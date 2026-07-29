@@ -1,0 +1,65 @@
+# ---- secrets: commit this file BEFORE anything else ----
+.env
+.env.*
+!.env.example
+*.key
+credentials.json
+service-account*.json
+
+# ---- fetched raw data (large, regenerable, NOT the deliverable) ----
+# Ignore the CONTENTS, not the directory: git cannot re-include a file whose
+# parent directory is excluded, and the 5 seed games below must stay committed
+# so the eval harness is reproducible.
+data/raw/*
+!data/raw/553850.json    # HELLDIVERS 2
+!data/raw/1091500.json   # Cyberpunk 2077
+!data/raw/233860.json    # Kenshi
+!data/raw/413150.json    # Stardew Valley
+!data/raw/1190460.json   # DEATH STRANDING
+data/cache/
+*.jsonl
+
+# NOTE: public/verdicts/ is intentionally NOT ignored.
+# Those generated verdict JSONs are what the static site serves.
+# If they get ignored, the deployed site will be empty.
+
+# ---- python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---- node / next.js ----
+node_modules/
+.next/
+out/
+build/
+dist/
+*.tsbuildinfo
+.eslintcache
+
+# ---- deploy ----
+.vercel/
+.netlify/
+
+# ---- claude code ----
+.claude/settings.local.json
+
+# ---- logs & scratch ----
+*.log
+npm-debug.log*
+yarn-error.log*
+scratch/
+tmp/
+notes-private.md
+
+# ---- os / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
