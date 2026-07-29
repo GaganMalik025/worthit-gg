@@ -22,6 +22,18 @@ data/raw/*
 data/cache/
 *.jsonl
 
+# ---- filtered corpus (input to extraction) ----
+# Same rule: seed survivors are committed so the evals reproduce. The dropped
+# dumps are NOT - they are regenerable, and there is no reason to put slurs and
+# censored rants into git history permanently.
+data/filtered/*
+!data/filtered/553850.json
+!data/filtered/1091500.json
+!data/filtered/233860.json
+!data/filtered/413150.json
+!data/filtered/1190460.json
+data/filtered/*.dropped.txt
+
 # NOTE: public/verdicts/ is intentionally NOT ignored.
 # Those generated verdict JSONs are what the static site serves.
 # If they get ignored, the deployed site will be empty.

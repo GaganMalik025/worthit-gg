@@ -1,0 +1,88 @@
+# WorthIt.gg - high-severity blocklist. A match DROPS the review from extraction,
+# so it can never reach a citation (invariant 8 / QR-4, the launch gate).
+#
+# Curated subset of LDNOOBW (pipeline/wordlists/ldnoobw_en.txt). The full list is
+# annotate-only: it contains ordinary game-review vocabulary (sex, hardcore,
+# balls, bang) and hard-dropping on it would cut real reviews from cohorts that
+# ingestion has already exhausted.
+#
+# Matching is word-boundary, repeat-tolerant and leet-normalised:
+#   "rape"   matches "raped"      but NOT "earrape"
+#   "cock"   matches "c0ck"       but NOT "cockroaches"
+#   "sex" is deliberately absent  - "bisexual", "homosexual", "the sex scenes"
+#                                   are all legitimate review content
+#
+# RULE FOR ADDING TERMS: never add a term that is a substring of, or an ordinary
+# sense of, normal review vocabulary. If it needs context to be offensive, it
+# belongs in the soft list, not here.
+
+# --- racial and ethnic slurs ---
+nigger
+nigga
+chink
+gook
+spic
+wetback
+kike
+beaner
+towelhead
+raghead
+jigaboo
+coon
+darkie
+paki
+
+# --- homophobic and transphobic slurs ---
+# note: "gay" and "queer" are NOT here on purpose - both appear as neutral
+# descriptions of romance options in this corpus (Cyberpunk, Stardew).
+faggot
+fag
+dyke
+tranny
+shemale
+ladyboy
+
+# --- ableist slurs ---
+# observed 5x in the seed corpus, all ableist usage
+retard
+mongoloid
+
+# --- sexual violence and child exploitation ---
+rape
+raping
+rapist
+molest
+pedophile
+pedophilia
+pedo
+loli
+lolicon
+shota
+jailbait
+
+# --- explicit sexual content ---
+# bare "porn" is absent on purpose: "architecture porn" / "ruin porn" are
+# ordinary critical idioms. The explicit compounds are not.
+cunt
+blowjob
+handjob
+rimjob
+cumshot
+creampie
+gangbang
+bukkake
+bestiality
+incest
+hentai
+dildo
+buttplug
+deepthroat
+felching
+fisting
+porno
+pornography
+pornhub
+whore
+slut
+milf
+jizz
