@@ -106,6 +106,10 @@ def _get_with_backoff(url, params, timeout=20):
         time.sleep(wait)
 
 
+class CacheMiss(Exception):
+    """Raised when a cache-only replay runs past the end of what we have."""
+
+
 def cache_path(appid, review_filter, page_idx):
     return CACHE_DIR / str(appid) / ("%s_%02d.json" % (review_filter, page_idx))
 
@@ -137,7 +141,8 @@ def save_cached_page(appid, review_filter, page_idx, cursor, data):
     )
 
 
-def fetch_page(appid, cursor, params, page_idx=0, use_cache=True, sleep=0.0):
+def fetch_page(appid, cursor, params, page_idx=0, use_cache=True, sleep=0.0,
+               cache_only=False):
     """One page of reviews. Served from disk when we already have it."""
     review_filter = params.get("filter", "recent")
 
@@ -145,6 +150,10 @@ def fetch_page(appid, cursor, params, page_idx=0, use_cache=True, sleep=0.0):
         cached = load_cached_page(appid, review_filter, page_idx, cursor)
         if cached is not None:
             return cached, True
+
+    if cache_only:
+        # --restats replays what is on disk and must never touch the network
+        raise CacheMiss("%s page %d not cached" % (review_filter, page_idx))
 
     q = {
         "json": 1,
@@ -248,7 +257,8 @@ def _quotas_met(pool, quota):
     return all(counts[name] >= quota for name, _, _ in BUCKETS)
 
 
-def sweep(appid, review_filter, pool, quota, max_pages, min_pages, sleep, use_cache):
+def sweep(appid, review_filter, pool, quota, max_pages, min_pages, sleep, use_cache,
+          cache_only=False):
     """Paginate one filter into the shared pool. Returns (query_summary, pages, live_calls).
 
     Nothing is discarded here - selection happens later, once both filters have
@@ -257,10 +267,15 @@ def sweep(appid, review_filter, pool, quota, max_pages, min_pages, sleep, use_ca
     cursor, summary, pages, live = "*", None, 0, 0
 
     while pages < max_pages:
-        data, from_cache = fetch_page(
-            appid, cursor, {"filter": review_filter},
-            page_idx=pages, use_cache=use_cache, sleep=(0.0 if pages == 0 else sleep),
-        )
+        try:
+            data, from_cache = fetch_page(
+                appid, cursor, {"filter": review_filter},
+                page_idx=pages, use_cache=use_cache,
+                sleep=(0.0 if pages == 0 else sleep), cache_only=cache_only,
+            )
+        except CacheMiss:
+            print("  [%s] end of cache at page %d" % (review_filter, pages + 1))
+            break
         if not from_cache:
             live += 1
         if summary is None:
@@ -303,6 +318,37 @@ def sweep(appid, review_filter, pool, quota, max_pages, min_pages, sleep, use_ca
         cursor = next_cursor
 
     return summary, pages, live
+
+
+def population_stats(pool, summary):
+    """True proportions, computed over the full PRE-QUOTA pool (invariant 11).
+
+    The sample is deliberately non-representative - quotas over-sample thin
+    cohorts. Prevalence may only ever be read from this block, never from
+    counting the reviews we kept.
+    """
+    total = len(pool)
+    buckets = OrderedDict()
+    for name in BUCKET_NAMES:
+        subset = [rec["review"] for rec in pool.values()
+                  if rec["review"]["bucket"] == name]
+        if name == "unknown" and not subset:
+            continue
+        pos = sum(1 for r in subset if r["voted_up"])
+        buckets[name] = {
+            "n": len(subset),
+            "share_of_pool_pct": round(100.0 * len(subset) / total, 1) if total else None,
+            "pct_positive": round(100.0 * pos / len(subset), 1) if subset else None,
+        }
+    steam_total = summary.get("total_reviews") or 0
+    steam_pos = summary.get("total_positive") or 0
+    return {
+        "basis": "pre-quota pool swept at ingestion",
+        "pool_size": total,
+        "buckets": buckets,
+        "steam_total_reviews": steam_total or None,
+        "steam_pct_positive": round(100.0 * steam_pos / steam_total, 1) if steam_total else None,
+    }
 
 
 def _round_robin(queues, limit):
@@ -384,6 +430,8 @@ def fetch_reviews(appid, target=400, filters=("recent", "all"), quota=None,
         "live_requests": live_calls,
         "pool_size": len(pool),
         "pool_by_bucket": dict(_pool_bucket_counts(pool)),
+        # invariant 11: the only sanctioned source of prevalence downstream
+        "population": population_stats(pool, summary or {}),
     }
     return reviews, (summary or {}), stats
 
@@ -466,6 +514,56 @@ def sample_report(reviews, stats):
     return out
 
 
+def print_population(population):
+    """The block downstream is allowed to quote. Sample counts are not."""
+    if not population:
+        return
+    print("\n--- population (pre-quota pool, n=%s) - invariant 11 source of truth ---"
+          % population.get("pool_size"))
+    for name, st in (population.get("buckets") or {}).items():
+        print("  %-14s n=%-5d %5.1f%% of pool   %5.1f%% positive"
+              % (name, st["n"], st["share_of_pool_pct"] or 0, st["pct_positive"] or 0))
+    if population.get("steam_pct_positive") is not None:
+        print("  %-14s %s reviews, %.1f%% positive"
+              % ("steam overall", population["steam_total_reviews"],
+                 population["steam_pct_positive"]))
+
+
+def restats_one(appid, args):
+    """Recompute the population block from cached pages only. Zero requests."""
+    path = Path(args.out) / ("%s.json" % appid)
+    blob = load_existing(path)
+    if not blob:
+        print("== %s - no %s to restat; run the fetch first ==" % (appid, path))
+        return False
+
+    params = blob.get("params") or {}
+    filters = params.get("filters") or ["recent", "all"]
+    print("== %s (%s) - recomputing population from cache ==" % (appid, blob.get("game_name")))
+
+    pool, summary = OrderedDict(), None
+    for review_filter in filters:
+        s, _, live = sweep(
+            appid, review_filter, pool, quota=10 ** 9,
+            max_pages=10 ** 6, min_pages=10 ** 6, sleep=0.0,
+            use_cache=True, cache_only=True,
+        )
+        if live:  # cache_only should make this impossible
+            raise RuntimeError("restats made %d live request(s)" % live)
+        if summary is None:
+            summary = s
+
+    if not pool:
+        print("   no cached pages found for %s" % appid)
+        return False
+
+    blob["population"] = population_stats(pool, summary or blob.get("query_summary") or {})
+    path.write_text(json.dumps(blob, indent=2, ensure_ascii=False), encoding="utf-8")
+    print_population(blob["population"])
+    print("\nupdated population block -> %s" % path)
+    return True
+
+
 def load_existing(path):
     try:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -510,6 +608,8 @@ def run_one(appid, args):
         return False
 
     ok = report(reviews, summary, stats)
+    population = stats.pop("population", None)
+    print_population(population)
 
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({
@@ -517,6 +617,7 @@ def run_one(appid, args):
         "game_name": name,
         "fetched_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "params": stats,
+        "population": population,
         "query_summary": summary,
         "sample_report": sample_report(reviews, stats),
         "reviews": reviews,
@@ -539,6 +640,8 @@ def main():
     ap.add_argument("--min-pages", type=int, default=3,
                     help="pages fetched per filter even once quotas are met")
     ap.add_argument("--sleep", type=float, default=1.0, help="delay between live requests")
+    ap.add_argument("--restats", action="store_true",
+                    help="recompute the population block from cache only (no network)")
     ap.add_argument("--force", action="store_true", help="refetch even if output exists")
     ap.add_argument("--no-cache", action="store_true", help="ignore the raw page cache")
     ap.add_argument("--out", default=str(OUT_DIR), help="output dir (default data/raw)")
@@ -560,7 +663,8 @@ def main():
     for i, appid in enumerate(appids):
         if i:
             print("")
-        if not run_one(appid, args):
+        ok = restats_one(appid, args) if args.restats else run_one(appid, args)
+        if not ok:
             failures.append(appid)
 
     if failures:

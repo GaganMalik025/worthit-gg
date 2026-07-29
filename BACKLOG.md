@@ -56,6 +56,17 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-07-29 | **Temporal bucketing (pre/post-patch splits) alongside playtime
+buckets** | build, phase 1.1 | Cyberpunk 2077 exposed the limit of the thesis:
+playtime segmentation cannot see a redemption arc. A 2020 launch review and a
+2025 post-2.0 review both land in `veteran` and get averaged — exactly the
+failure mode the product exists to correct, on a different axis. `timestamp_created`
+is already ingested, so the data is there. Not built now because it doubles the
+segmentation surface, invalidates the bucket definitions the evals are pinned to
+(invariant 2), and would push launch past Day 3. Revisit with the post-launch
+iteration if the Cyberpunk verdict reads as wrong to users — that would be
+evidence, which is the bar.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for

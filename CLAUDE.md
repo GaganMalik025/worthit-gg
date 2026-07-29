@@ -70,6 +70,21 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
     site serves. Never add it to `.gitignore`. `data/raw/` stays gitignored
     EXCEPT the 5 seed games, which are committed so the eval harness is
     reproducible.
+11. **The sample is deliberately non-representative.** Per-bucket quotas
+    over-sample thin cohorts on purpose — the refund cohort is ~3% of the pool
+    and ~10% of the sample. Therefore nothing in a prompt, claim, verdict, or
+    UI string may infer prevalence, proportion, or "how many players" from
+    sample counts: no "most players", "a third of reviewers", "commonly".
+    True population proportions are computed **in code** from the full
+    pre-quota pool and passed through explicitly. If a proportion was not
+    passed in that way, it does not get stated.
+12. **Minimum cohort evidence is 20 surviving reviews.** Below 20 reviews in a
+    bucket after filtering, no claim may be attributed to that cohort; the
+    section renders muted with an explicit `n=` label instead. Refund-window
+    counts pre-filter on the seed set: Kenshi 47, Helldivers 2 30, Death
+    Stranding 26, Stardew Valley 24, **Cyberpunk 2077 12** — already below the
+    floor before the filter runs. Cohorts are exhausted at ingestion (kept ==
+    pool), so a review the filter drops cannot be replaced.
 
 ## Budget rules
 

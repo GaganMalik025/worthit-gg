@@ -79,11 +79,17 @@ Source: `GET store.steampowered.com/appreviews/<appid>?json=1`. Public, no API k
 | `author.playtime_forever`, `playtime_last_two_weeks` | "Still playing" signal |
 | `timestamp_created`, `timestamp_updated` | Pre/post-patch temporal splits |
 | `voted_up` | Sentiment |
-| `refunded` | Explicit refund-cohort flag |
+| `refunded` | Explicit refund-cohort flag — **near-empty in practice, do not rely on it** |
 | `written_during_early_access` | EA distortion flag |
 | `weighted_vote_score`, `votes_up`, `votes_funny` | Helpfulness / joke-review signal |
 | `primarily_steam_deck` | Secondary segment |
 | `hardware.*` (GPU, CPU, RAM, OS) | Optional enrichment — minority of reviews |
+
+**Refund signal (measured, 1.1):** the `refunded` field is effectively empty —
+across 400-review samples it returned Kenshi 11, Helldivers 2 6, Cyberpunk 2077
+1, Stardew Valley 0, Death Stranding 0. It is a nice-to-have annotation, not a
+cohort definition. **`playtime_at_review` < 120 minutes is the operative refund
+signal**, and it is what `refund_window` means everywhere in this codebase.
 
 **Known traps:** `playtime_at_review` is minutes (60× silent error if mishandled); `query_summary.num_reviews` is batch count, not total (`total_reviews` is real); default sort is helpfulness-ranked — which *is* the bias being corrected (`filter=recent` + deliberate cross-bucket sampling); `day_range` only works with `filter=all`; Steam censors profanity into `♥♥♥` sequences.
 
