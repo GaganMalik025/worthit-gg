@@ -320,12 +320,16 @@ def sweep(appid, review_filter, pool, quota, max_pages, min_pages, sleep, use_ca
     return summary, pages, live
 
 
-def population_stats(pool, summary):
-    """True proportions, computed over the full PRE-QUOTA pool (invariant 11).
+def pool_stats(pool, summary):
+    """Rates over the full PRE-QUOTA pool (invariant 11).
 
-    The sample is deliberately non-representative - quotas over-sample thin
-    cohorts. Prevalence may only ever be read from this block, never from
-    counting the reviews we kept.
+    Deliberately called "pool", not "population": this is every review we swept,
+    not every review that exists. Helldivers 2's pool is 1,930 of 815,955 - a
+    sample, just an unbiased-by-us one. Every rate here ships with the pool_n it
+    was computed from so no figure can be quoted bare.
+
+    Prevalence may only ever be read from this block, never from counting the
+    reviews the quota kept or the filter spared.
     """
     total = len(pool)
     buckets = OrderedDict()
@@ -336,15 +340,15 @@ def population_stats(pool, summary):
             continue
         pos = sum(1 for r in subset if r["voted_up"])
         buckets[name] = {
-            "n": len(subset),
+            "pool_n": len(subset),
             "share_of_pool_pct": round(100.0 * len(subset) / total, 1) if total else None,
             "pct_positive": round(100.0 * pos / len(subset), 1) if subset else None,
         }
     steam_total = summary.get("total_reviews") or 0
     steam_pos = summary.get("total_positive") or 0
     return {
-        "basis": "pre-quota pool swept at ingestion",
-        "pool_size": total,
+        "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)",
+        "pool_n": total,
         "buckets": buckets,
         "steam_total_reviews": steam_total or None,
         "steam_pct_positive": round(100.0 * steam_pos / steam_total, 1) if steam_total else None,
@@ -431,7 +435,7 @@ def fetch_reviews(appid, target=400, filters=("recent", "all"), quota=None,
         "pool_size": len(pool),
         "pool_by_bucket": dict(_pool_bucket_counts(pool)),
         # invariant 11: the only sanctioned source of prevalence downstream
-        "population": population_stats(pool, summary or {}),
+        "pool": pool_stats(pool, summary or {}),
     }
     return reviews, (summary or {}), stats
 
@@ -514,23 +518,23 @@ def sample_report(reviews, stats):
     return out
 
 
-def print_population(population):
+def print_pool(pool):
     """The block downstream is allowed to quote. Sample counts are not."""
-    if not population:
+    if not pool:
         return
-    print("\n--- population (pre-quota pool, n=%s) - invariant 11 source of truth ---"
-          % population.get("pool_size"))
-    for name, st in (population.get("buckets") or {}).items():
-        print("  %-14s n=%-5d %5.1f%% of pool   %5.1f%% positive"
-              % (name, st["n"], st["share_of_pool_pct"] or 0, st["pct_positive"] or 0))
-    if population.get("steam_pct_positive") is not None:
-        print("  %-14s %s reviews, %.1f%% positive"
-              % ("steam overall", population["steam_total_reviews"],
-                 population["steam_pct_positive"]))
+    print("\n--- pool rates (pre-quota, pool_n=%s) - invariant 11 source of truth ---"
+          % pool.get("pool_n"))
+    for name, st in (pool.get("buckets") or {}).items():
+        print("  %-14s pool_n=%-5d %5.1f%% of pool   %5.1f%% positive"
+              % (name, st["pool_n"], st["share_of_pool_pct"] or 0, st["pct_positive"] or 0))
+    if pool.get("steam_pct_positive") is not None:
+        print("  %-14s pool_n=%-5s of %s on Steam, %.1f%% positive there"
+              % ("steam overall", pool.get("pool_n"), pool["steam_total_reviews"],
+                 pool["steam_pct_positive"]))
 
 
 def restats_one(appid, args):
-    """Recompute the population block from cached pages only. Zero requests."""
+    """Recompute the pool block from cached pages only. Zero requests."""
     path = Path(args.out) / ("%s.json" % appid)
     blob = load_existing(path)
     if not blob:
@@ -539,7 +543,7 @@ def restats_one(appid, args):
 
     params = blob.get("params") or {}
     filters = params.get("filters") or ["recent", "all"]
-    print("== %s (%s) - recomputing population from cache ==" % (appid, blob.get("game_name")))
+    print("== %s (%s) - recomputing pool rates from cache ==" % (appid, blob.get("game_name")))
 
     pool, summary = OrderedDict(), None
     for review_filter in filters:
@@ -557,10 +561,11 @@ def restats_one(appid, args):
         print("   no cached pages found for %s" % appid)
         return False
 
-    blob["population"] = population_stats(pool, summary or blob.get("query_summary") or {})
+    blob.pop("population", None)  # pre-rename key
+    blob["pool"] = pool_stats(pool, summary or blob.get("query_summary") or {})
     path.write_text(json.dumps(blob, indent=2, ensure_ascii=False), encoding="utf-8")
-    print_population(blob["population"])
-    print("\nupdated population block -> %s" % path)
+    print_pool(blob["pool"])
+    print("\nupdated pool block -> %s" % path)
     return True
 
 
@@ -608,8 +613,8 @@ def run_one(appid, args):
         return False
 
     ok = report(reviews, summary, stats)
-    population = stats.pop("population", None)
-    print_population(population)
+    pool = stats.pop("pool", None)
+    print_pool(pool)
 
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({
@@ -617,7 +622,7 @@ def run_one(appid, args):
         "game_name": name,
         "fetched_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "params": stats,
-        "population": population,
+        "pool": pool,
         "query_summary": summary,
         "sample_report": sample_report(reviews, stats),
         "reviews": reviews,
@@ -641,7 +646,7 @@ def main():
                     help="pages fetched per filter even once quotas are met")
     ap.add_argument("--sleep", type=float, default=1.0, help="delay between live requests")
     ap.add_argument("--restats", action="store_true",
-                    help="recompute the population block from cache only (no network)")
+                    help="recompute the pool-rate block from cache only (no network)")
     ap.add_argument("--force", action="store_true", help="refetch even if output exists")
     ap.add_argument("--no-cache", action="store_true", help="ignore the raw page cache")
     ap.add_argument("--out", default=str(OUT_DIR), help="output dir (default data/raw)")

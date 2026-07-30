@@ -35,8 +35,12 @@ Every "DoD" (definition of done) is checked by the developer, not assumed.
   bucket → claims with supporting IDs; ≥2-review rule enforced in code.
   **DoD:** one game's raw extraction output read by developer before 1.4.
 - 1.4 **Deterministic grounding check** (no LLM): cited IDs exist; lexical
-  overlap between claim and cited text; reject + regenerate on failure.
-  **DoD:** deliberately corrupted claim gets rejected in a test.
+  overlap between claim and cited text; **prevalence-language guard on claim
+  prose** (`pipeline/prevalence_guard.py`, built in 1.2 — a countless schema
+  cannot catch "most players bounce off the tutorial"); reject + regenerate on
+  failure.
+  **DoD:** deliberately corrupted claim gets rejected in a test, and a claim
+  carrying prevalence language is rejected with its offending term named.
 - 1.5 **Synthesis pass** (Gemini Flash): verdict JSON from extracted claims
   only; unknown claim IDs rejected in code. Output schema: verdict,
   for-whom, per-bucket sections, claims+citations, distortion flags.

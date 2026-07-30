@@ -1,7 +1,7 @@
 {
   "appid": "233860",
   "game_name": "Kenshi",
-  "filtered_at": "2026-07-29T17:33:40Z",
+  "filtered_at": "2026-07-29T18:27:28Z",
   "thresholds": {
     "heart_density": 0.02,
     "min_words": 5,
@@ -9,27 +9,27 @@
     "alpha_ratio": 0.6,
     "repeat_ratio": 0.35
   },
-  "population": {
-    "basis": "pre-quota pool swept at ingestion",
-    "pool_size": 1239,
+  "pool": {
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)",
+    "pool_n": 1239,
     "buckets": {
       "refund_window": {
-        "n": 47,
+        "pool_n": 47,
         "share_of_pool_pct": 3.8,
         "pct_positive": 40.4
       },
       "early": {
-        "n": 293,
+        "pool_n": 293,
         "share_of_pool_pct": 23.6,
         "pct_positive": 87.4
       },
       "mid": {
-        "n": 441,
+        "pool_n": 441,
         "share_of_pool_pct": 35.6,
         "pct_positive": 93.7
       },
       "veteran": {
-        "n": 458,
+        "pool_n": 458,
         "share_of_pool_pct": 37.0,
         "pct_positive": 98.0
       }
@@ -110,7 +110,57 @@
     },
     "overall_drop_pct": 31.0,
     "in": 400,
-    "kept": 276
+    "kept": 276,
+    "sentiment_shift": {
+      "refund_window": {
+        "n_pre": 47,
+        "pct_positive_pre": 40.4,
+        "n_post": 29,
+        "pct_positive_post": 37.9,
+        "delta_pts": -2.5,
+        "pct_positive_dropped": 44.4,
+        "n_low_information": 8,
+        "pct_positive_low_information": 75.0,
+        "warn": false,
+        "below_warn_n": true
+      },
+      "early": {
+        "n_pre": 118,
+        "pct_positive_pre": 88.1,
+        "n_post": 77,
+        "pct_positive_post": 93.5,
+        "delta_pts": 5.4,
+        "pct_positive_dropped": 78.0,
+        "n_low_information": 35,
+        "pct_positive_low_information": 91.4,
+        "warn": true,
+        "below_warn_n": false
+      },
+      "mid": {
+        "n_pre": 118,
+        "pct_positive_pre": 89.0,
+        "n_post": 86,
+        "pct_positive_post": 87.2,
+        "delta_pts": -1.8,
+        "pct_positive_dropped": 93.8,
+        "n_low_information": 27,
+        "pct_positive_low_information": 100.0,
+        "warn": false,
+        "below_warn_n": false
+      },
+      "veteran": {
+        "n_pre": 117,
+        "pct_positive_pre": 99.1,
+        "n_post": 84,
+        "pct_positive_post": 98.8,
+        "delta_pts": -0.3,
+        "pct_positive_dropped": 100.0,
+        "n_low_information": 29,
+        "pct_positive_low_information": 100.0,
+        "warn": false,
+        "below_warn_n": false
+      }
+    }
   },
   "reviews": [
     {

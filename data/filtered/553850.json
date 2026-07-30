@@ -1,7 +1,7 @@
 {
   "appid": "553850",
   "game_name": "HELLDIVERS™ 2",
-  "filtered_at": "2026-07-29T17:33:40Z",
+  "filtered_at": "2026-07-29T18:27:28Z",
   "thresholds": {
     "heart_density": 0.02,
     "min_words": 5,
@@ -9,27 +9,27 @@
     "alpha_ratio": 0.6,
     "repeat_ratio": 0.35
   },
-  "population": {
-    "basis": "pre-quota pool swept at ingestion",
-    "pool_size": 1930,
+  "pool": {
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)",
+    "pool_n": 1930,
     "buckets": {
       "refund_window": {
-        "n": 30,
+        "pool_n": 30,
         "share_of_pool_pct": 1.6,
         "pct_positive": 50.0
       },
       "early": {
-        "n": 414,
+        "pool_n": 414,
         "share_of_pool_pct": 21.5,
         "pct_positive": 88.2
       },
       "mid": {
-        "n": 615,
+        "pool_n": 615,
         "share_of_pool_pct": 31.9,
         "pct_positive": 85.2
       },
       "veteran": {
-        "n": 871,
+        "pool_n": 871,
         "share_of_pool_pct": 45.1,
         "pct_positive": 65.7
       }
@@ -110,7 +110,57 @@
     },
     "overall_drop_pct": 26.8,
     "in": 400,
-    "kept": 293
+    "kept": 293,
+    "sentiment_shift": {
+      "refund_window": {
+        "n_pre": 30,
+        "pct_positive_pre": 50.0,
+        "n_post": 25,
+        "pct_positive_post": 56.0,
+        "delta_pts": 6.0,
+        "pct_positive_dropped": 20.0,
+        "n_low_information": 2,
+        "pct_positive_low_information": 0.0,
+        "warn": false,
+        "below_warn_n": true
+      },
+      "early": {
+        "n_pre": 124,
+        "pct_positive_pre": 91.9,
+        "n_post": 80,
+        "pct_positive_post": 92.5,
+        "delta_pts": 0.6,
+        "pct_positive_dropped": 90.9,
+        "n_low_information": 39,
+        "pct_positive_low_information": 94.9,
+        "warn": false,
+        "below_warn_n": false
+      },
+      "mid": {
+        "n_pre": 123,
+        "pct_positive_pre": 70.7,
+        "n_post": 91,
+        "pct_positive_post": 64.8,
+        "delta_pts": -5.9,
+        "pct_positive_dropped": 87.5,
+        "n_low_information": 28,
+        "pct_positive_low_information": 92.9,
+        "warn": true,
+        "below_warn_n": false
+      },
+      "veteran": {
+        "n_pre": 123,
+        "pct_positive_pre": 52.8,
+        "n_post": 97,
+        "pct_positive_post": 45.4,
+        "delta_pts": -7.4,
+        "pct_positive_dropped": 80.8,
+        "n_low_information": 21,
+        "pct_positive_low_information": 100.0,
+        "warn": true,
+        "below_warn_n": false
+      }
+    }
   },
   "reviews": [
     {

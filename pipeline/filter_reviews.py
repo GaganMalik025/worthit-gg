@@ -44,6 +44,20 @@ WORDLIST_DIR = Path(__file__).resolve().parent / "wordlists"
 # invariant 12: below this many surviving reviews, a cohort carries no claims
 MIN_COHORT = 20
 
+# Sentiment-shift reporting. Short reviews skew positive (95% positive under 2
+# words vs 68% over 100), so low_information pulls the surviving sample NEGATIVE.
+# Measured on the seed set: -9.7pts on Helldivers 2's veteran bucket.
+#
+# The shift is only reported, never corrected. Correcting it means either
+# re-admitting contentless praise ("democracy", "Epic", "kul") that can support
+# no claim, or deleting claim-bearing negative reviews to make a ratio look
+# right. Both are worse than the artifact. Prevalence comes from the pool block
+# instead (invariant 11), which neither the quota nor the filter touches.
+SHIFT_WARN_PTS = 3.0
+# ...but only warn where the arithmetic can carry it. At n=12 a single review is
+# 8 points, so an ungated warning is noise, not signal.
+SHIFT_MIN_N = 30
+
 REASONS = ["heart_density", "blocked_term", "joke_review", "low_information"]
 
 BBCODE = re.compile(r"\[/?[a-zA-Z][^\]]{0,40}\]")
@@ -148,6 +162,64 @@ def classify(review, cfg, blocked_re, soft_re):
 # --------------------------------------------------------------------------
 # reporting
 # --------------------------------------------------------------------------
+
+def _pct_positive(rows):
+    if not rows:
+        return None
+    return round(100.0 * sum(1 for r in rows if r["_review"].get("voted_up")) / len(rows), 1)
+
+
+def sentiment_shift(rows):
+    """Per bucket: does filtering move the sentiment mix, and by how much?
+
+    Reported so the distortion is visible on every run and publishable on the
+    methodology page. Not corrected - see the note on SHIFT_WARN_PTS.
+    """
+    out = OrderedDict()
+    for name in BUCKET_NAMES:
+        pre = [r for r in rows if r["_bucket"] == name]
+        if not pre:
+            continue
+        post = [r for r in pre if r["_reason"] is None]
+        dropped = [r for r in pre if r["_reason"]]
+        lowinfo = [r for r in pre if r["_reason"] == "low_information"]
+        p_pre, p_post = _pct_positive(pre), _pct_positive(post)
+        delta = round(p_post - p_pre, 1) if (p_pre is not None and p_post is not None) else None
+        # gate on the smaller of the two sides: a delta is only meaningful if
+        # both the before and after have enough reviews to resolve 3 points
+        n_basis = min(len(pre), len(post))
+        out[name] = {
+            "n_pre": len(pre), "pct_positive_pre": p_pre,
+            "n_post": len(post), "pct_positive_post": p_post,
+            "delta_pts": delta,
+            "pct_positive_dropped": _pct_positive(dropped),
+            "n_low_information": len(lowinfo),
+            "pct_positive_low_information": _pct_positive(lowinfo),
+            "warn": bool(delta is not None and abs(delta) > SHIFT_WARN_PTS
+                         and n_basis >= SHIFT_MIN_N),
+            "below_warn_n": n_basis < SHIFT_MIN_N,
+        }
+    return out
+
+
+def print_sentiment_shift(shift):
+    print("  %-18s %8s %8s %7s %10s" % ("", "pre pos%", "post pos%", "delta", "dropped pos%"))
+    for name, st in shift.items():
+        note = ""
+        if st["warn"]:
+            note = "  <-- SHIFT %+.1f pts" % st["delta_pts"]
+        elif st["below_warn_n"]:
+            note = "  (n<%d, not assessed)" % SHIFT_MIN_N
+        print("  %-18s %7s%% %8s%% %+7.1f %9s%%%s"
+              % (name,
+                 "%.1f" % st["pct_positive_pre"] if st["pct_positive_pre"] is not None else "-",
+                 "%.1f" % st["pct_positive_post"] if st["pct_positive_post"] is not None else "-",
+                 st["delta_pts"] or 0.0,
+                 "%.1f" % st["pct_positive_dropped"] if st["pct_positive_dropped"] is not None else "-",
+                 note))
+    print("  (sentiment shift is reported, never corrected - prevalence comes "
+          "from the pool block)")
+
 
 def build_report(rows, game_total_in, game_total_dropped):
     by_bucket = OrderedDict()
@@ -276,8 +348,10 @@ def filter_one(appid, args, blocked_re, soft_re):
     dropped_rows = [r for r in rows if r["_reason"]]
     kept_rows = [r for r in rows if not r["_reason"]]
     by_bucket, overall_pct = build_report(rows, len(rows), len(dropped_rows))
+    shift = sentiment_shift(rows)
 
     print_report(game_name, by_bucket, overall_pct, len(rows), len(kept_rows))
+    print_sentiment_shift(shift)
     if args.sample:
         print_sample(dropped_rows, args.sample, args.sample_reason, args.seed)
 
@@ -300,10 +374,11 @@ def filter_one(appid, args, blocked_re, soft_re):
         "filtered_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "thresholds": cfg,
         # carried through: the ONLY sanctioned source of prevalence (invariant 11)
-        "population": blob.get("population"),
+        "pool": blob.get("pool"),
         "query_summary": blob.get("query_summary"),
         "filter_report": {"by_bucket": by_bucket, "overall_drop_pct": overall_pct,
-                          "in": len(rows), "kept": len(kept_rows)},
+                          "in": len(rows), "kept": len(kept_rows),
+                          "sentiment_shift": shift},
         "reviews": survivors,
         # ids and reasons only - dropped text never enters git
         "dropped": [{"recommendationid": r["_review"].get("recommendationid"),

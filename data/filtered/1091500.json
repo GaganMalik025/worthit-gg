@@ -1,7 +1,7 @@
 {
   "appid": "1091500",
   "game_name": "Cyberpunk 2077",
-  "filtered_at": "2026-07-29T17:33:40Z",
+  "filtered_at": "2026-07-29T18:27:28Z",
   "thresholds": {
     "heart_density": 0.02,
     "min_words": 5,
@@ -9,27 +9,27 @@
     "alpha_ratio": 0.6,
     "repeat_ratio": 0.35
   },
-  "population": {
-    "basis": "pre-quota pool swept at ingestion",
-    "pool_size": 2078,
+  "pool": {
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)",
+    "pool_n": 2078,
     "buckets": {
       "refund_window": {
-        "n": 12,
+        "pool_n": 12,
         "share_of_pool_pct": 0.6,
         "pct_positive": 91.7
       },
       "early": {
-        "n": 323,
+        "pool_n": 323,
         "share_of_pool_pct": 15.5,
         "pct_positive": 93.8
       },
       "mid": {
-        "n": 1083,
+        "pool_n": 1083,
         "share_of_pool_pct": 52.1,
         "pct_positive": 98.3
       },
       "veteran": {
-        "n": 660,
+        "pool_n": 660,
         "share_of_pool_pct": 31.8,
         "pct_positive": 98.0
       }
@@ -110,7 +110,57 @@
     },
     "overall_drop_pct": 28.8,
     "in": 400,
-    "kept": 285
+    "kept": 285,
+    "sentiment_shift": {
+      "refund_window": {
+        "n_pre": 12,
+        "pct_positive_pre": 91.7,
+        "n_post": 10,
+        "pct_positive_post": 100.0,
+        "delta_pts": 8.3,
+        "pct_positive_dropped": 50.0,
+        "n_low_information": 1,
+        "pct_positive_low_information": 100.0,
+        "warn": false,
+        "below_warn_n": true
+      },
+      "early": {
+        "n_pre": 130,
+        "pct_positive_pre": 96.2,
+        "n_post": 82,
+        "pct_positive_post": 96.3,
+        "delta_pts": 0.1,
+        "pct_positive_dropped": 95.8,
+        "n_low_information": 45,
+        "pct_positive_low_information": 97.8,
+        "warn": false,
+        "below_warn_n": false
+      },
+      "mid": {
+        "n_pre": 129,
+        "pct_positive_pre": 97.7,
+        "n_post": 91,
+        "pct_positive_post": 96.7,
+        "delta_pts": -1.0,
+        "pct_positive_dropped": 100.0,
+        "n_low_information": 32,
+        "pct_positive_low_information": 100.0,
+        "warn": false,
+        "below_warn_n": false
+      },
+      "veteran": {
+        "n_pre": 129,
+        "pct_positive_pre": 95.3,
+        "n_post": 102,
+        "pct_positive_post": 95.1,
+        "delta_pts": -0.2,
+        "pct_positive_dropped": 96.3,
+        "n_low_information": 23,
+        "pct_positive_low_information": 95.7,
+        "warn": false,
+        "below_warn_n": false
+      }
+    }
   },
   "reviews": [
     {

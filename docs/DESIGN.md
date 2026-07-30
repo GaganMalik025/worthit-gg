@@ -78,6 +78,18 @@ disagreement becomes a shape you can see before reading a word. A game where
 the refund bar is red and the veteran bar is green *looks like* "steep learning
 curve" at a glance. This is the product thesis as a visual.
 
+**Data source (non-negotiable, CLAUDE.md invariant 13):** every bar reads
+`pool.buckets[<cohort>].pct_positive` from the verdict JSON, and its cohort
+label carries the matching `pool_n` in mono: `<2h refund window · pool_n 47`.
+Never the post-quota or post-filter review counts — those are pipeline
+diagnostics and describe our sampling, not the game. A bar whose percentage has
+no `pool_n` beside it does not render at all.
+
+Cohorts under the 20-review floor (invariant 12) render the bar at 30% opacity
+with the label `n=12 · too few reviews to call` and carry no claims beneath
+them. The bar still shows: an honest "we don't know" is worth more than a
+missing row, and the gap is itself information about who bounced.
+
 - On load, bars fill left-to-right with a 350ms staggered ease-out (the page's
   one orchestrated motion moment). Respect `prefers-reduced-motion`: render
   filled, no animation.
@@ -99,7 +111,10 @@ it feel human, not decoration.
 ## Citations = receipts
 
 - Claims render as one-line statements with a mono evidence tag:
-  `▸ 6 reviews · 2 cohorts`.
+  `▸ 6 reviews · 2 cohorts`. This is the **one sanctioned non-pool number** on
+  the page (invariant 13): it counts the receipts attached to *this claim*, not
+  how many players think it. Never render it as a share, a rate, or "6 players",
+  and never let a claim's wording lean on it ("only a handful mention…").
 - Tapping expands (`--surface-2`, 200ms height ease) to the verbatim review
   excerpts, each with `voted_up` glyph, `hours at review` in mono, and date.
 - Collapsed by default ALWAYS (blast-radius rule from CLAUDE.md invariant 9).
@@ -111,6 +126,12 @@ it feel human, not decoration.
 An inline callout strip, not an alarm: `--wait`-tinted background at 8%
 opacity, mono label like `SCORE DISTORTION DETECTED`, one sentence of plain
 explanation, expandable evidence. Factual voice — flags explain, never editorialize.
+
+Any figure inside a flag — cohort rates, before/after splits, the gap between
+cohorts — comes from the `pool` block with its `pool_n` (invariant 13). A flag
+that cannot cite a pool figure does not ship; "this game looks review-bombed"
+without a number attached is editorializing, which is the one thing flags may
+never do.
 
 ---
 
@@ -133,8 +154,9 @@ explanation, expandable evidence. Factual voice — flags explain, never editori
    each with receipts expander.
 5. Hardware context section only when data density permits (F9) — omit
    silently otherwise, never show an empty section.
-6. Footer: "Data: N reviews sampled across cohorts · generated {date} ·
-   how this works →" in mono.
+6. Footer: "Data: {pool_n} reviews across 4 cohorts · generated {date} · how
+   this works →" in mono. `pool_n` is the swept pool (invariant 13) — not the
+   quota sample, not the post-filter count, not "reviews read by the model".
 
 ### Methodology page
 Written like a straight-talking README, not a legal page. Contains: the
@@ -161,8 +183,11 @@ Nothing else moves. Reduced-motion kills 1 and 3 entirely.
 ## Copy rules
 
 Active voice, sentence case, plain verbs. Buttons say what they do ("Show
-receipts", "Request verdict"). Numbers are specific ("412 reviews sampled"),
-never vague ("hundreds"). No exclamation marks. The interface's personality
+receipts", "Request verdict"). Numbers are specific and always carry their
+denominator ("1,930 reviews across 4 cohorts", "47 in the refund window"),
+never vague ("hundreds") and never bare percentages. Prevalence words — most,
+majority, many players, half, few — are banned in generated copy; they are
+rejected in code at 1.4, and the same rule applies to hand-written UI strings. No exclamation marks. The interface's personality
 comes from precision + the one catchphrase, not from jokes.
 
 ## Quality floor (non-negotiable, ship silently)

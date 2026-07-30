@@ -57,7 +57,13 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
    pass. Unknown IDs are rejected in code.
 5. A deterministic grounding check (IDs exist + lexical overlap between claim
    and cited review text) runs on every generation, before any LLM judging.
-6. Extraction runs at **temperature 0** with a structured output schema.
+6. Extraction runs with a **structured output schema** and
+   `thinking_level: minimal`, and sends **no sampling parameters**.
+   `temperature`/`top_p`/`top_k` are deprecated and ignored on Gemini 3.x and
+   return HTTP 400 in future model generations — do not reintroduce them.
+   Repeatability comes from the schema, the pinned model id
+   (`gemini-3.5-flash-lite`) and the fixed prompt; where it has to be proven,
+   from the self-consistency double-run on the seed set, not a sampling knob.
 7. The content filter (pipeline/filter step) runs **before** extraction. Its
    signals: `♥` density (Steam censors profanity into ♥♥♥ sequences),
    `votes_funny > votes_up` (joke reviews/copypasta — exclude entirely),
@@ -78,13 +84,29 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
     True population proportions are computed **in code** from the full
     pre-quota pool and passed through explicitly. If a proportion was not
     passed in that way, it does not get stated.
-12. **Minimum cohort evidence is 20 surviving reviews.** Below 20 reviews in a
+12. **Minimum cohort evidence is 20 surviving reviews.** [see invariant 13 for
+    how the resulting `n=` label is sourced] Below 20 reviews in a
     bucket after filtering, no claim may be attributed to that cohort; the
     section renders muted with an explicit `n=` label instead. Refund-window
     counts pre-filter on the seed set: Kenshi 47, Helldivers 2 30, Death
     Stranding 26, Stardew Valley 24, **Cyberpunk 2077 12** — already below the
     floor before the filter runs. Cohorts are exhausted at ingestion (kept ==
     pool), so a review the filter drops cannot be replaced.
+13. **Every user-facing number is a pool figure.** Split Bar rates, cohort `n=`
+    labels, distortion-flag evidence and footer counts all read the `pool` block
+    of the verdict JSON. Post-quota and post-filter counts — how many reviews
+    the quota kept, how many the filter spared, how many an LLM read — are
+    pipeline diagnostics and never render. Every rate ships with its `pool_n`;
+    a percentage without its denominator does not render.
+    - The word is **pool**, not "population": it is every review we swept, not
+      every review that exists (Helldivers 2: 1,930 of 815,955). Naming it a
+      population overclaims, in the UI and in the case study alike.
+    - **One carve-out:** the receipts tag on a claim (`▸ 6 reviews · 2 cohorts`)
+      counts *citations attached to that claim*, which is evidence, not
+      prevalence. It renders. It must never be phrased as a rate, a share, or
+      "6 players" — and no claim may be built from it.
+    - The filter's `sentiment_shift` is reported in the pipeline and published
+      on the methodology page, never used to correct the sample.
 
 ## Budget rules
 
