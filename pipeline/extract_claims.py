@@ -277,8 +277,10 @@ def load_env(path=".env"):
         os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 
-def cache_path(appid, bucket, model, system, user):
-    digest = hashlib.sha256(("%s\x00%s\x00%s" % (model, system, user))
+def cache_path(appid, bucket, model, system, user, tag="extract-v1"):
+    # tag participates in the key so a response produced under a different
+    # output schema can never be replayed for a different stage
+    digest = hashlib.sha256(("%s\x00%s\x00%s\x00%s" % (tag, model, system, user))
                             .encode("utf-8")).hexdigest()[:16]
     return CACHE_DIR / str(appid) / ("%s_%s.json" % (bucket, digest))
 
@@ -313,15 +315,21 @@ def response_text(resp):
     return "".join(chunks), census
 
 
-def call_model(client, model, system, user):
-    """One structured-output call, with backoff on quota/transient errors."""
+def call_model(client, model, system, user, schema=None, thinking_level="minimal"):
+    """One structured-output call, with backoff on quota/transient errors.
+
+    schema is a parameter, not a constant: synthesis reuses this transport with
+    the verdict schema. Hardcoding CLAIM_SCHEMA here once made the synthesis
+    pass return extraction-shaped claims that passed every check by being the
+    wrong thing entirely.
+    """
     from google.genai import types
     config = types.GenerateContentConfig(
         system_instruction=system,
         response_mime_type="application/json",
-        response_schema=CLAIM_SCHEMA,
-        # default for this model, pinned explicitly for reproducibility
-        thinking_config=types.ThinkingConfig(thinking_level="minimal"),
+        response_schema=schema if schema is not None else CLAIM_SCHEMA,
+        # extraction pins minimal (this model's default); synthesis reasons more
+        thinking_config=types.ThinkingConfig(thinking_level=thinking_level),
         # NO temperature / top_p / top_k - deprecated and ignored on Gemini 3.x
     )
     for attempt in range(MAX_ATTEMPTS):
@@ -396,7 +404,7 @@ def derive_citation_verdict(ids, voted_up_by_id):
     return label, {"positive": pos, "negative": neg}
 
 
-def enforce(raw_claims, valid_ids, voted_up_by_id=None):
+def enforce(raw_claims, valid_ids, voted_up_by_id=None, bucket=None):
     """Filter model output down to what the evidence actually supports.
 
     Order matters: unknown ids are stripped BEFORE the >=2 rule is applied, so a
@@ -426,7 +434,14 @@ def enforce(raw_claims, valid_ids, voted_up_by_id=None):
             continue
 
         verdict, split = derive_citation_verdict(clean, voted_up_by_id or {})
-        entry = {"claim": text, "theme": c.get("theme") or "other",
+        # Content-derived so it survives regeneration of identical text and eval
+        # cases can cite it. Invariant 4 rejects any id synthesis did not get
+        # from here.
+        claim_id = "%s-%s" % (
+            (bucket or "x")[:3],
+            hashlib.sha1(text.encode("utf-8")).hexdigest()[:6])
+        entry = {"claim_id": claim_id,
+                 "claim": text, "theme": c.get("theme") or "other",
                  # see derive_citation_verdict: the citing reviewers' verdict on
                  # the GAME, not the valence of this claim
                  "citation_verdict": verdict, "citation_split": split,
@@ -476,7 +491,7 @@ def extract_bucket(client, args, game, appid, bucket, reviews):
             break
 
         raw_claims = parsed.get("claims") or []
-        kept, rejected = enforce(raw_claims, set(corpus), voted_up_by_id)
+        kept, rejected = enforce(raw_claims, set(corpus), voted_up_by_id, bucket)
 
         # 1.4: deterministic grounding, before anything downstream sees a claim
         if args.no_ground:

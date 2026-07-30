@@ -56,6 +56,9 @@ BUCKETS = [
 
 BUCKET_NAMES = [name for name, _, _ in BUCKETS] + ["unknown"]
 
+# "recent" for the temporal pool split / recency flag
+RECENT_WINDOW_DAYS = 365
+
 # backoff: Steam has no published rate limit, so assume it has one.
 MAX_ATTEMPTS = 5
 BACKOFF_BASE = 2.0
@@ -344,12 +347,35 @@ def pool_stats(pool, summary):
             "share_of_pool_pct": round(100.0 * len(subset) / total, 1) if total else None,
             "pct_positive": round(100.0 * pos / len(subset), 1) if subset else None,
         }
+    # Temporal split over the same pre-quota pool. Feeds the deterministic
+    # recency flag: a game whose recent reviews diverge sharply from its older
+    # ones is not described by its lifetime score (Cyberpunk patched its way up;
+    # a review-bombed title drops). Pool-derived, so invariant 13 holds.
+    cutoff = int(time.time()) - RECENT_WINDOW_DAYS * 86400
+    recent = [rec["review"] for rec in pool.values()
+              if (rec["review"].get("created_ts") or 0) >= cutoff]
+    older = [rec["review"] for rec in pool.values()
+             if (rec["review"].get("created_ts") or 0) < cutoff]
+
+    def _side(rows):
+        pos = sum(1 for r in rows if r["voted_up"])
+        return {"pool_n": len(rows),
+                "pct_positive": round(100.0 * pos / len(rows), 1) if rows else None}
+
+    recent_side, older_side = _side(recent), _side(older)
+    delta = None
+    if recent_side["pct_positive"] is not None and older_side["pct_positive"] is not None:
+        delta = round(recent_side["pct_positive"] - older_side["pct_positive"], 1)
+
     steam_total = summary.get("total_reviews") or 0
     steam_pos = summary.get("total_positive") or 0
     return {
         "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)",
         "pool_n": total,
         "buckets": buckets,
+        "temporal": {"window_days": RECENT_WINDOW_DAYS,
+                     "recent": recent_side, "older": older_side,
+                     "delta_pts": delta},
         "steam_total_reviews": steam_total or None,
         "steam_pct_positive": round(100.0 * steam_pos / steam_total, 1) if steam_total else None,
     }

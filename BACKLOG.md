@@ -56,6 +56,35 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-07-30 | **Watch claim-drop rate against cohort review length during the
+Phase 4 catalog batch** | build, phase 1.4 | Kenshi's `early` cohort burned both
+grounding retries and still lost 3 of 9 claims, while its other three cohorts
+lost none. Not a Kenshi quirk: `early` has the shortest surviving reviews across
+the whole seed set (median 23 words, 45% under 20 words, vs veteran's 36 words /
+32%). Short reviews carry few content tokens, which depresses lexical coverage,
+and make it less likely that two separate reviewers name the same specific thing
+— so the ≥2-supporting-citations rule bites hardest exactly where reviews are
+shortest. The real predictor is **cohort median length, not the cohort label**:
+Cyberpunk's `early` runs 32 words and should behave fine, while Stardew `early`
+(18 words, 55% short) and Death Stranding `mid` (21 words, 49%) should struggle.
+Falsifiable, and 1.5's runs on the other four games test it for free. Not acting
+now because the fix would be either lowering the grounding threshold (ships
+unverifiable claims) or relaxing the ≥2 rule (breaks invariant 3) — both worse
+than a thinner early section. If it recurs catalog-wide, the honest response is a
+UI one: let a cohort render with fewer claims rather than pretending to parity.
+
+> **2026-07-30, tested — the prediction was wrong.** Across the other four seed
+> games, drops were 2 in total (Stardew `mid` 1, Helldivers `mid` 1) against
+> Kenshi's 3 in one cohort. The named cohorts did not struggle: Stardew `early`
+> (18-word median, the shortest in the set) lost nothing, and Death Stranding
+> `mid` lost nothing. Cohort median length does **not** predict claim drops.
+> Kenshi `early` remains a one-off, and 20-word medians elsewhere were fine.
+> What does vary is **claim yield**, not drop rate: Stardew `refund_window`
+> produced a single claim from 20 reviews while its `veteran` cohort produced
+> six. Watch yield per cohort in the Phase 4 batch, not drops — a cohort that
+> renders with one claim is the thin-section risk, and it comes from reviewers
+> having little specific to say rather than from the grounding check.
+
 2026-07-29 | **Temporal bucketing (pre/post-patch splits) alongside playtime
 buckets** | build, phase 1.1 | Cyberpunk 2077 exposed the limit of the thesis:
 playtime segmentation cannot see a redemption arc. A 2020 launch review and a

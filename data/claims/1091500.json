@@ -1,0 +1,419 @@
+{
+  "appid": "1091500",
+  "game_name": "Cyberpunk 2077",
+  "extracted_at": "2026-07-30T04:11:09Z",
+  "model": "gemini-3.5-flash-lite",
+  "thinking_level": "minimal",
+  "pool": {
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)",
+    "pool_n": 2078,
+    "buckets": {
+      "refund_window": {
+        "pool_n": 12,
+        "share_of_pool_pct": 0.6,
+        "pct_positive": 91.7
+      },
+      "early": {
+        "pool_n": 323,
+        "share_of_pool_pct": 15.5,
+        "pct_positive": 93.8
+      },
+      "mid": {
+        "pool_n": 1083,
+        "share_of_pool_pct": 52.1,
+        "pct_positive": 98.3
+      },
+      "veteran": {
+        "pool_n": 660,
+        "share_of_pool_pct": 31.8,
+        "pct_positive": 98.0
+      }
+    },
+    "steam_total_reviews": 411199,
+    "steam_pct_positive": 88.8
+  },
+  "grounding": {
+    "checked": true,
+    "min_coverage": 0.25,
+    "min_citation_coverage": 0.1,
+    "min_supporting": 2,
+    "retries_allowed": 2
+  },
+  "extraction_report": {
+    "buckets": [
+      {
+        "bucket": "early",
+        "n_reviews": 82,
+        "kept": 3,
+        "claims": [
+          {
+            "claim_id": "ear-1fce08",
+            "claim": "Reviewers report that high-end PC specifications or powerful hardware are required to run the game's graphics well.",
+            "theme": "performance",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 4,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "231578231",
+              "229952812",
+              "230870645",
+              "230478351"
+            ]
+          },
+          {
+            "claim_id": "ear-1b17dd",
+            "claim": "Reviewers note that the game still encounters minor bugs and glitches.",
+            "theme": "performance",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 5,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "230533151",
+              "230478351",
+              "231002985",
+              "230518551",
+              "230543476"
+            ]
+          },
+          {
+            "claim_id": "ear-55e492",
+            "claim": "Reviewers describe the user interface as unintuitive or not the best.",
+            "theme": "other",
+            "citation_verdict": "mixed",
+            "citation_split": {
+              "positive": 1,
+              "negative": 1
+            },
+            "supporting_ids": [
+              "231574193",
+              "230746087"
+            ]
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "returned": 3,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 0,
+            "accepted_running_total": 3
+          }
+        ],
+        "dropped_after_retries": []
+      },
+      {
+        "bucket": "mid",
+        "n_reviews": 91,
+        "kept": 4,
+        "claims": [
+          {
+            "claim_id": "mid-180c2a",
+            "claim": "Reviewers note that vehicle handling feels poor and frustrating to control.",
+            "theme": "performance",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 2,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "229963462",
+              "229392036"
+            ]
+          },
+          {
+            "claim_id": "mid-346c22",
+            "claim": "Reviewers describe the combat and gameplay as allowing for multiple approaches such as stealth, hacking, or direct gunplay.",
+            "theme": "content",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 2,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "230946771",
+              "230669377"
+            ]
+          },
+          {
+            "claim_id": "mid-49f225",
+            "claim": "Reviewers note that character conversations can become stuck on outdated information or repeat old dialogue choices during interactions.",
+            "theme": "content",
+            "citation_verdict": "mixed",
+            "citation_split": {
+              "positive": 1,
+              "negative": 1
+            },
+            "supporting_ids": [
+              "231581008",
+              "229392036"
+            ]
+          },
+          {
+            "claim_id": "mid-8e2560",
+            "claim": "Reviewers describe the game as well optimized and able to run smoothly across a wide variety of hardware configurations.",
+            "theme": "performance",
+            "citation_verdict": "mixed",
+            "citation_split": {
+              "positive": 1,
+              "negative": 1
+            },
+            "supporting_ids": [
+              "231546642",
+              "230612396"
+            ]
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "returned": 3,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 1,
+            "accepted_running_total": 2
+          },
+          {
+            "attempt": 1,
+            "returned": 3,
+            "deduped": 1,
+            "enforce_rejected": 0,
+            "grounding_rejected": 0,
+            "accepted_running_total": 4
+          }
+        ],
+        "dropped_after_retries": []
+      },
+      {
+        "bucket": "veteran",
+        "n_reviews": 102,
+        "kept": 3,
+        "claims": [
+          {
+            "claim_id": "vet-7d11b1",
+            "claim": "Reviewers report that the open world map features an abundance of marked side activities such as gigs and NCPD scanner hustles.",
+            "theme": "content",
+            "citation_verdict": "negative",
+            "citation_split": {
+              "positive": 1,
+              "negative": 2
+            },
+            "supporting_ids": [
+              "229975246",
+              "230443980",
+              "229668161"
+            ]
+          },
+          {
+            "claim_id": "vet-ce1122",
+            "claim": "Reviewers note that the game suffers from performance issues on older or lower-end PC hardware.",
+            "theme": "performance",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 2,
+              "negative": 1
+            },
+            "supporting_ids": [
+              "231568428",
+              "231564204",
+              "230443980"
+            ]
+          },
+          {
+            "claim_id": "vet-cf49d5",
+            "claim": "Reviewers describe the narrative and expansion story as standout elements of the experience.",
+            "theme": "content",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 3,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "231581901",
+              "231533968",
+              "231009898"
+            ]
+          }
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "returned": 3,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 0,
+            "accepted_running_total": 3
+          }
+        ],
+        "dropped_after_retries": []
+      }
+    ],
+    "skipped": [
+      {
+        "bucket": "refund_window",
+        "n_reviews": 10,
+        "skipped": "below_cohort_floor"
+      }
+    ]
+  },
+  "claims_by_bucket": {
+    "early": [
+      {
+        "claim_id": "ear-1fce08",
+        "claim": "Reviewers report that high-end PC specifications or powerful hardware are required to run the game's graphics well.",
+        "theme": "performance",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 4,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "231578231",
+          "229952812",
+          "230870645",
+          "230478351"
+        ]
+      },
+      {
+        "claim_id": "ear-1b17dd",
+        "claim": "Reviewers note that the game still encounters minor bugs and glitches.",
+        "theme": "performance",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 5,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "230533151",
+          "230478351",
+          "231002985",
+          "230518551",
+          "230543476"
+        ]
+      },
+      {
+        "claim_id": "ear-55e492",
+        "claim": "Reviewers describe the user interface as unintuitive or not the best.",
+        "theme": "other",
+        "citation_verdict": "mixed",
+        "citation_split": {
+          "positive": 1,
+          "negative": 1
+        },
+        "supporting_ids": [
+          "231574193",
+          "230746087"
+        ]
+      }
+    ],
+    "mid": [
+      {
+        "claim_id": "mid-180c2a",
+        "claim": "Reviewers note that vehicle handling feels poor and frustrating to control.",
+        "theme": "performance",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 2,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "229963462",
+          "229392036"
+        ]
+      },
+      {
+        "claim_id": "mid-346c22",
+        "claim": "Reviewers describe the combat and gameplay as allowing for multiple approaches such as stealth, hacking, or direct gunplay.",
+        "theme": "content",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 2,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "230946771",
+          "230669377"
+        ]
+      },
+      {
+        "claim_id": "mid-49f225",
+        "claim": "Reviewers note that character conversations can become stuck on outdated information or repeat old dialogue choices during interactions.",
+        "theme": "content",
+        "citation_verdict": "mixed",
+        "citation_split": {
+          "positive": 1,
+          "negative": 1
+        },
+        "supporting_ids": [
+          "231581008",
+          "229392036"
+        ]
+      },
+      {
+        "claim_id": "mid-8e2560",
+        "claim": "Reviewers describe the game as well optimized and able to run smoothly across a wide variety of hardware configurations.",
+        "theme": "performance",
+        "citation_verdict": "mixed",
+        "citation_split": {
+          "positive": 1,
+          "negative": 1
+        },
+        "supporting_ids": [
+          "231546642",
+          "230612396"
+        ]
+      }
+    ],
+    "veteran": [
+      {
+        "claim_id": "vet-7d11b1",
+        "claim": "Reviewers report that the open world map features an abundance of marked side activities such as gigs and NCPD scanner hustles.",
+        "theme": "content",
+        "citation_verdict": "negative",
+        "citation_split": {
+          "positive": 1,
+          "negative": 2
+        },
+        "supporting_ids": [
+          "229975246",
+          "230443980",
+          "229668161"
+        ]
+      },
+      {
+        "claim_id": "vet-ce1122",
+        "claim": "Reviewers note that the game suffers from performance issues on older or lower-end PC hardware.",
+        "theme": "performance",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 2,
+          "negative": 1
+        },
+        "supporting_ids": [
+          "231568428",
+          "231564204",
+          "230443980"
+        ]
+      },
+      {
+        "claim_id": "vet-cf49d5",
+        "claim": "Reviewers describe the narrative and expansion story as standout elements of the experience.",
+        "theme": "content",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 3,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "231581901",
+          "231533968",
+          "231009898"
+        ]
+      }
+    ]
+  }
+}
