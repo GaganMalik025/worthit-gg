@@ -47,9 +47,21 @@ PATTERNS = [
     (r"\b(?:all|every|everyone|nobody|no\s+one|none)\s*" + CROWD + r"?\b(?!\s+(?:mission|level|run))",
      "absolute quantifier"),
 
-    # frequency adverbs that stand in for a rate
+    # Frequency words that stand in for a rate. Unconditional by design: how
+    # often a bug fires is as unknowable from a quota sample as how many players
+    # hit it, so "frequently fail" is treated exactly like "frequently attacked".
+    # The rephrase is always available - "reviewers report pathfinding failures"
+    # keeps the whole claim and cites the same reviews.
     (r"\b(?:commonly|frequently|typically|generally|usually|often|rarely|seldom)\b",
      "frequency adverb"),
+    # ...and the adjective/noun forms of the same idea, which the adverb-only
+    # list used to wave through ("frequent crashes" passed while "frequently
+    # fail" was caught).
+    (r"\b(?:frequent|infrequent|occasional|widespread|prevalent|commonplace)\b",
+     "frequency adjective"),
+    # NOT included: bare "common" and "rare". In game reviews those are usually
+    # loot-rarity tiers ("rare materials are hard to farm"), not frequency
+    # claims. "commonly" stays banned above.
     (r"\b(?:widely|universally|unanimously|overwhelmingly)\b", "frequency adverb"),
     (r"\bconsensus\b|\bunanimous\b", "consensus language"),
 

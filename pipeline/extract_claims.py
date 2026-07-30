@@ -70,12 +70,15 @@ CLAIM_SCHEMA = {
             "type": "array",
             "items": {
                 "type": "object",
-                "required": ["claim", "theme", "sentiment", "supporting_ids"],
+                # No sentiment field: we hold ground truth for it. Every cited
+                # review carries voted_up, so sentiment is computed in code from
+                # the citations rather than inferred by a model reading tone.
+                # Kenshi is why - the model read community culture and tagged
+                # "characters start weak, frequent defeats, limb loss" positive.
+                "required": ["claim", "theme", "supporting_ids"],
                 "properties": {
                     "claim": {"type": "string"},
                     "theme": {"type": "string", "enum": THEMES},
-                    "sentiment": {"type": "string",
-                                  "enum": ["positive", "negative", "mixed"]},
                     "supporting_ids": {"type": "array", "minItems": 2,
                                        "items": {"type": "string"}},
                 },
@@ -114,6 +117,10 @@ percentages, "X out of Y".
 claims over one broad one.
 5. Say only what the review text supports. No outside knowledge about this game, \
 no inference about the developer's intent, no speculation about patches.
+5b. Do not judge whether reviewers liked the game, and do not soften or \
+harden a claim to match a tone you infer. Report what they describe; whether \
+each cited review was a thumbs-up or thumbs-down is already known and is not \
+your call.
 6. If fewer than two reviews support an observation, omit it entirely. Returning \
 an empty list is a valid and correct answer.
 """
@@ -257,7 +264,48 @@ def call_model(client, model, system, user):
 # enforcement (invariants 3 and 11)
 # --------------------------------------------------------------------------
 
-def enforce(raw_claims, valid_ids):
+def derive_citation_verdict(ids, voted_up_by_id):
+    """What the CITING REVIEWERS thought of the GAME - not of this claim.
+
+    Read this field's meaning carefully before using it anywhere:
+
+      citation_verdict = the aggregate Steam recommendation (voted_up) of the
+      reviews cited by this claim, for the game overall.
+
+      It is NOT the valence of the claim. Kenshi's veteran cohort produces
+      "the game features frequent bugs, crashes and technical jank" at 4u/1d -
+      a complaint, cited by reviewers who recommend the game anyway. Treating
+      that as claim sentiment would render "Veterans - positive: the game has
+      frequent crashes", which is incoherent.
+
+    Ground truth, not inference: every cited review already carries voted_up.
+    Asking a model to infer tone invites the failure this replaced, where a
+    community that celebrates brutality made "characters start weak, frequent
+    defeats, limb loss" read as praise.
+
+    Two-thirds agreement to be called; below that it is genuinely contested and
+    says so. The raw split travels with it - a count of citations on one claim,
+    which invariant 13 permits as evidence, never to be rendered as a rate.
+
+    Claim grouping stays theme-based (DESIGN.md); cohort sentiment stays
+    pool-rate-derived (invariant 13). Nothing downstream consumes this as
+    claim valence.
+    """
+    pos = sum(1 for i in ids if voted_up_by_id.get(i) is True)
+    neg = sum(1 for i in ids if voted_up_by_id.get(i) is False)
+    total = pos + neg
+    if not total:
+        label = "unknown"
+    elif pos / total >= 2 / 3:
+        label = "positive"
+    elif neg / total >= 2 / 3:
+        label = "negative"
+    else:
+        label = "mixed"
+    return label, {"positive": pos, "negative": neg}
+
+
+def enforce(raw_claims, valid_ids, voted_up_by_id=None):
     """Filter model output down to what the evidence actually supports.
 
     Order matters: unknown ids are stripped BEFORE the >=2 rule is applied, so a
@@ -286,9 +334,15 @@ def enforce(raw_claims, valid_ids):
                              "kept_ids": clean, "unknown_ids": unknown})
             continue
 
+        verdict, split = derive_citation_verdict(clean, voted_up_by_id or {})
         entry = {"claim": text, "theme": c.get("theme") or "other",
-                 "sentiment": c.get("sentiment") or "mixed",
+                 # see derive_citation_verdict: the citing reviewers' verdict on
+                 # the GAME, not the valence of this claim
+                 "citation_verdict": verdict, "citation_split": split,
                  "supporting_ids": clean}
+        if c.get("sentiment"):
+            # only present if an older cached response still carries the field
+            entry["model_sentiment_ignored"] = c["sentiment"]
         if unknown:
             # survived on its real citations; note what was invented
             entry["dropped_unknown_ids"] = unknown
@@ -344,7 +398,9 @@ def extract_bucket(client, args, game, appid, bucket, reviews):
                 "claims": [], "rejected": []}
 
     raw_claims = parsed.get("claims") or []
-    kept, rejected = enforce(raw_claims, valid_ids)
+    voted_up_by_id = {str(r.get("recommendationid")): r.get("voted_up")
+                      for r in reviews}
+    kept, rejected = enforce(raw_claims, valid_ids, voted_up_by_id)
     flagged = prevalence_guard.check_claims(kept)
 
     print("\n--- after code enforcement ---")
@@ -354,7 +410,10 @@ def extract_bucket(client, args, game, appid, bucket, reviews):
         print("     [%s] %s" % (r["reason"], r["claim"][:90]))
     print("  kept              : %d" % len(kept))
     for c in kept:
-        print("     (%s/%s) %s" % (c["theme"], c["sentiment"], c["claim"]))
+        s = c["citation_split"]
+        print("     (%s | cited reviewers %s %du/%dd) %s"
+              % (c["theme"], c["citation_verdict"], s["positive"], s["negative"],
+                 c["claim"]))
         print("        ids: %s" % ", ".join(c["supporting_ids"]))
     prevalence_guard.report(flagged, len(kept))
 

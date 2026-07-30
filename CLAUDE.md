@@ -107,6 +107,14 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
       "6 players" — and no claim may be built from it.
     - The filter's `sentiment_shift` is reported in the pipeline and published
       on the methodology page, never used to correct the sample.
+    - **`citation_verdict` on a claim is not the claim's sentiment.** It is the
+      aggregate `voted_up` of that claim's cited reviews — what those reviewers
+      thought of *the game overall* — computed in code, never model-inferred,
+      and shipped with its raw split (`4u/1d`). Kenshi veterans produce "the
+      game features frequent bugs and technical jank" at 4u/1d: a complaint from
+      people who recommend the game. Nothing may render it as claim valence.
+      Claims group by **theme** (DESIGN.md); cohort sentiment comes from **pool
+      rates**. There is no per-claim sentiment field and nothing should add one.
 
 ## Budget rules
 
