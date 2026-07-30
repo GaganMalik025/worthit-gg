@@ -1,14 +1,14 @@
 {
   "appid": "553850",
   "game_name": "HELLDIVERS™ 2",
-  "generated_at": "2026-07-30T04:19:17Z",
+  "generated_at": "2026-07-30T04:30:25Z",
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash"
   },
   "verdict": {
     "word": "Wait",
-    "for_whom": "This is for players who have a dedicated group of friends to play with and do not mind a repetitive, grindy progression system, but it is not for solo players or those sensitive to crashes and paid battle passes."
+    "for_whom": "You should buy this if you have a reliable group of friends to tackle chaotic co-op challenges with, but skip it if you prefer playing alone or dislike games that require repetitive grinding to unlock gear."
   },
   "split_bar": [
     {
@@ -44,9 +44,37 @@
     {
       "flag_id": "cohort_divergence",
       "type": "segmentation",
-      "direction": "widens_with_playtime",
-      "sentence": "Early reviews suffer from severe connection issues and solo difficulty, whereas players who cross into the next tier of playtime report a significantly more positive experience.",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "User satisfaction starts low due to initial technical barriers, climbs significantly as squad gameplay clicks, and then drops again among long-term players frustrated by endgame grinding and persistent bugs.",
       "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 50.0,
+            "pool_n": 30
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 88.2,
+            "pool_n": 414
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 85.2,
+            "pool_n": 615
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 65.7,
+            "pool_n": 871
+          }
+        ],
+        "shape": "rise_then_fall",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
         "low_pct_positive": 50.0,
@@ -55,7 +83,12 @@
         "high_cohort_label": "2-20 hours",
         "high_pct_positive": 88.2,
         "high_pool_n": 414,
-        "gap_pts": 38.2
+        "gap_pts": 38.2,
+        "peak_cohort": "early",
+        "peak_pct_positive": 88.2,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 65.7,
+        "drop_after_peak_pts": 22.5
       }
     }
   ],
@@ -68,7 +101,7 @@
       "pct_positive": 50.0,
       "muted": false,
       "n_note": null,
-      "summary": "Players starting out encounter game-breaking crashes, matchmaking issues, and find that tackling the game alone is incredibly difficult.",
+      "summary": "Technical hurdles dominate early on, with system crashes, matchmaking issues, and an unskippable cinematic. Playing alone is described as overly difficult, with the game proving far better when played alongside companions.",
       "themes": [
         {
           "theme": "performance",
@@ -235,7 +268,7 @@
       "pct_positive": 88.2,
       "muted": false,
       "n_note": null,
-      "summary": "Those who keep playing still struggle with crashes and find solo play disappointing, while finding that scaling up the difficulty leads to overwhelming enemy spawns.",
+      "summary": "The experience is vastly better with companions or random squads than playing alone, though system freezes and crashes continue to disrupt sessions. The lack of cross-progression is noted, and the highest difficulty settings spark debate, with feedback pointing to endless enemy spawns that make missions feel unplayable.",
       "themes": [
         {
           "theme": "content",
@@ -378,7 +411,7 @@
       "pct_positive": 85.2,
       "muted": false,
       "n_note": null,
-      "summary": "As players spend more time in the game, they encounter a repetitive loop and feel blockaded by warbonds that demand either real-world currency or extensive grinding.",
+      "summary": "The loop begins to feel repetitive after extensive play, compounded by a lack of unique stats on armor and disappointing mission rewards. Access to warbonds also draws criticism, with feedback highlighting that premium content requires either real money or tedious grinding.",
       "themes": [
         {
           "theme": "content",
@@ -537,7 +570,7 @@
       "pct_positive": 65.7,
       "muted": false,
       "n_note": null,
-      "summary": "Experienced players are let down by ongoing system instability and express strong dissatisfaction with the grind required to unlock premium gear.",
+      "summary": "Long-term engagement is hampered by persistent technical instability and crashes. Additionally, the premium warbonds and gear are locked behind time-consuming grinds for credits or direct purchases, which dampens the endgame experience.",
       "themes": [
         {
           "theme": "monetization",

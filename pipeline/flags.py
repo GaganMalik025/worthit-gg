@@ -39,9 +39,11 @@ RECENCY_MIN_POOL_N = 150
 # corroborating within-pool split only when there is a real older side
 CORROBORATION_MIN_OLDER_N = 100
 
-# cohort divergence: widest gap between two cohorts
+# cohort divergence: spread across the cohort sequence
 DIVERGENCE_MIN_GAP = 25.0
 DIVERGENCE_MIN_POOL_N = 30
+# steps smaller than this are flat, not a trend
+SHAPE_TOLERANCE = 3.0
 
 COHORT_LABELS = {
     "refund_window": "under 2 hours",
@@ -84,34 +86,86 @@ def _recency_shift(pool):
     }
 
 
+def classify_shape(sequence):
+    """Shape of sentiment across the cohort sequence, from every point in it.
+
+    Reporting the widest pair as a trend is wrong and was actively misleading:
+    Helldivers 2 runs 50 -> 88 -> 85 -> 66, so its widest pair (refund vs early)
+    reads as "improves with playtime" while the actual finding is the opposite -
+    it peaks early and falls away, with veterans nearly the unhappiest cohort.
+    That inverted shape is the whole point of segmenting, so it gets named.
+
+    Steps inside +/-TOLERANCE are treated as flat, so a 0.5-point wobble does
+    not turn a consensus title into a trend.
+    """
+    rates = [pct for _, pct, _ in sequence]
+    steps = [round(b - a, 1) for a, b in zip(rates, rates[1:])]
+    ups = [s for s in steps if s > SHAPE_TOLERANCE]
+    downs = [s for s in steps if s < -SHAPE_TOLERANCE]
+
+    if not ups and not downs:
+        return "flat", {}
+    if ups and not downs:
+        return "monotonic_increase", {}
+    if downs and not ups:
+        return "monotonic_decrease", {}
+
+    i_peak = max(range(len(rates)), key=lambda i: rates[i])
+    i_trough = min(range(len(rates)), key=lambda i: rates[i])
+    detail = {}
+    if 0 < i_peak < len(rates) - 1:
+        shape = "rise_then_fall"
+        after = min(range(i_peak, len(rates)), key=lambda i: rates[i])
+        detail = {
+            "peak_cohort": sequence[i_peak][0],
+            "peak_pct_positive": rates[i_peak],
+            "post_peak_low_cohort": sequence[after][0],
+            "post_peak_low_pct_positive": rates[after],
+            "drop_after_peak_pts": round(rates[i_peak] - rates[after], 1),
+        }
+    elif 0 < i_trough < len(rates) - 1:
+        shape = "fall_then_rise"
+        detail = {"trough_cohort": sequence[i_trough][0],
+                  "trough_pct_positive": rates[i_trough]}
+    else:
+        shape = "mixed"
+    return shape, detail
+
+
 def _cohort_divergence(pool):
     buckets = pool.get("buckets") or {}
-    eligible = [(name, st) for name, st in buckets.items()
-                if (st.get("pool_n") or 0) >= DIVERGENCE_MIN_POOL_N
-                and st.get("pct_positive") is not None]
-    if len(eligible) < 2:
+    # cohort order, not dict order - the sequence is the finding
+    sequence = [(name, buckets[name]["pct_positive"], buckets[name]["pool_n"])
+                for name in COHORT_LABELS
+                if name in buckets
+                and (buckets[name].get("pool_n") or 0) >= DIVERGENCE_MIN_POOL_N
+                and buckets[name].get("pct_positive") is not None]
+    if len(sequence) < 2:
         return None
 
-    low = min(eligible, key=lambda kv: kv[1]["pct_positive"])
-    high = max(eligible, key=lambda kv: kv[1]["pct_positive"])
-    gap = round(high[1]["pct_positive"] - low[1]["pct_positive"], 1)
+    rates = [pct for _, pct, _ in sequence]
+    gap = round(max(rates) - min(rates), 1)
     if gap < DIVERGENCE_MIN_GAP:
         return None
 
-    return {
-        "flag_id": "cohort_divergence",
-        "type": "segmentation",
-        "direction": "widens_with_playtime"
-                     if list(buckets).index(high[0]) > list(buckets).index(low[0])
-                     else "narrows_with_playtime",
-        "evidence": {
-            "low_cohort": low[0], "low_cohort_label": COHORT_LABELS.get(low[0], low[0]),
-            "low_pct_positive": low[1]["pct_positive"], "low_pool_n": low[1]["pool_n"],
-            "high_cohort": high[0], "high_cohort_label": COHORT_LABELS.get(high[0], high[0]),
-            "high_pct_positive": high[1]["pct_positive"], "high_pool_n": high[1]["pool_n"],
-            "gap_pts": gap,
-        },
+    shape, detail = classify_shape(sequence)
+    i_low, i_high = rates.index(min(rates)), rates.index(max(rates))
+    evidence = {
+        "sequence": [{"cohort": n, "label": COHORT_LABELS.get(n, n),
+                      "pct_positive": p, "pool_n": pn} for n, p, pn in sequence],
+        "shape": shape,
+        "low_cohort": sequence[i_low][0],
+        "low_cohort_label": COHORT_LABELS.get(sequence[i_low][0]),
+        "low_pct_positive": rates[i_low], "low_pool_n": sequence[i_low][2],
+        "high_cohort": sequence[i_high][0],
+        "high_cohort_label": COHORT_LABELS.get(sequence[i_high][0]),
+        "high_pct_positive": rates[i_high], "high_pool_n": sequence[i_high][2],
+        "gap_pts": gap,
     }
+    evidence.update(detail)
+
+    return {"flag_id": "cohort_divergence", "type": "segmentation",
+            "shape": shape, "evidence": evidence}
 
 
 def detect(pool):
@@ -128,11 +182,20 @@ def describe(flag):
                 % (e["recent_window_days"], e["delta_pts"],
                    e["recent_pool_pct_positive"], e["recent_pool_n"],
                    e["steam_lifetime_pct_positive"], e["steam_total_reviews"]))
-    return ("segmentation: %s (%.1f%%, pool_n %d) vs %s (%.1f%%, pool_n %d), "
-            "gap %.1f pts"
-            % (e["low_cohort_label"], e["low_pct_positive"], e["low_pool_n"],
-               e["high_cohort_label"], e["high_pct_positive"], e["high_pool_n"],
-               e["gap_pts"]))
+    seq = " -> ".join("%s %.1f%% (pool_n %d)"
+                      % (s["label"], s["pct_positive"], s["pool_n"])
+                      for s in e["sequence"])
+    head = "segmentation [%s], spread %.1f pts: %s" % (e["shape"], e["gap_pts"], seq)
+    if e["shape"] == "rise_then_fall":
+        head += ("; peaks at %s and falls %.1f pts to %s"
+                 % (COHORT_LABELS.get(e["peak_cohort"], e["peak_cohort"]),
+                    e["drop_after_peak_pts"],
+                    COHORT_LABELS.get(e["post_peak_low_cohort"],
+                                      e["post_peak_low_cohort"])))
+    elif e["shape"] == "fall_then_rise":
+        head += ("; troughs at %s"
+                 % COHORT_LABELS.get(e["trough_cohort"], e["trough_cohort"]))
+    return head
 
 
 if __name__ == "__main__":

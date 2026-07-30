@@ -338,7 +338,11 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed, model)
     for f in detected:
         out_flags.append({
             "flag_id": f["flag_id"], "type": f["type"],
-            "direction": f["direction"],
+            # recency carries a direction (improved/declined); segmentation
+            # carries a shape across the whole cohort sequence. Exactly one is
+            # set, and the UI should read the one that is present.
+            "direction": f.get("direction"),
+            "shape": f.get("shape"),
             "sentence": sentences.get(f["flag_id"]),
             "evidence": f["evidence"],
         })

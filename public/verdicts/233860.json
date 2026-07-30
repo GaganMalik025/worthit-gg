@@ -1,14 +1,14 @@
 {
   "appid": "233860",
   "game_name": "Kenshi",
-  "generated_at": "2026-07-30T04:19:29Z",
+  "generated_at": "2026-07-30T04:30:49Z",
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash"
   },
   "verdict": {
     "word": "Buy",
-    "for_whom": "Buy this if you want absolute freedom to forge your own story in a brutal, unforgiving world and do not mind using mods to fix technical issues; skip it if you require structured quests, tutorial guidance, or polished controller inputs."
+    "for_whom": "This is for highly patient, self-motivated players who thrive on making their own stories in a brutal, unguided world, and not for those who want clear directions, polished controls, or structured questlines."
   },
   "split_bar": [
     {
@@ -44,9 +44,37 @@
     {
       "flag_id": "cohort_divergence",
       "type": "segmentation",
-      "direction": "widens_with_playtime",
-      "sentence": "Players refunding the game early struggle with technical clunkiness and a lack of direction, while long-term players completely embrace the brutal, open-ended sandbox.",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Early impressions are highly critical, but satisfaction rises steadily the longer players spend in the game.",
       "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 40.4,
+            "pool_n": 47
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 87.4,
+            "pool_n": 293
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 93.7,
+            "pool_n": 441
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 98.0,
+            "pool_n": 458
+          }
+        ],
+        "shape": "monotonic_increase",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
         "low_pct_positive": 40.4,
@@ -68,7 +96,7 @@
       "pct_positive": 40.4,
       "muted": false,
       "n_note": null,
-      "summary": "Players leaving early struggle with clunky controller inputs, a total absence of sound effects, and delayed tutorial prompts that appear after characters already died, leaving them completely lost without structured quests or an introductory story mode.",
+      "summary": "Reviewers who quickly abandoned the game report clunky controls, a complete lack of audio, and an absence of tutorials or storylines to guide them.",
       "themes": [
         {
           "theme": "performance",
@@ -305,7 +333,7 @@
       "pct_positive": 87.4,
       "muted": false,
       "n_note": null,
-      "summary": "Players who push past the initial barrier embrace the dangerous, unguided nature of the world, finding appeal in the lack of tutorials and hand-holding.",
+      "summary": "Players who pushed past the initial hours note the lack of a tutorial or hand-holding, but accept being dropped into a dangerous world without direction.",
       "themes": [
         {
           "theme": "difficulty",
@@ -384,7 +412,7 @@
       "pct_positive": 93.7,
       "muted": false,
       "n_note": null,
-      "summary": "Experienced players find a steep learning curve where characters start incredibly weak and prone to enslavement, though they point out pathfinding issues and note that community mods are necessary to resolve bugs and improve performance.",
+      "summary": "Those who stayed longer note a steep learning curve and a punishing start where characters begin extremely weak, while pointing out that players must rely on community mods to fix pathfinding AI and other bugs.",
       "themes": [
         {
           "theme": "difficulty",
@@ -597,7 +625,7 @@
       "pct_positive": 98.0,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players celebrate the absolute sandbox freedom to build bases and craft unique stories without quest markers, despite the brutal learning curve and technical bugs like crashes during screen timeouts.",
+      "summary": "Experienced players celebrate the absolute sandbox freedom to build bases and shape unique stories without quest markers, though they acknowledge the harsh, unguided beginning and potential crashes during screen timeouts.",
       "themes": [
         {
           "theme": "difficulty",
