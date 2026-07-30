@@ -160,6 +160,14 @@ a moment of enthusiasm — decline, cite this section, and append the idea to
 
 - Steam endpoint validated live: `store.steampowered.com/appreviews/<appid>?json=1`,
   public, no key, cursor-paginated. Field traps documented in PRD §6.
+- **Gemini `AQ.` auth keys need an explicit service-account binding, and AI
+  Studio's key-creation flow omits it.** Symptom: a well-formed `AQ.` key returns
+  `401 UNAUTHENTICATED / ACCESS_TOKEN_TYPE_UNSUPPORTED` on every auth form
+  (`x-goog-api-key`, `?key=`, `Bearer`) and on any SDK version — it looks like a
+  bad key or a Vertex misroute and is neither. Fix: create the key from **Cloud
+  Console** with *"Authenticate API calls through a service account"* ticked.
+  Do not re-debug this from the client side; the client is fine.
+  (`AIza` standard keys are rejected outright from September 2026.)
 - `pipeline/fetch_reviews.py` exists (ingestion v0) — harden per plan 1.1, do
   not rewrite from scratch.
 - Seed games (eval basis): Helldivers 2 (review-bombed), Cyberpunk 2077
