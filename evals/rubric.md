@@ -1,7 +1,7 @@
 # Eval Rubric — WorthIt.gg
 
 **Author:** Gagan Malik
-**Version:** 1.0
+**Version:** 1.1
 **Applies to:** `evals/candidates.json` — 70 cases, 198 citations, 5 seed games
 **Claims produced by:** `gemini-3.5-flash-lite`, grounding thresholds
 `{min_coverage: 0.25, min_citation_coverage: 0.1, min_supporting: 2}`
@@ -12,6 +12,8 @@ what this tool tells them?**
 
 Three checks per case, scored independently. A case can pass two and fail one;
 record all three regardless.
+
+v1.1 — added compound-claim/component-scoring rule after 553850-ref-ff0ba4 surfaced a rubric gap
 
 ---
 
@@ -80,6 +82,8 @@ assertion only one citation covers.
 >
 > → **1.** Lack of progression mentioned in Claim doesn't specify what kind. There are multiple progressions, like "cross-progression" which means carrying over save data between consoles/PC. There is also no mention of Loadouts not saving after each mission, leading to doing same tasks (of applying your own fixed loadout) after every mission. Because words are not specific in Claim, it can be misread or misrepresented.
 
+Note: even though this claim mentions two things, it doesn't split into separate components, because it's phrased as one blended idea ('lack of X or Y'), not an explicit list like 'X, Y, and Z
+
 Typical 1-scoring patterns:
 - claim names a cause the reviewer never gave
 - claim bundles two findings, only one of which is cited
@@ -97,6 +101,35 @@ adjacent material into a different assertion.
 > is a real claim the 1.4 grounding check rejected three times before
 > dropping it — included here as the canonical shape of a 0, even though it
 > never reached the dataset.
+
+### Compound claims and component-level scoring
+
+A claim decomposes into components when it lists coordinate examples of one
+category — signaled by "such as" followed by two or more comma-separated
+items, or an explicit "X, Y, and Z" list. Each listed item is an independent
+component, scorable on its own, because each is a specific instance of the
+same general assertion the claim makes. For a decomposing claim, a citation 
+that fully and specifically supports one listed component earns FULL for that 
+component, notwithstanding silence on the sibling components — the case-level 
+score is then governed by how many components across the citation set reach FULL, 
+per the case scoring procedure above (at least two citations, collectively covering 
+the claim, required for a case-level 2).
+
+A claim does NOT decompose when a clause is subordinate by cause,
+consequence, or elaboration rather than list membership — signaled by words
+like "requiring," "resulting in," "because," or a single dependent clause
+following a comma. That subordinate clause is not a component; it is not
+independently scorable, and a citation supporting only it does not earn
+FULL.
+
+**Test:** if you can rewrite the tail as "for example, A; B; and C" without
+changing the claim's meaning, it's a list and decomposes. If rewriting it
+that way is nonsensical, it's a subordinate clause and does not.
+
+If a claim does not decompose, score it as one whole assertion. A citation
+that addresses only part of a non-decomposing claim's phrasing — without
+covering the full assertion — scores PARTIAL, never FULL, regardless of how
+confidently it matches the fragment it does cover.
 
 ---
 

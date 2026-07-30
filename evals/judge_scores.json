@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-30T10:25:34Z",
+  "generated_at": "2026-07-30T21:35:50Z",
   "model": "gemini-3.5-flash-lite",
   "thinking_level": "low",
   "sampling": "none - temperature/top_p/top_k not sent (invariant 6)",
   "rubric": {
-    "version": "1.0",
-    "sha256": "9f5fd42d6e93996426b550ecb2016b477774feda5f948805b1dafa3e49d94787",
+    "version": "1.1",
+    "sha256": "4200c44b4554c45d25d9bcf329dbd803e73a602ba52e0bbf7627725d8552e51f",
     "path": "evals/rubric.md",
     "sent": "verbatim, whole file, in system_instruction"
   },
@@ -30,13 +30,13 @@
   },
   "aggregate": {
     "qr1": {
-      "pct_scoring_2": 74.3,
-      "mean": 1.74,
+      "pct_scoring_2": 67.1,
+      "mean": 1.67,
       "n_zero": 0,
       "distribution": {
         "0": 0,
-        "1": 18,
-        "2": 52
+        "1": 23,
+        "2": 47
       },
       "zero_case_ids": []
     },
@@ -50,7 +50,7 @@
       "result": "pass",
       "failing_case_ids": []
     },
-    "qr1_rule_disagreements": 4,
+    "qr1_rule_disagreements": 6,
     "rubric_gaps": [],
     "cases_with_anomalies": []
   },
@@ -65,43 +65,43 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim regarding bugs, performance issues, and crashes interfering with gameplay.",
+      "qr1_reasoning": "More than two citations fully support the claim by explicitly mentioning bugs, performance issues, and crashes.",
       "citation_support": [
         {
           "recommendationid": "231335626",
           "level": "full",
-          "reasoning": "The citation explicitly mentions that the game is extremely buggy, supporting the claim's mention of bugs."
+          "reasoning": "The citation explicitly mentions that the game is extremely buggy, supporting the bug component of the claim."
         },
         {
           "recommendationid": "230477906",
           "level": "full",
-          "reasoning": "The citation states the game doesn't work properly, supporting the claim of performance issues."
+          "reasoning": "The citation states the game does not work properly on the reviewer's computer, supporting the performance issues component."
         },
         {
           "recommendationid": "229570595",
           "level": "full",
-          "reasoning": "The citation directly reports video driver crashes, fully supporting the claim of crashes."
+          "reasoning": "The citation mentions video driver crashes every 10 minutes, fully supporting the crashes component of the claim."
         },
         {
           "recommendationid": "230099392",
           "level": "full",
-          "reasoning": "The citation describes black screens, crashes, and failing to start, directly supporting multiple parts of the claim."
+          "reasoning": "The citation details black screens, crashes, and the game refusing to start, supporting multiple components of the claim."
         },
         {
           "recommendationid": "229012463",
           "level": "partial",
-          "reasoning": "The citation mentions computer issues preventing a full experience, which points toward performance problems but lacks specific details."
+          "reasoning": "The citation mentions computer issues preventing the full experience, which relates to performance issues but lacks specific bugs or crashes."
         },
         {
           "recommendationid": "229316925",
           "level": "partial",
-          "reasoning": "The citation advises checking if a computer can handle the game, implying performance considerations without specifying exact issues."
+          "reasoning": "The citation warns that computers need to handle the game, pointing generally toward performance requirements without specifying bugs or crashes."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 6 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard expressions of frustration and mild profanity but no slurs, hate speech, or inappropriate content.",
+      "qr4_reasoning": "The cited reviews contain standard gamer frustration and mild profanity but no slurs, hate speech, or distressing content.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -112,25 +112,25 @@
       "claim": "Reviewers report connection and matchmaking errors, such as failing to join lobbies, connection time-outs, and issues with peer-to-peer connectivity.",
       "n_citations": 2,
       "qr1": 1,
-      "qr1_judge": 2,
-      "qr1_rule_disagreement": true,
-      "qr1_reasoning": "The citations fully support the literal claim regarding connection, matchmaking, and lobby errors.",
+      "qr1_judge": 1,
+      "qr1_rule_disagreement": false,
+      "qr1_reasoning": "Only one citation fully supports the compound elements of the claim, while the other only partially mentions peer-to-peer connection without details.",
       "citation_support": [
         {
           "recommendationid": "229744856",
           "level": "partial",
-          "reasoning": "The citation mentions peer to peer connection issues briefly, but lacks the detailed errors mentioned in the claim."
+          "reasoning": "The reviewer briefly mentions peer-to-peer connection issues, but does not provide details about joining lobbies or timeouts."
         },
         {
           "recommendationid": "229440812",
           "level": "full",
-          "reasoning": "The citation explicitly confirms failing to join lobbies, connection time outs, and issues with matchmaking and public lobbies."
+          "reasoning": "The reviewer explicitly details failing to join lobbies, connection time-outs, and matchmaking errors matching the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard customer complaints without inappropriate language, slurs, or safety violations.",
+      "qr4_reasoning": "The reviews contain standard frustration and complaints about connectivity with no inappropriate content or slurs.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -148,18 +148,18 @@
         {
           "recommendationid": "229316153",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that playing without friends is not fun and led to a refund."
+          "reasoning": "The reviewer explicitly states that playing with no friends is not fun at all, directly supporting the claim that the game is less enjoyable solo."
         },
         {
           "recommendationid": "230287868",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that playing alone is trash and missions are too hard for solo gameplay."
+          "reasoning": "The reviewer directly states that playing alone makes the game trash and that missions are too hard for solo gameplay, fully supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "Neither citation contains any inappropriate content, slurs, or hate speech.",
+      "qr4_reasoning": "The citations contain ordinary frustrated phrasing and mild language without violating content safety guidelines.",
       "_citation_verdict_not_judged": "mixed"
     },
     {
@@ -172,23 +172,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case cannot score above 1.",
+      "qr1_reasoning": "Only one of the two citations fully supports the claim, meaning the case-level score cannot exceed 1.",
       "citation_support": [
         {
           "recommendationid": "229168707",
           "level": "full",
-          "reasoning": "The citation explicitly mentions an unskippable PlayStation cinematic movie that plays every time you launch the game."
+          "reasoning": "The citation explicitly mentions an unskippable PlayStation cinematic movie that plays every single time the game is launched."
         },
         {
           "recommendationid": "229656504",
           "level": "none",
-          "reasoning": "The citation discusses cross-progression and switching from Xbox to PC without mentioning any cinematic movie."
+          "reasoning": "The citation discusses cross-progression and switching from Xbox to PC, making no mention of any cinematic movie."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain some harsh language and complaints about the game, but no slurs, hate speech, or inappropriate material requiring a fail.",
+      "qr4_reasoning": "The reviews contain no slurs, hate speech, or explicit content that would make them inappropriate to surface.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -201,23 +201,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that the game lacks cross-progression.",
+      "qr1_reasoning": "Both citations fully and directly support the claim that the game lacks cross-progression.",
       "citation_support": [
         {
           "recommendationid": "231447709",
           "level": "full",
-          "reasoning": "The reviewer explicitly states there is no cross-progression."
+          "reasoning": "The citation explicitly states that the game has no cross-progression, directly supporting the claim."
         },
         {
           "recommendationid": "229855056",
           "level": "full",
-          "reasoning": "The reviewer wishes there was some form of cross-progression when switching platforms."
+          "reasoning": "The citation wishes for some form of cross-progression when switching platforms, directly supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain no inappropriate or harmful content.",
+      "qr4_reasoning": "The cited reviews contain no slurs, hate speech, or explicit content, making them completely safe to display.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -230,23 +230,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully and directly support the claim that reviewers experience computer freezes, crashes, and forced restarts.",
+      "qr1_reasoning": "Both citations fully support the claim that reviewers experience computer freezes, crashes, and forced restarts while playing.",
       "citation_support": [
         {
           "recommendationid": "229291222",
           "level": "full",
-          "reasoning": "The citation explicitly describes experiencing a hard freeze that required a power cycle and ongoing crashing."
+          "reasoning": "The citation explicitly describes experiencing a hard freeze requiring a power cycle and persistent crashing despite multiple fixes."
         },
         {
           "recommendationid": "229120773",
           "level": "full",
-          "reasoning": "The citation directly states that the game freezes the computer and forces automatic restarts."
+          "reasoning": "The citation explicitly mentions that the game freezes the entire computer causing an automatic restart and multiple crashes."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "The citation text contains standard frustration and mild emphasis but no slurs, hate speech, or inappropriate material.",
+      "qr4_reasoning": "The review text contains ordinary frustrated gamer complaints without any hate speech, slurs, or distressing material.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -259,23 +259,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case cannot score above 1 according to the rubric rules.",
+      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case-level score cannot exceed 1.",
       "citation_support": [
         {
           "recommendationid": "231465201",
           "level": "full",
-          "reasoning": "The citation explicitly states that the game is unplayable at higher difficulties due to endless enemy spams regardless of destroyed spawners."
+          "reasoning": "Citation 1 explicitly states that higher difficulties are unplayable due to endless enemy spawns regardless of destroyed spawners."
         },
         {
           "recommendationid": "229724405",
           "level": "none",
-          "reasoning": "The citation discusses pricing, group requirements, balance, and crashes, but does not mention endless enemy spawns making higher difficulties unplayable."
+          "reasoning": "Citation 2 discusses group difficulties and balance issues generally but does not mention endless spawns regardless of destroyed spawners."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "The cited reviews contain no inappropriate content, slurs, or graphic material.",
+      "qr4_reasoning": "No content safety violations or inappropriate language are present in the citations.",
       "_citation_verdict_not_judged": "mixed"
     },
     {
@@ -288,28 +288,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that solo play is less enjoyable or harder compared to playing with friends or squads.",
+      "qr1_reasoning": "All three citations fully support the claim that solo play is less enjoyable or harder compared to playing with friends or groups.",
       "citation_support": [
         {
           "recommendationid": "231483940",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that single player isn't as enjoyable and advises to play with others."
+          "reasoning": "This citation explicitly states that single player is not as enjoyable and that you should play with others."
         },
         {
           "recommendationid": "229724405",
           "level": "full",
-          "reasoning": "The reviewer notes that the game is extremely group heavy and that solo players must play with random squads to succeed in higher difficulties."
+          "reasoning": "This citation states that the game is extremely group heavy and that solo players must play with random squads to win."
         },
         {
           "recommendationid": "229901955",
           "level": "full",
-          "reasoning": "The reviewer mentions the game is great to play with friends though solo can get boring."
+          "reasoning": "This citation notes that solo play can get boring compared to playing with friends."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "No citations contain inappropriate or harmful content that fails the content safety requirements.",
+      "qr4_reasoning": "No inappropriate content or slurs are present in any of the cited reviews.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -322,7 +322,7 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All five citations fully support the claim that the game becomes repetitive after dozens of hours of play.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the game becomes repetitive after dozens of hours of play.",
       "citation_support": [
         {
           "recommendationid": "231554442",
@@ -332,28 +332,28 @@
         {
           "recommendationid": "231511767",
           "level": "full",
-          "reasoning": "The reviewer notes that the game gets repetitive late game."
+          "reasoning": "The reviewer states the game gets repetitive late game."
         },
         {
           "recommendationid": "231460378",
           "level": "full",
-          "reasoning": "The reviewer states that the game gets so repetitive after playing for a bit."
+          "reasoning": "The reviewer notes that the game gets so repetitive."
         },
         {
           "recommendationid": "231424025",
           "level": "full",
-          "reasoning": "The reviewer explicitly mentions that the gameplay can get repetitive."
+          "reasoning": "The reviewer states that the gameplay can get repetitive."
         },
         {
           "recommendationid": "230291998",
           "level": "full",
-          "reasoning": "The reviewer mentions a lack of content after 50 hours, supporting the idea of repetitiveness over time."
+          "reasoning": "The reviewer mentions a lack of content after 50 hours, which supports the claim of becoming repetitive."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 5 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "There is no inappropriate language, slurs, or distressing content in any of the cited reviews.",
+      "qr4_reasoning": "The reviews contain no slurs, hate speech, or inappropriate material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -364,25 +364,25 @@
       "claim": "Reviewers note a lack of progression or meaningful rewards after completing missions, stating that items and armor lack unique stats.",
       "n_citations": 2,
       "qr1": 1,
-      "qr1_judge": 1,
-      "qr1_rule_disagreement": false,
-      "qr1_reasoning": "The claim combines findings from multiple citations where each citation partially supports different parts of the claim rather than both fully supporting the entire assertion.",
+      "qr1_judge": 2,
+      "qr1_rule_disagreement": true,
+      "qr1_reasoning": "Together, the two citations fully cover all components of the claim with at least two supporting instances.",
       "citation_support": [
         {
           "recommendationid": "229652325",
           "level": "partial",
-          "reasoning": "The citation mentions a lack of incentive to play and getting little for beating missions, but does not mention items and armor lacking unique stats."
+          "reasoning": "This citation supports the lack of meaningful rewards and progression after completing missions, but does not mention items and armor lacking unique stats."
         },
         {
           "recommendationid": "230149413",
           "level": "partial",
-          "reasoning": "The citation supports the lack of progression and armors/weapons lacking unique stats, but does not cover loadouts or mission rewards in the same way as the first citation."
+          "reasoning": "This citation supports items and armor lacking unique stats and a lack of progression, but does not cover the exact reward structure mentioned in the first part of the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The review texts contain standard critical feedback about the game without any slurs, hate speech, or inappropriate content.",
+      "qr4_reasoning": "The citations contain standard gaming criticism and frustration without any abusive or inappropriate language.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -395,43 +395,43 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that warbonds and content are locked behind paywalls or require extensive grinding.",
+      "qr1_reasoning": "Multiple citations fully and explicitly support the claim that warbonds and additional content are locked behind paywalls and require grinding for premium currency.",
       "citation_support": [
         {
           "recommendationid": "229387011",
           "level": "full",
-          "reasoning": "The citation explicitly supports the claim that the warbond system requires excessive grinding or is inefficient compared to working."
+          "reasoning": "The reviewer explicitly mentions that the warbond system requires excessive grinding rather than farming super credits efficiently."
         },
         {
           "recommendationid": "230151755",
           "level": "full",
-          "reasoning": "The citation fully supports the claim regarding warbonds and the need to waste hours farming super credits for them."
+          "reasoning": "The reviewer states that warbonds require wasting 20 hours to farm super credits or paying for microtransactions."
         },
         {
           "recommendationid": "231489830",
-          "level": "partial",
-          "reasoning": "The citation notes super credits are a little hard to get without paying, partially supporting the claim."
+          "level": "full",
+          "reasoning": "The reviewer notes that super credits are hard to get without paying."
         },
         {
           "recommendationid": "230057711",
           "level": "full",
-          "reasoning": "The citation directly states that gear is locked behind a paywall or grinding low level missions for hours, fully supporting the claim."
+          "reasoning": "The reviewer states that 90% of gear is locked behind either a paywall or grinding low level missions for hours."
         },
         {
           "recommendationid": "230183655",
           "level": "full",
-          "reasoning": "The citation supports the claim by stating additional content is locked behind a paywall and discussing the soul-crushing grind for super credits."
+          "reasoning": "The reviewer discusses locking additional content behind paywalls and the excessive time required to manually farm super credits."
         },
         {
           "recommendationid": "230078780",
           "level": "full",
-          "reasoning": "The citation explicitly supports the claim that the game requires microtransactions and pay-to-progress mechanics."
+          "reasoning": "The reviewer complains about having to pay for microtransactions to progress and unlock gear."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 6 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain standard strong language and frustration about game monetization, but no slurs, hate speech, or content requiring a fail.",
+      "qr4_reasoning": "All citations contain standard gamer frustration and mild profanity without any hate speech, slurs, or inappropriate content that would fail safety checks.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -444,28 +444,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that premium currency and warbonds require significant grinding or paid transactions in a non-free-to-play game.",
+      "qr1_reasoning": "Multiple citations fully support the claim that premium currency and warbonds require significant grinding or paid transactions in a non-free-to-play game.",
       "citation_support": [
         {
           "recommendationid": "231472661",
           "level": "full",
-          "reasoning": "This citation explicitly mentions battlepasses, grinding for paid currency on low-level missions, and paying for the game only to have to pay more for weapons."
+          "reasoning": "Citation 1 states the game has battlepasses without adequate paid currency acquisition unless grinding level 1 missions, and notes paying for a paid game."
         },
         {
           "recommendationid": "230042993",
           "level": "full",
-          "reasoning": "This citation notes that the paid game uses F2P monetization and requires grinding boring low-difficulty missions to get premium currency efficiently."
+          "reasoning": "Citation 2 explicitly mentions it is a paid game using F2P monetization, locking gear behind passes, and requiring grinding the lowest difficulty to get currency efficiently."
         },
         {
           "recommendationid": "230052935",
           "level": "full",
-          "reasoning": "This citation discusses a paid game with a free-to-play monetization model, battle passes requiring real money or extensive grinding."
+          "reasoning": "Citation 3 states it is a paid game with a free-to-play monetization model requiring real money or extensive grinding for war bonds."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain only standard complaints about game monetization and no inappropriate content.",
+      "qr4_reasoning": "All citations contain standard gamer complaints and criticism of game monetization with no policy-violating content.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -478,23 +478,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that the game suffers from recurring crashes and technical instability without any inferential gap.",
+      "qr1_reasoning": "Both citations fully support the claim that the game suffers from recurring crashes and technical instability.",
       "citation_support": [
         {
           "recommendationid": "229806573",
           "level": "full",
-          "reasoning": "The citation explicitly mentions that the game continues to crash repeatedly and suffers from ongoing performance issues."
+          "reasoning": "The citation explicitly discusses recurring crashes and ongoing performance issues making the game unstable."
         },
         {
           "recommendationid": "229746660",
           "level": "full",
-          "reasoning": "The citation directly supports the claim by stating the game crashes so often it is unplayable and lacks stability."
+          "reasoning": "The citation directly states that the game suffers from frequent crashes and poor stability."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The cited reviews contain no slurs, hate speech, sexually explicit content, or other distressing material.",
+      "qr4_reasoning": "The citations contain standard expressions of frustration without any prohibited hate speech, graphic violence, or distressing content.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -507,23 +507,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that gear and warbonds are locked behind paid passes or a time-consuming super credit grind.",
+      "qr1_reasoning": "Both citations fully support the claim that warbonds and gear are locked behind paid passes or a time-consuming grind.",
       "citation_support": [
         {
           "recommendationid": "230042993",
           "level": "full",
-          "reasoning": "The citation explicitly mentions that gear is locked behind premium passes and that gathering currency requires playing the lowest difficulty efficiently."
+          "reasoning": "Citation explicitly mentions gear locked behind premium passes and that gathering currency requires tedious farming."
         },
         {
           "recommendationid": "230052935",
           "level": "full",
-          "reasoning": "The citation fully supports the claim by stating that weapons and armor are behind battle passes that require real money or a time-consuming grind for super credits."
+          "reasoning": "Citation explicitly discusses weapons and armor behind paid passes and time-consuming grinding for super credits."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain no slurs, hate speech, sexually explicit material, or distressing content.",
+      "qr4_reasoning": "No inappropriate, offensive, or distressing content is present in either citation.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -536,33 +536,33 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that high-end PC specifications or powerful hardware are required to run the game's graphics well.",
+      "qr1_reasoning": "Multiple citations fully support the claim that high-end PC specifications are required to run the game's graphics well.",
       "citation_support": [
         {
           "recommendationid": "231578231",
           "level": "full",
-          "reasoning": "The citation explicitly states that high PC specs are required to run on better graphics, fully supporting the claim."
+          "reasoning": "The citation explicitly states that high PC specs are required to run on better graphics."
         },
         {
           "recommendationid": "229952812",
           "level": "full",
-          "reasoning": "The citation describes the game as a benchmark and a flex for a high-end PC to push graphics limits, supporting the claim."
+          "reasoning": "The citation notes pushing the graphics card to limits and calls the game a flex for a high-end PC."
         },
         {
           "recommendationid": "230870645",
           "level": "full",
-          "reasoning": "The citation warns to make sure a decent PC is used to run the graphics, supporting the claim."
+          "reasoning": "The citation warns that a decent PC is needed to run the graphics on this game."
         },
         {
           "recommendationid": "230478351",
           "level": "full",
-          "reasoning": "The citation explicitly mentions that a beefy PC is needed to play, supporting the claim."
+          "reasoning": "The citation explicitly mentions that a beefy PC is needed to play the game."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 4 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "None of the citations contain slurs, hate speech, sexually explicit material, or distressing content.",
+      "qr4_reasoning": "All reviewed citations are completely free of slurs, hate speech, explicit content, or inappropriate material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -575,38 +575,38 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations explicitly state and fully support the claim that the game still encounters minor bugs and glitches.",
+      "qr1_reasoning": "Multiple citations fully support the claim that reviewers note minor bugs and glitches still present in the game.",
       "citation_support": [
         {
           "recommendationid": "230533151",
           "level": "full",
-          "reasoning": "The reviewer explicitly mentions there are some bugs here and there which supports the claim."
+          "reasoning": "Citation explicitly mentions there are some bugs here and there that are forgivable."
         },
         {
           "recommendationid": "230478351",
           "level": "full",
-          "reasoning": "The reviewer states they still encounter multiple bugs that are noticeable but not major, supporting the claim."
+          "reasoning": "Citation notes multiple minor bugs that are noticeable but not game-breaking."
         },
         {
           "recommendationid": "231002985",
           "level": "full",
-          "reasoning": "The reviewer explicitly states the latest patch still suffers from very minor bugs, directly supporting the claim."
+          "reasoning": "Citation states that the latest patch still suffers from very minor bugs."
         },
         {
           "recommendationid": "230518551",
           "level": "full",
-          "reasoning": "The reviewer notes a few glitches related to NPC cars, which supports the claim about minor glitches."
+          "reasoning": "Citation mentions noticing a few minor glitches related to NPC cars."
         },
         {
           "recommendationid": "230543476",
           "level": "full",
-          "reasoning": "The reviewer states that the game is still buggy, supporting the claim."
+          "reasoning": "Citation states that the game is still buggy."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 5 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "No citations contain inappropriate or harmful content and all pass safety standards.",
+      "qr4_reasoning": "There is no inappropriate, harmful, or offensive content in any of the citations.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -619,23 +619,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that the user interface is unintuitive or not the best.",
+      "qr1_reasoning": "Both citations fully support the claim that the user interface is unintuitive or not the best, meeting the requirement for a score of 2.",
       "citation_support": [
         {
           "recommendationid": "231574193",
           "level": "full",
-          "reasoning": "The citation explicitly states that the UI is unintuitive, directly supporting the claim."
+          "reasoning": "Citation 1 explicitly describes the user interface as unintuitive, directly supporting the claim."
         },
         {
           "recommendationid": "230746087",
           "level": "full",
-          "reasoning": "The citation states that the UI is not the best, which directly supports the claim."
+          "reasoning": "Citation 2 explicitly states that the UI is not the best, matching the second part of the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "Both citations contain normal player feedback without any slurs, hate speech, or explicit content.",
+      "qr4_reasoning": "The citations contain standard criticisms of the game with no slurs, hate speech, or distressing material.",
       "_citation_verdict_not_judged": "mixed"
     },
     {
@@ -648,23 +648,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations explicitly and fully support the claim that vehicle handling feels poor and frustrating.",
+      "qr1_reasoning": "Both citations fully and clearly support the claim that vehicle handling feels poor and frustrating to control.",
       "citation_support": [
         {
           "recommendationid": "229963462",
           "level": "full",
-          "reasoning": "The citation explicitly describes vehicle controls as frustrating and bothersome, directly supporting the claim."
+          "reasoning": "Citation 1 explicitly states that vehicle controls are frustrating, which directly supports the claim."
         },
         {
           "recommendationid": "229392036",
           "level": "full",
-          "reasoning": "The citation explicitly states that cars handle worse than real life and feels like driving with wooden wheels on mouse and keyboard, fully supporting the claim."
+          "reasoning": "Citation 2 explicitly mentions that driving feels poor with cars handling worse than real life, supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain only mild profanity and standard game criticism, with no content that would harm or distress a reader.",
+      "qr4_reasoning": "The citations contain only mild profanity used as standard review sentiment and do not include any policy-violating content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -677,23 +677,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that combat allows for multiple approaches such as stealth, hacking, or direct gunplay.",
+      "qr1_reasoning": "Both citations fully support the claim that multiple approaches like stealth, hacking, and gunplay are available.",
       "citation_support": [
         {
           "recommendationid": "230669377",
           "level": "full",
-          "reasoning": "The citation explicitly mentions tailoring combat to be a net-runner, cyber-samurai, or going guns blazing."
+          "reasoning": "This citation explicitly states that combat can be tailored to be a net-runner, cyber-samurai, or guns blazing."
         },
         {
           "recommendationid": "230946771",
           "level": "full",
-          "reasoning": "The citation directly states you can do slow-paced hacking or fast-paced bullet shooting based on preference."
+          "reasoning": "This citation supports the claim by mentioning slow-paced hacking and fast-paced bullet shooting based on player preference."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain no slurs, hate speech, or inappropriate content.",
+      "qr4_reasoning": "The citations contain no slurs, hate speech, sexually explicit content, or distressing material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -706,23 +706,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case cannot score above 1 according to the rubric's threshold rules.",
+      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case-level score cannot exceed 1.",
       "citation_support": [
         {
           "recommendationid": "231581008",
           "level": "full",
-          "reasoning": "Citation 1 explicitly states that conversations become wobbly and stuck on old information, fully supporting the claim."
+          "reasoning": "Citation 1 explicitly states that conversations become stuck on old information and that characters repeat or fail to progress dialogue topics."
         },
         {
           "recommendationid": "229392036",
           "level": "none",
-          "reasoning": "Citation 2 discusses slow dialogue and unskippable portions, but does not mention conversations becoming stuck on outdated information or repeating old dialogue choices."
+          "reasoning": "Citation 2 discusses slow dialogue and un-skippable portions in the DLC, but does not mention conversations becoming stuck on outdated information."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "Neither citation contains inappropriate content, slurs, or distressing material.",
+      "qr4_reasoning": "The citations contain standard gaming criticisms without any prohibited or harmful content.",
       "_citation_verdict_not_judged": "mixed"
     },
     {
@@ -735,23 +735,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that the game is well optimized and runs smoothly across various hardware configurations.",
+      "qr1_reasoning": "Both citations fully support the claim that the game is well optimized and able to run smoothly.",
       "citation_support": [
         {
           "recommendationid": "231546642",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that the game runs on a wide variety of systems and runs smoothly through customizable settings."
+          "reasoning": "The citation explicitly notes that the game can run on a wide variety of systems due to customizable settings and run smoothly."
         },
         {
           "recommendationid": "230612396",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that the game is remarkably well optimized and very pretty."
+          "reasoning": "The citation explicitly states that the game is remarkably well optimized."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "Both reviews are free of inappropriate content, slurs, or distress-inducing material.",
+      "qr4_reasoning": "The reviews contain no slurs, hate speech, sexually explicit content, or other distressing material.",
       "_citation_verdict_not_judged": "mixed"
     },
     {
@@ -764,28 +764,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that the open world features marked side activities like gigs and NCPD scanner hustles.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the open world map features marked side activities like gigs and NCPD scanner hustles.",
       "citation_support": [
         {
           "recommendationid": "229668161",
           "level": "full",
-          "reasoning": "The citation explicitly mentions hundreds of NCPD alerts and gigs marked on the map."
+          "reasoning": "The reviewer explicitly mentions hundreds of NCPD alerts and gigs that are marked on the map."
         },
         {
           "recommendationid": "229975246",
           "level": "full",
-          "reasoning": "The citation explicitly mentions spending time doing gigs and NCPD scanner hustles."
+          "reasoning": "The reviewer explicitly mentions spending most of their time doing side quests, gigs, and NCPD scanner hustles."
         },
         {
           "recommendationid": "230443980",
           "level": "full",
-          "reasoning": "The citation explicitly mentions completing side jobs, fixer gigs, and NCPD scanners marked on the map."
+          "reasoning": "The reviewer mentions completing all side jobs, fixer gigs, and NCPD scanners which are marked on the map."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "There is mild profanity filtered by hearts, but no hate speech, slurs, or distressing content.",
+      "qr4_reasoning": "There is no inappropriate, harmful, or explicitly distressing content in the citations.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -798,28 +798,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Two or more citations explicitly state and fully support the claim that the game suffers from performance issues on older or lower-end PC hardware.",
+      "qr1_reasoning": "At least two citations fully support the claim that the game suffers from performance issues on older or lower-end PC hardware.",
       "citation_support": [
         {
           "recommendationid": "231568428",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that performance is a hitch for low to medium end PCs."
+          "reasoning": "This reviewer explicitly notes that performance is a hitch for low to medium end PCs."
         },
         {
           "recommendationid": "231564204",
           "level": "full",
-          "reasoning": "The reviewer states that the game can be hard to run on older or weaker hardware."
+          "reasoning": "This reviewer states that the game can be hard to run on older or weaker hardware."
         },
         {
           "recommendationid": "230443980",
-          "level": "partial",
-          "reasoning": "The reviewer mentions having a mid-range PC and issues with performance and unpolished states, but does not explicitly detail older or lower-end hardware broadly."
+          "level": "none",
+          "reasoning": "This reviewer does not mention performance issues related to older or lower-end hardware, focusing instead on gameplay and content."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard critiques of game performance and design without any slurs, hate speech, explicit content, or distressing material.",
+      "qr4_reasoning": "The citations contain standard gaming critiques and do not feature any content safety violations.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -837,23 +837,23 @@
         {
           "recommendationid": "231581901",
           "level": "full",
-          "reasoning": "The citation explicitly highlights the story and rates the Phantom Liberty expansion story extremely high, fully supporting the claim."
+          "reasoning": "Citation 1 explicitly highlights the story and gives the Phantom Liberty expansion story an 11/10 rating."
         },
         {
           "recommendationid": "231533968",
           "level": "full",
-          "reasoning": "The citation directly states that the narrative and the Phantom Liberty expansion story steal the spotlight with stronger pacing, fully supporting the claim."
+          "reasoning": "Citation 2 states that the narrative has solid moments and that the Phantom Liberty expansion steals the spotlight."
         },
         {
           "recommendationid": "231009898",
           "level": "full",
-          "reasoning": "The citation praises the story and explicitly mentions that the DLC story is a bit better than the main story, fully supporting the claim."
+          "reasoning": "Citation 3 mentions that the story and the DLC story are very good."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "None of the citations contain any inappropriate content, slurs, or distressing material.",
+      "qr4_reasoning": "There is no inappropriate language or content in any of the citations.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -866,28 +866,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that the game lacks audio and sound effects.",
+      "qr1_reasoning": "Multiple citations fully and clearly support the claim that the game lacks audio and sound effects.",
       "citation_support": [
         {
           "recommendationid": "231405401",
           "level": "full",
-          "reasoning": "The citation explicitly states that the audio was completely mute."
+          "reasoning": "The reviewer explicitly states that audio was completely mute."
         },
         {
           "recommendationid": "226860605",
           "level": "full",
-          "reasoning": "The citation directly confirms there is no sound nor music."
+          "reasoning": "The reviewer explicitly states that there is no sound nor music."
         },
         {
           "recommendationid": "226523432",
           "level": "full",
-          "reasoning": "The citation explicitly mentions there is almost entirely no sound at all, with no music and no sfx."
+          "reasoning": "The reviewer explicitly states there is almost entirely no sound at all, including no music and no sfx."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "All citations contain standard critical feedback without any harmful, offensive, or inappropriate content.",
+      "qr4_reasoning": "The review texts contain no slurs, hate speech, sexually explicit content, or distressing material.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -900,23 +900,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "The case scores a 1 because only one citation fully supports the claim while the other does not address the specific assertion.",
+      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case-level score cannot exceed 1.",
       "citation_support": [
         {
           "recommendationid": "226860605",
           "level": "full",
-          "reasoning": "Citation 1 explicitly states that tutorials happen after they are needed, giving specific examples of a combat tutorial appearing after you die and a healing tutorial appearing after you have healed yourself."
+          "reasoning": "The reviewer explicitly states that tutorials happen after they are needed, such as the combat tutorial appearing after you die and the healing tutorial appearing after you have healed yourself."
         },
         {
           "recommendationid": "226928573",
           "level": "none",
-          "reasoning": "Citation 2 discusses controller support and un-intuitive mechanics regarding squads and building, but does not mention late tutorials for combat or healing."
+          "reasoning": "The reviewer discusses controller support and unintuitive mechanics, but does not mention tutorials appearing late or after events occur."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The cited reviews contain standard gamer frustration and mild profanity without any hate speech, slurs, or distressing content.",
+      "qr4_reasoning": "The reviews contain standard frustration and complaints about the game without any policy-violating content.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -926,31 +926,31 @@
       "theme": "performance",
       "claim": "Reviewers describe the game controls as janky, clunky, and poorly adapted for controllers.",
       "n_citations": 3,
-      "qr1": 2,
-      "qr1_judge": 2,
+      "qr1": 1,
+      "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that controls are janky and poorly adapted for controllers or generally awful.",
+      "qr1_reasoning": "Only one citation fully supports the complete claim regarding both janky/clunky controls and controller issues, while another supports the control aspect without mentioning controllers, limiting the case to a score of 1.",
       "citation_support": [
         {
           "recommendationid": "226928573",
           "level": "full",
-          "reasoning": "Citation 1 explicitly discusses playing on a controller and describes the controls as clunky and poorly adapted."
+          "reasoning": "This citation explicitly describes the controls as clunky and haphazardly mapped to a controller."
         },
         {
           "recommendationid": "226860605",
-          "level": "partial",
-          "reasoning": "Citation 2 mentions clunky UI and poor optimization, but does not specifically address controllers."
+          "level": "none",
+          "reasoning": "This citation mentions the UI is clunky, but does not discuss controls or controllers."
         },
         {
           "recommendationid": "226648574",
-          "level": "full",
-          "reasoning": "Citation 3 explicitly describes the controls as extremely janky and that they ruined the experience."
+          "level": "partial",
+          "reasoning": "This citation describes the controls as janky and ruining the experience, but does not mention controllers."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "All citations contain standard gamer frustration and critique without any slurs, hate speech, or explicit content.",
+      "qr4_reasoning": "The citations contain standard expressions of frustration and profanity relating to the game experience, which do not constitute harmful content or a QR-4 violation.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -963,28 +963,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Two or more citations fully support the claim that the game features no quests, storyline, or guidance.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the game features no quests, storyline, or guidance, leaving players to figure things out without direction.",
       "citation_support": [
         {
           "recommendationid": "229708067",
           "level": "partial",
-          "reasoning": "The reviewer mentions the need for a story mode to teach how to play and notes difficulty learning basics, but does not explicitly cover a total lack of quests or guidance."
+          "reasoning": "Citation 1 mentions needing a story mode to learn the basics, but does not explicitly discuss a lack of quests or guidance."
         },
         {
           "recommendationid": "227623721",
           "level": "full",
-          "reasoning": "The reviewer explicitly states there is no quest marker, no tutorial, no questlines, and the game does not hold your hand."
+          "reasoning": "Citation 2 states the game is not a game of questlines and has no quest markers, holding no hands and lacking onboarding."
         },
         {
           "recommendationid": "225284065",
           "level": "full",
-          "reasoning": "The reviewer states there is no tutorial, no sort of story, plot, or world events, and describes feeling directionless."
+          "reasoning": "Citation 3 explicitly mentions there are no quests, no direction, no plot, and leaves players feeling directionless and lost."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The cited reviews contain standard critical feedback without any inappropriate or harmful language.",
+      "qr4_reasoning": "The citations contain standard expressions of frustration and critical game reviews without any inappropriate or harmful language.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -997,28 +997,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that tutorials are missing, unhelpful, or appear too late, meeting the threshold for a score of 2.",
+      "qr1_reasoning": "Multiple citations fully support the claim that tutorials are missing or appear too late.",
       "citation_support": [
         {
           "recommendationid": "229708067",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that the game needs a story mode to teach how to play and complains about not having patience to spend hours learning the basics, fully supporting the claim that tutorials are missing or unhelpful."
+          "reasoning": "The reviewer explicitly states the game needs a mode to teach how to play and criticizes the lack of a proper learning curve."
         },
         {
           "recommendationid": "226860605",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that nothing is explained and gives specific examples of tutorials appearing after events occur, such as a combat tutorial appearing after dying, directly matching the claim."
+          "reasoning": "The reviewer directly states things are not explained and gives specific examples of tutorials appearing after events have already occurred."
         },
         {
           "recommendationid": "225284065",
           "level": "full",
-          "reasoning": "The reviewer notes there was no tutorial or training missions to familiarize themselves with the controls, and that they had to watch YouTube videos for stuff the game refuses to teach, fully supporting the claim."
+          "reasoning": "The reviewer notes there was no tutorial or training missions and that the game refuses to teach the player."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain standard critical feedback and minor frustration without any slurs, hate speech, or explicit content, passing content safety.",
+      "qr4_reasoning": "The reviews contain standard frustrated gaming critique with no objectionable or harmful content.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -1031,33 +1031,33 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that the game lacks a tutorial and story mode, leaving players unguided.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the game lacks a tutorial, story mode, and leaves players unguided without any inferential gap.",
       "citation_support": [
         {
           "recommendationid": "229708067",
           "level": "full",
-          "reasoning": "The reviewer explicitly states the game needs a story mode to teach how to play."
+          "reasoning": "The citation explicitly states the game needs a story mode to teach you how to play, directly supporting the claim."
         },
         {
           "recommendationid": "227623721",
           "level": "full",
-          "reasoning": "The reviewer notes there is no onboarding or hand-holding to explain intricate systems."
+          "reasoning": "The citation confirms there is no onboarding or hand-holding and that new players are left unguided."
         },
         {
           "recommendationid": "226860605",
           "level": "full",
-          "reasoning": "The reviewer mentions nothing is explained correctly and highlights poorly timed or missing tutorials."
+          "reasoning": "The citation notes that nothing is explained and tutorials appear incorrectly or after the fact."
         },
         {
           "recommendationid": "225284065",
           "level": "full",
-          "reasoning": "The reviewer states there are no tutorials or training missions to familiarize players with controls."
+          "reasoning": "The citation states there is no tutorial or training missions, and lacks story or plot direction."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 4 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain standard critical feedback about the game without any inappropriate, abusive, or harmful content.",
+      "qr4_reasoning": "All citations contain standard gamer feedback and constructive criticism without any inappropriate or harmful language.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -1070,28 +1070,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that the game lacks a tutorial, is unguided, and places players in a dangerous world without direction.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the game lacks a tutorial, is unguided, and places players into a dangerous world without direction.",
       "citation_support": [
         {
           "recommendationid": "231081366",
           "level": "full",
-          "reasoning": "The reviewer explicitly mentions that the game does not hold your hand, leaves you directionless, and places you in a dangerous world where you start as a nobody."
+          "reasoning": "This citation explicitly states that the game does not hold your hand, leaves you directionless, and drops you into a dangerous world where starving bandits can beat you up."
         },
         {
           "recommendationid": "229849790",
           "level": "full",
-          "reasoning": "The reviewer explicitly states there is a lack of tutorials and difficult controls, supporting the claim's assertion about being unguided."
+          "reasoning": "This citation directly complains about the lack of tutorials and the difficult controls."
         },
         {
           "recommendationid": "229599217",
           "level": "full",
-          "reasoning": "The reviewer states there is no guide, no objective, and no main story, supporting the claim that the opening hours are unguided."
+          "reasoning": "This citation explicitly mentions that there is no guide, no objective, and no main story."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "All citations are completely safe and contain no inappropriate, offensive, or harmful material.",
+      "qr4_reasoning": "The cited reviews contain no inappropriate, offensive, or distressing material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1104,7 +1104,7 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that the game lacks tutorials and does not hold the player's hand.",
+      "qr1_reasoning": "Both citations fully support the claim that reviewers report a lack of in-home tutorials and note that the game does not hold the player's hand.",
       "citation_support": [
         {
           "recommendationid": "229849790",
@@ -1120,7 +1120,7 @@
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "No inappropriate or harmful content is present in either citation.",
+      "qr4_reasoning": "The citations contain standard gaming discussions without any inappropriate content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1133,28 +1133,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that the game features a steep learning curve and a lack of an in-game tutorial or direction.",
+      "qr1_reasoning": "At least two citations fully support the claim that the game features a steep learning curve and a severe lack of tutorial or direction.",
       "citation_support": [
         {
           "recommendationid": "230698805",
           "level": "full",
-          "reasoning": "Citation 1 explicitly mentions a lack of direction and tutorial for new players."
+          "reasoning": "Citation 1 explicitly mentions a lack of direction and tutorial for new players, and requests an interactive tutorial."
         },
         {
           "recommendationid": "226470008",
-          "level": "full",
-          "reasoning": "Citation 2 explicitly states that there is a very steep learning curve."
+          "level": "partial",
+          "reasoning": "Citation 2 mentions a very steep learning curve, but does not explicitly discuss a lack of tutorial."
         },
         {
           "recommendationid": "225701022",
           "level": "full",
-          "reasoning": "Citation 3 confirms the lack of a proper tutorial by describing how the game just throws players into the desert."
+          "reasoning": "Citation 3 directly states the tutorial is simply 'good luck buddy' throwing the player into the desert."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard gaming discussions and criticism without any inappropriate, harmful, or graphic content.",
+      "qr4_reasoning": "The citations contain no slurs, hate speech, sexually explicit material, or distressing content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1167,38 +1167,38 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that reviewers rely on mods to fix bugs, improve performance, and add quality-of-life adjustments.",
+      "qr1_reasoning": "Multiple citations fully support the claim that reviewers rely on mods for fixing bugs, improving performance, and quality-of-life adjustments.",
       "citation_support": [
         {
           "recommendationid": "231482567",
           "level": "full",
-          "reasoning": "Citation 1 explicitly mentions adopting community fixes and modding extensions."
+          "reasoning": "The reviewer suggests officially adopting community fixes and extension modules, supporting the idea that modding is relied upon for fixes."
         },
         {
           "recommendationid": "231472623",
           "level": "full",
-          "reasoning": "Citation 2 states the game is unoptimized but mods fix this."
+          "reasoning": "The reviewer explicitly states the game is unoptimized but mods fix this, directly supporting performance improvement via mods."
         },
         {
           "recommendationid": "231393051",
           "level": "full",
-          "reasoning": "Citation 3 mentions the steam workshop and nexus hosting mods to mitigate performance and tweak the game."
+          "reasoning": "The reviewer mentions Steam Workshop and Nexus hosting mods to tweak the game, and that out-of-the-box performance issues can be mitigated with mods."
         },
         {
           "recommendationid": "230738226",
           "level": "full",
-          "reasoning": "Citation 4 states mods are required for quality-of-life improvements and bug fixes."
+          "reasoning": "The reviewer explicitly states that quality-of-life improvements, bug fixes, and other mods are required to smooth out rough edges."
         },
         {
           "recommendationid": "226465796",
           "level": "full",
-          "reasoning": "Citation 5 highlights the game's moddability for improving combat and rebalancing."
+          "reasoning": "The reviewer notes that mods are used for reducing raid frequencies, improving combat, and rebalancing the economy."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 5 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "No inappropriate content or slurs are present in any of the citations.",
+      "qr4_reasoning": "All citations are free of slurs, hate speech, or inappropriate material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1211,28 +1211,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that players start out weak and are prone to being defeated, captured, or enslaved early on.",
+      "qr1_reasoning": "All three citations fully support the claim that players start out weak and are prone to being defeated, captured, or enslaved early.",
       "citation_support": [
         {
           "recommendationid": "230194089",
           "level": "full",
-          "reasoning": "The reviewer describes being beaten up and enslaved within 10 minutes of starting the game, fully supporting the claim."
+          "reasoning": "The citation explicitly describes being beaten up and enslaved within 10 minutes of starting the game, directly supporting the claim."
         },
         {
           "recommendationid": "231552418",
           "level": "full",
-          "reasoning": "The reviewer notes getting beaten up, bleeding out, and facing the threat of enslavement, supporting the claim."
+          "reasoning": "The citation discusses being beaten up, bleeding out, and facing the risk of being enslaved or eaten, fully supporting the assertion."
         },
         {
           "recommendationid": "225701022",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that you begin as weak as a wet paper towel and get captured by slavers, directly supporting the claim."
+          "reasoning": "The citation confirms starting as weak as a wet paper towel and being captured by slavers, fully supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard expressions of frustration and soft profanity masked by hearts, but no content that fails the content safety guidelines.",
+      "qr4_reasoning": "The citations contain standard expressions of frustration and mild profanity but no hate speech, slurs, or sexually explicit content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1245,28 +1245,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that pathfinding AI struggles with obstacles like building hitboxes and causes characters to freeze or run in circles.",
+      "qr1_reasoning": "All three citations fully support the claim that pathfinding struggles with obstacles like buildings and causes characters to freeze or run in circles.",
       "citation_support": [
         {
           "recommendationid": "230664045",
           "level": "full",
-          "reasoning": "The citation explicitly notes that pathfinding rarely works and characters get caught on the hitbox of a building, fully supporting the claim."
+          "reasoning": "The reviewer explicitly mentions characters freezing and getting caught on the hitboxes of buildings, fully supporting the claim."
         },
         {
           "recommendationid": "230738226",
           "level": "full",
-          "reasoning": "The citation states that the pathfinding regularly makes terrible decisions, supporting the general claim about pathfinding struggles."
+          "reasoning": "The reviewer notes that the pathfinding regularly makes terrible decisions, supporting the claim's core assertion about pathfinding struggles."
         },
         {
           "recommendationid": "224731073",
           "level": "full",
-          "reasoning": "The citation mentions that pathing AI causes characters to stand still or run in circles during base building, directly supporting the claim."
+          "reasoning": "The reviewer states that characters stand still or run in circles due to poor pathing and base building issues, fully supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain only mild profanity and standard game criticism, with no content that would be distressing or harmful to readers.",
+      "qr4_reasoning": "The reviews contain only mild profanity and standard game criticisms, posing no safety concerns.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -1279,28 +1279,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that the game starts without a traditional tutorial and leaves players to figure things out on their own.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the game lacks a traditional tutorial and leaves players to figure out mechanics and direction on their own.",
       "citation_support": [
         {
           "recommendationid": "226473996",
-          "level": "full",
-          "reasoning": "The reviewer explicitly mentions that new players would benefit from a tutorial start and that learning to play is counterintuitive."
+          "level": "partial",
+          "reasoning": "The reviewer notes that new players would benefit from a tutorial start and learning that you are meant to get beaten up, but does not fully detail figuring out direction on their own."
         },
         {
           "recommendationid": "230698805",
           "level": "full",
-          "reasoning": "The reviewer states there is a lack of direction and tutorial, and that you are thrown into the world with a pat on the back."
+          "reasoning": "The reviewer explicitly states there is a lack of direction and tutorial, and that you are thrown into the world to figure things out."
         },
         {
           "recommendationid": "225701022",
           "level": "full",
-          "reasoning": "The reviewer confirms the game has no traditional tutorial, noting it just throws you into the desert and says good luck."
+          "reasoning": "The reviewer confirms the game has no traditional tutorial, noting it just throws you into the desert with a 'good luck buddy' attitude."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain mild colloquial frustration but no harmful, explicit, or distressing content.",
+      "qr4_reasoning": "The citations contain only mild, non-offensive profanity and standard game reviews suitable for viewing.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1313,38 +1313,38 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that the opening experience is harsh, brutal, unguided, and has a steep learning curve.",
+      "qr1_reasoning": "All citations fully support the claim that the opening experience is harsh, brutal, unguided, has a steep learning curve, slow progress, and lacks tutorials.",
       "citation_support": [
         {
           "recommendationid": "231316468",
           "level": "full",
-          "reasoning": "Citation confirms the game is brutal and features very slow progress."
+          "reasoning": "This citation explicitly describes the game as hardcore and brutal with very slow progress."
         },
         {
           "recommendationid": "231084824",
           "level": "full",
-          "reasoning": "Citation directly supports a very steep learning curve."
+          "reasoning": "This citation notes the very steep learning curve and lack of instant gratification."
         },
         {
           "recommendationid": "230796415",
           "level": "full",
-          "reasoning": "Citation mentions rough first few hours, no quests or markers, and lack of hand-holding."
+          "reasoning": "This citation confirms that the first few hours are rough and that there are no quests or markers."
         },
         {
           "recommendationid": "231022529",
           "level": "full",
-          "reasoning": "Citation explicitly states the game does not hold your hand."
+          "reasoning": "This citation specifically states that the game does not hold your hand."
         },
         {
           "recommendationid": "224323461",
           "level": "full",
-          "reasoning": "Citation notes a rough start and that tutorials are unhelpful."
+          "reasoning": "This citation mentions a rough start with no gameplay tutorial and no story."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 5 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "All citations contain mild or no profanity and do not feature harmful or distressing content.",
+      "qr4_reasoning": "All citations contain standard gamer frustration or mild profanity that does not violate content safety rules.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1357,38 +1357,38 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that the game features extensive sandbox freedom, no mandatory story quests or markers, and allows players to create their own roles, build bases, and shape unique narratives.",
+      "qr1_reasoning": "Multiple citations fully support the claim regarding sandbox freedom, lack of mandatory quests or markers, base building, and unique narratives.",
       "citation_support": [
         {
           "recommendationid": "230807893",
           "level": "full",
-          "reasoning": "The citation explicitly describes the game as an open world sandbox where the story is fully up to the player, allowing them to choose roles like slaves, traders, or warriors, and focus on base building."
+          "reasoning": "The citation fully confirms the sandbox freedom, role creation, and base building mentioned in the claim."
         },
         {
           "recommendationid": "230796415",
           "level": "full",
-          "reasoning": "The citation states there are no quests and no markers, and that players create their own unique story in a sandbox."
+          "reasoning": "The citation explicitly states there are no quests or markers, and that players make their own story."
         },
         {
           "recommendationid": "231231767",
           "level": "full",
-          "reasoning": "The citation mentions the game becomes a true sandbox where players write their own story, set up bases, and manage different playstyles."
+          "reasoning": "The citation confirms sandbox gameplay, base building, and creating unique narratives."
         },
         {
           "recommendationid": "230996279",
           "level": "full",
-          "reasoning": "The citation describes it as a fun sandbox game with no specific story to push the player in one direction."
+          "reasoning": "The citation confirms sandbox exploration with no specific story to push the player."
         },
         {
           "recommendationid": "226408306",
           "level": "full",
-          "reasoning": "The citation notes that the game truly gives a sense of freedom, adventure, and a unique story."
+          "reasoning": "The citation supports the claim that the game gives a sense of freedom and unique stories."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 5 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "All citations are free of hate speech, slurs, sexually explicit content, or other distressing material.",
+      "qr4_reasoning": "All citations are free from hate speech, slurs, sexually explicit content, or inappropriate material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1401,23 +1401,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one of the two citations supports the claim, meaning the claim is partially supported and cannot score a 2.",
+      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case cannot score above 1 per the case-level rule requiring at least two supporting citations for a score of 2.",
       "citation_support": [
         {
           "recommendationid": "231260699",
           "level": "full",
-          "reasoning": "This citation explicitly states that the game crashes the PC every time the screen times out while running."
+          "reasoning": "The citation explicitly states that the game crashes the PC every time the screen times out while running."
         },
         {
           "recommendationid": "225366571",
           "level": "none",
-          "reasoning": "This citation discusses game jank and reloading due to glitches, but does not mention screen timeouts or crashes related to them."
+          "reasoning": "The citation discusses general jank and glitches but does not mention screen timeouts or crashes related to them."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The cited text contains mild profanity censorship but no slurs, hate speech, or distressing content that fails safety standards.",
+      "qr4_reasoning": "The cited reviews contain mild profanity filtered with hearts and general game criticism, but no hate speech, explicit content, or material harmful to the reader.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1430,23 +1430,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that the game lacks a tutorial and hand-holding systems for players.",
+      "qr1_reasoning": "Both citations fully and clearly support the claim that the game lacks a tutorial and hand-holding systems for players.",
       "citation_support": [
         {
           "recommendationid": "231022529",
           "level": "full",
-          "reasoning": "The citation explicitly states that the game does not hold your hand."
+          "reasoning": "The reviewer explicitly states that the game does not hold your hand, which directly supports the claim about lacking hand-holding systems."
         },
         {
           "recommendationid": "224323461",
           "level": "full",
-          "reasoning": "The citation explicitly states that the game has no gameplay tutorial."
+          "reasoning": "The reviewer explicitly mentions that the game does not have a gameplay tutorial, directly supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The cited reviews contain normal player feedback with no inappropriate, harmful, or distressing content.",
+      "qr4_reasoning": "The review texts contain no slurs, hate speech, sexually explicit content, or other distressing material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1459,23 +1459,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one of the two citations fully supports the claim while the other does not mention fishing at all, meaning the case can score at most 1.",
+      "qr1_reasoning": "Only one citation supports the claim, while the other does not mention fishing, resulting in a partial support score under the case-level rules.",
       "citation_support": [
         {
           "recommendationid": "231456033",
           "level": "none",
-          "reasoning": "This citation discusses general ease of play and various game features but does not mention fishing or its difficulty."
+          "reasoning": "This citation discusses general gameplay, ease of picking up the game, and quests, but does not mention fishing or its difficulty."
         },
         {
           "recommendationid": "230774671",
           "level": "full",
-          "reasoning": "This citation explicitly states that fishing is not as hard as people say, directly supporting the claim."
+          "reasoning": "This citation explicitly states that fishing is not as hard as folks say, which directly supports the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "Both citations contain no hate speech, slurs, explicit content, or distressing material.",
+      "qr4_reasoning": "Neither citation contains slurs, hate speech, explicit content, or distressing material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1493,28 +1493,28 @@
         {
           "recommendationid": "231561508",
           "level": "full",
-          "reasoning": "The citation explicitly states that the game is very slow and boring at first before picking up."
+          "reasoning": "The reviewer explicitly states that the game is very slow and boring at first before picking up."
         },
         {
           "recommendationid": "230320334",
           "level": "full",
-          "reasoning": "The citation confirms that at the beginning the game can be very slow."
+          "reasoning": "The reviewer states in Spanish that at the beginning it can be very slow, matching the claim."
         },
         {
           "recommendationid": "230287516",
           "level": "none",
-          "reasoning": "The citation mentions the game being confusing at the start rather than slow and boring."
+          "reasoning": "The reviewer mentions the starting experience is confusing rather than slow and boring."
         },
         {
           "recommendationid": "230156269",
           "level": "full",
-          "reasoning": "The citation explicitly states that the game starts off really slow and gets more fun after a little while."
+          "reasoning": "The reviewer explicitly states that the game starts off really slow but gets more fun after a little while."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 4 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "All citations contain ordinary commentary and harmless descriptions without any inappropriate content.",
+      "qr4_reasoning": "All citations are free of slurs, hate speech, or inappropriate content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1527,23 +1527,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the literal assertion that the in-game mines are scary or stressful.",
+      "qr1_reasoning": "Both citations fully support the claim that reviewers describe the mines as scary or stressful.",
       "citation_support": [
         {
           "recommendationid": "231536663",
           "level": "full",
-          "reasoning": "The citation explicitly states that the mines get scary, fully supporting the claim."
+          "reasoning": "The citation explicitly states that the mines get scary, directly supporting the claim."
         },
         {
           "recommendationid": "230391557",
           "level": "full",
-          "reasoning": "The citation describes the mines as the most stressful things ever done, matching the claim's assertion of stress."
+          "reasoning": "The citation explicitly states that the mines are stressful, directly supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "No slurs, hate speech, or distressing content are present in either citation.",
+      "qr4_reasoning": "The reviews contain no slurs, hate speech, sexually explicit material, or distressing content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1556,28 +1556,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that the opening portion of the game is slow or confusing before becoming engaging.",
+      "qr1_reasoning": "All three citations fully support the claim that the opening portion of the game is slow or confusing before becoming engaging.",
       "citation_support": [
         {
           "recommendationid": "231561508",
           "level": "full",
-          "reasoning": "The citation explicitly states that the game is very slow and boring at first before picking up and becoming fun."
+          "reasoning": "The citation explicitly states that the game is very slow and boring at first before picking up, directly supporting the claim."
         },
         {
           "recommendationid": "230320334",
           "level": "full",
-          "reasoning": "The citation confirms that at the beginning the game can be very slow before getting good."
+          "reasoning": "The citation notes that at the beginning the game can be very slow, which fully supports the claim's assertion about the opening portion."
         },
         {
           "recommendationid": "230287516",
           "level": "full",
-          "reasoning": "The citation states that in the starting the game is kinda confusing before you come to love it."
+          "reasoning": "The citation explicitly mentions that in the starting it is kinda confusing, directly matching the claim's assertion."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "None of the citations contain any inappropriate content, slurs, or distressing material.",
+      "qr4_reasoning": "No inappropriate content, slurs, or distressing material are present in any of the citations.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1590,23 +1590,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations explicitly state that the game includes combat alongside farming, providing direct and complete support for the claim.",
+      "qr1_reasoning": "Both citations fully support the claim that the game includes combat elements alongside farming without any inferential gaps.",
       "citation_support": [
         {
           "recommendationid": "230511848",
           "level": "full",
-          "reasoning": "The citation explicitly lists combat as one of the 5 amazing skills to learn and master alongside farming, fully supporting the claim."
+          "reasoning": "Citation 1 explicitly lists combat as one of the five skills to learn and master alongside farming."
         },
         {
           "recommendationid": "230320517",
           "level": "full",
-          "reasoning": "The citation describes the game as a cozy farming game with a little bit of combat, fully supporting the claim."
+          "reasoning": "Citation 2 directly describes the game as a cozy farming game with a little bit of combat."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "Neither citation contains any inappropriate, harmful, or offensive content.",
+      "qr4_reasoning": "Both citations contain entirely safe and appropriate language with no objectionable content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1619,12 +1619,12 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the specific claim about dialogue becoming boring or repetitive, while the other broadly discusses the game getting repetitive.",
+      "qr1_reasoning": "Only one of the two citations fully supports the claim about dialogue, while the other discusses general boredom and repetition without mentioning dialogue, limiting the case to partial support.",
       "citation_support": [
         {
           "recommendationid": "231580326",
-          "level": "partial",
-          "reasoning": "The citation states that the game gets boring and repetitive, but does not explicitly mention dialogue."
+          "level": "none",
+          "reasoning": "The citation mentions the game gets boring and repetitive, but it does not specifically discuss dialogue."
         },
         {
           "recommendationid": "231462620",
@@ -1635,7 +1635,7 @@
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "Neither citation contains inappropriate, offensive, or harmful content.",
+      "qr4_reasoning": "Neither citation contains any inappropriate, offensive, or harmful material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1653,18 +1653,18 @@
         {
           "recommendationid": "229234455",
           "level": "full",
-          "reasoning": "The reviewer explicitly states that the beginning can feel a bit slow and that some systems take time to understand, which directly supports the claim."
+          "reasoning": "Citation 1 states that the beginning can feel a bit slow and that some systems take time to understand."
         },
         {
           "recommendationid": "230519233",
           "level": "full",
-          "reasoning": "The reviewer directly states the game is hard at first and then gets easier when you get the hang of it, fully supporting the claim."
+          "reasoning": "Citation 2 states that the game is hard at first and then gets addictive once you get the hang of it."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "Neither citation contains any inappropriate content, slurs, or graphic material.",
+      "qr4_reasoning": "The cited reviews contain no inappropriate content, slurs, or hate speech.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1677,23 +1677,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the claim while the other does not mention it, capping the score at 1.",
+      "qr1_reasoning": "Only one citation fully supports the claim while the other does not, capping the case at a score of 1.",
       "citation_support": [
         {
           "recommendationid": "230364205",
           "level": "full",
-          "reasoning": "The citation explicitly states that the fishing game is mildly annoying at first."
+          "reasoning": "Citation 1 explicitly states that the fishing game is mildly annoying at first."
         },
         {
           "recommendationid": "230335483",
           "level": "none",
-          "reasoning": "The citation discusses enjoying fishing and finding it relaxing, making no mention of it being annoying."
+          "reasoning": "Citation 2 describes fishing as delightfully relaxing and engaging, offering no support for the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain no inappropriate content, slurs, or distressing material.",
+      "qr4_reasoning": "Neither citation contains any inappropriate, offensive, or harmful material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1706,28 +1706,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that the game runs well on low-end computer hardware.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the game runs well on low-end hardware.",
       "citation_support": [
         {
           "recommendationid": "231571475",
           "level": "full",
-          "reasoning": "The citation explicitly mentions that a vista potato pc can handle the game, which directly supports the claim about low-end hardware."
+          "reasoning": "The citation explicitly notes that a potato PC can handle the game."
         },
         {
           "recommendationid": "231535589",
           "level": "full",
-          "reasoning": "The citation explicitly notes that the game runs on tiny weeny hardware, supporting the claim."
+          "reasoning": "The citation states that the game runs on tiny weeny hardware."
         },
         {
           "recommendationid": "230378060",
           "level": "full",
-          "reasoning": "The citation directly states that the game runs pretty well even on low-end pcs, fully supporting the claim."
+          "reasoning": "The citation directly confirms that the game runs pretty well even on low-end pcs."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The review texts contain no inappropriate content, hate speech, or excessive profanity that would fail content safety standards.",
+      "qr4_reasoning": "The cited reviews contain no harmful, inappropriate, or prohibited content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1740,23 +1740,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one of the two citations fully supports the claim, meaning the case cannot score above 1 under the rubric's rules.",
+      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case cannot score above 1.",
       "citation_support": [
         {
           "recommendationid": "230625204",
           "level": "full",
-          "reasoning": "The citation explicitly mentions arcade games like Journey of the Prairie King and Junimo Cart alongside farming, combat, and fishing systems."
+          "reasoning": "The citation explicitly mentions arcade minigames like Journey of the Prairie King and Junimo Cart alongside farming and combat elements."
         },
         {
           "recommendationid": "230492453",
           "level": "none",
-          "reasoning": "The citation mentions various gameplay styles like dating, sandbox, combat, fishing, and farming, but does not mention specific arcade minigames like Journey of the Prairie King or Junimo Cart."
+          "reasoning": "The citation mentions various game styles but does not name the specific arcade minigames mentioned in the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "Both citations are completely clean of any inappropriate content or slurs.",
+      "qr4_reasoning": "Both citations contain entirely clean, non-offensive language appropriate for all readers.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1769,23 +1769,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the literal content of the claim regarding the early game being intensive, slow, and confusing, and requiring planning and figuring out mechanics.",
+      "qr1_reasoning": "Both citations fully support the literal assertions in the claim regarding the early game being intensive, slow, and confusing, and requiring planning and mechanics learning.",
       "citation_support": [
         {
           "recommendationid": "230341603",
           "level": "full",
-          "reasoning": "The citation explicitly states that the early game is intensive, slow, and confusing, directly supporting the claim."
+          "reasoning": "This citation explicitly states that the early game is intensive, slow, and confusing, and mentions figuring out mechanics and planning."
         },
         {
           "recommendationid": "230514245",
           "level": "full",
-          "reasoning": "The citation mentions there is no tutorial and advises learning mechanics and keeping the wiki open, which supports the claim about figuring out mechanics and planning."
+          "reasoning": "This citation supports the claim by noting there is no tutorial, requiring players to learn mechanics and take their time."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "Neither citation contains any inappropriate, harmful, or distressing content.",
+      "qr4_reasoning": "The review texts contain normal gamer discussion and critique without any harmful, abusive, or explicitly restricted content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1795,26 +1795,26 @@
       "theme": "content",
       "claim": "Reviewers mention that multiplayer is available as a feature, though it requires having friends to play with.",
       "n_citations": 2,
-      "qr1": 2,
+      "qr1": 1,
       "qr1_judge": 2,
-      "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that multiplayer is available and requires someone to play with.",
+      "qr1_rule_disagreement": true,
+      "qr1_reasoning": "At least one citation fully supports the claim regarding multiplayer being a feature that requires friends, and the case-level rule is satisfied.",
       "citation_support": [
         {
           "recommendationid": "231571475",
           "level": "full",
-          "reasoning": "The citation explicitly states Multiplayer? Yes, but require friend(s), which directly supports the claim."
+          "reasoning": "Citation 1 explicitly lists multiplayer with the exact phrase 'Multiplayer? Yes, but require friend(s)' which directly matches the claim."
         },
         {
           "recommendationid": "230365282",
-          "level": "full",
-          "reasoning": "The citation discusses starting a multiplayer world, supporting the assertion that multiplayer is available."
+          "level": "partial",
+          "reasoning": "Citation 2 mentions starting a multiplayer world after finishing single-player content, but does not explicitly state that it requires having friends to play with."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain no offensive material, slurs, or distressing content.",
+      "qr4_reasoning": "The citations contain standard language and mild profanity that is not abusive, hateful, or content-safety failing.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1827,28 +1827,28 @@
       "qr1": 1,
       "qr1_judge": 2,
       "qr1_rule_disagreement": true,
-      "qr1_reasoning": "At least two citations fully or partially support the claim about multiplayer functionality and requiring other players.",
+      "qr1_reasoning": "At least two citations support the claim, with the first providing direct and complete support for multiplayer functionality and the requirement of other players.",
       "citation_support": [
         {
           "recommendationid": "231571475",
           "level": "full",
-          "reasoning": "The citation explicitly confirms the multiplayer feature and notes that it requires friends."
+          "reasoning": "This citation explicitly states multiplayer is present and requires friends."
         },
         {
           "recommendationid": "230228992",
           "level": "partial",
-          "reasoning": "The citation mentions enjoying the game with friends, supporting multiplayer implicitly without detailing requirements."
+          "reasoning": "This citation mentions enjoying the game with friends but does not explicitly state that multiplayer requires other players to join."
         },
         {
           "recommendationid": "230365282",
           "level": "partial",
-          "reasoning": "The citation mentions starting a multiplayer world, which touches on multiplayer functionality but not specifically the requirement of other players joining."
+          "reasoning": "This citation mentions starting a multiplayer world but does not elaborate on the requirement of other players joining."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The review text contains no slurs, hate speech, or distressing content.",
+      "qr4_reasoning": "The cited review texts contain no objectionable, offensive, or harmful content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1861,23 +1861,23 @@
       "qr1": 1,
       "qr1_judge": 2,
       "qr1_rule_disagreement": true,
-      "qr1_reasoning": "The citations fully support the claim that the game lacks a tutorial and requires players to figure things out or use external guides.",
+      "qr1_reasoning": "At least one citation fully supports the claim with no inferential gap, meeting the criteria for a score of 2.",
       "citation_support": [
         {
           "recommendationid": "230514245",
           "level": "full",
-          "reasoning": "The reviewer explicitly states there is no tutorial and advises having the Wiki open, fully supporting the claim."
+          "reasoning": "This citation explicitly states there is no tutorial and advises having the Wiki open, fully supporting the claim."
         },
         {
           "recommendationid": "230365282",
           "level": "partial",
-          "reasoning": "The reviewer mentions figuring things out without a guide, partially supporting the claim about figuring things out on their own."
+          "reasoning": "This citation mentions figuring things out without a guide, partially supporting the claim regarding mechanics and external guides."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard language with no hate speech, slurs, or inappropriate content.",
+      "qr4_reasoning": "The citations contain standard language and no abusive, graphic, or inappropriate content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -1887,31 +1887,31 @@
       "theme": "performance",
       "claim": "Reviewers report startup crashes and stability issues, including access violation errors.",
       "n_citations": 3,
-      "qr1": 2,
-      "qr1_judge": 2,
+      "qr1": 1,
+      "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Two citations fully support the claim regarding startup crashes and access violation errors with no inferential gap.",
+      "qr1_reasoning": "Only one citation fully supports the claim regarding access violations while another partially supports startup crashes, capping the overall score at 1.",
       "citation_support": [
         {
           "recommendationid": "220681160",
-          "level": "full",
-          "reasoning": "This citation explicitly states that the game crashes on startup, which fully supports part of the claim."
+          "level": "partial",
+          "reasoning": "This citation confirms startup crashes, but does not mention stability issues or access violation errors."
         },
         {
           "recommendationid": "123592706",
-          "level": "partial",
-          "reasoning": "This citation mentions the game does not work, but lacks specific details about startup crashes or stability issues."
+          "level": "none",
+          "reasoning": "This citation only mentions the game does not work generally without specifying startup crashes or access violations."
         },
         {
           "recommendationid": "122500478",
           "level": "full",
-          "reasoning": "This citation explicitly details stability issues and mentions access violation errors, fully supporting the claim."
+          "reasoning": "This citation explicitly confirms stability issues and access violation errors."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The cited reviews contain standard expressions of frustration without any inappropriate or harmful content.",
+      "qr4_reasoning": "The citations contain standard customer complaints about software stability without any harmful or explicit content.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -1922,25 +1922,25 @@
       "claim": "Reviewers note that the early game features lengthy cinematics and cutscenes with limited ability to skip or quit out of them easily.",
       "n_citations": 2,
       "qr1": 1,
-      "qr1_judge": 1,
-      "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the claim about cutscenes and skipping them, while the other supports the length of the cinematics but not the skipping limitation.",
+      "qr1_judge": 2,
+      "qr1_rule_disagreement": true,
+      "qr1_reasoning": "With at least two citations supporting the core assertions of lengthy cinematics and difficulties exiting or skipping them, the case-level score is 2.",
       "citation_support": [
         {
           "recommendationid": "226328032",
           "level": "full",
-          "reasoning": "The citation explicitly mentions too many cutscenes and the inability to skip or quit without alt-f4."
+          "reasoning": "This citation explicitly confirms that there are too many cutscenes and that the game does not allow quitting them without alt+f4 or skipping them."
         },
         {
           "recommendationid": "121046197",
           "level": "partial",
-          "reasoning": "The citation notes that the early game is mostly cinematics but does not explicitly mention the inability to skip them."
+          "reasoning": "This citation supports the claim that the early game features mostly cinematics, but it does not mention the inability to skip or quit out of them."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The cited reviews contain no inappropriate content, slurs, or safety violations.",
+      "qr4_reasoning": "The citations contain standard customer dissatisfaction and light profanity, which do not violate content safety standards.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -1953,23 +1953,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the claim while the other provides only partial support, capping the case score at 1.",
+      "qr1_reasoning": "Only one citation fully supports the claim while the other provides no support, limiting the case score to 1.",
       "citation_support": [
         {
           "recommendationid": "230339115",
           "level": "full",
-          "reasoning": "The citation directly states having no idea what to do, where to go, and an absence of guides and tutorials."
+          "reasoning": "Citation 1 explicitly states having no idea what to do, no guide, and no tutorial, which fully supports the claim."
         },
         {
           "recommendationid": "121280414",
-          "level": "partial",
-          "reasoning": "The citation mentions a long tutorial stage and boredom with cutscenes, but does not explicitly state an entire lack of clear direction or tutorials in the opening hours."
+          "level": "none",
+          "reasoning": "Citation 2 discusses controls, graphics, storyline, and getting stuck in a rock, but does not state a lack of direction or tutorials for the opening hours."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in refund_window",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard expressions of user frustration and disappointment without any hate speech, slurs, or distressing content.",
+      "qr4_reasoning": "Both citations are completely free of slurs, hate speech, or distressing material.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -1982,23 +1982,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the slow pace of the opening hours, while the second citation discusses tutorials and mechanics rather than the pace, making it a partial support.",
+      "qr1_reasoning": "Only one citation fully supports the slow pace while the other focuses on tutorials and menus, resulting in a partially supported case overall.",
       "citation_support": [
         {
           "recommendationid": "218832523",
           "level": "partial",
-          "reasoning": "The citation discusses struggling through tutorial missions and confusing instructions, but does not explicitly mention an extremely slow pace during the opening hours."
+          "reasoning": "The citation mentions struggling with tutorial missions and clunky mechanics but does not explicitly discuss an extremely slow pace overall."
         },
         {
           "recommendationid": "125879062",
           "level": "full",
-          "reasoning": "The citation directly states that the first 2 hours start off extremely slow, matching the claim's assertion about the opening hours' pace."
+          "reasoning": "The citation explicitly states that the first 2 hours start off extremely slow, matching the claim's pacing assertion."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "Neither citation contains any slurs, hate speech, explicit content, or distressing material.",
+      "qr4_reasoning": "The reviews contain no slurs, hate speech, or explicit material and are entirely appropriate for buyers.",
       "_citation_verdict_not_judged": "mixed"
     },
     {
@@ -2011,7 +2011,7 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that the PC control scheme and menu systems are frustrating and difficult to navigate.",
+      "qr1_reasoning": "At least two citations fully support the claim that the PC control scheme and menu systems are frustrating and difficult to navigate.",
       "citation_support": [
         {
           "recommendationid": "218832523",
@@ -2021,18 +2021,18 @@
         {
           "recommendationid": "124317588",
           "level": "full",
-          "reasoning": "This citation explicitly states that the PC control scheme is odd and the menus were frustrating at first, directly supporting the claim."
+          "reasoning": "This citation explicitly states that the PC control scheme is odd and the menus were frustrating at first, fully supporting the claim."
         },
         {
           "recommendationid": "123271873",
           "level": "partial",
-          "reasoning": "This citation mentions that menus take some time to become familiar with, but does not explicitly characterize them as frustrating or difficult in the same way the claim asserts."
+          "reasoning": "This citation notes that menus take time to become familiar with, but does not explicitly describe them or the controls as frustrating or difficult to navigate in the same comprehensive manner."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "No inappropriate, hateful, or harmful content is present in any of the cited reviews.",
+      "qr4_reasoning": "The cited review texts contain no slurs, hate speech, sexually explicit material, or other harmful content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2045,23 +2045,23 @@
       "qr1": 1,
       "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Only one citation fully supports the claim while the second citation only partially mentions one of the elements, capping the overall score at 1.",
+      "qr1_reasoning": "Only one citation fully supports the claim, meaning the case cannot score above 1 due to the requirement of at least two supporting citations for a score of 2.",
       "citation_support": [
         {
           "recommendationid": "124608584",
           "level": "full",
-          "reasoning": "This citation explicitly mentions the product placement of Monster Energy and the personal facilities like taking a shower or using the toilet as elements that break the magic/immersion."
+          "reasoning": "The citation explicitly mentions Monster product placement and going pee or taking a shower as immersion-breaking elements."
         },
         {
           "recommendationid": "221309019",
-          "level": "partial",
-          "reasoning": "This citation only mentions Monster Energy but lacks any details about personal facilities or them being immersion-breaking."
+          "level": "none",
+          "reasoning": "The citation only briefly mentions Monster Energy without discussing product placement as immersion-breaking."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain only standard game criticism and mild frustration without any content safety violations.",
+      "qr4_reasoning": "The citations contain no slurs, hate speech, or content that violates safety guidelines.",
       "_citation_verdict_not_judged": "mixed"
     },
     {
@@ -2074,28 +2074,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that reviewers praise optimization and high, stable frame rates on PC hardware.",
+      "qr1_reasoning": "Multiple citations fully support the claim regarding the game's optimization, high frame rates, and performance on PC hardware.",
       "citation_support": [
         {
           "recommendationid": "225335221",
           "level": "full",
-          "reasoning": "The citation explicitly describes the game as one of the most highly optimised games played on PC with minimal fan noise."
+          "reasoning": "The reviewer explicitly notes that the game is one of the most highly optimised games they have played on PC with a serious machine."
         },
         {
           "recommendationid": "224186717",
           "level": "full",
-          "reasoning": "The citation explicitly notes that the game runs incredibly well and looks stunning on PC."
+          "reasoning": "The reviewer explicitly states that the game runs incredibly well and looks stunning on PC."
         },
         {
           "recommendationid": "220611554",
           "level": "full",
-          "reasoning": "The citation notes specific hardware running the game with a steady 120 FPS, supporting the claim of high and stable frame rates."
+          "reasoning": "The reviewer reports that the game runs with a steady 120 FPS on an older CPU and GPU."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "None of the citations contain any inappropriate content, slurs, or objectionable material.",
+      "qr4_reasoning": "No inappropriate, hateful, or distressing content is present in any of the citations.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2108,28 +2108,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "All three citations fully support the claim that the core gameplay loop involves delivering cargo, balancing loads, and navigating terrain.",
+      "qr1_reasoning": "All three citations fully support the claim that the core gameplay loop centers on delivering cargo, balancing loads, and navigating terrain.",
       "citation_support": [
         {
           "recommendationid": "217465271",
           "level": "full",
-          "reasoning": "This citation explicitly states the gameplay loop is to grab packages and deliver them while navigating environments and landscapes."
+          "reasoning": "This citation explicitly describes the gameplay loop of grabbing packages and delivering them to other locations while dealing with traversal dynamics."
         },
         {
           "recommendationid": "124317588",
           "level": "full",
-          "reasoning": "This citation mentions getting to destinations, evenly distributing cargo so you fall over less, and navigating heavy loads."
+          "reasoning": "This citation supports the balancing of loads and navigating hiking conditions with a heavy load."
         },
         {
           "recommendationid": "124622239",
           "level": "full",
-          "reasoning": "This citation explicitly states gameplay is about getting from point to point and balancing your load while getting there."
+          "reasoning": "This citation mentions the delivery gameplay, getting from point to point, and balancing loads."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in early",
       "qr4": "pass",
-      "qr4_reasoning": "The citations are completely free of slurs, hate speech, sexually explicit content, or other distressing material.",
+      "qr4_reasoning": "The reviews contain no slurs, hate speech, or distressing content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2142,48 +2142,48 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that the opening hours are slow or difficult before improving.",
+      "qr1_reasoning": "Multiple citations fully support the claim that the game starts slow and unengaging before improving later.",
       "citation_support": [
         {
           "recommendationid": "226275330",
           "level": "full",
-          "reasoning": "The reviewer explicitly states the first 2 hours are kinda bad before getting better."
+          "reasoning": "The reviewer explicitly states the first 2 hours are bad and don't show what makes the game great, matching the claim."
         },
         {
           "recommendationid": "223638202",
           "level": "full",
-          "reasoning": "The reviewer states that at first it feels slow and strange, but if you give it time it pulls you in."
+          "reasoning": "The reviewer states the game feels slow at first but pulls you in and pays off, supporting the claim."
         },
         {
           "recommendationid": "221073352",
           "level": "partial",
-          "reasoning": "The reviewer notes the pace is too slow, but does not explicitly describe the improvement later."
+          "reasoning": "The reviewer notes the pace is too slow, but does not explicitly mention it improving later."
         },
         {
           "recommendationid": "220173082",
           "level": "partial",
-          "reasoning": "The reviewer mentions the story is a slow burn and takes a long time to tie up, focusing on a different aspect of pacing."
+          "reasoning": "The reviewer notes the story is a slow burn and takes a long time, but doesn't fully capture the opening hours description."
         },
         {
           "recommendationid": "125895370",
           "level": "full",
-          "reasoning": "The reviewer mentions rage quitting after the first two hours before having a wonderful subsequent experience."
+          "reasoning": "The reviewer mentions rage quitting after the first 2 hours before having a wonderful later experience, fully supporting the claim."
         },
         {
           "recommendationid": "125586614",
           "level": "full",
-          "reasoning": "The reviewer directly states the game is boring and slow to begin with but picks up later."
+          "reasoning": "The reviewer states the game is slow to begin with but picks up later, directly supporting the claim."
         },
         {
           "recommendationid": "125447210",
-          "level": "full",
-          "reasoning": "The reviewer mentions the start is confusing and difficult, advising players to stick with it until they fall in love."
+          "level": "partial",
+          "reasoning": "The reviewer notes the start is confusing and advises sticking with it to fall in love, partially supporting the claim."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 7 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "There is no inappropriate language, slurs, or distressing content in the citations.",
+      "qr4_reasoning": "All citations contain standard player feedback with no policy-violating content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2196,28 +2196,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Multiple citations fully support the claim that asynchronous multiplayer mechanics allow players to utilize structures and signs built by others.",
+      "qr1_reasoning": "Multiple citations fully and directly support the claim regarding asynchronous multiplayer mechanics and structures built by others.",
       "citation_support": [
         {
           "recommendationid": "225918795",
           "level": "full",
-          "reasoning": "The reviewer explicitly mentions the online connectivity of other people's builds and signs that impact gameplay and navigation."
+          "reasoning": "Citation explicitly discusses online connectivity of other players' builds, signs, roads, and zipline systems assisting with delivery routes."
         },
         {
           "recommendationid": "224188588",
           "level": "full",
-          "reasoning": "The reviewer mentions the online social aspect of leaving trails behind for other players."
+          "reasoning": "Citation directly mentions the online social aspect of leaving trails and paths behind for other players."
         },
         {
           "recommendationid": "217778088",
           "level": "full",
-          "reasoning": "The reviewer describes coming across things left behind by other players that helped them, matching the claim."
+          "reasoning": "Citation details the asynchronous cooperation and finding structures left behind by other players that end up helping."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain no inappropriate content, slurs, or graphic material.",
+      "qr4_reasoning": "All cited review texts are entirely free of slurs, hate speech, sexually explicit material, or distressing content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2230,28 +2230,28 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Two or more citations clearly support the claim that the story and cutscenes are lengthy and slow-paced.",
+      "qr1_reasoning": "Two citations fully support the claim regarding the lengthy, complex, or slow-paced nature of the game's story.",
       "citation_support": [
         {
           "recommendationid": "221452936",
           "level": "none",
-          "reasoning": "This citation does not discuss the story, cutscenes, or pace of the game."
+          "reasoning": "This citation only provides a general statement of loving the game without mentioning the story, cutscenes, or their pacing."
         },
         {
           "recommendationid": "220173082",
           "level": "full",
-          "reasoning": "This citation explicitly mentions too much talking, a slow burn story, and time taken to tie up threads, fully supporting the claim."
+          "reasoning": "This citation explicitly supports the claim by mentioning too much talking, a slow burn story, and a long time to tie up threads."
         },
         {
           "recommendationid": "218927649",
           "level": "full",
-          "reasoning": "This citation describes the game as a slow burn with exposition dumps and a long time required to complete, supporting the claim."
+          "reasoning": "This citation supports the claim by describing the game as a slow burn with a lot of exposition dumps and a long time needed to complete it."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "None of the citations contain any inappropriate content, slurs, or distressing material.",
+      "qr4_reasoning": "All citations are free of slurs, hate speech, sexually explicit content, or other distressing material.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2262,30 +2262,30 @@
       "claim": "Reviewers note that the game runs exceptionally well on PC with impressive graphical performance.",
       "n_citations": 3,
       "qr1": 1,
-      "qr1_judge": 2,
-      "qr1_rule_disagreement": true,
-      "qr1_reasoning": "Multiple citations fully or partially support the claim about exceptional graphical performance and how well the game runs.",
+      "qr1_judge": 1,
+      "qr1_rule_disagreement": false,
+      "qr1_reasoning": "Only one citation fully supports both the performance and graphical aspects, while the remaining citations only cover graphics without mentioning performance.",
       "citation_support": [
         {
           "recommendationid": "221984092",
           "level": "full",
-          "reasoning": "This citation explicitly mentions that the game is really beautiful and runs amazingly well."
+          "reasoning": "The reviewer explicitly states that the game is really beautiful and runs amazingly."
         },
         {
           "recommendationid": "221635725",
           "level": "partial",
-          "reasoning": "This citation notes amazing graphics and atmosphere, but does not explicitly mention overall PC performance."
+          "reasoning": "The reviewer mentions amazing graphics and world-building, but does not explicitly discuss the game's overall performance on PC."
         },
         {
           "recommendationid": "125622248",
           "level": "partial",
-          "reasoning": "This citation highlights amazing graphics, but does not specifically comment on PC performance."
+          "reasoning": "The reviewer highlights amazing graphics, but does not comment on the game's performance or technical running state."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 3 citations recorded in mid",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain standard gaming feedback and positive reviews without any inappropriate or harmful content.",
+      "qr4_reasoning": "All reviews are entirely free of inappropriate language, slurs, or distressing content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2295,26 +2295,26 @@
       "theme": "performance",
       "claim": "Reviewers describe the PC port as having poorly mapped keyboard and mouse controls that feel directly adapted from a gamepad.",
       "n_citations": 2,
-      "qr1": 2,
-      "qr1_judge": 2,
+      "qr1": 1,
+      "qr1_judge": 1,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that the PC port has poorly mapped keyboard and mouse controls adapted directly from a gamepad.",
+      "qr1_reasoning": "Only one citation fully supports the complete claim including the gamepad adaptation detail, meaning the case cannot score above 1 under the rules.",
       "citation_support": [
         {
           "recommendationid": "118492528",
-          "level": "full",
-          "reasoning": "The citation explicitly mentions that keyboard controls are poorly designed."
+          "level": "partial",
+          "reasoning": "The citation mentions that keyboard controls are bad, but does not explicitly state they feel directly adapted from a gamepad."
         },
         {
           "recommendationid": "122986571",
           "level": "full",
-          "reasoning": "The citation states that controls on PC seem like someone took controls designed for a pad and 1-1 mapped to keyboard."
+          "reasoning": "The citation explicitly describes the controls on PC as seeming like someone took controls designed for a pad and 1-1 mapped them to keyboard."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The citations contain only mild profanity and standard game criticism without any distressing or harmful content.",
+      "qr4_reasoning": "The reviews contain mild profanity and standard game critique without any content that violates safety guidelines.",
       "_citation_verdict_not_judged": "negative"
     },
     {
@@ -2324,26 +2324,26 @@
       "theme": "difficulty",
       "claim": "Reviewers note that vehicles can behave erratically or slide when driven over rough terrain.",
       "n_citations": 2,
-      "qr1": 2,
+      "qr1": 1,
       "qr1_judge": 2,
-      "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that vehicles can behave erratically or slide over rough terrain.",
+      "qr1_rule_disagreement": true,
+      "qr1_reasoning": "At least one citation fully supports the assertion with no inferential gap, and another partially supports it, meeting the criteria for a case-level score of 2.",
       "citation_support": [
         {
           "recommendationid": "230001365",
           "level": "full",
-          "reasoning": "The citation explicitly states that vehicles can behave strangely or awkwardly on rough terrain, directly supporting the claim."
+          "reasoning": "Citation explicitly states that vehicles can behave strangely and awkwardly on rough terrain, matching the claim."
         },
         {
           "recommendationid": "122900506",
-          "level": "full",
-          "reasoning": "The citation mentions the slippery front-end of the van, which supports the claim that vehicles can behave erratically or slide."
+          "level": "partial",
+          "reasoning": "Citation mentions the slippery front-end of the van, which aligns with vehicle issues, but does not explicitly detail rough terrain behavior."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain no slurs, hate speech, explicit content, or distressing material.",
+      "qr4_reasoning": "The review texts contain no slurs, hate speech, sexually explicit material, or distressing content.",
       "_citation_verdict_not_judged": "positive"
     },
     {
@@ -2356,23 +2356,23 @@
       "qr1": 2,
       "qr1_judge": 2,
       "qr1_rule_disagreement": false,
-      "qr1_reasoning": "Both citations fully support the claim that reviewers report lengthy credit sequences near the end of the game.",
+      "qr1_reasoning": "Both citations fully and explicitly support the claim that the game requires watching lengthy credit sequences near the end.",
       "citation_support": [
         {
           "recommendationid": "121316454",
           "level": "full",
-          "reasoning": "The citation explicitly discusses credit scenes near the end of the game and expresses frustration with having to sit through them."
+          "reasoning": "The reviewer explicitly mentions credit scenes that cannot be idled or skipped and have to be gone through twice."
         },
         {
           "recommendationid": "218152943",
           "level": "full",
-          "reasoning": "The citation confirms that the game forces players to watch the credits at the ending."
+          "reasoning": "The reviewer directly states that the game forces players to watch the entire credits twice near the end."
         }
       ],
       "qr2": "Y",
       "qr2_reasoning": "computed: all 2 citations recorded in veteran",
       "qr4": "pass",
-      "qr4_reasoning": "The reviews contain mild profanity expressing frustration but no slurs, hate speech, or sexually explicit content.",
+      "qr4_reasoning": "The citations contain standard profanity and frustration about a game feature, which does not constitute harmful or inappropriate content under the safety guidelines.",
       "_citation_verdict_not_judged": "positive"
     }
   ]
