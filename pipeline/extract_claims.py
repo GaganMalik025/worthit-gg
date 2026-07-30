@@ -46,6 +46,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fetch_reviews import BUCKETS                      # noqa: E402  (invariant 2, single source)
 from filter_reviews import MIN_COHORT                  # noqa: E402  (invariant 12)
 import prevalence_guard                                # noqa: E402
+import ground_check                                    # noqa: E402  (1.4)
 
 IN_DIR = Path("data/filtered")
 OUT_DIR = Path("data/claims")
@@ -133,6 +134,31 @@ Each line is: [recommendationid] (hours played at time of review, verdict) text
 """
 
 
+RETRY_PREAMBLE = """\
+Your previous response contained claims that could not be verified. Produce a \
+corrected set of claims for the SAME cohort and the SAME reviews, listed again \
+below.
+
+Problems found:
+
+{problems}
+
+How to fix them:
+- If a claim could not be verified against its citations, the citations are the \
+problem, not the wording. Either cite the reviews that genuinely support the \
+claim, or drop the claim entirely. Do NOT reword a claim to echo the reviews' \
+vocabulary - copying their phrasing does not make a claim better supported.
+- If a claim stated how common something is, restate it without any frequency, \
+proportion or quantity language, or drop it.
+- Dropping a claim is always acceptable. Returning fewer, well-cited claims is \
+better than returning the same number.
+
+Return the complete corrected list, including the claims that were fine.
+
+{reviews_block}
+"""
+
+
 def cohort_range_hours(bucket):
     """Bucket bounds in HOURS. Invariant 1: raw minutes never reach a prompt."""
     for name, lo, hi in BUCKETS:
@@ -151,6 +177,71 @@ COHORT_LABEL = {
     "mid": "mid",
     "veteran": "veteran",
 }
+
+
+# A retry is told to return the complete corrected list, so it re-emits claims
+# that were already fine - sometimes reworded. Exact-text dedupe misses those,
+# and the Kenshi early cohort produced two wordings of "the interface feels
+# dated" at 0.67 token overlap. Merge on meaning, keeping the better-cited one.
+DEDUPE_OVERLAP = 0.5
+
+
+def _merge_dedup(accepted, candidates):
+    """Add candidates to accepted, collapsing near-duplicates.
+
+    Ties break toward more supporting citations: same claim, more receipts.
+    """
+    merged, dropped = list(accepted), []
+    for cand in candidates:
+        ct = ground_check.tokens(cand["claim"])
+        replaced = False
+        for i, existing in enumerate(merged):
+            et = ground_check.tokens(existing["claim"])
+            if not ct or not et:
+                continue
+            overlap = len(ground_check.fuzzy_hits(ct, et)) / max(len(ct), len(et))
+            if overlap < DEDUPE_OVERLAP:
+                continue
+            if len(cand["supporting_ids"]) > len(existing["supporting_ids"]):
+                dropped.append((existing["claim"], "superseded"))
+                merged[i] = cand
+            else:
+                dropped.append((cand["claim"], "duplicate"))
+            replaced = True
+            break
+        if not replaced:
+            merged.append(cand)
+    return merged, dropped
+
+
+def _problem_line(result):
+    """Plain-language reason, deliberately free of overlap-speak.
+
+    Never says "your claim did not share enough words with the reviews" - that
+    teaches the model to parrot review text, which games the grounding check
+    while making claims worse.
+    """
+    reasons = []
+    for f in result["failures"]:
+        if f.startswith("prevalence_language"):
+            terms = f.split(":", 1)[1]
+            reasons.append("states how common something is (%s)" % terms)
+        elif f.startswith("low_union_coverage"):
+            reasons.append("could not be verified against the reviews it cites")
+        elif f.startswith("only_"):
+            reasons.append("only one cited review actually supports it; two are "
+                           "required")
+        elif f.startswith("cited_outside_bucket"):
+            reasons.append("cites a review from a different cohort")
+        elif f.startswith("ids_not_in_corpus"):
+            reasons.append("cites a review id that does not exist")
+    return "- \"%s\"\n    problem: %s" % (result["claim"], "; ".join(reasons))
+
+
+def build_retry_prompt(game, bucket, reviews, failures):
+    _, reviews_block = build_prompts(game, bucket, reviews)
+    problems = "\n".join(_problem_line(f) for f in failures)
+    return RETRY_PREAMBLE.format(problems=problems, reviews_block=reviews_block)
 
 
 def build_prompts(game, bucket, reviews):
@@ -366,6 +457,82 @@ def extract_bucket(client, args, game, appid, bucket, reviews):
         print("(dry run - no request made)")
         return None
 
+    cfg = {"min_coverage": args.min_coverage,
+           "min_citation_coverage": args.min_citation_coverage,
+           "min_supporting": args.min_supporting}
+    corpus = {str(r["recommendationid"]): r for r in reviews}
+    voted_up_by_id = {str(r.get("recommendationid")): r.get("voted_up")
+                      for r in reviews}
+
+    accepted, attempts, dropped = [], [], []
+    prompt = user
+    for attempt in range(args.ground_retries + 1):
+        text = _generate(client, args, appid, bucket, system, prompt, attempt)
+        try:
+            parsed = json.loads(text)
+        except ValueError as exc:
+            print("  !! response was not valid JSON: %s" % exc)
+            attempts.append({"attempt": attempt, "error": "invalid_json"})
+            break
+
+        raw_claims = parsed.get("claims") or []
+        kept, rejected = enforce(raw_claims, set(corpus), voted_up_by_id)
+
+        # 1.4: deterministic grounding, before anything downstream sees a claim
+        if args.no_ground:
+            passed, failed = kept, []
+        else:
+            passed, failed, _ = ground_check.check_bucket(kept, bucket, corpus, cfg)
+
+        accepted, deduped = _merge_dedup(accepted, passed)
+        for claim_text, why in deduped:
+            print("     [dedupe/%s] %s" % (why, claim_text[:80]))
+        attempts.append({"attempt": attempt, "returned": len(raw_claims),
+                         "deduped": len(deduped),
+                         "enforce_rejected": len(rejected),
+                         "grounding_rejected": len(failed),
+                         "accepted_running_total": len(accepted)})
+
+        print("\n--- attempt %d: model returned %d, enforce rejected %d, "
+              "grounding rejected %d, accepted %d ---"
+              % (attempt, len(raw_claims), len(rejected), len(failed), len(passed)))
+        for r in rejected:
+            print("     [enforce/%s] %s" % (r["reason"], r["claim"][:80]))
+        for f in failed:
+            print("     [grounding] %s" % f["claim"][:80])
+            for reason in f["failures"]:
+                print("          ! %s" % reason)
+
+        dropped = failed
+        if not failed or attempt == args.ground_retries:
+            break
+        print("\n  regenerating %s (attempt %d of %d)..."
+              % (bucket, attempt + 1, args.ground_retries))
+        prompt = build_retry_prompt(game, bucket, reviews, failed)
+
+    print("\n--- %s final: %d grounded claims, %d dropped ---"
+          % (bucket, len(accepted), len(dropped)))
+    for c in accepted:
+        s = c["citation_split"]
+        print("     (%s | cited reviewers %s %du/%dd) %s"
+              % (c["theme"], c["citation_verdict"], s["positive"], s["negative"],
+                 c["claim"]))
+        print("        ids: %s" % ", ".join(c["supporting_ids"]))
+
+    return {
+        "bucket": bucket,
+        "n_reviews": len(reviews),
+        "kept": len(accepted),
+        "claims": accepted,
+        "attempts": attempts,
+        "dropped_after_retries": [
+            {"claim": f["claim"], "failures": f["failures"],
+             "union_coverage": f["union_coverage"]} for f in dropped],
+    }
+
+
+def _generate(client, args, appid, bucket, system, user, attempt):
+    """One call, served from cache when the identical prompt has run before."""
     cpath = cache_path(appid, bucket, args.model, system, user)
     if cpath.exists() and not args.force:
         payload = json.loads(cpath.read_text(encoding="utf-8"))
@@ -387,46 +554,10 @@ def extract_bucket(client, args, game, appid, bucket, reviews):
         }, ensure_ascii=False, indent=2), encoding="utf-8")
         time.sleep(PACE_SECONDS)
 
-    print("--- RAW MODEL OUTPUT%s ---" % (" [cached]" if cached else ""))
+    print("--- RAW MODEL OUTPUT (attempt %d)%s ---"
+          % (attempt, " [cached]" if cached else ""))
     print(text)
-
-    try:
-        parsed = json.loads(text)
-    except ValueError as exc:
-        print("  !! response was not valid JSON: %s" % exc)
-        return {"bucket": bucket, "n_reviews": len(reviews), "error": "invalid_json",
-                "claims": [], "rejected": []}
-
-    raw_claims = parsed.get("claims") or []
-    voted_up_by_id = {str(r.get("recommendationid")): r.get("voted_up")
-                      for r in reviews}
-    kept, rejected = enforce(raw_claims, valid_ids, voted_up_by_id)
-    flagged = prevalence_guard.check_claims(kept)
-
-    print("\n--- after code enforcement ---")
-    print("  returned by model : %d" % len(raw_claims))
-    print("  rejected          : %d" % len(rejected))
-    for r in rejected:
-        print("     [%s] %s" % (r["reason"], r["claim"][:90]))
-    print("  kept              : %d" % len(kept))
-    for c in kept:
-        s = c["citation_split"]
-        print("     (%s | cited reviewers %s %du/%dd) %s"
-              % (c["theme"], c["citation_verdict"], s["positive"], s["negative"],
-                 c["claim"]))
-        print("        ids: %s" % ", ".join(c["supporting_ids"]))
-    prevalence_guard.report(flagged, len(kept))
-
-    return {
-        "bucket": bucket,
-        "n_reviews": len(reviews),
-        "returned": len(raw_claims),
-        "kept": len(kept),
-        "claims": kept,
-        "rejected": rejected,
-        "prevalence_flagged": [{"claim": t, "terms": [h[0] for h in hits]}
-                               for _, t, hits in flagged],
-    }
+    return text
 
 
 def main():
@@ -437,6 +568,16 @@ def main():
     ap.add_argument("--force", action="store_true", help="ignore the response cache")
     ap.add_argument("--dry-run", action="store_true", help="print prompts, call nothing")
     ap.add_argument("--show-prompt", action="store_true")
+    ap.add_argument("--ground-retries", type=int, default=2,
+                    help="regeneration attempts when grounding fails (default 2)")
+    ap.add_argument("--min-coverage", type=float,
+                    default=ground_check.MIN_UNION_COVERAGE)
+    ap.add_argument("--min-citation-coverage", type=float,
+                    default=ground_check.MIN_CITATION_COVERAGE)
+    ap.add_argument("--min-supporting", type=int,
+                    default=ground_check.MIN_SUPPORTING_CITATIONS)
+    ap.add_argument("--no-ground", action="store_true",
+                    help="skip the grounding check (diagnostics only)")
     ap.add_argument("--src", default=str(IN_DIR))
     ap.add_argument("--out", default=str(OUT_DIR))
     args = ap.parse_args()
@@ -496,6 +637,13 @@ def main():
         "thinking_level": "minimal",
         # carried through untouched - the only sanctioned prevalence source
         "pool": blob.get("pool"),
+        "grounding": {
+            "checked": not args.no_ground,
+            "min_coverage": args.min_coverage,
+            "min_citation_coverage": args.min_citation_coverage,
+            "min_supporting": args.min_supporting,
+            "retries_allowed": args.ground_retries,
+        },
         "extraction_report": {"buckets": results, "skipped": skipped},
         "claims_by_bucket": {r["bucket"]: r["claims"] for r in results},
     }, indent=2, ensure_ascii=False), encoding="utf-8")

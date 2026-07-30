@@ -34,13 +34,19 @@ Every "DoD" (definition of done) is checked by the developer, not assumed.
 - 1.3 **Extraction pass** (Gemini Flash-Lite, temp 0, structured output): per
   bucket → claims with supporting IDs; ≥2-review rule enforced in code.
   **DoD:** one game's raw extraction output read by developer before 1.4.
-- 1.4 **Deterministic grounding check** (no LLM): cited IDs exist; lexical
-  overlap between claim and cited text; **prevalence-language guard on claim
-  prose** (`pipeline/prevalence_guard.py`, built in 1.2 — a countless schema
-  cannot catch "most players bounce off the tutorial"); reject + regenerate on
-  failure.
-  **DoD:** deliberately corrupted claim gets rejected in a test, and a claim
-  carrying prevalence language is rejected with its offending term named.
+- 1.4 **Deterministic grounding check** (no LLM) — DONE. `pipeline/ground_check.py`:
+  cited IDs exist; cited reviews belong to the claimed bucket; fuzzy lexical
+  overlap (exact / 4-char prefix / containment, so `beaten`↔`beat`);
+  **prevalence-language guard on claim prose** (a countless schema cannot catch
+  "most players bounce off the tutorial"); reject → regenerate that bucket
+  (cap 2) → drop. Near-duplicate claims merged across retries at 0.5 overlap.
+  Thresholds measured on the Kenshi set (fuzzy union coverage p25 0.40,
+  median 0.54): union ≥ **0.25**, ≥ **2** citations each ≥ **0.10**.
+  Known limit: lexical overlap cannot separate rich paraphrase from
+  hallucination, so a failure means *unverifiable*, never *hallucinated*.
+  **DoD:** `pipeline/test_ground_check.py` — corrupted id, out-of-bucket
+  citation, claim/citation mismatch, one-sided support and prevalence prose are
+  each rejected with the reason named; runs offline.
 - 1.5 **Synthesis pass** (Gemini Flash): verdict JSON from extracted claims
   only; unknown claim IDs rejected in code. Output schema: verdict,
   for-whom, per-bucket sections, claims+citations, distortion flags.

@@ -1,7 +1,7 @@
 {
   "appid": "233860",
   "game_name": "Kenshi",
-  "extracted_at": "2026-07-30T03:43:14Z",
+  "extracted_at": "2026-07-30T03:52:06Z",
   "model": "gemini-3.5-flash-lite",
   "thinking_level": "minimal",
   "pool": {
@@ -32,12 +32,18 @@
     "steam_total_reviews": 56059,
     "steam_pct_positive": 95.1
   },
+  "grounding": {
+    "checked": true,
+    "min_coverage": 0.25,
+    "min_citation_coverage": 0.1,
+    "min_supporting": 2,
+    "retries_allowed": 2
+  },
   "extraction_report": {
     "buckets": [
       {
         "bucket": "refund_window",
         "n_reviews": 29,
-        "returned": 4,
         "kept": 4,
         "claims": [
           {
@@ -97,14 +103,22 @@
             ]
           }
         ],
-        "rejected": [],
-        "prevalence_flagged": []
+        "attempts": [
+          {
+            "attempt": 0,
+            "returned": 4,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 0,
+            "accepted_running_total": 4
+          }
+        ],
+        "dropped_after_retries": []
       },
       {
         "bucket": "early",
         "n_reviews": 77,
-        "returned": 5,
-        "kept": 5,
+        "kept": 6,
         "claims": [
           {
             "claim": "Reviewers describe the opening hours as unguided, featuring no hand-holding or tutorials explaining core systems.",
@@ -118,27 +132,6 @@
               "231081366",
               "229849790",
               "229599217"
-            ]
-          },
-          {
-            "claim": "Reviewers report that early-game characters are extremely weak and frequently get knocked out, robbed, enslaved, or killed shortly after leaving town.",
-            "theme": "difficulty",
-            "citation_verdict": "positive",
-            "citation_split": {
-              "positive": 7,
-              "negative": 0
-            },
-            "supporting_ids": [
-              "231340620",
-              "231242674",
-              "231108738",
-              "231041540",
-              "230580405",
-              "228938168",
-              "226458355"
-            ],
-            "dropped_unknown_ids": [
-              "230903814"
             ]
           },
           {
@@ -156,19 +149,6 @@
             ]
           },
           {
-            "claim": "Reviewers report inventory and storage automation bugs where characters continuously run back and forth to deposit matching items.",
-            "theme": "performance",
-            "citation_verdict": "mixed",
-            "citation_split": {
-              "positive": 1,
-              "negative": 1
-            },
-            "supporting_ids": [
-              "231256908",
-              "229765143"
-            ]
-          },
-          {
             "claim": "Reviewers describe the user interface and controls as feeling dated, resembling retro 2000s RPGs.",
             "theme": "performance",
             "citation_verdict": "positive",
@@ -180,22 +160,104 @@
               "229849790",
               "229768721"
             ]
+          },
+          {
+            "claim": "Reviewers describe the opening phase as unguided, noting the absence of tutorials and clear objectives.",
+            "theme": "difficulty",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 3,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "231081366",
+              "229849790",
+              "229599217"
+            ]
+          },
+          {
+            "claim": "Reviewers note that the game lacks a traditional main story, guidance, or hand-holding, requiring players to find their own objectives.",
+            "theme": "content",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 3,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "231081366",
+              "229599217",
+              "225762618"
+            ]
+          },
+          {
+            "claim": "Reviewers describe experiencing pathfinding or storage automation bugs where characters repeatedly haul items back and forth to storage containers.",
+            "theme": "performance",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 2,
+              "negative": 1
+            },
+            "supporting_ids": [
+              "231256908",
+              "231081366",
+              "229765143"
+            ]
           }
         ],
-        "rejected": [],
-        "prevalence_flagged": [
+        "attempts": [
           {
-            "claim": "Reviewers report that early-game characters are extremely weak and frequently get knocked out, robbed, enslaved, or killed shortly after leaving town.",
-            "terms": [
-              "frequently"
-            ]
+            "attempt": 0,
+            "returned": 5,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 2,
+            "accepted_running_total": 3
+          },
+          {
+            "attempt": 1,
+            "returned": 4,
+            "deduped": 1,
+            "enforce_rejected": 0,
+            "grounding_rejected": 2,
+            "accepted_running_total": 4
+          },
+          {
+            "attempt": 2,
+            "returned": 5,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 3,
+            "accepted_running_total": 6
+          }
+        ],
+        "dropped_after_retries": [
+          {
+            "claim": "Reviewers report that characters frequently lose limbs, get knocked unconscious, or are captured and enslaved shortly after leaving starting towns.",
+            "failures": [
+              "prevalence_language:frequently"
+            ],
+            "union_coverage": 0.571
+          },
+          {
+            "claim": "Reviewers encounter technical issues or poor performance when alt-tabbing out of the game.",
+            "failures": [
+              "low_union_coverage:0.00<0.25",
+              "only_0_supporting_citations(need_2_at_0.10)"
+            ],
+            "union_coverage": 0.0
+          },
+          {
+            "claim": "Reviewers state that the game features dated controls and lacks adequate tutorials for new players.",
+            "failures": [
+              "only_1_supporting_citations(need_2_at_0.10)"
+            ],
+            "union_coverage": 0.429
           }
         ]
       },
       {
         "bucket": "mid",
         "n_reviews": 86,
-        "returned": 5,
         "kept": 5,
         "claims": [
           {
@@ -212,19 +274,6 @@
             ]
           },
           {
-            "claim": "Reviewers report frequent performance issues, bugs, and janky pathfinding that often disrupt gameplay.",
-            "theme": "performance",
-            "citation_verdict": "mixed",
-            "citation_split": {
-              "positive": 1,
-              "negative": 1
-            },
-            "supporting_ids": [
-              "230738226",
-              "230664045"
-            ]
-          },
-          {
             "claim": "Reviewers recommend using mods from the community to fix bugs, improve performance, and add quality-of-life enhancements.",
             "theme": "performance",
             "citation_verdict": "positive",
@@ -235,19 +284,6 @@
             "supporting_ids": [
               "231393051",
               "230738226"
-            ]
-          },
-          {
-            "claim": "Reviewers describe the early game as extremely punishing, stating that players should expect to be repeatedly defeated, beaten up, or enslaved.",
-            "theme": "difficulty",
-            "citation_verdict": "positive",
-            "citation_split": {
-              "positive": 2,
-              "negative": 0
-            },
-            "supporting_ids": [
-              "231307284",
-              "225701022"
             ]
           },
           {
@@ -262,54 +298,60 @@
               "231405875",
               "224455841"
             ]
-          }
-        ],
-        "rejected": [],
-        "prevalence_flagged": [
+          },
           {
-            "claim": "Reviewers report frequent performance issues, bugs, and janky pathfinding that often disrupt gameplay.",
-            "terms": [
-              "often",
-              "frequent"
+            "claim": "Reviewers report technical problems, including bugs and pathfinding issues that cause characters to freeze or get stuck on structures.",
+            "theme": "performance",
+            "citation_verdict": "mixed",
+            "citation_split": {
+              "positive": 1,
+              "negative": 1
+            },
+            "supporting_ids": [
+              "230738226",
+              "230664045"
+            ]
+          },
+          {
+            "claim": "Reviewers note that the game lacks an in-game tutorial or explicit direction for new players, throwing them straight into the world without handholding.",
+            "theme": "content",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 3,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "230698805",
+              "230280019",
+              "225701022"
             ]
           }
-        ]
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "returned": 5,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 2,
+            "accepted_running_total": 3
+          },
+          {
+            "attempt": 1,
+            "returned": 2,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 0,
+            "accepted_running_total": 5
+          }
+        ],
+        "dropped_after_retries": []
       },
       {
         "bucket": "veteran",
         "n_reviews": 84,
-        "returned": 4,
         "kept": 4,
         "claims": [
-          {
-            "claim": "Reviewers note that the game features frequent bugs, crashes, performance lag, and general technical jank.",
-            "theme": "performance",
-            "citation_verdict": "positive",
-            "citation_split": {
-              "positive": 4,
-              "negative": 1
-            },
-            "supporting_ids": [
-              "231455552",
-              "231260699",
-              "230796415",
-              "226488988",
-              "225366571"
-            ]
-          },
-          {
-            "claim": "The game lacks a narrative or built-in tutorial system to guide new players.",
-            "theme": "content",
-            "citation_verdict": "positive",
-            "citation_split": {
-              "positive": 2,
-              "negative": 0
-            },
-            "supporting_ids": [
-              "230796415",
-              "224323461"
-            ]
-          },
           {
             "claim": "Players describe the gameplay and learning curve as brutal, unforgiving, and exceptionally difficult at the start.",
             "theme": "difficulty",
@@ -343,17 +385,54 @@
               "230996279",
               "226481861"
             ]
-          }
-        ],
-        "rejected": [],
-        "prevalence_flagged": [
+          },
           {
-            "claim": "Reviewers note that the game features frequent bugs, crashes, performance lag, and general technical jank.",
-            "terms": [
-              "frequent"
+            "claim": "Reviewers note that the game features technical issues including lagging, crashing when the screen times out, and squad members occasionally glitching into walls.",
+            "theme": "performance",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 2,
+              "negative": 1
+            },
+            "supporting_ids": [
+              "231455552",
+              "231260699",
+              "225366571"
+            ]
+          },
+          {
+            "claim": "Reviewers report that the game lacks a story or tutorial to guide players, resulting in a rough start.",
+            "theme": "difficulty",
+            "citation_verdict": "positive",
+            "citation_split": {
+              "positive": 2,
+              "negative": 0
+            },
+            "supporting_ids": [
+              "230796415",
+              "224323461"
             ]
           }
-        ]
+        ],
+        "attempts": [
+          {
+            "attempt": 0,
+            "returned": 4,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 2,
+            "accepted_running_total": 2
+          },
+          {
+            "attempt": 1,
+            "returned": 2,
+            "deduped": 0,
+            "enforce_rejected": 0,
+            "grounding_rejected": 0,
+            "accepted_running_total": 4
+          }
+        ],
+        "dropped_after_retries": []
       }
     ],
     "skipped": []
@@ -433,27 +512,6 @@
         ]
       },
       {
-        "claim": "Reviewers report that early-game characters are extremely weak and frequently get knocked out, robbed, enslaved, or killed shortly after leaving town.",
-        "theme": "difficulty",
-        "citation_verdict": "positive",
-        "citation_split": {
-          "positive": 7,
-          "negative": 0
-        },
-        "supporting_ids": [
-          "231340620",
-          "231242674",
-          "231108738",
-          "231041540",
-          "230580405",
-          "228938168",
-          "226458355"
-        ],
-        "dropped_unknown_ids": [
-          "230903814"
-        ]
-      },
-      {
         "claim": "Reviewers note that the game has a slow pace, with some finding it boring or lacking content once survival is figured out.",
         "theme": "content",
         "citation_verdict": "negative",
@@ -468,19 +526,6 @@
         ]
       },
       {
-        "claim": "Reviewers report inventory and storage automation bugs where characters continuously run back and forth to deposit matching items.",
-        "theme": "performance",
-        "citation_verdict": "mixed",
-        "citation_split": {
-          "positive": 1,
-          "negative": 1
-        },
-        "supporting_ids": [
-          "231256908",
-          "229765143"
-        ]
-      },
-      {
         "claim": "Reviewers describe the user interface and controls as feeling dated, resembling retro 2000s RPGs.",
         "theme": "performance",
         "citation_verdict": "positive",
@@ -491,6 +536,48 @@
         "supporting_ids": [
           "229849790",
           "229768721"
+        ]
+      },
+      {
+        "claim": "Reviewers describe the opening phase as unguided, noting the absence of tutorials and clear objectives.",
+        "theme": "difficulty",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 3,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "231081366",
+          "229849790",
+          "229599217"
+        ]
+      },
+      {
+        "claim": "Reviewers note that the game lacks a traditional main story, guidance, or hand-holding, requiring players to find their own objectives.",
+        "theme": "content",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 3,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "231081366",
+          "229599217",
+          "225762618"
+        ]
+      },
+      {
+        "claim": "Reviewers describe experiencing pathfinding or storage automation bugs where characters repeatedly haul items back and forth to storage containers.",
+        "theme": "performance",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 2,
+          "negative": 1
+        },
+        "supporting_ids": [
+          "231256908",
+          "231081366",
+          "229765143"
         ]
       }
     ],
@@ -509,19 +596,6 @@
         ]
       },
       {
-        "claim": "Reviewers report frequent performance issues, bugs, and janky pathfinding that often disrupt gameplay.",
-        "theme": "performance",
-        "citation_verdict": "mixed",
-        "citation_split": {
-          "positive": 1,
-          "negative": 1
-        },
-        "supporting_ids": [
-          "230738226",
-          "230664045"
-        ]
-      },
-      {
         "claim": "Reviewers recommend using mods from the community to fix bugs, improve performance, and add quality-of-life enhancements.",
         "theme": "performance",
         "citation_verdict": "positive",
@@ -532,19 +606,6 @@
         "supporting_ids": [
           "231393051",
           "230738226"
-        ]
-      },
-      {
-        "claim": "Reviewers describe the early game as extremely punishing, stating that players should expect to be repeatedly defeated, beaten up, or enslaved.",
-        "theme": "difficulty",
-        "citation_verdict": "positive",
-        "citation_split": {
-          "positive": 2,
-          "negative": 0
-        },
-        "supporting_ids": [
-          "231307284",
-          "225701022"
         ]
       },
       {
@@ -559,38 +620,36 @@
           "231405875",
           "224455841"
         ]
-      }
-    ],
-    "veteran": [
+      },
       {
-        "claim": "Reviewers note that the game features frequent bugs, crashes, performance lag, and general technical jank.",
+        "claim": "Reviewers report technical problems, including bugs and pathfinding issues that cause characters to freeze or get stuck on structures.",
         "theme": "performance",
-        "citation_verdict": "positive",
+        "citation_verdict": "mixed",
         "citation_split": {
-          "positive": 4,
+          "positive": 1,
           "negative": 1
         },
         "supporting_ids": [
-          "231455552",
-          "231260699",
-          "230796415",
-          "226488988",
-          "225366571"
+          "230738226",
+          "230664045"
         ]
       },
       {
-        "claim": "The game lacks a narrative or built-in tutorial system to guide new players.",
+        "claim": "Reviewers note that the game lacks an in-game tutorial or explicit direction for new players, throwing them straight into the world without handholding.",
         "theme": "content",
         "citation_verdict": "positive",
         "citation_split": {
-          "positive": 2,
+          "positive": 3,
           "negative": 0
         },
         "supporting_ids": [
-          "230796415",
-          "224323461"
+          "230698805",
+          "230280019",
+          "225701022"
         ]
-      },
+      }
+    ],
+    "veteran": [
       {
         "claim": "Players describe the gameplay and learning curve as brutal, unforgiving, and exceptionally difficult at the start.",
         "theme": "difficulty",
@@ -623,6 +682,33 @@
           "231310439",
           "230996279",
           "226481861"
+        ]
+      },
+      {
+        "claim": "Reviewers note that the game features technical issues including lagging, crashing when the screen times out, and squad members occasionally glitching into walls.",
+        "theme": "performance",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 2,
+          "negative": 1
+        },
+        "supporting_ids": [
+          "231455552",
+          "231260699",
+          "225366571"
+        ]
+      },
+      {
+        "claim": "Reviewers report that the game lacks a story or tutorial to guide players, resulting in a rough start.",
+        "theme": "difficulty",
+        "citation_verdict": "positive",
+        "citation_split": {
+          "positive": 2,
+          "negative": 0
+        },
+        "supporting_ids": [
+          "230796415",
+          "224323461"
         ]
       }
     ]
