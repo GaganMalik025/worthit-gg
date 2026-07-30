@@ -4,7 +4,7 @@ Append-only. One row per run. Rubric wording lives in evals/rubric.md (authored 
 
 | Date | Run | QR-1 Faithfulness | QR-2 Segment acc. | QR-3 Shape diversity | QR-4 Safety | Notes |
 |---|---|---|---|---|---|---|
-| 2026-07-31 | 2.3 baseline, rubric v1.1 | **67.1%** scoring 2 (mean 1.67, **0 zeros**) | 100% Y — by construction, see caveat | *not yet assessed* | **PASS** (0 failures / 198 citations) | First filed baseline. Rubric took three drafts to handle compound claims correctly. |
+| 2026-07-31 | 2.3 baseline, rubric v1.1 | **67.1%** scoring 2 (mean 1.67, **0 zeros**) | 100% Y — by construction, see caveat | **PASS** — 5 distinct flag profiles | **PASS** (0 failures / 198 citations) | First filed baseline. Rubric took three drafts to handle compound claims correctly. |
 
 ---
 
@@ -51,11 +51,47 @@ and the 1.4 grounding check rejects out-of-bucket citations upstream. It is wort
 recording because it will catch a future regression, but it is not evidence that
 segmentation is accurate — nothing here could have scored otherwise.
 
-**QR-3 — Verdict-shape diversity: not yet assessed**
+**QR-3 — Verdict-shape diversity: PASS**
 
-Not scored per case. Per the rubric it is a whole-set qualitative judgment made by
-reading all five seed verdicts and asking whether they differ structurally rather than
-only in wording. Owner-authored; left open rather than guessed.
+Not scored per case: a whole-set qualitative judgment made by reading all five seed
+verdicts and asking whether they differ structurally rather than only in wording.
+
+**All five games produced a distinct distortion-flag profile — no two alike:**
+
+| Game | Cohort sequence (pool % positive) | Spread | Flag profile |
+|---|---|---|---|
+| Kenshi | 40.4 → 87.4 → 93.7 → 98.0 | 57.6 | `cohort_divergence` / monotonic_increase |
+| Helldivers 2 | 50.0 → 88.2 → 85.2 → 65.7 | 38.2 | `cohort_divergence` / **rise_then_fall** |
+| Death Stranding | 50.0 → 74.3 → 93.7 → 95.3 | 45.3 | `recency_shift` / **declined** (−9.5 pts) |
+| Cyberpunk 2077 | 91.7 → 93.8 → 98.3 → 98.0 | 6.6 | `recency_shift` / **improved** (+8.7 pts) |
+| Stardew Valley | 75.0 → 97.3 → 98.5 → 99.0 | 24.0 | none — consensus |
+
+Kenshi is the only monotonic staircase to fire a divergence flag; Helldivers 2 the only
+non-monotonic shape, peaking at `early` and falling 22.5 points to `veteran`. Death
+Stranding and Cyberpunk both surface through recency rather than playtime — in opposite
+directions, a decline against lifetime score versus a redemption arc. Stardew fires
+nothing at all, which is itself the finding for a consensus title. Five games, five
+profiles: the pipeline is surfacing genuine per-game structure, not a templated output.
+
+Three corrections against the figures as first drafted, made from the pipeline's own
+output rather than carried through:
+
+1. **Kenshi's veteran cohort is 98.0%, not 99%.**
+2. **Stardew's spread is 24.0 points, which is not "narrow."** It is flat *only* among
+   the three cohorts clearing the flag-evidence floor (`pool_n ≥ 30`): 97.3 → 98.5 →
+   99.0, a 1.7-point spread. Its 75.0% refund figure rests on `pool_n = 24` and is
+   excluded from flag evidence. Both statements are true; pairing "75 → 99" with
+   "narrow spread" is not.
+3. **"No two games produced the same *shape*" does not hold as stated.** The pipeline's
+   own `classify_shape` labels four of five `monotonic_increase` — Kenshi's staircase
+   and Death Stranding's slow burn carry the same label. The claim that survives, and
+   the one recorded above, is that no two games produced the same **flag profile**.
+   That is the stronger test anyway: it is what a reader actually sees on the verdict
+   page, and it distinguishes all five rather than four.
+
+Note that Death Stranding's headline 45.3-point spread does **not** fire a divergence
+flag: its refund cohort (`n = 26`) falls below the flag floor, leaving an eligible
+spread of 21.0 against a 25-point threshold. Its verdict presents as a recency story.
 
 **QR-4 — Content safety: PASS (launch gate, invariant 8)**
 
