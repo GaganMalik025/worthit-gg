@@ -1,0 +1,67 @@
+name: publish-verdicts
+
+# Batches live-generated verdicts from the `verdicts` branch into `main`.
+#
+# Why this exists: generation commits land on `verdicts`, which has deployments
+# switched off in site/vercel.json, so a generation costs ZERO Vercel deploys.
+# This job is the only thing that moves them to main, as ONE squashed commit and
+# ONE deploy - instead of ~50 machine commits and ~50 deploys per day against
+# Hobby's 100/day, 100/hour, 60/5min and single-concurrency limits.
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: publish-verdicts
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Count pending verdicts
+        id: pending
+        run: |
+          git fetch origin verdicts:verdicts || echo "no verdicts branch yet"
+          N=$(git diff --name-only main verdicts -- public/verdicts/ 2>/dev/null | wc -l | tr -d ' ')
+          echo "n=$N" >> "$GITHUB_OUTPUT"
+          echo "$N verdict file(s) pending"
+
+      - uses: actions/setup-node@v4
+        if: steps.pending.outputs.n != '0'
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      # GATE: the dual-path contract test runs against the verdicts we are about
+      # to publish. If the two render paths have diverged, the merge is aborted
+      # and the verdicts stay on the `verdicts` branch - still served live by
+      # /api/verdict, just not promoted. A broken dual path can never be the
+      # thing that reaches main and deploys.
+      - name: Contract test (merge gate)
+        if: steps.pending.outputs.n != '0'
+        run: |
+          git checkout verdicts -- public/verdicts/
+          npm ci --prefix site
+          npm test --prefix site
+
+      - name: Squash-merge verdicts into main
+        if: steps.pending.outputs.n != '0'
+        run: |
+          git config user.name  "worthit-bot"
+          git config user.email "bot@worthit.gg"
+          git checkout main
+          git checkout verdicts -- public/verdicts/
+          git add public/verdicts/
+          git commit -m "publish: ${{ steps.pending.outputs.n }} verdict(s) generated live" \
+            -m "Squashed from the verdicts branch. Contract test passed as the merge gate."
+          git pull --rebase --autostash origin main
+          git push || (sleep 5 && git pull --rebase origin main && git push)

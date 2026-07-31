@@ -1,0 +1,106 @@
+/**
+ * The shared verdict renderer. Both loaders in lib/verdict.ts feed this exact
+ * component - that is what makes the dual path safe, and what the contract test
+ * pins.
+ *
+ * Data-faithful, not yet fully styled: the approved visual design lives in
+ * mockups/kenshi-verdict.html and lands with 3.1. What matters here and is
+ * already load-bearing:
+ *
+ *   - every rate ships with its evidence count in English (invariant 13),
+ *     never a bare percentage and never the raw field name
+ *   - citations render only inside the collapsed receipts element (invariant 9,
+ *     blast-radius); <details> is closed by default with no JS involved
+ *   - citation_verdict is carried in the data and never rendered as claim
+ *     valence (invariant 13)
+ */
+
+import type { Verdict } from "../lib/verdict";
+
+const THEME_LABEL: Record<string, string> = {
+  performance: "Performance",
+  content: "Content",
+  difficulty: "Difficulty",
+  monetization: "Monetization",
+  other: "Other",
+};
+
+export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
+  return (
+    <main>
+      <h1>{v.game_name}</h1>
+      <span className={`stamp ${v.verdict.word.toLowerCase()}`}>
+        {v.verdict.word.toUpperCase()}
+      </span>
+      <p className="for-whom">{v.verdict.for_whom}</p>
+
+      <section className="spine" aria-label="Sentiment by playtime cohort">
+        <h2>How satisfaction changes with playtime</h2>
+        <p className="sub">
+          Percent of reviewers who&rsquo;d recommend it, grouped by how long they
+          played before reviewing.
+        </p>
+        {v.split_bar.map((b) => (
+          <div key={b.bucket} className={b.muted ? "bar-row muted" : "bar-row"}>
+            <span className="bar-label">
+              {b.label}{" "}
+              <span className="mono">
+                {b.muted
+                  ? `${b.pool_n} reviews · too few to call`
+                  : `· based on ${b.pool_n} reviews`}
+              </span>
+            </span>
+            <span className="bar-pct mono">{b.pct_positive.toFixed(1)}%</span>
+          </div>
+        ))}
+      </section>
+
+      {v.cohorts.map((c) => (
+        <section key={c.bucket} className="cohort">
+          <h2>{c.label}</h2>
+          <div className="stats mono">
+            {c.hours_range} · {c.pct_positive.toFixed(1)}% positive, based on{" "}
+            {c.pool_n} reviews
+          </div>
+          {c.summary ? <p className="summary">{c.summary}</p> : null}
+          {c.themes.map((t) => (
+            <div key={t.theme} className="theme">
+              <h3>{THEME_LABEL[t.theme] ?? t.theme}</h3>
+              {t.claims.map((cl) => (
+                <div key={cl.claim_id} className="claim">
+                  <p className="text">{cl.claim}</p>
+                  {/* invariant 9: review text only behind a citation expand */}
+                  <details>
+                    <summary>
+                      <span className="tag mono">
+                        ▸ {cl.citations.length}{" "}
+                        {cl.citations.length === 1 ? "review" : "reviews"}
+                      </span>
+                      <span className="cta">Show receipts</span>
+                    </summary>
+                    {cl.citations.map((cit) => (
+                      <div key={cit.recommendationid} className="citation">
+                        <div className="meta mono">
+                          {cit.voted_up ? "▲ recommends" : "▼ does not recommend"}{" "}
+                          · {(cit.hours_at_review ?? 0).toFixed(1)} hrs ·{" "}
+                          {cit.date}
+                        </div>
+                        <div className="body">{cit.review_text}</div>
+                      </div>
+                    ))}
+                  </details>
+                </div>
+              ))}
+            </div>
+          ))}
+        </section>
+      ))}
+
+      <footer className="mono">
+        Data: {v.footer.pool_n.toLocaleString("en-US")} reviews across{" "}
+        {v.footer.cohort_count} cohorts · generated{" "}
+        {v.generated_at.slice(0, 10)}
+      </footer>
+    </main>
+  );
+}

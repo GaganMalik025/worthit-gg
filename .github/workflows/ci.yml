@@ -1,0 +1,26 @@
+name: ci
+
+# The dual verdict render path (prerendered vs proxied from the `verdicts`
+# branch) is the one thing in this repo that can rot silently, because only
+# freshly generated titles take the second path. This runs the contract test
+# that pins the two together.
+on:
+  push:
+    paths: ['site/**', 'public/verdicts/**', '.github/workflows/ci.yml']
+  pull_request:
+    paths: ['site/**', 'public/verdicts/**', '.github/workflows/ci.yml']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - run: npm ci
+        working-directory: site
+      - run: npm test
+        working-directory: site
