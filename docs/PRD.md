@@ -107,7 +107,7 @@ signal**, and it is what `refund_window` means everywhere in this codebase.
 - **F3 — Synthesis pass** (Flash). Verdict JSON from extracted claims only; may not introduce information absent from extraction.
 - **F4 — Static delivery.** Verdict JSONs committed, served static. Zero marginal cost per user.
 - **F5 — Catalog.** ~100–150 precomputed titles at launch; weekly regeneration script (manual trigger).
-- **F6 — Request queue.** Logged title requests, batch-processed overnight.
+- **F6 — Live generation on cache miss, with request queue as fallback.** A miss from the (selection-only) search box generates the verdict live and caches it permanently as static JSON. Guarded by the global daily reserve and the in-pipeline automated QR-4 gate; when either stops it, the title falls back to a logged request, batch-processed overnight. See CLAUDE.md § "Live on-demand generation".
 - **F7 — Analytics.** PostHog: session, search, verdict view, citation expand, request submit.
 - **F8 — Methodology page.** Segmentation logic + live eval scores + sample-distribution transparency + Steam-summary-vs-WorthIt comparison (Death Stranding). The trust artifact.
 - **F9 — Hardware enrichment.** Where ≥15 reviews carry hardware data, group performance claims by GPU tier. Degrade silently below threshold.
@@ -141,7 +141,9 @@ signal**, and it is what `refund_window` means everywhere in this codebase.
 
 | Risk | Likelihood | Mitigation |
 |---|---|---|
-| Hallucinated claims in a trust product | High (Flash-class) | Deterministic grounding check; structural constraint (synthesis limited to extracted claim IDs); temp-0 + schema; self-consistency on seed set; 10 manual judge-validation checks |
+| Hallucinated claims in a trust product | High (Flash-class) | Deterministic grounding check; structural constraint (synthesis limited to extracted claim IDs); structured output schema + `thinking_level: minimal` with no sampling parameters (Gemini 3.x deprecates temperature/top_p/top_k — invariant 6); self-consistency on seed set; 10 manual judge-validation checks |
+| **Daily Gemini quota exhausted by a traffic spike** (added 2026-07-31 with live generation) | Medium — one Reddit front-page hit is enough | Global daily reserve (`LIVE_RESERVE`, default 300 of ~1,500), checked before dispatch, not per-IP — per-IP is unbounded across clients and cannot protect a global budget. On exhaustion live generation switches off automatically and misses fall back to the queue; **cached verdicts are unaffected**, being static files on a CDN. Degradation is graceful, but it is a real ceiling (see D1) |
+| **A live-generated verdict reaching a user unaudited** | Medium — no human is in the loop | The automated QR-4 gate (`pipeline/qr4_gate.py`) runs after synthesis and before publication; on any failing citation the artifact is deleted, nothing is committed, and the title is queued for manual audit. Invariant 8 holds for generated titles by construction |
 | **NSFW/slur citation at launch** | **High — observed in live sample** | F10 filter stack; QR-4 hard gate; citations behind expand only (blast radius); manual audit of 20 random citations pre-launch |
 | Dead launch | Medium | Reply-first on r/ShouldIBuyThisGame; per-game subreddit posts; warm channels pre-seeded; Steam-sale timing; pivot to interview depth if no traction by Day 5 |
 | Sampling bias reproduces the problem being solved | Medium | Per-bucket quotas; merge recent+all filters, dedupe on ID; distribution report per run; publish sample-vs-Steam distribution on methodology page |

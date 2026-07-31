@@ -71,7 +71,10 @@ Every "DoD" (definition of done) is checked by the developer, not assumed.
   distribution, Death Stranding side-by-side (Steam summary vs WorthIt).
 - 3.3 PostHog events: session, search, verdict_view, citation_expand,
   request_submit. **DoD includes events verified firing in the PostHog UI.**
-- 3.4 Request-a-game input (title only) → PostHog event.
+- 3.4 Cache-miss flow from the selection-only search box: live generation
+  (dispatch → per-stage progress → verdict), with the request queue as the
+  fallback when the global reserve is spent or the QR-4 gate fails. PostHog
+  events for both outcomes.
 - 3.5 Mobile pass (most Reddit traffic is mobile) + keyboard focus visible +
   reduced-motion respected.
 - **DoD:** unlisted Vercel deploy renders all 5 seed verdicts correctly on a

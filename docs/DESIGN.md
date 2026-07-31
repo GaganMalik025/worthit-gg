@@ -293,10 +293,32 @@ mono), the sample-vs-Steam distribution chart, and the Death Stranding
 side-by-side (Steam's summary vs WorthIt's split). This page is the trust
 artifact — link it from every verdict footer.
 
-### Empty / request states
-Empty search result: "Not in the catalog yet. Request it and it'll be here
-within 48 hours." + single input + button labeled "Request verdict". After
-submit: "Queued. Check back tomorrow." No email asked, ever.
+### Cache-miss / generating / request states
+
+Search is selection-only, so there is no free-text empty state — every
+selection resolves to a real appid. What varies is whether we already hold a
+verdict.
+
+**Generating (the normal miss).** "We don't have this one yet — reading the
+reviews now." Then a legible per-stage progress list, never a bare spinner
+(CLAUDE.md guard 3): *Reading Steam reviews → Filtering out junk and unsafe
+reviews → Reading each playtime cohort → Writing the verdict → Safety check.*
+Completed stages tick; the current one is live. The Split Bar skeleton holds
+its four rows so the page does not jump when the verdict lands.
+
+The stated wait is **set from a measured round trip, never estimated**.
+Generation alone measured **122s** on 2026-07-31 (`generate_one.py --report`);
+the user-facing number must come from the full dispatch → commit → deploy
+round trip, which is longer. Until that has been measured once on a real
+deploy, the copy stays deliberately vague ("This takes a few minutes") rather
+than precise-and-wrong. Never "under a minute."
+
+**Queue fallback** — shown when the global reserve is spent or the QR-4 gate
+fails. Same copy for both, because the distinction is ours, not the user's, and
+"we found something unsafe in this game's reviews" is not information a buyer
+asked for: "Not in the catalog yet. Request it and it'll be here within 48
+hours." + button labeled "Request verdict". After submit: "Queued. Check back
+tomorrow." No email asked, ever.
 
 ---
 
