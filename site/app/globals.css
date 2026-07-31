@@ -1,0 +1,78 @@
+:root{
+  --bg:#10141C; --surface:#1A2029; --surface-2:#232B37;
+  --text:#E8ECF1; --text-dim:#8B95A5;
+  --buy:#4ADE80; --wait:#FBBF24; --skip:#F87171; --link:#7DD3FC;
+  --hairline:rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;
+  color:var(--text);padding:48px 24px 64px}
+h1,h2,h3,.display{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;
+  letter-spacing:-0.02em;line-height:1.1}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px}
+a{color:var(--link)}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:4px}
+main{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.waves{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.waves canvas{width:100%;height:100%;display:block}
+
+/* home */
+.wordmark{font-size:32px}
+.promise{color:var(--text-dim);margin:8px 0 32px}
+.searchbox{position:relative}
+.searchbox input{width:100%;padding:14px 16px;border-radius:12px;font:inherit;
+  color:var(--text);background:var(--surface);border:1px solid var(--hairline)}
+.results{list-style:none;margin-top:8px;background:var(--surface);
+  border-radius:12px;overflow:hidden}
+.results .row{display:flex;align-items:center;gap:12px;padding:8px 12px;cursor:pointer}
+.results .row.active{background:var(--surface-2)}
+.results .capsule{width:92px;height:35px;object-fit:cover;border-radius:4px;flex:none}
+.results .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip{padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;flex:none}
+.chip.buy{color:var(--buy);border:1px solid rgba(74,222,128,.2)}
+.chip.wait{color:var(--wait);border:1px solid rgba(251,191,36,.2)}
+.chip.skip{color:var(--skip);border:1px solid rgba(248,113,113,.2)}
+.chip.none{color:var(--text-dim);border:1px solid var(--hairline)}
+.grid{display:grid;gap:12px;margin-top:32px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.card{display:block;background:var(--surface);border-radius:12px;padding:16px;
+  color:inherit;text-decoration:none}
+.card:hover{background:var(--surface-2)}
+.card h3{font-size:16px;margin-bottom:8px}
+.ministripe{display:flex;flex-direction:column;gap:2px;height:24px;margin-top:8px}
+.ministripe i{flex:1;background:var(--skip);border-radius:1px;overflow:hidden;display:block}
+.ministripe i b{display:block;height:100%;background:var(--buy)}
+
+/* verdict page */
+.stamp{display:inline-block;padding:6px 18px;border-radius:8px;font-size:24px;
+  font-family:"Space Grotesk",sans-serif;font-weight:700}
+.stamp.buy{color:var(--buy);border:1px solid rgba(74,222,128,.2)}
+.stamp.wait{color:var(--wait);border:1px solid rgba(251,191,36,.2)}
+.stamp.skip{color:var(--skip);border:1px solid rgba(248,113,113,.2)}
+.for-whom{margin-top:16px}
+.spine{margin-top:32px}
+.spine .sub{color:var(--text-dim);font-size:14px;margin:4px 0 16px}
+.bar-row{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;font-size:14px}
+.bar-label .mono{color:var(--text-dim)}
+.bar-row.muted{opacity:.3}
+.cohort{margin-top:40px;background:var(--surface);border-radius:12px;padding:24px}
+.cohort .stats{margin-top:4px;color:var(--text-dim);font-size:14px}
+.cohort .summary{margin-top:12px;color:var(--text-dim)}
+.theme{margin-top:24px}
+.theme h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim)}
+.claim{padding:16px 0;border-top:1px solid var(--hairline)}
+.claim summary{display:flex;gap:16px;cursor:pointer;list-style:none}
+.claim summary .tag{color:var(--text-dim)}
+.claim summary .cta{color:var(--link);font-size:14px}
+.citation{background:var(--surface-2);border-radius:8px;padding:16px;margin-top:12px}
+.citation .meta{color:var(--text-dim);margin-bottom:8px;font-size:14px}
+.citation .meta .up{color:var(--buy)} .citation .meta .down{color:var(--skip)}
+.citation .body{white-space:pre-wrap;overflow-wrap:anywhere}
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--hairline);color:var(--text-dim)}
+.gen-panel{margin-top:48px}
+.gen-panel .sub{color:var(--text-dim);margin-top:8px}
+.stages{list-style:none;margin-top:24px}
+.stage{display:flex;gap:12px;padding:6px 0;color:var(--text-dim)}
+.stage.completed{color:var(--text)} .stage.in_progress{color:var(--link)}
+@media (max-width:520px){ .results .capsule{display:none} }
