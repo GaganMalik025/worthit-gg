@@ -78,13 +78,13 @@ export async function dispatchGeneration(appid: number, ip: string) {
  */
 export async function verdictExists(appid: number | string): Promise<boolean> {
   const res = await gh(
-    `/contents/public/verdicts/${appid}.json?ref=verdicts`,
+    `/contents/site/public/verdicts/${appid}.json?ref=verdicts`,
     { method: "HEAD" },
   );
   if (res.ok) return true;
   // HEAD is not supported on every contents path; fall back to a cheap GET
   if (res.status === 404) return false;
-  const get = await gh(`/contents/public/verdicts/${appid}.json?ref=verdicts`);
+  const get = await gh(`/contents/site/public/verdicts/${appid}.json?ref=verdicts`);
   return get.ok;
 }
 

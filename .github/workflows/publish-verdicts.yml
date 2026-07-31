@@ -30,7 +30,7 @@ jobs:
         id: pending
         run: |
           git fetch origin verdicts:verdicts || echo "no verdicts branch yet"
-          N=$(git diff --name-only main verdicts -- public/verdicts/ 2>/dev/null | wc -l | tr -d ' ')
+          N=$(git diff --name-only main verdicts -- site/public/verdicts/ 2>/dev/null | wc -l | tr -d ' ')
           echo "n=$N" >> "$GITHUB_OUTPUT"
           echo "$N verdict file(s) pending"
 
@@ -49,7 +49,7 @@ jobs:
       - name: Contract test (merge gate)
         if: steps.pending.outputs.n != '0'
         run: |
-          git checkout verdicts -- public/verdicts/
+          git checkout verdicts -- site/public/verdicts/
           npm ci --prefix site
           npm test --prefix site
 
@@ -59,8 +59,8 @@ jobs:
           git config user.name  "worthit-bot"
           git config user.email "bot@worthit.gg"
           git checkout main
-          git checkout verdicts -- public/verdicts/
-          git add public/verdicts/
+          git checkout verdicts -- site/public/verdicts/
+          git add site/public/verdicts/
           git commit -m "publish: ${{ steps.pending.outputs.n }} verdict(s) generated live" \
             -m "Squashed from the verdicts branch. Contract test passed as the merge gate."
           git pull --rebase --autostash origin main

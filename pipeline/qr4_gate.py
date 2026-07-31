@@ -27,7 +27,7 @@ or truncates a citation to make it pass - a verdict is publishable as generated
 or it is not publishable at all.
 
 Usage:
-    .venv/bin/python pipeline/qr4_gate.py public/verdicts/233860.json
+    .venv/bin/python pipeline/qr4_gate.py site/public/verdicts/233860.json
     .venv/bin/python pipeline/qr4_gate.py --all
 """
 
@@ -109,12 +109,12 @@ def main():
     ap = argparse.ArgumentParser(description="Automated QR-4 gate (invariant 8)")
     ap.add_argument("paths", nargs="*", help="verdict JSON paths")
     ap.add_argument("--all", action="store_true",
-                    help="every verdict in public/verdicts/")
+                    help="every verdict in site/public/verdicts/")
     args = ap.parse_args()
 
     paths = [Path(p) for p in args.paths]
     if args.all:
-        paths = sorted((ROOT / "public/verdicts").glob("*.json"))
+        paths = sorted((ROOT / "site/public/verdicts").glob("*.json"))
     if not paths:
         ap.error("give verdict paths or --all")
 

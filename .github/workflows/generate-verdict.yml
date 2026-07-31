@@ -64,14 +64,14 @@ jobs:
       - name: qr4
         id: qr4
         run: |
-          python pipeline/qr4_gate.py "public/verdicts/$APPID.json"
+          python pipeline/qr4_gate.py "site/public/verdicts/$APPID.json"
 
       - name: commit to verdicts branch
         if: success()
         run: |
           git config user.name  "worthit-bot"
           git config user.email "bot@worthit.gg"
-          git add "public/verdicts/$APPID.json"
+          git add "site/public/verdicts/$APPID.json"
           git commit -m "verdict: $APPID (generated live)" || exit 0
           git pull --rebase --autostash origin verdicts || true
           git push origin verdicts || (sleep 5 && git pull --rebase origin verdicts && git push origin verdicts)
@@ -91,7 +91,7 @@ jobs:
           else OUT=stage_failed; fi
           echo "outcome: $OUT"
           if [ "$OUT" != "published" ]; then
-            rm -f "public/verdicts/$APPID.json" 2>/dev/null || true
+            rm -f "site/public/verdicts/$APPID.json" 2>/dev/null || true
           fi
 
           # Read and fallback are SEPARATE statements on purpose.

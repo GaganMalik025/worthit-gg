@@ -3,7 +3,7 @@
  *
  * A verdict can arrive by two routes:
  *
- *   loadVerdictStatic   - read from public/verdicts/ at build time. Catalog
+ *   loadVerdictStatic   - read from site/public/verdicts/ at build time. Catalog
  *                         titles, and anything already merged from the
  *                         `verdicts` branch. Prerendered.
  *   loadVerdictProxied  - fetched at request time from the `verdicts` branch

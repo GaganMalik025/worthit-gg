@@ -12,7 +12,7 @@ Stage boundaries are the ones the UI shows, because a legible wait is guard 3:
     ingest    fetch_reviews    Steam only, no model calls
     filter    filter_reviews   content filter, no model calls
     extract   extract_claims   1 Gemini call per qualifying cohort (+ retries)
-    verdict   synthesize       1 Gemini call, writes public/verdicts/<appid>.json
+    verdict   synthesize       1 Gemini call, writes site/public/verdicts/<appid>.json
     qr4       qr4_gate         invariant 8, in-pipeline, before anything renders
 
 ORDER IS THE POINT. The QR-4 gate runs AFTER synthesis and BEFORE the verdict is
@@ -40,7 +40,7 @@ import qr4_gate    # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 PY = str(ROOT / ".venv/bin/python")
-VERDICTS = ROOT / "public/verdicts"
+VERDICTS = ROOT / "site/public/verdicts"
 
 STAGES = [
     ("ingest", "Reading Steam reviews", ["pipeline/fetch_reviews.py"]),

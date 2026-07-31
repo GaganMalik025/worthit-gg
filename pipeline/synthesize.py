@@ -2,7 +2,7 @@
 WorthIt.gg - synthesis pass (build plan 1.5)
 
 Turns grounded claims into the verdict JSON the static site serves:
-public/verdicts/<appid>.json.
+site/public/verdicts/<appid>.json.
 
 The model's job is deliberately tiny. It picks the verdict word, writes the
 for-whom line, one sentence per cohort and one per detected flag, and orders the
@@ -43,7 +43,7 @@ from fetch_reviews import BUCKETS, SEED_GAMES          # noqa: E402
 
 CLAIMS_DIR = Path("data/claims")
 FILTERED_DIR = Path("data/filtered")
-OUT_DIR = Path("public/verdicts")
+OUT_DIR = Path("site/public/verdicts")
 DEFAULT_MODEL = "gemini-3.5-flash"
 MAX_CITATION_CHARS = 2000
 

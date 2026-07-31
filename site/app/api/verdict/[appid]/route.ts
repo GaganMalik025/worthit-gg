@@ -25,7 +25,7 @@ export async function GET(
   }
 
   const res = await fetch(
-    `https://api.github.com/repos/${repo}/contents/public/verdicts/${appid}.json?ref=verdicts`,
+    `https://api.github.com/repos/${repo}/contents/site/public/verdicts/${appid}.json?ref=verdicts`,
     {
       headers: {
         accept: "application/vnd.github.raw",

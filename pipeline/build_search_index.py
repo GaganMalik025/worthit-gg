@@ -2,7 +2,7 @@
 WorthIt.gg - static search index for the home typeahead
 
 Builds the list of Steam titles the search box can offer. Decoupled from
-public/verdicts/: the index covers the whole store above a review floor, while
+site/public/verdicts/: the index covers the whole store above a review floor, while
 verdicts cover only what we have generated. A title in the index without a
 verdict is a cache miss, which is a valid destination (live generation or the
 request queue), not an error.
@@ -31,8 +31,8 @@ SHAPE
 -----
 Two shards, so the box is usable before the whole catalog has downloaded:
 
-    public/search-index-core.json   >= CORE_MIN reviews  (fetched on focus)
-    public/search-index-tail.json   floor .. CORE_MIN-1  (fetched right after)
+    site/public/search-index-core.json   >= CORE_MIN reviews  (fetched on focus)
+    site/public/search-index-tail.json   floor .. CORE_MIN-1  (fetched right after)
 
 Capsule URLs are DERIVED from appid at render time, never stored - storing them
 costs ~105 bytes per entry and buys nothing. Entries are sorted by review count
@@ -60,8 +60,8 @@ from fetch_reviews import _get_with_backoff  # noqa: E402  (shared 429 disciplin
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "data/cache/searchindex"
-CORE_PATH = ROOT / "public/search-index-core.json"
-TAIL_PATH = ROOT / "public/search-index-tail.json"
+CORE_PATH = ROOT / "site/public/search-index-core.json"
+TAIL_PATH = ROOT / "site/public/search-index-tail.json"
 
 SEARCH_URL = ("https://store.steampowered.com/search/results/"
               "?query&start=%d&count=100&dynamic_data=&sort_by=Reviews_DESC"
@@ -163,7 +163,7 @@ def merge_verdicts(by_id, verdicts_dir=None):
     box covering our catalog and merely covering Steam's storefront. Ranking uses
     the verdict's own steam_total_reviews, already carried in the footer.
     """
-    d = Path(verdicts_dir or (ROOT / "public/verdicts"))
+    d = Path(verdicts_dir or (ROOT / "site/public/verdicts"))
     added = []
     for p in sorted(d.glob("*.json")):
         try:
@@ -240,7 +240,7 @@ def main():
     by_id, pages, cached = walk(args.limit, args.force)
     added = merge_verdicts(by_id)
     for appid, name, n in added:
-        print("  + %s (%d) not in store search - added from public/verdicts/ "
+        print("  + %s (%d) not in store search - added from site/public/verdicts/ "
               "(%s reviews)" % (name, appid, f"{n:,}"))
     entries, core, tail = build(by_id, args.min_reviews, args.core_min)
     dt = time.time() - t0
