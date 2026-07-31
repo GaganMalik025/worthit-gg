@@ -73,6 +73,12 @@ directions, a decline against lifetime score versus a redemption arc. Stardew fi
 nothing at all, which is itself the finding for a consensus title. Five games, five
 profiles: the pipeline is surfacing genuine per-game structure, not a templated output.
 
+Cyberpunk 2077 is worth stating in its own terms: it reads flat **via a temporal
+redemption arc rather than playtime segmentation**, surfaced by the recency flag
+instead. Its cohorts genuinely do not disagree — the structure in this title is
+chronological, not segmental, and a tool that only looked across playtime would report
+it as consensus and miss the story entirely.
+
 Three corrections against the figures as first drafted, made from the pipeline's own
 output rather than carried through:
 
