@@ -37,12 +37,18 @@ before the case study is published.
 | R1 | Accounts / login / saved history | Friction with zero decision value; PRD non-goal |
 | R2 | Monetization of any kind | Changes ToS exposure with Steam; adds nothing to the learning objective |
 | R3 | Console / non-Steam platforms | No equivalent open review data source exists |
-| R4 | Live on-demand generation per request | Breaks the zero-marginal-cost architecture (decision D1 in PRD §9) |
+| ~~R4~~ | ~~Live on-demand generation per request~~ | **Reversed 2026-07-31 — moved to Implemented as I1.** Rule 2 says rejections stay rejected; this one was overturned by explicit owner decision, which is the only thing that may overturn one. Recorded rather than deleted. |
 | R5 | Price tracking, deal alerts, wishlists | Different product entirely |
 | R6 | Recommendation engine ("what should I play") | We answer "should I buy X" — narrower question is the wedge |
 | R7 | Switching to a paid model to fix hallucination | Wrong diagnosis; grounding checks + self-consistency solve it for free |
 | R8 | Database / backend service | Static JSON is the architecture; a DB is unrequested complexity |
 | R9 | User-submitted reviews or ratings | Moderation burden, cold-start problem, dilutes the source-of-truth story |
+
+## Implemented — moved out of Deferred/Rejected
+
+| # | Item | Why it moved, and what it cost |
+|---|---|---|
+| I1 | **Live on-demand generation on cache miss** (was R4) | Reconsidered for early-days UX: with a ~100–150 title catalog, most first visits from Reddit will miss, and "check back tomorrow" spends the one moment of attention a launch gets. Owner decision, 2026-07-31. **Admitted only with four guards** (CLAUDE.md § "Live on-demand generation"): a *global* daily quota reserve — per-IP was rejected as the primary limit because it is unbounded across IPs — with automatic fallback to the queue when spent; the automated QR-4 gate in-pipeline, failure meaning *not published*; honest copy set from measured runs, never "under a minute"; and cached verdicts untouched on the CDN. D1's spike-proof property is now conditional on the reserve rather than absolute — that is the real price paid, and it is recorded in PRD §9. |
 
 ## Open questions (from PRD §11) — resolve with evidence, not building
 

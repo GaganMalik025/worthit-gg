@@ -130,12 +130,38 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
 
 ## Non-goals — refuse and add to BACKLOG.md instead
 
-No accounts/login/history. No monetization. No non-Steam platforms. No live
-on-demand generation. No price tracking/deals/wishlists. No recommendation
-engine ("what should I play"). No non-English reviews. No database. No
+No accounts/login/history. No monetization. No non-Steam platforms. No price
+tracking/deals/wishlists. No recommendation engine ("what should I play"). No
+non-English reviews. No database. No
 paid anything. If asked to build any of these — including by the developer in
 a moment of enthusiasm — decline, cite this section, and append the idea to
 `BACKLOG.md` with a one-line reason.
+
+## Live on-demand generation — allowed, but only fully guarded
+
+Reversed on 2026-07-31 (was a non-goal; see BACKLOG I1). A cache miss from the
+search box may generate a verdict live. It is in scope **only** with all four
+guards below intact. Remove any one of them and it goes back to being a
+non-goal — they are the reason it is permitted, not decoration.
+
+1. **Global daily quota reserve, not per-IP.** A single global counter reserves
+   the tail of the daily Gemini budget (`LIVE_RESERVE`, default 300 of ~1,500)
+   for live generation. When the reserve is spent, live generation switches
+   itself off for the rest of the day and cache misses fall back to the queue
+   flow. Per-IP throttling exists only as a secondary guard against one user
+   burning the global reserve — it is never the primary limit, because per-IP
+   is unbounded across IPs and cannot protect a global quota.
+2. **The automated QR-4 gate runs in-pipeline, before anything renders.** If any
+   citation fails it, the verdict is **not published**: the title drops into the
+   queue for manual audit and the user sees the queue copy. Nothing reaches a
+   user that the automated gate has not passed. Invariant 8 is unchanged.
+3. **Honest copy, set from measured runs.** The wait is stated in real observed
+   numbers and progress is legible per stage (ingest → filter → per-cohort
+   extraction → synthesis), never a bare spinner and never an optimistic
+   estimate. If a measured run gets slower, the copy changes, not the claim.
+4. **Cached verdicts are never affected.** They stay static files on the CDN:
+   zero marginal cost, instant, and completely unaffected by reserve
+   exhaustion, generation failures, or traffic spikes.
 
 ## Working rules for Claude Code sessions
 

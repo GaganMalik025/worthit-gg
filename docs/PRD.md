@@ -52,7 +52,7 @@ Communities like r/ShouldIBuyThisGame exist entirely because this problem is uns
 - No accounts, login, or saved history. Friction with zero decision value.
 - No monetization. Changes ToS exposure with Steam; adds nothing to the learning objective.
 - No platforms beyond Steam/PC. No equivalent open review data exists for console.
-- No live/on-demand generation. All verdicts precomputed; unknown games enter a request queue.
+- ~~No live/on-demand generation.~~ **Reversed 2026-07-31.** Catalog verdicts stay precomputed and static; a cache miss may generate live, but only behind a global daily quota reserve, the in-pipeline automated QR-4 gate, and honest measured-timing copy. When the reserve is spent or QR-4 fails, the title falls back to the request queue. See §5.3, D1, and CLAUDE.md § "Live on-demand generation".
 - No price tracking, deal alerts, or wishlists. Different product.
 - No recommendation engine. We answer *"should I buy X,"* not *"what should I buy."*
 - No non-English reviews in v0.
@@ -66,7 +66,14 @@ Communities like r/ShouldIBuyThisGame exist entirely because this problem is uns
    - **Claims with receipts** — every claim expandable to verbatim source reviews with playtime context.
    - **Score-distortion flag** — review bombing / pre-patch / early-access skew, stated with evidence.
    - **Hardware context** (where data density allows) — performance claims attributed to reported GPU tiers.
-3. Game not in catalog → title request (no email) → batch-generated within 24–48 hrs.
+3. Game not in catalog → **generated live** (a few minutes, with legible
+   per-stage progress: ingest → filter → per-cohort extraction → synthesis),
+   then cached permanently as static JSON like any other verdict.
+   Falls back to a title request (no email) → batch-generated within 24–48 hrs
+   when **either** the global daily generation reserve is spent **or** the
+   automated QR-4 gate fails, in which case the title is queued for manual
+   audit and nothing is published. Search is selection-only from the static
+   index, so a request always carries a resolved appid, never free text.
 
 ## 6. Data foundation (validated live)
 
@@ -122,7 +129,7 @@ signal**, and it is what `refund_window` means everywhere in this codebase.
 
 | # | Decision | Rationale | Tradeoff |
 |---|---|---|---|
-| D1 | Precomputed verdicts over live inference | ₹0 marginal cost; instant latency; spike-proof; request log = free prioritization signal | Catalog limits, staleness — mitigated by request queue + regeneration |
+| D1 | Precomputed verdicts, **plus reserve-guarded live generation on cache miss** (revised 2026-07-31) | Cached views keep ₹0 marginal cost and instant latency. Live generation buys the first-visit experience a 150-title catalog cannot: the answer now, not tomorrow | **Spike-proof is now conditional, not absolute.** Cached verdicts remain spike-proof — static files on a CDN. *Generation* is protected only by the global daily reserve (`LIVE_RESERVE`, default 300 of ~1,500 req/day): a large enough spike exhausts it, after which generation degrades to the queue. Degradation is graceful and automatic, but it is a real ceiling, and per-IP limits cannot substitute for it |
 | D2 | Playtime segmentation as core differentiator | Existing summaries flatten disagreement into consensus | More complex pipeline |
 | D3 | Two-pass extraction → synthesis | Hallucination becomes measurable and localizable | 2× calls/title (immaterial at free-tier volume) |
 | D4 | ≥2-review support rule | Suppresses one-off opinions presented as patterns | Loses rare-but-real signals |
