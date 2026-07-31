@@ -64,6 +64,30 @@ export async function dispatchGeneration(appid: number, ip: string) {
   }
 }
 
+/**
+ * Does the verdict actually exist on the `verdicts` branch?
+ *
+ * GROUND TRUTH, and the reason it exists: the outcome variable is written by a
+ * bookkeeping step that can fail (and did). When it failed, a verdict that had
+ * genuinely generated and committed was invisible to the client, which sat on
+ * "queued" until its 8-minute timeout and then told the user to request a page
+ * that already existed.
+ *
+ * The artifact is the source of truth; the variable is only a hint that saves a
+ * round trip. Anything that decides "published" asks this first.
+ */
+export async function verdictExists(appid: number | string): Promise<boolean> {
+  const res = await gh(
+    `/contents/public/verdicts/${appid}.json?ref=verdicts`,
+    { method: "HEAD" },
+  );
+  if (res.ok) return true;
+  // HEAD is not supported on every contents path; fall back to a cheap GET
+  if (res.status === 404) return false;
+  const get = await gh(`/contents/public/verdicts/${appid}.json?ref=verdicts`);
+  return get.ok;
+}
+
 export interface RunInfo {
   id: number;
   status: string;
