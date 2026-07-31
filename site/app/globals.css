@@ -76,3 +76,132 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--hairline);col
 .stage{display:flex;gap:12px;padding:6px 0;color:var(--text-dim)}
 .stage.completed{color:var(--text)} .stage.in_progress{color:var(--link)}
 @media (max-width:520px){ .results .capsule{display:none} }
+
+/* ===== case hero: CSS ported verbatim from mockups/kenshi-verdict.html
+   (the approved mockup is the source of truth, per DESIGN.md) ===== */
+/* ---- the case: pure CSS 3D ---- */
+.case-scene{position:sticky;top:88px;padding:48px 0 24px}
+/* full-bleed backdrop: fixed to the viewport, never inside a content wrapper,
+   no overflow clipper, no mask - nothing may create a visible boundary */
+.case-wrap{perspective:1400px;width:280px;margin:0 auto}
+.case{position:relative;width:280px;height:356px;
+  transform-style:preserve-3d;transform:rotateY(22deg);
+  filter:drop-shadow(0 28px 44px rgba(0,0,0,.55))}
+.case .panel{position:absolute;inset:0;border-radius:8px}
+/* thickness: spine edge on the hinge side */
+.edge{position:absolute;top:0;left:0;width:26px;height:100%;
+  transform:translateZ(13px) rotateY(90deg);transform-origin:left center;
+  background:linear-gradient(90deg,#141A24,#1E2632);border-radius:4px}
+/* interior tray: disc bed */
+.tray{transform:translateZ(-13px);background:var(--surface-2);
+  box-shadow:inset 0 0 40px rgba(0,0,0,.45)}
+.disc{position:absolute;top:50%;left:50%;width:200px;height:200px;
+  transform:translate(-50%,-50%);border-radius:50%;overflow:hidden;
+  background:var(--surface);
+  box-shadow:0 2px 14px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.08)}
+.disc::after{content:"";position:absolute;top:50%;left:50%;width:44px;
+  height:44px;transform:translate(-50%,-50%);border-radius:50%;
+  background:var(--bg);box-shadow:0 0 0 6px rgba(255,255,255,.06)}
+.disc .ms{position:absolute;inset:0}
+.disc .disc-art{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;filter:brightness(.5) contrast(1.18) saturate(.85)}
+.disc .disc-art.dim{filter:grayscale(.65) brightness(.38) contrast(1.25)}
+.disc .sheen{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255,255,255,.16), transparent 46%),
+    conic-gradient(from 210deg,
+      transparent 0deg, rgba(255,255,255,.08) 38deg, transparent 92deg,
+      transparent 175deg, rgba(255,255,255,.05) 215deg, transparent 265deg),
+    radial-gradient(circle, transparent 52%, rgba(0,0,0,.4) 100%)}
+/* cover: hinged at the left edge, two faces */
+.cover{transform-origin:left center;transform-style:preserve-3d;
+  transform:translateZ(13px) rotateY(0deg)}
+.face{position:absolute;inset:0;border-radius:8px;overflow:hidden;
+  backface-visibility:hidden}
+.face.front{background:var(--surface);display:flex;flex-direction:column}
+.band{height:40px;flex:none;background:var(--surface-2);display:flex;
+  align-items:center;padding:0 14px;font-size:16px;letter-spacing:.22em;
+  border-bottom:1px solid var(--hairline)}
+.art-wrap{position:relative;flex:1;overflow:hidden}
+.art-wrap img.art{width:100%;height:100%;object-fit:cover;display:block}
+.art-wrap.letterbox img.art{object-fit:contain;position:relative;z-index:1}
+.art-wrap img.art-bg{display:none}
+.art-wrap.letterbox img.art-bg{display:block;position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;transform:scale(1.35);
+  filter:blur(22px) brightness(.55)}
+.art-wrap.motif img{display:none}
+.art-wrap.motif{background:var(--surface)}
+.art-wrap.motif .ms{position:absolute;inset:24% 12%}
+.face.inside{transform:rotateY(180deg);background:var(--surface-2)}
+/* the cover poster seen from behind, through frosted tinted plastic:
+   mirrored, ghosted, blurred, pulled toward the panel's own surface color */
+.face.inside .ghost{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transform:scaleX(-1);opacity:.25;
+  filter:blur(7px) grayscale(.6) brightness(.8)}
+.face.inside::before{content:"";position:absolute;inset:0;z-index:1;
+  background:rgba(35,43,55,.5)}
+.face.inside::after{content:"";position:absolute;top:50%;left:50%;z-index:2;
+  width:180px;height:180px;transform:translate(-50%,-50%);border-radius:50%;
+  border:1px solid rgba(255,255,255,.07)}
+/* mini split bar motif (disc label + art fallback) */
+.ms{display:flex;flex-direction:column;gap:0}
+.ms i{display:block;flex:1;background:var(--skip)}
+.ms i b{display:block;height:100%;background:var(--buy)}
+
+
+/* two-column shell: case pins left, reading column right */
+.layout{display:grid;max-width:1100px;margin:0 auto;column-gap:56px;
+  grid-template-columns:340px minmax(0,1fr)}
+.hero-copy{grid-column:2;grid-row:1;max-width:680px}
+.case-col{grid-column:1;grid-row:1/span 2}
+.main-col{grid-column:2;grid-row:2;max-width:680px}
+.layout,.verdict-footer{position:relative;z-index:1}
+.verdict-footer{max-width:1100px;margin:64px auto 0;padding-top:24px;
+  border-top:1px solid var(--hairline);color:var(--text-dim)}
+
+/* stamp reveal: a landing, not a fade (DESIGN.md "first two seconds") */
+@media (prefers-reduced-motion: no-preference){
+  .stamp{animation:stamp-land 260ms cubic-bezier(.2,1.35,.45,1) 100ms backwards}
+  @keyframes stamp-land{
+    0%{transform:scale(1.5);opacity:0}
+    55%{transform:scale(.96);opacity:1}
+    100%{transform:scale(1);opacity:1}}
+  .stamp::after{content:"";position:absolute;inset:-1px;border-radius:8px;
+    border:2px solid currentColor;opacity:0;pointer-events:none;
+    animation:stamp-ring 450ms ease-out 240ms}
+  @keyframes stamp-ring{
+    0%{opacity:.55;transform:scale(1)}
+    100%{opacity:0;transform:scale(1.35)}}
+  .bar-fill{clip-path:inset(0 100% 0 0);
+    animation:draw 350ms ease-out forwards;animation-delay:var(--delay)}
+  @keyframes draw{to{clip-path:inset(0 0 0 0)}}
+}
+.stamp{position:relative}
+.bar-track{height:16px;border-radius:999px;overflow:hidden;background:var(--surface);
+  flex:1;margin:0 12px}
+.bar-fill{display:flex;height:100%;width:100%}
+.bar-pos{background:var(--buy);height:100%}
+.bar-neg{background:var(--skip);height:100%}
+.bar-row{align-items:center}
+.bar-label{flex:none;width:190px}
+.bar-pct{flex:none;width:64px;text-align:right}
+
+/* mobile: static hero image, no 3D, no pinning (DESIGN.md) */
+@media (max-width:767px){
+  .layout{display:block}
+  .hero-copy,.main-col{max-width:none}
+  .case-scene{position:static;padding:24px 0 0}
+  .case-wrap{perspective:none;width:200px}
+  .case{width:200px;height:254px;transform:none}
+  .edge{display:none}
+  .cover{transform:none !important}
+  .band{height:32px;font-size:13px}
+  .bar-label{width:auto} .bar-row{flex-wrap:wrap}
+}
+
+/* reduced motion: case already open and settled, nothing scroll-linked */
+@media (prefers-reduced-motion: reduce){
+  .stamp,.bar-fill{animation:none}
+  html.prm .cover{transform:translateZ(13px) rotateY(-150deg)}
+  html.prm .case{transform:rotateY(8deg)}
+}
