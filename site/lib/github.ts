@@ -76,16 +76,35 @@ export async function dispatchGeneration(appid: number, ip: string) {
  * The artifact is the source of truth; the variable is only a hint that saves a
  * round trip. Anything that decides "published" asks this first.
  */
-export async function verdictExists(appid: number | string): Promise<boolean> {
-  const res = await gh(
-    `/contents/site/public/verdicts/${appid}.json?ref=verdicts`,
-    { method: "HEAD" },
-  );
-  if (res.ok) return true;
-  // HEAD is not supported on every contents path; fall back to a cheap GET
-  if (res.status === 404) return false;
-  const get = await gh(`/contents/site/public/verdicts/${appid}.json?ref=verdicts`);
-  return get.ok;
+export async function verdictExists(
+  appid: number | string,
+): Promise<{ found: boolean; source?: string }> {
+  // 1. main, as of the last build. Anything the nightly publish workflow has
+  //    already squash-merged is prerendered and on disk - no API call needed,
+  //    and a title stays "published" after the merge rather than reverting to
+  //    "queued" because it left the verdicts branch view.
+  try {
+    const fs = await import("node:fs/promises");
+    const path = await import("node:path");
+    await fs.access(
+      path.join(process.cwd(), `public/verdicts/${appid}.json`),
+    );
+    return { found: true, source: "main" };
+  } catch {
+    /* not merged yet - fall through to the branch */
+  }
+
+  // 2. the verdicts branch. Both layouts are checked: public/verdicts/ was the
+  //    path until the Vercel Root Directory move, and verdicts generated before
+  //    that move still sit there. Dropping the legacy path would strand them.
+  for (const [dir, source] of [
+    ["site/public/verdicts", "verdicts"],
+    ["public/verdicts", "verdicts:legacy-path"],
+  ]) {
+    const res = await gh(`/contents/${dir}/${appid}.json?ref=verdicts`);
+    if (res.ok) return { found: true, source };
+  }
+  return { found: false };
 }
 
 export interface RunInfo {

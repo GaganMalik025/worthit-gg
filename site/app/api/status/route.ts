@@ -26,8 +26,9 @@ export async function GET(req: NextRequest) {
   if (!appid) return NextResponse.json({ error: "appid required" }, { status: 400 });
 
   // 1. ground truth: is it actually there?
-  if (await verdictExists(appid)) {
-    return NextResponse.json({ state: "published", source: "artifact" });
+  const exists = await verdictExists(appid);
+  if (exists.found) {
+    return NextResponse.json({ state: "published", source: exists.source });
   }
 
   // 2. the ledger, for terminal states that leave no artifact by design

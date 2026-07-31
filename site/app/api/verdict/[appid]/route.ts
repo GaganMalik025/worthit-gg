@@ -24,18 +24,22 @@ export async function GET(
     return NextResponse.json({ error: "not configured" }, { status: 500 });
   }
 
-  const res = await fetch(
-    `https://api.github.com/repos/${repo}/contents/site/public/verdicts/${appid}.json?ref=verdicts`,
-    {
-      headers: {
-        accept: "application/vnd.github.raw",
-        authorization: `Bearer ${token}`,
-        "x-github-api-version": "2022-11-28",
-      },
-      cache: "no-store",
-    },
-  );
-  if (!res.ok) {
+  // both layouts: public/verdicts/ predates the Root Directory move and still
+  // holds verdicts generated before it
+  const headers = {
+    accept: "application/vnd.github.raw",
+    authorization: `Bearer ${token}`,
+    "x-github-api-version": "2022-11-28",
+  };
+  let res: Response | null = null;
+  for (const dir of ["site/public/verdicts", "public/verdicts"]) {
+    const r = await fetch(
+      `https://api.github.com/repos/${repo}/contents/${dir}/${appid}.json?ref=verdicts`,
+      { headers, cache: "no-store" },
+    );
+    if (r.ok) { res = r; break; }
+  }
+  if (!res) {
     return NextResponse.json({ error: "not found" }, { status: 404 });
   }
   return new NextResponse(await res.text(), {
