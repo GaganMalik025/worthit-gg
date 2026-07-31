@@ -1,0 +1,53 @@
+# Titles whose cohort structure is live-service shaped: an open-ended
+# progression loop that concentrates the pool in the veteran bucket, leaving
+# the playtime split less to say than it has on a title people finish.
+#
+# WHY THIS LIST EXISTS RATHER THAN A PRICE CHECK
+# ----------------------------------------------
+# Free-to-play was the obvious automatic proxy - it costs nothing, the signal
+# sits in store HTML we already cache. It was measured against 20 ingested
+# titles on 2026-08-01 and it does not hold:
+#
+#     class                     n    veteran share (median)
+#     free-to-play             10           50.4%
+#     paid live-service         4           47.7%
+#     paid, not live-service    6           32.9%
+#
+# Free and paid-live-service are indistinguishable. Rust (paid, 57.5% veteran)
+# ranks above 8 of the 10 free titles; Team Fortress 2 (free, 36.5%) ranks below
+# 3 of the 4 paid live-service ones. Price would have demoted TF2 and kept Rust,
+# which is backwards. Being free does not make a game live-service; it is the
+# progression loop that does, and no keyless field reports that.
+#
+# The refund-cohort half of the original worry was not supported at all. Free
+# titles carry refund cohorts of 21-88 (median 49) against 12-54 (median 28) for
+# the paid seeds. Cyberpunk 2077 - paid, single-player - owns the only cohort
+# below invariant 12's floor of 20.
+#
+# WHAT THIS LIST IS NOT
+# ---------------------
+# Not an exclusion. Titles here are capped in the manifest, not dropped: people
+# search them, and a verdict that says "the veterans are the game" is still a
+# true and useful verdict. Helldivers 2 sits at 45.1% veteran - the highest of
+# any paid seed - and produced the best verdict shape in the whole eval set.
+# High veteran share compresses the segmentation story; it does not delete it.
+#
+# FORMAT: appid  # title - basis
+#   "measured" = veteran share observed from a real ingest, cited inline
+#   "judgment" = classified by its progression loop, not yet measured
+#
+# free-to-play is detected automatically from the cached store rows and does
+# NOT need an entry here. This file is only for titles price cannot see.
+
+252490   # Rust - measured 57.5% veteran; persistent wipe-cycle servers
+221100   # DayZ - measured 49.3% veteran; persistent survival, no end state
+381210   # Dead by Daylight - measured 46.1% veteran; seasonal live-service
+346110   # ARK: Survival Evolved - measured 32.2% veteran; the lowest of the
+         #   measured four, retained on its progression loop rather than its
+         #   number - flag it for review if the batch contradicts this
+251570   # 7 Days to Die - judgment; persistent world, wipe-driven
+107410   # Arma 3 - judgment; platform for persistent mod communities
+1172620  # Sea of Thieves - judgment; seasonal live-service
+1517290  # Battlefield 2042 - judgment; seasonal live-service
+2694490  # Path of Exile 2 - judgment; league-cycle ARPG
+108600   # Project Zomboid - judgment; open-ended survival sandbox
