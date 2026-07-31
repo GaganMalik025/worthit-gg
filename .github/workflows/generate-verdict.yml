@@ -1,0 +1,107 @@
+name: generate-verdict
+
+# Live generation of one verdict, fired by /api/generate via repository_dispatch.
+#
+# Commits land on the `verdicts` branch, never main. That branch has deployments
+# switched off in site/vercel.json, so a generation costs ZERO Vercel deploys;
+# publish-verdicts.yml promotes them nightly as one commit and one deploy.
+#
+# The step names below are the contract with the UI: /api/status maps them to
+# the five stages the user watches, so the progress feed is the real pipeline
+# rather than a decorative animation. Renaming a step changes the UI.
+
+on:
+  repository_dispatch:
+    types: [generate-verdict]
+
+# One at a time. Two runs pushing to `verdicts` concurrently would race, and a
+# cancelled run wastes Gemini quota already spent - so queue, never cancel.
+concurrency:
+  group: verdict-generation
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      APPID: ${{ github.event.client_payload.appid }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: setup
+        run: |
+          test -n "$APPID" || { echo "no appid in client_payload"; exit 1; }
+          test -n "$GEMINI_API_KEY" || {
+            echo "::error::GEMINI_API_KEY is not set in Actions secrets"; exit 1; }
+          git fetch origin verdicts:verdicts 2>/dev/null || git branch verdicts
+          git checkout verdicts
+          git merge --no-edit origin/main || true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -r requirements.txt
+
+      # --- the five stages the UI shows. Names are load-bearing. ---
+      - name: ingest
+        run: python pipeline/fetch_reviews.py "$APPID"
+      - name: filter
+        run: python pipeline/filter_reviews.py "$APPID"
+      - name: extract
+        run: python pipeline/extract_claims.py "$APPID"
+      - name: verdict
+        run: python pipeline/synthesize.py "$APPID"
+
+      # invariant 8, in-pipeline, before anything is published. Exit 1 here
+      # means the artifact is deleted and nothing is committed.
+      - name: qr4
+        id: qr4
+        run: |
+          python pipeline/qr4_gate.py "public/verdicts/$APPID.json"
+
+      - name: commit to verdicts branch
+        if: success()
+        run: |
+          git config user.name  "worthit-bot"
+          git config user.email "bot@worthit.gg"
+          git add "public/verdicts/$APPID.json"
+          git commit -m "verdict: $APPID (generated live)" || exit 0
+          git pull --rebase --autostash origin verdicts || true
+          git push origin verdicts || (sleep 5 && git pull --rebase origin verdicts && git push origin verdicts)
+
+      # Always runs, so a failed QR-4 or a dead stage still terminates the UI
+      # instead of leaving the user polling forever.
+      - name: record outcome
+        if: always()
+        run: |
+          if [ "${{ job.status }}" = "success" ]; then OUT=published
+          elif [ "${{ steps.qr4.outcome }}" = "failure" ]; then OUT=qr4_failed
+          else OUT=stage_failed; fi
+          echo "outcome: $OUT"
+          rm -f "public/verdicts/$APPID.json" 2>/dev/null || true
+          CUR=$(gh api "repos/${{ github.repository }}/actions/variables/LIVE_QUOTA" \
+                 --jq .value 2>/dev/null || echo '{}')
+          NEW=$(python - "$CUR" "$APPID" "$OUT" <<'PY'
+          import json, sys, datetime
+          state = json.loads(sys.argv[1] or "{}")
+          state.setdefault("outcomes", {})[sys.argv[2]] = {
+              "state": sys.argv[3],
+              "at": datetime.datetime.now(datetime.timezone.utc)
+                     .strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "run_id": "${{ github.run_id }}",
+          }
+          state["outcomes"] = dict(list(state["outcomes"].items())[-200:])
+          print(json.dumps(state, separators=(",", ":")))
+          PY
+          )
+          gh api -X PATCH "repos/${{ github.repository }}/actions/variables/LIVE_QUOTA" \
+            -f name=LIVE_QUOTA -f value="$NEW" \
+            || gh api -X POST "repos/${{ github.repository }}/actions/variables" \
+                 -f name=LIVE_QUOTA -f value="$NEW"
