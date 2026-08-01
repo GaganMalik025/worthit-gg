@@ -62,10 +62,75 @@ def count_model_calls(out):
     return out.count("RAW MODEL OUTPUT") - out.count("[cached]")
 
 
-def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False):
-    """Returns (published, result). Never leaves an ungated verdict on disk."""
+def cohort_structure(appid):
+    """Veteran pool share and refund cohort size, read from the ingest output.
+
+    Available for FREE after the ingest stage - ingestion talks only to Steam.
+    That is what makes the thin-segmentation gate cheap: it sits between the
+    free stage and the first stage that spends Gemini quota.
+    """
+    path = ROOT / "data/raw" / ("%s.json" % appid)
+    if not path.exists():
+        return None
+    pool = json.loads(path.read_text(encoding="utf-8")).get("pool") or {}
+    buckets, total = pool.get("buckets") or {}, pool.get("pool_n") or 0
+    if not buckets or not total:
+        return None
+    return {
+        "pool_n": total,
+        "veteran_share": round(
+            (buckets.get("veteran", {}).get("pool_n", 0)) / total, 3),
+        "refund_n": buckets.get("refund_window", {}).get("pool_n", 0),
+        "eligible_cohorts": sum(
+            1 for b in buckets.values() if b.get("pool_n", 0) >= 20),
+    }
+
+
+def thin_segmentation(struct, max_veteran_share=0.60, min_cohorts=2):
+    """(is_thin, reason). Applied AFTER ingest, BEFORE any model call.
+
+    Deliberately conservative, calibrated against the seed set rather than
+    guessed: Helldivers 2 sits at 45.1% veteran and produced the best verdict
+    shape in the eval set, so a threshold anywhere near it would reject good
+    titles. 0.60 rejects only the degenerate cases (Dota 2 measured 77.0%),
+    where one cohort is so dominant that "different cohorts describe different
+    products" has nothing left to compare.
+
+    The cohort-count check is the harder floor: fewer than two cohorts clearing
+    invariant 12's 20-review minimum means there is no split to show at all.
+    """
+    if struct is None:
+        return False, None
+    if struct["eligible_cohorts"] < min_cohorts:
+        return True, ("only %d cohort(s) clear the 20-review floor - there is "
+                      "no split to render" % struct["eligible_cohorts"])
+    if struct["veteran_share"] > max_veteran_share:
+        return True, ("%.1f%% of the pool is the veteran cohort (limit %.0f%%) "
+                      "- the playtime split has nothing to contrast"
+                      % (100 * struct["veteran_share"], 100 * max_veteran_share))
+    return False, None
+
+
+def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
+             ledger="live", segmentation_gate=False):
+    """Returns (published, result). Never leaves an ungated verdict on disk.
+
+    ledger selects which claim on the daily budget this generation charges:
+      "live"  - the reserve carved out for search-box cache misses (guard 1)
+      "batch" - the daily budget MINUS that reserve, so an overnight catalog
+                run can never exhaust the capacity live generation depends on
+
+    segmentation_gate is a batch-only economy: it drops a title whose measured
+    cohort structure cannot support a split, after the free ingest stage and
+    before the first stage that costs quota. Live generation leaves it off - a
+    user who asked for a specific title gets an honest verdict about it, thin
+    cohorts and all, because invariant 12 already renders those muted.
+    """
     state = live_quota.load()
-    allowed, reason, detail = live_quota.can_generate(state, ip, reserve)
+    if ledger == "batch":
+        allowed, reason, detail = live_quota.can_batch(state, reserve=reserve)
+    else:
+        allowed, reason, detail = live_quota.can_generate(state, ip, reserve)
     if not allowed:
         # guard 1: reserve spent (or the secondary IP guard) -> queue fallback
         return False, {"published": False, "outcome": reason, "detail": detail,
@@ -84,6 +149,18 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False):
                            "stage": key, "timings": timings,
                            "stderr": proc.stderr[-1500:], "fallback": "queue"}
 
+        # the measured gate, placed exactly on the cost boundary: ingest is
+        # free, everything after "filter" spends quota
+        if segmentation_gate and key == "filter":
+            struct = cohort_structure(appid)
+            thin, why = thin_segmentation(struct)
+            if thin:
+                return False, {"published": False,
+                               "outcome": "thin_segmentation",
+                               "reason": why, "structure": struct,
+                               "timings": timings, "model_calls": 0,
+                               "fallback": "skip"}
+
     out_path = VERDICTS / ("%s.json" % appid)
     if not out_path.exists():
         return False, {"published": False, "outcome": "no_verdict_written",
@@ -96,7 +173,7 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False):
     timings.append({"stage": "qr4", "label": "Safety check",
                     "seconds": round(time.time() - t0, 1)})
 
-    live_quota.record(state, cost, ip)
+    live_quota.record(state, cost, ip, ledger=ledger)
     live_quota.save(state)
 
     if not passed:

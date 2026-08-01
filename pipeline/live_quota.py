@@ -72,10 +72,12 @@ def load(path=STATE_PATH):
         state = {}
     # a new UTC day resets everything; stale hours are dropped on write
     if state.get("date") != _today():
-        state = {"date": _today(), "live_used": 0, "generations": 0,
-                 "by_ip_hour": {}}
+        state = {"date": _today(), "live_used": 0, "batch_used": 0,
+                 "generations": 0, "batch_generations": 0, "by_ip_hour": {}}
     state.setdefault("live_used", 0)
+    state.setdefault("batch_used", 0)
     state.setdefault("generations", 0)
+    state.setdefault("batch_generations", 0)
     state.setdefault("by_ip_hour", {})
     return state
 
@@ -119,8 +121,48 @@ def can_generate(state, ip=None, reserve=LIVE_RESERVE, est=EST_COST,
     return True, "ok", {"remaining": left, "generations_left_approx": left // est}
 
 
-def record(state, cost, ip=None):
-    """Charge actual Gemini requests used by one generation."""
+def batch_budget(reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
+    """What the batch may spend: the daily budget MINUS the live reserve.
+
+    The symmetry this module's docstring promises, finally implemented in both
+    directions. The reserve belongs to live generation and the batch cannot
+    touch it, so an overnight catalog run can never be the reason a visitor's
+    search box falls back to the queue in the morning.
+    """
+    return max(0, daily - reserve)
+
+
+def batch_remaining(state, reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
+    """Batch headroom, charged against EVERYTHING spent today.
+
+    Live spend counts here on purpose: the two ledgers are separate claims on
+    one shared daily ceiling, so live generation eats batch headroom even though
+    the reverse is forbidden. Asymmetric by design - the reserve is a floor
+    under live generation, not a wall around it.
+    """
+    used = state.get("batch_used", 0) + state.get("live_used", 0)
+    return max(0, batch_budget(reserve, daily) - used)
+
+
+def can_batch(state, est=EST_COST, reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
+    """(allowed, reason, detail) for one batch title."""
+    left = batch_remaining(state, reserve, daily)
+    if left < est:
+        return False, "batch_budget_exhausted", {
+            "batch_used": state.get("batch_used", 0),
+            "live_used": state.get("live_used", 0),
+            "batch_budget": batch_budget(reserve, daily),
+            "remaining": left, "needed": est,
+            "reserve_untouched": reserve, "resets": "00:00 UTC"}
+    return True, "ok", {"remaining": left, "titles_left_approx": left // est}
+
+
+def record(state, cost, ip=None, ledger="live"):
+    """Charge actual Gemini requests used by one generation to one ledger."""
+    if ledger == "batch":
+        state["batch_used"] = state.get("batch_used", 0) + int(cost)
+        state["batch_generations"] = state.get("batch_generations", 0) + 1
+        return state
     state["live_used"] = state.get("live_used", 0) + int(cost)
     state["generations"] = state.get("generations", 0) + 1
     if ip:
@@ -131,6 +173,7 @@ def record(state, cost, ip=None):
 
 def status(state, reserve=LIVE_RESERVE, est=EST_COST):
     left = remaining(state, reserve)
+    bleft = batch_remaining(state, reserve)
     return {
         "date": state.get("date"),
         "daily_limit": DAILY_LIMIT,
@@ -140,6 +183,11 @@ def status(state, reserve=LIVE_RESERVE, est=EST_COST):
         "generations_today": state.get("generations", 0),
         "generations_left_approx": left // est,
         "live_generation": "on" if left >= est else "off_falls_back_to_queue",
+        "batch_budget": batch_budget(reserve),
+        "batch_used": state.get("batch_used", 0),
+        "batch_remaining": bleft,
+        "batch_generations_today": state.get("batch_generations", 0),
+        "batch_titles_left_approx": bleft // est,
     }
 
 

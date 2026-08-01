@@ -47,6 +47,7 @@ from fetch_reviews import BUCKETS                      # noqa: E402  (invariant 
 from filter_reviews import MIN_COHORT                  # noqa: E402  (invariant 12)
 import prevalence_guard                                # noqa: E402
 import ground_check                                    # noqa: E402  (1.4)
+import model_pacer                                     # noqa: E402  (4.1 RPM pacing)
 
 IN_DIR = Path("data/filtered")
 OUT_DIR = Path("data/claims")
@@ -334,8 +335,13 @@ def call_model(client, model, system, user, schema=None, thinking_level="minimal
     )
     for attempt in range(MAX_ATTEMPTS):
         try:
-            resp = client.models.generate_content(
-                model=model, contents=user, config=config)
+            # Proactive rate pacing, shared across processes. The batch runs
+            # stages as subprocesses, so this is the only place a per-minute
+            # limit can be enforced for every title at once. Synthesis reuses
+            # this transport, so it is paced by the same bucket.
+            with model_pacer.pace(model.split("/")[-1]):
+                resp = client.models.generate_content(
+                    model=model, contents=user, config=config)
             return resp
         except Exception as exc:  # noqa: BLE001 - SDK raises a family of these
             msg = str(exc)
@@ -351,6 +357,14 @@ def call_model(client, model, system, user, schema=None, thinking_level="minimal
             transient = any(s in msg for s in
                             ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE",
                              "500", "INTERNAL", "504", "DEADLINE"))
+            if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                # Paced and still rate-limited: the configured ceiling was
+                # wrong. Lower it for the rest of the day rather than rediscover
+                # this on every subsequent call.
+                ceiling = model_pacer.narrow(
+                    model_pacer.status()["ceiling_rpm"] - 2)
+                print("    pacer: 429 despite pacing - ceiling now %d rpm"
+                      % ceiling)
             if not transient or attempt == MAX_ATTEMPTS - 1:
                 raise
             wait = BACKOFF_BASE * (2 ** attempt) + random.uniform(0, 0.5)
