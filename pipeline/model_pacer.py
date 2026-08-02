@@ -124,6 +124,7 @@ def _load(path):
     state.setdefault("recent", [])
     state.setdefault("today", 0)
     state.setdefault("rpm", None)
+    state.setdefault("by_appid", {})
     return state
 
 
@@ -134,6 +135,13 @@ def _save(path, state):
 
 def _acquire(path, rpm, now=None):
     """Reserve one slot. Returns (wait_seconds, used_this_minute, today).
+
+    Also tallies the call against WORTHIT_APPID. This is the ONLY place every
+    Gemini request passes through, which is what makes it the only place a
+    per-title count can be correct: it increments BEFORE the request is sent, so
+    a call that 429s, times out, or raises is counted exactly like one that
+    succeeds. The previous counter scraped stdout for "RAW MODEL OUTPUT" and
+    therefore missed every failed call - it reported 21 where 37 had been spent.
 
     Records the timestamp BEFORE sleeping, so a concurrent worker sees the
     reservation immediately and cannot hand out the same slot twice.
@@ -153,8 +161,16 @@ def _acquire(path, rpm, now=None):
         recent.append(stamp)
         state["recent"] = recent[-(ceiling * 3):]
         state["today"] = state.get("today", 0) + 1
+        key = os.environ.get("WORTHIT_APPID") or "-"
+        by = state.setdefault("by_appid", {})
+        by[key] = by.get(key, 0) + 1
         _save(path, state)
         return wait, len(recent), state["today"]
+
+
+def calls_for(appid, path=STATE_PATH):
+    """Gemini requests charged to this appid today. Attempts, not successes."""
+    return _load(path).get("by_appid", {}).get(str(appid), 0)
 
 
 def narrow(new_rpm, path=STATE_PATH):

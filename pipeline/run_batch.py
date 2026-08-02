@@ -78,7 +78,7 @@ def record(state, appid, entry):
         save_state(state)
 
 
-def pending(catalog, state, night, limit):
+def pending(catalog, state, night, limit, skip_flash_tier=False):
     """Titles still to do, in manifest order.
 
     A title already generated is skipped rather than regenerated - the point of
@@ -87,11 +87,17 @@ def pending(catalog, state, night, limit):
     rejected does not get re-litigated on every restart.
     """
     TERMINAL = {"ok", "thin_segmentation", "qr4_failed"}
+    # Flash-tier titles are held back so they are generated ONCE, on flash, on
+    # their scheduled day. Generating them on flash-lite today and re-synthesing
+    # tomorrow would spend a call to produce a verdict we then overwrite.
+    tier = generate_one.flash_tier_ids() if skip_flash_tier else set()
     out = []
     for row in catalog["titles"]:
         if night and row.get("night") != night:
             continue
         appid = row["appid"]
+        if appid in tier:
+            continue
         if (VERDICTS / ("%d.json" % appid)).exists():
             continue
         prev = state["titles"].get(str(appid))
@@ -136,6 +142,8 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="stop after N titles")
     ap.add_argument("--concurrency", type=int, default=2)
     ap.add_argument("--reserve", type=int, default=live_quota.LIVE_RESERVE)
+    ap.add_argument("--skip-flash-tier", action="store_true",
+                    help="hold back titles scheduled for a flash day")
     ap.add_argument("--no-gate", action="store_true",
                     help="disable the measured segmentation gate")
     ap.add_argument("--dry-run", action="store_true",
@@ -146,7 +154,8 @@ def main():
         sys.exit("no data/catalog.json - run pipeline/build_catalog.py first")
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     state = load_state()
-    todo = pending(catalog, state, args.night, args.limit)
+    todo = pending(catalog, state, args.night, args.limit,
+                   args.skip_flash_tier)
 
     q = live_quota.load()
     budget = live_quota.batch_remaining(q, args.reserve)

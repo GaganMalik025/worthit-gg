@@ -27,6 +27,7 @@ Usage:
 
 import argparse
 import json
+import os
 import re
 import sys
 from collections import OrderedDict
@@ -553,6 +554,7 @@ def main():
     ap.add_argument("--out", default=str(OUT_DIR))
     args = ap.parse_args()
     args.model_override = args.model
+    os.environ.setdefault("WORTHIT_APPID", str(args.appids[0]) if getattr(args, "appids", None) else "-")
 
     appids = list(args.appids)
     if args.seeds:

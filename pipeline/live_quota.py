@@ -45,7 +45,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import quota_day  # noqa: E402  (one definition of the quota day boundary)
+import quota_day   # noqa: E402  (one definition of the quota day boundary)
+import model_pacer  # noqa: E402  (reuses its cross-process file lock)
 
 ROOT = Path(__file__).resolve().parent.parent
 STATE_PATH = ROOT / "data/live_quota.json"
@@ -185,6 +186,26 @@ def record(state, cost, ip=None, ledger="live"):
         key = "%s|%s" % (ip, _hour())
         state["by_ip_hour"][key] = state["by_ip_hour"].get(key, 0) + 1
     return state
+
+
+def charge(cost, ip=None, ledger="live", path=STATE_PATH):
+    """Atomically load -> record -> save. Returns the updated state.
+
+    The read-modify-write MUST be locked. It was not, and the batch runs titles
+    concurrently: two workers each loaded the ledger, each added their own cost,
+    and whichever saved last erased the other. A verification run spent 28
+    requests and the ledger recorded 17 - a lost-update race, not a counting
+    error. The per-title figures were exact the whole time; the aggregation was
+    dropping them.
+
+    Uses the pacer's lock helper so the guarantee holds across processes too,
+    not just across threads in one interpreter.
+    """
+    with model_pacer._locked(path):
+        state = load(path)
+        record(state, cost, ip, ledger=ledger)
+        save(state, path)
+        return state
 
 
 def status(state, reserve=LIVE_RESERVE, est=EST_COST):

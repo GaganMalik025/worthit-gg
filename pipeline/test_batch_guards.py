@@ -182,7 +182,7 @@ def test_gate_costs_nothing_when_it_fires():
     print("\ngate: sits on the cost boundary")
     src = (Path(__file__).resolve().parent / "generate_one.py").read_text()
     filter_at = src.index('if segmentation_gate and key == "filter"')
-    record_at = src.index("live_quota.record(state, cost")
+    record_at = src.index("live_quota.charge(cost")
     check("the gate runs before the quota charge", filter_at < record_at)
     check("it returns model_calls 0 when it fires",
           '"model_calls": 0' in src[filter_at:filter_at + 900])
@@ -322,6 +322,70 @@ def test_prompt_names_every_word_the_guard_rejects():
     check("claim ids are forbidden in prose", "1b. Claim ids go in" in prompt)
 
 
+def test_call_counting_is_at_the_call_site():
+    """The undercount: count_model_calls() scraped stdout for RAW MODEL OUTPUT,
+    so a call that 429'd or raised printed nothing and was never charged. The
+    ledger read 21 where 37 requests had been spent, and every budget projection
+    rode on that number."""
+    print("\ncounting: attempts are charged at the call site, not scraped")
+    import os
+    with tempfile.TemporaryDirectory() as d:
+        path = Path(d) / "pacer.json"
+        prev = os.environ.get("WORTHIT_APPID")
+        try:
+            os.environ["WORTHIT_APPID"] = "424242"
+            for _ in range(3):
+                model_pacer._acquire(path, rpm=50)
+            os.environ["WORTHIT_APPID"] = "999999"
+            model_pacer._acquire(path, rpm=50)
+        finally:
+            if prev is None:
+                os.environ.pop("WORTHIT_APPID", None)
+            else:
+                os.environ["WORTHIT_APPID"] = prev
+        check("per-title tally is exact",
+              model_pacer.calls_for("424242", path) == 3,
+              model_pacer.calls_for("424242", path))
+        check("tallies do not bleed between titles",
+              model_pacer.calls_for("999999", path) == 1)
+        check("per-title tallies sum to the day total",
+              model_pacer.status(path)["requests_today"] == 4)
+        check("an untouched title is zero, not missing",
+              model_pacer.calls_for("111", path) == 0)
+
+    check("the old stdout scraper is gone (raises rather than undercounts)",
+          "NotImplementedError" in
+          (Path(__file__).resolve().parent / "generate_one.py").read_text())
+    gsrc = (Path(__file__).resolve().parent / "generate_one.py").read_text()
+    check("generate_one charges from the pacer",
+          "model_pacer.calls_for(appid) - calls_before" in gsrc)
+    check("stages are tagged with the appid they charge",
+          "WORTHIT_APPID=str(appid)" in gsrc)
+
+
+def test_ledger_charge_is_atomic():
+    """The lost-update race the verification run exposed: 28 requests spent, 17
+    recorded. generate_one did load -> record -> save with no lock while the
+    batch runs titles concurrently, so workers erased each other's charges."""
+    print("\nledger: concurrent charges are not lost")
+    import subprocess as sp
+    with tempfile.TemporaryDirectory() as d:
+        path = Path(d) / "q.json"
+        code = ("import sys;sys.path.insert(0,%r);import live_quota;"
+                "live_quota.charge(1, ledger='batch', path=%r)"
+                % (str(Path(__file__).resolve().parent), str(path)))
+        procs = [sp.Popen([PY, "-c", code]) for _ in range(12)]
+        for pr in procs:
+            pr.wait(timeout=90)
+        got = live_quota.load(path)["batch_used"]
+        check("12 concurrent charges of 1 all land", got == 12, got)
+        check("generation count matches too",
+              live_quota.load(path)["batch_generations"] == 12)
+    gsrc = (Path(__file__).resolve().parent / "generate_one.py").read_text()
+    check("generate_one uses the atomic charge, not load/record/save",
+          "live_quota.charge(" in gsrc and "live_quota.save(state)" not in gsrc)
+
+
 def test_batch_never_spends_flash():
     """The bug that failed No Man's Sky and DayZ: flash_tier.txt carried the day
     schedule in COMMENTS while model_for() only checked membership, so the batch
@@ -411,6 +475,8 @@ if __name__ == "__main__":
     test_flash_tier_allocation()
     test_batch_never_spends_flash()
     test_batch_is_interruptible()
+    test_call_counting_is_at_the_call_site()
+    test_ledger_charge_is_atomic()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),

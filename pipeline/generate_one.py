@@ -35,8 +35,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import live_quota  # noqa: E402
-import qr4_gate    # noqa: E402
+import live_quota   # noqa: E402
+import model_pacer  # noqa: E402
+import qr4_gate     # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 PY = str(ROOT / ".venv/bin/python")
@@ -51,16 +52,38 @@ STAGES = [
 
 
 def run_stage(script_args, appid, timeout=900, extra=()):
+    """Run one stage as a subprocess, tagged with the title it is charging.
+
+    WORTHIT_APPID is how the pacer attributes each request to a title. It has to
+    cross the process boundary because the stages are subprocesses, and it has to
+    be set here rather than inside each script so no stage can forget.
+    """
+    import os
+    env = dict(os.environ, WORTHIT_APPID=str(appid))
     t0 = time.time()
     proc = subprocess.run([PY] + script_args + [str(appid)] + list(extra),
-                          cwd=str(ROOT),
+                          cwd=str(ROOT), env=env,
                           capture_output=True, text=True, timeout=timeout)
     return time.time() - t0, proc
 
 
 def count_model_calls(out):
-    """Gemini requests actually issued, for honest quota accounting."""
-    return out.count("RAW MODEL OUTPUT") - out.count("[cached]")
+    """DEPRECATED - kept only so an old caller cannot silently get zero.
+
+    Counting by scraping stdout is what produced the undercount: a call that
+    429s, times out or raises never prints "RAW MODEL OUTPUT", so every failed
+    call was invisible. The ledger read 21 where 37 requests had been spent, and
+    every budget projection rode on that number. Counting now happens at the
+    call site - see model_pacer.calls_for().
+    """
+    raise NotImplementedError(
+        "use model_pacer.calls_for(appid); stdout scraping misses failed calls")
+
+
+def flash_tier_ids():
+    """appids scheduled for a flash day, for callers that need to hold them back."""
+    import synthesize
+    return set(synthesize.flash_tier())
 
 
 def cohort_structure(appid):
@@ -137,7 +160,10 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
         return False, {"published": False, "outcome": reason, "detail": detail,
                        "fallback": "queue"}
 
-    timings, cost, log = [], 0, []
+    # Count at the choke point every request passes through, before it is sent,
+    # so failures are charged exactly like successes.
+    calls_before = model_pacer.calls_for(appid)
+    timings, log = [], []
     for key, label, script in STAGES:
         if not quiet:
             print("  [%s] %s..." % (key, label), flush=True)
@@ -149,7 +175,6 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
         dt, proc = run_stage(script, appid, extra=extra)
         timings.append({"stage": key, "label": label, "seconds": round(dt, 1)})
         log.append(proc.stdout[-4000:])
-        cost += count_model_calls(proc.stdout)
         if proc.returncode != 0:
             return False, {"published": False, "outcome": "stage_failed",
                            "stage": key, "timings": timings,
@@ -179,8 +204,9 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
     timings.append({"stage": "qr4", "label": "Safety check",
                     "seconds": round(time.time() - t0, 1)})
 
-    live_quota.record(state, cost, ip, ledger=ledger)
-    live_quota.save(state)
+    cost = model_pacer.calls_for(appid) - calls_before
+    # atomic: concurrent workers must not lose each other's charges
+    live_quota.charge(cost, ip, ledger=ledger)
 
     if not passed:
         # withheld, not served-with-a-warning. Remove the artifact so no static
