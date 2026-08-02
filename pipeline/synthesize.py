@@ -44,7 +44,19 @@ from fetch_reviews import BUCKETS, SEED_GAMES          # noqa: E402
 CLAIMS_DIR = Path("data/claims")
 FILTERED_DIR = Path("data/filtered")
 OUT_DIR = Path("site/public/verdicts")
-DEFAULT_MODEL = "gemini-3.5-flash"
+# flash-lite, not flash. gemini-3.5-flash carries a free-tier limit of 20
+# requests PER PROJECT PER DAY (quotaId GenerateRequestsPerDayPerProjectPerModel
+# -FreeTier), and one synthesis call is one verdict - so it capped the whole
+# product at ~20 verdicts a day and killed night 1 of the catalog batch at title
+# 17. flash-lite has its own, far larger, daily bucket.
+#
+# thinking_level stays "medium" here. Extraction pins "minimal" per CLAUDE.md
+# invariant 6; synthesis is the stage that actually reasons - it picks which
+# claims survive and writes the for-whom line - so it keeps the higher level.
+# The discipline that carries over from extraction is the part that matters:
+# pinned model id, structured output schema, explicit thinking_level, and no
+# sampling parameters.
+DEFAULT_MODEL = "gemini-3.5-flash-lite"
 MAX_CITATION_CHARS = 2000
 
 # DESIGN.md Split Bar labels
@@ -92,7 +104,7 @@ VERDICT_SCHEMA = {
     },
 }
 
-SYSTEM_INSTRUCTION = """\
+_SYSTEM_TEMPLATE = """\
 You write the verdict for a game-buying advice product. A reader has two \
 minutes and one question: should I buy this game?
 
@@ -105,19 +117,30 @@ RULES
 1. Use ONLY the claim ids given to you, and only under the cohort they came \
 from. Inventing an id, or moving a claim to a different cohort, is the one \
 unrecoverable error here.
-2. Write NO numbers of any kind. No digits, no percentages, no counts, no "two \
-thirds", no "half". The interface renders every figure itself from verified \
-data. If you write a number it will be rejected.
-3. Never state how many or what proportion of players hold a view. You are \
-looking at a deliberately non-representative sample. BANNED: most, majority, \
-many players, few, half, commonly, widely, usually, typically, generally, \
-often, everyone, nobody.
+1b. Claim ids go in the claim_ids array and NOWHERE ELSE. Never write an id \
+into a summary, the for-whom line or a flag sentence. A reader cannot see ids, \
+and an id in prose is rejected automatically because it contains digits. \
+WRONG: "Players praise the freedom ref-e18e82, ear-6b753e." \
+RIGHT: "Players praise the freedom." with those ids listed in claim_ids.
+2. Write NO numbers of any kind in prose. No digits, no percentages, no \
+counts, no "two thirds", no "half", and never an hour boundary - write "within \
+the refund window", not the hours behind it. The interface renders every figure \
+itself from verified data. Any digit in prose is rejected.
+3. Never state how many or what proportion of players hold a view, and never \
+state how OFTEN something happens. You are looking at a deliberately \
+non-representative sample: thin cohorts are over-sampled on purpose, so \
+counting anything here says nothing about the playerbase, and a rate is as \
+unknowable as a proportion. Simply drop the word - "veterans praise the combat" \
+is stronger than "most veterans praise the combat", and "reviewers report \
+crashes" says everything "occasional crashes" was trying to say. \
+BANNED WORDS: %(banned)s. \
+Also banned: percentages, "N out of N", "a third of", "half the players".
 4. Each claim shows what its citing reviewers thought of the GAME overall. That \
 is not the same as whether the claim is good or bad news: a complaint from \
 people who recommend the game anyway is a real and useful pattern. Say so \
 plainly instead of resolving it into agreement.
-5. Cohorts that disagree must be LEFT DISAGREEING. Flattening them into a \
-consensus is the exact failure this product exists to correct. If people who \
+5. Cohorts that disagree must be LEFT DISAGREEING. Flattening them into one \
+agreed view is the exact failure this product exists to correct. If people who \
 bounced early and people who stayed describe different games, say that.
 6. A cohort marked MUTED gets no summary and no claims. Skip it entirely.
 7. The for-whom line names who should buy this and who should not, in one \
@@ -128,6 +151,15 @@ speculate about controversies, publishers, patches or review campaigns.
 game most people love can still be Skip for the reader if the claims say it \
 suits a narrow taste. Say who it is for and let the verdict follow.
 """
+
+# Filled from prevalence_guard so the prompt cannot drift behind the rule it
+# explains. It drifted once: the guard rejected the frequency ADJECTIVES
+# (frequent, occasional, widespread) while the prompt named only the adverbs,
+# so synthesis failed on "occasional technical crashes" - a word nothing had
+# told the model to avoid. Both models were exposed; flash-lite reached for it
+# more often, which is how it surfaced.
+SYSTEM_INSTRUCTION = _SYSTEM_TEMPLATE % {
+    "banned": ", ".join(prevalence_guard.banned_words())}
 
 
 def _bucket_order(name):
@@ -394,8 +426,14 @@ def synthesize_one(client, args, appid):
             user + "\n\nYour previous answer was rejected for these reasons:\n"
             + "\n".join("  - %s" % f for f in failures)
             + "\nProduce a corrected answer obeying every rule.")
+        # The attempt number is part of the cache key, and it has to be.
+        # The retry prompt embeds the failure list, so when a retry fails the
+        # SAME WAY the next prompt is byte-identical to the last one - identical
+        # key, and the cache replays the very answer that was just rejected.
+        # Stardew Valley burned all three attempts that way: attempt 2 was
+        # served from cache and "failed" without a request ever being sent.
         cpath = cache_path(appid, "synthesis", args.model, system, prompt,
-                           tag="verdict-v1")
+                           tag="verdict-v1-attempt%d" % attempt)
         if cpath.exists() and not args.force:
             text = json.loads(cpath.read_text(encoding="utf-8"))["text"]
             print("  [cached] attempt %d" % attempt)

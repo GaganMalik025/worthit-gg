@@ -283,6 +283,45 @@ def test_ledger_does_not_reset_at_utc_midnight():
               live_quota._today(_utc(2026, 8, 2, 7, 0)) != day)
 
 
+# ------------------------------------------------ synthesis prompt/cache
+def test_retry_cache_key_includes_the_attempt():
+    """A retry that fails the same way must not replay the cached bad answer."""
+    print("\nsynthesis: each retry is a genuinely fresh generation")
+    from extract_claims import cache_path
+    same_prompt = "identical because the failure list was identical"
+    a = cache_path(1, "synthesis", "m", "sys", same_prompt,
+                   tag="verdict-v1-attempt1")
+    b = cache_path(1, "synthesis", "m", "sys", same_prompt,
+                   tag="verdict-v1-attempt2")
+    check("identical prompt, different attempt -> different cache key", a != b,
+          (a.name, b.name))
+    src = (Path(__file__).resolve().parent / "synthesize.py").read_text()
+    check("synthesize.py keys its cache on the attempt",
+          'tag="verdict-v1-attempt%d" % attempt' in src)
+
+
+def test_prompt_names_every_word_the_guard_rejects():
+    """The prompt used to carry a hand-written banned list and it fell behind
+    the guard: "occasional" was rejected in code and never mentioned in the
+    prompt. Deriving one from the other is only safe if this holds."""
+    print("\nsynthesis: prompt banned-list matches the guard")
+    import prevalence_guard
+    import synthesize
+    prompt = synthesize.SYSTEM_INSTRUCTION
+    missing = [w for w in prevalence_guard.banned_words() if w not in prompt]
+    check("every guard-rejected word appears in the prompt", not missing,
+          missing)
+    for word in ("occasional", "frequent", "widespread", "consensus"):
+        check("  frequency/consensus word %r is named" % word, word in prompt)
+    check("every listed word really is rejected by the guard",
+          all(prevalence_guard.check_claim("the game has %s problems" % w)
+              or prevalence_guard.check_claim("%s players report problems" % w)
+              for w in prevalence_guard.banned_words()))
+    check("the prompt no longer seeds the banned word 'consensus' itself",
+          "into a consensus" not in prompt)
+    check("claim ids are forbidden in prose", "1b. Claim ids go in" in prompt)
+
+
 if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
@@ -298,6 +337,8 @@ if __name__ == "__main__":
     test_quota_day_rolls_at_midnight_pacific_not_utc()
     test_both_ledgers_share_one_boundary()
     test_ledger_does_not_reset_at_utc_midnight()
+    test_retry_cache_key_includes_the_attempt()
+    test_prompt_names_every_word_the_guard_rejects()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),
