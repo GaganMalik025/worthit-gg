@@ -1,0 +1,119 @@
+# flash_tier.txt - titles whose verdict is synthesized with gemini-3.5-flash
+#
+# gemini-3.5-flash is capped at 20 requests PER PROJECT PER DAY on the free tier
+# (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, verified from the
+# 429 body on 2026-08-01, and confirmed reset at midnight Pacific). One synthesis
+# call is one verdict, so flash can cover exactly 20 titles a day - no more.
+#
+# Everything not listed here is synthesized with gemini-3.5-flash-lite, which has
+# its own, far larger daily bucket. The two draw on SEPARATE quotas, so the
+# flash-lite batch is never blocked waiting for flash's daily allowance.
+#
+# Live generation is ALWAYS flash-lite, whatever this file says. A user waiting
+# on a cache miss cannot be made to wait for tomorrow's flash allowance.
+#
+# WHY UPGRADING IS CHEAP
+# Extraction responses are cached per exact prompt, so re-synthesizing a title
+# that flash-lite already generated costs exactly ONE flash call - the synthesis
+# request. 20 titles/day is therefore 20 flash calls/day, with no extraction
+# spend at all.
+#
+# THE CUTOFF: 110,000 reviews
+# Below roughly this line, review count stops discriminating. Ranks 1-74 span
+# 2,583,442 down to ~118,000 - a factor of 22. Ranks 75-150 span 118,000 down to
+# 56,416 - a factor of 2. Spending the scarce model on rank 80 but not rank 95 is
+# an arbitrary distinction between titles of near-identical reach, so flash stops
+# where the ranking stops meaning anything. That line also happens to fall within
+# the 3-4 day runway, which is what makes the schedule affordable rather than
+# what makes it correct.
+#
+# The 5 seed games lead day 1 regardless of review count: they are the eval
+# basis, they are what every RESULTS.md row is scored against, and two of them
+# (Kenshi, Death Stranding) sit below the floor on reviews alone.
+#
+# FORMAT: appid  # day N | title | reviews
+
+
+# ---- day 1 (14 titles, 798,230..432,302 reviews) ----
+# only 14: 6 of today's 20 flash calls were already spent on the
+# quota probe and the model-isolation test.
+233860    # day 1 | Kenshi | seed game
+553850    # day 1 | HELLDIVERS 2 | seed game
+1091500   # day 1 | Cyberpunk 2077 | seed game
+413150    # day 1 | Stardew Valley | seed game
+1190460   # day 1 | DEATH STRANDING | seed game
+359550    # day 1 | Tom Clancy's Rainbow Six Siege | 798,230
+440       # day 1 | Team Fortress 2 | 739,546
+105600    # day 1 | Terraria | 597,431
+4000      # day 1 | Garry's Mod | 535,072
+252490    # day 1 | Rust | 527,990
+578080    # day 1 | PUBG: BATTLEGROUNDS | 448,607
+1172470   # day 1 | Apex Legends™ | 446,968
+1086940   # day 1 | Baldur's Gate 3 | 445,918
+1245620   # day 1 | ELDEN RING | 432,302
+
+# ---- day 2 (20 titles, 388,613..196,983 reviews) ----
+1085660   # day 2 | Destiny 2 | 388,613
+945360    # day 2 | Among Us | 378,620
+739630    # day 2 | Phasmophobia | 358,016
+236390    # day 2 | War Thunder | 321,654
+1174180   # day 2 | Red Dead Redemption 2 | 307,765
+230410    # day 2 | Warframe | 298,670
+2767030   # day 2 | Marvel Rivals | 292,929
+322170    # day 2 | Geometry Dash | 292,674
+1966720   # day 2 | Lethal Company | 276,019
+381210    # day 2 | Dead by Daylight | 263,978
+892970    # day 2 | Valheim | 257,119
+346110    # day 2 | ARK: Survival Evolved | 255,618
+292030    # day 2 | The Witcher 3: Wild Hunt | 238,853
+1938090   # day 2 | Call of Duty® | 233,248
+550       # day 2 | Left 4 Dead 2 | 231,026
+960090    # day 2 | Bloons TD 6 | 228,532
+304930    # day 2 | Unturned | 221,139
+284160    # day 2 | BeamNG.drive | 205,798
+3164500   # day 2 | Schedule I | 197,349
+1808500   # day 2 | ARC Raiders | 196,983
+
+# ---- day 3 (20 titles, 188,203..149,699 reviews) ----
+264710    # day 3 | Subnautica | 188,203
+377160    # day 3 | Fallout 4 | 182,795
+275850    # day 3 | No Man's Sky | 182,705
+221100    # day 3 | DayZ | 177,582
+242760    # day 3 | The Forest | 177,289
+291550    # day 3 | Brawlhalla | 177,164
+438100    # day 3 | VRChat | 176,136
+1118200   # day 3 | People Playground | 175,716
+218620    # day 3 | PAYDAY 2 | 175,018
+620       # day 3 | Portal 2 | 172,596
+548430    # day 3 | Deep Rock Galactic | 170,581
+1623730   # day 3 | Palworld | 170,353
+22380     # day 3 | Fallout: New Vegas | 169,125
+2357570   # day 3 | Overwatch® | 165,093
+976730    # day 3 | Halo: The Master Chief Collection | 163,312
+632360    # day 3 | Risk of Rain 2 | 162,546
+250900    # day 3 | The Binding of Isaac: Rebirth | 157,540
+391540    # day 3 | Undertale | 156,445
+2073850   # day 3 | THE FINALS | 155,921
+2807960   # day 3 | Battlefield™ 6 | 149,699
+
+# ---- day 4 (20 titles, 149,223..116,859 reviews) ----
+1144200   # day 4 | Ready or Not | 149,223
+1229490   # day 4 | ULTRAKILL | 147,754
+227300    # day 4 | Euro Truck Simulator 2 | 143,942
+1030300   # day 4 | Hollow Knight: Silksong | 143,446
+990080    # day 4 | Hogwarts Legacy | 142,532
+1145360   # day 4 | Hades | 141,766
+526870    # day 4 | Satisfactory | 136,074
+3241660   # day 4 | R.E.P.O. | 135,852
+3527290   # day 4 | PEAK | 134,175
+648800    # day 4 | Raft | 129,598
+698780    # day 4 | Doki Doki Literature Club! | 129,582
+489830    # day 4 | The Elder Scrolls V: Skyrim Special Edition | 128,883
+1794680   # day 4 | Vampire Survivors | 127,331
+394360    # day 4 | Hearts of Iron IV | 123,971
+49520     # day 4 | Borderlands 2 | 122,569
+782330    # day 4 | DOOM Eternal | 120,457
+311210    # day 4 | Call of Duty®: Black Ops III | 118,586
+294100    # day 4 | RimWorld | 118,449
+1326470   # day 4 | Sons Of The Forest | 117,027
+427520    # day 4 | Factorio | 116,859

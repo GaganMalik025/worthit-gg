@@ -50,9 +50,10 @@ STAGES = [
 ]
 
 
-def run_stage(script_args, appid, timeout=900):
+def run_stage(script_args, appid, timeout=900, extra=()):
     t0 = time.time()
-    proc = subprocess.run([PY] + script_args + [str(appid)], cwd=str(ROOT),
+    proc = subprocess.run([PY] + script_args + [str(appid)] + list(extra),
+                          cwd=str(ROOT),
                           capture_output=True, text=True, timeout=timeout)
     return time.time() - t0, proc
 
@@ -140,7 +141,12 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
     for key, label, script in STAGES:
         if not quiet:
             print("  [%s] %s..." % (key, label), flush=True)
-        dt, proc = run_stage(script, appid)
+        # Live generation is ALWAYS flash-lite. flash is capped at 20/day and
+        # its allowance belongs to the batch's flash tier; a cache miss must
+        # never wait on tomorrow's quota, and a live hit on a tier title would
+        # burn a slot the batch reserved.
+        extra = ("--force-lite",) if (key == "verdict" and ledger != "batch") else ()
+        dt, proc = run_stage(script, appid, extra=extra)
         timings.append({"stage": key, "label": label, "seconds": round(dt, 1)})
         log.append(proc.stdout[-4000:])
         cost += count_model_calls(proc.stdout)

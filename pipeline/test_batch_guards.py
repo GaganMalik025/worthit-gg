@@ -322,6 +322,31 @@ def test_prompt_names_every_word_the_guard_rejects():
     check("claim ids are forbidden in prose", "1b. Claim ids go in" in prompt)
 
 
+def test_flash_tier_allocation():
+    """flash is the scarce model (20/day). Who gets it, and who must not."""
+    print("\nflash tier: allocation and the live-generation carve-out")
+    import synthesize
+    tier = synthesize.flash_tier()
+    check("flash_tier.txt parses to a non-empty set", len(tier) > 0, len(tier))
+    check("it fits the 4-day runway at 20/day", len(tier) <= 80, len(tier))
+    check("a tier title batch-synthesizes with flash",
+          synthesize.model_for(sorted(tier)[0]) == synthesize.FLASH_MODEL)
+    check("a non-tier title uses flash-lite",
+          synthesize.model_for(999999999) == synthesize.DEFAULT_MODEL)
+    check("LIVE generation never uses flash, even on a tier title",
+          synthesize.model_for(sorted(tier)[0], force_lite=True)
+          == synthesize.DEFAULT_MODEL)
+    check("an explicit --model override still wins",
+          synthesize.model_for(999999999, override="gemini-3.5-flash")
+          == "gemini-3.5-flash")
+    src = (Path(__file__).resolve().parent / "generate_one.py").read_text()
+    check("generate_one forces flash-lite on the live path",
+          'ledger != "batch"' in src and "--force-lite" in src)
+    gate_rejected = {570, 730}
+    check("gate-rejected titles are not in the tier (no verdict to upgrade)",
+          not (tier & gate_rejected), sorted(tier & gate_rejected))
+
+
 if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
@@ -339,6 +364,7 @@ if __name__ == "__main__":
     test_ledger_does_not_reset_at_utc_midnight()
     test_retry_cache_key_includes_the_attempt()
     test_prompt_names_every_word_the_guard_rejects()
+    test_flash_tier_allocation()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),
