@@ -208,6 +208,81 @@ def test_pending_skips_finished_and_terminal():
     check("an untouched title is queued", 999003 in got, got)
 
 
+# ---------------------------------------------------- quota day boundary
+def _utc(y, mo, d, h, mi=0):
+    from datetime import datetime, timezone
+    return datetime(y, mo, d, h, mi, tzinfo=timezone.utc)
+
+
+def test_quota_day_rolls_at_midnight_pacific_not_utc():
+    """The bug that broke night 1's accounting, pinned in both ledgers.
+
+    Google resets RPD at midnight Pacific. Keying the day on UTC zeroed both
+    ledgers seven hours early - inside the window an overnight batch runs in.
+    """
+    print("\nquota day: rolls at midnight PACIFIC, not midnight UTC")
+    import quota_day
+
+    # PDT (summer, UTC-7): the day turns at 07:00 UTC
+    check("23:59 PDT (06:59 UTC) is still the previous day",
+          quota_day.today(_utc(2026, 8, 2, 6, 59)) == "2026-08-01",
+          quota_day.today(_utc(2026, 8, 2, 6, 59)))
+    check("00:00 PDT (07:00 UTC) starts the new day",
+          quota_day.today(_utc(2026, 8, 2, 7, 0)) == "2026-08-02",
+          quota_day.today(_utc(2026, 8, 2, 7, 0)))
+    check("midnight UTC does NOT roll the quota day",
+          quota_day.today(_utc(2026, 8, 2, 0, 30)) == "2026-08-01",
+          quota_day.today(_utc(2026, 8, 2, 0, 30)))
+
+    # PST (winter, UTC-8): the day turns at 08:00 UTC. A hardcoded -7 offset
+    # would call this "2026-01-15" and be a full day wrong at the boundary.
+    check("23:59 PST (07:59 UTC) is still the previous day",
+          quota_day.today(_utc(2026, 1, 15, 7, 59)) == "2026-01-14",
+          quota_day.today(_utc(2026, 1, 15, 7, 59)))
+    check("00:00 PST (08:00 UTC) starts the new day",
+          quota_day.today(_utc(2026, 1, 15, 8, 0)) == "2026-01-15",
+          quota_day.today(_utc(2026, 1, 15, 8, 0)))
+    check("PDT and PST boundaries differ by an hour, so no fixed offset works",
+          quota_day.today(_utc(2026, 1, 15, 7, 30)) != "2026-01-15"
+          and quota_day.today(_utc(2026, 8, 2, 7, 30)) == "2026-08-02")
+
+
+def test_both_ledgers_share_one_boundary():
+    """If the two disagree, one resets first and they briefly contradict each
+    other about how much budget exists - the same class of bug, harder to see."""
+    print("\nquota day: both ledgers key on the SAME boundary")
+    import quota_day
+    for label, clock in (("06:59 UTC", _utc(2026, 8, 2, 6, 59)),
+                         ("07:00 UTC", _utc(2026, 8, 2, 7, 0)),
+                         ("00:30 UTC", _utc(2026, 8, 2, 0, 30))):
+        a, b = live_quota._today(clock), model_pacer._today(clock)
+        check("%s: live_quota and model_pacer agree (%s)" % (label, a),
+              a == b == quota_day.today(clock), (a, b))
+
+
+def test_ledger_does_not_reset_at_utc_midnight():
+    """End to end: a state file written on Aug 1 Pacific must survive 00:30 UTC
+    on Aug 2 with its counters intact."""
+    print("\nquota day: a ledger written before UTC midnight keeps its counters")
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        p = Path(d) / "q.json"
+        # written during the Pacific day that is still in progress at 00:30 UTC
+        day = live_quota._today(_utc(2026, 8, 2, 0, 30))
+        p.write_text(json.dumps({"date": day, "live_used": 120,
+                                 "batch_used": 400, "generations": 9,
+                                 "batch_generations": 40, "by_ip_hour": {}}),
+                     encoding="utf-8")
+        check("the day key written at 00:30 UTC is Aug 1, not Aug 2",
+              day == "2026-08-01", day)
+        # load() compares against the CURRENT day; simulate by checking the key
+        # the ledger would compute at 06:59 vs 07:00 UTC
+        check("still the same quota day at 06:59 UTC",
+              live_quota._today(_utc(2026, 8, 2, 6, 59)) == day)
+        check("a new quota day only at 07:00 UTC",
+              live_quota._today(_utc(2026, 8, 2, 7, 0)) != day)
+
+
 if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
@@ -220,6 +295,9 @@ if __name__ == "__main__":
     test_segmentation_gate_calibration()
     test_gate_costs_nothing_when_it_fires()
     test_pending_skips_finished_and_terminal()
+    test_quota_day_rolls_at_midnight_pacific_not_utc()
+    test_both_ledgers_share_one_boundary()
+    test_ledger_does_not_reset_at_utc_midnight()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),

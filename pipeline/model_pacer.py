@@ -21,7 +21,8 @@ WHAT IT GUARANTEES
     process on this machine
   * jitter on release, so workers that pile up on a lock do not then fire in a
     synchronised burst the instant it frees
-  * a running count of requests this minute AND this UTC day, written to disk,
+  * a running count of requests this minute AND this QUOTA day (midnight
+    Pacific, per quota_day.py - NOT midnight UTC), written to disk,
     so a run resumed after an interruption READS its position instead of
     assuming it starts from zero
   * a real 429 permanently narrows the ceiling for the rest of the run
@@ -52,6 +53,10 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import quota_day  # noqa: E402  (one definition of the quota day boundary)
+
 ROOT = Path(__file__).resolve().parent.parent
 STATE_PATH = ROOT / "data/model_pacer.json"
 
@@ -64,8 +69,9 @@ JITTER = 0.3          # +/- seconds, so releases do not align into a burst
 LOCK_TIMEOUT = 120.0  # a stuck holder must not deadlock the whole batch
 
 
-def _today():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+def _today(clock=None):
+    """The quota day, keyed on midnight PACIFIC - see pipeline/quota_day.py."""
+    return quota_day.today(clock)
 
 
 @contextmanager

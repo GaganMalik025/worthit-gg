@@ -22,8 +22,10 @@ that budget for live generation only, so a batch run cannot silently consume the
 capacity that keeps the search box working - and, symmetrically, live traffic
 cannot eat the batch capacity the catalog depends on.
 
-When the reserve is spent, live generation switches OFF for the rest of the UTC
-day and cache misses fall back to the request queue. Cached verdicts are static
+When the reserve is spent, live generation switches OFF for the rest of the
+quota day and cache misses fall back to the request queue. The quota day ends at
+MIDNIGHT PACIFIC, which is when Google resets RPD - not at midnight UTC. See
+pipeline/quota_day.py. Cached verdicts are static
 files on a CDN and are never affected by any of this.
 
 State is a small JSON file, committed by the generation workflow. No database:
@@ -37,8 +39,13 @@ Usage:
 
 import argparse
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import quota_day  # noqa: E402  (one definition of the quota day boundary)
 
 ROOT = Path(__file__).resolve().parent.parent
 STATE_PATH = ROOT / "data/live_quota.json"
@@ -56,12 +63,18 @@ IP_LIMIT_PER_HOUR = 5
 EST_COST = 13
 
 
-def _today():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+def _today(clock=None):
+    """The quota day, keyed on midnight PACIFIC - see pipeline/quota_day.py.
+
+    Not UTC. Google resets RPD quotas at midnight Pacific, and keying this on
+    UTC zeroed the ledger seven hours early, in exactly the window an overnight
+    batch runs in.
+    """
+    return quota_day.today(clock)
 
 
-def _hour():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H")
+def _hour(clock=None):
+    return quota_day.hour(clock)
 
 
 def load(path=STATE_PATH):
@@ -70,7 +83,8 @@ def load(path=STATE_PATH):
         state = json.loads(p.read_text(encoding="utf-8"))
     else:
         state = {}
-    # a new UTC day resets everything; stale hours are dropped on write
+    # a new QUOTA day resets everything (midnight Pacific, not UTC - the
+    # boundary Google actually resets on); stale hours are dropped on write
     if state.get("date") != _today():
         state = {"date": _today(), "live_used": 0, "batch_used": 0,
                  "generations": 0, "batch_generations": 0, "by_ip_hour": {}}
@@ -109,7 +123,8 @@ def can_generate(state, ip=None, reserve=LIVE_RESERVE, est=EST_COST,
     if left < est:
         return False, "reserve_exhausted", {
             "live_used": state.get("live_used", 0), "reserve": reserve,
-            "remaining": left, "needed": est, "resets": "00:00 UTC"}
+            "remaining": left, "needed": est,
+            "resets": "00:00 America/Los_Angeles"}
 
     if ip:
         key = "%s|%s" % (ip, _hour())
@@ -153,7 +168,8 @@ def can_batch(state, est=EST_COST, reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
             "live_used": state.get("live_used", 0),
             "batch_budget": batch_budget(reserve, daily),
             "remaining": left, "needed": est,
-            "reserve_untouched": reserve, "resets": "00:00 UTC"}
+            "reserve_untouched": reserve,
+            "resets": "00:00 America/Los_Angeles"}
     return True, "ok", {"remaining": left, "titles_left_approx": left // est}
 
 

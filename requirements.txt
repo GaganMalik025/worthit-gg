@@ -5,3 +5,8 @@
 # ThinkingConfig, only the legacy thinking_budget that Gemini 3.x replaced.
 google-genai>=2.15.0
 requests>=2.32.0
+
+# IANA time zone database. Quota accounting keys on midnight Pacific (Google
+# resets RPD there, not at UTC midnight), and zoneinfo needs system tzdata or
+# this package. Pure-python, no service, no cost.
+tzdata
