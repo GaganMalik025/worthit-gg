@@ -358,13 +358,26 @@ def call_model(client, model, system, user, schema=None, thinking_level="minimal
                             ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE",
                              "500", "INTERNAL", "504", "DEADLINE"))
             if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
-                # Paced and still rate-limited: the configured ceiling was
-                # wrong. Lower it for the rest of the day rather than rediscover
-                # this on every subsequent call.
-                ceiling = model_pacer.narrow(
-                    model_pacer.status()["ceiling_rpm"] - 2)
-                print("    pacer: 429 despite pacing - ceiling now %d rpm"
-                      % ceiling)
+                # A 429 is TWO different failures wearing one status code, and
+                # treating them alike is what collapsed night 1 and then the
+                # second batch:
+                #
+                #   PerMinute -> a real rate problem. Lowering the ceiling helps.
+                #   PerDay    -> the daily allowance is gone. Lowering the rate
+                #                cannot help; it just makes every remaining call
+                #                wait 60s to fail. The flash daily exhaustion
+                #                narrowed this SHARED pacer to 1 rpm and
+                #                throttled flash-lite along with it.
+                #
+                # The quota id says which. Only a rate limit narrows the rate.
+                if "PerDay" in msg:
+                    print("    daily quota exhausted for this model - the pacer "
+                          "is not narrowed (a rate cut cannot buy back a day)")
+                else:
+                    ceiling = model_pacer.narrow(
+                        model_pacer.status()["ceiling_rpm"] - 2)
+                    print("    pacer: per-minute 429 despite pacing - ceiling "
+                          "now %d rpm" % ceiling)
             if not transient or attempt == MAX_ATTEMPTS - 1:
                 raise
             wait = BACKOFF_BASE * (2 ** attempt) + random.uniform(0, 0.5)

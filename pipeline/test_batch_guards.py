@@ -322,6 +322,48 @@ def test_prompt_names_every_word_the_guard_rejects():
     check("claim ids are forbidden in prose", "1b. Claim ids go in" in prompt)
 
 
+def test_batch_never_spends_flash():
+    """The bug that failed No Man's Sky and DayZ: flash_tier.txt carried the day
+    schedule in COMMENTS while model_for() only checked membership, so the batch
+    routed all 74 tier titles to flash at once, burned the 20/day allowance, and
+    429'd the rest."""
+    print("\nflash tier: the schedule is enforced, not just documented")
+    import synthesize
+    tier = synthesize.flash_tier()
+    check("flash_tier() returns {appid: day}, not a bare set",
+          isinstance(tier, dict) and all(isinstance(v, int) for v in tier.values()))
+    days = sorted(set(tier.values()))
+    check("every tier title carries a day", days and days[0] >= 1, days)
+    check("no day exceeds the 20/day allowance",
+          all(sum(1 for v in tier.values() if v == d) <= 20 for d in days),
+          {d: sum(1 for v in tier.values() if v == d) for d in days})
+
+    nms = 275850  # day 3 - the title that actually failed
+    check("a day-3 title does NOT get flash on a plain batch run",
+          synthesize.model_for(nms) == synthesize.DEFAULT_MODEL)
+    check("...nor on --flash-day 1",
+          synthesize.model_for(nms, flash_day=1) == synthesize.DEFAULT_MODEL)
+    check("...but does on --flash-day 3",
+          synthesize.model_for(nms, flash_day=3) == synthesize.FLASH_MODEL)
+    check("flash is opt-in: no flash_day means no flash, for ANY tier title",
+          all(synthesize.model_for(a) == synthesize.DEFAULT_MODEL for a in tier))
+
+
+def test_batch_is_interruptible():
+    """SIGINT used to do nothing: all futures were submitted up front and
+    shutdown(wait=True) drained them regardless. It took SIGTERM to stop."""
+    print("\nbatch: an interrupt actually halts it")
+    src = (Path(__file__).resolve().parent / "run_batch.py").read_text()
+    check("a SIGINT handler is installed", "signal.signal(signal.SIGINT" in src)
+    check("queued futures are cancelled on interrupt",
+          "cancel_futures=True" in src)
+    check("submission loop checks the flag between titles",
+          'if interrupted["flag"]:' in src)
+    check("in-flight titles are still waited for (no mid-write kill)",
+          "shutdown(wait=True, cancel_futures=True)" in src)
+    check("the previous handler is restored", "signal.signal(signal.SIGINT, prev_handler)" in src)
+
+
 def test_flash_tier_allocation():
     """flash is the scarce model (20/day). Who gets it, and who must not."""
     print("\nflash tier: allocation and the live-generation carve-out")
@@ -329,12 +371,14 @@ def test_flash_tier_allocation():
     tier = synthesize.flash_tier()
     check("flash_tier.txt parses to a non-empty set", len(tier) > 0, len(tier))
     check("it fits the 4-day runway at 20/day", len(tier) <= 80, len(tier))
-    check("a tier title batch-synthesizes with flash",
-          synthesize.model_for(sorted(tier)[0]) == synthesize.FLASH_MODEL)
+    check("a tier title gets flash when its day is named",
+          synthesize.model_for(sorted(tier)[0], flash_day=tier[sorted(tier)[0]])
+          == synthesize.FLASH_MODEL)
     check("a non-tier title uses flash-lite",
           synthesize.model_for(999999999) == synthesize.DEFAULT_MODEL)
-    check("LIVE generation never uses flash, even on a tier title",
-          synthesize.model_for(sorted(tier)[0], force_lite=True)
+    check("LIVE generation never uses flash, even on its scheduled day",
+          synthesize.model_for(sorted(tier)[0], force_lite=True,
+                               flash_day=tier[sorted(tier)[0]])
           == synthesize.DEFAULT_MODEL)
     check("an explicit --model override still wins",
           synthesize.model_for(999999999, override="gemini-3.5-flash")
@@ -344,7 +388,7 @@ def test_flash_tier_allocation():
           'ledger != "batch"' in src and "--force-lite" in src)
     gate_rejected = {570, 730}
     check("gate-rejected titles are not in the tier (no verdict to upgrade)",
-          not (tier & gate_rejected), sorted(tier & gate_rejected))
+          not (set(tier) & gate_rejected), sorted(set(tier) & gate_rejected))
 
 
 if __name__ == "__main__":
@@ -365,6 +409,8 @@ if __name__ == "__main__":
     test_retry_cache_key_includes_the_attempt()
     test_prompt_names_every_word_the_guard_rejects()
     test_flash_tier_allocation()
+    test_batch_never_spends_flash()
+    test_batch_is_interruptible()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),

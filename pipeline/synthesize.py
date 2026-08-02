@@ -169,30 +169,46 @@ SYSTEM_INSTRUCTION = _SYSTEM_TEMPLATE % {
 
 
 def flash_tier():
-    """appids whose verdict is synthesized with flash. Missing file -> empty."""
-    out = set()
+    """{appid: scheduled day} for titles that get flash. Missing file -> {}.
+
+    The DAY matters and used to be ignored. flash_tier.txt carried the schedule
+    in its comments while model_for() only checked membership, so the batch
+    routed all 74 tier titles to flash on the first run, burned the 20/day
+    allowance in minutes, and then failed every remaining tier title with a 429.
+    A schedule that lives only in comments is documentation, not a schedule.
+    """
+    out = {}
     if not FLASH_TIER_PATH.exists():
         return out
     for line in FLASH_TIER_PATH.read_text(encoding="utf-8").splitlines():
-        head = line.split("#", 1)[0].strip()
-        if head.isdigit():
-            out.add(int(head))
+        head, _, comment = line.partition("#")
+        head = head.strip()
+        if not head.isdigit():
+            continue
+        day = re.search(r"day (\d+)", comment)
+        out[int(head)] = int(day.group(1)) if day else 1
     return out
 
 
-def model_for(appid, override=None, force_lite=False):
+def model_for(appid, override=None, force_lite=False, flash_day=None):
     """Which synthesis model this title gets.
 
-    force_lite is the live-generation path and always wins: a user waiting on a
-    cache miss must never be made to wait for tomorrow's flash allowance, and a
-    live request that lands on a flash-tier title would otherwise burn a slot
-    reserved for the batch.
+    FLASH IS OPT-IN, and that default is the fix for the failure above. flash is
+    used only when the caller names the day it is spending (flash_day) AND this
+    title is scheduled for exactly that day. Every other path - the catalog
+    batch, live generation, a bare CLI run - gets flash-lite, so nothing can
+    reach the 20/day model by accident.
+
+    force_lite additionally hard-wires the live path: a user waiting on a cache
+    miss must never wait for tomorrow's allowance, and a live request landing on
+    a tier title would burn a slot the batch reserved.
     """
     if override:
         return override
-    if force_lite:
+    if force_lite or flash_day is None:
         return DEFAULT_MODEL
-    return FLASH_MODEL if int(appid) in flash_tier() else DEFAULT_MODEL
+    return (FLASH_MODEL if flash_tier().get(int(appid)) == int(flash_day)
+            else DEFAULT_MODEL)
 
 
 def _bucket_order(name):
@@ -435,7 +451,8 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed, model)
 
 def synthesize_one(client, args, appid):
     # the flash tier is per TITLE, not per run: one batch mixes both models
-    args.model = model_for(appid, args.model_override, args.force_lite)
+    args.model = model_for(appid, args.model_override, args.force_lite,
+                           args.flash_day)
     claims_blob, corpus, pool, cohorts = load_inputs(appid, args.claims, args.filtered)
     game = claims_blob.get("game_name") or appid
     detected = flags_mod.detect(pool)
@@ -525,6 +542,8 @@ def main():
                     help="override; default resolves via flash_tier.txt")
     ap.add_argument("--force-lite", action="store_true",
                     help="live-generation path: always flash-lite")
+    ap.add_argument("--flash-day", type=int, default=None,
+                    help="spend flash on titles scheduled for this tier day")
     ap.add_argument("--retries", type=int, default=2)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--dry-run", action="store_true")

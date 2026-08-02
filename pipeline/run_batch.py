@@ -35,6 +35,7 @@ Usage:
 
 import argparse
 import json
+import signal
 import sys
 import threading
 import time
@@ -175,9 +176,35 @@ def main():
     save_state(state)
 
     t0, done, stopped = time.time(), [], None
-    with ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+
+    # SIGINT must actually stop this. It did not: every future was submitted up
+    # front, and `with ThreadPoolExecutor(...)` calls shutdown(wait=True) on the
+    # way out, so KeyboardInterrupt landed in the main thread and the pool then
+    # calmly drained all 131 queued titles anyway. Stopping the run took SIGTERM.
+    #
+    # Now a handler sets a flag, queued futures are cancelled, and only the
+    # titles already in flight are allowed to finish - which is what keeps state
+    # consistent, because run_title records each title AFTER its verdict is
+    # written. Cancelling a queued title loses nothing; killing an in-flight one
+    # mid-write is what we are avoiding.
+    interrupted = {"flag": False}
+
+    def _on_interrupt(signum, _frame):
+        if interrupted["flag"]:                     # second Ctrl-C: give up now
+            print("\nsecond interrupt - exiting immediately", flush=True)
+            raise KeyboardInterrupt
+        interrupted["flag"] = True
+        print("\ninterrupt received: cancelling queued titles. Titles already "
+              "running will finish and record, then this exits.", flush=True)
+
+    prev_handler = signal.signal(signal.SIGINT, _on_interrupt)
+    pool = ThreadPoolExecutor(max_workers=args.concurrency)
+    try:
         futures = []
         for row in todo:
+            if interrupted["flag"]:
+                stopped = ("interrupted", {"submitted": len(futures)})
+                break
             allowed, reason, detail = live_quota.can_batch(
                 live_quota.load(), reserve=args.reserve)
             if not allowed:
@@ -186,7 +213,25 @@ def main():
                 break
             futures.append(pool.submit(run_title, row, state, args))
         for f in futures:
-            done.append(f.result())
+            if interrupted["flag"]:
+                break
+            try:
+                done.append(f.result())
+            except Exception as exc:  # noqa: BLE001 - one title must not end the run
+                print("  [ERR ] %s" % exc, flush=True)
+        if interrupted["flag"]:
+            # cancel what has not started; wait only for the in-flight titles
+            pool.shutdown(wait=True, cancel_futures=True)
+            done.extend(f.result() for f in futures
+                        if f.done() and not f.cancelled() and not f.exception())
+            if stopped is None:
+                stopped = ("interrupted", {"submitted": len(futures)})
+            print("stopped: %d titles recorded, %d cancelled before starting"
+                  % (len(done), sum(1 for f in futures if f.cancelled())))
+        else:
+            pool.shutdown(wait=True)
+    finally:
+        signal.signal(signal.SIGINT, prev_handler)
 
     wall = time.time() - t0
     ok = sum(1 for d in done if d["published"])
