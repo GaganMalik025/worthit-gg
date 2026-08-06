@@ -160,3 +160,27 @@ budget stop; the day-3 upgrades overlap the outstanding count).
 **Developer notes on the audit:** Read all 20 sampled citations against the filter
 annotations (`hearts_present`, `profanity_soft`, `all_caps`); no slurs, no explicit
 content, no distressing material found. Clean.
+
+---
+
+## 2026-08-06 — 4.4 audit, day-3 flash-lite verdicts
+
+**QR-4 — Content safety: PASS**
+
+| | |
+|---|---|
+| Automated gate | **541 citations across 12 verdicts, 0 failures** |
+| Manual audit | 10 verdicts spot-checked, 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-day3.md` |
+
+These 12 reached `main` briefly inside an unrelated UI commit (`2177675`, a
+`git add -A site/` that swept up files being held back), were reverted out in
+`3e4bc6e`, audited, and re-committed on their own in `d03bea8`. Recorded because
+the gate exists to be auditable, and a gate that was skipped and then repaired
+is part of that record.
+
+They are flash-lite-final — dropped from the flash tier rather than upgraded,
+since re-synthesis changes which claims are selected and therefore which
+citations render, which would mean paying for this audit twice.
+
+**Developer notes on the audit:** _(left blank — to be filled by the author)_
