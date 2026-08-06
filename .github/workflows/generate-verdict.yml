@@ -39,9 +39,34 @@ jobs:
           test -n "$APPID" || { echo "no appid in client_payload"; exit 1; }
           test -n "$GEMINI_API_KEY" || {
             echo "::error::GEMINI_API_KEY is not set in Actions secrets"; exit 1; }
-          git fetch origin verdicts:verdicts 2>/dev/null || git branch verdicts
-          git checkout verdicts
-          git merge --no-edit origin/main || true
+          # CODE COMES FROM main. FULL STOP.
+          #
+          # This used to `git checkout verdicts` and then
+          # `git merge --no-edit origin/main || true`. The `|| true` swallowed a
+          # failed merge, and the run carried on executing whatever code the
+          # verdicts branch happened to hold. That branch had drifted 31 commits
+          # behind - its synthesize.py still had DEFAULT_MODEL =
+          # "gemini-3.5-flash" and none of the tier, cap or force-lite logic -
+          # so a LIVE request asked for the 20/day model on a day it was already
+          # spent, and died on 429s.
+          #
+          # The verdicts branch is ARTIFACT STORAGE. No code runs from it. The
+          # commit step below reaches for it only to push a file.
+          echo "running from $(git rev-parse --abbrev-ref HEAD) @ $(git rev-parse --short HEAD)"
+          grep -n "^DEFAULT_MODEL" pipeline/synthesize.py
+          python - <<'PROVE'
+          import sys, pathlib
+          sys.path.insert(0, "pipeline")
+          import synthesize
+          # Fail the run rather than generate from a build that predates the
+          # guards. Cheap, and it is exactly the check that would have caught
+          # the stale-branch incident before a single request was spent.
+          assert synthesize.DEFAULT_MODEL == "gemini-3.5-flash-lite", \
+              "stale code: DEFAULT_MODEL is %s" % synthesize.DEFAULT_MODEL
+          assert hasattr(synthesize, "model_for"), "stale code: no model_for()"
+          assert hasattr(synthesize, "flash_tier"), "stale code: no flash_tier()"
+          print("code check ok: flash-lite default, tier and cap logic present")
+          PROVE
 
       - uses: actions/setup-python@v5
         with:
@@ -49,28 +74,80 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
 
-      # --- the five stages the UI shows. Names are load-bearing. ---
-      - name: ingest
-        run: python pipeline/fetch_reviews.py "$APPID"
-      - name: filter
-        run: python pipeline/filter_reviews.py "$APPID"
-      - name: extract
-        run: python pipeline/extract_claims.py "$APPID"
-      - name: verdict
-        run: python pipeline/synthesize.py "$APPID"
+      # The runner must NOT trust the committed data/live_quota.json. That file
+      # is a local artifact of whoever last ran a batch; the copy on main was
+      # five days stale and claimed batch_used 11 while the real project-wide
+      # flash-lite counter was near its 500/day ceiling. A ledger the runner
+      # cannot see is not a guard.
+      #
+      # LIVE_QUOTA, the repository variable, is the ledger both the API routes
+      # and this workflow already share. Seed the file from it so the pipeline
+      # reads today's real numbers, and let `record outcome` write back.
+      - name: seed the ledger from LIVE_QUOTA
+        run: |
+          set +e
+          RAW=$(gh api "repos/${{ github.repository }}/actions/variables/LIVE_QUOTA" --jq .value 2>/dev/null)
+          RC=$?
+          set -e
+          [ $RC -ne 0 ] && RAW=""
+          mkdir -p data
+          RAW="$RAW" python - <<'SEED'
+          import json, os, sys
+          sys.path.insert(0, "pipeline")
+          import live_quota
+          raw = os.environ.get("RAW", "").strip()
+          try:
+              shared = json.loads(raw) if raw else {}
+          except ValueError:
+              shared = {}
+          state = live_quota.load()          # rolls the day if it is stale
+          for k in ("live_used", "batch_used", "flash_used",
+                    "generations", "batch_generations", "flash_generations"):
+              if isinstance(shared.get(k), int) and shared.get("date") == state["date"]:
+                  state[k] = shared[k]
+          live_quota.save(state)
+          print("ledger seeded:", json.dumps(
+              {k: state[k] for k in ("date", "live_used", "batch_used", "flash_used")}))
+          SEED
 
-      # invariant 8, in-pipeline, before anything is published. Exit 1 here
-      # means the artifact is deleted and nothing is committed.
+      # --- the five stages the UI shows. Names are load-bearing. ---
+      #
+      # Every one goes through generate_one.py, which is the SAME entry point
+      # the catalog batch uses. That is the 2.6 principle applied to the live
+      # path: one place decides which model a path may use, so the live path
+      # cannot quietly diverge from the batch again. Calling the stage scripts
+      # directly is what let --force-lite go unpassed and sent a live request
+      # to flash.
+      #
+      # The steps stay separate because /api/status maps these names to the
+      # progress feed. One collapsed step would leave the UI nothing to show.
+      - name: ingest
+        run: python pipeline/generate_one.py "$APPID" --stage ingest --ledger live
+      - name: filter
+        run: python pipeline/generate_one.py "$APPID" --stage filter --ledger live
+      - name: extract
+        run: python pipeline/generate_one.py "$APPID" --stage extract --ledger live
+      - name: verdict
+        run: python pipeline/generate_one.py "$APPID" --stage verdict --ledger live
+
+      # invariant 8, in-pipeline, before anything is published, AND the ledger
+      # charge. Exit 1 here means the artifact is deleted and nothing commits.
       - name: qr4
         id: qr4
-        run: |
-          python pipeline/qr4_gate.py "site/public/verdicts/$APPID.json"
+        run: python pipeline/generate_one.py "$APPID" --stage qr4 --ledger live
 
+      # Artifact storage only. We switch to the branch HERE, after every stage
+      # has already run from main's code, carrying just the one file across.
       - name: commit to verdicts branch
         if: success()
         run: |
           git config user.name  "worthit-bot"
           git config user.email "bot@worthit.gg"
+          cp "site/public/verdicts/$APPID.json" "/tmp/$APPID.json"
+          git fetch origin verdicts:verdicts 2>/dev/null || git branch verdicts
+          git checkout verdicts
+          mkdir -p site/public/verdicts
+          cp "/tmp/$APPID.json" "site/public/verdicts/$APPID.json"
           git add "site/public/verdicts/$APPID.json"
           git commit -m "verdict: $APPID (generated live)" || exit 0
           git pull --rebase --autostash origin verdicts || true

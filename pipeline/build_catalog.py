@@ -154,7 +154,7 @@ def existing_verdicts():
     return have
 
 
-def select(entries, free, live_list, exempt, have, target, cap):
+def select(entries, free, live_list, exempt, have, target, cap, to_rank=0):
     """Walk the ranking, filling slots, capping live-service representation.
 
     The free-to-play flag is wrong in both directions and both corrections are
@@ -163,7 +163,15 @@ def select(entries, free, live_list, exempt, have, target, cap):
     """
     chosen, skipped, n_live = [], [], 0
     for rank, (appid, title, reviews) in enumerate(entries, 1):
-        if len(chosen) >= target:
+        # Two stop conditions, and they mean different things. to_rank covers the
+        # ranking down to a depth ("everything in the top 500"); target counts
+        # NEW titles to add. Covering a depth is the right frame once part of
+        # the catalog already exists, because a count silently reaches deeper
+        # every time more titles are already held.
+        if to_rank:
+            if rank > to_rank:
+                break
+        elif len(chosen) >= target:
             break
         if appid in have:
             continue
@@ -199,6 +207,9 @@ def main():
     ap = argparse.ArgumentParser(description="Build the Phase 4 catalog manifest")
     ap.add_argument("--target", type=int, default=TARGET,
                     help="new titles to generate (default %d)" % TARGET)
+    ap.add_argument("--to-rank", type=int, default=0,
+                    help="cover the ranking down to this rank, instead of "
+                         "adding a fixed number of new titles")
     ap.add_argument("--cap", type=int, default=LIVE_SERVICE_CAP,
                     help="max live-service titles (default %d)" % LIVE_SERVICE_CAP)
     ap.add_argument("--night-1", type=int, default=NIGHT_1)
@@ -221,7 +232,7 @@ def main():
              len(live_list), len(exempt), len(have)))
 
     chosen, skipped = select(entries, free, live_list, exempt, have,
-                             args.target, args.cap)
+                             args.target, args.cap, args.to_rank)
 
     # Delisted titles the store walk cannot see. merge_verdicts covers the ones
     # we already hold a verdict for; this covers the rest, and there is no

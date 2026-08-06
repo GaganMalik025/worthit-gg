@@ -235,14 +235,78 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
                   "total_seconds": round(sum(t["seconds"] for t in timings), 1)}
 
 
+STAGE_BASELINE = ROOT / "data/.stage_baseline.json"
+
+
+def run_single_stage(appid, stage, ledger="live"):
+    """Run exactly ONE stage, with the flags this ledger requires.
+
+    The CI workflow needs five separately-named steps, because /api/status maps
+    those step names to the progress feed the user watches - collapsing them
+    into one generate_one call would leave the UI with nothing to show. But the
+    workflow used to invoke the four stage scripts DIRECTLY, which meant the
+    flag logic here never applied to the live path: --force-lite was never
+    passed, and live generation asked for flash.
+
+    So the stages stay separate and every one of them comes through here. One
+    place decides which model a path may use.
+    """
+    for key, label, script in STAGES:
+        if key != stage:
+            continue
+        if key == "ingest":                       # record where this run started
+            STAGE_BASELINE.parent.mkdir(parents=True, exist_ok=True)
+            STAGE_BASELINE.write_text(json.dumps(
+                {"appid": str(appid),
+                 "calls": model_pacer.calls_for(appid)}), encoding="utf-8")
+        extra = ("--force-lite",) if (key == "verdict" and ledger != "batch") else ()
+        dt, proc = run_stage(script, appid, extra=extra)
+        print(proc.stdout[-6000:])
+        if proc.stderr:
+            print(proc.stderr[-3000:], file=sys.stderr)
+        print("[%s] %.1fs rc=%d" % (key, dt, proc.returncode))
+        return proc.returncode
+
+    if stage == "qr4":
+        # invariant 8, and the ledger charge, at the end of the run
+        out_path = VERDICTS / ("%s.json" % appid)
+        if not out_path.exists():
+            print("no verdict written for %s" % appid, file=sys.stderr)
+            return 1
+        verdict = json.loads(out_path.read_text(encoding="utf-8"))
+        passed, report = qr4_gate.gate(verdict, verdict.get("game_name"))
+        print(json.dumps(report, indent=2))
+        try:
+            base = json.loads(STAGE_BASELINE.read_text(encoding="utf-8"))
+            before = base["calls"] if base.get("appid") == str(appid) else 0
+        except Exception:                          # noqa: BLE001
+            before = 0
+        spent = max(0, model_pacer.calls_for(appid) - before)
+        live_quota.charge(spent, ledger=ledger)
+        print("charged %d request(s) to the %s ledger" % (spent, ledger))
+        if not passed:
+            out_path.unlink()                      # withheld, never served
+            return 1
+        return 0
+
+    print("unknown stage: %s" % stage, file=sys.stderr)
+    return 2
+
+
 def main():
     ap = argparse.ArgumentParser(description="Generate one verdict live")
     ap.add_argument("appid")
+    ap.add_argument("--stage", default=None,
+                    help="run one stage only (ingest|filter|extract|verdict|qr4)")
+    ap.add_argument("--ledger", default="live", choices=("live", "batch"))
     ap.add_argument("--ip", default=None, help="secondary per-IP guard")
     ap.add_argument("--reserve", type=int, default=live_quota.LIVE_RESERVE)
     ap.add_argument("--report", action="store_true",
                     help="print the measured timing used to set the wait copy")
     args = ap.parse_args()
+
+    if args.stage:
+        sys.exit(run_single_stage(args.appid, args.stage, args.ledger))
 
     print("generating %s ..." % args.appid)
     t0 = time.time()

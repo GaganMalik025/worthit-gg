@@ -98,3 +98,9 @@ data/model_pacer.json.lock
 
 # QR-5 blinding key. Do not open while scoring evals/QR5-scoring-sheet.md.
 evals/qr5-key.json
+
+# The live-generation ledger is per-machine runtime state. It was committed
+# once and went five days stale, and the CI runner then read it as truth while
+# the real project-wide counter was near its ceiling. LIVE_QUOTA (the repository
+# variable) is the shared ledger; this file is only a local cache of it.
+data/live_quota.json
