@@ -114,20 +114,49 @@ export interface RunInfo {
   appid: string | null;
 }
 
-/** Runs of the generate workflow that have not finished, oldest first. */
+/**
+ * Statuses that mean a run is FINISHED. Everything else is treated as still
+ * live - see listActiveRuns for why the list is inverted.
+ *
+ * From GitHub's workflow-runs API (docs fetched 2026-08-06), the full status
+ * vocabulary is: completed, action_required, cancelled, failure, neutral,
+ * skipped, stale, success, timed_out, in_progress, queued, requested, waiting,
+ * pending. The non-terminal ones are queued, in_progress, requested, waiting,
+ * pending and action_required.
+ */
+const TERMINAL_RUN_STATUS = new Set([
+  "completed", "cancelled", "failure", "neutral",
+  "skipped", "stale", "success", "timed_out",
+]);
+
+/**
+ * Runs of the generate workflow that have not finished, oldest first.
+ *
+ * TWO THINGS CHANGED HERE, AND BOTH WERE CAUSING A STUCK UI.
+ *
+ * 1. It used to poll only `queued` and `in_progress`. GitHub also parks runs in
+ *    `waiting`, `requested`, `pending` and `action_required` - a run awaiting a
+ *    runner or an approval sits in one of those and was invisible, so
+ *    /api/status saw zero active runs and told the user "You're next" forever.
+ *
+ * 2. The filter is now by EXCLUSION of terminal statuses, in a single
+ *    unfiltered request, rather than one request per status. That is fewer API
+ *    calls per poll, and it fails safe: a status GitHub adds later counts as
+ *    active and stays visible, instead of silently vanishing from the queue the
+ *    way `waiting` did.
+ */
 export async function listActiveRuns(): Promise<RunInfo[]> {
-  const out: RunInfo[] = [];
-  for (const status of ["queued", "in_progress"]) {
-    const res = await gh(
-      `/actions/workflows/generate-verdict.yml/runs?status=${status}&per_page=50`,
-    );
-    if (!res.ok) continue;
-    const { workflow_runs = [] } = (await res.json()) as {
-      workflow_runs: { id: number; status: string; created_at: string }[];
-    };
-    out.push(...workflow_runs.map((r) => ({ ...r, appid: null })));
-  }
-  return out.sort((a, b) => a.created_at.localeCompare(b.created_at));
+  const res = await gh(
+    "/actions/workflows/generate-verdict.yml/runs?per_page=50",
+  );
+  if (!res.ok) return [];
+  const { workflow_runs = [] } = (await res.json()) as {
+    workflow_runs: { id: number; status: string; created_at: string }[];
+  };
+  return workflow_runs
+    .filter((r) => !TERMINAL_RUN_STATUS.has(r.status))
+    .map((r) => ({ ...r, appid: null }))
+    .sort((a, b) => a.created_at.localeCompare(b.created_at));
 }
 
 /** Step names of a run's job, in order — the five UI stages. */

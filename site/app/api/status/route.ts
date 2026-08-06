@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { listActiveRuns, readQuota, runSteps, verdictExists } from "../../../lib/github";
-import type { QuotaState } from "../../../lib/quota";
+import { dispatchLost, type QuotaState } from "../../../lib/quota";
 
 export const dynamic = "force-dynamic";
 
@@ -44,6 +44,18 @@ export async function GET(req: NextRequest) {
   // 3. still working
   const runs = await listActiveRuns();
   if (runs.length === 0) {
+    // No artifact, no terminal outcome, and no run in ANY non-terminal state.
+    // This used to return {queued, ahead: 0} - the same response as a genuine
+    // "you're next", so a request whose run never existed polled until timeout
+    // showing a queue position it did not have.
+    //
+    // Past the grace window that is not a queue, it is a lost dispatch, and it
+    // gets its own terminal state so the client can fall back to the request
+    // queue instead of waiting on something that is not coming.
+    if (dispatchLost(quota, appid)) {
+      return NextResponse.json({ state: "dispatch_lost", appid });
+    }
+    // inside the window: the run genuinely has not appeared yet
     return NextResponse.json({ state: "queued", ahead: 0 });
   }
 
