@@ -134,3 +134,27 @@ scoring 2.
 The claims did not get worse — the standard got more honest. Per the rubric's Versioning
 section, the v1.0 figure is not a valid comparison point and no improvement is claimed
 against it.
+
+---
+
+## 2026-08-06 — 4.4 catalog audit (BUILD_PLAN DoD)
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | `pipeline/qr4_gate.py --all` — **7,102 citations across 131 verdicts, 0 failures** |
+| Manual audit | 10 verdicts spot-checked, 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-sample.md`, sampled deterministically from the audit-stable set |
+| Published | 119 verdicts, in two commits (34 flash-tier day 1–2; 85 non-tier + day 3) |
+
+The audit sample was drawn only from **audit-stable** verdicts — those whose
+synthesis model will not change again. The 12 day-3 titles still awaiting a
+flash upgrade were excluded: auditing a verdict that is about to be regenerated
+spends the audit on something that will not survive.
+
+**Catalog position:** 119 of 150 published · 4 gate-rejected as thin-segmentation
+· 27 outstanding (12 day-3 flash upgrades, 20 day-4 titles, 2 rolled over by the
+budget stop; the day-3 upgrades overlap the outstanding count).
+
+**Developer notes on the audit:** _(left blank — to be filled by the author)_
