@@ -78,7 +78,7 @@ def record(state, appid, entry):
         save_state(state)
 
 
-def pending(catalog, state, night, limit, skip_flash_tier=False):
+def pending(catalog, state, night, limit, skip_flash_tier=False, only=None):
     """Titles still to do, in manifest order.
 
     A title already generated is skipped rather than regenerated - the point of
@@ -96,6 +96,8 @@ def pending(catalog, state, night, limit, skip_flash_tier=False):
         if night and row.get("night") != night:
             continue
         appid = row["appid"]
+        if only is not None and appid not in only:
+            continue
         if appid in tier:
             continue
         if (VERDICTS / ("%d.json" % appid)).exists():
@@ -142,6 +144,10 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="stop after N titles")
     ap.add_argument("--concurrency", type=int, default=2)
     ap.add_argument("--reserve", type=int, default=live_quota.LIVE_RESERVE)
+    ap.add_argument("--appids", default=None,
+                    help="restrict the run to these appids (comma/space list "
+                         "or a file path). Keeps every guard - budget stop, "
+                         "pacer, state, interrupt - unlike looping by hand.")
     ap.add_argument("--skip-flash-tier", action="store_true",
                     help="hold back titles scheduled for a flash day")
     ap.add_argument("--no-gate", action="store_true",
@@ -154,8 +160,14 @@ def main():
         sys.exit("no data/catalog.json - run pipeline/build_catalog.py first")
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     state = load_state()
+    only = None
+    if args.appids:
+        raw = Path(args.appids).read_text() if Path(args.appids).exists() \
+            else args.appids
+        only = {int(x) for x in raw.replace(",", " ").split() if x.strip().isdigit()}
+        print("restricted to %d appids" % len(only))
     todo = pending(catalog, state, args.night, args.limit,
-                   args.skip_flash_tier)
+                   args.skip_flash_tier, only)
 
     q = live_quota.load()
     budget = live_quota.batch_remaining(q, args.reserve)

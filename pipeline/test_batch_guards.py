@@ -422,6 +422,47 @@ def test_ledger_charge_is_atomic():
           "live_quota.charge(" in gsrc and "live_quota.save(state)" not in gsrc)
 
 
+def test_flash_daily_cap_is_enforced_by_the_ledger():
+    """Second lock on the 20/day model. The schedule is enforced in model_for();
+    this refuses the 21st call regardless of what any schedule claims - the same
+    class of gap that let the routing bug spend the whole allowance."""
+    print("\nflash: the daily cap is a ledger refusal, not a comment")
+    check("the cap is the verified 20/day",
+          live_quota.FLASH_DAILY_LIMIT == 20, live_quota.FLASH_DAILY_LIMIT)
+    st = {"date": live_quota._today(), "live_used": 0, "batch_used": 0,
+          "flash_used": 0, "generations": 0, "batch_generations": 0,
+          "flash_generations": 0, "by_ip_hour": {}}
+    ok, _, _ = live_quota.can_flash(st)
+    check("a fresh day allows flash", ok)
+    st["flash_used"] = 19
+    check("the 20th call is allowed", live_quota.can_flash(st)[0])
+    st["flash_used"] = 20
+    ok, reason, detail = live_quota.can_flash(st)
+    check("the 21st is refused", not ok and reason == "flash_daily_exhausted",
+          reason)
+    check("the refusal names when it resets",
+          "America/Los_Angeles" in detail["resets"])
+
+    live_quota.record(st, 3, ledger="flash")
+    check("flash charges land on flash_used, not batch_used",
+          st["flash_used"] == 23 and st["batch_used"] == 0, st)
+    check("a flash charge does not touch the flash-lite budget",
+          live_quota.batch_remaining(st) == live_quota.batch_budget(),
+          live_quota.batch_remaining(st))
+
+    src = (Path(__file__).resolve().parent / "synthesize.py").read_text()
+    call_at = src.index("resp = call_model(client, args.model")
+    window = src[max(0, call_at - 1200):call_at]
+    check("the check sits immediately before the call site",
+          "live_quota.can_flash(" in window)
+    check("and charges before sending", 'live_quota.charge(1, ledger="flash")'
+          in window)
+    check("refusal is loud by default (SystemExit), not a silent downgrade",
+          "REFUSED mid-title" in src)
+    check("--flash-fallback exists as an explicit opt-in",
+          "--flash-fallback" in src)
+
+
 def test_batch_never_spends_flash():
     """The bug that failed No Man's Sky and DayZ: flash_tier.txt carried the day
     schedule in COMMENTS while model_for() only checked membership, so the batch
@@ -510,6 +551,7 @@ if __name__ == "__main__":
     test_prompt_names_every_word_the_guard_rejects()
     test_flash_tier_allocation()
     test_batch_never_spends_flash()
+    test_flash_daily_cap_is_enforced_by_the_ledger()
     test_batch_is_interruptible()
     test_call_counting_is_at_the_call_site()
     test_ledger_charge_is_atomic()

@@ -37,6 +37,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import flags as flags_mod                              # noqa: E402
+import live_quota                                      # noqa: E402  (flash daily cap)
+import model_pacer                                     # noqa: E402
 import prevalence_guard                                # noqa: E402
 from extract_claims import (CACHE_DIR, PACE_SECONDS, call_model,  # noqa: E402
                             cache_path, load_env, response_text)
@@ -454,6 +456,25 @@ def synthesize_one(client, args, appid):
     # the flash tier is per TITLE, not per run: one batch mixes both models
     args.model = model_for(appid, args.model_override, args.force_lite,
                            args.flash_day)
+
+    # THE FLASH CAP, ENFORCED. model_for() decides which model this title should
+    # get; the ledger decides whether that is still affordable. Both are needed:
+    # the schedule was already correct when the routing bug spent the allowance,
+    # because nothing checked the remaining balance before spending it.
+    if args.model == FLASH_MODEL:
+        allowed, reason, detail = live_quota.can_flash(live_quota.load())
+        if not allowed:
+            if args.flash_fallback:
+                print("  flash cap reached (%s) - falling back to %s"
+                      % (json.dumps(detail), DEFAULT_MODEL))
+                args.model = DEFAULT_MODEL
+            else:
+                raise SystemExit(
+                    "\nREFUSED: %s wanted gemini-3.5-flash, but the daily cap "
+                    "is spent.\n  %s\n  Nothing was sent. Re-run after the "
+                    "reset, or pass --flash-fallback to synthesize this title "
+                    "on flash-lite instead."
+                    % (appid, json.dumps(detail)))
     claims_blob, corpus, pool, cohorts = load_inputs(appid, args.claims, args.filtered)
     game = claims_blob.get("game_name") or appid
     detected = flags_mod.detect(pool)
@@ -491,6 +512,24 @@ def synthesize_one(client, args, appid):
             text = json.loads(cpath.read_text(encoding="utf-8"))["text"]
             print("  [cached] attempt %d" % attempt)
         else:
+            # Per CALL, not per title: a retry is another flash request, and a
+            # title with two retries could otherwise cross the cap mid-title.
+            # Check then charge, so the 21st call is refused before it is sent
+            # rather than discovered afterwards in a 429.
+            if args.model == FLASH_MODEL:
+                ok_flash, why, detail = live_quota.can_flash(live_quota.load())
+                if not ok_flash:
+                    if args.flash_fallback:
+                        print("  flash cap reached mid-title - remaining "
+                              "attempts use %s" % DEFAULT_MODEL)
+                        args.model = DEFAULT_MODEL
+                    else:
+                        raise SystemExit(
+                            "\nREFUSED mid-title: the daily gemini-3.5-flash "
+                            "cap is spent.\n  %s\n  Nothing was sent."
+                            % json.dumps(detail))
+                else:
+                    live_quota.charge(1, ledger="flash")
             resp = call_model(client, args.model, system, prompt,
                               schema=VERDICT_SCHEMA, thinking_level="medium")
             text, _ = response_text(resp)
@@ -545,6 +584,9 @@ def main():
                     help="live-generation path: always flash-lite")
     ap.add_argument("--flash-day", type=int, default=None,
                     help="spend flash on titles scheduled for this tier day")
+    ap.add_argument("--flash-fallback", action="store_true",
+                    help="if the flash cap is spent, use flash-lite instead of "
+                         "refusing")
     ap.add_argument("--retries", type=int, default=2)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--dry-run", action="store_true")

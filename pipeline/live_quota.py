@@ -67,6 +67,18 @@ DAILY_LIMIT = 500
 # leaves 400/day for the catalog batch. The old 300 was chosen against a 1500
 # ceiling; carried over unchanged it would have left the batch only 200.
 LIVE_RESERVE = 100
+
+# gemini-3.5-flash has its own, much smaller, daily bucket. It is NOT part of
+# DAILY_LIMIT - the two models are metered separately by the API - so it needs
+# its own counter and its own refusal.
+#
+# This exists because a schedule written in comments is not a schedule.
+# flash_tier.txt named a day per title, model_for() ignored the day, and the
+# batch spent the whole allowance in minutes and then 429'd every remaining tier
+# title. The day check is now enforced in model_for(); this is the second lock:
+# even a correctly scheduled run cannot exceed the cap, because the ledger
+# refuses the 21st call regardless of what any schedule says.
+FLASH_DAILY_LIMIT = 20
 # Secondary guard only - see the module docstring.
 IP_LIMIT_PER_HOUR = 5
 
@@ -100,9 +112,12 @@ def load(path=STATE_PATH):
     # boundary Google actually resets on); stale hours are dropped on write
     if state.get("date") != _today():
         state = {"date": _today(), "live_used": 0, "batch_used": 0,
-                 "generations": 0, "batch_generations": 0, "by_ip_hour": {}}
+                 "flash_used": 0, "generations": 0, "batch_generations": 0,
+                 "flash_generations": 0, "by_ip_hour": {}}
     state.setdefault("live_used", 0)
     state.setdefault("batch_used", 0)
+    state.setdefault("flash_used", 0)
+    state.setdefault("flash_generations", 0)
     state.setdefault("generations", 0)
     state.setdefault("batch_generations", 0)
     state.setdefault("by_ip_hour", {})
@@ -186,8 +201,27 @@ def can_batch(state, est=EST_COST, reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
     return True, "ok", {"remaining": left, "titles_left_approx": left // est}
 
 
+def flash_remaining(state, limit=FLASH_DAILY_LIMIT):
+    return max(0, limit - state.get("flash_used", 0))
+
+
+def can_flash(state, est=1, limit=FLASH_DAILY_LIMIT):
+    """(allowed, reason, detail) for one gemini-3.5-flash request."""
+    left = flash_remaining(state, limit)
+    if left < est:
+        return False, "flash_daily_exhausted", {
+            "flash_used": state.get("flash_used", 0), "flash_limit": limit,
+            "remaining": left, "needed": est,
+            "resets": "00:00 America/Los_Angeles"}
+    return True, "ok", {"remaining": left}
+
+
 def record(state, cost, ip=None, ledger="live"):
     """Charge actual Gemini requests used by one generation to one ledger."""
+    if ledger == "flash":
+        state["flash_used"] = state.get("flash_used", 0) + int(cost)
+        state["flash_generations"] = state.get("flash_generations", 0) + 1
+        return state
     if ledger == "batch":
         state["batch_used"] = state.get("batch_used", 0) + int(cost)
         state["batch_generations"] = state.get("batch_generations", 0) + 1
@@ -237,6 +271,10 @@ def status(state, reserve=LIVE_RESERVE, est=EST_COST):
         "batch_remaining": bleft,
         "batch_generations_today": state.get("batch_generations", 0),
         "batch_titles_left_approx": bleft // est,
+        "flash_daily_limit": FLASH_DAILY_LIMIT,
+        "flash_used": state.get("flash_used", 0),
+        "flash_remaining": flash_remaining(state),
+        "flash_generations_today": state.get("flash_generations", 0),
     }
 
 
