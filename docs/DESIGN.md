@@ -102,9 +102,13 @@ missing row, and the gap is itself information about who bounced.
   bar, beginning ~420ms — after the verdict stamp has landed) — the second
   half of the page's two-beat entrance sequence. Respect
   `prefers-reduced-motion`: render filled, no animation.
-- A compact 4-stripe mini version of the Split Bar appears on home-grid cards
-  and becomes the favicon/OG-image motif. One element, reused everywhere =
-  identity.
+- A compact 4-stripe mini version of the Split Bar is the favicon/OG-image
+  motif, and is the last-resort face of the verdict-page case art. One element,
+  reused = identity.
+- It is **not** on home-grid cards. Those are poster-only at rest (see Home
+  below) - a mini Split Bar there competed with the cover art and shrank the
+  signature element to the point where its four stripes read as texture rather
+  than as data.
 
 Everything else stays quiet so this lands.
 
@@ -260,15 +264,48 @@ never do.
 1. Wordmark + one-line promise: "Should you buy it? The verdict, with
    receipts." (This exact line — it names both the product and the mechanism.)
 2. Search box, autofocus on desktop, full-width. Placeholder: "Search a game…"
-3. Grid of game cards: title, mini Split Bar, verdict chip — and capsule art
-   from the Steam CDN, consistent with the verdict-page case hero (same
-   fallback chain, degrading silently; never block on it). Art is welcome on
-   cards but verdict data leads: the grid should read as verdicts, not a
-   store.
+3. Grid of game cards, **poster-dominant and minimal at rest**. A card is its
+   cover art and nothing else — no title, no chip, no Split Bar. On hover a
+   gradient scrim fades in (150ms) carrying the game title and the verdict
+   chip. The homepage is poster-browsing; the verdict is the payoff for
+   interaction, not the wallpaper.
+
+   Art comes from the Steam CDN on the same fallback chain as the case hero:
+   `library_600x900` → `header.jpg` (contained, not cropped) → **no art**. If
+   every image fails the card becomes a text card with the overlay pinned on,
+   because a blank untitled tile is not a degraded card, it is an unusable one.
+
+   **Where hover does not exist, the overlay is always visible.** Keyed on
+   `@media (hover: none)`, not a width breakpoint — the question is whether the
+   device can hover, and a touch laptop passes a width test while leaving a
+   card that never reveals its verdict.
+
+   **The scrim opacity is measured, not chosen.** White text on bare cover art
+   fails WCAG AA on every catalog cover tested — 1.20:1 on Cyberpunk 2077, and
+   only 2.49:1 on the friendliest (Elden Ring), against a 4.5:1 floor. Contrast
+   was computed for white over the *brightest patch* of each cover's bottom
+   band, with a black scrim composited in sRGB:
+
+   | cover | needs α ≥ | at α .80 |
+   |---|---|---|
+   | Cyberpunk 2077 | 0.50 | 13.5:1 |
+   | Balatro | 0.45 | 14.2:1 |
+   | HELLDIVERS 2 | 0.41 | 14.7:1 |
+   | Kenshi | 0.39 | 15.1:1 |
+   | Stardew Valley | 0.36 | 15.4:1 |
+   | Terraria | 0.32 | 15.8:1 |
+   | Baldur's Gate 3 | 0.29 | 16.1:1 |
+   | ELDEN RING | 0.28 | 16.2:1 |
+
+   The title sits where the gradient is ≥ .80, so the worst cover in the set
+   still clears 13.5:1 — past AAA, not merely AA. `text-shadow` is
+   belt-and-braces for a bright edge inside a dark patch; it is not the
+   mechanism, because no shadow rescues 1.20:1. Re-measure before changing the
+   gradient.
 4. Footer: "Game not here? Request it" + methodology link.
 
-Desktop only: card lift 2px + shadow ease on hover, ~150ms. No equivalent on
-touch — don't fake a hover state with a tap.
+The card's own hover *is* the overlay reveal — there is no separate lift. On
+touch there is no hover to fake: the overlay is simply already there.
 
 ### Verdict page (top to bottom)
 1. Hero: the game's PC case, with the full-bleed wave backdrop (see "The
