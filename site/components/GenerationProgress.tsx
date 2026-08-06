@@ -33,6 +33,9 @@ type Status =
   | { state: "published" }
   | { state: "qr4_failed" }
   | { state: "stage_failed" }
+  /* dispatched, but GitHub never produced a run. Terminal: the wait is not
+     going to end on its own, so fall back rather than keep polling. */
+  | { state: "dispatch_lost" }
   | { state: "queue_fallback"; reason?: string };
 
 const HARD_TIMEOUT_MS = 8 * 60 * 1000;
@@ -64,7 +67,11 @@ export function GenerationProgress({
         if (!alive) return;
         setStatus(next);
         if (next.state === "published") return onPublished();
-        if (next.state === "qr4_failed" || next.state === "stage_failed") {
+        if (
+          next.state === "qr4_failed" ||
+          next.state === "stage_failed" ||
+          next.state === "dispatch_lost"
+        ) {
           return onFallback();
         }
       } catch {

@@ -1,0 +1,1269 @@
+{
+  "appid": "306130",
+  "game_name": "The Elder Scrolls® Online",
+  "generated_at": "2026-08-02T11:34:10Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Skip",
+    "for_whom": "Players willing to tolerate severe launcher hurdles and ongoing subscription costs for inventory space should play, while others should avoid."
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 51,
+      "pct_positive": 27.5,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 280,
+      "pct_positive": 66.8,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 296,
+      "pct_positive": 70.9,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 576,
+      "pct_positive": 73.4,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Review sentiment improves significantly as playtime increases from the initial technical and launcher barrier.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 27.5,
+            "pool_n": 51
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 66.8,
+            "pool_n": 280
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 70.9,
+            "pool_n": 296
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 73.4,
+            "pool_n": 576
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 27.5,
+        "low_pool_n": 51,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 73.4,
+        "high_pool_n": 576,
+        "gap_pts": 45.9
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews reflect a lower approval rating compared to the lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 69.3,
+        "recent_pool_n": 1203,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 80.3,
+        "steam_total_reviews": 87696,
+        "delta_pts": -11.0
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 51,
+      "pct_positive": 27.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players face severe technical hurdles right away, including lengthy downloads, launcher updates, startup crashes, and account creation errors alongside aggressive monetization and external account requirements.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-5f3af8",
+              "claim": "Reviewers report lengthy downloads through Steam followed by massive in-launcher updates and patches before the game can be played.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 9
+              },
+              "citations": [
+                {
+                  "recommendationid": "231722735",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-31",
+                  "review_text": "It took me a week to finish downloading it\nFinished\nTRy to start a game but windows load toolong so it didnt start\nrestarted it\nAND NOW SUDDENLY, MORE 100GB UPDATE\nI didnt even play a game i already now it a es es",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229915337",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "0/10 First Impression. Absolutely Unacceptable.\n\nForty-three minutes. That's how long I spent trying to play a game I had already paid for.\n\nThe experience went like this: install, launch, crash, repair files, launch again, crash, repair again, finally reach the title screen, get sent to create an online account and accept legal agreements, return to the game... and it crashes again. Then the launcher tells me to repair the files yet again.\n\nI repaired the installation multiple times. It made absolutely no difference.\n\nThe only part of this entire process that worked flawlessly was taking my money. After that I was immediately pushed toward creating another account, accepting additional agreements, being introduced to a subscription service, and exposed to in-game microtransactions before I could even play. Meanwhile, the actual game couldn't stay running long enough to let me create a character.\n\nThis is one of the worst first impressions I've had in years. A game should work before it starts asking me for subscriptions and additional purchases.\n\nIf your launcher's solution to every crash is \"repair the game files,\" even after repeated successful repairs, then your launcher isn't diagnosing the problem—it's wasting the player's time.\n\nI wanted to enjoy this game. Instead, I spent nearly an hour troubleshooting software I had just installed. That's not entertainment; it's unpaid technical support.\n\nFix your launcher. Fix your crash handling. Let people actually play the game they purchased before trying to sell them anything else.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226888485",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "250GB of waiting 😉\n\n(wait for sneaky 100GB scan after downloading)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226870054",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "150gb download with extra 100gb download",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226767014",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "Just downloaded 136gb from steam to install the game.\nLoad the game\n120gb update required...\nWhat was the point of the 136gb? a 1gb installer wouldve saved a lot of time just sayin",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226684651",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-29",
+                  "review_text": "Running the game results in a launcher with a 20GB download and over 100GB of patching, this is to eat into your playtime to limit how much of the game you can see before refunding. Scumbag tactic. They also hamstring you when it comes to item storage. They engineered a problem, and sell you the solution via subscription fee or $50 MTX. Scumbag tactics.\n\nThe Deluxe edition misses out the following content:\nZone / Story DLCs NOT included\nImperial City (may now be free depending on platform/update state)\nOrsinium\nThieves Guild\nDark Brotherhood\nClockwork City\nMurkmire\nDragonhold\nMarkarth\nDeadlands\nFiresong\nDungeon DLCs NOT included\nShadows of the Hist\nHorns of the Reach\nDragon Bones\nWolfhunter\nWrathstone\nScalebreaker\nHarrowstorm\nStonethorn\nFlames of Ambition\nWaking Flame\nAscending Tide\nLost Depths\nScribes of Fate\n\nCollector’s / Deluxe cosmetic content NOT included\n\nFor previous Chapters:\n\nCollector mounts\nPets\nEmotes\nOutfit styles\nExtra cosmetics\n\nThese are separate Crown Store “Collector’s Packs.”\n\nESO Plus-only convenience features NOT included\n\nUnless you subscribe:\n\nCrafting bag\nDouble bank space\nDLC access rental\nExtra furnishing limits\nMonthly crowns\nVarious subscriber perks",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226243172",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-05-23",
+                  "review_text": "Does new player experience mean anything? The first 3 hours of gameplay needs to be amazing, so I come back and play more and SPEND MONEY. I SHOULD NOT BE GREETED WITH A SECOND LAUNCHER AND A 15 MIN LOADING SCREEN AFTER INSTALL AND PRESSING PLAY. Its not 2005 anymore, the app store will automatically install updates, Indie game devs do this let alone  a AAA game dev.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223729482",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-04-20",
+                  "review_text": "Which skooma-addled idiot at Bethesda thought it was a good idea to have a 100+ gigabyte update hidden behind the launcher after downloading over 100 gigs through Steam? I just wanna talk and not leave them to rot in the Soul Carin.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223695903",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-04-20",
+                  "review_text": "omfg will you stop it with these god forsaken updates and patches I just f--king bought the game let me play it already you gate keeping mother f--kers. :K",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-e5663e",
+              "claim": "Reviewers experience persistent game crashes during startup and shortly after launching.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "231094279",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "IM really mad i bought this... AGAIN1! on two seperate computers on two seperate internet connections i've downloaded this game. every time it runs for 2-3 minutes then crashes. I uninstalled and reinstalled on both consoles and have the same problem. I always loved skyrim and wanted to love this, but it doesn't seem like it was meant to be.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229915337",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "0/10 First Impression. Absolutely Unacceptable.\n\nForty-three minutes. That's how long I spent trying to play a game I had already paid for.\n\nThe experience went like this: install, launch, crash, repair files, launch again, crash, repair again, finally reach the title screen, get sent to create an online account and accept legal agreements, return to the game... and it crashes again. Then the launcher tells me to repair the files yet again.\n\nI repaired the installation multiple times. It made absolutely no difference.\n\nThe only part of this entire process that worked flawlessly was taking my money. After that I was immediately pushed toward creating another account, accepting additional agreements, being introduced to a subscription service, and exposed to in-game microtransactions before I could even play. Meanwhile, the actual game couldn't stay running long enough to let me create a character.\n\nThis is one of the worst first impressions I've had in years. A game should work before it starts asking me for subscriptions and additional purchases.\n\nIf your launcher's solution to every crash is \"repair the game files,\" even after repeated successful repairs, then your launcher isn't diagnosing the problem—it's wasting the player's time.\n\nI wanted to enjoy this game. Instead, I spent nearly an hour troubleshooting software I had just installed. That's not entertainment; it's unpaid technical support.\n\nFix your launcher. Fix your crash handling. Let people actually play the game they purchased before trying to sell them anything else.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228818833",
+                  "hours_at_review": 0.3,
+                  "voted_up": true,
+                  "date": "2026-06-25",
+                  "review_text": "If MSI Afterburner and RivaTuner are open, the game crashes for me during the splash screen.\n\nWould give me an error about Steam failing to initialize once in game and attempting to login. Step two here fixed it for me: https://help.elderscrollsonline.com/#en/answer/39135\n\nIn case the link ever changes, here is the info:\n\nStep 2:\n\n1. Change Steam to \"Offline Mode.\" Instructions on how to do this can be found here: Steam Support - How to setup Offline Mode\n\n2. Restart Steam and open The Elder Scrolls Online\n\n3. Once the launcher has opened, toggle Steam back to Online mode\n\n4. Fully close steam again and relaunch Steam as an Administrator. To do so, locate the Steam icon on your desktop, right-click on the icon and select Properties. Under the Compatibility tab, make sure Run this program as an Administrator has a check and hit apply. Alternatively, locate Steam in your start menu, right-click, select More, then Run as Administrator.\n\n5. Relaunch Steam\n\nLeaving it positive cuz it at least works, and have finished the tutorial, right now only planning on playing it with others which might not happen very often. But it was $6CAD on sale and doesn't need a sub to be able to play so not a big deal.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227466833",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-06-08",
+                  "review_text": "Game doesn't play. You click play, see the logo then it closes. Try to get support and the devs ban you from the boards. Do not give them any money ever.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228156505",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-06-17",
+                  "review_text": "I do not recommend buying this game I haven't even been able to create a character and it constantly crashes I have been playing on my computer almost all day since it is my day off from work and I thought to try a new game I hear a lot about so I bought it and all of a sudden my computer has crashed 3 times and has a corrupted download file but my other 2 games work perfectly fine so it is literally just this 1 which I am pissed about because I bought the deluxe edition which was about 80 dollars so now that's 80 dollars I lost because of this stupid ♥♥♥♥♥♥♥ game. If you are reading this please do not waste money when all you're gonna get is computer bugs",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224470456",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-01",
+                  "review_text": "Attempted to make the switch over to PC from console. For some reason, this game absolutely refuses to start up with my hardware/software. Tried all the fixes I was able to find online (cycling internet during launcher update, disabling firewall, installing older code, deleting program data etc.) and not a single thing worked. \nThe fact that this game commonly requires some mystical arts to just get started on a modern machine is pretty unacceptable. I've seen smaller game studios get their games pulled off Steam for less given how common it seems to be online. Yet it has apparently had this issue for years and it has never been fixed. Refunding it after I post this review.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-82bbec",
+              "claim": "Reviewers describe crashing during launch or startup, requiring file repairs and troubleshooting steps.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "231263927",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "45 mins of playtime and its all troubleshooting cuz i cant log in. great game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231094279",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "IM really mad i bought this... AGAIN1! on two seperate computers on two seperate internet connections i've downloaded this game. every time it runs for 2-3 minutes then crashes. I uninstalled and reinstalled on both consoles and have the same problem. I always loved skyrim and wanted to love this, but it doesn't seem like it was meant to be.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229915337",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "0/10 First Impression. Absolutely Unacceptable.\n\nForty-three minutes. That's how long I spent trying to play a game I had already paid for.\n\nThe experience went like this: install, launch, crash, repair files, launch again, crash, repair again, finally reach the title screen, get sent to create an online account and accept legal agreements, return to the game... and it crashes again. Then the launcher tells me to repair the files yet again.\n\nI repaired the installation multiple times. It made absolutely no difference.\n\nThe only part of this entire process that worked flawlessly was taking my money. After that I was immediately pushed toward creating another account, accepting additional agreements, being introduced to a subscription service, and exposed to in-game microtransactions before I could even play. Meanwhile, the actual game couldn't stay running long enough to let me create a character.\n\nThis is one of the worst first impressions I've had in years. A game should work before it starts asking me for subscriptions and additional purchases.\n\nIf your launcher's solution to every crash is \"repair the game files,\" even after repeated successful repairs, then your launcher isn't diagnosing the problem—it's wasting the player's time.\n\nI wanted to enjoy this game. Instead, I spent nearly an hour troubleshooting software I had just installed. That's not entertainment; it's unpaid technical support.\n\nFix your launcher. Fix your crash handling. Let people actually play the game they purchased before trying to sell them anything else.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227466833",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-06-08",
+                  "review_text": "Game doesn't play. You click play, see the logo then it closes. Try to get support and the devs ban you from the boards. Do not give them any money ever.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224470456",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-01",
+                  "review_text": "Attempted to make the switch over to PC from console. For some reason, this game absolutely refuses to start up with my hardware/software. Tried all the fixes I was able to find online (cycling internet during launcher update, disabling firewall, installing older code, deleting program data etc.) and not a single thing worked. \nThe fact that this game commonly requires some mystical arts to just get started on a modern machine is pretty unacceptable. I've seen smaller game studios get their games pulled off Steam for less given how common it seems to be online. Yet it has apparently had this issue for years and it has never been fixed. Refunding it after I post this review.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "other",
+          "claims": [
+            {
+              "claim_id": "ref-846a08",
+              "claim": "Reviewers describe issues with account creation, including error messages stating emails are already in use and failure to receive verification or password recovery emails.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229915337",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "0/10 First Impression. Absolutely Unacceptable.\n\nForty-three minutes. That's how long I spent trying to play a game I had already paid for.\n\nThe experience went like this: install, launch, crash, repair files, launch again, crash, repair again, finally reach the title screen, get sent to create an online account and accept legal agreements, return to the game... and it crashes again. Then the launcher tells me to repair the files yet again.\n\nI repaired the installation multiple times. It made absolutely no difference.\n\nThe only part of this entire process that worked flawlessly was taking my money. After that I was immediately pushed toward creating another account, accepting additional agreements, being introduced to a subscription service, and exposed to in-game microtransactions before I could even play. Meanwhile, the actual game couldn't stay running long enough to let me create a character.\n\nThis is one of the worst first impressions I've had in years. A game should work before it starts asking me for subscriptions and additional purchases.\n\nIf your launcher's solution to every crash is \"repair the game files,\" even after repeated successful repairs, then your launcher isn't diagnosing the problem—it's wasting the player's time.\n\nI wanted to enjoy this game. Instead, I spent nearly an hour troubleshooting software I had just installed. That's not entertainment; it's unpaid technical support.\n\nFix your launcher. Fix your crash handling. Let people actually play the game they purchased before trying to sell them anything else.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229383750",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "I had just bought the game when i go to create an account. I fill out the fields for creating a new account and click create new account only to receive a notification saying that i've already created an account. I've never played this game in my life. I press \"recover username/password\" and i was notified that an email would be sent to me. I never received an email. Okay. So i create another account under a new email and i had to verify through that email that the account was mine that i was setting up. I didn't receive an email under that account either. \n\nI'm not sure if im doing something wrong, or if bethesda is living up to their reputation of being mentally slow, but i cannot log onto the game that i paid for because according to bethesda, my email is already in use. I cannot recover any username/password, i cannot create a new account with a new email, im locked out of this game. 0/5 stars, a total dissappoinment.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-4444e5",
+              "claim": "Reviewers note that the game requires creating a separate online account and accepting legal agreements before playing.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "229915337",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "0/10 First Impression. Absolutely Unacceptable.\n\nForty-three minutes. That's how long I spent trying to play a game I had already paid for.\n\nThe experience went like this: install, launch, crash, repair files, launch again, crash, repair again, finally reach the title screen, get sent to create an online account and accept legal agreements, return to the game... and it crashes again. Then the launcher tells me to repair the files yet again.\n\nI repaired the installation multiple times. It made absolutely no difference.\n\nThe only part of this entire process that worked flawlessly was taking my money. After that I was immediately pushed toward creating another account, accepting additional agreements, being introduced to a subscription service, and exposed to in-game microtransactions before I could even play. Meanwhile, the actual game couldn't stay running long enough to let me create a character.\n\nThis is one of the worst first impressions I've had in years. A game should work before it starts asking me for subscriptions and additional purchases.\n\nIf your launcher's solution to every crash is \"repair the game files,\" even after repeated successful repairs, then your launcher isn't diagnosing the problem—it's wasting the player's time.\n\nI wanted to enjoy this game. Instead, I spent nearly an hour troubleshooting software I had just installed. That's not entertainment; it's unpaid technical support.\n\nFix your launcher. Fix your crash handling. Let people actually play the game they purchased before trying to sell them anything else.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229383750",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "I had just bought the game when i go to create an account. I fill out the fields for creating a new account and click create new account only to receive a notification saying that i've already created an account. I've never played this game in my life. I press \"recover username/password\" and i was notified that an email would be sent to me. I never received an email. Okay. So i create another account under a new email and i had to verify through that email that the account was mine that i was setting up. I didn't receive an email under that account either. \n\nI'm not sure if im doing something wrong, or if bethesda is living up to their reputation of being mentally slow, but i cannot log onto the game that i paid for because according to bethesda, my email is already in use. I cannot recover any username/password, i cannot create a new account with a new email, im locked out of this game. 0/5 stars, a total dissappoinment.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227262898",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-05",
+                  "review_text": "Absolute crap. The graphics are like stepping back into middle school and the forced necessity of data and just why TF do i need to nake an acount for ANYTHING just to play a damn game! #BoycottESO #MELWARE",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ref-20269c",
+              "claim": "Reviewers state that item storage is restricted unless players purchase a subscription or microtransactions.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226684651",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-29",
+                  "review_text": "Running the game results in a launcher with a 20GB download and over 100GB of patching, this is to eat into your playtime to limit how much of the game you can see before refunding. Scumbag tactic. They also hamstring you when it comes to item storage. They engineered a problem, and sell you the solution via subscription fee or $50 MTX. Scumbag tactics.\n\nThe Deluxe edition misses out the following content:\nZone / Story DLCs NOT included\nImperial City (may now be free depending on platform/update state)\nOrsinium\nThieves Guild\nDark Brotherhood\nClockwork City\nMurkmire\nDragonhold\nMarkarth\nDeadlands\nFiresong\nDungeon DLCs NOT included\nShadows of the Hist\nHorns of the Reach\nDragon Bones\nWolfhunter\nWrathstone\nScalebreaker\nHarrowstorm\nStonethorn\nFlames of Ambition\nWaking Flame\nAscending Tide\nLost Depths\nScribes of Fate\n\nCollector’s / Deluxe cosmetic content NOT included\n\nFor previous Chapters:\n\nCollector mounts\nPets\nEmotes\nOutfit styles\nExtra cosmetics\n\nThese are separate Crown Store “Collector’s Packs.”\n\nESO Plus-only convenience features NOT included\n\nUnless you subscribe:\n\nCrafting bag\nDouble bank space\nDLC access rental\nExtra furnishing limits\nMonthly crowns\nVarious subscriber perks",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224541987",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-05-01",
+                  "review_text": "[strike]D0g5h1t[/strike]\n\nNegatives:\n- I do not like the pay-to-play attitude of the devs. Yes - it's a free game, but the inconveneince of not having ESO Plus makes the game miserable to play. Make no mistake it was designed this way.\n\n- I also don't understand why people subscribe to ESO Plus for the entire year and then still have to pay for the new DLC. Disgraceful.\n\n- Everytime I come into the game after a short break, my builds are reset or non-functional and I have to spend ages respecing or replacing my equipment.\n\n- Navigation is HORRIBLE. You NEED better quest markers mod to know where the hell you're going, or the game can take you through doorways in an infinite loop sometimes.\n\n- Mods are a PITA to manage and the devs just shrug it off to third parties.\n\n- Dungeons with randoms is a horrible experience because most people don't care to communicate or strategize. I would rather dungeos were possible to solo.\n\n- People with invisibility in PVP ruins the game. I have been done both sides and it's just stupid: punishes players without a stealth detection item in their loadout.\n\nNeutrals:\n- The story is pretty good, but repetitive to do on every character. Let me just do it once and never have to waste my time doing it again. It took the joy out of it.\n\n- The daily writs were actually fun to level, but you need the premium crafting bag and lazy writ crafter to not get brain damage of the highest caliber.\n\nPositives:\n- The world is nice to explore. If you don't farm XP like a bot, there are some really interesting quests.\n- Building your own safehouse is really cool to show off your collectables, but I wish there were more in-game items from questing rather than just buying most things. Anyone can drop money on the game. Trophies are way more impressive and can tell a story.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 280,
+      "pct_positive": 66.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter lifeless combat, technical instability during character creation, and core features locked behind paid expansions or subscriptions.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-b8f5e4",
+              "claim": "Reviewers report that combat feels lifeless, simplistic, or lacking compared to other action RPGs and MMORPGs.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "231872805",
+                  "hours_at_review": 15.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "A sterile wooden world. Combat is lifeless and the environments feel empty. The ui interface reflects the blandness of the game also. Most encounters are easy wins and pose no challenge. Story and voice acting are the only thing decent about the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231841568",
+                  "hours_at_review": 8.5,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "Works on Steam + Linux which is awesome. I am an old gamer and wanted to give this MMO old timer a try. I will base this review in comparison to other games i currently play ; Valheim , Black Desert  and Guild Wars.  I found the game to be a boring never ending quest fest that gets stale fast after the introduction , which is great and yeah it was good initially. But then i starting missing the random zone boss events of Guild Wars and the combat mechanics of Black Desert. Not to mention i really miss the combat, crafting and building about Valheim . Gave it a try, but gave up on this game however if family and friends want to play i will reinstall this",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230265729",
+                  "hours_at_review": 4.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "The Elder Scrolls Online proves that you don't need to play a single-player Elder Scrolls game to get lost in Tamriel for hundreds of hours.\r\n\r\nThe world is massive, and the best part is that almost every location feels worth exploring. From ancient ruins and mysterious caves to beautiful cities and dangerous landscapes, ESO captures the feeling of adventure that made the series famous. 🗺️✨\r\n\r\nThe freedom is incredible. You can become a warrior, mage, assassin, healer, crafter, treasure hunter, or something completely different. The class system, skill lines, crafting, housing, and countless quests give you endless ways to customize your character. 🛡️🧙\r\n\r\nThe storytelling is surprisingly strong for an MMO. Many quests feel personal, with memorable characters and fully voiced dialogue that makes the world feel alive. The ability to explore almost all of Tamriel with friends is a huge bonus. 🤝\r\n\r\nThe amount of content can be overwhelming, the combat may feel simple compared with traditional action RPGs, and some of the best features are locked behind expansions or subscriptions. Still, the sheer amount of things to do makes it one of the most complete MMORPG experiences available. ⭐\r\n\r\nI started with a simple quest. 200 hours later I was decorating a house, crafting gear, stealing from NPCs, and still finding new places on the map. 😂🏰\r\n\r\nTamriel is huge. Bring snacks. 🍻",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230294472",
+                  "hours_at_review": 18.6,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "This game is unbeliveably boring, the combat is just trash.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229554214",
+                  "hours_at_review": 3.3,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "The combat is boring. It can be summed up as walk over to a enemy and activate abilities until there health bar goes down to 0. You don't even need to aim, and projectiles home in on a target so they can't be dodged.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229007246",
+                  "hours_at_review": 2.3,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "The classes, the skills and the combat felt lackluster. It literally made me uninstall and asked for a refund which I immediately got.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-7103de",
+              "claim": "Reviewers state that weapon swapping dismisses active minion summons.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "229683571",
+                  "hours_at_review": 11.8,
+                  "voted_up": false,
+                  "date": "2026-07-05",
+                  "review_text": "Alright, I'm going to be honest with you all: This is not a good game. If you are a massive Elder Scrolls fan, this game becomes OKAY AT BEST. Otherwise, it is not an MMO worth your time or money even on sale. Yes there's no monthly payment required to play (the Plus Membership is for extra content) which is great, but as an RPG it is just not very fun. \n\nThe quest dialogue is all voiced but your character goes out of view, which takes you out if you play in third person. The writing is terrible, often times I read the dialogue choices and thought \"what a dumb thing for my character to ask\", and would try to continue the quest without asking but the game won't let you continue until you ask it. Compare it to a game like Star Wars The Old Republic where every class story arc is interesting and your characters are allowed to have cool moments within cutscenes. The gameplay sucks, the simple joy of seeing your skill bar progressively get bigger and start taking up your screen on the vertical right side is gone. You get 5 active skills + 1 ultimate, at level 15 you get a second set of 5 + 1. But guess what, if you are a sorcerer for example and summon a minion on one bar, then switch to the other bar mid combat to use your skills there, the game will kill your minion even if it's full health. Great. Thanks, game. This was all done to make the game play well on consoles apparently. \n\nSo yeah, tons of content but none of it particularly amazing besides the occasional Elder Scrolls reference you recognize. And the community is not anything to write home about either, pretty standard online game community, no one is going out of their way to interact with each other in any meaningful way, if you wanna join a guild you get told to join a discord. If you want an online game to grind there are plenty of other options.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230265729",
+                  "hours_at_review": 4.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "The Elder Scrolls Online proves that you don't need to play a single-player Elder Scrolls game to get lost in Tamriel for hundreds of hours.\r\n\r\nThe world is massive, and the best part is that almost every location feels worth exploring. From ancient ruins and mysterious caves to beautiful cities and dangerous landscapes, ESO captures the feeling of adventure that made the series famous. 🗺️✨\r\n\r\nThe freedom is incredible. You can become a warrior, mage, assassin, healer, crafter, treasure hunter, or something completely different. The class system, skill lines, crafting, housing, and countless quests give you endless ways to customize your character. 🛡️🧙\r\n\r\nThe storytelling is surprisingly strong for an MMO. Many quests feel personal, with memorable characters and fully voiced dialogue that makes the world feel alive. The ability to explore almost all of Tamriel with friends is a huge bonus. 🤝\r\n\r\nThe amount of content can be overwhelming, the combat may feel simple compared with traditional action RPGs, and some of the best features are locked behind expansions or subscriptions. Still, the sheer amount of things to do makes it one of the most complete MMORPG experiences available. ⭐\r\n\r\nI started with a simple quest. 200 hours later I was decorating a house, crafting gear, stealing from NPCs, and still finding new places on the map. 😂🏰\r\n\r\nTamriel is huge. Bring snacks. 🍻",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ear-d55567",
+              "claim": "Reviewers note that core features, quests, and quality-of-life inventory mechanics are locked behind expansions or paid subscriptions like ESO Plus.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230369213",
+                  "hours_at_review": 15.8,
+                  "voted_up": true,
+                  "date": "2026-07-13",
+                  "review_text": "The game is great, one of my top 5 MMO's.  What people say about the monetization is very true, a lot of spots that make you feel that push to sub or buy content.  I would say character classes/builds feeling kind of samish would be a weakness.  Story is really strong in a lot of places, really enjoyed a lot of the zone stories and quests.  Did not do enough PvP to offer a rating for that side.\r\n\r\nGame is 4/5,  3/5 if monetization bothers you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229554685",
+                  "hours_at_review": 17.9,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "The Crown Store kills it for me.  You can earn the cosmetics slowly without paying, but if you want new quests, companions, and story, you have to get ESO+ or try to get other players to buy them for you for gold.  I'd only recommend this to people who don't mind a monthly sub style MMO, because ESO+ unlocks most of that stuff as long as you stay subbed as well as some major inventory QOL features that are obviously only locked to make it harder to be F2P after buying the base game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231178947",
+                  "hours_at_review": 14.6,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "brilliant game not great graphics but lots to do and explore. Highly reccomend if you like fantasy but some places of the ingame map are innacssesible unless you buy the dlc's eg; gold road. Would buy, bit pricey tho",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230966884",
+                  "hours_at_review": 4.0,
+                  "voted_up": false,
+                  "date": "2026-07-21",
+                  "review_text": "Main gripe is that 12 years later and there still isn't an OCE or even an ASIA server to help things be more inclusive for people this side of the world. Pretty frustrating. Also billions of money grabbing constant micro transactions. Other than that, game is fun, community is kind.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230265729",
+                  "hours_at_review": 4.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "The Elder Scrolls Online proves that you don't need to play a single-player Elder Scrolls game to get lost in Tamriel for hundreds of hours.\r\n\r\nThe world is massive, and the best part is that almost every location feels worth exploring. From ancient ruins and mysterious caves to beautiful cities and dangerous landscapes, ESO captures the feeling of adventure that made the series famous. 🗺️✨\r\n\r\nThe freedom is incredible. You can become a warrior, mage, assassin, healer, crafter, treasure hunter, or something completely different. The class system, skill lines, crafting, housing, and countless quests give you endless ways to customize your character. 🛡️🧙\r\n\r\nThe storytelling is surprisingly strong for an MMO. Many quests feel personal, with memorable characters and fully voiced dialogue that makes the world feel alive. The ability to explore almost all of Tamriel with friends is a huge bonus. 🤝\r\n\r\nThe amount of content can be overwhelming, the combat may feel simple compared with traditional action RPGs, and some of the best features are locked behind expansions or subscriptions. Still, the sheer amount of things to do makes it one of the most complete MMORPG experiences available. ⭐\r\n\r\nI started with a simple quest. 200 hours later I was decorating a house, crafting gear, stealing from NPCs, and still finding new places on the map. 😂🏰\r\n\r\nTamriel is huge. Bring snacks. 🍻",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-c48ae2",
+              "claim": "Reviewers note that the game requires subscriptions or additional purchases to access certain quests, stories, companions, and extra inventory features.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230369213",
+                  "hours_at_review": 15.8,
+                  "voted_up": true,
+                  "date": "2026-07-13",
+                  "review_text": "The game is great, one of my top 5 MMO's.  What people say about the monetization is very true, a lot of spots that make you feel that push to sub or buy content.  I would say character classes/builds feeling kind of samish would be a weakness.  Story is really strong in a lot of places, really enjoyed a lot of the zone stories and quests.  Did not do enough PvP to offer a rating for that side.\r\n\r\nGame is 4/5,  3/5 if monetization bothers you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229554685",
+                  "hours_at_review": 17.9,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "The Crown Store kills it for me.  You can earn the cosmetics slowly without paying, but if you want new quests, companions, and story, you have to get ESO+ or try to get other players to buy them for you for gold.  I'd only recommend this to people who don't mind a monthly sub style MMO, because ESO+ unlocks most of that stuff as long as you stay subbed as well as some major inventory QOL features that are obviously only locked to make it harder to be F2P after buying the base game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230265729",
+                  "hours_at_review": 4.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "The Elder Scrolls Online proves that you don't need to play a single-player Elder Scrolls game to get lost in Tamriel for hundreds of hours.\r\n\r\nThe world is massive, and the best part is that almost every location feels worth exploring. From ancient ruins and mysterious caves to beautiful cities and dangerous landscapes, ESO captures the feeling of adventure that made the series famous. 🗺️✨\r\n\r\nThe freedom is incredible. You can become a warrior, mage, assassin, healer, crafter, treasure hunter, or something completely different. The class system, skill lines, crafting, housing, and countless quests give you endless ways to customize your character. 🛡️🧙\r\n\r\nThe storytelling is surprisingly strong for an MMO. Many quests feel personal, with memorable characters and fully voiced dialogue that makes the world feel alive. The ability to explore almost all of Tamriel with friends is a huge bonus. 🤝\r\n\r\nThe amount of content can be overwhelming, the combat may feel simple compared with traditional action RPGs, and some of the best features are locked behind expansions or subscriptions. Still, the sheer amount of things to do makes it one of the most complete MMORPG experiences available. ⭐\r\n\r\nI started with a simple quest. 200 hours later I was decorating a house, crafting gear, stealing from NPCs, and still finding new places on the map. 😂🏰\r\n\r\nTamriel is huge. Bring snacks. 🍻",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-227bbe",
+              "claim": "Reviewers report that the game encounters technical instability, including client crashes during character creation or gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "230931317",
+                  "hours_at_review": 11.8,
+                  "voted_up": false,
+                  "date": "2026-07-20",
+                  "review_text": "Fresh install on a MacBook Air with M3 processor. I gave up after half a dozen crashes. I never made it past the character creation. It crashed after the account creation, several times during the intro video, and in the character creation editor. And every time I relaunched the game, I had to accept all of the legal documents again. Wasted an hour of my life.\n\nThe gameplay might be good but the game (aka the executable) is not.\n\n---------------\n\n2026-07-26:\n\n2nd attempt on a Linux x86 machine. Should be fewer crashes and hickups because the binaries do not need to go through Rosetta. The graphics card of my ThinkPad X1 Carbon Gen 11 is not the best (which is fine, since I am mor interested in the game play than fancy graphics) but it has 32 GiByte of RAM.\n\n---------------\n\n2026-07-30\n\nESO is playable on my ThinkPad on Linux (resolution 1280x720, lowest graphics settings).\n\nIn another attempt, I will try CrossOver on my M3 MacBook Air.\n\n…well, graphics can be set to high and the frame rate is superb. But every 10-30 minutes ESO crashes. Could be Rosetta. There were no crashes on the Linux machine.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230324176",
+                  "hours_at_review": 8.9,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "i have no idea how to fix this but as of 7/12/2026, this game crashes constantly, each time after only a few minutes of gameplay and none of the online solutions I've found has worked. Utterly unplayable. FIX YOUR GAME. \n\nWindows 11 home, 13th gen Intel Core I7, 32g RAM",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230230850",
+                  "hours_at_review": 9.1,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "game crashes every 20 minutes to desktop, driver are up do date, files are verified.\r\nOtherwise game is good, played it on my old pc years ago and liked it. a bit heavily monetised\r\nIf i can get the game to run ill update this review to positiv\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229503530",
+                  "hours_at_review": 5.8,
+                  "voted_up": true,
+                  "date": "2026-07-03",
+                  "review_text": "So far I like it alot very fun gameplay only thing I dont like is when the game crashes or when it doesn't wanna work",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 296,
+      "pct_positive": 70.9,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers note unimpactful combat animations, extreme inventory management difficulties without optional subscriptions, and external launcher issues.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-d5f44d",
+              "claim": "The combat system features unimpactful animations, poor hit feedback, and unappealing special effects.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231841392",
+                  "hours_at_review": 34.5,
+                  "voted_up": false,
+                  "date": "2026-08-01",
+                  "review_text": "this will go in the history books. they achieved the most boring combat in the mmo genre",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231834475",
+                  "hours_at_review": 21.4,
+                  "voted_up": false,
+                  "date": "2026-08-01",
+                  "review_text": "I am a combat oriented person.\n\nThe combat in ESO is the worst I've ever seen in this genre. \nNo hit feedback, wet-noodle animation and amateur-hour special effects. The whole animation library is so bad I can't believe someone approved of it and shipped it in the final build.\n\nIncreasing difficulty helps but it's like putting lipstick on a pig.\nConsume slop and be happy type product",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "mid-ceda2c",
+              "claim": "Inventory management without the optional subscription's crafting bag is described as an extremely difficult experience.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231585221",
+                  "hours_at_review": 70.6,
+                  "voted_up": true,
+                  "date": "2026-07-29",
+                  "review_text": "I'm enjoying this game with my wife. It's an above average MMO if you're used to games like WoW or Guild Wars 2. We haven't payed for ESO+ so the limited inventory for crafting materials is a true nightmare, but it's a minor inconvenience if you compare it to the housing. Totally recommended for begginers but seasoned MMO players might find it a bit dull",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230854576",
+                  "hours_at_review": 84.4,
+                  "voted_up": true,
+                  "date": "2026-07-19",
+                  "review_text": "Okay as long as you like to inventory management",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229711365",
+                  "hours_at_review": 67.2,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "Honestly a real fun game. I bought ESO (with all the DLCs on Steam) when it was on sale, and at first I didn't think I'd enjoy it that much, because I prefer singleplayer games, but I was pleasantly surprised to find that I really enjoy playing.\r\n\r\nThat said, it does have some downsides. ESO+ is basically a must-have. Okay sure, you can play without it, but inventory management will be a genuine nightmare beyond what you may be thinking. ESO without ESO+ is only for people who enjoy constant back-and-forth for hours on end.\r\n\r\nAlso, bear in mind that, even if you buy the game with all the DLCs on Steam, you still don't have access to all in-game content. There are a significant lot of regions that are stuck behind DLCs you either buy in the in-game store with Crowns (a currency you buy on Steam for the game), which is the very expensive option, or by having ESO+ - but the latter means that if you drop ESO+, you no longer have access to those DLCs. It's kinda BS all around.\r\n\r\nSo... I think the game still earns a solid 7/10. Frankly, gameplay wise it's arguably a 10/10, but the annoying financial choices for this game drop it to a 7 for me. If that's not an issue to you, then I doubt you'll find anything to complain about this game!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228938408",
+                  "hours_at_review": 89.8,
+                  "voted_up": true,
+                  "date": "2026-06-27",
+                  "review_text": "Unlimited solo and group content. Runs great on any system. Beautiful environments and world to explore. Highly recommend. Only downside is [b] that a subscription is implicitly required to not suffer from missing out on some serious QoL[/b].",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-22997b",
+              "claim": "The optional subscription model and multiple purchases required for expansions and content are cited as predatory or excessive monetization.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231623697",
+                  "hours_at_review": 83.9,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "As a big TES fan, I don't recommend this game and I urge people to stay away from it. This game really is goofy, childish and worst of all - GREEDY to biblical proportions. It is basically a toll simulator, it has more layers of walls than the strongest roman fortifications had and each one takes away your money. It is an insult to the lore and to the historical characters of the TES universe who all sound and behave like goofy MCU characters, the combat is really weird and it feels like they really wanted to avoid tab combat but it made it even worse, the skill system is really simplified to the point of being blank and boring, progression is boring because everything scales to your level etc. Also it is no secret that the game's future is uncertain, it will probably go into maintenance mode and suffer the same fate of SWTOR so expect rare and lazy content plus aggressive monetization, play single player games or other respectable true MMOs, avoid this at all costs.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229711365",
+                  "hours_at_review": 67.2,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "Honestly a real fun game. I bought ESO (with all the DLCs on Steam) when it was on sale, and at first I didn't think I'd enjoy it that much, because I prefer singleplayer games, but I was pleasantly surprised to find that I really enjoy playing.\r\n\r\nThat said, it does have some downsides. ESO+ is basically a must-have. Okay sure, you can play without it, but inventory management will be a genuine nightmare beyond what you may be thinking. ESO without ESO+ is only for people who enjoy constant back-and-forth for hours on end.\r\n\r\nAlso, bear in mind that, even if you buy the game with all the DLCs on Steam, you still don't have access to all in-game content. There are a significant lot of regions that are stuck behind DLCs you either buy in the in-game store with Crowns (a currency you buy on Steam for the game), which is the very expensive option, or by having ESO+ - but the latter means that if you drop ESO+, you no longer have access to those DLCs. It's kinda BS all around.\r\n\r\nSo... I think the game still earns a solid 7/10. Frankly, gameplay wise it's arguably a 10/10, but the annoying financial choices for this game drop it to a 7 for me. If that's not an issue to you, then I doubt you'll find anything to complain about this game!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229982219",
+                  "hours_at_review": 39.0,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "Easy to play and just jump in and enjoy. You can do casual stuff or get real serious and go crazy.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229626941",
+                  "hours_at_review": 48.3,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "some of the most predatory monetisation there is. buy the game, buy membership, and buy the expansions in order to the experience the game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-5bdd3a",
+              "claim": "Recent corporate layoffs at Microsoft have created uncertainty regarding the future support and update quality of the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "230361243",
+                  "hours_at_review": 41.8,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "The game is fine. I just don't think it will exist in a good state since they just fired half of the people that worked on it. Buying this game is a risky investment since Microsoft doesn't think they should invest in the people who keep the game running.\n\nRuns well on linux.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230106251",
+                  "hours_at_review": 71.6,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "Cant recommend this or any other Microsoft operated product on any marketplace.  Microslop's mass layoff are a joke and they deserve all the hate in the world for it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229870683",
+                  "hours_at_review": 73.2,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Fk Microslop for firing half the team. This game is done for",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229522892",
+                  "hours_at_review": 69.0,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "(I am leaving my first review from 3 days ago. At the end I posted why I changed my review to negative). \n\nI started playing MMORPGs shortly after Everquest launched almost 30 years ago. Since then I have played at least dozens. DAoC/WoW/Anarchy Online/FF14/etc etc.\n\nI got to be honest. I am completely shocked I am enjoying this game as much as I am. I started this game at exact same time as GW2 recently and ESO is winning my time. \n\nPeople are nice, crafting is a lot of fun, and the amount of stuff to do is just insane. \n\nEdit: Changing my review 3 days after I posted it. Here is update\n\nToday senior talent, senior gameplay designers, and even the studio founder were fired by Microsoft. Apparently, making 200 million dollars a year isn't enough for them. So they have gutted the team that made/maintained/updated this game.\n\nAs mentioned on my review I been playing MMORPGs for 30 years and seen how this unfolds. I've seen it happen often. People see \"50% cut to staff and main team fired\" it creates a death spiral. \n\nWhen this happens you can pretty much guarantee the games quality declines, player growth is not happening, bugs remain longer (if not forever), cash shop becomes bigger and bigger deal. In few years it will be in Maintenance mode with just very most devoted holding on until they finally close it up. \n\nIf you aren't invested in this game yet there is absolutely no point in starting now. \n\nI am still going to play, but no way going to continue my ESO sub. I'll just ignore crafting (Will lose crafting bag) and see the content they have now quest wise in non DLC wise.\n\nThen I am done.\n\nAgain, avoid this game. MOSTLY at 20 dollars. ♥♥♥♥ I wouldn't even buy it at 5 at this point.\n\nIf Microsoft says there is no future in this game then we the players need to take them at their word since they own it.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-e960f9",
+              "claim": "Players experience technical hurdles with the external game launcher and connection issues during server maintenance or login attempts.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231402973",
+                  "hours_at_review": 25.2,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "Literally cant even sign in to even play, nor can my gf from epic. account management system is just terrible. we spent hours trying to resolve issues to no avail. terrible experience.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229715682",
+                  "hours_at_review": 26.7,
+                  "voted_up": false,
+                  "date": "2026-07-05",
+                  "review_text": " I started playing ESO again after few years and I couldnt remember why I stopped. After 14 days I am sure I know why. So many downtimes. There are maintanance days (literaly). I had multiple login server issues (EU) during that 14 days. I don't mind paying for mmo with so much content but this is just unacceptable. There are MMOs with basicaly zero downtime (looking at you Guild Wars 2 - not a single downtime in like 14 years) and no subscription. If you are looking at stream with developers, there is no metion about this so I am sure they don't want do anything about downtimes. So happy they are reworking classes when you cant even play a game. Fix your servers. This is a joke.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229228126",
+                  "hours_at_review": 46.5,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "Man i had this game for a long time. Now the launcher cant even open the game properly some days it is horrible. Like the game itself is fun but the hassle to actually get the game to work is just so dumb. They really need to fix their launcher for pc other then that play this on console if you can because, I tried everything trying to make the launcher work and it only works less then half the time and just says the game is open when it is not, I tried many solutions its just dumb.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 576,
+      "pct_positive": 73.4,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players praise the large world and fully voiced quests, but report persistent connection instability, mandatory subscription reliance for crafting storage, heavily unbalanced player versus player modes, and demanding high-end combat optimization.",
+      "themes": [
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "vet-50d969",
+              "claim": "Reviewers report that inventory management and crafting material storage are heavily restricted without an active subscription due to the craft bag being locked behind ESO Plus.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231776880",
+                  "hours_at_review": 2179.4,
+                  "voted_up": false,
+                  "date": "2026-07-31",
+                  "review_text": "I beta tested before it was released it drew me away from the other mainstay in the genre. ESO had something more even back then. The characters, the artwork all won me over, ESO+ was a easy sell for me to enjoy the game fully. Having come back more than once the most recent foray was one of excitement followed quickly by utter frustration. They say no subscriptuion required but I am sorry I categorially do not agree, the crafting bag is the simple most hamstringing mechanic in the game if you are wanting immersion. ESO+ comes with some other bits and pieces but to put it simply the 'Crafting bag' is what you need, it is not pay for convenience it really changes it to pay to play if immersion is what you are after. Give that to people and people miight actually happily pay for the seasons. Now I will clarify the game remains installed but right now I couldn't recommend but I live in hope.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231694695",
+                  "hours_at_review": 408.1,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "1. This game is a gold-digger.\r\nPlayers without DLCs or a subscription are able to find Scryable antiquities or treasure maps that require a DLCs/subscription to actually unlock. The treasure maps can't even be sold to a shopkeeper for gold.\r\nThe game floods your inventory with loot and then forces you to pay gold to increase your bag-space but subscribed users get twice the bag-space AND a crafting bag that holds all of your crafting resources.\r\nIt slows the roll of players not paying extra by requiring players to more than double their tome-points just to unlock the next page of their tamriel tomes.\r\n\r\n2. This game is badly balanced thanks to the players complaining in PVP.\r\nEvery encounter in the game is either too easy or likely to kill you because of a ♥♥♥♥♥♥♥♥ mechanic that you were not warned an enemy had. Your character ends up terribly proportioned when it comes to skills because your skills don't level as fast as your character does and most of the skills aren't anything until you manage to max them out. Crafting skills are a nightmare because you have to constantly craft with the resources you've found to level them up and once you level up the crafting skill, the game will not just start giving you the higher-tier of resources in your home-town. You have to leave the place you learned where the best places were to gather what you needed in search of higher-leveled areas to find higher-tiered stuff, forcing you to stumble your way into unfamiliar territory. The higher the area you go to, the more players will be there and the likely-hood that another player will have collected the resource-nodes and loot-boxes, leaving nothing for you until both respawn which could be anywhere from an hour to three hours.\r\n\r\n3. This game is Unstable on the best of days.\r\nYou don't know when it's going to crash and when it does it takes the entire computer with it. There are graphical glitches with textures and models in-game even on higher-end systems.\r\n\r\n4. Useless to Re…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231600466",
+                  "hours_at_review": 990.4,
+                  "voted_up": true,
+                  "date": "2026-07-29",
+                  "review_text": "I'm a veteran of the WoW, Guild Wars, and Destiny communities and this is still my favorite MMO of all time.  \r\nSome of my favorite things are:\r\n1) Unlike GW2, ESO's megaservers ensure every map feels so alive and populated, I love constantly seeing other players on their adventures, especially in the cities and so forth. \r\n2) The voice acting is always phenomenal and immersive. Engaging from the first moment you enter the universe.\r\n3) Queueing for group content feels easy and low pressure, even in early-game stages. Unlike the LFG systems in other games where I often felt like too much of a noob to try, the ESO dungeon finder system tends to foster an attitude of \"anyone can give it a go\"\r\n4) On the other hand, group activities are truly optional. If I want to focus on single-player experience, I love playing ESO like I'm playing Skyrim. Spending time exploring the environment, reading lore books, and talking to NPCs. \r\n5) The amount of content is just mind boggling. At 1000 hours, there are still zones I have never completed the main storyline for.\r\n6) The housing system and decorating is next level. It truly is like a completely second game within this game.\r\n\r\nMy main qualm is the pricing model and the ESO plus access to the crafting bag. If you want to do ANY crafting in this game, you need ESO plus in order to store mats. I wish they would rethink this particular aspect of ESO plus. It has acted as a barrier for several friends who have played for a while and then put the game down because they wanted to go deeper into crafting but didn't want to pay the subscription. In my opinion, ESO plus should be for cosmetics primarily. Which brings me to one other qualm - I truly loved the fashion wars aspect of GW2 and wish there were even more fun cosmetic options in ESO! I'm just a girly pop, what can I say, but I want more colorful mounts and ways to accessorize beyond what exists already. I know they try to stay lore-friendly and all... but sometimes a girl just w…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231211115",
+                  "hours_at_review": 819.1,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "Its no masterpiece but its very enjoyable for what it is, each zone has its own self contained story, the companions are enjoyable enough even though they can get annopying after you hear the same voicelines 1000 times but you can turn it off, the cash shop is horribly over priced but thats every game these days unfortunately, if you want to get into crafting then the monthly sub is a must have since the craft bag is locked in it which is dumb, the trials and dungeons are fun and unique, the classes vary enough to keep things fresh and its overall its worth the entry cost and who knows maybe you will get lost in the world",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230776858",
+                  "hours_at_review": 299.7,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "To start: ESO Has an amazing world, solid voice acting, and one of the most casual-friendly MMO combat setups I've played.\n\nThe problem is that almost every system is built around friction:\n\n-Inventory management is absolutely miserable without ESO+.\n\n-The UI is so lacking that addons are essentially mandatory. I considered a minimap addon essential within my first week.\n\n-The game constantly buries information behind unintuitive awkward menus. I spent a solid 10 minutes trying to figure out how to leave a dungeon group.\n\n-Questing is often incoherent. Major characters can appear alive, dead, or meeting you for the \"first time\" depending on which storyline you happen to be playing. It is very jarring and breaks immersion.\n\n-Progression becomes increasingly about grinding currencies, collections, achievements and champion points (CP). Notice the absence of \"gear\" on that list. More on that later.\n\n-Endgame optimization effectively expects constant weapon/bar swapping to maintain buffs and access your full toolkit.\n\n-The \"solution\" is spending dozens of hours grinding Antiquities for Oakensoul, a ring that removes bar swapping by limiting you to a single six-button action bar. I'll be honest, I had choice words for ESO over both the swapping and the \"fix\".\n\n-Gear progression eventually becomes shockingly horizontal for the average MMO player used to continued vertical gear progression. Once you've assembled a competent endgame build, future upgrades often feel like minor percentage increases rather than exciting power spikes, and these are very few and far between.\n\nI reached 500+ CP, completed all 3 alliance storylines as well as several DLC stories, acquired Oakensoul, capped all tradeskills and have most of my tradeskill trait research done, fully geared my character in build appropriate legendary sets, and was soloing dungeons and world bosses without difficulty. \n\nThen I realized there wasn't much left except making numbers slightly bigger via CP grinding or coll…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-e95fd1",
+              "claim": "Reviewers mention that the in-game cash shop items are perceived as grossly overpriced.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231211115",
+                  "hours_at_review": 819.1,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "Its no masterpiece but its very enjoyable for what it is, each zone has its own self contained story, the companions are enjoyable enough even though they can get annopying after you hear the same voicelines 1000 times but you can turn it off, the cash shop is horribly over priced but thats every game these days unfortunately, if you want to get into crafting then the monthly sub is a must have since the craft bag is locked in it which is dumb, the trials and dungeons are fun and unique, the classes vary enough to keep things fresh and its overall its worth the entry cost and who knows maybe you will get lost in the world",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230681094",
+                  "hours_at_review": 715.4,
+                  "voted_up": false,
+                  "date": "2026-07-17",
+                  "review_text": "Fun while it lasted, but corporate greed finally got the best of me. I understand needing cash shops in free games to survive. No issues there. I do object at pure greed. ESO+ is basically mandatory for the crafting bag. No problem, the free monthly crowns make up for it. But the cash shop? Unbelievably overpriced. Yes, you don't need the cash shop to play but for those who want to spend moderately, this is not the game. Every single item in the cash shop is grossly overpriced.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-f2e4fd",
+              "claim": "Reviewers note that the game features fully voiced quests and dialogue for characters throughout the world.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231768616",
+                  "hours_at_review": 3602.5,
+                  "voted_up": true,
+                  "date": "2026-07-31",
+                  "review_text": "I enjoy the game a lot. It has it's issues but what game doesn't? I love the lore and the voice acting is top notch with every line voice acted not just the first sentence or a grunt from the npc. There is lots to do, pve, pvp, housing. I think it's a lot of fun but, that's just me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231600466",
+                  "hours_at_review": 990.4,
+                  "voted_up": true,
+                  "date": "2026-07-29",
+                  "review_text": "I'm a veteran of the WoW, Guild Wars, and Destiny communities and this is still my favorite MMO of all time.  \r\nSome of my favorite things are:\r\n1) Unlike GW2, ESO's megaservers ensure every map feels so alive and populated, I love constantly seeing other players on their adventures, especially in the cities and so forth. \r\n2) The voice acting is always phenomenal and immersive. Engaging from the first moment you enter the universe.\r\n3) Queueing for group content feels easy and low pressure, even in early-game stages. Unlike the LFG systems in other games where I often felt like too much of a noob to try, the ESO dungeon finder system tends to foster an attitude of \"anyone can give it a go\"\r\n4) On the other hand, group activities are truly optional. If I want to focus on single-player experience, I love playing ESO like I'm playing Skyrim. Spending time exploring the environment, reading lore books, and talking to NPCs. \r\n5) The amount of content is just mind boggling. At 1000 hours, there are still zones I have never completed the main storyline for.\r\n6) The housing system and decorating is next level. It truly is like a completely second game within this game.\r\n\r\nMy main qualm is the pricing model and the ESO plus access to the crafting bag. If you want to do ANY crafting in this game, you need ESO plus in order to store mats. I wish they would rethink this particular aspect of ESO plus. It has acted as a barrier for several friends who have played for a while and then put the game down because they wanted to go deeper into crafting but didn't want to pay the subscription. In my opinion, ESO plus should be for cosmetics primarily. Which brings me to one other qualm - I truly loved the fashion wars aspect of GW2 and wish there were even more fun cosmetic options in ESO! I'm just a girly pop, what can I say, but I want more colorful mounts and ways to accessorize beyond what exists already. I know they try to stay lore-friendly and all... but sometimes a girl just w…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231414342",
+                  "hours_at_review": 2146.2,
+                  "voted_up": true,
+                  "date": "2026-07-27",
+                  "review_text": "a great mmo to hop in and out of. you dont need to spend a dime once you buy it, you dont need ESO+. there are hundreds and hundreds of hours of fully voiced quests, dungeons, raids, rare drops, and more to keep you occupied. sure it's nice to have extra storage space but if you get a free home and use writs to get free storage boxes in that home you wont have issues with space either. save enough gold and you can literally trade that gold for crowns to permanently unlock any DLC you might want. ignore the crybabies and start grinding!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230776858",
+                  "hours_at_review": 299.7,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "To start: ESO Has an amazing world, solid voice acting, and one of the most casual-friendly MMO combat setups I've played.\n\nThe problem is that almost every system is built around friction:\n\n-Inventory management is absolutely miserable without ESO+.\n\n-The UI is so lacking that addons are essentially mandatory. I considered a minimap addon essential within my first week.\n\n-The game constantly buries information behind unintuitive awkward menus. I spent a solid 10 minutes trying to figure out how to leave a dungeon group.\n\n-Questing is often incoherent. Major characters can appear alive, dead, or meeting you for the \"first time\" depending on which storyline you happen to be playing. It is very jarring and breaks immersion.\n\n-Progression becomes increasingly about grinding currencies, collections, achievements and champion points (CP). Notice the absence of \"gear\" on that list. More on that later.\n\n-Endgame optimization effectively expects constant weapon/bar swapping to maintain buffs and access your full toolkit.\n\n-The \"solution\" is spending dozens of hours grinding Antiquities for Oakensoul, a ring that removes bar swapping by limiting you to a single six-button action bar. I'll be honest, I had choice words for ESO over both the swapping and the \"fix\".\n\n-Gear progression eventually becomes shockingly horizontal for the average MMO player used to continued vertical gear progression. Once you've assembled a competent endgame build, future upgrades often feel like minor percentage increases rather than exciting power spikes, and these are very few and far between.\n\nI reached 500+ CP, completed all 3 alliance storylines as well as several DLC stories, acquired Oakensoul, capped all tradeskills and have most of my tradeskill trait research done, fully geared my character in build appropriate legendary sets, and was soloing dungeons and world bosses without difficulty. \n\nThen I realized there wasn't much left except making numbers slightly bigger via CP grinding or coll…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230528281",
+                  "hours_at_review": 782.3,
+                  "voted_up": true,
+                  "date": "2026-07-15",
+                  "review_text": "The Elder Scrolls Online is one of the best MMORPGs for players who love exploration, lore, and freedom of choice. The world of Tamriel feels huge and alive, with countless quests, interesting locations, and a great amount of content to discover. The storytelling is surprisingly strong, and the voice acting makes many quests feel more like a singleplayer Elder Scrolls adventure.\n\nHowever, the game is not perfect. The combat can feel a bit outdated, some systems are overwhelming for new players, and the amount of DLC and optional purchases may be confusing. The early experience can also be slower compared to other modern MMOs.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-8365e2",
+              "claim": "Reviewers note that the game features a large world and map with accessible regions from across Tamriel.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231880957",
+                  "hours_at_review": 113.7,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "Saying this as someone who invested several hundred hours into Elder Scroll games and other media:\r\n\r\nESO is fantastic. The most user friendly MMORPG system I have ever seen. \r\n- You can change all of your skill and attribute points anytime.\r\n- Past lvl50 every character will count toward a shared max level while getting Champion points.\r\n- The map is huge! Almost all of Tamriel is accessable. With some daedric realms and such.\r\n\r\nNote: I use Eso Plus while playing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231694174",
+                  "hours_at_review": 126.9,
+                  "voted_up": true,
+                  "date": "2026-07-30",
+                  "review_text": "For a long time this game was looked on as the black sheep of mmos. yet in spite of it, it has managed to survive longer than some mmos and much longer than most \"games as a service\" games. while I recognize the criticisms regarding paywalled content, i also know that the devs are trying to fix with the shift towards seasons and releasing future content for free. for what its worth, i like the game for what it is which is an elder scrolls that allows you to explore around most of tamriel with your mates. honestly eff microsoft for their layoffs, i hope this game gets its much deserved resurgence",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230963947",
+                  "hours_at_review": 358.6,
+                  "voted_up": true,
+                  "date": "2026-07-21",
+                  "review_text": "Game is good rn, the new difficulty settings actually introduce some challenge into combat which requires some degree of thought on what actions you should take, and actually use the various mechanics that existed before that were just pointless due to the enemies having the damage output and health of wet paper.\n\nA massive world to explore, some questlines and storylines are cookie cutter, some are decently written with characters I'll remember. I feel a key part of enjoying the game is finding some intrinsic motivation or goal to work towards, ie buying and fully furnishing a house, trying to explore and complete every zone, or dominating the pvp space. It is after all, a sandbox-oriented game, as all Bethesda games are.\n\nSome might say the game is unplayable without paying for ESO plus, but I disagree, you can easily get by if you take advantage of being able to create multiple characters that you can transfer stuff between at no cost, and buy the inventory and bank space (with the main in-game earnable gold currency). Some may not like going back to towns to sell their plunder, and store the materials and items they want for crafting, but I like it, and think it adds to the immersion. But eventually if you do want more, the DLC's and expansions can have exceptionally high prices, which kinda forces you to get ESO plus if you want to play them at a reasonable price. \n\nThis game checks a lot of boxes for me as a wind-down game. And in the current state, I can see myself clocking a few more hundred hours on it. But if you come to this game expecting a fleshed out combat system, or a deep RPG narrative with branching storylines, this game may disappoint you, but I had no such expectations for this game, and enjoy it for what it is.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230528281",
+                  "hours_at_review": 782.3,
+                  "voted_up": true,
+                  "date": "2026-07-15",
+                  "review_text": "The Elder Scrolls Online is one of the best MMORPGs for players who love exploration, lore, and freedom of choice. The world of Tamriel feels huge and alive, with countless quests, interesting locations, and a great amount of content to discover. The storytelling is surprisingly strong, and the voice acting makes many quests feel more like a singleplayer Elder Scrolls adventure.\n\nHowever, the game is not perfect. The combat can feel a bit outdated, some systems are overwhelming for new players, and the amount of DLC and optional purchases may be confusing. The early experience can also be slower compared to other modern MMOs.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-3ab4da",
+              "claim": "Reviewers state that animation cancelling is practically mandatory in order to remain competitive in gameplay.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231730452",
+                  "hours_at_review": 1655.5,
+                  "voted_up": true,
+                  "date": "2026-07-31",
+                  "review_text": "Headline: 1600+ hours in. The slow decline of a giant, and what it desperately needs to survive.With over 1,655 hours registered on Steam (and many more outside of it), I have invested serious time and money into ESO. However, we have to face reality: the game is slowly but surely dying. The first major blow will come with the release of GTA 6, and the final nail in the coffin might be Guild Wars 3.\nAs someone who loves this universe, I want to share what this game is missing and what could have saved its outdated combat and PvP systems. \n1. Combat Synergy: Moving from \"One-Button Spams\" to Combo Chains (Inspired by Conqueror’s Blade)The current combat feels rigid. Instead of abilities simply triggering a one-time effect with a cooldown, ESO desperately needs a dynamic combo and chain system bound to a single key. Inspired by the Glaive mechanics in Conqueror's Blade, abilities should flow as continuous animations based on timing:\n1st Press: Triggers a wide, sweeping weapon animation.\n2nd Press (Perfect Timing Window): Transitions smoothly into a heavy follow-up strike.\n3rd Press: Executes a powerful finisher that breaks blocks or knocks enemies down.\n\nNote: Players should still be able to animation-cancel out of this using a dodge roll.\n\nIn ESO, this would look like combining Critical Charge -> Uppercut -> Reverse Slash into a single, evolving skill slot with its respective morphs. \nThe same should apply to buffs. Imagine combining Dragon Blood -> Wing Buffet -> Earthspike Mantle into a 32-second sequence. To maintain all three effects at maximum efficiency, you would need to re-cast the ability within a strict 28–30 second window. Missing the window reduces the buff's effectiveness by a percentage, which you can only restore in the next cycle. This would add actual skill expression to buff management.\n\n2. PvP Arena Evolution: A MOBA-style SystemESO’s massive library of item sets makes it perfect for a MOBA-inspired PvP mode. Before entering the map, you lock in th…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231028982",
+                  "hours_at_review": 358.4,
+                  "voted_up": false,
+                  "date": "2026-07-22",
+                  "review_text": "animation cancelling is mandatory to be competive, the most unfun and unimmersive machanic",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-f5dd64",
+              "claim": "Reviewers describe player versus player combat as heavily unbalanced, mentioning issues such as being rapidly eliminated by other players or facing veteran characters as a newly leveled player.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "231694695",
+                  "hours_at_review": 408.1,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "1. This game is a gold-digger.\r\nPlayers without DLCs or a subscription are able to find Scryable antiquities or treasure maps that require a DLCs/subscription to actually unlock. The treasure maps can't even be sold to a shopkeeper for gold.\r\nThe game floods your inventory with loot and then forces you to pay gold to increase your bag-space but subscribed users get twice the bag-space AND a crafting bag that holds all of your crafting resources.\r\nIt slows the roll of players not paying extra by requiring players to more than double their tome-points just to unlock the next page of their tamriel tomes.\r\n\r\n2. This game is badly balanced thanks to the players complaining in PVP.\r\nEvery encounter in the game is either too easy or likely to kill you because of a ♥♥♥♥♥♥♥♥ mechanic that you were not warned an enemy had. Your character ends up terribly proportioned when it comes to skills because your skills don't level as fast as your character does and most of the skills aren't anything until you manage to max them out. Crafting skills are a nightmare because you have to constantly craft with the resources you've found to level them up and once you level up the crafting skill, the game will not just start giving you the higher-tier of resources in your home-town. You have to leave the place you learned where the best places were to gather what you needed in search of higher-leveled areas to find higher-tiered stuff, forcing you to stumble your way into unfamiliar territory. The higher the area you go to, the more players will be there and the likely-hood that another player will have collected the resource-nodes and loot-boxes, leaving nothing for you until both respawn which could be anywhere from an hour to three hours.\r\n\r\n3. This game is Unstable on the best of days.\r\nYou don't know when it's going to crash and when it does it takes the entire computer with it. There are graphical glitches with textures and models in-game even on higher-end systems.\r\n\r\n4. Useless to Re…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231580848",
+                  "hours_at_review": 1047.3,
+                  "voted_up": true,
+                  "date": "2026-07-29",
+                  "review_text": "i really enjoy this game, classes can be made to do any role pretty well with the proper build. my one gripe is pvp, i want to complete my dailies but after lvl 50 for a character your thrown into a terrible system where anyone is in these matches so someone with a end game character gets thrown against a fresh lvl 50 and its just constantly dying without doing anything.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231447916",
+                  "hours_at_review": 2076.4,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "I love ESO, but I can not in good faith recommend this game to anyone. I noticed a lot of other reviews mentioning that \"you have to sub and then buy DLCs on top of that\" which is just misleading. The subscription gives you access to the DLC areas. I am fully aware that the only way to access the crafting bag is via subscription and it is annoying that ends up being the case, but I don't think it's that bad.\n\nWhile yes, the game does have loot boxes; they are mostly cosmetic. The only things that are pay for convenience in the loot boxes are research scrolls; the books for mount speed, stamina, and carrying capacity which you can just buy from the crown store by themselves anyways if you don't want to wait for the stablemaster in game; and other miscellaneous consumable foods, potions, and poisons which you can either make better food in game and the tri-potions can be bought in-game as well.\n\nI will admit that PVP is at it's worst state it's ever been since the dragon knight and werewolf reworks. It is absolutely unplayable whether it be battlegrounds or cyrodill or imperial city. There is literally nothing positive I can say about PVP.\n\nWhen it comes to PVE however, I understand that the bar to entry seems inexplicably difficult at first, and that isn't due to how hard the content is but rather due to how hard it is to find reliable players. Most ESO content is able to be accomplished if you're willing to learn. However I will admit there is a large amount of players that will either actively sabotage other player's content or just refuse to learn the content and expect to be carried.\n\nThe most disappointing thing about ESO is how technically fickle the game is. It will repeatedly crash if it's not running under \"just the right conditions\" and it will crash OVER AND OVER again. ESO support will be of absolutely no help because they are incapable of being honest with their playerbase. They will ask you to go through a very basic battery of support steps that are al…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230355346",
+                  "hours_at_review": 3031.7,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "Ive given this game time.  I was so happy at first while playing it.  but over time it has gotten... bad.  If you dont like running Meta builds because of how boring it gets, this isnt for you.  it seems like the Dev's go out of their way to buff meta and leave the rest to die in the dark.  PvP is just a bunch of over tank slog or super fine tuned insta burst snipers and anything original falls over flat.  you dont even get enough time to test your build.  PvE in normal dungeons is just a sprint to the boss fights, with some hyper meta build leading the pack tanking, dpsing, and healing all at once while you try to just keep up.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230182460",
+                  "hours_at_review": 260.2,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "The game concept is really good. There are tons of dungeons that make it fun to play for a while, but after you get to a certain point, you only want to go into certain dungeons because most people just won't touch the so called hard dungeons because the player base is very mediocre. Raids are plentiful and the normal setting of the raid is super easy.\n\nI don't recommend this game specifically because nobody wants to do certain dungeons and specifically because the servers are not optimized and its laggy. Also allowing exploits and bugs to continue for years is crazy. If you like pvp, this game is definitely not for you either, you will combo'd for your whole health and you won't see the enemy player doing anything besides 1 ability when in reality, they did 10. That's why the servers are terrible.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-738341",
+              "claim": "Reviewers describe the player versus player mode as unplayable or poorly balanced due to high-level characters dominating newer or fresh level 50 players.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231694695",
+                  "hours_at_review": 408.1,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "1. This game is a gold-digger.\r\nPlayers without DLCs or a subscription are able to find Scryable antiquities or treasure maps that require a DLCs/subscription to actually unlock. The treasure maps can't even be sold to a shopkeeper for gold.\r\nThe game floods your inventory with loot and then forces you to pay gold to increase your bag-space but subscribed users get twice the bag-space AND a crafting bag that holds all of your crafting resources.\r\nIt slows the roll of players not paying extra by requiring players to more than double their tome-points just to unlock the next page of their tamriel tomes.\r\n\r\n2. This game is badly balanced thanks to the players complaining in PVP.\r\nEvery encounter in the game is either too easy or likely to kill you because of a ♥♥♥♥♥♥♥♥ mechanic that you were not warned an enemy had. Your character ends up terribly proportioned when it comes to skills because your skills don't level as fast as your character does and most of the skills aren't anything until you manage to max them out. Crafting skills are a nightmare because you have to constantly craft with the resources you've found to level them up and once you level up the crafting skill, the game will not just start giving you the higher-tier of resources in your home-town. You have to leave the place you learned where the best places were to gather what you needed in search of higher-leveled areas to find higher-tiered stuff, forcing you to stumble your way into unfamiliar territory. The higher the area you go to, the more players will be there and the likely-hood that another player will have collected the resource-nodes and loot-boxes, leaving nothing for you until both respawn which could be anywhere from an hour to three hours.\r\n\r\n3. This game is Unstable on the best of days.\r\nYou don't know when it's going to crash and when it does it takes the entire computer with it. There are graphical glitches with textures and models in-game even on higher-end systems.\r\n\r\n4. Useless to Re…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231580848",
+                  "hours_at_review": 1047.3,
+                  "voted_up": true,
+                  "date": "2026-07-29",
+                  "review_text": "i really enjoy this game, classes can be made to do any role pretty well with the proper build. my one gripe is pvp, i want to complete my dailies but after lvl 50 for a character your thrown into a terrible system where anyone is in these matches so someone with a end game character gets thrown against a fresh lvl 50 and its just constantly dying without doing anything.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231447916",
+                  "hours_at_review": 2076.4,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "I love ESO, but I can not in good faith recommend this game to anyone. I noticed a lot of other reviews mentioning that \"you have to sub and then buy DLCs on top of that\" which is just misleading. The subscription gives you access to the DLC areas. I am fully aware that the only way to access the crafting bag is via subscription and it is annoying that ends up being the case, but I don't think it's that bad.\n\nWhile yes, the game does have loot boxes; they are mostly cosmetic. The only things that are pay for convenience in the loot boxes are research scrolls; the books for mount speed, stamina, and carrying capacity which you can just buy from the crown store by themselves anyways if you don't want to wait for the stablemaster in game; and other miscellaneous consumable foods, potions, and poisons which you can either make better food in game and the tri-potions can be bought in-game as well.\n\nI will admit that PVP is at it's worst state it's ever been since the dragon knight and werewolf reworks. It is absolutely unplayable whether it be battlegrounds or cyrodill or imperial city. There is literally nothing positive I can say about PVP.\n\nWhen it comes to PVE however, I understand that the bar to entry seems inexplicably difficult at first, and that isn't due to how hard the content is but rather due to how hard it is to find reliable players. Most ESO content is able to be accomplished if you're willing to learn. However I will admit there is a large amount of players that will either actively sabotage other player's content or just refuse to learn the content and expect to be carried.\n\nThe most disappointing thing about ESO is how technically fickle the game is. It will repeatedly crash if it's not running under \"just the right conditions\" and it will crash OVER AND OVER again. ESO support will be of absolutely no help because they are incapable of being honest with their playerbase. They will ask you to go through a very basic battery of support steps that are al…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-686829",
+              "claim": "Reviewers state that high-end combat optimization requires constant weapon and bar swapping to maintain buffs and access the full toolkit.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231730452",
+                  "hours_at_review": 1655.5,
+                  "voted_up": true,
+                  "date": "2026-07-31",
+                  "review_text": "Headline: 1600+ hours in. The slow decline of a giant, and what it desperately needs to survive.With over 1,655 hours registered on Steam (and many more outside of it), I have invested serious time and money into ESO. However, we have to face reality: the game is slowly but surely dying. The first major blow will come with the release of GTA 6, and the final nail in the coffin might be Guild Wars 3.\nAs someone who loves this universe, I want to share what this game is missing and what could have saved its outdated combat and PvP systems. \n1. Combat Synergy: Moving from \"One-Button Spams\" to Combo Chains (Inspired by Conqueror’s Blade)The current combat feels rigid. Instead of abilities simply triggering a one-time effect with a cooldown, ESO desperately needs a dynamic combo and chain system bound to a single key. Inspired by the Glaive mechanics in Conqueror's Blade, abilities should flow as continuous animations based on timing:\n1st Press: Triggers a wide, sweeping weapon animation.\n2nd Press (Perfect Timing Window): Transitions smoothly into a heavy follow-up strike.\n3rd Press: Executes a powerful finisher that breaks blocks or knocks enemies down.\n\nNote: Players should still be able to animation-cancel out of this using a dodge roll.\n\nIn ESO, this would look like combining Critical Charge -> Uppercut -> Reverse Slash into a single, evolving skill slot with its respective morphs. \nThe same should apply to buffs. Imagine combining Dragon Blood -> Wing Buffet -> Earthspike Mantle into a 32-second sequence. To maintain all three effects at maximum efficiency, you would need to re-cast the ability within a strict 28–30 second window. Missing the window reduces the buff's effectiveness by a percentage, which you can only restore in the next cycle. This would add actual skill expression to buff management.\n\n2. PvP Arena Evolution: A MOBA-style SystemESO’s massive library of item sets makes it perfect for a MOBA-inspired PvP mode. Before entering the map, you lock in th…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230776858",
+                  "hours_at_review": 299.7,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "To start: ESO Has an amazing world, solid voice acting, and one of the most casual-friendly MMO combat setups I've played.\n\nThe problem is that almost every system is built around friction:\n\n-Inventory management is absolutely miserable without ESO+.\n\n-The UI is so lacking that addons are essentially mandatory. I considered a minimap addon essential within my first week.\n\n-The game constantly buries information behind unintuitive awkward menus. I spent a solid 10 minutes trying to figure out how to leave a dungeon group.\n\n-Questing is often incoherent. Major characters can appear alive, dead, or meeting you for the \"first time\" depending on which storyline you happen to be playing. It is very jarring and breaks immersion.\n\n-Progression becomes increasingly about grinding currencies, collections, achievements and champion points (CP). Notice the absence of \"gear\" on that list. More on that later.\n\n-Endgame optimization effectively expects constant weapon/bar swapping to maintain buffs and access your full toolkit.\n\n-The \"solution\" is spending dozens of hours grinding Antiquities for Oakensoul, a ring that removes bar swapping by limiting you to a single six-button action bar. I'll be honest, I had choice words for ESO over both the swapping and the \"fix\".\n\n-Gear progression eventually becomes shockingly horizontal for the average MMO player used to continued vertical gear progression. Once you've assembled a competent endgame build, future upgrades often feel like minor percentage increases rather than exciting power spikes, and these are very few and far between.\n\nI reached 500+ CP, completed all 3 alliance storylines as well as several DLC stories, acquired Oakensoul, capped all tradeskills and have most of my tradeskill trait research done, fully geared my character in build appropriate legendary sets, and was soloing dungeons and world bosses without difficulty. \n\nThen I realized there wasn't much left except making numbers slightly bigger via CP grinding or coll…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230355346",
+                  "hours_at_review": 3031.7,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "Ive given this game time.  I was so happy at first while playing it.  but over time it has gotten... bad.  If you dont like running Meta builds because of how boring it gets, this isnt for you.  it seems like the Dev's go out of their way to buff meta and leave the rest to die in the dark.  PvP is just a bunch of over tank slog or super fine tuned insta burst snipers and anything original falls over flat.  you dont even get enough time to test your build.  PvE in normal dungeons is just a sprint to the boss fights, with some hyper meta build leading the pack tanking, dpsing, and healing all at once while you try to just keep up.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-6bdf89",
+              "claim": "Reviewers report experiencing technical issues and connection instability, including constant disconnects and launcher problems through Steam.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231678439",
+                  "hours_at_review": 964.1,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "Not worth playing with all the constant disconnects",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231421579",
+                  "hours_at_review": 1504.0,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "the game is amazing to play when i can actually get in and play but whats stopping me is the amount of problems i have with this games launcher through steam.\r\nnot recommended its no wonder the game is tanking if the devs cant even be bothered to fix their own launcher restricting peoples ability to actually play",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230182460",
+                  "hours_at_review": 260.2,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "The game concept is really good. There are tons of dungeons that make it fun to play for a while, but after you get to a certain point, you only want to go into certain dungeons because most people just won't touch the so called hard dungeons because the player base is very mediocre. Raids are plentiful and the normal setting of the raid is super easy.\n\nI don't recommend this game specifically because nobody wants to do certain dungeons and specifically because the servers are not optimized and its laggy. Also allowing exploits and bugs to continue for years is crazy. If you like pvp, this game is definitely not for you either, you will combo'd for your whole health and you won't see the enemy player doing anything besides 1 ability when in reality, they did 10. That's why the servers are terrible.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 1203,
+    "steam_total_reviews": 87696,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

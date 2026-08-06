@@ -73,6 +73,42 @@ PATTERNS = [
 COMPILED = [(re.compile(p, re.IGNORECASE), label) for p, label in PATTERNS]
 
 
+def banned_words():
+    """Every literal word the patterns above reject, for the prompt to quote.
+
+    The synthesis prompt used to carry its own hand-written banned list, and it
+    drifted: the guard rejects the frequency ADJECTIVES (frequent, occasional,
+    widespread...) while the prompt only ever named the adverbs. Synthesis then
+    failed on "occasional technical crashes" - a word the model was never told
+    to avoid. Both models were exposed; flash-lite just reached for it more.
+
+    Deriving the list from PATTERNS means the prompt cannot fall behind the rule
+    it is meant to explain. test_batch_guards asserts the two stay in step.
+    """
+    words = set()
+    for pattern, _ in PATTERNS:
+        # literal alternations only - the structural patterns (percentages,
+        # ratios, "X of the Y") are explained in prose in the prompt instead
+        for group in re.findall(r"\(\?:([a-z|\s]+)\)", pattern):
+            for word in group.split("|"):
+                word = word.strip()
+                if word and " " not in word:
+                    words.add(word)
+        for bare in re.findall(r"\\b([a-z]+)\\b", pattern):
+            words.add(bare)
+    # Keep only words this module actually rejects on their own. The regexes
+    # also contain fragments of multi-word rules ("a third of", "vast number"),
+    # and listing "third" as a banned word would be false - the prompt explains
+    # those structurally instead. Verifying against check_claim rather than
+    # curating a second list is what keeps this honest.
+    standalone = []
+    for word in sorted(words):
+        if check_claim("the game has %s problems" % word) or \
+           check_claim("%s players report problems" % word):
+            standalone.append(word)
+    return standalone
+
+
 def check_claim(text):
     """Return [(matched_text, reason)] - empty means the claim is clean."""
     hits = []

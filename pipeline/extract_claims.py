@@ -47,6 +47,7 @@ from fetch_reviews import BUCKETS                      # noqa: E402  (invariant 
 from filter_reviews import MIN_COHORT                  # noqa: E402  (invariant 12)
 import prevalence_guard                                # noqa: E402
 import ground_check                                    # noqa: E402  (1.4)
+import model_pacer                                     # noqa: E402  (4.1 RPM pacing)
 
 IN_DIR = Path("data/filtered")
 OUT_DIR = Path("data/claims")
@@ -334,8 +335,13 @@ def call_model(client, model, system, user, schema=None, thinking_level="minimal
     )
     for attempt in range(MAX_ATTEMPTS):
         try:
-            resp = client.models.generate_content(
-                model=model, contents=user, config=config)
+            # Proactive rate pacing, shared across processes. The batch runs
+            # stages as subprocesses, so this is the only place a per-minute
+            # limit can be enforced for every title at once. Synthesis reuses
+            # this transport, so it is paced by the same bucket.
+            with model_pacer.pace(model.split("/")[-1]):
+                resp = client.models.generate_content(
+                    model=model, contents=user, config=config)
             return resp
         except Exception as exc:  # noqa: BLE001 - SDK raises a family of these
             msg = str(exc)
@@ -351,6 +357,27 @@ def call_model(client, model, system, user, schema=None, thinking_level="minimal
             transient = any(s in msg for s in
                             ("429", "RESOURCE_EXHAUSTED", "503", "UNAVAILABLE",
                              "500", "INTERNAL", "504", "DEADLINE"))
+            if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                # A 429 is TWO different failures wearing one status code, and
+                # treating them alike is what collapsed night 1 and then the
+                # second batch:
+                #
+                #   PerMinute -> a real rate problem. Lowering the ceiling helps.
+                #   PerDay    -> the daily allowance is gone. Lowering the rate
+                #                cannot help; it just makes every remaining call
+                #                wait 60s to fail. The flash daily exhaustion
+                #                narrowed this SHARED pacer to 1 rpm and
+                #                throttled flash-lite along with it.
+                #
+                # The quota id says which. Only a rate limit narrows the rate.
+                if "PerDay" in msg:
+                    print("    daily quota exhausted for this model - the pacer "
+                          "is not narrowed (a rate cut cannot buy back a day)")
+                else:
+                    ceiling = model_pacer.narrow(
+                        model_pacer.status()["ceiling_rpm"] - 2)
+                    print("    pacer: per-minute 429 despite pacing - ceiling "
+                          "now %d rpm" % ceiling)
             if not transient or attempt == MAX_ATTEMPTS - 1:
                 raise
             wait = BACKOFF_BASE * (2 ** attempt) + random.uniform(0, 0.5)

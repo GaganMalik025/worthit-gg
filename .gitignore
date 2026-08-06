@@ -86,3 +86,15 @@ data/claims/*
 !data/claims/233860.json
 !data/claims/413150.json
 !data/claims/1190460.json
+
+# Next.js build output
+site/.next/
+site/node_modules/
+
+# pacer state is per-machine and rewritten every request - noise in git,
+# and a merge conflict waiting to happen on a branch the bot pushes to
+data/model_pacer.json
+data/model_pacer.json.lock
+
+# QR-5 blinding key. Do not open while scoring evals/QR5-scoring-sheet.md.
+evals/qr5-key.json

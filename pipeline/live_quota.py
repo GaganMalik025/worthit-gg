@@ -22,8 +22,10 @@ that budget for live generation only, so a batch run cannot silently consume the
 capacity that keeps the search box working - and, symmetrically, live traffic
 cannot eat the batch capacity the catalog depends on.
 
-When the reserve is spent, live generation switches OFF for the rest of the UTC
-day and cache misses fall back to the request queue. Cached verdicts are static
+When the reserve is spent, live generation switches OFF for the rest of the
+quota day and cache misses fall back to the request queue. The quota day ends at
+MIDNIGHT PACIFIC, which is when Google resets RPD - not at midnight UTC. See
+pipeline/quota_day.py. Cached verdicts are static
 files on a CDN and are never affected by any of this.
 
 State is a small JSON file, committed by the generation workflow. No database:
@@ -37,16 +39,46 @@ Usage:
 
 import argparse
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import quota_day   # noqa: E402  (one definition of the quota day boundary)
+import model_pacer  # noqa: E402  (reuses its cross-process file lock)
 
 ROOT = Path(__file__).resolve().parent.parent
 STATE_PATH = ROOT / "data/live_quota.json"
 
-# Gemini free tier, requests/day. The ceiling this whole module exists to defend.
-DAILY_LIMIT = 1500
-# Tail of the daily budget reserved for live generation (guard 1).
-LIVE_RESERVE = 300
+# Gemini free tier, requests/day PER MODEL. VERIFIED from the 429 body, not
+# assumed: gemini-3.5-flash-lite is 500/day and gemini-3.5-flash is 20/day
+# (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, 2026-08-02).
+#
+# This was 1500 - the figure in CLAUDE.md - and it was wrong by 3x. Every budget
+# projection built on it was wrong by the same factor, including "1,050 calls
+# fits in 1,200", which is how a batch walked into a wall the budget stop was
+# supposed to prevent. The number here is now the one the API actually enforces.
+#
+# Synthesis titles on the flash tier draw the separate 20/day flash bucket, so
+# they do not consume this one.
+DAILY_LIMIT = 500
+# Tail of the daily budget reserved for live generation (guard 1). 100 of 500
+# leaves 400/day for the catalog batch. The old 300 was chosen against a 1500
+# ceiling; carried over unchanged it would have left the batch only 200.
+LIVE_RESERVE = 100
+
+# gemini-3.5-flash has its own, much smaller, daily bucket. It is NOT part of
+# DAILY_LIMIT - the two models are metered separately by the API - so it needs
+# its own counter and its own refusal.
+#
+# This exists because a schedule written in comments is not a schedule.
+# flash_tier.txt named a day per title, model_for() ignored the day, and the
+# batch spent the whole allowance in minutes and then 429'd every remaining tier
+# title. The day check is now enforced in model_for(); this is the second lock:
+# even a correctly scheduled run cannot exceed the cap, because the ledger
+# refuses the 21st call regardless of what any schedule says.
+FLASH_DAILY_LIMIT = 20
 # Secondary guard only - see the module docstring.
 IP_LIMIT_PER_HOUR = 5
 
@@ -56,12 +88,18 @@ IP_LIMIT_PER_HOUR = 5
 EST_COST = 13
 
 
-def _today():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+def _today(clock=None):
+    """The quota day, keyed on midnight PACIFIC - see pipeline/quota_day.py.
+
+    Not UTC. Google resets RPD quotas at midnight Pacific, and keying this on
+    UTC zeroed the ledger seven hours early, in exactly the window an overnight
+    batch runs in.
+    """
+    return quota_day.today(clock)
 
 
-def _hour():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H")
+def _hour(clock=None):
+    return quota_day.hour(clock)
 
 
 def load(path=STATE_PATH):
@@ -70,12 +108,18 @@ def load(path=STATE_PATH):
         state = json.loads(p.read_text(encoding="utf-8"))
     else:
         state = {}
-    # a new UTC day resets everything; stale hours are dropped on write
+    # a new QUOTA day resets everything (midnight Pacific, not UTC - the
+    # boundary Google actually resets on); stale hours are dropped on write
     if state.get("date") != _today():
-        state = {"date": _today(), "live_used": 0, "generations": 0,
-                 "by_ip_hour": {}}
+        state = {"date": _today(), "live_used": 0, "batch_used": 0,
+                 "flash_used": 0, "generations": 0, "batch_generations": 0,
+                 "flash_generations": 0, "by_ip_hour": {}}
     state.setdefault("live_used", 0)
+    state.setdefault("batch_used", 0)
+    state.setdefault("flash_used", 0)
+    state.setdefault("flash_generations", 0)
     state.setdefault("generations", 0)
+    state.setdefault("batch_generations", 0)
     state.setdefault("by_ip_hour", {})
     return state
 
@@ -107,7 +151,8 @@ def can_generate(state, ip=None, reserve=LIVE_RESERVE, est=EST_COST,
     if left < est:
         return False, "reserve_exhausted", {
             "live_used": state.get("live_used", 0), "reserve": reserve,
-            "remaining": left, "needed": est, "resets": "00:00 UTC"}
+            "remaining": left, "needed": est,
+            "resets": "00:00 America/Los_Angeles"}
 
     if ip:
         key = "%s|%s" % (ip, _hour())
@@ -119,8 +164,68 @@ def can_generate(state, ip=None, reserve=LIVE_RESERVE, est=EST_COST,
     return True, "ok", {"remaining": left, "generations_left_approx": left // est}
 
 
-def record(state, cost, ip=None):
-    """Charge actual Gemini requests used by one generation."""
+def batch_budget(reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
+    """What the batch may spend: the daily budget MINUS the live reserve.
+
+    The symmetry this module's docstring promises, finally implemented in both
+    directions. The reserve belongs to live generation and the batch cannot
+    touch it, so an overnight catalog run can never be the reason a visitor's
+    search box falls back to the queue in the morning.
+    """
+    return max(0, daily - reserve)
+
+
+def batch_remaining(state, reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
+    """Batch headroom, charged against EVERYTHING spent today.
+
+    Live spend counts here on purpose: the two ledgers are separate claims on
+    one shared daily ceiling, so live generation eats batch headroom even though
+    the reverse is forbidden. Asymmetric by design - the reserve is a floor
+    under live generation, not a wall around it.
+    """
+    used = state.get("batch_used", 0) + state.get("live_used", 0)
+    return max(0, batch_budget(reserve, daily) - used)
+
+
+def can_batch(state, est=EST_COST, reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
+    """(allowed, reason, detail) for one batch title."""
+    left = batch_remaining(state, reserve, daily)
+    if left < est:
+        return False, "batch_budget_exhausted", {
+            "batch_used": state.get("batch_used", 0),
+            "live_used": state.get("live_used", 0),
+            "batch_budget": batch_budget(reserve, daily),
+            "remaining": left, "needed": est,
+            "reserve_untouched": reserve,
+            "resets": "00:00 America/Los_Angeles"}
+    return True, "ok", {"remaining": left, "titles_left_approx": left // est}
+
+
+def flash_remaining(state, limit=FLASH_DAILY_LIMIT):
+    return max(0, limit - state.get("flash_used", 0))
+
+
+def can_flash(state, est=1, limit=FLASH_DAILY_LIMIT):
+    """(allowed, reason, detail) for one gemini-3.5-flash request."""
+    left = flash_remaining(state, limit)
+    if left < est:
+        return False, "flash_daily_exhausted", {
+            "flash_used": state.get("flash_used", 0), "flash_limit": limit,
+            "remaining": left, "needed": est,
+            "resets": "00:00 America/Los_Angeles"}
+    return True, "ok", {"remaining": left}
+
+
+def record(state, cost, ip=None, ledger="live"):
+    """Charge actual Gemini requests used by one generation to one ledger."""
+    if ledger == "flash":
+        state["flash_used"] = state.get("flash_used", 0) + int(cost)
+        state["flash_generations"] = state.get("flash_generations", 0) + 1
+        return state
+    if ledger == "batch":
+        state["batch_used"] = state.get("batch_used", 0) + int(cost)
+        state["batch_generations"] = state.get("batch_generations", 0) + 1
+        return state
     state["live_used"] = state.get("live_used", 0) + int(cost)
     state["generations"] = state.get("generations", 0) + 1
     if ip:
@@ -129,8 +234,29 @@ def record(state, cost, ip=None):
     return state
 
 
+def charge(cost, ip=None, ledger="live", path=STATE_PATH):
+    """Atomically load -> record -> save. Returns the updated state.
+
+    The read-modify-write MUST be locked. It was not, and the batch runs titles
+    concurrently: two workers each loaded the ledger, each added their own cost,
+    and whichever saved last erased the other. A verification run spent 28
+    requests and the ledger recorded 17 - a lost-update race, not a counting
+    error. The per-title figures were exact the whole time; the aggregation was
+    dropping them.
+
+    Uses the pacer's lock helper so the guarantee holds across processes too,
+    not just across threads in one interpreter.
+    """
+    with model_pacer._locked(path):
+        state = load(path)
+        record(state, cost, ip, ledger=ledger)
+        save(state, path)
+        return state
+
+
 def status(state, reserve=LIVE_RESERVE, est=EST_COST):
     left = remaining(state, reserve)
+    bleft = batch_remaining(state, reserve)
     return {
         "date": state.get("date"),
         "daily_limit": DAILY_LIMIT,
@@ -140,6 +266,15 @@ def status(state, reserve=LIVE_RESERVE, est=EST_COST):
         "generations_today": state.get("generations", 0),
         "generations_left_approx": left // est,
         "live_generation": "on" if left >= est else "off_falls_back_to_queue",
+        "batch_budget": batch_budget(reserve),
+        "batch_used": state.get("batch_used", 0),
+        "batch_remaining": bleft,
+        "batch_generations_today": state.get("batch_generations", 0),
+        "batch_titles_left_approx": bleft // est,
+        "flash_daily_limit": FLASH_DAILY_LIMIT,
+        "flash_used": state.get("flash_used", 0),
+        "flash_remaining": flash_remaining(state),
+        "flash_generations_today": state.get("flash_generations", 0),
     }
 
 

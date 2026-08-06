@@ -72,8 +72,8 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
    citation. Any failure blocks deploy.
 9. Review text appears in the UI **only behind a citation expand** — never in
    the verdict summary itself (blast-radius design).
-10. `public/verdicts/` is committed to git on purpose — it is what the static
-    site serves. Never add it to `.gitignore`. `data/raw/` stays gitignored
+10. `site/public/verdicts/` is committed to git on purpose — it is what the static
+    site serves. Never add it to `.gitignore`. It lives under `site/` because Vercel's Root Directory is `site/`, and a Vercel app cannot read files outside its root. `data/raw/` stays gitignored
     EXCEPT the 5 seed games, which are committed so the eval harness is
     reproducible.
 11. **The sample is deliberately non-representative.** Per-bucket quotas

@@ -12,7 +12,7 @@ Stage boundaries are the ones the UI shows, because a legible wait is guard 3:
     ingest    fetch_reviews    Steam only, no model calls
     filter    filter_reviews   content filter, no model calls
     extract   extract_claims   1 Gemini call per qualifying cohort (+ retries)
-    verdict   synthesize       1 Gemini call, writes public/verdicts/<appid>.json
+    verdict   synthesize       1 Gemini call, writes site/public/verdicts/<appid>.json
     qr4       qr4_gate         invariant 8, in-pipeline, before anything renders
 
 ORDER IS THE POINT. The QR-4 gate runs AFTER synthesis and BEFORE the verdict is
@@ -35,12 +35,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-import live_quota  # noqa: E402
-import qr4_gate    # noqa: E402
+import live_quota   # noqa: E402
+import model_pacer  # noqa: E402
+import qr4_gate     # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 PY = str(ROOT / ".venv/bin/python")
-VERDICTS = ROOT / "public/verdicts"
+VERDICTS = ROOT / "site/public/verdicts"
 
 STAGES = [
     ("ingest", "Reading Steam reviews", ["pipeline/fetch_reviews.py"]),
@@ -50,44 +51,164 @@ STAGES = [
 ]
 
 
-def run_stage(script_args, appid, timeout=900):
+def run_stage(script_args, appid, timeout=900, extra=()):
+    """Run one stage as a subprocess, tagged with the title it is charging.
+
+    WORTHIT_APPID is how the pacer attributes each request to a title. It has to
+    cross the process boundary because the stages are subprocesses, and it has to
+    be set here rather than inside each script so no stage can forget.
+    """
+    import os
+    env = dict(os.environ, WORTHIT_APPID=str(appid))
     t0 = time.time()
-    proc = subprocess.run([PY] + script_args + [str(appid)], cwd=str(ROOT),
+    proc = subprocess.run([PY] + script_args + [str(appid)] + list(extra),
+                          cwd=str(ROOT), env=env,
                           capture_output=True, text=True, timeout=timeout)
     return time.time() - t0, proc
 
 
 def count_model_calls(out):
-    """Gemini requests actually issued, for honest quota accounting."""
-    return out.count("RAW MODEL OUTPUT") - out.count("[cached]")
+    """DEPRECATED - kept only so an old caller cannot silently get zero.
+
+    Counting by scraping stdout is what produced the undercount: a call that
+    429s, times out or raises never prints "RAW MODEL OUTPUT", so every failed
+    call was invisible. The ledger read 21 where 37 requests had been spent, and
+    every budget projection rode on that number. Counting now happens at the
+    call site - see model_pacer.calls_for().
+    """
+    raise NotImplementedError(
+        "use model_pacer.calls_for(appid); stdout scraping misses failed calls")
 
 
-def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False):
-    """Returns (published, result). Never leaves an ungated verdict on disk."""
+def flash_tier_ids():
+    """appids scheduled for a flash day, for callers that need to hold them back."""
+    import synthesize
+    return set(synthesize.flash_tier())
+
+
+def cohort_structure(appid):
+    """Veteran pool share and refund cohort size, read from the ingest output.
+
+    Available for FREE after the ingest stage - ingestion talks only to Steam.
+    That is what makes the thin-segmentation gate cheap: it sits between the
+    free stage and the first stage that spends Gemini quota.
+    """
+    path = ROOT / "data/raw" / ("%s.json" % appid)
+    if not path.exists():
+        return None
+    pool = json.loads(path.read_text(encoding="utf-8")).get("pool") or {}
+    buckets, total = pool.get("buckets") or {}, pool.get("pool_n") or 0
+    if not buckets or not total:
+        return None
+    return {
+        "pool_n": total,
+        "veteran_share": round(
+            (buckets.get("veteran", {}).get("pool_n", 0)) / total, 3),
+        "refund_n": buckets.get("refund_window", {}).get("pool_n", 0),
+        "eligible_cohorts": sum(
+            1 for b in buckets.values() if b.get("pool_n", 0) >= 20),
+    }
+
+
+def thin_segmentation(struct, max_veteran_share=0.60, min_cohorts=2):
+    """(is_thin, reason). Applied AFTER ingest, BEFORE any model call.
+
+    Deliberately conservative, calibrated against the seed set rather than
+    guessed: Helldivers 2 sits at 45.1% veteran and produced the best verdict
+    shape in the eval set, so a threshold anywhere near it would reject good
+    titles. 0.60 rejects only the degenerate cases (Dota 2 measured 77.0%),
+    where one cohort is so dominant that "different cohorts describe different
+    products" has nothing left to compare.
+
+    The cohort-count check is the harder floor: fewer than two cohorts clearing
+    invariant 12's 20-review minimum means there is no split to show at all.
+    """
+    if struct is None:
+        return False, None
+    if struct["eligible_cohorts"] < min_cohorts:
+        return True, ("only %d cohort(s) clear the 20-review floor - there is "
+                      "no split to render" % struct["eligible_cohorts"])
+    if struct["veteran_share"] > max_veteran_share:
+        return True, ("%.1f%% of the pool is the veteran cohort (limit %.0f%%) "
+                      "- the playtime split has nothing to contrast"
+                      % (100 * struct["veteran_share"], 100 * max_veteran_share))
+    return False, None
+
+
+def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
+             ledger="live", segmentation_gate=False):
+    """Returns (published, result). Never leaves an ungated verdict on disk.
+
+    ledger selects which claim on the daily budget this generation charges:
+      "live"  - the reserve carved out for search-box cache misses (guard 1)
+      "batch" - the daily budget MINUS that reserve, so an overnight catalog
+                run can never exhaust the capacity live generation depends on
+
+    segmentation_gate is a batch-only economy: it drops a title whose measured
+    cohort structure cannot support a split, after the free ingest stage and
+    before the first stage that costs quota. Live generation leaves it off - a
+    user who asked for a specific title gets an honest verdict about it, thin
+    cohorts and all, because invariant 12 already renders those muted.
+    """
     state = live_quota.load()
-    allowed, reason, detail = live_quota.can_generate(state, ip, reserve)
+    if ledger == "batch":
+        allowed, reason, detail = live_quota.can_batch(state, reserve=reserve)
+    else:
+        allowed, reason, detail = live_quota.can_generate(state, ip, reserve)
     if not allowed:
         # guard 1: reserve spent (or the secondary IP guard) -> queue fallback
         return False, {"published": False, "outcome": reason, "detail": detail,
                        "fallback": "queue"}
 
-    timings, cost, log = [], 0, []
+    # Count at the choke point every request passes through, before it is sent,
+    # so failures are charged exactly like successes.
+    calls_before = model_pacer.calls_for(appid)
+    timings, log = [], []
     for key, label, script in STAGES:
         if not quiet:
             print("  [%s] %s..." % (key, label), flush=True)
-        dt, proc = run_stage(script, appid)
+        # Live generation is ALWAYS flash-lite. flash is capped at 20/day and
+        # its allowance belongs to the batch's flash tier; a cache miss must
+        # never wait on tomorrow's quota, and a live hit on a tier title would
+        # burn a slot the batch reserved.
+        extra = ("--force-lite",) if (key == "verdict" and ledger != "batch") else ()
+        dt, proc = run_stage(script, appid, extra=extra)
         timings.append({"stage": key, "label": label, "seconds": round(dt, 1)})
         log.append(proc.stdout[-4000:])
-        cost += count_model_calls(proc.stdout)
         if proc.returncode != 0:
+            # Charge what this title already spent. It used to return without
+            # charging, so quota burned by a failed title was invisible to the
+            # budget stop: the ledger read 410 while the pacer had counted 506.
+            # A failed call costs exactly as much as a successful one.
+            spent = model_pacer.calls_for(appid) - calls_before
+            live_quota.charge(spent, ip, ledger=ledger)
             return False, {"published": False, "outcome": "stage_failed",
-                           "stage": key, "timings": timings,
+                           "stage": key, "timings": timings, "model_calls": spent,
                            "stderr": proc.stderr[-1500:], "fallback": "queue"}
+
+        # the measured gate, placed exactly on the cost boundary: ingest is
+        # free, everything after "filter" spends quota
+        if segmentation_gate and key == "filter":
+            struct = cohort_structure(appid)
+            thin, why = thin_segmentation(struct)
+            if thin:
+                # the gate fires before any model call, so this is normally 0 -
+                # but charge the measured figure rather than asserting it
+                spent = model_pacer.calls_for(appid) - calls_before
+                live_quota.charge(spent, ip, ledger=ledger)
+                return False, {"published": False,
+                               "outcome": "thin_segmentation",
+                               "reason": why, "structure": struct,
+                               "timings": timings, "model_calls": spent,
+                               "fallback": "skip"}
 
     out_path = VERDICTS / ("%s.json" % appid)
     if not out_path.exists():
+        spent = model_pacer.calls_for(appid) - calls_before
+        live_quota.charge(spent, ip, ledger=ledger)
         return False, {"published": False, "outcome": "no_verdict_written",
-                       "timings": timings, "fallback": "queue"}
+                       "timings": timings, "model_calls": spent,
+                       "fallback": "queue"}
 
     # guard 2: invariant 8, in-pipeline, before anything renders
     t0 = time.time()
@@ -96,8 +217,9 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False):
     timings.append({"stage": "qr4", "label": "Safety check",
                     "seconds": round(time.time() - t0, 1)})
 
-    live_quota.record(state, cost, ip)
-    live_quota.save(state)
+    cost = model_pacer.calls_for(appid) - calls_before
+    # atomic: concurrent workers must not lose each other's charges
+    live_quota.charge(cost, ip, ledger=ledger)
 
     if not passed:
         # withheld, not served-with-a-warning. Remove the artifact so no static

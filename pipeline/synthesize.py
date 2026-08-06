@@ -2,7 +2,7 @@
 WorthIt.gg - synthesis pass (build plan 1.5)
 
 Turns grounded claims into the verdict JSON the static site serves:
-public/verdicts/<appid>.json.
+site/public/verdicts/<appid>.json.
 
 The model's job is deliberately tiny. It picks the verdict word, writes the
 for-whom line, one sentence per cohort and one per detected flag, and orders the
@@ -27,6 +27,7 @@ Usage:
 
 import argparse
 import json
+import os
 import re
 import sys
 from collections import OrderedDict
@@ -36,6 +37,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import flags as flags_mod                              # noqa: E402
+import live_quota                                      # noqa: E402  (flash daily cap)
+import model_pacer                                     # noqa: E402
 import prevalence_guard                                # noqa: E402
 from extract_claims import (CACHE_DIR, PACE_SECONDS, call_model,  # noqa: E402
                             cache_path, load_env, response_text)
@@ -43,8 +46,25 @@ from fetch_reviews import BUCKETS, SEED_GAMES          # noqa: E402
 
 CLAIMS_DIR = Path("data/claims")
 FILTERED_DIR = Path("data/filtered")
-OUT_DIR = Path("public/verdicts")
-DEFAULT_MODEL = "gemini-3.5-flash"
+OUT_DIR = Path("site/public/verdicts")
+# flash-lite, not flash. gemini-3.5-flash carries a free-tier limit of 20
+# requests PER PROJECT PER DAY (quotaId GenerateRequestsPerDayPerProjectPerModel
+# -FreeTier), and one synthesis call is one verdict - so it capped the whole
+# product at ~20 verdicts a day and killed night 1 of the catalog batch at title
+# 17. flash-lite has its own, far larger, daily bucket.
+#
+# thinking_level stays "medium" here. Extraction pins "minimal" per CLAUDE.md
+# invariant 6; synthesis is the stage that actually reasons - it picks which
+# claims survive and writes the for-whom line - so it keeps the higher level.
+# The discipline that carries over from extraction is the part that matters:
+# pinned model id, structured output schema, explicit thinking_level, and no
+# sampling parameters.
+DEFAULT_MODEL = "gemini-3.5-flash-lite"
+# Titles listed in pipeline/data/flash_tier.txt are synthesized with flash
+# instead - the scarce, 20/day model, spent on the highest-reach titles. See
+# that file for the schedule and the cutoff.
+FLASH_MODEL = "gemini-3.5-flash"
+FLASH_TIER_PATH = Path(__file__).resolve().parent / "data/flash_tier.txt"
 MAX_CITATION_CHARS = 2000
 
 # DESIGN.md Split Bar labels
@@ -92,7 +112,7 @@ VERDICT_SCHEMA = {
     },
 }
 
-SYSTEM_INSTRUCTION = """\
+_SYSTEM_TEMPLATE = """\
 You write the verdict for a game-buying advice product. A reader has two \
 minutes and one question: should I buy this game?
 
@@ -105,19 +125,30 @@ RULES
 1. Use ONLY the claim ids given to you, and only under the cohort they came \
 from. Inventing an id, or moving a claim to a different cohort, is the one \
 unrecoverable error here.
-2. Write NO numbers of any kind. No digits, no percentages, no counts, no "two \
-thirds", no "half". The interface renders every figure itself from verified \
-data. If you write a number it will be rejected.
-3. Never state how many or what proportion of players hold a view. You are \
-looking at a deliberately non-representative sample. BANNED: most, majority, \
-many players, few, half, commonly, widely, usually, typically, generally, \
-often, everyone, nobody.
+1b. Claim ids go in the claim_ids array and NOWHERE ELSE. Never write an id \
+into a summary, the for-whom line or a flag sentence. A reader cannot see ids, \
+and an id in prose is rejected automatically because it contains digits. \
+WRONG: "Players praise the freedom ref-e18e82, ear-6b753e." \
+RIGHT: "Players praise the freedom." with those ids listed in claim_ids.
+2. Write NO numbers of any kind in prose. No digits, no percentages, no \
+counts, no "two thirds", no "half", and never an hour boundary - write "within \
+the refund window", not the hours behind it. The interface renders every figure \
+itself from verified data. Any digit in prose is rejected.
+3. Never state how many or what proportion of players hold a view, and never \
+state how OFTEN something happens. You are looking at a deliberately \
+non-representative sample: thin cohorts are over-sampled on purpose, so \
+counting anything here says nothing about the playerbase, and a rate is as \
+unknowable as a proportion. Simply drop the word - "veterans praise the combat" \
+is stronger than "most veterans praise the combat", and "reviewers report \
+crashes" says everything "occasional crashes" was trying to say. \
+BANNED WORDS: %(banned)s. \
+Also banned: percentages, "N out of N", "a third of", "half the players".
 4. Each claim shows what its citing reviewers thought of the GAME overall. That \
 is not the same as whether the claim is good or bad news: a complaint from \
 people who recommend the game anyway is a real and useful pattern. Say so \
 plainly instead of resolving it into agreement.
-5. Cohorts that disagree must be LEFT DISAGREEING. Flattening them into a \
-consensus is the exact failure this product exists to correct. If people who \
+5. Cohorts that disagree must be LEFT DISAGREEING. Flattening them into one \
+agreed view is the exact failure this product exists to correct. If people who \
 bounced early and people who stayed describe different games, say that.
 6. A cohort marked MUTED gets no summary and no claims. Skip it entirely.
 7. The for-whom line names who should buy this and who should not, in one \
@@ -128,6 +159,59 @@ speculate about controversies, publishers, patches or review campaigns.
 game most people love can still be Skip for the reader if the claims say it \
 suits a narrow taste. Say who it is for and let the verdict follow.
 """
+
+# Filled from prevalence_guard so the prompt cannot drift behind the rule it
+# explains. It drifted once: the guard rejected the frequency ADJECTIVES
+# (frequent, occasional, widespread) while the prompt named only the adverbs,
+# so synthesis failed on "occasional technical crashes" - a word nothing had
+# told the model to avoid. Both models were exposed; flash-lite reached for it
+# more often, which is how it surfaced.
+SYSTEM_INSTRUCTION = _SYSTEM_TEMPLATE % {
+    "banned": ", ".join(prevalence_guard.banned_words())}
+
+
+
+def flash_tier():
+    """{appid: scheduled day} for titles that get flash. Missing file -> {}.
+
+    The DAY matters and used to be ignored. flash_tier.txt carried the schedule
+    in its comments while model_for() only checked membership, so the batch
+    routed all 74 tier titles to flash on the first run, burned the 20/day
+    allowance in minutes, and then failed every remaining tier title with a 429.
+    A schedule that lives only in comments is documentation, not a schedule.
+    """
+    out = {}
+    if not FLASH_TIER_PATH.exists():
+        return out
+    for line in FLASH_TIER_PATH.read_text(encoding="utf-8").splitlines():
+        head, _, comment = line.partition("#")
+        head = head.strip()
+        if not head.isdigit():
+            continue
+        day = re.search(r"day (\d+)", comment)
+        out[int(head)] = int(day.group(1)) if day else 1
+    return out
+
+
+def model_for(appid, override=None, force_lite=False, flash_day=None):
+    """Which synthesis model this title gets.
+
+    FLASH IS OPT-IN, and that default is the fix for the failure above. flash is
+    used only when the caller names the day it is spending (flash_day) AND this
+    title is scheduled for exactly that day. Every other path - the catalog
+    batch, live generation, a bare CLI run - gets flash-lite, so nothing can
+    reach the 20/day model by accident.
+
+    force_lite additionally hard-wires the live path: a user waiting on a cache
+    miss must never wait for tomorrow's allowance, and a live request landing on
+    a tier title would burn a slot the batch reserved.
+    """
+    if override:
+        return override
+    if force_lite or flash_day is None:
+        return DEFAULT_MODEL
+    return (FLASH_MODEL if flash_tier().get(int(appid)) == int(flash_day)
+            else DEFAULT_MODEL)
 
 
 def _bucket_order(name):
@@ -369,6 +453,28 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed, model)
 # --------------------------------------------------------------------------
 
 def synthesize_one(client, args, appid):
+    # the flash tier is per TITLE, not per run: one batch mixes both models
+    args.model = model_for(appid, args.model_override, args.force_lite,
+                           args.flash_day)
+
+    # THE FLASH CAP, ENFORCED. model_for() decides which model this title should
+    # get; the ledger decides whether that is still affordable. Both are needed:
+    # the schedule was already correct when the routing bug spent the allowance,
+    # because nothing checked the remaining balance before spending it.
+    if args.model == FLASH_MODEL:
+        allowed, reason, detail = live_quota.can_flash(live_quota.load())
+        if not allowed:
+            if args.flash_fallback:
+                print("  flash cap reached (%s) - falling back to %s"
+                      % (json.dumps(detail), DEFAULT_MODEL))
+                args.model = DEFAULT_MODEL
+            else:
+                raise SystemExit(
+                    "\nREFUSED: %s wanted gemini-3.5-flash, but the daily cap "
+                    "is spent.\n  %s\n  Nothing was sent. Re-run after the "
+                    "reset, or pass --flash-fallback to synthesize this title "
+                    "on flash-lite instead."
+                    % (appid, json.dumps(detail)))
     claims_blob, corpus, pool, cohorts = load_inputs(appid, args.claims, args.filtered)
     game = claims_blob.get("game_name") or appid
     detected = flags_mod.detect(pool)
@@ -394,12 +500,36 @@ def synthesize_one(client, args, appid):
             user + "\n\nYour previous answer was rejected for these reasons:\n"
             + "\n".join("  - %s" % f for f in failures)
             + "\nProduce a corrected answer obeying every rule.")
+        # The attempt number is part of the cache key, and it has to be.
+        # The retry prompt embeds the failure list, so when a retry fails the
+        # SAME WAY the next prompt is byte-identical to the last one - identical
+        # key, and the cache replays the very answer that was just rejected.
+        # Stardew Valley burned all three attempts that way: attempt 2 was
+        # served from cache and "failed" without a request ever being sent.
         cpath = cache_path(appid, "synthesis", args.model, system, prompt,
-                           tag="verdict-v1")
+                           tag="verdict-v1-attempt%d" % attempt)
         if cpath.exists() and not args.force:
             text = json.loads(cpath.read_text(encoding="utf-8"))["text"]
             print("  [cached] attempt %d" % attempt)
         else:
+            # Per CALL, not per title: a retry is another flash request, and a
+            # title with two retries could otherwise cross the cap mid-title.
+            # Check then charge, so the 21st call is refused before it is sent
+            # rather than discovered afterwards in a 429.
+            if args.model == FLASH_MODEL:
+                ok_flash, why, detail = live_quota.can_flash(live_quota.load())
+                if not ok_flash:
+                    if args.flash_fallback:
+                        print("  flash cap reached mid-title - remaining "
+                              "attempts use %s" % DEFAULT_MODEL)
+                        args.model = DEFAULT_MODEL
+                    else:
+                        raise SystemExit(
+                            "\nREFUSED mid-title: the daily gemini-3.5-flash "
+                            "cap is spent.\n  %s\n  Nothing was sent."
+                            % json.dumps(detail))
+                else:
+                    live_quota.charge(1, ledger="flash")
             resp = call_model(client, args.model, system, prompt,
                               schema=VERDICT_SCHEMA, thinking_level="medium")
             text, _ = response_text(resp)
@@ -448,7 +578,15 @@ def main():
     ap = argparse.ArgumentParser(description="WorthIt.gg synthesis pass (1.5)")
     ap.add_argument("appids", nargs="*")
     ap.add_argument("--seeds", action="store_true")
-    ap.add_argument("--model", default=DEFAULT_MODEL)
+    ap.add_argument("--model", default=None,
+                    help="override; default resolves via flash_tier.txt")
+    ap.add_argument("--force-lite", action="store_true",
+                    help="live-generation path: always flash-lite")
+    ap.add_argument("--flash-day", type=int, default=None,
+                    help="spend flash on titles scheduled for this tier day")
+    ap.add_argument("--flash-fallback", action="store_true",
+                    help="if the flash cap is spent, use flash-lite instead of "
+                         "refusing")
     ap.add_argument("--retries", type=int, default=2)
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
@@ -457,6 +595,8 @@ def main():
     ap.add_argument("--filtered", default=str(FILTERED_DIR))
     ap.add_argument("--out", default=str(OUT_DIR))
     args = ap.parse_args()
+    args.model_override = args.model
+    os.environ.setdefault("WORTHIT_APPID", str(args.appids[0]) if getattr(args, "appids", None) else "-")
 
     appids = list(args.appids)
     if args.seeds:
@@ -470,7 +610,9 @@ def main():
         from google import genai
         client = genai.Client(api_key=__import__("os").environ["GEMINI_API_KEY"])
 
-    print("synthesizing with %s" % args.model)
+    print("synthesis model resolves per title via flash_tier.txt%s"
+          % (" (overridden: %s)" % args.model if args.model else
+             " (forced flash-lite)" if args.force_lite else ""))
     failed = [a for a in appids if synthesize_one(client, args, a) is None
               and not args.dry_run]
     if failed:

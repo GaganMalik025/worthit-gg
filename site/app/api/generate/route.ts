@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dispatchGeneration, readQuota, writeQuota } from "../../../lib/github";
-import { canGenerate, chargeReservation, rollDay, type QuotaState } from "../../../lib/quota";
+import { canGenerate, chargeReservation, recordDispatch, rollDay, type QuotaState } from "../../../lib/quota";
 
 export const dynamic = "force-dynamic";
 
@@ -26,7 +26,12 @@ export async function POST(req: NextRequest) {
   // Reserve up front so a burst cannot oversubscribe between check and record.
   // The workflow writes the authoritative charge afterwards, so the ledger
   // self-corrects if a pre-check races (GitHub variables have no CAS).
-  await writeQuota(chargeReservation(state, ip) as Record<string, unknown>);
+  // Record WHEN we asked, not just that we charged. /api/status needs it to
+  // tell "the run has not appeared yet" from "the run is never coming" - those
+  // were indistinguishable, and the second one rendered as "You're next"
+  // forever.
+  const charged = recordDispatch(chargeReservation(state, ip) as QuotaState, appid);
+  await writeQuota(charged as Record<string, unknown>);
   await dispatchGeneration(Number(appid), ip);
 
   return NextResponse.json({ state: "dispatched", appid: Number(appid) });

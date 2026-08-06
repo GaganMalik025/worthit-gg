@@ -36,7 +36,7 @@ import {
   type Verdict,
 } from "../verdict";
 
-const REPO = path.resolve(__dirname, "../../..");
+const REPO = path.resolve(__dirname, "../..");
 const APPID = 233860; // Kenshi - committed seed, real pipeline output
 
 const readRepoFile = (p: string) => readFile(path.join(REPO, p), "utf-8");

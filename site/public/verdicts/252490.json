@@ -1,0 +1,844 @@
+{
+  "appid": "252490",
+  "game_name": "Rust",
+  "generated_at": "2026-08-06T15:47:24Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash"
+  },
+  "verdict": {
+    "word": "Wait",
+    "for_whom": "This is for patient survival enthusiasts who enjoy complex base construction and high-stakes PvP, but not for those easily frustrated by immediate spawn-killing, a lack of helpful tutorials, or encounters with cheaters."
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 55,
+      "pct_positive": 41.8,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 385,
+      "pct_positive": 70.1,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 438,
+      "pct_positive": 75.6,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 1189,
+      "pct_positive": 77.4,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Player satisfaction rises steadily the longer they persist with the game, as early obstacles eventually give way to deeper enjoyment.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 41.8,
+            "pool_n": 55
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 70.1,
+            "pool_n": 385
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 75.6,
+            "pool_n": 438
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 77.4,
+            "pool_n": 1189
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 41.8,
+        "low_pool_n": 55,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 77.4,
+        "high_pool_n": 1189,
+        "gap_pts": 35.6
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews reflect a downward trend in player recommendations compared to the historical average.",
+      "evidence": {
+        "recent_pool_pct_positive": 74.7,
+        "recent_pool_n": 2067,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 86.1,
+        "steam_total_reviews": 627738,
+        "delta_pts": -11.4
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 55,
+      "pct_positive": 41.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players experience long loading times and crashes when attempting to join servers. Upon entering, new arrivals are repeatedly killed by others immediately after spawning, before they can gather resources or construct a base. Additionally, the inability to customize character appearance is a point of frustration.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-73bf31",
+              "claim": "Reviewers report extremely long loading times when trying to enter servers or launch the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "231712854",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-31",
+                  "review_text": "please dont make the mistake of getting this game. i have wanted this game for about 2 years and every time its gone on sale, i have been very close to buying it. i decided to give in to the urges today and finally try to have a great time on this game that ive heard so many good things about. The game takes 45 minutes to load in to a server which was pretty annoying but i thought it was just because it was my first time playing. i join a server and immediately die to a bear while breaking a tree. whatever, i thought, at least i havent met an annoying player yet. next respawn im walking over to a tree while i get shot in the head with a pistol. i then respawned one more time and proceeded to get slammed in the head by a bolt action from a ♥♥♥♥♥♥ on an oil rig 5 kilometers away from me. so thats that. please dont ever get this game its not worth it and ive never disliked a game more than this one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230776693",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "Massively multiplayer first-person survival game.  You have been dropped into a hostile world, naked and without equipment.  Learn how to gather materials and craft them into usable gear.  Survive against hostile wildlife and fellow players.  Make a place for yourself.\n\nI do not begrudge people for liking this game.  I do not, for various reasons.\n\nTo begin with, the game is a pig on my machine, and my machine has been able to run just about anything I've thrown at it, and in most cases streamed it live at the same time.  When it took fifteen minutes or so to load the game, someone in my stream suggested my machine couldn't handle Rust.  I showed them my specs.  They admitted it could.\n\nLoading the game a second time offstream also took fifteen minutes, so whatever the hell it was doing the first time wasn't just initializing, or wasn't only that.  This feels like the antithesis of a fat-client system.  In my mind it doesn't lend itself to impulse play...it suggests you need to start the game, then go grab dinner or something before settling in to do as many hours as you can in a session so you don't need to load it again.\n\nI did the tutorial.  I got a Steam achievement for completing it...apparently a lot of people don't.  Got through the basics, took a while to understand some fundamental concepts (and the small font didn't help with that - fogey alert) but I managed.  Only died twice.  Did the missions provided by the trainer, geared myself up, clothed myself, got into a little boat and set off toward the main island.\n\nAnd got ganked.  Not by players, but by NPCs in boats that surrounded mine.  I then woke up, naked and unequipped, in a starting area.  This tells me ganking isn't something that evolved amongst the player base, not something that one person did, and then another, and then everyone does.  This is an integral part of the game.  It's built into the tutorial.\n\nAnd that's not my flavor of fun.  For those people who do find that fun, for those who wish …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229897908",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "Took about 20 minutes to load into the lobby and crashed my game when i tried to join a server.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229785535",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "amazing game just couldnt load to game stucked on loading screen for straight 1 h nice game\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-beeb40",
+              "claim": "Reviewers report that the game suffers from long loading times and crashing issues when attempting to join servers.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 7
+              },
+              "citations": [
+                {
+                  "recommendationid": "231712854",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-31",
+                  "review_text": "please dont make the mistake of getting this game. i have wanted this game for about 2 years and every time its gone on sale, i have been very close to buying it. i decided to give in to the urges today and finally try to have a great time on this game that ive heard so many good things about. The game takes 45 minutes to load in to a server which was pretty annoying but i thought it was just because it was my first time playing. i join a server and immediately die to a bear while breaking a tree. whatever, i thought, at least i havent met an annoying player yet. next respawn im walking over to a tree while i get shot in the head with a pistol. i then respawned one more time and proceeded to get slammed in the head by a bolt action from a ♥♥♥♥♥♥ on an oil rig 5 kilometers away from me. so thats that. please dont ever get this game its not worth it and ive never disliked a game more than this one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231477876",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "game wont let me load in. i tried many times to join any server and even small empty ones it just crashes right before i load in idk why maybe my pc specs are bad",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230776693",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "Massively multiplayer first-person survival game.  You have been dropped into a hostile world, naked and without equipment.  Learn how to gather materials and craft them into usable gear.  Survive against hostile wildlife and fellow players.  Make a place for yourself.\n\nI do not begrudge people for liking this game.  I do not, for various reasons.\n\nTo begin with, the game is a pig on my machine, and my machine has been able to run just about anything I've thrown at it, and in most cases streamed it live at the same time.  When it took fifteen minutes or so to load the game, someone in my stream suggested my machine couldn't handle Rust.  I showed them my specs.  They admitted it could.\n\nLoading the game a second time offstream also took fifteen minutes, so whatever the hell it was doing the first time wasn't just initializing, or wasn't only that.  This feels like the antithesis of a fat-client system.  In my mind it doesn't lend itself to impulse play...it suggests you need to start the game, then go grab dinner or something before settling in to do as many hours as you can in a session so you don't need to load it again.\n\nI did the tutorial.  I got a Steam achievement for completing it...apparently a lot of people don't.  Got through the basics, took a while to understand some fundamental concepts (and the small font didn't help with that - fogey alert) but I managed.  Only died twice.  Did the missions provided by the trainer, geared myself up, clothed myself, got into a little boat and set off toward the main island.\n\nAnd got ganked.  Not by players, but by NPCs in boats that surrounded mine.  I then woke up, naked and unequipped, in a starting area.  This tells me ganking isn't something that evolved amongst the player base, not something that one person did, and then another, and then everyone does.  This is an integral part of the game.  It's built into the tutorial.\n\nAnd that's not my flavor of fun.  For those people who do find that fun, for those who wish …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229897908",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "Took about 20 minutes to load into the lobby and crashed my game when i tried to join a server.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229785535",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "amazing game just couldnt load to game stucked on loading screen for straight 1 h nice game\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229966280",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "well, would probably give a good score if the game managed to launch even one loby",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229596302",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "i only have 20 minutes in game but its all on the menu because any time i try to load into a server the game crashes, ive tried reallocating ram, lowering graphic settings, updating my computer, and verifying the integrity of the files. im not sure what to do, i have thumbs downed this game and left the comments on in hopes of getting someones attention that may know how to fix the issue im having. thanks in advance for anyone who may have recommendations.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-bfb728",
+              "claim": "Reviewers state that newly spawned players are repeatedly killed by other players before they are able to build a base or gather resources.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231623027",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "worst game ive ever played walked around and did nothing and got farmed",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229363049",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "Players kill you on the spot. There's no chance to even start to build anything. you just spawn and die over and over again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229629857",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "nearly 2 hours of running around getting killed by other players never even got a chance to build a base lost my sh*t 20 times... just not fun. had to ask for the refund before the 2 hrs was up... the game just isnt worth investing 100s of hours to get good.... dont waste your money unless you have no life.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-a1e62b",
+              "claim": "Reviewers describe being killed repeatedly by other players immediately after spawning into servers.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "231712854",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-31",
+                  "review_text": "please dont make the mistake of getting this game. i have wanted this game for about 2 years and every time its gone on sale, i have been very close to buying it. i decided to give in to the urges today and finally try to have a great time on this game that ive heard so many good things about. The game takes 45 minutes to load in to a server which was pretty annoying but i thought it was just because it was my first time playing. i join a server and immediately die to a bear while breaking a tree. whatever, i thought, at least i havent met an annoying player yet. next respawn im walking over to a tree while i get shot in the head with a pistol. i then respawned one more time and proceeded to get slammed in the head by a bolt action from a ♥♥♥♥♥♥ on an oil rig 5 kilometers away from me. so thats that. please dont ever get this game its not worth it and ive never disliked a game more than this one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231623027",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "worst game ive ever played walked around and did nothing and got farmed",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231017582",
+                  "hours_at_review": 0.6,
+                  "voted_up": true,
+                  "date": "2026-07-22",
+                  "review_text": "Getting killed by a half-naked man with a rock in his hand right after spawning is the best experience I've ever had. 10/10 experience. Would let the half-naked man kill me again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229363049",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "Players kill you on the spot. There's no chance to even start to build anything. you just spawn and die over and over again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229629857",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "nearly 2 hours of running around getting killed by other players never even got a chance to build a base lost my sh*t 20 times... just not fun. had to ask for the refund before the 2 hrs was up... the game just isnt worth investing 100s of hours to get good.... dont waste your money unless you have no life.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-10c0ad",
+              "claim": "Reviewers note that character appearance cannot be customized and is permanently tied to the player's account/SteamID.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231618072",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "terrible game ,refunded instantly after it gave me an ugly black woman as my character and i couldnt change it, not playing as that creature",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230205608",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "Character creation doesn't exist and is tied to your SteamID, so if you're a woman or ethnicity you don't identify with you can't do anything about it. Go fück yourselves and your idiotic game design facepunch, i'm glad I did not pay the full game and got a key instead, that way my money doesn't go to idiots such as yourselves",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 385,
+      "pct_positive": 70.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long loading times remain a frustration, and players report that the brief tutorial fails to explain fundamental survival mechanics, requiring outside guides to learn how to gather basic resources. New players struggle with being repeatedly killed on spawn beaches, while encounters with cheaters using scripts and the continued lack of character creation options sour the experience.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-2b0c47",
+              "claim": "Reviewers report lengthy loading times when trying to enter servers or cycle through the server list.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231694731",
+                  "hours_at_review": 7.9,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "I cant boot the game because me pc is trash but Im not gonna refund it because in the future I will maybe prob eventually get a good pc also I have 7 hours in loading screens",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230780649",
+                  "hours_at_review": 3.5,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "[h1] Rust has the worst introduction of any game I have ever played. [/h1]\n\nFirst off, as soon as you load the game and look for servers, you are met with a server list full of premium servers, like the game can't detect whether you have premium or not. Just an annoying way to advertise your premium service, a small but constant inconvenience because you have to reapply your filters every time.\n\nSecond, the loading times for entering a new server are not great. If you want to join and leave servers quickly, you're gonna be spending half an hour just cycling between a couple servers. Now if you are not made to feel like you have to cycle servers, the loading time wouldn't really be that bad. This is going to be relevant in point three.\n\nThird, where is the ♥♥♥♥♥♥♥ stone? Seriously, The tutorial tells you to gather stone, but there is none. There are thousands of rocks and boulders, but for whatever un-immersive reason, you can't mine them. The stone nodes in Rust are rarer than diamonds in Minecraft. My friends tried to say that this is just Rust's infamously, \"brutally hard\" start. I reject that statement. If a player is running around for hours looking for something, that's not brutally hard. That's brutally boring. \n\nFourth, every server is so old. It is hard to find a server that is just a few hours old. That said, I did find one. Thought I'd find stone there, and I did, and immediately starved to death because I'd been looking for it for a ridiculous amount of time. \n\nFifth, every region outside the U.S is just everyone speaking Russian. Nothing wrong with that, but more narrowed regional matchmaking can help players join servers with people they can talk to. After all, Rust is famous for its multiplayer. \n\nAll in all, if every new player is going to have this abysmal of a time trying to get into the very basics of the game, Rust is not going to grow. It already seems highly tailored to its old player-base, as everyone you meet has 80 trillion hours. The audienc…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-09274a",
+              "claim": "Reviewers state that the in-game tutorial is too short and omits key survival mechanics, requiring outside guides to learn the basics.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230879051",
+                  "hours_at_review": 16.9,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "the tutorial is too short and misses key points in the game. i reccomend watching a tutorial on youtube instead. practice on a private server first until you know the basics then you can go public otherwise you will get killed a bunch.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230780649",
+                  "hours_at_review": 3.5,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "[h1] Rust has the worst introduction of any game I have ever played. [/h1]\n\nFirst off, as soon as you load the game and look for servers, you are met with a server list full of premium servers, like the game can't detect whether you have premium or not. Just an annoying way to advertise your premium service, a small but constant inconvenience because you have to reapply your filters every time.\n\nSecond, the loading times for entering a new server are not great. If you want to join and leave servers quickly, you're gonna be spending half an hour just cycling between a couple servers. Now if you are not made to feel like you have to cycle servers, the loading time wouldn't really be that bad. This is going to be relevant in point three.\n\nThird, where is the ♥♥♥♥♥♥♥ stone? Seriously, The tutorial tells you to gather stone, but there is none. There are thousands of rocks and boulders, but for whatever un-immersive reason, you can't mine them. The stone nodes in Rust are rarer than diamonds in Minecraft. My friends tried to say that this is just Rust's infamously, \"brutally hard\" start. I reject that statement. If a player is running around for hours looking for something, that's not brutally hard. That's brutally boring. \n\nFourth, every server is so old. It is hard to find a server that is just a few hours old. That said, I did find one. Thought I'd find stone there, and I did, and immediately starved to death because I'd been looking for it for a ridiculous amount of time. \n\nFifth, every region outside the U.S is just everyone speaking Russian. Nothing wrong with that, but more narrowed regional matchmaking can help players join servers with people they can talk to. After all, Rust is famous for its multiplayer. \n\nAll in all, if every new player is going to have this abysmal of a time trying to get into the very basics of the game, Rust is not going to grow. It already seems highly tailored to its old player-base, as everyone you meet has 80 trillion hours. The audienc…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-cac354",
+              "claim": "Reviewers describe starting out vulnerable and weaponless on beaches where they are repeatedly killed by other players.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231670497",
+                  "hours_at_review": 3.0,
+                  "voted_up": true,
+                  "date": "2026-07-30",
+                  "review_text": "spawned on a beach surrounded by naked men and got killed with a rock 10/10 would reccomend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230378364",
+                  "hours_at_review": 18.4,
+                  "voted_up": true,
+                  "date": "2026-07-13",
+                  "review_text": "Start with a trusty rock and a torch. Get shot by geared people, wake up somewhere new. Rinse and repeat. Fun game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229525650",
+                  "hours_at_review": 9.1,
+                  "voted_up": true,
+                  "date": "2026-07-03",
+                  "review_text": "I spawned in the game for the first time and got shot immediately. 10/10 would recommend.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-5ef7b8",
+              "claim": "Reviewers complain about encountering cheaters or players using recoil scripts during matches.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230137889",
+                  "hours_at_review": 14.6,
+                  "voted_up": true,
+                  "date": "2026-07-10",
+                  "review_text": "Great game if you ever wanted to spend 8 hours farming rocks just to get raided by a guy named xX_SleepDeprived_420_Xx who has been online for 36 hours straight. Half the servers are people with recoil scripts, the other half are people pretending they don't have recoil scripts.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229533536",
+                  "hours_at_review": 16.6,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "I was disappointed after encountering dozens of cheaters and seeing the lag issues. Throw in the Russian kids waiting on the beach just to kill you with a rock for the fun of it, and the game simply isn't in a playable state right now. Still, the maps and game mechanics are excellent tho but need to fix those things for playable game.\n\nI will change it to a positive recommendation once the issues are resolved. Sadly not recommending now.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-5bb70c",
+              "claim": "Reviewers state that the tutorial lacks information and fails to explain key mechanics like finding stone.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230879051",
+                  "hours_at_review": 16.9,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "the tutorial is too short and misses key points in the game. i reccomend watching a tutorial on youtube instead. practice on a private server first until you know the basics then you can go public otherwise you will get killed a bunch.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230780649",
+                  "hours_at_review": 3.5,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "[h1] Rust has the worst introduction of any game I have ever played. [/h1]\n\nFirst off, as soon as you load the game and look for servers, you are met with a server list full of premium servers, like the game can't detect whether you have premium or not. Just an annoying way to advertise your premium service, a small but constant inconvenience because you have to reapply your filters every time.\n\nSecond, the loading times for entering a new server are not great. If you want to join and leave servers quickly, you're gonna be spending half an hour just cycling between a couple servers. Now if you are not made to feel like you have to cycle servers, the loading time wouldn't really be that bad. This is going to be relevant in point three.\n\nThird, where is the ♥♥♥♥♥♥♥ stone? Seriously, The tutorial tells you to gather stone, but there is none. There are thousands of rocks and boulders, but for whatever un-immersive reason, you can't mine them. The stone nodes in Rust are rarer than diamonds in Minecraft. My friends tried to say that this is just Rust's infamously, \"brutally hard\" start. I reject that statement. If a player is running around for hours looking for something, that's not brutally hard. That's brutally boring. \n\nFourth, every server is so old. It is hard to find a server that is just a few hours old. That said, I did find one. Thought I'd find stone there, and I did, and immediately starved to death because I'd been looking for it for a ridiculous amount of time. \n\nFifth, every region outside the U.S is just everyone speaking Russian. Nothing wrong with that, but more narrowed regional matchmaking can help players join servers with people they can talk to. After all, Rust is famous for its multiplayer. \n\nAll in all, if every new player is going to have this abysmal of a time trying to get into the very basics of the game, Rust is not going to grow. It already seems highly tailored to its old player-base, as everyone you meet has 80 trillion hours. The audienc…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-e5cc7b",
+              "claim": "Reviewers report that the tutorial lacks key points and leaves players uninformed about basic tasks such as finding stone.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230879051",
+                  "hours_at_review": 16.9,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "the tutorial is too short and misses key points in the game. i reccomend watching a tutorial on youtube instead. practice on a private server first until you know the basics then you can go public otherwise you will get killed a bunch.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230780649",
+                  "hours_at_review": 3.5,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "[h1] Rust has the worst introduction of any game I have ever played. [/h1]\n\nFirst off, as soon as you load the game and look for servers, you are met with a server list full of premium servers, like the game can't detect whether you have premium or not. Just an annoying way to advertise your premium service, a small but constant inconvenience because you have to reapply your filters every time.\n\nSecond, the loading times for entering a new server are not great. If you want to join and leave servers quickly, you're gonna be spending half an hour just cycling between a couple servers. Now if you are not made to feel like you have to cycle servers, the loading time wouldn't really be that bad. This is going to be relevant in point three.\n\nThird, where is the ♥♥♥♥♥♥♥ stone? Seriously, The tutorial tells you to gather stone, but there is none. There are thousands of rocks and boulders, but for whatever un-immersive reason, you can't mine them. The stone nodes in Rust are rarer than diamonds in Minecraft. My friends tried to say that this is just Rust's infamously, \"brutally hard\" start. I reject that statement. If a player is running around for hours looking for something, that's not brutally hard. That's brutally boring. \n\nFourth, every server is so old. It is hard to find a server that is just a few hours old. That said, I did find one. Thought I'd find stone there, and I did, and immediately starved to death because I'd been looking for it for a ridiculous amount of time. \n\nFifth, every region outside the U.S is just everyone speaking Russian. Nothing wrong with that, but more narrowed regional matchmaking can help players join servers with people they can talk to. After all, Rust is famous for its multiplayer. \n\nAll in all, if every new player is going to have this abysmal of a time trying to get into the very basics of the game, Rust is not going to grow. It already seems highly tailored to its old player-base, as everyone you meet has 80 trillion hours. The audienc…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-e8422f",
+              "claim": "Reviewers note the absence of a character creation system to customize appearance or gender.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230285700",
+                  "hours_at_review": 13.4,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "Bugged. No character selection. No skill system. Unrealistic. Same tired map every time. When are they gonna finish this russia based game?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229895801",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "Finally a decent survival game, absolutely no character creation, cant even choose your gender, not a big deal to most people but honestly that one facet alone makes it a total bust for me so far.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 438,
+      "pct_positive": 75.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "Performance issues emerge, including crashes, connection errors, and frame rate drops on populated servers. Players also report facing opponents who use scripts and cheating software to gain unfair advantages in combat.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-644ec6",
+              "claim": "Reviewers experience game crashes and issues loading into servers.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231761000",
+                  "hours_at_review": 41.4,
+                  "voted_up": true,
+                  "date": "2026-07-31",
+                  "review_text": "i keep on trying to run rust but it keeps on crashing on me before i can choose a server",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230102974",
+                  "hours_at_review": 50.5,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "cant even load into the game been trying new things for the past 50 hrs its straight up BS",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-aaa2fb",
+              "claim": "Players face performance issues and frame rate drops on high population servers.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231651177",
+                  "hours_at_review": 58.7,
+                  "voted_up": true,
+                  "date": "2026-07-30",
+                  "review_text": "Best Game Ever, played  for more than 4k hours now i still can't hate it , however i have a decent pc with RTX 5060, I5 14th Gen, 32 GB Ram and i still struggle with FPS in High pop Servers, The Game Lack serious optimisations !",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230512493",
+                  "hours_at_review": 67.0,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "**⭐☆☆☆☆ (1/5)**\n\nI've put way too many hours into Rust hoping it would get better, but instead it's just become one of the most frustrating games I've ever played.\n\nThe biggest issue is the **cheaters**. No matter what server you join, it feels like there's always someone using ESP, aimbots, recoil scripts, or other cheats. You spend hours farming resources, building a base, and getting geared, only to get wiped by someone who somehow knows exactly where you are. It completely ruins the survival experience and makes every death feel suspicious instead of deserved.\n\nThen there's the community. While there are some good players, a huge portion of the player base is unbelievably toxic. Constant trash talk, griefing, door camping, roof camping, offline raiding, and players who only seem interested in making everyone else's experience miserable. New players barely stand a chance.\n\nThe grind is another massive problem. You can spend an entire day gathering materials, crafting, and expanding your base, only to log in the next morning and find everything gone because your base was raided while you were offline. Losing progress is part of Rust, but when it happens over and over, it starts to feel like you're wasting your time.\n\nPerformance is also disappointing. Even on decent PCs, the game can suffer from poor optimization, random frame drops, stuttering, long loading times, and crashes. Every major update seems to introduce new bugs while old issues remain.\n\nThe learning curve is brutal. Beginners are thrown into the game with almost no guidance, and experienced players dominate every server. Unless you already have hundreds or thousands of hours, expect to spend most of your time dying.\n\nThe game also demands an unhealthy amount of time. If you don't play every day, someone else will out-farm you, out-progress you, and eventually destroy everything you've built. It often feels less like a game and more like a second job.\n\nOverall, Rust has an incredible concept, but the c…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-9b6c4b",
+              "claim": "Reviewers report that the game suffers from crashes and connection problems when attempting to load or join servers.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231761000",
+                  "hours_at_review": 41.4,
+                  "voted_up": true,
+                  "date": "2026-07-31",
+                  "review_text": "i keep on trying to run rust but it keeps on crashing on me before i can choose a server",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230102974",
+                  "hours_at_review": 50.5,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "cant even load into the game been trying new things for the past 50 hrs its straight up BS",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-0e2002",
+              "claim": "Encountering cheaters using aims, ESP, and scripts is reported across servers.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231636755",
+                  "hours_at_review": 29.7,
+                  "voted_up": true,
+                  "date": "2026-07-30",
+                  "review_text": "This is a good game but there are for sure some things that make you want to end it.\r\nimagine finally doing your first raid and youre feeling amazing, heart pouding, not knowing exactly what to do, thinking about all those youtube videos you watched to help you figure out how to secure the raid and then in the end you walk outside just ready to go home with the bag just to be 1 click eoka'd by a naked who just spawned and takes everything.\r\n\r\nIn the end its just a game and I think most people that complain are the ones who only play Mondays bi-weekly servers with 500 pop. There really is more than 1 server so some of these people just have to stop there ♥♥♥♥♥♥♥ to be honest. Furthurmore, there are a lot of cheater which would be my biggest problem with this game, and allthough I find myself complaining about cheater in other games to cope I can say without a doubt that every server you play in there will always be a cheater in it so be mentally prepared to lose that Ak you've been too scared to take out because of gear fear.\r\n\r\nStop playing this game like a loot goblin that doesn't do anything besides grub all wipe.\r\n\r\nStop waiting until the very end of wipe farming sulfur and gp just to go offline raid everyone and act like you're so amazing at the game even though server wiped 12 days ago and nobody is on.\r\n\r\nJust enjoy the game and use a mindset like \"hey i'm just having fun if I lose my stuff its okay I knew this would happen at some point\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230512493",
+                  "hours_at_review": 67.0,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "**⭐☆☆☆☆ (1/5)**\n\nI've put way too many hours into Rust hoping it would get better, but instead it's just become one of the most frustrating games I've ever played.\n\nThe biggest issue is the **cheaters**. No matter what server you join, it feels like there's always someone using ESP, aimbots, recoil scripts, or other cheats. You spend hours farming resources, building a base, and getting geared, only to get wiped by someone who somehow knows exactly where you are. It completely ruins the survival experience and makes every death feel suspicious instead of deserved.\n\nThen there's the community. While there are some good players, a huge portion of the player base is unbelievably toxic. Constant trash talk, griefing, door camping, roof camping, offline raiding, and players who only seem interested in making everyone else's experience miserable. New players barely stand a chance.\n\nThe grind is another massive problem. You can spend an entire day gathering materials, crafting, and expanding your base, only to log in the next morning and find everything gone because your base was raided while you were offline. Losing progress is part of Rust, but when it happens over and over, it starts to feel like you're wasting your time.\n\nPerformance is also disappointing. Even on decent PCs, the game can suffer from poor optimization, random frame drops, stuttering, long loading times, and crashes. Every major update seems to introduce new bugs while old issues remain.\n\nThe learning curve is brutal. Beginners are thrown into the game with almost no guidance, and experienced players dominate every server. Unless you already have hundreds or thousands of hours, expect to spend most of your time dying.\n\nThe game also demands an unhealthy amount of time. If you don't play every day, someone else will out-farm you, out-progress you, and eventually destroy everything you've built. It often feels less like a game and more like a second job.\n\nOverall, Rust has an incredible concept, but the c…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-cc634f",
+              "claim": "Reviewers encounter cheaters using software to gain unfair advantages during PvP encounters.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231636755",
+                  "hours_at_review": 29.7,
+                  "voted_up": true,
+                  "date": "2026-07-30",
+                  "review_text": "This is a good game but there are for sure some things that make you want to end it.\r\nimagine finally doing your first raid and youre feeling amazing, heart pouding, not knowing exactly what to do, thinking about all those youtube videos you watched to help you figure out how to secure the raid and then in the end you walk outside just ready to go home with the bag just to be 1 click eoka'd by a naked who just spawned and takes everything.\r\n\r\nIn the end its just a game and I think most people that complain are the ones who only play Mondays bi-weekly servers with 500 pop. There really is more than 1 server so some of these people just have to stop there ♥♥♥♥♥♥♥ to be honest. Furthurmore, there are a lot of cheater which would be my biggest problem with this game, and allthough I find myself complaining about cheater in other games to cope I can say without a doubt that every server you play in there will always be a cheater in it so be mentally prepared to lose that Ak you've been too scared to take out because of gear fear.\r\n\r\nStop playing this game like a loot goblin that doesn't do anything besides grub all wipe.\r\n\r\nStop waiting until the very end of wipe farming sulfur and gp just to go offline raid everyone and act like you're so amazing at the game even though server wiped 12 days ago and nobody is on.\r\n\r\nJust enjoy the game and use a mindset like \"hey i'm just having fun if I lose my stuff its okay I knew this would happen at some point\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230512493",
+                  "hours_at_review": 67.0,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "**⭐☆☆☆☆ (1/5)**\n\nI've put way too many hours into Rust hoping it would get better, but instead it's just become one of the most frustrating games I've ever played.\n\nThe biggest issue is the **cheaters**. No matter what server you join, it feels like there's always someone using ESP, aimbots, recoil scripts, or other cheats. You spend hours farming resources, building a base, and getting geared, only to get wiped by someone who somehow knows exactly where you are. It completely ruins the survival experience and makes every death feel suspicious instead of deserved.\n\nThen there's the community. While there are some good players, a huge portion of the player base is unbelievably toxic. Constant trash talk, griefing, door camping, roof camping, offline raiding, and players who only seem interested in making everyone else's experience miserable. New players barely stand a chance.\n\nThe grind is another massive problem. You can spend an entire day gathering materials, crafting, and expanding your base, only to log in the next morning and find everything gone because your base was raided while you were offline. Losing progress is part of Rust, but when it happens over and over, it starts to feel like you're wasting your time.\n\nPerformance is also disappointing. Even on decent PCs, the game can suffer from poor optimization, random frame drops, stuttering, long loading times, and crashes. Every major update seems to introduce new bugs while old issues remain.\n\nThe learning curve is brutal. Beginners are thrown into the game with almost no guidance, and experienced players dominate every server. Unless you already have hundreds or thousands of hours, expect to spend most of your time dying.\n\nThe game also demands an unhealthy amount of time. If you don't play every day, someone else will out-farm you, out-progress you, and eventually destroy everything you've built. It often feels less like a game and more like a second job.\n\nOverall, Rust has an incredible concept, but the c…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230185332",
+                  "hours_at_review": 24.8,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "\n\nMy cousin and I had become fairly invested in Rust, spending hours building up our base and enjoying the challenge the game offers. That experience came to an abrupt halt when we ran into a player using cheats. He eliminated both of us instantly, took over our base, and continued to kill us repeatedly from across the map with no way for us to fight back or even understand what was happening in real time. It became clear in that moment that there was little point in continuing.\n\nAfter that encounter, we learned that this kind of cheating is a widespread and ongoing issue within the Rust community, not an isolated incident. Knowing that this could happen again at any time made it difficult to justify investing further time into the game.\n\nI wanted to like Rust, and in many ways I did. The foundation is there for a genuinely excellent survival experience. However, if fair play and a level playing field matter to you, this is worth strong consideration before committing your time. If hacking and cheating are not deal breakers for you, the game may still be worth playing.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 1189,
+      "pct_positive": 77.4,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players highlight the deep base-building system, which allows progression from simple wooden shelters to advanced fortresses using electricity and piping. However, players on Linux note a lack of official support for their operating system.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-5d3bcc",
+              "claim": "Reviewers report that the game lacks official Linux operating system support.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229654087",
+                  "hours_at_review": 378.5,
+                  "voted_up": false,
+                  "date": "2026-07-05",
+                  "review_text": "No one can say that Rust is a well-made, well-performing, optimised game. Facepunch also refuses to enable Linux support.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230798907",
+                  "hours_at_review": 4052.0,
+                  "voted_up": false,
+                  "date": "2026-07-19",
+                  "review_text": "Sadly cannot play anymore, as I won't run Windows 11, and company has decided not to support Linux even though other games do using similar development stack.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230814997",
+                  "hours_at_review": 5687.9,
+                  "voted_up": true,
+                  "date": "2026-07-19",
+                  "review_text": "Played for years. Brutal game and a great sense of loss when you get raided. Loved it....\n\nHad to switch to linux after Win10.... and game sux now. Pitty there's no linux support.\n\nBye bye rust. was good knowing ya.....",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-dd8d81",
+              "claim": "Reviewers describe base building as a core mechanic, allowing players to progress from simple wooden shacks to defended fortresses using complex elements like electricity and piping.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231767041",
+                  "hours_at_review": 8166.4,
+                  "voted_up": true,
+                  "date": "2026-07-31",
+                  "review_text": "Absolutely the best open-world survival game. The mechanics of movement/flight and interfaces are very comfortable. Building, electrical using their own rust watts(rW), industrial loot moving piping, farming with plant genetics. The possibilities on this game are endless.. I'm a strict solo. Only played with a team for a short period of time being their builder.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230292690",
+                  "hours_at_review": 260.0,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "**Rust** is one of the most exciting and challenging survival games I have ever played. Every time you join a new server, you start with nothing and must gather resources, build a base, craft equipment, and survive against both the environment and other players. Because every server and every wipe is different, no two experiences ever feel the same.\n\nWhat I enjoy the most is the freedom the game offers. You can choose to play solo, team up with friends, trade with other players, or become a powerful clan that dominates the server. There are countless ways to play, and every decision can completely change your experience. Playing with friends is especially fun, as building a base, defending against raids, and exploring monuments together creates unforgettable moments.\n\nThe building system is one of Rust's strongest features. Watching a small wooden shelter grow into a heavily defended fortress is incredibly satisfying. The crafting system is also deep, allowing players to gradually unlock better equipment and weapons as they progress. Combined with the large open world and constant player interaction, the game always feels fresh and unpredictable.\n\nIf I had to mention a downside, it would be the steep learning curve. New players can easily lose everything after being killed or raided, which can be frustrating. Some servers may also have cheaters or highly experienced players that make survival difficult for beginners. However, finding a well-managed server greatly improves the overall experience.\n\nOverall, Rust is an outstanding survival game with excellent base building, PvP combat, exploration, and multiplayer gameplay. Although it can be unforgiving at times, the satisfaction of successfully defending your base, winning raids, or surviving an entire wipe makes every challenge worthwhile. I highly recommend it to anyone who enjoys survival games and competitive multiplayer experiences.\n\n\n『Rust』は、私が今まで遊んだサバイバルゲームの中でも特に緊張感があり、自由度の高い作品です。サーバーに参加すると何も持っていない状態から始まり、資源を集…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230816733",
+                  "hours_at_review": 194.6,
+                  "voted_up": true,
+                  "date": "2026-07-19",
+                  "review_text": "Ein absolut erstklassiges Survival Spiel. Die Atmosphäre ist stimmungsvoll, das Gameplay sorgt durchgehend für Nervenkitzel und die Fights sind an Intensität kaum zu überbieten. Vor allem im Team entfaltet das Spiel sein volles Potenzial und sorgt für unvergessliche Sessions. Der Basebau ist angenehm komplex und erfordert echtes technisches Verständnis. Man merkt einfach, wie viel Arbeit in die stetige und gelungene Weiterentwicklung gesteckt wird.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 2067,
+    "steam_total_reviews": 627738,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

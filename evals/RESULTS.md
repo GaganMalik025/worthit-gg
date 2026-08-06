@@ -73,6 +73,12 @@ directions, a decline against lifetime score versus a redemption arc. Stardew fi
 nothing at all, which is itself the finding for a consensus title. Five games, five
 profiles: the pipeline is surfacing genuine per-game structure, not a templated output.
 
+Cyberpunk 2077 is worth stating in its own terms: it reads flat **via a temporal
+redemption arc rather than playtime segmentation**, surfaced by the recency flag
+instead. Its cohorts genuinely do not disagree — the structure in this title is
+chronological, not segmental, and a tool that only looked across playtime would report
+it as consensus and miss the story entirely.
+
 Three corrections against the figures as first drafted, made from the pipeline's own
 output rather than carried through:
 
@@ -128,3 +134,54 @@ scoring 2.
 The claims did not get worse — the standard got more honest. Per the rubric's Versioning
 section, the v1.0 figure is not a valid comparison point and no improvement is claimed
 against it.
+
+---
+
+## 2026-08-06 — 4.4 catalog audit (BUILD_PLAN DoD)
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | `pipeline/qr4_gate.py --all` — **7,102 citations across 131 verdicts, 0 failures** |
+| Manual audit | 10 verdicts spot-checked, 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-sample.md`, sampled deterministically from the audit-stable set |
+| Published | 119 verdicts, in two commits (34 flash-tier day 1–2; 85 non-tier + day 3) |
+
+The audit sample was drawn only from **audit-stable** verdicts — those whose
+synthesis model will not change again. The 12 day-3 titles still awaiting a
+flash upgrade were excluded: auditing a verdict that is about to be regenerated
+spends the audit on something that will not survive.
+
+**Catalog position:** 119 of 150 published · 4 gate-rejected as thin-segmentation
+· 27 outstanding (12 day-3 flash upgrades, 20 day-4 titles, 2 rolled over by the
+budget stop; the day-3 upgrades overlap the outstanding count).
+
+**Developer notes on the audit:** Read all 20 sampled citations against the filter
+annotations (`hearts_present`, `profanity_soft`, `all_caps`); no slurs, no explicit
+content, no distressing material found. Clean.
+
+---
+
+## 2026-08-06 — 4.4 audit, day-3 flash-lite verdicts
+
+**QR-4 — Content safety: PASS**
+
+| | |
+|---|---|
+| Automated gate | **541 citations across 12 verdicts, 0 failures** |
+| Manual audit | 10 verdicts spot-checked, 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-day3.md` |
+
+These 12 reached `main` briefly inside an unrelated UI commit (`2177675`, a
+`git add -A site/` that swept up files being held back), were reverted out in
+`3e4bc6e`, audited, and re-committed on their own in `d03bea8`. Recorded because
+the gate exists to be auditable, and a gate that was skipped and then repaired
+is part of that record.
+
+They are flash-lite-final — dropped from the flash tier rather than upgraded,
+since re-synthesis changes which claims are selected and therefore which
+citations render, which would mean paying for this audit twice.
+
+**Developer notes on the audit:** Read all 20 sampled citations against the filter
+annotations; no slurs, no explicit content, no distressing material found. Clean.

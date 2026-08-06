@@ -15,6 +15,7 @@
  *     valence (invariant 13)
  */
 
+import { CaseHero } from "./CaseHero";
 import type { Verdict } from "../lib/verdict";
 
 const THEME_LABEL: Record<string, string> = {
@@ -27,7 +28,8 @@ const THEME_LABEL: Record<string, string> = {
 
 export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
   return (
-    <main>
+    <div className="layout">
+      <header className="hero-copy">
       <h1>{v.game_name}</h1>
       <span className={`stamp ${v.verdict.word.toLowerCase()}`}>
         {v.verdict.word.toUpperCase()}
@@ -40,7 +42,7 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
           Percent of reviewers who&rsquo;d recommend it, grouped by how long they
           played before reviewing.
         </p>
-        {v.split_bar.map((b) => (
+        {v.split_bar.map((b, i) => (
           <div key={b.bucket} className={b.muted ? "bar-row muted" : "bar-row"}>
             <span className="bar-label">
               {b.label}{" "}
@@ -50,11 +52,23 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
                   : `· based on ${b.pool_n} reviews`}
               </span>
             </span>
+            <span className="bar-track">
+              <span className="bar-fill" style={{ ["--delay" as string]: `${420 + 60 * i}ms` } as React.CSSProperties}>
+                <span className="bar-pos" style={{ width: `${b.pct_positive}%` }} />
+                <span className="bar-neg" style={{ width: `${100 - b.pct_positive}%` }} />
+              </span>
+            </span>
             <span className="bar-pct mono">{b.pct_positive.toFixed(1)}%</span>
           </div>
         ))}
       </section>
+      </header>
 
+      <div className="case-col">
+        <CaseHero appid={v.appid} gameName={v.game_name} splitBar={v.split_bar} />
+      </div>
+
+      <main className="main-col">
       {v.cohorts.map((c) => (
         <section key={c.bucket} className="cohort">
           <h2>{c.label}</h2>
@@ -96,11 +110,12 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
         </section>
       ))}
 
-      <footer className="mono">
+      </main>
+      <footer className="mono verdict-footer">
         Data: {v.footer.pool_n.toLocaleString("en-US")} reviews across{" "}
         {v.footer.cohort_count} cohorts · generated{" "}
         {v.generated_at.slice(0, 10)}
       </footer>
-    </main>
+    </div>
   );
 }

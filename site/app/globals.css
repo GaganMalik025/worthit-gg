@@ -1,0 +1,255 @@
+:root{
+  --bg:#10141C; --surface:#1A2029; --surface-2:#232B37;
+  --text:#E8ECF1; --text-dim:#8B95A5;
+  --buy:#4ADE80; --wait:#FBBF24; --skip:#F87171; --link:#7DD3FC;
+  --hairline:rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;
+  color:var(--text);padding:48px 24px 64px}
+h1,h2,h3,.display{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;
+  letter-spacing:-0.02em;line-height:1.1}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px}
+a{color:var(--link)}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:4px}
+main{max-width:720px;margin:0 auto;position:relative;z-index:1}
+.waves{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.waves canvas{width:100%;height:100%;display:block}
+
+/* home */
+.wordmark{font-size:32px}
+.promise{color:var(--text-dim);margin:8px 0 32px}
+.searchbox{position:relative}
+.searchbox input{width:100%;padding:14px 16px;border-radius:12px;font:inherit;
+  color:var(--text);background:var(--surface);border:1px solid var(--hairline)}
+.results{list-style:none;margin-top:8px;background:var(--surface);
+  border-radius:12px;overflow:hidden}
+.results .row{display:flex;align-items:center;gap:12px;padding:8px 12px;cursor:pointer}
+.results .row.active{background:var(--surface-2)}
+.results .capsule{width:92px;height:35px;object-fit:cover;border-radius:4px;flex:none}
+.results .title{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chip{padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600;flex:none}
+.chip.buy{color:var(--buy);border:1px solid rgba(74,222,128,.2)}
+.chip.wait{color:var(--wait);border:1px solid rgba(251,191,36,.2)}
+.chip.skip{color:var(--skip);border:1px solid rgba(248,113,113,.2)}
+.chip.none{color:var(--text-dim);border:1px solid var(--hairline)}
+.grid{display:grid;gap:12px;margin-top:32px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+/* ---- home grid: poster-dominant cards ----------------------------------
+   At rest the card is only cover art. The overlay carries the title and the
+   verdict chip and fades in on hover.
+
+   THE SCRIM OPACITY IS MEASURED, NOT PICKED. White text on bare cover art
+   fails WCAG AA on every catalog cover tested - 1.20:1 on Cyberpunk 2077 up to
+   only 2.49:1 on Elden Ring, against a 4.5:1 floor. Contrast of white over the
+   BRIGHTEST patch of each cover's bottom band, black scrim composited in sRGB:
+
+       cover              needs alpha >=   at alpha .80
+       Cyberpunk 2077          0.50           13.5:1
+       Balatro                 0.45           14.2:1
+       HELLDIVERS 2            0.41           14.7:1
+       Kenshi                  0.39           15.1:1
+       Stardew Valley          0.36           15.4:1
+       Terraria                0.32           15.8:1
+       Baldur's Gate 3         0.29           16.1:1
+       ELDEN RING              0.28           16.2:1
+
+   The title sits where the gradient is >= .80, so the worst cover in the set
+   still clears 13.5:1 - past AAA, not just AA. text-shadow is belt-and-braces
+   for a bright edge inside a dark patch, not the primary mechanism: a shadow
+   alone could not rescue 1.20:1. */
+.card{position:relative;display:block;border-radius:12px;overflow:hidden;
+  aspect-ratio:2/3;background:var(--surface);color:inherit;text-decoration:none;
+  isolation:isolate}
+.card .poster{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block}
+/* header.jpg is 16:9 - contain it rather than crop a wide image to portrait */
+.card.letterbox .poster{object-fit:contain;background:var(--surface)}
+.card.artless .poster{display:none}
+
+.card .overlay{position:absolute;inset:0;z-index:1;display:flex;
+  flex-direction:column;justify-content:flex-end;align-items:flex-start;
+  gap:8px;padding:14px;opacity:0;transition:opacity 150ms ease;
+  background:linear-gradient(to top,
+    rgba(0,0,0,.92) 0%, rgba(0,0,0,.80) 32%,
+    rgba(0,0,0,.45) 58%, rgba(0,0,0,0) 100%)}
+.card:hover .overlay,
+.card:focus-visible .overlay{opacity:1}
+.card .overlay h3{font-size:15px;line-height:1.25;color:#fff;
+  text-shadow:0 1px 3px rgba(0,0,0,.9)}
+
+/* No hover available: the verdict must be visible without one. Keyed on the
+   capability, not on width - a touch laptop passes a width test and would
+   otherwise show a card that never reveals anything. */
+@media (hover: none){
+  .card .overlay{opacity:1}
+}
+/* No art at all: the overlay is the card. */
+.card.artless .overlay{opacity:1;background:var(--surface);justify-content:center}
+
+@media (prefers-reduced-motion: reduce){
+  .card .overlay{transition:none}
+}
+
+/* verdict page */
+.stamp{display:inline-block;padding:6px 18px;border-radius:8px;font-size:24px;
+  font-family:"Space Grotesk",sans-serif;font-weight:700}
+.stamp.buy{color:var(--buy);border:1px solid rgba(74,222,128,.2)}
+.stamp.wait{color:var(--wait);border:1px solid rgba(251,191,36,.2)}
+.stamp.skip{color:var(--skip);border:1px solid rgba(248,113,113,.2)}
+.for-whom{margin-top:16px}
+.spine{margin-top:32px}
+.spine .sub{color:var(--text-dim);font-size:14px;margin:4px 0 16px}
+.bar-row{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;font-size:14px}
+.bar-label .mono{color:var(--text-dim)}
+.bar-row.muted{opacity:.3}
+.cohort{margin-top:40px;background:var(--surface);border-radius:12px;padding:24px}
+.cohort .stats{margin-top:4px;color:var(--text-dim);font-size:14px}
+.cohort .summary{margin-top:12px;color:var(--text-dim)}
+.theme{margin-top:24px}
+.theme h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim)}
+.claim{padding:16px 0;border-top:1px solid var(--hairline)}
+.claim summary{display:flex;gap:16px;cursor:pointer;list-style:none}
+.claim summary .tag{color:var(--text-dim)}
+.claim summary .cta{color:var(--link);font-size:14px}
+.citation{background:var(--surface-2);border-radius:8px;padding:16px;margin-top:12px}
+.citation .meta{color:var(--text-dim);margin-bottom:8px;font-size:14px}
+.citation .meta .up{color:var(--buy)} .citation .meta .down{color:var(--skip)}
+.citation .body{white-space:pre-wrap;overflow-wrap:anywhere}
+footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--hairline);color:var(--text-dim)}
+.gen-panel{margin-top:48px}
+.gen-panel .sub{color:var(--text-dim);margin-top:8px}
+.stages{list-style:none;margin-top:24px}
+.stage{display:flex;gap:12px;padding:6px 0;color:var(--text-dim)}
+.stage.completed{color:var(--text)} .stage.in_progress{color:var(--link)}
+@media (max-width:520px){ .results .capsule{display:none} }
+
+/* ===== case hero: CSS ported verbatim from mockups/kenshi-verdict.html
+   (the approved mockup is the source of truth, per DESIGN.md) ===== */
+/* ---- the case: pure CSS 3D ---- */
+.case-scene{position:sticky;top:88px;padding:48px 0 24px}
+/* full-bleed backdrop: fixed to the viewport, never inside a content wrapper,
+   no overflow clipper, no mask - nothing may create a visible boundary */
+.case-wrap{perspective:1400px;width:280px;margin:0 auto}
+.case{position:relative;width:280px;height:356px;
+  transform-style:preserve-3d;transform:rotateY(22deg);
+  filter:drop-shadow(0 28px 44px rgba(0,0,0,.55))}
+.case .panel{position:absolute;inset:0;border-radius:8px}
+/* thickness: spine edge on the hinge side */
+.edge{position:absolute;top:0;left:0;width:26px;height:100%;
+  transform:translateZ(13px) rotateY(90deg);transform-origin:left center;
+  background:linear-gradient(90deg,#141A24,#1E2632);border-radius:4px}
+/* interior tray: disc bed */
+.tray{transform:translateZ(-13px);background:var(--surface-2);
+  box-shadow:inset 0 0 40px rgba(0,0,0,.45)}
+.disc{position:absolute;top:50%;left:50%;width:200px;height:200px;
+  transform:translate(-50%,-50%);border-radius:50%;overflow:hidden;
+  background:var(--surface);
+  box-shadow:0 2px 14px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.08)}
+.disc::after{content:"";position:absolute;top:50%;left:50%;width:44px;
+  height:44px;transform:translate(-50%,-50%);border-radius:50%;
+  background:var(--bg);box-shadow:0 0 0 6px rgba(255,255,255,.06)}
+.disc .ms{position:absolute;inset:0}
+.disc .disc-art{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;filter:brightness(.5) contrast(1.18) saturate(.85)}
+.disc .disc-art.dim{filter:grayscale(.65) brightness(.38) contrast(1.25)}
+.disc .sheen{position:absolute;inset:0;border-radius:50%;pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255,255,255,.16), transparent 46%),
+    conic-gradient(from 210deg,
+      transparent 0deg, rgba(255,255,255,.08) 38deg, transparent 92deg,
+      transparent 175deg, rgba(255,255,255,.05) 215deg, transparent 265deg),
+    radial-gradient(circle, transparent 52%, rgba(0,0,0,.4) 100%)}
+/* cover: hinged at the left edge, two faces */
+.cover{transform-origin:left center;transform-style:preserve-3d;
+  transform:translateZ(13px) rotateY(0deg)}
+.face{position:absolute;inset:0;border-radius:8px;overflow:hidden;
+  backface-visibility:hidden}
+.face.front{background:var(--surface);display:flex;flex-direction:column}
+.band{height:40px;flex:none;background:var(--surface-2);display:flex;
+  align-items:center;padding:0 14px;font-size:16px;letter-spacing:.22em;
+  border-bottom:1px solid var(--hairline)}
+.art-wrap{position:relative;flex:1;overflow:hidden}
+.art-wrap img.art{width:100%;height:100%;object-fit:cover;display:block}
+.art-wrap.letterbox img.art{object-fit:contain;position:relative;z-index:1}
+.art-wrap img.art-bg{display:none}
+.art-wrap.letterbox img.art-bg{display:block;position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;transform:scale(1.35);
+  filter:blur(22px) brightness(.55)}
+.art-wrap.motif img{display:none}
+.art-wrap.motif{background:var(--surface)}
+.art-wrap.motif .ms{position:absolute;inset:24% 12%}
+.face.inside{transform:rotateY(180deg);background:var(--surface-2)}
+/* the cover poster seen from behind, through frosted tinted plastic:
+   mirrored, ghosted, blurred, pulled toward the panel's own surface color */
+.face.inside .ghost{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transform:scaleX(-1);opacity:.25;
+  filter:blur(7px) grayscale(.6) brightness(.8)}
+.face.inside::before{content:"";position:absolute;inset:0;z-index:1;
+  background:rgba(35,43,55,.5)}
+.face.inside::after{content:"";position:absolute;top:50%;left:50%;z-index:2;
+  width:180px;height:180px;transform:translate(-50%,-50%);border-radius:50%;
+  border:1px solid rgba(255,255,255,.07)}
+/* mini split bar motif (disc label + art fallback) */
+.ms{display:flex;flex-direction:column;gap:0}
+.ms i{display:block;flex:1;background:var(--skip)}
+.ms i b{display:block;height:100%;background:var(--buy)}
+
+
+/* two-column shell: case pins left, reading column right */
+.layout{display:grid;max-width:1100px;margin:0 auto;column-gap:56px;
+  grid-template-columns:340px minmax(0,1fr)}
+.hero-copy{grid-column:2;grid-row:1;max-width:680px}
+.case-col{grid-column:1;grid-row:1/span 2}
+.main-col{grid-column:2;grid-row:2;max-width:680px}
+.layout,.verdict-footer{position:relative;z-index:1}
+.verdict-footer{max-width:1100px;margin:64px auto 0;padding-top:24px;
+  border-top:1px solid var(--hairline);color:var(--text-dim)}
+
+/* stamp reveal: a landing, not a fade (DESIGN.md "first two seconds") */
+@media (prefers-reduced-motion: no-preference){
+  .stamp{animation:stamp-land 260ms cubic-bezier(.2,1.35,.45,1) 100ms backwards}
+  @keyframes stamp-land{
+    0%{transform:scale(1.5);opacity:0}
+    55%{transform:scale(.96);opacity:1}
+    100%{transform:scale(1);opacity:1}}
+  .stamp::after{content:"";position:absolute;inset:-1px;border-radius:8px;
+    border:2px solid currentColor;opacity:0;pointer-events:none;
+    animation:stamp-ring 450ms ease-out 240ms}
+  @keyframes stamp-ring{
+    0%{opacity:.55;transform:scale(1)}
+    100%{opacity:0;transform:scale(1.35)}}
+  .bar-fill{clip-path:inset(0 100% 0 0);
+    animation:draw 350ms ease-out forwards;animation-delay:var(--delay)}
+  @keyframes draw{to{clip-path:inset(0 0 0 0)}}
+}
+.stamp{position:relative}
+.bar-track{height:16px;border-radius:999px;overflow:hidden;background:var(--surface);
+  flex:1;margin:0 12px}
+.bar-fill{display:flex;height:100%;width:100%}
+.bar-pos{background:var(--buy);height:100%}
+.bar-neg{background:var(--skip);height:100%}
+.bar-row{align-items:center}
+.bar-label{flex:none;width:190px}
+.bar-pct{flex:none;width:64px;text-align:right}
+
+/* mobile: static hero image, no 3D, no pinning (DESIGN.md) */
+@media (max-width:767px){
+  .layout{display:block}
+  .hero-copy,.main-col{max-width:none}
+  .case-scene{position:static;padding:24px 0 0}
+  .case-wrap{perspective:none;width:200px}
+  .case{width:200px;height:254px;transform:none}
+  .edge{display:none}
+  .cover{transform:none !important}
+  .band{height:32px;font-size:13px}
+  .bar-label{width:auto} .bar-row{flex-wrap:wrap}
+}
+
+/* reduced motion: case already open and settled, nothing scroll-linked */
+@media (prefers-reduced-motion: reduce){
+  .stamp,.bar-fill{animation:none}
+  html.prm .cover{transform:translateZ(13px) rotateY(-150deg)}
+  html.prm .case{transform:rotateY(8deg)}
+}

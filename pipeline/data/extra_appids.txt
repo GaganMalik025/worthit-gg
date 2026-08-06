@@ -1,0 +1,18 @@
+# Titles that exist, carry reviews, and are ABSENT from Steam's store search.
+#
+# Store search omits delisted titles by construction, and IStoreService/GetAppList
+# is key-gated, so there is no keyless way to DISCOVER these - only to record
+# them. Death Stranding (1190460) is the proof: 79,157 reviews, a live store
+# page, and absent from all 686 pages of the walk. It is findable today only
+# because we already held its verdict, which build_search_index.merge_verdicts()
+# unions back in.
+#
+# This file covers the rest: titles we know about but hold no verdict for, so
+# merge_verdicts cannot rescue them. Each entry is validated with one keyless
+# appreviews call (total_reviews >= 70) before it enters the batch.
+#
+# FORMAT: appid  # title - why it is missing from store search
+#
+# Empty at the start of the Phase 4 batch. Entries are added when a specific
+# title is found missing, never speculatively - an unvalidated appid here costs
+# a failed generation.

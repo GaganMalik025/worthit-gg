@@ -2,7 +2,7 @@
 WorthIt.gg - static search index for the home typeahead
 
 Builds the list of Steam titles the search box can offer. Decoupled from
-public/verdicts/: the index covers the whole store above a review floor, while
+site/public/verdicts/: the index covers the whole store above a review floor, while
 verdicts cover only what we have generated. A title in the index without a
 verdict is a cache miss, which is a valid destination (live generation or the
 request queue), not an error.
@@ -31,8 +31,8 @@ SHAPE
 -----
 Two shards, so the box is usable before the whole catalog has downloaded:
 
-    public/search-index-core.json   >= CORE_MIN reviews  (fetched on focus)
-    public/search-index-tail.json   floor .. CORE_MIN-1  (fetched right after)
+    site/public/search-index-core.json   >= CORE_MIN reviews  (fetched on focus)
+    site/public/search-index-tail.json   floor .. CORE_MIN-1  (fetched right after)
 
 Capsule URLs are DERIVED from appid at render time, never stored - storing them
 costs ~105 bytes per entry and buys nothing. Entries are sorted by review count
@@ -51,6 +51,7 @@ import json
 import re
 import sys
 import time
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -60,8 +61,8 @@ from fetch_reviews import _get_with_backoff  # noqa: E402  (shared 429 disciplin
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "data/cache/searchindex"
-CORE_PATH = ROOT / "public/search-index-core.json"
-TAIL_PATH = ROOT / "public/search-index-tail.json"
+CORE_PATH = ROOT / "site/public/search-index-core.json"
+TAIL_PATH = ROOT / "site/public/search-index-tail.json"
 
 SEARCH_URL = ("https://store.steampowered.com/search/results/"
               "?query&start=%d&count=100&dynamic_data=&sort_by=Reviews_DESC"
@@ -75,35 +76,84 @@ PACE_SECONDS = 0.6
 
 SEED_APPIDS = [233860, 553850, 1091500, 413150, 1190460]
 
-RE_APPID = re.compile(r'data-ds-appid="(\d+)"')
+# Titles whose appid pairing is asserted on every build. Each one was MISPAIRED
+# by the parallel-run parser this file used to carry (see parse_page), so they
+# are the cheapest possible tripwire for that class of bug returning.
+SPOT_CHECK = {
+    233860: "Kenshi",
+    367520: "Hollow Knight",
+    1086940: "Baldur's Gate 3",
+    292030: "The Witcher 3: Wild Hunt",
+    250900: "The Binding of Isaac: Rebirth",
+}
+
+RE_ROW = re.compile(r'(?=<a[^>]*class="search_result_row)')
+# An App_ itemkey is the row's identity. Deliberately NOT data-ds-appid - see
+# parse_page for why that attribute cannot be used to identify a row.
+RE_ITEMKEY = re.compile(r'data-ds-itemkey="App_(\d+)"')
 RE_TITLE = re.compile(r'<span class="title">([^<]*)</span>')
 RE_TIP = re.compile(r'data-tooltip-html="([^"]*)"')
 RE_COUNT = re.compile(r'([\d,]+)\s+user reviews')
 
 
 def parse_page(blob):
-    """(appid, title, review_count) per row, skipping rows with no count.
+    """(appid, title, review_count) per row, parsed ROW BY ROW.
 
-    Steam emits appids, titles and tooltips as three parallel runs in the same
-    order. A row with no review tooltip (unreleased, or too few reviews to have
-    a score) has no count and is dropped - it cannot clear the floor anyway.
+    NOT as parallel runs. This file used to scan the whole page for appids,
+    titles and tooltips separately and pair them by index, on the assumption
+    that Steam emits three runs of equal length. It does not:
+
+        <a class="search_result_row" ... data-ds-itemkey="Sub_281610"
+           data-ds-packageid="281610">      <- package: NO data-ds-appid
+        <a class="search_result_row" ... data-ds-appid="292030,378649,378648"
+           data-ds-itemkey="Sub_...">       <- package: a LIST of appids
+
+    214 of 68,537 rows are `Sub_` package rows, and `data-ds-appid="(\\d+)"`
+    matches neither shape. Every row after the first package on a page therefore
+    paired its appid with a NEIGHBOUR's title: 6,417 of 30,248 shipped entries
+    (21.2%) named the wrong game. `Hollow Knight` resolved to Binding of Isaac's
+    appid, and picking it in the search box would have generated the wrong
+    verdict.
+
+    Package rows are dropped rather than salvaged. The first appid of a package
+    is often a real game, but the row's title is the package name ("Complete
+    Edition") and its count is the package's aggregate - both wrong for a
+    search result. Every such game has its own App_ row anyway.
+
+    Returns (rows, total_count, stats). stats accounts for EVERY row seen, so
+    verify() can prove no row was silently dropped.
     """
     h = blob.get("results_html") or ""
-    ids = RE_APPID.findall(h)
-    titles = [html_mod.unescape(t).strip() for t in RE_TITLE.findall(h)]
-    tips = RE_TIP.findall(h)
-    rows = []
-    for i, tip in enumerate(tips):
-        if i >= len(ids) or i >= len(titles):
-            break
-        m = RE_COUNT.search(html_mod.unescape(tip))
-        if not m:
+    rows, stats = [], Counter()
+    for chunk in RE_ROW.split(h):
+        if "search_result_row" not in chunk:
             continue
-        title = titles[i]
+        stats["rows"] += 1
+        key = RE_ITEMKEY.search(chunk)
+        if not key:
+            stats["not_an_app"] += 1          # Sub_/Bundle_ package rows
+            continue
+        title = RE_TITLE.search(chunk)
+        tip = RE_TIP.search(chunk)
+        if not tip:
+            # unreleased, or too few reviews to carry a score - it could not
+            # clear the floor regardless
+            stats["no_tooltip"] += 1
+            continue
         if not title:
+            stats["no_title"] += 1
             continue
-        rows.append((int(ids[i]), title, int(m.group(1).replace(",", ""))))
-    return rows, blob.get("total_count") or 0
+        m = RE_COUNT.search(html_mod.unescape(tip.group(1)))
+        if not m:
+            stats["no_review_count"] += 1
+            continue
+        name = html_mod.unescape(title.group(1)).strip()
+        if not name:
+            stats["empty_title"] += 1
+            continue
+        rows.append((int(key.group(1)), name, int(m.group(1).replace(",", ""))))
+        stats["parsed"] += 1
+    return rows, blob.get("total_count") or 0, stats
 
 
 def fetch_page(start, force=False):
@@ -121,16 +171,18 @@ def fetch_page(start, force=False):
 def walk(limit=0, force=False):
     """Every page of the catalog. Stops when a page returns no rows."""
     by_id, start, total, pages, cached = {}, 0, None, 0, 0
+    stats = Counter()
     while True:
         blob, was_cached = fetch_page(start, force)
-        rows, tc = parse_page(blob)
+        rows, tc, page_stats = parse_page(blob)
+        stats.update(page_stats)
         if total is None and tc:
             total = tc
             print("catalog reports %s scored games (~%d pages)"
                   % (f"{total:,}", -(-total // PAGE)))
         pages += 1
         cached += 1 if was_cached else 0
-        if not rows and not RE_APPID.search(blob.get("results_html") or ""):
+        if not rows and not page_stats["rows"]:
             break
         for appid, title, n in rows:
             prev = by_id.get(appid)
@@ -145,7 +197,7 @@ def walk(limit=0, force=False):
             break
         if total and start >= total:
             break
-    return by_id, pages, cached
+    return by_id, pages, cached, stats
 
 
 def merge_verdicts(by_id, verdicts_dir=None):
@@ -163,7 +215,7 @@ def merge_verdicts(by_id, verdicts_dir=None):
     box covering our catalog and merely covering Steam's storefront. Ranking uses
     the verdict's own steam_total_reviews, already carried in the footer.
     """
-    d = Path(verdicts_dir or (ROOT / "public/verdicts"))
+    d = Path(verdicts_dir or (ROOT / "site/public/verdicts"))
     added = []
     for p in sorted(d.glob("*.json")):
         try:
@@ -205,7 +257,7 @@ def payload(rows, min_reviews, max_reviews=None):
     }
 
 
-def verify(entries, core, tail, min_reviews, core_min):
+def verify(entries, core, tail, min_reviews, core_min, stats=None):
     problems = []
     ids = [a for a, _, _ in entries]
     if len(set(ids)) != len(ids):
@@ -223,6 +275,30 @@ def verify(entries, core, tail, min_reviews, core_min):
     missing = [a for a in SEED_APPIDS if a not in present]
     if missing:
         problems.append("seed appids missing from the index: %s" % missing)
+
+    # The pairing tripwire. A parser that pairs a title with the wrong appid
+    # produces an index that passes every check above - it is the right size,
+    # sorted, unique, and every seed is present. Only naming a known pair
+    # catches it.
+    titles = {a: t for a, t, _ in entries}
+    for appid, expected in sorted(SPOT_CHECK.items()):
+        got = titles.get(appid)
+        if got is None:
+            problems.append("spot-check appid %d absent from the index" % appid)
+        elif got != expected:
+            problems.append("appid %d is titled %r, expected %r - appid/title "
+                            "pairing is wrong" % (appid, got, expected))
+
+    # Every row seen must be accounted for by exactly one outcome. If Steam
+    # adds a row shape this parser does not recognise, the count stops
+    # balancing here rather than silently shrinking the index.
+    if stats:
+        accounted = (stats["parsed"] + stats["not_an_app"] + stats["no_tooltip"]
+                     + stats["no_title"] + stats["no_review_count"]
+                     + stats["empty_title"])
+        if accounted != stats["rows"]:
+            problems.append("row accounting does not balance: %d rows seen, "
+                            "%d accounted for" % (stats["rows"], accounted))
     return problems
 
 
@@ -237,22 +313,28 @@ def main():
 
     t0 = time.time()
     print("walking the Steam catalog (keyless store search, %d/page)..." % PAGE)
-    by_id, pages, cached = walk(args.limit, args.force)
+    by_id, pages, cached, stats = walk(args.limit, args.force)
     added = merge_verdicts(by_id)
     for appid, name, n in added:
-        print("  + %s (%d) not in store search - added from public/verdicts/ "
+        print("  + %s (%d) not in store search - added from site/public/verdicts/ "
               "(%s reviews)" % (name, appid, f"{n:,}"))
     entries, core, tail = build(by_id, args.min_reviews, args.core_min)
     dt = time.time() - t0
 
     print("\n%d pages (%d from cache) in %.1f min" % (pages, cached, dt / 60))
+    print("rows: %s seen -> %s parsed | dropped: %d package/bundle, "
+          "%d no tooltip, %d no review count, %d no/empty title"
+          % (f"{stats['rows']:,}", f"{stats['parsed']:,}", stats["not_an_app"],
+             stats["no_tooltip"], stats["no_review_count"],
+             stats["no_title"] + stats["empty_title"]))
     print("%s unique games seen, %s clear the %d-review floor"
           % (f"{len(by_id):,}", f"{len(entries):,}", args.min_reviews))
     print("  core (>=%s reviews): %s" % (f"{args.core_min:,}", f"{len(core):,}"))
     print("  tail (%d-%s)       : %s"
           % (args.min_reviews, f"{args.core_min - 1:,}", f"{len(tail):,}"))
 
-    problems = verify(entries, core, tail, args.min_reviews, args.core_min)
+    problems = verify(entries, core, tail, args.min_reviews, args.core_min,
+                      stats)
     if problems:
         print("\nINTEGRITY FAILURES (%d):" % len(problems))
         for p in problems:
@@ -263,7 +345,9 @@ def main():
         print("  (--limit run: partial walk, failures expected)")
     else:
         print("\nintegrity: ids unique, all >= floor, sorted by count desc, "
-              "shards partition, all 5 seed appids present")
+              "shards partition, all 5 seed appids present,\n"
+              "           %d appid/title pairs spot-checked, every row "
+              "accounted for" % len(SPOT_CHECK))
 
     if args.dry_run:
         print("\nsample rows: %s" % [(a, t) for a, t in core[:3]])

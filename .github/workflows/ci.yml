@@ -1,14 +1,30 @@
 name: ci
 
-# The dual verdict render path (prerendered vs proxied from the `verdicts`
-# branch) is the one thing in this repo that can rot silently, because only
-# freshly generated titles take the second path. This runs the contract test
-# that pins the two together.
+# Two things here can rot silently, and both are pinned by contract tests:
+#
+#   1. the dual verdict render path (prerendered vs proxied from the `verdicts`
+#      branch) - only freshly generated titles take the second path
+#   2. the quota constants, which live in BOTH site/lib/quota.ts and
+#      pipeline/live_quota.py and drifted for days
+#
+# The pipeline paths are in the trigger on purpose. A change to live_quota.py
+# alone is exactly what caused the drift, and a site-only path filter would not
+# have run the test that catches it.
 on:
   push:
-    paths: ['site/**', 'public/verdicts/**', '.github/workflows/ci.yml']
+    paths:
+      - 'site/**'
+      - 'site/public/verdicts/**'
+      - 'pipeline/live_quota.py'
+      - 'pipeline/quota_day.py'
+      - '.github/workflows/ci.yml'
   pull_request:
-    paths: ['site/**', 'public/verdicts/**', '.github/workflows/ci.yml']
+    paths:
+      - 'site/**'
+      - 'site/public/verdicts/**'
+      - 'pipeline/live_quota.py'
+      - 'pipeline/quota_day.py'
+      - '.github/workflows/ci.yml' 
 
 jobs:
   test:

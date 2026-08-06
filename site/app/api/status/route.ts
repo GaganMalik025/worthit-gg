@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { listActiveRuns, readQuota, runSteps } from "../../../lib/github";
-import type { QuotaState } from "../../../lib/quota";
+import { listActiveRuns, readQuota, runSteps, verdictExists } from "../../../lib/github";
+import { dispatchLost, type QuotaState } from "../../../lib/quota";
 
 export const dynamic = "force-dynamic";
 
@@ -13,19 +13,49 @@ export const dynamic = "force-dynamic";
  * Queue position is a fact we can state. A queue TIME estimate would be a guess
  * multiplied by an unknown queue, so it is never returned - the measured
  * duration copy belongs to the running state only.
+ *
+ * ORDER MATTERS. The artifact is checked BEFORE the bookkeeping variable,
+ * because the variable is written by a step that can fail. It did fail once,
+ * and the result was a verdict that existed, was committed, and was live via
+ * the proxy - while the client polled "queued" until it timed out and told the
+ * user to request the page it was already serving. Deciding "published" from
+ * the artifact makes that failure mode impossible rather than unlikely.
  */
 export async function GET(req: NextRequest) {
   const appid = req.nextUrl.searchParams.get("appid");
   if (!appid) return NextResponse.json({ error: "appid required" }, { status: 400 });
 
-  const quota = (await readQuota()) as QuotaState;
-  const outcome = quota.outcomes?.[appid];
-  if (outcome) {
-    return NextResponse.json({ state: outcome.state, at: outcome.at });
+  // 1. ground truth: is it actually there?
+  const exists = await verdictExists(appid);
+  if (exists.found) {
+    return NextResponse.json({ state: "published", source: exists.source });
   }
 
+  // 2. the ledger, for terminal states that leave no artifact by design
+  //    (qr4_failed deletes it; stage_failed never wrote one)
+  const quota = (await readQuota()) as QuotaState;
+  const outcome = quota.outcomes?.[appid];
+  if (outcome && outcome.state !== "published") {
+    return NextResponse.json({ state: outcome.state, at: outcome.at });
+  }
+  // A "published" ledger entry with no artifact means the commit was reverted
+  // or the branch rewritten - trust the artifact and keep polling.
+
+  // 3. still working
   const runs = await listActiveRuns();
   if (runs.length === 0) {
+    // No artifact, no terminal outcome, and no run in ANY non-terminal state.
+    // This used to return {queued, ahead: 0} - the same response as a genuine
+    // "you're next", so a request whose run never existed polled until timeout
+    // showing a queue position it did not have.
+    //
+    // Past the grace window that is not a queue, it is a lost dispatch, and it
+    // gets its own terminal state so the client can fall back to the request
+    // queue instead of waiting on something that is not coming.
+    if (dispatchLost(quota, appid)) {
+      return NextResponse.json({ state: "dispatch_lost", appid });
+    }
+    // inside the window: the run genuinely has not appeared yet
     return NextResponse.json({ state: "queued", ahead: 0 });
   }
 
@@ -33,9 +63,6 @@ export async function GET(req: NextRequest) {
   const running = runs[0];
   const steps = await runSteps(running.id);
   const started = steps.steps.some((s) => s.status !== "pending");
-
-  // We cannot label runs by appid from the runs API, so position is derived
-  // from queue depth: everything active that is not the head is waiting.
   const ahead = Math.max(0, runs.length - 1);
 
   if (started && runs.length === 1) {
