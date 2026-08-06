@@ -184,8 +184,13 @@ def test_gate_costs_nothing_when_it_fires():
     filter_at = src.index('if segmentation_gate and key == "filter"')
     record_at = src.index("live_quota.charge(cost")
     check("the gate runs before the quota charge", filter_at < record_at)
-    check("it returns model_calls 0 when it fires",
-          '"model_calls": 0' in src[filter_at:filter_at + 900])
+    # It used to hardcode model_calls 0. Now it charges the MEASURED figure -
+    # which should be 0, but is reported rather than asserted, because a
+    # hardcoded zero is how spend goes missing.
+    check("it reports the measured spend, not a hardcoded zero",
+          '"model_calls": spent' in src[filter_at:filter_at + 900])
+    check("...and charges it to the ledger",
+          "live_quota.charge(spent" in src[filter_at:filter_at + 900])
 
 
 def test_pending_skips_finished_and_terminal():
@@ -363,6 +368,37 @@ def test_call_counting_is_at_the_call_site():
           "WORTHIT_APPID=str(appid)" in gsrc)
 
 
+def test_failure_paths_charge_the_ledger():
+    """Quota spent by a failed title must be visible to the budget stop. It was
+    not: generate_one returned early on stage_failed without charging, so the
+    ledger read 410 while the pacer had counted 506 - and the budget stop is the
+    thing meant to prevent exactly the wall that run hit."""
+    print("\nledger: failed and skipped titles are charged too")
+    src = (Path(__file__).resolve().parent / "generate_one.py").read_text()
+    for label, marker in (("stage_failed", '"outcome": "stage_failed"'),
+                          ("thin_segmentation", '"outcome": "thin_segmentation"'),
+                          ("no_verdict_written", '"outcome": "no_verdict_written"')):
+        at = src.index(marker)
+        window = src[max(0, at - 400):at]
+        check("%s charges before returning" % label,
+              "live_quota.charge(" in window)
+    check("every early return reports what it spent",
+          src.count('"model_calls": spent') >= 3)
+    check("the ledger limits are the VERIFIED ones, not the assumed 1500",
+          live_quota.DAILY_LIMIT == 500 and live_quota.LIVE_RESERVE == 100,
+          (live_quota.DAILY_LIMIT, live_quota.LIVE_RESERVE))
+    check("batch budget is therefore 400/day",
+          live_quota.batch_budget() == 400, live_quota.batch_budget())
+
+
+def test_interrupt_does_not_double_count():
+    print("\nbatch: an interrupted run reports what actually happened")
+    src = (Path(__file__).resolve().parent / "run_batch.py").read_text()
+    check("only uncollected futures are extended", "futures[already:]" in src)
+    check("the naive extend-everything is gone",
+          "done.extend(f.result() for f in futures\n" not in src)
+
+
 def test_ledger_charge_is_atomic():
     """The lost-update race the verification run exposed: 28 requests spent, 17
     recorded. generate_one did load -> record -> save with no lock while the
@@ -477,6 +513,8 @@ if __name__ == "__main__":
     test_batch_is_interruptible()
     test_call_counting_is_at_the_call_site()
     test_ledger_charge_is_atomic()
+    test_failure_paths_charge_the_ledger()
+    test_interrupt_does_not_double_count()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),

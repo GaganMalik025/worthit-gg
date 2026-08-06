@@ -176,8 +176,14 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
         timings.append({"stage": key, "label": label, "seconds": round(dt, 1)})
         log.append(proc.stdout[-4000:])
         if proc.returncode != 0:
+            # Charge what this title already spent. It used to return without
+            # charging, so quota burned by a failed title was invisible to the
+            # budget stop: the ledger read 410 while the pacer had counted 506.
+            # A failed call costs exactly as much as a successful one.
+            spent = model_pacer.calls_for(appid) - calls_before
+            live_quota.charge(spent, ip, ledger=ledger)
             return False, {"published": False, "outcome": "stage_failed",
-                           "stage": key, "timings": timings,
+                           "stage": key, "timings": timings, "model_calls": spent,
                            "stderr": proc.stderr[-1500:], "fallback": "queue"}
 
         # the measured gate, placed exactly on the cost boundary: ingest is
@@ -186,16 +192,23 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
             struct = cohort_structure(appid)
             thin, why = thin_segmentation(struct)
             if thin:
+                # the gate fires before any model call, so this is normally 0 -
+                # but charge the measured figure rather than asserting it
+                spent = model_pacer.calls_for(appid) - calls_before
+                live_quota.charge(spent, ip, ledger=ledger)
                 return False, {"published": False,
                                "outcome": "thin_segmentation",
                                "reason": why, "structure": struct,
-                               "timings": timings, "model_calls": 0,
+                               "timings": timings, "model_calls": spent,
                                "fallback": "skip"}
 
     out_path = VERDICTS / ("%s.json" % appid)
     if not out_path.exists():
+        spent = model_pacer.calls_for(appid) - calls_before
+        live_quota.charge(spent, ip, ledger=ledger)
         return False, {"published": False, "outcome": "no_verdict_written",
-                       "timings": timings, "fallback": "queue"}
+                       "timings": timings, "model_calls": spent,
+                       "fallback": "queue"}
 
     # guard 2: invariant 8, in-pipeline, before anything renders
     t0 = time.time()

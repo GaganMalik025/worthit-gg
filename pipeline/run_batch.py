@@ -231,8 +231,15 @@ def main():
         if interrupted["flag"]:
             # cancel what has not started; wait only for the in-flight titles
             pool.shutdown(wait=True, cancel_futures=True)
-            done.extend(f.result() for f in futures
-                        if f.done() and not f.cancelled() and not f.exception())
+            # Collect ONLY futures not already collected above. Extending with
+            # every finished future re-added the ones the loop had already
+            # appended, so an interrupted run reported more titles attempted
+            # than exist and more calls than the day had - 112 titles and 614
+            # calls against 104 titles and 506 requests.
+            already = len(done)
+            remaining = [f for f in futures[already:]
+                         if f.done() and not f.cancelled() and not f.exception()]
+            done.extend(f.result() for f in remaining)
             if stopped is None:
                 stopped = ("interrupted", {"submitted": len(futures)})
             print("stopped: %d titles recorded, %d cancelled before starting"

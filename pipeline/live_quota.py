@@ -51,10 +51,22 @@ import model_pacer  # noqa: E402  (reuses its cross-process file lock)
 ROOT = Path(__file__).resolve().parent.parent
 STATE_PATH = ROOT / "data/live_quota.json"
 
-# Gemini free tier, requests/day. The ceiling this whole module exists to defend.
-DAILY_LIMIT = 1500
-# Tail of the daily budget reserved for live generation (guard 1).
-LIVE_RESERVE = 300
+# Gemini free tier, requests/day PER MODEL. VERIFIED from the 429 body, not
+# assumed: gemini-3.5-flash-lite is 500/day and gemini-3.5-flash is 20/day
+# (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, 2026-08-02).
+#
+# This was 1500 - the figure in CLAUDE.md - and it was wrong by 3x. Every budget
+# projection built on it was wrong by the same factor, including "1,050 calls
+# fits in 1,200", which is how a batch walked into a wall the budget stop was
+# supposed to prevent. The number here is now the one the API actually enforces.
+#
+# Synthesis titles on the flash tier draw the separate 20/day flash bucket, so
+# they do not consume this one.
+DAILY_LIMIT = 500
+# Tail of the daily budget reserved for live generation (guard 1). 100 of 500
+# leaves 400/day for the catalog batch. The old 300 was chosen against a 1500
+# ceiling; carried over unchanged it would have left the batch only 200.
+LIVE_RESERVE = 100
 # Secondary guard only - see the module docstring.
 IP_LIMIT_PER_HOUR = 5
 
