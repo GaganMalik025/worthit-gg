@@ -183,4 +183,5 @@ They are flash-lite-final — dropped from the flash tier rather than upgraded,
 since re-synthesis changes which claims are selected and therefore which
 citations render, which would mean paying for this audit twice.
 
-**Developer notes on the audit:** _(left blank — to be filled by the author)_
+**Developer notes on the audit:** Read all 20 sampled citations against the filter
+annotations; no slurs, no explicit content, no distressing material found. Clean.
