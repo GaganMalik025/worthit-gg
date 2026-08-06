@@ -157,4 +157,6 @@ spends the audit on something that will not survive.
 · 27 outstanding (12 day-3 flash upgrades, 20 day-4 titles, 2 rolled over by the
 budget stop; the day-3 upgrades overlap the outstanding count).
 
-**Developer notes on the audit:** _(left blank — to be filled by the author)_
+**Developer notes on the audit:** Read all 20 sampled citations against the filter
+annotations (`hearts_present`, `profanity_soft`, `all_caps`); no slurs, no explicit
+content, no distressing material found. Clean.
