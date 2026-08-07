@@ -37,7 +37,8 @@ jobs:
     env:
       APPID: ${{ github.event.client_payload.appid }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # No GH_TOKEN: nothing in this workflow shells out to `gh` any more. The
+      # push to `verdicts` uses the credentials actions/checkout persists.
     steps:
       - uses: actions/checkout@v4
         with:
@@ -89,53 +90,71 @@ jobs:
       # flash-lite counter was near its 500/day ceiling. A ledger the runner
       # cannot see is not a guard.
       #
-      # LIVE_QUOTA, the repository variable, is the ledger both the API routes
-      # and this workflow already share. Seed the file from it so the pipeline
-      # reads today's real numbers, and let `record outcome` write back.
+      # THE LEDGER ARRIVES IN THE PAYLOAD. It used to be fetched here with
+      # `gh api .../variables/LIVE_QUOTA`, which cannot work: the runner's
+      # GITHUB_TOKEN can neither read nor write repository variables. That is
+      # not a permissions block we can widen - `variables` is not in
+      # GITHUB_TOKEN's surface at all - and the only fix from inside the runner
+      # would be a PAT, which this project is not adding.
       #
-      # THIS STEP DOES NOT FALL BACK. It used to: `set +e`, and on any failure
-      # RAW="" and the seed quietly proceeded from the committed file - which is
-      # precisely the stale-ledger condition the step was written to prevent. It
-      # then reported success, so the one signal that the guard was not working
-      # looked identical to the guard working.
+      # The failure was invisible for two reasons at once: the read ran under
+      # `set +e` and fell back to RAW="", and the matching write in `record
+      # outcome` is continue-on-error. Both steps reported success while doing
+      # nothing, so the one signal that the guard was not working looked exactly
+      # like the guard working.
       #
-      # If the shared ledger cannot be read, we do not know what today has
-      # already spent, and the reserve cannot be enforced. That is a reason to
-      # stop before spending anything, not a reason to guess.
-      - name: seed the ledger from LIVE_QUOTA
+      # /api/generate already holds the real ledger - it reads it to decide
+      # whether to dispatch at all - so it now sends the counters along. Same
+      # numbers, same source of truth, no second credential.
+      #
+      # NO FALLBACK. A missing or stale-dated payload means we cannot tell what
+      # today has spent, and that is a reason to stop before spending anything
+      # rather than to guess from the committed file.
+      - name: seed the ledger from the dispatch payload
+        env:
+          QUOTA_JSON: ${{ toJSON(github.event.client_payload.quota) }}
         run: |
-          set +e
-          RAW=$(gh api "repos/${{ github.repository }}/actions/variables/LIVE_QUOTA" --jq .value 2>/tmp/gh_err)
-          RC=$?
-          set -e
-          if [ $RC -ne 0 ]; then
-            echo "::error::cannot read the LIVE_QUOTA repository variable (gh exit $RC)"
-            echo "--- gh stderr ---"
-            cat /tmp/gh_err || true
-            echo "-----------------"
-            echo "The runner cannot see the shared ledger, so the daily reserve"
-            echo "cannot be enforced. Refusing to generate against the stale"
-            echo "committed data/live_quota.json. Nothing was spent."
+          if [ -z "$QUOTA_JSON" ] || [ "$QUOTA_JSON" = "null" ]; then
+            echo "::error::no quota snapshot in the dispatch payload"
+            echo "The runner cannot read LIVE_QUOTA itself, so /api/generate must"
+            echo "send it. Refusing to generate against the stale committed"
+            echo "data/live_quota.json. Nothing was spent."
             exit 1
           fi
-          echo "read LIVE_QUOTA ok (${#RAW} chars)"
           mkdir -p data
-          RAW="$RAW" python - <<'SEED'
+          RAW="$QUOTA_JSON" python - <<'SEED'
           import json, os, sys
           sys.path.insert(0, "pipeline")
           import live_quota
+
           raw = os.environ.get("RAW", "").strip()
           try:
-              shared = json.loads(raw) if raw else {}
-          except ValueError:
-              shared = {}
+              shared = json.loads(raw)
+          except ValueError as exc:
+              # Was `except ValueError: shared = {}`, i.e. a corrupt payload
+              # seeded zeros and carried on. Zeros are the most permissive
+              # possible ledger; guessing them is the one thing this step must
+              # never do.
+              sys.exit("::error::quota snapshot is not valid JSON (%s). "
+                       "Nothing was spent." % exc)
+          if not isinstance(shared, dict):
+              sys.exit("::error::quota snapshot is not an object. Nothing was spent.")
+
           state = live_quota.load()          # rolls the day if it is stale
-          for k in ("live_used", "batch_used", "flash_used",
-                    "generations", "batch_generations", "flash_generations"):
-              if isinstance(shared.get(k), int) and shared.get("date") == state["date"]:
-                  state[k] = shared[k]
+          if shared.get("date") == state["date"]:
+              for k in ("live_used", "batch_used", "flash_used",
+                        "generations", "batch_generations", "flash_generations"):
+                  if isinstance(shared.get(k), int):
+                      state[k] = shared[k]
+              note = "seeded from dispatch payload"
+          else:
+              # The quota day rolled between dispatch and run start. The rolled
+              # state is CORRECT here, not stale - Google's counters reset at the
+              # same boundary - so this proceeds, loudly, rather than failing.
+              note = ("payload dated %s, quota day is %s - day rolled in flight, "
+                      "using fresh counters" % (shared.get("date"), state["date"]))
           live_quota.save(state)
-          print("ledger seeded:", json.dumps(
+          print("ledger %s:" % note, json.dumps(
               {k: state[k] for k in ("date", "live_used", "batch_used", "flash_used")}))
           SEED
 
@@ -182,65 +201,31 @@ jobs:
           git pull --rebase --autostash origin verdicts || true
           git push origin verdicts || (sleep 5 && git pull --rebase origin verdicts && git push origin verdicts)
 
-      # Always runs, so a failed QR-4 or a dead stage still terminates the UI
-      # instead of leaving the user polling forever.
-      # This step writes the terminal state the client polls for, so it must not
-      # be able to fail the run and must be safe to re-run. continue-on-error is
-      # deliberate: a bookkeeping failure must never mark a successful
-      # generation as failed.
-      - name: record outcome
+      # The artifact is withheld on ANY non-success, so a run that died
+      # mid-pipeline cannot leave a partial verdict behind for the commit step
+      # or a later run to pick up.
+      #
+      # THIS STEP NO LONGER RECORDS ANYTHING. It used to write the terminal
+      # state into the LIVE_QUOTA repository variable for /api/status to read,
+      # under continue-on-error so bookkeeping could never fail a good
+      # generation. The runner's GITHUB_TOKEN cannot write repository variables,
+      # so the write silently did nothing while the step reported success - and
+      # a genuinely failed run left no record at all, which /api/status could
+      # only read as a lost dispatch.
+      #
+      # /api/status now derives the terminal state from this run's own steps
+      # (lib/github.ts runOutcome). The steps cannot fail to record themselves,
+      # and it needs no credential the runner does not have.
+      - name: withhold the artifact on failure
         if: always()
-        continue-on-error: true
         run: |
-          if [ "${{ job.status }}" = "success" ]; then OUT=published
-          elif [ "${{ steps.qr4.outcome }}" = "failure" ]; then OUT=qr4_failed
-          else OUT=stage_failed; fi
-          echo "outcome: $OUT"
-          if [ "$OUT" != "published" ]; then
+          if [ "${{ job.status }}" = "success" ]; then
+            echo "outcome: published"
+          else
+            if [ "${{ steps.qr4.outcome }}" = "failure" ]; then
+              echo "outcome: qr4_failed (invariant 8) - withholding the verdict"
+            else
+              echo "outcome: stage_failed - withholding any partial verdict"
+            fi
             rm -f "site/public/verdicts/$APPID.json" 2>/dev/null || true
           fi
-
-          # Read and fallback are SEPARATE statements on purpose.
-          #   CUR=$(gh api ... || echo '{}')
-          # concatenates when gh prints output AND exits non-zero - `||` does not
-          # discard stdout already emitted - producing '<valid json>{}' and the
-          # "Extra data" JSONDecodeError that killed this step. Capture first,
-          # inspect the exit status second.
-          set +e
-          RAW=$(gh api "repos/${{ github.repository }}/actions/variables/LIVE_QUOTA" --jq .value 2>/dev/null)
-          RC=$?
-          set -e
-          if [ $RC -ne 0 ]; then RAW=""; fi
-          echo "quota variable: rc=$RC, ${#RAW} chars"
-          echo "raw: $RAW"
-
-          NEW=$(APPID="$APPID" OUT="$OUT" RUN_ID="${{ github.run_id }}" RAW="$RAW" python3 <<'PY'
-          import json, os, datetime
-
-          raw = os.environ.get("RAW", "").strip()
-          try:
-              state = json.loads(raw) if raw else {}
-              if not isinstance(state, dict):
-                  raise ValueError("not an object")
-          except Exception as exc:
-              # never crash: a corrupt ledger must not cost us the terminal state
-              print("warning: could not parse quota variable (%s); starting fresh"
-                    % exc, file=__import__("sys").stderr)
-              state = {}
-
-          # overwrite this appid's entry; re-running the step is a no-op
-          outcomes = state.get("outcomes") or {}
-          outcomes[os.environ["APPID"]] = {
-              "state": os.environ["OUT"],
-              "at": datetime.datetime.now(datetime.timezone.utc)
-                    .strftime("%Y-%m-%dT%H:%M:%SZ"),
-              "run_id": os.environ["RUN_ID"],
-          }
-          state["outcomes"] = dict(list(outcomes.items())[-200:])
-          print(json.dumps(state, separators=(",", ":")))
-          PY
-          )
-          echo "writing ${#NEW} chars"
-          # `gh variable set` creates-or-overwrites in one call. The old
-          # PATCH-then-POST fallback could double-write on a partial failure.
-          printf '%s' "$NEW" | gh variable set LIVE_QUOTA --repo "${{ github.repository }}" --body-file -

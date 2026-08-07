@@ -31,15 +31,14 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ state: "published", source: exists.source });
   }
 
-  // 2. the ledger, for terminal states that leave no artifact by design
-  //    (qr4_failed deletes it; stage_failed never wrote one)
+  // 2. the ledger - now ONLY for the dispatch timestamp.
+  //
+  //    This used to read quota.outcomes[appid] for terminal states. Nothing
+  //    writes that field: the workflow step that was supposed to could not, and
+  //    said nothing. Reading it was therefore always a no-op that looked like a
+  //    fast path, so it is gone rather than left as decoration. Terminal state
+  //    comes from the run itself in step 4.
   const quota = (await readQuota()) as QuotaState;
-  const outcome = quota.outcomes?.[appid];
-  if (outcome && outcome.state !== "published") {
-    return NextResponse.json({ state: outcome.state, at: outcome.at });
-  }
-  // A "published" ledger entry with no artifact means the commit was reverted
-  // or the branch rewritten - trust the artifact and keep polling.
 
   // 3. this request's own run. One listing serves both questions below, so a
   //    poll still costs the same number of GitHub calls as before.

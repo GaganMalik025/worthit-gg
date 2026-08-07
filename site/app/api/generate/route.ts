@@ -32,7 +32,8 @@ export async function POST(req: NextRequest) {
   // forever.
   const charged = recordDispatch(chargeReservation(state, ip) as QuotaState, appid);
   await writeQuota(charged as Record<string, unknown>);
-  await dispatchGeneration(Number(appid), ip);
+  // The ledger travels WITH the dispatch - the runner cannot read it itself.
+  await dispatchGeneration(Number(appid), ip, charged as Record<string, unknown>);
 
   return NextResponse.json({ state: "dispatched", appid: Number(appid) });
 }

@@ -51,12 +51,39 @@ export async function writeQuota(state: Record<string, unknown>) {
   await gh("/actions/variables", { method: "POST", body });
 }
 
-export async function dispatchGeneration(appid: number, ip: string) {
+/**
+ * Fire the generation run, CARRYING TODAY'S LEDGER WITH IT.
+ *
+ * The workflow used to fetch the shared ledger itself, with `gh api
+ * .../variables/LIVE_QUOTA`. It cannot: the runner's GITHUB_TOKEN can neither
+ * read nor write repository variables (verified on run #5 - the read fails, and
+ * an earlier write reported success while writing nothing). So the runner was
+ * either silently falling back to the stale committed file, or - once that
+ * fallback was removed - failing outright.
+ *
+ * We already hold the real ledger here, one line before dispatching, read with
+ * the token that does have access. Sending the counters in the payload gives
+ * the runner today's true numbers with no second credential and no second
+ * source of truth. Counters only: `outcomes` and `by_ip_hour` are not the
+ * runner's business and would bloat the payload.
+ */
+export async function dispatchGeneration(
+  appid: number,
+  ip: string,
+  quota: Record<string, unknown> = {},
+) {
+  const COUNTERS = [
+    "date", "live_used", "batch_used", "flash_used",
+    "generations", "batch_generations", "flash_generations",
+  ];
+  const snapshot = Object.fromEntries(
+    COUNTERS.filter((k) => k in quota).map((k) => [k, quota[k]]),
+  );
   const res = await gh("/dispatches", {
     method: "POST",
     body: JSON.stringify({
       event_type: "generate-verdict",
-      client_payload: { appid: String(appid), ip },
+      client_payload: { appid: String(appid), ip, quota: snapshot },
     }),
   });
   if (!res.ok && res.status !== 204) {
