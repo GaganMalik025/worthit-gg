@@ -159,6 +159,26 @@ export async function listActiveRuns(): Promise<RunInfo[]> {
     .sort((a, b) => a.created_at.localeCompare(b.created_at));
 }
 
+/**
+ * One workflow step -> one stage dot in the progress feed.
+ *
+ * `skipped` IS A TRUTHY CONCLUSION. The old expression was
+ * `s.conclusion ? "failed" : ...`, so when a run died at ingest the four stages
+ * that never ran came back as `skipped` and rendered as four more failures. A
+ * single real failure showed the user five red stages and implied the whole
+ * pipeline collapsed.
+ *
+ * Skipped means DID NOT RUN, which on this feed is `pending` - the same thing a
+ * stage shows before its turn. It is not a success and it is certainly not a
+ * failure, and only the step that actually failed should be marked as one.
+ */
+export function uiStatus(s: { status: string; conclusion: string | null }) {
+  if (s.conclusion === "success") return "completed";
+  if (s.conclusion === "skipped") return "pending";
+  if (s.conclusion) return "failed";        // failure, cancelled, timed_out
+  return s.status === "in_progress" ? "in_progress" : "pending";
+}
+
 /** Step names of a run's job, in order — the five UI stages. */
 export async function runSteps(runId: number) {
   const res = await gh(`/actions/runs/${runId}/jobs`);
@@ -176,14 +196,7 @@ export async function runSteps(runId: number) {
     .filter((s) => UI.includes(s.name))
     .map((s) => ({
       key: s.name,
-      status:
-        s.conclusion === "success"
-          ? "completed"
-          : s.conclusion
-            ? "failed"
-            : s.status === "in_progress"
-              ? "in_progress"
-              : "pending",
+      status: uiStatus(s),
     }));
   return { status: job?.status ?? "unknown", steps };
 }

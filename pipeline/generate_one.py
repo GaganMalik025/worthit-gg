@@ -40,7 +40,18 @@ import model_pacer  # noqa: E402
 import qr4_gate     # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
-PY = str(ROOT / ".venv/bin/python")
+# Stages run under THE INTERPRETER ALREADY RUNNING THIS FILE, not a hardcoded
+# path. This was `ROOT / ".venv/bin/python"`, which is correct on a laptop and
+# does not exist anywhere else: .venv is gitignored, and the CI runner pip
+# installs into system Python. The moment the workflow started routing stages
+# through this module (so one place decides which model a path may use), every
+# stage became a subprocess call to a missing binary and ingest died with
+# FileNotFoundError in under a second - before touching Steam, before any model.
+#
+# sys.executable is right in both places by construction: locally it resolves to
+# .venv/bin/python because that is what invoked us, and on the runner it
+# resolves to the python that has requirements.txt installed.
+PY = sys.executable
 VERDICTS = ROOT / "site/public/verdicts"
 
 STAGES = [
