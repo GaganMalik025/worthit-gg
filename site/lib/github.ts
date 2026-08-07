@@ -110,8 +110,21 @@ export async function verdictExists(
 export interface RunInfo {
   id: number;
   status: string;
+  conclusion: string | null;
   created_at: string;
   appid: string | null;
+}
+
+/**
+ * The appid a run was dispatched for, read from its run-name.
+ *
+ * repository_dispatch does not surface client_payload on the runs API, so the
+ * workflow puts the appid in `run-name:` and this reads it back out. Anything
+ * unparseable (runs created before that existed) returns null and simply never
+ * matches, which degrades to the old behaviour rather than mis-attributing.
+ */
+export function runAppid(r: { name?: string; display_title?: string }): string | null {
+  return /verdict\s+(\d+)/.exec(r.display_title || r.name || "")?.[1] ?? null;
 }
 
 /**
@@ -145,18 +158,63 @@ const TERMINAL_RUN_STATUS = new Set([
  *    active and stays visible, instead of silently vanishing from the queue the
  *    way `waiting` did.
  */
-export async function listActiveRuns(): Promise<RunInfo[]> {
+export async function listRuns(): Promise<RunInfo[]> {
   const res = await gh(
     "/actions/workflows/generate-verdict.yml/runs?per_page=50",
   );
   if (!res.ok) return [];
   const { workflow_runs = [] } = (await res.json()) as {
-    workflow_runs: { id: number; status: string; created_at: string }[];
+    workflow_runs: {
+      id: number; status: string; conclusion: string | null;
+      created_at: string; name?: string; display_title?: string;
+    }[];
   };
   return workflow_runs
-    .filter((r) => !TERMINAL_RUN_STATUS.has(r.status))
-    .map((r) => ({ ...r, appid: null }))
+    .map((r) => ({
+      id: r.id, status: r.status, conclusion: r.conclusion,
+      created_at: r.created_at, appid: runAppid(r),
+    }))
     .sort((a, b) => a.created_at.localeCompare(b.created_at));
+}
+
+export const isActive = (r: RunInfo) => !TERMINAL_RUN_STATUS.has(r.status);
+
+export async function listActiveRuns(): Promise<RunInfo[]> {
+  return (await listRuns()).filter(isActive);
+}
+
+/**
+ * The terminal state of a FINISHED run, read from the run itself.
+ *
+ * This replaces trusting `outcomes` in the LIVE_QUOTA variable. That variable
+ * is written by a bookkeeping step inside the workflow, and the runner's
+ * GITHUB_TOKEN cannot write repository variables - so the step reported success
+ * (it is `continue-on-error`) while writing nothing. A run that had genuinely
+ * failed left no record at all, and /api/status fell through to the lost-
+ * dispatch branch and told the user their request was never received.
+ *
+ * The run's own steps cannot silently fail to record: they ARE the record.
+ * Deriving from them needs no extra credential, and it cannot go stale.
+ */
+export type Outcome = "published" | "qr4_failed" | "stage_failed" | null;
+
+/** The decision itself, separated from the fetch so it can be tested directly. */
+export function deriveOutcome(
+  status: string,
+  conclusion: string | null,
+  steps: { key: string; status: string }[],
+): Outcome {
+  if (status !== "completed") return null;        // still going; not terminal
+  if (conclusion === "success") return "published";
+  // invariant 8 gets its own state: a QR-4 rejection is a content decision, not
+  // a crash, and the UI says something different about it.
+  if (steps.find((s) => s.key === "qr4")?.status === "failed") return "qr4_failed";
+  return "stage_failed";
+}
+
+export async function runOutcome(runId: number): Promise<Outcome> {
+  const { status, conclusion, steps } = await runSteps(runId);
+  return deriveOutcome(status, conclusion, steps);
 }
 
 /**
@@ -182,7 +240,12 @@ export function uiStatus(s: { status: string; conclusion: string | null }) {
 /** Step names of a run's job, in order — the five UI stages. */
 export async function runSteps(runId: number) {
   const res = await gh(`/actions/runs/${runId}/jobs`);
-  if (!res.ok) return { status: "unknown", steps: [] as { key: string; status: string }[] };
+  if (!res.ok) {
+    return {
+      status: "unknown", conclusion: null as string | null,
+      steps: [] as { key: string; status: string }[],
+    };
+  }
   const { jobs = [] } = (await res.json()) as {
     jobs: {
       status: string;
@@ -198,5 +261,9 @@ export async function runSteps(runId: number) {
       key: s.name,
       status: uiStatus(s),
     }));
-  return { status: job?.status ?? "unknown", steps };
+  return {
+    status: job?.status ?? "unknown",
+    conclusion: job?.conclusion ?? null,
+    steps,
+  };
 }

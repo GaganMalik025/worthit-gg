@@ -14,6 +14,15 @@ on:
   repository_dispatch:
     types: [generate-verdict]
 
+# The appid, in the run's own name. /api/status needs to tell WHICH request a
+# run belongs to, and repository_dispatch does not expose client_payload
+# anywhere queryable on the runs API. Without this the route could only assume
+# "the oldest active run is yours" - true at a concurrency of one and a lie the
+# moment a second person is waiting, who would then watch someone else's stages.
+# It is also what lets a FINISHED run be attributed to an appid, which is how
+# the terminal state is derived now instead of from a ledger write.
+run-name: verdict ${{ github.event.client_payload.appid }}
+
 # One at a time. Two runs pushing to `verdicts` concurrently would race, and a
 # cancelled run wastes Gemini quota already spent - so queue, never cancel.
 concurrency:
@@ -83,13 +92,33 @@ jobs:
       # LIVE_QUOTA, the repository variable, is the ledger both the API routes
       # and this workflow already share. Seed the file from it so the pipeline
       # reads today's real numbers, and let `record outcome` write back.
+      #
+      # THIS STEP DOES NOT FALL BACK. It used to: `set +e`, and on any failure
+      # RAW="" and the seed quietly proceeded from the committed file - which is
+      # precisely the stale-ledger condition the step was written to prevent. It
+      # then reported success, so the one signal that the guard was not working
+      # looked identical to the guard working.
+      #
+      # If the shared ledger cannot be read, we do not know what today has
+      # already spent, and the reserve cannot be enforced. That is a reason to
+      # stop before spending anything, not a reason to guess.
       - name: seed the ledger from LIVE_QUOTA
         run: |
           set +e
-          RAW=$(gh api "repos/${{ github.repository }}/actions/variables/LIVE_QUOTA" --jq .value 2>/dev/null)
+          RAW=$(gh api "repos/${{ github.repository }}/actions/variables/LIVE_QUOTA" --jq .value 2>/tmp/gh_err)
           RC=$?
           set -e
-          [ $RC -ne 0 ] && RAW=""
+          if [ $RC -ne 0 ]; then
+            echo "::error::cannot read the LIVE_QUOTA repository variable (gh exit $RC)"
+            echo "--- gh stderr ---"
+            cat /tmp/gh_err || true
+            echo "-----------------"
+            echo "The runner cannot see the shared ledger, so the daily reserve"
+            echo "cannot be enforced. Refusing to generate against the stale"
+            echo "committed data/live_quota.json. Nothing was spent."
+            exit 1
+          fi
+          echo "read LIVE_QUOTA ok (${#RAW} chars)"
           mkdir -p data
           RAW="$RAW" python - <<'SEED'
           import json, os, sys

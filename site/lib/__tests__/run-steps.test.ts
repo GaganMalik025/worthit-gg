@@ -13,7 +13,7 @@
 
 import { describe, expect, it } from "vitest";
 
-import { uiStatus } from "../github";
+import { deriveOutcome, runAppid, uiStatus } from "../github";
 
 /** run #3's actual steps, verbatim from /actions/runs/31177627980/jobs */
 const RUN_3 = [
@@ -48,5 +48,59 @@ describe("uiStatus", () => {
     expect(uiStatus({ status: "completed", conclusion: "success" })).toBe("completed");
     expect(uiStatus({ status: "in_progress", conclusion: null })).toBe("in_progress");
     expect(uiStatus({ status: "queued", conclusion: null })).toBe("pending");
+  });
+});
+
+describe("runAppid", () => {
+  it("reads the appid out of the run-name", () => {
+    expect(runAppid({ display_title: "verdict 1547000" })).toBe("1547000");
+    expect(runAppid({ name: "verdict 233860" })).toBe("233860");
+  });
+
+  it("returns null rather than guessing", () => {
+    // runs created before run-name existed, and the workflow's own name
+    expect(runAppid({ display_title: "generate-verdict" })).toBeNull();
+    expect(runAppid({})).toBeNull();
+  });
+
+  it("does not match a different workflow that happens to carry a number", () => {
+    expect(runAppid({ display_title: "publish 12 verdicts" })).toBeNull();
+  });
+});
+
+describe("deriveOutcome", () => {
+  const ok = [
+    { key: "ingest", status: "completed" }, { key: "filter", status: "completed" },
+    { key: "extract", status: "completed" }, { key: "verdict", status: "completed" },
+    { key: "qr4", status: "completed" },
+  ];
+
+  it("a fully successful run is published", () => {
+    expect(deriveOutcome("completed", "success", ok)).toBe("published");
+  });
+
+  it("run #3's shape - died at ingest - is stage_failed", () => {
+    expect(deriveOutcome("completed", "failure", [
+      { key: "ingest", status: "failed" }, { key: "filter", status: "pending" },
+      { key: "extract", status: "pending" }, { key: "verdict", status: "pending" },
+      { key: "qr4", status: "pending" },
+    ])).toBe("stage_failed");
+  });
+
+  it("a QR-4 rejection is its own state, not a generic failure", () => {
+    expect(deriveOutcome("completed", "failure", [
+      ...ok.slice(0, 4), { key: "qr4", status: "failed" },
+    ])).toBe("qr4_failed");
+  });
+
+  it("a run that failed BEFORE any stage is still terminal", () => {
+    // e.g. the seed step now failing loudly: no UI step ran at all, but the
+    // client must still be told to stop polling.
+    expect(deriveOutcome("completed", "failure", [])).toBe("stage_failed");
+  });
+
+  it("an unfinished run is not terminal", () => {
+    expect(deriveOutcome("in_progress", null, ok)).toBeNull();
+    expect(deriveOutcome("queued", null, [])).toBeNull();
   });
 });
