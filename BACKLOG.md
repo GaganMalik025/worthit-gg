@@ -102,6 +102,24 @@ segmentation surface, invalidates the bucket definitions the evals are pinned to
 iteration if the Cyberpunk verdict reads as wrong to users — that would be
 evidence, which is the bar.
 
+2026-08-07 | **Reconcile the live reserve against real generation cost** | build,
+live generation | `/api/generate` reserves `EST_COST = 13` requests before
+dispatching, because the check and the spend cannot be atomic across a
+`repository_dispatch` boundary and a burst must not oversubscribe the reserve.
+Measured cost of a real generation is **~5–6 calls** (Hades: 4 cohort extractions
++ 1 synthesis). So the 100-request reserve is worth ~7 generations/day rather
+than the ~18 it could be. Not fixed because reconciliation requires the runner to
+write the shared ledger back after the run, and the runner's `GITHUB_TOKEN` can
+neither read nor write repository variables — `variables` is not in that token's
+permission surface at all, so no `permissions:` widening reaches it. The only
+in-runner fix is a PAT, which is new long-lived credential surface for a
+bookkeeping nicety. The current behaviour **fails safe**: it over-counts, never
+under, so the reserve can shut live generation off early but can never let it
+overrun the Gemini budget. Revisit if a safe mechanism emerges — a callback the
+site can authenticate, or the runner reporting spend through an artifact the site
+already reads. Until then the honest framing is that the reserve is measured in
+*reservations*, not requests.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for
