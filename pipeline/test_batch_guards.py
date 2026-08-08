@@ -634,6 +634,95 @@ def test_verdict_rail_rejects_through_check_response():
           "allowed=Buy,Wait" in msg, msg)
 
 
+
+# ------------------------------------------------- claim sourcing balance
+
+def test_claim_balance_metric_counts_sources_not_claims():
+    print("\nbalance: the metric computes on a known fixture")
+    import measure_claim_balance as mcb
+
+    # 20 early reviews, 16 thumbs-up -> available 80%. The verdict cites 10 of
+    # them, only 2 thumbs-up -> cited 20%. Delta -60. Sized to clear the
+    # title-level floor, which is deliberately twice the per-cohort one.
+    reviews = [{"recommendationid": str(i), "bucket": "early",
+                "voted_up": i < 16} for i in range(20)]
+    cited = [0, 1] + list(range(16, 24))[:8]    # two thumbs-up, eight not
+    verdict = {"game_name": "Fixture", "verdict": {"word": "Wait"},
+               "cohorts": [{"bucket": "early", "themes": [{"theme": "content",
+                   "claims": [{"citations": [
+                       {"recommendationid": str(i), "voted_up": i < 8}
+                       for i in cited]}]}]}]}
+
+    with tempfile.TemporaryDirectory() as d:
+        root = Path(d)
+        (root / "f").mkdir(); (root / "v").mkdir()
+        (root / "f/1.json").write_text(json.dumps({"reviews": reviews}))
+        (root / "v/1.json").write_text(json.dumps(verdict))
+        old_f, old_v = mcb.FILTERED, mcb.VERDICTS
+        mcb.FILTERED, mcb.VERDICTS = root / "f", root / "v"
+        try:
+            r = mcb.measure("1")
+        finally:
+            mcb.FILTERED, mcb.VERDICTS = old_f, old_v
+
+    check("available% is the share of thumbs-up reviews extraction could read",
+          r["available_pct"] == 80.0, str(r))
+    check("cited% is the share of thumbs-up reviews it actually cited",
+          r["cited_pct"] == 20.0, str(r))
+    check("delta is cited minus available, negative when it over-cites critics",
+          r["delta"] == -60.0, str(r))
+    # The per-cohort delta is computed separately from the title-level one, so
+    # it needs its own assertion - a sign error in the cohort loop alone would
+    # otherwise pass every check here. Found exactly that way, by injecting one.
+    cohort = r["cohorts"][0]
+    check("the per-cohort delta carries the same sign convention",
+          cohort["delta"] == -60.0 and cohort["bucket"] == "early", str(cohort))
+    check("per-cohort counts report what was actually measured",
+          cohort["n_available"] == 20 and cohort["n_cited"] == 10, str(cohort))
+
+    # the metric must never look at claim text or citation_verdict - invariant 13
+    check("no claim-valence field appears in the result",
+          not any("valence" in k or "sentiment" in k for k in r), str(list(r)))
+
+
+def test_claim_balance_ignores_cohorts_too_small_to_judge():
+    print("\nbalance: thin cohorts are excluded, not averaged in")
+    import measure_claim_balance as mcb
+
+    # early clears both floors; veteran has too few cited reviews to mean anything
+    n = mcb.MIN_AVAIL * 2
+    reviews = ([{"recommendationid": "e%d" % i, "bucket": "early",
+                 "voted_up": i < n // 2} for i in range(n)]
+               + [{"recommendationid": "v%d" % i, "bucket": "veteran",
+                   "voted_up": True} for i in range(n)])
+    def cohort(b, ids):
+        return {"bucket": b, "themes": [{"theme": "content", "claims": [
+            {"citations": [{"recommendationid": i, "voted_up": True} for i in ids]}]}]}
+    verdict = {"game_name": "Fixture", "verdict": {"word": "Buy"}, "cohorts": [
+        cohort("early", ["e%d" % i for i in range(mcb.MIN_CITED * 2)]),
+        cohort("veteran", ["v0"]),              # 1 cited < MIN_CITED
+    ]}
+
+    with tempfile.TemporaryDirectory() as d:
+        root = Path(d)
+        (root / "f").mkdir(); (root / "v").mkdir()
+        (root / "f/2.json").write_text(json.dumps({"reviews": reviews}))
+        (root / "v/2.json").write_text(json.dumps(verdict))
+        old_f, old_v = mcb.FILTERED, mcb.VERDICTS
+        mcb.FILTERED, mcb.VERDICTS = root / "f", root / "v"
+        try:
+            r = mcb.measure("2")
+        finally:
+            mcb.FILTERED, mcb.VERDICTS = old_f, old_v
+
+    buckets = [c["bucket"] for c in r["cohorts"]]
+    check("a cohort with too few cited reviews is dropped from the breakdown",
+          buckets == ["early"], str(buckets))
+    check("a missing title returns None rather than a zero", mcb.measure("nope") is None)
+    check("a title too small to judge returns None, not a noisy percentage",
+          mcb.MIN_AVAIL * 2 > mcb.MIN_AVAIL and mcb.MIN_CITED * 2 > mcb.MIN_CITED)
+
+
 if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
@@ -662,6 +751,8 @@ if __name__ == "__main__":
     test_verdict_rail_band_boundaries()
     test_verdict_rail_mean_excludes_refund_and_muted()
     test_verdict_rail_rejects_through_check_response()
+    test_claim_balance_metric_counts_sources_not_claims()
+    test_claim_balance_ignores_cohorts_too_small_to_judge()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),
