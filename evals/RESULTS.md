@@ -185,3 +185,114 @@ citations render, which would mean paying for this audit twice.
 
 **Developer notes on the audit:** Read all 20 sampled citations against the filter
 annotations; no slurs, no explicit content, no distressing material found. Clean.
+
+
+## 2026-08-08 — Verdict override bug (rule 9): overcorrection, root cause, and a code-side fix
+
+**Found via:** manual 4.4 audit (citation-level review), not automated
+QR-4 — this was a soundness/consistency issue, not a grounding or safety
+issue, and QR-4 passed cleanly throughout.
+
+**Bug 1 — theme misclassification.** Extraction's theme enum had no
+category for access/DRM requirements (mandatory launchers, account
+linking); such claims were absorbed into "monetization," "performance," or
+"other." Final measured scope: 38 claims across 18 titles (an earlier
+estimate of 11/8 undercounted by not searching all themes; a second
+estimate of 29/14 undercounted by conflating launcher *requirements* with
+launcher *malfunctions*, which are correctly "performance"). Fix: added an
+"access" theme, defined all six themes explicitly in the extraction
+prompt. Re-extraction of 6 titles (as a side effect of the verdict fix
+below) confirmed the fix works cleanly; 18 titles remain outstanding for a
+dedicated re-extraction pass (~110 calls).
+
+**Bug 2 — verdict rule 9 override, and a failed first fix.** Original rule
+9 permitted the model to override cohort sentiment toward Skip on claim
+severity, via one undefined worked example. GTA:SA scored Skip at 83.4%
+mean post-refund positive sentiment — the only Skip among 90 titles with
+post-refund cohorts all ≥80%. Proven via A/B isolation (identical claims,
+prompt-only diff) as the cause, not extraction variance.
+
+A first rewrite of rule 9 (defining Buy/Wait/Skip, adding a "broad
+recommendation makes Skip almost certainly wrong" guardrail) fixed GTA:SA
+but introduced the mirror bias: Starfield (57.5% mean, 78.4% negative
+claims — both signals pointing to Skip) returned Wait 3/3 under two
+different wordings of the fix. Skip had effectively left the model's
+vocabulary. All 6 titles regenerated under the first fix flipped Skip ->
+Wait (100% flip rate), which in hindsight was a symptom of overcorrection,
+not confirmation of a clean fix.
+
+**Root cause:** the verdict word was the one high-stakes output still
+decided by prose instruction alone, contrary to the pipeline's own design
+principle (model output stays narrow; consequential decisions are
+computed in code). A prompt-only fix could not hold — it just moved the
+bias.
+
+**Real fix — code-side band rail.** `post_refund_mean(cohorts)` computes
+mean `pct_positive` across non-muted, non-refund post-refund cohorts, and
+`forbidden_verdicts(mean)` maps that to the rejected set (refund
+window excluded — it's the cohort that already bounced, and cohorts below
+the invariant-12 evidence floor are excluded from the mean). Rejects
+verdicts outside the allowed set per band, reusing the existing
+check-and-retry machinery (same pattern as invariants 4/11/12/13):
+
+| mean post-refund | rejects | rationale |
+|---|---|---|
+| >= 80% | Skip | catches the original failure (GTA:SA 83.4%, Megabonk 85.8%) |
+| 70-80% | nothing | genuine ambiguous band — claims decide |
+| 60-70% | Buy | a game a third of remaining players won't recommend isn't a Buy |
+| < 60% | Buy, Wait | only Skip; 6 of 7 published titles here already were |
+
+No verdict is written if a title exhausts retries without landing on an
+allowed word (same posture as every other invariant) — logged as a
+distinct `verdict_rail_exhausted` count to make the rate measurable rather
+than inferred.
+
+**Verified:** 25 offline boundary tests (13 band-edge cases from both
+sides, 5 cohort-inclusion cases, 7 through `check_response`'s real retry
+path). Break-then-confirm:
+disabling the rail failed exactly the 3 wiring tests, correctly leaving
+the pure band-function tests green. Live A/B on the 8 touched titles
+(verdict-only, nothing committed) — rail fired on exactly 1 of 8
+(Starfield), matching the pre-fix prediction that it would not sweep the
+catalog.
+
+**Published outcomes (Skip -> Wait, rail-compliant, held from the first
+fix):** GTA:SA Definitive (83.5%), Megabonk (85.8%, re-rolled to Buy on
+re-test — high band (>=80%), not forced), The Sims 4 (79.97% — free band, not
+>=80 as earlier reported), The Isle (78.97%), Hell Let Loose (78.87%).
+
+**Corrected by the rail (Wait -> Skip):** Starfield (57.5% mean, 78.4%
+negative claims). Regenerated verdict -> qr4, QR-4 108/108 clean, page and
+OG tags verified correct (`Starfield: Skip — WorthIt.gg`).
+
+**Left unchanged, free-band judgment calls, not rail violations:** ESO
+(70.4%, stayed Skip — correctly did not flip under either rule 9 wording;
+used as the control confirming the rail doesn't over-sweep), MORDHAU
+(70.2%, returned Skip under the final rule after earlier appearing to
+"converge" on Wait 6/6 — that convergence was an artifact of a fixed
+prompt state across repeated runs, not a stable property of the title; a
+mistake made and caught twice in this investigation, worth remembering).
+
+**Separate defect found and fixed:** Starfield published with
+`game_name: null` from a transient ingestion lookup failure written
+through uncaught, breaking its page title and OG unfurl (`null: Skip`).
+Fixed at the source with a guard in both ingestion and synthesis refusing
+to proceed without a resolved name.
+
+**Separate defect found and fixed:** for-whom lines could contradict their
+own verdict stamp (e.g., "should buy this" text under a Skip stamp — found
+on MORDHAU). Added a directive-language check (should buy/buy it/skip
+it/avoid it) to check_response, verified against 8 cases including the
+real failure.
+
+**Open, flagged for later:** 6 band-edge titles (Marvel Rivals, Apex
+Legends, Last Epoch, Hunt: Showdown 1896, ESO, Borderlands 3) hold the
+minority verdict word for their band under rules that have since changed
+— rail-compliant, reported as judgment calls, not regenerated. Also open:
+Marvel Rivals (95.7% negative claims) and Megabonk (52.9% negative claims,
+above the Buy-population mean of 16.2%) show a claims-content-vs-verdict-
+word mismatch distinct from the cohort-mean rail above — flagged as a
+candidate for a second, separate rail; deliberately not folded into this
+fix, per the same discipline that caused the original overcorrection.
+18 titles still need the access-theme re-extraction pass. Batch ledger:
+83/400 used today.
