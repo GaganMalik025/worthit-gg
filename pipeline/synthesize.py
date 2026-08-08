@@ -278,6 +278,56 @@ def build_user_turn(game, pool, cohorts, detected):
 
 DIGIT = re.compile(r"\d")
 
+# --------------------------------------------------------------------------
+# the verdict rail
+#
+# The verdict word was the last high-stakes output decided purely by prose
+# instruction, and this module's own docstring promises the opposite. Two
+# successive rewrites of rule 9 swung the whole catalog in opposite directions:
+# the original produced Skip for a title whose post-refund cohorts all sat above
+# four in five, and the rewrite that fixed that produced Wait for a title below
+# three in five with four in five of its claims negative. A sentence cannot hold
+# this; the rail can.
+#
+# It rejects only the CLEARLY WRONG word and leaves the judgement intact. In the
+# 70-80 band it forbids nothing at all - that band is genuinely ambiguous and is
+# where the product's whole thesis lives.
+#
+# Thresholds are the catalog's own distribution, not invented: published means
+# are Buy 94.5, Wait 84.2, Skip 65.0. Below 60, six of the seven published
+# titles were already Skip, so the floor encodes practice rather than inventing
+# a standard.
+POST_REFUND = ("early", "mid", "veteran")
+
+
+def post_refund_mean(cohorts):
+    """Mean pool positive rate across non-muted post-refund cohorts, or None.
+
+    refund_window is excluded on purpose: it is by definition the cohort that
+    bounced, and counting it would penalise every title twice for one fact.
+    Muted cohorts are excluded because they are below the evidence floor
+    (invariant 12) - a rate we refuse to show a reader is not one we should
+    judge a verdict by.
+
+    None means the rail does not apply. We cannot judge what we cannot measure.
+    """
+    rates = [c["pct_positive"] for c in cohorts
+             if c["bucket"] in POST_REFUND and not c["muted"]]
+    return sum(rates) / len(rates) if rates else None
+
+
+def forbidden_verdicts(mean):
+    """Which verdict words the cohort data rules out. Empty set = all allowed."""
+    if mean is None:
+        return frozenset()
+    if mean >= 80:
+        return frozenset({"Skip"})       # they largely recommend it
+    if mean >= 70:
+        return frozenset()               # ambiguous band - claims decide
+    if mean >= 60:
+        return frozenset({"Buy"})        # a third will not recommend it
+    return frozenset({"Buy", "Wait"})    # floor: only Skip survives here
+
 
 def check_response(parsed, cohorts, detected):
     """Return a list of failure strings. Empty means the response is usable."""
@@ -302,6 +352,18 @@ def check_response(parsed, cohorts, detected):
         if f["flag_id"] not in {s.get("flag_id")
                                 for s in (parsed.get("flag_sentences") or [])}:
             failures.append("flag_not_described:%s" % f["flag_id"])
+
+    # The rail. Evaluated BEFORE the for-whom check so a rejected verdict and a
+    # contradicting for-whom line come back in the same retry rather than
+    # costing two round trips.
+    mean = post_refund_mean(cohorts)
+    forbidden = forbidden_verdicts(mean)
+    if parsed.get("verdict") in forbidden:
+        allowed = [w for w in ("Buy", "Wait", "Skip") if w not in forbidden]
+        failures.append(
+            "verdict_out_of_band:%s:cohorts_past_the_refund_window_average_"
+            "%.1f_percent_positive:allowed=%s"
+            % (parsed.get("verdict"), mean, ",".join(allowed)))
 
     # The for-whom line may not argue with the stamp above it.
     #
@@ -623,6 +685,16 @@ def synthesize_one(client, args, appid):
     if parsed is None:
         print("  FAILED after %d attempts - no verdict written for %s"
               % (args.retries + 1, appid))
+        # Distinct, greppable line when the RAIL is what exhausted the attempts.
+        # The rail forbids one word of three (two at the floor), so a title that
+        # cannot produce an allowed one in three tries is evidence the bands are
+        # wrong - and that has to arrive as a number we can count, not as a
+        # title quietly missing from the catalog.
+        if any(f.startswith("verdict_out_of_band") for f in failures):
+            print("  verdict_rail_exhausted appid=%s mean=%.1f last=%s"
+                  % (appid, post_refund_mean(cohorts) or -1.0,
+                     ",".join(f for f in failures
+                              if f.startswith("verdict_out_of_band"))))
         return None
 
     verdict = assemble(appid, claims_blob, corpus, pool, cohorts, detected,

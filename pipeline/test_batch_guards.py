@@ -532,6 +532,108 @@ def test_flash_tier_allocation():
           not (set(tier) & gate_rejected), sorted(set(tier) & gate_rejected))
 
 
+
+# ---------------------------------------------------------------- verdict rail
+
+def _cohorts(early=None, mid=None, veteran=None, refund=None, muted=()):
+    """Minimal cohort shape - only what the rail reads."""
+    out = []
+    for b, v in (("refund_window", refund), ("early", early),
+                 ("mid", mid), ("veteran", veteran)):
+        if v is None:
+            continue
+        out.append({"bucket": b, "pct_positive": v, "muted": b in muted,
+                    "claims": []})
+    return out
+
+
+def test_verdict_rail_band_boundaries():
+    print("\nrail: the band edges, from both sides")
+    import synthesize as sy
+
+    # >= 80 forbids Skip. GTA:SA came back Skip at 83.4 - the case that started
+    # all of this.
+    check("83.4% (GTA:SA, the original failure) rejects Skip",
+          "Skip" in sy.forbidden_verdicts(83.4))
+    check("80.0% exactly rejects Skip (inclusive edge)",
+          "Skip" in sy.forbidden_verdicts(80.0))
+    check("79.9% forbids nothing - ambiguous band starts here",
+          sy.forbidden_verdicts(79.9) == frozenset())
+
+    # 70-80 is deliberately unconstrained: the product's thesis lives here.
+    for m in (70.0, 70.2, 70.4, 75.0, 79.9):
+        check("%.1f%% forbids nothing (ambiguous band)" % m,
+              sy.forbidden_verdicts(m) == frozenset())
+
+    # 60-70 forbids Buy only.
+    check("69.9% rejects Buy but allows Wait and Skip",
+          sy.forbidden_verdicts(69.9) == frozenset({"Buy"}))
+    check("60.0% exactly rejects Buy only (inclusive edge)",
+          sy.forbidden_verdicts(60.0) == frozenset({"Buy"}))
+
+    # the floor: only Skip survives. Starfield sat here at 57.5 and said Wait.
+    check("59.9% rejects Buy AND Wait - only Skip left",
+          sy.forbidden_verdicts(59.9) == frozenset({"Buy", "Wait"}))
+    check("57.5% (Starfield) rejects Wait", "Wait" in sy.forbidden_verdicts(57.5))
+    check("57.5% still permits Skip", "Skip" not in sy.forbidden_verdicts(57.5))
+
+
+def test_verdict_rail_mean_excludes_refund_and_muted():
+    print("\nrail: which cohorts the mean is built from")
+    import synthesize as sy
+
+    # refund_window is excluded by definition - it is the cohort that bounced.
+    m = sy.post_refund_mean(_cohorts(refund=10.0, early=80.0, mid=80.0,
+                                     veteran=80.0))
+    check("refund_window is not in the mean", m == 80.0, str(m))
+
+    # a muted cohort is below the evidence floor (invariant 12); a rate we
+    # refuse to show a reader must not decide a verdict either.
+    m = sy.post_refund_mean(_cohorts(early=90.0, mid=90.0, veteran=30.0,
+                                     muted=("veteran",)))
+    check("a muted cohort is excluded from the mean", m == 90.0, str(m))
+
+    # nothing measurable -> rail does not apply at all
+    m = sy.post_refund_mean(_cohorts(refund=40.0))
+    check("no post-refund cohort at all -> mean is None", m is None, str(m))
+    check("mean None forbids nothing", sy.forbidden_verdicts(None) == frozenset())
+    m = sy.post_refund_mean(_cohorts(early=50.0, mid=50.0, veteran=50.0,
+                                     muted=("early", "mid", "veteran")))
+    check("every post-refund cohort muted -> mean is None", m is None, str(m))
+
+
+def test_verdict_rail_rejects_through_check_response():
+    print("\nrail: fires through check_response, the real retry path")
+    import synthesize as sy
+
+    def verdicts_rejected(word, cohorts):
+        parsed = {"verdict": word, "for_whom": "Some specific reader.",
+                  "cohorts": [], "flag_sentences": []}
+        return [f for f in sy.check_response(parsed, cohorts, [])
+                if f.startswith("verdict_out_of_band")]
+
+    gta = _cohorts(early=81.8, mid=83.4, veteran=85.2, refund=39.6)
+    check("GTA:SA shape rejects Skip via check_response",
+          verdicts_rejected("Skip", gta))
+    check("GTA:SA shape accepts Wait", not verdicts_rejected("Wait", gta))
+
+    star = _cohorts(early=45.9, mid=61.1, veteran=65.5, refund=20.0)
+    check("Starfield shape rejects Wait via check_response",
+          verdicts_rejected("Wait", star))
+    check("Starfield shape rejects Buy", verdicts_rejected("Buy", star))
+    check("Starfield shape accepts Skip", not verdicts_rejected("Skip", star))
+
+    eso = _cohorts(early=66.8, mid=70.9, veteran=73.4, refund=27.5)
+    check("ESO shape (ambiguous band) accepts all three words",
+          not any(verdicts_rejected(w, eso) for w in ("Buy", "Wait", "Skip")))
+
+    # the failure string has to tell the model what IS allowed, or the retry is
+    # a guess - the retry prompt embeds this text verbatim
+    msg = verdicts_rejected("Skip", gta)[0]
+    check("failure names the allowed words for the retry prompt",
+          "allowed=Buy,Wait" in msg, msg)
+
+
 if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
@@ -557,6 +659,9 @@ if __name__ == "__main__":
     test_ledger_charge_is_atomic()
     test_failure_paths_charge_the_ledger()
     test_interrupt_does_not_double_count()
+    test_verdict_rail_band_boundaries()
+    test_verdict_rail_mean_excludes_refund_and_muted()
+    test_verdict_rail_rejects_through_check_response()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),
