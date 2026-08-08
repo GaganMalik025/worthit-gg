@@ -173,13 +173,19 @@ claims describe real problems that a buyer today would hit.
    Skip - the reader should not buy it. Reserve this for when the people who \
 actually played it do NOT broadly recommend it, or a claim describes a barrier \
 that applies to essentially every buyer with no way around it.
-IF THE COHORTS PAST THE REFUND WINDOW BROADLY RECOMMEND THE GAME, SKIP IS \
-ALMOST CERTAINLY THE WRONG WORD. A dense list of complaints is not the same as \
-a game people regret buying - rule 4 already told you those coexist, and this \
-is where that matters most. The honest verdict there is Wait, with the \
-for-whom line naming the barrier and who it disqualifies. Narrow taste is also \
-a job for the for-whom line, not for Skip: the verdict is one word for \
-everyone, and the for-whom line is where you say who should walk away.
+Weigh the cohort rates you are shown, and read them BOTH ways: \
+when the cohorts past the refund window sit at about four in five or better, \
+Skip is almost certainly the wrong word - a dense list of complaints is not \
+the same as a game people regret buying, and rule 4 already told you those \
+coexist; \
+when those cohorts sit at about two in three or worse, Skip is genuinely on \
+the table and Wait may be too soft - a game a third of its remaining players \
+will not recommend is not one the reader should merely wait on; \
+in between, the claims decide, and either word can be right. \
+Sentiment that FALLS as playtime rises is evidence against Buy no matter how \
+high it starts: the people who know it best liked it least. \
+Narrow taste is a job for the for-whom line, not for Skip: the verdict is one \
+word for everyone, and the for-whom line is where you say who should walk away.
 """
 
 # Filled from prevalence_guard so the prompt cannot drift behind the rule it
