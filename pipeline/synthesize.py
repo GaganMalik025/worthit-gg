@@ -4,10 +4,15 @@ WorthIt.gg - synthesis pass (build plan 1.5)
 Turns grounded claims into the verdict JSON the static site serves:
 site/public/verdicts/<appid>.json.
 
-The model's job is deliberately tiny. It picks the verdict word, writes the
-for-whom line, one sentence per cohort and one per detected flag, and orders the
-claims. Everything else - every number, which flags fire, theme grouping,
-citations, muted sections - is computed in code.
+The model's job is deliberately tiny. It writes the for-whom line, one sentence
+per cohort and one per detected flag, and orders the claims. Everything else -
+the VERDICT WORD, every number, which flags fire, theme grouping, citations,
+muted sections - is computed in code.
+
+The verdict word used to be the exception, and it was the bug: decided by prose
+instruction, it swung the whole catalog whenever that prose was rewritten. It is
+now verdict_for_mean(post_refund_mean(cohorts)) and the model is told the answer
+rather than asked for it.
 
 It never sees review text at this stage, only claims. That is the two-pass
 separation (PRD D3), and it is what makes invariant 4 enforceable: the model can
@@ -83,9 +88,8 @@ HOURS_RANGE = OrderedDict([
 
 VERDICT_SCHEMA = {
     "type": "object",
-    "required": ["verdict", "for_whom", "cohorts"],
+    "required": ["for_whom", "cohorts"],
     "properties": {
-        "verdict": {"type": "string", "enum": ["Buy", "Wait", "Skip"]},
         "for_whom": {"type": "string"},
         "cohorts": {
             "type": "array",
@@ -151,41 +155,36 @@ plainly instead of resolving it into agreement.
 agreed view is the exact failure this product exists to correct. If people who \
 bounced early and people who stayed describe different games, say that.
 6. A cohort marked MUTED gets no summary and no claims. Skip it entirely.
-7. The for-whom line names who should buy this and who should not, in one \
+7. The for-whom line names who this suits and who it does not, in one \
 sentence. Be specific about the person, not the genre. IT MUST NOT CONTRADICT \
-THE VERDICT STAMP. The reader sees the word and this line together, so a line \
+THE VERDICT STAMP: the reader sees the word and this line together, so a line \
 arguing with the word above it reads as a mistake, not as nuance. Never write \
-"should buy" or "buy this" under Skip. Never write "should skip" or "avoid \
-this" under Buy. Narrow-audience carve-outs are still wanted - write them from \
-the stamp's side: \
-under Skip, "skip this unless you specifically want X"; \
-under Wait, "buy now only if X, otherwise wait for Y"; \
-under Buy, "buy it, though X will not suit you".
+"should buy" or "buy this" under Skip; never write "should skip" or "avoid \
+this" under Buy.
+7b. FRICTION IS STATED AS FACT, NEVER AS SOMETHING THE READER MUST AGREE TO. \
+Anything the reader should know before paying - a mandatory third-party \
+launcher, a required account or sign-in, an always-online requirement, \
+technical instability, a punishing learning curve - is written FLAT: \
+"Worth knowing: it requires a third-party launcher and a publisher account." \
+"Worth knowing: performance is unstable on release hardware." \
+BANNED CONSTRUCTIONS, all of them: "willing to tolerate", "willing to \
+overlook", "willing to navigate", "can tolerate", "if you can overlook", \
+"provided you accept", "buy only if". These read as a test the reader has to \
+pass, and moving the test from the verb into the audience does not remove it - \
+"suits players willing to tolerate the launcher" is the same sentence as "buy \
+only if you tolerate the launcher" with the condition hidden one clause \
+further in. Both are rejected. \
+The verdict word is already settled by the cohort data. Asking the reader to \
+weigh whether they can put up with something is asking them to re-decide it. \
+RIGHT: "Suits people who want a deep tactical shooter. Worth knowing: it \
+requires a third-party launcher, and the learning curve is steep." \
+WRONG: "Suits tactical shooter fans willing to navigate launcher setups." \
+Naming who it does NOT suit stays welcome, as a plain description: "not for \
+newcomers looking for a smooth first hour."
 8. Flag sentences describe WHAT the pattern is, never WHY it happened. Do not \
 speculate about controversies, publishers, patches or review campaigns.
-9. The verdict is your judgement and it does not have to track the score - but \
-it does have to be reconcilable with it. The three words mean:
-   Buy  - the reader should buy it. Cohorts past the refund window recommend \
-it, and no claim describes a barrier that would stop this reader.
-   Wait - the reader should hold off for now: on a patch, a sale, or a \
-specific fix. Use this when people who stayed recommend the game but the \
-claims describe real problems that a buyer today would hit.
-   Skip - the reader should not buy it. Reserve this for when the people who \
-actually played it do NOT broadly recommend it, or a claim describes a barrier \
-that applies to essentially every buyer with no way around it.
-Weigh the cohort rates you are shown, and read them BOTH ways: \
-when the cohorts past the refund window sit at about four in five or better, \
-Skip is almost certainly the wrong word - a dense list of complaints is not \
-the same as a game people regret buying, and rule 4 already told you those \
-coexist; \
-when those cohorts sit at about two in three or worse, Skip is genuinely on \
-the table and Wait may be too soft - a game a third of its remaining players \
-will not recommend is not one the reader should merely wait on; \
-in between, the claims decide, and either word can be right. \
-Sentiment that FALLS as playtime rises is evidence against Buy no matter how \
-high it starts: the people who know it best liked it least. \
-Narrow taste is a job for the for-whom line, not for Skip: the verdict is one \
-word for everyone, and the for-whom line is where you say who should walk away.
+9. THE VERDICT WORD IS GIVEN TO YOU, in the turn below. It is computed from the cohort rates before you are called, and it is not yours to choose, argue with, or soften. Write the for-whom line so it reads naturally under that word. \
+You are not being asked whether the word is right. A claim list can look grim under a Buy and encouraging under a Wait - rule 4 already told you those coexist - and that is not a contradiction to resolve.
 """
 
 # Filled from prevalence_guard so the prompt cannot drift behind the rule it
@@ -247,9 +246,16 @@ def _bucket_order(name):
     return order.index(name) if name in order else len(order)
 
 
-def build_user_turn(game, pool, cohorts, detected):
+def build_user_turn(game, pool, cohorts, detected, verdict_word):
     lines = ["Game: %s" % game, ""]
-    lines.append("COHORTS (rates are context for your judgement - never repeat "
+    # The word is stated FIRST and as settled fact. It is computed from the
+    # rates below, so the model is being told the conclusion and asked only to
+    # write prose that sits under it.
+    lines.append("VERDICT (already decided from the cohort rates - write the "
+                 "for-whom line to suit it, do not argue with it): %s"
+                 % verdict_word)
+    lines.append("")
+    lines.append("COHORTS (rates are context for your wording - never repeat "
                  "them as text):")
     for c in cohorts:
         if c["muted"]:
@@ -279,58 +285,88 @@ def build_user_turn(game, pool, cohorts, detected):
 DIGIT = re.compile(r"\d")
 
 # --------------------------------------------------------------------------
-# the verdict rail
+# THE VERDICT WORD IS COMPUTED HERE, NOT CHOSEN BY THE MODEL
 #
-# The verdict word was the last high-stakes output decided purely by prose
-# instruction, and this module's own docstring promises the opposite. Two
-# successive rewrites of rule 9 swung the whole catalog in opposite directions:
-# the original produced Skip for a title whose post-refund cohorts all sat above
-# four in five, and the rewrite that fixed that produced Wait for a title below
-# three in five with four in five of its claims negative. A sentence cannot hold
-# this; the rail can.
+# It was the last high-stakes output decided by prose instruction, against this
+# module's own docstring. Two rewrites of rule 9 proved a sentence cannot hold
+# it: the first produced Skip for a title whose post-refund cohorts all sat
+# above four in five, and the rewrite that fixed that produced Wait for one
+# below three in five with four in five of its claims negatively sourced. Each
+# fix installed the opposite bias, because a prompt can only lean.
 #
-# It rejects only the CLEARLY WRONG word and leaves the judgement intact. In the
-# 70-80 band it forbids nothing at all - that band is genuinely ambiguous and is
-# where the product's whole thesis lives.
-#
-# Thresholds are the catalog's own distribution, not invented: published means
-# are Buy 94.5, Wait 84.2, Skip 65.0. Below 60, six of the seven published
-# titles were already Skip, so the floor encodes practice rather than inventing
-# a standard.
+# An earlier attempt (forbidden_verdicts) had the code REJECT clearly-wrong
+# words and leave the rest to the model. That is gone: it still let claim
+# severity decide inside the permitted band, which is the same bug wearing a
+# smaller coat.
 POST_REFUND = ("early", "mid", "veteran")
+
+# A cohort's rate must be well measured before it steers a verdict. This is the
+# same floor QR-3 already uses for flag evidence, and it is deliberately a POOL
+# figure: the survivor-based mute (invariant 12) answers "may we attribute
+# claims to this cohort", which is a different question from "is this rate solid
+# enough to decide a verdict". Judging admission by one number and the rate by
+# another is how a 27-review cohort came to outvote a 560-review one.
+MIN_POOL_FOR_MEAN = 30
+
+# Derived from the catalog's own distribution, not chosen for roundness.
+# Buy/Wait error bottoms out at 89 (Buy p10 89.2 against Wait p90 93.9 - a real
+# overlap, so the boundary is a judgement the data only narrows). Skip/Wait error
+# bottoms out at 64, and the populations barely touch there (Skip p90 68.5,
+# Wait p10 69.8). Lower thresholds were tested and rejected: at Buy>=75 titles
+# like Squad and The Isle took an unqualified Buy on 77-81% negatively-sourced
+# evidence, and at Skip<50 no title in the catalog could ever be a Skip.
+BUY_AT = 89.0
+SKIP_BELOW = 64.0
 
 
 def post_refund_mean(cohorts):
-    """Mean pool positive rate across non-muted post-refund cohorts, or None.
+    """Pool-weighted positive rate across the post-refund cohorts, or None.
 
-    refund_window is excluded on purpose: it is by definition the cohort that
-    bounced, and counting it would penalise every title twice for one fact.
-    Muted cohorts are excluded because they are below the evidence floor
-    (invariant 12) - a rate we refuse to show a reader is not one we should
-    judge a verdict by.
+    WEIGHTED BY pool_n, because an unweighted mean let a 27-review veteran
+    cohort count as much as a 560-review early one - and with the verdict word
+    now computed from this number, that thin cohort WAS the verdict.
 
-    None means the rail does not apply. We cannot judge what we cannot measure.
+    Three exclusions, each for its own reason:
+      refund_window   - by definition the cohort that bounced; counting it
+                        would penalise every title twice for one fact.
+      muted           - invariant 12: a cohort we refuse to attribute claims to.
+      pool_n < 30     - the rate itself is too noisy to decide anything.
+
+    None means we cannot measure this title, and the caller must not invent a
+    verdict for it.
     """
-    rates = [c["pct_positive"] for c in cohorts
-             if c["bucket"] in POST_REFUND and not c["muted"]]
-    return sum(rates) / len(rates) if rates else None
+    live = [c for c in cohorts
+            if c["bucket"] in POST_REFUND and not c.get("muted")
+            and (c.get("pool_n") or 0) >= MIN_POOL_FOR_MEAN]
+    total = sum(c["pool_n"] for c in live)
+    if not total:
+        return None
+    return sum(c["pct_positive"] * c["pool_n"] for c in live) / total
 
 
-def forbidden_verdicts(mean):
-    """Which verdict words the cohort data rules out. Empty set = all allowed."""
+def verdict_for_mean(mean):
+    """The verdict word, from the cohort data alone. None if unmeasurable.
+
+    Claim content does not appear here and must not: friction a reader should
+    know about belongs in the for-whom line as disclosure (rule 7), never as a
+    condition that quietly softens the word.
+    """
     if mean is None:
-        return frozenset()
-    if mean >= 80:
-        return frozenset({"Skip"})       # they largely recommend it
-    if mean >= 70:
-        return frozenset()               # ambiguous band - claims decide
-    if mean >= 60:
-        return frozenset({"Buy"})        # a third will not recommend it
-    return frozenset({"Buy", "Wait"})    # floor: only Skip survives here
+        return None
+    if mean >= BUY_AT:
+        return "Buy"
+    if mean < SKIP_BELOW:
+        return "Skip"
+    return "Wait"
 
 
-def check_response(parsed, cohorts, detected):
-    """Return a list of failure strings. Empty means the response is usable."""
+def check_response(parsed, cohorts, detected, verdict_word):
+    """Return a list of failure strings. Empty means the response is usable.
+
+    verdict_word is COMPUTED and passed in - the model does not return one, so
+    there is nothing here to validate it against. What remains is checking that
+    the prose the model did write agrees with it.
+    """
     failures = []
     by_bucket = {c["bucket"]: c for c in cohorts}
     valid_ids = {cl["claim_id"]: c["bucket"] for c in cohorts for cl in c["claims"]}
@@ -338,8 +374,6 @@ def check_response(parsed, cohorts, detected):
     # Completeness first. Without this an empty or wrong-shaped response passes
     # every other gate by containing nothing to object to - which is exactly how
     # a synthesis call answered with extraction-shaped claims and still "passed".
-    if parsed.get("verdict") not in ("Buy", "Wait", "Skip"):
-        failures.append("missing_or_invalid_verdict:%r" % parsed.get("verdict"))
     if not (parsed.get("for_whom") or "").strip():
         failures.append("missing_for_whom")
     answered = {c.get("bucket") for c in (parsed.get("cohorts") or [])}
@@ -353,18 +387,6 @@ def check_response(parsed, cohorts, detected):
                                 for s in (parsed.get("flag_sentences") or [])}:
             failures.append("flag_not_described:%s" % f["flag_id"])
 
-    # The rail. Evaluated BEFORE the for-whom check so a rejected verdict and a
-    # contradicting for-whom line come back in the same retry rather than
-    # costing two round trips.
-    mean = post_refund_mean(cohorts)
-    forbidden = forbidden_verdicts(mean)
-    if parsed.get("verdict") in forbidden:
-        allowed = [w for w in ("Buy", "Wait", "Skip") if w not in forbidden]
-        failures.append(
-            "verdict_out_of_band:%s:cohorts_past_the_refund_window_average_"
-            "%.1f_percent_positive:allowed=%s"
-            % (parsed.get("verdict"), mean, ",".join(allowed)))
-
     # The for-whom line may not argue with the stamp above it.
     #
     # IN CODE, NOT ONLY IN THE PROMPT, for the usual reason: rule 7 says this in
@@ -376,7 +398,6 @@ def check_response(parsed, cohorts, detected):
     # Narrow-audience carve-outs are still wanted, which is why this matches the
     # DIRECTIVE forms ("should buy", "buy it/this") and not every mention of a
     # word - "buy" appears legitimately under Wait as "buy now only if X".
-    verdict_word = parsed.get("verdict")
     for_whom = parsed.get("for_whom") or ""
     banned_for = {
         "Buy":  (r"\b(?:should\s+skip|skip\s+(?:it|this)|avoid\s+(?:it|this)|"
@@ -389,6 +410,24 @@ def check_response(parsed, cohorts, detected):
         if re.search(pattern, for_whom, re.I):
             failures.append("for_whom_contradicts_verdict:%s:%s"
                             % (verdict_word, what))
+
+    # Friction stated as a test the reader must pass (rule 7b), IN CODE because
+    # the prompt version of this rule half-held: the directive form ("buy only
+    # if...") disappeared, and the same condition reappeared inside the audience
+    # description instead - "suits players willing to tolerate the launcher".
+    # That is the identical sentence with the condition moved one clause in, so
+    # it is matched here rather than argued about in prose.
+    FRICTION_VERBS = (r"tolerate|overlook|navigate|manage|troubleshoot|weather|"
+                      r"endure|put\s+up\s+with")
+    if re.search(r"\b(?:(?:willing|prepared|happy)\s+to\s+(?:%s)|"
+                 # the obligation form is the same condition in the imperative:
+                 # "though you must tolerate the launcher" asks exactly what
+                 # "willing to tolerate the launcher" asks.
+                 r"(?:must|have\s+to|need\s+to)\s+(?:%s|accept)|"
+                 r"can\s+tolerate|if\s+you\s+can\s+overlook|"
+                 r"provided\s+you\s+(?:accept|can))\b"
+                 % (FRICTION_VERBS, FRICTION_VERBS), for_whom, re.I):
+        failures.append("for_whom_frames_friction_as_a_condition")
 
     prose = [("for_whom", parsed.get("for_whom") or "")]
     for c in parsed.get("cohorts") or []:
@@ -488,7 +527,8 @@ def build_citation(rid, corpus):
     }
 
 
-def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed, model):
+def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
+             model, verdict_word):
     by_bucket = {c.get("bucket"): c for c in (parsed.get("cohorts") or [])}
     sentences = {f.get("flag_id"): f.get("sentence")
                  for f in (parsed.get("flag_sentences") or [])}
@@ -561,7 +601,8 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed, model)
         "game_name": claims_blob.get("game_name"),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "model": {"extraction": claims_blob.get("model"), "synthesis": model},
-        "verdict": {"word": parsed.get("verdict"),
+        # computed, never model-chosen - see verdict_for_mean()
+        "verdict": {"word": verdict_word,
                     "for_whom": parsed.get("for_whom")},
         "split_bar": split_bar,
         "distortion_flags": out_flags,
@@ -613,7 +654,16 @@ def synthesize_one(client, args, appid):
                  "  MUTED" if c["muted"] else ""))
 
     system = SYSTEM_INSTRUCTION
-    user = build_user_turn(game, pool, cohorts, detected)
+    mean = post_refund_mean(cohorts)
+    verdict_word = verdict_for_mean(mean)
+    if verdict_word is None:
+        print("  REFUSED: no post-refund cohort clears the evidence floor "
+              "(pool_n >= %d), so there is no measurable sentiment to compute a "
+              "verdict from. Nothing written for %s." % (MIN_POOL_FOR_MEAN, appid))
+        return None
+    print("  verdict computed from cohort data: %s (post-refund mean %.1f%%)"
+          % (verdict_word, mean))
+    user = build_user_turn(game, pool, cohorts, detected, verdict_word)
     if args.show_prompt or args.dry_run:
         print("\n--- user turn ---\n%s" % user)
     if args.dry_run:
@@ -674,7 +724,7 @@ def synthesize_one(client, args, appid):
             print("  attempt %d rejected: %s" % (attempt, failures[0]))
             continue
 
-        failures = check_response(candidate, cohorts, detected)
+        failures = check_response(candidate, cohorts, detected, verdict_word)
         if not failures:
             parsed = candidate
             break
@@ -685,20 +735,10 @@ def synthesize_one(client, args, appid):
     if parsed is None:
         print("  FAILED after %d attempts - no verdict written for %s"
               % (args.retries + 1, appid))
-        # Distinct, greppable line when the RAIL is what exhausted the attempts.
-        # The rail forbids one word of three (two at the floor), so a title that
-        # cannot produce an allowed one in three tries is evidence the bands are
-        # wrong - and that has to arrive as a number we can count, not as a
-        # title quietly missing from the catalog.
-        if any(f.startswith("verdict_out_of_band") for f in failures):
-            print("  verdict_rail_exhausted appid=%s mean=%.1f last=%s"
-                  % (appid, post_refund_mean(cohorts) or -1.0,
-                     ",".join(f for f in failures
-                              if f.startswith("verdict_out_of_band"))))
         return None
 
     verdict = assemble(appid, claims_blob, corpus, pool, cohorts, detected,
-                       parsed, args.model)
+                       parsed, args.model, verdict_word)
     out_dir = Path(args.out)
     out_dir.mkdir(parents=True, exist_ok=True)
     path = out_dir / ("%s.json" % appid)
