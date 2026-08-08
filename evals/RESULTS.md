@@ -296,3 +296,94 @@ candidate for a second, separate rail; deliberately not folded into this
 fix, per the same discipline that caused the original overcorrection.
 18 titles still need the access-theme re-extraction pass. Batch ledger:
 83/400 used today.
+
+---
+
+## 2026-08-08 — Claim sourcing balance: measured, partially fixed, NOT rolled out
+
+**Question.** A reader sees the Split Bar say a cohort is 72% positive, then
+reads a claim list built overwhelmingly from people who did not recommend the
+game. Is extraction under-sampling positive reviews, or is the pool genuinely
+that negative?
+
+**Answer: extraction, and catalog-wide.** New tool
+`pipeline/measure_claim_balance.py` compares, per cohort, the share of
+`voted_up` reviews **available** to extraction (the filtered survivors) against
+the share among reviews it **actually cited**. It counts SOURCES, never claims —
+invariant 13 forbids a per-claim valence, and `citation_verdict` is what the
+citing reviewers thought of the *game*, so it cannot stand in for one.
+
+Baseline, 131 titles (`evals/baselines/claim-balance-before.json`):
+
+| | |
+|---|---|
+| cited more negatively than their own pool | **120 of 131 (92%)** |
+| mean delta | **−20.2 pts** (median −20.4, min −56.7, max +6.1) |
+| by pool sentiment | <60% −24.5 · 60–75% −31.2 · 75–90% −23.9 · ≥90% −9.4 |
+
+Extraction receives *all* of a cohort's filtered survivors, so the input is
+already representative. The whole skew is in what it chooses to cite.
+
+**Two mechanisms.** (a) Prompt framing: extraction rule 2 defined a claim as
+"what breaks, what is hard, what is missing, what works" — three negative
+framings to one, with a complaint as its only worked example. (b) Structural:
+positive reviews are half the length of negative ones (median 20 vs 40 words;
+49% vs 28% under 20 words), so praise clears invariant 3's ≥2-supporting-
+citations bar and the "specific and falsifiable" test far less often.
+
+**Change tested (a only).** Rule 2 reordered to lead with "what works", a
+positive worked example added beside the negative one, and one sentence added
+that a cohort's praise is evidence on the same terms as its complaints.
+Deliberately **no ratio target and no instruction to produce balance** — that
+would be fabrication pressure against invariant 3, installing a counter-bias
+rather than removing a bias.
+
+**A/B: 10 titles, re-extraction only, same review pools.** Gate criteria were
+fixed in the plan before any measurement.
+
+| title | pool | Δ before | Δ after | move |
+|---|---|---|---|---|
+| Binding of Isaac | 87.2% | −56.7 | −36.3 | +20.4 |
+| Last Epoch | 62.6% | −46.5 | −27.9 | +18.6 |
+| Slay the Spire | 88.0% | −39.3 | −16.6 | +22.7 |
+| Megabonk | 75.2% | −37.2 | −25.2 | +12.0 |
+| Marvel Rivals | 37.7% | −31.6 | −25.1 | +6.5 |
+| Divinity: OS2 | 89.3% | −27.6 | −25.0 | +2.6 |
+| Apex Legends | 52.4% | −23.2 | −3.1 | +20.1 |
+| Hunt: Showdown | 59.9% | −21.3 | −16.5 | +4.8 |
+| **ARK: Survival Ascended** | 28.7% | −15.0 | **−16.1** | **−1.1** |
+| *DOOM (control)* | 93.8% | −1.7 | +3.6 | +5.3 |
+
+| criterion | required | actual | |
+|---|---|---|---|
+| mean \|Δ\| improvement | ≥ 33.3% | 33.2 → 21.3 = 35.7% | PASS |
+| no title worsens | zero tolerance | ARK −1.1 | **FAIL** |
+| control moves | < 10 pts | 5.3 | PASS |
+
+**Not rolled out.** The failing criterion was held absolute rather than relaxed
+after seeing the data — relaxing a pre-set bar post hoc is how a fix gets talked
+into looking better than it measured. All 10 test titles' claims were restored
+to their pre-A/B state; no verdict or published page changed.
+
+**The over-correction question is closed — no evidence of it.** The first A/B's
+control (DOOM) crossed from −1.7 to +3.6, raising the possibility that the new
+wording over-corrected toward praise. Widening to two more high-sentiment titles
+with real headroom settled it: Slay the Spire (88.0%) and Divinity: OS2 (89.3%)
+both moved *toward* zero and stopped well short of it (−16.6, −25.0), as did
+Binding of Isaac (−36.3). DOOM began at −1.7 against a 93.8% positive pool and
+had nowhere else to go — a ceiling effect, not a signal.
+
+**Mechanism (b) is the dominant remaining cause, and prompt changes do not
+resolve it.** Residual mean \|Δ\| is 21.3, and Binding of Isaac still sits at
+−36.3 against an 87.2% positive pool. The change helps most where the skew was
+largest (Δ worse than −25 improved +12 to +23) and does nothing where the pool
+is already overwhelmingly negative — the signature of removing a framing bias,
+not of installing a counter-bias. What remains is a property of the evidence:
+people who like a game write "10/10 great game"; people who do not write
+paragraphs explaining why. Closing it would require weakening invariant 3 or the
+falsifiability bar, both of which cost more than the distortion they would fix.
+BACKLOG.md recorded this same length asymmetry earlier as a driver of claim
+*drops*; this is the same effect showing up as claim *sourcing*.
+
+**Not affected:** the 18-title access-theme re-extraction pass is independent of
+this result and was never contingent on it.
