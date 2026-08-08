@@ -152,7 +152,15 @@ agreed view is the exact failure this product exists to correct. If people who \
 bounced early and people who stayed describe different games, say that.
 6. A cohort marked MUTED gets no summary and no claims. Skip it entirely.
 7. The for-whom line names who should buy this and who should not, in one \
-sentence. Be specific about the person, not the genre.
+sentence. Be specific about the person, not the genre. IT MUST NOT CONTRADICT \
+THE VERDICT STAMP. The reader sees the word and this line together, so a line \
+arguing with the word above it reads as a mistake, not as nuance. Never write \
+"should buy" or "buy this" under Skip. Never write "should skip" or "avoid \
+this" under Buy. Narrow-audience carve-outs are still wanted - write them from \
+the stamp's side: \
+under Skip, "skip this unless you specifically want X"; \
+under Wait, "buy now only if X, otherwise wait for Y"; \
+under Buy, "buy it, though X will not suit you".
 8. Flag sentences describe WHAT the pattern is, never WHY it happened. Do not \
 speculate about controversies, publishers, patches or review campaigns.
 9. The verdict is your judgement and it does not have to track the score - but \
@@ -288,6 +296,31 @@ def check_response(parsed, cohorts, detected):
         if f["flag_id"] not in {s.get("flag_id")
                                 for s in (parsed.get("flag_sentences") or [])}:
             failures.append("flag_not_described:%s" % f["flag_id"])
+
+    # The for-whom line may not argue with the stamp above it.
+    #
+    # IN CODE, NOT ONLY IN THE PROMPT, for the usual reason: rule 7 says this in
+    # words and the model broke it on the very next run, answering Buy with
+    # "...but skip it if you are a newcomer". The reader sees the stamp and this
+    # line together, so a line contradicting the word reads as a bug in the
+    # product rather than as nuance.
+    #
+    # Narrow-audience carve-outs are still wanted, which is why this matches the
+    # DIRECTIVE forms ("should buy", "buy it/this") and not every mention of a
+    # word - "buy" appears legitimately under Wait as "buy now only if X".
+    verdict_word = parsed.get("verdict")
+    for_whom = parsed.get("for_whom") or ""
+    banned_for = {
+        "Buy":  (r"\b(?:should\s+skip|skip\s+(?:it|this)|avoid\s+(?:it|this)|"
+                 r"should\s+avoid|steer\s+clear)\b", "skip/avoid language"),
+        "Skip": (r"\b(?:should\s+buy|buy\s+(?:it|this|in)|pick\s+(?:it|this)\s+up|"
+                 r"worth\s+buying)\b", "buy language"),
+    }
+    if verdict_word in banned_for:
+        pattern, what = banned_for[verdict_word]
+        if re.search(pattern, for_whom, re.I):
+            failures.append("for_whom_contradicts_verdict:%s:%s"
+                            % (verdict_word, what))
 
     prose = [("for_whom", parsed.get("for_whom") or "")]
     for c in parsed.get("cohorts") or []:
