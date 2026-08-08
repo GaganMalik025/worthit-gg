@@ -445,6 +445,16 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed, model)
             "evidence": f["evidence"],
         })
 
+    # Second lock on the null-name bug (the first is in fetch_reviews). A
+    # verdict with no game name is unpublishable by definition: it renders an
+    # empty heading and unfurls as "null: Skip". Refusing here means a raw file
+    # that predates that guard cannot quietly reach the site either.
+    if not claims_blob.get("game_name"):
+        raise SystemExit(
+            "\nREFUSED: appid %s has no game_name.\n"
+            "  Re-run ingestion for it - the store lookup failed and the name\n"
+            "  never made it into data/raw. Nothing was written." % appid)
+
     return {
         "appid": appid,
         "game_name": claims_blob.get("game_name"),

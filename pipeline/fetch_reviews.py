@@ -619,7 +619,29 @@ def run_one(appid, args):
         print("== %s - existing file unreadable, refetching ==" % appid)
 
     name = resolve_game_name(appid, use_cache=not args.no_cache)
-    print("== %s (%s) ==" % (appid, name or "name lookup failed"))
+    # A NULL NAME IS A HARD STOP, not a warning.
+    #
+    # resolve_game_name returns None for every failure alike - a timeout, a rate
+    # limit, a non-success body - and this used to write that None straight into
+    # the blob and carry on. It reached production: appid 1716740 published with
+    # game_name null, so the verdict page rendered an empty <h1> and a
+    # "null: Skip - WorthIt.gg" title, and once OG tags shipped it unfurled that
+    # way on Reddit too. Nothing downstream could tell a game genuinely called
+    # nothing from a lookup that quietly failed.
+    #
+    # The name is also how we verify the appid is the game we think it is (see
+    # resolve_game_name's docstring), so continuing without it skips the check
+    # this function exists to perform. Steam's appdetails is free and cached;
+    # the right response to a transient failure is to run it again.
+    if not name:
+        print("\nFAILED: could not resolve a store name for appid %s.\n"
+              "  Steam's appdetails returned nothing usable. This is usually\n"
+              "  transient - rerun. Refusing to write a review file with a null\n"
+              "  game_name: it renders as an empty title and a 'null' unfurl,\n"
+              "  and it silently skips the appid verification this lookup is\n"
+              "  for. Nothing was written." % appid)
+        return False
+    print("== %s (%s) ==" % (appid, name))
     print("   target=%d quota=%s filters=%s max_pages=%d"
           % (args.target, args.quota or args.target // len(BUCKETS),
              ",".join(args.filters), args.max_pages))
