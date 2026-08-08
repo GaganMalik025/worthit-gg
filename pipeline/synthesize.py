@@ -155,9 +155,23 @@ bounced early and people who stayed describe different games, say that.
 sentence. Be specific about the person, not the genre.
 8. Flag sentences describe WHAT the pattern is, never WHY it happened. Do not \
 speculate about controversies, publishers, patches or review campaigns.
-9. The verdict is your judgement, and it does not have to track the score. A \
-game most people love can still be Skip for the reader if the claims say it \
-suits a narrow taste. Say who it is for and let the verdict follow.
+9. The verdict is your judgement and it does not have to track the score - but \
+it does have to be reconcilable with it. The three words mean:
+   Buy  - the reader should buy it. Cohorts past the refund window recommend \
+it, and no claim describes a barrier that would stop this reader.
+   Wait - the reader should hold off for now: on a patch, a sale, or a \
+specific fix. Use this when people who stayed recommend the game but the \
+claims describe real problems that a buyer today would hit.
+   Skip - the reader should not buy it. Reserve this for when the people who \
+actually played it do NOT broadly recommend it, or a claim describes a barrier \
+that applies to essentially every buyer with no way around it.
+IF THE COHORTS PAST THE REFUND WINDOW BROADLY RECOMMEND THE GAME, SKIP IS \
+ALMOST CERTAINLY THE WRONG WORD. A dense list of complaints is not the same as \
+a game people regret buying - rule 4 already told you those coexist, and this \
+is where that matters most. The honest verdict there is Wait, with the \
+for-whom line naming the barrier and who it disqualifies. Narrow taste is also \
+a job for the for-whom line, not for Skip: the verdict is one word for \
+everyone, and the for-whom line is where you say who should walk away.
 """
 
 # Filled from prevalence_guard so the prompt cannot drift behind the rule it

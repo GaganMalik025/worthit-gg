@@ -18,10 +18,15 @@
 import { CaseHero } from "./CaseHero";
 import type { Verdict } from "../lib/verdict";
 
-const THEME_LABEL: Record<string, string> = {
+/** Must cover every value in pipeline/extract_claims.py THEMES - asserted by
+ *  lib/__tests__/theme-labels.contract.test.ts, because the `?? t.theme`
+ *  fallback below renders a missing one as a raw lowercase enum value rather
+ *  than failing, which is the kind of thing that ships. */
+export const THEME_LABEL: Record<string, string> = {
   performance: "Performance",
   content: "Content",
   difficulty: "Difficulty",
+  access: "Access",
   monetization: "Monetization",
   other: "Other",
 };

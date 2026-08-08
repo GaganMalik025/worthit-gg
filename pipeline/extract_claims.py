@@ -59,7 +59,16 @@ MAX_ATTEMPTS = 5
 BACKOFF_BASE = 2.0
 PACE_SECONDS = 1.0          # keeps us under the 15 RPM free-tier ceiling
 
-THEMES = ["performance", "content", "difficulty", "monetization", "other"]
+# Grouping headers for the claim list (DESIGN.md). These were a bare enum with
+# no definition anywhere in the prompt, so the model had five words and had to
+# guess what they meant - and there was no bucket at all for DRM, launchers,
+# account requirements or always-online. Those claims went to "monetization",
+# the nearest storefront-adjacent word: 11 claims across 8 published titles,
+# including "the game requires a Microsoft account to play" filed under
+# monetization. That is a taxonomy gap, not a model slip, so the fix is a bucket
+# that fits plus definitions in the prompt (see RULE 7 in SYSTEM_INSTRUCTION).
+THEMES = ["performance", "content", "difficulty", "access", "monetization",
+          "other"]
 
 # Countless by construction: no count, no frequency, no "how many" field exists
 # for the model to fill. The only way prevalence can leak is prose, which is
@@ -125,6 +134,24 @@ each cited review was a thumbs-up or thumbs-down is already known and is not \
 your call.
 6. If fewer than two reviews support an observation, omit it entirely. Returning \
 an empty list is a valid and correct answer.
+7. Pick the theme that matches what the claim is ABOUT. These are grouping \
+headers a reader sees, so a wrong one is visible:
+   performance  - how it runs: frame rate, stutter, crashes, bugs, load times, \
+hardware behaviour, technical instability.
+   content      - what is in the game: story, missions, world, characters, \
+art, audio, features present or missing, cut or changed from an earlier version.
+   difficulty   - how hard it is to play or learn: challenge, balance, \
+grind, tutorials, controls, accessibility of the systems themselves.
+   access       - what stands between owning it and playing it: third-party \
+launchers, mandatory accounts or sign-ins, always-online or internet \
+requirements, DRM, region or platform restrictions. Use this even when the \
+barrier belongs to a publisher's store - it is about ACCESS, not money.
+   monetization - money: price, value for money, microtransactions, paid DLC, \
+season passes, subscriptions, in-game stores.
+   other        - none of the above genuinely fits. Prefer a real theme.
+A claim about a launcher or a required account is ALWAYS access, never \
+monetization, even if the launcher also sells things - in that case write the \
+selling as a separate monetization claim if the reviews support one.
 """
 
 USER_PREAMBLE = """\
