@@ -96,6 +96,11 @@ site/node_modules/
 data/model_pacer.json
 data/model_pacer.json.lock
 
+# Same shape: written at the start of every ingest stage to record the pacer's
+# call count before the run, so qr4 can charge the difference. Purely local
+# runtime state, meaningless on another machine.
+data/.stage_baseline.json
+
 # QR-5 blinding key. Do not open while scoring evals/QR5-scoring-sheet.md.
 evals/qr5-key.json
 
