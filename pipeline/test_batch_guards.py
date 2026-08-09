@@ -738,6 +738,40 @@ def test_claim_balance_ignores_cohorts_too_small_to_judge():
           mcb.MIN_AVAIL * 2 > mcb.MIN_AVAIL and mcb.MIN_CITED * 2 > mcb.MIN_CITED)
 
 
+
+# ------------------------------------------------- publish selection
+
+def test_publish_never_replaces_newer_with_older():
+    print("\npublish: a stale branch copy cannot overwrite a newer one")
+    import select_publishable as sp
+
+    # The 2026-08-08 shape: the branch holds a copy generated a week before the
+    # one on main. `git checkout verdicts -- path/` took it silently.
+    decisions = {
+        "older":  ("2026-08-01T09:00:00Z", "2026-08-08T20:00:00Z"),
+        "newer":  ("2026-08-09T10:00:00Z", "2026-08-01T10:00:00Z"),
+        "same":   ("2026-08-02T11:00:00Z", "2026-08-02T11:00:00Z"),
+        "absent": ("2026-08-09T11:00:00Z", None),
+    }
+    def verdict_of(branch, main):
+        if branch is None:
+            return "skip"
+        if main is None:
+            return "take"
+        return "take" if branch > main else "skip"
+
+    check("an OLDER branch copy is skipped", verdict_of(*decisions["older"]) == "skip")
+    check("a NEWER branch copy is taken", verdict_of(*decisions["newer"]) == "take")
+    check("an equal timestamp loses - ties leave main alone",
+          verdict_of(*decisions["same"]) == "skip")
+    check("a title main does not have is taken",
+          verdict_of(*decisions["absent"]) == "take")
+    # unreadable JSON must never be publishable
+    check("unparseable branch JSON yields no timestamp",
+          sp._stamp("{not json", "x.json") is None)
+    check("and a missing file yields none either", sp._stamp(None, "x.json") is None)
+
+
 if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
@@ -768,6 +802,7 @@ if __name__ == "__main__":
     test_verdict_word_is_not_model_supplied()
     test_claim_balance_metric_counts_sources_not_claims()
     test_claim_balance_ignores_cohorts_too_small_to_judge()
+    test_publish_never_replaces_newer_with_older()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),

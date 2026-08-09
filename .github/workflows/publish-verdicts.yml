@@ -26,13 +26,29 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Count pending verdicts
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # WHICH verdicts may be published - not "all of them".
+      #
+      # This step used to be `git checkout verdicts -- site/public/verdicts/`,
+      # which is a wholesale overwrite rather than a merge, so git reported no
+      # conflict and nothing warned. On 2026-08-08 it replayed 68 verdicts
+      # generated 1-7 days earlier over 56 regenerated the same day, and logged
+      # "Automatic merge went well".
+      #
+      # The verdicts branch is append-only artifact storage and always holds
+      # copies older than main, so age is the thing to check. Skips are printed
+      # individually on purpose: a stale copy being dropped must be visible in
+      # the log, not inferred from a count.
+      - name: Select publishable verdicts
         id: pending
         run: |
           git fetch origin verdicts:verdicts || echo "no verdicts branch yet"
-          N=$(git diff --name-only main verdicts -- site/public/verdicts/ 2>/dev/null | wc -l | tr -d ' ')
-          echo "n=$N" >> "$GITHUB_OUTPUT"
-          echo "$N verdict file(s) pending"
+          python pipeline/select_publishable.py \
+            --from verdicts --into HEAD --apply \
+            --github-output "$GITHUB_OUTPUT"
 
       - uses: actions/setup-node@v4
         if: steps.pending.outputs.n != '0'
@@ -42,26 +58,25 @@ jobs:
           cache-dependency-path: site/package-lock.json
 
       # GATE: the dual-path contract test runs against the verdicts we are about
-      # to publish. If the two render paths have diverged, the merge is aborted
-      # and the verdicts stay on the `verdicts` branch - still served live by
-      # /api/verdict, just not promoted. A broken dual path can never be the
-      # thing that reaches main and deploys.
+      # to publish - the SELECTED set already written into the working tree by
+      # the step above, not the raw branch. Testing the branch would test files
+      # we have decided not to publish. If the two render paths have diverged the
+      # publish is aborted and the verdicts stay on `verdicts`, still served live
+      # by /api/verdict, just not promoted.
       - name: Contract test (merge gate)
         if: steps.pending.outputs.n != '0'
         run: |
-          git checkout verdicts -- site/public/verdicts/
           npm ci --prefix site
           npm test --prefix site
 
-      - name: Squash-merge verdicts into main
+      - name: Commit the selected verdicts
         if: steps.pending.outputs.n != '0'
         run: |
           git config user.name  "worthit-bot"
           git config user.email "bot@worthit.gg"
-          git checkout main
-          git checkout verdicts -- site/public/verdicts/
           git add site/public/verdicts/
+          git diff --cached --quiet && { echo "nothing staged after selection"; exit 0; }
           git commit -m "publish: ${{ steps.pending.outputs.n }} verdict(s) generated live" \
-            -m "Squashed from the verdicts branch. Contract test passed as the merge gate."
+            -m "Selected by generated_at against main; ${{ steps.pending.outputs.skipped }} older or equal copies skipped. Contract test passed as the merge gate."
           git pull --rebase --autostash origin main
           git push || (sleep 5 && git pull --rebase origin main && git push)
