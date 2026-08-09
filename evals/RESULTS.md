@@ -496,3 +496,34 @@ negatively-sourced claims, both partly explained by the ~20pt extraction
 sourcing bias measured earlier today, not folded into this fix); the
 paused 18-title access-theme 4.5 audit, now unblocked since these titles'
 verdicts have settled.
+---
+
+## 2026-08-09 — 4.5 audit, the 18 access-theme re-extracted verdicts
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **1,213 citations across 18 verdicts, 0 failures** (and 7,084 across all 133, PASS) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.5-access.md`, seed 45, weighted 8/20 toward Access claims |
+| Scope | 359 claims, of which **73 now group under Access** |
+
+These are the 18 titles re-extracted under the new `access` theme (`f8129f7`),
+which moved 38 access-requirement claims out of `monetization`, `performance`
+and `other`. The sample was deliberately weighted toward Access because that is
+the grouping this pass introduced and the one most in need of a human read.
+
+**The sample was refreshed, not re-drawn.** Between preparation and audit, the
+verdict-computation rollout changed five of these titles' verdict words (GTA IV,
+GTA V Enhanced, Kingdom Come II, Red Dead Redemption 2, Rainbow Six Siege), so
+section A no longer described the pages. Section B was left untouched and
+re-verified instead: that rollout ran the verdict stage only, so no claim or
+citation moved, and all twenty sampled citations were confirmed present in the
+same cohort under the same theme. Re-randomising would have discarded reading
+already done against citations that never changed.
+
+Verdict mix across the 18 after the rollout: Wait 11, Buy 5, Skip 2.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+reviewed, nothing inappropriate.
