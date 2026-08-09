@@ -11,12 +11,21 @@ across all 133 verdicts catalog-wide, PASS).
 Sample is deliberately weighted toward **Access** claims (8 of 20) — that is
 the theme this pass introduced and the one most in need of a human read.
 
+> **Section A refreshed 2026-08-09** after the verdict-computation rollout.
+> Five of these titles' verdict words changed when the word moved into code
+> (GTA IV, GTA V Enhanced, Kingdom Come II, Red Dead Redemption 2, Rainbow
+> Six Siege). **Section B is untouched and still valid** — that rollout ran the
+> verdict stage only, so no claim or citation changed; all twenty sampled
+> citations were re-checked as present, in the same cohort and theme. The
+> sample was deliberately NOT re-drawn, because re-randomising it would
+> discard any reading already done against citations that never changed.
+
 
 ## A. The eighteen verdicts
 
 - [ ] **Assassin's Creed® Odyssey** (`812140`) — **Wait**  ·  4 access claim(s)
       refu 33.3% -> earl 83.2% -> mid 85.8% -> vete 90.9%
-      > Hold off on buying until launcher and startup issues are fixed, unless you are willing to troubleshoot technical hurdles for a massive historical open world.
+      > Suits history enthusiasts looking for a massive open-world adventure, but not for players seeking a quick, uninterrupted narrative. Worth knowing: it requires a third-party launcher, and progress involves heavy grinding and side quest completion.
 
 - [ ] **Call of Duty®** (`1938090`) — **Skip**  ·  5 access claim(s)
       refu 17.4% -> earl 67.2% -> mid 66.7% -> vete 52.0%
@@ -28,27 +37,27 @@ the theme this pass introduced and the one most in need of a human read.
 
 - [ ] **Far Cry® 5** (`552520`) — **Wait**  ·  7 access claim(s)
       refu 35.3% -> earl 76.6% -> mid 85.6% -> vete 91.2%
-      > Buy now only if you can overlook third-party launcher hurdles, otherwise wait for access issues to be resolved.
+      > Not for players wanting a smooth opening or seamless co-op, though it suits open-world completionists. Worth knowing: it requires a third-party launcher and features forced story cutscenes that interrupt exploration.
 
 - [ ] **Forza Horizon 5** (`1551360`) — **Wait**  ·  5 access claim(s)
       refu 35.0% -> earl 88.5% -> mid 85.0% -> vete 88.6%
       > Buy now only if you use standard gamepads and do not mind account logins, otherwise wait for steering wheel support and stability patches.
 
-- [ ] **Grand Theft Auto IV: The Complete Edition** (`12210`) — **Wait**  ·  6 access claim(s)
+- [ ] **Grand Theft Auto IV: The Complete Edition** (`12210`) — **Buy**  ·  6 access claim(s)
       refu 36.6% -> earl 91.7% -> mid 87.4% -> vete 92.9%
-      > Buy it now only if you are willing to install community fixes and manage third-party launcher requirements, otherwise wait.
+      > Suits players looking for a dark open-world crime story. Not for newcomers seeking a smooth out-of-the-box launch. Worth knowing: it requires a third-party launcher, community mods for stability, and manual workarounds for final mission bugs.
 
-- [ ] **Grand Theft Auto V Enhanced** (`3240220`) — **Skip**  ·  7 access claim(s)
+- [ ] **Grand Theft Auto V Enhanced** (`3240220`) — **Wait**  ·  7 access claim(s)
       refu 34.6% -> earl 84.7% -> mid 75.5% -> vete 42.3%
-      > Skip this unless you specifically want a standalone campaign and are willing to deal with external launcher barriers and heavy online monetization.
+      > Suits players looking for expanded singleplayer content, but worth knowing that third-party launchers, technical errors, and heavy economic grinds affect access and progression.
 
 - [ ] **Halo: The Master Chief Collection** (`976730`) — **Wait**  ·  8 access claim(s)
       refu 24.4% -> earl 85.2% -> mid 86.4% -> vete 85.8%
       > Buy it if you want bundled classic campaigns and multiplayer, but wait until Microsoft account login barriers are resolved.
 
-- [ ] **Kingdom Come: Deliverance II** (`1771300`) — **Buy**  ·  0 access claim(s)
+- [ ] **Kingdom Come: Deliverance II** (`1771300`) — **Wait**  ·  0 access claim(s)
       refu 19.0% -> earl 70.3% -> mid 90.7% -> vete 96.4%
-      > Buy it if you appreciate deep historical roleplaying and challenging combat, though the steep learning curve and clunky interface may test your patience.
+      > Suits history enthusiasts and patient roleplayers prepared for a steep learning curve, but not for players seeking immediate, accessible action.
 
 - [ ] **Last Epoch** (`899770`) — **Wait**  ·  2 access claim(s)
       refu 25.0% -> earl 72.3% -> mid 64.0% -> vete 64.2%
@@ -56,36 +65,35 @@ the theme this pass introduced and the one most in need of a human read.
 
 - [ ] **Overwatch®** (`2357570`) — **Skip**  ·  5 access claim(s)
       refu 17.5% -> earl 54.6% -> mid 57.1% -> vete 49.6%
-      > Skip this unless you specifically want a hero shooter and are willing to navigate strict account requirements and severe technical hurdles.
+      > Not for players seeking a straightforward, stable hero shooter. Worth knowing: mandatory phone verification, connection instability, and aggressive monetization create immediate friction.
 
-- [ ] **Red Dead Redemption 2** (`1174180`) — **Wait**  ·  5 access claim(s)
+- [ ] **Red Dead Redemption 2** (`1174180`) — **Buy**  ·  5 access claim(s)
       refu 37.1% -> earl 87.1% -> mid 94.1% -> vete 94.9%
-      > Buy now only if you are ready to troubleshoot external account logins, otherwise wait until technical access barriers are resolved.
+      > Suits open-world enthusiasts seeking a deep narrative experience. Worth knowing: it requires a third-party launcher and account sign-in, and the opening hours are slow-paced and restrictive.
 
 - [ ] **STAR WARS Jedi: Fallen Order™** (`1172380`) — **Buy**  ·  3 access claim(s)
       refu 51.0% -> earl 85.3% -> mid 94.5% -> vete 100.0%
-      > Buy it if you enjoy action-adventure journeys, though you must tolerate mandatory external launchers and level backtracking.
+      > Suits action-adventure fans wanting a compelling galactic journey, though not for players seeking frictionless navigation. Worth knowing: it requires a third-party EA launcher and account, and performance stutters during area transitions.
 
 - [ ] **Stellaris** (`281990`) — **Wait**  ·  4 access claim(s)
       refu 20.0% -> earl 75.1% -> mid 77.9% -> vete 63.3%
-      > Buy now only if you are deeply patient with complex grand strategy and willing to navigate steep learning curves, otherwise wait for performance fixes and sales.
+      > Not for newcomers looking for a smooth entry, and worth holding off on until performance and content stability improve.
 
 - [ ] **The Elder Scrolls® Online** (`306130`) — **Wait**  ·  3 access claim(s)
       refu 27.5% -> earl 66.8% -> mid 70.9% -> vete 73.4%
-      > buy now only if you are a dedicated fan willing to navigate launcher issues and subscription models, otherwise wait.
+      > Not for players seeking a smooth entry, given early technical hurdles, mandatory external accounts, and heavy monetization prompts.
 
 - [ ] **Titanfall® 2** (`1237970`) — **Buy**  ·  4 access claim(s)
       refu 65.9% -> earl 95.7% -> mid 97.4% -> vete 96.9%
       > Buy it for the standout single-player campaign, though players strictly seeking active multiplayer queues or those avoiding external launchers should look elsewhere.
 
-- [ ] **Tom Clancy's Rainbow Six Siege** (`359550`) — **Skip**  ·  3 access claim(s)
+- [ ] **Tom Clancy's Rainbow Six Siege** (`359550`) — **Wait**  ·  3 access claim(s)
       refu 42.6% -> earl 80.2% -> mid 74.2% -> vete 60.1%
-      > Skip this unless you specifically want a demanding tactical shooter and are willing to endure severe technical hurdles.
+      > Not for newcomers looking for a smooth entry, as the game requires a third-party account and features a steep learning curve with recurring technical hurdles.
 
 - [ ] **Warhammer 40,000: Space Marine 2** (`2183900`) — **Wait**  ·  2 access claim(s)
       refu 30.6% -> earl 86.6% -> mid 87.1% -> vete 84.9%
-      > Buy now only if you are eager for cooperative action and can tolerate launch instability, otherwise wait for performance patches.
-
+      > Suits action game fans once technical issues settle. Worth knowing: it requires an always-online connection, and performance includes crashes and freezing early on.
 
 ## B. Twenty citations to audit for QR-4 (invariant 8)
 
