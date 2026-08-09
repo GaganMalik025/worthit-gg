@@ -387,3 +387,112 @@ BACKLOG.md recorded this same length asymmetry earlier as a driver of claim
 
 **Not affected:** the 18-title access-theme re-extraction pass is independent of
 this result and was never contingent on it.
+
+
+## 2026-08-08 (cont'd) — Verdict word moved fully into code
+
+**Context:** the earlier entry this session documented the rule-9 override
+bug and two failed prompt-only attempts to fix it (Skip-biased, then
+Wait-biased). Root cause: the verdict word was the one high-stakes output
+still decided by prose instruction, against this module's own stated
+contract ("the model's job is deliberately tiny; everything else is
+computed in code"). This entry documents the architectural fix.
+
+**Decision:** the verdict word (Buy/Wait/Skip) is now computed in code from
+`post_refund_mean(cohorts)`, not returned by the model. The model receives
+the computed word as an input and writes only the for-whom prose to match
+it.
+
+**Threshold derivation:** anchored to the catalog's own statistical
+distribution, not round numbers. Two corrections were made to the input
+before finalizing thresholds:
+- `post_refund_mean` is now pool_n-weighted (previously an unweighted
+  mean, which let a 27-review cohort outvote a 560-review one) with a
+  pool_n >= 30 inclusion floor (previously a cohort could be admitted on
+  survivor count alone even with an unreliable pool rate).
+- These corrections shifted several titles meaningfully (e.g. ARC Raiders
+  -6.9pts, War Thunder -4.6pts) and moved the Skip/Wait boundary itself
+  (from an initial 68% to 64%) — thresholds were re-derived after the
+  correction, not assumed to hold.
+
+**Final thresholds:** Buy >= 89% · Skip < 64% · Wait between. Both are the
+empirical error-minimizing points on the corrected distribution (Buy p10
+89.2 / Wait p90 93.9; Skip p90 68.5 / Wait p10 69.8).
+
+**Rejected alternatives, with reasons:** Buy >=75%/Skip<50% (round numbers)
+was tested and rejected — Skip could never fire (catalog minimum is
+51.8%), and would have reversed today's earlier Starfield correction; Buy
+>=80% was tested and rejected — Halo: The Master Chief Collection and ARK:
+Survival Evolved would enter Buy despite ~75-80% of their claims being
+negatively-sourced. Buy >=89%/Skip<68% (pre-correction) was superseded once
+weighting/flooring changed where the data actually separates.
+
+**Catalog impact:** Buy 68->79, Wait 53->43, Skip 12->11 (24 titles
+changed word on the arithmetic pass; scope for the full rollout below).
+Starfield stays Skip in every candidate tested. Marvel Rivals correctly
+enters Skip (58.9%, 95.7% negatively-sourced claims) — the sharpest
+confirmation the new logic works as intended.
+
+**Second, related fix — friction-as-disclosure, not condition (rule 7):**
+for-whom lines could previously frame material friction (mandatory
+launchers, account requirements) as a purchase condition ("buy only if
+you're willing to..."). Fixed in two passes: the first removed the hard
+"buy only if" form but left a softer audience-framing construction
+("suits players willing to tolerate X") that does the same work under a
+different grammar. Tightened to require a flat disclosure form ("worth
+knowing: requires X"). Verified this doesn't hold on repeated generation
+by prose alone — codified as a `check_response` guard
+(`for_whom_frames_friction_as_a_condition`) in the retry loop, the same
+pattern as every other invariant here, rather than trusted to a paragraph
+of instructions. A second obligation-verb variant ("must tolerate") was
+found escaping the first version of this guard and folded in.
+
+**Scope-finding, worth recording on its own:** the rollout's true scope
+was computed twice before being trusted. An initial regex-based estimate
+(66 of 133) was wrong in both directions — it missed titles failing
+`for_whom_contradicts_verdict` for an unrelated reason (Buy verdicts
+reading "but skip it if...", e.g. Baldur's Gate 3, Cyberpunk 2077), and it
+over-counted via a proxy pattern. Running the actual code guards against
+every title, rather than a text proxy, gave the true figure: 50 of 133 (20
+word changes, 36 for-whom guard failures, 13 overlap).
+
+**Rollout:** 50 titles, verdict stage only (no re-extraction — claims and
+citations untouched). 57 model calls (50 + 7 retries, guards firing
+correctly: 3 friction-condition rejections, 4 other prose rejections, all
+recovered on first retry). 0 failures. Final catalog: Buy 79 / Wait 43 /
+Skip 11 — matches the pre-rollout projection exactly.
+
+**Verification:** offline boundary tests at both thresholds (88.9/89.0/
+89.1, 63.9/64.0/64.1) plus weighting/floor cases; break-then-confirm on
+every new invariant (one weighting test initially couldn't fail — its
+fixture used a 27-review cohort, below the pool floor, so weighting never
+engaged; caught and fixed before trusting the result, the second time
+today break-then-confirm caught an unfireable test); dead-reference grep
+confirming `forbidden_verdicts`, `verdict_out_of_band`, and
+`verdict_rail_exhausted` have zero live references; live A/B on 6 boundary
+titles before rollout; catalog-wide consistency check post-rollout (0
+titles disagree with their computed word, 0 fail a for-whom guard, across
+all 133); QR-4 on the 50 regenerated (2,607 citations, 0 failures) and
+catalog-wide (7,084 citations / 133 verdicts, PASS); site suite 52/52;
+pipeline guards green.
+
+**Audit disposition:** for the 50 regenerated titles, extraction and
+citations are unchanged — only the verdict word and for-whom prose
+changed. Existing 4.4/4.5 QR-4 findings on those citations still hold; no
+fresh citation re-audit was performed, since re-reading unchanged citations
+spends audit effort on nothing. This note is that record.
+
+**Known, accepted limitation (documented, not fixed):** 17 of 133 titles
+sit within a 95% confidence interval of a threshold, computed by
+propagating each cohort's binomial error into the mean — these titles'
+published verdict could plausibly flip on a different day's sampling. This
+is treated as an accepted property of any threshold-based system, not a
+defect. No tie-break rule was added, deliberately — a tie-break would
+reintroduce the kind of ad-hoc judgment this whole change removed.
+
+**Explicitly deferred:** a second rail for claims-content-vs-verdict-word
+mismatch (Age of Empires II, Palworld — strong sentiment against
+negatively-sourced claims, both partly explained by the ~20pt extraction
+sourcing bias measured earlier today, not folded into this fix); the
+paused 18-title access-theme 4.5 audit, now unblocked since these titles'
+verdicts have settled.

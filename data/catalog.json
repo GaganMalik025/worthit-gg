@@ -1,32 +1,156 @@
 {
   "v": 1,
-  "generated_at": "2026-07-31T21:39:15Z",
+  "generated_at": "2026-08-06T17:26:49Z",
   "rule": {
     "primary_sort": "steam review count, descending",
     "target": 150,
-    "live_service_cap": 20,
+    "live_service_cap": 67,
     "live_service_definition": "(free-to-play, detected from cached store rows, minus pipeline/data/free_not_live_service.txt) OR pipeline/data/live_service.txt",
     "why_not_price_alone": "measured 2026-08-01 over 20 ingested titles: free and paid-live-service have indistinguishable veteran shares (50.4% vs 47.7% median) against 32.9% for paid non-live-service; price alone would demote Team Fortress 2 and keep Rust",
     "measured_gate": "run_batch.py drops a title after ingestion and before extraction if its real cohort structure is degenerate - ingestion costs no Gemini quota"
   },
   "counts": {
-    "selected": 150,
-    "premium": 130,
-    "live_service": 20,
-    "skipped_by_cap": 21,
-    "already_held": 7,
-    "deepest_rank_reached": 176,
+    "selected": 355,
+    "premium": 288,
+    "live_service": 67,
+    "skipped_by_cap": 14,
+    "already_held": 131,
+    "deepest_rank_reached": 500,
     "night_1": 120,
-    "night_2": 30
+    "night_2": 235
   },
   "already_held": [
+    70,
+    220,
+    400,
+    440,
+    550,
+    620,
+    4000,
+    12210,
+    22380,
+    105600,
+    218620,
+    220200,
+    221100,
+    230410,
     233860,
+    236390,
+    239140,
+    242760,
+    244210,
+    244850,
+    250900,
+    252490,
+    255710,
+    261550,
+    262060,
+    264710,
+    268910,
+    270880,
+    275850,
+    281990,
+    284160,
+    289070,
+    291550,
+    292030,
+    304390,
+    304930,
+    306130,
+    319630,
+    322170,
+    322330,
+    346110,
+    359550,
+    362890,
     367520,
+    374320,
+    376210,
+    377160,
+    379430,
     379720,
+    381210,
+    383870,
+    391540,
+    393380,
+    397540,
     413150,
+    433340,
+    435150,
+    438100,
+    504230,
+    508440,
+    518790,
+    534380,
+    546560,
+    548430,
+    552520,
     553850,
+    578080,
+    581320,
+    582010,
+    594650,
+    629760,
+    632360,
+    632470,
+    646570,
+    671860,
+    686810,
+    739630,
+    812140,
+    813780,
+    814380,
+    883710,
+    892970,
+    899770,
+    945360,
+    960090,
+    976730,
+    1085660,
+    1086940,
     1091500,
-    1190460
+    1092790,
+    1118200,
+    1145350,
+    1167630,
+    1172380,
+    1172470,
+    1174180,
+    1190460,
+    1222140,
+    1222670,
+    1237970,
+    1245620,
+    1313140,
+    1332010,
+    1361210,
+    1551360,
+    1593500,
+    1623730,
+    1671210,
+    1716740,
+    1721470,
+    1771300,
+    1808500,
+    1903340,
+    1938090,
+    1962700,
+    1966720,
+    2050650,
+    2183900,
+    2246340,
+    2357570,
+    2358720,
+    2379780,
+    2399830,
+    2592160,
+    2622380,
+    2767030,
+    2868840,
+    3164500,
+    3240220,
+    3321460,
+    3405340
   ],
   "titles": [
     {
@@ -48,435 +172,21 @@
       "night": 1
     },
     {
-      "appid": 359550,
-      "title": "Tom Clancy's Rainbow Six Siege",
-      "review_count": 798230,
-      "rank": 3,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 440,
-      "title": "Team Fortress 2",
-      "review_count": 739546,
-      "rank": 4,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 105600,
-      "title": "Terraria",
-      "review_count": 597431,
-      "rank": 6,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 4000,
-      "title": "Garry's Mod",
-      "review_count": 535072,
-      "rank": 7,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 252490,
-      "title": "Rust",
-      "review_count": 527990,
-      "rank": 8,
-      "class": "live_service",
-      "basis": "audited: Rust - measured 57.5% veteran; persistent wipe-cycle servers",
-      "night": 1
-    },
-    {
-      "appid": 578080,
-      "title": "PUBG: BATTLEGROUNDS",
-      "review_count": 448607,
-      "rank": 9,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 1172470,
-      "title": "Apex Legends™",
-      "review_count": 446968,
-      "rank": 10,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 1086940,
-      "title": "Baldur's Gate 3",
-      "review_count": 445918,
-      "rank": 11,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1245620,
-      "title": "ELDEN RING",
-      "review_count": 432302,
-      "rank": 12,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1085660,
-      "title": "Destiny 2",
-      "review_count": 388613,
-      "rank": 14,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 945360,
-      "title": "Among Us",
-      "review_count": 378620,
-      "rank": 16,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 739630,
-      "title": "Phasmophobia",
-      "review_count": 358016,
-      "rank": 17,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 236390,
-      "title": "War Thunder",
-      "review_count": 321654,
-      "rank": 18,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 1174180,
-      "title": "Red Dead Redemption 2",
-      "review_count": 307765,
-      "rank": 19,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 230410,
-      "title": "Warframe",
-      "review_count": 298670,
-      "rank": 20,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 2767030,
-      "title": "Marvel Rivals",
-      "review_count": 292929,
-      "rank": 21,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 322170,
-      "title": "Geometry Dash",
-      "review_count": 292674,
-      "rank": 22,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1966720,
-      "title": "Lethal Company",
-      "review_count": 276019,
-      "rank": 23,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 381210,
-      "title": "Dead by Daylight",
-      "review_count": 263978,
-      "rank": 24,
-      "class": "live_service",
-      "basis": "audited: Dead by Daylight - measured 46.1% veteran; seasonal live-service",
-      "night": 1
-    },
-    {
-      "appid": 892970,
-      "title": "Valheim",
-      "review_count": 257119,
-      "rank": 25,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 346110,
-      "title": "ARK: Survival Evolved",
-      "review_count": 255618,
-      "rank": 26,
-      "class": "live_service",
-      "basis": "audited: ARK: Survival Evolved - measured 32.2% veteran; the lowest of the",
-      "night": 1
-    },
-    {
-      "appid": 292030,
-      "title": "The Witcher 3: Wild Hunt",
-      "review_count": 238853,
-      "rank": 27,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1938090,
-      "title": "Call of Duty®",
-      "review_count": 233248,
-      "rank": 28,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 550,
-      "title": "Left 4 Dead 2",
-      "review_count": 231026,
-      "rank": 29,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 960090,
-      "title": "Bloons TD 6",
-      "review_count": 228532,
-      "rank": 30,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 304930,
-      "title": "Unturned",
-      "review_count": 221139,
-      "rank": 31,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 284160,
-      "title": "BeamNG.drive",
-      "review_count": 205798,
-      "rank": 32,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 3164500,
-      "title": "Schedule I",
-      "review_count": 197349,
-      "rank": 33,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1808500,
-      "title": "ARC Raiders",
-      "review_count": 196983,
-      "rank": 34,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 264710,
-      "title": "Subnautica",
-      "review_count": 188203,
-      "rank": 35,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 377160,
-      "title": "Fallout 4",
-      "review_count": 182795,
-      "rank": 36,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 275850,
-      "title": "No Man's Sky",
-      "review_count": 182705,
-      "rank": 37,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 221100,
-      "title": "DayZ",
-      "review_count": 177582,
-      "rank": 39,
-      "class": "live_service",
-      "basis": "audited: DayZ - measured 49.3% veteran; persistent survival, no end state",
-      "night": 1
-    },
-    {
-      "appid": 242760,
-      "title": "The Forest",
-      "review_count": 177289,
-      "rank": 40,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 291550,
-      "title": "Brawlhalla",
-      "review_count": 177164,
-      "rank": 41,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 438100,
-      "title": "VRChat",
-      "review_count": 176136,
-      "rank": 42,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 1118200,
-      "title": "People Playground",
-      "review_count": 175716,
-      "rank": 43,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 218620,
-      "title": "PAYDAY 2",
-      "review_count": 175018,
-      "rank": 44,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 620,
-      "title": "Portal 2",
-      "review_count": 172596,
-      "rank": 45,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 548430,
-      "title": "Deep Rock Galactic",
-      "review_count": 170581,
-      "rank": 46,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1623730,
-      "title": "Palworld",
-      "review_count": 170353,
-      "rank": 47,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 22380,
-      "title": "Fallout: New Vegas",
-      "review_count": 169125,
-      "rank": 48,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 2357570,
-      "title": "Overwatch®",
-      "review_count": 165093,
-      "rank": 49,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "night": 1
-    },
-    {
-      "appid": 976730,
-      "title": "Halo: The Master Chief Collection",
-      "review_count": 163312,
-      "rank": 50,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 632360,
-      "title": "Risk of Rain 2",
-      "review_count": 162546,
-      "rank": 51,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 250900,
-      "title": "The Binding of Isaac: Rebirth",
-      "review_count": 157540,
-      "rank": 52,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 391540,
-      "title": "Undertale",
-      "review_count": 156445,
-      "rank": 53,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
       "appid": 2073850,
       "title": "THE FINALS",
       "review_count": 155921,
       "rank": 54,
       "class": "live_service",
       "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 108600,
+      "title": "Project Zomboid",
+      "review_count": 152671,
+      "rank": 55,
+      "class": "live_service",
+      "basis": "audited: Project Zomboid - judgment; open-ended survival sandbox",
       "night": 1
     },
     {
@@ -507,6 +217,24 @@
       "night": 1
     },
     {
+      "appid": 1172620,
+      "title": "Sea of Thieves: 2026 Edition",
+      "review_count": 146890,
+      "rank": 59,
+      "class": "live_service",
+      "basis": "audited: Sea of Thieves - judgment; seasonal live-service",
+      "night": 1
+    },
+    {
+      "appid": 1063730,
+      "title": "New World: Aeternum",
+      "review_count": 145966,
+      "rank": 60,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
       "appid": 227300,
       "title": "Euro Truck Simulator 2",
       "review_count": 143942,
@@ -534,12 +262,30 @@
       "night": 1
     },
     {
+      "appid": 238960,
+      "title": "Path of Exile",
+      "review_count": 142422,
+      "rank": 64,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
       "appid": 1145360,
       "title": "Hades",
       "review_count": 141766,
       "rank": 65,
       "class": "premium",
       "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1240440,
+      "title": "Halo Infinite",
+      "review_count": 138990,
+      "rank": 66,
+      "class": "live_service",
+      "basis": "free-to-play",
       "night": 1
     },
     {
@@ -597,6 +343,15 @@
       "night": 1
     },
     {
+      "appid": 444090,
+      "title": "Paladins®",
+      "review_count": 127562,
+      "rank": 73,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
       "appid": 1794680,
       "title": "Vampire Survivors",
       "review_count": 127331,
@@ -612,6 +367,15 @@
       "rank": 75,
       "class": "premium",
       "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 251570,
+      "title": "7 Days to Die",
+      "review_count": 123691,
+      "rank": 76,
+      "class": "live_service",
+      "basis": "audited: 7 Days to Die - judgment; persistent world, wipe-driven",
       "night": 1
     },
     {
@@ -669,246 +433,75 @@
       "night": 1
     },
     {
-      "appid": 582010,
-      "title": "Monster Hunter: World",
-      "review_count": 115308,
-      "rank": 83,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
+      "appid": 107410,
+      "title": "Arma 3",
+      "review_count": 111060,
+      "rank": 84,
+      "class": "live_service",
+      "basis": "audited: Arma 3 - judgment; platform for persistent mod communities",
       "night": 1
     },
     {
-      "appid": 289070,
-      "title": "Sid Meier’s Civilization® VI",
-      "review_count": 107048,
-      "rank": 85,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
+      "appid": 1517290,
+      "title": "Battlefield™ 2042",
+      "review_count": 106551,
+      "rank": 88,
+      "class": "live_service",
+      "basis": "audited: Battlefield 2042 - judgment; seasonal live-service",
       "night": 1
     },
     {
-      "appid": 2592160,
-      "title": "Dispatch",
-      "review_count": 106976,
-      "rank": 86,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
+      "appid": 1625450,
+      "title": "Muck",
+      "review_count": 102544,
+      "rank": 91,
+      "class": "live_service",
+      "basis": "free-to-play",
       "night": 1
     },
     {
-      "appid": 374320,
-      "title": "DARK SOULS™ III",
-      "review_count": 106886,
-      "rank": 87,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
+      "appid": 2694490,
+      "title": "Path of Exile 2",
+      "review_count": 96344,
+      "rank": 96,
+      "class": "live_service",
+      "basis": "audited: Path of Exile 2 - judgment; league-cycle ARPG",
       "night": 1
     },
     {
-      "appid": 1222670,
-      "title": "The Sims™ 4",
-      "review_count": 105748,
-      "rank": 89,
-      "class": "premium",
-      "basis": "free, audited as single-player: The Sims 4 - base game went free; single-player sim, no live-service",
+      "appid": 700330,
+      "title": "SCP: Secret Laboratory",
+      "review_count": 91304,
+      "rank": 102,
+      "class": "live_service",
+      "basis": "free-to-play",
       "night": 1
     },
     {
-      "appid": 2379780,
-      "title": "Balatro",
-      "review_count": 102976,
-      "rank": 90,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
+      "appid": 677620,
+      "title": "Splitgate",
+      "review_count": 87336,
+      "rank": 105,
+      "class": "live_service",
+      "basis": "free-to-play",
       "night": 1
     },
     {
-      "appid": 1903340,
-      "title": "Clair Obscur: Expedition 33",
-      "review_count": 101144,
-      "rank": 92,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
+      "appid": 2139460,
+      "title": "Once Human",
+      "review_count": 86434,
+      "rank": 106,
+      "class": "live_service",
+      "basis": "free-to-play",
       "night": 1
     },
     {
-      "appid": 255710,
-      "title": "Cities: Skylines",
-      "review_count": 100281,
-      "rank": 93,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 239140,
-      "title": "Dying Light",
-      "review_count": 98333,
-      "rank": 94,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 261550,
-      "title": "Mount & Blade II: Bannerlord",
-      "review_count": 97955,
-      "rank": 95,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1237970,
-      "title": "Titanfall® 2",
-      "review_count": 95762,
-      "rank": 97,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 2183900,
-      "title": "Warhammer 40,000: Space Marine 2",
-      "review_count": 94898,
-      "rank": 98,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 594650,
-      "title": "Hunt: Showdown 1896",
-      "review_count": 94338,
-      "rank": 99,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 270880,
-      "title": "American Truck Simulator",
-      "review_count": 93981,
-      "rank": 100,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1551360,
-      "title": "Forza Horizon 5",
-      "review_count": 91781,
-      "rank": 101,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 220,
-      "title": "Half-Life 2",
-      "review_count": 90266,
-      "rank": 103,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 814380,
-      "title": "Sekiro™: Shadows Die Twice - GOTY Edition",
-      "review_count": 87458,
-      "rank": 104,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1716740,
-      "title": "Starfield",
-      "review_count": 85522,
-      "rank": 107,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 508440,
-      "title": "Totally Accurate Battle Simulator",
-      "review_count": 83917,
-      "rank": 109,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 2246340,
-      "title": "Monster Hunter Wilds",
-      "review_count": 83893,
-      "rank": 110,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 400,
-      "title": "Portal",
-      "review_count": 83443,
-      "rank": 111,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1172380,
-      "title": "STAR WARS Jedi: Fallen Order™",
-      "review_count": 83425,
-      "rank": 112,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 435150,
-      "title": "Divinity: Original Sin 2 - Definitive Edition",
-      "review_count": 83220,
-      "rank": 113,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 393380,
-      "title": "Squad",
-      "review_count": 83150,
-      "rank": 114,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 220200,
-      "title": "Kerbal Space Program",
-      "review_count": 82947,
-      "rank": 116,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 322330,
-      "title": "Don't Starve Together",
-      "review_count": 81886,
-      "rank": 117,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1332010,
-      "title": "Stray",
-      "review_count": 78850,
-      "rank": 118,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
+      "appid": 1782210,
+      "title": "Crab Game",
+      "review_count": 83094,
+      "rank": 115,
+      "class": "live_service",
+      "basis": "free-to-play",
       "night": 1
     },
     {
@@ -921,609 +514,13 @@
       "night": 1
     },
     {
-      "appid": 671860,
-      "title": "BattleBit Remastered",
-      "review_count": 78219,
-      "rank": 120,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 319630,
-      "title": "Life is Strange - Episode 1",
-      "review_count": 76536,
-      "rank": 121,
-      "class": "premium",
-      "basis": "free, audited as single-player: Life is Strange - Episode 1 - free first episode of a narrative game",
-      "night": 1
-    },
-    {
-      "appid": 281990,
-      "title": "Stellaris",
-      "review_count": 76485,
-      "rank": 122,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 646570,
-      "title": "Slay the Spire",
-      "review_count": 76442,
-      "rank": 123,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1092790,
-      "title": "Inscryption",
-      "review_count": 76155,
-      "rank": 124,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1167630,
-      "title": "Teardown",
-      "review_count": 75326,
-      "rank": 125,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 2622380,
-      "title": "ELDEN RING NIGHTREIGN",
-      "review_count": 74355,
-      "rank": 126,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 306130,
-      "title": "The Elder Scrolls® Online",
-      "review_count": 74351,
-      "rank": 127,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1361210,
-      "title": "Warhammer 40,000: Darktide",
-      "review_count": 73875,
-      "rank": 128,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 12210,
-      "title": "Grand Theft Auto IV: The Complete Edition",
-      "review_count": 72374,
-      "rank": 129,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 3240220,
-      "title": "Grand Theft Auto V Enhanced",
-      "review_count": 71349,
-      "rank": 130,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1962700,
-      "title": "Subnautica 2",
-      "review_count": 70239,
-      "rank": 131,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 362890,
-      "title": "Black Mesa",
-      "review_count": 70108,
-      "rank": 132,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 2358720,
-      "title": "Black Myth: Wukong",
-      "review_count": 69826,
-      "rank": 133,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 2050650,
-      "title": "Resident Evil 4",
-      "review_count": 69754,
-      "rank": 134,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 552520,
-      "title": "Far Cry® 5",
-      "review_count": 69629,
-      "rank": 135,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 534380,
-      "title": "Dying Light 2 Stay Human: Reloaded Edition",
-      "review_count": 68659,
-      "rank": 136,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 244850,
-      "title": "Space Engineers",
-      "review_count": 67589,
-      "rank": 139,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 1771300,
-      "title": "Kingdom Come: Deliverance II",
-      "review_count": 66393,
-      "rank": 140,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 2868840,
-      "title": "Slay the Spire 2",
-      "review_count": 65932,
-      "rank": 142,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 433340,
-      "title": "Slime Rancher",
-      "review_count": 65376,
-      "rank": 143,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 268910,
-      "title": "Cuphead",
-      "review_count": 65255,
-      "rank": 144,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 1145350,
-      "title": "Hades II",
-      "review_count": 64813,
-      "rank": 145,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 518790,
-      "title": "theHunter: Call of the Wild™",
-      "review_count": 63531,
-      "rank": 146,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 379430,
-      "title": "Kingdom Come: Deliverance",
-      "review_count": 63186,
-      "rank": 147,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 686810,
-      "title": "Hell Let Loose",
-      "review_count": 62464,
-      "rank": 149,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 1721470,
-      "title": "Poppy Playtime",
-      "review_count": 61725,
-      "rank": 150,
-      "class": "premium",
-      "basis": "free, audited as single-player: Poppy Playtime - free first chapter, finishable single-player horror",
-      "night": 2
-    },
-    {
-      "appid": 813780,
-      "title": "Age of Empires II: Definitive Edition",
-      "review_count": 61464,
-      "rank": 151,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 546560,
-      "title": "Half-Life: Alyx",
-      "review_count": 61361,
-      "rank": 152,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 504230,
-      "title": "Celeste",
-      "review_count": 60816,
-      "rank": 153,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 39210,
-      "title": "FINAL FANTASY XIV Online",
-      "review_count": 60738,
-      "rank": 154,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 1593500,
-      "title": "God of War",
-      "review_count": 60241,
-      "rank": 156,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 376210,
-      "title": "The Isle",
-      "review_count": 60068,
-      "rank": 157,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 397540,
-      "title": "Borderlands 3",
-      "review_count": 60026,
-      "rank": 158,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 244210,
-      "title": "Assetto Corsa",
-      "review_count": 59899,
-      "rank": 159,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 1313140,
-      "title": "Cult of the Lamb",
-      "review_count": 59845,
-      "rank": 160,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 3321460,
-      "title": "Crimson Desert",
-      "review_count": 59801,
-      "rank": 161,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 581320,
-      "title": "Insurgency: Sandstorm",
-      "review_count": 59740,
-      "rank": 162,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 899770,
-      "title": "Last Epoch",
-      "review_count": 59534,
-      "rank": 163,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 629760,
-      "title": "MORDHAU",
-      "review_count": 59057,
-      "rank": 164,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 812140,
-      "title": "Assassin's Creed® Odyssey",
-      "review_count": 59046,
-      "rank": 165,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 70,
-      "title": "Half-Life",
-      "review_count": 58630,
-      "rank": 166,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 304390,
-      "title": "FOR HONOR™",
-      "review_count": 58228,
-      "rank": 167,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 883710,
-      "title": "Resident Evil 2",
-      "review_count": 58003,
-      "rank": 168,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 2399830,
-      "title": "ARK: Survival Ascended",
-      "review_count": 57812,
-      "rank": 169,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 1671210,
-      "title": "DELTARUNE",
-      "review_count": 57459,
-      "rank": 170,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 3405340,
-      "title": "Megabonk",
-      "review_count": 57270,
-      "rank": 171,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 632470,
-      "title": "Disco Elysium - The Final Cut",
-      "review_count": 57127,
-      "rank": 172,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 1222140,
-      "title": "Detroit: Become Human",
-      "review_count": 56607,
-      "rank": 174,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 383870,
-      "title": "Firewatch",
-      "review_count": 56573,
-      "rank": 175,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    },
-    {
-      "appid": 262060,
-      "title": "Darkest Dungeon®",
-      "review_count": 56416,
-      "rank": 176,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 2
-    }
-  ],
-  "skipped_by_cap": [
-    {
-      "appid": 108600,
-      "title": "Project Zomboid",
-      "review_count": 152671,
-      "rank": 55,
-      "class": "live_service",
-      "basis": "audited: Project Zomboid - judgment; open-ended survival sandbox",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 1172620,
-      "title": "Sea of Thieves: 2026 Edition",
-      "review_count": 146890,
-      "rank": 59,
-      "class": "live_service",
-      "basis": "audited: Sea of Thieves - judgment; seasonal live-service",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 1063730,
-      "title": "New World: Aeternum",
-      "review_count": 145966,
-      "rank": 60,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 238960,
-      "title": "Path of Exile",
-      "review_count": 142422,
-      "rank": 64,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 1240440,
-      "title": "Halo Infinite",
-      "review_count": 138990,
-      "rank": 66,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 444090,
-      "title": "Paladins®",
-      "review_count": 127562,
-      "rank": 73,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 251570,
-      "title": "7 Days to Die",
-      "review_count": 123691,
-      "rank": 76,
-      "class": "live_service",
-      "basis": "audited: 7 Days to Die - judgment; persistent world, wipe-driven",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 107410,
-      "title": "Arma 3",
-      "review_count": 111060,
-      "rank": 84,
-      "class": "live_service",
-      "basis": "audited: Arma 3 - judgment; platform for persistent mod communities",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 1517290,
-      "title": "Battlefield™ 2042",
-      "review_count": 106551,
-      "rank": 88,
-      "class": "live_service",
-      "basis": "audited: Battlefield 2042 - judgment; seasonal live-service",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 1625450,
-      "title": "Muck",
-      "review_count": 102544,
-      "rank": 91,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 2694490,
-      "title": "Path of Exile 2",
-      "review_count": 96344,
-      "rank": 96,
-      "class": "live_service",
-      "basis": "audited: Path of Exile 2 - judgment; league-cycle ARPG",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 700330,
-      "title": "SCP: Secret Laboratory",
-      "review_count": 91304,
-      "rank": 102,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 677620,
-      "title": "Splitgate",
-      "review_count": 87336,
-      "rank": 105,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 2139460,
-      "title": "Once Human",
-      "review_count": 86434,
-      "rank": 106,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
-      "appid": 1782210,
-      "title": "Crab Game",
-      "review_count": 83094,
-      "rank": 115,
-      "class": "live_service",
-      "basis": "free-to-play",
-      "skipped": "live_service_cap"
-    },
-    {
       "appid": 386360,
       "title": "SMITE®",
       "review_count": 67956,
       "rank": 137,
       "class": "live_service",
       "basis": "free-to-play",
-      "skipped": "live_service_cap"
+      "night": 1
     },
     {
       "appid": 2507950,
@@ -1532,7 +529,7 @@
       "rank": 138,
       "class": "live_service",
       "basis": "free-to-play",
-      "skipped": "live_service_cap"
+      "night": 1
     },
     {
       "appid": 714010,
@@ -1541,7 +538,7 @@
       "rank": 141,
       "class": "live_service",
       "basis": "free-to-play",
-      "skipped": "live_service_cap"
+      "night": 1
     },
     {
       "appid": 3564740,
@@ -1550,7 +547,16 @@
       "rank": 148,
       "class": "live_service",
       "basis": "free-to-play",
-      "skipped": "live_service_cap"
+      "night": 1
+    },
+    {
+      "appid": 39210,
+      "title": "FINAL FANTASY XIV Online",
+      "review_count": 60738,
+      "rank": 154,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
     },
     {
       "appid": 3354750,
@@ -1559,13 +565,2913 @@
       "rank": 155,
       "class": "live_service",
       "basis": "free-to-play",
-      "skipped": "live_service_cap"
+      "night": 1
     },
     {
       "appid": 433850,
       "title": "Z1 Battle Royale",
       "review_count": 56764,
       "rank": 173,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 823130,
+      "title": "Totally Accurate Battlegrounds",
+      "review_count": 56094,
+      "rank": 177,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 1142710,
+      "title": "Total War: WARHAMMER III",
+      "review_count": 55617,
+      "rank": 178,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 848450,
+      "title": "Subnautica: Below Zero",
+      "review_count": 55416,
+      "rank": 179,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 48700,
+      "title": "Mount & Blade: Warband",
+      "review_count": 54899,
+      "rank": 180,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1604030,
+      "title": "V Rising",
+      "review_count": 54754,
+      "rank": 181,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1817070,
+      "title": "Marvel’s Spider-Man Remastered",
+      "review_count": 54473,
+      "rank": 182,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1289310,
+      "title": "Helltaker",
+      "review_count": 53956,
+      "rank": 183,
+      "class": "premium",
+      "basis": "free, audited as single-player: Helltaker - short free single-player puzzle game",
+      "night": 1
+    },
+    {
+      "appid": 1150690,
+      "title": "OMORI",
+      "review_count": 53947,
+      "rank": 184,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 361420,
+      "title": "ASTRONEER",
+      "review_count": 53747,
+      "rank": 185,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1454400,
+      "title": "Cookie Clicker",
+      "review_count": 53741,
+      "rank": 186,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 359320,
+      "title": "Elite Dangerous",
+      "review_count": 53247,
+      "rank": 187,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 620980,
+      "title": "Beat Saber",
+      "review_count": 52980,
+      "rank": 188,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 203160,
+      "title": "Tomb Raider Game of the Year",
+      "review_count": 52671,
+      "rank": 189,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 674940,
+      "title": "Stick Fight: The Game",
+      "review_count": 52611,
+      "rank": 190,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1286830,
+      "title": "STAR WARS™: The Old Republic™",
+      "review_count": 52537,
+      "rank": 191,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 3764200,
+      "title": "Resident Evil Requiem",
+      "review_count": 52448,
+      "rank": 192,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1237950,
+      "title": "STAR WARS™ Battlefront™ II",
+      "review_count": 52102,
+      "rank": 193,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 753640,
+      "title": "Outer Wilds",
+      "review_count": 51999,
+      "rank": 194,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 211820,
+      "title": "Starbound",
+      "review_count": 51831,
+      "rank": 195,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1151640,
+      "title": "Horizon Zero Dawn™ Complete Edition",
+      "review_count": 51705,
+      "rank": 196,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1222680,
+      "title": "Need for Speed™ Heat",
+      "review_count": 51384,
+      "rank": 197,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 208650,
+      "title": "Batman™: Arkham Knight",
+      "review_count": 50775,
+      "rank": 198,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 594570,
+      "title": "Total War: WARHAMMER II",
+      "review_count": 50728,
+      "rank": 199,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 2074920,
+      "title": "The First Descendant",
+      "review_count": 50604,
+      "rank": 200,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 1868140,
+      "title": "DAVE THE DIVER",
+      "review_count": 50330,
+      "rank": 201,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1774580,
+      "title": "STAR WARS Jedi: Survivor™",
+      "review_count": 50090,
+      "rank": 202,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 524220,
+      "title": "NieR:Automata™",
+      "review_count": 49960,
+      "rank": 203,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 3146520,
+      "title": "WEBFISHING",
+      "review_count": 49945,
+      "rank": 204,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1158310,
+      "title": "Crusader Kings III",
+      "review_count": 49758,
+      "rank": 205,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 457140,
+      "title": "Oxygen Not Included",
+      "review_count": 49213,
+      "rank": 206,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 629730,
+      "title": "Blade and Sorcery",
+      "review_count": 49167,
+      "rank": 207,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 552990,
+      "title": "World of Warships",
+      "review_count": 49129,
+      "rank": 208,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 1973530,
+      "title": "Limbus Company",
+      "review_count": 48679,
+      "rank": 209,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 1449850,
+      "title": "Yu-Gi-Oh! Master Duel",
+      "review_count": 48573,
+      "rank": 210,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 570940,
+      "title": "DARK SOULS™: REMASTERED",
+      "review_count": 48530,
+      "rank": 211,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1203620,
+      "title": "Enshrouded",
+      "review_count": 48302,
+      "rank": 212,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 203770,
+      "title": "Crusader Kings II",
+      "review_count": 47775,
+      "rank": 214,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 2623190,
+      "title": "The Elder Scrolls IV: Oblivion Remastered",
+      "review_count": 47696,
+      "rank": 215,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 236850,
+      "title": "Europa Universalis IV",
+      "review_count": 47691,
+      "rank": 216,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1426210,
+      "title": "It Takes Two",
+      "review_count": 47549,
+      "rank": 217,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 2995920,
+      "title": "It Takes Two Friend's Pass",
+      "review_count": 47549,
+      "rank": 218,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 218230,
+      "title": "PlanetSide 2",
+      "review_count": 47467,
+      "rank": 219,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 8870,
+      "title": "BioShock Infinite",
+      "review_count": 47322,
+      "rank": 220,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 2016590,
+      "title": "Dark and Darker",
+      "review_count": 47162,
+      "rank": 221,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 881100,
+      "title": "Noita",
+      "review_count": 47118,
+      "rank": 222,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 387990,
+      "title": "Scrap Mechanic",
+      "review_count": 47003,
+      "rank": 223,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 212680,
+      "title": "FTL: Faster Than Light",
+      "review_count": 46681,
+      "rank": 224,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1533390,
+      "title": "Gorilla Tag",
+      "review_count": 46629,
+      "rank": 225,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1196590,
+      "title": "Resident Evil Village",
+      "review_count": 46511,
+      "rank": 226,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1151340,
+      "title": "Fallout 76",
+      "review_count": 46367,
+      "rank": 227,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 2479810,
+      "title": "Gray Zone Warfare",
+      "review_count": 46351,
+      "rank": 228,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1172710,
+      "title": "Dune: Awakening",
+      "review_count": 46297,
+      "rank": 229,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 636480,
+      "title": "Ravenfield",
+      "review_count": 46156,
+      "rank": 230,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 204360,
+      "title": "Castle Crashers®",
+      "review_count": 45966,
+      "rank": 231,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1238840,
+      "title": "Battlefield™ 1",
+      "review_count": 45880,
+      "rank": 232,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1113000,
+      "title": "Persona 4 Golden",
+      "review_count": 45556,
+      "rank": 233,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 613100,
+      "title": "House Flipper",
+      "review_count": 45540,
+      "rank": 234,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 225540,
+      "title": "Just Cause™ 3",
+      "review_count": 45510,
+      "rank": 235,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 2231450,
+      "title": "Pizza Tower",
+      "review_count": 45239,
+      "rank": 236,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 240,
+      "title": "Counter-Strike: Source",
+      "review_count": 45013,
+      "rank": 237,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 268500,
+      "title": "XCOM® 2",
+      "review_count": 44828,
+      "rank": 238,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1943950,
+      "title": "Escape the Backrooms",
+      "review_count": 44289,
+      "rank": 239,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 588650,
+      "title": "Dead Cells",
+      "review_count": 44170,
+      "rank": 240,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1250410,
+      "title": "Microsoft Flight Simulator (2020) 40th Anniversary Edition",
+      "review_count": 44030,
+      "rank": 241,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 2054970,
+      "title": "Dragon's Dogma 2",
+      "review_count": 43892,
+      "rank": 242,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 552500,
+      "title": "Warhammer: Vermintide 2",
+      "review_count": 43881,
+      "rank": 243,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 223470,
+      "title": "POSTAL 2",
+      "review_count": 43132,
+      "rank": 244,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 220240,
+      "title": "Far Cry 3",
+      "review_count": 43033,
+      "rank": 245,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1285190,
+      "title": "Borderlands 4",
+      "review_count": 42705,
+      "rank": 246,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 3590,
+      "title": "Plants vs. Zombies GOTY Edition",
+      "review_count": 42673,
+      "rank": 247,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 703080,
+      "title": "Planet Zoo",
+      "review_count": 42604,
+      "rank": 248,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 1643320,
+      "title": "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
+      "review_count": 42507,
+      "rank": 249,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 1
+    },
+    {
+      "appid": 304050,
+      "title": "Trove",
+      "review_count": 42329,
+      "rank": 250,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 1
+    },
+    {
+      "appid": 219150,
+      "title": "Hotline Miami",
+      "review_count": 42212,
+      "rank": 251,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 232090,
+      "title": "Killing Floor 2",
+      "review_count": 42167,
+      "rank": 252,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 287700,
+      "title": "METAL GEAR SOLID V: THE PHANTOM PAIN",
+      "review_count": 41935,
+      "rank": 253,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 240720,
+      "title": "Getting Over It with Bennett Foddy",
+      "review_count": 41526,
+      "rank": 254,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1304930,
+      "title": "The Outlast Trials",
+      "review_count": 41417,
+      "rank": 255,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 573090,
+      "title": "Stormworks: Build and Rescue",
+      "review_count": 41263,
+      "rank": 256,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 3224770,
+      "title": "Umamusume: Pretty Derby",
+      "review_count": 41163,
+      "rank": 257,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1328670,
+      "title": "Mass Effect™ Legendary Edition",
+      "review_count": 41022,
+      "rank": 258,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 962130,
+      "title": "Grounded",
+      "review_count": 40849,
+      "rank": 259,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1888160,
+      "title": "ARMORED CORE™ VI FIRES OF RUBICON™",
+      "review_count": 40674,
+      "rank": 260,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 305620,
+      "title": "The Long Dark",
+      "review_count": 40655,
+      "rank": 261,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 219990,
+      "title": "Grim Dawn",
+      "review_count": 40397,
+      "rank": 262,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1089980,
+      "title": "The Henry Stickmin Collection",
+      "review_count": 40266,
+      "rank": 263,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 635260,
+      "title": "CarX Drift Racing Online",
+      "review_count": 40124,
+      "rank": 264,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 601150,
+      "title": "Devil May Cry 5",
+      "review_count": 39935,
+      "rank": 265,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1363080,
+      "title": "Manor Lords",
+      "review_count": 39524,
+      "rank": 266,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 440900,
+      "title": "Conan Exiles Enhanced",
+      "review_count": 39436,
+      "rank": 267,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 239030,
+      "title": "Papers, Please",
+      "review_count": 39407,
+      "rank": 268,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 205100,
+      "title": "Dishonored",
+      "review_count": 39326,
+      "rank": 269,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1506830,
+      "title": "FIFA 22",
+      "review_count": 39227,
+      "rank": 270,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 311690,
+      "title": "Enter the Gungeon",
+      "review_count": 39078,
+      "rank": 271,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2483190,
+      "title": "Forza Horizon 6",
+      "review_count": 39009,
+      "rank": 272,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 235460,
+      "title": "METAL GEAR RISING: REVENGEANCE",
+      "review_count": 38933,
+      "rank": 273,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 323190,
+      "title": "Frostpunk",
+      "review_count": 38816,
+      "rank": 274,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2215430,
+      "title": "Ghost of Tsushima DIRECTOR'S CUT",
+      "review_count": 38476,
+      "rank": 275,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 346900,
+      "title": "AdVenture Capitalist",
+      "review_count": 38422,
+      "rank": 276,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1290000,
+      "title": "PowerWash Simulator",
+      "review_count": 38332,
+      "rank": 277,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 17390,
+      "title": "SPORE™",
+      "review_count": 38172,
+      "rank": 278,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 4704690,
+      "title": "MECCHA CHAMELEON",
+      "review_count": 38160,
+      "rank": 279,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 223710,
+      "title": "Cry of Fear",
+      "review_count": 37936,
+      "rank": 280,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 460930,
+      "title": "Tom Clancy's Ghost Recon® Wildlands",
+      "review_count": 37885,
+      "rank": 281,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 513710,
+      "title": "SCUM",
+      "review_count": 37881,
+      "rank": 282,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 747660,
+      "title": "Five Nights at Freddy's: Security Breach",
+      "review_count": 37107,
+      "rank": 283,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 431240,
+      "title": "Golf With Your Friends",
+      "review_count": 36998,
+      "rank": 284,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1284190,
+      "title": "The Planet Crafter",
+      "review_count": 36797,
+      "rank": 285,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 516750,
+      "title": "My Summer Car",
+      "review_count": 36784,
+      "rank": 286,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1259420,
+      "title": "Days Gone",
+      "review_count": 36747,
+      "rank": 287,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 221380,
+      "title": "Age of Empires II (Retired)",
+      "review_count": 36737,
+      "rank": 288,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 582160,
+      "title": "Assassin's Creed® Origins",
+      "review_count": 36655,
+      "rank": 289,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1217060,
+      "title": "Gunfire Reborn",
+      "review_count": 36634,
+      "rank": 290,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 356190,
+      "title": "Middle-earth™: Shadow of War™",
+      "review_count": 36484,
+      "rank": 291,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 3065800,
+      "title": "Marathon",
+      "review_count": 35646,
+      "rank": 292,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 222880,
+      "title": "Insurgency",
+      "review_count": 35618,
+      "rank": 293,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2835570,
+      "title": "Buckshot Roulette",
+      "review_count": 35406,
+      "rank": 294,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1238810,
+      "title": "Battlefield™ V",
+      "review_count": 35284,
+      "rank": 295,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 10,
+      "title": "Counter-Strike",
+      "review_count": 34987,
+      "rank": 296,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 6060,
+      "title": "STAR WARS™ Battlefront II (Classic, 2005)",
+      "review_count": 34861,
+      "rank": 297,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1687950,
+      "title": "Persona 5 Royal",
+      "review_count": 34829,
+      "rank": 298,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2881650,
+      "title": "Content Warning",
+      "review_count": 34777,
+      "rank": 299,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 335300,
+      "title": "DARK SOULS™ II: Scholar of the First Sin",
+      "review_count": 34560,
+      "rank": 300,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 412020,
+      "title": "Metro Exodus",
+      "review_count": 34501,
+      "rank": 301,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 333930,
+      "title": "Dirty Bomb®",
+      "review_count": 34353,
+      "rank": 302,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1446780,
+      "title": "MONSTER HUNTER RISE",
+      "review_count": 34284,
+      "rank": 303,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2709570,
+      "title": "Supermarket Together",
+      "review_count": 34204,
+      "rank": 304,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 949230,
+      "title": "Cities: Skylines II",
+      "review_count": 34048,
+      "rank": 305,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2670630,
+      "title": "Supermarket Simulator",
+      "review_count": 34006,
+      "rank": 306,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 233450,
+      "title": "Prison Architect",
+      "review_count": 33987,
+      "rank": 307,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1046930,
+      "title": "Dota Underlords",
+      "review_count": 33522,
+      "rank": 308,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 10090,
+      "title": "Call of Duty: World at War",
+      "review_count": 33430,
+      "rank": 309,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 241930,
+      "title": "Middle-earth™: Shadow of Mordor™",
+      "review_count": 33375,
+      "rank": 310,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 319510,
+      "title": "Five Nights at Freddy's",
+      "review_count": 33304,
+      "rank": 311,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1677740,
+      "title": "Stumble Guys",
+      "review_count": 33124,
+      "rank": 312,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 3070070,
+      "title": "TCG Card Shop Simulator",
+      "review_count": 33115,
+      "rank": 313,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 219740,
+      "title": "Don't Starve",
+      "review_count": 33014,
+      "rank": 314,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 588430,
+      "title": "Fallout Shelter",
+      "review_count": 32906,
+      "rank": 315,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 200210,
+      "title": "Realm of the Mad God Exalt",
+      "review_count": 32747,
+      "rank": 316,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 418370,
+      "title": "Resident Evil 7 Biohazard",
+      "review_count": 32658,
+      "rank": 317,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1384160,
+      "title": "GUILTY GEAR -STRIVE-",
+      "review_count": 32646,
+      "rank": 318,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 420530,
+      "title": "OneShot",
+      "review_count": 32198,
+      "rank": 319,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 22330,
+      "title": "The Elder Scrolls IV: Oblivion® Game of the Year Edition (2009)",
+      "review_count": 32063,
+      "rank": 320,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 900883,
+      "title": "The Elder Scrolls IV: Oblivion® Game of the Year Edition Deluxe (2009)",
+      "review_count": 32063,
+      "rank": 321,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1562430,
+      "title": "DREDGE",
+      "review_count": 32028,
+      "rank": 322,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 952060,
+      "title": "Resident Evil 3",
+      "review_count": 32025,
+      "rank": 323,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 214950,
+      "title": "Total War: ROME II - Emperor Edition",
+      "review_count": 32008,
+      "rank": 324,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 391220,
+      "title": "Rise of the Tomb Raider™",
+      "review_count": 31957,
+      "rank": 325,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 871720,
+      "title": "Ultimate Custom Night",
+      "review_count": 31761,
+      "rank": 326,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1942280,
+      "title": "Brotato",
+      "review_count": 31735,
+      "rank": 327,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 286160,
+      "title": "Tabletop Simulator",
+      "review_count": 31650,
+      "rank": 328,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1419170,
+      "title": "My Singing Monsters",
+      "review_count": 31628,
+      "rank": 329,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1272080,
+      "title": "PAYDAY 3",
+      "review_count": 31556,
+      "rank": 330,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1693980,
+      "title": "Dead Space",
+      "review_count": 31555,
+      "rank": 331,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 22370,
+      "title": "Fallout 3: Game of the Year Edition",
+      "review_count": 31400,
+      "rank": 332,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 493340,
+      "title": "Planet Coaster",
+      "review_count": 31206,
+      "rank": 333,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 389730,
+      "title": "TEKKEN 7",
+      "review_count": 31064,
+      "rank": 334,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1057090,
+      "title": "Ori and the Will of the Wisps",
+      "review_count": 31051,
+      "rank": 335,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 555160,
+      "title": "Pavlov",
+      "review_count": 30999,
+      "rank": 336,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2073620,
+      "title": "Arena Breakout: Infinite",
+      "review_count": 30955,
+      "rank": 337,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 477160,
+      "title": "Human Fall Flat",
+      "review_count": 30729,
+      "rank": 338,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 242050,
+      "title": "Assassin’s Creed® IV Black Flag™",
+      "review_count": 30727,
+      "rank": 339,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 387290,
+      "title": "Ori and the Blind Forest: Definitive Edition",
+      "review_count": 30682,
+      "rank": 340,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 213670,
+      "title": "South Park™: The Stick of Truth™",
+      "review_count": 30609,
+      "rank": 341,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 680420,
+      "title": "OUTRIDERS",
+      "review_count": 30554,
+      "rank": 342,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1874880,
+      "title": "Arma Reforger",
+      "review_count": 30508,
+      "rank": 343,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2021910,
+      "title": "FPS Chess",
+      "review_count": 30501,
+      "rank": 344,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1404210,
+      "title": "Red Dead Online",
+      "review_count": 30485,
+      "rank": 345,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 224260,
+      "title": "No More Room in Hell",
+      "review_count": 30423,
+      "rank": 346,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 35140,
+      "title": "Batman: Arkham Asylum Game of the Year Edition",
+      "review_count": 30386,
+      "rank": 347,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1149460,
+      "title": "ICARUS",
+      "review_count": 30333,
+      "rank": 348,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2212330,
+      "title": "Your Only Move Is HUSTLE",
+      "review_count": 30319,
+      "rank": 349,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 307690,
+      "title": "Sleeping Dogs: Definitive Edition",
+      "review_count": 30275,
+      "rank": 350,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1659040,
+      "title": "HITMAN World of Assassination",
+      "review_count": 30237,
+      "rank": 351,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 265930,
+      "title": "Goat Simulator",
+      "review_count": 30183,
+      "rank": 352,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2669320,
+      "title": "EA SPORTS FC™ 25",
+      "review_count": 30090,
+      "rank": 353,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 3949040,
+      "title": "RV There Yet?",
+      "review_count": 30018,
+      "rank": 354,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 312520,
+      "title": "Rain World",
+      "review_count": 29931,
+      "rank": 355,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1961460,
+      "title": "PROJECT: PLAYTIME",
+      "review_count": 29750,
+      "rank": 356,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1665460,
+      "title": "eFootball™",
+      "review_count": 29506,
+      "rank": 357,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 774171,
+      "title": "Muse Dash",
+      "review_count": 29495,
+      "rank": 358,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 823500,
+      "title": "BONEWORKS",
+      "review_count": 29473,
+      "rank": 359,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 505460,
+      "title": "Foxhole",
+      "review_count": 29396,
+      "rank": 360,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1238860,
+      "title": "Battlefield 4™",
+      "review_count": 29321,
+      "rank": 361,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 253230,
+      "title": "A Hat in Time",
+      "review_count": 29239,
+      "rank": 362,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1206560,
+      "title": "WorldBox - God Simulator",
+      "review_count": 29153,
+      "rank": 363,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1845910,
+      "title": "Dragon Age™: The Veilguard",
+      "review_count": 29047,
+      "rank": 364,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1790600,
+      "title": "DRAGON BALL: Sparking! ZERO",
+      "review_count": 29001,
+      "rank": 365,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 238320,
+      "title": "Outlast",
+      "review_count": 28973,
+      "rank": 366,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 380600,
+      "title": "Fishing Planet",
+      "review_count": 28932,
+      "rank": 367,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1295660,
+      "title": "Sid Meier's Civilization VII",
+      "review_count": 28861,
+      "rank": 368,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1030840,
+      "title": "Mafia: Definitive Edition",
+      "review_count": 28770,
+      "rank": 369,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 286690,
+      "title": "Metro 2033 Redux",
+      "review_count": 28765,
+      "rank": 370,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1888930,
+      "title": "The Last of Us™ Part I",
+      "review_count": 28757,
+      "rank": 371,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 363970,
+      "title": "Clicker Heroes",
+      "review_count": 28644,
+      "rank": 372,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 414340,
+      "title": "Hellblade: Senua's Sacrifice",
+      "review_count": 28625,
+      "rank": 373,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1466860,
+      "title": "Age of Empires IV: Anniversary Edition",
+      "review_count": 28590,
+      "rank": 374,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 3513350,
+      "title": "Wuthering Waves",
+      "review_count": 28553,
+      "rank": 375,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 602960,
+      "title": "Barotrauma",
+      "review_count": 28435,
+      "rank": 376,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 231430,
+      "title": "Company of Heroes 2",
+      "review_count": 28420,
+      "rank": 377,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 221910,
+      "title": "The Stanley Parable",
+      "review_count": 28295,
+      "rank": 378,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 3419430,
+      "title": "Bongo Cat",
+      "review_count": 28181,
+      "rank": 379,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 427410,
+      "title": "Abiotic Factor",
+      "review_count": 28093,
+      "rank": 380,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 686060,
+      "title": "Mewgenics",
+      "review_count": 27938,
+      "rank": 381,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 552100,
+      "title": "Brick Rigs",
+      "review_count": 27824,
+      "rank": 382,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 383980,
+      "title": "Rivals of Aether",
+      "review_count": 27750,
+      "rank": 383,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 424370,
+      "title": "Wolcen: Lords of Mayhem",
+      "review_count": 27678,
+      "rank": 384,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 3041230,
+      "title": "Windrose",
+      "review_count": 27646,
+      "rank": 385,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1627720,
+      "title": "Lies of P",
+      "review_count": 27541,
+      "rank": 386,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 365590,
+      "title": "Tom Clancy’s The Division™",
+      "review_count": 27462,
+      "rank": 388,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 761890,
+      "title": "Albion Online",
+      "review_count": 27222,
+      "rank": 389,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 683320,
+      "title": "GRIS",
+      "review_count": 27150,
+      "rank": 390,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 3405690,
+      "title": "EA SPORTS FC™ 26",
+      "review_count": 27127,
+      "rank": 391,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 646910,
+      "title": "The Crew™ 2",
+      "review_count": 27062,
+      "rank": 392,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1778820,
+      "title": "TEKKEN 8",
+      "review_count": 27005,
+      "rank": 393,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1371980,
+      "title": "No Rest for the Wicked",
+      "review_count": 26944,
+      "rank": 394,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1282100,
+      "title": "REMNANT II®",
+      "review_count": 26928,
+      "rank": 395,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 20900,
+      "title": "The Witcher: Enhanced Edition Director's Cut",
+      "review_count": 26890,
+      "rank": 396,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 815370,
+      "title": "Green Hell",
+      "review_count": 26806,
+      "rank": 397,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 447040,
+      "title": "Watch_Dogs® 2",
+      "review_count": 26753,
+      "rank": 398,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 418460,
+      "title": "Rising Storm 2: Vietnam",
+      "review_count": 26747,
+      "rank": 399,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 246620,
+      "title": "Plague Inc: Evolved",
+      "review_count": 26732,
+      "rank": 400,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 214490,
+      "title": "Alien: Isolation",
+      "review_count": 26663,
+      "rank": 401,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 234140,
+      "title": "Mad Max",
+      "review_count": 26654,
+      "rank": 402,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 920210,
+      "title": "LEGO® Star Wars™: The Skywalker Saga",
+      "review_count": 26616,
+      "rank": 403,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2707930,
+      "title": "Palia",
+      "review_count": 26616,
+      "rank": 404,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 32470,
+      "title": "STAR WARS™ Empire at War - Gold Pack",
+      "review_count": 26607,
+      "rank": 405,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 200260,
+      "title": "Batman: Arkham City - Game of the Year Edition",
+      "review_count": 26589,
+      "rank": 406,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 470220,
+      "title": "UNO",
+      "review_count": 26483,
+      "rank": 407,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2420510,
+      "title": "HoloCure - Save the Fans!",
+      "review_count": 26425,
+      "rank": 408,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 254700,
+      "title": "Resident Evil 4 (2005)",
+      "review_count": 26305,
+      "rank": 409,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 409710,
+      "title": "BioShock™ Remastered",
+      "review_count": 26293,
+      "rank": 410,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1557740,
+      "title": "ROUNDS",
+      "review_count": 26187,
+      "rank": 411,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 678950,
+      "title": "DRAGON BALL FighterZ",
+      "review_count": 26147,
+      "rank": 412,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 3008130,
+      "title": "Dying Light: The Beast",
+      "review_count": 26083,
+      "rank": 413,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 20920,
+      "title": "The Witcher 2: Assassins of Kings Enhanced Edition",
+      "review_count": 25968,
+      "rank": 414,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 289650,
+      "title": "Assassin's Creed® Unity",
+      "review_count": 25938,
+      "rank": 415,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 201810,
+      "title": "Wolfenstein: The New Order",
+      "review_count": 25880,
+      "rank": 416,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 976310,
+      "title": "Mortal Kombat 11",
+      "review_count": 25833,
+      "rank": 417,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1222700,
+      "title": "A Way Out",
+      "review_count": 25831,
+      "rank": 418,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 242920,
+      "title": "Banished",
+      "review_count": 25752,
+      "rank": 419,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1017180,
+      "title": "The Long Drive",
+      "review_count": 25739,
+      "rank": 420,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 285900,
+      "title": "Gang Beasts",
+      "review_count": 25712,
+      "rank": 421,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2527500,
+      "title": "MiSide",
+      "review_count": 25660,
+      "rank": 422,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 493520,
+      "title": "GTFO",
+      "review_count": 25579,
+      "rank": 423,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 655500,
+      "title": "MX Bikes",
+      "review_count": 25567,
+      "rank": 424,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1248130,
+      "title": "Farming Simulator 22",
+      "review_count": 25552,
+      "rank": 425,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 550650,
+      "title": "Black Squad",
+      "review_count": 25426,
+      "rank": 426,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 924970,
+      "title": "Back 4 Blood",
+      "review_count": 25319,
+      "rank": 427,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 870780,
+      "title": "CONTROL Ultimate Edition",
+      "review_count": 25249,
+      "rank": 428,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2281730,
+      "title": "Combat Master: Season 5",
+      "review_count": 25215,
+      "rank": 429,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1407200,
+      "title": "World of Tanks",
+      "review_count": 25054,
+      "rank": 430,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1714040,
+      "title": "Super Auto Pets",
+      "review_count": 25009,
+      "rank": 431,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 200510,
+      "title": "XCOM: Enemy Unknown",
+      "review_count": 24965,
+      "rank": 432,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 207610,
+      "title": "The Walking Dead",
+      "review_count": 24779,
+      "rank": 433,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 298110,
+      "title": "Far Cry® 4",
+      "review_count": 24725,
+      "rank": 434,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 489520,
+      "title": "Minion Masters",
+      "review_count": 24639,
+      "rank": 435,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 274170,
+      "title": "Hotline Miami 2: Wrong Number",
+      "review_count": 24637,
+      "rank": 436,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1276390,
+      "title": "Bloons TD Battles 2",
+      "review_count": 24627,
+      "rank": 437,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 1366540,
+      "title": "Dyson Sphere Program",
+      "review_count": 24550,
+      "rank": 438,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 444200,
+      "title": "World of Tanks Blitz",
+      "review_count": 24541,
+      "rank": 439,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "night": 2
+    },
+    {
+      "appid": 204100,
+      "title": "Max Payne 3",
+      "review_count": 24521,
+      "rank": 440,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 334230,
+      "title": "Town of Salem",
+      "review_count": 24407,
+      "rank": 441,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2475490,
+      "title": "Mouthwashing",
+      "review_count": 24396,
+      "rank": 442,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 617290,
+      "title": "Remnant: From the Ashes",
+      "review_count": 24299,
+      "rank": 443,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 282140,
+      "title": "SOMA",
+      "review_count": 24175,
+      "rank": 444,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1703340,
+      "title": "The Stanley Parable: Ultra Deluxe",
+      "review_count": 24166,
+      "rank": 445,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 304430,
+      "title": "INSIDE",
+      "review_count": 24104,
+      "rank": 446,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 787860,
+      "title": "Farming Simulator 19",
+      "review_count": 24034,
+      "rank": 447,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 975370,
+      "title": "Dwarf Fortress",
+      "review_count": 24002,
+      "rank": 448,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 750920,
+      "title": "Shadow of the Tomb Raider: Definitive Edition",
+      "review_count": 23965,
+      "rank": 449,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2406770,
+      "title": "Bodycam",
+      "review_count": 23951,
+      "rank": 450,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2321470,
+      "title": "Deep Rock Galactic: Survivor",
+      "review_count": 23844,
+      "rank": 453,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1062090,
+      "title": "Timberborn",
+      "review_count": 23608,
+      "rank": 456,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 238460,
+      "title": "BattleBlock Theater®",
+      "review_count": 23597,
+      "rank": 457,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 113200,
+      "title": "The Binding of Isaac",
+      "review_count": 23546,
+      "rank": 458,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1657630,
+      "title": "Slime Rancher 2",
+      "review_count": 23540,
+      "rank": 459,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 313120,
+      "title": "Stranded Deep",
+      "review_count": 23425,
+      "rank": 460,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 206420,
+      "title": "Saints Row IV: Re-Elected",
+      "review_count": 23418,
+      "rank": 461,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 648350,
+      "title": "Jurassic World Evolution",
+      "review_count": 23387,
+      "rank": 462,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1824220,
+      "title": "Chivalry 2",
+      "review_count": 23338,
+      "rank": 464,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2001120,
+      "title": "Split Fiction",
+      "review_count": 23329,
+      "rank": 465,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1621690,
+      "title": "Core Keeper",
+      "review_count": 23316,
+      "rank": 466,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 346010,
+      "title": "Besiege",
+      "review_count": 23242,
+      "rank": 467,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 466560,
+      "title": "Northgard: Definitive Edition",
+      "review_count": 23191,
+      "rank": 469,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2124490,
+      "title": "SILENT HILL 2",
+      "review_count": 23163,
+      "rank": 470,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1989270,
+      "title": "Slay the Princess — The Pristine Cut",
+      "review_count": 23131,
+      "rank": 471,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 282070,
+      "title": "This War of Mine",
+      "review_count": 22970,
+      "rank": 474,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 502500,
+      "title": "ACE COMBAT™ 7: SKIES UNKNOWN",
+      "review_count": 22888,
+      "rank": 475,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 774801,
+      "title": "Crab Champions",
+      "review_count": 22809,
+      "rank": 477,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1135690,
+      "title": "Unpacking",
+      "review_count": 22792,
+      "rank": 478,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 460950,
+      "title": "Katana ZERO",
+      "review_count": 22632,
+      "rank": 479,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 585420,
+      "title": "Trailmakers",
+      "review_count": 22627,
+      "rank": 480,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 824270,
+      "title": "KovaaK's",
+      "review_count": 22579,
+      "rank": 481,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 2161700,
+      "title": "Persona 3 Reload",
+      "review_count": 22508,
+      "rank": 483,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 32370,
+      "title": "STAR WARS™ Knights of the Old Republic™",
+      "review_count": 22366,
+      "rank": 485,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 954850,
+      "title": "Kerbal Space Program 2",
+      "review_count": 22282,
+      "rank": 486,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 367500,
+      "title": "Dragon's Dogma: Dark Arisen",
+      "review_count": 22175,
+      "rank": 487,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 239820,
+      "title": "Game Dev Tycoon",
+      "review_count": 22170,
+      "rank": 488,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 480490,
+      "title": "Prey",
+      "review_count": 22108,
+      "rank": 489,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 495420,
+      "title": "State of Decay 2: Juggernaut Edition",
+      "review_count": 21993,
+      "rank": 490,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 219640,
+      "title": "Chivalry: Medieval Warfare",
+      "review_count": 21951,
+      "rank": 491,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 4128580,
+      "title": "BidKing",
+      "review_count": 21849,
+      "rank": 492,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 752590,
+      "title": "A Plague Tale: Innocence",
+      "review_count": 21818,
+      "rank": 494,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 1250,
+      "title": "Killing Floor",
+      "review_count": 21753,
+      "rank": 495,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 201270,
+      "title": "Total War: SHOGUN 2",
+      "review_count": 21663,
+      "rank": 497,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 645630,
+      "title": "Car Mechanic Simulator 2018",
+      "review_count": 21661,
+      "rank": 498,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    },
+    {
+      "appid": 209000,
+      "title": "Batman™: Arkham Origins",
+      "review_count": 21616,
+      "rank": 500,
+      "class": "premium",
+      "basis": "priced, not on the live-service list",
+      "night": 2
+    }
+  ],
+  "skipped_by_cap": [
+    {
+      "appid": 2943650,
+      "title": "FragPunk",
+      "review_count": 23934,
+      "rank": 451,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 504370,
+      "title": "Battlerite",
+      "review_count": 23870,
+      "rank": 452,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 2134320,
+      "title": "ENA: Dream BBQ",
+      "review_count": 23800,
+      "rank": 454,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 1203220,
+      "title": "NARAKA: BLADEPOINT",
+      "review_count": 23718,
+      "rank": 455,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 2524890,
+      "title": "Pixel Gun 3D: PC Edition",
+      "review_count": 23373,
+      "rank": 463,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 674020,
+      "title": "World War 3",
+      "review_count": 23200,
+      "rank": 468,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 8500,
+      "title": "EVE Online",
+      "review_count": 23071,
+      "rank": 472,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 223750,
+      "title": "DCS World Steam Edition",
+      "review_count": 23049,
+      "rank": 473,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 417860,
+      "title": "Emily is Away",
+      "review_count": 22836,
+      "rank": 476,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 1468260,
+      "title": "Leaf Blower Revolution - Idle Game",
+      "review_count": 22522,
+      "rank": 482,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 386180,
+      "title": "Crossout",
+      "review_count": 22416,
+      "rank": 484,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 2141910,
+      "title": "Magic: The Gathering Arena",
+      "review_count": 21844,
+      "rank": 493,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 1343400,
+      "title": "RuneScape ®",
+      "review_count": 21738,
+      "rank": 496,
+      "class": "live_service",
+      "basis": "free-to-play",
+      "skipped": "live_service_cap"
+    },
+    {
+      "appid": 1128810,
+      "title": "RISK: Global Domination",
+      "review_count": 21627,
+      "rank": 499,
       "class": "live_service",
       "basis": "free-to-play",
       "skipped": "live_service_cap"
