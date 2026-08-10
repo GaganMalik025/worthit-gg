@@ -319,7 +319,13 @@ def main():
 
     print("generating %s ..." % args.appid)
     t0 = time.time()
-    published, result = generate(args.appid, args.ip, args.reserve)
+    # --ledger has to be THREADED, not just parsed. It was accepted by argparse
+    # and then dropped here, so every full-run CLI invocation charged the live
+    # reserve whatever the flag said - and asked can_generate() rather than
+    # can_batch() for permission. Invisible until charging moved to the pacer,
+    # because the check and the charge were consistently wrong together.
+    published, result = generate(args.appid, args.ip, args.reserve,
+                                 ledger=args.ledger)
     wall = time.time() - t0
 
     print("\n%s" % json.dumps({k: v for k, v in result.items()

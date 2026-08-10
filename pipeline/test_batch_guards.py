@@ -560,6 +560,43 @@ def test_a_single_stage_run_still_charges():
           "live_quota.charge(" not in gsrc[at:], "a second charge point is back")
 
 
+def test_every_ledger_flag_reaches_the_ledger():
+    """A flag that is parsed and then dropped is worse than no flag.
+
+    `generate_one.py <appid> --ledger batch` charged the LIVE reserve: main()
+    called generate() without passing args.ledger, so the default won. It also
+    asked can_generate() instead of can_batch() for permission. It survived
+    because the check and the charge were consistently wrong together - 21
+    requests of catalog work landed on the reserve that protects the search box
+    (2026-08-10).
+
+    Checked with ast rather than a substring, so reformatting cannot fake it.
+    """
+    print("\nflags: --ledger actually reaches generate()")
+    import ast
+    src = (Path(__file__).resolve().parent / "generate_one.py").read_text()
+    tree = ast.parse(src)
+    main = next(n for n in tree.body
+                if isinstance(n, ast.FunctionDef) and n.name == "main")
+    calls = [n for n in ast.walk(main)
+             if isinstance(n, ast.Call) and getattr(n.func, "id", "") == "generate"]
+    check("main() calls generate()", len(calls) == 1, len(calls))
+    kwargs = {k.arg for k in calls[0].keywords}
+    check("...and passes the ledger through",
+          "ledger" in kwargs, sorted(kwargs))
+    src_of = ast.get_source_segment(src, next(
+        k.value for k in calls[0].keywords if k.arg == "ledger"))
+    check("...from the parsed flag, not a literal", src_of == "args.ledger",
+          src_of)
+    # the single-stage path already threaded it; pin that too so a later edit
+    # cannot quietly regress the half that works
+    stage_calls = [n for n in ast.walk(main)
+                   if isinstance(n, ast.Call)
+                   and getattr(n.func, "id", "") == "run_single_stage"]
+    check("the --stage path threads it as well",
+          stage_calls and len(stage_calls[0].args) == 3, stage_calls)
+
+
 def test_lock_order_is_one_way():
     """Two locks, one direction. The pacer takes the ledger's lock while holding
     its own; nothing may do the reverse, or a batch deadlocks at 3am."""
@@ -1165,6 +1202,7 @@ if __name__ == "__main__":
     test_ledger_routing_is_by_model_then_by_caller()
     test_pacer_and_ledger_cannot_drift()
     test_a_single_stage_run_still_charges()
+    test_every_ledger_flag_reaches_the_ledger()
     test_lock_order_is_one_way()
     test_a_test_can_never_charge_the_real_ledger()
     test_flash_daily_cap_is_enforced_by_the_ledger()
