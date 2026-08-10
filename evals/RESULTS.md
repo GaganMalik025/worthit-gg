@@ -527,3 +527,43 @@ Verdict mix across the 18 after the rollout: Wait 11, Buy 5, Skip 2.
 
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 reviewed, nothing inappropriate.
+
+---
+
+## 2026-08-10 — 4.4 audit, Hades and Hollow Knight (first audit, not a re-audit)
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **96 citations across 2 verdicts, 0 failures** (and 7,098 across all 134, PASS) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-hades-hollowknight.md`, seeded, stratified across both titles and all four cohorts |
+| Scope | 32 claims, 96 citations |
+
+**These two had never been audited.** Both were live-generated on the CI runner
+before the 4.4/4.5 audit work existed and published through the legacy header
+shim, and `data/raw/`, `data/filtered/` and `data/claims/` are gitignored — so
+their extraction artifacts never reached the dev machine and the 4.6 header
+rollout could not re-synthesize them. They were the last two verdicts on the
+pre-split shape. Re-ingesting them end to end (`86c1587`, 21 Gemini calls)
+produced new claims and new citations, none of which any human had read; the
+shim-served versions were never reviewed either. So this is a first audit rather
+than a re-audit, and the sample was drawn fresh rather than refreshed — there was
+no prior reading to preserve.
+
+Both keep their verdict word:
+
+| | word | refund | early | mid | veteran | claims | citations |
+|---|---|---|---|---|---|---|---|
+| Hades | Buy | 86.2% | 95.9% | 97.4% | 100.0% | 18 | 50 |
+| Hollow Knight | Buy | 72.4% | 93.2% | 95.9% | 97.0% | 14 | 46 |
+
+Catalog after this pass: **134 titles**, all on the split header shape
+(tagline + for-you-if + not-for-you-if). The compatibility shim in
+`site/lib/verdict.ts` stays regardless — the `verdicts` branch is append-only
+and `/api/verdict` serves pre-split artifacts straight off it.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+read across Hades and Hollow Knight, both titles and all four cohorts, nothing
+inappropriate found.

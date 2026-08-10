@@ -133,11 +133,17 @@ reading of it, confirm the verdict reads sound.
 
 ## C. Result
 
-Fill in after reading. Same bar as every other 4.4 pass: any citation that
-should not reach a reader blocks the title, and the fix is regeneration,
-never editing the citation.
+Same bar as every other 4.4 pass: any citation that should not reach a reader
+blocks the title, and the fix is regeneration, never editing the citation.
 
-- citations read:
-- failures:
-- verdict wording sound (y/n):
-- notes:
+- citations read: **20 of 20**
+- failures: **0**
+- verdict wording sound (y/n): **y**
+- coverage: both titles, all four cohorts (`refund_window`, `early`, `mid`,
+  `veteran`)
+- notes: **Manual audit confirmed clean — 20/20 citations read across Hades and
+  Hollow Knight, both titles and all four cohorts, nothing inappropriate
+  found.** First manual audit either title has ever had: the versions served
+  through the legacy shim predated the audit process and were never reviewed.
+
+Completed 2026-08-10. Recorded in `evals/RESULTS.md`.
