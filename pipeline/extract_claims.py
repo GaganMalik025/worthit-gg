@@ -366,7 +366,10 @@ def call_model(client, model, system, user, schema=None, thinking_level="minimal
             # stages as subprocesses, so this is the only place a per-minute
             # limit can be enforced for every title at once. Synthesis reuses
             # this transport, so it is paced by the same bucket.
-            with model_pacer.pace(model.split("/")[-1]):
+            # model= is the real id, and it is what routes the ledger charge
+            # (flash and flash-lite are metered in separate daily buckets). The
+            # first positional argument is only the progress label.
+            with model_pacer.pace(model.split("/")[-1], model=model):
                 resp = client.models.generate_content(
                     model=model, contents=user, config=config)
             return resp

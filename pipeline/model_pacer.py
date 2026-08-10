@@ -35,6 +35,19 @@ TOTAL and keeps the live reserve separate from batch spend. Both are consulted:
 the pacer decides when a call may go, the ledger decides whether it may go at
 all.
 
+It is, however, WHERE THE LEDGER IS CHARGED. Because _acquire is the one place
+every request passes through, charging anywhere further out can be bypassed -
+and was: generate_one charged only in its qr4 stage, so a run invoked as
+`--stage verdict` spent 176 requests against a ledger reading 0 (2026-08-10).
+The two files still hold different things (this one is per-machine and rate-
+scoped; the ledger is project-wide and persisted, and on CI it arrives in the
+dispatch payload because a runner's pacer starts empty every run) - but on any
+machine that actually spends, they now satisfy:
+
+    requests_today == live_used + batch_used + flash_used
+
+which test_pacer_and_ledger_cannot_drift asserts.
+
 Usage:
     from model_pacer import pace
     with pace("extract"):            # blocks until a token is free
@@ -133,7 +146,7 @@ def _save(path, state):
     Path(path).write_text(json.dumps(state), encoding="utf-8")
 
 
-def _acquire(path, rpm, now=None):
+def _acquire(path, rpm, now=None, model=None, ledger=None):
     """Reserve one slot. Returns (wait_seconds, used_this_minute, today).
 
     Also tallies the call against WORTHIT_APPID. This is the ONLY place every
@@ -165,12 +178,78 @@ def _acquire(path, rpm, now=None):
         by = state.setdefault("by_appid", {})
         by[key] = by.get(key, 0) + 1
         _save(path, state)
+        # Charged HERE, inside the same lock and before the request is sent, so
+        # the ledger cannot disagree with the pacer about what today spent.
+        _charge_ledger(model, ledger, path)
         return wait, len(recent), state["today"]
 
 
 def calls_for(appid, path=STATE_PATH):
     """Gemini requests charged to this appid today. Attempts, not successes."""
     return _load(path).get("by_appid", {}).get(str(appid), 0)
+
+
+def _quota_path(pacer_path):
+    """Which ledger file this pacer file charges. None means live_quota's own.
+
+    A non-default pacer path means a test, so the ledger goes next to it. That
+    is derived rather than passed as a second argument on purpose: every
+    existing `_acquire(tmpfile)` call is then incapable of charging the real
+    ledger, without any of them being edited to say so.
+    """
+    p = Path(pacer_path)
+    return None if str(p) == str(STATE_PATH) else p.parent / "live_quota.json"
+
+
+def ledger_for(model=None, ledger=None):
+    """Which daily bucket one request draws from.
+
+    The API meters PER MODEL: gemini-3.5-flash-lite has its own 500/day and
+    gemini-3.5-flash its own 20/day. So the model decides the bucket, and the
+    caller only decides which claim on the flash-lite bucket this is.
+
+    Decided from the model id passed in, never sniffed from the display label -
+    a budget decision resting on a string meant for a progress line is the same
+    implicit coupling that let single-stage runs spend unbooked.
+
+    The default is "batch", and that is the SAFE default rather than an
+    arbitrary one: batch_used reduces batch headroom but never the live reserve,
+    so a mislabelled request can never switch live generation off. The live path
+    names itself explicitly through WORTHIT_LEDGER.
+    """
+    m = (model or "").lower()
+    if "flash" in m and "lite" not in m:
+        return "flash"
+    return ledger or os.environ.get("WORTHIT_LEDGER") or "batch"
+
+
+def _charge_ledger(model, ledger, pacer_path):
+    """Book one request to the daily ledger. THE single increment point.
+
+    This lives here because _acquire is, by this module's own docstring, the
+    only place every Gemini request passes through - and because the previous
+    arrangement proved that any charge point further out can be bypassed. It
+    was: generate_one charged in the qr4 stage only, so `--stage verdict` run on
+    its own spent 176 requests against a ledger that read 0 (2026-08-10).
+
+    Lock order is pacer -> ledger, always, and only here. Nothing takes them the
+    other way round; test_lock_order_is_one_way pins it.
+    """
+    import live_quota                    # local: live_quota imports this module
+    kw = {}
+    qpath = _quota_path(pacer_path)
+    if qpath is not None:
+        kw["path"] = qpath
+    try:
+        live_quota.charge(1, ledger=ledger_for(model, ledger),
+                          count_generation=False, **kw)
+    except (OSError, ValueError) as exc:
+        # A bookkeeping failure must not take down an overnight batch - but it
+        # must never be quiet either, because an unbooked request is precisely
+        # the drift this function exists to end.
+        print("    !! LEDGER CHARGE FAILED (%s) - one request is unbooked; "
+              "reconcile against the pacer before trusting the ledger" % exc,
+              flush=True)
 
 
 def narrow(new_rpm, path=STATE_PATH):
@@ -188,9 +267,15 @@ def narrow(new_rpm, path=STATE_PATH):
 
 
 @contextmanager
-def pace(label="call", rpm=DEFAULT_RPM, path=STATE_PATH, quiet=False):
-    """Block until a request slot is free, then run the body."""
-    wait, used, today = _acquire(path, rpm)
+def pace(label="call", rpm=DEFAULT_RPM, path=STATE_PATH, quiet=False,
+         model=None, ledger=None):
+    """Block until a request slot is free, then run the body.
+
+    model is the real model id (not the display label) and decides which daily
+    bucket the request is charged to; ledger names the claim on the flash-lite
+    bucket and defaults to WORTHIT_LEDGER, then to "batch". See ledger_for.
+    """
+    wait, used, today = _acquire(path, rpm, model=model, ledger=ledger)
     if wait > 0:
         if not quiet:
             print("    pacer: %s waiting %.1fs (rpm %d/%d, today %d)"

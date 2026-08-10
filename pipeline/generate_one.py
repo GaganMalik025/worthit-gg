@@ -62,15 +62,18 @@ STAGES = [
 ]
 
 
-def run_stage(script_args, appid, timeout=900, extra=()):
+def run_stage(script_args, appid, timeout=900, extra=(), ledger=None):
     """Run one stage as a subprocess, tagged with the title it is charging.
 
-    WORTHIT_APPID is how the pacer attributes each request to a title. It has to
-    cross the process boundary because the stages are subprocesses, and it has to
-    be set here rather than inside each script so no stage can forget.
+    WORTHIT_APPID is how the pacer attributes each request to a title, and
+    WORTHIT_LEDGER is how it attributes the request to a daily claim. Both have
+    to cross the process boundary because the stages are subprocesses, and both
+    are set here rather than inside each script so no stage can forget - which
+    is exactly what every stage but qr4 used to do.
     """
     import os
-    env = dict(os.environ, WORTHIT_APPID=str(appid))
+    env = dict(os.environ, WORTHIT_APPID=str(appid),
+               WORTHIT_LEDGER=str(ledger or "batch"))
     t0 = time.time()
     proc = subprocess.run([PY] + script_args + [str(appid)] + list(extra),
                           cwd=str(ROOT), env=env,
@@ -171,8 +174,10 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
         return False, {"published": False, "outcome": reason, "detail": detail,
                        "fallback": "queue"}
 
-    # Count at the choke point every request passes through, before it is sent,
-    # so failures are charged exactly like successes.
+    # Baseline for REPORTING what this title spent. The charging happens at the
+    # choke point every request passes through (model_pacer._acquire), before
+    # the request is sent, so failures are charged exactly like successes and no
+    # early return can skip it.
     calls_before = model_pacer.calls_for(appid)
     timings, log = [], []
     for key, label, script in STAGES:
@@ -183,16 +188,15 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
         # never wait on tomorrow's quota, and a live hit on a tier title would
         # burn a slot the batch reserved.
         extra = ("--force-lite",) if (key == "verdict" and ledger != "batch") else ()
-        dt, proc = run_stage(script, appid, extra=extra)
+        dt, proc = run_stage(script, appid, extra=extra, ledger=ledger)
         timings.append({"stage": key, "label": label, "seconds": round(dt, 1)})
         log.append(proc.stdout[-4000:])
         if proc.returncode != 0:
-            # Charge what this title already spent. It used to return without
-            # charging, so quota burned by a failed title was invisible to the
-            # budget stop: the ledger read 410 while the pacer had counted 506.
-            # A failed call costs exactly as much as a successful one.
+            # Already charged: every request this title sent was booked by the
+            # pacer before it went out, failures included. This figure is for
+            # REPORTING only - the ledger does not depend on reaching this line,
+            # which is the whole point of moving the charge to the choke point.
             spent = model_pacer.calls_for(appid) - calls_before
-            live_quota.charge(spent, ip, ledger=ledger)
             return False, {"published": False, "outcome": "stage_failed",
                            "stage": key, "timings": timings, "model_calls": spent,
                            "stderr": proc.stderr[-1500:], "fallback": "queue"}
@@ -204,9 +208,8 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
             thin, why = thin_segmentation(struct)
             if thin:
                 # the gate fires before any model call, so this is normally 0 -
-                # but charge the measured figure rather than asserting it
+                # but report the measured figure rather than asserting it
                 spent = model_pacer.calls_for(appid) - calls_before
-                live_quota.charge(spent, ip, ledger=ledger)
                 return False, {"published": False,
                                "outcome": "thin_segmentation",
                                "reason": why, "structure": struct,
@@ -216,7 +219,6 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
     out_path = VERDICTS / ("%s.json" % appid)
     if not out_path.exists():
         spent = model_pacer.calls_for(appid) - calls_before
-        live_quota.charge(spent, ip, ledger=ledger)
         return False, {"published": False, "outcome": "no_verdict_written",
                        "timings": timings, "model_calls": spent,
                        "fallback": "queue"}
@@ -229,8 +231,9 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
                     "seconds": round(time.time() - t0, 1)})
 
     cost = model_pacer.calls_for(appid) - calls_before
-    # atomic: concurrent workers must not lose each other's charges
-    live_quota.charge(cost, ip, ledger=ledger)
+    # Usage is already booked, request by request. This records that one TITLE
+    # finished, so status() can still report generations_today.
+    live_quota.note_generation(ledger=ledger, ip=ip)
 
     if not passed:
         # withheld, not served-with-a-warning. Remove the artifact so no static
@@ -246,8 +249,6 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
                   "total_seconds": round(sum(t["seconds"] for t in timings), 1)}
 
 
-STAGE_BASELINE = ROOT / "data/.stage_baseline.json"
-
 
 def run_single_stage(appid, stage, ledger="live"):
     """Run exactly ONE stage, with the flags this ledger requires.
@@ -261,17 +262,18 @@ def run_single_stage(appid, stage, ledger="live"):
 
     So the stages stay separate and every one of them comes through here. One
     place decides which model a path may use.
+
+    NOTHING HERE CHARGES THE LEDGER ANY MORE, and that is the fix rather than an
+    omission. This used to charge in the qr4 branch only, as a delta from a
+    baseline the ingest branch wrote - so a stage run on its own charged nothing
+    and left no trace that it had not. The pacer books every request as it is
+    sent, whichever stage sends it and whether or not a later stage ever runs.
     """
     for key, label, script in STAGES:
         if key != stage:
             continue
-        if key == "ingest":                       # record where this run started
-            STAGE_BASELINE.parent.mkdir(parents=True, exist_ok=True)
-            STAGE_BASELINE.write_text(json.dumps(
-                {"appid": str(appid),
-                 "calls": model_pacer.calls_for(appid)}), encoding="utf-8")
         extra = ("--force-lite",) if (key == "verdict" and ledger != "batch") else ()
-        dt, proc = run_stage(script, appid, extra=extra)
+        dt, proc = run_stage(script, appid, extra=extra, ledger=ledger)
         print(proc.stdout[-6000:])
         if proc.stderr:
             print(proc.stderr[-3000:], file=sys.stderr)
@@ -279,7 +281,8 @@ def run_single_stage(appid, stage, ledger="live"):
         return proc.returncode
 
     if stage == "qr4":
-        # invariant 8, and the ledger charge, at the end of the run
+        # invariant 8, at the end of the run. Usage was charged per request as
+        # it went out; all that is recorded here is that a title completed.
         out_path = VERDICTS / ("%s.json" % appid)
         if not out_path.exists():
             print("no verdict written for %s" % appid, file=sys.stderr)
@@ -287,14 +290,9 @@ def run_single_stage(appid, stage, ledger="live"):
         verdict = json.loads(out_path.read_text(encoding="utf-8"))
         passed, report = qr4_gate.gate(verdict, verdict.get("game_name"))
         print(json.dumps(report, indent=2))
-        try:
-            base = json.loads(STAGE_BASELINE.read_text(encoding="utf-8"))
-            before = base["calls"] if base.get("appid") == str(appid) else 0
-        except Exception:                          # noqa: BLE001
-            before = 0
-        spent = max(0, model_pacer.calls_for(appid) - before)
-        live_quota.charge(spent, ledger=ledger)
-        print("charged %d request(s) to the %s ledger" % (spent, ledger))
+        live_quota.note_generation(ledger=ledger)
+        print("%s spent %d request(s), all booked to the %s ledger as they were "
+              "sent" % (appid, model_pacer.calls_for(appid), ledger))
         if not passed:
             out_path.unlink()                      # withheld, never served
             return 1

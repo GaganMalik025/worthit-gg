@@ -216,25 +216,47 @@ def can_flash(state, est=1, limit=FLASH_DAILY_LIMIT):
     return True, "ok", {"remaining": left}
 
 
-def record(state, cost, ip=None, ledger="live"):
-    """Charge actual Gemini requests used by one generation to one ledger."""
+def record(state, cost, ip=None, ledger="live", count_generation=True):
+    """Charge Gemini requests to one ledger.
+
+    count_generation separates the two things this used to conflate. Usage is
+    now charged PER REQUEST, from model_pacer._acquire - the one place every
+    request passes through - so incrementing a generation counter there would
+    make "generations_today" count requests instead of titles. The generation
+    counters are bumped once, by the caller that knows a title finished
+    (note_generation), and the per-IP tally rides with them because it counts
+    generations per client, not requests.
+    """
+    n = int(cost)
     if ledger == "flash":
-        state["flash_used"] = state.get("flash_used", 0) + int(cost)
-        state["flash_generations"] = state.get("flash_generations", 0) + 1
+        state["flash_used"] = state.get("flash_used", 0) + n
+        if count_generation:
+            state["flash_generations"] = state.get("flash_generations", 0) + 1
         return state
     if ledger == "batch":
-        state["batch_used"] = state.get("batch_used", 0) + int(cost)
-        state["batch_generations"] = state.get("batch_generations", 0) + 1
+        state["batch_used"] = state.get("batch_used", 0) + n
+        if count_generation:
+            state["batch_generations"] = state.get("batch_generations", 0) + 1
         return state
-    state["live_used"] = state.get("live_used", 0) + int(cost)
-    state["generations"] = state.get("generations", 0) + 1
-    if ip:
-        key = "%s|%s" % (ip, _hour())
-        state["by_ip_hour"][key] = state["by_ip_hour"].get(key, 0) + 1
+    state["live_used"] = state.get("live_used", 0) + n
+    if count_generation:
+        state["generations"] = state.get("generations", 0) + 1
+        if ip:
+            key = "%s|%s" % (ip, _hour())
+            state["by_ip_hour"][key] = state["by_ip_hour"].get(key, 0) + 1
     return state
 
 
-def charge(cost, ip=None, ledger="live", path=STATE_PATH):
+def note_generation(ledger="live", ip=None, path=STATE_PATH):
+    """One title finished. Counts the generation, charges no usage.
+
+    Usage arrives per request from the pacer; this is only the "how many titles"
+    half, kept so status() can still say generations_today.
+    """
+    return charge(0, ip, ledger=ledger, path=path, count_generation=True)
+
+
+def charge(cost, ip=None, ledger="live", path=STATE_PATH, count_generation=True):
     """Atomically load -> record -> save. Returns the updated state.
 
     The read-modify-write MUST be locked. It was not, and the batch runs titles
@@ -249,7 +271,7 @@ def charge(cost, ip=None, ledger="live", path=STATE_PATH):
     """
     with model_pacer._locked(path):
         state = load(path)
-        record(state, cost, ip, ledger=ledger)
+        record(state, cost, ip, ledger=ledger, count_generation=count_generation)
         save(state, path)
         return state
 

@@ -182,15 +182,20 @@ def test_gate_costs_nothing_when_it_fires():
     print("\ngate: sits on the cost boundary")
     src = (Path(__file__).resolve().parent / "generate_one.py").read_text()
     filter_at = src.index('if segmentation_gate and key == "filter"')
-    record_at = src.index("live_quota.charge(cost")
-    check("the gate runs before the quota charge", filter_at < record_at)
-    # It used to hardcode model_calls 0. Now it charges the MEASURED figure -
+    # THE COST BOUNDARY IS THE STAGE ORDER, now that charging happens per
+    # request at the pacer rather than at a return statement: ingest and filter
+    # send nothing, extract is the first stage that spends. A gate that fires
+    # here therefore costs zero by construction, not by assertion.
+    order = [k for k, _, _ in generate_one.STAGES]
+    check("filter precedes extract, so the gate sits before the first spend",
+          order.index("filter") < order.index("extract"), order)
+    # It used to hardcode model_calls 0. It reports the MEASURED figure -
     # which should be 0, but is reported rather than asserted, because a
     # hardcoded zero is how spend goes missing.
     check("it reports the measured spend, not a hardcoded zero",
           '"model_calls": spent' in src[filter_at:filter_at + 900])
-    check("...and charges it to the ledger",
-          "live_quota.charge(spent" in src[filter_at:filter_at + 900])
+    check("no early return owns the charge any more",
+          "live_quota.charge(spent" not in src)
 
 
 def test_pending_skips_finished_and_terminal():
@@ -384,10 +389,13 @@ def test_call_counting_is_at_the_call_site():
           "NotImplementedError" in
           (Path(__file__).resolve().parent / "generate_one.py").read_text())
     gsrc = (Path(__file__).resolve().parent / "generate_one.py").read_text()
-    check("generate_one charges from the pacer",
-          "model_pacer.calls_for(appid) - calls_before" in gsrc)
     check("stages are tagged with the appid they charge",
           "WORTHIT_APPID=str(appid)" in gsrc)
+    check("stages are tagged with the LEDGER they charge",
+          "WORTHIT_LEDGER=str(ledger" in gsrc)
+    check("generate_one no longer charges from a delta it might not reach",
+          "live_quota.charge(spent" not in gsrc
+          and "STAGE_BASELINE" not in gsrc, "delta charging still present")
 
 
 def test_failure_paths_charge_the_ledger():
@@ -396,16 +404,20 @@ def test_failure_paths_charge_the_ledger():
     ledger read 410 while the pacer had counted 506 - and the budget stop is the
     thing meant to prevent exactly the wall that run hit."""
     print("\nledger: failed and skipped titles are charged too")
+    # The charge no longer depends on reaching any particular return: it
+    # happens at the pacer, before the request is sent. What the early returns
+    # still owe is an honest REPORT of what was spent.
     src = (Path(__file__).resolve().parent / "generate_one.py").read_text()
-    for label, marker in (("stage_failed", '"outcome": "stage_failed"'),
-                          ("thin_segmentation", '"outcome": "thin_segmentation"'),
-                          ("no_verdict_written", '"outcome": "no_verdict_written"')):
-        at = src.index(marker)
-        window = src[max(0, at - 400):at]
-        check("%s charges before returning" % label,
-              "live_quota.charge(" in window)
     check("every early return reports what it spent",
           src.count('"model_calls": spent') >= 3)
+    with tempfile.TemporaryDirectory() as d:
+        pacer = Path(d) / "pacer.json"
+        ledger = Path(d) / "live_quota.json"
+        model_pacer._acquire(pacer, rpm=50, model="gemini-3.5-flash-lite",
+                             ledger="batch")
+        check("a request is booked the moment it is sent, before any outcome",
+              live_quota.load(ledger)["batch_used"] == 1,
+              live_quota.load(ledger))
     check("the ledger limits are the VERIFIED ones, not the assumed 1500",
           live_quota.DAILY_LIMIT == 500 and live_quota.LIVE_RESERVE == 100,
           (live_quota.DAILY_LIMIT, live_quota.LIVE_RESERVE))
@@ -439,9 +451,148 @@ def test_ledger_charge_is_atomic():
         check("12 concurrent charges of 1 all land", got == 12, got)
         check("generation count matches too",
               live_quota.load(path)["batch_generations"] == 12)
+    # The unlocked load -> record -> save that lost updates is gone from every
+    # caller: charging is now one locked helper, reached only through the pacer.
+    for mod in ("generate_one.py", "model_pacer.py", "run_batch.py"):
+        msrc = (Path(__file__).resolve().parent / mod).read_text()
+        check("%s never does its own load/record/save" % mod,
+              "live_quota.save(" not in msrc and "live_quota.record(" not in msrc)
+
+
+def test_ledger_routing_is_by_model_then_by_caller():
+    print("\nledger: which bucket a request draws from")
+    import os
+    check("flash-lite draws the flash-lite bucket",
+          model_pacer.ledger_for("gemini-3.5-flash-lite", "batch") == "batch")
+    check("flash draws its own bucket, whatever the caller said",
+          model_pacer.ledger_for("gemini-3.5-flash", "batch") == "flash")
+    check("...and the live path cannot override that either",
+          model_pacer.ledger_for("gemini-3.5-flash", "live") == "flash")
+    check("an explicit ledger wins for flash-lite",
+          model_pacer.ledger_for("gemini-3.5-flash-lite", "live") == "live")
+
+    prev = os.environ.get("WORTHIT_LEDGER")
+    try:
+        os.environ.pop("WORTHIT_LEDGER", None)
+        # THE DEFAULT IS SAFE, NOT ARBITRARY: batch_used reduces batch headroom
+        # but never the live reserve, so an unlabelled request can never switch
+        # live generation off.
+        check("with nothing set at all, the default is batch",
+              model_pacer.ledger_for("gemini-3.5-flash-lite") == "batch")
+        st = {"date": live_quota._today(), "live_used": 0, "batch_used": 400,
+              "generations": 0, "batch_generations": 0, "by_ip_hour": {}}
+        check("...and a day of that default leaves the reserve untouched",
+              live_quota.remaining(st) == live_quota.LIVE_RESERVE)
+        os.environ["WORTHIT_LEDGER"] = "live"
+        check("the env var crosses the subprocess boundary",
+              model_pacer.ledger_for("gemini-3.5-flash-lite") == "live")
+    finally:
+        if prev is None:
+            os.environ.pop("WORTHIT_LEDGER", None)
+        else:
+            os.environ["WORTHIT_LEDGER"] = prev
+
+
+def test_pacer_and_ledger_cannot_drift():
+    """THE TEST THAT WOULD HAVE CAUGHT 2026-08-10.
+
+    176 requests spent, ledger read 0, because the only charge point was the
+    qr4 stage and the run never invoked it. The invariant below holds on any
+    machine where the spending happens, and it held at 176 == 0 + 0 + 0.
+    """
+    print("\nledger: the pacer and the ledger cannot disagree")
+    with tempfile.TemporaryDirectory() as d:
+        pacer = Path(d) / "pacer.json"
+        ledger = Path(d) / "live_quota.json"
+        for _ in range(7):
+            model_pacer._acquire(pacer, rpm=50, model="gemini-3.5-flash-lite",
+                                 ledger="batch")
+        for _ in range(3):
+            model_pacer._acquire(pacer, rpm=50, model="gemini-3.5-flash-lite",
+                                 ledger="live")
+        for _ in range(2):
+            model_pacer._acquire(pacer, rpm=50, model="gemini-3.5-flash")
+        st = live_quota.load(ledger)
+        total = st["live_used"] + st["batch_used"] + st["flash_used"]
+        seen = model_pacer.status(pacer)["requests_today"]
+        check("every paced request is booked exactly once",
+              seen == total == 12, "pacer=%s ledger=%s" % (seen, total))
+        check("and to the right bucket",
+              (st["batch_used"], st["live_used"], st["flash_used"]) == (7, 3, 2),
+              st)
+        # per-REQUEST charging must not inflate the per-TITLE counters
+        check("generation counts are not incremented per request",
+              st["generations"] == st["batch_generations"] == 0, st)
+        live_quota.note_generation(ledger="batch", path=ledger)
+        st = live_quota.load(ledger)
+        check("note_generation counts a title without charging usage",
+              st["batch_generations"] == 1 and st["batch_used"] == 7, st)
+
+
+def test_a_single_stage_run_still_charges():
+    """The 2026-08-10 regression, replayed offline.
+
+    `--stage verdict` in isolation never reached the qr4 branch that held the
+    only charge, so it spent silently. The stage is simulated here by its
+    observable behaviour - a subprocess that paces requests with WORTHIT_LEDGER
+    set and never calls anything in generate_one afterwards.
+    """
+    print("\nledger: a stage run on its own is charged too")
+    import subprocess as sp
+    with tempfile.TemporaryDirectory() as d:
+        pacer = Path(d) / "pacer.json"
+        ledger = Path(d) / "live_quota.json"
+        code = ("import sys,os;sys.path.insert(0,%r);"
+                "os.environ['WORTHIT_LEDGER']='batch';import model_pacer;"
+                "[model_pacer._acquire(%r, rpm=50, "
+                "model='gemini-3.5-flash-lite') for _ in range(4)]"
+                % (str(Path(__file__).resolve().parent), str(pacer)))
+        sp.run([PY, "-c", code], check=True, timeout=90)
+        st = live_quota.load(ledger)
+        check("4 requests from a lone stage land on the ledger",
+              st["batch_used"] == 4, st)
+        check("...and the ledger agrees with the pacer",
+              model_pacer.status(pacer)["requests_today"] == st["batch_used"])
+
     gsrc = (Path(__file__).resolve().parent / "generate_one.py").read_text()
-    check("generate_one uses the atomic charge, not load/record/save",
-          "live_quota.charge(" in gsrc and "live_quota.save(state)" not in gsrc)
+    at = gsrc.index("def run_single_stage")
+    check("run_single_stage charges no usage of its own",
+          "live_quota.charge(" not in gsrc[at:], "a second charge point is back")
+
+
+def test_lock_order_is_one_way():
+    """Two locks, one direction. The pacer takes the ledger's lock while holding
+    its own; nothing may do the reverse, or a batch deadlocks at 3am."""
+    print("\nlocks: pacer -> ledger, never the other way")
+    lsrc = (Path(__file__).resolve().parent / "live_quota.py").read_text()
+    msrc = (Path(__file__).resolve().parent / "model_pacer.py").read_text()
+    check("live_quota locks only its own state file",
+          lsrc.count("model_pacer._locked(") == 1
+          and "model_pacer._locked(path)" in lsrc, lsrc.count("_locked("))
+    check("live_quota never acquires the pacer's own lock",
+          "model_pacer.STATE_PATH" not in lsrc)
+    at = msrc.index("def _charge_ledger")
+    check("the pacer's charge helper imports live_quota lazily (no import cycle)",
+          "import live_quota" in msrc[at:at + 700])
+    with tempfile.TemporaryDirectory() as d:
+        pacer = Path(d) / "pacer.json"
+        # if the order were ever reversed this hangs rather than fails; the
+        # timeout is the assertion
+        t0 = time.time()
+        for _ in range(3):
+            model_pacer._acquire(pacer, rpm=50, model="gemini-3.5-flash-lite")
+        check("nested locking completes promptly", time.time() - t0 < 10,
+              "%.1fs" % (time.time() - t0))
+
+
+def test_a_test_can_never_charge_the_real_ledger():
+    print("\nledger: tests are structurally unable to touch the real file")
+    with tempfile.TemporaryDirectory() as d:
+        p = Path(d) / "pacer.json"
+        check("a temp pacer path implies a temp ledger path",
+              model_pacer._quota_path(p) == Path(d) / "live_quota.json")
+    check("the default pacer path defers to live_quota's own",
+          model_pacer._quota_path(model_pacer.STATE_PATH) is None)
 
 
 def test_flash_daily_cap_is_enforced_by_the_ledger():
@@ -1011,6 +1162,11 @@ if __name__ == "__main__":
     test_prompt_names_every_word_the_guard_rejects()
     test_flash_tier_allocation()
     test_batch_never_spends_flash()
+    test_ledger_routing_is_by_model_then_by_caller()
+    test_pacer_and_ledger_cannot_drift()
+    test_a_single_stage_run_still_charges()
+    test_lock_order_is_one_way()
+    test_a_test_can_never_charge_the_real_ledger()
     test_flash_daily_cap_is_enforced_by_the_ledger()
     test_batch_is_interruptible()
     test_call_counting_is_at_the_call_site()
