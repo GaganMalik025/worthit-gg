@@ -4,10 +4,17 @@ WorthIt.gg - synthesis pass (build plan 1.5)
 Turns grounded claims into the verdict JSON the static site serves:
 site/public/verdicts/<appid>.json.
 
-The model's job is deliberately tiny. It writes the for-whom line, one sentence
-per cohort and one per detected flag, and orders the claims. Everything else -
-the VERDICT WORD, every number, which flags fire, theme grouping, citations,
-muted sections - is computed in code.
+The model's job is deliberately tiny. It writes the three-part header (a tagline
+about the game, then the "for you if" and "not for you if" clause lists), one
+sentence per cohort and one per detected flag, and orders the claims. Everything
+else - the VERDICT WORD, every number, which flags fire, theme grouping,
+citations, muted sections - is computed in code.
+
+The header used to be a single for-whom sentence doing all three jobs at once,
+which is why material friction kept coming out as a purchase condition
+("suits players willing to tolerate the launcher") no matter how the rule was
+worded: a sentence that must name an audience has nowhere neutral to put a
+requirement. Splitting it gives the condition a heading that admits it is one.
 
 The verdict word used to be the exception, and it was the bug: decided by prose
 instruction, it swung the whole catalog whenever that prose was rewritten. It is
@@ -60,7 +67,7 @@ OUT_DIR = Path("site/public/verdicts")
 #
 # thinking_level stays "medium" here. Extraction pins "minimal" per CLAUDE.md
 # invariant 6; synthesis is the stage that actually reasons - it picks which
-# claims survive and writes the for-whom line - so it keeps the higher level.
+# claims survive and writes the header prose - so it keeps the higher level.
 # The discipline that carries over from extraction is the part that matters:
 # pinned model id, structured output schema, explicit thinking_level, and no
 # sampling parameters.
@@ -86,11 +93,28 @@ HOURS_RANGE = OrderedDict([
     ("veteran", "over 100 hours"),
 ])
 
+# The three parts of the header, and the bounds they are held to. The counts and
+# the clause length are enforced in check_response, NOT by minItems/maxItems in
+# the schema: rule 7 already demonstrated what happens when a shape lives only in
+# words the model reads, and the structured-output subset's array bounds are not
+# something a launch-blocking shape should rest on.
+FIT_MIN, FIT_MAX = 2, 4
+CLAUSE_MAX_CHARS = 80
+# The tagline sits beside the stamp chip, so its length is a layout constraint,
+# not a style preference: measured in the approved mockup, ~70 characters holds
+# one line at the 680px reading column and 90 is the point past which it starts
+# pushing the stamp around. The first A/B run produced a 108-character tagline
+# that wrapped to three lines - hence a cap, enforced the same way as the clause
+# cap rather than asked for in the prompt.
+TAGLINE_MAX_CHARS = 90
+
 VERDICT_SCHEMA = {
     "type": "object",
-    "required": ["for_whom", "cohorts"],
+    "required": ["tagline", "for_you_if", "not_for_you_if", "cohorts"],
     "properties": {
-        "for_whom": {"type": "string"},
+        "tagline": {"type": "string"},
+        "for_you_if": {"type": "array", "items": {"type": "string"}},
+        "not_for_you_if": {"type": "array", "items": {"type": "string"}},
         "cohorts": {
             "type": "array",
             "items": {
@@ -130,7 +154,8 @@ RULES
 from. Inventing an id, or moving a claim to a different cohort, is the one \
 unrecoverable error here.
 1b. Claim ids go in the claim_ids array and NOWHERE ELSE. Never write an id \
-into a summary, the for-whom line or a flag sentence. A reader cannot see ids, \
+into a summary, the tagline, a fit clause or a flag sentence. A reader cannot \
+see ids, \
 and an id in prose is rejected automatically because it contains digits. \
 WRONG: "Players praise the freedom ref-e18e82, ear-6b753e." \
 RIGHT: "Players praise the freedom." with those ids listed in claim_ids.
@@ -155,35 +180,41 @@ plainly instead of resolving it into agreement.
 agreed view is the exact failure this product exists to correct. If people who \
 bounced early and people who stayed describe different games, say that.
 6. A cohort marked MUTED gets no summary and no claims. Skip it entirely.
-7. The for-whom line names who this suits and who it does not, in one \
-sentence. Be specific about the person, not the genre. IT MUST NOT CONTRADICT \
-THE VERDICT STAMP: the reader sees the word and this line together, so a line \
-arguing with the word above it reads as a mistake, not as nuance. Never write \
-"should buy" or "buy this" under Skip; never write "should skip" or "avoid \
-this" under Buy.
-7b. FRICTION IS STATED AS FACT, NEVER AS SOMETHING THE READER MUST AGREE TO. \
-Anything the reader should know before paying - a mandatory third-party \
-launcher, a required account or sign-in, an always-online requirement, \
-technical instability, a punishing learning curve - is written FLAT: \
-"Worth knowing: it requires a third-party launcher and a publisher account." \
-"Worth knowing: performance is unstable on release hardware." \
-BANNED CONSTRUCTIONS, all of them: "willing to tolerate", "willing to \
-overlook", "willing to navigate", "can tolerate", "if you can overlook", \
-"provided you accept", "buy only if". These read as a test the reader has to \
-pass, and moving the test from the verb into the audience does not remove it - \
-"suits players willing to tolerate the launcher" is the same sentence as "buy \
-only if you tolerate the launcher" with the condition hidden one clause \
-further in. Both are rejected. \
-The verdict word is already settled by the cohort data. Asking the reader to \
-weigh whether they can put up with something is asking them to re-decide it. \
-RIGHT: "Suits people who want a deep tactical shooter. Worth knowing: it \
-requires a third-party launcher, and the learning curve is steep." \
-WRONG: "Suits tactical shooter fans willing to navigate launcher setups." \
-Naming who it does NOT suit stays welcome, as a plain description: "not for \
-newcomers looking for a smooth first hour."
+7. YOU WRITE THREE THINGS UNDER THE VERDICT STAMP AND THEY DO DIFFERENT JOBS. \
+Never make one of them do another's. \
+(a) tagline - ONE short line about the GAME, a dozen words at most: it sits \
+beside the verdict stamp and a longer one wraps and shoves the stamp around. \
+This is the only line on the page allowed some character, so give it some. It \
+names no audience, sets no condition, and asks nothing of the reader. \
+RIGHT: "Great heroes, rough machine - the fights look better than they run." \
+WRONG: "For patient players who can tolerate rough performance." - that is an \
+audience and a condition, and both belong below, not here. \
+(b) for_you_if - between two and four SHORT clauses, second person, one idea \
+each, naming the reader this suits: "you play in a stack that can absorb a bad \
+match". \
+(c) not_for_you_if - the same, for the reader it does not suit. \
+These are CLAUSES, NOT SENTENCES: no full stop, nothing over about a dozen \
+words. A clause the reader has to read twice has already failed.
+7b. MATERIAL FRICTION GOES IN not_for_you_if, AS A CLAUSE. A mandatory \
+third-party launcher, a required account or sign-in, an always-online \
+requirement, heavy storage, technical instability, a punishing learning curve: \
+"you will not install a third-party launcher", "you need stable frame rates on \
+release hardware", "you are short on storage space". Under this heading a \
+condition is honest, because the heading itself says it is a condition. \
+IT MAY NOT MOVE INTO THE TAGLINE. The tagline never says "willing to tolerate", \
+"willing to overlook", "can tolerate", "if you can overlook", "provided you \
+accept", "must put up with" or any relative of those. Those turn the verdict \
+into a test the reader has to sit, and the verdict is already settled by the \
+cohort data - asking them to weigh whether they can put up with something is \
+asking them to re-decide it.
 8. Flag sentences describe WHAT the pattern is, never WHY it happened. Do not \
 speculate about controversies, publishers, patches or review campaigns.
-9. THE VERDICT WORD IS GIVEN TO YOU, in the turn below. It is computed from the cohort rates before you are called, and it is not yours to choose, argue with, or soften. Write the for-whom line so it reads naturally under that word. \
+9. THE VERDICT WORD IS GIVEN TO YOU, in the turn below. It is computed from the cohort rates before you are called, and it is not yours to choose, argue with, or soften. The tagline must read naturally under that word. \
+BOTH LISTS ARE WRITTEN ON EVERY VERDICT, SKIP INCLUDED. A Skip still has people \
+it would suit, and saying who they are is this product's entire thesis - it is \
+not an endorsement and never phrases itself as one. Never write "buy it anyway" \
+under a Skip, or "skip it" under a Buy; not_for_you_if is an audience carve-out, \
+never a rebuttal of the word. \
 You are not being asked whether the word is right. A claim list can look grim under a Buy and encouraging under a Wait - rule 4 already told you those coexist - and that is not a contradiction to resolve.
 """
 
@@ -252,7 +283,7 @@ def build_user_turn(game, pool, cohorts, detected, verdict_word):
     # rates below, so the model is being told the conclusion and asked only to
     # write prose that sits under it.
     lines.append("VERDICT (already decided from the cohort rates - write the "
-                 "for-whom line to suit it, do not argue with it): %s"
+                 "header to suit it, do not argue with it): %s"
                  % verdict_word)
     lines.append("")
     lines.append("COHORTS (rates are context for your wording - never repeat "
@@ -348,8 +379,9 @@ def verdict_for_mean(mean):
     """The verdict word, from the cohort data alone. None if unmeasurable.
 
     Claim content does not appear here and must not: friction a reader should
-    know about belongs in the for-whom line as disclosure (rule 7), never as a
-    condition that quietly softens the word.
+    know about belongs in not_for_you_if as a clause under a heading that says
+    it is a condition (rule 7b), never as a condition that quietly softens the
+    word.
     """
     if mean is None:
         return None
@@ -374,8 +406,28 @@ def check_response(parsed, cohorts, detected, verdict_word):
     # Completeness first. Without this an empty or wrong-shaped response passes
     # every other gate by containing nothing to object to - which is exactly how
     # a synthesis call answered with extraction-shaped claims and still "passed".
-    if not (parsed.get("for_whom") or "").strip():
-        failures.append("missing_for_whom")
+    if not (parsed.get("tagline") or "").strip():
+        failures.append("missing_tagline")
+    elif len(parsed["tagline"]) > TAGLINE_MAX_CHARS:
+        failures.append("tagline_too_long:%d" % len(parsed["tagline"]))
+    fit = {}
+    for field in ("for_you_if", "not_for_you_if"):
+        items = [s for s in (parsed.get(field) or []) if isinstance(s, str)]
+        fit[field] = items
+        if not FIT_MIN <= len(items) <= FIT_MAX:
+            failures.append("%s_out_of_bounds:%d" % (field, len(items)))
+        for s in items:
+            if not s.strip():
+                failures.append("empty_fit_clause:%s" % field)
+            elif len(s) > CLAUSE_MAX_CHARS:
+                failures.append("fit_clause_too_long:%s:%d" % (field, len(s)))
+    # The same clause on both sides is not nuance, it is a contradiction the
+    # reader has to resolve themselves.
+    both = ({s.strip().lower().rstrip(".") for s in fit["for_you_if"]}
+            & {s.strip().lower().rstrip(".") for s in fit["not_for_you_if"]})
+    for s in sorted(both):
+        failures.append("duplicate_fit_clause:%s" % s[:40])
+
     answered = {c.get("bucket") for c in (parsed.get("cohorts") or [])}
     for c in cohorts:
         if c["muted"] or not c["claims"]:
@@ -387,18 +439,18 @@ def check_response(parsed, cohorts, detected, verdict_word):
                                 for s in (parsed.get("flag_sentences") or [])}:
             failures.append("flag_not_described:%s" % f["flag_id"])
 
-    # The for-whom line may not argue with the stamp above it.
+    # Nothing in the header may argue with the stamp above it.
     #
-    # IN CODE, NOT ONLY IN THE PROMPT, for the usual reason: rule 7 says this in
+    # IN CODE, NOT ONLY IN THE PROMPT, for the usual reason: rule 7 said this in
     # words and the model broke it on the very next run, answering Buy with
     # "...but skip it if you are a newcomer". The reader sees the stamp and this
-    # line together, so a line contradicting the word reads as a bug in the
-    # product rather than as nuance.
+    # block together, so a contradiction reads as a bug in the product rather
+    # than as nuance.
     #
     # Narrow-audience carve-outs are still wanted, which is why this matches the
     # DIRECTIVE forms ("should buy", "buy it/this") and not every mention of a
-    # word - "buy" appears legitimately under Wait as "buy now only if X".
-    for_whom = parsed.get("for_whom") or ""
+    # word.
+    tagline = parsed.get("tagline") or ""
     banned_for = {
         "Buy":  (r"\b(?:should\s+skip|skip\s+(?:it|this)|avoid\s+(?:it|this)|"
                  r"should\s+avoid|steer\s+clear)\b", "skip/avoid language"),
@@ -407,16 +459,35 @@ def check_response(parsed, cohorts, detected, verdict_word):
     }
     if verdict_word in banned_for:
         pattern, what = banned_for[verdict_word]
-        if re.search(pattern, for_whom, re.I):
-            failures.append("for_whom_contradicts_verdict:%s:%s"
+        if re.search(pattern, tagline, re.I):
+            failures.append("tagline_contradicts_verdict:%s:%s"
                             % (verdict_word, what))
+
+    # The lists get the OPPOSITE side's pattern, and only that side.
+    #
+    # This is the whole reason the split works. Under a Skip, for_you_if exists
+    # to say who the game would still suit - a clause is fine, "you should buy
+    # it anyway" is the model overturning a computed verdict inside a bullet.
+    # Under a Buy the mirror holds for not_for_you_if. Applying both patterns to
+    # both lists would ban the sections' own purpose.
+    for field, word in (("for_you_if", "Skip"), ("not_for_you_if", "Buy")):
+        if verdict_word != word:
+            continue
+        pattern, what = banned_for[word]
+        for s in fit[field]:
+            if re.search(pattern, s, re.I):
+                failures.append("fit_list_contradicts_verdict:%s:%s:%s"
+                                % (field, word, what))
 
     # Friction stated as a test the reader must pass (rule 7b), IN CODE because
     # the prompt version of this rule half-held: the directive form ("buy only
     # if...") disappeared, and the same condition reappeared inside the audience
     # description instead - "suits players willing to tolerate the launcher".
-    # That is the identical sentence with the condition moved one clause in, so
-    # it is matched here rather than argued about in prose.
+    #
+    # TAGLINE ONLY, and that is the point of this design. A condition in
+    # not_for_you_if is honest, because the heading above it says it is a
+    # condition; the same words in the tagline are a test smuggled in beside the
+    # verdict word. Same sentence, different contract with the reader.
     FRICTION_VERBS = (r"tolerate|overlook|navigate|manage|troubleshoot|weather|"
                       r"endure|put\s+up\s+with")
     if re.search(r"\b(?:(?:willing|prepared|happy)\s+to\s+(?:%s)|"
@@ -426,10 +497,17 @@ def check_response(parsed, cohorts, detected, verdict_word):
                  r"(?:must|have\s+to|need\s+to)\s+(?:%s|accept)|"
                  r"can\s+tolerate|if\s+you\s+can\s+overlook|"
                  r"provided\s+you\s+(?:accept|can))\b"
-                 % (FRICTION_VERBS, FRICTION_VERBS), for_whom, re.I):
-        failures.append("for_whom_frames_friction_as_a_condition")
+                 % (FRICTION_VERBS, FRICTION_VERBS), tagline, re.I):
+        failures.append("tagline_frames_friction_as_a_condition")
 
-    prose = [("for_whom", parsed.get("for_whom") or "")]
+    # The prose sweep below is invariant 11 and 13's only coverage, so EVERY
+    # field the model writes has to be in it. Splitting one for-whom line into
+    # three fields is exactly how a surface loses its guard silently: the checks
+    # keep passing, on prose nobody sends them any more.
+    prose = [("tagline", tagline)]
+    for field in ("for_you_if", "not_for_you_if"):
+        for i, s in enumerate(fit[field]):
+            prose.append(("%s[%d]" % (field, i), s))
     for c in parsed.get("cohorts") or []:
         prose.append(("summary[%s]" % c.get("bucket"), c.get("summary") or ""))
     for f in parsed.get("flag_sentences") or []:
@@ -601,9 +679,12 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
         "game_name": claims_blob.get("game_name"),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "model": {"extraction": claims_blob.get("model"), "synthesis": model},
-        # computed, never model-chosen - see verdict_for_mean()
+        # word: computed, never model-chosen - see verdict_for_mean()
+        # tagline/lists: the model's three-part header, bounded by rule 7
         "verdict": {"word": verdict_word,
-                    "for_whom": parsed.get("for_whom")},
+                    "tagline": parsed.get("tagline"),
+                    "for_you_if": list(parsed.get("for_you_if") or []),
+                    "not_for_you_if": list(parsed.get("not_for_you_if") or [])},
         "split_bar": split_bar,
         "distortion_flags": out_flags,
         "cohorts": out_cohorts,
@@ -745,7 +826,10 @@ def synthesize_one(client, args, appid):
     path.write_text(json.dumps(verdict, indent=2, ensure_ascii=False),
                     encoding="utf-8")
     print("  -> %s  [%s] %s" % (path, verdict["verdict"]["word"],
-                                verdict["verdict"]["for_whom"]))
+                                verdict["verdict"]["tagline"]))
+    for field, glyph in (("for_you_if", "+"), ("not_for_you_if", "-")):
+        for s in verdict["verdict"][field]:
+            print("       %s %s" % (glyph, s))
     return verdict
 
 

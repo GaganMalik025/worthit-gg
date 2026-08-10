@@ -8,7 +8,6 @@ export interface CatalogEntry {
   appid: number;
   game_name: string;
   word: string;
-  for_whom: string;
   pool_n: number;
   split_bar: { bucket: string; pct_positive: number; muted: boolean }[];
 }
@@ -27,7 +26,8 @@ export async function catalog(): Promise<CatalogEntry[]> {
         appid: Number(v.appid),
         game_name: v.game_name,
         word: v.verdict.word,
-        for_whom: v.verdict.for_whom,
+        // no header prose here on purpose: the home grid is poster + title +
+        // chip (DESIGN.md), so carrying it would be a field nothing renders
         pool_n: v.footer?.pool_n ?? 0,
         split_bar: (v.split_bar ?? []).map((b: CatalogEntry["split_bar"][0]) => ({
           bucket: b.bucket, pct_positive: b.pct_positive, muted: b.muted,

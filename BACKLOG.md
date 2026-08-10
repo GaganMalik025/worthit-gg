@@ -120,6 +120,47 @@ site can authenticate, or the runner reporting spend through an artifact the sit
 already reads. Until then the honest framing is that the reserve is measured in
 *reservations*, not requests.
 
+2026-08-10 | **Re-ingest Hades (1145360) and Hollow Knight (367520) to get the
+new tagline / for-you-if / not-for-you-if boxes** | build, header split | These
+two are the only titles in the 133-title catalog still rendering the pre-split
+header, through the legacy shim in `site/lib/verdict.ts`. Both were produced by
+**live generation on the CI runner**, and `data/raw/`, `data/filtered/` and
+`data/claims/` are gitignored except the five seeds — so their extraction
+artifacts only ever existed on the runner and are not on the dev machine. The
+header rollout was verdict-stage-only by design (claims and citations untouched,
+so the banked 4.4/4.5 citation audits still hold), and re-synthesis reads
+`data/claims/<appid>.json`, which for these two does not exist:
+`FileNotFoundError: 'data/claims/1145360.json'`. Fixing it means a **full
+re-ingest** — ingest + filter + extract + verdict, ~5–6 Gemini calls each — which
+produces **new citations**, and new citations mean a fresh QR-4 gate and a fresh
+manual 4.4 audit for both titles. That is a real cost for a cosmetic gain on two
+pages that already render correctly, so it was not blocking the rollout. Do it
+when either title is next re-ingested for another reason, or as a batch with the
+next catalog expansion. Until then the legacy shim is load-bearing and must not
+be removed — it is what keeps these two from rendering `undefined` where the
+tagline goes.
+
+2026-08-10 | **Single-stage runs bypass the ledger charge entirely** | build,
+quota discipline | `generate_one.run_single_stage()` charges `live_quota` in the
+**qr4 stage only**, as a delta from the baseline the **ingest** stage writes. A
+full run therefore charges once, correctly, at the end. But a run invoked as
+`--stage verdict` (or `--stage extract`, or any stage in isolation) never reaches
+that branch, so the shared daily counter never learns the spend happened. The
+header rollout hit this at full scale: **170 flash-lite requests spent, ledger
+read 0**, and `batch_remaining` still showed the full 400. Reconciled by hand
+with `live_quota.charge(176, ledger="batch")`, verified against the pacer's
+`requests_today`. This is structural, not a one-off — every future single-stage
+batch run has the same hole, and the failure is silent in the direction that
+matters: the ledger UNDER-reports, so guard 1's reserve can be granted against
+budget that is already spent, which is the exact condition it exists to prevent
+(the opposite of the `EST_COST` entry above, which over-counts and fails safe).
+Fix is one of: charge per stage as each completes; charge unconditionally at the
+start of `run_single_stage` and reconcile at the end; or have the pacer be the
+single source of truth and derive the ledger from it rather than maintaining a
+parallel count. The last is probably right — two counters for one quantity is
+what produced this. Not blocking, because the real Gemini quota still enforces
+itself with a 429 and the ledger resets at midnight Pacific.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for

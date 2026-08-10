@@ -59,6 +59,18 @@ PATTERNS = [
     # fail" was caught).
     (r"\b(?:frequent|infrequent|occasional|widespread|prevalent|commonplace)\b",
      "frequency adjective"),
+    # The persistence forms of the same claim, added after synthesis produced
+    # "constant monetization pushes" and "repeated technical crashes" - both of
+    # which say how OFTEN something happens, from a sample that cannot know it,
+    # and both of which this list waved through while rejecting "occasional".
+    # Same rephrase as always: "reviewers report technical crashes" keeps the
+    # claim and cites the same reviews.
+    (r"\b(?:constant|constantly|repeated|repeatedly|persistent|persistently|"
+     r"continual|continually|regularly|routinely|ongoing)\b",
+     "frequency adjective"),
+    # NOT included: bare "regular" and "routine". Both are ordinary adjectives
+    # in game writing - "regular updates" is a schedule, "routine patrols" is a
+    # description of enemy behaviour - so only the adverb forms are rejected.
     # NOT included: bare "common" and "rare". In game reviews those are usually
     # loot-rarity tiers ("rare materials are hard to farm"), not frequency
     # claims. "commonly" stays banned above.

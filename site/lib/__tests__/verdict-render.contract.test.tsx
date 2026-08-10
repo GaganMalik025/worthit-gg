@@ -119,6 +119,99 @@ describe("verdict render contract: static path === proxied path", () => {
     expect(render(b)).toBe(render(a));
   });
 
+  it("a pre-split verdict renders identically on both paths", async () => {
+    // The header split (tagline + for_you_if + not_for_you_if) replaced a single
+    // for_whom sentence. The `verdicts` branch is append-only and holds copies
+    // written before it, and the PROXIED loader is the one that serves them - so
+    // the shim has to be in normalizeVerdict, where both loaders inherit it, not
+    // in the page. Delete the shim and this pair fails: `undefined` where the
+    // tagline goes, and only on freshly generated titles.
+    const base = JSON.parse(await readRepoFile(`public/verdicts/${APPID}.json`));
+    base.verdict = { word: "Buy", for_whom: "A line from before the split." };
+    const text = JSON.stringify(base);
+    const a = normalizeVerdict(JSON.parse(text));
+    const b = await loadVerdictProxied(
+      APPID,
+      (async () =>
+        new Response(text, {
+          status: 200,
+          headers: { "content-type": "application/json" },
+        })) as unknown as typeof fetch,
+    );
+    expect(b).toEqual(a);
+    expect(render(b)).toBe(render(a));
+    // it degrades to the page it had before: tagline carries the old sentence,
+    // and neither fit box renders rather than rendering empty
+    expect(render(a)).toContain("A line from before the split.");
+    expect(render(a)).not.toContain("For you if");
+    expect(render(a)).not.toContain("undefined");
+  });
+
+  it("a split-header verdict renders both fit boxes on both paths", async () => {
+    // No committed verdict has the new shape yet - the catalog re-synthesis is
+    // what produces it - so the branch that renders the boxes would otherwise
+    // be unreached by every fixture here. That is the precise gap that let an
+    // injected bug through the single-fixture version of this test.
+    const base = JSON.parse(await readRepoFile(`public/verdicts/${APPID}.json`));
+    base.verdict = {
+      word: "Skip",
+      tagline: "Great heroes, rough machine.",
+      for_you_if: ["you are here for the roster", "you play in a stack"],
+      not_for_you_if: ["you want fair matchmaking", "you need stable frames"],
+    };
+    const text = JSON.stringify(base);
+    const a = normalizeVerdict(JSON.parse(text));
+    const b = await loadVerdictProxied(
+      APPID,
+      (async () =>
+        new Response(text, {
+          status: 200,
+          headers: { "content-type": "application/json" },
+        })) as unknown as typeof fetch,
+    );
+    expect(b).toEqual(a);
+    expect(render(b)).toBe(render(a));
+    const html = render(a);
+    expect(html).toContain("Great heroes, rough machine.");
+    expect(html).toContain("For you if");
+    expect(html).toContain("Not for you if");
+    expect(html).toContain("you play in a stack");
+    expect(html).toContain("you need stable frames");
+    // Polarity is never carried by colour alone (DESIGN.md pairing rule).
+    // MATCHED ON THE FULL SPAN, not on the bare glyph: citation metadata
+    // renders "▲ recommends" on every page, so `toContain("▲")` passes with the
+    // fit-box glyph deleted. It did - the assertion was written that way first
+    // and a mutation removing the glyph walked straight through it.
+    expect(html).toContain('<span class="glyph" aria-hidden="true">▲</span>');
+    expect(html).toContain('<span class="glyph" aria-hidden="true">▼</span>');
+  });
+
+  it("renders only the side that has clauses", async () => {
+    // Reachable branch, not a hypothetical: an artifact carrying one list and
+    // not the other must render one box, never an empty panel with a heading
+    // and nothing under it.
+    const base = JSON.parse(await readRepoFile(`public/verdicts/${APPID}.json`));
+    base.verdict = {
+      word: "Buy", tagline: "A farm, and nowhere in particular to be.",
+      for_you_if: ["you like setting your own goals"], not_for_you_if: [],
+    };
+    const text = JSON.stringify(base);
+    const a = normalizeVerdict(JSON.parse(text));
+    const b = await loadVerdictProxied(
+      APPID,
+      (async () =>
+        new Response(text, {
+          status: 200,
+          headers: { "content-type": "application/json" },
+        })) as unknown as typeof fetch,
+    );
+    expect(render(b)).toBe(render(a));
+    const html = render(a);
+    expect(html).toContain("For you if");
+    expect(html).not.toContain("Not for you if");
+    expect(html).not.toContain('<span class="glyph" aria-hidden="true">▼</span>');
+  });
+
   it("renders real evidence, so an empty page cannot pass the comparison", async () => {
     const v = await loadVerdictStatic(APPID, readRepoFile);
     const html = render(v);

@@ -58,10 +58,21 @@ describe("verdictMetadata", () => {
     expect(m.twitter.card).toBe("summary_large_image");
   });
 
-  it("the description is the verdict's own for-whom line", () => {
-    expect(m.openGraph.description).toBe(v.verdict.for_whom);
+  it("the description is the verdict's own tagline", () => {
+    expect(m.openGraph.description).toBe(v.verdict.tagline);
+    expect(m.openGraph.description).toBeTruthy();
     // DESIGN.md voice rule, and it ships to every share surface
     expect(m.openGraph.description).not.toContain("!");
+  });
+
+  it("a pre-split verdict still unfurls with a description, not undefined", () => {
+    // The `verdicts` branch keeps copies written before the header split, and
+    // /api/verdict serves straight off it. An unfurl reading `undefined` would
+    // only ever happen on those, i.e. on the newest titles.
+    const legacy = JSON.parse(raw);
+    legacy.verdict = { word: "Buy", for_whom: "A line from before the split." };
+    const card = verdictMetadata(normalizeVerdict(legacy), 233860);
+    expect(card.openGraph.description).toBe("A line from before the split.");
   });
 
   it("static and proxied loaders produce the SAME card", async () => {

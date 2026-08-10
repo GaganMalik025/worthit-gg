@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fit boxes on a Skip verdict · Marvel Rivals — WorthIt.gg mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<!--
+  WHAT THIS IS
+
+  The fit-polarity tint, on the case it has to survive: a SKIP verdict, with a
+  green-tinted "For you if" box sitting directly under a red SKIP stamp. An
+  isolated swatch cannot answer the only question that matters here - whether
+  the green reads as agreeing with, or softening, the stamp above it - so this
+  renders the real hero: stamp, tagline, both boxes, Split Bar.
+
+  Real data: Marvel Rivals (2767030), the catalog's clearest Skip. Verdict word,
+  cohort rates, pool counts and footer are its actual published verdict JSON.
+  The tagline and the two clause lists are HAND-WRITTEN for this mockup - the
+  pipeline does not emit those fields yet, that is what the change builds. They
+  are drawn from the title's real extracted claims (matchmaking, frame rates,
+  storage, toxicity) and each one passes prevalence_guard.check_claim() and the
+  digit ban, so nothing here is copy the pipeline could not legally produce.
+
+  Every colour below is composited in sRGB and stated as its rendered hex, not
+  as an rgba() the eye has to imagine. See the measurement table at the bottom.
+-->
+<style>
+:root{
+  --bg:#10141C; --surface:#1A2029; --surface-2:#232B37;
+  --text:#E8ECF1; --text-dim:#8B95A5;
+  --buy:#4ADE80; --wait:#FBBF24; --skip:#F87171; --link:#7DD3FC;
+  --hairline:rgba(255,255,255,0.06);
+
+  /* NEW: fit polarity.
+     CHOSEN DIRECTLY, NOT MIXED. The first pass defined a mid-tone accent and
+     laid it over --surface at 8% alpha. That failed for a reason worth keeping
+     written down: --surface is itself a saturated blue (216deg), so 8% of a
+     desaturated rose over it composites to #272630 - hue 248deg, a VIOLET grey.
+     It was never going to read as "reddish"; it read as "slightly purple". The
+     yes side drifted the same way, 169deg -> 202deg, teal rather than green.
+     Raising the alpha until the hue survived pushed --text-dim below 4.5:1.
+     So the rendered values are picked in HSL directly and the blue base does
+     not get a vote. */
+  --fit-yes-wash:#1F2E24;     /* H140 S20 L15 */
+  --fit-yes-rail:#39604A;     /* H146 S26 L30 */
+  --fit-yes-line:#2E4235;     /* H142 S18 L22 */
+  --fit-no-wash:#312221;      /* H  6 S20 L16 */
+  --fit-no-rail:#6F453E;      /* H  8 S28 L34 */
+  --fit-no-line:#493431;      /* H  7 S20 L24 */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;
+  color:var(--text);padding:40px 24px 80px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px}
+h1,h2,h3,.stamp{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;
+  letter-spacing:-0.02em;line-height:1.1}
+
+/* ---- mockup scaffolding (NOT part of the design) ---- */
+.sheet{max-width:1180px;margin:0 auto}
+.sheet > h1{font-size:24px;margin-bottom:8px}
+.sheet > .lede{color:var(--text-dim);max-width:70ch;margin-bottom:40px}
+.panels{display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start}
+.panel{background:rgba(255,255,255,.015);border:1px dashed rgba(255,255,255,.10);
+  border-radius:16px;padding:24px}
+.panel > .cap{font-family:"IBM Plex Mono",monospace;font-size:12px;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--text-dim);
+  margin-bottom:20px}
+.w-desktop{width:680px}
+.w-mobile{width:360px}
+
+/* ---- hero: ported from mockups/kenshi-verdict.html, unchanged ---- */
+.hero h1{font-size:32px;margin-bottom:16px}
+.stamp{display:inline-block;padding:6px 18px;border-radius:8px;font-size:24px;
+  vertical-align:middle}
+.stamp.skip{color:var(--skip);border:1px solid rgba(248,113,113,0.2)}
+.stamp.buy{color:var(--buy);border:1px solid rgba(74,222,128,0.2)}
+
+/* ---- NEW: tagline sits beside the stamp, no longer a qualifier sentence ---- */
+.stamp-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.tagline{font-size:16px;color:var(--text);flex:1 1 280px;min-width:0}
+
+/* ---- NEW: the two fit boxes ---- */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.fit{border-radius:12px;padding:18px 20px;
+  border:1px solid var(--fit-yes-line);border-left:3px solid var(--fit-yes-rail);
+  background:var(--fit-yes-wash)}
+.fit.no{border-color:var(--fit-no-line);border-left-color:var(--fit-no-rail);
+  background:var(--fit-no-wash)}
+/* heading reuses the existing .theme h3 role exactly: 14px, uppercase, .08em,
+   --text-dim. NOTHING here is coloured text - that is the single biggest
+   separation from the stamp, where the word itself carries the colour. */
+.fit h3{font-family:Inter,sans-serif;font-weight:600;font-size:14px;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);
+  display:flex;align-items:center;gap:8px;margin-bottom:12px}
+/* the colour-blind carrier: under deuteranopia the two washes converge and
+   this glyph is the whole signal. */
+.fit h3 .glyph{font-size:12px;line-height:1}
+.fit ul{list-style:none}
+.fit li{padding:6px 0;font-size:16px;line-height:1.5}
+.fit li + li{border-top:1px solid rgba(255,255,255,.05)}
+@media (max-width:520px){ .fit-grid{grid-template-columns:1fr} }
+.w-mobile .fit-grid{grid-template-columns:1fr}
+
+/* ---- split bar: ported unchanged, so the boxes are judged in real company ---- */
+.spine{margin-top:32px}
+.spine h2{font-size:20px}
+.spine .sub{color:var(--text-dim);font-size:14px;margin:4px 0 16px}
+.bar-row{display:grid;grid-template-columns:190px 1fr 64px;gap:12px;
+  align-items:center;margin-bottom:12px}
+.bar-label{font-size:14px}
+.bar-label .mono{color:var(--text-dim)}
+.bar-track{height:16px;border-radius:999px;overflow:hidden;background:var(--surface)}
+.bar-fill{display:flex;height:100%;width:100%}
+.bar-pos{background:var(--buy);height:100%}
+.bar-neg{background:var(--skip);height:100%}
+.bar-pct{text-align:right}
+.w-mobile .bar-row{grid-template-columns:1fr;gap:4px;margin-bottom:16px}
+.w-mobile .bar-pct{text-align:left}
+
+/* ---- measurement table ---- */
+.measure{margin-top:56px;max-width:900px}
+.measure h2{font-size:20px;margin-bottom:16px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--hairline);
+  vertical-align:middle}
+th{color:var(--text-dim);font-weight:600;font-size:12px;text-transform:uppercase;
+  letter-spacing:.08em}
+td.mono{font-family:"IBM Plex Mono",monospace}
+.chipswatch{display:inline-block;width:56px;height:22px;border-radius:6px;
+  vertical-align:middle;margin-right:10px;border:1px solid rgba(255,255,255,.10)}
+.note{color:var(--text-dim);font-size:14px;margin-top:16px;max-width:80ch}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <h1>Fit boxes, tinted, on a Skip verdict</h1>
+  <p class="lede">Marvel Rivals — real verdict word, real cohort rates, real pool
+  counts. The tagline and the two clause lists are hand-written for this mockup
+  (the pipeline does not emit those fields yet) from the title's own extracted
+  claims. The question this page exists to answer: does the green box read as
+  arguing with the red stamp directly above it?</p>
+
+  <div class="panels">
+
+    <!-- ============ desktop ============ -->
+    <section class="panel w-desktop">
+      <div class="cap">1 · desktop, 680px reading column</div>
+      <div class="hero">
+        <h1>Marvel Rivals</h1>
+        <div class="stamp-row">
+          <span class="stamp skip">SKIP</span>
+          <p class="tagline">Great heroes, rough machine — the fights look
+            better than they run.</p>
+        </div>
+
+        <div class="fit-grid">
+          <div class="fit yes">
+            <h3><span class="glyph" aria-hidden="true">▲</span> For you if</h3>
+            <ul>
+              <li>you&rsquo;re here for the roster and the spectacle, not the ladder</li>
+              <li>you play in a stack that can absorb a bad match</li>
+              <li>you want to try it free and walk away unbothered</li>
+            </ul>
+          </div>
+          <div class="fit no">
+            <h3><span class="glyph" aria-hidden="true">▼</span> Not for you if</h3>
+            <ul>
+              <li>you want ranked matches that feel fairly matched</li>
+              <li>you need stable frame rates on release hardware</li>
+              <li>you are sensitive to toxic voice and text chat</li>
+            </ul>
+          </div>
+        </div>
+
+        <section class="spine">
+          <h2>How satisfaction changes with playtime</h2>
+          <p class="sub">Percent of reviewers who&rsquo;d recommend it, grouped by
+            how long they played before reviewing.</p>
+          <div class="bar-row">
+            <span class="bar-label">&lt;2h refund window
+              <span class="mono">· based on 54 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:29.6%"></span>
+              <span class="bar-neg" style="width:70.4%"></span></span></span>
+            <span class="bar-pct mono">29.6%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">2-20h
+              <span class="mono">· based on 476 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:70.4%"></span>
+              <span class="bar-neg" style="width:29.6%"></span></span></span>
+            <span class="bar-pct mono">70.4%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">20-100h
+              <span class="mono">· based on 568 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:63.9%"></span>
+              <span class="bar-neg" style="width:36.1%"></span></span></span>
+            <span class="bar-pct mono">63.9%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">100h+
+              <span class="mono">· based on 1167 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:51.7%"></span>
+              <span class="bar-neg" style="width:48.3%"></span></span></span>
+            <span class="bar-pct mono">51.7%</span>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============ 360px ============ -->
+    <section class="panel w-mobile">
+      <div class="cap">2 · 360px</div>
+      <div class="hero">
+        <h1 style="font-size:26px">Marvel Rivals</h1>
+        <div class="stamp-row">
+          <span class="stamp skip">SKIP</span>
+        </div>
+        <p class="tagline" style="margin-top:16px">Great heroes, rough machine —
+          the fights look better than they run.</p>
+        <div class="fit-grid">
+          <div class="fit yes">
+            <h3><span class="glyph" aria-hidden="true">▲</span> For you if</h3>
+            <ul>
+              <li>you&rsquo;re here for the roster and the spectacle, not the ladder</li>
+              <li>you play in a stack that can absorb a bad match</li>
+              <li>you want to try it free and walk away unbothered</li>
+            </ul>
+          </div>
+          <div class="fit no">
+            <h3><span class="glyph" aria-hidden="true">▼</span> Not for you if</h3>
+            <ul>
+              <li>you want ranked matches that feel fairly matched</li>
+              <li>you need stable frame rates on release hardware</li>
+              <li>you are sensitive to toxic voice and text chat</li>
+            </ul>
+          </div>
+        </div>
+        <section class="spine">
+          <h2 style="font-size:18px">How satisfaction changes with playtime</h2>
+          <p class="sub">Percent of reviewers who&rsquo;d recommend it, grouped by
+            how long they played before reviewing.</p>
+          <div class="bar-row">
+            <span class="bar-label">&lt;2h refund window
+              <span class="mono">· based on 54 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:29.6%"></span>
+              <span class="bar-neg" style="width:70.4%"></span></span></span>
+            <span class="bar-pct mono">29.6%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">100h+
+              <span class="mono">· based on 1167 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:51.7%"></span>
+              <span class="bar-neg" style="width:48.3%"></span></span></span>
+            <span class="bar-pct mono">51.7%</span>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============ deuteranopia ============ -->
+    <section class="panel w-desktop" style="filter:url(#deuter)">
+      <div class="cap">3 · deuteranopia simulation (same markup, filtered)</div>
+      <div class="hero">
+        <h1>Marvel Rivals</h1>
+        <div class="stamp-row">
+          <span class="stamp skip">SKIP</span>
+          <p class="tagline">Great heroes, rough machine — the fights look
+            better than they run.</p>
+        </div>
+        <div class="fit-grid">
+          <div class="fit yes">
+            <h3><span class="glyph" aria-hidden="true">▲</span> For you if</h3>
+            <ul>
+              <li>you&rsquo;re here for the roster and the spectacle, not the ladder</li>
+              <li>you play in a stack that can absorb a bad match</li>
+              <li>you want to try it free and walk away unbothered</li>
+            </ul>
+          </div>
+          <div class="fit no">
+            <h3><span class="glyph" aria-hidden="true">▼</span> Not for you if</h3>
+            <ul>
+              <li>you want ranked matches that feel fairly matched</li>
+              <li>you need stable frame rates on release hardware</li>
+              <li>you are sensitive to toxic voice and text chat</li>
+            </ul>
+          </div>
+        </div>
+        <section class="spine">
+          <h2>How satisfaction changes with playtime</h2>
+          <p class="sub">Percent of reviewers who&rsquo;d recommend it, grouped by
+            how long they played before reviewing.</p>
+          <div class="bar-row">
+            <span class="bar-label">&lt;2h refund window
+              <span class="mono">· based on 54 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:29.6%"></span>
+              <span class="bar-neg" style="width:70.4%"></span></span></span>
+            <span class="bar-pct mono">29.6%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">100h+
+              <span class="mono">· based on 1167 reviews</span></span>
+            <span class="bar-track"><span class="bar-fill">
+              <span class="bar-pos" style="width:51.7%"></span>
+              <span class="bar-neg" style="width:48.3%"></span></span></span>
+            <span class="bar-pct mono">51.7%</span>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ============ the control: same boxes under a BUY ============ -->
+    <section class="panel w-desktop">
+      <div class="cap">4 · control · the identical boxes under a BUY stamp</div>
+      <div class="hero">
+        <h1>Stardew Valley</h1>
+        <div class="stamp-row">
+          <span class="stamp buy">BUY</span>
+          <p class="tagline">A farm, a fishing rod, and nowhere in particular to be.</p>
+        </div>
+        <div class="fit-grid">
+          <div class="fit yes">
+            <h3><span class="glyph" aria-hidden="true">▲</span> For you if</h3>
+            <ul>
+              <li>you want a game you can put down for a month and pick back up</li>
+              <li>you like setting your own goals</li>
+            </ul>
+          </div>
+          <div class="fit no">
+            <h3><span class="glyph" aria-hidden="true">▼</span> Not for you if</h3>
+            <ul>
+              <li>you want direction and a clear ending</li>
+              <li>you bounce off pixel art</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="note">The tint is identical on both stamps. If it were reading as
+      a second verdict, this panel and panel 1 would feel different — that is the
+      comparison to make.</p>
+    </section>
+
+  </div>
+
+  <!-- ============ measurements ============ -->
+  <section class="measure">
+    <h2>What is actually on screen</h2>
+    <table>
+      <tr><th>element</th><th>rendered</th><th>hue</th><th>saturation</th><th>ΔE vs</th></tr>
+      <tr>
+        <td><span class="chipswatch" style="background:#F87171"></span>SKIP stamp — the <em>word</em></td>
+        <td class="mono">#F87171</td><td class="mono">0°</td><td class="mono">91%</td>
+        <td class="mono">—</td>
+      </tr>
+      <tr>
+        <td><span class="chipswatch" style="background:#4ADE80"></span>BUY stamp — the <em>word</em></td>
+        <td class="mono">#4ADE80</td><td class="mono">142°</td><td class="mono">69%</td>
+        <td class="mono">—</td>
+      </tr>
+      <tr>
+        <td><span class="chipswatch" style="background:#1F2E24"></span>For-you-if wash</td>
+        <td class="mono">#1F2E24</td><td class="mono">140°</td><td class="mono">20%</td>
+        <td class="mono">85 from --buy</td>
+      </tr>
+      <tr>
+        <td><span class="chipswatch" style="background:#312221"></span>Not-for-you-if wash</td>
+        <td class="mono">#312221</td><td class="mono">6°</td><td class="mono">20%</td>
+        <td class="mono">70 from --skip</td>
+      </tr>
+      <tr>
+        <td><span class="chipswatch" style="background:#39604A"></span>For-you-if rail (3px)</td>
+        <td class="mono">#39604A</td><td class="mono">146°</td><td class="mono">26%</td>
+        <td class="mono">63 from --buy</td>
+      </tr>
+      <tr>
+        <td><span class="chipswatch" style="background:#6F453E"></span>Not-for-you-if rail (3px)</td>
+        <td class="mono">#6F453E</td><td class="mono">8°</td><td class="mono">28%</td>
+        <td class="mono">48 from --skip</td>
+      </tr>
+      <tr>
+        <td><span class="chipswatch" style="background:#1A2029"></span>--surface (untinted card)</td>
+        <td class="mono">#1A2029</td><td class="mono">216°</td><td class="mono">22%</td>
+        <td class="mono">15.6 / 13.1 from the washes</td>
+      </tr>
+    </table>
+    <p class="note">
+      ΔE is CIE76 in Lab. 15.6 and 13.1 against <span class="mono">--surface</span>
+      put the tint far past the ~2.3 just-noticeable difference, so it reads as a
+      tinted panel rather than a guess; ΔE 16.0 between the two washes means the
+      boxes are told apart by tint before the glyph is consulted. 85 and 70
+      against the stamp colours are the numbers that matter for the constraint:
+      what is on screen is nowhere near the colour it might be confused with,
+      and even the rails — the strongest expression of the tint — sit 63 and 48
+      away. Text contrast on the washes: <span class="mono">--text</span> 12.0:1
+      and 12.8:1, <span class="mono">--text-dim</span> 4.7:1 and 5.0:1 — AA
+      clear, the dim heading included.
+    </p>
+    <p class="note">
+      The hue stays in the green/red family on purpose — that is what makes the
+      polarity legible without a caption. The separation from the stamp is
+      carried by the other two axes: <strong>saturation</strong> (69%/91% on the
+      stamp against 20% here) and <strong>form</strong> — the stamp colours a
+      bold 24px <em>word</em> inside a bordered chip on a transparent
+      background; the boxes colour only a background wash and a rail, and never
+      touch a character of text. Panel 3 is the check that none of this leans on
+      hue alone: under deuteranopia the two washes stay ΔE 11.1 apart and the
+      rails 29.9, and the ▲ / ▼ glyphs carry the rest.
+    </p>
+  </section>
+</div>
+
+<!-- Viénot-style deuteranopia matrix, applied in linearRGB (the SVG filter
+     default), which is where colour-vision simulation is defined. An
+     approximation, and enough for the only question asked of it: whether the
+     two boxes stay distinguishable when the green/red channel separation is
+     gone. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="deuter">
+    <feColorMatrix type="matrix" values="
+      0.625 0.375 0 0 0
+      0.700 0.300 0 0 0
+      0     0.300 0.7 0 0
+      0     0     0   1 0"/>
+  </filter>
+</svg>
+</body>
+</html>

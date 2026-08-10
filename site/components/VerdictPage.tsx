@@ -31,15 +31,56 @@ export const THEME_LABEL: Record<string, string> = {
   other: "Other",
 };
 
+/**
+ * One side of the fit split.
+ *
+ * Renders nothing at all for an empty list - which is what a pre-split verdict
+ * coming off the `verdicts` branch normalizes to, so those pages keep the shape
+ * they had rather than showing an empty box.
+ *
+ * The polarity is carried by the tint AND the glyph, never by colour alone
+ * (DESIGN.md). Nothing here colours text: the heading stays --text-dim, because
+ * a coloured word is the verdict stamp's job and the fit boxes must not be read
+ * as a second verdict.
+ */
+function FitBox({ kind, title, clauses }: {
+  kind: "yes" | "no";
+  title: string;
+  clauses: string[];
+}) {
+  if (!clauses.length) return null;
+  return (
+    <div className={`fit ${kind}`}>
+      <h3>
+        <span className="glyph" aria-hidden="true">{kind === "yes" ? "▲" : "▼"}</span>{" "}
+        {title}
+      </h3>
+      <ul>
+        {clauses.map((c) => <li key={c}>{c}</li>)}
+      </ul>
+    </div>
+  );
+}
+
 export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
+  const fit = v.verdict.for_you_if.length || v.verdict.not_for_you_if.length;
   return (
     <div className="layout">
       <header className="hero-copy">
       <h1>{v.game_name}</h1>
-      <span className={`stamp ${v.verdict.word.toLowerCase()}`}>
-        {v.verdict.word.toUpperCase()}
-      </span>
-      <p className="for-whom">{v.verdict.for_whom}</p>
+      <div className="stamp-row">
+        <span className={`stamp ${v.verdict.word.toLowerCase()}`}>
+          {v.verdict.word.toUpperCase()}
+        </span>
+        <p className="tagline">{v.verdict.tagline}</p>
+      </div>
+
+      {fit ? (
+        <div className="fit-grid">
+          <FitBox kind="yes" title="For you if" clauses={v.verdict.for_you_if} />
+          <FitBox kind="no" title="Not for you if" clauses={v.verdict.not_for_you_if} />
+        </div>
+      ) : null}
 
       <section className="spine" aria-label="Sentiment by playtime cohort">
         <h2>How satisfaction changes with playtime</h2>

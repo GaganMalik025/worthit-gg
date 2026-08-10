@@ -316,8 +316,30 @@ def test_prompt_names_every_word_the_guard_rejects():
     missing = [w for w in prevalence_guard.banned_words() if w not in prompt]
     check("every guard-rejected word appears in the prompt", not missing,
           missing)
-    for word in ("occasional", "frequent", "widespread", "consensus"):
+    for word in ("occasional", "frequent", "widespread", "consensus",
+                 # the persistence forms, from real synthesis output: ESO wrote
+                 # "constant monetization pushes" and "repeated technical
+                 # crashes" past a list that already rejected "occasional"
+                 "constant", "repeated", "persistent", "ongoing"):
         check("  frequency/consensus word %r is named" % word, word in prompt)
+    for phrase in ("constant monetization pushes",
+                   "repeated technical crashes",
+                   "persistent server problems",
+                   "continually reworked systems",
+                   "regularly broken matchmaking",
+                   "routinely dropped frames",
+                   "ongoing balance problems"):
+        check("  %r is rejected" % phrase, prevalence_guard.check_claim(phrase),
+              phrase)
+    # ordinary game writing that must survive: these are schedules and
+    # descriptions, not rates, and banning them would cost real claims
+    for phrase in ("regular updates from the studio",
+                   "routine patrols around the base",
+                   "rare crafting materials are hard to farm",
+                   "a common enemy type"):
+        check("  %r still passes" % phrase,
+              not prevalence_guard.check_claim(phrase),
+              str(prevalence_guard.check_claim(phrase)))
     check("every listed word really is rejected by the guard",
           all(prevalence_guard.check_claim("the game has %s problems" % w)
               or prevalence_guard.check_claim("%s players report problems" % w)
@@ -636,18 +658,216 @@ def test_verdict_word_is_not_model_supplied():
 
     # check_response takes the COMPUTED word; a model-supplied one is ignored
     cohorts = _cohorts(early=95.0, mid=95.0, veteran=95.0)
-    parsed = {"verdict": "Skip",                 # would once have been honoured
-              "for_whom": "A specific reader who wants this.",
-              "cohorts": [], "flag_sentences": []}
+    parsed = _header(verdict="Skip")             # would once have been honoured
     fails = sy.check_response(parsed, cohorts, [], "Buy")
     check("a stray verdict field in the response changes nothing",
-          not [f for f in fails if "verdict" in f and "for_whom" not in f], str(fails))
+          not [f for f in fails if "verdict" in f], str(fails))
 
-    # the for-whom guard now validates against the computed word
-    parsed["for_whom"] = "Skip this unless you want a punishing sandbox."
+    # the contradiction guard now validates the tagline against the computed word
+    parsed = _header(tagline="Skip this unless you want a punishing sandbox.")
     fails = sy.check_response(parsed, cohorts, [], "Buy")
-    check("for-whom contradicting the COMPUTED word is still rejected",
-          any(f.startswith("for_whom_contradicts_verdict") for f in fails), str(fails))
+    check("a tagline contradicting the COMPUTED word is still rejected",
+          any(f.startswith("tagline_contradicts_verdict") for f in fails), str(fails))
+
+
+# ------------------------------------------------- the three-part header
+
+def _header(**kw):
+    """A response that passes every header guard, so a test can break one thing.
+
+    Deliberately built from copy that is legal under the OTHER rules too - no
+    digits, nothing the prevalence guard rejects - because a fixture that trips
+    an unrelated check makes every assertion below ambiguous.
+    """
+    parsed = {
+        "tagline": "Great heroes, rough machine - the fights look better "
+                   "than they run.",
+        "for_you_if": ["you are here for the roster, not the ladder",
+                       "you play in a stack that can absorb a bad match"],
+        "not_for_you_if": ["you want ranked matches that feel fairly matched",
+                           "you need stable frame rates on release hardware"],
+        "cohorts": [], "flag_sentences": [],
+    }
+    parsed.update(kw)
+    return parsed
+
+
+def test_header_shape_is_bounded_in_code():
+    print("\nheader: the three parts, and the bounds on them")
+    import synthesize as sy
+    cohorts = _cohorts(early=95.0, mid=95.0, veteran=95.0)
+    fails = lambda p: sy.check_response(p, cohorts, [], "Wait")   # noqa: E731
+
+    check("the baseline fixture passes cleanly", not fails(_header()),
+          str(fails(_header())))
+
+    check("schema asks for all three parts",
+          set(sy.VERDICT_SCHEMA["required"]) >=
+          {"tagline", "for_you_if", "not_for_you_if"})
+    check("the old single field is gone from the schema",
+          "for_whom" not in sy.VERDICT_SCHEMA["properties"])
+
+    check("a missing tagline is rejected",
+          "missing_tagline" in fails(_header(tagline="   ")))
+
+    # The tagline sits beside the stamp, so its length is a layout constraint.
+    # The real 108-character line that prompted the cap, from the first A/B run:
+    long_tag = ("Nostalgic streets wrapped in modern friction - classic "
+                "open-world scale paired with rough technical execution.")
+    check("a tagline over the cap is rejected",
+          any(f.startswith("tagline_too_long") for f in fails(_header(tagline=long_tag))),
+          "%d chars" % len(long_tag))
+    check("a tagline exactly at the cap is accepted",
+          not [f for f in fails(_header(tagline="x" * sy.TAGLINE_MAX_CHARS))
+               if f.startswith("tagline_too_long")])
+
+    # bounds, from both sides of each edge
+    for field in ("for_you_if", "not_for_you_if"):
+        one = ["you like it"]
+        check("%s with one clause is rejected" % field,
+              any(f.startswith("%s_out_of_bounds" % field)
+                  for f in fails(_header(**{field: one}))))
+        check("%s with two clauses is accepted" % field,
+              not [f for f in fails(_header(**{field: one * 2}))
+                   if f.startswith("%s_out_of_bounds" % field)])
+        check("%s with four clauses is accepted" % field,
+              not [f for f in fails(_header(**{field: one * 4}))
+                   if f.startswith("%s_out_of_bounds" % field)])
+        check("%s with five clauses is rejected" % field,
+              any(f.startswith("%s_out_of_bounds" % field)
+                  for f in fails(_header(**{field: one * 5}))))
+
+    # BOTH lists are required on a Skip too. A Skip with an empty "for you if"
+    # is the failure mode this whole split was meant to avoid: the product's
+    # thesis is that a Skip still has people it suits.
+    fs = sy.check_response(_header(for_you_if=[]), cohorts, [], "Skip")
+    check("a Skip may not ship with an empty for_you_if",
+          any(f.startswith("for_you_if_out_of_bounds") for f in fs), str(fs))
+
+    long_clause = "you want " + "a very long run-on clause that keeps going " * 3
+    check("a clause over the length cap is rejected",
+          any(f.startswith("fit_clause_too_long")
+              for f in fails(_header(for_you_if=["you like it", long_clause]))))
+    check("a clause exactly at the cap is accepted",
+          not [f for f in fails(_header(
+                  for_you_if=["x" * sy.CLAUSE_MAX_CHARS, "you like it"]))
+               if f.startswith("fit_clause_too_long")])
+    check("an empty clause is rejected",
+          any(f.startswith("empty_fit_clause")
+              for f in fails(_header(not_for_you_if=["you want direction", " "]))))
+    check("the same clause on both sides is rejected",
+          any(f.startswith("duplicate_fit_clause")
+              for f in fails(_header(for_you_if=["you like pixel art", "you like it"],
+                                     not_for_you_if=["You like pixel art.",
+                                                     "you want direction"]))))
+
+
+def test_header_may_not_argue_with_the_computed_word():
+    print("\nheader: contradiction, per field, per word")
+    import synthesize as sy
+    cohorts = _cohorts(early=95.0, mid=95.0, veteran=95.0)
+
+    # THE ASYMMETRY IS THE DESIGN. Under a Skip, for_you_if exists to say who
+    # the game would still suit; only the DIRECTIVE form is an overturned
+    # verdict. The mirror applies to not_for_you_if under a Buy. Applying both
+    # patterns to both lists would ban the sections' own purpose.
+    skip_pitch = _header(for_you_if=["you should buy it anyway",
+                                     "you like the roster"])
+    fs = sy.check_response(skip_pitch, cohorts, [], "Skip")
+    check("'you should buy it anyway' in for_you_if is rejected under Skip",
+          any(f.startswith("fit_list_contradicts_verdict:for_you_if") for f in fs),
+          str(fs))
+    fs = sy.check_response(skip_pitch, cohorts, [], "Wait")
+    check("the same clause is not policed under Wait",
+          not [f for f in fs if f.startswith("fit_list_contradicts_verdict")], str(fs))
+
+    buy_bail = _header(not_for_you_if=["skip it if you dislike pixel art",
+                                       "you want direction"])
+    fs = sy.check_response(buy_bail, cohorts, [], "Buy")
+    check("'skip it' in not_for_you_if is rejected under Buy",
+          any(f.startswith("fit_list_contradicts_verdict:not_for_you_if")
+              for f in fs), str(fs))
+
+    # EXACTLY ONE LIST IS POLICED PER WORD, and these are the cases that prove
+    # it. Under a Buy the risky list is not_for_you_if; for_you_if is left
+    # alone, and has to be, or a clause describing a reader who "avoids this
+    # genre" gets read as the model overturning the stamp. A first pass asserted
+    # the agreeing-language direction instead, and a guard applying both
+    # patterns to both lists walked straight through it - found by mutation, not
+    # by reading.
+    fs = sy.check_response(_header(for_you_if=["you avoid this genre as a rule",
+                                               "you like the roster"]),
+                           cohorts, [], "Buy")
+    check("for_you_if is not policed under Buy", not fs, str(fs))
+    fs = sy.check_response(_header(not_for_you_if=["you want to buy it for the story",
+                                                   "you bounce off pixel art"]),
+                           cohorts, [], "Skip")
+    check("not_for_you_if is not policed under Skip", not fs, str(fs))
+
+    # ...and the plain clause form survives on both sides, which is the point
+    ok = _header(for_you_if=["you want a punishing sandbox", "you like the roster"],
+                 not_for_you_if=["you want direction", "you bounce off pixel art"])
+    check("plain fit clauses pass under Skip",
+          not sy.check_response(ok, cohorts, [], "Skip"),
+          str(sy.check_response(ok, cohorts, [], "Skip")))
+    check("plain fit clauses pass under Buy",
+          not sy.check_response(ok, cohorts, [], "Buy"),
+          str(sy.check_response(ok, cohorts, [], "Buy")))
+
+
+def test_friction_is_a_condition_only_below_a_heading_that_says_so():
+    print("\nheader: friction as a condition - banned in the tagline, fine in a list")
+    import synthesize as sy
+    cohorts = _cohorts(early=95.0, mid=95.0, veteran=95.0)
+    fails = lambda p: sy.check_response(p, cohorts, [], "Wait")   # noqa: E731
+
+    for phrasing in ("Suits players willing to tolerate the launcher.",
+                     "A deep shooter, provided you accept the account signup.",
+                     "Good, though you must tolerate a third-party launcher."):
+        check("tagline: %r rejected" % phrasing[:38],
+              "tagline_frames_friction_as_a_condition" in fails(_header(tagline=phrasing)),
+              str(fails(_header(tagline=phrasing))))
+
+    # THE RESOLUTION OF THE OLD TENSION: the identical words are legal in the
+    # list, because the heading above them already tells the reader it is a
+    # condition. Nothing here may fire.
+    conditional = _header(not_for_you_if=["you will not install a third-party launcher",
+                                          "you must accept an always-online requirement"])
+    check("the same condition is legal inside not_for_you_if",
+          not fails(conditional), str(fails(conditional)))
+
+
+def test_prose_sweep_covers_every_new_field():
+    print("\nheader: invariant 11 and 13 reach the tagline AND both lists")
+    import synthesize as sy
+    cohorts = _cohorts(early=95.0, mid=95.0, veteran=95.0)
+    fails = lambda p: sy.check_response(p, cohorts, [], "Wait")   # noqa: E731
+
+    # THE EASIEST GUARD TO LOSE IN THIS CHANGE. The sweep used to read one
+    # field. Splitting that field into three without extending it would leave
+    # every check below passing - on prose nothing sends them any more.
+    check("a digit in the tagline is rejected (invariant 13)",
+          any(f.startswith("digit_in_prose:tagline")
+              for f in fails(_header(tagline="Two hundred heroes, 3 of them good."))))
+    check("a digit in a for_you_if clause is rejected",
+          any(f.startswith("digit_in_prose:for_you_if[1]")
+              for f in fails(_header(for_you_if=["you like the roster",
+                                                 "you have 100 gigabytes free"]))))
+    check("a digit in a not_for_you_if clause is rejected",
+          any(f.startswith("digit_in_prose:not_for_you_if[0]")
+              for f in fails(_header(not_for_you_if=["you have under 50 hours to give",
+                                                     "you want direction"]))))
+    check("prevalence language in the tagline is rejected (invariant 11)",
+          any(f.startswith("prevalence:tagline")
+              for f in fails(_header(tagline="Most players bounce off the tutorial."))))
+    check("prevalence language in a for_you_if clause is rejected",
+          any(f.startswith("prevalence:for_you_if[0]")
+              for f in fails(_header(for_you_if=["you agree with the majority of players",
+                                                 "you like the roster"]))))
+    check("prevalence language in a not_for_you_if clause is rejected",
+          any(f.startswith("prevalence:not_for_you_if[1]")
+              for f in fails(_header(not_for_you_if=["you want direction",
+                                                     "few players finish it"]))))
 
 
 # ------------------------------------------------- claim sourcing balance
@@ -800,6 +1020,10 @@ if __name__ == "__main__":
     test_verdict_word_boundaries()
     test_verdict_mean_is_pool_weighted_and_floored()
     test_verdict_word_is_not_model_supplied()
+    test_header_shape_is_bounded_in_code()
+    test_header_may_not_argue_with_the_computed_word()
+    test_friction_is_a_condition_only_below_a_heading_that_says_so()
+    test_prose_sweep_covers_every_new_field()
     test_claim_balance_metric_counts_sources_not_claims()
     test_claim_balance_ignores_cohorts_too_small_to_judge()
     test_publish_never_replaces_newer_with_older()

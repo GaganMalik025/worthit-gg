@@ -34,11 +34,15 @@ export const HEADER = { width: 460, height: 215 };
  * is the only way the two paths cannot drift apart.
  */
 export function verdictMetadata(
-  v: { game_name: string; verdict: { word: string; for_whom: string } },
+  v: { game_name: string; verdict: { word: string; tagline: string } },
   appid: string | number,
 ) {
   const title = `${v.game_name}: ${v.verdict.word} — WorthIt.gg`;
-  const description = v.verdict.for_whom;
+  // The tagline, not the fit clauses. An unfurl gets one line, and a line about
+  // the game travels better in a Reddit comment than a list of audience
+  // conditions - which would also arrive stripped of the headings that make
+  // them honest.
+  const description = v.verdict.tagline;
   const url = `${SITE_URL}/verdict/${appid}`;
   const images = [{
     url: `${CDN}/${appid}/header.jpg`,

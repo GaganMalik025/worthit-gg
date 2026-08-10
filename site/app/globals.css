@@ -3,6 +3,16 @@
   --text:#E8ECF1; --text-dim:#8B95A5;
   --buy:#4ADE80; --wait:#FBBF24; --skip:#F87171; --link:#7DD3FC;
   --hairline:rgba(255,255,255,0.06);
+
+  /* Fit polarity. CHOSEN DIRECTLY, NOT MIXED: --surface is itself a saturated
+     blue (216deg), so an accent laid over it at a low alpha composites toward
+     blue - a desaturated rose at 8% lands on hue 248, a violet grey, and never
+     reads as "reddish". Raising the alpha until the hue survived pushed
+     --text-dim under 4.5:1. Measured against the stamp colours: dE 85 from
+     --buy and 70 from --skip, saturation 20% against their 69/91%, and nothing
+     here ever colours text. See mockups/fit-boxes-skip.html. */
+  --fit-yes-wash:#1F2E24; --fit-yes-rail:#39604A; --fit-yes-line:#2E4235;
+  --fit-no-wash:#312221;  --fit-no-rail:#6F453E;  --fit-no-line:#493431;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg)}
@@ -98,7 +108,28 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
 .stamp.buy{color:var(--buy);border:1px solid rgba(74,222,128,.2)}
 .stamp.wait{color:var(--wait);border:1px solid rgba(251,191,36,.2)}
 .stamp.skip{color:var(--skip);border:1px solid rgba(248,113,113,.2)}
-.for-whom{margin-top:16px}
+/* the tagline sits beside the stamp, and wraps under it when there is no room */
+.stamp-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px}
+.tagline{flex:1 1 280px;min-width:0}
+
+/* the fit split - CSS ported from mockups/fit-boxes-skip.html, the approved
+   mockup (DESIGN.md treats the mockup as the source of truth) */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.fit{border-radius:12px;padding:18px 20px;background:var(--fit-yes-wash);
+  border:1px solid var(--fit-yes-line);border-left:3px solid var(--fit-yes-rail)}
+.fit.no{background:var(--fit-no-wash);border-color:var(--fit-no-line);
+  border-left-color:var(--fit-no-rail)}
+/* --text-dim, never a verdict colour: a coloured word is the stamp's job, and
+   the boxes must not read as a second verdict. The glyph is the colour-blind
+   carrier (DESIGN.md pairing rule). */
+.fit h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--text-dim);margin-bottom:12px}
+.fit h3 .glyph{font-size:12px}
+.fit ul{list-style:none}
+.fit li{padding:6px 0}
+.fit li + li{border-top:1px solid rgba(255,255,255,.05)}
+@media (max-width:640px){ .fit-grid{grid-template-columns:1fr} }
+
 .spine{margin-top:32px}
 .spine .sub{color:var(--text-dim);font-size:14px;margin:4px 0 16px}
 .bar-row{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px;font-size:14px}
