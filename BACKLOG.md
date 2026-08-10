@@ -141,6 +141,57 @@ parallel count. The last is probably right — two counters for one quantity is
 what produced this. Not blocking, because the real Gemini quota still enforces
 itself with a 429 and the ledger resets at midnight Pacific.
 
+2026-08-10 | **Cohort sourcing representativeness — the claim list can be built
+from a sample that contradicts the rate printed above it** | build, second-rail
+investigation | Investigated as a possible verdict-word problem and found not to
+be one. Age of Empires II (post-refund mean 91.9%, 58% negatively-sourced
+claims) and Palworld (91.8%, 62%) were flagged as Buy verdicts whose claim lists
+read overwhelmingly negative. **The verdicts are correct and stay as they are:**
+reading every claim on both titles shows narrow, specific, often
+platform-scoped complaints — AoE2's are substantially about the *macOS* build's
+cross-play, Palworld's are keybinding papercuts — none of which contradicts
+"most post-refund reviewers recommend this". That is invariant 13's Kenshi case
+at larger scale, and a rail loose enough to catch these two also fires on Slay
+the Spire, Monster Hunter: World and Disco Elysium. Decision: **no rail**
+(owner, 2026-08-10), which also keeps the 2026-08-09 product decision intact —
+the verdict word is driven solely by cohort sentiment, never downweighted by
+claim content.
+
+What the investigation *did* surface is a real but different defect, in page
+coherence rather than in the verdict:
+
+    AoE2, veteran:     80 reviews available, 78.8% recommend
+                        9 reviews cited,      0.0% recommend    delta -78.8
+    Palworld, mid:     90 reviews available, 74.4% recommend
+                        6 reviews cited,      0.0% recommend    delta -74.4
+
+The Split Bar tells a reader that 78.8% of 100-hour players recommend the game,
+and the claim list beneath it is built from nine reviews of which none do. Rare:
+**6 titles catalog-wide exceed a -40 source delta** against a catalog mean of
+-19.8, and 4 of those 6 are Wait titles, so it is not a Buy-band property.
+
+DISTINCT FROM THE 2026-08-08 CLAIM-BALANCE WORK, which measured the same
+underlying sourcing skew catalog-wide (mean delta -20.3) and tried to correct it
+by rebalancing extraction rule 2. That attempt **failed its own A/B safety gate**
+(ARK, -1.1) and was not shipped, by design — the gate was held absolute rather
+than relaxed post-hoc. This entry is about the extreme tail of that
+distribution and about what the *page* does with it, not about the average.
+
+Two directions, neither started:
+  (a) Extraction-side: make cited samples representative of their cohort. Same
+      category as the attempt that already failed once - approach with caution,
+      and re-read the RESULTS.md write-up of that failure before spending
+      quota on it.
+  (b) Page-level disclosure: flag a cohort whose cited sample is thin or whose
+      cited rate diverges sharply from its pool rate, so the reader can see the
+      provenance rather than being left to reconcile two numbers that do not
+      agree. Untried, no gate has rejected it, and it treats the honest problem
+      (what we show) rather than the hard one (what the model reaches for). The
+      more promising of the two.
+
+Deferred deliberately: measured, understood, and not urgent. Nothing in the
+pipeline or the site was changed by this investigation.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for
