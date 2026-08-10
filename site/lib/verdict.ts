@@ -102,13 +102,17 @@ interface LegacyVerdictBlock {
  * empty. VerdictPage renders no box for an empty list, so it degrades to
  * exactly the page it had before.
  *
- * IT IS ALSO LOAD-BEARING FOR TWO TITLES IN THE COMMITTED CATALOG, not only for
- * the branch: Hades (1145360) and Hollow Knight (367520) were generated live on
- * the CI runner, so their data/claims/ artifacts never existed on the dev
- * machine and the header rollout could not re-synthesize them. They ship the
- * pre-split shape today. See BACKLOG.md, 2026-08-10 — removing this shim
- * requires re-ingesting those two first, which means new citations, a fresh
- * QR-4 gate and a fresh manual audit for each.
+ * EVERY COMMITTED VERDICT NOW CARRIES THE SPLIT SHAPE. Hades (1145360) and
+ * Hollow Knight (367520) were the last two on the pre-split header — generated
+ * live on the CI runner, so their data/claims/ artifacts never reached the dev
+ * machine and the rollout could not re-synthesize them — and both were
+ * re-ingested end to end on 2026-08-10.
+ *
+ * The shim stays anyway, for the reason it was written: the `verdicts` branch
+ * is append-only artifact storage that is never pruned, and /api/verdict serves
+ * straight off it, so a title generated before the split is still one fetch
+ * away from a reader. Retire it only once nothing older than the rollout
+ * survives on that branch — not because the catalog looks clean.
  */
 export function normalizeVerdict(raw: unknown): Verdict {
   const v = raw as Verdict;
