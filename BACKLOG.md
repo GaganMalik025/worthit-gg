@@ -213,6 +213,28 @@ its own test rather than riding along with cleanup work. Also worth clearing the
 two abandoned worktrees (`git worktree prune`, plus the `verdicts-migrate`
 branch) while in there.
 
+2026-08-11 | **`generate-verdict.yml`'s fetch fallback can branch from the wrong
+base** | build, live generation | The commit-to-branch step runs
+`git fetch origin verdicts:verdicts 2>/dev/null || git branch verdicts`. This is
+**not** the publish-path bug fixed the same day: that one swallowed a fetch
+failure into a false success, whereas this fallback does something deliberate —
+it creates the branch when it genuinely does not exist yet, which is a real
+first-run state. The hazard is narrower. `git branch verdicts` with no start
+point branches from **current HEAD**, which in that job is main's code plus the
+freshly generated verdict. So if the fetch ever failed on a repo where
+`verdicts` *does* exist — a transient network error, a partial clone, a
+ref-lock — the step would build its commit on main rather than on the branch,
+and then `git push origin verdicts` would try to replace the branch's history
+with main's. Almost certainly rejected as a non-fast-forward, and the step's
+`|| (sleep 5 && git pull --rebase ...)` would then rebase onto the real branch,
+which is probably why this has never been seen. "Probably caught downstream" is
+not a guard, though, and the failure would be a live-generated verdict lost
+after the quota was already spent on it. Fix is small — drop the `||` fallback
+and create the branch explicitly from `origin/main` only when `ls-remote` says
+it is absent, the same probe-before-acting shape `select_publishable.py` now
+uses — but it touches the live-generation commit step, so it gets its own scoped
+change rather than riding along with a publish-path fix.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for
