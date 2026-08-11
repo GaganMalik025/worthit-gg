@@ -19,6 +19,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -1180,6 +1181,178 @@ def test_publish_never_replaces_newer_with_older():
     check("and a missing file yields none either", sp._stamp(None, "x.json") is None)
 
 
+def _fixture_repo(d, now):
+    """A real repo with main and a branch, not a model of one.
+
+    Six titles, one per decision the pruner has to make. Commit dates on main
+    are set explicitly, because the grace window is measured from them.
+
+    `regen` is the case that distinguishes the corrected predicate from the
+    first one: on main since 200h ago, bytes rewritten seconds ago. Its title
+    has been in the deployed build for over a week, so the branch copy cannot be
+    serving it, and it must be PRUNED. The age-of-current-bytes predicate kept
+    it - which is how it came to keep all 133 on 2026-08-10.
+    """
+    import os
+    import subprocess as sp_
+    from datetime import timedelta
+
+    def git(*a, **kw):
+        env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t",
+                   GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@t", **kw)
+        return sp_.run(["git", *a], cwd=d, env=env, capture_output=True, text=True)
+
+    vd = Path(d) / "site/public/verdicts"
+    vd.mkdir(parents=True)
+    git("init", "-q", "-b", "main")
+
+    def write(appid, stamp, raw=None):
+        (vd / ("%s.json" % appid)).write_text(
+            raw if raw is not None else json.dumps({"generated_at": stamp}),
+            encoding="utf-8")
+
+    # main: four titles. `old` and `tie` were promoted long ago; `fresh` was
+    # promoted minutes ago and is still inside the deploy window.
+    old_date = (now - timedelta(hours=200)).strftime("%Y-%m-%dT%H:%M:%S+00:00")
+    write("old", "2026-08-09T00:00:00Z")
+    write("tie", "2026-08-02T00:00:00Z")
+    write("bad", "2026-08-09T00:00:00Z")
+    write("regen", "2026-08-09T00:00:00Z")
+    git("add", "-A")
+    git("commit", "-q", "-m", "main: old, tie, bad, regen",
+        GIT_COMMITTER_DATE=old_date)
+    # `fresh` first appears NOW; `regen` has been here all along and is merely
+    # rewritten now. Same commit, opposite verdicts - which is the point.
+    write("fresh", "2026-08-09T00:00:01Z")
+    write("regen", "2026-08-09T00:00:02Z")
+    git("add", "-A")
+    git("commit", "-q", "-m", "main: fresh arrives, regen rewritten",
+        GIT_COMMITTER_DATE=now.strftime("%Y-%m-%dT%H:%M:%S+00:00"))
+
+    git("checkout", "-q", "-b", "vbranch")
+    write("old", "2026-08-01T00:00:00Z")      # older than main   -> prune
+    write("tie", "2026-08-02T00:00:00Z")      # identical stamp   -> keep
+    write("fresh", "2026-08-01T00:00:00Z")    # older but recent  -> keep
+    write("bad", None, raw="{not json")       # unreadable        -> keep
+    write("only", "2026-08-09T00:00:00Z")     # not on main       -> keep
+    write("regen", "2026-08-01T00:00:00Z")    # old title, new bytes -> prune
+    git("add", "-A")
+    git("commit", "-q", "-m", "branch")
+    git("checkout", "-q", "main")
+
+
+def test_prune_only_drops_superseded_and_settled():
+    """The pruner may only ever delete a copy that is BOTH older than main's and
+    past the deploy window in which the branch was still serving it."""
+    print("\nprune: which branch artifacts may be dropped")
+    import os
+    import prune_verdicts as pv
+
+    now = datetime.now(timezone.utc)
+    with tempfile.TemporaryDirectory() as d:
+        _fixture_repo(d, now)
+        cwd = os.getcwd()
+        try:
+            os.chdir(d)
+            prune, keep = pv.prunable("vbranch", "main", grace_hours=48, now=now)
+        finally:
+            os.chdir(cwd)
+
+    dropped = {p["appid"] for p in prune}
+    kept = {k["appid"]: k["keep_because"] for k in keep}
+    check("the superseded, settled copy is pruned", "old" in dropped, dropped)
+    # THE CORRECTED PREDICATE, stated as a test: a title that has been in the
+    # deployed build for a week is prunable even though main's bytes changed
+    # seconds ago. The deploy race depends on first appearance, not on freshness.
+    check("a long-published title whose bytes were just rewritten is pruned",
+          "regen" in dropped, {"dropped": dropped, "kept": kept})
+    check("...and nothing else is", dropped == {"old", "regen"}, dropped)
+    check("a title main does not have is kept",
+          kept.get("only", "").startswith("publishable"), kept)
+    check("an equal timestamp is kept", kept.get("tie") == "same_timestamp", kept)
+    check("unreadable branch JSON is kept (may be half-written)",
+          kept.get("bad") == "unreadable_on_branch", kept)
+    check("a copy superseded minutes ago is kept - the deploy may still be "
+          "serving it", kept.get("fresh") == "inside_deploy_window", kept)
+
+
+def test_prune_grace_window_from_both_sides():
+    print("\nprune: the deploy window, from both sides of the boundary")
+    import os
+    import prune_verdicts as pv
+    from datetime import timedelta
+
+    now = datetime.now(timezone.utc)
+    with tempfile.TemporaryDirectory() as d:
+        _fixture_repo(d, now)
+        cwd = os.getcwd()
+        try:
+            os.chdir(d)
+            # `fresh` was promoted at `now`; move the observer instead of the
+            # commit so the boundary is tested on one variable only
+            just_inside = pv.prunable("vbranch", "main", grace_hours=48,
+                                      now=now + timedelta(hours=47))[0]
+            just_outside = pv.prunable("vbranch", "main", grace_hours=48,
+                                       now=now + timedelta(hours=49))[0]
+        finally:
+            os.chdir(cwd)
+    check("at 47h the newly-arrived title is still protected",
+          {p["appid"] for p in just_inside} == {"old", "regen"},
+          {p["appid"] for p in just_inside})
+    check("at 49h it becomes prunable",
+          {p["appid"] for p in just_outside} == {"old", "regen", "fresh"},
+          {p["appid"] for p in just_outside})
+
+
+def test_prune_keeps_anything_it_cannot_date():
+    """An unknown promotion date must fail SAFE - keep, never drop.
+
+    Not reachable from fixture data: a file missing from main is classified as a
+    new title and kept for a different reason, so the only way to exercise this
+    branch is to make promoted_at() answer None directly. It answers None in a
+    shallow or grafted clone, where `git log -1 -- path` finds no commit for a
+    path that is present in the tree - and "I cannot tell how long this has been
+    published" must never be read as "long enough".
+    """
+    print("\nprune: an undateable entry is kept, not dropped")
+    import os
+    import prune_verdicts as pv
+
+    now = datetime.now(timezone.utc)
+    with tempfile.TemporaryDirectory() as d:
+        _fixture_repo(d, now)
+        cwd, real = os.getcwd(), pv.promoted_at
+        try:
+            os.chdir(d)
+            pv.promoted_at = lambda *a, **kw: None
+            prune, keep = pv.prunable("vbranch", "main", grace_hours=48, now=now)
+        finally:
+            pv.promoted_at = real
+            os.chdir(cwd)
+    check("nothing is pruned when nothing can be dated", prune == [],
+          [p["appid"] for p in prune])
+    check("and the reason is recorded rather than silent",
+          any(k["keep_because"] == "no_promotion_date_on_main" for k in keep),
+          {k["appid"]: k["keep_because"] for k in keep})
+
+
+def test_prune_refuses_a_local_ref():
+    """A dev machine's local `verdicts` is whatever it last fetched - on the
+    machine this was written on it was two files behind origin. Pruning against
+    a stale view would delete files that are still the only copy."""
+    print("\nprune: refuses to work from a ref that might be stale")
+    src = (Path(__file__).resolve().parent / "prune_verdicts.py").read_text()
+    check("the default ref is remote-tracking",
+          'BRANCH = "origin/verdicts"' in src)
+    check("and a non-remote ref is refused outright",
+          'refs/remotes/' in src and "must be a remote-tracking ref" in src)
+    check("the push never forces",
+          "--force" not in src.split("def apply_prune")[1].split("git\", \"push")[0]
+          or "push\", \"origin\", \"HEAD:verdicts\"" in src)
+    check("a rejected push aborts rather than rebasing",
+          "must be derived against the current branch" in src)
+
+
 if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
@@ -1221,6 +1394,10 @@ if __name__ == "__main__":
     test_claim_balance_metric_counts_sources_not_claims()
     test_claim_balance_ignores_cohorts_too_small_to_judge()
     test_publish_never_replaces_newer_with_older()
+    test_prune_only_drops_superseded_and_settled()
+    test_prune_grace_window_from_both_sides()
+    test_prune_keeps_anything_it_cannot_date()
+    test_prune_refuses_a_local_ref()
 
     print("\n%s" % ("all guard tests passed" if not FAILURES
                     else "%d FAILURES:\n  %s" % (len(FAILURES),

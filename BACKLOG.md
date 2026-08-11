@@ -192,6 +192,27 @@ Two directions, neither started:
 Deferred deliberately: measured, understood, and not urgent. Nothing in the
 pipeline or the site was changed by this investigation.
 
+2026-08-10 | **`select_publishable.py` defaults to the local `verdicts` ref,
+which is stale on any dev machine** | build, verdicts-branch pruning | The
+script's `--from` defaults to `verdicts` — the *local* branch, i.e. whatever
+that machine last fetched. In CI this is harmless (fresh clone, explicit
+`git fetch origin verdicts:verdicts` immediately before). Locally it is a
+footgun: on the machine this was found on, the local ref sat at 131 files
+against origin's 133, and worse, `git fetch origin verdicts:verdicts` **fails
+outright** because an abandoned worktree at `/private/tmp/vw2` has that branch
+checked out — so the ref cannot even be refreshed without noticing the worktree
+first. Any local invocation therefore reports a publish decision derived from a
+stale view, and the failure is silent: the output looks exactly like a correct
+run. `prune_verdicts.py` sidesteps it by defaulting to `origin/verdicts` and
+refusing any ref that is not remote-tracking, but the underlying default is
+unchanged and the next person to run the publisher by hand inherits it. Fix is
+small — default to `origin/verdicts`, fetch first, refuse a non-remote ref, same
+as the pruner — but it touches the nightly publish path, which is the one script
+whose failure mode is silent data loss, so it gets its own scoped change with
+its own test rather than riding along with cleanup work. Also worth clearing the
+two abandoned worktrees (`git worktree prune`, plus the `verdicts-migrate`
+branch) while in there.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for
