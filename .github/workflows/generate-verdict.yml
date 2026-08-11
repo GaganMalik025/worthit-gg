@@ -192,13 +192,52 @@ jobs:
           git config user.name  "worthit-bot"
           git config user.email "bot@worthit.gg"
           cp "site/public/verdicts/$APPID.json" "/tmp/$APPID.json"
-          git fetch origin verdicts:verdicts 2>/dev/null || git branch verdicts
+          # ASK THE REMOTE, THEN ACT. This was:
+          #     git fetch origin verdicts:verdicts 2>/dev/null || git branch verdicts
+          # and the fallback is right for the case it was written for - a first
+          # run, where the branch does not exist yet. The bug was that it fired
+          # on ANY fetch failure, and `git branch verdicts` with no start point
+          # branches from CURRENT HEAD, which here is main's code plus the fresh
+          # verdict. A transient network or auth error against an existing
+          # branch therefore built the commit on main's history.
+          #
+          # "The push would reject it" was assumed and is FALSE, reproduced
+          # 2026-08-11: the `git pull --rebase` below replays main's commits on
+          # top of origin/verdicts, which makes the result a fast-forward, so
+          # the push is ACCEPTED and main's files land on the artifact branch.
+          # Where the two DO overlap the rebase conflicts instead, and the
+          # verdict is lost after its quota was already spent.
+          #
+          # ls-remote --exit-code separates the cases exactly: rc 2 = absent
+          # (legitimate), rc 0 = present, anything else = remote unreachable.
+          # Same technique as pipeline/select_publishable.py.
+          if git ls-remote --exit-code --heads origin verdicts >/dev/null 2>&1; then
+            BRANCH_EXISTS=1
+            git fetch origin verdicts:verdicts \
+              || { echo "::error::verdicts exists on origin but could not be fetched"; exit 1; }
+          else
+            BRANCH_EXISTS=0
+            echo "no verdicts branch on origin yet - creating it from this run"
+            git branch verdicts
+          fi
           git checkout verdicts
           mkdir -p site/public/verdicts
           cp "/tmp/$APPID.json" "site/public/verdicts/$APPID.json"
           git add "site/public/verdicts/$APPID.json"
           git commit -m "verdict: $APPID (generated live)" || exit 0
-          git pull --rebase --autostash origin verdicts || true
+          # No `|| true` here any more. A failed rebase used to be swallowed,
+          # and the step then walked into a push that could not succeed and a
+          # retry that hit the same conflict - failing anyway, three commands
+          # later, with the log pointing at the push instead of the rebase.
+          #
+          # Guarded on BRANCH_EXISTS, because there is nothing to pull FROM on a
+          # first run: `git pull origin verdicts` fails with "couldn't find
+          # remote ref verdicts", which `|| true` used to hide. Dropping the
+          # swallow without this guard breaks the first-run path - found by the
+          # absent-branch fixture, not by reading.
+          if [ "$BRANCH_EXISTS" = 1 ]; then
+            git pull --rebase --autostash origin verdicts
+          fi
           git push origin verdicts || (sleep 5 && git pull --rebase origin verdicts && git push origin verdicts)
 
       # The artifact is withheld on ANY non-success, so a run that died

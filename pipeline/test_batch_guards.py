@@ -1349,6 +1349,59 @@ def test_select_tells_no_branch_apart_from_no_network():
               (r.returncode, r.stderr.strip()[:90]))
 
 
+def test_ls_remote_exit_codes_are_what_two_call_sites_assume():
+    """The shared contract, pinned once.
+
+    `git ls-remote --exit-code --heads` is how BOTH select_publishable.py and
+    generate-verdict.yml's commit step tell "the branch does not exist" (a
+    legitimate first-run state) from "the remote is unreachable" (an error). If
+    git ever changed those exit codes, one would start creating branches it
+    should not and the other would start publishing nothing while reporting
+    success - so the assumption is asserted against a real remote here, and both
+    users fail together rather than one drifting quietly.
+    """
+    print("\ngit: ls-remote exit codes, the contract two call sites rely on")
+    with tempfile.TemporaryDirectory() as d:
+        work = _fixture_remote(d)                       # has origin/verdicts
+        r = subprocess.run(["git", "ls-remote", "--exit-code", "--heads",
+                            "origin", "verdicts"], cwd=str(work),
+                           capture_output=True, text=True)
+        check("a branch that exists -> rc 0", r.returncode == 0, r.returncode)
+        r = subprocess.run(["git", "ls-remote", "--exit-code", "--heads",
+                            "origin", "no-such-branch"], cwd=str(work),
+                           capture_output=True, text=True)
+        check("a branch that does not exist -> rc 2", r.returncode == 2,
+              r.returncode)
+        subprocess.run(["git", "remote", "set-url", "origin",
+                        str(Path(d) / "gone.git")], cwd=str(work),
+                       capture_output=True)
+        r = subprocess.run(["git", "ls-remote", "--exit-code", "--heads",
+                            "origin", "verdicts"], cwd=str(work),
+                           capture_output=True, text=True)
+        check("an unreachable remote -> neither 0 nor 2",
+              r.returncode not in (0, 2), r.returncode)
+
+    # and both call sites really do use it
+    sel = (Path(__file__).resolve().parent / "select_publishable.py").read_text()
+    wf = (Path(__file__).resolve().parent.parent
+          / ".github/workflows/generate-verdict.yml").read_text()
+    check("select_publishable probes before fetching",
+          "ls-remote" in sel and "returncode == 2" in sel)
+    check("the generation workflow probes before falling back",
+          "ls-remote --exit-code --heads origin verdicts" in wf, "not in the yml")
+    # Comment lines are excluded on purpose: the step quotes the old command in
+    # its own comment so the fallback cannot be "simplified" back, and a naive
+    # substring search finds that quote and fails on it. Asked and answered the
+    # hard way - this assertion did exactly that on its first run.
+    live = [ln for ln in wf.splitlines() if not ln.strip().startswith("#")]
+    offenders = [ln.strip() for ln in live if "|| git branch verdicts" in ln]
+    check("...and no longer falls back on ANY fetch failure, outside comments",
+          not offenders, offenders)
+    check("the fallback is reachable only when the branch is confirmed absent",
+          any("BRANCH_EXISTS=0" in ln for ln in live)
+          and any("git branch verdicts" in ln for ln in live), "guard missing")
+
+
 def test_select_surfaces_failures_it_cannot_reproduce_locally():
     """Two failure modes a fixture cannot stage: a tree object that will not
     read (partial clone, damaged object store) and a fetch that fails after the
@@ -1558,6 +1611,7 @@ if __name__ == "__main__":
     test_select_refuses_a_ref_it_cannot_read()
     test_select_defaults_to_the_remote_and_refuses_local()
     test_select_tells_no_branch_apart_from_no_network()
+    test_ls_remote_exit_codes_are_what_two_call_sites_assume()
     test_select_surfaces_failures_it_cannot_reproduce_locally()
     test_prune_only_drops_superseded_and_settled()
     test_prune_grace_window_from_both_sides()

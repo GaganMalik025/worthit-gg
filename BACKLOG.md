@@ -235,6 +235,28 @@ it is absent, the same probe-before-acting shape `select_publishable.py` now
 uses — but it touches the live-generation commit step, so it gets its own scoped
 change rather than riding along with a publish-path fix.
 
+> **2026-08-11, reproduced — the "probably rejected" reasoning above was wrong,
+> and the bug was live. FIXED.** Staged in throwaway repos rather than argued
+> about. The push is **accepted**: `git pull --rebase` replays main's commits on
+> top of `origin/verdicts`, which makes the result a fast-forward, so the push
+> has nothing to object to and main's files land on the artifact branch
+> silently. The rejection only happens when the two sides touch the same appid,
+> and there the rebase conflicts instead — loud, but the verdict is lost after
+> its quota was spent. Worse, **this repo had just moved into the silent
+> regime**: after the same day's prune the branch held zero verdict files, so
+> replaying main's commits would conflict with nothing and would have quietly
+> copied all 134 verdicts back onto the branch, undoing the prune.
+>
+> Fixed by probing with `git ls-remote --exit-code --heads` before acting, so
+> the fallback is reachable only when the branch is confirmed absent, and by
+> dropping `|| true` from the rebase. That second change **broke the first-run
+> path** — there is nothing to pull from when the branch does not exist yet, and
+> `|| true` had been hiding that too — so the pull is now guarded on
+> `BRANCH_EXISTS`. Caught by the absent-branch fixture, not by reading it.
+>
+> The lesson worth keeping: "almost certainly rejected" was a mechanism I had
+> not tested, written down as if it were one I had.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for
