@@ -257,6 +257,34 @@ change rather than riding along with a publish-path fix.
 > The lesson worth keeping: "almost certainly rejected" was a mechanism I had
 > not tested, written down as if it were one I had.
 
+2026-08-11 | **`test_ledger_charge_is_atomic` cannot tell a crashed child from a
+lost update** | build, test integrity | The test spawns 12 subprocesses that each
+`live_quota.charge(1, ledger="batch")` and asserts the ledger reads 12. It calls
+`pr.wait(timeout=90)` on each and **never checks their return codes**. So a child
+that died before charging — an import error, an OOM, a transient under load —
+produces the identical output to a genuinely lost update under the lock:
+`12 concurrent charges of 1 all land   11`. Those two have opposite meanings. One
+is a flaky test; the other is the ledger's atomicity guard being broken, which is
+the exact defect the test was written for after a verification run spent 28
+requests and recorded 17.
+
+Observed twice on 2026-08-11, both times while the machine was busy running other
+subprocess-heavy work, and green on every deliberate re-run afterwards: 12/12 on
+an isolated stress loop and 5/5 on the full suite. That pattern *suggests* dying
+children rather than a lock failure — but suggesting is all it can do, because
+the test does not record which happened.
+
+**Fix:** collect each child's return code and assert all 12 are 0 before
+asserting the total, so a crash reports as a crash. Consider also capturing
+stderr from any non-zero child, since the point is to know *why* it died.
+
+**Standing rule until this is fixed:** a flake on this test is **unverified**,
+not "probably fine". Do not treat the passing runs as proof of atomicity — the
+green runs and the red ones are equally uninformative about the lock while the
+two failure modes remain indistinguishable. This is the same class as the
+break-then-confirm harness that read a non-compiling mutation as "no test caught
+it": a test whose failure output does not identify the failure is not yet a test.
+
 ---
 
 *This file is a case-study artifact. What got deferred, and the reasoning for
