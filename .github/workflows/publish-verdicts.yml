@@ -42,12 +42,26 @@ jobs:
       # copies older than main, so age is the thing to check. Skips are printed
       # individually on purpose: a stale copy being dropped must be visible in
       # the log, not inferred from a count.
+      #
+      # THE FETCH USED TO LIVE HERE, as:
+      #     git fetch origin verdicts:verdicts || echo "no verdicts branch yet"
+      # and the `||` swallowed its failure. select_publishable.py then returned
+      # an empty selection for an unreadable ref, so a broken fetch published
+      # nothing and this step reported success - the same shape as the
+      # `gh variable set` no-op, where the signal that the guard is broken looks
+      # exactly like the guard working.
+      #
+      # The script now owns the fetch. It reads origin/verdicts, asks the remote
+      # whether the branch exists before fetching (so "no branch yet" stays a
+      # clean exit 0 and is said out loud), and hard-errors on a fetch failure or
+      # an unreadable ref instead of reporting zero. --from is omitted so the
+      # hardened default applies rather than being restated here where it could
+      # drift.
       - name: Select publishable verdicts
         id: pending
         run: |
-          git fetch origin verdicts:verdicts || echo "no verdicts branch yet"
           python pipeline/select_publishable.py \
-            --from verdicts --into HEAD --apply \
+            --into HEAD --apply \
             --github-output "$GITHUB_OUTPUT"
 
       - uses: actions/setup-node@v4

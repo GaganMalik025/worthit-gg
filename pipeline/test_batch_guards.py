@@ -1241,6 +1241,167 @@ def _fixture_repo(d, now):
     git("checkout", "-q", "main")
 
 
+def _fixture_remote(d, with_branch=True):
+    """A bare `origin` and a clone of it, so fetch behaviour is real.
+
+    The ref guards are about what a REMOTE says, so a fixture that fakes the
+    remote proves nothing about them.
+    """
+    import os
+    import subprocess as sp_
+    env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@t",
+               GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@t")
+
+    def git(*a, cwd):
+        return sp_.run(["git", *a], cwd=cwd, env=env, capture_output=True, text=True)
+
+    origin, work = Path(d) / "origin.git", Path(d) / "work"
+    sp_.run(["git", "init", "-q", "--bare", "-b", "main", str(origin)], env=env)
+    sp_.run(["git", "clone", "-q", str(origin), str(work)], env=env)
+    vd = work / "site/public/verdicts"
+    vd.mkdir(parents=True)
+    (vd / "1.json").write_text(json.dumps({"generated_at": "2026-08-09T00:00:00Z"}))
+    git("add", "-A", cwd=work); git("commit", "-q", "-m", "main", cwd=work)
+    git("push", "-q", "origin", "main", cwd=work)
+    if with_branch:
+        git("checkout", "-q", "-b", "verdicts", cwd=work)
+        (vd / "1.json").write_text(json.dumps({"generated_at": "2026-08-10T00:00:00Z"}))
+        (vd / "2.json").write_text(json.dumps({"generated_at": "2026-08-10T00:00:00Z"}))
+        git("add", "-A", cwd=work); git("commit", "-q", "-m", "branch", cwd=work)
+        git("push", "-q", "origin", "verdicts", cwd=work)
+        git("checkout", "-q", "main", cwd=work)
+        git("branch", "-q", "-D", "verdicts", cwd=work)   # only origin/ remains
+    return work
+
+
+def _run_select(work, *args):
+    import subprocess as sp_
+    script = str(Path(__file__).resolve().parent / "select_publishable.py")
+    return sp_.run([PY, script, *args], cwd=str(work),
+                   capture_output=True, text=True)
+
+
+def test_select_refuses_a_ref_it_cannot_read():
+    """THE REGRESSION. `--from no-such-ref` printed `publishable: 0 skipped: 0`
+    and exited 0 - indistinguishable from "nothing to publish". The nightly
+    workflow swallowed its fetch failure with `|| echo`, so a broken fetch
+    published nothing and reported success: the gh-variable-set shape again."""
+    print("\nselect: an unreadable ref is an error, never an empty selection")
+    import select_publishable as sp
+
+    with tempfile.TemporaryDirectory() as d:
+        work = _fixture_remote(d)
+        r = _run_select(work, "--from", "no-such-ref", "--allow-local-ref")
+        check("a missing ref exits NON-zero", r.returncode != 0, r.returncode)
+        check("...and does not report a clean zero",
+              "publishable: 0    skipped: 0" not in r.stdout, r.stdout)
+        r = _run_select(work, "--from", "origin/verdicts")
+        check("a good remote ref still selects normally",
+              r.returncode == 0 and "publishable: 2" in r.stdout,
+              r.stdout.strip()[-120:])
+    check("select() raises rather than returning an empty pair",
+          hasattr(sp, "RefProblem"))
+
+
+def test_select_defaults_to_the_remote_and_refuses_local():
+    print("\nselect: the source ref cannot be silently stale")
+    import select_publishable as sp
+    check("the default --from is remote-tracking",
+          sp.DEFAULT_FROM == "origin/verdicts", sp.DEFAULT_FROM)
+
+    with tempfile.TemporaryDirectory() as d:
+        work = _fixture_remote(d)
+        import subprocess as sp_
+        sp_.run(["git", "branch", "verdicts", "origin/verdicts"], cwd=str(work),
+                capture_output=True)
+        r = _run_select(work, "--from", "verdicts")
+        check("a local ref is refused by default",
+              r.returncode == 2 and "not a remote-tracking ref" in r.stderr,
+              r.stderr.strip()[:90])
+        r = _run_select(work, "--from", "verdicts", "--allow-local-ref")
+        check("...and permitted only when asked for explicitly",
+              r.returncode == 0, r.stderr.strip()[:90])
+        check("...with a warning that it may be behind origin",
+              "may be behind origin" in r.stdout, r.stdout[:200])
+
+
+def test_select_tells_no_branch_apart_from_no_network():
+    """`git fetch origin verdicts` FAILS when the branch does not exist, so
+    fetching alone cannot separate "no branch yet" - a legitimate state the
+    workflow has always handled - from a broken remote. The remote is probed
+    first. The first version of this change got it wrong and made the
+    legitimate case unreachable."""
+    print("\nselect: absent branch and unreachable remote are different answers")
+    with tempfile.TemporaryDirectory() as d:
+        work = _fixture_remote(d, with_branch=False)
+        r = _run_select(work, "--from", "origin/verdicts")
+        check("no branch on the remote is a clean, explicit exit 0",
+              r.returncode == 0 and "nothing to publish" in r.stdout,
+              (r.returncode, r.stdout.strip()[-90:]))
+    with tempfile.TemporaryDirectory() as d:
+        work = _fixture_remote(d)
+        import subprocess as sp_
+        sp_.run(["git", "remote", "set-url", "origin", str(Path(d) / "gone.git")],
+                cwd=str(work), capture_output=True)
+        r = _run_select(work, "--from", "origin/verdicts")
+        check("an unreachable remote is an error, not an empty selection",
+              r.returncode == 2 and "could not reach" in r.stderr,
+              (r.returncode, r.stderr.strip()[:90]))
+
+
+def test_select_surfaces_failures_it_cannot_reproduce_locally():
+    """Two failure modes a fixture cannot stage: a tree object that will not
+    read (partial clone, damaged object store) and a fetch that fails after the
+    remote said the branch is there (corrupt remote, connection dropped
+    mid-transfer). Both are injected at _git, the one place every git call goes
+    through, because the property under test is what the code DOES with a
+    failure - and both used to be swallowed into "nothing to publish"."""
+    print("\nselect: injected git failures are surfaced, not swallowed")
+    import select_publishable as sp
+
+    real = sp._git
+
+    def failing(*match):
+        def fake(*args):
+            if list(args[:len(match)]) == list(match):
+                return subprocess.CompletedProcess(args, 128, "", "fatal: injected")
+            return real(*args)
+        return fake
+
+    # 1. the ref resolves, but its tree will not read
+    try:
+        sp._git = failing("ls-tree")
+        raised = False
+        try:
+            sp.select("origin/verdicts", "HEAD")
+        except sp.RefProblem:
+            raised = True
+        check("an unreadable tree raises rather than selecting nothing", raised)
+    finally:
+        sp._git = real
+
+    # 2. the remote lists the branch, then the fetch fails
+    import io
+    from contextlib import redirect_stderr, redirect_stdout
+    try:
+        sp._git = failing("fetch")
+        argv = sys.argv
+        sys.argv = ["select_publishable.py", "--from", "origin/verdicts"]
+        err, out = io.StringIO(), io.StringIO()
+        try:
+            with redirect_stderr(err), redirect_stdout(out):
+                rc = sp.main()
+        finally:
+            sys.argv = argv
+        check("a failed fetch refuses instead of publishing nothing", rc == 2, rc)
+        check("...and says the fetch was what failed",
+              "could not fetch" in err.getvalue(), err.getvalue()[:120])
+        check("...and never prints a clean selection",
+              "publishable:" not in out.getvalue(), out.getvalue()[:120])
+    finally:
+        sp._git = real
+
+
 def test_prune_only_drops_superseded_and_settled():
     """The pruner may only ever delete a copy that is BOTH older than main's and
     past the deploy window in which the branch was still serving it."""
@@ -1394,6 +1555,10 @@ if __name__ == "__main__":
     test_claim_balance_metric_counts_sources_not_claims()
     test_claim_balance_ignores_cohorts_too_small_to_judge()
     test_publish_never_replaces_newer_with_older()
+    test_select_refuses_a_ref_it_cannot_read()
+    test_select_defaults_to_the_remote_and_refuses_local()
+    test_select_tells_no_branch_apart_from_no_network()
+    test_select_surfaces_failures_it_cannot_reproduce_locally()
     test_prune_only_drops_superseded_and_settled()
     test_prune_grace_window_from_both_sides()
     test_prune_keeps_anything_it_cannot_date()
