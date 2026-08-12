@@ -85,7 +85,8 @@ Every "DoD" (definition of done) is checked by the developer, not assumed.
 - 4.1 Assemble ~100–150 appids (top sellers / most reviewed). 100 is enough —
   catalog size never delays launch.
 - 4.2 Quota plan: self-consistency double-run on seed games only; single-pass
-  long tail; split across two nights if needed (~1,500 req/day ceiling).
+  long tail; split across nights (500 req/day ceiling on Flash-Lite, of which
+  `LIVE_RESERVE`=100 is held back, leaving 400/day ≈ 30 titles at 13 calls each).
 - 4.3 Overnight batch with backoff; commit generated JSONs.
 - 4.4 Morning audit: 10 random verdicts spot-checked; **20 random citations
   manually audited for QR-4.** Last gate before strangers.

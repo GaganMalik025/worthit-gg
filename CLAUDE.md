@@ -135,8 +135,10 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
 
 ## Budget rules
 
-- **Total budget is ₹0.** Gemini free tier only (Flash / Flash-Lite,
-  ~1,500 requests/day). Never suggest a paid model, paid API, paid hosting, or
+- **Total budget is ₹0.** Gemini free tier only. The real per-model daily
+  ceilings, verified from the 429 body and encoded in `pipeline/live_quota.py`:
+  **Flash-Lite 500/day** (`DAILY_LIMIT`), **Flash 20/day**
+  (`FLASH_DAILY_LIMIT`). Never suggest a paid model, paid API, paid hosting, or
   any paid service. If a problem seems to need one, the answer is architecture
   (grounding checks, self-consistency, caching, precompute), not spend.
 - Quota discipline: self-consistency double-runs only on the 5 seed games and
@@ -162,9 +164,10 @@ guards below intact. Remove any one of them and it goes back to being a
 non-goal — they are the reason it is permitted, not decoration.
 
 1. **Global daily quota reserve, not per-IP.** A single global counter reserves
-   the tail of the daily Gemini budget (`LIVE_RESERVE`, default 300 of ~1,500)
-   for live generation. When the reserve is spent, live generation switches
-   itself off for the rest of the day and cache misses fall back to the queue
+   the tail of the daily Gemini budget (`LIVE_RESERVE`, **default 100 of 500**)
+   for live generation, leaving 400/day for batch work. When the reserve is
+   spent, live generation switches itself off for the rest of the day and cache
+   misses fall back to the queue
    flow. Per-IP throttling exists only as a secondary guard against one user
    burning the global reserve — it is never the primary limit, because per-IP
    is unbounded across IPs and cannot protect a global quota.
