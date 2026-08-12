@@ -62,6 +62,43 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-12 | **The live and batch quota ledgers are two independent counters of
+one 500/day budget** | build, pre-batch LIVE_QUOTA check | Tonight's parity check
+found `live_used` at 13 in the `LIVE_QUOTA` GitHub variable against 5 in
+`data/live_quota.json`. This is **structural, not staleness**: `site/lib/github.ts`
+reads and writes the repository variable, `pipeline/live_quota.py` reads and
+writes the local file, and a grep for any reconciliation path finds none in
+either direction. Neither ledger can see the other's spend. It did not block the
+2026-08-12 batch because both carried a stale `date` and `load()` zeroes a ledger
+whose date is not the current Pacific quota day, so the night started at a true
+400/400. The failure it sets up is a **heavy live-traffic night**: live
+generation beyond its 100-request reserve is invisible to the batch ledger, so
+the batch keeps dispatching against headroom it believes it has and takes 429s
+mid-run. Not fixed now because the honest fix is one ledger with one writer, and
+the only shared store both sides can reach is the GitHub variable — that makes
+every batch title a network write against a rate-limited API, mid-run, which is a
+new failure mode traded for an old one. Revisit after launch, when real live
+traffic shows whether the 100 reserve is ever actually exceeded. Until then the
+mitigation is operational: check the variable before a night, not the file.
+
+2026-08-12 | **Raw end-user IP addresses are stored unhashed in the `LIVE_QUOTA`
+GitHub variable** | build, pre-batch LIVE_QUOTA check | `by_ip_hour` keys are
+built as `"<ip>|<hour>"` and persisted verbatim — `site/lib/quota.ts`
+(`chargeReservation`) and `pipeline/live_quota.py` (`record`) both do it, so it
+is intended behavior in both implementations rather than drift. One real
+visitor's address was sitting in the variable when it was read. This sits oddly
+against the project's no-accounts, no-database stance: the product deliberately
+collects nothing about who is asking, and then writes the one identifier it does
+receive into repository state. The per-IP counter only ever needs to answer "has
+this client had 5 this hour", which a salted hash of the address answers exactly
+as well. Not fixed now because it touches the live path on the night of a batch
+and the guards in CLAUDE.md § "Live on-demand generation" are load-bearing —
+changing the key format without care silently resets every in-flight per-IP
+counter. Cheap and worth doing early post-launch: hash the address with a salt
+that is not in the repo, keep the hour suffix, and the guard behaves identically.
+(The observed address is deliberately not recorded here — writing it into a
+committed file would reproduce the exact exposure being flagged.)
+
 2026-07-30 | **Watch claim-drop rate against cohort review length during the
 Phase 4 catalog batch** | build, phase 1.4 | Kenshi's `early` cohort burned both
 grounding retries and still lost 3 of 9 claims, while its other three cohorts
