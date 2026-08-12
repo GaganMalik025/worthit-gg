@@ -567,3 +567,51 @@ and `/api/verdict` serves pre-split artifacts straight off it.
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 read across Hades and Hollow Knight, both titles and all four cohorts, nothing
 inappropriate found.
+
+---
+
+## 2026-08-12 — 4.1 catalog batch, 41 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **1,986 citations across 41 verdicts, 0 failures** (and 9,157 across all 176, PASS) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-2026-08-12.md`, seed 20260812, stratified 5 per playtime cohort |
+| Scope | 662 claims, 1,986 citations |
+
+The first catalog batch run against the corrected quota ceiling. 45 titles
+attempted in 52.6 minutes on the real 400/day batch budget (500 daily limit
+minus the 100 live reserve, verified from the 429 body — the docs had carried
+1,500/300 until `8b92f33`). 41 published, 396 of 400 calls spent, **9.27 calls
+per published title**: above the 7.86 historical mean, which is what sets the
+remaining catalog at roughly 9 more nights rather than the 9 originally
+projected off a wrong ceiling.
+
+Four titles did not publish, none of them for content reasons:
+
+| appid | title | outcome | calls |
+|---|---|---|---|
+| 294100 | RimWorld | `thin_segmentation` — 61.4% veteran (limit 60%) | 0 |
+| 2694490 | Path of Exile 2 | `thin_segmentation` — 63.3% veteran (limit 60%) | 0 |
+| 48700 | Mount & Blade: Warband | `stage_failed` at extract | 1 |
+| 1604030 | V Rising | `stage_failed` at verdict | 10 |
+
+Both segmentation drops cost zero Gemini calls — the gate runs after ingestion
+and before extraction, which is the whole point of placing it there. A fifth
+title, Marvel's Spider-Man Remastered (`1817070`), timed out in extraction and
+left no `batch_state` record while still charging ~5 calls to the ledger; that
+gap is recorded in BACKLOG (`aaa1534`) and accounts for the run summary
+reporting 391 calls against the ledger's 396.
+
+Verdict mix across the 41: Buy 19, Wait 19, Skip 3.
+
+Catalog after this pass: **176 titles** (135 held + 41 new), batch committed as
+`5bb68e3`. Search index rebuilt in the same commit — 7,304 core + 23,079 tail
+rows, with all 176 verdict appids confirmed present, since a verdict that cannot
+be searched for is one we paid to generate and then hid.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+read across all four playtime cohorts and 10 verdicts spot-checked against their
+splits, nothing inappropriate found.
