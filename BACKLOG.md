@@ -62,6 +62,21 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-12 | **The pacer's cross-process test has the same unchecked-exit-code
+shape the ledger test just had** | build, fixing test_ledger_charge_is_atomic |
+`test_pacer_ceiling_across_processes` (test_batch_guards.py:67) spawns 5
+children and never looks at a return code either. It is **less dangerous than
+the ledger case was**, and that is the whole reason it is here rather than
+fixed: it reads each child's stdout through `json.loads`, so a child that dies
+produces a `JSONDecodeError` and the test fails loudly instead of quietly
+counting lower. The failure is honest but unhelpful — a decode traceback points
+at the parse, not at "a child process died", so whoever hits it starts by
+debugging the pacer rather than the environment. Worth the same treatment as
+`adf26e3` (assert exit codes first, capture stderr, then assert the behaviour)
+next time that file is open. Not doing it now because it is a diagnosis-quality
+improvement to a test that already cannot pass silently, and the standing
+instruction for tonight is to record rather than widen scope.
+
 2026-08-12 | **A title that raises inside run_title() spends quota but leaves no
 trace in batch_state.json** | build, 2026-08-12 overnight batch | Marvel's
 Spider-Man Remastered (`1817070`) timed out tonight — `extract_claims.py` hit its
