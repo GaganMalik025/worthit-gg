@@ -62,6 +62,32 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-12 | **A title that raises inside run_title() spends quota but leaves no
+trace in batch_state.json** | build, 2026-08-12 overnight batch | Marvel's
+Spider-Man Remastered (`1817070`) timed out tonight — `extract_claims.py` hit its
+900s limit — and the exception propagated out of `run_title()` to the
+`except Exception` around `f.result()` in `run_batch.main()`. That handler prints
+`[ERR]` and continues, which is right: one title must not end a night. But
+`record()` is called at the *end* of `run_title()`, so a raise anywhere before it
+means the title is never written to `data/batch_state.json` at all. The calls it
+already made were charged to the quota ledger by `generate_one`, which charges as
+it goes. So the spend is real and the record is absent: tonight the run summary
+reported 391 model calls while the ledger reported 396, and the 5-call gap is
+exactly this title. Two consequences. First, `batch_state` is not a reliable
+account of what a night cost — anything reconciling the two will keep finding
+drift. Second, because the appid has no entry, it is not in the `TERMINAL` set,
+so it lands back in `todo` on the next run and retries: a title that times out
+*reliably* will burn ~5 calls and up to 15 minutes every single night, silently,
+and nothing in the state file ever shows it happening. Tonight that is 1 title
+out of 45; it stops being cosmetic the moment it is a title that always fails.
+Not fixed now because the fix is not just moving `record()` into a `finally` —
+the entry needs an outcome the retry logic can reason about, and deciding whether
+a timeout is terminal (never retry, may be a genuinely un-processable title) or
+transient (retry, may have been a slow API night) is a real product call that
+wants more than one night of evidence. Cheap interim step when it is picked up:
+record the failure with a `timed_out` outcome, leave it non-terminal, and count
+retries so a permanent failure becomes visible instead of silent.
+
 2026-08-12 | **The live and batch quota ledgers are two independent counters of
 one 500/day budget** | build, pre-batch LIVE_QUOTA check | Tonight's parity check
 found `live_used` at 13 in the `LIVE_QUOTA` GitHub variable against 5 in
