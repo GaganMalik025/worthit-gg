@@ -61,6 +61,7 @@ OUT_PATH = ROOT / "data/catalog.json"
 LIVE_SERVICE_PATH = Path(__file__).resolve().parent / "data/live_service.txt"
 EXEMPT_PATH = Path(__file__).resolve().parent / "data/free_not_live_service.txt"
 EXTRA_PATH = Path(__file__).resolve().parent / "data/extra_appids.txt"
+DUPLICATE_PATH = Path(__file__).resolve().parent / "data/duplicate_editions.txt"
 
 TARGET = 150            # total catalog size, including what we already hold
 LIVE_SERVICE_CAP = 20   # slots a live-service title may occupy
@@ -154,14 +155,21 @@ def existing_verdicts():
     return have
 
 
-def select(entries, free, live_list, exempt, have, target, cap, to_rank=0):
+def select(entries, free, live_list, exempt, have, target, cap, to_rank=0,
+           duplicates=None):
     """Walk the ranking, filling slots, capping live-service representation.
 
     The free-to-play flag is wrong in both directions and both corrections are
     audited files: live_list adds PAID live-service titles price cannot see,
     exempt removes FREE single-player titles price wrongly demotes.
+
+    duplicates drops edition SKUs that share one review pool with a title
+    already in the ranking - see pipeline/data/duplicate_editions.txt. It is
+    checked before `have`, because the point is that these appids must never be
+    ingested at all, not that we happen to hold one already.
     """
-    chosen, skipped, n_live = [], [], 0
+    duplicates = duplicates or {}
+    chosen, skipped, dropped, n_live = [], [], [], 0
     for rank, (appid, title, reviews) in enumerate(entries, 1):
         # Two stop conditions, and they mean different things. to_rank covers the
         # ranking down to a depth ("everything in the top 500"); target counts
@@ -173,6 +181,11 @@ def select(entries, free, live_list, exempt, have, target, cap, to_rank=0):
                 break
         elif len(chosen) >= target:
             break
+        if appid in duplicates:
+            dropped.append({"appid": appid, "title": title,
+                            "review_count": reviews, "rank": rank,
+                            "reason": duplicates[appid] or "duplicate edition"})
+            continue
         if appid in have:
             continue
         is_free = bool(free.get(appid)) and appid not in exempt
@@ -200,7 +213,7 @@ def select(entries, free, live_list, exempt, have, target, cap, to_rank=0):
         if is_live:
             n_live += 1
         chosen.append(row)
-    return chosen, skipped
+    return chosen, skipped, dropped
 
 
 def main():
@@ -224,6 +237,7 @@ def main():
     live_list = read_appid_list(LIVE_SERVICE_PATH)
     exempt = read_appid_list(EXEMPT_PATH)
     extra = read_appid_list(EXTRA_PATH)
+    duplicates = read_appid_list(DUPLICATE_PATH)
     have = existing_verdicts()
 
     print("  %s ranked titles | %s free-to-play | %d on the audited "
@@ -231,15 +245,16 @@ def main():
           % (f"{len(entries):,}", f"{sum(1 for v in free.values() if v):,}",
              len(live_list), len(exempt), len(have)))
 
-    chosen, skipped = select(entries, free, live_list, exempt, have,
-                             args.target, args.cap, args.to_rank)
+    chosen, skipped, dropped = select(entries, free, live_list, exempt, have,
+                                      args.target, args.cap, args.to_rank,
+                                      duplicates)
 
     # Delisted titles the store walk cannot see. merge_verdicts covers the ones
     # we already hold a verdict for; this covers the rest, and there is no
     # keyless way to discover them - hence an audited file.
     known = {r["appid"] for r in chosen}
     for appid, note in extra.items():
-        if appid in known or appid in have:
+        if appid in known or appid in have or appid in duplicates:
             continue
         chosen.append({"appid": appid, "title": note or str(appid),
                        "review_count": None, "rank": None, "class": "premium",
@@ -270,12 +285,19 @@ def main():
             "measured_gate": "run_batch.py drops a title after ingestion and "
                              "before extraction if its real cohort structure "
                              "is degenerate - ingestion costs no Gemini quota",
+            "duplicate_editions": "edition SKUs sharing one Steam review pool "
+                                  "with a ranked title are dropped, per "
+                                  "pipeline/data/duplicate_editions.txt - "
+                                  "ingesting both spends quota twice and "
+                                  "publishes two verdicts on the same "
+                                  "recommendationids",
         },
         "counts": {
             "selected": len(chosen),
             "premium": len(chosen) - n_live,
             "live_service": n_live,
             "skipped_by_cap": len(skipped),
+            "dropped_duplicate_edition": len(dropped),
             "already_held": len(have),
             "deepest_rank_reached": deepest,
             "night_1": sum(1 for r in chosen if r["night"] == 1),
@@ -284,6 +306,7 @@ def main():
         "already_held": sorted(have),
         "titles": chosen,
         "skipped_by_cap": skipped[:60],
+        "dropped_duplicate_edition": dropped,
     }
 
     print("\nselected %d titles: %d premium, %d live-service (cap %d)"
@@ -294,6 +317,9 @@ def main():
              sum(1 for a, _, _ in entries[:args.target]
                  if free.get(a) or a in live_list)))
     print("  %d live-service titles skipped by the cap" % len(skipped))
+    for row in dropped:
+        print("  dropped duplicate edition: %d %s (rank %s) - %s"
+              % (row["appid"], row["title"], row["rank"], row["reason"]))
     print("  night 1: %d | night 2: %d"
           % (manifest["counts"]["night_1"], manifest["counts"]["night_2"]))
 

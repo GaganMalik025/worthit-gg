@@ -1,0 +1,30 @@
+# Appids that share ONE Steam review pool with another appid in the ranking.
+#
+# Steam serves the same reviews under every edition SKU of a game - GOTY,
+# Deluxe, Definitive, Complete. The store search returns each SKU as its own
+# row with its own appid, so the ranking carries both and the catalog would
+# ingest the same reviews twice: double the quota spend, and two published
+# verdicts citing the SAME recommendationids under two titles.
+#
+# Listed here = the edition we DROP. The survivor stays in the ranking and is
+# named in the note. Keep the base/lower appid where there is a choice; its
+# store page is the one search and inbound links land on.
+#
+# How to verify a suspected pair before adding it (a matching review_count in
+# data/catalog.json is the tell, not the proof):
+#
+#   for id in A B; do
+#     curl -s "https://store.steampowered.com/appreviews/${id}?json=1\
+# &num_per_page=100&language=english&purchase_type=all&filter=recent" \
+#       | jq -r '.reviews[].recommendationid' | sort > "ids_${id}.txt"
+#   done
+#   comm -12 ids_A.txt ids_B.txt | wc -l    # shared
+#   comm -3  ids_A.txt ids_B.txt | wc -l    # differing
+#
+# One page is NOT enough. A single 100-review page can show a few ids unique to
+# each side and read as two independent pools; that is cache-shard propagation
+# lag on the newest reviews, and it disappears over three cursor pages. Compare
+# 300 and expect 300/300 shared. A same-appid control fetch shows zero churn,
+# so the churn is not clock drift between the two calls.
+
+900883  # Oblivion GOTY Deluxe - same pool as 22330 (Oblivion GOTY); verified 2026-08-12, 300/300 recommendationids shared over 3 cursor pages, identical 39,114 total / 37,306 up / 1,808 down

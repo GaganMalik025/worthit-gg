@@ -1,22 +1,24 @@
 {
   "v": 1,
-  "generated_at": "2026-08-11T12:16:38Z",
+  "generated_at": "2026-08-12T09:40:19Z",
   "rule": {
     "primary_sort": "steam review count, descending",
     "target": 150,
     "live_service_cap": 78,
     "live_service_definition": "(free-to-play, detected from cached store rows, minus pipeline/data/free_not_live_service.txt) OR pipeline/data/live_service.txt",
     "why_not_price_alone": "measured 2026-08-01 over 20 ingested titles: free and paid-live-service have indistinguishable veteran shares (50.4% vs 47.7% median) against 32.9% for paid non-live-service; price alone would demote Team Fortress 2 and keep Rust",
-    "measured_gate": "run_batch.py drops a title after ingestion and before extraction if its real cohort structure is degenerate - ingestion costs no Gemini quota"
+    "measured_gate": "run_batch.py drops a title after ingestion and before extraction if its real cohort structure is degenerate - ingestion costs no Gemini quota",
+    "duplicate_editions": "edition SKUs sharing one Steam review pool with a ranked title are dropped, per pipeline/data/duplicate_editions.txt - ingesting both spends quota twice and publishes two verdicts on the same recommendationids"
   },
   "counts": {
-    "selected": 412,
-    "premium": 334,
+    "selected": 411,
+    "premium": 333,
     "live_service": 78,
     "skipped_by_cap": 18,
+    "dropped_duplicate_edition": 1,
     "already_held": 135,
     "deepest_rank_reached": 564,
-    "night_1": 412,
+    "night_1": 411,
     "night_2": 0
   },
   "already_held": [
@@ -1845,15 +1847,6 @@
       "title": "The Elder Scrolls IV: Oblivion® Game of the Year Edition (2009)",
       "review_count": 32111,
       "rank": 321,
-      "class": "premium",
-      "basis": "priced, not on the live-service list",
-      "night": 1
-    },
-    {
-      "appid": 900883,
-      "title": "The Elder Scrolls IV: Oblivion® Game of the Year Edition Deluxe (2009)",
-      "review_count": 32111,
-      "rank": 322,
       "class": "premium",
       "basis": "priced, not on the live-service list",
       "night": 1
@@ -4028,6 +4021,15 @@
       "class": "live_service",
       "basis": "audited: Ghost Recon Breakpoint - judgment; paid live-service, seasonal",
       "skipped": "live_service_cap"
+    }
+  ],
+  "dropped_duplicate_edition": [
+    {
+      "appid": 900883,
+      "title": "The Elder Scrolls IV: Oblivion® Game of the Year Edition Deluxe (2009)",
+      "review_count": 32111,
+      "rank": 322,
+      "reason": "Oblivion GOTY Deluxe - same pool as 22330 (Oblivion GOTY); verified 2026-08-12, 300/300 recommendationids shared over 3 cursor pages, identical 39,114 total / 37,306 up / 1,808 down"
     }
   ]
 }
