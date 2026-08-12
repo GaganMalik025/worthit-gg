@@ -1,0 +1,758 @@
+{
+  "appid": "648800",
+  "game_name": "Raft",
+  "generated_at": "2026-08-12T10:15:58Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Surviving the open ocean begins with a painfully slow drift.",
+    "for_you_if": [
+      "you want a co-op survival experience with friends",
+      "you enjoy building sprawling custom rafts and bases"
+    ],
+    "not_for_you_if": [
+      "you need smooth controller support right from the start",
+      "you are sensitive to motion sickness during gameplay",
+      "you expect a fast-paced opening without tedious grinding"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 38,
+      "pct_positive": 42.1,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 552,
+      "pct_positive": 86.8,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 515,
+      "pct_positive": 89.9,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 128,
+      "pct_positive": 93.8,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Player sentiment shifts dramatically from negative initial impressions to strongly positive reviews as playtime increases.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 42.1,
+            "pool_n": 38
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 86.8,
+            "pool_n": 552
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 89.9,
+            "pool_n": 515
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 93.8,
+            "pool_n": 128
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 42.1,
+        "low_pool_n": 38,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 93.8,
+        "high_pool_n": 128,
+        "gap_pts": 51.7
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 38,
+      "pct_positive": 42.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players report frustrating tutorial gaps, missing controller support, and a sluggish opening experience.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-044f0f",
+              "claim": "Reviewers report that the game lacks controller support, rendering it unplayable with a controller.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232613405",
+                  "hours_at_review": 1.1,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "game seems cool but has no controller support and is a pita with overlay. why haven't the devs learned yet? why not make controller support for all games to make them playeble by all users? other then that this game seems fun, the little i was able to play",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231587736",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "Unplayable on a controller, and generally just crap.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-f8ac11",
+              "claim": "Reviewers describe the opening hours as tedious and lacking reward.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232503519",
+                  "hours_at_review": 1.3,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "Maybe I will change my mind if I try again but for the first hour this game just felt incredibly tedious and not rewarding at all.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229593853",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "I did not like it. Was too tedious for me, although normally I like crafting and grinding games, but this one just isn't it.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-72140b",
+              "claim": "Reviewers report a lack of tutorials explaining basic fundamentals, leading to getting stuck or soft-locked on the first island.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231250420",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "I am baffled I do not see other people with the same issue I have. I can not even figure out how to play the game! Clearly, it looks I am in the minority with this but there is no tutorial or anything on the basic fundamentals of the game. \n\nI am terminally online and have spent more than my fair share of time soaked into survival games. I know i need to expand my raft, build equipment, and find food. How do i do any of that? No idea. \n\nThe game's failure to show me how to build and interact with the world soft locks me almost immediately. I load in, float towards the first island, get stuck on the first island, and my game ends there as i do not know how to get around the island.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229886858",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "raft got stuck against a tiny island in a record breaking 3 minutes after starting, didnt have the materials to make a paddle. Completely softlocked with no way to continue. tried looking it up online and heard about an \"unstuck\" button in the pause menu that just didnt exist for me. refunded! what trash.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-cdd152",
+              "claim": "Reviewers state that the game falsely advertises crossplay between PlayStation 5 and PC.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230269466",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "Scam game be careful! The game is NOT crossplay and is used to falsely advertise. DO NOT FALL FOR THIS",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230183718",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "Gay ass game.... Fken cheap ass studio... False adverstisement on the crossplay. You can't play ps5 to pc. This studio should be fken sued to the fken ground.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 552,
+      "pct_positive": 86.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "As progression opens up, players find cooperative sessions significantly more engaging despite early resource friction.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-605d8e",
+              "claim": "Reviewers note that the early game and progression can feel very slow, grindy, and tedious.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232442363",
+                  "hours_at_review": 5.0,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "[h2]I don't understand where all the positive reviews come from[/h2]\n\nRaft isn't even shallow - it's primitive. The whole game is mostly slow gathering, crafting and pointless routine.\n\nThe combat is terrible. The spear's attack range is literally half a step. The character moves at a speed that would be considered walking in other games. My spear completely broke while I was fighting a sheep, and the sheep [b]survived[/b].\n\nOn a large island, a boar killed me and I lost 2/3 of my loot. I respawned in my bed on the raft, heard the boar immediately, and somehow died again, losing the rest of my stuff. That's not difficult or engaging - it's just wasting the player's time.\n\nThe game has been out for four years, yet it still lacks even basic tooltips for learning its mechanics.\n\nHonestly, I think Raft is only worth experiencing through YouTube videos, where someone else does all the tedious gathering and routine for you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232232849",
+                  "hours_at_review": 6.7,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "Honestly wanna give the game a neutral review but it's 20 euros and there's so much that could be better.\nAs much as I loved played it with a friend, the game doesn't feel very polished or finished even though it's a finished product.\n\n- Trees don't fall over, they just disappear after chopping them, the larger trees in the game cannot be chopped at all. I also wish it was possible to pluck fruits without having to actually chop the trees.\n\n- Item durability is absolute buttsauce, the metal axe is laughably weak and breaks faster than a toothpick.\n\n- Movement is okay but feels super basic and stiff, I kinda feel like a concrete block sliding across the ground.\n\n- Game is very grindy, takes a long time to gather materials, some items feel very expensive and don't feel like they're worth the risk or resources you have to put into them.\n\nIs the game fun?\nWith a friend, absolutely. I had a blast playing it.\n\nWould I recommend you to get it?\nIf it's on sale, like 50% off or something.\n\nIf devs read this, please address the problems people point out in reviews, the game feels like massive wasted potential.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232143452",
+                  "hours_at_review": 10.1,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "I generally like this genre, but the early progression in Raft is incredibly slow and tedious. It might get better later in the game, but the initial progression was so boring that I lost my patience before it even got to that point. If you don't mind a very slow start, you might enjoy it, but the first few hours were too much of a chore for me to keep going.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228259529",
+                  "hours_at_review": 10.3,
+                  "voted_up": true,
+                  "date": "2026-06-18",
+                  "review_text": "Score: 8.5/10\n\nRaft takes a very different approach to survival games. Instead of surviving in a frozen wilderness, you're stranded on a tiny raft in the middle of the ocean, collecting floating debris to stay alive and expand your floating home.\n\nWhat it does well\n\n✅ Excellent Co-op\n\nThe game is much more fun with friends.\nWorking together to gather resources and build a massive raft is highly satisfying.\n\n✅ Building System\n\nYou start on a tiny platform and can eventually create huge floating bases.\nLots of freedom for creative designs.\n\n✅ Relaxing Gameplay\n\nThe ocean atmosphere is calm and enjoyable most of the time.\nGreat balance between survival and exploration.\n\n✅ Progression\n\nConstantly unlocking new technologies gives a strong sense of advancement.\nWeaknesses\n\n❌ Can Become Repetitive\n\nGathering resources from the ocean can feel grindy after many hours.\n\n❌ Shark Annoyance\n\nThe shark attacks your raft frequently, especially early in the game.\n\n❌ Less Challenging Survival\n\nOnce established, survival becomes much easier\n\nYou'll probably enjoy Raft if you like:\n\nValheim\nSubnautica\nMinecraft\nBase building\nExploration\nCo-op gameplay",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ad26e9",
+              "claim": "Reviewers state that item durability is very low, causing tools like axes to break quickly.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232442363",
+                  "hours_at_review": 5.0,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "[h2]I don't understand where all the positive reviews come from[/h2]\n\nRaft isn't even shallow - it's primitive. The whole game is mostly slow gathering, crafting and pointless routine.\n\nThe combat is terrible. The spear's attack range is literally half a step. The character moves at a speed that would be considered walking in other games. My spear completely broke while I was fighting a sheep, and the sheep [b]survived[/b].\n\nOn a large island, a boar killed me and I lost 2/3 of my loot. I respawned in my bed on the raft, heard the boar immediately, and somehow died again, losing the rest of my stuff. That's not difficult or engaging - it's just wasting the player's time.\n\nThe game has been out for four years, yet it still lacks even basic tooltips for learning its mechanics.\n\nHonestly, I think Raft is only worth experiencing through YouTube videos, where someone else does all the tedious gathering and routine for you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232232849",
+                  "hours_at_review": 6.7,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "Honestly wanna give the game a neutral review but it's 20 euros and there's so much that could be better.\nAs much as I loved played it with a friend, the game doesn't feel very polished or finished even though it's a finished product.\n\n- Trees don't fall over, they just disappear after chopping them, the larger trees in the game cannot be chopped at all. I also wish it was possible to pluck fruits without having to actually chop the trees.\n\n- Item durability is absolute buttsauce, the metal axe is laughably weak and breaks faster than a toothpick.\n\n- Movement is okay but feels super basic and stiff, I kinda feel like a concrete block sliding across the ground.\n\n- Game is very grindy, takes a long time to gather materials, some items feel very expensive and don't feel like they're worth the risk or resources you have to put into them.\n\nIs the game fun?\nWith a friend, absolutely. I had a blast playing it.\n\nWould I recommend you to get it?\nIf it's on sale, like 50% off or something.\n\nIf devs read this, please address the problems people point out in reviews, the game feels like massive wasted potential.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-72e09b",
+              "claim": "Reviewers describe the game as significantly more enjoyable and better suited for playing with other people.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232292868",
+                  "hours_at_review": 12.3,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "its a great game but i would suggest it more for friends",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232266079",
+                  "hours_at_review": 10.9,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "Super good game but more fun with friends",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232155394",
+                  "hours_at_review": 18.9,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "a great game to play with friends!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228259529",
+                  "hours_at_review": 10.3,
+                  "voted_up": true,
+                  "date": "2026-06-18",
+                  "review_text": "Score: 8.5/10\n\nRaft takes a very different approach to survival games. Instead of surviving in a frozen wilderness, you're stranded on a tiny raft in the middle of the ocean, collecting floating debris to stay alive and expand your floating home.\n\nWhat it does well\n\n✅ Excellent Co-op\n\nThe game is much more fun with friends.\nWorking together to gather resources and build a massive raft is highly satisfying.\n\n✅ Building System\n\nYou start on a tiny platform and can eventually create huge floating bases.\nLots of freedom for creative designs.\n\n✅ Relaxing Gameplay\n\nThe ocean atmosphere is calm and enjoyable most of the time.\nGreat balance between survival and exploration.\n\n✅ Progression\n\nConstantly unlocking new technologies gives a strong sense of advancement.\nWeaknesses\n\n❌ Can Become Repetitive\n\nGathering resources from the ocean can feel grindy after many hours.\n\n❌ Shark Annoyance\n\nThe shark attacks your raft frequently, especially early in the game.\n\n❌ Less Challenging Survival\n\nOnce established, survival becomes much easier\n\nYou'll probably enjoy Raft if you like:\n\nValheim\nSubnautica\nMinecraft\nBase building\nExploration\nCo-op gameplay",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226595004",
+                  "hours_at_review": 4.2,
+                  "voted_up": true,
+                  "date": "2026-05-28",
+                  "review_text": "Fun, not as terribly deep as it could be, but easy enough to get the basics of. Basically never run out of water and food and you can go at any pace afterwards. The shark is an ass, the bird is an ass, and I'd imagine this game is a lot more fun with friends. Couldn't tell you.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 515,
+      "pct_positive": 89.9,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid-game introduces story locations and building freedom alongside repetitive exploration, item durability limits, and motion sickness complaints.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-e95743",
+              "claim": "Tools feature durability mechanics and cannot be repaired, forcing players to craft new ones when they break.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231949065",
+                  "hours_at_review": 37.5,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "For a game about the ocean, Raft is quite shallow. The nugget of an idea here is a good one; float around on a tiny raft and gather what materials you can to make it into a home while surviving hunger, thirst, and sharks. Islands serve as the primary method of exploration, offering up crafting materials and notes left behind by other survivors. The problem here is that there just isn't much to do. NPCs are extremely scarce and offer very little in terms of flavor or story. The loop of creating water and cooking food while managing battery life and tool durability gets stale almost immediately. Playing matador with a shark that does the exact same thing every time I dive into the shallows is grating after the first encounter. All of the other animals either aggro like the shark and mindlessly attack, or run away bleating. Unfortunately, the rewards for exploration are likewise shallow and unsatisfying, leaving the whole package a disappointment from start to finish. Playing with friends is a better experience, but that doesn't make the game itself any real fun. I suggest you pass on this one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228808602",
+                  "hours_at_review": 47.6,
+                  "voted_up": false,
+                  "date": "2026-06-25",
+                  "review_text": "First and foremost I am writing this review on me experiencing this in SINGLEPLAYER. That being said; played this game back in Alpha years ago and was excited for the full release. Now? I'm disappointed.\n\nI'm surprised this game has so many positive reviews, since you'll notice that only <15% of players actually completed the game. This isn't because the game is difficult, but because it is tedious, repetitive, and in the long-term: boring.\n\nYour hunger and thirst go down way too fast, even on easier difficulties and after eating multiple foods. And the worst of all is EVERY tool has durability. Every tool, from your hook, fishing rod, shovel, spear, clothes, gear, paddle, gun, batteries, every tool. It would have been better if non-scrap tools had infinite durability but were expensive to build, giving you a better sense of accomplishment and easing the load. Instead you are in a constant cycle of making tools for them to inevitably break and then use again. Why would I make the expensive version of tools if like the cheaper alternatives they'll eventually break? You can't even repair them, you HAVE to break them. All that combined with the awful crafting mechanics and storage makes the experience slow and lacking. So much so that I doubt it would be fun even in multiplayer.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-5bded3",
+              "claim": "Combat and movement feel janky, with imprecise hitboxes and enemies that can hit through walls.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "227130300",
+                  "hours_at_review": 35.6,
+                  "voted_up": false,
+                  "date": "2026-06-04",
+                  "review_text": "A truly miserable experience.\r\n\r\nThe \"open world survival craft\" genre has become my favourite type of game, and Raft was on my radar for a long time. It was well-reviewed and I was saving it for a rainy day based on the assumption that it would be good. Unfortunately, it's not good.\r\n\r\nEverything in the game seems unfinished. The movement is imprecise and janky. So is the combat, which the game expects you to participate in. None of it feels pleasant. Everything you do feels about 30% too slow -- from the walking and sprinting speeds, to the time between tool swings, to the time it takes between eating a food item and that item disappearing from your inventory and allowing a new item to be picked up in the slot it previously occupied. All of it will make you feel like you're playing through brain damage.\r\n\r\nThe crafting/harvesting/survival mechnics are not tuned well. You'll be running in repetitive ellipses on your raft attending to your tedious survival chores without a moment to breathe and take in the vibes. Your food and water meters deplete too quickly, and nutritional items replenish you too little.\r\n\r\nThe exploration of islands is very disappointing, and they're homogeneous slop piles full of graphical assets that look like you should be able to harvest or interact with them, but which you cannot, full of hostile creatures that are annoying to fight. Islands seem to spawn from a small roster of pre-gens, but they're universally boring.  The bespoke islands that are part of the story aren't much better, \r\n\r\nThe shark who follows you all game is one of the most annoying mechanics ever devised. It will bite your raft every 5 minutes, and you either ward it off or let it destroy one (1) tile of raft. Either way you pay a slow, constant material tax for repairing your raft's shark-inflicted wounds. There's nothing interesting about interacting with the shark directly, whether you're trying to kill it, avoid it, or escape it, because your interaction is mediated …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "226188573",
+                  "hours_at_review": 23.1,
+                  "voted_up": false,
+                  "date": "2026-05-23",
+                  "review_text": "TLDR: Fun game if you don't expect much and you have company to play with it. Bad game if you look too hard at it. I looked too hard at it, so I didn't like it and I’m mostly just listing all the major reasons I could think of.\n\n\nI'll be honest, I played it because I saw Markiplier's series a few years back. And honestly? As singleplayer, I liked the game until I didn't. I love survival games and I loved the survival aspect of the game. I would have recommended it if you asked me in the first 5-10 hours of playing,\n\nBut, as people have mentioned, it's very buggy. Most of the time, it's fine and you can ignore the bugs since they're kinda harmless. But, if you do any fighting or do the story quests, it gets incredibly frustrating and the inventory lost is very punishing (losing \"2/3 of your inventory\" when it's actually more like everything and your morgage). Hit boxes are weird and enemies tend to hit you way more than they can hit you. Like, hitting you through walls while you can't kind of janky. So, you just end up avoiding fights entirely. \n\nQuick mentions, the game can be lackluster if you look at the seams too hard. The islands you find around are very repetitive and predictable after the first 2-3 encounters, having the same rewards n the same places. And I found myself ending up with a bunch of things in surplus you quickly have no purpose for that you either must throw away (fearing they will become relevant in the future again) or increase your raft size and then add chests for just for them. The eating and drinking mechanics are annoying if you don't always carry a lot of water and food with you since your character has the faster metabolism known to mankind. The nighttime sucks always and the story feels very chaotic (maybe because they released the chapters at different times and experimented with stuff?). \n\nSpeaking of the story (no spoilers), it was original and it had good puzzles, I'll give it that. But I realized I only enjoyed them when I already …",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-b8adad",
+              "claim": "Reviewers describe the game as causing motion sickness.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232426759",
+                  "hours_at_review": 87.7,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "It's pretty fun, but it gives me motion sickness. I'm fine with some games and not others when it comes to motion sickness issues. This game happens to be \"not others\".\r\nIt's pretty okay otherwise.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227130300",
+                  "hours_at_review": 35.6,
+                  "voted_up": false,
+                  "date": "2026-06-04",
+                  "review_text": "A truly miserable experience.\r\n\r\nThe \"open world survival craft\" genre has become my favourite type of game, and Raft was on my radar for a long time. It was well-reviewed and I was saving it for a rainy day based on the assumption that it would be good. Unfortunately, it's not good.\r\n\r\nEverything in the game seems unfinished. The movement is imprecise and janky. So is the combat, which the game expects you to participate in. None of it feels pleasant. Everything you do feels about 30% too slow -- from the walking and sprinting speeds, to the time between tool swings, to the time it takes between eating a food item and that item disappearing from your inventory and allowing a new item to be picked up in the slot it previously occupied. All of it will make you feel like you're playing through brain damage.\r\n\r\nThe crafting/harvesting/survival mechnics are not tuned well. You'll be running in repetitive ellipses on your raft attending to your tedious survival chores without a moment to breathe and take in the vibes. Your food and water meters deplete too quickly, and nutritional items replenish you too little.\r\n\r\nThe exploration of islands is very disappointing, and they're homogeneous slop piles full of graphical assets that look like you should be able to harvest or interact with them, but which you cannot, full of hostile creatures that are annoying to fight. Islands seem to spawn from a small roster of pre-gens, but they're universally boring.  The bespoke islands that are part of the story aren't much better, \r\n\r\nThe shark who follows you all game is one of the most annoying mechanics ever devised. It will bite your raft every 5 minutes, and you either ward it off or let it destroy one (1) tile of raft. Either way you pay a slow, constant material tax for repairing your raft's shark-inflicted wounds. There's nothing interesting about interacting with the shark directly, whether you're trying to kill it, avoid it, or escape it, because your interaction is mediated …",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-10b2a0",
+              "claim": "Reviewers note that the game features motion sickness issues.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232426759",
+                  "hours_at_review": 87.7,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "It's pretty fun, but it gives me motion sickness. I'm fine with some games and not others when it comes to motion sickness issues. This game happens to be \"not others\".\r\nIt's pretty okay otherwise.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225612809",
+                  "hours_at_review": 24.7,
+                  "voted_up": true,
+                  "date": "2026-05-15",
+                  "review_text": "As a 50 year old parent playing this with a 17 year old, I can highly recommend for most any age (may be a little too complex for under 8's) there is also a little blood spatter when the shark bites you but no real gore.  If you are a fan of Minecraft (or just exploration and crafting in general) this ticks all the boxes! Your raft is your home, build it in your own style! Fish, cook, expand your raft, collect supplies, explore islands, fight boars and bears for meat and leather, and search for clues needed to progress the game. Simplistic style, engaging, will keep you busy for quite a while and the co-op feature makes it even better! I haven't encountered any major bugs (I'm on a mid level gaming pc) I honestly love this game and have started my own world to solo after playing with my son. It doesn't disappoint!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-7fee5b",
+              "claim": "Exploration features repeating, predictable islands with homogeneous assets and similar rewards.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "228509654",
+                  "hours_at_review": 95.6,
+                  "voted_up": true,
+                  "date": "2026-06-21",
+                  "review_text": "Great game, definitely more fun with friends. Co-op works great!\r\nMain story will take u around 15-30h of gameplay. After that islands get extremely repetetive and gameplay turns into decorating and expending your \"raft\" rather than experiencing new stuff.\r\nGoing for 100% achievements requires some time sink to get to 365 in-game days (80-140h based on how many nights u can skip with sleeping), also there are some RNG achievements that will make u go insane when u ran out of luck..",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227130300",
+                  "hours_at_review": 35.6,
+                  "voted_up": false,
+                  "date": "2026-06-04",
+                  "review_text": "A truly miserable experience.\r\n\r\nThe \"open world survival craft\" genre has become my favourite type of game, and Raft was on my radar for a long time. It was well-reviewed and I was saving it for a rainy day based on the assumption that it would be good. Unfortunately, it's not good.\r\n\r\nEverything in the game seems unfinished. The movement is imprecise and janky. So is the combat, which the game expects you to participate in. None of it feels pleasant. Everything you do feels about 30% too slow -- from the walking and sprinting speeds, to the time between tool swings, to the time it takes between eating a food item and that item disappearing from your inventory and allowing a new item to be picked up in the slot it previously occupied. All of it will make you feel like you're playing through brain damage.\r\n\r\nThe crafting/harvesting/survival mechnics are not tuned well. You'll be running in repetitive ellipses on your raft attending to your tedious survival chores without a moment to breathe and take in the vibes. Your food and water meters deplete too quickly, and nutritional items replenish you too little.\r\n\r\nThe exploration of islands is very disappointing, and they're homogeneous slop piles full of graphical assets that look like you should be able to harvest or interact with them, but which you cannot, full of hostile creatures that are annoying to fight. Islands seem to spawn from a small roster of pre-gens, but they're universally boring.  The bespoke islands that are part of the story aren't much better, \r\n\r\nThe shark who follows you all game is one of the most annoying mechanics ever devised. It will bite your raft every 5 minutes, and you either ward it off or let it destroy one (1) tile of raft. Either way you pay a slow, constant material tax for repairing your raft's shark-inflicted wounds. There's nothing interesting about interacting with the shark directly, whether you're trying to kill it, avoid it, or escape it, because your interaction is mediated …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "226188573",
+                  "hours_at_review": 23.1,
+                  "voted_up": false,
+                  "date": "2026-05-23",
+                  "review_text": "TLDR: Fun game if you don't expect much and you have company to play with it. Bad game if you look too hard at it. I looked too hard at it, so I didn't like it and I’m mostly just listing all the major reasons I could think of.\n\n\nI'll be honest, I played it because I saw Markiplier's series a few years back. And honestly? As singleplayer, I liked the game until I didn't. I love survival games and I loved the survival aspect of the game. I would have recommended it if you asked me in the first 5-10 hours of playing,\n\nBut, as people have mentioned, it's very buggy. Most of the time, it's fine and you can ignore the bugs since they're kinda harmless. But, if you do any fighting or do the story quests, it gets incredibly frustrating and the inventory lost is very punishing (losing \"2/3 of your inventory\" when it's actually more like everything and your morgage). Hit boxes are weird and enemies tend to hit you way more than they can hit you. Like, hitting you through walls while you can't kind of janky. So, you just end up avoiding fights entirely. \n\nQuick mentions, the game can be lackluster if you look at the seams too hard. The islands you find around are very repetitive and predictable after the first 2-3 encounters, having the same rewards n the same places. And I found myself ending up with a bunch of things in surplus you quickly have no purpose for that you either must throw away (fearing they will become relevant in the future again) or increase your raft size and then add chests for just for them. The eating and drinking mechanics are annoying if you don't always carry a lot of water and food with you since your character has the faster metabolism known to mankind. The nighttime sucks always and the story feels very chaotic (maybe because they released the chapters at different times and experimented with stuff?). \n\nSpeaking of the story (no spoilers), it was original and it had good puzzles, I'll give it that. But I realized I only enjoyed them when I already …",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-a3d53e",
+              "claim": "Story locations feature puzzles to solve and notes left behind by other survivors.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232197079",
+                  "hours_at_review": 72.3,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "Probably the best open world survival craft experience you'll ever get to experience. Ever since I beat this game I have been chasing the highs that Raft gives, but I have been nothing but unsuccessful with my attempts. The building mechanics are polished and well thought out. The open world is beautiful to look at and its POIs are filled with satisfying lore leaving room for your imagination to build on top of. The core concept of traversing the open world with your base is amazing. To top it all off the main story keeps you hooked throughout your journey. I highly recommend grabbing the game with a friend or two as it creates incredibly hilarious moments to look back and cherish at.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231949065",
+                  "hours_at_review": 37.5,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "For a game about the ocean, Raft is quite shallow. The nugget of an idea here is a good one; float around on a tiny raft and gather what materials you can to make it into a home while surviving hunger, thirst, and sharks. Islands serve as the primary method of exploration, offering up crafting materials and notes left behind by other survivors. The problem here is that there just isn't much to do. NPCs are extremely scarce and offer very little in terms of flavor or story. The loop of creating water and cooking food while managing battery life and tool durability gets stale almost immediately. Playing matador with a shark that does the exact same thing every time I dive into the shallows is grating after the first encounter. All of the other animals either aggro like the shark and mindlessly attack, or run away bleating. Unfortunately, the rewards for exploration are likewise shallow and unsatisfying, leaving the whole package a disappointment from start to finish. Playing with friends is a better experience, but that doesn't make the game itself any real fun. I suggest you pass on this one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228732518",
+                  "hours_at_review": 64.6,
+                  "voted_up": true,
+                  "date": "2026-06-24",
+                  "review_text": "I didn't think id like this game but I do.   Its very addicting and rewarding.  It may start off a lil slow but it gets better and better the longer u play it.   Some of the islands are better then others but they all have their quirks and puzzles which add to the fun with friends and a good team.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226007212",
+                  "hours_at_review": 80.5,
+                  "voted_up": true,
+                  "date": "2026-05-20",
+                  "review_text": "The story so far is so amazing, im currently going through it again for the third time! The puzzles in the game are so well thought out! my favourite is the shipping container puzzle in tangaroa. I hope they add more to the story, like how did the world flood? whats the next steps for utopia? etc. Also i think we should be able to attack the shark with an axe! defo a 10/10, would recommend",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-695cc8",
+              "claim": "Reviewers find that islands and side content become repetitive after completing the main story or initial hours.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "228509654",
+                  "hours_at_review": 95.6,
+                  "voted_up": true,
+                  "date": "2026-06-21",
+                  "review_text": "Great game, definitely more fun with friends. Co-op works great!\r\nMain story will take u around 15-30h of gameplay. After that islands get extremely repetetive and gameplay turns into decorating and expending your \"raft\" rather than experiencing new stuff.\r\nGoing for 100% achievements requires some time sink to get to 365 in-game days (80-140h based on how many nights u can skip with sleeping), also there are some RNG achievements that will make u go insane when u ran out of luck..",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226188573",
+                  "hours_at_review": 23.1,
+                  "voted_up": false,
+                  "date": "2026-05-23",
+                  "review_text": "TLDR: Fun game if you don't expect much and you have company to play with it. Bad game if you look too hard at it. I looked too hard at it, so I didn't like it and I’m mostly just listing all the major reasons I could think of.\n\n\nI'll be honest, I played it because I saw Markiplier's series a few years back. And honestly? As singleplayer, I liked the game until I didn't. I love survival games and I loved the survival aspect of the game. I would have recommended it if you asked me in the first 5-10 hours of playing,\n\nBut, as people have mentioned, it's very buggy. Most of the time, it's fine and you can ignore the bugs since they're kinda harmless. But, if you do any fighting or do the story quests, it gets incredibly frustrating and the inventory lost is very punishing (losing \"2/3 of your inventory\" when it's actually more like everything and your morgage). Hit boxes are weird and enemies tend to hit you way more than they can hit you. Like, hitting you through walls while you can't kind of janky. So, you just end up avoiding fights entirely. \n\nQuick mentions, the game can be lackluster if you look at the seams too hard. The islands you find around are very repetitive and predictable after the first 2-3 encounters, having the same rewards n the same places. And I found myself ending up with a bunch of things in surplus you quickly have no purpose for that you either must throw away (fearing they will become relevant in the future again) or increase your raft size and then add chests for just for them. The eating and drinking mechanics are annoying if you don't always carry a lot of water and food with you since your character has the faster metabolism known to mankind. The nighttime sucks always and the story feels very chaotic (maybe because they released the chapters at different times and experimented with stuff?). \n\nSpeaking of the story (no spoilers), it was original and it had good puzzles, I'll give it that. But I realized I only enjoyed them when I already …",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-249959",
+              "claim": "Reviewers state that the building system provides freedom for base design and raft expansion.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232087236",
+                  "hours_at_review": 36.6,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "At the time of its initial unveiling in 2016 and following this day, Raft was one of the only coop survival titles to offer a dynamically-changing open world stranded-at-sea experience, which holds up to this day. \r\n\r\nYou find yourself stranded on a small patch of wood and plastic, stranded in an endless unfathomable ocean as a shark circles around to tear away chunks of your safe haven. The preluding goal is to gather materials floating on the veiled surface to expand your raft and grow your survivorship capabilities; however as the relative safety curtails, reality sets in - the water shrouds secrets of the world before the ocean calamity, which just might be the resolution to your callous suffering. \r\n\r\nNavigation on outset is done via sails and paddles - air streams change and need to be accounted for in order to reach your destination, or to avoid being lodged onto shallow shores. Trash filled ocean currents bring forth an ever ending cascade of building materials, meanwhile islands and reefs provide juncture to gather much-coveted raw natural resources, at the pervasive risk of fighting off fierce opponents. \r\n\r\nRaft base building is unique as you have total freedom of how to tailor your mobile refuge - exploring grants schematics for new equipment and tools which grants to improve the effectiveness of your survival instruments, or offering partial automation opportunities down the line. \r\n\r\nThe Raft world is vast and full of secrets, with varying remnants of humanity serving as your course for uncovering the story of what transpired during the apocalypse. Each location offers a unique space to explore, as mazy maps and enigmas will stand between secrets and your party. The explorative aspect is bolstered by location-unique puzzles, as you will have to traverse the decaying bastions of humanity to repair & untangle your way towards ultimate submerged salvation. \r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225368694",
+                  "hours_at_review": 91.7,
+                  "voted_up": true,
+                  "date": "2026-05-12",
+                  "review_text": "Started this game thinking:\r\n“hehe funny floating trash simulator”\r\n\r\nEnded this game screaming at the ocean because of a shark named Bruce.\r\n\r\nRaft is basically:\r\n\r\n40% collecting garbage\r\n30% dehydration\r\n20% architectural engineering\r\n10% pure hatred for Bruce\r\n\r\nBruce is not a shark.\r\nBruce is an unpaid employee whose full-time job is eating exactly the raft piece you JUST repaired.\r\n\r\n“Oh nice, my raft is finally looki—”\r\nCRUNCH\r\nThanks Bruce. Very cool.\r\n\r\nPlayed on EASY mode and honestly? Zero regrets.\r\nSome people want Dark Souls on water.\r\nI wanted a chill survival game where I can build a floating Costco without developing real-life anxiety.\r\n\r\nAnd the building system? Surprisingly addictive.\r\nI started with:\r\n“just a small raft”\r\n\r\nA few hours later:\r\n“welcome aboard my 3-story floating suburban shopping mall with advanced storage logistics.”\r\n\r\nThe story was actually way better than I expected too. The locations are cool, progression feels rewarding, and discovering new places kept me hooked.\r\n\r\nBUT.\r\n\r\nFinding Titanium feels like applying for a mortgage.\r\nI swear the game acts like Titanium is made from extinct dinosaur tears.\r\n\r\nAfter finishing the story, I really wish farming late-game materials became easier, because the building part is where this game becomes dangerously fun.\r\n\r\nHonestly, I can totally see myself coming back just to play Creative Mode and build the dumbest floating civilization imaginable.\r\n\r\n10/10\r\nWould get emotionally bullied by a shark again.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 128,
+      "pct_positive": 93.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players highlight severe multiplayer connection hurdles and harsh survival penalties upon dying or stepping away.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-a42a1c",
+              "claim": "The escape menu does not pause the game and hunger or thirst do not decrease while idle, causing players to starve if they step away, which results in inventory deletion.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232346440",
+                  "hours_at_review": 108.1,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "I really like this game. I used to love this game, but tbh:\n\nESC menu doesn't pause, and there's no reduction to hunger/water if you're idle, so anytime I have to go to the bathroom or something, I end up dying to starvation/thirst, and that outright deletes 2/3rds of my inventory (doesn't drop), and after having that happen 3 times, I find the fast death really, really irritating and I've just decided to stop playing. Everything else about the game, I enjoy, but as a solo player who has stuff come up that demands my attention, having no way to pause mid-game and the really steep outright deletion of my inventory is just too steep a punishment for having to step away for a few minutes.\n\nIt's a shame because this is an AMAZING game to just chill out and play, except now chilling out and playing gets you a really really steep punishment, since every single death that deletes 2/3rds of my inventory has, without fail, deleted every single item of food, water, and tool, and weapon, and any kind of metal ingot or whatever, and left behind plastic and leaf, the two resources most overabundant. \n\nSo, yes, it's a great game, but I can't stand to play it with this absurd inventory deletion.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230580625",
+                  "hours_at_review": 132.7,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "It's a surprise to me that this game is recommended so highly, the game is pretty tedious, boring, and overall just a slog to get through. \n\nThe game is buggy to hell and back, occasionally, the game would stutter mid jump, causing the player to do an additional jump, and if you happened to be on your raft during a surge of heavy waves, you can actually take a chunk of fall damage, I even died one time when this occurred. Sometimes hits just don't register, online worlds would just crash and say the connection was lost (even for the host), among various other things. That's not even including weird performance stutters, I won't lie, I have a five year old pc, but I can run so many other games with better frames and visuals than this one.\n\nGameplay is not much better, it's the same repetitive tasks, go to island, loot, expand raft, fight off shark, go to island, loot, there's a bit more to it, but that's the general gameplay loop. Once you get engines, it turns into \"wait until you get to the next story island\". Dying in game is also just badly designed. If you die, you lose 2/3rds of your inventory at random. Seems simple enough, but it doesn't value items the same way. Dug up some titanium? All of that is gone but good thing it kept a majority of your wood! Durability also decreases by 2/3rds overall at seemingly random. Sometimes the tools just disappear, other times they just stay and keep roughly the same durability? Oh, and if you thought you could maybe return to your death point to retrieve any of your items, tough luck, because there's no way to retrieve your items, even if you died right next to your raft.\n\nEven for basic survival game elements it somehow feels worse to play. At the start when you're just trying to find the next plank to purify another cup of water to not dehydrate, it's enjoyable, but it then becomes somehow even worse of a chore than many other survival games. Food and water deplete so fast it's not even funny. When you eventually get to …",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-ad6ccc",
+              "claim": "Reviewers state that dying results in the random loss of two-thirds of their inventory items.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232346440",
+                  "hours_at_review": 108.1,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "I really like this game. I used to love this game, but tbh:\n\nESC menu doesn't pause, and there's no reduction to hunger/water if you're idle, so anytime I have to go to the bathroom or something, I end up dying to starvation/thirst, and that outright deletes 2/3rds of my inventory (doesn't drop), and after having that happen 3 times, I find the fast death really, really irritating and I've just decided to stop playing. Everything else about the game, I enjoy, but as a solo player who has stuff come up that demands my attention, having no way to pause mid-game and the really steep outright deletion of my inventory is just too steep a punishment for having to step away for a few minutes.\n\nIt's a shame because this is an AMAZING game to just chill out and play, except now chilling out and playing gets you a really really steep punishment, since every single death that deletes 2/3rds of my inventory has, without fail, deleted every single item of food, water, and tool, and weapon, and any kind of metal ingot or whatever, and left behind plastic and leaf, the two resources most overabundant. \n\nSo, yes, it's a great game, but I can't stand to play it with this absurd inventory deletion.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230580625",
+                  "hours_at_review": 132.7,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "It's a surprise to me that this game is recommended so highly, the game is pretty tedious, boring, and overall just a slog to get through. \n\nThe game is buggy to hell and back, occasionally, the game would stutter mid jump, causing the player to do an additional jump, and if you happened to be on your raft during a surge of heavy waves, you can actually take a chunk of fall damage, I even died one time when this occurred. Sometimes hits just don't register, online worlds would just crash and say the connection was lost (even for the host), among various other things. That's not even including weird performance stutters, I won't lie, I have a five year old pc, but I can run so many other games with better frames and visuals than this one.\n\nGameplay is not much better, it's the same repetitive tasks, go to island, loot, expand raft, fight off shark, go to island, loot, there's a bit more to it, but that's the general gameplay loop. Once you get engines, it turns into \"wait until you get to the next story island\". Dying in game is also just badly designed. If you die, you lose 2/3rds of your inventory at random. Seems simple enough, but it doesn't value items the same way. Dug up some titanium? All of that is gone but good thing it kept a majority of your wood! Durability also decreases by 2/3rds overall at seemingly random. Sometimes the tools just disappear, other times they just stay and keep roughly the same durability? Oh, and if you thought you could maybe return to your death point to retrieve any of your items, tough luck, because there's no way to retrieve your items, even if you died right next to your raft.\n\nEven for basic survival game elements it somehow feels worse to play. At the start when you're just trying to find the next plank to purify another cup of water to not dehydrate, it's enjoyable, but it then becomes somehow even worse of a chore than many other survival games. Food and water deplete so fast it's not even funny. When you eventually get to …",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-5932ce",
+              "claim": "Online multiplayer and crossplay feature connection issues, crashing worlds, and difficulties generating world codes.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230580625",
+                  "hours_at_review": 132.7,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "It's a surprise to me that this game is recommended so highly, the game is pretty tedious, boring, and overall just a slog to get through. \n\nThe game is buggy to hell and back, occasionally, the game would stutter mid jump, causing the player to do an additional jump, and if you happened to be on your raft during a surge of heavy waves, you can actually take a chunk of fall damage, I even died one time when this occurred. Sometimes hits just don't register, online worlds would just crash and say the connection was lost (even for the host), among various other things. That's not even including weird performance stutters, I won't lie, I have a five year old pc, but I can run so many other games with better frames and visuals than this one.\n\nGameplay is not much better, it's the same repetitive tasks, go to island, loot, expand raft, fight off shark, go to island, loot, there's a bit more to it, but that's the general gameplay loop. Once you get engines, it turns into \"wait until you get to the next story island\". Dying in game is also just badly designed. If you die, you lose 2/3rds of your inventory at random. Seems simple enough, but it doesn't value items the same way. Dug up some titanium? All of that is gone but good thing it kept a majority of your wood! Durability also decreases by 2/3rds overall at seemingly random. Sometimes the tools just disappear, other times they just stay and keep roughly the same durability? Oh, and if you thought you could maybe return to your death point to retrieve any of your items, tough luck, because there's no way to retrieve your items, even if you died right next to your raft.\n\nEven for basic survival game elements it somehow feels worse to play. At the start when you're just trying to find the next plank to purify another cup of water to not dehydrate, it's enjoyable, but it then becomes somehow even worse of a chore than many other survival games. Food and water deplete so fast it's not even funny. When you eventually get to …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230183123",
+                  "hours_at_review": 512.5,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "online multiplayer is broken,game generates world code when it feels like it,",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229864558",
+                  "hours_at_review": 346.8,
+                  "voted_up": true,
+                  "date": "2026-07-07",
+                  "review_text": "Game is extremely good however the crossplay doesnt work for **** it takes over 20 attempts JUST to get a world code and then when they do join some of the times it doesnt work gets stuck on a loading screen and yeah the crossplay is awful but if you can get it to work it is fun",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 1233,
+    "steam_total_reviews": 151451,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

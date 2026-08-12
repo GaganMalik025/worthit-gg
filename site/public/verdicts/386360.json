@@ -1,0 +1,1025 @@
+{
+  "appid": "386360",
+  "game_name": "SMITE®",
+  "generated_at": "2026-08-12T10:32:25Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Skip",
+    "tagline": "Action-heavy third-person MOBA bogged down by technical friction.",
+    "for_you_if": [
+      "you enjoy third-person tactical MOBA combat",
+      "you tolerate steep learning curves"
+    ],
+    "not_for_you_if": [
+      "you will not install third-party anti-cheat software",
+      "you expect your previous purchases to transfer",
+      "you want an active community without toxicity"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 68,
+      "pct_positive": 45.6,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 233,
+      "pct_positive": 64.8,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 187,
+      "pct_positive": 71.7,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 712,
+      "pct_positive": 61.1,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "Positive sentiment rises during intermediate playtime before falling among long-term participants.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 45.6,
+            "pool_n": 68
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 64.8,
+            "pool_n": 233
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 71.7,
+            "pool_n": 187
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 61.1,
+            "pool_n": 712
+          }
+        ],
+        "shape": "rise_then_fall",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 45.6,
+        "low_pool_n": 68,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 71.7,
+        "high_pool_n": 187,
+        "gap_pts": 26.1,
+        "peak_cohort": "mid",
+        "peak_pct_positive": 71.7,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 61.1,
+        "drop_after_peak_pts": 10.6
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews skew more negative compared to historical lifetime ratings.",
+      "evidence": {
+        "recent_pool_pct_positive": 63.7,
+        "recent_pool_n": 683,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 77.0,
+        "steam_total_reviews": 67952,
+        "delta_pts": -13.3,
+        "within_pool_older_pct_positive": 61.1,
+        "within_pool_older_n": 517
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 68,
+      "pct_positive": 45.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "New players encounter severe login blocks, installation failures, toxic communities, and lost purchases across platforms.",
+      "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-0ee4e5",
+              "claim": "Reviewers report difficulty creating new accounts or logging into existing ones.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "225147901",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-09",
+                  "review_text": "After trying to create an account and being told 25 times account name unavailable i uninstalled the game. (Yes...it was 25 different names)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "189986398",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2025-03-12",
+                  "review_text": "Wouldn't let me create a new account or access an old account.  i literally cant even play the game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "189866010",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2025-03-10",
+                  "review_text": "Tried to start a game. Wouldn't let me create a new account or access and old account. No really sure what is happening but took 20 minutes before I just loaded smite 2 back up lol\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-a12b71",
+              "claim": "Reviewers experience launch and installation issues related to Easy Anti-Cheat.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "199604050",
+                  "hours_at_review": 0.5,
+                  "voted_up": true,
+                  "date": "2025-07-12",
+                  "review_text": "having this issue when i download the game. the Easy anti cheat won't install/work. never played the game before and am not sure what to do to be able to play. would much appreciate some help\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "191023613",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2025-03-23",
+                  "review_text": "would love to play but i cant because of the Easy anti cheat",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-cbbb3e",
+              "claim": "Reviewers describe the community as toxic and unwelcoming to new players.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "225410552",
+                  "hours_at_review": 0.8,
+                  "voted_up": true,
+                  "date": "2026-05-13",
+                  "review_text": "Love the game but this is a very toxic community. Just prepare yourself if you do begin to play.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218593138",
+                  "hours_at_review": 1.0,
+                  "voted_up": true,
+                  "date": "2026-02-18",
+                  "review_text": "Joguinho divertido, mas é cheio de gente toxica",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "203652446",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2025-09-06",
+                  "review_text": "There's no lies here. Players really are toxic and unwelcoming of new players. Such a waste.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ref-c49b5b",
+              "claim": "Reviewers note that previously purchased content and god packs do not carry over when transitioning across platforms or versions.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "230785912",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "I truly believe Hi-Rez intentionally nuked this game. For the record, I likely have well over 6000 hours in this game across all platforms over the past decade. If I am ever diagnosed with a terminal disease, struck by lightning, urinate on an electric fence, hit by a mid sized bus with unsuitable air conditioning for the town in which I am currently residing in, my last thoughts will likely be of this game. There has never been a more sudden or greater downfall in the history of my favorite games. I've probably spent enough money on smite gems over the course of like 8 years to purchase a mildly reliable, mid 2010's Toyota Camry and to not have any of that carry over into what was supposedly going to be a massive overhaul is absolutely criminal. However, that move itself was the final nail in the coffin for this game that had been on a rapid decline for years. The only people who play it now are insufferable. Every once in a while I'll load up the game and each one is exactly like the last. I haven't played a competent match since roughly 2021, and even then it was like catching that first sign of your girlfriend getting ready to leave you. The peak for this game was unlike any other MOBA I've ever played. Every MOBA out there will generally have some sort of balance issue, but your skill level easily made up for that in this game. Lobbies felt fair and people genuinely just wanted to play the game. Now this is game is a wasteland. Until Hi-Rez can refocus their priorities on anything that isn't how to brainwash you into stealing your mom's credit card as an adult man to buy entire new wardrobes for characters you've been playing since you were actually stealing your mom's credit card as a teenager, don't play this game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227371888",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-06-07",
+                  "review_text": "Like a negative review would really impact this game at this point. I bought the God Pack a LONG time ago on PS4. I was unable to log in to my account and have it on PC. I understand it's a different platform, but the game is F2P, with thousands of players playing daily and buying skins, plus new gods. Would it be SO bad to let someone have all the characters if they've already bought the pack? Not to mention the skins packs I bought?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224832110",
+                  "hours_at_review": 1.3,
+                  "voted_up": false,
+                  "date": "2026-05-05",
+                  "review_text": "Smite 1 is beyond ruined and with Smite 2(The scam) there is no point to bother with this game or company anymore. I have thousands of hours on xbox. The fact that I can't transfer any of my purchases for the same fkn game(new engine does not mean it's a new game) is a scam.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 233,
+      "pct_positive": 64.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early participants appreciate the manual aiming mechanics while struggling with toxicity, steep learning curves, and account recovery hurdles.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-776839",
+              "claim": "Reviewers report that the game features a third-person, over-the-shoulder perspective with manual aiming for basic attacks and abilities, differentiating it from traditional top-down MOBAs.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231519203",
+                  "hours_at_review": 12.9,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "Смайт это моба но от третьего лица и это меняет вообще все ощущение боя блин managing позиционирование там совсем другое чем в дота или лоле нужно реально целится и уворачиваться руками боги там разные из разных мифологий это дает крутое разнообразие стилей игры графика для мобы приятная детализированная джунгли фарм вся классика жанра осталась на месте минус в том что новичку разобраться сложно механики стрельбы плюс моба система это двойная кривая обучения комьюнити токсичное местами как и в любой мобе но геймплей уникальный и затягивает крепко",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228605506",
+                  "hours_at_review": 5.0,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "🔰\nSMITE is an original MOBA that stands out thanks to its third-person perspective, which makes combat feel more dynamic and immersive compared to other games in the genre. The roster of gods from various mythologies is diverse and interesting, and the gameplay can be very fun once you get used to it.\nHowever, the game can be quite difficult for new players, with a steep learning curve and a sometimes unwelcoming community. Matchmaking can also feel inconsistent at times, which leads to frustrating matches.\nThe progression and cosmetic systems are decent, but they can feel a bit grind-heavy or overly focused on paid skins. Despite this, matches are generally enjoyable and competitive.\nA solid MOBA with a unique twist, but not necessarily for everyone.\n\n\nAvis mitigé\n\nSMITE est un MOBA original qui se démarque grâce à sa vue à la troisième personne, ce qui rend les combats plus dynamiques et immersifs que dans les jeux du même genre. Le roster de dieux issus de différentes mythologies est varié et intéressant, et le gameplay peut être très fun une fois maîtrisé.\n\nCependant, le jeu peut être assez difficile à prendre en main pour les nouveaux joueurs, avec une courbe d’apprentissage exigeante et une communauté parfois peu accueillante. Le matchmaking est également inégal par moments, ce qui peut rendre certaines parties frustrantes.\n\nLe système de progression et de skins est correct, mais parfois trop axé sur le grind ou les éléments cosmétiques payants. Malgré cela, les matchs restent globalement plaisants et compétitifs.\n\nUn bon jeu MOBA avec une idée originale, mais qui ne conviendra pas forcément à tout le monde.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228289187",
+                  "hours_at_review": 16.0,
+                  "voted_up": true,
+                  "date": "2026-06-18",
+                  "review_text": "SMITE is a free-to-play multiplayer online battle arena developed by Titan Forge Games and published by Hi-Rez Studios. Rather than following the traditional top-down formula that defines much of the MOBA genre, SMITE places players directly behind their chosen deity in a third-person perspective. This single design choice dramatically changes the way battles unfold, creating a more action-oriented experience that blends strategic team play with the excitement of direct combat. The game's central premise of controlling legendary gods and mythological figures immediately gives it a unique identity that continues to stand out even among long-established competitors.\n\nOne of the strongest aspects of SMITE is its extensive roster of playable characters inspired by world mythologies. Players can command gods, warriors, hunters, mages, and mythical beings drawn from Greek, Norse, Egyptian, Chinese, Japanese, Hindu, and many other pantheons. Every character comes equipped with a distinctive set of abilities that reflect their legendary origins. This attention to thematic detail makes each god feel memorable and encourages experimentation with different playstyles. Whether a player prefers aggressive frontline combat, long-range damage, magical destruction, or supportive utility, the roster offers an impressive variety of options.\n\nCombat is where SMITE truly separates itself from most games in its genre. Basic attacks and many abilities require manual aiming, making precision and positioning critical factors in every encounter. The third-person perspective creates a greater sense of immersion and intensity, as players are actively dodging attacks, chasing opponents, and lining up skill shots in real time. Team fights often feel fast, chaotic, and highly rewarding, especially when coordinated abilities combine to secure victory. This action-heavy approach makes the game appealing not only to MOBA fans but also to players who enjoy shooters and action titles.\n\nThe game offer…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "225075694",
+                  "hours_at_review": 13.2,
+                  "voted_up": true,
+                  "date": "2026-05-09",
+                  "review_text": "SMITE® remains a unique standout in the MOBA genre by successfully blending traditional lane-based strategy with a third-person, action-oriented perspective. Unlike top-down alternatives, the \"over-the-shoulder\" camera makes every skill shot feel more impactful and rewards players who have strong mechanical awareness and positioning.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "211671155",
+                  "hours_at_review": 2.7,
+                  "voted_up": true,
+                  "date": "2025-11-29",
+                  "review_text": "SMITE is a third-person action MOBA that stands out by putting you directly behind your character. Instead of clicking to move, you use WASD, and your attacks are skill-shot based, making every encounter feel more visceral and action-packed. The over-the-shoulder camera makes the game feel more like an action battleground than a traditional top-down MOBA. Dodging attacks and landing abilities is incredibly satisfying. As with many competitive team-based games, toxicity can be an issue. Just be prepared for a tough learning curve and the typical online community pitfalls.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-2997e3",
+              "claim": "Reviewers note that the community can be toxic and unwelcoming to players.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231519203",
+                  "hours_at_review": 12.9,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "Смайт это моба но от третьего лица и это меняет вообще все ощущение боя блин managing позиционирование там совсем другое чем в дота или лоле нужно реально целится и уворачиваться руками боги там разные из разных мифологий это дает крутое разнообразие стилей игры графика для мобы приятная детализированная джунгли фарм вся классика жанра осталась на месте минус в том что новичку разобраться сложно механики стрельбы плюс моба система это двойная кривая обучения комьюнити токсичное местами как и в любой мобе но геймплей уникальный и затягивает крепко",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228605506",
+                  "hours_at_review": 5.0,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "🔰\nSMITE is an original MOBA that stands out thanks to its third-person perspective, which makes combat feel more dynamic and immersive compared to other games in the genre. The roster of gods from various mythologies is diverse and interesting, and the gameplay can be very fun once you get used to it.\nHowever, the game can be quite difficult for new players, with a steep learning curve and a sometimes unwelcoming community. Matchmaking can also feel inconsistent at times, which leads to frustrating matches.\nThe progression and cosmetic systems are decent, but they can feel a bit grind-heavy or overly focused on paid skins. Despite this, matches are generally enjoyable and competitive.\nA solid MOBA with a unique twist, but not necessarily for everyone.\n\n\nAvis mitigé\n\nSMITE est un MOBA original qui se démarque grâce à sa vue à la troisième personne, ce qui rend les combats plus dynamiques et immersifs que dans les jeux du même genre. Le roster de dieux issus de différentes mythologies est varié et intéressant, et le gameplay peut être très fun une fois maîtrisé.\n\nCependant, le jeu peut être assez difficile à prendre en main pour les nouveaux joueurs, avec une courbe d’apprentissage exigeante et une communauté parfois peu accueillante. Le matchmaking est également inégal par moments, ce qui peut rendre certaines parties frustrantes.\n\nLe système de progression et de skins est correct, mais parfois trop axé sur le grind ou les éléments cosmétiques payants. Malgré cela, les matchs restent globalement plaisants et compétitifs.\n\nUn bon jeu MOBA avec une idée originale, mais qui ne conviendra pas forcément à tout le monde.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "211671155",
+                  "hours_at_review": 2.7,
+                  "voted_up": true,
+                  "date": "2025-11-29",
+                  "review_text": "SMITE is a third-person action MOBA that stands out by putting you directly behind your character. Instead of clicking to move, you use WASD, and your attacks are skill-shot based, making every encounter feel more visceral and action-packed. The over-the-shoulder camera makes the game feel more like an action battleground than a traditional top-down MOBA. Dodging attacks and landing abilities is incredibly satisfying. As with many competitive team-based games, toxicity can be an issue. Just be prepared for a tough learning curve and the typical online community pitfalls.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-c1e8f2",
+              "claim": "Reviewers describe a steep learning curve and difficulty for new players.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231519203",
+                  "hours_at_review": 12.9,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "Смайт это моба но от третьего лица и это меняет вообще все ощущение боя блин managing позиционирование там совсем другое чем в дота или лоле нужно реально целится и уворачиваться руками боги там разные из разных мифологий это дает крутое разнообразие стилей игры графика для мобы приятная детализированная джунгли фарм вся классика жанра осталась на месте минус в том что новичку разобраться сложно механики стрельбы плюс моба система это двойная кривая обучения комьюнити токсичное местами как и в любой мобе но геймплей уникальный и затягивает крепко",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228605506",
+                  "hours_at_review": 5.0,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "🔰\nSMITE is an original MOBA that stands out thanks to its third-person perspective, which makes combat feel more dynamic and immersive compared to other games in the genre. The roster of gods from various mythologies is diverse and interesting, and the gameplay can be very fun once you get used to it.\nHowever, the game can be quite difficult for new players, with a steep learning curve and a sometimes unwelcoming community. Matchmaking can also feel inconsistent at times, which leads to frustrating matches.\nThe progression and cosmetic systems are decent, but they can feel a bit grind-heavy or overly focused on paid skins. Despite this, matches are generally enjoyable and competitive.\nA solid MOBA with a unique twist, but not necessarily for everyone.\n\n\nAvis mitigé\n\nSMITE est un MOBA original qui se démarque grâce à sa vue à la troisième personne, ce qui rend les combats plus dynamiques et immersifs que dans les jeux du même genre. Le roster de dieux issus de différentes mythologies est varié et intéressant, et le gameplay peut être très fun une fois maîtrisé.\n\nCependant, le jeu peut être assez difficile à prendre en main pour les nouveaux joueurs, avec une courbe d’apprentissage exigeante et une communauté parfois peu accueillante. Le matchmaking est également inégal par moments, ce qui peut rendre certaines parties frustrantes.\n\nLe système de progression et de skins est correct, mais parfois trop axé sur le grind ou les éléments cosmétiques payants. Malgré cela, les matchs restent globalement plaisants et compétitifs.\n\nUn bon jeu MOBA avec une idée originale, mais qui ne conviendra pas forcément à tout le monde.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218394776",
+                  "hours_at_review": 15.6,
+                  "voted_up": false,
+                  "date": "2026-02-15",
+                  "review_text": "Totally not a bad game and its a fun time waster, that has too high of a learning curve to make me interested enough to keep me on the hook.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "211671155",
+                  "hours_at_review": 2.7,
+                  "voted_up": true,
+                  "date": "2025-11-29",
+                  "review_text": "SMITE is a third-person action MOBA that stands out by putting you directly behind your character. Instead of clicking to move, you use WASD, and your attacks are skill-shot based, making every encounter feel more visceral and action-packed. The over-the-shoulder camera makes the game feel more like an action battleground than a traditional top-down MOBA. Dodging attacks and landing abilities is incredibly satisfying. As with many competitive team-based games, toxicity can be an issue. Just be prepared for a tough learning curve and the typical online community pitfalls.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ear-c26437",
+              "claim": "Reviewers complain about high prices and cosmetic systems focused heavily on paid skins.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "228605506",
+                  "hours_at_review": 5.0,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "🔰\nSMITE is an original MOBA that stands out thanks to its third-person perspective, which makes combat feel more dynamic and immersive compared to other games in the genre. The roster of gods from various mythologies is diverse and interesting, and the gameplay can be very fun once you get used to it.\nHowever, the game can be quite difficult for new players, with a steep learning curve and a sometimes unwelcoming community. Matchmaking can also feel inconsistent at times, which leads to frustrating matches.\nThe progression and cosmetic systems are decent, but they can feel a bit grind-heavy or overly focused on paid skins. Despite this, matches are generally enjoyable and competitive.\nA solid MOBA with a unique twist, but not necessarily for everyone.\n\n\nAvis mitigé\n\nSMITE est un MOBA original qui se démarque grâce à sa vue à la troisième personne, ce qui rend les combats plus dynamiques et immersifs que dans les jeux du même genre. Le roster de dieux issus de différentes mythologies est varié et intéressant, et le gameplay peut être très fun une fois maîtrisé.\n\nCependant, le jeu peut être assez difficile à prendre en main pour les nouveaux joueurs, avec une courbe d’apprentissage exigeante et une communauté parfois peu accueillante. Le matchmaking est également inégal par moments, ce qui peut rendre certaines parties frustrantes.\n\nLe système de progression et de skins est correct, mais parfois trop axé sur le grind ou les éléments cosmétiques payants. Malgré cela, les matchs restent globalement plaisants et compétitifs.\n\nUn bon jeu MOBA avec une idée originale, mais qui ne conviendra pas forcément à tout le monde.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218986090",
+                  "hours_at_review": 7.5,
+                  "voted_up": false,
+                  "date": "2026-02-22",
+                  "review_text": "After playing this game for years on both Xbox One, the original Smite launcher back in 2015, and now on Steam-\n\nThis game has honestly fallen into a pit of greed and sadness. This game makes League look like the best game since Valve created Half-Life. You cannot earn skins or any other cosmetics anymore naturally, it always has some sort of absurd difficulty to push you to pay for it instead, despite years ago you could just play the game and get a bunch of cool cosmetics for doing so.\n\nNow? This game isn't worth the trouble, nor is it worth trying to pick back up and enjoy again. I'd honestly rather play Deadlock or League since both of those games make Smite look like Weenie Hut Junior.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "217226284",
+                  "hours_at_review": 19.9,
+                  "voted_up": true,
+                  "date": "2026-01-31",
+                  "review_text": "i dislike how much the skins are diamond wise for this old game. i recommend lowering the skin prices as this game is almost out of date. most smite players are fed up with prices. let us enjoy the game now.\r\nplease please please.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-0f246a",
+              "claim": "Reviewers report issues with account recovery and account merging processes between platforms.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "215673317",
+                  "hours_at_review": 3.5,
+                  "voted_up": false,
+                  "date": "2026-01-10",
+                  "review_text": "i cant recover my account i used to love this game but hi rez making it so hard to recover an account when i am using THE SAME EMAIL IS CRAZY",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "212436774",
+                  "hours_at_review": 7.5,
+                  "voted_up": false,
+                  "date": "2025-12-02",
+                  "review_text": "this game fails on so many levels over the decade that ive played it for. I still continue to play the game despite its flaws yet one stands out the most. Account Merge Process! Theres no clear answers or support with this issue and when i try to do anything involving fixes this it gives me errors. I cant play smite 1 or 2 on PC without losing all the money ive given this company over the years. I wont be playing smite 2 anytime soon ill play 1  until you greedy POS's remove that from me as well.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 187,
+      "pct_positive": 71.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Experienced players report lengthy matchmaking queues, broken support links, skin pricing complaints, and launcher issues.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-a9c11e",
+              "claim": "Reviewers note that Easy Anticheat causes the game to fail to load.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226039090",
+                  "hours_at_review": 30.6,
+                  "voted_up": false,
+                  "date": "2026-05-21",
+                  "review_text": "update: until this gets fixed i will keep updating this everytime I remember. Hi-rez will steal your items, does that make sense? they have made so many in game content cosmetics that they assume theres no way you can keep track of all of them after you have received so many items. After that they slowly take away items from characters you dont play first followed by skins you dont use on characters you play. then it starts being skins that are root corner stones for all boxes. by this i mean those annoying jamaican nox skins, or re color nu wa astro nauts. after that they take one away because youll say \"oh wait, maybe I had the other color,\" you didn't you've always had both you just gave money to people who give zero ♥♥♥♥♥ about you.\n\n1st review;I have definitive proof that this company takes skins from long time players. The first time it was addressed they apologized and reimbursed me claiming it was a bug. The second time they said that if I had a receipt to prove my purchase they would return the item. *knock knock* your loot system is in crates lol? so I kept playing, even bought tier 5 skins, they're very rare after all (100$+USD). They finally told me years later in their fine print they are not held liable for missing items no matter the circumstances. somehow, people kept playing and as if by some stroke of karma their ways caught up to them. They started a new game claiming the old one was a \"beta\" and all these skins that kept their economy alfoat would be wayyy to strenuous to copy over to the new game. Which you'd assume isn't a \"beta\" because they fixed their ways, right? wrong, smite 2 is an open beta as well!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "201410566",
+                  "hours_at_review": 25.3,
+                  "voted_up": false,
+                  "date": "2025-08-04",
+                  "review_text": "Easy Anticheat not only sucks as an anticheat but also causes the game not to load. Worthless. Go play smite 2",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-fd2ac8",
+              "claim": "Reviewers report issues with missing cosmetic items and skins after account linking or updates.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232327963",
+                  "hours_at_review": 92.5,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "Have 2000+ hours over all platforms, and would have told everyone to give this game a shot because it really WAS good but Smite 2 was such a blatant cash grab, I could never support Hi-Rez again. They told us they would compensate us for any skins not ported to Smite 2 but then proceed to compensate us pennies.... on the dollar (and Pennies is being generous) Just to port 60+ Smite 1 skins, call them lagacy skins, and then try to resell them too you. ♥♥♥♥♥♥♥ pathetic, I would give EA money before I give Hi-Rez another dime, much less play their games again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226039090",
+                  "hours_at_review": 30.6,
+                  "voted_up": false,
+                  "date": "2026-05-21",
+                  "review_text": "update: until this gets fixed i will keep updating this everytime I remember. Hi-rez will steal your items, does that make sense? they have made so many in game content cosmetics that they assume theres no way you can keep track of all of them after you have received so many items. After that they slowly take away items from characters you dont play first followed by skins you dont use on characters you play. then it starts being skins that are root corner stones for all boxes. by this i mean those annoying jamaican nox skins, or re color nu wa astro nauts. after that they take one away because youll say \"oh wait, maybe I had the other color,\" you didn't you've always had both you just gave money to people who give zero ♥♥♥♥♥ about you.\n\n1st review;I have definitive proof that this company takes skins from long time players. The first time it was addressed they apologized and reimbursed me claiming it was a bug. The second time they said that if I had a receipt to prove my purchase they would return the item. *knock knock* your loot system is in crates lol? so I kept playing, even bought tier 5 skins, they're very rare after all (100$+USD). They finally told me years later in their fine print they are not held liable for missing items no matter the circumstances. somehow, people kept playing and as if by some stroke of karma their ways caught up to them. They started a new game claiming the old one was a \"beta\" and all these skins that kept their economy alfoat would be wayyy to strenuous to copy over to the new game. Which you'd assume isn't a \"beta\" because they fixed their ways, right? wrong, smite 2 is an open beta as well!",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-d4de8b",
+              "claim": "Reviewers mention that support links are broken and getting help from support is difficult.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "219240658",
+                  "hours_at_review": 67.0,
+                  "voted_up": false,
+                  "date": "2026-02-26",
+                  "review_text": "this game sucks ass. the moment they came out with the smite 2 ALL THEIR SUPPORT LINKS ARE BROKEN, FOR SMITE 1. i have reported it multiple times at this point and they do not care. i live in GA, USA and i cant atest that they do not care about you. DO NOT PLAY SMITE 1 or 2. THEY ARE LITERALLY THE WORST OUT OF ANY GAMING COMPANY.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209747525",
+                  "hours_at_review": 65.2,
+                  "voted_up": false,
+                  "date": "2025-11-21",
+                  "review_text": "Unplayable. Queue times are often 20+ minutes, and getting any help from support is incredibly frustrating.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-b220a8",
+              "claim": "Reviewers describe long queue times and difficulties finding matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "209928715",
+                  "hours_at_review": 39.2,
+                  "voted_up": false,
+                  "date": "2025-11-23",
+                  "review_text": "Stuck in que, is anyone even playing this?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209747525",
+                  "hours_at_review": 65.2,
+                  "voted_up": false,
+                  "date": "2025-11-21",
+                  "review_text": "Unplayable. Queue times are often 20+ minutes, and getting any help from support is incredibly frustrating.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "208860111",
+                  "hours_at_review": 63.2,
+                  "voted_up": false,
+                  "date": "2025-11-10",
+                  "review_text": "Game's dead, 5 minutes queued and cant get into a match anymore :[",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-15f2a0",
+              "claim": "Reviewers report that the community is toxic, verbally abusive, and uses slurs.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231283173",
+                  "hours_at_review": 47.8,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "I came back to the game after about 8 years to see how much had changed. Back then, I used to play every single day. But I have never in my entire life seen such a toxic, garbage, absolute scumbag of a community. In just four matches, people threw every slur imaginable at me, called me a noob, and told me they hoped I'd die. Even if the game itself doesn't die on its own, it seems the community killed it a long time ago. I never coming back to this game. ♥♥♥♥ everybody.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229932827",
+                  "hours_at_review": 48.0,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "Toxic. Players are verbally abusive. 10/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222551345",
+                  "hours_at_review": 29.1,
+                  "voted_up": true,
+                  "date": "2026-04-05",
+                  "review_text": "I only play Assault because ive played all character and this is the mode that you need to adapt to every situation , the only thing is that the people are sooo toxic , people raging all the time and quit or just start complain for minor things , everybody want to eat eachothers its really sad because this is THE MOBA imo , pricing is too much tho for just skins , come on",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ded919",
+              "claim": "Reviewers state that the learning curve is steep and the game is difficult for newcomers.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229971994",
+                  "hours_at_review": 29.5,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "Smite took the traditional MOBA formula, moved the camera behind your character and somehow made missing your abilities even more embarrassing.\n\nPlaying as gods from different mythologies gives the game a personality few MOBAs can match. Every god feels unique, matches are constantly evolving, and landing the perfect combo is every bit as satisfying as you'd hope.\n\nOf course, it's still a MOBA.\n\nYou'll meet teammates who think objectives are optional, enemies who somehow predict every move you make, and at least one player convinced every loss was someone else's fault.\n\nThe learning curve is steep, but those willing to stick with it will find a competitive game with plenty of depth and one of the most diverse character rosters around.\n\nThe battleground of the gods is impressive. However, Smite 2 is now here and its slowly making players transitition. Still Smite and Smite 2 are my favourite MOBA style games on the market today.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220515545",
+                  "hours_at_review": 42.7,
+                  "voted_up": true,
+                  "date": "2026-03-12",
+                  "review_text": "IT IS NOT FOR THE FAINT OF HEART!! This is the most rage inducing game I have ever encountered in my life and yet I'm obsessed with it. I have played this game for about 10 years on and off since season 2. It is very hard to bring new people in because the learning curve is crazy and other players aren't very helpful. It is a sink or swim type of game for sure but the payoff is very rewarding. The servers are consistent and I still prefer it over Smite 2 however it feels like the only ones that play Smite 1 one are veterans to the game and already know the ins and outs. If you get this game please be patient with it and yourself. You probably won't be good for a while and that's ok. Smite has definitely given me some gray hairs but it was my first love in the MOBA world and it will always be my favorite from the genre.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "215654867",
+                  "hours_at_review": 100.0,
+                  "voted_up": true,
+                  "date": "2026-01-10",
+                  "review_text": "Cool MOBA, but i think it's more confusing then LoL, maybe bc of poor UI design or tutorials",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-791e84",
+              "claim": "Reviewers report facing extremely long queue times or getting stuck in the queue.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "209928715",
+                  "hours_at_review": 39.2,
+                  "voted_up": false,
+                  "date": "2025-11-23",
+                  "review_text": "Stuck in que, is anyone even playing this?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209747525",
+                  "hours_at_review": 65.2,
+                  "voted_up": false,
+                  "date": "2025-11-21",
+                  "review_text": "Unplayable. Queue times are often 20+ minutes, and getting any help from support is incredibly frustrating.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "mid-40d152",
+              "claim": "Reviewers complain that in-game skin pricing is too expensive.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "222551345",
+                  "hours_at_review": 29.1,
+                  "voted_up": true,
+                  "date": "2026-04-05",
+                  "review_text": "I only play Assault because ive played all character and this is the mode that you need to adapt to every situation , the only thing is that the people are sooo toxic , people raging all the time and quit or just start complain for minor things , everybody want to eat eachothers its really sad because this is THE MOBA imo , pricing is too much tho for just skins , come on",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "206389181",
+                  "hours_at_review": 63.2,
+                  "voted_up": true,
+                  "date": "2025-10-10",
+                  "review_text": "“SMITE: Where gods clash, friendships die, and you realize you’re not as divine as you thought.”\n\nYou start thinking, “Cool, I can play as Zeus!” — ten minutes later, you’re being juggled by a monkey, melted by Ra, and insulted by a twelve-year-old who just called you “trash” before ulting your corpse.\n\nIt’s chaotic, unbalanced, occasionally rage-inducing... and somehow I can’t stop playing. \nThe gameplay slaps harder than Thor’s hammer, and every match feels like a mix of divine glory and emotional trauma. \nThe graphics are solid, the gods are varied, and every new skin tempts your wallet like a siren song from Hades himself.\n\nSure, the matchmaking sometimes feels like it was designed by Loki on a bad day, but when your team actually coordinates? Pure serotonin.\n\n9/10 — Would queue again, cry again, and pretend it was “lag” again. ⚡",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "mid-16905f",
+              "claim": "Reviewers report difficulties with unlinking Steam and Hi-Rez accounts and subsequent login failures.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "219240658",
+                  "hours_at_review": 67.0,
+                  "voted_up": false,
+                  "date": "2026-02-26",
+                  "review_text": "this game sucks ass. the moment they came out with the smite 2 ALL THEIR SUPPORT LINKS ARE BROKEN, FOR SMITE 1. i have reported it multiple times at this point and they do not care. i live in GA, USA and i cant atest that they do not care about you. DO NOT PLAY SMITE 1 or 2. THEY ARE LITERALLY THE WORST OUT OF ANY GAMING COMPANY.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "202253966",
+                  "hours_at_review": 40.6,
+                  "voted_up": false,
+                  "date": "2025-08-16",
+                  "review_text": "I have played Smite on Steam some times.Today  I linked my steam with hi-rez account ,and I cannot login Smite on steam .I do not find ways to  unlink. Hi-rez give my money back,FKU",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-f2a5af",
+              "claim": "Reviewers report encountering issues with linking accounts between Steam and Hi-Rez, resulting in login blocks.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "202253966",
+                  "hours_at_review": 40.6,
+                  "voted_up": false,
+                  "date": "2025-08-16",
+                  "review_text": "I have played Smite on Steam some times.Today  I linked my steam with hi-rez account ,and I cannot login Smite on steam .I do not find ways to  unlink. Hi-rez give my money back,FKU",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219240658",
+                  "hours_at_review": 67.0,
+                  "voted_up": false,
+                  "date": "2026-02-26",
+                  "review_text": "this game sucks ass. the moment they came out with the smite 2 ALL THEIR SUPPORT LINKS ARE BROKEN, FOR SMITE 1. i have reported it multiple times at this point and they do not care. i live in GA, USA and i cant atest that they do not care about you. DO NOT PLAY SMITE 1 or 2. THEY ARE LITERALLY THE WORST OUT OF ANY GAMING COMPANY.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 712,
+      "pct_positive": 61.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Longtime participants highlight developer abandonment toward the sequel and unmoving purchases left behind.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-ef724b",
+              "claim": "Reviewers report that the developers abandoned the original game in favor of developing a sequel, leaving the first title without updates or active moderation.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232121453",
+                  "hours_at_review": 2737.5,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "DYING GAME, PLAYERS WILL FEED OR JUST NOT PLAY AT ALL AND REPORTING THEM DOES NOTHING CAUSE THE SMITE MODS DONT EVEN PAY ATTENTION TO THEIR FIRST GAME ANYMORE.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230769195",
+                  "hours_at_review": 1907.1,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "This game didn't deserve to be abandoned, especially not for the incomplete mess that is Smite 2. Aside from that game being a blatant money grab, the changes included are not nearly enough to justify leaving a game and a player base of over 10 years with NOTHING and forcing them to either move to the unfinished sequel with less than half the content OR stay on the original while it fizzles out.\n\nThe bare minimum should've been to allow ALL the pre-existing content to come to the new game. If they needed more time to do that then they should've either kept updating this game until they were ready or not even bother with the sequel in the first place. Outside of that, the graphical overhaul is hardly noticeable and, lets be honest, people weren't playing Smite because its a graphical master piece to begin with. The game feels slower and clunkier somehow and the balancing issues are the same, if not worse. A COMPLETE let down and I would honestly urge any of the existing playerbase to NOT play the sequel and stay on the original, but unfortunately that won't happen. This game is dead in the water and the sequel won't last another 2 years. \n\nGood job Hi-Rez",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224059507",
+                  "hours_at_review": 116.1,
+                  "voted_up": true,
+                  "date": "2026-04-25",
+                  "review_text": "Edit: The more I play this game, the more it grows on me. plenty of games to be had during peak hours and ive had a lot of fun. I'll keep my review up, but maybe give it a try if your not sure about Smite 2.\n-----------------------------------------------------------------------------------------------------\nLooks like it was a fun game at one time, but its been abandoned for a sequel (Why not just upgrade your current game?).\n\nConquest matches are hard to find and I often didnt get the roles that I wanted, evidently others didnt either as they often did not pick characters forcing the lobby to dissolve. If the match did start sometimes the games went well, other times my team had no idea what they were doing (running duos in the solo lane/ solo laner stealing my farm as jungle while feeding continuously against two people in duo lane thinking he was in solo.) Arena and other casual modes seem fairly populated and is likely where the majority of the playerbase is.\n \nAll of the intriguing licensed skins are locked behind long gone events and now removed \"chests\" (Think typical f2p/mobile game \"rolls\" gambling crap, with currency obfuscation.)\n that, with the games abandonment and the legal headache that is intellectual property licensing will probably never be obtainable again - unlikely to be renegotiated and brought to the sequel and thus will be gone forever once they pull the plug. Despite this they continue to advertise licensed content in the store, with the avatar the last airbender collab remaining on display despite having been removed years ago, presumably as a final insult to those who missed out and can no longer obtain the cosmetics. \n\nIt appears all of this could have been avoided though, I fail to understand the motivation behind killing your companies cash cow. The publisher Hi-Rez has a seemingly long history of pumping out F2P games based on market trends - all of which have failed spectacularly, but not Smite. A third person MOBA based on real life…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-786d75",
+              "claim": "Reviewers report that the developers abandoned the game and stopped updating it in order to focus on the sequel, Smite 2.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230769195",
+                  "hours_at_review": 1907.1,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "This game didn't deserve to be abandoned, especially not for the incomplete mess that is Smite 2. Aside from that game being a blatant money grab, the changes included are not nearly enough to justify leaving a game and a player base of over 10 years with NOTHING and forcing them to either move to the unfinished sequel with less than half the content OR stay on the original while it fizzles out.\n\nThe bare minimum should've been to allow ALL the pre-existing content to come to the new game. If they needed more time to do that then they should've either kept updating this game until they were ready or not even bother with the sequel in the first place. Outside of that, the graphical overhaul is hardly noticeable and, lets be honest, people weren't playing Smite because its a graphical master piece to begin with. The game feels slower and clunkier somehow and the balancing issues are the same, if not worse. A COMPLETE let down and I would honestly urge any of the existing playerbase to NOT play the sequel and stay on the original, but unfortunately that won't happen. This game is dead in the water and the sequel won't last another 2 years. \n\nGood job Hi-Rez",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230102052",
+                  "hours_at_review": 2141.9,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "This game is sadly dead, it's been over a year and a half sense it's last update\r\nI don't know what is worse, that a game I put so much time in is waiting for the plug to be pulled, or all the money I've spent on this game that I'll never get back...\r\nYou can try Smite 2 if you want, but it's missing like more than half the cast of this game so maybe wait another 2 years, but then we will probably be on Smite 3\r\nI wish things were different, but maybe Hi Rez can finally be able to make a game and keep it alive for once with Smite 2, guess we'll see...\r\nAlso add Tyr to Smite 2 already",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "vet-0bf616",
+              "claim": "Reviewers note that previous purchases and cosmetics do not transfer over to the sequel, requiring players to buy them again.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229511882",
+                  "hours_at_review": 2926.8,
+                  "voted_up": true,
+                  "date": "2026-07-03",
+                  "review_text": "I have played this game for 10 years between console and PC. I have spent thousands of dollars on skins/battle passes and events and would have spent a thousand more in the coming years if they hadn't abandoned this game. This was my first and only MOBA game I have ever played to this date. It is a shame that they have completely abandoned this game and severely broken the trust of the players that supported and funded their company. This game was one of the most fun games I've ever played. I purchased Smite 2 deluxe edition before it even released under the guise the game would be the same as smite 1 but on a new unreal engine and many other players were also sold this idea, just for it to be untrue they changed what made smite smite to try and align more with what League of Legends was structured and managed to implement those changes in awful ways. Then proceeded to monetize the game in horrible ways i.e. releasing the same skins you previously paid $20 for and saying \"hey pay $20 again for the same skin but now it looks better cause unreal engine 5\". Smite is not one of those games that really warrants a sequel. League of Legends announced a \"LoL2\" on a new engine in 2027 and are not requiring you to buy it, or reset your account progression, but rather just an overhaul to the already existing LoL servers. This just goes to show Hi-Rez was insanely greedy in their monetization of the idea of a new engine. If Hi-Rez kept providing support to Smite 1 even if just regular patch updates and bug fixes. I think the Smite 1 community would be more then happy. They don't care if Hi-Rez wants to invest in Smite 2 to see if they can get traction or try to grow a Smite 2 fan base with a different direction for the game. The problem is we just don't want it forced down our throats via abandoning the game the community loved and supported. Bring back Smite 1",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227701321",
+                  "hours_at_review": 232.8,
+                  "voted_up": false,
+                  "date": "2026-06-11",
+                  "review_text": "Scamming devs really released a game with a pack that guarantees unlocking all present and future gods and then made a sequel where you don't get all the gods AND your past skins don't transfer over. You can't make it up. Imagine if Riot Games made League of Legends 2 and none of your skins and champions transferred LOL",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224173147",
+                  "hours_at_review": 472.6,
+                  "voted_up": false,
+                  "date": "2026-04-26",
+                  "review_text": "Smite 2 obviously killed this game. I've played since Beta and collected a lot of great cosmetics. They chose to not transfer any cosmetics to Smite 2 - shameful.\r\n\r\nAlso, the game has blown since the original Season 2. It went from skilled brawling and an occasional nuke, to purely nuke only. Now you either 1 shot someone, or they 1 shot you. Great idea Hi-Rez.. that's fun - not.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-b5e9ba",
+              "claim": "Reviewers state that previously purchased skins and cosmetic items do not carry over to Smite 2.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230287659",
+                  "hours_at_review": 2349.8,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "HiRez tricked its community into buying skins, etc. to support Smite 1, then refused to carry it over to their incomplete garbage of a game Smite 2, while slowing and secretly letting Smite 1 die. Incompetent crooks.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227701321",
+                  "hours_at_review": 232.8,
+                  "voted_up": false,
+                  "date": "2026-06-11",
+                  "review_text": "Scamming devs really released a game with a pack that guarantees unlocking all present and future gods and then made a sequel where you don't get all the gods AND your past skins don't transfer over. You can't make it up. Imagine if Riot Games made League of Legends 2 and none of your skins and champions transferred LOL",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-67bba9",
+              "claim": "Reviewers note that matches suffer from players disconnecting and griefing due to a lack of moderation.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "228462714",
+                  "hours_at_review": 291.1,
+                  "voted_up": false,
+                  "date": "2026-06-21",
+                  "review_text": "This game is full of trolls and griefers, the devs stopped moderating this game and it's so easy to get in a match where everyone trolls you now.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223846366",
+                  "hours_at_review": 991.1,
+                  "voted_up": false,
+                  "date": "2026-04-22",
+                  "review_text": "Worst community in any game i've ever played. Every game there is someone disconnecting or intentionally feeding because they are mad. This game used to be fun, I want to play it, but it wont let you play. It wont let you have fun. The game isn't worth the headache. Find something else to like, don't be like me. Hooked on the 1% of fun times that just never come.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 67952,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

@@ -1,0 +1,638 @@
+{
+  "appid": "433850",
+  "game_name": "Z1 Battle Royale",
+  "generated_at": "2026-08-12T10:36:18Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Dead lobbies and dated mechanics make this royale hard to recommend.",
+    "for_you_if": [
+      "you want to explore its past as a zombie survival game",
+      "you chase chaotic combat encounters despite scarce loot"
+    ],
+    "not_for_you_if": [
+      "you need active lobbies to find full matches",
+      "you cannot tolerate connection errors and server instability",
+      "you expect modern graphics and responsive controls"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 160,
+      "pct_positive": 42.5,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 124,
+      "pct_positive": 55.6,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 100,
+      "pct_positive": 70.0,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 216,
+      "pct_positive": 73.1,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Positive sentiment increases progressively the longer players spend in the game.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 42.5,
+            "pool_n": 160
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 55.6,
+            "pool_n": 124
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 70.0,
+            "pool_n": 100
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 73.1,
+            "pool_n": 216
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 42.5,
+        "low_pool_n": 160,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 73.1,
+        "high_pool_n": 216,
+        "gap_pts": 30.6
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "improved",
+      "shape": null,
+      "sentence": "Recent reviews show higher positivity compared to the lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 61.6,
+        "recent_pool_n": 185,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 50.3,
+        "steam_total_reviews": 56754,
+        "delta_pts": 11.3,
+        "within_pool_older_pct_positive": 60.5,
+        "within_pool_older_n": 415
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 160,
+      "pct_positive": 42.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players describe the game as entirely dead with extremely low player counts in matches.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-5b52d2",
+              "claim": "Reviewers describe the game as completely dead with extremely low player counts in matches.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "226634458",
+                  "hours_at_review": 1.1,
+                  "voted_up": true,
+                  "date": "2026-05-28",
+                  "review_text": "Shout out to the guy named \"Freedomli\"\r\n\r\nThe game is pretty dead but still had fun with this guy",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "186965068",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2025-02-02",
+                  "review_text": "Continuing my quest to find alternatives to Fortnite and PUBG, and I've stumbled upon this game.\n\nI'm certainly much too late to the party because the most players in a match I've seen is four, with the majority of them having only two.\n\nThis looked like a decent enough candidate, but I'd avoid this game because it's very much a ghost town with zero players. Even when it's free to play.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 124,
+      "pct_positive": 55.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers report connection errors, outdated visuals, unresponsive controls, and cheaters alongside memories of its past as a zombie survival title.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-40f83a",
+              "claim": "Reviewers state that the game was originally a zombie survival title before being changed into a battle royale.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232153572",
+                  "hours_at_review": 4.4,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "Huge bait and switch. Offered the game as a zombie survival. Then out of nowhere, after a year of sales, changed to a battle royale game. We didn't buy for a battle royale, we bought wanting a good zombie survival game. Now this trash heap is free to play. Devs are scum bags.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "183595313",
+                  "hours_at_review": 2.5,
+                  "voted_up": false,
+                  "date": "2024-12-24",
+                  "review_text": "I miss fist fighting fresh spawns outside of the church when this wasn't a battle royale",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "179875910",
+                  "hours_at_review": 9.1,
+                  "voted_up": false,
+                  "date": "2024-11-26",
+                  "review_text": "2024 and I still think about how fun this game was before DEYBRAKE got a hold of it and tried to turn it into a battle royal game. H1Z1 was such great fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "178970199",
+                  "hours_at_review": 7.0,
+                  "voted_up": false,
+                  "date": "2024-11-13",
+                  "review_text": "literal dumpster fire of a game that once had promise. they took a decent survival game that had potential and stripped it down to a battle royale to chase the latest craze instead of forging their own and look where it led them. just a bunch of scamming trash that'll take your money for a year then shut down the game. horrible company wont ever give them or anything associated with them a dime ever again.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-215f3f",
+              "claim": "The graphics and visual assets appear outdated, faded, and lack the polish of modern genre competitors.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "204828575",
+                  "hours_at_review": 9.9,
+                  "voted_up": false,
+                  "date": "2025-09-21",
+                  "review_text": "It’s clunky, outdated, and buried under the shadow of games that actually evolved, leaving h1z1 as little more than a historical footnote no one asked to revisit. Playing this now feels more like an archaeological dig, sifting through the ruins of what was once the foundation of battle royales. Unfortunately, the excavation yields nothing but broken mechanics and outdated graphics.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "188041726",
+                  "hours_at_review": 3.4,
+                  "voted_up": false,
+                  "date": "2025-02-16",
+                  "review_text": "Z1 Battle Royale is, unfortunately, a disappointment. The game tries to be a classic battle royale game, but it has too many problems. The graphics are outdated, even for the genre, and everything looks kind of faded and unimpressive. The controls often seem unresponsive, and the physics of objects and characters leaves much to be desired - sometimes it feels like you're sliding across the map instead of running. Weapon balance is also lame: some guns are too weak, others are just imba, and it kills all the excitement. Matchmaking works badly - either you wait for a long time for the game to start, or you get to the lobby with a lot of bots, which makes the victory not so valuable. In general, if you want to play battle royal, you'd better choose something else - there are too many flaws here that spoil the whole impression.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "184473339",
+                  "hours_at_review": 9.9,
+                  "voted_up": true,
+                  "date": "2025-01-01",
+                  "review_text": "Z1 Battle Royale: A Retro Twist on the Battle Royale Genre\n\nZ1 Battle Royale offers a nostalgic take on the battle royale genre, delivering a more classic, fast-paced experience compared to modern titles. The game focuses on survival, where players fight to be the last one standing on a shrinking map filled with weapons, vehicles, and other hazards. The core gameplay is rooted in the traditional battle royale formula, offering an exciting and competitive environment for players who enjoy tense firefights and strategic positioning.\n\nThe game's retro graphics and mechanics evoke a sense of the early days of battle royale, with a simpler, more straightforward approach. The gameplay is intense, with a focus on fast movement and immediate action, which can be a refreshing change for those who want less emphasis on complex mechanics. Additionally, the vehicle system provides an interesting layer of strategy, allowing players to quickly traverse the map or use vehicles in combat scenarios.\n\nHowever, Z1 Battle Royale does have its shortcomings. The game struggles with technical issues such as server instability, which can lead to frustrating lag and connection problems, diminishing the overall experience. Additionally, while the retro graphics have a certain charm, they may feel outdated for players used to the more polished visuals of other modern battle royale games. The lack of variety in game modes and content also limits long-term appeal, making the experience feel repetitive after a while.\n\nDespite its issues, Z1 Battle Royale can still be an enjoyable and nostalgic experience for players seeking a classic-style battle royale. While it may not have the same polish or depth as some of its more modern counterparts, it offers a unique take on the genre that could appeal to fans of retro shooters and those looking for a more straightforward competitive experience.\n\nScore: 72/100",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "179163041",
+                  "hours_at_review": 7.7,
+                  "voted_up": true,
+                  "date": "2024-11-16",
+                  "review_text": "Z1 Battle Royale : By Triple F\n\n\"Z1 Battle Royale\", developed by Daybreak Game Company, is a battle royale shooter that served as one of the genre's pioneers, evolving from its origins as H1Z1 and eventually splitting into two distinct titles: Just Survive and \"Z1 Battle Royale\". As one of the early entries in the battle royale space, \"Z1 Battle Royale\" sought to establish itself as a fast-paced, competitive alternative to its peers. However, the game’s journey has been as turbulent as its frantic gunfights, marked by significant highs and lows.\n\nSet in a sprawling, post-apocalyptic environment, \"Z1 Battle Royale\" drops up to 150 players into a massive map, tasking them with scavenging weapons and gear while outlasting opponents to claim victory. The gameplay loop is familiar yet effective: players parachute in, scramble for resources, and navigate an ever-shrinking safe zone while battling opponents. The tension of early-game looting, combined with high-stakes firefights, captures the core appeal of the genre. The map design is functional, featuring urban centers, open fields, and scattered points of interest, though it lacks the visual polish and variety seen in later genre competitors like Fortnite or PUBG.\n\nOne of the defining characteristics of \"Z1 Battle Royale\" is its focus on speed and fluidity. The game emphasizes fast-paced engagements, with responsive movement mechanics and a high time-to-kill (TTK) system that rewards accuracy and aggression. The gunplay, while simple, is satisfying, with a small but effective arsenal of weapons that cater to different playstyles. Vehicles also play a central role, allowing players to traverse the map quickly or engage in adrenaline-pumping car chases. However, the heavy reliance on vehicles can lead to repetitive late-game strategies, where skilled players dominate by leveraging their mobility.\n\nThe game's simplicity is both a strength and a weakness. While the stripped-down mechanics make it accessible to new players a…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-cc73a2",
+              "claim": "Reviewers note that the game changed its core focus from zombie survival to battle royale after release.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232153572",
+                  "hours_at_review": 4.4,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "Huge bait and switch. Offered the game as a zombie survival. Then out of nowhere, after a year of sales, changed to a battle royale game. We didn't buy for a battle royale, we bought wanting a good zombie survival game. Now this trash heap is free to play. Devs are scum bags.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "179875910",
+                  "hours_at_review": 9.1,
+                  "voted_up": false,
+                  "date": "2024-11-26",
+                  "review_text": "2024 and I still think about how fun this game was before DEYBRAKE got a hold of it and tried to turn it into a battle royal game. H1Z1 was such great fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "178970199",
+                  "hours_at_review": 7.0,
+                  "voted_up": false,
+                  "date": "2024-11-13",
+                  "review_text": "literal dumpster fire of a game that once had promise. they took a decent survival game that had potential and stripped it down to a battle royale to chase the latest craze instead of forging their own and look where it led them. just a bunch of scamming trash that'll take your money for a year then shut down the game. horrible company wont ever give them or anything associated with them a dime ever again.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-befe4a",
+              "claim": "Players encounter connection errors, server instability, and issues loading into matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "215228779",
+                  "hours_at_review": 3.0,
+                  "voted_up": false,
+                  "date": "2026-01-05",
+                  "review_text": "wojnt load into the game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "212538610",
+                  "hours_at_review": 3.2,
+                  "voted_up": false,
+                  "date": "2025-12-04",
+                  "review_text": "Cant even play it keep getting code G15. cant be arsed to jump through hoops to fix it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "212327814",
+                  "hours_at_review": 5.0,
+                  "voted_up": false,
+                  "date": "2025-12-01",
+                  "review_text": "will not let me play SOLO mode - keeps hanging and crashing",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "184473339",
+                  "hours_at_review": 9.9,
+                  "voted_up": true,
+                  "date": "2025-01-01",
+                  "review_text": "Z1 Battle Royale: A Retro Twist on the Battle Royale Genre\n\nZ1 Battle Royale offers a nostalgic take on the battle royale genre, delivering a more classic, fast-paced experience compared to modern titles. The game focuses on survival, where players fight to be the last one standing on a shrinking map filled with weapons, vehicles, and other hazards. The core gameplay is rooted in the traditional battle royale formula, offering an exciting and competitive environment for players who enjoy tense firefights and strategic positioning.\n\nThe game's retro graphics and mechanics evoke a sense of the early days of battle royale, with a simpler, more straightforward approach. The gameplay is intense, with a focus on fast movement and immediate action, which can be a refreshing change for those who want less emphasis on complex mechanics. Additionally, the vehicle system provides an interesting layer of strategy, allowing players to quickly traverse the map or use vehicles in combat scenarios.\n\nHowever, Z1 Battle Royale does have its shortcomings. The game struggles with technical issues such as server instability, which can lead to frustrating lag and connection problems, diminishing the overall experience. Additionally, while the retro graphics have a certain charm, they may feel outdated for players used to the more polished visuals of other modern battle royale games. The lack of variety in game modes and content also limits long-term appeal, making the experience feel repetitive after a while.\n\nDespite its issues, Z1 Battle Royale can still be an enjoyable and nostalgic experience for players seeking a classic-style battle royale. While it may not have the same polish or depth as some of its more modern counterparts, it offers a unique take on the genre that could appeal to fans of retro shooters and those looking for a more straightforward competitive experience.\n\nScore: 72/100",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-b43fb9",
+              "claim": "Reviewers report encountering players using cheats such as zero recoil and one-tap kills while wearing helmets.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "227867509",
+                  "hours_at_review": 18.1,
+                  "voted_up": true,
+                  "date": "2026-06-13",
+                  "review_text": "Wish more people played it. My only complaints are there is still a couple cheaters that 1 tap you with a AR 15 even when you have a helmet on, they also seemingly have no recoil and hit you from so far away even when this game's weapon bloom should make it nearly impossible to hit somebody that's moving especially. Lobbies are almost dead but a few people still play it. And also, along with having more players. I wish it was on Xbox. This game died out WAY before its prime should of ever ended. Still a gem and an all time great game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "196669858",
+                  "hours_at_review": 13.7,
+                  "voted_up": false,
+                  "date": "2025-06-08",
+                  "review_text": "so many cheaters and ai bots",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-aceffb",
+              "claim": "Controls feel unresponsive and character movement mechanics can cause players to slide across the map.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "188041726",
+                  "hours_at_review": 3.4,
+                  "voted_up": false,
+                  "date": "2025-02-16",
+                  "review_text": "Z1 Battle Royale is, unfortunately, a disappointment. The game tries to be a classic battle royale game, but it has too many problems. The graphics are outdated, even for the genre, and everything looks kind of faded and unimpressive. The controls often seem unresponsive, and the physics of objects and characters leaves much to be desired - sometimes it feels like you're sliding across the map instead of running. Weapon balance is also lame: some guns are too weak, others are just imba, and it kills all the excitement. Matchmaking works badly - either you wait for a long time for the game to start, or you get to the lobby with a lot of bots, which makes the victory not so valuable. In general, if you want to play battle royal, you'd better choose something else - there are too many flaws here that spoil the whole impression.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "214495724",
+                  "hours_at_review": 4.4,
+                  "voted_up": false,
+                  "date": "2025-12-29",
+                  "review_text": "Hours Played: Way too many (especially early on)\nVerdict: ⚠️ Mixed – Was Great, Became Complicated\n\nZ1 Battle Royale is one of those games that makes you say, “Man, remember when this was amazing?” Because for a while.. it really was.\n\nBack in its prime, Z1 was fast, chaotic, and genuinely exciting. Gunfights were tense, movement felt unique, and every match had those heart-pounding moments that made the genre explode in popularity. It wasn’t perfect, but it was fun in a raw, addictive way—and that mattered more than polish.\n\nThen things started to change. Updates began fixing some issues while accidentally breaking others. Core mechanics were tweaked, reverted, re-tweaked, and sometimes completely overhauled, making the game feel inconsistent depending on when you played. What once felt intuitive slowly became messy.\n\nGunplay, once snappy and rewarding, became more hit-or-miss. Balance issues crept in, performance problems showed up more often, and bugs became a regular part of the experience. Instead of improving what worked, the game often felt like it was trying to reinvent itself mid-race.\n\nThe community took hits too. As changes piled up and player trust dropped, population declined, which only made matchmaking and overall excitement worse. A battle royale lives and dies by its player base, and Z1 struggled to hold onto the momentum it once had.\n\nWhat Z1 did right:\n\n* Strong early gameplay and pacing\n* Memorable, intense firefights\n* Helped define the battle royale genre\n\nWhat went wrong:\n\n* Inconsistent design direction\n* Questionable updates and reversals\n* Performance and balance issues over time\n\nZ1 Battle Royale isn’t a bad game—it’s a frustrating one. It started off strong, proved it had something special, and then slowly chipped away at its own identity. If you were there in the early days, you probably remember why people loved it. If you’re jumping in now, you may wonder what all the hype was about.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 100,
+      "pct_positive": 70.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players mention extremely low player counts and recall its earlier zombie survival mode.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-6af508",
+              "claim": "Reviewers report that the player count is extremely low, making it difficult to find full lobbies or matches.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "225528191",
+                  "hours_at_review": 28.5,
+                  "voted_up": true,
+                  "date": "2026-05-15",
+                  "review_text": "THE original battle royale, such a shame the game is so dead. on the weekends sometimes you can get into a solo game with about 15ish people if your lucky and through out the week is just luck getting into a lobby. its definitely not what it used to be but it can still be fun, i wish more people played it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "215621682",
+                  "hours_at_review": 91.5,
+                  "voted_up": false,
+                  "date": "2026-01-10",
+                  "review_text": "Z1 Battle Royale is a game where I get ready to play but nobody comes.\n\nI press play and I wait and I wait and I wait and my snack gets cold.\n\nThe game used to have lots of friends and running and shooting and shouting, but now it is very quiet like bedtime forever.\n\nI find a match sometimes but it feels lonely and a little bit sad, like a playground with no kids.\n\nThe game is not bad, it’s just tired. Nobody fixed it and everyone went to play somewhere else.\n\nI still remember when it was fun.\n\nGame sleepy. Friends gone. I wave goodbye. 😔",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "198143600",
+                  "hours_at_review": 81.2,
+                  "voted_up": true,
+                  "date": "2025-06-25",
+                  "review_text": "Still a fire game, even if there's hardly anyone online anymore.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-4dc50e",
+              "claim": "Reviewers recall that the game originally featured a zombie survival mode before it was split or changed into a battle royale.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "228297075",
+                  "hours_at_review": 26.4,
+                  "voted_up": false,
+                  "date": "2026-06-19",
+                  "review_text": "bring back the zombie survival that was mor fun then this crap",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "214332269",
+                  "hours_at_review": 29.2,
+                  "voted_up": false,
+                  "date": "2025-12-27",
+                  "review_text": "it was a nice Survival game until this battle royale came up",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "206093978",
+                  "hours_at_review": 64.8,
+                  "voted_up": false,
+                  "date": "2025-10-07",
+                  "review_text": "This game fell so far from what it used to be. The old H1Z1 was a survival zombie game, but in the world you could loot Battle Royale tickets which enabled you to be able to compete.  I loved that, but i can see why people wanted to just be able to que. However, right when they first made the split, and you no longer looted the tickets, but rather within the same game could either hop on a survival server or play the BR's mode, that's when this game was gold. All kinds of cosmetics, that you could loot from airdrops within the matches. ♥♥♥♥♥♥♥♥♥ this game was the best in its prime.  I really miss it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 216,
+      "pct_positive": 73.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players note empty lobbies and ruined gunfeel from past updates, while others enjoy the chaotic combat.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-a084d5",
+              "claim": "Reviewers report that the current player count is very low, making it difficult or impossible to find natural lobbies or full matches.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "226990059",
+                  "hours_at_review": 1843.9,
+                  "voted_up": true,
+                  "date": "2026-06-02",
+                  "review_text": "amazing game, not blinded by nostalgia because i played it consistently never stopping. cant find a lobby naturally but god it would be great to get there again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224972167",
+                  "hours_at_review": 1580.9,
+                  "voted_up": false,
+                  "date": "2026-05-07",
+                  "review_text": "No one plays this game. you can wait hours for a lobby with one other player. Its a 1 v 1 on map z2 in less than 1 square of the sand box. NO PvE mode, nothing from what SOE made in 2015.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "193234136",
+                  "hours_at_review": 114.2,
+                  "voted_up": true,
+                  "date": "2025-04-21",
+                  "review_text": "low player count but its fun",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-25354d",
+              "claim": "Reviewers describe past updates, particularly weapon and combat changes, as having negatively affected movement, gunfeel, and the overall state of the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "220296106",
+                  "hours_at_review": 308.3,
+                  "voted_up": false,
+                  "date": "2026-03-09",
+                  "review_text": "Used to be the best BR you could possibly play back then in 2017. Massively hyped and a huge amount of streamers playing the game but everything had to be ruined by a company who didn't listen to their community. (Weapons update that ruined movement and gunfeel). It took them years to fix the mess they had made but it was too late lol. \nAt least we got to experience prime fortnite after that ahah",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "201880566",
+                  "hours_at_review": 445.2,
+                  "voted_up": false,
+                  "date": "2025-08-11",
+                  "review_text": "Combat update killed it  see to see",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-605deb",
+              "claim": "Reviewers report that past updates altered weapons, movement, and gunfeel in ways that ruined the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "220296106",
+                  "hours_at_review": 308.3,
+                  "voted_up": false,
+                  "date": "2026-03-09",
+                  "review_text": "Used to be the best BR you could possibly play back then in 2017. Massively hyped and a huge amount of streamers playing the game but everything had to be ruined by a company who didn't listen to their community. (Weapons update that ruined movement and gunfeel). It took them years to fix the mess they had made but it was too late lol. \nAt least we got to experience prime fortnite after that ahah",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "201880566",
+                  "hours_at_review": 445.2,
+                  "voted_up": false,
+                  "date": "2025-08-11",
+                  "review_text": "Combat update killed it  see to see",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-f6b261",
+              "claim": "Reviewers describe the gameplay as featuring scarce loot, chaotic combat encounters, and wild shots.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "212432891",
+                  "hours_at_review": 631.4,
+                  "voted_up": true,
+                  "date": "2025-12-02",
+                  "review_text": "Z1 BR is the game where I drop in thinking I’ll survive five minutes, and somehow make it to the final circle with half my squad missing and a car that’s basically held together with hope. Loot is scarce, shots are wild, and every match ends with someone flying through the air like they forgot gravity exists. Brutal, chaotic, and somehow ridiculously fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "203049945",
+                  "hours_at_review": 248.6,
+                  "voted_up": true,
+                  "date": "2025-08-28",
+                  "review_text": "A game where I drop from the sky full of hope, loot for 5 minutes like a responsible adult, and then get headshot by a guy crouching in a bush who probably just logged in. Absolutely love how my life choices are mocked in HD graphics. 10/10 would be humiliated again.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 600,
+    "steam_total_reviews": 56754,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

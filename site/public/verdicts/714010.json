@@ -1,0 +1,735 @@
+{
+  "appid": "714010",
+  "game_name": "Aimlabs",
+  "generated_at": "2026-08-12T10:33:45Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Powerful aim training buried under paywalls, forced logins, and intrusive ads.",
+    "for_you_if": [
+      "you want custom playlists for aiming routines",
+      "you plan to stick with the core training tools"
+    ],
+    "not_for_you_if": [
+      "you will not create an account to play",
+      "you mind subscription prompts for basic features",
+      "you need functional controller support"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 270,
+      "pct_positive": 40.0,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 588,
+      "pct_positive": 82.5,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 252,
+      "pct_positive": 82.5,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 93,
+      "pct_positive": 87.1,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Early reviews are significantly more critical than those from players with more time.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 40.0,
+            "pool_n": 270
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 82.5,
+            "pool_n": 588
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 82.5,
+            "pool_n": 252
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 87.1,
+            "pool_n": 93
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 40.0,
+        "low_pool_n": 270,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 87.1,
+        "high_pool_n": 93,
+        "gap_pts": 47.1
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews lean more negative than historical averages.",
+      "evidence": {
+        "recent_pool_pct_positive": 73.3,
+        "recent_pool_n": 1203,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 90.7,
+        "steam_total_reviews": 66108,
+        "delta_pts": -17.4
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 270,
+      "pct_positive": 40.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players struggle with forced logins, broken controller inputs, and immediate subscription prompts.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-02800e",
+              "claim": "Reviewers report that the user interface is cluttered and difficult to navigate.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232367391",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "The game doesn't feel like the game I chose, and unless you are willing to shell out some money, you don't have many options on what you do. the HUD is also super confusing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232295027",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "Most unintuitive UI I've had the displeasure of laying my eyes upon.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231654514",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "Absolute corporate bloated slop, i just want to train my aim, not be offered to buy a damn subscription multiple times while i'm getting lost navigating through this hell of a UI",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231229048",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "UI looks like a cluttered mess almost like a video streaming site. genuinely can't tell how to get into a training mode, but I sure was offered about a dozen different ways to spend money in full screen adverts. \n\nAll I installed this for was to click circles, and Im not making an account to do that. I'm not gonna use your web services, or pay you 10 bucks a month for you to recommend me routines.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230266056",
+                  "hours_at_review": 0.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "Great for warmups for just about any game. May be a little confusing at first but is very good for warmups or even for just boredom.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-f55d46",
+              "claim": "This cohort describes controller support as non-functional or poorly implemented.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232231366",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "Controller support is terrible. You cannot have your mouse and controller co-exist and you cannot navigate the menu or anything properly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231168584",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "The worst controller support ever and so many microtransactions",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-c9e89c",
+              "claim": "Reviewers state that controller support functions poorly, preventing proper navigation and simultaneous use of mouse and controller.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232231366",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "Controller support is terrible. You cannot have your mouse and controller co-exist and you cannot navigate the menu or anything properly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231168584",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "The worst controller support ever and so many microtransactions",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ref-36b3c5",
+              "claim": "This cohort reports that a monthly subscription is required to access many of the features and useful training tools.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
+                "negative": 8
+              },
+              "citations": [
+                {
+                  "recommendationid": "232067298",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Need to buy 10e subscription to do the ai aim thing...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231476111",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "You cant do anyhting without paying",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231229048",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "UI looks like a cluttered mess almost like a video streaming site. genuinely can't tell how to get into a training mode, but I sure was offered about a dozen different ways to spend money in full screen adverts. \n\nAll I installed this for was to click circles, and Im not making an account to do that. I'm not gonna use your web services, or pay you 10 bucks a month for you to recommend me routines.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231150843",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Have to spend money on a monthly basis to use the most basic things to help you, just pay kovack one time instead is what id suggest",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231144204",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "This \"game\", software, aim trainer, whatever it can be cailed... It's horrible. \r\n\r\nAim Labs is one of the messiest, ugliest \"games\" I have ever had the luxury of using. I have only played for about 15 minutes, made an account, got my tier and tested a few modes for fun, and was absolutely shocked by how unpleasant and horrible this played.\r\n\r\nFor 20 GB, you would sure hope that this would be worth using at all. In 20 GB i could download Grand Theft Auto 4, an early Call of Duty title, the legacy version of Counter Strike: Global Offensive, and a load of other games that could *actually* give me some aiming practice, as well as proper multiplayer. Instead, I was not allowed to paste my password in when making an account, making my password manager essentially useless, so I opted for a more... throwaway password.\r\n\r\nAnd I think this was one of the worst things I've ever touched. Charging money every month for an aim trainer, much less one that is supposedly \"free\", is insane. The way this game is moderated in general has a lot of issues, from allowing you to pay for weapon skins to the ability for the target to flash red when \"shot\". You know, a feature that is an essential GIVEN in any title you can play nowadays? Would you like me to also pay for every 10 minutes of gameplay?\r\n\r\nFor the money you spend on an aim trainer like this (every month, no less), you could just as easily buy a skin in whatever game you're training for (be it Counter-Strike or Valorant, or anything in between) and a bit of their virtual currency. Why you would also want to pay for cosmetics on an aim trainer that you won't be revisiting for fun frequently is insanity.\r\n\r\nYou can argue that other aim trainers cost money, so this one is automatically better for being free. Except it's not, because they charge all the cool and NORMALLY GIVEN ♥♥♥♥♥♥♥♥ under a subscription.\r\n\r\nYou would think if they are charging a subscription, the game would at least be good, or at least look nice. Except it doe…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230988394",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-21",
+                  "review_text": "You have to pay for a monthly subscription to really utilize this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230776348",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "lmao do not get this. its free but you have to pay a MONTHLY SUBSCRIPTION for any features other than shooting at a target. theres literally no reason not to just practice in the game youre trying to be good at\n\nif you want to get those features, you have to create an account and collect an assload of data on you:\n\nyour scores, account info, and possibly gameplay recordings, plus mouse movement and keystroke patterns, which they legally count as \"biometric data.\" your performance stats can be public on leaderboards unless you turn on anonymous mode, and linking accounts pulls in even more data.\n\nthey say they don't \"sell\" your info, but sharing it with advertisers might count and opting out is on you, not automatic. They also share data with a bunch of third parties (ad networks, analytics/session-recording tools), don't honor \"Do Not Track,\" and don't cap how long they keep your data.\n\nuse the offline mode if you must",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229723570",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-05",
+                  "review_text": "you get treated like you are a homeless man on the street you cant do anything without money,you need to buy a monthly subscription or whatever to access the features",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229638540",
+                  "hours_at_review": 0.3,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "It works, but a LOT of things are behind a paywall of subscriptions.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229586367",
+                  "hours_at_review": 1.3,
+                  "voted_up": true,
+                  "date": "2026-07-04",
+                  "review_text": "good trainer but you need a subscription",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-42e006",
+              "claim": "Reviewers describe encountering prompts and offers for a paid subscription service upon startup.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231401909",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "It gives the option to play without making an account, but if you pick that, it gets stuck on the loading screen, where the only way to get around it is to make an account.\nThe second I get in I get bombarded with their subscription service that I cannot be bothered to care about.\n\nGame is a convoluted mess that takes roughly the same amount of disk space as Helldivers 2??? Seriously??",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231251265",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "Wasn't past login for 15 seconds before it tried to get me to get a monthly subscription for premium.\nLogging in was a pain in the ass. I actually gave up creating an account and played \"offline\".",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231229048",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "UI looks like a cluttered mess almost like a video streaming site. genuinely can't tell how to get into a training mode, but I sure was offered about a dozen different ways to spend money in full screen adverts. \n\nAll I installed this for was to click circles, and Im not making an account to do that. I'm not gonna use your web services, or pay you 10 bucks a month for you to recommend me routines.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-43d6ec",
+              "claim": "Reviewers state that creating an account and logging in are mandatory just to play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232320545",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "Needs to Log in just to Play.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231401909",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "It gives the option to play without making an account, but if you pick that, it gets stuck on the loading screen, where the only way to get around it is to make an account.\nThe second I get in I get bombarded with their subscription service that I cannot be bothered to care about.\n\nGame is a convoluted mess that takes roughly the same amount of disk space as Helldivers 2??? Seriously??",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231201683",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "Got to sign in now to play the game now? pathetic lmao ill look elsewhere",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231251265",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "Wasn't past login for 15 seconds before it tried to get me to get a monthly subscription for premium.\nLogging in was a pain in the ass. I actually gave up creating an account and played \"offline\".",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-15dee3",
+              "claim": "Reviewers note that the software requires creating an account and logging in before playing.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232320545",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "Needs to Log in just to Play.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231401909",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "It gives the option to play without making an account, but if you pick that, it gets stuck on the loading screen, where the only way to get around it is to make an account.\nThe second I get in I get bombarded with their subscription service that I cannot be bothered to care about.\n\nGame is a convoluted mess that takes roughly the same amount of disk space as Helldivers 2??? Seriously??",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231201683",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "Got to sign in now to play the game now? pathetic lmao ill look elsewhere",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231251265",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "Wasn't past login for 15 seconds before it tried to get me to get a monthly subscription for premium.\nLogging in was a pain in the ass. I actually gave up creating an account and played \"offline\".",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 588,
+      "pct_positive": 82.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "As playtime increases, players notice paywalls on specific tools like the sensitivity finder alongside large file downloads.",
+      "themes": [
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ear-26ac8e",
+              "claim": "Reviewers report that the sensitivity finder feature requires payment or a subscription.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232508966",
+                  "hours_at_review": 3.1,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "i used to play on aimlabs and it was all free.\r\n\r\nnowdays,,,,, i have to pay for finding my sens its just sad.\r\n\r\nwouldn`t recommend it!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232452601",
+                  "hours_at_review": 9.5,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "requests money for everything lol the sens finder isnt even free anymore LOL",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-4bc27f",
+              "claim": "Reviewers note that features and content are locked behind paywalls or subscriptions.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232518568",
+                  "hours_at_review": 4.0,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "after 2 days of owning it to access anything u need to get a subscription",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232493265",
+                  "hours_at_review": 10.2,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "Aim labs is great. only things are that alot of stuff is locked behind a paywall",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231393923",
+                  "hours_at_review": 3.5,
+                  "voted_up": false,
+                  "date": "2026-07-26",
+                  "review_text": "me when i'm a game that let's you play for maybe 3 hours and then puts everything behind a paywall so you can't do anything",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-407833",
+              "claim": "Reviewers mention that the download file size is large for an aim training software.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232529107",
+                  "hours_at_review": 7.5,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "Why would anyone download 20 GIGABYTES OF SOFTWARE to click circles...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231993606",
+                  "hours_at_review": 3.4,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "Я в жизни не пойму как можно сделать игру такой УВЕСИСТОЙ. 18 гигабайтов что бы пострелять в синие шарики... БРУХ!! Люди пользуются только потому что альтернативы нет.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231882700",
+                  "hours_at_review": 6.0,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "bro why tf am i downloading 12gb for an aim prac app",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 252,
+      "pct_positive": 82.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid-tier players encounter advertisements and paywalled features while continuing training.",
+      "themes": [
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "mid-eb5f51",
+              "claim": "Reviewers note that the software features pop-ups and advertisements for an Aimlabs+ subscription.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232438726",
+                  "hours_at_review": 77.5,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "Decent and free aim trainer.  Pop ups which suggest their aimlabs+ subscription can get annoying tho",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232227114",
+                  "hours_at_review": 89.9,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "Massive amount of bloat (especially the UI and nonstop subscription ads) but it's a [b]FREE[/b] aim trainer.\r\n\r\n---{ Graphics }---\r\n☐ You forget what reality is\r\n☐ Beautiful\r\n☐ Good\r\n☑ Decent\r\n☐ Bad\r\n☐ Don‘t look too long at it\r\n☐ MS-DOS\r\n\r\n---{ Gameplay }---\r\n☐ Very good\r\n☐ Good\r\n☑ It's just gameplay\r\n☐ Mehh\r\n☐ Watch paint dry instead\r\n☐ Just don't\r\n\r\n---{ Audio }---\r\n☐ Eargasm\r\n☐ Very good\r\n☑ Good\r\n☐ Not too bad\r\n☐ Bad\r\n☐ I'm now deaf\r\n\r\n---{ Audience }---\r\n☑ Kids\r\n☑ Teens\r\n☑ Adults\r\n☑ Grandma\r\n\r\n---{ PC Requirements }---\r\n☐ Check if you can run paint\r\n☑ Potato\r\n☐ Decent\r\n☐ Fast\r\n☐ Rich boi\r\n☐ Ask NASA if they have a spare computer\r\n\r\n---{ Game Size }---\r\n☑ Floppy Disk\r\n☐ Old Fashioned\r\n☐ Workable\r\n☐ Big\r\n☐ Will eat 15% of your 1TB hard drive\r\n☐ You will want an entire hard drive to hold it\r\n☐ You will need to invest in a black hole to hold all the data\r\n\r\n---{ Difficulty }---\r\n☐ Just press 'W'\r\n☐ Easy\r\n☑ Easy to learn / Hard to master\r\n☐ Significant brain usage\r\n☐ Difficult\r\n☐ Dark Souls\r\n\r\n---{ Grind }---\r\n☐ Nothing to grind\r\n☑ Only if u care about leaderboards/ranks\r\n☐ Isn't necessary to progress\r\n☐ Average grind level\r\n☐ Too much grind\r\n☐ You'll need a second life for grinding\r\n\r\n---{ Story }---\r\n☑ No Story\r\n☐ Some lore\r\n☐ Average\r\n☐ Good\r\n☐ Lovely\r\n☐ It'll replace your life\r\n\r\n---{ Game Time }---\r\n☑ Long enough for a cup of coffee\r\n☐ Short\r\n☐ Average\r\n☐ Long\r\n☐ To infinity and beyond\r\n\r\n---{ Price }---\r\n☑ It's free!\r\n☐ Worth the price\r\n☐ If it's on sale\r\n☐ If u have some spare money left\r\n☐ Not recommended\r\n☐ You could also just burn your money\r\n\r\n---{ Bugs }---\r\n☑ Never heard of\r\n☐ Minor bugs\r\n☐ Can get annoying\r\n☐ ARK: Survival Evolved\r\n☐ The game itself is a big terrarium for bugs\r\n\r\n---{ ? / 10 }---\r\n☐ 1\r\n☐ 2\r\n☐ 3\r\n☐ 4\r\n☐ 5\r\n☐ 6\r\n☑ 7\r\n☐ 8\r\n☐ 9\r\n☐ 10",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-32f1d4",
+              "claim": "Reviewers mention that interesting features or parts of the trainer are locked behind a paywall or the Aimlabs+ subscription.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229613334",
+                  "hours_at_review": 65.7,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "The Base version lacks features everything interesting is locked behind a paywall and sensitivity conversion isnt great, If you want aimlabs+ look for how to get it for free :> Or If youre going to spend the money just buy kovaaks instead",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229376834",
+                  "hours_at_review": 22.6,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "The aim trainer is good, but the sub premium you need to have access to the rest of the trainer is not worth it and predatory. Download this for an easy free experience but do not pay for it. this trainer was better when it was in alpha/beta due to them actually allowing you to use the full program",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 93,
+      "pct_positive": 87.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players value custom playlists despite a progressively bloated interface.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-810cb3",
+              "claim": "Reviewers report that the user interface has become cluttered and bloated over time, making it difficult to find previously used features and menus.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231622139",
+                  "hours_at_review": 221.0,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "Every change made in the last 5 years should be reversed they bloated this thing to the point I can't find anything. Thank god I made some custom playlists back in 2019 before they nuked this app. Legit feels like they tried to be the roblox of aim trainers.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230515050",
+                  "hours_at_review": 557.5,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "When they started out this was a great program to test and train your aim. As time does though it moves forward and sometimes we get it wrong. This game/app/training software aged like unpasteurized milk. It's bloated and over barren. Then everything you used to use got buried in the clutter. No way to adjust the menu's to get to the things you use to use daily without digging past everything new they want to show you.\n\nContent creators and 'pro' player embeds everywhere. As a marketing strategy? I don't care about either.\n\nThen there's the whole people testing aimbots against tasks. You can look at the leaderboards and visit the replays. Watch as someone flicks in perfect straight lines and when a mistake is made it's corrected the same as any other mistake. Leaderboards flooded with cheats weekly, monthly, and yearly. If you know what you're looking at.\nEven the best angle snapping mouse still allows for a bit of a curve now and then. \n\nWith them not cleaning up leaderboards or banning these people leaderboards have no value. The other side of the coin is the people doing this aren't really there for just the leaderboard. Their testing humanized aiming and training it to look legitimate. They do the best scores but realistically only for a laugh. Then they tune it more and more like the best aimers known. So they'll be less likely to be banned by a program when they play another game. This program without anti cheat is less a tool for improving your aim and more a tool for humanizing your aimbot.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229205832",
+                  "hours_at_review": 171.9,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "It became less and less appealing with every update. Instead of being a straightforward training tool, it's turned into something with Clash Royale level monetization. If you can tolerate a terrible UI, unnecessary bloat, and awful QoL in the hope that it'll eventually improve, you might find some use in it. Otherwise, just get Kovaak's or use Human Benchmark instead.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-e6533d",
+              "claim": "Reviewers highlight that user-made tracks and custom playlists are available and useful for training.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231622139",
+                  "hours_at_review": 221.0,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "Every change made in the last 5 years should be reversed they bloated this thing to the point I can't find anything. Thank god I made some custom playlists back in 2019 before they nuked this app. Legit feels like they tried to be the roblox of aim trainers.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228931422",
+                  "hours_at_review": 142.4,
+                  "voted_up": true,
+                  "date": "2026-06-27",
+                  "review_text": "pretty good aim trainer besides the fact that everything they make themselves is behind a paywall, user made tracks arent bad tho, still good",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 1203,
+    "steam_total_reviews": 66108,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
