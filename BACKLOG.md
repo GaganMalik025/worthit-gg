@@ -62,6 +62,34 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-12 | **Nothing in CI ever runs `pipeline/test_batch_guards.py` — two
+independent gaps, not one** | build, after pushing the concurrency-test fix |
+`ci.yml` did not run on the push carrying `adf26e3`, and would not have run on
+any change to the guard suite. **Gap one, the trigger:** the push path filter
+lists `site/**`, `site/public/verdicts/**`, `pipeline/live_quota.py`,
+`pipeline/quota_day.py` and the workflow file. `pipeline/test_batch_guards.py`
+is not among them. (Note the trigger is *not* site-only — two pipeline files are
+there deliberately, because quota-constant drift between `site/lib/quota.ts` and
+`pipeline/live_quota.py` is what motivated them. The gap is the guard suite
+specifically, not pipeline coverage in general.) **Gap two, and the reason the
+obvious fix is not a fix:** the single `test` job is `actions/checkout` →
+`actions/setup-node` → `npm ci` → `npm test`, all in `site/`. There is no
+`setup-python`, no venv, no dependency install, and no step that invokes any
+Python at all. Adding `pipeline/**` to the path filter would therefore start
+triggering the workflow on guard-suite changes and still not execute a single
+guard test — arguably worse than today, because the run would go green and look
+like coverage. What this costs right now: tonight's fix to
+`test_ledger_charge_is_atomic` is verified **only** by the local
+break-then-confirm run (three mutations, each caught, suite green after
+restore). That is real evidence and it is the only evidence; nothing re-runs it
+on the next push, so a future change that quietly breaks the guard suite —
+including one that breaks the atomicity guard it protects — surfaces at the next
+manual run rather than at the next push. Deferred rather than fixed because it
+needs both halves done together: a path-filter entry AND a new job step
+(`setup-python`, install, `pipeline/test_batch_guards.py`), and the suite shells
+out to `git` against real refs in temp worktrees, so it wants a check that it
+actually passes on a clean runner before it is trusted as a gate.
+
 2026-08-12 | **The pacer's cross-process test has the same unchecked-exit-code
 shape the ledger test just had** | build, fixing test_ledger_charge_is_atomic |
 `test_pacer_ceiling_across_processes` (test_batch_guards.py:67) spawns 5
