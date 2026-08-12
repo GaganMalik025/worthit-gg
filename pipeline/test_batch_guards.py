@@ -445,11 +445,26 @@ def test_ledger_charge_is_atomic():
         code = ("import sys;sys.path.insert(0,%r);import live_quota;"
                 "live_quota.charge(1, ledger='batch', path=%r)"
                 % (str(Path(__file__).resolve().parent), str(path)))
-        procs = [sp.Popen([PY, "-c", code]) for _ in range(12)]
+        procs = [sp.Popen([PY, "-c", code], stderr=sp.PIPE) for _ in range(12)]
+        # Exit codes FIRST. A crashed child and a genuinely lost update both
+        # leave batch_used < 12, so asserting the count alone cannot tell "the
+        # lock failed" from "python could not start" - and the second one would
+        # read as a passing guard being broken. Prove all 12 charges actually
+        # ran, then the count means what the name says it means.
+        failed = []
         for pr in procs:
-            pr.wait(timeout=90)
+            err = pr.communicate(timeout=90)[1]
+            if pr.returncode != 0:
+                failed.append((pr.returncode, (err or b"").decode(
+                    "utf-8", "replace").strip()[-300:]))
+        check("all 12 charge processes exited 0", not failed,
+              "; ".join("rc=%d %s" % f for f in failed[:3]))
         got = live_quota.load(path)["batch_used"]
-        check("12 concurrent charges of 1 all land", got == 12, got)
+        # Only reachable as a real lost update now: every child is known to have
+        # run to completion, so a short count means charges erased each other.
+        check("12 concurrent charges of 1 all land", got == 12,
+              "%s (all children exited 0, so this is a LOST UPDATE, "
+              "not a crash)" % got if not failed else got)
         check("generation count matches too",
               live_quota.load(path)["batch_generations"] == 12)
     # The unlocked load -> record -> save that lost updates is gone from every
