@@ -1,20 +1,42 @@
-"""Build the 4.4-style manual-audit sample for tonight's new verdicts.
+"""Build the 4.4-style manual-audit sample for a batch night's new verdicts.
 
 Mechanical extraction only: this script selects and formats, it does not read,
-rank, or characterise citation content. Seeded so the sample is reproducible.
-"""
-import json, pathlib, random, sys
+rank, or characterise citation content. Seeded so the sample is reproducible:
+re-running with the same --seed and --since reproduces the identical sample.
 
-SEED = 20260812
-ROOT = pathlib.Path("/Users/gaganmalik/Downloads/worthit-gg")
+    .venv/bin/python evals/make_audit_sample.py --date 2026-08-13 --seed 20260813 \
+        --gate-note "11,385 citations across 221 verdicts, run 2026-08-13"
+
+Every round gets its OWN seed. Reusing a seed across nights would re-draw
+correlated positions in each night's list rather than sampling independently.
+"""
+import argparse, json, pathlib, random
+
+ROOT = pathlib.Path(__file__).resolve().parent.parent
 VERDICTS = ROOT / "site/public/verdicts"
-OUT = ROOT / "evals/audit-4.4-2026-08-12.md"
-N_VERDICTS, N_CITATIONS = 10, 20
 BUCKETS = ["refund_window", "early", "mid", "veteran"]
+
+ap = argparse.ArgumentParser(description=__doc__)
+ap.add_argument("--date", required=True,
+                help="batch date, YYYY-MM-DD; scopes the sample to verdicts "
+                     "published on or after it and names the output file")
+ap.add_argument("--seed", type=int, required=True,
+                help="new seed per round - never reuse a previous night's")
+ap.add_argument("--gate-note", default="",
+                help="the automated QR-4 result this sample sits on top of")
+ap.add_argument("--verdicts", type=int, default=10)
+ap.add_argument("--citations", type=int, default=20)
+ap.add_argument("--out", default=None)
+args = ap.parse_args()
+
+SEED = args.seed
+SINCE = args.date
+OUT = pathlib.Path(args.out) if args.out else ROOT / f"evals/audit-4.4-{args.date}.md"
+N_VERDICTS, N_CITATIONS = args.verdicts, args.citations
 
 state = json.loads((ROOT / "data/batch_state.json").read_text())
 new_ids = sorted(int(k) for k, v in state["titles"].items()
-                 if v.get("at", "") > "2026-08-12" and v.get("published"))
+                 if v.get("at", "") > SINCE and v.get("published"))
 
 docs = {}
 for appid in new_ids:
@@ -71,14 +93,14 @@ def line(s, n):
 
 
 L = []
-L.append("# 4.4 morning audit - sample for manual review (2026-08-12 batch)\n")
-L.append(f"Generated from the {len(docs)} verdicts published by the 2026-08-12 "
+L.append(f"# 4.4 morning audit - sample for manual review ({SINCE} batch)\n")
+L.append(f"Generated from the {len(docs)} verdicts published by the {SINCE} "
          "overnight batch. Earlier catalog titles are out of scope here - they "
          "were audited in their own rounds.\n")
-L.append("Automated QR-4 has already passed on every citation in this set "
-         f"(9,157 citations across 176 verdicts, {docs and ''}run 2026-08-12). "
-         "This sample is the HUMAN gate that BUILD_PLAN calls the last one "
-         "before strangers.\n")
+L.append("Automated QR-4 has already passed on every citation in this set"
+         + (f" ({args.gate_note})" if args.gate_note else "")
+         + ". This sample is the HUMAN gate that BUILD_PLAN calls the last one "
+           "before strangers.\n")
 L.append(f"Selection is seeded (`SEED = {SEED}`) and stratified: section A "
          "round-robins across verdict words, section B round-robins across the "
          "four playtime cohorts. Re-running the generator reproduces this exact "

@@ -1,0 +1,600 @@
+{
+  "appid": "881100",
+  "game_name": "Noita",
+  "generated_at": "2026-08-13T09:55:04Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "Brutal pixel destruction and wand crafting backed by deep simulation.",
+    "for_you_if": [
+      "you enjoy experimenting with complex magic systems",
+      "you love physics-based destruction and emergent chaos",
+      "you appreciate high difficulty and trial-and-error learning"
+    ],
+    "not_for_you_if": [
+      "you dislike relying on external guides for obscure secrets",
+      "you want permanent progression carried between attempts",
+      "you need to manage saves carefully to avoid file corruption"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 30,
+      "pct_positive": 53.3,
+      "muted": true
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 384,
+      "pct_positive": 92.7,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 401,
+      "pct_positive": 94.0,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 385,
+      "pct_positive": 97.7,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Positive review proportions increase progressively as playtime lengthens.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 53.3,
+            "pool_n": 30
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 92.7,
+            "pool_n": 384
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 94.0,
+            "pool_n": 401
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 97.7,
+            "pool_n": 385
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 53.3,
+        "low_pool_n": 30,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 97.7,
+        "high_pool_n": 385,
+        "gap_pts": 44.4
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 30,
+      "pct_positive": 53.3,
+      "muted": true,
+      "n_note": "n=19 - too few reviews to call",
+      "summary": null,
+      "themes": []
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 384,
+      "pct_positive": 92.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers note the lack of progression between runs, absent tutorials, and reliance on external guides.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-494228",
+              "claim": "Reviewers note that runs feature no progression carried over between attempts.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231965823",
+                  "hours_at_review": 4.0,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "Clever use of physics, cool wand-crafting mechanics, fun gameplay.\n\nBut having to restart from zero without even a slight passive bonus carried over from your previous run or something... that's too much for me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231633113",
+                  "hours_at_review": 3.6,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "I agree with the review Vogel1000 posted before me. \r\n\r\nI don't think I can recommend this roguelike unless it's your first or you really really really find the pixel gimmick to make it all worth it on its own. Most of the time you spend playing this game, is just collecting better items at the very beginning for me. I don't breeze through it after a couple of hours in, and that just makes me feel like I'm wasting my time at some sort of tutorial instead of feeling some progress was made. \r\nIt just feels like an early access game to me; the gameplay itself is fine but the loop is very tedious, and I don't find it interesting to check on a wiki every single item I find.\r\n\r\nI've spent countless hours on The Powder Toy as a kid, but this never clicked for me, I don't find nothing particularly interesting to justify me sinking more and more hours finding random wands to advance with nothing to show for it other than a menu that pops up showing me the things I found. Hooray.\r\n\r\nThis is my own personal review, the game has an overwhelming positive rating for a reason.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-13750f",
+              "claim": "The game does not include tutorials explaining its mechanics, spells, or items.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230631883",
+                  "hours_at_review": 4.2,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "The concept of Noita is interesting, addicting, and fun, but sadly I have a hard time enjoying this game because it is EXTREMELY difficult. I've been trying for a while and I cannot seem to make it past the 3rd or 4th area. I don't generally dislike games just because they are hard, but with Noita it seems I am just hitting a wall, and I can't find a real way around it. The game also doesn't explain anything -- it doesn't give you tips, it doesn't show you how to use your weapons, it doesn't explain any of the hundreds and hundreds of spells, enemies, mechanics, or perks. I suppose I could figure out this game after tens of hours of study, memorizing spells, and grindy trial and error, but with a roguelike I'm not willing to put in that kind of time. If you're an extremely skilled gamer and you want to put in the time and effort to learn how to play Noita properly, then by all means try! But if you're not up for a nasty challenge, maybe try another game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230221244",
+                  "hours_at_review": 9.8,
+                  "voted_up": true,
+                  "date": "2026-07-11",
+                  "review_text": "Amazing game, super addicting. The wand and build crafting are some of the funnest ive seen in a long time. Exploration and combat are challenging but you feel like you learn something new each run. the game doesnt hold your hand or endlessly tutorialize it gives you the controls and throws you down a hill to learn yourself and its so refreshing. love this game,",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-1ed719",
+              "claim": "Reviewers state that progressing successfully requires consulting external wikis and guides.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231981942",
+                  "hours_at_review": 7.4,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "This game has two major problems:\n1. There is absolutely no way that any human being could reasonably play this game in a fulfilling way without using a wiki. Pair that with how strictly unfair the game can be and that makes for an experience that’s not very fun after the first hour.\n2. People preach that the true \"meta-progression\" of this game is experience and wisdom but that is simply not true.\nAt the time of this review I have around 7 hours of experience. In most Roguelikes a person with that much time would be considered to have the fundamentals of the game understood. In Noita, however, a person with 100 hours is considered a \"noob\". For most players, it will take them over 150 hours to complete the tutorial. I have been saying this for as long as I’ve been playing games, but being hard for the sake of a challenge and being hard just to be hard are not the same thing, and hard for the sake of hard is not fun. Your time is better spent playing Rogue Legacy 2 or Magicka 2 if you want to play a fun roguelike or magic-casting game.\n150 hours should not be a barrier to entry for any game.\nThis also has a third but less relevant problem: The \"no hand-holding\" philosophy also extends to the Steam page and marketing. Nowhere does it tell you truly how much time and grief you will have to sink into the game to even have a basic grasp of what you’re doing.\nIf you insist on playing it, however, I would recommend you do ten or fifteen runs and then looking at some mods that can potentially lighten your burden.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231633113",
+                  "hours_at_review": 3.6,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "I agree with the review Vogel1000 posted before me. \r\n\r\nI don't think I can recommend this roguelike unless it's your first or you really really really find the pixel gimmick to make it all worth it on its own. Most of the time you spend playing this game, is just collecting better items at the very beginning for me. I don't breeze through it after a couple of hours in, and that just makes me feel like I'm wasting my time at some sort of tutorial instead of feeling some progress was made. \r\nIt just feels like an early access game to me; the gameplay itself is fine but the loop is very tedious, and I don't find it interesting to check on a wiki every single item I find.\r\n\r\nI've spent countless hours on The Powder Toy as a kid, but this never clicked for me, I don't find nothing particularly interesting to justify me sinking more and more hours finding random wands to advance with nothing to show for it other than a menu that pops up showing me the things I found. Hooray.\r\n\r\nThis is my own personal review, the game has an overwhelming positive rating for a reason.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 401,
+      "pct_positive": 94.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players praise the fully simulated pixels and smooth performance on hardware, while noting obscure secrets and brief freezes during actions.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-469dab",
+              "claim": "Reviewers report that the game features smooth performance even on lower-end PC hardware.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231164742",
+                  "hours_at_review": 79.3,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "this game is awesome. it's very smooth even on lower end PCs and every inch of the map is fun to explore.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230675027",
+                  "hours_at_review": 25.6,
+                  "voted_up": true,
+                  "date": "2026-07-17",
+                  "review_text": "Good game. Runs smoothly despite my low specs. A ton of content and hours of playtime. Would recommend.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-07693b",
+              "claim": "Reviewers note that clicking a button causes the game to freeze briefly before snapping the player character",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232626078",
+                  "hours_at_review": 48.5,
+                  "voted_up": true,
+                  "date": "2026-08-12",
+                  "review_text": "What's YOUR favorite part of Noita?\r\nMine is when you click a button and the game freezes for a moment, lighting up every shadow before snapping you in half.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231420525",
+                  "hours_at_review": 81.2,
+                  "voted_up": true,
+                  "date": "2026-07-27",
+                  "review_text": "First off: the game does have a very well made Coop mod that works pretty well, so even though it says single player, you can play it with friends\n\nThe first few runs, and by that I mean the first like 20 hours will be brutal, if you make it past the first 4 areas in one run in under 20 hours good for you, but you wont be able to do it consistently. But then you start figuring it out, learning how to dodge, checking out the wiki, and then everything starts to click.\n\nThis is when it becomes an issue and if you have problems with addictions you should probably leave, because once you start figuring it all out youll learn just how much gambling there is in this game. You will spend hours looking for just one spell, hoping every wand you come across has it, you will literally move heaven and earth for it. \n\nThe other part of gambling is the deaths, sometimes they are your fault, sometimes you were just in the wrong spot, and sometimes you got notia by something you just couldn't possible avoid. \n\nI think the best way to encapsulate this game is: My best friend and I lost a 15 hour run because I took a perk that basically killed us when I fired my wand, and after 2 minutes of yelling at each other and 30 seconds of silence I just hear: \"so we running it back or what?\"\n\nThis game will be both your reason for leaving and subsequently getting back into therapy",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-d7fe6b",
+              "claim": "The game runs smoothly even on lower-specification personal computers",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231164742",
+                  "hours_at_review": 79.3,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "this game is awesome. it's very smooth even on lower end PCs and every inch of the map is fun to explore.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230675027",
+                  "hours_at_review": 25.6,
+                  "voted_up": true,
+                  "date": "2026-07-17",
+                  "review_text": "Good game. Runs smoothly despite my low specs. A ton of content and hours of playtime. Would recommend.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-af0944",
+              "claim": "Reviewers state that many puzzles, secrets, and mechanics are so obscure that players must rely on external wiki pages and community guides to understand them.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232405281",
+                  "hours_at_review": 55.0,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "An exraordinarily intricate powder sandbox with a healthbar and perk system hapazardly slapped on to the side that frustratingly claims to focus on experimentation yet refuses to give you even a scrap of actionable information to actually experiment with in game. The only possible way that \"death is a learning experience\" here is if you immidiately google the name of whatever killed you (provided it even was an enemy, otherwise you may as well chalk it up to spontaneus cardiac arrest..) to find out what absurdly niche mechanic or ridiculous damage resistance this 1 innocuous creature you've never interacted with across 50 hours and 300 runs used to break the \"\"\"game\"\"\" in its favour (Seriously though why the actual ♥♥♥♥ are frogs of all things able to hit you for every frame???).\n\nFor a real rougelike this wouldnt be an issue but Noita insists that game knowledge and spell unlocks be the only measure of progression between your utterly ardous, multi hour runs, a perfectly fine concept that is completely and totally butchered by the fact that you will not learn or unlock a single ♥♥♥♥♥♥♥ thing from 99.9% of your actual runs and deaths. The general mechanics and unlock requirements are so utterly obtuse and inexplicable that any actually usefull information about them is EXCLUSIVELY found in irl wiki pages and community content creators, which imo is a bit of a turnoff for people who play play videgames for the whole \"videogame\" part...\n\nThe real kick in the nads is that every genuinely good aspect of Noita feels completely at odds with itself, its like two different games that have been conjoined at the hip and are each trying to tear themselves apart from the other and killing themselves in the process.\n\nIf it werent trying so hard to be a grueling gamey game for gamers you'd have a perfect powder puzzle sandbox with actual freedom to experiment and genuinely interesting secrets to work through, this is borderline impossible though because you've gotta metagame the …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230752586",
+                  "hours_at_review": 41.6,
+                  "voted_up": true,
+                  "date": "2026-07-18",
+                  "review_text": "Does the pain ever end? not in this game. Especially since most of the time you will be punching yourself in the face for being stupid and dying to a pixel because you were too greedy. But every time you die you will get smarter and more careful, which makes the game addictive because you will think about new things you can try and understand the game deeper.\nThis game is really difficult, but that difficulty can be bypassed by being patient and careful and thinking ahead.\nBeyond it being a roguelike like many other games, Noita offers an incredibly deep world with many secrets , mechanics, puzzles, and lore to uncover, although a lot of the puzzles and secrets are very obscure and you would never be able to figure them out on your own, which is a bit frustrating.\nOh and also the music slaps.\nOverall 10\\10 , perfect game for the unemployed.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-3c52a6",
+              "claim": "Reviewers report that the game features fully simulated pixels and physics.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232137600",
+                  "hours_at_review": 65.3,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "After 60+ hours and completing the game, I must say Noita is one of the best indie games I have ever played.\n\nI've really been looking forward to reviewing it, but felt like I had to give it some time before doing so. Sandbox, roguelike, platformer...you name it, but it's really something special.\n\nMy advice? Have patience. Give it a few hours, learn the basics, and proceed slowly. Whenever you think you're done with it, you keep on discovering places, magical spells, and powers (perks) you haven't seen or heard of before. The versatility, the element of surprise and Noita's unique physics engine are without comparison.\n\nHighly recommended, and I still expect to enjoy many more hours playing it. That's how immersive and replayable Noita is. Props for great sound design!\n\nA bright speck of light in the field of Finnish video games, and one that makes me very proud!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230857387",
+                  "hours_at_review": 67.9,
+                  "voted_up": true,
+                  "date": "2026-07-19",
+                  "review_text": "Erm, lowk, best game ver made, new concept, every pixel simulated, veri gud👍",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 385,
+      "pct_positive": 97.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players highlight pixel-based world destruction and trial-and-error learning, alongside performance strains and save corruption risks.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-2e4e40",
+              "claim": "Reviewers report that the game requires turning off steam cloud or managing saves carefully, as crashes can corrupt or wipe save files.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231893579",
+                  "hours_at_review": 102.5,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "The wand building is very fun. The exploration can also be fun although it's very unforgiving and the secrets can get too obscure. Some secrets are just meant to confuse you, and some bosses were disappointing. Still, discovering something new is always a nice experience.\r\n\r\n100 hours in and I still learn fun and exciting bs that will instantly end your run despite how well and long you've been going. In my last run I learned the game will just crash and corrupt your data, and apparently your save can even get wiped, how wonderful.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231396491",
+                  "hours_at_review": 585.4,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "this game is so fun and confusing, and even runs great* on my potato of a pc.\r\nfree tip: NEVER TURN OF STEAM CLOUD or if u do turn it back on the second you die\r\nif the game crashes(probably your own fault summoning 1600 bombs)  it can corrupt your save.\r\nspeaking from experience x 3",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-d1d589",
+              "claim": "Reviewers note that the game's mechanics can cause high processor load and performance strain on computer hardware during intensive moments.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231894355",
+                  "hours_at_review": 123.0,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "This game is always ALWAYS fun to come back to and after all the secrets and wild things I've done on it, I thought now is a good time to say a recommendation.\n\nfirstly. The game is hard and I won't suger coat it, BUT as you play it more and more. You learn how to deal with things as well as the ins and outs of it.\n\nAll I can say is, just take your time with your runs. There is no timer, no rush to get it done, be careful with progressing and learn what you can along the way. the world of Noita is very large and full of fun, secrets and surprises. (as well as a load of enemies that definately will find a way to humble you)\n\nThe thing I love most is the secrets and wand building. while technically there is no increment to each new run to make the it easier (beside your knowledge of the game) you can unlock new spells and the like with the secrets in the game. some are simple as \"kill this guy\" and some are very much not.\n\nbut if you like that in a game and a solid challenge and a boat load of wand editing that can be absurdly strong or instantly backfire you into a new run then I encourage you to give this game a solid go. You may hate it or love it. (or both haha) \n\nIt CAN be taxing on the pc (processor load) with some things but besides that. it doesn't really require a top line pc to run.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231357989",
+                  "hours_at_review": 566.0,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "I can never recommend this game enough. A lot of people I know haven't even heard of it, and it's CRAZY to me that they're missing out on something this good.\nIt has become my comfort game, but it also induces rage like no other ((((::::: - the best of both worlds, honestly.\nDon't ever refund this game. It's way too cheap for the amount of content it packs in.\n\nPS: DunkOrSlam and FuryForged make amazing YouTube tutorials that explain some game's concepts whenever you (inevitably) get stuck.\nPPS: Close your tabs, you'll need the processing power ):",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-c0041e",
+              "claim": "Reviewers report that the game can cause performance drops or processor load issues.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231894355",
+                  "hours_at_review": 123.0,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "This game is always ALWAYS fun to come back to and after all the secrets and wild things I've done on it, I thought now is a good time to say a recommendation.\n\nfirstly. The game is hard and I won't suger coat it, BUT as you play it more and more. You learn how to deal with things as well as the ins and outs of it.\n\nAll I can say is, just take your time with your runs. There is no timer, no rush to get it done, be careful with progressing and learn what you can along the way. the world of Noita is very large and full of fun, secrets and surprises. (as well as a load of enemies that definately will find a way to humble you)\n\nThe thing I love most is the secrets and wand building. while technically there is no increment to each new run to make the it easier (beside your knowledge of the game) you can unlock new spells and the like with the secrets in the game. some are simple as \"kill this guy\" and some are very much not.\n\nbut if you like that in a game and a solid challenge and a boat load of wand editing that can be absurdly strong or instantly backfire you into a new run then I encourage you to give this game a solid go. You may hate it or love it. (or both haha) \n\nIt CAN be taxing on the pc (processor load) with some things but besides that. it doesn't really require a top line pc to run.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231357989",
+                  "hours_at_review": 566.0,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "I can never recommend this game enough. A lot of people I know haven't even heard of it, and it's CRAZY to me that they're missing out on something this good.\nIt has become my comfort game, but it also induces rage like no other ((((::::: - the best of both worlds, honestly.\nDon't ever refund this game. It's way too cheap for the amount of content it packs in.\n\nPS: DunkOrSlam and FuryForged make amazing YouTube tutorials that explain some game's concepts whenever you (inevitably) get stuck.\nPPS: Close your tabs, you'll need the processing power ):",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-5bf724",
+              "claim": "Reviewers mention that disabling Steam Cloud or experiencing crashes can risk save file corruption or loss.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231893579",
+                  "hours_at_review": 102.5,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "The wand building is very fun. The exploration can also be fun although it's very unforgiving and the secrets can get too obscure. Some secrets are just meant to confuse you, and some bosses were disappointing. Still, discovering something new is always a nice experience.\r\n\r\n100 hours in and I still learn fun and exciting bs that will instantly end your run despite how well and long you've been going. In my last run I learned the game will just crash and corrupt your data, and apparently your save can even get wiped, how wonderful.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231396491",
+                  "hours_at_review": 585.4,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "this game is so fun and confusing, and even runs great* on my potato of a pc.\r\nfree tip: NEVER TURN OF STEAM CLOUD or if u do turn it back on the second you die\r\nif the game crashes(probably your own fault summoning 1600 bombs)  it can corrupt your save.\r\nspeaking from experience x 3",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-3567d1",
+              "claim": "Reviewers state that the game features a pixel-based world where elements like sand and acid interact with and kill the player.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232042614",
+                  "hours_at_review": 296.3,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Here's the thing. I LIKE this game. It does NOT like me. I love to hate it and hate to love it.\r\n\r\nNoita is a roguelite with a pixel based world about wand building, alchemy, and secrets. Every grain of sand, every drop of acid, can be interacted with or kill you. This is a game that will expect you to know things you could not possibly know without either having an expertise in cryptography, puzzle solving, and ARGs, or a wiki you can tab in and out of. If you go in blind it'll probably take you 80 - 100 runs just to beat the main boss, but there's so much more to this game.\r\n\r\nWand building is integral to your success, and it will kill you even hundreds of hours into your playthrough. One of the most irritating parts of this game is when you have an hours long run and you're trying to get multiple unlocks. There is no \"safe\" way to test your wands, not really. Dying instantly should be expected coming in, but while testing wands? It sucks, a lot. Polymorph is another concern for instant death. It transforms you into a weaker creature, who does NOT have your extra life perks, inventory of healing spells, or your large health pool, for the terrifying seconds until it wears off. It's fair to warn you now, that if you give this game a chance you will be better off looking up the more hidden unlocks after you get comfortable playing, if you respect your own sanity and time.\r\n\r\nThat being said, when this game is good you get to feel godly. Spells that delete everything in front of you. Perks that make you feel untouchable. Crazy wands filled spells that would confuse other players. Actual message toasts of the gods fearing you. Feats that feel special compared to most games. But this all comes at a cost. It has to be gained through knowledge, experience, time, and probably an external guide.\r\n\r\nIf you haven't been scared off here's some advice from someone with a little experience. Get experimental, don't be afraid to die early on, don't be afraid to go off the beaten p…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231860733",
+                  "hours_at_review": 120.1,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "On a surface level this is a difficult unforgiving and incredibly fun dungeoncrawler esque rouglike, but once you begin to explore and uncover the massive world you realise the incredible depth of lore content and puzzles this game has to offer. 10/10 died with 15k health on a 6h run because i got turned into a sheep.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-bc370a",
+              "claim": "Reviewers note that the game features a wand building system and pixel-based world destruction mechanics.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232042614",
+                  "hours_at_review": 296.3,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Here's the thing. I LIKE this game. It does NOT like me. I love to hate it and hate to love it.\r\n\r\nNoita is a roguelite with a pixel based world about wand building, alchemy, and secrets. Every grain of sand, every drop of acid, can be interacted with or kill you. This is a game that will expect you to know things you could not possibly know without either having an expertise in cryptography, puzzle solving, and ARGs, or a wiki you can tab in and out of. If you go in blind it'll probably take you 80 - 100 runs just to beat the main boss, but there's so much more to this game.\r\n\r\nWand building is integral to your success, and it will kill you even hundreds of hours into your playthrough. One of the most irritating parts of this game is when you have an hours long run and you're trying to get multiple unlocks. There is no \"safe\" way to test your wands, not really. Dying instantly should be expected coming in, but while testing wands? It sucks, a lot. Polymorph is another concern for instant death. It transforms you into a weaker creature, who does NOT have your extra life perks, inventory of healing spells, or your large health pool, for the terrifying seconds until it wears off. It's fair to warn you now, that if you give this game a chance you will be better off looking up the more hidden unlocks after you get comfortable playing, if you respect your own sanity and time.\r\n\r\nThat being said, when this game is good you get to feel godly. Spells that delete everything in front of you. Perks that make you feel untouchable. Crazy wands filled spells that would confuse other players. Actual message toasts of the gods fearing you. Feats that feel special compared to most games. But this all comes at a cost. It has to be gained through knowledge, experience, time, and probably an external guide.\r\n\r\nIf you haven't been scared off here's some advice from someone with a little experience. Get experimental, don't be afraid to die early on, don't be afraid to go off the beaten p…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230946237",
+                  "hours_at_review": 697.6,
+                  "voted_up": true,
+                  "date": "2026-07-21",
+                  "review_text": "My friend put me onto this game a couple years ago and it's one of the best I've ever played. There is no other gameplay like that of Noita. It maintains its own identity so completely it's hard to see how it's not one of the most widely-known indie games that exist. No other game provides world destruction and editing to this degree, and I can't even think of words for their wand building system that operates like its own language.\r\n\r\nNoita is HARD. It is unforgiving. It is not perfect. \r\nBut it is a work of pure genius.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-9ac4b6",
+              "claim": "Reviewers describe the learning process as reliant on experimentation and trial-and-error because core systems are not spelled out beyond the controls.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232440668",
+                  "hours_at_review": 428.0,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "Noita is hands down an incredible game. That said, it's not a game for everybody... and I came very close to leaving it a bad review in my first twenty hours or so of playing. I'll do my best to review the game fairly so you can see whether the game is for you:\r\nAbove all, Noita is a game about creativity and leveraging knowledge to succeed. You can't expect to win a run on the first attempt, nor the second, nor the third (yes, it has been done, but that's beside the point). As effectively none of the game's systems are spelled out to you - short of the controls - the only way to learn is through experimentation.\r\nThat gives rise to one of the biggest points of contention for the game. If you don't know that the spell to cast an explosion will hurt you, the way you'll learn is invariably that you'll get hit by yourself casting it. Given the small starting health pool and admirable output on some spells, it often will result in death and a new run. The speed at which a good run can be taken away from you after hours of labour can feel brutal. If you learn to enjoy the absurd ways in which you end up dying, and be willing to accept the inevitable deaths, Noita can in these early stages feel very fun.\r\nOnce you get you first victory, it will feel earnt over the ridiculous odds the game seems to throw at you. But more than that, when you play more you'll realise just how easy winning can become when you learn the ways to exploit every opportunity.\r\nDifficulty and progression aside, I can only call Noita an incredible game because of its phenomenal depth. Being able to drag and drop spells of all sorts (projectiles and modifiers, through to logic gates (which I've honestly never used)) allows you to feel as if you are genuinely creating your own magic, rather than the mage classes in many other games which prescribe you very specific options, even if varied. Wands act as vessels, constraining your choice of spells so you have to be situationally opportunistic, whilst hol…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232042614",
+                  "hours_at_review": 296.3,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Here's the thing. I LIKE this game. It does NOT like me. I love to hate it and hate to love it.\r\n\r\nNoita is a roguelite with a pixel based world about wand building, alchemy, and secrets. Every grain of sand, every drop of acid, can be interacted with or kill you. This is a game that will expect you to know things you could not possibly know without either having an expertise in cryptography, puzzle solving, and ARGs, or a wiki you can tab in and out of. If you go in blind it'll probably take you 80 - 100 runs just to beat the main boss, but there's so much more to this game.\r\n\r\nWand building is integral to your success, and it will kill you even hundreds of hours into your playthrough. One of the most irritating parts of this game is when you have an hours long run and you're trying to get multiple unlocks. There is no \"safe\" way to test your wands, not really. Dying instantly should be expected coming in, but while testing wands? It sucks, a lot. Polymorph is another concern for instant death. It transforms you into a weaker creature, who does NOT have your extra life perks, inventory of healing spells, or your large health pool, for the terrifying seconds until it wears off. It's fair to warn you now, that if you give this game a chance you will be better off looking up the more hidden unlocks after you get comfortable playing, if you respect your own sanity and time.\r\n\r\nThat being said, when this game is good you get to feel godly. Spells that delete everything in front of you. Perks that make you feel untouchable. Crazy wands filled spells that would confuse other players. Actual message toasts of the gods fearing you. Feats that feel special compared to most games. But this all comes at a cost. It has to be gained through knowledge, experience, time, and probably an external guide.\r\n\r\nIf you haven't been scared off here's some advice from someone with a little experience. Get experimental, don't be afraid to die early on, don't be afraid to go off the beaten p…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 52015,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

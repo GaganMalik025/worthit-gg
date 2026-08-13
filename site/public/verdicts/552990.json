@@ -1,0 +1,572 @@
+{
+  "appid": "552990",
+  "game_name": "World of Warships",
+  "generated_at": "2026-08-13T09:43:06Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Strategic naval combat hampered by heavy monetization and steep learning curves.",
+    "for_you_if": [
+      "you enjoy tactical naval combat",
+      "you can master a steep learning curve",
+      "you tolerate slow resource grinds"
+    ],
+    "not_for_you_if": [
+      "you want balanced matchmaking",
+      "you are unwilling to link external accounts",
+      "you mind aggressive microtransactions",
+      "you need stable server connections"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 53,
+      "pct_positive": 45.3,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 446,
+      "pct_positive": 75.3,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 315,
+      "pct_positive": 79.7,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 390,
+      "pct_positive": 62.8,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "Player sentiment peaks during mid-tier progression before declining among long-term participants.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 45.3,
+            "pool_n": 53
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 75.3,
+            "pool_n": 446
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 79.7,
+            "pool_n": 315
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 62.8,
+            "pool_n": 390
+          }
+        ],
+        "shape": "rise_then_fall",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 45.3,
+        "low_pool_n": 53,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 79.7,
+        "high_pool_n": 315,
+        "gap_pts": 34.4,
+        "peak_cohort": "mid",
+        "peak_pct_positive": 79.7,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 62.8,
+        "drop_after_peak_pts": 16.9
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews reflect a decline in sentiment compared to lifetime averages.",
+      "evidence": {
+        "recent_pool_pct_positive": 71.1,
+        "recent_pool_n": 1204,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 80.0,
+        "steam_total_reviews": 49172,
+        "delta_pts": -8.9
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 53,
+      "pct_positive": 45.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early reviewers encounter unbalanced matchmaking and heavy monetization.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-c09349",
+              "claim": "Reviewers describe the matchmaking as unbalanced, resulting in lopsided matches where teams get quickly overwhelmed.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230677327",
+                  "hours_at_review": 1.1,
+                  "voted_up": true,
+                  "date": "2026-07-17",
+                  "review_text": "Hello, blue player here (I have 56% wr and around 4k battles in this game) here is my review of the game, I'll be making some comparison to WOT - another Wargaming game just to show some similarity and different about 2 games\n\n-the core gameplay: this game is much more strategic than wot in a way that 1 player can make a lot of impact on the game, but at the same time 1 lone player can not at all hold off too many enemy at one like in wot does, let me elaborate the latter sentiment first:\n     +if 2 enemies are aiming at you, you start kite away while trying ditch a little bit of dmg out, \n     +if 3 enemies aiming at you, run, stop shooting if you can go un-spotted even\n  --> hence this is called corward meta, and it works fabulously well. Unlike wot where your tank can bounce hit without taking and dmg, here you ship fold really fast under concentrate fire. So everybody all try to avoid taking dmg, some even turn their tail in the first sign of danger even when they are using the toughest ship in the game and that player may or may not contribute for a landslide defeat to his team if the enemy manage to take out his higher-firepower teammates first. This kind of 9-3 and zero point insta lost is called blowout games (equivilant of wot's turbo game)  happens a lot bc a player in an important ship just decided to take the wrong turn in the early game. But when the coward meta works, it is may become a great gaming experience for the players involve:\n\n     +either one team decide to push the flank and secure the cap and try to take out the high-value target like destroyers, subs while the other team try to take them out 1 by 1\n\n     +and there will be that 1 player who have a great time gaming by stopping the enemies and deal lot of dmg. Be that  a battleship player from the other flank who cause the enemies broadside when they push, a torpedo destroyer who got lot of sussesful torp salvo or a cruiser who annoying the enemy so much they have to turn back and abandon t…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "227084090",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-03",
+                  "review_text": "The game is fun to play and well done but the matchmaker is complete garbage and there are too many players who have no idea what they are doing and are unable to read",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ref-4416b5",
+              "claim": "Reviewers report that premium ships and microtransactions create a heavy pay-to-win environment.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232336294",
+                  "hours_at_review": 1.0,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "Gameplay-wise, it's a banger. The shooting and movement mechanics are quite polished and honestly very satisfying. But as with any Wargaming game, the progression is painfully slow. The level of \"pay2win-ness\" could be compared to Clash of Clans, it's really bad. Additionally, the servers are filled with bots. It might be because I'm still using low level ships, but I've had maybe 2-3 human players per game on average.\n\nOverall, the core game is good, but unless you plan on making it your second job, I wouldn't bother too much with it. I just like going pew pew with battleships.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232027455",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Pros: Beautiful game, maps and ships. And the idea is great.\nCons: Pay-to-play nightmare. As a new player, you get absolutely destroyed by players who have obviously spent a lot of money on the premium ships. The only way to be competitive would be to spend another huge sum of money on premium ships. \nWould much rather just pay an upfront amount for the game to access most of them and some optional DLC. Ideally also a single-player mode, not everyone wants to play multiplayer.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224722574",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-05-04",
+                  "review_text": "*Hour count is low because I play using the WG launcher and not via steam.*\n\nDecent game but dragged down by a terrible freemium model, absolutely insane prices ($120 USD for 1 premium ship), gambling lootboxes galore, and blatant pay-2-win.\n\nAnd if you need more reason to avoid this game, exposure to this developer might give you a terminal illness. They don't listen to their playerbase, they don't play their own game, they don't know how to balance what they do put in, and worst of all after 10 years they're running out of ideas and things just get more and more broken as time goes by.\n\nThe one thing I will give this game is that there is a lot of \"free\" content to consume if you have the patience but it will not be long before you're prompted to put some real money down or face some kind of roadblock or massive inconvenience. \n\nThis is a game for rich retirees that like naval history and who have nothing better to spend their boatloads of disposable cash on. \n\nAbsolutely 100% do not recommend. This game has a niche which is the ONLY reason it's still online after all this time.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 446,
+      "pct_positive": 75.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "New players face confusing economies and strict penalties for leaving matches.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-095a00",
+              "claim": "Reviewers note that the game penalizes players for leaving matches early or stepping away from the keyboard.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231954488",
+                  "hours_at_review": 3.4,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "the game penalises me for getting a drink and the bots cant even shoot or drive",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231138287",
+                  "hours_at_review": 2.2,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "did not like when i had to leave battle to do something i reloaded the game and it penalized me for \"misporting conduct\" and \"leaving battle early\" like bro i had to go do things in my life like the game isnt even that high on my games list",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-339ee8",
+              "claim": "Reviewers mention that the tech tree and its economy are overwhelming and confusing for new players trying to figure out which ship lines to start with.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229994796",
+                  "hours_at_review": 4.7,
+                  "voted_up": true,
+                  "date": "2026-07-09",
+                  "review_text": "Simple fun for the most part. Learning curve can be a bit steep playing against long term players however, the variety of the ships and overall experience makes it pretty fun!\r\n\r\nTech tree can be overwhelming at first, it was hard to make a decision on what ship line to start with, and I wasted some resources while trying to figure it out. Now that I understand the economy and progression I'm having a lot more fun with the tech tree.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229955113",
+                  "hours_at_review": 11.7,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "Current Rating: 8/10\r\n\r\nAfter about 11 hours of navigating, maneuvering, and engaging in intense naval battles, I can honestly say: I’m having a blast.\r\n\r\nWorld of Warships successfully delivers a great mix of action and a slower, more calculated pace compared to your typical shooters. You can't just \"run and gun\" here—every turn of the rudder and every volley of shells requires forward thinking, and that’s exactly what makes it so addictive.\r\n\r\n⚓ What I Liked Most:\r\nTactics and Pacing: The battles feel epic. Learning about armor angling, reload timing, and using islands for cover gives a massive sense of satisfaction when a salvo hits just right.\r\n\r\nThe Tech Tree: Advancing through the different Tiers feels highly rewarding. Unlocking new ships and customizing commander skill builds adds a ton of depth and gives you a clear goal to keep playing.\r\n\r\nGraphics and Atmosphere: The ship models are incredibly detailed, and the water and explosion effects look fantastic, completely immersing you in the naval combat experience.\r\n\r\n⚠️ Things to Keep in Mind Moving Forward:\r\nThe Learning Curve: The first 11 hours, the game is quite forgiving (especially in low-tier matches), but the complexity and competitiveness definitely ramp up as you progress into higher tiers.\r\n\r\nMonetization: It's clear that the game nudges you toward premium ships and bundles, but at this stage, it is entirely viable and enjoyable as a Free-to-Play title without feeling left behind.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 315,
+      "pct_positive": 79.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid-tier participants navigate aggressive monetization, bots, steep learning curves, and account linking requirements.",
+      "themes": [
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "mid-10fd20",
+              "claim": "The game features aggressive monetization, pushing premium content and making the grind to unlock standard ships very slow.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232482334",
+                  "hours_at_review": 34.9,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "[h2]A Fun Core Game Bogged Down by Frustrating Mechanics[/h2]\n\nWorld of Warships is a visually impressive naval combat game that definitely has a solid foundation. If you're looking for casual fun and enjoy the mechanics of steering massive ships and firing off satisfying broadsides, there is definitely enjoyment to be had here. \n\n[b]The Good:[/b]\n[list]\n[*] [b]Visuals & Gameplay Core:[/b] The game looks fantastic, and the core shooting and movement mechanics are surprisingly polished and satisfying.\n[*] [b]Casual Appeal:[/b] It can be genuinely fun if you just want to drop in occasionally for a few matches without taking it too seriously.\n[*] [b]Constant Updates:[/b] The developers are frequently adding new tech trees, ships, and mechanics, keeping the content flowing.\n[/list]\n\n[b]The Bad:[/b]\n[list]\n[*] [b]Aggressive Monetization:[/b] The game constantly pushes premium content. The grind to unlock new ships on the standard tech tree is painfully slow, heavily incentivizing the purchase of premium time or boosters. \n[*] [b]Balance Issues:[/b] New players or those playing certain classes (like destroyers) can easily feel like target practice for higher-tier or premium ships, leading to a frustrating experience where you can get deleted from the map instantly.\n[*] [b]Player Base & Bots:[/b] At lower tiers, matches are often filled with bots. In higher tiers, problems with AFK/passive players and a lack of teamwork can make the experience highly inconsistent.\n[/list]\n\n[b]Recommendation:[/b]\nI can only recommend this if you are prepared for a massive, classic Free-to-Play grind or if you are willing to spend real money to skip it. The core gameplay is a banger, but the heavy pay-to-progress mechanics and frustrating matchmaking often get in the way of what could be a stellar experience. \n\n[hr][/hr]\n[b]Verdict:[/b] Mixed. Great for casual \"pew pew\" with battleships, but potentially frustrating if you want to progress seriously without opening your wallet.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231983993",
+                  "hours_at_review": 28.8,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "As someone who is obsessed with warships. This game does it right. However I played this game back when it was released. Now developers are overdoing and squeezing every bit of fun by advertising premium ship and nerfing the OG ships you have in your fleet\nSkins and cosmetics are satirical at best.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-ced072",
+              "claim": "At lower tiers, matches contain a significant number of bots, and certain game modes remain locked until reaching higher tiers.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232482334",
+                  "hours_at_review": 34.9,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "[h2]A Fun Core Game Bogged Down by Frustrating Mechanics[/h2]\n\nWorld of Warships is a visually impressive naval combat game that definitely has a solid foundation. If you're looking for casual fun and enjoy the mechanics of steering massive ships and firing off satisfying broadsides, there is definitely enjoyment to be had here. \n\n[b]The Good:[/b]\n[list]\n[*] [b]Visuals & Gameplay Core:[/b] The game looks fantastic, and the core shooting and movement mechanics are surprisingly polished and satisfying.\n[*] [b]Casual Appeal:[/b] It can be genuinely fun if you just want to drop in occasionally for a few matches without taking it too seriously.\n[*] [b]Constant Updates:[/b] The developers are frequently adding new tech trees, ships, and mechanics, keeping the content flowing.\n[/list]\n\n[b]The Bad:[/b]\n[list]\n[*] [b]Aggressive Monetization:[/b] The game constantly pushes premium content. The grind to unlock new ships on the standard tech tree is painfully slow, heavily incentivizing the purchase of premium time or boosters. \n[*] [b]Balance Issues:[/b] New players or those playing certain classes (like destroyers) can easily feel like target practice for higher-tier or premium ships, leading to a frustrating experience where you can get deleted from the map instantly.\n[*] [b]Player Base & Bots:[/b] At lower tiers, matches are often filled with bots. In higher tiers, problems with AFK/passive players and a lack of teamwork can make the experience highly inconsistent.\n[/list]\n\n[b]Recommendation:[/b]\nI can only recommend this if you are prepared for a massive, classic Free-to-Play grind or if you are willing to spend real money to skip it. The core gameplay is a banger, but the heavy pay-to-progress mechanics and frustrating matchmaking often get in the way of what could be a stellar experience. \n\n[hr][/hr]\n[b]Verdict:[/b] Mixed. Great for casual \"pew pew\" with battleships, but potentially frustrating if you want to progress seriously without opening your wallet.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230631423",
+                  "hours_at_review": 65.1,
+                  "voted_up": true,
+                  "date": "2026-07-16",
+                  "review_text": "World of Warships is a free-to-play game where you can take old-school warships into battle. It's not a hard-core simulator, which makes it more approachable. But if you're looking for a simulator, you might be disappointed. That said, the graphics are great. The physics are satisfying. The controls are polished. And the map design is very good. IMO this game is very well made.\n\nSince it's free-to-play, it does have micro-transactions. But it's not really pay-to-win. More like pay-to-skip. You can absolutely play it without spending any money. But be prepared to grind your eyeballs out.\n\nFor a new player, the game doesn't offer much. The only game modes available are PVE matchmaking and PVP matchmaking. But at the lower tiers (1 thru 5), the PVP is full of bots. So ironically, the PVE has more human players than the PVP.\n\nYou don't gain access to other game modes until you get a tier 6 ship. That's where the real fun starts... ranked PVP matches, PVE story missions, etc. But for a F2P player, getting to tier 6 can take awhile. This is where the \"pay-to-skip\" aspect comes in. Pay some money for a tier 6 ship, and you're good to go. Or you can settle in for the grind. I did the grind, just to see how long it would take. For me, it was over 40 hours of game time to get a tier 6 ship. But I wasn't laser focused on getting to tier 6. So I'm sure you can get there faster.\n\nI haven't joined a clan yet, so I can't speak to that.\n\nTL;DR I think the game is enjoyable. If you like old-school warships, and you have time (or money) to spend, I think this game is worth it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "mid-c0d8cf",
+              "claim": "Players are forced to link multiple accounts, which can prevent them from accessing the game on Steam.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232329203",
+                  "hours_at_review": 48.5,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "bo i nev even use the game in  a long time and it pemenantly deleted my account",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229741819",
+                  "hours_at_review": 36.5,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "Forced to link multiple accounts i do not remember, cant even play on steam now, tickets wont work, and am uninstalling this game, Worse Update ever GG, and goodbye.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-414dcd",
+              "claim": "The learning curve is steep, requiring time and strategy to become comfortable in battles.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230469173",
+                  "hours_at_review": 78.4,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "My first ever ship simulator, this game has exceeded my expectations in a positive way and it takes some getting  used to. \r\n* There are free perks available \r\n*The selection of ships in the tech tree is bigger than you will expect from aircraft carriers to destroyers\r\n* The sounds effects add a layer of realism to the whole experience\r\n* This game has a learning curve involved and I suggest you watch the tutorials in the port section during your first week \r\n* Suggested:-Play with an ethernet cable attached to your device + a small mouse\r\n\r\nMy verdict 10/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229333257",
+                  "hours_at_review": 69.2,
+                  "voted_up": true,
+                  "date": "2026-07-01",
+                  "review_text": "Its a fun game but the learning curve is very steep and could take months or even a year to get comfortable in random or ranked battles. The amount of free content is great but some paid content do get pricey. Matchmaking also can screw you over, I had multiple games where i was 2 tiers lower than the other ships. Overall its an OK game if you enjoy naval combat.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232695642",
+                  "hours_at_review": 52.0,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "Though the company is cash-grabby, the actual gameplay is excellent. Lots of content, lots of strategy, a high skill ceiling and low skill floor.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 390,
+      "pct_positive": 62.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players report passive high-tier matches, expensive bundles, server instability, and unbalanced pairing.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-87f0d7",
+              "claim": "Reviewers report that high-tier matches feature passive gameplay where players wait for the enemy team to make a mistake.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229629461",
+                  "hours_at_review": 256.3,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "After grinding to get to T10, you will be rewarded with the most passive matches you've ever played because the most effective meta in high-level matches is to just kinda hang out and wait for the enemy team to make a mistake. Makes the whole grind feel like a big waste of time.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230393088",
+                  "hours_at_review": 1643.1,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "Just not as fun as it used to be and wouldn't recommend nowadays. The few game modes that are there are stale and the ones we actually like are rotated out of selection every couple of months despite what the community wants. Map selection is somewhat scarce and bland once you've cycled through them. The monetization is also getting out of control with $110+ Admiral packs, they are greedier than Gajin and that says something. There are also too many funny buttons for high tier ships which cause only a handful (or two) of ships to be feasible at that tier making high tier even more cut throat than it needs to be; and that's still not taking into account you can easily get sneezed on from 25km-30km out and die instantly to begin with. To avoid this many players sit behind an island and never move leaving the caps wide open to the enemy since they are not in a position that can look over the cap area. Teamwork at the level is hit or miss (mostly misses) but you can definitely count on teammates cussing each other out for the smallest things or even for nothing. Overall the good days of WoWs are behind it and now it's the devs trying to keep this game from dying even though they are the reason it's in terrible shape.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "vet-f34aa6",
+              "claim": "Reviewers note that the game features premium bundles costing over $150 for a single ship.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230393088",
+                  "hours_at_review": 1643.1,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "Just not as fun as it used to be and wouldn't recommend nowadays. The few game modes that are there are stale and the ones we actually like are rotated out of selection every couple of months despite what the community wants. Map selection is somewhat scarce and bland once you've cycled through them. The monetization is also getting out of control with $110+ Admiral packs, they are greedier than Gajin and that says something. There are also too many funny buttons for high tier ships which cause only a handful (or two) of ships to be feasible at that tier making high tier even more cut throat than it needs to be; and that's still not taking into account you can easily get sneezed on from 25km-30km out and die instantly to begin with. To avoid this many players sit behind an island and never move leaving the caps wide open to the enemy since they are not in a position that can look over the cap area. Teamwork at the level is hit or miss (mostly misses) but you can definitely count on teammates cussing each other out for the smallest things or even for nothing. Overall the good days of WoWs are behind it and now it's the devs trying to keep this game from dying even though they are the reason it's in terrible shape.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229651928",
+                  "hours_at_review": 252.4,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "Its a fun game. But if you get into it enough you'll start to want to buy in-game ships. Thats where it can be expensive. It used to be just ships but then Wargaming found out people still bought ships in bundles because they want them so bad. Now a ship that could have been $60 can cost over $150 for the same thing while shoving flags, commanders, camos, destruction effects that you don't need. And $150 and that gets you a single ship. Wait til you want to get ships only available in loot crates where you only have a 5% chance (if you're lucky) to get a ship in a crate. Best time of the year is for the Christmas Crates. You can get a lot of ships much cheaper but theres no guarantee. And it usually always gives lower tier ships first before top tier. The game itself is stagnant, because their priority is premium ships and loot crates than balancing ships or adding content. I really do wish they provided more reason to vary ship play, cause lower tiers are suffering due to lower player counts in servers. They've also made getting credits and in-game currency much more difficult to get than it used to be. Despite all these negatives, there's a good game behind it. Finally, expect A TOXIC community. If you've never played the game before, expect everyone to expect you to be a master player. Just disable chat cause in random matches theres usually never anything said thats positive or useful in the game from anyone outside of your division or clan.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-7f98dc",
+              "claim": "Reviewers experience disconnects and server instability during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231281915",
+                  "hours_at_review": 508.9,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "i luv this game BUT\nmatchmaking is ♥♥♥♥, \nyou thing you can do operation there is like 20 different but for some reason you will do 5 time the same\nduring game even with the best connection, you will feel 5k of ping for no reason, even when you are in discord with your friend and there is no connection problem from your side\nyou thing by tryharding you willl get good event gift.....no you will have to pay",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230047750",
+                  "hours_at_review": 1312.7,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "Servers terrible and disconnect all the time and reconnecting just crashes the game. Devs put all their time into making more broken battleships instead of trying to balance the game, pay for actual servers or a working game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-568bee",
+              "claim": "Reviewers report that matches can pair players with ships two tiers higher than their own, leading to unbalanced combat.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232542666",
+                  "hours_at_review": 176.0,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "The game randomly joins you with players 2 ship levels above your own, it happens in coop or operations far too often, which leads to you not getting much exp or $$$, since the higher level ships obliterate all --> for example your 6th level ships gets teamed with 8th level ships or 7th level ships gets teamed with 9th level, it's kind of pointless at that point as the higher levels or those that have been playing this game since it's debut are going to be far better at aiming than you are as a beginner etc., \"especially\" running ships 2 levels above your own.\n\nP.S. Also at times some players have \"supped up ships too\" which do massive damage or fire / far faster than your lower tier ship can fire, by the time your ship fires the target is dead in the water.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230652826",
+                  "hours_at_review": 402.7,
+                  "voted_up": false,
+                  "date": "2026-07-17",
+                  "review_text": "There is way too much leveling up. It's not fun to play against ships that are two or three levels higher than you. It doesn't matter how good you are, the ships are too unevenly matched and it becomes a waste of time and an exercise in frustration.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 1204,
+    "steam_total_reviews": 49172,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

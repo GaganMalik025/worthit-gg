@@ -1,0 +1,929 @@
+{
+  "appid": "387990",
+  "game_name": "Scrap Mechanic",
+  "generated_at": "2026-08-13T09:52:27Z",
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Steep survival grind and janky physics test your patience.",
+    "for_you_if": [
+      "you enjoy engineering complex vehicles despite rough physics",
+      "you can build through frustrating early progression walls"
+    ],
+    "not_for_you_if": [
+      "you need stable frame rates on massive creations",
+      "you expect a guided survival experience with clear maps",
+      "you want robust controller support out of the box"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 32,
+      "pct_positive": 25.0,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 296,
+      "pct_positive": 72.0,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 520,
+      "pct_positive": 83.8,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 659,
+      "pct_positive": 84.5,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Positive review proportions increase sharply from the initial hours to later stages of play.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 25.0,
+            "pool_n": 32
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 72.0,
+            "pool_n": 296
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 83.8,
+            "pool_n": 520
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 84.5,
+            "pool_n": 659
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 25.0,
+        "low_pool_n": 32,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 84.5,
+        "high_pool_n": 659,
+        "gap_pts": 59.5
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews score lower compared to the lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 80.6,
+        "recent_pool_n": 1507,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 90.8,
+        "steam_total_reviews": 52948,
+        "delta_pts": -10.2
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 32,
+      "pct_positive": 25.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Initial hours expose a punishing grind, limited combat options, and early mission bugs.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-9e2bed",
+              "claim": "Reviewers report that the survival mode's early progression is hindered by extremely rare crafting components and a heavy grinding requirement to gather necessary items.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232706310",
+                  "hours_at_review": 1.3,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "Sorry, but it's a big no for me.\n\nAmazing mechanics and fun engineering building give you the opportunity to create amazing machines with some really cool features, but the survival portion is a complete HASSLE to get through.\n\nI was looking for an adventure that would easily show me how to be a good engineer, but all I found was a grind machine wanting me to smash robots for an hour before i got one circuit board, 5 of which are needed to create a Craftbot (which you need to progress the missions).\n\nRecommended for anyone who loves complex engineering OR anyone who likes hard-to-play survival games (I.E. not me).",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231866830",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "Not an enjoyable experience. I've watched people play it for hours before buying. Thought that I would give it a chance because you never know. I didn't think PalWorld had a chance in being enjoyable for me but 100 hours later I was wrong.\n\nThat said:\n\nI don't care about the tutorial/information being minimal. It's not an enjoyable experience for a lot of reasons. Healing is a significant problem. You're punished if you attempt to grow food to solve this problem. Combat is not enjoyable. Items you need to craft the very first item required to progress are incredibly rare and very annoying to get.\n\nHad this been 1/2 the price I would keep it, but I'm deciding whether to refund. I don't see myself enjoying this.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-e863fe",
+              "claim": "Reviewers note that melee combat lacks defensive mechanics such as dodging or blocking, requiring players to face-tank or circle enemies.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231351352",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-26",
+                  "review_text": "Might be better with friends but solo I really didn't enjoy my time the start is rough couldn't craft something needed to kill robots to get the resources but the combat is terrible at the start there's no dodge or block so without friends you basically have to face tank attacks so I died 5 times getting the resource as you respawn with low hp and the only way to restore hp is tea which is rare or corn which requires like 15 to restore anything worth while. Then the first car you get is terrible flips at the slightest turn  and doesn't go straight so you have to walk to get anywhere without stopping every 2 seconds to flip the car and you don't have access to the resources to improve it. so I gave up after the car flipping after a slight turn for the 10th time",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231256430",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "Unfortunately within the 2 hour refund window this game was spectacularly mediocre.\n\nNo pausing the game, no hunger/thirst for a \"survival\" game, melee combat with the 2 enemies shown so far is awful. They don't stagger when hit, the game lacks impact frames for melee strikes to give it some power and both enemies require you to just walk a circle around them smashing them with a hammer. Left click Left click Left click Left click etc. No dodge or blocking.  \n\nStory so far is that robots turned evil with some overused tropes about an evil corporation and farmers paying them back. It's been done to death. The writing isn't charming but you can tell that it believes it is, it can never resist making unnecessary quips with every drawn out 1 sided conversation with NPCs. \n\nThe most by the books template level of sandbox quests given to the player that have been literally things like go clear out enemies a few miles away in a location that is no different than any of the other dotted around junk piles or collect X amount of items.\n\nI kept waiting for the game to get good and show me it wasn't wasting my time, instead it kept giving me strong implications that it released years later than it should have as the average sandbox or survival genre have long surpassed what this game can offer you.\n\nThe only unique element that is likely worth someones time is the building contraptions mechanic, it clearly had a lot of work into it and it seems to have been done well. I don't understand why the introduction of this game isn't hammering away this mechanic besisdes making you build a god awful car or me running across a random farmer asking me to build him a pen for his cow before I've even met the first story farmer to set the premise up.\n\nSolid not recommended, especially not for the asking price.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-cc48b3",
+              "claim": "Reviewers report that the survival mode requires a lengthy grind for resources such as circuit boards to progress.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232706310",
+                  "hours_at_review": 1.3,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "Sorry, but it's a big no for me.\n\nAmazing mechanics and fun engineering building give you the opportunity to create amazing machines with some really cool features, but the survival portion is a complete HASSLE to get through.\n\nI was looking for an adventure that would easily show me how to be a good engineer, but all I found was a grind machine wanting me to smash robots for an hour before i got one circuit board, 5 of which are needed to create a Craftbot (which you need to progress the missions).\n\nRecommended for anyone who loves complex engineering OR anyone who likes hard-to-play survival games (I.E. not me).",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231866830",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "Not an enjoyable experience. I've watched people play it for hours before buying. Thought that I would give it a chance because you never know. I didn't think PalWorld had a chance in being enjoyable for me but 100 hours later I was wrong.\n\nThat said:\n\nI don't care about the tutorial/information being minimal. It's not an enjoyable experience for a lot of reasons. Healing is a significant problem. You're punished if you attempt to grow food to solve this problem. Combat is not enjoyable. Items you need to craft the very first item required to progress are incredibly rare and very annoying to get.\n\nHad this been 1/2 the price I would keep it, but I'm deciding whether to refund. I don't see myself enjoying this.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-37add2",
+              "claim": "Reviewers mention that the melee combat system lacks options to dodge or block enemy attacks.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231351352",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-26",
+                  "review_text": "Might be better with friends but solo I really didn't enjoy my time the start is rough couldn't craft something needed to kill robots to get the resources but the combat is terrible at the start there's no dodge or block so without friends you basically have to face tank attacks so I died 5 times getting the resource as you respawn with low hp and the only way to restore hp is tea which is rare or corn which requires like 15 to restore anything worth while. Then the first car you get is terrible flips at the slightest turn  and doesn't go straight so you have to walk to get anywhere without stopping every 2 seconds to flip the car and you don't have access to the resources to improve it. so I gave up after the car flipping after a slight turn for the 10th time",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231256430",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "Unfortunately within the 2 hour refund window this game was spectacularly mediocre.\n\nNo pausing the game, no hunger/thirst for a \"survival\" game, melee combat with the 2 enemies shown so far is awful. They don't stagger when hit, the game lacks impact frames for melee strikes to give it some power and both enemies require you to just walk a circle around them smashing them with a hammer. Left click Left click Left click Left click etc. No dodge or blocking.  \n\nStory so far is that robots turned evil with some overused tropes about an evil corporation and farmers paying them back. It's been done to death. The writing isn't charming but you can tell that it believes it is, it can never resist making unnecessary quips with every drawn out 1 sided conversation with NPCs. \n\nThe most by the books template level of sandbox quests given to the player that have been literally things like go clear out enemies a few miles away in a location that is no different than any of the other dotted around junk piles or collect X amount of items.\n\nI kept waiting for the game to get good and show me it wasn't wasting my time, instead it kept giving me strong implications that it released years later than it should have as the average sandbox or survival genre have long surpassed what this game can offer you.\n\nThe only unique element that is likely worth someones time is the building contraptions mechanic, it clearly had a lot of work into it and it seems to have been done well. I don't understand why the introduction of this game isn't hammering away this mechanic besisdes making you build a god awful car or me running across a random farmer asking me to build him a pen for his cow before I've even met the first story farmer to set the premise up.\n\nSolid not recommended, especially not for the asking price.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-e5af69",
+              "claim": "Reviewers state that healing items are rare and difficult to obtain.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231866830",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "Not an enjoyable experience. I've watched people play it for hours before buying. Thought that I would give it a chance because you never know. I didn't think PalWorld had a chance in being enjoyable for me but 100 hours later I was wrong.\n\nThat said:\n\nI don't care about the tutorial/information being minimal. It's not an enjoyable experience for a lot of reasons. Healing is a significant problem. You're punished if you attempt to grow food to solve this problem. Combat is not enjoyable. Items you need to craft the very first item required to progress are incredibly rare and very annoying to get.\n\nHad this been 1/2 the price I would keep it, but I'm deciding whether to refund. I don't see myself enjoying this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231351352",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-26",
+                  "review_text": "Might be better with friends but solo I really didn't enjoy my time the start is rough couldn't craft something needed to kill robots to get the resources but the combat is terrible at the start there's no dodge or block so without friends you basically have to face tank attacks so I died 5 times getting the resource as you respawn with low hp and the only way to restore hp is tea which is rare or corn which requires like 15 to restore anything worth while. Then the first car you get is terrible flips at the slightest turn  and doesn't go straight so you have to walk to get anywhere without stopping every 2 seconds to flip the car and you don't have access to the resources to improve it. so I gave up after the car flipping after a slight turn for the 10th time",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-ccc2c4",
+              "claim": "Reviewers report encountering bugs where quests and missions get stuck or fail to complete properly.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231644375",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "This is just a sad mess.\nIts mainly bugs and the occasional crash.\nYou will constantly loose everything, because you cannot pick up your loot bag anymore, glitches through the world or simply gets deleted by the game engine.\nQuests will more often get stuck than actually correctly complete.\nAnd of course there is no savegame backup system or console commands to help solve any of the many issues and bugs.\nGiven the speed of development this game has received, lets just wait another 6 years for something to maybe come.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231195406",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "2nd mission doesn't allow you to pick up cell to get ship started. Spent 5 mins to realize this game hasn't changed in years and still poop. DONT BUY UNLESS THERES A GUN TO YOUR HEAD.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-1ce503",
+              "claim": "Reviewers report that enemy variety is very limited during the early game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231865921",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "Scrap Mechanic [i]looks like[/i] your typical survivalcraft game on first look.\n\n[b]While Building vehicles and machines is the strongest aspect of Scrap Mechanic, I find the game is lacking in literally every other aspect.[/b]\n\n[b]The world feels disjointed.[/b] While the world is technically very large, contains several visually distinct biomes ... it is all but large stretches of mostly flat terrain littered with similar points of interest at exact similar distances from each other. Alone around the Mechanic Station in my game, I found the area full of those identical looking \"damaged Silo/Barn\" type structures, which feels not immersive.\nAfter running a couple I grew tired of them already. Not that I didn't run more of those ... which I did since the only way to gather stuff is by clearing them out, which was just a \"more of the same\" experience.\n\nThe game [i]does[/i] have other POIs then the \"damaged Silo/Barn\" type but most of those are just small camps or farmers markets and I feel like there should have been allot more diverse POIs, like big overrun farms. After all, story wise the farmers bought the bots to help them with farming ... yet you don't see any large scale farms around. Not even ruins of them.\n\n[b]Enemy variety is very limited.[/i] That means for the vast majority of the game you'll fight the same 4 of robots over and over again: Totebots, Haybots, Tapebots and eventually Farmbots. Some of which have color variations, which don't alter their behavior.\n\n[b]Combat is as limited as the enemy variety is.[/b] You start out with the Sledgehammer, which doesn't feel like a weapon meant to fight. Despite the character doing wide horizontal swings, you only hit bots directly under your crosshair of 1 pixel dot size. Since the bots tend to do their actions rather suddenly and you possibly miss them allot, you will die fast.   \n\nAs soon as you plant most crops, literally a minute later a Robot Raid will hit you, whose strength depends on which vegetables an…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231256430",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "Unfortunately within the 2 hour refund window this game was spectacularly mediocre.\n\nNo pausing the game, no hunger/thirst for a \"survival\" game, melee combat with the 2 enemies shown so far is awful. They don't stagger when hit, the game lacks impact frames for melee strikes to give it some power and both enemies require you to just walk a circle around them smashing them with a hammer. Left click Left click Left click Left click etc. No dodge or blocking.  \n\nStory so far is that robots turned evil with some overused tropes about an evil corporation and farmers paying them back. It's been done to death. The writing isn't charming but you can tell that it believes it is, it can never resist making unnecessary quips with every drawn out 1 sided conversation with NPCs. \n\nThe most by the books template level of sandbox quests given to the player that have been literally things like go clear out enemies a few miles away in a location that is no different than any of the other dotted around junk piles or collect X amount of items.\n\nI kept waiting for the game to get good and show me it wasn't wasting my time, instead it kept giving me strong implications that it released years later than it should have as the average sandbox or survival genre have long surpassed what this game can offer you.\n\nThe only unique element that is likely worth someones time is the building contraptions mechanic, it clearly had a lot of work into it and it seems to have been done well. I don't understand why the introduction of this game isn't hammering away this mechanic besisdes making you build a god awful car or me running across a random farmer asking me to build him a pen for his cow before I've even met the first story farmer to set the premise up.\n\nSolid not recommended, especially not for the asking price.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 296,
+      "pct_positive": 72.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Expanding into exploration brings severe navigation hurdles, rough vehicle handling, and terrain glitches.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-bf4213",
+              "claim": "Reviewers report that the game lacks an in-game map, making navigation difficult.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232080428",
+                  "hours_at_review": 17.1,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Biggest issue is that it has no in game map.  That is a huge problem in a game like this.  I ended up with a really bad world with way too much water between me and the quests.  Swimming, besides being slow, is also super dangerous because of the water bots.  Not having a map made trying to navigate my way around all the water 10X worse.  Farming is a big pain in the butt to do.  Going to have to build defenses just to farm even if it is only a couple of plants you are trying to protect as you can't fight away the bots before one of them goes in and destroys what you are growing. I could see needing to do that for a bigger farm later in the game but not starting out and only two plants down.  Healing up in the game is another painful point.  The bots do a lot of damage to you and stuff like corn barely heals you.  You go through the teas you loot quickly and cooking stuff means farming which I already went over.  You can feed the cows corn but then you got to wait for them to pop out the milk after they slowly eat several ears of corn.  Now this would not be near as bad if you didn't come back with hardly any health when you get knocked out.  The bed should heal you to full!!  Now there are mods you can install that will help some of these things if not all of them but you have to start a new custom game and you can no longer get achievements.  Which I do understand but come on...the game SHOULD have a map.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231994587",
+                  "hours_at_review": 3.6,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "You get flooded with parts for building vehicles and other automation with no way to properly dispose of or recycle them into something you can actually use. It's 2026 and you can't set sprint or crouch to toggle. There's no mini map or actual map to be able to look around for points of interest. And what do you mean the first two chests I can make have the exact same inventory space? The game looks so good and fun, but there are basic features the game needs that are just completely missing. And that's not to mention the janky mod support... I can't recommend this game to anyone looking to pick it up as is.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231925334",
+                  "hours_at_review": 3.1,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "If you are cool with a very stretched definition of survival crafting in what looks to be a very cool building/physics game then you will most likely enjoy this because a lot of people seem to enjoy it.\n\nMy issues are with the survival crafting part of the game, imagine you are a mechanic/engineer that decided he didn't need map. I shouldn't have to go outside the game for a map for a game like this. I'm about three hours in and I fought 2 different enemies which were not challenging and I've seen a few cows and some random bot. The starting car you make from the first side mission is so terrible I destroyed it to get my parts back and just started running everywhere while I wait to find better parts to make something that doesn't handle in such a way that running feels like a more reliable means of travel.\n\nThe game seems to have quite a bit going for it, but getting to the point where that fun begins has not been a journey that I found to be immersive, challenging or fun. If you are looking/hoping for good to great survival crafting game that meets a great building/physics game this isn't it, you will find a very stretched definition of survival crafting here... Its more a horde mode triggered by placing your garden and it just so happens to take place in a open world with light elements of survival crafting. \n\nI really want to like the game, but that has been a struggle",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-dea867",
+              "claim": "Players experience issues with falling through the floor or terrain glitches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232587899",
+                  "hours_at_review": 7.0,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "The physics engine is shoddy, and the bugs are frustrating. At times I would fall through the floor for no apparent reason and simply die. The concept is neat, but it feels terribly executed. I also hate that nearly everything seems to kill me in two hits.\n\nI attempted to refund the game, but because I had left it running so my partner could try it as well, my playtime exceeded the two-hour refund window and the request was denied. Neither of us enjoyed the game, and I cannot recommend it in its current state.\n\nSupposedly the game gets better once you progress further, but getting there is incredibly frustrating. Component Kits needed for progression come from mobs that can kill you in two hits, which makes the early game feel more punishing than rewarding.\n\nI would reconsider it if there were notable improvements to collision bugs, falling through the ground, damage balance, driving physics, and the general lack of direction. The game also needs clearer instructions and objectives so that it does not feel like a pointless sandbox.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232141109",
+                  "hours_at_review": 13.1,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "keeps crashing even after hours of trouble shooting.\r\n\r\nmultiplayer keeps us falling through the ground.\r\n\r\nnot in a playable state at this time, even tho the game itself is very enjoyable",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231959391",
+                  "hours_at_review": 17.9,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "Full of glitches. Often falling through the texture. Sometimes I can't run or attack until I restart the game. Otherwise a fun game but these issues certainly take out the fun out of it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230867214",
+                  "hours_at_review": 11.0,
+                  "voted_up": false,
+                  "date": "2026-07-19",
+                  "review_text": "I've been playing survival and it's just awful. I feel like the game is punishing me at every step of the way. \nIt starts you out building your first vehicle with a template. Well a couple hours in that template fell through the map. So I had to start all over again. Only to find out that the vehicle you build with that template is USELESS! It is literally slower then walking and almost impossible to steer. Yet you run around gather stuff to build it when you shouldn't even bother. But even when you upgrade to better parts the vehicle are still awful! It's like you are gliding on ice everywhere. You can't steer without fishtailing. You can't even go full speed without fishtailing. If you want any traction you have to weight down your vehicle until the suspension is useless. I don't know why it's even in the game.\nAnd then the progression is horrible too. You can run around thinking you know the danger level only to suddenly be swapped by 6 robots all at once that instantly kill you. Or a robot with a gun that one shots you. Say goodbye to your inventory because that robot will just one shot you every time you go back to retrieve it. And you can't build a gun. You have to buy them once you've done a bunch of other unexplained, obscure task that you don't even know you have to do.\nCrafting is a clunky mess as is the UI in general. Again, I just felt punish for trying to do anything. \nFood feels unbalanced as you barely recover any health and you need to eat like 4-6 items to get to full health. Water is even worse in that you carry around buckets of water but can't drink from them or the many bodies of water around. No, you have to bash giant corn with your hammer and then feed that to cows to get milk to drink or find random shakes which is rare. It's complexity for the complexities sake and it feels like it. \nTo get food you have to find it in random crates or grow it. Except as soon as you plant anything the robots detect it and you get a countdown until they come …",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-efd7c6",
+              "claim": "The survival mode features a steep learning curve with vague or non-descriptive tutorials and progression guidance.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232587899",
+                  "hours_at_review": 7.0,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "The physics engine is shoddy, and the bugs are frustrating. At times I would fall through the floor for no apparent reason and simply die. The concept is neat, but it feels terribly executed. I also hate that nearly everything seems to kill me in two hits.\n\nI attempted to refund the game, but because I had left it running so my partner could try it as well, my playtime exceeded the two-hour refund window and the request was denied. Neither of us enjoyed the game, and I cannot recommend it in its current state.\n\nSupposedly the game gets better once you progress further, but getting there is incredibly frustrating. Component Kits needed for progression come from mobs that can kill you in two hits, which makes the early game feel more punishing than rewarding.\n\nI would reconsider it if there were notable improvements to collision bugs, falling through the ground, damage balance, driving physics, and the general lack of direction. The game also needs clearer instructions and objectives so that it does not feel like a pointless sandbox.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232504642",
+                  "hours_at_review": 4.4,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "This game looks so fun but and I really gave it a chance until I was over the refund window, but I wish I trusted the negative reviews before buying. \n\nIt lacks and insane amount of QoL, its grindy just for the sake of being grindy\nThe tutorials/missions and mechanics are insanely non-descriptive and vague to the point of being frustrating. \n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232047385",
+                  "hours_at_review": 6.2,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "As a newcomer to Scrap Mechanic, I will confidently say that this is probably one of the worst survival sandboxes I've ever played. I want to preface that I haven't tried the creative or challenge modes, but the most promoted gamemode (and that most newcomers will want to try) is the Survival Mode.\r\n\r\nThe first two hours of the game seemed to be expected, pretty small amount of options, quite linear in its questline, hard to get to places and very little actual building (Unless you want to build a square house of wood) However, as I got further into the game (closer to 7 hours) I realized that the gameplay wasn't changing in the slightest. The farming aspect was introduced, and it was very poorly explained. The only thing we had built was a car and a tiny death machine, 4 saws to defend our crops. There were a few side quests that we couldn't complete because we Still hadn't unlocked anything new, and when I decided to find a wiki, it told us to go over a mile away down the road to find a schematic bot that could gives us recipes.\r\n\r\nThis was not explained to us, we were given no hints, and when we got there, it was either a random chance to get furniture, or you had to put in the item that you wanted to learn into the machine; Meaning you had to [u] craft the item first [/u] before being able to actually craft it. This meant you had to find out in the wild, however you are heavily discouraged to explore as the travel times are absolutely nightmarish (driving to the schematicbot took us 15 minutes) and a surprising amount of content is completely locked behind story progression.\r\n\r\nThe combat is extremely unpleasant, every enemy takes a quarter of your HP and the healing items are extremely scarce or barely usable, being completely unable to craft any actually good healing despite the \"Cookbot\" saying that you can craft healing items with it. If a game takes over 5 hours of unbearably annoying grind to get to the interesting part (assuming there is one) then the gam…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232027683",
+                  "hours_at_review": 7.4,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "The building and physics are fantastic, but the progression is terrible. I spent more time searching Google, Reddit and wiki than actually playing because the game explains almost nothing about unlocking recipes, upgrading parts, or what you're meant to be working towards. I don't mind grinding, but I need to know what I'm grinding for.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-9efdab",
+              "claim": "Vehicles built early in survival mode handle poorly, making them difficult to steer and prone to tipping or fishtailing.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232300506",
+                  "hours_at_review": 4.2,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "Is this scrap mechanic or walking simulator whats up with having to do menial tasks and walk everywhere in the first hour of the game? 4 HOURS IN AND STILL I HAVE TO WALK EVERYWHERE AND CARRY EVERYTHING BY HAND CUS FOR SOME REASON THEY DECIDED TO MAKE THE ONLY CAR WE HAVE ACCES TO TO BE SLOWER THAN WALKING CUS IT DRIVES LIKE ♥♥♥♥ CONSTANTLY TIPPING OVER ETC AND WHY TF DOES GROWING A SINGLE CROP TAKE 21 IRL MINUTES. im pretty sure all the positive comments are just bought comments or something theres no way a game that feels like it shouldnt even be in prerelease is considered \"good\" im gonna refund this and hope steam gives me back my money cus ♥♥♥♥♥♥♥ this shi is awfull",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231925334",
+                  "hours_at_review": 3.1,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "If you are cool with a very stretched definition of survival crafting in what looks to be a very cool building/physics game then you will most likely enjoy this because a lot of people seem to enjoy it.\n\nMy issues are with the survival crafting part of the game, imagine you are a mechanic/engineer that decided he didn't need map. I shouldn't have to go outside the game for a map for a game like this. I'm about three hours in and I fought 2 different enemies which were not challenging and I've seen a few cows and some random bot. The starting car you make from the first side mission is so terrible I destroyed it to get my parts back and just started running everywhere while I wait to find better parts to make something that doesn't handle in such a way that running feels like a more reliable means of travel.\n\nThe game seems to have quite a bit going for it, but getting to the point where that fun begins has not been a journey that I found to be immersive, challenging or fun. If you are looking/hoping for good to great survival crafting game that meets a great building/physics game this isn't it, you will find a very stretched definition of survival crafting here... Its more a horde mode triggered by placing your garden and it just so happens to take place in a open world with light elements of survival crafting. \n\nI really want to like the game, but that has been a struggle",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231240125",
+                  "hours_at_review": 5.8,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "maaan, 10 years of early access development ? Are you sure this is 1.0 version ?\n\nI am just a several minutes in the survival game and the beginning is bad, like early access bad.\n\nwhy is there no pause in menu ? \nyou cant change item slots when sprinting (holding shift)\nthe game is weird when i sprint, like it is looking like lagging/stuttering but it is not ? \nwhy cant i turn off the weird camera wobbling when i sprint ?\nyou seriously cant pin the recipes to see what materilas you need ?\nthe melee combat is unnecesarry hard to the point that i died more times in an hour than in the entire game in elden ring and you respawn miles away and with only 25% health with basically no way to replenish it\n\n\nthe tutorial is really sloppy, grindy, unbalanced like hell and awfull:\ni have been attacked right afte exiting ship in the beginning \ndo i really need to go 3x times to lake for water ?\nset a waypoint to mechanic station ? what ? where ?\nwhere can i get the materials for the things that tutorial is telling me to craft ?\nin the mechanic station, tutorial is pointing to middle of a building and telling me to build a craftbot, why is not pointing me to mechanic station thingy i can use and not telling me to use the station to build it ?\nand again, where to get the materials ? \ni build the craftbot but why when my next objective is on the other side of the island ? why cant i pack the craftbot and bring it with me ?\n\n\nSry for bad english, its not my first language, i will update review in time when i play it longer",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230867214",
+                  "hours_at_review": 11.0,
+                  "voted_up": false,
+                  "date": "2026-07-19",
+                  "review_text": "I've been playing survival and it's just awful. I feel like the game is punishing me at every step of the way. \nIt starts you out building your first vehicle with a template. Well a couple hours in that template fell through the map. So I had to start all over again. Only to find out that the vehicle you build with that template is USELESS! It is literally slower then walking and almost impossible to steer. Yet you run around gather stuff to build it when you shouldn't even bother. But even when you upgrade to better parts the vehicle are still awful! It's like you are gliding on ice everywhere. You can't steer without fishtailing. You can't even go full speed without fishtailing. If you want any traction you have to weight down your vehicle until the suspension is useless. I don't know why it's even in the game.\nAnd then the progression is horrible too. You can run around thinking you know the danger level only to suddenly be swapped by 6 robots all at once that instantly kill you. Or a robot with a gun that one shots you. Say goodbye to your inventory because that robot will just one shot you every time you go back to retrieve it. And you can't build a gun. You have to buy them once you've done a bunch of other unexplained, obscure task that you don't even know you have to do.\nCrafting is a clunky mess as is the UI in general. Again, I just felt punish for trying to do anything. \nFood feels unbalanced as you barely recover any health and you need to eat like 4-6 items to get to full health. Water is even worse in that you carry around buckets of water but can't drink from them or the many bodies of water around. No, you have to bash giant corn with your hammer and then feed that to cows to get milk to drink or find random shakes which is rare. It's complexity for the complexities sake and it feels like it. \nTo get food you have to find it in random crates or grow it. Except as soon as you plant anything the robots detect it and you get a countdown until they come …",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 520,
+      "pct_positive": 83.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid-game play introduces restrictive save systems and relentless farm raids alongside control limitations.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-cbdec7",
+              "claim": "Reviewers report that the game lacks controller support.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231238369",
+                  "hours_at_review": 50.7,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "this game is great, but I've been waiting for controller support since day one and its killing me that its still not added.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231231021",
+                  "hours_at_review": 87.5,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "After 10 years…. Scrap Mechanic Alpha version here 🥹 love this cant wait for controller support and there should be setting for drink and hunger like before❤️",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-a7b80f",
+              "claim": "Reviewers note that the game features a single save file per world with no manual save or reload options.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232356924",
+                  "hours_at_review": 97.4,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "I enjoyed this game alot, even with the somewhat grindy nature of it.  There are plenty of things that made me shout in frustration, anger, and pure rage. but most of it I got over it and moved passed it. However it lingered in memory.\n\nThat said all of my biggest complaints come down to one simple thing.  No control over the save file for your world.   There is one save file per world and it updates even if you use Task Manager to close the game, hoping to go back to a save before.  There is no I need to save cause im about to do something hard, silly or maybe crazy, You are stuck with it. I can accept that for certain gameplay points, even with the trashbot boss that wrecked me over and over, would of been nice to just save and reload when failing. but ok i get it.   \n\nHOWEVER,  you will see many people talk about getting stuck out of bounds, loosing their items cause if you do get stuck out there and use the Unstuck feature, you drop all you inventory except primary equipment.  Its quite easy to get clipped out of bounds.   This wouldnt be near the problem if we could reload from a previous auto-save Or Manual save. but nope, deal with it seems to be the answer.\nso many ways for things to go wrong and cost you a lot of time and sanity, and its only solution is Deal WIth it.\nIf --\n---You get stuck out of bounds, unstuck and hope your items can be reached when you run all the way back.\n--- Your Control seat for your vehicle got destroyed/picked up by accident cause he you might have be aiming at the item behind it but when you pick up the item you grab the seat, and now the engine just turns on at whatever throttle you had (CAUSE WHY SHOULD IT REQUIRE AT LEAST A SWITCH) and now your vehicle is running off into the distance, you just praying that it hits something and stops or gets flippled. Or maybe it runs right off a cliff into a pool of lava and just comepletly destroys it.\n--- maybe you are just like, this looks like a cool jump. only to find explosive bots in …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231229095",
+                  "hours_at_review": 84.7,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "Full release after all this time, and you still can't play creative mode in the full survival map, you have to use the small sandbox map for creative. Combat is still clunky as hell, no way to block or dodge enemy attacks other than backpedaling. There are still no world/game settings to change aspects of the game, like turning off farm raids. Only a difficulty slider that switches between Easy and Normal with no descriptions or explanations of what it changes.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-a0ae26",
+              "claim": "Reviewers state that the game lacks world settings or options to disable farm raids.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232441772",
+                  "hours_at_review": 35.4,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "The biggest downfall from this game is the seeker and how you can't build a farm without being under attack. I understand it's a concept of the game but it ruins the relaxing survival aspect of it. Maybe have an option to disable it or have them attack you and not the farm. I find this game to be a complete waste of time and the lack of communication from the developers. People actually thought this game was abandoned and they came out with 1.0. Don't expect the developers to engage. They're happy to announce to they sold 3 million copies but lack communication when it comes to the game. It's not worth the price if you ask me. I've had it collecting dust for 10 years and barely played it. Now that it's out, I don't find it fun at all.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231229095",
+                  "hours_at_review": 84.7,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "Full release after all this time, and you still can't play creative mode in the full survival map, you have to use the small sandbox map for creative. Combat is still clunky as hell, no way to block or dodge enemy attacks other than backpedaling. There are still no world/game settings to change aspects of the game, like turning off farm raids. Only a difficulty slider that switches between Easy and Normal with no descriptions or explanations of what it changes.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-3dafcc",
+              "claim": "Reviewers note that survival mode features mechanics where enemy bots attack farms during gameplay.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232441772",
+                  "hours_at_review": 35.4,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "The biggest downfall from this game is the seeker and how you can't build a farm without being under attack. I understand it's a concept of the game but it ruins the relaxing survival aspect of it. Maybe have an option to disable it or have them attack you and not the farm. I find this game to be a complete waste of time and the lack of communication from the developers. People actually thought this game was abandoned and they came out with 1.0. Don't expect the developers to engage. They're happy to announce to they sold 3 million copies but lack communication when it comes to the game. It's not worth the price if you ask me. I've had it collecting dust for 10 years and barely played it. Now that it's out, I don't find it fun at all.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231213685",
+                  "hours_at_review": 53.4,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "chapter 2 is finally here\n\naside from the hopium memes its actually so much better, the new gameplay loop is a lot more forgiving and way less tedious than before\nit honestly feels like a GAME now instead of a early access test (no shade to the devs it was fun before chapter 2 too), it just feels overall a lot more polished and put together\nif you enjoy stuff like trailmakers but want more game-y elements (farms, raids, etc.) this game is 100% for you\n\nmy only criticism is that areodynamics arent a thing which means no planes, but there are mods that fix this so 10/10",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-082217",
+              "claim": "Reviewers report encountering issues with characters or vehicles getting stuck or clipping out of bounds.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232543624",
+                  "hours_at_review": 92.1,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "Great game for those who want to make cool things but please fix that my fifth wheel trailer keeps glitching out of the hook up and also i broke the raids as the bots spawn out of bounds",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232356924",
+                  "hours_at_review": 97.4,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "I enjoyed this game alot, even with the somewhat grindy nature of it.  There are plenty of things that made me shout in frustration, anger, and pure rage. but most of it I got over it and moved passed it. However it lingered in memory.\n\nThat said all of my biggest complaints come down to one simple thing.  No control over the save file for your world.   There is one save file per world and it updates even if you use Task Manager to close the game, hoping to go back to a save before.  There is no I need to save cause im about to do something hard, silly or maybe crazy, You are stuck with it. I can accept that for certain gameplay points, even with the trashbot boss that wrecked me over and over, would of been nice to just save and reload when failing. but ok i get it.   \n\nHOWEVER,  you will see many people talk about getting stuck out of bounds, loosing their items cause if you do get stuck out there and use the Unstuck feature, you drop all you inventory except primary equipment.  Its quite easy to get clipped out of bounds.   This wouldnt be near the problem if we could reload from a previous auto-save Or Manual save. but nope, deal with it seems to be the answer.\nso many ways for things to go wrong and cost you a lot of time and sanity, and its only solution is Deal WIth it.\nIf --\n---You get stuck out of bounds, unstuck and hope your items can be reached when you run all the way back.\n--- Your Control seat for your vehicle got destroyed/picked up by accident cause he you might have be aiming at the item behind it but when you pick up the item you grab the seat, and now the engine just turns on at whatever throttle you had (CAUSE WHY SHOULD IT REQUIRE AT LEAST A SWITCH) and now your vehicle is running off into the distance, you just praying that it hits something and stops or gets flippled. Or maybe it runs right off a cliff into a pool of lava and just comepletly destroys it.\n--- maybe you are just like, this looks like a cool jump. only to find explosive bots in …",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 659,
+      "pct_positive": 84.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players push through physics engine quirks and performance drops with massive creations despite save compatibility resets.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-d949eb",
+              "claim": "Reviewers note that large player creations can cause severe performance drops, including low frame rates and heavy lag.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232539655",
+                  "hours_at_review": 187.7,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "I started playing Scrap Mechanic over six year ago, and I would say 1.0 was well worth the wait.\nIf that's all you want to hear go try it, in my opinion its worth the thirty dollars, but I must say there are a few flaws.\n\nOn my playthrough I only encountered one bug (which I will get into later), though this may have been due to my previous knowledge of the game.  The game does struggle with multiple physics objects or large creations.  I learned this the hard way because I used to play on a laptop so lower end devices may have trouble running Scrap Mechanic well (Though a semi recent update to the physics engine has made things a bit better).  I believe the main cause of most bugs is weird collisions with the physics engine so minimizing physics objects should help.\n\nAnother problem I have heard is that the car building system is very difficult to learn and that is fair.  Again my previous experience with Scrap Mechanic made this easy for me but the concern is valid.  I think the game could benefit from a more in depth tutorial.\n\nIn regards to warehouses and the first warehouse of the story (spoilers I guess)\n[spoiler]A complaint I have seen is that some don't like the fact you cant re-enter a warehouse after it has been raided because it blows up and makes it so if you died inside you loot is unretrievable, which I agree with.  A possible solution is that that after you clear a warehouse any loot bags you dropped simply drop right outside the warehouse.  Additionally instead of exploding the warehouse system says that it is attempting to restart the anti theft systems then you have five minutes to loot all you can before the system restarts.  Though having the first warehouse still explode would be fine just so that there can still be a fun cinematic moment with Lorenzo.[/spoiler]\n\nI have also heard that the seeker bot is poorly implemented and while I did not have any problems with it I do have an idea that could improve it though may not be a perfect solution.  …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231152188",
+                  "hours_at_review": 1188.8,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Scrap Mechanic is honestly one of my favourite sandbox games. You can build almost anything you can think of, and somehow I can still spend hours making something that barely works.\r\n\r\nWhen Survival first came out, I remember being really excited to finally experience such a huge new part of the game. Drilling Thunder is giving me that same feeling again. It feels like Scrap Mechanic is about to become fresh and exciting again, and I really cannot wait to explore all the new content.\r\n\r\nThe biggest problem has always been the performance and bugs. Large creations can completely destroy the FPS, multiplayer can get really laggy, and the physics sometimes just decides that your creation should shake itself apart for no reason. Some of the bugs are funny, but others can be really annoying.\r\n\r\nThe new Drilling Thunder update looks absolutely massive. After waiting for so long, it is really exciting to finally get all the underground stuff, new parts, enemies, story content, and graphical improvements. I am especially interested in the performance improvements, because that is probably the main thing Scrap Mechanic has needed for years.\r\n\r\nEven with all the bugs and performance problems, I still love the game. There really is nothing else quite like it, and Drilling Thunder is making me feel just as excited as I was when Survival first released.\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-b8e23e",
+              "claim": "Reviewers report that the physics engine can cause bugs such as vehicles and items falling through the map or getting lost.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232614698",
+                  "hours_at_review": 117.7,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "I love and hate this game. I love it and wish i could continue to play it but ever since around 50 hours I started having game crashing issues which have continued until now as well as falling through the map issues and thank god the game lets you re start it and load back in insanely fast right but now I'm losing vehicles and bags repeatedly and its like its just getting worse and worse and i only have/had 2 vehicles a small farm and small base but its just become unplayable i believe for the time being. Im not tech savy so idk if my computer just cant handle it or if maybe they have bugs to work out but I hope i can return to this game someday.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231152188",
+                  "hours_at_review": 1188.8,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Scrap Mechanic is honestly one of my favourite sandbox games. You can build almost anything you can think of, and somehow I can still spend hours making something that barely works.\r\n\r\nWhen Survival first came out, I remember being really excited to finally experience such a huge new part of the game. Drilling Thunder is giving me that same feeling again. It feels like Scrap Mechanic is about to become fresh and exciting again, and I really cannot wait to explore all the new content.\r\n\r\nThe biggest problem has always been the performance and bugs. Large creations can completely destroy the FPS, multiplayer can get really laggy, and the physics sometimes just decides that your creation should shake itself apart for no reason. Some of the bugs are funny, but others can be really annoying.\r\n\r\nThe new Drilling Thunder update looks absolutely massive. After waiting for so long, it is really exciting to finally get all the underground stuff, new parts, enemies, story content, and graphical improvements. I am especially interested in the performance improvements, because that is probably the main thing Scrap Mechanic has needed for years.\r\n\r\nEven with all the bugs and performance problems, I still love the game. There really is nothing else quite like it, and Drilling Thunder is making me feel just as excited as I was when Survival first released.\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-1e4565",
+              "claim": "Reviewers describe the physics engine as janky, noting that physics objects can sometimes shake apart or produce strange collisions.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232507056",
+                  "hours_at_review": 1199.2,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "very frustrating.\r\n\r\nwhole game build ontop of a janky phisics engine that will test your patience\r\neverything is a threat to whatever you're trying to build\r\nboss fights are awful and out of the game's vibe\r\nfarming is a real chose, automation is incomplete\r\n\r\nthe whole thing seems to respond to a very masochistic meaning of what is \"fun\"\r\n\r\ni want my time and money back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231152188",
+                  "hours_at_review": 1188.8,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Scrap Mechanic is honestly one of my favourite sandbox games. You can build almost anything you can think of, and somehow I can still spend hours making something that barely works.\r\n\r\nWhen Survival first came out, I remember being really excited to finally experience such a huge new part of the game. Drilling Thunder is giving me that same feeling again. It feels like Scrap Mechanic is about to become fresh and exciting again, and I really cannot wait to explore all the new content.\r\n\r\nThe biggest problem has always been the performance and bugs. Large creations can completely destroy the FPS, multiplayer can get really laggy, and the physics sometimes just decides that your creation should shake itself apart for no reason. Some of the bugs are funny, but others can be really annoying.\r\n\r\nThe new Drilling Thunder update looks absolutely massive. After waiting for so long, it is really exciting to finally get all the underground stuff, new parts, enemies, story content, and graphical improvements. I am especially interested in the performance improvements, because that is probably the main thing Scrap Mechanic has needed for years.\r\n\r\nEven with all the bugs and performance problems, I still love the game. There really is nothing else quite like it, and Drilling Thunder is making me feel just as excited as I was when Survival first released.\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-caa4ae",
+              "claim": "Reviewers report that large creations or multiple physics objects cause performance issues, frame rate drops, and lag in multiplayer.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232539655",
+                  "hours_at_review": 187.7,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "I started playing Scrap Mechanic over six year ago, and I would say 1.0 was well worth the wait.\nIf that's all you want to hear go try it, in my opinion its worth the thirty dollars, but I must say there are a few flaws.\n\nOn my playthrough I only encountered one bug (which I will get into later), though this may have been due to my previous knowledge of the game.  The game does struggle with multiple physics objects or large creations.  I learned this the hard way because I used to play on a laptop so lower end devices may have trouble running Scrap Mechanic well (Though a semi recent update to the physics engine has made things a bit better).  I believe the main cause of most bugs is weird collisions with the physics engine so minimizing physics objects should help.\n\nAnother problem I have heard is that the car building system is very difficult to learn and that is fair.  Again my previous experience with Scrap Mechanic made this easy for me but the concern is valid.  I think the game could benefit from a more in depth tutorial.\n\nIn regards to warehouses and the first warehouse of the story (spoilers I guess)\n[spoiler]A complaint I have seen is that some don't like the fact you cant re-enter a warehouse after it has been raided because it blows up and makes it so if you died inside you loot is unretrievable, which I agree with.  A possible solution is that that after you clear a warehouse any loot bags you dropped simply drop right outside the warehouse.  Additionally instead of exploding the warehouse system says that it is attempting to restart the anti theft systems then you have five minutes to loot all you can before the system restarts.  Though having the first warehouse still explode would be fine just so that there can still be a fun cinematic moment with Lorenzo.[/spoiler]\n\nI have also heard that the seeker bot is poorly implemented and while I did not have any problems with it I do have an idea that could improve it though may not be a perfect solution.  …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231152188",
+                  "hours_at_review": 1188.8,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Scrap Mechanic is honestly one of my favourite sandbox games. You can build almost anything you can think of, and somehow I can still spend hours making something that barely works.\r\n\r\nWhen Survival first came out, I remember being really excited to finally experience such a huge new part of the game. Drilling Thunder is giving me that same feeling again. It feels like Scrap Mechanic is about to become fresh and exciting again, and I really cannot wait to explore all the new content.\r\n\r\nThe biggest problem has always been the performance and bugs. Large creations can completely destroy the FPS, multiplayer can get really laggy, and the physics sometimes just decides that your creation should shake itself apart for no reason. Some of the bugs are funny, but others can be really annoying.\r\n\r\nThe new Drilling Thunder update looks absolutely massive. After waiting for so long, it is really exciting to finally get all the underground stuff, new parts, enemies, story content, and graphical improvements. I am especially interested in the performance improvements, because that is probably the main thing Scrap Mechanic has needed for years.\r\n\r\nEven with all the bugs and performance problems, I still love the game. There really is nothing else quite like it, and Drilling Thunder is making me feel just as excited as I was when Survival first released.\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-be1291",
+              "claim": "Reviewers note that the physics engine can cause vehicles to shake apart or suffer from weird collisions.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232539655",
+                  "hours_at_review": 187.7,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "I started playing Scrap Mechanic over six year ago, and I would say 1.0 was well worth the wait.\nIf that's all you want to hear go try it, in my opinion its worth the thirty dollars, but I must say there are a few flaws.\n\nOn my playthrough I only encountered one bug (which I will get into later), though this may have been due to my previous knowledge of the game.  The game does struggle with multiple physics objects or large creations.  I learned this the hard way because I used to play on a laptop so lower end devices may have trouble running Scrap Mechanic well (Though a semi recent update to the physics engine has made things a bit better).  I believe the main cause of most bugs is weird collisions with the physics engine so minimizing physics objects should help.\n\nAnother problem I have heard is that the car building system is very difficult to learn and that is fair.  Again my previous experience with Scrap Mechanic made this easy for me but the concern is valid.  I think the game could benefit from a more in depth tutorial.\n\nIn regards to warehouses and the first warehouse of the story (spoilers I guess)\n[spoiler]A complaint I have seen is that some don't like the fact you cant re-enter a warehouse after it has been raided because it blows up and makes it so if you died inside you loot is unretrievable, which I agree with.  A possible solution is that that after you clear a warehouse any loot bags you dropped simply drop right outside the warehouse.  Additionally instead of exploding the warehouse system says that it is attempting to restart the anti theft systems then you have five minutes to loot all you can before the system restarts.  Though having the first warehouse still explode would be fine just so that there can still be a fun cinematic moment with Lorenzo.[/spoiler]\n\nI have also heard that the seeker bot is poorly implemented and while I did not have any problems with it I do have an idea that could improve it though may not be a perfect solution.  …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231152188",
+                  "hours_at_review": 1188.8,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Scrap Mechanic is honestly one of my favourite sandbox games. You can build almost anything you can think of, and somehow I can still spend hours making something that barely works.\r\n\r\nWhen Survival first came out, I remember being really excited to finally experience such a huge new part of the game. Drilling Thunder is giving me that same feeling again. It feels like Scrap Mechanic is about to become fresh and exciting again, and I really cannot wait to explore all the new content.\r\n\r\nThe biggest problem has always been the performance and bugs. Large creations can completely destroy the FPS, multiplayer can get really laggy, and the physics sometimes just decides that your creation should shake itself apart for no reason. Some of the bugs are funny, but others can be really annoying.\r\n\r\nThe new Drilling Thunder update looks absolutely massive. After waiting for so long, it is really exciting to finally get all the underground stuff, new parts, enemies, story content, and graphical improvements. I am especially interested in the performance improvements, because that is probably the main thing Scrap Mechanic has needed for years.\r\n\r\nEven with all the bugs and performance problems, I still love the game. There really is nothing else quite like it, and Drilling Thunder is making me feel just as excited as I was when Survival first released.\r\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-62da3b",
+              "claim": "Reviewers point out that old save worlds do not carry over to the new chapter update, requiring players to start from scratch.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231055841",
+                  "hours_at_review": 561.2,
+                  "voted_up": true,
+                  "date": "2026-07-22",
+                  "review_text": "One of the best survival-building games ever made.\nHonestly, I think it's better than almost every other game in the genre.\n\nIt's the kind of game you can play casually for hours, always finding something new to build, automate, or explore.\n\nThe community waited more than **four years** for the next chapter, and the developers absolutely delivered. The update was worth the wait.\n\nI spent nearly **three years** preparing my original world for the new chapter—stockpiling resources, building factories, and getting everything ready for what I thought would be a seamless continuation.\n\nThen we found out our old worlds wouldn't carry over.\n\nAnd surprisingly... I'm not even disappointed. That's how much faith I have in the new chapter. If starting over is what the developers believe will create the best experience, I'm all for it. I can't wait to begin from scratch and experience everything the way it was intended.\n\nHuge respect to the developers for sticking to their vision and delivering an incredible update.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232658381",
+                  "hours_at_review": 330.6,
+                  "voted_up": true,
+                  "date": "2026-08-12",
+                  "review_text": "Scrap Mechanic is one of those rare games where you don't think twice about it on the store page, but once you get into it, you get lost making physics defying contraptions, trying again and again to perfect that walker design, or just launching a rocket armed with explosives to the skybox. This game's modding community is incredible for their part in making Scrap Mechanic what it is today, and the release of Chapter 2, after years of waiting, surpassed every expectation I had. I hope this game will keep improving on itself with new story content, new things to farm and build, and maybe just one more boss. The Trashbot was really fun to fight.\r\n\r\nThank you, Axolot, for making such an amazing sandbox game where anything is possible.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-bfaba7",
+              "claim": "Reviewers state that the story mode lacks a meaningful narrative or has a practically nonexistent story.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232692793",
+                  "hours_at_review": 324.4,
+                  "voted_up": true,
+                  "date": "2026-08-12",
+                  "review_text": "Ignoring the EA Hiatus because the devs did cook here. How long is too long? who ♥♥♥♥♥♥♥ cares, i lived life and the game came out in a satisfying to play state.\n\nThe game is 3 simultaneous robotics competitions that complement eachother very well. Resource harvesting, Defending your farm, Mining for valuables to hoard, and FPS focused sections that act as a break from the vehicle sections. \n\nEach task provides and requires resources and blueprints for other parts of the game, and each of the activities (except the FPS sections) are designed to be acomplished with engineering solutions to problems in probably the best physics based vehicle builder out there. You really can make just about anything you can think of, and every problem your vehicle faces can be engineered out. If it feels jank, your weight, ceneter of mass, or something else is probably wrong for the task, making the game a different experience for every person based on their problem solving style. \nYou are designing your halo warthog that you will probably spend the next dozen to couple dozen hours using, so your gameplay will be highly personalized. My favorite part of the game is seeing how different my vehicle compares to my friends.\n\nThis game is VERY far from perfect though. Despite the setting of a terraformed corporate owned midwestern hellscape farmplanet where the ecosystem is patented and unsanctioned farming is met with enforced violence, the story is practically nonexistent. \nGenuinely baffling how you have environments and ambient music that provide the kind of intrigue youd feel stepping on a halo ring designed after rural idaho, and the best dialogue we experienced in our playthrough was when the random phone call event failed to fetch the file and displayed an error message on our screen.\n\nEvery dialogue is a dora the explorer type conversation where the player is spoken at and answered for and they will never pass up the chance to call the enemy slurs for robots with such a genuine ha…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232678128",
+                  "hours_at_review": 336.3,
+                  "voted_up": true,
+                  "date": "2026-08-12",
+                  "review_text": "As part of the OG scrap mechanic fans, I've played since there used to only be a flat dirt map and only creative mode, I can say I'm so happy with how the game turned out almost a decade later. Over the years since I used to play on my Father's old (Now hacked) steam account, I've watched this game built from the ground up, I was there when Pistons got added, I saw when terrain came about, then the huge survival update with the crappy raid counters, and the mesmerizing warehousing taunting us with so many unique blocks behind an impassable barrier of the encryptor, and then years of radio silence thinking the Dev's abandoned us. And now with the 1.0 release I can say I am so glad I stuck around, the story is so fun, the characters are charming, the new parts and bots are so unique and delightful to play around with. The Red Totebots are a frustrating mechanic to circumnavigate around but fun nonetheless\nSo, Axolot games, thank you very much, but you gotta work on communication",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-03c8c9",
+              "claim": "Reviewers describe the vehicle building and car design systems as very difficult to learn for new players.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232539655",
+                  "hours_at_review": 187.7,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "I started playing Scrap Mechanic over six year ago, and I would say 1.0 was well worth the wait.\nIf that's all you want to hear go try it, in my opinion its worth the thirty dollars, but I must say there are a few flaws.\n\nOn my playthrough I only encountered one bug (which I will get into later), though this may have been due to my previous knowledge of the game.  The game does struggle with multiple physics objects or large creations.  I learned this the hard way because I used to play on a laptop so lower end devices may have trouble running Scrap Mechanic well (Though a semi recent update to the physics engine has made things a bit better).  I believe the main cause of most bugs is weird collisions with the physics engine so minimizing physics objects should help.\n\nAnother problem I have heard is that the car building system is very difficult to learn and that is fair.  Again my previous experience with Scrap Mechanic made this easy for me but the concern is valid.  I think the game could benefit from a more in depth tutorial.\n\nIn regards to warehouses and the first warehouse of the story (spoilers I guess)\n[spoiler]A complaint I have seen is that some don't like the fact you cant re-enter a warehouse after it has been raided because it blows up and makes it so if you died inside you loot is unretrievable, which I agree with.  A possible solution is that that after you clear a warehouse any loot bags you dropped simply drop right outside the warehouse.  Additionally instead of exploding the warehouse system says that it is attempting to restart the anti theft systems then you have five minutes to loot all you can before the system restarts.  Though having the first warehouse still explode would be fine just so that there can still be a fun cinematic moment with Lorenzo.[/spoiler]\n\nI have also heard that the seeker bot is poorly implemented and while I did not have any problems with it I do have an idea that could improve it though may not be a perfect solution.  …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231092746",
+                  "hours_at_review": 300.6,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Scrap Mechanic is genuinely the best sandbox game I have ever played, and I have played lots of sandboxes. Minecraft is fun but its whole idea compared to Scrap Mechanic's is just not as good in my opinion.\r\nScrap mechanic's constantly challenging building system is super engaging for players wanting to get better, along with it's actually top tier physics system. Simple mechanical ideas that you think should work do, and thats how you discover stuff. The learning curve to Scrap Mechanic is perfect and allows for the nurturing of valuable skills in the game.\r\nWith creative you have challenge and survival mode, with Challenge being super fun and engaging, and not so difficult you want to cry. Survival gives a fun experience for a little bit, and especially with friends. Its new edition in a couple of days should also overhaul the experience and make the whole thing amazing.\r\nScrap Mechanic is a legendary Sandbox game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footer": {
+    "pool_n": 1507,
+    "steam_total_reviews": 52948,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
