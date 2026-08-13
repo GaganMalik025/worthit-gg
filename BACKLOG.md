@@ -80,6 +80,21 @@ a kept log. That is also the cheap half of the fix for `e06538a` (CI never runs
 this suite) - a suite that flakes silently is worse in CI than out of it,
 because there it fails a push nobody can explain. Related: [[verify-the-verifier]].
 
+> **2026-08-13, campaign result — did not recur.** 40 runs under the same load
+> the flake appeared under (`vitest` + `tsc --noEmit` concurrent), every run's
+> stdout/stderr to a real file and its exit code recorded: **40/40 rc=0, zero
+> failure logs**. The 40 are only worth something because the harness was proven
+> able to fail: removing the lock from `live_quota.charge()` and pushing it
+> through the identical campaign body recorded `rc=1`, kept the log, and named
+> it — `12 concurrent charges of 1 all land 1 (all children exited 0, so this is
+> a LOST UPDATE, not a crash)`. `live_quota.py` restored byte-identical after.
+> **The original flake's cause remains unknown and stays UNVERIFIED** per the
+> 2026-08-11 standing rule below: its output was discarded, and later green runs
+> are not evidence about what failed. What has changed is that rule's premise —
+> it was written for a test that "does not record which happened", and `adf26e3`
+> fixed exactly that, which is why the mutation probe could tell the two modes
+> apart at all. Unblocks batch nights; does not close this entry.
+
 2026-08-13 | **The pipeline's Gemini project binding is undocumented locally, so
 quota collisions with other work on the same account are undetectable from the
 repo** | build, checking whether a second AI Studio project shares this key |
