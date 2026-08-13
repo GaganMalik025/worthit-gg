@@ -52,6 +52,40 @@ describe("verdictMetadata", () => {
     expect(m.openGraph.images[0].url).not.toContain("capsule");
   });
 
+  it("prefers Steam's captured header_image over the legacy pattern", () => {
+    const withArt = verdictMetadata(
+      { ...v, art: { header_image: "https://shared.akamai.steamstatic.com/x/header.jpg" } },
+      233860,
+    );
+    expect(withArt.openGraph.images[0].url)
+      .toBe("https://shared.akamai.steamstatic.com/x/header.jpg");
+  });
+
+  /**
+   * THE LOAD-BEARING ONE. `art.grid` is community-uploaded SteamGridDB art. It
+   * is allowed in a home-grid tile and NEVER in an unfurl, where it would sit
+   * beside our verdict in a Reddit feed and read as Valve's official art.
+   *
+   * This fails if anyone ever "unifies" the tile and unfurl art chains.
+   */
+  it("NEVER puts SteamGridDB fan art in an unfurl", () => {
+    const fanart = "https://cdn2.steamgriddb.com/grid/deadbeef.png";
+    const withGrid = verdictMetadata(
+      { ...v, art: { grid: fanart } } as Parameters<typeof verdictMetadata>[0],
+      233860,
+    );
+    expect(withGrid.openGraph.images[0].url).not.toContain("steamgriddb");
+    expect(withGrid.openGraph.images[0].url).toContain("/233860/header.jpg");
+
+    // ...and it still refuses even when both are present.
+    const both = verdictMetadata(
+      { ...v, art: { header_image: "https://shared.akamai.steamstatic.com/x/header.jpg",
+                     grid: fanart } } as Parameters<typeof verdictMetadata>[0],
+      233860,
+    );
+    expect(both.openGraph.images[0].url).not.toContain("steamgriddb");
+  });
+
   it("declares dimensions clearing the summary_large_image floor (300x157)", () => {
     expect(HEADER.width).toBeGreaterThanOrEqual(300);
     expect(HEADER.height).toBeGreaterThanOrEqual(157);

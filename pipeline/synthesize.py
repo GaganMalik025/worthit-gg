@@ -48,6 +48,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+import art as art_mod                                  # noqa: E402  (cover art tiers)
 import flags as flags_mod                              # noqa: E402
 import live_quota                                      # noqa: E402  (flash daily cap)
 import model_pacer                                     # noqa: E402
@@ -674,10 +675,18 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
             "  Re-run ingestion for it - the store lookup failed and the name\n"
             "  never made it into data/raw. Nothing was written." % appid)
 
+    # Cover art, resolved once at generation time (pipeline/art.py). Tier 1 is
+    # free - it reads the appdetails response ingestion already cached. Tier 2
+    # is one SteamGridDB lookup, cached forever, and is TILES ONLY: `grid` must
+    # never reach an OG image. Absent keys mean the site falls back to the
+    # legacy pattern, which is still correct for ~97% of titles.
+    art = art_mod.art_block(appid)
+
     return {
         "appid": appid,
         "game_name": claims_blob.get("game_name"),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "art": art,
         "model": {"extraction": claims_blob.get("model"), "synthesis": model},
         # word: computed, never model-chosen - see verdict_for_mean()
         # tagline/lists: the model's three-part header, bounded by rule 7

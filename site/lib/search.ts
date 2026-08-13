@@ -27,8 +27,36 @@ export interface Hit {
   rank: number; // position in the index = popularity
 }
 
-export const CAPSULE = (appid: number) =>
-  `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`;
+/**
+ * Capsule art for a dropdown row.
+ *
+ * The legacy pattern below is still right for ~97% of titles and stays as the
+ * fallback, but Steam is migrating store art to a content-hash path that CANNOT
+ * be derived from the appid - the hash differs per asset and the filename
+ * varies (`capsule_231x87_alt_assets_0.jpg`). Measured 2026-08-13: 13 manifest
+ * titles have no working legacy art at all.
+ *
+ * The real suffixes are already sitting in the store-search pages the index is
+ * built from, so `search-index-art.json` carries them at ZERO network cost -
+ * no API, no key, one more parse of pages already on disk.
+ *
+ * Only the ~8.6k HASHED entries are stored. A store_item_assets URL with no
+ * hash segment is derivable, and 21.7k of the 30.4k indexed titles are that
+ * shape - storing them would triple the file to buy nothing.
+ */
+export interface ArtMap {
+  host: string;
+  /** appid -> path suffix after `/apps/<appid>/`, e.g. `<hash>/capsule_231x87.jpg` */
+  c: Record<string, string>;
+}
+
+export const CAPSULE = (appid: number, art?: ArtMap | null) => {
+  const suffix = art?.c?.[String(appid)];
+  if (suffix) {
+    return `https://${art!.host}/store_item_assets/steam/apps/${appid}/${suffix}`;
+  }
+  return `https://cdn.cloudflare.steamstatic.com/steam/apps/${appid}/capsule_231x87.jpg`;
+};
 
 /** Lowercase, strip diacritics, collapse punctuation to single spaces. */
 export function normalize(s: string): string {
@@ -90,6 +118,7 @@ export function createIndexLoader(base = "") {
   let started = false;
   let core: Entry[] = [];
   let tail: Entry[] = [];
+  let art: ArtMap | null = null;
   let corePromise: Promise<void> | null = null;
   let tailPromise: Promise<void> | null = null;
 
@@ -115,6 +144,15 @@ export function createIndexLoader(base = "") {
           tail = t;
         })
         .catch(() => {});
+      // Art is DECORATION: fetched alongside, never awaited, and a failure is
+      // swallowed. Rows render with the legacy capsule until (and if) it lands,
+      // so a missing or slow art file can never delay or break the typeahead.
+      fetch(`${base}/search-index-art.json`)
+        .then((r) => (r.ok ? r.json() : null))
+        .then((m) => {
+          if (m && m.host && m.c) art = m as ArtMap;
+        })
+        .catch(() => {});
     },
     /** Resolves once every title >= the review floor is searchable. */
     async whenComplete() {
@@ -125,6 +163,10 @@ export function createIndexLoader(base = "") {
     },
     get complete() {
       return tail.length > 0;
+    },
+    /** The hash-path capsule map, or null until it lands. Never awaited. */
+    get art() {
+      return art;
     },
     shards() {
       return [

@@ -25,24 +25,58 @@ const CDN = "https://cdn.cloudflare.steamstatic.com/steam/apps";
  * card with the overlay pinned on, because a blank untitled tile is not a
  * degraded card, it is an unusable one.
  */
+/**
+ * The tile art chain, resolved at BUILD time from the verdict's `art` block
+ * where possible, with the legacy URL pattern as the last resort.
+ *
+ * Ordered deliberately, and not the same order as the unfurl image:
+ *
+ *   1. art.grid        - SteamGridDB portrait. Fan art, tiles ONLY. Portrait
+ *                        is the shape this grid is designed around (DESIGN.md),
+ *                        and for the ~13 titles Steam serves no reachable
+ *                        portrait for, this is the only portrait that exists.
+ *   2. art.header_image- Steam's own art, but LANDSCAPE, so it letterboxes.
+ *   3. legacy pattern  - correct for ~97% of titles, 404s on recently
+ *                        refreshed store listings.
+ *
+ * onError still walks the remaining stages, because a stored URL can rot. It
+ * cannot, however, catch Battlefield 6's failure mode: the legacy path returns
+ * HTTP 200 with a 1.6KB blank placeholder, so no error ever fires. That title
+ * is only fixed by starting from a stored URL - which is the point of tiers 1-2.
+ */
+function tileStages(e: CatalogEntry): { src: string; letterbox: boolean }[] {
+  const stages: { src: string; letterbox: boolean }[] = [];
+  if (e.art?.grid) stages.push({ src: e.art.grid, letterbox: false });
+  if (e.art?.header_image) stages.push({ src: e.art.header_image, letterbox: true });
+  stages.push({ src: `${CDN}/${e.appid}/library_600x900.jpg`, letterbox: false });
+  stages.push({ src: `${CDN}/${e.appid}/header.jpg`, letterbox: true });
+  return stages;
+}
+
 function PosterCard({ entry: e }: { entry: CatalogEntry }) {
+  const stages = tileStages(e);
   const onError = (ev: React.SyntheticEvent<HTMLImageElement>) => {
     const img = ev.currentTarget;
     const card = img.closest(".card");
-    if (img.dataset.stage === "lib") {
-      img.dataset.stage = "header";
-      card?.classList.add("letterbox");
-      img.src = `${CDN}/${e.appid}/header.jpg`;
-    } else {
+    const next = Number(img.dataset.stage ?? "0") + 1;
+    const stage = stages[next];
+    if (!stage) {
       card?.classList.add("artless");
+      return;
     }
+    img.dataset.stage = String(next);
+    card?.classList.toggle("letterbox", stage.letterbox);
+    img.src = stage.src;
   };
   return (
-    <a className="card" href={`/verdict/${e.appid}`}>
+    <a
+      className={`card${stages[0].letterbox ? " letterbox" : ""}`}
+      href={`/verdict/${e.appid}`}
+    >
       <img
         className="poster"
-        data-stage="lib"
-        src={`${CDN}/${e.appid}/library_600x900.jpg`}
+        data-stage="0"
+        src={stages[0].src}
         alt=""
         aria-hidden="true"
         loading="lazy"

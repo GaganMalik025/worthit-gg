@@ -18,8 +18,15 @@ export const SITE_URL =
  *
  * NOT `capsule_616x353.jpg`, which is larger and better-proportioned but
  * 301-redirects on some titles (GTA:SA among them), and unfurlers are not
- * obliged to follow redirects. `header.jpg` is a straight 200 on every app
- * checked and 460x215 clears the summary_large_image floor of 300x157.
+ * obliged to follow redirects. 460x215 clears the summary_large_image floor
+ * of 300x157.
+ *
+ * CORRECTED 2026-08-13: this used to say `header.jpg` "is a straight 200 on
+ * every app checked". It is not. Measured across the 411-title manifest, 14
+ * appids 404 on it and one (Battlefield 6) returns a 1.6KB blank placeholder
+ * with HTTP 200. Steam is migrating store art to a content-hash path that
+ * cannot be derived from the appid, so this pattern is now the FALLBACK and
+ * the real URL is captured at ingestion - see unfurlImage below.
  */
 export const CDN = "https://cdn.cloudflare.steamstatic.com/steam/apps";
 export const HEADER = { width: 460, height: 215 };
@@ -33,8 +40,27 @@ export const HEADER = { width: 460, height: 215 };
  * both funnel through here. There is no second place metadata is built, which
  * is the only way the two paths cannot drift apart.
  */
+/**
+ * The unfurl image: Steam's own art, else the legacy pattern. TWO TIERS ONLY.
+ *
+ * It deliberately does NOT read `art.grid`. That field is SteamGridDB fan art,
+ * and an unfurl card puts the image beside our verdict in a Reddit or Twitter
+ * feed, where a community upload would be read as Valve's official art - a
+ * claim this product has no business making. The grid tile may use it; this
+ * may not. Enforced by reading a different field, not by a flag, so there is no
+ * default to get wrong. See pipeline/art.py `og_art`, which mirrors this.
+ */
+export function unfurlImage(art: { header_image?: string } | undefined,
+                            appid: string | number) {
+  return art?.header_image ?? `${CDN}/${appid}/header.jpg`;
+}
+
 export function verdictMetadata(
-  v: { game_name: string; verdict: { word: string; tagline: string } },
+  v: {
+    game_name: string;
+    verdict: { word: string; tagline: string };
+    art?: { header_image?: string };
+  },
   appid: string | number,
 ) {
   const title = `${v.game_name}: ${v.verdict.word} — WorthIt.gg`;
@@ -45,7 +71,7 @@ export function verdictMetadata(
   const description = v.verdict.tagline;
   const url = `${SITE_URL}/verdict/${appid}`;
   const images = [{
-    url: `${CDN}/${appid}/header.jpg`,
+    url: unfurlImage(v.art, appid),
     ...HEADER,
     alt: `${v.game_name} on Steam`,
   }];

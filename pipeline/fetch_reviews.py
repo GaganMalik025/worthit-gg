@@ -179,13 +179,24 @@ def fetch_page(appid, cursor, params, page_idx=0, use_cache=True, sleep=0.0,
 
 
 def resolve_game_name(appid, use_cache=True):
-    """Store title for the appid. Makes 'verify the appid' a mechanical check."""
+    """Store title for the appid. Makes 'verify the appid' a mechanical check.
+
+    Also persists the art URLs from the SAME response. `filters=basic` returns
+    `header_image` and `capsule_image` on the content-hash CDN path, and this
+    function used to write `{"name": name}` and discard them - which is why the
+    site fell back to a guessed URL pattern that 404s on recently refreshed
+    listings. Capturing them here costs no extra request. See pipeline/art.py.
+    """
     path = CACHE_DIR / str(appid) / "appdetails.json"
     if use_cache and path.exists():
         try:
-            return json.loads(path.read_text(encoding="utf-8")).get("name")
+            cached = json.loads(path.read_text(encoding="utf-8"))
         except (ValueError, OSError):
-            pass
+            cached = {}
+        # Re-fetch a name-only cache entry written before art was captured;
+        # a stale shape must not permanently deny a title its art.
+        if cached.get("name") and "header_image" in cached:
+            return cached["name"]
     try:
         r = _get_with_backoff(
             DETAILS_ENDPOINT, {"appids": appid, "filters": "basic"}, timeout=15
@@ -193,12 +204,17 @@ def resolve_game_name(appid, use_cache=True):
         entry = r.json().get(str(appid)) or {}
         if not entry.get("success"):
             return None
-        name = (entry.get("data") or {}).get("name")
+        data = entry.get("data") or {}
+        name = data.get("name")
     except (RuntimeError, ValueError, requests.RequestException):
         return None
     if name:
+        record = {"name": name}
+        for field in ("header_image", "capsule_image"):
+            if isinstance(data.get(field), str):
+                record[field] = data[field]
         path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps({"name": name}, ensure_ascii=False), encoding="utf-8")
+        path.write_text(json.dumps(record, ensure_ascii=False), encoding="utf-8")
     return name
 
 

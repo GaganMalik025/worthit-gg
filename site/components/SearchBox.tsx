@@ -104,7 +104,7 @@ export function SearchBox({
                 {/* capsule left, title right */}
                 <img
                   className="capsule"
-                  src={CAPSULE(h.appid)}
+                  src={CAPSULE(h.appid, loader.art)}
                   alt=""
                   aria-hidden="true"
                   loading="lazy"

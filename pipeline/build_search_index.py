@@ -63,6 +63,15 @@ ROOT = Path(__file__).resolve().parent.parent
 CACHE_DIR = ROOT / "data/cache/searchindex"
 CORE_PATH = ROOT / "site/public/search-index-core.json"
 TAIL_PATH = ROOT / "site/public/search-index-tail.json"
+ART_PATH = ROOT / "site/public/search-index-art.json"
+
+# Steam's content-hash art path. The rendered store rows carry the REAL capsule
+# URL, and the legacy CAPSULE pattern above cannot be derived back to it: the
+# hash differs per asset and the filename varies (capsule_231x87_alt_assets_0).
+# Measured 2026-08-13: 13 manifest titles have no working legacy art at all.
+RE_ROW_IMG = re.compile(
+    r'src="https://([^"/]+)/store_item_assets/steam/apps/(\d+)/([^"?]+)')
+ART_HOST = "shared.akamai.steamstatic.com"
 
 SEARCH_URL = ("https://store.steampowered.com/search/results/"
               "?query&start=%d&count=100&dynamic_data=&sort_by=Reviews_DESC"
@@ -257,6 +266,39 @@ def payload(rows, min_reviews, max_reviews=None):
     }
 
 
+def parse_capsules():
+    """{appid: '<hash>/<file>'} for rows whose art is on the content-hash path.
+
+    Zero network: the same cached store pages the index is built from. Only
+    HASHED suffixes are kept - a store_item_assets URL with no hash segment is
+    derivable from the appid, and those are ~72% of rows, so storing them would
+    triple the file to buy nothing.
+    """
+    out = {}
+    for path in sorted(CACHE_DIR.glob("start_*.json")):
+        blob = json.loads(path.read_text(encoding="utf-8"))
+        for host, appid, tail in RE_ROW_IMG.findall(blob.get("results_html") or ""):
+            if "/" in tail:                      # hash segment present
+                out[int(appid)] = tail
+    return out
+
+
+def art_payload(capsules, indexed):
+    keep = {str(a): s for a, s in capsules.items() if a in indexed}
+    return {
+        "v": 1,
+        "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "source": "store_item_assets URLs read from the same cached store "
+                  "search pages as the index; no API, no key",
+        "host": ART_HOST,
+        "note": "appid -> path suffix after /apps/<appid>/. Only titles whose "
+                "art lives on the content-hash path are listed; everything "
+                "else is served by the legacy pattern in site/lib/search.ts",
+        "n": len(keep),
+        "c": keep,
+    }
+
+
 def verify(entries, core, tail, min_reviews, core_min, stats=None):
     problems = []
     ids = [a for a, _, _ in entries]
@@ -365,6 +407,17 @@ def main():
         print("wrote %-34s %s rows  %6.0f KB raw  %6.0f KB gzipped"
               % (path.relative_to(ROOT), f"{len(rows):,}", len(blob) / 1024,
                  len(gzip.compress(blob, 9)) / 1024))
+
+    # Kept OUT of the shards on purpose: the typeahead must stay fast, and this
+    # is decoration the client fetches without ever awaiting it.
+    indexed = {a for a, _ in core} | {a for a, _ in tail}
+    art_blob = json.dumps(art_payload(parse_capsules(), indexed),
+                          separators=(",", ":"), ensure_ascii=False).encode("utf-8")
+    ART_PATH.write_bytes(art_blob)
+    print("wrote %-34s %s rows  %6.0f KB raw  %6.0f KB gzipped"
+          % (ART_PATH.relative_to(ROOT),
+             f"{json.loads(art_blob)['n']:,}", len(art_blob) / 1024,
+             len(gzip.compress(art_blob, 9)) / 1024))
 
 
 if __name__ == "__main__":

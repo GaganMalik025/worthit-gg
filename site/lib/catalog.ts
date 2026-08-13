@@ -4,11 +4,25 @@ import path from "node:path";
 
 const DIR = path.join(process.cwd(), "public/verdicts");
 
+/**
+ * Cover art captured at generation time (pipeline/art.py).
+ *
+ * `grid` is COMMUNITY-UPLOADED fan art from SteamGridDB and is licensed here
+ * for grid tiles only. It must never reach an OpenGraph image - see
+ * lib/site.ts, which reads header_image and cannot see this field.
+ */
+export interface Art {
+  header_image?: string;
+  capsule_image?: string;
+  grid?: string;
+}
+
 export interface CatalogEntry {
   appid: number;
   game_name: string;
   word: string;
   pool_n: number;
+  art: Art;
   split_bar: { bucket: string; pct_positive: number; muted: boolean }[];
 }
 
@@ -29,6 +43,9 @@ export async function catalog(): Promise<CatalogEntry[]> {
         // no header prose here on purpose: the home grid is poster + title +
         // chip (DESIGN.md), so carrying it would be a field nothing renders
         pool_n: v.footer?.pool_n ?? 0,
+        // Older verdicts predate the art block; {} keeps them on the legacy
+        // pattern rather than crashing the grid.
+        art: (v.art ?? {}) as CatalogEntry["art"],
         split_bar: (v.split_bar ?? []).map((b: CatalogEntry["split_bar"][0]) => ({
           bucket: b.bucket, pct_positive: b.pct_positive, muted: b.muted,
         })),
