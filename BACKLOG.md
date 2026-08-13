@@ -62,6 +62,24 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-13 | **`pipeline/test_batch_guards.py` failed once, unreproducibly, and
+the evidence was thrown away** | build, regression run before the art commit |
+One run exited 1 where the twelve runs around it exited 0. The failing run's
+output went to `/dev/null`, so WHICH check failed is unknown and unrecoverable.
+Attempts to reproduce: 3 sequential, 3 with `npm test` running concurrently (the
+condition the failure occurred under), 5 more sequential - **11/11 green**. The
+suite touches no network; its git tests build real repos in temp dirs, so a
+remote transient is not the explanation. Two candidates, neither confirmed: a
+timing-sensitive check under load (the pacer tests assert on wall-clock windows,
+and `test_ledger_charge_is_atomic` spawns 12 processes with a 90s budget), or a
+temp-dir/filesystem race. **Why this is not being chased now:** a 1-in-12 flake
+with no captured output is not debuggable from the outside - it needs the
+failure in hand. What SHOULD happen next time the suite is touched: stop
+redirecting it to `/dev/null` in any script or check, and have failures write to
+a kept log. That is also the cheap half of the fix for `e06538a` (CI never runs
+this suite) - a suite that flakes silently is worse in CI than out of it,
+because there it fails a push nobody can explain. Related: [[verify-the-verifier]].
+
 2026-08-13 | **The pipeline's Gemini project binding is undocumented locally, so
 quota collisions with other work on the same account are undetectable from the
 repo** | build, checking whether a second AI Studio project shares this key |
