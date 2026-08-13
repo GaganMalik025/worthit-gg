@@ -615,3 +615,61 @@ be searched for is one we paid to generate and then hid.
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 read across all four playtime cohorts and 10 verdicts spot-checked against their
 splits, nothing inappropriate found.
+
+---
+
+## 2026-08-13 — 4.1 catalog batch, 45 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **2,228 citations across 45 verdicts, 0 failures** (and 11,385 across all 221, PASS) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-2026-08-13.md`, seed 20260813, stratified 5 per playtime cohort |
+| Scope | 719 claims, 2,228 citations |
+
+The cleanest night so far: 46 attempted in 35.7 minutes, 45 published, **no
+stage failures and no timeouts**. One segmentation drop, at zero cost — Europa
+Universalis IV, 67.5% veteran against the 60% limit. 398 of 400 calls spent at
+**8.84 per published title**, down from 9.27 on 2026-08-12.
+
+All three of the previous night's non-terminal failures published on retry:
+Mount & Blade: Warband (9 calls), V Rising (2), Marvel's Spider-Man Remastered
+(7). Spider-Man is the 900-second extraction timeout recorded in BACKLOG
+(`aaa1534`), so that was transient rather than a property of the title. Tonight
+the run summary and the quota ledger both read 398; on 2026-08-12 they read 391
+against 396, and the 5-call gap was exactly that timed-out title's lost record —
+which is decent evidence the BACKLOG entry has the right cause.
+
+**Verdict mix shifted, and it is worth watching rather than explaining away:**
+
+| | Buy | Wait | Skip |
+|---|---|---|---|
+| 2026-08-12 (41 titles) | 19 | 19 | 3 |
+| 2026-08-13 (45 titles) | **29** | 14 | 2 |
+
+Buy went from 46% to 64% of the night in one step. The benign reading is
+selection: the batch descends the review-count ranking, so each night samples a
+different slice of the catalog, and nothing about the verdict computation
+changed between the two runs (no code moved; the same pinned model and prompts
+ran both). The reading that would matter is a verdict-computation drift that
+happens to favour Buy, which this table cannot distinguish from selection. Left
+recorded rather than diagnosed — two nights is not a trend, and the honest thing
+is to keep the numbers where the third night can be compared against them.
+
+Catalog after this pass: **221 titles** (176 + 45 tonight), batch committed as
+`b204a8b`. Search index rebuilt in the same commit — 7,304 core + 23,079 tail
+rows, all 221 verdict appids confirmed present **by set membership, 0 missing**,
+not by row-count diff. Row counts are unchanged from 2026-08-12 because the
+index is built from the cached store-search pages and tonight's titles were
+already ranked in them.
+
+`evals/make_audit_sample.py` now takes `--date`, `--seed` and `--gate-note`
+rather than hardcoding one night's values, so each round runs the same generator
+under its own seed. Tonight's draw shares zero recommendationids with
+2026-08-12's.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+read across all four playtime cohorts and 10 verdicts spot-checked against their
+splits, nothing inappropriate found.
