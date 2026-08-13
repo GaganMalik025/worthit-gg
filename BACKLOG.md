@@ -62,6 +62,28 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-13 | **The pipeline's Gemini project binding is undocumented locally, so
+quota collisions with other work on the same account are undetectable from the
+repo** | build, checking whether a second AI Studio project shares this key |
+`.env` carries `GEMINI_API_KEY` (a 53-char `AQ.` service-account-bound key) and
+nothing else that identifies where it draws from: no `GOOGLE_CLOUD_PROJECT`, no
+project ID in `.env` or anywhere under `pipeline/` (the "project" strings in the
+code are all comments *about* the per-project quota scope, not an identifier).
+An `AQ.` key does not self-describe its project, so answering "does this key
+share a project with X?" requires Cloud Console or an authenticated `gcloud` —
+it cannot be answered from a checkout. **Why it matters:** the ceiling is
+`GenerateRequestsPerDayPerProjectPerModel-FreeTier` — per project, per model. If
+other work on the account sits in the same project, it draws from the same
+500/day Flash-Lite pool a batch night plans against, and the batch would collide
+with it mid-run with no local signal that anything was competing. **Same shape
+as `2ec78e6`, one level up the stack:** there, two ledgers of one budget that
+never reconcile; here, one ledger that cannot see a whole other consumer of the
+same budget. Not fixed — it needs the project ID recorded somewhere the repo can
+read (even a comment in `live_quota.py` next to the DAILY_LIMIT note, or a
+`GOOGLE_CLOUD_PROJECT` line in `.env.example`), which is a decision about what to
+commit rather than a code change, and the ID is not something this session can
+verify without Console access.
+
 2026-08-12 | **Nothing in CI ever runs `pipeline/test_batch_guards.py` — two
 independent gaps, not one** | build, after pushing the concurrency-test fix |
 `ci.yml` did not run on the push carrying `adf26e3`, and would not have run on
