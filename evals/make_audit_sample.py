@@ -62,7 +62,18 @@ while len(sample_a) < min(N_VERDICTS, len(docs)):
     i += 1
 
 # --- B: twenty citations, stratified evenly across the four cohorts
+#
+# ONE ENTRY PER REVIEW, not per (claim, citation) pair. A review that backs two
+# claims used to sit in the pool twice and could be drawn twice - 2026-08-14
+# sampled recommendationid 196900480 (Trove) at both #4 and #16, so that round
+# audited 19 distinct reviews while presenting 20 slots. The audit reads REVIEW
+# TEXT for QR-4; the same text twice costs a slot and buys nothing.
+#
+# Dedup runs before the shuffle and keeps first encounter, walking appids in
+# sorted order, so the pool is a deterministic function of the inputs and the
+# seed still reproduces a sample exactly.
 pool = {b: [] for b in BUCKETS}
+seen = set()
 for appid, d in docs.items():
     for co in d.get("cohorts", []):
         b = co.get("bucket")
@@ -71,9 +82,13 @@ for appid, d in docs.items():
         for th in co.get("themes", []):
             for cl in th.get("claims", []):
                 for c in cl.get("citations", []):
+                    rid = c["recommendationid"]
+                    if rid in seen:
+                        continue
+                    seen.add(rid)
                     pool[b].append({
                         "appid": appid, "game": d["game_name"], "bucket": b,
-                        "rid": c["recommendationid"],
+                        "rid": rid,
                         "claim": cl["claim"], "text": c["review_text"],
                     })
 for b in pool:
