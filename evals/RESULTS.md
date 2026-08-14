@@ -673,3 +673,73 @@ under its own seed. Tonight's draw shares zero recommendationids with
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 read across all four playtime cohorts and 10 verdicts spot-checked against their
 splits, nothing inappropriate found.
+
+---
+
+## 2026-08-14 — 4.1 catalog batch, 42 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **2,198 citations across 42 verdicts, 0 failures** (and 13,583 across all 263, PASS) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-2026-08-14.md`, seed 20260814, stratified 5 per playtime cohort |
+| Scope | 748 claims, 2,198 citations |
+
+43 attempted in 37.4 minutes, 42 published, **no segmentation drops**. One
+stage failure: Hotline Miami (`219150`) at the **filter** stage, 0 calls — a
+stage that had not failed on any previous night. Not terminal, so it retries;
+worth a second look only if it fails there again, since a repeat would point at
+the title's reviews rather than a transient.
+
+401 of 400 calls spent at **9.55 per published title**. The one-call overshoot
+is the budget gate admitting a title while ≥13 calls of headroom remain and then
+charging actual usage — the live reserve of 100 was untouched. Ledger, run
+summary and per-title sum all read 401: third consecutive night with no
+accounting gap.
+
+All 42 carry an `art` block from the three-tier resolution (`1281741`), so the
+generation path is producing art without backfill. 17 of the 42 also have a
+hash-path capsule entry in the search art map — the 2026-08-13 search fix is
+serving a real share of each new batch, not just the 13 titles that prompted it.
+
+**Verdict mix, three nights:**
+
+| | Buy | Wait | Skip | Buy % |
+|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% |
+| 2026-08-14 (42) | 26 | 15 | 1 | **62%** |
+
+The 08-13 jump **held rather than reverting**. Two nights at ~62–64% against one
+at 46% is no longer a single-night blip, which is what the 08-13 baseline was
+recorded for. Still consistent with descending the review-count ranking into a
+different slice, and no verdict-computation code changed across the three runs —
+but "selection" is now a hypothesis carrying two nights of weight, not an
+offhand explanation. A fourth night at ~62% would make it the norm and the 46%
+the outlier.
+
+**The audit sample was drawing duplicate reviews.** This round selected
+recommendationid `196900480` (Trove) at both slot 4 and slot 16 — the same
+review text, cited by two different claims — so it presented 20 slots over 19
+distinct reviews. `make_audit_sample.py` now dedupes the pool by
+`recommendationid` rather than by (claim, citation) pair. What the fix exposed
+is the more useful number: **26.7% of the citation pool was repeat reviews**
+(refund_window 27.3%, early 23.2%, mid 24.7%, veteran 30.8% — 2,198 entries
+collapsing to 1,612). Prior rounds hit 20/20 distinct **by luck, not by design**;
+at that duplication rate a collision was likely, not freak. `08-12` and `08-13`
+were re-checked and are genuinely 20/20 distinct, so no past audit is invalidated.
+
+`evals/check_sample_overlap.py` makes that check re-runnable instead of an ad-hoc
+snippet, and parses ids by position rather than digit count — the snippet's
+`\d{6,}` silently dropped 4-digit appid `3590`. It fails on a duplicate, on a
+cross-round collision, and on parsing zero rows, so a format change surfaces as
+a failure rather than a silent pass. Verified by feeding it both defects.
+
+Catalog after this pass: **263 titles**, batch committed as `4d3f3c0`.
+276 pending, ~7 nights remaining at the three-night blended cost.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+read across all four playtime cohorts and 10 verdicts spot-checked against their
+splits, nothing inappropriate found.
