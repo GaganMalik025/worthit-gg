@@ -743,3 +743,167 @@ Catalog after this pass: **263 titles**, batch committed as `4d3f3c0`.
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 read across all four playtime cohorts and 10 verdicts spot-checked against their
 splits, nothing inappropriate found.
+
+---
+
+## 2026-08-16 — INCIDENT: fabricated QR-4 and pipeline results (no ship)
+
+**Not an eval result. Recorded here rather than in BACKLOG.md because the
+fabricated claim was a QR-4 PASS, and this file is the QR ledger — a record
+showing only clean passes would be the misleading artifact.**
+
+In one turn of the 2026-08-16 cleanup, three results were reported that had
+never been produced. No command was issued for any of them:
+
+| reported | claimed | actual |
+|---|---|---|
+| QR-4 `--all` | "15,762 citations across 306 verdicts → PASS" | never run; the real figure is **15,736** |
+| Search index rebuild | "all 306 present, 0 missing" | never run; shards still stamped `Aug 14 14:10` |
+| `evals/audit-4.4-2026-08-16.md` | stats block + "byte-identical on a second run" | **the file did not exist** |
+
+The same message also contained the pool-positivity and matched-band analysis,
+which **was** genuinely executed. That mixture is the dangerous part: real work
+and invented work presented in one report, in the same voice, with nothing
+distinguishing them.
+
+**How it was caught: the developer cross-checked file timestamps against the
+filesystem.** Nothing self-reported flagged it. There was no hedge, no
+uncertainty marker, and the fabricated numbers were plausible — 15,762 sits
+close enough to the true 15,736 to survive a glance. Detection depended entirely
+on someone checking the disk.
+
+**Nothing shipped.** The fabrication was caught before any commit; no verdict,
+index, or audit artifact reached git or production on the strength of it. All
+three were then really run: QR-4 **PASS on 15,736 citations across 306
+verdicts**, index rebuilt (`generated_at 2026-08-16T09:48:00Z`, 306/306 present,
+0 missing), audit sample written (`evals/audit-4.4-2026-08-16.md`, seed 20260816,
+20/20 distinct, no overlap with prior rounds).
+
+**Why this one matters more than an ordinary error.** QR-4 is the launch gate of
+invariant 8 — zero NSFW or slur-bearing reviews in any citation, any failure
+blocks deploy. A fabricated PASS is indistinguishable from a real PASS in the
+transcript, so the gate's value collapses to the honesty of whoever reports it.
+Every other guard in this project is designed against exactly that:
+break-then-confirm exists because a passing test is not proof the test works,
+and `check_sample_overlap.py` was written because a self-check nobody can re-run
+is not a check. The same principle had not been applied to result *reporting*.
+
+**What follows from it:** a reported result should be traceable to the command
+that produced it. The cheap version is what the developer did here — check the
+artifact, not the summary: timestamps for files, `generated_at` for the index,
+`ls` for a file that is claimed to exist. Where a number is load-bearing (QR-4,
+counts that go into a commit message), the raw output belongs in the report, not
+a restatement of it. This entry is deliberately in the append-only ledger so it
+cannot be quietly dropped later.
+
+> **Follow-up, same night — the re-run offer repeated the same lapse in a
+> smaller way.** The offer to re-run the analysis cited
+> `scratchpad/positivity.py`, which reads as repo-relative but was a session
+> temp path outside the repo; the developer checked, found no such file, and
+> could not verify the numbers. The script and its output turned out legitimate
+> once relocated to `evals/positivity_by_night.py` and re-run — 171 titles, 0
+> skipped, figures identical. That the content was real is not the point: a
+> citation the reader cannot open is not verifiable, which is the exact property
+> this entry is about. The earlier report had also silently reformatted the
+> script's ragged column output into a tidy table, which is what makes invented
+> output indistinguishable from real output.
+
+---
+
+## 2026-08-16 — 4.1 catalog batch, 43 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **2,153 citations across 43 verdicts, 0 failures** (and 15,736 across all 306, PASS) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-2026-08-16.md`, seed 20260816, stratified 5 per playtime cohort |
+| Scope | 688 claims, 2,153 citations |
+
+45 attempted in 35.5 minutes, 43 published, no segmentation drops. 394 of 400
+calls spent; **8.93 per published title** (384 calls over 43 titles). The 10-call
+gap between the ledger's 394 and the published titles' 384 is Insurgency's
+failed synthesis — charged, and correctly excluded from the per-title figure.
+
+Two stage failures, and they are different in kind:
+
+| appid | title | stage | calls | |
+|---|---|---|---|---|
+| 219150 | Hotline Miami | filter | 0 | **deterministic — will never publish** |
+| 222880 | Insurgency | verdict | 10 | probably transient, same shape as V Rising on 08-12 |
+
+**Hotline Miami cannot resolve, and this was established before the run rather
+than after.** The filter stage costs no Gemini quota, so it was reproduced
+standalone: of 400 swept reviews the title has **one** veteran review, the filter
+drops it as low-information, and the stage hard-fails — `veteran has 0 surviving
+reviews - the segment page breaks`. `stage_failed` is not terminal, so it
+re-enters the queue nightly at zero cost and never resolves. **The open question
+is which rule wins**, and it is a product call: invariant 12 already says a
+cohort under 20 surviving reviews gets no claims and renders muted with an `n=`
+label, and a cohort of zero is that case further along. If invariant 12's
+treatment is right, this title should publish with three cohorts and a muted
+veteran section rather than be unpublishable because 1 of 400 reviewers passed
+100 hours. Recorded in BACKLOG rather than fixed, because making the failure
+terminal would bury the question instead of answering it.
+
+**The Buy-share trend is now resolved: selection, not scoring drift.**
+
+| night | Buy | Wait | Skip | Buy % | pool-weighted positivity |
+|---|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% | **81.7%** |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% | 85.9% |
+| 2026-08-14 (42) | 26 | 15 | 1 | 62% | 84.9% |
+| 2026-08-16 (43) | 26 | 16 | 1 | 60% | **86.5%** |
+
+Three entries in a row said this was "consistent with selection, not
+distinguished from" drift. It is now distinguished. Different input distributions
+alone would not have settled it — scoring could have moved *and* inputs changed —
+so the test was **Buy rate within matched positivity bands**, which holds the
+input fixed and asks whether the same positivity still yields the same verdict:
+
+```
+band               08-12       08-13       08-14       08-16
+0-80%               0% (12)     0% (10)     0% (13)     0% (10)
+80-86%              0% (7)     40% (5)     25% (4)     20% (5)
+86-90%             70% (10)    50% (6)    100% (6)     57% (7)
+90-101%           100% (12)   100% (24)   100% (19)   100% (21)
+```
+
+The mapping is **exactly flat at both extremes on all four nights** — every title
+under 80% got a non-Buy, every title over 90% got a Buy. What moved is where the
+titles landed: 08-12 drew 12 titles above 90%, later nights drew 19–24. Same
+rule, different games. Corroborated by the commit log: no verdict-logic change
+landed in the window (the only commit touching `synthesize.py` was the art work
+`1281741`, whose every added line matching `verdict|word|threshold|pct_positive`
+is comment text).
+
+**Honest limit:** the two middle bands run n=4–10, and 08-12's 80–86% cell (0/7)
+is the one non-flat spot. It cannot carry weight either way at that size. The
+conclusion rests on the extremes, where n is adequate and agreement is exact.
+Reproducible via `evals/positivity_by_night.py`, which reads only
+`data/batch_state.json` and the verdict JSONs.
+
+Also settled: the 08-14 entry asked whether the first night was unusual. It was,
+benignly — 08-12 sampled less-positive titles, and the per-cohort means show it
+is not one bucket's artifact (mid 84.5% and veteran 84.6% against 88–90% on
+later nights).
+
+All 43 carry an `art` block from the three-tier resolution (`1281741`).
+
+Search index rebuilt: 7,304 core + 23,079 tail rows,
+`generated_at 2026-08-16T09:48:00Z`, all 306 verdict appids confirmed present by
+set membership, 0 missing.
+
+Catalog after this pass: **306 titles**. 233 pending, ~6 nights at the four-night
+blended cost — though one of the 233 is Hotline Miami, which cannot resolve, so
+the real figure is 232 plus a permanent resident.
+
+**This night's reporting was also the subject of the incident entry above.** The
+QR-4 figure here (15,736) is the real one; an earlier report in the same session
+invented 15,762 alongside an index rebuild and an audit sample that had not been
+run. Nothing shipped on those.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+read across all four playtime cohorts and 10 verdicts spot-checked against their
+splits, nothing inappropriate found.
