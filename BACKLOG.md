@@ -610,6 +610,45 @@ its own test rather than riding along with cleanup work. Also worth clearing the
 two abandoned worktrees (`git worktree prune`, plus the `verdicts-migrate`
 branch) while in there.
 
+> **2026-08-17, RECORD CORRECTION — the fix has been in for a while; this entry
+> was stale, not open.** Everything the entry asked for is implemented in
+> `select_publishable.py` and has been for some time: `DEFAULT_FROM =
+> "origin/verdicts"` (line 68), a fetch before the script decides anything, and
+> an outright refusal of a `--from` that is not remote-tracking, with an
+> explicit opt-in flag to override and a printed warning when it is used. It
+> also distinguishes "the branch does not exist" from "the network failed",
+> which the entry did not ask for and which is the more dangerous of the two.
+> Covered by five dedicated tests in `test_batch_guards.py`, all green:
+> `test_select_refuses_a_ref_it_cannot_read`,
+> `test_select_defaults_to_the_remote_and_refuses_local`,
+> `test_select_tells_no_branch_apart_from_no_network`,
+> `test_select_surfaces_failures_it_cannot_reproduce_locally`, and
+> `test_publish_never_replaces_newer_with_older`.
+>
+> **Why the record went stale is the part worth keeping.** The fix landed as a
+> side effect of adjacent publish-path work rather than as the scoped change
+> this entry called for, and nothing updated the entry when it did. So the
+> BACKLOG carried a solved problem as an open one, which is the mirror image of
+> the failure this file is meant to prevent: the register of what is undone was
+> itself undone. Anyone reading it since would have re-investigated a closed
+> question, or worse, trusted "not yet fixed" and worked around a guard that
+> was already there. Worth a habit rather than a note: when a fix lands
+> incidentally, the entry it closes is part of the change.
+>
+> **The genuinely leftover half is now done too.** The `verdicts-migrate`
+> branch is deleted; the two abandoned worktrees the entry mentions are already
+> gone (`git worktree list` shows only the main checkout, and
+> `git worktree prune --dry-run` finds nothing), and `/private/tmp/vw2` — the
+> worktree that made `git fetch origin verdicts:verdicts` fail outright — no
+> longer exists, so that specific footgun is gone with it.
+> `git branch -d` **refused** the branch as not fully merged, so `-D` was used
+> deliberately: it carried 2 commits that are not ancestors of main
+> (`f967e95` "migrate verdicts to site/public/verdicts/", a pure set of renames,
+> and `a8ce50f` "verdict: 367520 (generated live)"). Neither is lost work — the
+> migration was redone on main rather than merged, and 367520 (Hollow Knight) is
+> live in `site/public/verdicts/` today. SHA recorded here because `-D` leaves
+> only the reflog: **the deleted tip was `f967e95`.**
+
 2026-08-11 | **`generate-verdict.yml`'s fetch fallback can branch from the wrong
 base** | build, live generation | The commit-to-branch step runs
 `git fetch origin verdicts:verdicts 2>/dev/null || git branch verdicts`. This is
