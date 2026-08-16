@@ -154,6 +154,10 @@ def main():
                     help="disable the measured segmentation gate")
     ap.add_argument("--dry-run", action="store_true",
                     help="show what would run, spend nothing")
+    ap.add_argument("--skip-remote-check", action="store_true",
+                    help="start even if the live ledger cannot be read. "
+                         "Runs on local live_used, which may OVERSTATE batch "
+                         "headroom - deliberate escape hatch, not a default")
     args = ap.parse_args()
 
     if not CATALOG.exists():
@@ -170,6 +174,40 @@ def main():
                    args.skip_flash_tier, only)
 
     q = live_quota.load()
+
+    # Read the live ledger ONCE, before anything is spent. batch_remaining()
+    # charges live spend against batch headroom but reads a local live_used the
+    # live path never writes, so without this the batch can believe headroom it
+    # does not have. Read-only and one-directional on purpose: batch spend never
+    # needs to reach LIVE_QUOTA, because can_generate() walls the reserve off
+    # from batch_used entirely.
+    try:
+        remote_live, detail = live_quota.fetch_remote_live_used()
+    except live_quota.RemoteQuotaUnavailable as exc:
+        if not args.skip_remote_check:
+            sys.exit(
+                "REFUSING TO START: could not read the live ledger (%s).\n"
+                "  Live spend counts against batch headroom, so proceeding on\n"
+                "  local numbers alone would assume live_used=0 - the one\n"
+                "  direction that is unsafe. Fix `gh auth`/network, or pass\n"
+                "  --skip-remote-check to run on local numbers deliberately."
+                % exc)
+        print("!! remote live ledger UNREAD (%s)" % exc)
+        print("!! --skip-remote-check: proceeding on local live_used=%d, which "
+              "may overstate headroom" % q.get("live_used", 0))
+    else:
+        before = q.get("live_used", 0)
+        # PERSIST it, do not just merge in memory. The per-title stop below
+        # calls can_batch(live_quota.load(), ...) - a fresh read of the file on
+        # every iteration - so an in-memory merge would reach this banner and
+        # leave the actual stop condition unprotected. Written once, before any
+        # worker starts, through the same locked path charges use.
+        q = live_quota.sync_live_used(remote_live)
+        print("live ledger: remote live_used=%d (%s), local=%d -> using %d "
+              "(persisted, so the per-title stop sees it too)"
+              % (remote_live, detail.get("note", "same quota day"),
+                 before, q.get("live_used", 0)))
+
     budget = live_quota.batch_remaining(q, args.reserve)
     print("catalog %s | night %s | %d titles pending"
           % (catalog["generated_at"], args.night or "all", len(todo)))

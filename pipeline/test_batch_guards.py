@@ -24,6 +24,7 @@ neither the path trigger nor any job referenced it (see BACKLOG, e06538a).
 """
 
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -484,6 +485,147 @@ def test_ledger_charge_is_atomic():
               "live_quota.save(" not in msrc and "live_quota.record(" not in msrc)
 
 
+def test_remote_live_ledger_read_is_offline_and_fail_safe():
+    """The pre-flight read of LIVE_QUOTA, entirely through an injected runner.
+
+    No network, no gh, no auth - the runner is a plain function returning
+    (rc, stdout, stderr), which is the only reason this can run in CI.
+    """
+    print("\nledger: the pre-flight read of the remote live ledger")
+    today = live_quota._today()
+
+    def runner_for(payload, rc=0, err=""):
+        return lambda cmd, timeout=20: (rc, payload, err)
+
+    used, detail = live_quota.fetch_remote_live_used(
+        runner=runner_for(json.dumps({"date": today, "live_used": 37})))
+    check("same-day remote live_used is read", used == 37, (used, detail))
+
+    used, detail = live_quota.fetch_remote_live_used(
+        runner=runner_for(json.dumps({"date": "2000-01-01", "live_used": 13})))
+    check("a remote ledger from another quota day counts 0, not its stale figure",
+          used == 0 and detail["raw_live_used"] == 13, (used, detail))
+
+    # every failure shape must RAISE, never return 0 - returning 0 is the one
+    # unsafe answer, because it hands the batch headroom it may not have
+    for name, kwargs in (
+            ("gh missing (rc=127)", {"runner": runner_for("", 127, "not installed")}),
+            ("gh unauthenticated (rc=4)", {"runner": runner_for("", 4, "auth required")}),
+            ("gh timed out (rc=124)", {"runner": runner_for("", 124, "timeout")}),
+            ("output is not JSON", {"runner": runner_for("<html>login</html>")}),
+            ("output is JSON but not an object", {"runner": runner_for("[1,2]")}),
+            ("ledger has no date", {"runner": runner_for('{"live_used": 5}')}),
+            ("live_used is not an int",
+             {"runner": runner_for(json.dumps({"date": today, "live_used": "x"}))}),
+            ("live_used is negative",
+             {"runner": runner_for(json.dumps({"date": today, "live_used": -1}))})):
+        try:
+            got = live_quota.fetch_remote_live_used(**kwargs)
+            check("%s raises rather than reporting 0" % name, False, got)
+        except live_quota.RemoteQuotaUnavailable:
+            check("%s raises rather than reporting 0" % name, True)
+
+    # reconciliation over-counts, never under
+    st = {"batch_used": 100, "live_used": 5}
+    check("remote higher than local wins",
+          live_quota.reconcile_live_used(st, 40)["live_used"] == 40)
+    check("local higher than remote is KEPT - max, not overwrite",
+          live_quota.reconcile_live_used(st, 1)["live_used"] == 5)
+    check("reconcile does not mutate the caller's state",
+          st["live_used"] == 5)
+
+    # and the reconciled figure actually moves the batch budget
+    budget = live_quota.batch_budget()
+    plain = live_quota.batch_remaining({"batch_used": 100, "live_used": 0})
+    folded = live_quota.batch_remaining(
+        live_quota.reconcile_live_used({"batch_used": 100, "live_used": 0}, 40))
+    check("folding remote live spend REDUCES batch headroom",
+          folded == plain - 40 and plain == budget - 100, (plain, folded))
+
+
+def test_reconciled_live_used_survives_the_reload_the_loop_does():
+    """THE TEST THAT WAS MISSING.
+
+    The first cut reconciled in memory only. run_batch's per-title stop calls
+    can_batch(live_quota.load(), ...) - a fresh read of the file each iteration -
+    so the reconciled figure reached the startup banner and NOTHING ELSE, and
+    the real budget stop ran on unreconciled numbers. Asserting that
+    reconcile_live_used() returns the right value in isolation cannot see that;
+    only reloading the way the loop does can.
+    """
+    print("\nledger: reconciliation survives the loop's re-read")
+    with tempfile.TemporaryDirectory() as d:
+        path = Path(d) / "q.json"
+        path.write_text(json.dumps({
+            "date": live_quota._today(), "live_used": 5, "batch_used": 100,
+            "flash_used": 0, "generations": 0, "batch_generations": 0,
+            "flash_generations": 0, "by_ip_hour": {}}), encoding="utf-8")
+
+        live_quota.sync_live_used(40, path=path)
+
+        # simulate the loop: a FRESH load, exactly as can_batch's caller does
+        reloaded = live_quota.load(path)
+        check("a fresh load() sees the reconciled live_used, not the old one",
+              reloaded["live_used"] == 40, reloaded.get("live_used"))
+        check("batch_used is untouched by the sync",
+              reloaded["batch_used"] == 100, reloaded.get("batch_used"))
+
+        # and the STOP CONDITION itself, which is what actually gates spending
+        budget = live_quota.batch_budget()
+        allowed, reason, detail = live_quota.can_batch(
+            live_quota.load(path), est=budget - 100 - 40 + 1)
+        check("the per-title stop is computed from the reconciled figure",
+              not allowed and reason == "batch_budget_exhausted", (reason, detail))
+        allowed, _, _ = live_quota.can_batch(
+            live_quota.load(path), est=budget - 100 - 40)
+        check("...and still allows exactly what remains after it",
+              allowed)
+
+        # idempotent, and never walks the number backwards
+        live_quota.sync_live_used(40, path=path)
+        live_quota.sync_live_used(1, path=path)
+        check("re-syncing is idempotent and never lowers live_used",
+              live_quota.load(path)["live_used"] == 40,
+              live_quota.load(path).get("live_used"))
+
+        # a later live charge still accumulates on top of the synced figure
+        live_quota.charge(3, ledger="live", path=path, count_generation=False)
+        check("a live charge after the sync adds to it rather than resetting",
+              live_quota.load(path)["live_used"] == 43,
+              live_quota.load(path).get("live_used"))
+
+
+def test_run_batch_refuses_to_start_on_an_unreadable_live_ledger():
+    """The fail-safe is in run_batch's startup, not just the helper."""
+    print("\nledger: a batch night cannot start blind")
+    src = (Path(__file__).resolve().parent / "run_batch.py").read_text()
+    check("run_batch calls the pre-flight read",
+          "fetch_remote_live_used(" in src)
+    check("...and exits rather than continuing when it raises",
+          "RemoteQuotaUnavailable" in src and "REFUSING TO START" in src)
+    check("...guarded by an explicit opt-out flag, not silent",
+          "--skip-remote-check" in src and "skip_remote_check" in src)
+    # THE WIRING HALF of the missing-test bug. The helper being correct is not
+    # enough: run_batch must PERSIST, because its per-title stop re-reads the
+    # file. An in-memory merge here reaches the banner and nothing else.
+    check("run_batch PERSISTS the reconciled figure rather than merging in memory",
+          "sync_live_used(" in src)
+    check("...and the loop's stop really does re-read from disk, which is why",
+          "can_batch(\n                live_quota.load()" in src
+          or "can_batch(live_quota.load()" in src)
+    # find(), not index(): a missing marker must report as a FAILED CHECK, not
+    # raise ValueError and abort the whole suite before the tests after it run.
+    # The mutation run that proved this test works is exactly how that surfaced.
+    at_sync, at_budget = src.find("sync_live_used"), src.find("batch_remaining(q")
+    check("the persisted state is what the startup budget is computed from",
+          at_sync != -1 and at_budget != -1 and at_sync < at_budget,
+          (at_sync, at_budget))
+    # the unsafe default would be `except: remote = 0`
+    check("no code path substitutes 0 for an unreadable ledger",
+          "remote_live = 0" not in src and "live_used=0" not in src.replace(
+              "assume live_used=0", ""))
+
+
 def test_ledger_routing_is_by_model_then_by_caller():
     print("\nledger: which bucket a request draws from")
     import os
@@ -628,9 +770,15 @@ def test_lock_order_is_one_way():
     print("\nlocks: pacer -> ledger, never the other way")
     lsrc = (Path(__file__).resolve().parent / "live_quota.py").read_text()
     msrc = (Path(__file__).resolve().parent / "model_pacer.py").read_text()
+    # EVERY call site must lock `path` - its own ledger - not a count of them.
+    # The count was a proxy for the same thing and read == 1 until
+    # sync_live_used added a second locked read-modify-write (2026-08-16). The
+    # deadlock this guards against is about WHICH lock is taken while holding
+    # another, never how many sites take the ledger's own.
+    locked_sites = re.findall(r"model_pacer\._locked\(([^)]*)\)", lsrc)
     check("live_quota locks only its own state file",
-          lsrc.count("model_pacer._locked(") == 1
-          and "model_pacer._locked(path)" in lsrc, lsrc.count("_locked("))
+          locked_sites and all(a.strip() == "path" for a in locked_sites),
+          locked_sites)
     check("live_quota never acquires the pacer's own lock",
           "model_pacer.STATE_PATH" not in lsrc)
     at = msrc.index("def _charge_ledger")
@@ -1610,6 +1758,9 @@ if __name__ == "__main__":
     test_prompt_names_every_word_the_guard_rejects()
     test_flash_tier_allocation()
     test_batch_never_spends_flash()
+    test_remote_live_ledger_read_is_offline_and_fail_safe()
+    test_reconciled_live_used_survives_the_reload_the_loop_does()
+    test_run_batch_refuses_to_start_on_an_unreadable_live_ledger()
     test_ledger_routing_is_by_model_then_by_caller()
     test_pacer_and_ledger_cannot_drift()
     test_a_single_stage_run_still_charges()

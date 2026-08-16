@@ -201,6 +201,122 @@ def can_batch(state, est=EST_COST, reserve=LIVE_RESERVE, daily=DAILY_LIMIT):
     return True, "ok", {"remaining": left, "titles_left_approx": left // est}
 
 
+# --------------------------------------------------------------------------
+# remote reconciliation (read-only, once per batch run)
+# --------------------------------------------------------------------------
+#
+# THE GAP THIS CLOSES, and why it is one-directional.
+#
+# batch_remaining() already charges live spend against batch headroom. What it
+# cannot do is LEARN that spend: the live path writes the LIVE_QUOTA repository
+# variable from the Vercel function, this file writes data/live_quota.json, and
+# nothing carries one into the other. So the batch reads its own live_used - a
+# number the live path never updates - and believes headroom it may not have.
+#
+# Only that direction is dangerous. Batch spend never needs to reach LIVE_QUOTA,
+# because can_generate() measures live generation against the reserve alone and
+# never consults batch_used, so a batch night cannot consume the live path's
+# floor no matter how much it spends. One read at startup is therefore the whole
+# fix, not half of a sync.
+#
+# The read replaces a manual `gh variable get LIVE_QUOTA` that was being run by
+# hand before every batch night.
+
+REPO = "GaganMalik025/worthit-gg"
+
+
+class RemoteQuotaUnavailable(RuntimeError):
+    """The remote ledger could not be read. NEVER treat this as live_used=0."""
+
+
+def _gh_runner(cmd, timeout=20):
+    """Default runner: (returncode, stdout, stderr). Injected in tests."""
+    import subprocess
+    try:
+        p = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout)
+        return p.returncode, p.stdout, p.stderr
+    except FileNotFoundError:
+        return 127, "", "gh not installed"
+    except subprocess.TimeoutExpired:
+        return 124, "", "gh timed out after %ss" % timeout
+
+
+def fetch_remote_live_used(repo=REPO, runner=None, clock=None):
+    """live_used from the LIVE_QUOTA repo variable, for TODAY's quota day.
+
+    Returns (live_used, detail). Raises RemoteQuotaUnavailable if the variable
+    cannot be read or parsed - the caller must not paper over that with 0.
+
+    A remote ledger dated to an EARLIER quota day reports 0, not its stale
+    figure: the live path zeroes on date mismatch exactly as load() does here,
+    so yesterday's 13 is not today's spend. That is day semantics, not
+    under-counting - the alternative would tax every future night with a number
+    that already expired.
+    """
+    runner = runner or _gh_runner
+    cmd = ["gh", "variable", "get", "LIVE_QUOTA", "--repo", repo]
+    rc, out, err = runner(cmd)
+    if rc != 0:
+        raise RemoteQuotaUnavailable(
+            "gh exited %s: %s" % (rc, (err or out or "").strip()[:200]))
+    try:
+        blob = json.loads(out)
+    except ValueError as exc:
+        raise RemoteQuotaUnavailable("LIVE_QUOTA is not JSON: %s" % exc)
+    if not isinstance(blob, dict):
+        raise RemoteQuotaUnavailable("LIVE_QUOTA is not an object")
+
+    remote_day = blob.get("date")
+    if not remote_day:
+        # An undated ledger cannot be aged. Refuse rather than guess.
+        raise RemoteQuotaUnavailable("LIVE_QUOTA has no date field")
+    today = _today(clock)
+    if remote_day != today:
+        return 0, {"remote_date": remote_day, "today": today,
+                   "raw_live_used": blob.get("live_used", 0),
+                   "note": "remote ledger is from another quota day - counts 0"}
+    used = blob.get("live_used", 0)
+    if not isinstance(used, int) or used < 0:
+        raise RemoteQuotaUnavailable("live_used is not a non-negative int: %r" % used)
+    return used, {"remote_date": remote_day, "today": today, "raw_live_used": used}
+
+
+def reconcile_live_used(state, remote_live_used):
+    """State copy whose live_used is the MAX of local and remote.
+
+    Max, not remote: the two ledgers count different things (the local file also
+    carries live generations run from this machine), and the safe error is to
+    over-count. Under-counting is what hands the batch headroom that is not
+    there and ends the night on 429s.
+    """
+    merged = dict(state)
+    merged["live_used"] = max(state.get("live_used", 0) or 0,
+                              int(remote_live_used or 0))
+    return merged
+
+
+def sync_live_used(remote_live_used, path=STATE_PATH):
+    """PERSIST the reconciled live_used to the local ledger. Returns the state.
+
+    Reconciling in memory is not enough and the first cut of this got it wrong:
+    run_batch's per-title stop calls `can_batch(live_quota.load(), ...)`, which
+    re-reads this file every iteration, so an in-memory merge reached the
+    startup banner and nothing else - the actual budget stop stayed unprotected.
+
+    Writing it once, here, means every later load() in the loop carries the
+    reconciled figure without any state object being threaded through by hand.
+    Locked and max()-based like the rest of this module, so it is safe to call
+    alongside live charges and idempotent if run twice.
+    """
+    with model_pacer._locked(path):
+        state = load(path)
+        merged = max(state.get("live_used", 0) or 0, int(remote_live_used or 0))
+        if merged != state.get("live_used", 0):
+            state["live_used"] = merged
+            save(state, path)
+        return state
+
+
 def flash_remaining(state, limit=FLASH_DAILY_LIMIT):
     return max(0, limit - state.get("flash_used", 0))
 

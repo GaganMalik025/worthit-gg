@@ -263,6 +263,53 @@ new failure mode traded for an old one. Revisit after launch, when real live
 traffic shows whether the 100 reserve is ever actually exceeded. Until then the
 mitigation is operational: check the variable before a night, not the file.
 
+> **2026-08-16, RESOLVED — and deliberately NARROWER than this entry framed it.**
+> The fix is a read-only pre-flight reconciliation, not the "one ledger, one
+> writer" sync described above. `live_quota.fetch_remote_live_used()` shells out
+> to `gh variable get LIVE_QUOTA` **once at batch startup**,
+> `reconcile_live_used()` folds it in as `max(local, remote)`, and
+> **`sync_live_used()` PERSISTS that figure to the local ledger through the
+> locked path before any worker starts** — that last function is the one that
+> actually closes the gap; the first two alone do not. The manual "check the
+> variable before a night" mitigation is now the code path.
+>
+> **The first cut reconciled in memory only, and that was a real bug.**
+> `run_batch`'s per-title stop calls `can_batch(live_quota.load(), ...)`, a fresh
+> read of the file on every iteration, so a merged-but-unsaved figure reached the
+> startup banner and **nothing else** — the actual stop condition, the thing that
+> gates spending, ran on unreconciled numbers. It was **caught in review, not by
+> the test suite that shipped with it**: those tests asserted
+> `reconcile_live_used()` returned the right value in isolation, which is true
+> and useless, because the defect was in the wiring rather than the helper.
+> `test_reconciled_live_used_survives_the_reload_the_loop_does` exists because
+> that coverage gap was itself the finding — it reloads the ledger the way the
+> loop does and drives `can_batch()` at the exact boundary, and a companion
+> assertion pins that `run_batch` persists rather than merges. Both were
+> mutation-proved against the original bug. The lesson generalises past this
+> entry: a test that exercises a helper directly cannot see that nobody calls it
+> correctly.
+> **Why narrower is correct rather than a compromise: the risk was only ever
+> one-directional.** Live spend eating batch headroom is dangerous, and
+> `batch_remaining()` already charges `live_used` against the batch — it simply
+> could not *learn* it. Batch spend reaching `LIVE_QUOTA` buys nothing, because
+> `can_generate()` measures live generation against the reserve alone and never
+> consults `batch_used`, so a batch night cannot consume the live path's floor
+> however much it spends. One read therefore closes the whole exposure, and it
+> avoids exactly the trade this entry refused: no per-title network write, no
+> rate-limited API in the hot loop, no new failure mode.
+> **Fail-safe, in the project's over-count-never-under posture:** every
+> unreadable case raises `RemoteQuotaUnavailable` and the batch REFUSES TO START
+> (exit 1) rather than assuming `live_used=0`, which is the one unsafe answer.
+> `--skip-remote-check` is the explicit, loudly-printed opt-out. A remote ledger
+> from an earlier quota day counts 0 rather than its stale figure — day
+> semantics, matching `load()`, not under-counting.
+> Covered offline by `test_remote_live_ledger_read_is_offline_and_fail_safe` and
+> `test_run_batch_refuses_to_start_on_an_unreadable_live_ledger` — the gh call is
+> an injected runner, so CI needs no network, no gh and no auth. Mutation-proved:
+> making failures report 0 turns three of those assertions red.
+> **Still open:** the underlying two-writer split is unchanged. This closes the
+> dangerous direction, not the architecture.
+
 2026-08-12 | **Raw end-user IP addresses are stored unhashed in the `LIVE_QUOTA`
 GitHub variable** | build, pre-batch LIVE_QUOTA check | `by_ip_hour` keys are
 built as `"<ip>|<hour>"` and persisted verbatim — `site/lib/quota.ts`
