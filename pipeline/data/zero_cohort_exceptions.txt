@@ -1,0 +1,23 @@
+# Appids allowed to publish with a cohort at ZERO surviving reviews.
+#
+# Default behaviour is unchanged and stays the default: a bucket that filters
+# to 0 survivors fails the whole title, because a segment page with nothing
+# behind it is broken. This file is the narrow, audited exception - a title
+# listed here mutes the empty cohort instead, exactly as invariant 12 already
+# mutes a cohort under 20 survivors, and publishes its remaining cohorts.
+#
+# THIS IS A PER-TITLE DECISION, NOT A RULE CHANGE. The general question - should
+# every zero-survivor cohort mute automatically? - is deliberately still open
+# (see BACKLOG, 2026-08-16). Adding a line here decides one title and nothing
+# else. If this file grows past a handful of entries, that is the signal the
+# general question needs answering rather than more exceptions.
+#
+# Before adding an appid, confirm the emptiness is REAL SCARCITY and not a
+# filter defect - a cohort that filtered 200 reviews down to 0 is a bug in the
+# filter, not a title that deserves an exception:
+#
+#   .venv/bin/python pipeline/generate_one.py <appid> --stage filter
+#
+# Read the `in` column for the empty bucket. A single-digit `in` is scarcity.
+
+219150  # 1 of 400 veteran reviews, filtered to 0 survivors - muted rather than title-level fail, owner exception 2026-08-16

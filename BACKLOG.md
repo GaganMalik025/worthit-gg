@@ -85,6 +85,22 @@ owner's call — and because the cheap half (making a deterministic
 `stage_failed` terminal so it stops being retried) would paper over the
 question rather than answer it. Related: [[verify-the-verifier]].
 
+> **2026-08-16, resolved for THIS TITLE ONLY — as a scoped exception, not a rule
+> change.** Owner decision: `pipeline/data/zero_cohort_exceptions.txt` is a new
+> audited allowlist (same shape as `duplicate_editions.txt`), and `219150` is on
+> it. An allowlisted appid mutes an empty cohort the way invariant 12 already
+> mutes an under-20 one; every other title keeps today's behaviour, where zero
+> survivors still fails the whole title. Verified both directions: with the entry
+> present the filter reports `n=0 EXCEPTION: veteran has 0 surviving reviews -
+> muted, not a title-level failure` and exits 0; with it commented out the same
+> title reports `FAIL: veteran has 0 surviving reviews` and exits 1 — so the
+> allowlist, not a weakened default, is what changed.
+> **THE GENERAL QUESTION STAYS OPEN.** Whether *every* zero-survivor cohort
+> should mute automatically is still undecided and deliberately so; one title is
+> decided, nothing else. The exceptions file says the same thing at the point of
+> use, and notes that growth past a handful of entries is the signal the general
+> question needs answering rather than more exceptions.
+
 2026-08-13 | **`pipeline/test_batch_guards.py` failed once, unreproducibly, and
 the evidence was thrown away** | build, regression run before the art commit |
 One run exited 1 where the twelve runs around it exited 0. The failing run's
@@ -167,6 +183,25 @@ needs both halves done together: a path-filter entry AND a new job step
 (`setup-python`, install, `pipeline/test_batch_guards.py`), and the suite shells
 out to `git` against real refs in temp worktrees, so it wants a check that it
 actually passes on a clean runner before it is trusted as a gate.
+
+> **2026-08-16, RESOLVED — both halves landed together** (`f9bb6fe`, developed on
+> `ci/python-guards`). Trigger gains `pipeline/**` and `requirements.txt`; a new
+> `python-guards` job builds a real `.venv` at the repo root, because the suite
+> hardcodes `PY = <repo>/.venv/bin/python` and spawns subprocesses through it.
+> Ran to completion on a clean runner: 236 assertions, `all guard tests passed`,
+> python 3.12.13 — answering the "does it pass on a clean runner" question this
+> entry ended on.
+> **Proven able to fail, not just to pass.** A lock-removal mutation was pushed
+> to the branch and CI caught it, verbatim from the job log:
+> `12 concurrent charges of 1 all land 2 (all children exited 0, so this is a
+> LOST UPDATE, not a crash)` — so the `adf26e3` crash-vs-lost-update diagnostic
+> works in the CI environment too. Reverted, green again. The mutation/revert
+> pair was deliberately kept out of main's history; this note is the record.
+> **Accepted side effect:** path filters are workflow-level, so the site suite
+> now also runs on pipeline-only changes. Not split with `dorny/paths-filter` —
+> the quota-mirror contract test spans `site/lib/quota.ts` and
+> `pipeline/live_quota.py`, so a pipeline change genuinely can break the site
+> suite, and the drift that motivated those paths is exactly that pair.
 
 2026-08-12 | **The pacer's cross-process test has the same unchecked-exit-code
 shape the ledger test just had** | build, fixing test_ledger_charge_is_atomic |

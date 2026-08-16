@@ -44,6 +44,29 @@ WORDLIST_DIR = Path(__file__).resolve().parent / "wordlists"
 # invariant 12: below this many surviving reviews, a cohort carries no claims
 MIN_COHORT = 20
 
+# Per-title exceptions allowed to publish with a cohort at ZERO survivors, muting
+# it the way invariant 12 already mutes an under-20 cohort. Default is unchanged:
+# without a line in this file, zero survivors still fails the whole title. The
+# general question - should every zero-survivor cohort mute? - stays open on
+# purpose; see pipeline/data/zero_cohort_exceptions.txt and BACKLOG 2026-08-16.
+ZERO_COHORT_PATH = Path(__file__).resolve().parent / "data/zero_cohort_exceptions.txt"
+
+
+def load_zero_cohort_exceptions(path=ZERO_COHORT_PATH):
+    """{appid: note} from a '<appid>  # note' file. Missing file means none."""
+    out = {}
+    if not Path(path).exists():
+        return out
+    for line in Path(path).read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        appid, _, note = line.partition("#")
+        appid = appid.strip()
+        if appid.isdigit():
+            out[int(appid)] = note.strip()
+    return out
+
 # Sentiment-shift reporting. Short reviews skew positive (95% positive under 2
 # words vs 68% over 100), so low_information pulls the surviving sample NEGATIVE.
 # Measured on the seed set: -9.7pts on Helldivers 2's veteran bucket.
@@ -267,7 +290,11 @@ def print_report(game_name, by_bucket, overall_pct, total_in, total_kept):
           % ("ALL", total_in, "", "", "", "", total_kept, overall_pct))
 
     for name, st in by_bucket.items():
-        if st["kept"] == 0:
+        if st["kept"] == 0 and st.get("zero_cohort_exception"):
+            print("  n=0 EXCEPTION: %s has 0 surviving reviews - muted, not a "
+                  "title-level failure.\n      %s"
+                  % (name, st.get("exception_note", "")))
+        elif st["kept"] == 0:
             print("  FAIL: %s has 0 surviving reviews - the segment page breaks." % name)
         elif st["muted"]:
             print("  invariant 12: %s has n=%d (<%d) - renders muted, carries no claims."
@@ -348,6 +375,14 @@ def filter_one(appid, args, blocked_re, soft_re):
     dropped_rows = [r for r in rows if r["_reason"]]
     kept_rows = [r for r in rows if not r["_reason"]]
     by_bucket, overall_pct = build_report(rows, len(rows), len(dropped_rows))
+    # Scoped, per-title: an allowlisted appid mutes an empty cohort instead of
+    # failing the title. Annotated here, before the report prints and before the
+    # pass/fail is computed, so both read the same decision.
+    note = load_zero_cohort_exceptions().get(int(appid))
+    for st in by_bucket.values():
+        st["zero_cohort_exception"] = bool(note) and st["kept"] == 0
+        if st["zero_cohort_exception"]:
+            st["exception_note"] = note
     shift = sentiment_shift(rows)
 
     print_report(game_name, by_bucket, overall_pct, len(rows), len(kept_rows))
@@ -357,7 +392,8 @@ def filter_one(appid, args, blocked_re, soft_re):
 
     if args.dry_run:
         print("  (dry run - nothing written)")
-        return all(st["kept"] > 0 for st in by_bucket.values())
+        return all(st["kept"] > 0 or st.get("zero_cohort_exception")
+               for st in by_bucket.values())
 
     survivors = []
     for r in kept_rows:
@@ -391,7 +427,8 @@ def filter_one(appid, args, blocked_re, soft_re):
     print("  wrote %d survivors -> %s" % (len(survivors), out_path))
     print("  wrote %d dropped   -> %s   <- read this" % (len(dropped_rows), txt_path))
 
-    return all(st["kept"] > 0 for st in by_bucket.values())
+    return all(st["kept"] > 0 or st.get("zero_cohort_exception")
+               for st in by_bucket.values())
 
 
 def main():
