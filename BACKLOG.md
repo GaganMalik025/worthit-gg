@@ -349,6 +349,42 @@ next time that file is open. Not doing it now because it is a diagnosis-quality
 improvement to a test that already cannot pass silently, and the standing
 instruction for tonight is to record rather than widen scope.
 
+> **2026-08-17, RESOLVED in `36aad66` — exactly the treatment this entry
+> specified.** `stderr=PIPE`, all five children's `(rc, stdout, stderr)`
+> collected before anything is parsed, exit codes asserted first, then a
+> separate named check for a child that exits 0 but prints nothing parsable
+> (a third cause this entry did not enumerate), and only then the behavioural
+> asserts. Those behavioural checks still REPORT on a bad run rather than being
+> skipped — an unreported check reads as a pass in the final tally.
+> **The bar was never redness, and the campaign was built accordingly.** This
+> entry was careful that the test "already cannot pass silently", so a mutation
+> merely turning the suite red would prove nothing. `evals/mutate_pacer_diagnosis.py`
+> therefore asserts on the OUTPUT TEXT and carries a pre-fix control, 3/3
+> CAUGHT+NAMED:
+>
+>     p01  child exits 3, current test  -> "all 5 pacer processes exited 0 rc=3"
+>                                          + 3 more named checks, run continues
+>     p02  same child, PRE-FIX body     -> json.decoder.JSONDecodeError, aborts
+>     p03  child writes stderr, exits 4 -> "rc=4 PACER-CHILD-DIED-HERE"
+>
+> p03 exists because p01's child dies silently: p01 proves the check fires but
+> leaves the stderr-capture branch untested, which would have made "capture
+> stderr" an untested line shipped under a passing campaign.
+> **Incidental finding from the p02 control, worth keeping.** The old shape did
+> not merely misname the failure — it aborted inside
+> `with tempfile.TemporaryDirectory()`, tearing the directory down while the
+> other four children were still running, so they died in `os.mkdir` on a
+> deleted parent: `FileNotFoundError` on the `.lock` path at
+> `model_pacer.py:104`. One dead child therefore produced TWO misleading
+> tracebacks stacked on each other. **This is not the TOCTOU race** of the
+> 2026-08-16 entry, and the difference is checkable rather than argued: that one
+> is line 107, `lock.stat()` after `lock.exists()` inside
+> `except FileExistsError`, under contention; this is line 104, `lock.mkdir()`,
+> with the parent directory removed by the test's own cleanup. It appears only
+> in the pre-fix control and never in the fixed test, which waits for all five
+> children before touching anything. The line-107 race remains open and
+> untouched.
+
 2026-08-12 | **A title that raises inside run_title() spends quota but leaves no
 trace in batch_state.json** | build, 2026-08-12 overnight batch | Marvel's
 Spider-Man Remastered (`1817070`) timed out tonight — `extract_claims.py` hit its
@@ -516,6 +552,41 @@ overrun the Gemini budget. Revisit if a safe mechanism emerges — a callback th
 site can authenticate, or the runner reporting spend through an artifact the site
 already reads. Until then the honest framing is that the reserve is measured in
 *reservations*, not requests.
+
+> **2026-08-16, RESOLVED in `2d2f5e4` — and the framing this entry ends on is
+> now obsolete: the reserve is measured in REAL REQUESTS, not reservations.**
+> The mechanism is the one this entry named as acceptable — "the runner
+> reporting spend through an artifact the site already reads" — so the PAT it
+> ruled out is still ruled out and no new credential surface exists.
+> `synthesize.py` writes `cost.model_calls` from `model_pacer.calls_for(appid)`
+> into the verdict itself (the one artifact the runner does commit);
+> `fetchVerdictCost()` reads it back; `sweepReconciliations()` walks recent runs
+> and books the difference; and `effectiveLiveUsed()` is what admission actually
+> reads, so the correction reaches the DECISION rather than only the display.
+> EST_COST stays 13 as the up-front reservation — the check and the spend still
+> cannot be atomic across a `repository_dispatch` boundary — but the unspent
+> part now comes back instead of being lost, so the 100-request reserve is worth
+> roughly the ~18 generations/day this entry computed rather than ~7. The
+> direction of failure is unchanged and still over-counts: a run whose cost
+> cannot be read keeps its whole reservation. Mutation-proved 11/11
+> (`evals/mutate_reconciliation.py`, logs `01`–`11`), including the two that
+> matter most here — a clamp that would refuse to charge a 14-call overrun, and
+> a constant standing in for the measured figure.
+> **It also closed two stale comments found on the way**, in
+> `site/app/api/generate/route.ts` and `site/lib/quota.ts`: both still described
+> the reserve as unreconcilable, which is exactly the sentence a future reader
+> would have trusted instead of reading the code.
+> **THE ONE HONEST LIMIT: none of this has ever run against a real live
+> generation.** It is fully built and fully tested, and the tests are the only
+> thing that has exercised it. Checked rather than assumed — the remote
+> `LIVE_QUOTA` variable today reads
+> `{"date":"2026-08-10","live_used":13,"generations":1,...,"outcomes":{}}`. That
+> ledger predates `2d2f5e4` by six days, and `outcomes` — the map
+> `sweepReconciliations()` writes into — is still empty. So the first real live
+> generation is simultaneously the sweep's first real exercise, and the thing to
+> watch on it is a `reconciled` map appearing there. Until then this is verified
+> code, not verified behaviour, and that distinction is the whole reason this
+> note says so.
 
 2026-08-10 | **Single-stage runs bypass the ledger charge entirely** | build,
 quota discipline | `generate_one.run_single_stage()` charges `live_quota` in the
