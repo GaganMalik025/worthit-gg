@@ -55,6 +55,15 @@ STATE_PATH = ROOT / "data/live_quota.json"
 # assumed: gemini-3.5-flash-lite is 500/day and gemini-3.5-flash is 20/day
 # (quotaId GenerateRequestsPerDayPerProjectPerModel-FreeTier, 2026-08-02).
 #
+# PER PROJECT, per that quotaId - so these ceilings are only WorthIt.gg's if
+# nothing else bills to the same project. Confirmed by the owner on 2026-08-17
+# that it is single-purpose: the console display name "Review Summariser" is an
+# earlier working name for THIS project, not a separate one sharing the key. No
+# other work draws from these two buckets, so a batch night can plan against
+# the whole 500 without an invisible competitor. See .env.example for the
+# longer note, and the 2026-08-13 BACKLOG entry for why this was unanswerable
+# from a checkout (an `AQ.` key does not self-describe its project).
+#
 # This was 1500 - the figure in CLAUDE.md - and it was wrong by 3x. Every budget
 # projection built on it was wrong by the same factor, including "1,050 calls
 # fits in 1,200", which is how a batch walked into a wall the budget stop was

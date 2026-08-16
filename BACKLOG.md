@@ -261,6 +261,32 @@ read (even a comment in `live_quota.py` next to the DAILY_LIMIT note, or a
 commit rather than a code change, and the ID is not something this session can
 verify without Console access.
 
+> **2026-08-17, RESOLVED — and the resolution is stronger than this entry
+> anticipated.** The entry assumed the fix was *visibility*: record the project
+> somewhere the repo can read, so a collision becomes detectable. The Console
+> check the owner ran removes the collision instead. The project's display name
+> is **"Review Summariser"** — an earlier working name for THIS project, not a
+> second project sharing the key — and nothing else bills to it. So the hazard
+> the entry described, "other work on the account drawing from the same 500/day
+> pool with no local signal", does not exist to be detected: the project is
+> single-purpose, and the 500/day Flash-Lite and 20/day Flash ceilings in
+> `live_quota.py` are WorthIt.gg's alone. A batch night plans against the whole
+> 500 without an invisible competitor.
+> **Recorded in both places the entry named:** a comment beside the
+> `DAILY_LIMIT`/`FLASH_DAILY_LIMIT` constants, and a new `.env.example` — which
+> `.gitignore:4` had already carved an exception for (`!.env.example`) and which
+> had never actually been written, so the key setup, the `AQ.`
+> service-account trap and the project note now all live in one committed file
+> instead of in session transcripts.
+> **One honest limit on what was verified.** What the owner confirmed is the
+> console DISPLAY NAME, not the project ID. A display name is mutable and not
+> unique, so it identifies the project well enough for a human to recognise it
+> in Console and cannot be used as a machine-checkable key — the entry's
+> preferred `GOOGLE_CLOUD_PROJECT` line would be that, and is still not
+> present. If the two ever disagree, Console is right and the committed note is
+> stale. That is a weaker artifact than an ID and a stronger outcome than the
+> entry asked for, and both halves are worth keeping straight.
+
 2026-08-12 | **Nothing in CI ever runs `pipeline/test_batch_guards.py` — two
 independent gaps, not one** | build, after pushing the concurrency-test fix |
 `ci.yml` did not run on the push carrying `adf26e3`, and would not have run on
