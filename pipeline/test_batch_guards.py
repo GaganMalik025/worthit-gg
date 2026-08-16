@@ -73,17 +73,54 @@ def test_pacer_ceiling_across_processes():
             "w,u,t=model_pacer._acquire(%r,rpm=3);print(json.dumps([w,u,t]))"
             % (str(Path(__file__).resolve().parent), str(p))
         )
-        results = []
         procs = [subprocess.Popen([PY, "-c", code], stdout=subprocess.PIPE,
-                                  text=True) for _ in range(5)]
+                                  stderr=subprocess.PIPE, text=True)
+                 for _ in range(5)]
+        # EXIT CODES AND STDERR FIRST, same treatment as adf26e3 gave
+        # test_ledger_charge_is_atomic. This test used to feed each child's
+        # stdout straight to json.loads, so a child that died before printing
+        # raised a JSONDecodeError - which fails honestly but names the wrong
+        # thing. The traceback points at the parse, so whoever hits it starts by
+        # debugging the pacer when the event was "a child process died", and it
+        # aborts the run before a single named check can report. Collect
+        # everything, then let the checks say what happened.
+        raw, failed = [], []
         for proc in procs:
-            out, _ = proc.communicate(timeout=60)
-            results.append(json.loads(out.strip()))
-        waited = sum(1 for w, _, _ in results if w > 0)
-        today = max(t for _, _, t in results)
-        check("5 separate processes, 3-rpm ceiling -> 2 had to wait",
-              waited == 2, results)
-        check("the shared counter saw all 5", today == 5, results)
+            out, err = proc.communicate(timeout=60)
+            raw.append((proc.returncode, out or "", err or ""))
+            if proc.returncode != 0:
+                failed.append((proc.returncode, (err or "").strip()[-300:]))
+        check("all 5 pacer processes exited 0", not failed,
+              "; ".join("rc=%d %s" % f for f in failed[:3]))
+
+        # A child can also exit 0 and still print nothing usable - a partial
+        # write, an interpreter warning on stdout. That is a third distinct
+        # cause and gets its own name rather than a parse traceback.
+        results, unparsable = [], []
+        for rc, out, err in raw:
+            try:
+                results.append(json.loads(out.strip()))
+            except ValueError:
+                unparsable.append("rc=%d stdout=%r stderr=%s"
+                                  % (rc, out.strip()[:60], err.strip()[-200:]))
+        check("every child printed one parsable [wait, used, today]",
+              not unparsable, "; ".join(unparsable[:3]))
+
+        # Never skip the behavioural checks on a bad run: an unreported check
+        # reads as a pass in the final tally. They report FAIL and point at the
+        # two checks above, which already named the cause.
+        if len(results) == 5:
+            waited = sum(1 for w, _, _ in results if w > 0)
+            today = max(t for _, _, t in results)
+            check("5 separate processes, 3-rpm ceiling -> 2 had to wait",
+                  waited == 2, results)
+            check("the shared counter saw all 5", today == 5, results)
+        else:
+            detail = ("only %d of 5 children produced a result - the checks "
+                      "above name why" % len(results))
+            check("5 separate processes, 3-rpm ceiling -> 2 had to wait",
+                  False, detail)
+            check("the shared counter saw all 5", False, detail)
 
 
 def test_pacer_narrow_only_lowers():

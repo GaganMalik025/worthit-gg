@@ -1,0 +1,406 @@
+$ .venv/bin/python pipeline/test_batch_guards.py   (cwd=.)
+exit=1
+
+batch guard tests - offline, no quota spent
+
+pacer: ceiling within one process
+  first 3 go immediately                                         ok
+  4th and 5th are made to wait                                   ok
+  counts every request in the day total                          ok
+
+pacer: ceiling ACROSS processes (the reason it is a file)
+  all 5 pacer processes exited 0                                 FAIL
+  every child printed one parsable [wait, used, today]           FAIL
+  5 separate processes, 3-rpm ceiling -> 2 had to wait           FAIL
+  the shared counter saw all 5                                   FAIL
+
+pacer: narrow() only ever lowers the ceiling
+  narrow to 8                                                    ok
+  narrow to 5 lowers again                                       ok
+  narrow to 11 does NOT raise it                                 ok
+
+pacer: a corrupt state file does not stop a batch
+  recovers and hands out a slot                                  ok
+
+ledger: the batch cannot spend the live reserve
+  batch budget is daily minus reserve                            ok
+  one more title still fits at the boundary                      ok
+  the title that would overshoot is refused                      ok
+  live generation is unaffected by an exhausted batch budget     ok
+
+ledger: asymmetry is deliberate and holds
+  live spend eats batch headroom                                 ok
+  batch spend does NOT eat the live reserve                      ok
+  live generation still allowed after a full batch night         ok
+
+ledger: record() charges the ledger it was told to
+  batch charge lands on batch_used                               ok
+  live charge lands on live_used                                 ok
+  the two counters are independent                               ok
+
+gate: calibrated against the seed set, not guessed
+  Helldivers 2 (45.1% veteran, best shape in the eval set) PASSES ok
+  Dota 2 (77.0% veteran) is rejected                             ok
+  Counter-Strike 2 (61.4%) is rejected, just over the line       ok
+  a title with one eligible cohort is rejected outright          ok
+  no structure available -> no rejection (fail open, then QR-4 gates) ok
+
+gate: sits on the cost boundary
+  filter precedes extract, so the gate sits before the first spend ok
+  it reports the measured spend, not a hardcoded zero            ok
+  no early return owns the charge any more                       ok
+
+resumability: a restart does not redo settled work
+  an existing verdict is skipped                                 ok
+  a gate rejection is not re-litigated                           ok
+  a crashed title IS retried                                     ok
+  an untouched title is queued                                   ok
+
+quota day: rolls at midnight PACIFIC, not midnight UTC
+  23:59 PDT (06:59 UTC) is still the previous day                ok
+  00:00 PDT (07:00 UTC) starts the new day                       ok
+  midnight UTC does NOT roll the quota day                       ok
+  23:59 PST (07:59 UTC) is still the previous day                ok
+  00:00 PST (08:00 UTC) starts the new day                       ok
+  PDT and PST boundaries differ by an hour, so no fixed offset works ok
+
+quota day: both ledgers key on the SAME boundary
+  06:59 UTC: live_quota and model_pacer agree (2026-08-01)       ok
+  07:00 UTC: live_quota and model_pacer agree (2026-08-02)       ok
+  00:30 UTC: live_quota and model_pacer agree (2026-08-01)       ok
+
+quota day: a ledger written before UTC midnight keeps its counters
+  the day key written at 00:30 UTC is Aug 1, not Aug 2           ok
+  still the same quota day at 06:59 UTC                          ok
+  a new quota day only at 07:00 UTC                              ok
+
+synthesis: each retry is a genuinely fresh generation
+  identical prompt, different attempt -> different cache key     ok
+  synthesize.py keys its cache on the attempt                    ok
+
+synthesis: prompt banned-list matches the guard
+  every guard-rejected word appears in the prompt                ok
+    frequency/consensus word 'occasional' is named               ok
+    frequency/consensus word 'frequent' is named                 ok
+    frequency/consensus word 'widespread' is named               ok
+    frequency/consensus word 'consensus' is named                ok
+    frequency/consensus word 'constant' is named                 ok
+    frequency/consensus word 'repeated' is named                 ok
+    frequency/consensus word 'persistent' is named               ok
+    frequency/consensus word 'ongoing' is named                  ok
+    'constant monetization pushes' is rejected                   ok
+    'repeated technical crashes' is rejected                     ok
+    'persistent server problems' is rejected                     ok
+    'continually reworked systems' is rejected                   ok
+    'regularly broken matchmaking' is rejected                   ok
+    'routinely dropped frames' is rejected                       ok
+    'ongoing balance problems' is rejected                       ok
+    'regular updates from the studio' still passes               ok
+    'routine patrols around the base' still passes               ok
+    'rare crafting materials are hard to farm' still passes      ok
+    'a common enemy type' still passes                           ok
+  every listed word really is rejected by the guard              ok
+  the prompt no longer seeds the banned word 'consensus' itself  ok
+  claim ids are forbidden in prose                               ok
+
+flash tier: allocation and the live-generation carve-out
+  flash_tier.txt parses to a non-empty set                       ok
+  it fits the 4-day runway at 20/day                             ok
+  a tier title gets flash when its day is named                  ok
+  a non-tier title uses flash-lite                               ok
+  LIVE generation never uses flash, even on its scheduled day    ok
+  an explicit --model override still wins                        ok
+  generate_one forces flash-lite on the live path                ok
+  gate-rejected titles are not in the tier (no verdict to upgrade) ok
+
+flash tier: the schedule is enforced, not just documented
+  flash_tier() returns {appid: day}, not a bare set              ok
+  every tier title carries a day                                 ok
+  no day exceeds the 20/day allowance                            ok
+  a day-3 title does NOT get flash on a plain batch run          ok
+  ...nor on --flash-day 1                                        ok
+  ...but does on --flash-day 3                                   ok
+  flash is opt-in: no flash_day means no flash, for ANY tier title ok
+
+ledger: the pre-flight read of the remote live ledger
+  same-day remote live_used is read                              ok
+  a remote ledger from another quota day counts 0, not its stale figure ok
+  gh missing (rc=127) raises rather than reporting 0             ok
+  gh unauthenticated (rc=4) raises rather than reporting 0       ok
+  gh timed out (rc=124) raises rather than reporting 0           ok
+  output is not JSON raises rather than reporting 0              ok
+  output is JSON but not an object raises rather than reporting 0 ok
+  ledger has no date raises rather than reporting 0              ok
+  live_used is not an int raises rather than reporting 0         ok
+  live_used is negative raises rather than reporting 0           ok
+  remote higher than local wins                                  ok
+  local higher than remote is KEPT - max, not overwrite          ok
+  reconcile does not mutate the caller's state                   ok
+  folding remote live spend REDUCES batch headroom               ok
+
+ledger: reconciliation survives the loop's re-read
+  a fresh load() sees the reconciled live_used, not the old one  ok
+  batch_used is untouched by the sync                            ok
+  the per-title stop is computed from the reconciled figure      ok
+  ...and still allows exactly what remains after it              ok
+  re-syncing is idempotent and never lowers live_used            ok
+  a live charge after the sync adds to it rather than resetting  ok
+
+ledger: a batch night cannot start blind
+  run_batch calls the pre-flight read                            ok
+  ...and exits rather than continuing when it raises             ok
+  ...guarded by an explicit opt-out flag, not silent             ok
+  run_batch PERSISTS the reconciled figure rather than merging in memory ok
+  ...and the loop's stop really does re-read from disk, which is why ok
+  the persisted state is what the startup budget is computed from ok
+  no code path substitutes 0 for an unreadable ledger            ok
+
+ledger: which bucket a request draws from
+  flash-lite draws the flash-lite bucket                         ok
+  flash draws its own bucket, whatever the caller said           ok
+  ...and the live path cannot override that either               ok
+  an explicit ledger wins for flash-lite                         ok
+  with nothing set at all, the default is batch                  ok
+  ...and a day of that default leaves the reserve untouched      ok
+  the env var crosses the subprocess boundary                    ok
+
+ledger: the pacer and the ledger cannot disagree
+  every paced request is booked exactly once                     ok
+  and to the right bucket                                        ok
+  generation counts are not incremented per request              ok
+  note_generation counts a title without charging usage          ok
+
+ledger: a stage run on its own is charged too
+  4 requests from a lone stage land on the ledger                ok
+  ...and the ledger agrees with the pacer                        ok
+  run_single_stage charges no usage of its own                   ok
+
+flags: --ledger actually reaches generate()
+  main() calls generate()                                        ok
+  ...and passes the ledger through                               ok
+  ...from the parsed flag, not a literal                         ok
+  the --stage path threads it as well                            ok
+
+locks: pacer -> ledger, never the other way
+  live_quota locks only its own state file                       ok
+  live_quota never acquires the pacer's own lock                 ok
+  the pacer's charge helper imports live_quota lazily (no import cycle) ok
+  nested locking completes promptly                              ok
+
+ledger: tests are structurally unable to touch the real file
+  a temp pacer path implies a temp ledger path                   ok
+  the default pacer path defers to live_quota's own              ok
+
+flash: the daily cap is a ledger refusal, not a comment
+  the cap is the verified 20/day                                 ok
+  a fresh day allows flash                                       ok
+  the 20th call is allowed                                       ok
+  the 21st is refused                                            ok
+  the refusal names when it resets                               ok
+  flash charges land on flash_used, not batch_used               ok
+  a flash charge does not touch the flash-lite budget            ok
+  the check sits immediately before the call site                ok
+  and charges before sending                                     ok
+  refusal is loud by default (SystemExit), not a silent downgrade ok
+  --flash-fallback exists as an explicit opt-in                  ok
+
+batch: an interrupt actually halts it
+  a SIGINT handler is installed                                  ok
+  queued futures are cancelled on interrupt                      ok
+  submission loop checks the flag between titles                 ok
+  in-flight titles are still waited for (no mid-write kill)      ok
+  the previous handler is restored                               ok
+
+counting: attempts are charged at the call site, not scraped
+  per-title tally is exact                                       ok
+  tallies do not bleed between titles                            ok
+  per-title tallies sum to the day total                         ok
+  an untouched title is zero, not missing                        ok
+  the old stdout scraper is gone (raises rather than undercounts) ok
+  stages are tagged with the appid they charge                   ok
+  stages are tagged with the LEDGER they charge                  ok
+  generate_one no longer charges from a delta it might not reach ok
+
+ledger: concurrent charges are not lost
+  all 12 charge processes exited 0                               ok
+  12 concurrent charges of 1 all land                            ok
+  generation count matches too                                   ok
+  generate_one.py never does its own load/record/save            ok
+  model_pacer.py never does its own load/record/save             ok
+  run_batch.py never does its own load/record/save               ok
+
+ledger: failed and skipped titles are charged too
+  every early return reports what it spent                       ok
+  a request is booked the moment it is sent, before any outcome  ok
+  the ledger limits are the VERIFIED ones, not the assumed 1500  ok
+  batch budget is therefore 400/day                              ok
+
+batch: an interrupted run reports what actually happened
+  only uncollected futures are extended                          ok
+  the naive extend-everything is gone                            ok
+
+verdict: the thresholds, from both sides of each edge
+  89.0 exactly is Buy (inclusive edge)                           ok
+  88.9 is Wait, not Buy                                          ok
+  89.1 is Buy                                                    ok
+  64.0 exactly is Wait (Skip is strictly below)                  ok
+  63.9 is Skip                                                   ok
+  64.1 is Wait                                                   ok
+  Starfield at 60.4 is Skip                                      ok
+  Marvel Rivals at 58.9 is Skip                                  ok
+  GTA:SA at 83.5 is Wait                                         ok
+  Halo MCC at 85.8 is Wait, not Buy                              ok
+  an unmeasurable title yields no word at all                    ok
+
+verdict: which cohorts the mean is built from, and their weight
+  a 40-review cohort cannot outvote two 800-review ones          ok
+  the UNWEIGHTED answer (88.0) is not what we get                ok
+  a cohort under the pool floor is excluded from the mean        ok
+  at exactly the floor it counts                                 ok
+  refund_window is not in the mean                               ok
+  a muted cohort is excluded from the mean                       ok
+  no post-refund cohort at all -> None                           ok
+  every post-refund cohort muted -> None                         ok
+  every post-refund cohort under the floor -> None               ok
+
+verdict: the model cannot supply or override the word
+  VERDICT_SCHEMA no longer accepts a verdict field               ok
+  verdict is not a required response field                       ok
+  the old forbid-layer is gone                                   ok
+  a stray verdict field in the response changes nothing          ok
+  a tagline contradicting the COMPUTED word is still rejected    ok
+
+header: the three parts, and the bounds on them
+  the baseline fixture passes cleanly                            ok
+  schema asks for all three parts                                ok
+  the old single field is gone from the schema                   ok
+  a missing tagline is rejected                                  ok
+  a tagline over the cap is rejected                             ok
+  a tagline exactly at the cap is accepted                       ok
+  for_you_if with one clause is rejected                         ok
+  for_you_if with two clauses is accepted                        ok
+  for_you_if with four clauses is accepted                       ok
+  for_you_if with five clauses is rejected                       ok
+  not_for_you_if with one clause is rejected                     ok
+  not_for_you_if with two clauses is accepted                    ok
+  not_for_you_if with four clauses is accepted                   ok
+  not_for_you_if with five clauses is rejected                   ok
+  a Skip may not ship with an empty for_you_if                   ok
+  a clause over the length cap is rejected                       ok
+  a clause exactly at the cap is accepted                        ok
+  an empty clause is rejected                                    ok
+  the same clause on both sides is rejected                      ok
+
+header: contradiction, per field, per word
+  'you should buy it anyway' in for_you_if is rejected under Skip ok
+  the same clause is not policed under Wait                      ok
+  'skip it' in not_for_you_if is rejected under Buy              ok
+  for_you_if is not policed under Buy                            ok
+  not_for_you_if is not policed under Skip                       ok
+  plain fit clauses pass under Skip                              ok
+  plain fit clauses pass under Buy                               ok
+
+header: friction as a condition - banned in the tagline, fine in a list
+  tagline: 'Suits players willing to tolerate the ' rejected     ok
+  tagline: 'A deep shooter, provided you accept th' rejected     ok
+  tagline: 'Good, though you must tolerate a third' rejected     ok
+  the same condition is legal inside not_for_you_if              ok
+
+header: invariant 11 and 13 reach the tagline AND both lists
+  a digit in the tagline is rejected (invariant 13)              ok
+  a digit in a for_you_if clause is rejected                     ok
+  a digit in a not_for_you_if clause is rejected                 ok
+  prevalence language in the tagline is rejected (invariant 11)  ok
+  prevalence language in a for_you_if clause is rejected         ok
+  prevalence language in a not_for_you_if clause is rejected     ok
+
+balance: the metric computes on a known fixture
+  available% is the share of thumbs-up reviews extraction could read ok
+  cited% is the share of thumbs-up reviews it actually cited     ok
+  delta is cited minus available, negative when it over-cites critics ok
+  the per-cohort delta carries the same sign convention          ok
+  per-cohort counts report what was actually measured            ok
+  no claim-valence field appears in the result                   ok
+
+balance: thin cohorts are excluded, not averaged in
+  a cohort with too few cited reviews is dropped from the breakdown ok
+  a missing title returns None rather than a zero                ok
+  a title too small to judge returns None, not a noisy percentage ok
+
+publish: a stale branch copy cannot overwrite a newer one
+  an OLDER branch copy is skipped                                ok
+  a NEWER branch copy is taken                                   ok
+  an equal timestamp loses - ties leave main alone               ok
+  a title main does not have is taken                            ok
+  ! x.json is not valid JSON; treating as unpublishable
+  unparseable branch JSON yields no timestamp                    ok
+  and a missing file yields none either                          ok
+
+select: an unreadable ref is an error, never an empty selection
+  a missing ref exits NON-zero                                   ok
+  ...and does not report a clean zero                            ok
+  a good remote ref still selects normally                       ok
+  select() raises rather than returning an empty pair            ok
+
+select: the source ref cannot be silently stale
+  the default --from is remote-tracking                          ok
+  a local ref is refused by default                              ok
+  ...and permitted only when asked for explicitly                ok
+  ...with a warning that it may be behind origin                 ok
+
+select: absent branch and unreachable remote are different answers
+  no branch on the remote is a clean, explicit exit 0            ok
+  an unreachable remote is an error, not an empty selection      ok
+
+git: ls-remote exit codes, the contract two call sites rely on
+  a branch that exists -> rc 0                                   ok
+  a branch that does not exist -> rc 2                           ok
+  an unreachable remote -> neither 0 nor 2                       ok
+  select_publishable probes before fetching                      ok
+  the generation workflow probes before falling back             ok
+  ...and no longer falls back on ANY fetch failure, outside comments ok
+  the fallback is reachable only when the branch is confirmed absent ok
+
+select: injected git failures are surfaced, not swallowed
+  an unreadable tree raises rather than selecting nothing        ok
+  a failed fetch refuses instead of publishing nothing           ok
+  ...and says the fetch was what failed                          ok
+  ...and never prints a clean selection                          ok
+
+prune: which branch artifacts may be dropped
+  ! site/public/verdicts/bad.json is not valid JSON; treating as unpublishable
+  the superseded, settled copy is pruned                         ok
+  a long-published title whose bytes were just rewritten is pruned ok
+  ...and nothing else is                                         ok
+  a title main does not have is kept                             ok
+  an equal timestamp is kept                                     ok
+  unreadable branch JSON is kept (may be half-written)           ok
+  a copy superseded minutes ago is kept - the deploy may still be serving it ok
+
+prune: the deploy window, from both sides of the boundary
+  ! site/public/verdicts/bad.json is not valid JSON; treating as unpublishable
+  ! site/public/verdicts/bad.json is not valid JSON; treating as unpublishable
+  at 47h the newly-arrived title is still protected              ok
+  at 49h it becomes prunable                                     ok
+
+prune: an undateable entry is kept, not dropped
+  ! site/public/verdicts/bad.json is not valid JSON; treating as unpublishable
+  nothing is pruned when nothing can be dated                    ok
+  and the reason is recorded rather than silent                  ok
+
+prune: refuses to work from a ref that might be stale
+  the default ref is remote-tracking                             ok
+  and a non-remote ref is refused outright                       ok
+  the push never forces                                          ok
+  a rejected push aborts rather than rebasing                    ok
+
+4 FAILURES:
+  all 5 pacer processes exited 0 rc=3 ; rc=3 ; rc=3 
+  every child printed one parsable [wait, used, today] rc=3 stdout='' stderr=; rc=3 stdout='' stderr=; rc=3 stdout='' stderr=
+  5 separate processes, 3-rpm ceiling -> 2 had to wait only 0 of 5 children produced a result - the checks above name why
+  the shared counter saw all 5 only 0 of 5 children produced a result - the checks above name why
+warning: You appear to have cloned an empty repository.
+warning: You appear to have cloned an empty repository.
+warning: You appear to have cloned an empty repository.
+warning: You appear to have cloned an empty repository.
+warning: You appear to have cloned an empty repository.

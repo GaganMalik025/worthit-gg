@@ -1,0 +1,43 @@
+$ .venv/bin/python pipeline/test_batch_guards.py   (cwd=.)
+exit=1
+
+batch guard tests - offline, no quota spent
+
+pacer: ceiling within one process
+  first 3 go immediately                                         ok
+  4th and 5th are made to wait                                   ok
+  counts every request in the day total                          ok
+
+pacer: ceiling ACROSS processes (the reason it is a file)
+Traceback (most recent call last):
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/test_batch_guards.py", line 1745, in <module>
+    test_pacer_ceiling_across_processes()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/test_batch_guards.py", line 81, in test_pacer_ceiling_across_processes
+    results.append(json.loads(out.strip()))
+                   ~~~~~~~~~~^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+    import sys,json;sys.path.insert(0,'/Users/gaganmalik/Downloads/worthit-gg/pipeline');import model_pacer;w,u,t=model_pacer._acquire('/var/folders/41/hww3xyr91jg0h4t40ybwn81r0000gn/T/tmp_naacnl5/pacer.json',rpm=3);sys.exit(3)
+                                                                                                                  ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/model_pacer.py", line 163, in _acquire
+    with _locked(path):
+         ~~~~~~~^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/model_pacer.py", line 104, in _locked
+    lock.mkdir()
+    ~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/var/folders/41/hww3xyr91jg0h4t40ybwn81r0000gn/T/tmp_naacnl5/pacer.json.lock'
