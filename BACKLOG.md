@@ -62,6 +62,29 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-16 | **A title whose cohort is empty fails forever, and `stage_failed`
+retries it every night** | build, investigating Hotline Miami's filter-stage
+failure | Reproduced deterministically at zero Gemini cost
+(`generate_one.py 219150 --stage filter`): of 400 swept reviews Hotline Miami has
+**one** veteran review, the filter drops it as low-information, and the stage
+hard-fails — `FAIL: veteran has 0 surviving reviews - the segment page breaks`.
+Nothing about that is transient: the same input produces the same failure on
+every retry, and `stage_failed` is not in `run_batch`'s TERMINAL set, so this
+title re-enters the queue every night forever. It costs 0 calls per attempt, so
+it burns no quota — it just never resolves and quietly pads the pending count.
+**The real question is which of two rules wins**, and that is a product call,
+not a bug fix. Invariant 12 already says a cohort under 20 surviving reviews
+does not get claims and renders muted with an explicit `n=` label — a cohort of
+zero is the same situation further along, and the muted-section path appears to
+handle it. The filter instead treats zero survivors as fatal for the whole
+title. If invariant 12's treatment is right, a title like this should publish
+with three cohorts and a muted veteran section rather than being unpublishable
+because 1 of 400 reviewers passed 100 hours. **Not fixed here** because it
+changes what gets published, touches the invariant-12 boundary, and wants the
+owner's call — and because the cheap half (making a deterministic
+`stage_failed` terminal so it stops being retried) would paper over the
+question rather than answer it. Related: [[verify-the-verifier]].
+
 2026-08-13 | **`pipeline/test_batch_guards.py` failed once, unreproducibly, and
 the evidence was thrown away** | build, regression run before the art commit |
 One run exited 1 where the twelve runs around it exited 0. The failing run's

@@ -1,0 +1,680 @@
+{
+  "appid": "431240",
+  "game_name": "Golf With Your Friends",
+  "generated_at": "2026-08-16T09:16:56Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/431240/header.jpg?t=1780479958",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/431240/capsule_231x87.jpg?t=1780479958",
+    "grid": "https://cdn2.steamgriddb.com/grid/44d37f9019983d92ead37f855133415b.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Chaotic mini-golf marred by erratic physics and connection drops.",
+    "for_you_if": [
+      "you play primarily with local groups",
+      "you enjoy custom workshop levels despite quirks",
+      "you can laugh off unpredictable physics engines"
+    ],
+    "not_for_you_if": [
+      "you require stable online multiplayer connections",
+      "you expect consistent and predictable ball physics",
+      "you play where disconnects ruin a session"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 197,
+      "pct_positive": 55.8,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 778,
+      "pct_positive": 83.2,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 200,
+      "pct_positive": 85.5,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 29,
+      "pct_positive": 89.7,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Review positivity increases across groups with higher playtime.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 55.8,
+            "pool_n": 197
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 83.2,
+            "pool_n": 778
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 85.5,
+            "pool_n": 200
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 55.8,
+        "low_pool_n": 197,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 85.5,
+        "high_pool_n": 200,
+        "gap_pts": 29.7
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews trend lower than the historical lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 79.2,
+        "recent_pool_n": 1204,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 88.1,
+        "steam_total_reviews": 54032,
+        "delta_pts": -8.9
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 197,
+      "pct_positive": 55.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers highlight frustrating online disconnections and the absence of a reconnection feature.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-8ab8cd",
+              "claim": "The game lacks a reconnection feature for players who leave or disconnect during a session.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232697974",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "Fun minigolf-type game where you don't have to take turns.\n\nBut it has no way to rejoin after leaving or disconnecting, very weird for a game made in the last decade or two.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228302418",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-06-19",
+                  "review_text": "if this game didn't disconnect every 5 seconds. it'd be nice. yet here we are...",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-781aec",
+              "claim": "Online servers experience disconnection issues during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229395467",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "Found out the OCE servers are dead. The only way to play against randoms online in OCE is to switch servers and deal with the high ping. If you have friends and play locally, then this shouldn’t concern you too much.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228302418",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-06-19",
+                  "review_text": "if this game didn't disconnect every 5 seconds. it'd be nice. yet here we are...",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 778,
+      "pct_positive": 83.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter physics anomalies alongside level editor support and missing cross-platform play.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-afc2ab",
+              "claim": "Reviewers describe the physics as inconsistent and difficult to control regarding ball bounces and movement off walls.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232637246",
+                  "hours_at_review": 3.2,
+                  "voted_up": false,
+                  "date": "2026-08-12",
+                  "review_text": "Worst Physics I Seen\r\nWII SPORTS RESORT HAS WIND PHYSICS AND THIS CAN'T GET A SPHERE OFF A WALL CORRECT",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231992817",
+                  "hours_at_review": 6.3,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "What the hell is with these physics? like seriously the ball bounce is just stupid, your ball bounces around so much its hard to control. And as for the power system, like iv never seen something so inconsistent every. \n\nI wouldn't recommend this to anyone and if their new game is anything like this, i wouldn't buy that one either.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-2f468b",
+              "claim": "Reviewers note that the reset button adds an extra stroke to the player's score.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232572767",
+                  "hours_at_review": 13.2,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "The game has a lot of bugs in  hockey gamemode the maps suck and it is not worth the price also the game is very repetitive and not fun also the reset button adds and extra stroke when you use it and it shouldn't be\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231864081",
+                  "hours_at_review": 15.6,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "Speed golf has changed me... It is like a drug that I quit, shackles that are unbreakable. I fear I cannot play normal golf anymore. The break button calls me like a demon and I its patron...",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-7672d7",
+              "claim": "Reviewers mention that the game includes Steam workshop and level editor support, providing additional content.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232000917",
+                  "hours_at_review": 5.6,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "this game is awesome\r\n10x better because of workshop/level editor support\r\nfans of literally anything will all like this game\r\nso fun",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231800110",
+                  "hours_at_review": 3.7,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "Game is fun to play with friends. I recommend it if you have friends. If you don't have friends, do not get the game because you won't have as much fun. I give this game a solid 8.5 because it also has a workshop, so the content is never ending.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-0fd871",
+              "claim": "Reviewers state that the game lacks cross-platform play for playing with friends on consoles.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232357444",
+                  "hours_at_review": 3.5,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "fun game, mostly played on Xbox. The only thing i would like would be this game to have cross platform play",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231549566",
+                  "hours_at_review": 19.4,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "Absolutely love playing this game with my friends. Wish this game was cross platform so my other friends that play on console could join.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-3a2a1b",
+              "claim": "Reviewers report physics issues including inconsistent power systems, difficult ball bouncing, and trouble handling balls on walls.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232848882",
+                  "hours_at_review": 3.5,
+                  "voted_up": true,
+                  "date": "2026-08-15",
+                  "review_text": "This game is really hard but it's also very fun. The physics are a little borked sometimes.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232637246",
+                  "hours_at_review": 3.2,
+                  "voted_up": false,
+                  "date": "2026-08-12",
+                  "review_text": "Worst Physics I Seen\r\nWII SPORTS RESORT HAS WIND PHYSICS AND THIS CAN'T GET A SPHERE OFF A WALL CORRECT",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231992817",
+                  "hours_at_review": 6.3,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "What the hell is with these physics? like seriously the ball bounce is just stupid, your ball bounces around so much its hard to control. And as for the power system, like iv never seen something so inconsistent every. \n\nI wouldn't recommend this to anyone and if their new game is anything like this, i wouldn't buy that one either.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 200,
+      "pct_positive": 85.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Extended playtime reveals multiplayer desync issues, map geometry bugs, and unpredictable shot results.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-b0fb72",
+              "claim": "Reviewers note that online matchmaking can be broken, with some stating that public lobbies are unreliable and that the game lacks a reconnect option for disconnects.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232778598",
+                  "hours_at_review": 54.2,
+                  "voted_up": true,
+                  "date": "2026-08-14",
+                  "review_text": "10/10 probably the best golf experience on steam. even on single player going for par achievement on each map is genuinely a fun time\n10/10 game then 9/10 now just because the menu looks different and online is broken",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232155958",
+                  "hours_at_review": 38.0,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "It's pretty good, the DLC maps are pretty mediocre though. I also wouldn't count on public lobbies, the only way to enjoy this game is to put together a group of at least 3 people you know you can troll by turning collision on.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231174236",
+                  "hours_at_review": 54.3,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "Great Game to play. This games level editor is pretty bad at times. this game needs a reconnect option even if you have to forfeit the hole you got disconnected from",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-a15583",
+              "claim": "Reviewers report physics inconsistencies, bugs where balls take unexpected angles off micropixels, and getting stuck in rocks or poorly designed map geometry.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "232519606",
+                  "hours_at_review": 74.6,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "too much glitches on the maps, sometimes you hit a micropixel and it goes in an unexpected angle, other times you get stuck because the map was poorly designed. Don't buy it, waste of money. You'll rage more than have fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232321514",
+                  "hours_at_review": 61.7,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "The cup on Volcano, is F!@#ed, Also get stuck often, as per my friend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231926918",
+                  "hours_at_review": 37.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "The ball flies like a ♥♥♥♥♥ (inconsistent results with near identical shots and generally unpredictable), major issues with desync in multiplier and a third of the base game maps are abysmal. Baring the fun aspect of coop with friends the game is simply annoying,",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231885722",
+                  "hours_at_review": 37.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "GAME HAS TO MANY CLIP POINTS PLEASE SMOOTH OUT\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229524284",
+                  "hours_at_review": 20.2,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "I NO LIKE WHEN YOU STUCK IN ROCK, BRING BACK Å!!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229306723",
+                  "hours_at_review": 69.2,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "The game's physics are not consistent and imaginary walls appear in flat and curved spaces. It is infuriating and makes a fun time with friends unenjoyable.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-26de8d",
+              "claim": "Reviewers note that online multiplayer features are broken, and describe major issues with desync in multiplayer sessions.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232778598",
+                  "hours_at_review": 54.2,
+                  "voted_up": true,
+                  "date": "2026-08-14",
+                  "review_text": "10/10 probably the best golf experience on steam. even on single player going for par achievement on each map is genuinely a fun time\n10/10 game then 9/10 now just because the menu looks different and online is broken",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231926918",
+                  "hours_at_review": 37.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "The ball flies like a ♥♥♥♥♥ (inconsistent results with near identical shots and generally unpredictable), major issues with desync in multiplier and a third of the base game maps are abysmal. Baring the fun aspect of coop with friends the game is simply annoying,",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-3f7072",
+              "claim": "Reviewers report encountering invisible walls, clipping points, and situations where the ball gets stuck on the maps.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232519606",
+                  "hours_at_review": 74.6,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "too much glitches on the maps, sometimes you hit a micropixel and it goes in an unexpected angle, other times you get stuck because the map was poorly designed. Don't buy it, waste of money. You'll rage more than have fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231635358",
+                  "hours_at_review": 20.1,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "This game has so much potential, namely with the workshop maps, too bad every single one is infested with invisible walls, bait holes, and par 1's. Please fix this",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231885722",
+                  "hours_at_review": 37.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "GAME HAS TO MANY CLIP POINTS PLEASE SMOOTH OUT\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229306723",
+                  "hours_at_review": 69.2,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "The game's physics are not consistent and imaginary walls appear in flat and curved spaces. It is infuriating and makes a fun time with friends unenjoyable.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-30dd6d",
+              "claim": "Reviewers describe the level editor as being poorly made at times.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231174236",
+                  "hours_at_review": 54.3,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "Great Game to play. This games level editor is pretty bad at times. this game needs a reconnect option even if you have to forfeit the hole you got disconnected from",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230327616",
+                  "hours_at_review": 78.5,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "Rating: 9.3/10\n\nGolf With Your Friends is one of the most entertaining party games on Steam, turning a simple game of mini golf into a chaotic and highly competitive multiplayer experience. With support for up to 12 players, dozens of creative courses, fun power-ups, and a built-in level editor, it's the perfect game for relaxing with friends—or ruining friendships over a single missed putt.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-5ab2f0",
+              "claim": "Reviewers report that the physics feel inconsistent with unpredictable ball movement and shots yielding different results under similar conditions.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232519606",
+                  "hours_at_review": 74.6,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "too much glitches on the maps, sometimes you hit a micropixel and it goes in an unexpected angle, other times you get stuck because the map was poorly designed. Don't buy it, waste of money. You'll rage more than have fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231926918",
+                  "hours_at_review": 37.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "The ball flies like a ♥♥♥♥♥ (inconsistent results with near identical shots and generally unpredictable), major issues with desync in multiplier and a third of the base game maps are abysmal. Baring the fun aspect of coop with friends the game is simply annoying,",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229306723",
+                  "hours_at_review": 69.2,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "The game's physics are not consistent and imaginary walls appear in flat and curved spaces. It is infuriating and makes a fun time with friends unenjoyable.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228553046",
+                  "hours_at_review": 27.4,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "It's *barely* golfing, but yes, your friends are here.\n\nPros:\n- Rarely, if ever, run into server problems\n- Decent amount of hours you can get out of playing\n- Thoughtfully integrated game rules \n- Workshop integration\n- Almost constantly on sale\n\nCons:\n- The DLC is far too expensive to buy when not on sale\n- DLC is required to 100% the game (if you're into that sort of thing)\n- The physics can sometimes feel wildly different course to course, hole to hole, shot to shot\n- Gameplay loop gets repetitive after that 3rd or 4th group you play with\n\nIt's literally Golf With Your Friends. \nBuying or being gifted this game just to be locked into a 4 hour long golf session is basically a rite of passage.\n\n(Just wait for a sale if you want the responsibility of being the friend who hosts every time because you have the DLC.)",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-e34b0f",
+              "claim": "Reviewers describe the physics as inconsistent, leading to unpredictable shot results and varying feel across courses and holes.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231926918",
+                  "hours_at_review": 37.9,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "The ball flies like a ♥♥♥♥♥ (inconsistent results with near identical shots and generally unpredictable), major issues with desync in multiplier and a third of the base game maps are abysmal. Baring the fun aspect of coop with friends the game is simply annoying,",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229306723",
+                  "hours_at_review": 69.2,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "The game's physics are not consistent and imaginary walls appear in flat and curved spaces. It is infuriating and makes a fun time with friends unenjoyable.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228553046",
+                  "hours_at_review": 27.4,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "It's *barely* golfing, but yes, your friends are here.\n\nPros:\n- Rarely, if ever, run into server problems\n- Decent amount of hours you can get out of playing\n- Thoughtfully integrated game rules \n- Workshop integration\n- Almost constantly on sale\n\nCons:\n- The DLC is far too expensive to buy when not on sale\n- DLC is required to 100% the game (if you're into that sort of thing)\n- The physics can sometimes feel wildly different course to course, hole to hole, shot to shot\n- Gameplay loop gets repetitive after that 3rd or 4th group you play with\n\nIt's literally Golf With Your Friends. \nBuying or being gifted this game just to be locked into a 4 hour long golf session is basically a rite of passage.\n\n(Just wait for a sale if you want the responsibility of being the friend who hosts every time because you have the DLC.)",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 29,
+      "pct_positive": 89.7,
+      "muted": true,
+      "n_note": "n=17 - too few reviews to call",
+      "summary": null,
+      "themes": []
+    }
+  ],
+  "footer": {
+    "pool_n": 1204,
+    "steam_total_reviews": 54032,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
