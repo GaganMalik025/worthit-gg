@@ -660,6 +660,59 @@ Two directions, neither started:
 Deferred deliberately: measured, understood, and not urgent. Nothing in the
 pipeline or the site was changed by this investigation.
 
+> **2026-08-17, RESOLVED — direction (b) is built, shipped and live in
+> `cdebb6d`. Direction (a) was not touched, per this entry's own caution.**
+>
+> **The measurement was re-run first, on the full catalog rather than the ~135
+> this entry was written against, and it changed the shape of the problem.** At
+> TITLE level the tail is as rare as before: 17 of 304 past −40 (5.6%) against
+> 7 of 131 (5.3%) at the 08-08 baseline, and the catalog mean barely moved
+> (−20.2 → −20.9; the 131 titles present in both files moved a paired mean of
+> +0.2, and the 173 added since arrive at −21.5). But the page renders COHORTS,
+> not titles, and at cohort level the same data reads completely differently:
+> **231 of 1,077 unmuted sections (21.4%) diverge more than 40 points from the
+> rate printed directly above them, mean −22.6, and exactly ONE section
+> diverges +40 the other way.** The title-level average was hiding one broken
+> cohort behind three sound ones. AoE2 veteran and Palworld mid reproduce
+> exactly (−78.8 and −74.4 against filtered survivors) and are still 6th and
+> 9th of 1,077 — outliers, but no longer alone.
+> **That measurement is what set the design.** Because divergence is the NORMAL
+> state rather than the tail, tier 1 is unconditional: a note that fired only
+> on the extremes would tell a reader, by its silence, that every other claim
+> list was drawn representatively. Tier 2 escalates on two rules taken from the
+> measured distribution, neither of them round numbers — thin (≤ 4 distinct
+> cited reviews, the p10 against a median of 10; fires 11.0%) and divergent
+> (exact binomial lower tail against the POOL rate, p < 0.05/1077, Bonferroni
+> over the family of sections that actually render; fires 6.6%). They overlap
+> on one section of 1,077, so they are kept as two rules rather than merged.
+> **B2 (no number) over B1 (print the cited count), and the reason is
+> `DESIGN.md:238`:** it calls the per-claim receipts tag "the one sanctioned
+> non-pool number on the page", so a cohort-level count would be a second one —
+> which needs an explicit DESIGN.md amendment as its own decision, not a
+> ride-along on this feature. Two further hazards B2 avoids by construction:
+> adjacency (a cited count under "based on 439 reviews" invites the reader to
+> compute 6/439, a prevalence inference from sample counts that invariant 11
+> forbids) and arithmetic (77.3% of cohorts cite some review from more than one
+> claim — 15,736 citation instances over 11,882 distinct review-cohort pairs —
+> so a distinct count is NOT the sum of the receipts tags above it and cannot
+> honestly be presented as one). The counts still ship in the JSON as pipeline
+> diagnostics, and a render-side contract test with sentinel values is what
+> keeps them off the page.
+> **Verified end to end, not just built:** backfilled across all 306 verdicts
+> at zero Gemini cost (every input was already in the published JSON) and
+> proven additive — all 306 files parse identically with the `sourcing` key
+> stripped, and QR-4 re-run for real afterwards at 15,736 citations / 306
+> verdicts, PASS. Mutation-proved 10/10 (`evals/mutate_sourcing.py`, logs
+> `s01`–`s10`). Confirmed on PRODUCTION rather than locally: `813780`'s veteran
+> cohort serves `"level":"escalated","triggers":["divergent"]` and the page
+> renders "…here, reviews leaning more negative than the cohort above." beneath
+> its 87.7%-of-439 stats line — the exact case this entry opened with.
+> **(a) remains untouched and this note is not an argument for it.** Nothing in
+> the fresh measurement makes extraction-side rebalancing newly necessary: the
+> skew is stable rather than worsening, and the 08-08 finding stands that the
+> dominant residual mechanism is review-length asymmetry, which prompt work
+> cannot reach. The caution in this entry is unchanged for whoever picks it up.
+
 2026-08-10 | **`select_publishable.py` defaults to the local `verdicts` ref,
 which is stale on any dev machine** | build, verdicts-branch pruning | The
 script's `--from` defaults to `verdicts` — the *local* branch, i.e. whatever
@@ -791,6 +844,16 @@ green runs and the red ones are equally uninformative about the lock while the
 two failure modes remain indistinguishable. This is the same class as the
 break-then-confirm harness that read a non-compiling mutation as "no test caught
 it": a test whose failure output does not identify the failure is not yet a test.
+
+> **2026-08-11, RESOLVED in `adf26e3`** — each child's return code is collected
+> and asserted before the count is trusted, with stderr captured from any
+> non-zero child, so a crash now reports as a crash. **The standing rule above
+> is discharged**: the two failure modes are distinguishable, so a flake on this
+> test is no longer uninformative by construction. Kept short because the fix's
+> consequences are narrated where they were earned rather than here — the
+> 2026-08-13 campaign could tell a lost update from a crash only because of it,
+> and the 2026-08-16 entry names a cause rather than listing candidates for the
+> same reason. Its sibling test got the same treatment in `36aad66`.
 
 ---
 
