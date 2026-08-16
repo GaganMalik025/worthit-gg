@@ -24,7 +24,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 
-import { DAILY_LIMIT, IP_LIMIT_PER_HOUR, LIVE_RESERVE } from "../quota";
+import { DAILY_LIMIT, EST_COST, IP_LIMIT_PER_HOUR, LIVE_RESERVE } from "../quota";
 
 const REPO = path.resolve(__dirname, "../../..");
 const py = (f: string) => readFileSync(path.join(REPO, "pipeline", f), "utf-8");
@@ -50,6 +50,21 @@ describe("quota.ts mirrors pipeline/live_quota.py", () => {
 
   it("IP_LIMIT_PER_HOUR matches", () => {
     expect(IP_LIMIT_PER_HOUR).toBe(pyInt(liveQuota, "IP_LIMIT_PER_HOUR"));
+  });
+
+  /**
+   * EST_COST was mirrored in both files and NOT covered here - exactly the
+   * class of drift this file exists to catch, sitting inside it.
+   *
+   * It matters more since reconciliation landed, because the constant now does
+   * two jobs on the TS side: it is the up-front charge AND the baseline every
+   * correction is measured against (effectiveLiveUsed subtracts
+   * EST_COST - actual). If the Python side moved and this did not, the batch
+   * would admit titles against one worst case while the live path reserved and
+   * refunded against another.
+   */
+  it("EST_COST matches", () => {
+    expect(EST_COST).toBe(pyInt(liveQuota, "EST_COST"));
   });
 
   it("both roll the quota day on the same timezone", () => {

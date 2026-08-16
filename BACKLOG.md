@@ -62,6 +62,34 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-16 | **The live path keeps a second, doubled ledger on the runner that
+nothing reads** | build, implementing EST_COST reconciliation | The workflow's
+`seed the ledger from the dispatch payload` step writes the site's counters into
+the runner's `data/live_quota.json` — and `live_used` in that payload ALREADY
+includes the `EST_COST = 13` reservation `/api/generate` charged before
+dispatching. Then every request the run makes is charged again, +1 at a time, by
+`model_pacer._charge_ledger` at the pacer's choke point. So by the end of a live
+run that file reads roughly `13 + actual` for a generation that cost `actual`,
+which is not a quantity that means anything. **Harmless today, on three separate
+counts, which is the only reason this is a note and not a fix:** the file is
+gitignored so it is never committed; `run_single_stage` performs no quota check,
+so nothing consults it during the run (the five stages just execute); and the
+runner's filesystem is discarded when the job ends. The double-count therefore
+has no reader and no lifetime. **Why record it anyway:** it is a file named
+`live_quota.json` sitting on disk holding a number that looks authoritative and
+is not, and the obvious future change — having a stage check its own budget
+before spending, or having the runner report its ledger back — would read it as
+truth. Whoever does that must reconcile the seeding and the charging first
+(seed the pre-reservation figure, or have the pacer not charge on a path whose
+reservation is already booked); the two are counting the same spend twice by
+construction, not by accident. Same family as the 2026-08-12 two-ledger entry
+resolved in `573a1d6`, one level further in: there, two ledgers of one budget
+that never reconciled; here, one ledger double-counting one spend because two
+mechanisms both book it. Not fixed because nothing reads it, and changing the
+seeding or the charge point on the live path touches CLAUDE.md guard 1's
+machinery for a number with no consumer — the fix belongs to whoever gives it a
+consumer. Related: [[verify-the-verifier]].
+
 2026-08-16 | **A title whose cohort is empty fails forever, and `stage_failed`
 retries it every night** | build, investigating Hotline Miami's filter-stage
 failure | Reproduced deterministically at zero Gemini cost

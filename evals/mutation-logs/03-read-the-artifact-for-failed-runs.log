@@ -1,0 +1,77 @@
+$ npx vitest run lib/__tests__/reconciliation.test.ts   (cwd=site)
+exit=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/reconciliation.test.ts (24 tests | 3 failed) 17ms
+   × sweepReconciliations > records the null sentinel for a terminal failure 3ms
+     → expected { '413150|1': 9 } to deeply equal { '413150|1': null }
+   × sweepReconciliations > the null sentinel stops the run being re-examined forever 0ms
+     → expected "spy" to be called 1 times, but got 2 times
+   × sweepReconciliations > does not credit a failed run with a later run's artifact 0ms
+     → expected { '413150|1': 9, '413150|2': 9 } to deeply equal { '413150|1': null, '413150|2': 9 }
+
+ Test Files  1 failed (1)
+      Tests  3 failed | 21 passed (24)
+   Start at  20:49:14
+   Duration  188ms (transform 22ms, setup 0ms, collect 23ms, tests 17ms, environment 0ms, prepare 30ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 3 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > sweepReconciliations > records the null sentinel for a terminal failure
+AssertionError: expected { '413150|1': 9 } to deeply equal { '413150|1': null }
+
+- Expected
++ Received
+
+  Object {
+-   "413150|1": null,
++   "413150|1": 9,
+  }
+
+ ❯ lib/__tests__/reconciliation.test.ts:215:30
+    213|       });
+    214|       const out = await sweepReconciliations(dispatched("413150"), dep…
+    215|       expect(out.reconciled).toEqual({ "413150|1": null });
+       |                              ^
+    216|       expect(deps.fetchVerdictCost).not.toHaveBeenCalled();
+    217|     }
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > sweepReconciliations > the null sentinel stops the run being re-examined forever
+AssertionError: expected "spy" to be called 1 times, but got 2 times
+ ❯ lib/__tests__/reconciliation.test.ts:227:29
+    225|     const first = await sweepReconciliations(dispatched("413150"), dep…
+    226|     await sweepReconciliations(first, deps);
+    227|     expect(deps.runOutcome).toHaveBeenCalledTimes(1);
+       |                             ^
+    228|   });
+    229| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > sweepReconciliations > does not credit a failed run with a later run's artifact
+AssertionError: expected { '413150|1': 9, '413150|2': 9 } to deeply equal { '413150|1': null, '413150|2': 9 }
+
+- Expected
++ Received
+
+  Object {
+-   "413150|1": null,
++   "413150|1": 9,
+    "413150|2": 9,
+  }
+
+ ❯ lib/__tests__/reconciliation.test.ts:277:28
+    275|     });
+    276|     const out = await sweepReconciliations(dispatched("413150"), deps);
+    277|     expect(out.reconciled).toEqual({ "413150|1": null, "413150|2": 9 }…
+       |                            ^
+    278|     // the artifact was read once, for the run that actually produced …
+    279|     expect(deps.fetchVerdictCost).toHaveBeenCalledTimes(1);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+

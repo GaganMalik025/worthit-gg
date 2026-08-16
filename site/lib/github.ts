@@ -4,6 +4,8 @@
  * a proxy rather than the client polling GitHub directly.
  */
 
+import { reconcileKey, type QuotaState } from "./quota";
+
 const API = "https://api.github.com";
 
 function env() {
@@ -134,6 +136,65 @@ export async function verdictExists(
   return { found: false };
 }
 
+/**
+ * What one generation actually cost, read back out of the artifact it committed.
+ *
+ * THE ONLY CHANNEL THERE IS. The runner knows the true figure
+ * (model_pacer.calls_for) and cannot tell us: its GITHUB_TOKEN cannot write
+ * repository variables, and `variables` is not in that token's permission
+ * surface at all, so no `permissions:` widening reaches it. The only in-runner
+ * alternative is a PAT, which is new long-lived credential surface for a
+ * bookkeeping nicety. So the number rides out in the one thing the runner does
+ * commit - the verdict JSON - and is read back here with the credential the
+ * site already holds. No new credential, no runner cooperation.
+ *
+ * Returns null for ANYTHING it cannot read as a real positive count: absent
+ * file, unparseable JSON, a verdict generated before the cost field existed, or
+ * a zero. Zero is refused on purpose - synthesis is mandatory, so a live
+ * generation cannot really have cost nothing, and a 0 means something is wrong
+ * rather than something was free. Every one of those cases leaves the full
+ * reservation standing, which over-counts, which is the safe direction.
+ */
+export async function fetchVerdictCost(
+  appid: number | string,
+): Promise<number | null> {
+  const usable = (raw: string): number | null => {
+    try {
+      const cost = (JSON.parse(raw) as { cost?: { model_calls?: unknown } })
+        ?.cost?.model_calls;
+      return typeof cost === "number" && Number.isInteger(cost) && cost > 0
+        ? cost
+        : null;
+    } catch {
+      return null;
+    }
+  };
+
+  // Same dual lookup as verdictExists, and in the same order. A live-generated
+  // title is normally still branch-only (main catches up at the nightly
+  // promote), but once promoted the committed file carries the field too.
+  try {
+    const fs = await import("node:fs/promises");
+    const path = await import("node:path");
+    return usable(
+      await fs.readFile(
+        path.join(process.cwd(), `public/verdicts/${appid}.json`),
+        "utf-8",
+      ),
+    );
+  } catch {
+    /* not merged yet - fall through to the branch */
+  }
+
+  for (const dir of ["site/public/verdicts", "public/verdicts"]) {
+    const res = await gh(`/contents/${dir}/${appid}.json?ref=verdicts`, {
+      headers: { accept: "application/vnd.github.raw" },
+    });
+    if (res.ok) return usable(await res.text());
+  }
+  return null;
+}
+
 export interface RunInfo {
   id: number;
   status: string;
@@ -242,6 +303,101 @@ export function deriveOutcome(
 export async function runOutcome(runId: number): Promise<Outcome> {
   const { status, conclusion, steps } = await runSteps(runId);
   return deriveOutcome(status, conclusion, steps);
+}
+
+/**
+ * At most this many reservations are reconciled per dispatch. Oldest first, so
+ * a backlog drains in order rather than starving. The cap exists because this
+ * runs INSIDE /api/generate: an unbounded sweep would put N artifact fetches in
+ * front of a user waiting to be dispatched.
+ */
+export const SWEEP_LIMIT = 5;
+
+export interface SweepDeps {
+  listRuns: () => Promise<RunInfo[]>;
+  runOutcome: (runId: number) => Promise<Outcome>;
+  fetchVerdictCost: (appid: string) => Promise<number | null>;
+}
+
+/**
+ * Learn what today's finished generations really cost, and record it.
+ *
+ * WHY THIS RUNS AT ADMISSION TIME AND NOT ON A STATUS POLL. Reconciling when a
+ * poller notices a run finish would add a second writer to a store with no CAS
+ * - every writer here is a read-modify-write of one repository variable - and
+ * the interleave is live: a reconcile write that reads before a concurrent
+ * /api/generate and writes after it erases that dispatch's whole 13-request
+ * reservation. Under-counting the ledger is the one direction that hands out
+ * budget the Gemini quota does not have.
+ *
+ * Folding the sweep into the read-modify-write /api/generate ALREADY performs
+ * means no new writer and no new race. (The pre-existing generate-vs-generate
+ * race is untouched; this neither fixes nor worsens it.)
+ *
+ * It also answers the abandoned-tab case better than polling could. Nothing
+ * here is event-driven: the work list is derived from ledger state - a
+ * reservation with no matching fact - so a user who closed the tab is
+ * reconciled by whoever generates next. And if nobody ever generates again
+ * today, the over-count is never read: the only consumer of the corrected
+ * number is an admission decision that is not happening, and the whole ledger
+ * resets at the Pacific day roll. The correction has value only at admission
+ * time, so doing it at admission time gives up nothing.
+ *
+ * KEYED BY RUN. Iterating runs rather than dispatched-appids is what makes a
+ * retry safe: a failed run #1 and a successful run #2 for one appid are two
+ * keys, and #1 is resolved from ITS OWN outcome - so #1 can never be credited
+ * with the artifact #2 committed. Only a run that deriveOutcome calls
+ * "published" ever reads an artifact at all.
+ *
+ * NEVER WRITES A NUMBER IT DID NOT READ. A run still in flight, a cost that
+ * cannot be parsed, an artifact that is not there, a verdict predating the cost
+ * field - all skip, leaving the full reservation standing until a later sweep.
+ * A terminal FAILURE instead records the null sentinel: qr4_failed and
+ * stage_failed delete or never write the artifact and the runner's filesystem
+ * is gone, so that cost is unrecoverable for good. Recording null keeps the
+ * full 13 and stops the sweep re-checking it on every future dispatch.
+ *
+ * A reservation whose run never appeared at all (a lost dispatch) has nothing
+ * to iterate and is never reconciled. It keeps its full charge for the day,
+ * which is the safe reading of "we do not know what happened".
+ */
+export async function sweepReconciliations(
+  state: QuotaState,
+  deps: SweepDeps,
+  limit = SWEEP_LIMIT,
+): Promise<QuotaState> {
+  const reserved = new Set(Object.keys(state.dispatched ?? {}));
+  if (reserved.size === 0) return state;
+  const known = state.reconciled ?? {};
+
+  // listRuns returns oldest-first; keep that order so the cap drains a backlog
+  // rather than repeatedly re-examining the newest few.
+  const pending = (await deps.listRuns())
+    .filter(
+      (r) =>
+        r.appid !== null &&
+        reserved.has(r.appid) &&
+        !isActive(r) &&
+        !(reconcileKey(r.appid, r.id) in known),
+    )
+    .slice(0, limit);
+  if (pending.length === 0) return state;
+
+  const found: Record<string, number | null> = {};
+  for (const run of pending) {
+    const appid = run.appid as string;
+    const outcome = await deps.runOutcome(run.id);
+    if (outcome === null) continue;                 // not terminal after all
+    if (outcome !== "published") {
+      found[reconcileKey(appid, run.id)] = null;    // cost gone for good
+      continue;
+    }
+    const cost = await deps.fetchVerdictCost(appid);
+    if (cost === null) continue;                    // no real number in hand
+    found[reconcileKey(appid, run.id)] = cost;
+  }
+  if (Object.keys(found).length === 0) return state;
+  return { ...state, reconciled: { ...known, ...found } };
 }
 
 /**

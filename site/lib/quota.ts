@@ -15,7 +15,25 @@
 export const DAILY_LIMIT = 500;
 export const LIVE_RESERVE = 100;
 export const IP_LIMIT_PER_HOUR = 5;
-export const EST_COST = 13; // charged up front; the workflow records the actual
+/**
+ * Charged up front, in full, on every dispatch.
+ *
+ * NOTHING IN THE RUNNER EVER CORRECTS THIS. That is worth stating plainly
+ * because this comment used to claim the opposite ("the workflow records the
+ * actual"), and generate/route.ts carried the matching claim that "the workflow
+ * writes the authoritative charge afterwards, so the ledger self-corrects".
+ * Both described a bookkeeping step that was deleted: the runner's GITHUB_TOKEN
+ * cannot write repository variables at all, so the step reported success while
+ * writing nothing (see generate-verdict.yml, "THIS STEP NO LONGER RECORDS
+ * ANYTHING"). A reservation stayed a reservation for the rest of the day.
+ *
+ * The correction now happens HERE, on the site side, from the cost the runner
+ * writes into the verdict artifact it commits - see effectiveLiveUsed below.
+ * 13 stays deliberately conservative: it is roughly p99 of measured cost, not a
+ * true ceiling (one title in 295 spent 14), and reconciliation makes
+ * over-reserving free, so the safe error is to keep reserving high.
+ */
+export const EST_COST = 13;
 
 // Google resets RPD at MIDNIGHT PACIFIC, not midnight UTC. Keying the day on
 // UTC zeroed this ledger seven hours early - the same defect fixed on the
@@ -35,6 +53,62 @@ export interface QuotaState {
   outcomes?: Record<string, { state: string; at: string; run_id?: string }>;
   /** appid -> ISO time we asked GitHub to create a run. See recordDispatch. */
   dispatched?: Record<string, string>;
+  /**
+   * `appid|run_id` -> what that generation ACTUALLY cost, or null when the cost
+   * is unrecoverable. Facts, never arithmetic: see effectiveLiveUsed.
+   */
+  reconciled?: Record<string, number | null>;
+}
+
+/** The reconciliation key. Keyed by RUN, not by appid.
+ *
+ *  A retry after a stage_failed is a second dispatch, a second EST_COST charge
+ *  and a second run - so it is a second key. Keying on appid alone would let
+ *  one run's cost stand in for another's, in either direction. */
+export const reconcileKey = (appid: number | string, runId: number | string) =>
+  `${appid}|${runId}`;
+
+/**
+ * Live requests spent today, with completed generations corrected to what they
+ * really cost.
+ *
+ * THE SHAPE IS THE WHOLE POINT, so it is worth saying why it is not a
+ * decrement. The obvious implementation is "when a run finishes, subtract
+ * (EST_COST - actual) from live_used", which needs a dedup marker so the same
+ * generation is not credited twice - and under-counting is the one direction
+ * that can hand out budget the Gemini quota does not have. A marker is then a
+ * second thing that can land or fail to land independently of the correction.
+ *
+ * So there is no decrement and no marker. `live_used` stays the pure sum of
+ * reservations, the ledger records the FACT of each run's cost, and the
+ * corrected figure is derived here. That is idempotent by construction rather
+ * than by protocol:
+ *
+ *   1. writing reconciled[key] = 9 five times equals writing it once - a set,
+ *      not an increment, so "have I already applied this?" is never a question
+ *      anyone has to answer correctly;
+ *   2. this function is pure in (live_used, reconciled), so any reader
+ *      recomputing it any number of times gets the same number;
+ *   3. the fact and the counter are ONE JSON blob behind ONE PATCH, so there is
+ *      no interleaving in which the dedup marker is durable and the correction
+ *      is not.
+ *
+ * THE TERM IS ALLOWED TO GO NEGATIVE, and that is not an oversight. EST_COST is
+ * ~p99 of measured cost, not a ceiling: 1 of 295 published titles spent 14. A
+ * 14-call run therefore charges 1 MORE than it reserved. Clamping the term at
+ * zero would silently under-count exactly the runs that overran, which is the
+ * dangerous direction. Only the total is clamped, and only at zero.
+ *
+ * A null entry contributes nothing: it means "this run is finished and its cost
+ * is unrecoverable, keep the full reservation" - see sweepReconciliations.
+ */
+export function effectiveLiveUsed(s: QuotaState): number {
+  const correction = Object.values(s.reconciled ?? {}).reduce(
+    (acc: number, actual) =>
+      typeof actual === "number" ? acc + (EST_COST - actual) : acc,
+    0,
+  );
+  return Math.max(0, (s.live_used ?? 0) - correction);
 }
 
 /**
@@ -62,13 +136,21 @@ export function dispatchLost(s: QuotaState, appid: number | string, now = Date.n
 export function rollDay(s: QuotaState): QuotaState {
   if (s.date !== today()) {
     return { date: today(), live_used: 0, generations: 0, by_ip_hour: {},
-             outcomes: s.outcomes ?? {}, dispatched: {} };
+             outcomes: s.outcomes ?? {}, dispatched: {}, reconciled: {} };
   }
-  return { live_used: 0, generations: 0, by_ip_hour: {}, outcomes: {}, dispatched: {}, ...s };
+  return { live_used: 0, generations: 0, by_ip_hour: {}, outcomes: {},
+           dispatched: {}, reconciled: {}, ...s };
 }
 
+/**
+ * Headroom left in the reserve.
+ *
+ * Reads the DERIVED figure, not the raw counter, so every admission decision
+ * downstream (canGenerate, and the status detail it reports) inherits the
+ * correction from one place rather than each remembering to apply it.
+ */
 export function remaining(s: QuotaState, reserve = LIVE_RESERVE) {
-  return Math.max(0, reserve - (s.live_used ?? 0));
+  return Math.max(0, reserve - effectiveLiveUsed(s));
 }
 
 export type Denied = "reserve_exhausted" | "ip_limited";

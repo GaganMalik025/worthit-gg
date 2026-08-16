@@ -1,0 +1,37 @@
+$ npx vitest run lib/__tests__/quota-mirror.contract.test.ts   (cwd=site)
+exit=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/quota-mirror.contract.test.ts (6 tests | 1 failed) 4ms
+   × quota.ts mirrors pipeline/live_quota.py > EST_COST matches 3ms
+     → expected 14 to be 13 // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 5 passed (6)
+   Start at  20:49:17
+   Duration  188ms (transform 16ms, setup 0ms, collect 14ms, tests 4ms, environment 0ms, prepare 29ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/quota-mirror.contract.test.ts > quota.ts mirrors pipeline/live_quota.py > EST_COST matches
+AssertionError: expected 14 to be 13 // Object.is equality
+
+- Expected
++ Received
+
+- 13
++ 14
+
+ ❯ lib/__tests__/quota-mirror.contract.test.ts:67:22
+     65|    */
+     66|   it("EST_COST matches", () => {
+     67|     expect(EST_COST).toBe(pyInt(liveQuota, "EST_COST"));
+       |                      ^
+     68|   });
+     69| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

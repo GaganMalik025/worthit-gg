@@ -80,3 +80,9 @@ jobs:
       # rather than relying on global config.
       - name: guard suite
         run: .venv/bin/python pipeline/test_batch_guards.py
+
+      # Offline: committed seed artifacts only, no Steam, no Gemini, no quota.
+      # It runs here for the reason e06538a existed - a suite nothing re-runs on
+      # push is verified exactly once, by the person who wrote it.
+      - name: verdict cost field
+        run: .venv/bin/python pipeline/test_verdict_cost.py

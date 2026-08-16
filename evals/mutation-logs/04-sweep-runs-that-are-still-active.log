@@ -1,0 +1,39 @@
+$ npx vitest run lib/__tests__/reconciliation.test.ts   (cwd=site)
+exit=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/reconciliation.test.ts (24 tests | 1 failed) 17ms
+   × sweepReconciliations > never writes a value it did not read > skips a run that is still going 3ms
+     → expected { '413150|1': 9 } to deeply equal {}
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 23 passed (24)
+   Start at  20:49:15
+   Duration  187ms (transform 26ms, setup 0ms, collect 26ms, tests 17ms, environment 0ms, prepare 30ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > sweepReconciliations > never writes a value it did not read > skips a run that is still going
+AssertionError: expected { '413150|1': 9 } to deeply equal {}
+
+- Expected
++ Received
+
+- Object {}
++ Object {
++   "413150|1": 9,
++ }
+
+ ❯ lib/__tests__/reconciliation.test.ts:238:36
+    236|       });
+    237|       const out = await sweepReconciliations(dispatched("413150"), dep…
+    238|       expect(out.reconciled ?? {}).toEqual({});
+       |                                    ^
+    239|       expect(deps.runOutcome).not.toHaveBeenCalled();
+    240|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

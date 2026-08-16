@@ -1,0 +1,58 @@
+$ npx vitest run lib/__tests__/reconciliation.test.ts   (cwd=site)
+exit=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/reconciliation.test.ts (24 tests | 2 failed) 17ms
+   × effectiveLiveUsed > the admission path reads the derived figure, not the raw one > remaining() reflects a reconciled run 3ms
+     → expected 74 to be 78 // Object.is equality
+   × effectiveLiveUsed > the admission path reads the derived figure, not the raw one > a reconciled run can re-open a reserve that reads exhausted 0ms
+     → expected false to be true // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 22 passed (24)
+   Start at  20:49:16
+   Duration  188ms (transform 23ms, setup 0ms, collect 23ms, tests 17ms, environment 0ms, prepare 24ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > effectiveLiveUsed > the admission path reads the derived figure, not the raw one > remaining() reflects a reconciled run
+AssertionError: expected 74 to be 78 // Object.is equality
+
+- Expected
++ Received
+
+- 78
++ 74
+
+ ❯ lib/__tests__/reconciliation.test.ts:134:28
+    132|     it("remaining() reflects a reconciled run", () => {
+    133|       const s: QuotaState = { live_used: 26, reconciled: { "413150|1":…
+    134|       expect(remaining(s)).toBe(LIVE_RESERVE - 22);
+       |                            ^
+    135|     });
+    136| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > effectiveLiveUsed > the admission path reads the derived figure, not the raw one > a reconciled run can re-open a reserve that reads exhausted
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ lib/__tests__/reconciliation.test.ts:149:51
+    147|       };
+    148|       expect(effectiveLiveUsed(reconciled)).toBe(72);
+    149|       expect(canGenerate(reconciled, IP).allowed).toBe(true);
+       |                                                   ^
+    150|     });
+    151|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

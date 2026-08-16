@@ -68,6 +68,13 @@ dist/
 *.log
 npm-debug.log*
 yarn-error.log*
+# ...except the mutation campaign's, which are EVIDENCE rather than noise: they
+# are the break-then-confirm record for the reconciliation guards, and each one
+# names the assertion that caught its mutation. Without this line `git add
+# evals/mutation-logs/` silently adds nothing, which is its own version of the
+# 2026-08-13 finding that a suite redirected to /dev/null cannot be debugged.
+# Deliberately scoped to that one directory - *.log stays the default.
+!evals/mutation-logs/*.log
 scratch/
 tmp/
 notes-private.md

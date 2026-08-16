@@ -682,12 +682,43 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
     # legacy pattern, which is still correct for ~97% of titles.
     art = art_mod.art_block(appid)
 
+    # WHAT THIS GENERATION COST, written by the last stage that spends a call.
+    #
+    # It exists so the live path can give budget back. /api/generate reserves
+    # EST_COST=13 up front, because the check and the spend cannot be atomic
+    # across a repository_dispatch boundary and a burst must not oversubscribe
+    # the reserve. The true median is 9 (measured over 295 published titles in
+    # data/batch_state.json: p25 7, median 9, p90 12, max 14), so ~34% of every
+    # reservation is budget nobody spent. The runner cannot hand the real figure
+    # back - its GITHUB_TOKEN cannot write repository variables - so the figure
+    # travels in the one artifact the runner DOES commit: this file.
+    #
+    # READ THE BASIS STRING BEFORE USING THIS NUMBER. It is calls_for(appid),
+    # which the pacer keys per appid PER QUOTA DAY PER MACHINE, not per run.
+    # On a CI runner those coincide exactly - data/model_pacer.json is
+    # gitignored, so the runner starts empty, generates one title, and exits -
+    # which is why the live reconciler may trust it. On a dev machine a title
+    # regenerated the same day accumulates across both attempts. Anything that
+    # starts treating this as a clean per-run cost on the batch path is wrong,
+    # and the basis string is here so that cannot happen by accident.
+    #
+    # It is a PIPELINE DIAGNOSTIC and never renders (invariant 13). Pinned by
+    # site/lib/__tests__/cost-never-renders.contract.test.tsx.
+    cost = {
+        "model_calls": model_pacer.calls_for(appid),
+        "basis": ("gemini requests charged to this appid on this quota day, on "
+                  "the machine that generated it. equals this run's cost on a "
+                  "fresh CI runner; a same-day regeneration on a dev machine "
+                  "accumulates. pipeline diagnostic - never rendered."),
+    }
+
     return {
         "appid": appid,
         "game_name": claims_blob.get("game_name"),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "art": art,
         "model": {"extraction": claims_blob.get("model"), "synthesis": model},
+        "cost": cost,
         # word: computed, never model-chosen - see verdict_for_mean()
         # tagline/lists: the model's three-part header, bounded by rule 7
         "verdict": {"word": verdict_word,

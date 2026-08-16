@@ -1,0 +1,37 @@
+$ npx vitest run lib/__tests__/reconciliation.test.ts   (cwd=site)
+exit=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/reconciliation.test.ts (24 tests | 1 failed) 17ms
+   × sweepReconciliations > caps the sweep, oldest first 4ms
+     → expected [ '1|1', '2|2', '3|3', '4|4', …(5) ] to have a length of 5 but got 9
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 23 passed (24)
+   Start at  20:49:15
+   Duration  187ms (transform 24ms, setup 0ms, collect 24ms, tests 17ms, environment 0ms, prepare 28ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > sweepReconciliations > caps the sweep, oldest first
+AssertionError: expected [ '1|1', '2|2', '3|3', '4|4', …(5) ] to have a length of 5 but got 9
+
+- Expected
++ Received
+
+- 5
++ 9
+
+ ❯ lib/__tests__/reconciliation.test.ts:296:18
+    294|     );
+    295|     const keys = Object.keys(out.reconciled ?? {});
+    296|     expect(keys).toHaveLength(SWEEP_LIMIT);
+       |                  ^
+    297|     expect(keys).toEqual(["1|1", "2|2", "3|3", "4|4", "5|5"]);
+    298|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+

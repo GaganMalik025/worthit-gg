@@ -1,5 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { dispatchGeneration, readQuota, writeQuota } from "../../../lib/github";
+import {
+  dispatchGeneration,
+  fetchVerdictCost,
+  listRuns,
+  readQuota,
+  runOutcome,
+  sweepReconciliations,
+  writeQuota,
+} from "../../../lib/github";
 import { canGenerate, chargeReservation, recordDispatch, rollDay, type QuotaState } from "../../../lib/quota";
 
 export const dynamic = "force-dynamic";
@@ -12,7 +20,24 @@ export async function POST(req: NextRequest) {
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "unknown";
 
-  const state = rollDay((await readQuota()) as QuotaState);
+  const read = rollDay((await readQuota()) as QuotaState);
+
+  // Give back what today's FINISHED generations did not spend, before deciding
+  // whether this one fits. Deliberately placed between the read and the charge:
+  // the correction then rides the write this route already performs, so it adds
+  // no writer to a ledger that has no compare-and-swap, and the fact and the
+  // counter land in one PATCH.
+  //
+  // NEVER BLOCKS A DISPATCH. A sweep failure falls back to the un-reconciled
+  // (higher) figure, which can only ever deny a request that the true number
+  // would have allowed. Refusing to generate is recoverable; authorising
+  // against budget that is already spent is not.
+  const state = await sweepReconciliations(read, {
+    listRuns,
+    runOutcome,
+    fetchVerdictCost,
+  }).catch(() => read);
+
   const check = canGenerate(state, ip);
   if (!check.allowed) {
     // guard 1: reserve spent (or the secondary IP guard) -> queue fallback.
@@ -23,9 +48,20 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Reserve up front so a burst cannot oversubscribe between check and record.
-  // The workflow writes the authoritative charge afterwards, so the ledger
-  // self-corrects if a pre-check races (GitHub variables have no CAS).
+  // Reserve up front, in full, so a burst cannot oversubscribe between check
+  // and record.
+  //
+  // This used to say the workflow wrote the authoritative charge afterwards and
+  // the ledger self-corrected. It never did: the runner's GITHUB_TOKEN cannot
+  // write repository variables, so that step reported success while writing
+  // nothing, and it has since been deleted outright (generate-verdict.yml,
+  // "THIS STEP NO LONGER RECORDS ANYTHING"). Reservations simply stood at
+  // EST_COST for the rest of the quota day. The correction is the sweep above
+  // instead - site-side, from the cost the runner commits into the artifact.
+  //
+  // GitHub variables still have no CAS, and two concurrent dispatches can still
+  // lose one another's charge. That race is untouched here.
+  //
   // Record WHEN we asked, not just that we charged. /api/status needs it to
   // tell "the run has not appeared yet" from "the run is never coming" - those
   // were indistinguishable, and the second one rendered as "You're next"

@@ -1,0 +1,58 @@
+$ npx vitest run lib/__tests__/reconciliation.test.ts   (cwd=site)
+exit=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/reconciliation.test.ts (24 tests | 2 failed) 15ms
+   × effectiveLiveUsed > corrects UPWARD when a run cost more than it reserved 3ms
+     → expected 13 to be 14 // Object.is equality
+   × effectiveLiveUsed > nets a cheap run against an expensive one 0ms
+     → expected 20 to be 21 // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 22 passed (24)
+   Start at  20:49:13
+   Duration  176ms (transform 24ms, setup 0ms, collect 24ms, tests 15ms, environment 0ms, prepare 25ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > effectiveLiveUsed > corrects UPWARD when a run cost more than it reserved
+AssertionError: expected 13 to be 14 // Object.is equality
+
+- Expected
++ Received
+
+- 14
++ 13
+
+ ❯ lib/__tests__/reconciliation.test.ts:71:34
+     69|   it("corrects UPWARD when a run cost more than it reserved", () => {
+     70|     const s: QuotaState = { live_used: 13, reconciled: { "413150|1": 1…
+     71|     expect(effectiveLiveUsed(s)).toBe(14);
+       |                                  ^
+     72|     expect(effectiveLiveUsed(s)).toBeGreaterThan(13);
+     73|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  lib/__tests__/reconciliation.test.ts > effectiveLiveUsed > nets a cheap run against an expensive one
+AssertionError: expected 20 to be 21 // Object.is equality
+
+- Expected
++ Received
+
+- 21
++ 20
+
+ ❯ lib/__tests__/reconciliation.test.ts:81:34
+     79|     };
+     80|     // -1 for the overrun, +6 for the cheap one
+     81|     expect(effectiveLiveUsed(s)).toBe(26 - (-1 + 6));
+       |                                  ^
+     82|     expect(effectiveLiveUsed(s)).toBe(21);
+     83|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

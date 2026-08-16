@@ -1,0 +1,35 @@
+$ .venv/bin/python pipeline/test_verdict_cost.py   (cwd=.)
+exit=1
+
+====================================================================
+verdict cost field - offline, committed seed artifacts only
+====================================================================
+
+cost block shape
+  ok   assemble() writes a cost block
+  ok   model_calls is an int
+  ok   basis is a non-empty string
+  ok   the block carries nothing else
+
+the number is the pacer's, not a constant
+  FAIL model_calls tracks calls_for (7)  <- 9
+  FAIL model_calls tracks calls_for (14)  <- 9
+  FAIL the two differ  <- 
+  FAIL a run that overran EST_COST=13 is representable  <- 
+
+the basis string cannot quietly become a bare number
+  ok   names the quota-day scope
+  ok   names the machine scope
+  ok   warns about same-day regeneration
+  ok   says it never renders
+
+real pacer attribution (temp state, no network)
+  ok   three requests count as three
+  ok   a different appid counts zero
+
+round trip through the committed artifact
+  FAIL model_calls survives serialization  <- 
+  ok   the verdict still carries its own required keys
+
+11 passed, 5 failed
+FAILED: model_calls tracks calls_for (7), model_calls tracks calls_for (14), the two differ, a run that overran EST_COST=13 is representable, model_calls survives serialization
