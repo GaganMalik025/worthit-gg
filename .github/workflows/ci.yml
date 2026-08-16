@@ -10,21 +10,28 @@ name: ci
 # The pipeline paths are in the trigger on purpose. A change to live_quota.py
 # alone is exactly what caused the drift, and a site-only path filter would not
 # have run the test that catches it.
+#
+# pipeline/** rather than an enumerated file list: test_batch_guards.py imports
+# nearly every pipeline module (generate_one, live_quota, model_pacer,
+# synthesize, select_publishable, prune_verdicts, measure_claim_balance,
+# quota_day), so any narrower list drifts out of sync with what the suite
+# actually covers. requirements.txt is in for the same reason - a dependency
+# bump can break the imports without touching a single pipeline file.
 on:
   push:
     paths:
       - 'site/**'
       - 'site/public/verdicts/**'
-      - 'pipeline/live_quota.py'
-      - 'pipeline/quota_day.py'
+      - 'pipeline/**'
+      - 'requirements.txt'
       - '.github/workflows/ci.yml'
   pull_request:
     paths:
       - 'site/**'
       - 'site/public/verdicts/**'
-      - 'pipeline/live_quota.py'
-      - 'pipeline/quota_day.py'
-      - '.github/workflows/ci.yml' 
+      - 'pipeline/**'
+      - 'requirements.txt'
+      - '.github/workflows/ci.yml'
 
 jobs:
   test:
@@ -40,3 +47,36 @@ jobs:
         working-directory: site
       - run: npm test
         working-directory: site
+
+  python-guards:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # A REAL .venv at the repo root, not a bare `pip install`. The suite
+      # hardcodes PY = <repo>/.venv/bin/python and spawns real subprocesses
+      # through that exact path - the 12-process concurrency test, and the
+      # select_publishable.py / prune_verdicts.py runs against real git repos in
+      # temp dirs. Without the binary at that path those tests do not fail
+      # loudly; they fail confusingly on a missing interpreter, or get swallowed
+      # by error handling and misreport. Same commands requirements.txt
+      # documents, so CI and a dev machine install identically.
+      - run: python3 -m venv .venv
+      - run: .venv/bin/pip install -r requirements.txt
+
+      # Fail early and legibly if the interpreter the suite reaches for is not
+      # where it expects, rather than surfacing it as a subprocess error 400
+      # lines into the run.
+      - name: verify .venv/bin/python exists at the repo root
+        run: |
+          test -x .venv/bin/python || { echo "::error::.venv/bin/python missing - the guard suite spawns subprocesses through this exact path"; exit 1; }
+          .venv/bin/python -V
+
+      # From the repo root, matching the script's own docstring. No git config
+      # setup: the suite's fixtures pass GIT_AUTHOR_NAME/EMAIL per-command
+      # rather than relying on global config.
+      - name: guard suite
+        run: .venv/bin/python pipeline/test_batch_guards.py

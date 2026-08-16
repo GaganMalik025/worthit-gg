@@ -12,6 +12,15 @@ discovered at 3am halfway through an unattended run:
     after it
 
 Run:  .venv/bin/python pipeline/test_batch_guards.py
+
+Run from the REPO ROOT, and through the .venv interpreter specifically: PY
+below is a hardcoded path to .venv/bin/python, and several tests spawn real
+subprocesses through it. A bare `python pipeline/test_batch_guards.py` against
+a system interpreter will reach for a binary that may not exist.
+
+CI runs this in the `python-guards` job of .github/workflows/ci.yml, which
+builds that same .venv. Before 2026-08-16 nothing in CI ran this file at all -
+neither the path trigger nor any job referenced it (see BACKLOG, e06538a).
 """
 
 import json
