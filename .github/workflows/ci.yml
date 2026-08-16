@@ -86,3 +86,12 @@ jobs:
       # push is verified exactly once, by the person who wrote it.
       - name: verdict cost field
         run: .venv/bin/python pipeline/test_verdict_cost.py
+
+      # Same reasoning, and one step further: this one reads all 306 published
+      # verdicts and recomputes every cohort's sourcing block from the
+      # citations in its own file. That makes it a check on the ARTIFACT, not
+      # just on the code - a re-extraction that leaves a stale block behind
+      # fails the push that carries it, which is the only moment anyone would
+      # notice. site/public/verdicts/** is already in the trigger above.
+      - name: cohort sourcing contract
+        run: .venv/bin/python pipeline/test_sourcing_contract.py

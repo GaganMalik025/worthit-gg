@@ -1,0 +1,46 @@
+$ .venv/bin/python pipeline/test_sourcing_contract.py   (cwd=.)
+exit=1
+
+====================================================================
+cohort sourcing block - offline, committed artifacts only
+====================================================================
+
+the thresholds are the ones that were measured
+  ok   ALPHA is 0.05 Bonferroni-corrected over the 1,077-section family
+  ok   THIN_MAX_REVIEWS is the p10 of the measured distribution (4)
+
+the binomial tail is exact and hand-checkable
+  ok   P(X<=0 | n=2, p=.971) == 0.029^2
+  ok   P(X<=n | n, p) == 1
+  ok   the tail grows with k
+  ok   no cited reviews yields None, never a number
+  ok   no pool rate yields None
+  ok   a 100% pool makes any dissent impossible, not merely unlikely
+
+thin fires at 4 distinct reviews and not at 5
+  FAIL 4 distinct cited reviews is thin  <- got {'level': 'escalated', 'triggers': ['thin', 'divergent'], 'cited_reviews': 4, 'cited_recommend': 4, 'divergence_p': 1.0, 'basis': 'pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13'}
+  FAIL 5 distinct cited reviews is not  <- got {'level': 'escalated', 'triggers': ['divergent'], 'cited_reviews': 5, 'cited_recommend': 5, 'divergence_p': 1.0, 'basis': 'pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13'}
+
+divergent straddles ALPHA, on a pair 1.3e-5 apart
+  ok   just inside ALPHA escalates
+  ok   just outside ALPHA does not
+  ok   and the pair really does straddle the constant
+
+only the negative direction escalates - the copy depends on it
+  FAIL an overwhelmingly positive cited sample never escalates  <- got {'level': 'escalated', 'triggers': ['divergent'], 'cited_reviews': 12, 'cited_recommend': 12, 'divergence_p': 1.0, 'basis': 'pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13'}
+  ok   ...and its tail probability is at the top of the range, not the bottom
+
+a reviewer cited by three claims is one reviewer
+  ok   12 citation instances over 4 reviewers counts 4
+  ok   and is therefore thin
+
+no block where nothing renders beneath the heading
+  ok   a muted cohort gets no block (invariant 12 owns that section)
+  ok   an unmuted cohort whose claims all dropped gets no block
+
+every published block still describes the claims in its own file
+  ok   306 verdicts read, 1077 cohort blocks recomputed
+  FAIL no block disagrees with the citations beneath it  <- stale: 10/early, 10/mid, 10/veteran, 105600/mid, 105600/veteran (+175)
+
+17 passed, 4 failed
+FAILED: 4 distinct cited reviews is thin, 5 distinct cited reviews is not, an overwhelmingly positive cited sample never escalates, no block disagrees with the citations beneath it

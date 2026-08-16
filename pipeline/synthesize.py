@@ -53,6 +53,7 @@ import flags as flags_mod                              # noqa: E402
 import live_quota                                      # noqa: E402  (flash daily cap)
 import model_pacer                                     # noqa: E402
 import prevalence_guard                                # noqa: E402
+import sourcing as sourcing_mod                        # noqa: E402  (B2 disclosure)
 from extract_claims import (CACHE_DIR, PACE_SECONDS, call_model,  # noqa: E402
                             cache_path, load_env, response_text)
 from fetch_reviews import BUCKETS, SEED_GAMES          # noqa: E402
@@ -650,6 +651,11 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
                 })
             section["themes"] = [{"theme": t, "claims": cs}
                                  for t, cs in themed.items()]
+        # B2 sourcing disclosure. Computed here, from the section as assembled,
+        # for the same reason citation_split is computed here: the site is a
+        # renderer, and a figure derived in TypeScript is a figure nothing in
+        # the pipeline re-derives or tests. Reads only what already shipped.
+        section["sourcing"] = sourcing_mod.sourcing_block(section)
         out_cohorts.append(section)
 
     out_flags = []

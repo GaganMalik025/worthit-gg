@@ -16,7 +16,49 @@
  */
 
 import { CaseHero } from "./CaseHero";
-import type { Verdict } from "../lib/verdict";
+import type { Sourcing, Verdict } from "../lib/verdict";
+
+/**
+ * The sourcing disclosure (B2). Tier 1 is unconditional on every cohort that
+ * renders claims, because divergence between the pool rate and the cited
+ * sample is the catalog's NORMAL state - measured 2026-08-17, 21.4% of cohort
+ * sections diverge by more than 40 points and only 1 of 1,077 diverges the
+ * other way. A note that appeared only on the tail would tell a reader, by its
+ * silence, that every other claim list was drawn representatively.
+ *
+ * Deliberately numberless. The counts sit in the JSON as diagnostics and must
+ * not reach this function - see the Sourcing type and invariant 13.
+ *
+ * "more negative" is safe to state unconditionally on the divergent trigger:
+ * pipeline/sourcing.py tests the LOWER binomial tail only, so that rule cannot
+ * fire in the other direction.
+ *
+ * THE REPETITION IS A DELIBERATE NON-FIX (owner, 2026-08-17). On a title whose
+ * cohorts all escalate - Counter-Strike (10) is the example, 7 titles carry 3
+ * or more - the same baseline sentence renders four times down the page. The
+ * structural alternative (hoist the baseline sentence to the Split Bar, keep
+ * only the escalation clause per cohort) was considered and declined: the note
+ * is about the claim list directly beneath it, and moving it away from that
+ * list to save words costs the thing it is for. Do not re-litigate unless an
+ * audit read flags it as genuinely bad - that would be evidence, which is the
+ * bar.
+ */
+export function sourcingNote(s: Sourcing | null): string | null {
+  if (!s) return null;
+  const base =
+    "The rate above covers all reviews in this cohort. " +
+    "The points below come from the reviews that described something specific";
+  const thin = s.triggers.includes("thin");
+  const divergent = s.triggers.includes("divergent");
+  if (thin && divergent) {
+    return `${base} — here, an unusually small set of them, leaning more negative than the cohort above.`;
+  }
+  if (thin) return `${base} — here, an unusually small set of them.`;
+  if (divergent) {
+    return `${base} — here, reviews leaning more negative than the cohort above.`;
+  }
+  return `${base}.`;
+}
 
 /** Must cover every value in pipeline/extract_claims.py THEMES - asserted by
  *  lib/__tests__/theme-labels.contract.test.ts, because the `?? t.theme`
@@ -123,6 +165,20 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
             {c.pool_n} reviews
           </div>
           {c.summary ? <p className="summary">{c.summary}</p> : null}
+          {/* Sits directly above the claim list because that is what it is
+              about ("the points below"), and renders nothing when the cohort
+              renders no claims. */}
+          {sourcingNote(c.sourcing) ? (
+            <p
+              className={
+                c.sourcing?.level === "escalated"
+                  ? "sourcing escalated"
+                  : "sourcing"
+              }
+            >
+              {sourcingNote(c.sourcing)}
+            </p>
+          ) : null}
           {c.themes.map((t) => (
             <div key={t.theme} className="theme">
               <h3>{THEME_LABEL[t.theme] ?? t.theme}</h3>

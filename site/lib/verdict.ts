@@ -37,6 +37,30 @@ export interface Claim {
   citations: Citation[];
 }
 
+/**
+ * Where this cohort's claims came from, computed in pipeline/sourcing.py.
+ *
+ * `level` and `triggers` are the ONLY fields that may drive rendering, and the
+ * disclosure they drive is deliberately numberless (owner decision,
+ * 2026-08-17). The counts below are pipeline diagnostics carried for the
+ * contract test, on the same footing as every other post-filter count
+ * invariant 13 keeps off the page: DESIGN.md:238 calls the per-claim receipts
+ * tag the one sanctioned non-pool number, and a cohort-level count would be a
+ * second one. Rendering `cited_reviews` - as a count, a rate, or a share -
+ * needs an explicit DESIGN.md amendment first, as its own decision.
+ *
+ * null when nothing renders beneath the heading: a muted cohort (invariant 12)
+ * or an unmuted one whose claims all dropped.
+ */
+export interface Sourcing {
+  level: "baseline" | "escalated";
+  triggers: ("thin" | "divergent")[];
+  cited_reviews: number;
+  cited_recommend: number;
+  divergence_p: number | null;
+  basis: string;
+}
+
 export interface Cohort {
   bucket: string;
   label: string;
@@ -46,6 +70,7 @@ export interface Cohort {
   muted: boolean;
   n_note: string | null;
   summary: string | null;
+  sourcing: Sourcing | null;
   themes: { theme: string; claims: Claim[] }[];
 }
 
@@ -133,6 +158,10 @@ export function normalizeVerdict(raw: unknown): Verdict {
       muted: Boolean(c.muted),
       n_note: c.n_note ?? null,
       summary: c.summary ?? null,
+      // Absent on any verdict generated before 2026-08-17. Normalising to null
+      // means those pages render without the note rather than throwing - the
+      // backfill is what puts it on them, not the renderer.
+      sourcing: c.sourcing ?? null,
       themes: (c.themes ?? []).map((t) => ({
         ...t,
         claims: (t.claims ?? []).map((cl) => ({

@@ -62,6 +62,83 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-17 | **40 citations render an hours figure that contradicts the cohort
+heading above them** | build, cohort-sourcing measurement | Sweeping every
+citation in all 306 verdicts against its cohort's hour range finds **40 of
+15,736** sitting exactly on a boundary and reading as outside it: `2.0 hrs`
+under `<2h refund window` (28 of them), `20.0 hrs` under the early heading (8),
+`100.0 hrs` under mid (4). Not a bucketing error — invariant 1 puts bucketing on
+raw MINUTES at ingestion, and the bucket is right; 119 minutes is
+`refund_window` and always was. What renders is `hours_at_review` rounded to
+one decimal, and 119/60 = 1.983 displays as `2.0`. The rounding is already
+baked into `data/filtered/` (Arma 3's `230637493` is stored as
+`hours_at_review: 2.0, bucket: refund_window`), so the display value and the
+bucketing input have been separate quantities since ingestion. **Why it is
+worth recording rather than shrugging at:** the whole citation UI exists to let
+a sceptical reader check the receipts, and 0.25% of the time the receipt
+appears to disprove the heading it sits under. A reader who notices cannot
+distinguish "rounding" from "the segmentation is wrong", and the segmentation
+*is* the product thesis. **Not fixed** because the honest options differ in
+kind and the choice is a display decision, not a bug fix: floor the display
+instead of rounding (`1.9 hrs`, truthful to the bucket, slightly wrong as a
+duration), carry a second decimal at the boundary only (`1.98 hrs`, precise and
+fussy), or keep minutes alongside hours in the citation record so the UI can
+choose. All three touch what renders on every citation on every page, for 40
+cases. Cheap and safe whenever the citation row is next open.
+
+2026-08-16 | **The 2026-08-13 guard-suite flake reproduced in CI, with the
+evidence captured this time — it is a TOCTOU race in `model_pacer._locked`, not
+a timing-sensitive assertion** | build, CI run 31956075631 on the action-version
+bump | `pipeline/model_pacer.py:107` reads
+
+    age = time.time() - lock.stat().st_mtime if lock.exists() else 0
+
+`exists()` and `stat()` are two syscalls against a path another process is
+racing to `rmdir()`. When the holder releases in that window, `stat()` raises
+`FileNotFoundError`, it propagates out of `_locked`, and the child dies
+**before charging**. Captured verbatim from the failing job:
+
+    3 FAILURES:
+      all 12 charge processes exited 0 rc=1 ^^^
+      FileNotFoundError: [Errno 2] No such file or directory:
+        '/tmp/tmpy6bohrk8/q.json.lock'
+      12 concurrent charges of 1 all land 11
+
+**`adf26e3` is what made this diagnosable, and it worked exactly as designed.**
+The 2026-08-11 entry's whole complaint was that
+`test_ledger_charge_is_atomic` could not tell a crashed child from a lost
+update, and set a standing rule that a flake on it is UNVERIFIED rather than
+"probably fine". Here the exit-code assertion fired first and named the mode:
+`all 12 charge processes exited 0` FAILED with `rc=1`, so this is a **crashed
+child, not a lost update** — the lock's mutual exclusion is not implicated, and
+the atomicity guard itself is not in question. That distinction was
+unobtainable before `adf26e3` and is the entire reason this entry can state a
+cause rather than list candidates.
+
+It also closes the 2026-08-13 entry's open question. That entry named two
+candidates — "a timing-sensitive check under load, or a temp-dir/filesystem
+race" — and could not choose between them because the output had gone to
+`/dev/null`. It is the second one.
+
+**Not caused by the action bump it surfaced on.** `fff2aa5` changes only
+`.github/workflows/ci.yml`; `git diff --stat 2d2f5e4 fff2aa5` touches no Python,
+so the suite's code is byte-identical across the failing and passing runs, and
+both ran Python 3.12.13. Re-running the identical commit went green, which is
+the definition of nondeterministic. The bump is a bystander that happened to
+provide the 13th sample.
+
+**Why not fixed here:** the fix is small and obvious in isolation — catch
+`FileNotFoundError`/`OSError` around the age probe and treat an vanished lock as
+age 0, i.e. retry the `mkdir` — but it is a change to the lock every Gemini
+charge in the project passes through, on the night a batch is due, and the
+honest way to land it is with a reproduction harness that fails first. That is
+buildable: the race needs contention plus a holder releasing mid-probe, which
+the existing 12-process fixture already produces at roughly 1-in-13. Do it as
+its own change, mutation-proved against the captured traceback above, not as a
+ride-along on a version bump. Until then the suite retains a ~7% false-failure
+rate in CI, which is itself an argument for doing it soon: a gate that cries
+wolf gets ignored. Related: [[verify-the-verifier]].
+
 2026-08-16 | **The live path keeps a second, doubled ledger on the runner that
 nothing reads** | build, implementing EST_COST reconciliation | The workflow's
 `seed the ledger from the dispatch payload` step writes the site's counters into

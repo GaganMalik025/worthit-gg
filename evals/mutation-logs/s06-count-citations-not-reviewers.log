@@ -1,0 +1,46 @@
+$ .venv/bin/python pipeline/test_sourcing_contract.py   (cwd=.)
+exit=1
+
+====================================================================
+cohort sourcing block - offline, committed artifacts only
+====================================================================
+
+the thresholds are the ones that were measured
+  ok   ALPHA is 0.05 Bonferroni-corrected over the 1,077-section family
+  ok   THIN_MAX_REVIEWS is the p10 of the measured distribution (4)
+
+the binomial tail is exact and hand-checkable
+  ok   P(X<=0 | n=2, p=.971) == 0.029^2
+  ok   P(X<=n | n, p) == 1
+  ok   the tail grows with k
+  ok   no cited reviews yields None, never a number
+  ok   no pool rate yields None
+  ok   a 100% pool makes any dissent impossible, not merely unlikely
+
+thin fires at 4 distinct reviews and not at 5
+  ok   4 distinct cited reviews is thin
+  ok   5 distinct cited reviews is not
+
+divergent straddles ALPHA, on a pair 1.3e-5 apart
+  ok   just inside ALPHA escalates
+  ok   just outside ALPHA does not
+  ok   and the pair really does straddle the constant
+
+only the negative direction escalates - the copy depends on it
+  ok   an overwhelmingly positive cited sample never escalates
+  ok   ...and its tail probability is at the top of the range, not the bottom
+
+a reviewer cited by three claims is one reviewer
+  FAIL 12 citation instances over 4 reviewers counts 4  <- got 12
+  FAIL and is therefore thin  <- 
+
+no block where nothing renders beneath the heading
+  ok   a muted cohort gets no block (invariant 12 owns that section)
+  ok   an unmuted cohort whose claims all dropped gets no block
+
+every published block still describes the claims in its own file
+  ok   306 verdicts read, 1077 cohort blocks recomputed
+  FAIL no block disagrees with the citations beneath it  <- stale: 10/early, 10/veteran, 10090/early, 10090/mid, 10090/veteran (+827)
+
+18 passed, 3 failed
+FAILED: 12 citation instances over 4 reviewers counts 4, and is therefore thin, no block disagrees with the citations beneath it

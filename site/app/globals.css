@@ -138,6 +138,13 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
 .cohort{margin-top:40px;background:var(--surface);border-radius:12px;padding:24px}
 .cohort .stats{margin-top:4px;color:var(--text-dim);font-size:14px}
 .cohort .summary{margin-top:12px;color:var(--text-dim)}
+/* Provenance, not an alarm - the distortion-flag strip is the loud element on
+   this page and this must not compete with it. Tier 1 sits back at --text-dim;
+   the escalated variant gains a hairline rule and normal text weight rather
+   than a colour, because a verdict colour here would read as a judgement about
+   the game. Numberless by design (invariant 13). */
+.cohort .sourcing{margin-top:12px;color:var(--text-dim);font-size:14px}
+.cohort .sourcing.escalated{color:var(--text);border-left:2px solid var(--hairline);padding-left:12px}
 .theme{margin-top:24px}
 .theme h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim)}
 .claim{padding:16px 0;border-top:1px solid var(--hairline)}
