@@ -1,0 +1,436 @@
+{
+  "appid": "219150",
+  "game_name": "Hotline Miami",
+  "generated_at": "2026-08-17T13:10:40Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/219150/header.jpg?t=1785434922",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/219150/capsule_231x87.jpg?t=1785434922",
+    "grid": "https://cdn2.steamgriddb.com/grid/9fad6725914cafe948673da493a02c5b.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 5,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "Fast-paced neon violence with a pulsing electronic soundtrack.",
+    "for_you_if": [
+      "you enjoy fast-paced action with instant respawns",
+      "you love a neon-soaked aesthetic and electronic music"
+    ],
+    "not_for_you_if": [
+      "you need the game to support rebinding controls",
+      "you struggle with camera and mouse movement linking",
+      "you encounter crashes and launch folder issues"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 115,
+      "pct_positive": 66.1,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 1041,
+      "pct_positive": 94.2,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 79,
+      "pct_positive": 98.7,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 1,
+      "pct_positive": 0.0,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Initial reviews show lower satisfaction compared to later playtimes.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 66.1,
+            "pool_n": 115
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 94.2,
+            "pool_n": 1041
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 98.7,
+            "pool_n": 79
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 66.1,
+        "low_pool_n": 115,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 98.7,
+        "high_pool_n": 79,
+        "gap_pts": 32.6
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 115,
+      "pct_positive": 66.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players report control limitations, camera friction, and technical bugs.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-771219",
+              "claim": "Reviewers report that the game does not support rebinding controls.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229856280",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Game doesn't support rebinding the controls.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229680979",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-05",
+                  "review_text": "You can't remap controls. Using the right bumper as shoot is the weirdest thing I've ever seen. And a great way to make your hand cramp up.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-b2e47e",
+              "claim": "Reviewers describe the camera and mouse movement as linked to the character, making it difficult to aim and dodge simultaneously.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232287647",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "-unplayable on controller\ncamera moves around the character. Aiming demands 0.5s precision kills, while enemies moves at lightning speed\n-weak story\n-weak combat",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226580497",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-05-27",
+                  "review_text": "Unplayable on pc with the camera controls. The mouse moves dependently of the character. A truly mind-boggling game design choice... Never in my life have I seen a top down game where the cursor will move with your character. \r\nThe result of this is that it's basically impossible (or at least insanely difficult) to do something simple like dodge an enemy and fight back at the same time. You literally have to multitask counteracting your movements with the mouse when avoiding enemy attacks, and trying to land a shot at the same time. The best part is there is no way to change the camera controls. It's not like that on console, and no other top down game does this. seriouly wtf... Just play intravenous or something, this game is not the move.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-6ac00e",
+              "claim": "Reviewers experience bugs including weapons and enemies phasing through walls or becoming invincible, alongside save issues and crashes.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231436840",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "This might be the most overglazed game OAT. The game have some much problems its a joke, first of the weapons like fashing through walls and you end up bugging them, sometimes the enemies like becoming invincible same with the bosses, and the game has a massive save issuse. i cant even play the game without downloading something to fix it opening up as it randomly choose to kill itself. the game is fun yes, but its a rushed bugged ♥♥♥♥♥♥ mess.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231331480",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-07-26",
+                  "review_text": "This game blows, it crashes all the time and is generally just a buggy slog. Enemies phase through doors, the AI is some of the stupidest I've ever seen, and the story is lame as hell",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 0,
+        "divergence_p": 0.00152,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 1041,
+      "pct_positive": 94.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers highlight the fast-paced gameplay, striking aesthetic, and soundtrack alongside technical hurdles.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-de29cf",
+              "claim": "Reviewers note that the game features an electronic soundtrack.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232561355",
+                  "hours_at_review": 3.4,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "Hotline Miami is a thrilling, fast-paced masterpiece that pairs brutal top-down action with a pulsing, unforgettable electronic soundtrack. Its high-difficulty, instant-respawn gameplay creates a mesmerizing loop of trial and error, while the surreal, neon-soaked 1980s aesthetic and trippy story keep you hooked until the very end.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232561234",
+                  "hours_at_review": 6.2,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "Bought game for 0.49\n\nFkn worth it\n\nFast paced hell with a good soundtrack and guts galore\n\nA bit difficult but you get the hang of it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232097939",
+                  "hours_at_review": 18.5,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "The gameplay is challenging, but in all the right ways. It's a bloody, brutal, and adrenaline-fueled experience that keeps you engaged from start to finish. It gives you complete freedom to approach each level however you want. You can take your time, plan every move, and eliminate enemies stealthily, or charge in headfirst and leave nothing but chaos behind. Both playstyles are equally satisfying. Since a single hit is enough to kill you, every encounter keeps you on edge, and even the smallest mistake can cost you the entire run.\r\n\r\nBetween the intense missions, the game unfolds a cryptic, symbolism-filled story that intentionally leaves you confused, encouraging you to piece everything together in your own way. The retro aesthetic, combined with its surreal narrative exploring just how brutal humanity can become, gives the game a unique and unforgettable identity.\r\n\r\nThe soundtrack is nothing short of phenomenal. Every track perfectly matches the game's atmosphere, and I enjoyed it so much that I downloaded several songs to my phone—I still listen to them regularly.\r\n\r\nGetting every achievement was a rewarding challenge, especially the \"Get A Life\" achievement. It demanded a lot of patience and persistence, but finally unlocking it made the experience even more satisfying.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ff1aaf",
+              "claim": "Reviewers report that the game includes an electronic soundtrack and a neon-soaked 1980s aesthetic.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232561355",
+                  "hours_at_review": 3.4,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "Hotline Miami is a thrilling, fast-paced masterpiece that pairs brutal top-down action with a pulsing, unforgettable electronic soundtrack. Its high-difficulty, instant-respawn gameplay creates a mesmerizing loop of trial and error, while the surreal, neon-soaked 1980s aesthetic and trippy story keep you hooked until the very end.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232097939",
+                  "hours_at_review": 18.5,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "The gameplay is challenging, but in all the right ways. It's a bloody, brutal, and adrenaline-fueled experience that keeps you engaged from start to finish. It gives you complete freedom to approach each level however you want. You can take your time, plan every move, and eliminate enemies stealthily, or charge in headfirst and leave nothing but chaos behind. Both playstyles are equally satisfying. Since a single hit is enough to kill you, every encounter keeps you on edge, and even the smallest mistake can cost you the entire run.\r\n\r\nBetween the intense missions, the game unfolds a cryptic, symbolism-filled story that intentionally leaves you confused, encouraging you to piece everything together in your own way. The retro aesthetic, combined with its surreal narrative exploring just how brutal humanity can become, gives the game a unique and unforgettable identity.\r\n\r\nThe soundtrack is nothing short of phenomenal. Every track perfectly matches the game's atmosphere, and I enjoyed it so much that I downloaded several songs to my phone—I still listen to them regularly.\r\n\r\nGetting every achievement was a rewarding challenge, especially the \"Get A Life\" achievement. It demanded a lot of patience and persistence, but finally unlocking it made the experience even more satisfying.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-687cb0",
+              "claim": "Reviewers describe the gameplay as fast-paced with instant respawns upon death.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232561355",
+                  "hours_at_review": 3.4,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "Hotline Miami is a thrilling, fast-paced masterpiece that pairs brutal top-down action with a pulsing, unforgettable electronic soundtrack. Its high-difficulty, instant-respawn gameplay creates a mesmerizing loop of trial and error, while the surreal, neon-soaked 1980s aesthetic and trippy story keep you hooked until the very end.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232561234",
+                  "hours_at_review": 6.2,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "Bought game for 0.49\n\nFkn worth it\n\nFast paced hell with a good soundtrack and guts galore\n\nA bit difficult but you get the hang of it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232094299",
+                  "hours_at_review": 7.1,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "Definitely got more fun the more I got used to the controls. This is a HARD game, but the game knows this, so failing never feels super crushing or tedious (it takes <1 second to respawn). \r\n\r\nGraphics and Music are definitely a highlight of the game in my eyes. Super huge fan of the neon vibe that the game is going for. \r\n\r\nGameplay is hard yes, but it's incredibly satisfying once you get the hang of it. Each kill feels super good to pull off, and combos especially are very satisfying. The lock-in mechanic was a little weird for me to get the hang of tho.\r\n\r\nI wish the story leaned a little more into the pacifist angle. That's what it's going for, but I think the game could've used a bit more of story to flesh the theming out a bit idk.\r\n\r\nNot really my type of game, but a good game nonetheless.\r\n\r\n7/10",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-932cc7",
+              "claim": "Reviewers note that the game features technical issues such as crashes and problems with monitor plugging.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232327779",
+                  "hours_at_review": 8.0,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "PEAK. Best way that i can describe it is if you put the style system from ultrakill and the stealth of payday into the original GTA. Also decently long of a game if your going for all masks. Perfect little side game to snag while a big sale is happening. Fair warning to people though, THIS GAME CRASHES A LOT. You will have to restart a level once in a while.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232177207",
+                  "hours_at_review": 14.9,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "liked the game v much was very easy in start then right at the last chapter became hard lmao. there were some issues with this game such as crashing and some monitor plugging but rest was good was enjoyable",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-5db3c9",
+              "claim": "Reviewers state that initial launches of the updated version can fail due to folder relocation by OneDrive.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232105712",
+                  "hours_at_review": 5.3,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "this game was a 8.5/10 exprince really i recommend it but i had the problem with updated version at first that simply didn't lunch and i figuerd out that one drive moved the document to one drive folder before and i uninstalled it and yeah when you return the document folder to it's place it opened perfectly fine and yeah fu*# microslop",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228760180",
+                  "hours_at_review": 13.7,
+                  "voted_up": true,
+                  "date": "2026-06-25",
+                  "review_text": "This game still has more soul than a lot of more other games. Also most iconic soundtracks of all time. Had a lot fun replaying it after the PS Vita version.\r\n\r\nOriginal version is better in performance, but has a lot more bugs than the updated one. I also couldn`t fix the resolution on the updated version so I decided to play the original one. However, If you want to get all the achievements you should probably play the updated one. Though, if you completed the original version and have troubles getting the last achievement \"Achievement w-h-o-r-e\", you should try completing the prologue in the updated version (fix by NilsPaysTheBills).",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 8,
+        "cited_recommend": 8,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 79,
+      "pct_positive": 98.7,
+      "muted": false,
+      "n_note": null,
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 1,
+      "pct_positive": 0.0,
+      "muted": true,
+      "n_note": "n=0 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1236,
+    "steam_total_reviews": 51125,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

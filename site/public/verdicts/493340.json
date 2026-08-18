@@ -1,0 +1,910 @@
+{
+  "appid": "493340",
+  "game_name": "Planet Coaster",
+  "generated_at": "2026-08-17T13:27:33Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/493340/header.jpg?t=1782480201",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/493340/capsule_231x87.jpg?t=1782480201",
+    "grid": "https://cdn2.steamgriddb.com/grid/b408660a784f2425fb2b868db94f1cdf.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 7,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "Build sprawling theme parks once you master the steep learning curve",
+    "for_you_if": [
+      "you love designing intricate theme parks",
+      "you have patience for complex building tools"
+    ],
+    "not_for_you_if": [
+      "you expect clear in-game tutorials right away",
+      "you struggle with clunky path placement and UI",
+      "your system drops frames in large parks"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 107,
+      "pct_positive": 43.0,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 576,
+      "pct_positive": 87.3,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 339,
+      "pct_positive": 94.7,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 178,
+      "pct_positive": 94.4,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Approval ratings rise steadily from early playtimes through to veteran cohorts",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 43.0,
+            "pool_n": 107
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 87.3,
+            "pool_n": 576
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 94.7,
+            "pool_n": 339
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 94.4,
+            "pool_n": 178
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 43.0,
+        "low_pool_n": 107,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 94.7,
+        "high_pool_n": 339,
+        "gap_pts": 51.7
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 107,
+      "pct_positive": 43.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Beginners face steep hurdles with missing tutorials, clunky building controls, and frustrating path placement systems",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-2f357a",
+              "claim": "Reviewers report that the game lacks any in-game tutorial or clear instructions for beginners, instead providing links to external video tutorials.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 11
+              },
+              "citations": [
+                {
+                  "recommendationid": "229125025",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-29",
+                  "review_text": "Even though I did not play it for long, I am refunding this game and recommend not buying it unless you enjoy a clunky building experience, and a bad path system. I watched Lets Game It Out and my experience wasn't near as good as his. The game also does not do a very good job at teaching you how to play or build! Do not recommend!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226737531",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-29",
+                  "review_text": "Completely overwhelming. No in-game tutorial",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226583417",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-05-27",
+                  "review_text": "     I really wanted to like this game. It just feels like a knock off park management sim. The controls are absolutely atrocious and theres no controller support on PC. Just trying to place the park entrance was enough to dissuade me from playing. \n\n\n     The developers expect you to watch someone else play to figure out how to play. Theres no \"Tutorial\" of any kind, although there are supposedly Hints, which while enabled never appeared for me. The main menu DOES  features a Tutorial Video section, but that was not a pleasant experience. Whenever you start a game mode it just loads in to a game and youre expected to figure it out from that point.\n\n     There are a handful of Game Modes; Career, Sandbox, Challenge, etc. Career mode loads you into a premade park and has a singular pop up that basically says, \"Heres a park, make it work\". Sandbox mode loads you into a completely blank enviornment with unlimited money and a bunch of convoluted menus. I had to actively hunt just to find a park entrance item menu, which was a nightmare to place proper. Challenge mode i got as far as selecting difficulty and looking at those options i promptly closed the game and uninstalled. \n\n  As a person who throughly enjoys park sims I was beyond disappointed with this one, Definitely recommend playing any other one on the store",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224450688",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-04-30",
+                  "review_text": "I've tried to play this a few times and its just frustrating because theres no tutorials on how to play, i dont know what im supposed to be doing or what any thing is used for. Its also really hard to read anything because all the writting is in the smallest friggen font. Not gonna waste my time on it anymore, i give up",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223826062",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-04-22",
+                  "review_text": "Complete lack of tutorial, or any explanations. Not even guidelines that could be found in the menu. Not unplayable, but if it is your first game of the genre, it definitely does not help to get the hang of anything. Otherwise it looked nice.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222980655",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-04-10",
+                  "review_text": "More of a tech-demo than an actual game. got it on 95% discount and still feels like a waste of money. the on-boarding and tutorializing is astonishingly bad on the very first, supposedly introductory level; Instead of teaching how the game functions in-game bit by bit, it has links to dozens of video tutorials for everything instead, which isn't so much gameplay as it is homework.\n\nRollerCoaster Tycoon from 1999 somehow manages to function as a better game than this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219985542",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-03-06",
+                  "review_text": "I'll address that this isn't a full review and I will edit this when I finally decide to come around and play this game again. But what kind of game doesn't have a tutorial. They've had ten years and enough time to churn out $80 worth of dlc but not enough time to create a tutorial. Wait, let me amend that. They apparently had youtube tutorial videos which already would be bad because I have to leave the game for the tutorial, but I don't even have to worry about that because that link leads to a deleted playlist.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "216102969",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-01-16",
+                  "review_text": "Lost interest in first 5 mins bcs theres no tutorial and game just throws you in...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "211269887",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2025-11-27",
+                  "review_text": "no tutorial, the \"tutorial videos\" also points to a deleted playlist",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209221779",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2025-11-14",
+                  "review_text": "very bad game, put challange on very easy and couldnt even play that path wont connect to the entraceses and exits of roller coasters not a clear tutorial and impossible to enjoy when youre new. DONT BUY THIS GAME ITS A WASTE OF MONEY",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "208802897",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2025-11-09",
+                  "review_text": "The complete lack of an interactive tutorial, whether specifically selected or as a copilot to your first scenarios, is a frankly crazy choice for a game like this. Some games it's excusable to have a more sandbox learn-as-you-go process, but what stopped me from even trying to persevere was the UI scaling. I'm on a 1440p monitor, nothing that crazy. All the thumbnails for items and most UI elements are extremely blurry as if they were upscaled from something as bad as 480p or 720p. Maybe this is less noticeable on a 1080p display? Either way an immediate deal breaker unfortunately.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-5ec8cb",
+              "claim": "Reviewers describe the building controls, camera movement, and UI as clunky, difficult, and frustrating to use.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 8
+              },
+              "citations": [
+                {
+                  "recommendationid": "229125025",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-29",
+                  "review_text": "Even though I did not play it for long, I am refunding this game and recommend not buying it unless you enjoy a clunky building experience, and a bad path system. I watched Lets Game It Out and my experience wasn't near as good as his. The game also does not do a very good job at teaching you how to play or build! Do not recommend!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227199603",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-06-05",
+                  "review_text": "The game is fine, but the controls are absolutely terrible, and no easy fixes.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226583417",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-05-27",
+                  "review_text": "     I really wanted to like this game. It just feels like a knock off park management sim. The controls are absolutely atrocious and theres no controller support on PC. Just trying to place the park entrance was enough to dissuade me from playing. \n\n\n     The developers expect you to watch someone else play to figure out how to play. Theres no \"Tutorial\" of any kind, although there are supposedly Hints, which while enabled never appeared for me. The main menu DOES  features a Tutorial Video section, but that was not a pleasant experience. Whenever you start a game mode it just loads in to a game and youre expected to figure it out from that point.\n\n     There are a handful of Game Modes; Career, Sandbox, Challenge, etc. Career mode loads you into a premade park and has a singular pop up that basically says, \"Heres a park, make it work\". Sandbox mode loads you into a completely blank enviornment with unlimited money and a bunch of convoluted menus. I had to actively hunt just to find a park entrance item menu, which was a nightmare to place proper. Challenge mode i got as far as selecting difficulty and looking at those options i promptly closed the game and uninstalled. \n\n  As a person who throughly enjoys park sims I was beyond disappointed with this one, Definitely recommend playing any other one on the store",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222650151",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-04-06",
+                  "review_text": "The camera is just... impossible...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "217355105",
+                  "hours_at_review": 0.2,
+                  "voted_up": true,
+                  "date": "2026-02-01",
+                  "review_text": "I've yet to give it a focused session, but from my few minutes before closing it, it appeared to be RTC3 meets The Sims 4, but with a confusing UI.\n\nI hear great things tho. Pick it up on sale.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "216220743",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-01-18",
+                  "review_text": "This game really needs a tutorial. There are no instructions for how to do anything and I'm having to google controls for every step of construction. It's immensely frustrating. I later realized the controls weren't working due to bugs. \n\nCan't place items on completely flat terrain. \"Intersecting terrain\" when it's as flat as a pancake.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "212330408",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2025-12-01",
+                  "review_text": "Unfortunately, an instant uninstall. Simply building a path is extremely difficult, and controls to even build a toilet are very jittery and inconsistent. I was able to build one flat ride, but all of this took over 30 minutes. Maybe it's the lifelong RCT player in me (I mean, I'm sure it is) but I just can't tolerate it. Refunded.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "207506529",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2025-10-25",
+                  "review_text": "O gráfico é bonitinho, mas meua migo, os comandos são uma merda, fazer \"estrada\" ou caminhos é simplesmente terrível, os atalhos são ruins, mover, girar, selecionar as estruturas é horroroso, nenhum jogo tem a qualidade e nem o charme de Roller Coaster Tycoon 1 e 2.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "206948881",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2025-10-17",
+                  "review_text": "This game is so terrible, I wish I could get a refund. Even the basic controls are so bad, it turns any new play away. If you look for a good coaster game, get the most famous Roller Coaster Tycoon.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-01c216",
+              "claim": "Reviewers experience issues with the path-building system, stating that connecting paths and placing park entrances or ride queues is problematic.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "229125025",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-29",
+                  "review_text": "Even though I did not play it for long, I am refunding this game and recommend not buying it unless you enjoy a clunky building experience, and a bad path system. I watched Lets Game It Out and my experience wasn't near as good as his. The game also does not do a very good job at teaching you how to play or build! Do not recommend!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "214980806",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-01-03",
+                  "review_text": "I really hope the devs made it easier to lay paths in PC2, because the process really sucks in this one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "212330408",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2025-12-01",
+                  "review_text": "Unfortunately, an instant uninstall. Simply building a path is extremely difficult, and controls to even build a toilet are very jittery and inconsistent. I was able to build one flat ride, but all of this took over 30 minutes. Maybe it's the lifelong RCT player in me (I mean, I'm sure it is) but I just can't tolerate it. Refunded.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "210692192",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2025-11-25",
+                  "review_text": "The most irritating building system ive ever used, grid system is so inconsistent and problematic.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209221779",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2025-11-14",
+                  "review_text": "very bad game, put challange on very easy and couldnt even play that path wont connect to the entraceses and exits of roller coasters not a clear tutorial and impossible to enjoy when youre new. DONT BUY THIS GAME ITS A WASTE OF MONEY",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "207506529",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2025-10-25",
+                  "review_text": "O gráfico é bonitinho, mas meua migo, os comandos são uma merda, fazer \"estrada\" ou caminhos é simplesmente terrível, os atalhos são ruins, mover, girar, selecionar as estruturas é horroroso, nenhum jogo tem a qualidade e nem o charme de Roller Coaster Tycoon 1 e 2.\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 20,
+        "cited_recommend": 1,
+        "divergence_p": 0.000211,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 576,
+      "pct_positive": 87.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter missing instruction, awkward interfaces, and tight budgets in early management modes",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-02268f",
+              "claim": "Reviewers report that the game lacks a proper tutorial or clear instructions for learning how to play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "231192954",
+                  "hours_at_review": 4.5,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "its a fun game i only feel like the tutorial is missing im not sure if i missed something but i feel like its missing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231158640",
+                  "hours_at_review": 5.8,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "no tutorial, when playing career it is so hard to make any money.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231076186",
+                  "hours_at_review": 5.1,
+                  "voted_up": false,
+                  "date": "2026-07-22",
+                  "review_text": "Planet Coaster has nice graphics and is frustrating! There needs to be a tutorial! Play/Buy the original Rollercoaster Tycoon is so much better than this! Not recommended",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228909808",
+                  "hours_at_review": 4.3,
+                  "voted_up": false,
+                  "date": "2026-06-26",
+                  "review_text": "Planet Coaster really needs a tutorial, and instead of having one there's a button that sends you to a youtube playlist that does not exist. I think Frontier learned its lesson here, because I also have Jurassic World Evolution 2, and that whole game is a tutorial.\n\nNPCs look like rejects from a GrubHub commercial, and I struggle to complete challenges at greater than a snail's pace (no tutorials, remember). Game thinks the point of designing an AMUSEMENT park is to constantly tell me guests are losing interest in my rides (erm, is that ride older than five months? Hecking yikes, man...) and employees are unhappy with their wages.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228692240",
+                  "hours_at_review": 16.1,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "there is no tutorial or explanation on how to do things or what influences guest opinion of your rides",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228241195",
+                  "hours_at_review": 5.8,
+                  "voted_up": false,
+                  "date": "2026-06-18",
+                  "review_text": "Does not teach you how to play, does not tell you how to fix things going wrong, staff [i]constantly[/i] want raises, camera movement feels bad, and the whole UI is clunky and unintuitive. Despite maps being themed, the game seems uninterested in helping you keep it on theme, and researched items don't even have pre-made structures. You have to build every floor, wall, and decoration for each building and change the colors on everything if you want it to match the theme. Also had to turn off the shadows because they're glitchy AF\n\nOverall, it fails to match games that came 15 years before it, let alone improve them. I'd take 1999's Theme Park World over this game any day and it has just about everything this game does. Maybe the second one fixes a lot of the issues, idk, and I probably won't find out; I'm just working my way through my backlog 😂",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-d84cd9",
+              "claim": "Reviewers find the building controls and user interface clunky and difficult to navigate.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232768396",
+                  "hours_at_review": 3.0,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "the building and controls are cluncky and i regret playing this game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228918088",
+                  "hours_at_review": 3.7,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "I'm disappointed in Planet Coaster. I loved RCT3 and thought an update would be great. But I find the controls much more clunky and difficult to manage. As such, building the park is difficult and frustrating. I can't stand that a lot of the appealing ride and scenery have to purchased as a DLC. I'd rather they charged me more and just gave me everything. I bought the DLC for Halloween and it was extremely disappointing. I had to keep checking to see if the DLC went through because so little content was added. If I can get it to run on a modern PC, I'll stick with RCT3.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228241195",
+                  "hours_at_review": 5.8,
+                  "voted_up": false,
+                  "date": "2026-06-18",
+                  "review_text": "Does not teach you how to play, does not tell you how to fix things going wrong, staff [i]constantly[/i] want raises, camera movement feels bad, and the whole UI is clunky and unintuitive. Despite maps being themed, the game seems uninterested in helping you keep it on theme, and researched items don't even have pre-made structures. You have to build every floor, wall, and decoration for each building and change the colors on everything if you want it to match the theme. Also had to turn off the shadows because they're glitchy AF\n\nOverall, it fails to match games that came 15 years before it, let alone improve them. I'd take 1999's Theme Park World over this game any day and it has just about everything this game does. Maybe the second one fixes a lot of the issues, idk, and I probably won't find out; I'm just working my way through my backlog 😂",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-e82015",
+              "claim": "Reviewers describe maintaining profitability in career and challenge modes as extremely difficult due to expenses and low starting funds.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231158640",
+                  "hours_at_review": 5.8,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "no tutorial, when playing career it is so hard to make any money.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230989564",
+                  "hours_at_review": 7.2,
+                  "voted_up": false,
+                  "date": "2026-07-21",
+                  "review_text": "My first experience went like this...\nI want to play with no challenges but also not unlimited money. I want to build and solve park problems organically not be forced into scenarios or free money unlimited build.\nI finally found it in what's called challenge mode despite it not having any challenges like career mode. Already that over site should show you the care and foresight that went into this game... They cant even name game modes correctly...\nI went into challenge mode didnt even have enough money to start a park.....\nI literally built a circle path and place a carousel and i was broke....\nI placed it wrong because you would think turning a building or placeable would be done thru hold right click and turning the mouse... nope its a separate keyboard shortcut that they dont tell you!!!\nI tried to move it to where I wanted but could only move the ride itself not the decoration that make up its vibe...\nSo my first time was terrible to say the least I rage quit and said screw this!!!\n\nIGNORE FRONTIER THEY ARE TRASH!!!!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229273825",
+                  "hours_at_review": 7.9,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "i keep losing money no matter what i do. it gets to the point where even my coasters lose money. not recommended. never install.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "ear-abe4fa",
+              "claim": "Reviewers note that unowned DLC content, such as coasters, appears in research menus during sandbox play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232776351",
+                  "hours_at_review": 10.6,
+                  "voted_up": false,
+                  "date": "2026-08-14",
+                  "review_text": "It's [u]really[/u] scummy to have DLC coasters show up as research in sandbox for DLC you don't own.\n\nNot only are you harassing me to buy the DLC I don't particularly want, it's literally harming the gameplay",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228918088",
+                  "hours_at_review": 3.7,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "I'm disappointed in Planet Coaster. I loved RCT3 and thought an update would be great. But I find the controls much more clunky and difficult to manage. As such, building the park is difficult and frustrating. I can't stand that a lot of the appealing ride and scenery have to purchased as a DLC. I'd rather they charged me more and just gave me everything. I bought the DLC for Halloween and it was extremely disappointing. I had to keep checking to see if the DLC went through because so little content was added. If I can get it to run on a modern PC, I'll stick with RCT3.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228843790",
+                  "hours_at_review": 7.5,
+                  "voted_up": false,
+                  "date": "2026-06-26",
+                  "review_text": "boring without the 40 trillion dollars of dlc #youcankeepit",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 12,
+        "cited_recommend": 1,
+        "divergence_p": 1.47e-09,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 339,
+      "pct_positive": 94.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Experienced builders report frustrating path tools and campaign trial and error",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-0c6bc8",
+              "claim": "Path placement tools are frustrating to use and difficult to control when trying to build straight paths or staircases.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232041803",
+                  "hours_at_review": 25.6,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Almost a good game but I just can't get past how painful it is to do pathing. I'm seriously pulling out my hair just trying to place a straight ♥♥♥♥♥♥♥ staircase and no, snapping does not help, the path decides where it wants to go. Everything else seems fine but bland, nothing really great comes to mind. Actually this might even be a watered down version of Thrillville...\r\n\r\nPlay RollerCoaster Tycoon 2 instead, 24 years later and it's still the best theme park game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226742970",
+                  "hours_at_review": 31.6,
+                  "voted_up": true,
+                  "date": "2026-05-30",
+                  "review_text": "paths every thing else is great",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-97202f",
+              "claim": "The campaign mode relies on trial and error rather than providing a comprehensive tutorial to explain core features.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231096027",
+                  "hours_at_review": 44.7,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Boasting an ultra charming art style and soundtrack, Planet Coaster remains one of the most memorable simulation games released in the past decade. \n\nThe campaign is a bit hit and miss, with some features being essentially learned through trial and error rather than through a comprehensive tutorial. It may take multiple attempts until you realize what you’re missing. The DLCs add no extra campaign scenarios, which feels like a missed opportunity.\n\nWhile not an spiritual successor to Thrillville, you can really tell it was made by the same company. This is the closest to a modern RollerCoaster Tycoon 2 we have so far. And if you enjoy decorating, this is going to feel like heaven.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229253648",
+                  "hours_at_review": 69.5,
+                  "voted_up": true,
+                  "date": "2026-06-30",
+                  "review_text": "it is a very fun and exiting game. if you are a roller coaster content creator or justa guy who loves theme parks. THIS IS YOUR GAME!!!! i love it. it is all about trial and error",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ddb97b",
+              "claim": "Reviewers report that path placement and pathing systems are frustrating or difficult to use correctly.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232041803",
+                  "hours_at_review": 25.6,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Almost a good game but I just can't get past how painful it is to do pathing. I'm seriously pulling out my hair just trying to place a straight ♥♥♥♥♥♥♥ staircase and no, snapping does not help, the path decides where it wants to go. Everything else seems fine but bland, nothing really great comes to mind. Actually this might even be a watered down version of Thrillville...\r\n\r\nPlay RollerCoaster Tycoon 2 instead, 24 years later and it's still the best theme park game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226742970",
+                  "hours_at_review": 31.6,
+                  "voted_up": true,
+                  "date": "2026-05-30",
+                  "review_text": "paths every thing else is great",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-9929a8",
+              "claim": "Underground building and tunneling can be glitchy.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229532708",
+                  "hours_at_review": 34.1,
+                  "voted_up": true,
+                  "date": "2026-07-03",
+                  "review_text": "Fun Game, But it an be a bit glitchy at times, especially when you're doing stuff under ground.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228074844",
+                  "hours_at_review": 54.7,
+                  "voted_up": true,
+                  "date": "2026-06-16",
+                  "review_text": "It's a good game with solid building and free range, however I feel like animatronics could have better and smoother motions, like modern day ones, and also more options for what they are doing and what they look like would be nice. Auto-Tunneling through the underground could be better and the camera tracking could also be worked on a bit more. But other than those few minor tweaks and kinks its an awesome game!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 5,
+        "divergence_p": 0.279,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 178,
+      "pct_positive": 94.4,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players highlight pathing quirks, building tool limitations, and performance drops in massive parks",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-acca8d",
+              "claim": "Reviewers describe coaster building and smoothing tools as difficult to use or not fully functional.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231645508",
+                  "hours_at_review": 139.4,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "Planet Coaster is absolute ass in a handbag.\n\nThe entire game feels like it was designed under the assumption that the community would finish developing it for free.\n\nThe tools are powerful. The creations people build are incredible. The workshop is full of parks that look like professional architects were locked inside their homes for six months with unlimited caffeine.\n\nUnfortunately, the actual game is barely accessible to anyone who is not unemployed.\n\nEvery minute takes an hour.\n\nYou do not simply place a flat ride and open it.\n\nFirst, the game informs you that the ride has 0% scenery because apparently nobody is willing to sit on a spinning metal death machine unless the queue is surrounded by twelve bushes, six decorative barrels, three lanterns, a pirate skeleton, and a completely unnecessary fountain.\n\nSo now you are placing plants.\n\nThen rocks.\n\nThen signs.\n\nThen tiny objects along the entrance and exit paths that would never exist in a real amusement park because guests would immediately trip over them and sue everyone involved.\n\nCongratulations. The ride is now slightly more desirable.\n\nThe coaster-building system is precise, which sounds like praise until you realize it is also painstakingly slow and gives you almost no useful feedback while you are building.\n\nWill this turn be exciting?\n\nWill it snap every passenger’s spine?\n\nWill the train crawl to a stop halfway through the loop?\n\nWho knows?\n\nYou have to finish it, test it, watch it fail, delete half the track, rebuild it, test it again, and slowly discover that the coaster you spent an hour creating produces eleven lateral Gs and causes every guest to describe it as “too intense.”\n\nThe game does not respect your time.\n\nIt looks at your evening plans and says:\n\n“You wanted to build a roller coaster. Please begin arranging shrubbery.”\n\nStill, the game runs well, the simulation works, and there is an undeniable satisfaction when something finally looks and functions the way you imagined it.\n\nIt is not …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "224542198",
+                  "hours_at_review": 861.6,
+                  "voted_up": true,
+                  "date": "2026-05-01",
+                  "review_text": "This game is buns dont buy it is one of the devils biggest schemes to make you have inspiration for a magnificent park and then when you go to build it, it comes out awful because the smoothing if bad. Do not buy this game just put your money towards nolimits2 or if you really like building both just get the second planco",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230630678",
+                  "hours_at_review": 152.5,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "Frontier made a good game, somewhat limited by the fact you can't scale scenery pieces, the pathing tool is very rectangular and coaster smoothing is not very functional, but I enjoyed it and put over 500 hours into the game, it has a lot of base game content and I wouldn't mind if it had a couple of DLC's, on that note 11 DLC's????\n\nThis is stupid, and frontier have lost all my respect, even more now they've added a subscription to access the DLC's just so they can extort players for even more money. Great game ruined by greedy developers. 7.5/10 but dragged down to 4/10 for all the DLC, worse now than on release because of greed, and now their butchering the second game in the same way.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-d85a80",
+              "claim": "Reviewers report that the pathing system is rectangular, difficult to use, and prone to bugs.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230630678",
+                  "hours_at_review": 152.5,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "Frontier made a good game, somewhat limited by the fact you can't scale scenery pieces, the pathing tool is very rectangular and coaster smoothing is not very functional, but I enjoyed it and put over 500 hours into the game, it has a lot of base game content and I wouldn't mind if it had a couple of DLC's, on that note 11 DLC's????\n\nThis is stupid, and frontier have lost all my respect, even more now they've added a subscription to access the DLC's just so they can extort players for even more money. Great game ruined by greedy developers. 7.5/10 but dragged down to 4/10 for all the DLC, worse now than on release because of greed, and now their butchering the second game in the same way.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220201433",
+                  "hours_at_review": 171.8,
+                  "voted_up": false,
+                  "date": "2026-03-08",
+                  "review_text": "To hard to make paths\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220165984",
+                  "hours_at_review": 371.4,
+                  "voted_up": true,
+                  "date": "2026-03-08",
+                  "review_text": "Fun game that could of been better with some much needed updates before going on to make a sequel that shows they didn't learn much. It does have fps drops, eats memory like a hungry hippo, buggy pathways, low iQ park guests (they are dumb), notifications bug out, random symmetry problems with building, structure pieces can suddenly glitch, there's more but I'll cut it here. \n\nDespite all that the ability to create almost anything you want and share it with the community is a worthwhile experience. Best advice is to keep your park's size and detailing reasonable or it will crash and take ages to load. Buy complete edition on sale NOW CAN U DIG IT SUCKAAAA!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218587123",
+                  "hours_at_review": 341.3,
+                  "voted_up": true,
+                  "date": "2026-02-18",
+                  "review_text": "Fun game, lots to do on there, I do wish the paths are better but the game is super awesome",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-dbc20b",
+              "claim": "Reviewers mention performance issues including frame rate drops and high memory usage.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "220165984",
+                  "hours_at_review": 371.4,
+                  "voted_up": true,
+                  "date": "2026-03-08",
+                  "review_text": "Fun game that could of been better with some much needed updates before going on to make a sequel that shows they didn't learn much. It does have fps drops, eats memory like a hungry hippo, buggy pathways, low iQ park guests (they are dumb), notifications bug out, random symmetry problems with building, structure pieces can suddenly glitch, there's more but I'll cut it here. \n\nDespite all that the ability to create almost anything you want and share it with the community is a worthwhile experience. Best advice is to keep your park's size and detailing reasonable or it will crash and take ages to load. Buy complete edition on sale NOW CAN U DIG IT SUCKAAAA!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231645508",
+                  "hours_at_review": 139.4,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "Planet Coaster is absolute ass in a handbag.\n\nThe entire game feels like it was designed under the assumption that the community would finish developing it for free.\n\nThe tools are powerful. The creations people build are incredible. The workshop is full of parks that look like professional architects were locked inside their homes for six months with unlimited caffeine.\n\nUnfortunately, the actual game is barely accessible to anyone who is not unemployed.\n\nEvery minute takes an hour.\n\nYou do not simply place a flat ride and open it.\n\nFirst, the game informs you that the ride has 0% scenery because apparently nobody is willing to sit on a spinning metal death machine unless the queue is surrounded by twelve bushes, six decorative barrels, three lanterns, a pirate skeleton, and a completely unnecessary fountain.\n\nSo now you are placing plants.\n\nThen rocks.\n\nThen signs.\n\nThen tiny objects along the entrance and exit paths that would never exist in a real amusement park because guests would immediately trip over them and sue everyone involved.\n\nCongratulations. The ride is now slightly more desirable.\n\nThe coaster-building system is precise, which sounds like praise until you realize it is also painstakingly slow and gives you almost no useful feedback while you are building.\n\nWill this turn be exciting?\n\nWill it snap every passenger’s spine?\n\nWill the train crawl to a stop halfway through the loop?\n\nWho knows?\n\nYou have to finish it, test it, watch it fail, delete half the track, rebuild it, test it again, and slowly discover that the coaster you spent an hour creating produces eleven lateral Gs and causes every guest to describe it as “too intense.”\n\nThe game does not respect your time.\n\nIt looks at your evening plans and says:\n\n“You wanted to build a roller coaster. Please begin arranging shrubbery.”\n\nStill, the game runs well, the simulation works, and there is an undeniable satisfaction when something finally looks and functions the way you imagined it.\n\nIt is not …",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-ad583c",
+              "claim": "Reviewers note that the game features performance issues such as frame rate drops, high memory consumption, and potential crashes if parks become too large or detailed.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231645508",
+                  "hours_at_review": 139.4,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "Planet Coaster is absolute ass in a handbag.\n\nThe entire game feels like it was designed under the assumption that the community would finish developing it for free.\n\nThe tools are powerful. The creations people build are incredible. The workshop is full of parks that look like professional architects were locked inside their homes for six months with unlimited caffeine.\n\nUnfortunately, the actual game is barely accessible to anyone who is not unemployed.\n\nEvery minute takes an hour.\n\nYou do not simply place a flat ride and open it.\n\nFirst, the game informs you that the ride has 0% scenery because apparently nobody is willing to sit on a spinning metal death machine unless the queue is surrounded by twelve bushes, six decorative barrels, three lanterns, a pirate skeleton, and a completely unnecessary fountain.\n\nSo now you are placing plants.\n\nThen rocks.\n\nThen signs.\n\nThen tiny objects along the entrance and exit paths that would never exist in a real amusement park because guests would immediately trip over them and sue everyone involved.\n\nCongratulations. The ride is now slightly more desirable.\n\nThe coaster-building system is precise, which sounds like praise until you realize it is also painstakingly slow and gives you almost no useful feedback while you are building.\n\nWill this turn be exciting?\n\nWill it snap every passenger’s spine?\n\nWill the train crawl to a stop halfway through the loop?\n\nWho knows?\n\nYou have to finish it, test it, watch it fail, delete half the track, rebuild it, test it again, and slowly discover that the coaster you spent an hour creating produces eleven lateral Gs and causes every guest to describe it as “too intense.”\n\nThe game does not respect your time.\n\nIt looks at your evening plans and says:\n\n“You wanted to build a roller coaster. Please begin arranging shrubbery.”\n\nStill, the game runs well, the simulation works, and there is an undeniable satisfaction when something finally looks and functions the way you imagined it.\n\nIt is not …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "220165984",
+                  "hours_at_review": 371.4,
+                  "voted_up": true,
+                  "date": "2026-03-08",
+                  "review_text": "Fun game that could of been better with some much needed updates before going on to make a sequel that shows they didn't learn much. It does have fps drops, eats memory like a hungry hippo, buggy pathways, low iQ park guests (they are dumb), notifications bug out, random symmetry problems with building, structure pieces can suddenly glitch, there's more but I'll cut it here. \n\nDespite all that the ability to create almost anything you want and share it with the community is a worthwhile experience. Best advice is to keep your park's size and detailing reasonable or it will crash and take ages to load. Buy complete edition on sale NOW CAN U DIG IT SUCKAAAA!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-8e9006",
+              "claim": "Reviewers mention that scenery pieces cannot be scaled in size.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230630678",
+                  "hours_at_review": 152.5,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "Frontier made a good game, somewhat limited by the fact you can't scale scenery pieces, the pathing tool is very rectangular and coaster smoothing is not very functional, but I enjoyed it and put over 500 hours into the game, it has a lot of base game content and I wouldn't mind if it had a couple of DLC's, on that note 11 DLC's????\n\nThis is stupid, and frontier have lost all my respect, even more now they've added a subscription to access the DLC's just so they can extort players for even more money. Great game ruined by greedy developers. 7.5/10 but dragged down to 4/10 for all the DLC, worse now than on release because of greed, and now their butchering the second game in the same way.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220165984",
+                  "hours_at_review": 371.4,
+                  "voted_up": true,
+                  "date": "2026-03-08",
+                  "review_text": "Fun game that could of been better with some much needed updates before going on to make a sequel that shows they didn't learn much. It does have fps drops, eats memory like a hungry hippo, buggy pathways, low iQ park guests (they are dumb), notifications bug out, random symmetry problems with building, structure pieces can suddenly glitch, there's more but I'll cut it here. \n\nDespite all that the ability to create almost anything you want and share it with the community is a worthwhile experience. Best advice is to keep your park's size and detailing reasonable or it will crash and take ages to load. Buy complete edition on sale NOW CAN U DIG IT SUCKAAAA!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 3,
+        "divergence_p": 0.00309,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 37791,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

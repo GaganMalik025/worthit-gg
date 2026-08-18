@@ -1,0 +1,598 @@
+{
+  "appid": "387290",
+  "game_name": "Ori and the Blind Forest: Definitive Edition",
+  "generated_at": "2026-08-17T13:34:00Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/387290/header.jpg?t=1701967651",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/387290/capsule_231x87.jpg?t=1701967651",
+    "grid": "https://cdn2.steamgriddb.com/grid/dfe12e78a966e3c32ffc9feb2d7ad3b3.jpg"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 9,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "Breathtaking platforming brilliance hiding heavy technical friction early on.",
+    "for_you_if": [
+      "you want a masterclass in atmospheric platforming",
+      "you can push past early technical hurdles",
+      "you enjoy demanding and precise escape sequences"
+    ],
+    "not_for_you_if": [
+      "you need stable performance right from the start",
+      "you expect complex and deep combat mechanics",
+      "you struggle with punishing death counts"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 48,
+      "pct_positive": 52.1,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 945,
+      "pct_positive": 92.1,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 201,
+      "pct_positive": 97.5,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 6,
+      "pct_positive": 100.0,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Initial reviews report severe technical hurdles and crashes that later players do not emphasize as heavily.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 52.1,
+            "pool_n": 48
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 92.1,
+            "pool_n": 945
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 97.5,
+            "pool_n": 201
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 52.1,
+        "low_pool_n": 48,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 97.5,
+        "high_pool_n": 201,
+        "gap_pts": 45.4
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 48,
+      "pct_positive": 52.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter technical failures including black screen character models, game crashes, and controller input mapping issues alongside punishing early dark zones and tiny sprites.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-36e2a0",
+              "claim": "Reviewers report that character models appear as black boxes and the game crashes after the first cutscene.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226986718",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-06-02",
+                  "review_text": "⚠️ CRITICAL FRAME PACING AND STABILITY ISSUES ON HIGH-END HARDWARE ⚠️\n\nDo not let the age of this game fool you. If you attempt to play Ori and the Blind Forest: Definitive Edition on a modern flagship system (particularly with an Nvidia GeForce RTX 4090) you may encounter severe engine-level incompatibilities that render the experience effectively unplayable out of the box.\n\nProblem Overview\n\nThis is not a performance limitation, but a fundamental architectural issue. The game runs on an older version of the *Unity engine*, where timing loops, animation systems, and physics are tightly coupled to a fixed 60Hz baseline.\n\nWhen paired with \"ultra-high-end GPUs\" and \"high-refresh-rate monitors (144Hz, 240Hz, or higher)\", the engine fails to scale correctly, resulting in >>systemic instability<<\n\nTechnical Symptoms:\n\nSevere Frame Pacing Issues:\nFrequent and aggressive micro-stuttering occurs every 2,3 seconds, regardless of resolution or graphics settings.\n\nGame Speed Acceleration:\nThe internal game clock incorrectly syncs with the GPU’s output, causing animations, physics, and gameplay to run at abnormally high speeds.\n\nEngine-Level Conflicts and Crashes:\nInterference between Windows Fullscreen Optimizations and the game’s native V-Sync implementation can lead to black screens, freezes, and crashes to desktop.\n\n🔴 Verdict 🔴\n\nThe raw performance of modern GPUs like the RTX 4090 overwhelms the game’s legacy timing systems. Without manual intervention (such as driver overrides, Nvidia Control Panel adjustments, or third-party framerate limiting) the experience is *unstable and inconsistent*.\n\nIf you own high-end hardware, be prepared to rely on community fixes immediately after installation.\n\n⚠️ The game is incompatible with the latest generation Nvidia GPUs and 4k or 8k monitors ⚠️",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "216667868",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-01-24",
+                  "review_text": "This game is so poorly optimized all characters are black boxes and after you get through the very first cutscene the game crashes! Just goes to show that microsoft has no care about there quality of there games/products.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-14d2a1",
+              "claim": "Players state that the character sprite is extremely small on certain screens without any zoom options available to adjust the view.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232877610",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "it is a hardcore metroidvania with hard platforming, don't let the fantastic cutesy art and soothing music fool you, so be prepared to get your ass kicked. I kinda gave up on it after platforming become quite hard without much context. Example, endless spikes for the sake of being spike obstacles and intentional placement of annoying enemies, ambushes. The game started out good but about 3 hours in it will get difficult and Ori's early upgrades are not helpful, If you enjoy games like super meatboy or celeste type of hard platforming, you will enjoy it. \n\none impressive mechanic is create your own checkpoint system.\n\nIf you plan to play it on steam deck, the game looks very small on deck and Ori is just a tiny speck and hard to play long hours without straining the eyes. better for big screens.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221433602",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "Straining my eyes trying to see what my character's doing because they're like two pixels on my screen. No zoom options either.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-518a3e",
+              "claim": "Reviewers describe encountering a pitch-dark second zone with blind jumps into spike traps.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226396377",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-05-25",
+                  "review_text": "Poor level design. \nHaving pitch black area as the second zone with loads of blind jumps into spike traps is not fun when you have to start at the beginning of the zone each time you die.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218326071",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-02-14",
+                  "review_text": "I got into a dark area where I cant see the way and unable to continue just fall and die constantly\ni put the game on easy and I cant beat the first level because I cant see anything just keep falling over and over, what Im supposed to do imagine the way where to jump?\ndevelopers forgot to add a flash light into the game\ngame its incomplete they forgot to add some light to the level\nif you are looking for a 2D game where developers dont miss to light up the levels try Mega Man 11 or Ninja Gaiden ragebound\n\ngive me my refund from this scam game",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-08af17",
+              "claim": "Reviewers report that the game opens on a secondary display and fails to map controls correctly for a PS4 controller.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230272659",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "The game really does look beautiful, but it constantly opens on a secondary screen no matter how I change settings and it still doesn't map properly to a PS4 controller. Normally if a game doesn't support PS4 controllers but does support Xbox controllers I can use Steam's system to emulate an Xbox controller. But on this game that doesn't work and it ends up mapping the controls incorrectly. For example: A should = X, B should = O  In this game A = ▢ and B = X\n\nSo the game is unplayable on a PS4 controller, in a way that is uniquely bad and probably more effort to fix than the game is worth.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226986718",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-06-02",
+                  "review_text": "⚠️ CRITICAL FRAME PACING AND STABILITY ISSUES ON HIGH-END HARDWARE ⚠️\n\nDo not let the age of this game fool you. If you attempt to play Ori and the Blind Forest: Definitive Edition on a modern flagship system (particularly with an Nvidia GeForce RTX 4090) you may encounter severe engine-level incompatibilities that render the experience effectively unplayable out of the box.\n\nProblem Overview\n\nThis is not a performance limitation, but a fundamental architectural issue. The game runs on an older version of the *Unity engine*, where timing loops, animation systems, and physics are tightly coupled to a fixed 60Hz baseline.\n\nWhen paired with \"ultra-high-end GPUs\" and \"high-refresh-rate monitors (144Hz, 240Hz, or higher)\", the engine fails to scale correctly, resulting in >>systemic instability<<\n\nTechnical Symptoms:\n\nSevere Frame Pacing Issues:\nFrequent and aggressive micro-stuttering occurs every 2,3 seconds, regardless of resolution or graphics settings.\n\nGame Speed Acceleration:\nThe internal game clock incorrectly syncs with the GPU’s output, causing animations, physics, and gameplay to run at abnormally high speeds.\n\nEngine-Level Conflicts and Crashes:\nInterference between Windows Fullscreen Optimizations and the game’s native V-Sync implementation can lead to black screens, freezes, and crashes to desktop.\n\n🔴 Verdict 🔴\n\nThe raw performance of modern GPUs like the RTX 4090 overwhelms the game’s legacy timing systems. Without manual intervention (such as driver overrides, Nvidia Control Panel adjustments, or third-party framerate limiting) the experience is *unstable and inconsistent*.\n\nIf you own high-end hardware, be prepared to rely on community fixes immediately after installation.\n\n⚠️ The game is incompatible with the latest generation Nvidia GPUs and 4k or 8k monitors ⚠️",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 7,
+        "cited_recommend": 0,
+        "divergence_p": 0.00579,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 945,
+      "pct_positive": 92.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers highlight basic combat mechanics and awkward keyboard remapping alongside manual resource-based saving systems and performance drops.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-5c0ea1",
+              "claim": "Reviewers report that the combat system is repetitive and basic, relying mainly on an automatic ranged attack or pressing a single button.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232908001",
+                  "hours_at_review": 15.1,
+                  "voted_up": true,
+                  "date": "2026-08-15",
+                  "review_text": "Very fun and enjoyable game but the difficulty even on normal is challenging and you'll reach the triple digits of death by the time you reach the next main area. The platforming is decently challenging and engaging. The combat is just simply pressing one button over and over again with a moment here or their having to use bash. The story is fun and charming like a fairy tale for kids but it I felt like it ended to abruptly. An enjoyable game that you wouldn't regret getting.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232465525",
+                  "hours_at_review": 15.6,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "[h2] This game is an AMAZING platformer, but a decent metroidvania. [/h2]\nI don't want to scold this game too much (because I fell in love with it and think it's one of the best platformers/metroidvanias on Steam), but this game does have some issues.\n\nThe enemies in this game are awful. They just have a lot of HP and boring attacks, so I find fighting them kinda boring. Also, I think the metroidvania aspect is kinda broken because you can finish the game before you get all the abilities. There are also too many upgrades in this game, so you eventually start killing everyone without even trying to avoid their attacks - you can just tank them. In the platforming sections, you have a lot of energy cells, which makes the game easier because you can just save all the time.\n\nAnddd yes, that's basically all the problems I have with this game. Everything else is great!\n\nI honestly love the animation and graphics. They are so beautiful, cute, and enjoyable to look at. And the story of this game... It's so kind and cute! It was VERY enjoyable after playing games with cruel stories like Hollow Knight or Rain World.\nAnddd... everyone compares this game with Hollow Knight, so I just want to say: Hollow Knight has better combat and world design, while this game has better platforming and puzzles. The graphics and story are amazing in both games, and both games are JUST amazing!\n\n[h3] I love this game. It's just sad that it's sooo short. I literally completed this game in 2–3 days :< [/h3]\n\nThis game has problems, but the positives are bigger, and... I love this game! I can say it 10 more times! Well, I think I need to finish this review, so I'll just say that this game is great, and people who love platforming games will love it. I can also recommend this game to new players who want to get into the metroidvania genre.\n\n[h1] Hard 8/10! [/h1]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231272077",
+                  "hours_at_review": 12.8,
+                  "voted_up": true,
+                  "date": "2026-07-25",
+                  "review_text": "English Version (french below) : \r\n\r\nOk so this game is absolutely gorgeous, maybe of the most beautiful games I've played, both in artstyle, effects and music.\r\nThe story is simple but touching, almost like a tale for children.\r\nAnd it's a metroidvania, which is something that I really like. (And the escape sections were peak)\r\n\r\nHOWEVER, I do have quite some complaints about the gameplay. Firstly, about the \"combat\" system, which is mostly \"press one button repeatedly until the enemy dies\" (oh and we're talking about a magic ball shooting automatically, not your character actually attacking anything). it's boring and repetitive. Secondly, about the very long plateforming sections that will not only kill you instantly in most cases but also send you back, sometimes quite a lot from what I remember.\r\n\r\nWhen you really look at it, it's more a platform game than a classic metroidvania, which is fine but it also doesn't have the most precise controls for it. And I mean dying 20+ times to spikes can really detach you from the story and general atmospheres, which are the main advantages of this game.\r\n\r\nAs far as the platinum goes, 100% a save file isn't really hard or particularly long, but some achievements require you to finish the game in like 4 different ways, including one without dying, which I can definitely see becoming frustrating with how much instant death is present in the game, but maybe I'll get to it someday.\r\n\r\nAnyway, great game, just know what you're getting into so you don't expect things are not in the game, it is NOT Hollow Knight or even close to it in terms of game philosophy.\r\n\r\n\r\n\r\nVersion Française : \r\n\r\nLe jeu est juste super beau, peut être l'un des plus beaux auxquels j'ai joué, que ce soit dans la DA, les effets ou la musique. \r\nL'histoire est simple, mais touchante, un peu comme un conte pour enfant.\r\nC'est aussi un metroidvania, qui est quelque chose que j'aime bien (et les sections de fuite sont incroyables).\r\n\r\nCEPENDANT, j'ai quelques …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230232550",
+                  "hours_at_review": 9.8,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "It's interesting enough that I completed the game, its cute and the mechanics individually can have interesting moments. However, the game feels clunky, platforms/ wall space are often placed right at the edge of jumping range even in areas without significant danger or difficulty making exploration tedious rather than giving us an opportunity to admire the art and throwing off the pacing. Combat is not interesting, involving mainly kiting away from the enemy while spamming the auto aimed attack or later using the ability that makes you effectively immune from ranged attack. Personally I did not find the storyline compelling but I'm not really the target audience for it. Finally I had some issues with the game seeming to slow down or accelerate at random in some moments.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-6a50f2",
+              "claim": "Reviewers note that the game features a manual saving system that consumes an energy resource, allowing players to place checkpoints almost anywhere.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232465525",
+                  "hours_at_review": 15.6,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "[h2] This game is an AMAZING platformer, but a decent metroidvania. [/h2]\nI don't want to scold this game too much (because I fell in love with it and think it's one of the best platformers/metroidvanias on Steam), but this game does have some issues.\n\nThe enemies in this game are awful. They just have a lot of HP and boring attacks, so I find fighting them kinda boring. Also, I think the metroidvania aspect is kinda broken because you can finish the game before you get all the abilities. There are also too many upgrades in this game, so you eventually start killing everyone without even trying to avoid their attacks - you can just tank them. In the platforming sections, you have a lot of energy cells, which makes the game easier because you can just save all the time.\n\nAnddd yes, that's basically all the problems I have with this game. Everything else is great!\n\nI honestly love the animation and graphics. They are so beautiful, cute, and enjoyable to look at. And the story of this game... It's so kind and cute! It was VERY enjoyable after playing games with cruel stories like Hollow Knight or Rain World.\nAnddd... everyone compares this game with Hollow Knight, so I just want to say: Hollow Knight has better combat and world design, while this game has better platforming and puzzles. The graphics and story are amazing in both games, and both games are JUST amazing!\n\n[h3] I love this game. It's just sad that it's sooo short. I literally completed this game in 2–3 days :< [/h3]\n\nThis game has problems, but the positives are bigger, and... I love this game! I can say it 10 more times! Well, I think I need to finish this review, so I'll just say that this game is great, and people who love platforming games will love it. I can also recommend this game to new players who want to get into the metroidvania genre.\n\n[h1] Hard 8/10! [/h1]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231114477",
+                  "hours_at_review": 7.7,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "All the attempts to pull at my heartstrings was a little off-putting, I just wanted to play a silly metroidvania, not feel things. \r\n\r\nGraphics and aesthetic are beautiful, it's like playing in a painting. I do feel though that they prioritized pretty graphics over gameplay because often time I found myself unable to easily see projectiles or other hazards on the screen because of how bright everything can be and how they blend together. A lot of \"wait, what killed me there?\" moments. The platforming is tight and responsive and solving the little platforming puzzles it throws your way was satisfying. \r\n\r\nPretty short game, took me 8 hours to beat it on hard. May want to wait for a sale if the price/playtime ratio sounds off to you. During those 8 hours of playtime I died 600 times, which is kind of embarrassing but probably pretty normal. The devs seem to be aware of how easy it is to die and lose progress because they implement a quick save system that uses an energy resource so you can place a save in most areas as long as you have at least 1 of the resource points.\r\n\r\nRecommended. Fun, tight gameplay and beautiful aesthetic.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230540654",
+                  "hours_at_review": 15.8,
+                  "voted_up": true,
+                  "date": "2026-07-15",
+                  "review_text": "Very satisfying platformer with beautiful visuals, music, and story. The gameplay can get hard yet the mechanics play very well (on controller).\n\nYou may die 5 million times, but hey you can create your own save points!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230132199",
+                  "hours_at_review": 8.6,
+                  "voted_up": true,
+                  "date": "2026-07-10",
+                  "review_text": "A really fun and ejoyable platformer. It's quite short for better or for worse but I kind of appreciated that about it. I played on hard mode and it felt balanced, it was hard on some sections but the game lets you set your own save points (as long as you have the energy for it) which makes the challenging sections really fun cause you don't have to run back every time you die plus the death and respawn animations are also very. Maybe not worth at full price for everyone but if you see it on sale it's for sure worth it.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-7091d7",
+              "claim": "Reviewers mention that default keyboard controls are awkward and difficult to rebind, requiring manual editing of configuration text files.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229912261",
+                  "hours_at_review": 12.0,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "Beautiful game, lots of interesting mechanics, super sweet story, amazing soundtrack and I love the difficulty progression as well. \nThe default controls, however, are horrible (keyboard). They almost made me quit because I was hurting my wrists to play and this is important to mention because it's not possible to rebind the keys in-game, you have to edit the .txt files instead which is an awful solution.\nBut if you're able to find a comfortable layout to play, it's really worth it!! :)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230194402",
+                  "hours_at_review": 13.9,
+                  "voted_up": true,
+                  "date": "2026-07-11",
+                  "review_text": "The game certainly shows its age. I can see many similarities with Hollow Knight Silksong. Although there are no bosses, some may argue the platforming itself is the boss, because good god does it get difficult around the halfway point of the game. \r\nI can't say that I enjoyed the joystick controls. I think the game was built to be played on keyboard and mouse. \r\n\r\nAnd finally is it worth it 10-15 hours of your time? Hell yes.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-2ebb04",
+              "claim": "Reviewers experience performance issues such as lagging and freezing, with the game failing to run at a stable frame rate.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232440153",
+                  "hours_at_review": 16.3,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "LMAO I really didn't know there were new stuffs added to this edition, I just ran in blindly thinking the same; had to backtrack and was pain in the ass. Still, I enjoyed it, except the \"Unhinged\" achievement; really made me crashed out, the game was laggier than the original edition for some reason.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229954252",
+                  "hours_at_review": 3.1,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "Game is litteraly unplayable because too laggy, too many freeezes, tho i run without any issue AAA games on ultra, this game cant even run 60fps without freezing every second or so. Tried to run as admin, play fullscreen or windowed, with or without vsync, and several other fixes i saw online: none of them worked. Litteraly unplayable.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 11,
+        "cited_recommend": 9,
+        "divergence_p": 0.214,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 201,
+      "pct_positive": 97.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players navigate punishing platforming paths and intricate escape sequences while encountering bugs alongside restricted early jump distances.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-fa0060",
+              "claim": "Reviewers report that the game includes challenging escape sequences that require precise timing and mastery of learned mechanics.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230288162",
+                  "hours_at_review": 21.7,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "Ori and the Blind Forest is a hand-painted metroidvania from Moon Studios that tells the story of a small forest spirit trying to restore a dying world. From the opening minutes it makes its intentions clear, delivering a wordless prologue that lands harder than most games manage across entire campaigns. What follows is a tightly paced journey through the forest of Nibel, one that pairs genuine emotional weight with some of the most precise platforming in the genre.\n\nMovement is where the game truly excels. Ori controls with an immediacy that feels almost weightless, and each new ability layers cleanly onto the last until you are chaining wall jumps, dashes, and Bash launches into a single unbroken flow. Bash in particular is a stroke of design brilliance, letting you ricochet off enemies and projectiles to redirect momentum in midair, turning hazards into tools. The escape sequences, especially the Ginso Tree, are among the finest set pieces in any 2D platformer, demanding total mastery of everything you have learned while the screen erupts around you.\n\nPresentation is equally exceptional. The art direction is luminous and layered, with parallax depth that makes every screen feel like a painting in motion, and the game's score elevates even quiet exploration into something that lingers. The Definitive Edition additions round out the package nicely, folding in the Black Root Burrows area, new abilities, fast travel, and difficulty options that soften the original release's rougher edges without dulling the challenge.\n\nThe weak spot is combat. Spirit Flame is essentially an auto-targeted spam button, and enemies exist more as movement obstacles than as threats worth engaging with. It never actively hurts the experience since the platforming carries everything, but it is the one system that feels underdeveloped compared to the rest. Backtracking can also drag slightly in the mid-game, though fast travel largely resolves this.\n\n[hr][/hr]\n[b]Highlights:[/b]\n[list]\n[*]Be…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "228267828",
+                  "hours_at_review": 27.7,
+                  "voted_up": true,
+                  "date": "2026-06-18",
+                  "review_text": "I expected a beautiful little platformer that I could relax with after some heavier games.\r\n\r\nOh boy I was horribly mistaken.\r\n\r\nThis game looks innocent, but it absolutely humbled me. The movement and platforming feel fantastic, and once you unlock more abilities, traversing the world becomes incredibly satisfying. The world itself is gorgeous, and the music does a great job supporting both the emotional and intense moments.\r\n\r\nThat said, this game was way harder than I expected. Maybe I'm just the noobest player on the planet, and I somehow finished the game with 1,437 deaths. At some point, I stopped counting failures and started celebrating every checkpoint I reached.\r\n\r\nThe story is simple but effective, and the escape sequences were easily some of the most memorable parts of the game. Few games have made me panic and focus that hard at the same time.\r\n\r\nOverall, a great experience. Beautiful, challenging, and surprisingly unforgiving. If you're looking for a relaxing platformer, think again. If you're looking for a fantastic one, this is definitely worth playing.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ef9223",
+              "claim": "Reviewers note that the normal jump feels too short, which hinders movement early in the game until new abilities are unlocked.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229370197",
+                  "hours_at_review": 36.2,
+                  "voted_up": true,
+                  "date": "2026-07-01",
+                  "review_text": "8/10 solid game\r\n\r\nThe game is very well made, the movement is amzing exept ffor the normal jump which is just so short thatit ruins the early game alittle until you get more movment.\r\n\r\nThe game is a little to short in my opinion and it feels like you barely play with alot of the abilities that you get towards the end before you beat the game.\r\n\r\nThe visuals can also be really annoying at times like its sometimes hard to tell if an objekt is or isnt a backround objekt or where an objekt starts. its also really hard to tell that some enemies or hassards exist which can be very frustrating at times.\r\n\r\noveral id rate it about 8/10, its very solid but doesnt quite live up to games like hollow kight, silksong or haiku. if you like metroadvainias you should give it a try.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219854339",
+                  "hours_at_review": 26.4,
+                  "voted_up": true,
+                  "date": "2026-03-05",
+                  "review_text": "i've been replaying this and getting the urge to 100% it AGAIN which is how you know that this is a game where just existing and running around in the world is endlessly fun. one of my favorite platformers ever for sure. bash wins for best movement ability. having escape sequences instead of boss fights is genius also! love a game in which enemies are more obstacles than true enemies. there are a few rough design elements, but that's charming imo (the save system is especially funky) - and there's nothing that gets in the way of how amazing the platforming feels.\n\nunfortunately, however, i actively dislike the storytelling in this game, which is mostly because of the tediously long (unskippable!) opening cutscene. why a game with this fun of a movement system doesn't immediately let you start jumping around is beyond me...\n\nalso i wish there was a way to rebind the controls within the actual game",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-52beb7",
+              "claim": "Reviewers describe the game as featuring difficult and punishing platforming sequences that lead to high death counts.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231099573",
+                  "hours_at_review": 24.6,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "This is the most beautiful game I've ever played. It has great visuals, breathtaking music, and emotional storytelling. Other than that, the gameplay was really fun. Even though I died so many times, I couldn't stop playing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227213916",
+                  "hours_at_review": 89.7,
+                  "voted_up": true,
+                  "date": "2026-06-05",
+                  "review_text": "This game is driving me insane. First off Ori and The Blind Forest is amazing. It’s a really fun and chill/challenging game to kick back and relax on. The visuals are beautiful and the story very well made and intriguing. With the movement system being clean and crisp, and the flow of combat between traps and enemies, the games works out great. But I’ve sunk over 50 hours into one life difficulty and I gotta say I have died more to the environment than I have to mobs and it is really frustrating. This game is proving to be a really hard challenge to master and although I salute you I hate you at the same time. 10/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228267828",
+                  "hours_at_review": 27.7,
+                  "voted_up": true,
+                  "date": "2026-06-18",
+                  "review_text": "I expected a beautiful little platformer that I could relax with after some heavier games.\r\n\r\nOh boy I was horribly mistaken.\r\n\r\nThis game looks innocent, but it absolutely humbled me. The movement and platforming feel fantastic, and once you unlock more abilities, traversing the world becomes incredibly satisfying. The world itself is gorgeous, and the music does a great job supporting both the emotional and intense moments.\r\n\r\nThat said, this game was way harder than I expected. Maybe I'm just the noobest player on the planet, and I somehow finished the game with 1,437 deaths. At some point, I stopped counting failures and started celebrating every checkpoint I reached.\r\n\r\nThe story is simple but effective, and the escape sequences were easily some of the most memorable parts of the game. Few games have made me panic and focus that hard at the same time.\r\n\r\nOverall, a great experience. Beautiful, challenging, and surprisingly unforgiving. If you're looking for a relaxing platformer, think again. If you're looking for a fantastic one, this is definitely worth playing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223589382",
+                  "hours_at_review": 21.4,
+                  "voted_up": true,
+                  "date": "2026-04-19",
+                  "review_text": "The game has a steep learning curve, especially for somewhat like me who doesn't have much experience in platformers (be prepared to die hundreds of times)!\r\n\r\nHowever, the initial frustration is offset by the beautiful atmosphere and enchanting music. The controls are also responsive and overall feels well polished (if the frames drop, adjusting v-sync may help). The story, while simple, is engaging and emotional enough.\r\n\r\nOverall, recommended for both the challenging gameplay and the beautiful story / atmosphere.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "217689394",
+                  "hours_at_review": 34.7,
+                  "voted_up": true,
+                  "date": "2026-02-06",
+                  "review_text": "Died 802 times. Finished the game out of pure hatred and spite and I’m convinced the developers secretly hated the players. If that’s your jam, I highly recommend it. :DDD That said, most of the changes in the Definitive Edition are welcome and make the game better overall. \n\nps. The artwork is still just as stunningly beautiful as in the original release.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-7e23f3",
+              "claim": "Reviewers note that the game suffers from bugs, including stuck characters and bugged achievements.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232536369",
+                  "hours_at_review": 31.9,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "People who complain about Silksong being difficult have NOT played this game, seriously.\r\nI like the difficulty however, and even got all the achievements.\r\n\r\nThe game is relatively short, at around 7-8 hours if going for 100%, but I could consistently speedrun it in under 2 hours otherwise.\r\n\r\nIt's not a perfect game, since the combat is lacking, there are performance issues on newer hardware, and some of the achievements are bugged.\r\nHowever the platforming, music, level design, story, and visuals are all top notch, making this one of my favorite games of all time.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218676738",
+                  "hours_at_review": 23.2,
+                  "voted_up": true,
+                  "date": "2026-02-19",
+                  "review_text": "A beautiful and fun game :) A bit frustrating at times (a bit of a skill issue on my part), and once I got stuck in the wall and had to restart. Still would recommend it. Lovely story, gameplay, and art! ❤️",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 10,
+        "cited_recommend": 10,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 6,
+      "pct_positive": 100.0,
+      "muted": true,
+      "n_note": "n=4 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 34596,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
