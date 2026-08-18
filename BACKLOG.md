@@ -62,6 +62,74 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-18 | **Insurgency's verdict stage is deadlocked by its own response
+cache — three rejected answers replayed nightly, forever, at zero cost** | build,
+third consecutive failure of `222880` | Diagnosed at **zero Gemini spend**, by
+running the stage standalone; raw output committed at
+`evals/insurgency-verdict-2026-08-18.txt`. The synthesis retry loop burns all
+three attempts against guard rejections, and **every one of the three is served
+from cache**:
+
+    [cached] attempt 0 -> ! prevalence:tagline:persistent
+    [cached] attempt 1 -> ! digit_in_prose:not_for_you_if[0]
+    [cached] attempt 2 -> ! prevalence:summary[mid]:persistent
+    FAILED after 3 attempts - no verdict written for 222880
+
+The three cached responses are `data/cache/extract/222880/synthesis_*.json`, all
+stamped **2026-08-16 14:53 and untouched since** — so 08-17 and 08-18 sent no
+request at all and cannot have produced a different answer. That is exactly why
+the failure costs 0 calls and 1.7s, and why it is not transient: the 08-16 entry
+guessed "probably transient, same shape as V Rising on 08-12", and it is not.
+The offending strings, read out of the cache files:
+
+| attempt | field | text | guard |
+|---|---|---|---|
+| 0 | `tagline` | "Lethal tactical combat meets **persistent** startup crashes on modern systems." | prevalence |
+| 1 | `not_for_you_if[0]` | "you use Windows **11** with BattlEye" | digit in prose |
+| 2 | `summary[mid]` | "…noting **persistent** anti cheat compatibility problems." | prevalence |
+
+**`synthesize.py:805-812` already anticipated this hazard and fixed the wrong
+half of it.** That comment puts the attempt number in the cache key precisely so
+a retry that fails the SAME way cannot replay its predecessor's answer — the
+Stardew Valley case it names. Insurgency fails a *different* way each attempt, so
+the retry prompts genuinely differ, each gets its own key, and the loop writes
+**three** distinct poisoned entries instead of one. The existing fix makes the
+attempts distinct; nothing makes them expire. A cache that is right for
+resumability is wrong for a retry loop whose whole purpose is to get a different
+answer.
+
+**Why the guards fire here is not model sloppiness, and that is the interesting
+part.** This title's dominant complaint IS a long-running BattlEye failure on
+Windows 11. "Persistent" is banned as a prevalence word (invariant 11) but here
+describes a *bug's* persistence, not how many players hit it; "Windows 11" trips
+the digit-in-prose rule (invariant 13) as an OS name, not a count. Both guards
+are behaving as written and both are catching a false positive that the subject
+matter pulls the model toward on every attempt. A title whose real story sits on
+top of two guards will fail three times in a row reliably — which is the
+condition that mints the poisoned cache.
+
+**Third mechanism in the same family, and the family is now the finding.**
+`stage_failed` is not in `run_batch`'s TERMINAL set, so this re-enters the queue
+every night at zero cost — the 2026-08-16 Hotline Miami entry's exact shape
+(empty cohort), reached the 2026-08-12 entry's way (no usable record), by a
+third route (cached rejections). Three distinct causes, one behaviour: a title
+that can never resolve, retried nightly, padding the pending count. Hotline Miami
+was resolved by a scoped allowlist and this one will not be, because the cause is
+not the same and an allowlist is not the shape of the fix.
+
+**Not fixed — the honest options are a spend decision, not a bug fix**, and they
+differ in kind. (a) `synthesize.py --force` on this one title bypasses the cache
+and spends ~3 calls for a fresh set of attempts; cheapest, unblocks tonight, and
+fixes nothing structural — the next such title mints its own deadlock. (b) Do not
+cache a REJECTED response at all, which is arguably what the cache means, but
+changes the write path every title's synthesis passes through on a batch night.
+(c) Retry-loop bypasses the cache after attempt 0, keeping the cache for
+resumability and denying it to the retries — closest to the intent of the
+805-812 comment. (d) Make a rejection-exhausted `stage_failed` terminal, which
+buries the question the way the Hotline Miami entry warned against. **(c) looks
+right and (a) is what tonight would want**, but both spend quota to verify, and
+neither should ride along with a batch commit. Related: [[verify-the-verifier]].
+
 2026-08-17 | **`n_note` is a post-filter count wearing a user-facing label, one
 wire-up away from breaking invariant 13** | build, confirming Hotline Miami's
 muted veteran cohort | Every muted cohort ships a preformatted string like
