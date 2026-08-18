@@ -1016,3 +1016,110 @@ World still carry last night's `batch_budget_exhausted`. All three retry.
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 read across all four playtime cohorts and 10 verdicts spot-checked against their
 splits, nothing inappropriate found.
+
+---
+
+## 2026-08-18 — 4.1 catalog batch, 44 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **2,305 citations across 44 verdicts, 0 failures** (and **20,024 across all 390, PASS**, `rc=0`) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-2026-08-18.md`, seed 20260818, stratified 5 per playtime cohort |
+| Scope | 44 verdicts, 738 claims, 2,305 citations |
+| Raw output | `evals/qr4-2026-08-18.txt` — in-repo and openable |
+
+The two figures reconcile against last night rather than being restated from it:
+20,024 − 17,719 = **2,305**, exactly tonight's contribution.
+
+**The run finished cleanly** — 193 titles attempted in 36.1 minutes, ending
+through `run_batch.main()`'s budget path with a real summary block and exit 0
+(`evals/batch-2026-08-18.txt`). Of the 193, **45 were actually worked**: 44
+published and 1 stage failure. The remaining 148 were budget-stopped at 0 calls
+once 397 of 400 were spent, which is correct — a title needs 13.
+
+**Cost: 397 calls over 44 published titles = 9.02 per title**, against 9.30 on
+08-17 and 8.93 on 08-16. All synthesis ran on flash-lite; the 20/day flash tier
+was untouched (`flash_used` 0), as was the 100-call live reserve.
+
+**The accounting reconciles exactly, which is the thing 08-17 could not do.**
+Ledger `batch_used` **397** = pacer `today` **397** = the sum of per-title
+`model_calls` in `batch_state.json` **397**. No repeat of last night's 14-call
+hole, and because the one failure spent nothing, the published-title sum equals
+the night's total spend.
+
+**Both titles stranded by the 08-17 connectivity loss resolved on the first
+attempt** — Rain World (`312520`, 3 calls, 21s) and EA SPORTS FC™ 25
+(`2669320`, 2 calls, 32s), the two workers in flight when the connection
+dropped. They cost 5 calls between them because their partial `data/raw/` and
+`data/filtered/` artifacts were intact, exactly as checked that night, so the
+retry read good cache rather than re-sweeping. The 08-17 entry's accounting hole
+is therefore closed on the ledger side too: the 14 calls it recorded as buying
+nothing did buy the cached artifacts these two ran off tonight.
+
+**One stage failure, and it is no longer undiagnosed: Insurgency (`222880`),
+verdict stage, 0 calls, 1.7s — third consecutive night.** The 08-16 entry
+guessed "probably transient, same shape as V Rising on 08-12". It is not
+transient and never was. Reproduced standalone at **zero Gemini cost**
+(`evals/insurgency-verdict-2026-08-18.txt`): the synthesis retry loop burns all
+three attempts on guard rejections, and all three are served from cache —
+
+    [cached] attempt 0 -> ! prevalence:tagline:persistent
+    [cached] attempt 1 -> ! digit_in_prose:not_for_you_if[0]
+    [cached] attempt 2 -> ! prevalence:summary[mid]:persistent
+    FAILED after 3 attempts - no verdict written for 222880
+
+The three cached responses are stamped **2026-08-16 14:53 and untouched since**,
+so 08-17 and 08-18 sent no request at all and could not have produced a
+different answer. That is why the failure costs 0 calls and 1.7 seconds, and why
+it will recur every night until something changes: `stage_failed` is not
+TERMINAL. Both guards are behaving as written, on text this title's subject
+matter pulls the model toward every time — its real story is a long-running
+BattlEye failure on Windows 11, where "persistent" describes a *bug* rather than
+player prevalence and "11" is an OS name rather than a count. Filed in BACKLOG
+under today's date with four options; none taken tonight, and 3 calls remained
+in any case.
+
+**Verdict mix — 18 Buy, 20 Wait, 6 Skip**, counted from the 44 published files:
+
+| | Buy | Wait | Skip | Buy % |
+|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% |
+| 2026-08-14 (42) | 26 | 15 | 1 | 62% |
+| 2026-08-16 (43) | 26 | 16 | 1 | 60% |
+| 2026-08-17 (40) | 26 | 14 | 0 | 65% |
+| **2026-08-18 (44)** | **18** | **20** | **6** | **41%** |
+
+**This is the lowest Buy share of the six nights and the most Skips yet — a
+24-point swing off 08-17 — and it is recorded here as UNEXPLAINED.** The 08-16
+entry established what would settle it: Buy rate within matched positivity
+bands, which holds the input distribution fixed and asks whether the same
+positivity still yields the same verdict. That test has **not** been run for
+this night, because `evals/positivity_by_night.py` carries a hardcoded `NIGHTS`
+list ending at 2026-08-16 (line 4) and cannot see 08-17 or 08-18 — the exact
+staleness the 08-17 entry flagged and deferred. Extending it is the next step
+and is deliberately not folded into this batch commit. Until that runs, nothing
+here distinguishes selection from scoring drift, and this entry does not claim
+it does. No verdict-logic change landed in the window.
+
+Search index rebuilt: 7,304 core + 23,079 tail rows,
+`generated_at 2026-08-18T11:58:31Z`, **all 390 verdict appids confirmed present
+by set membership, 0 missing** (verdict set minus index set is empty — not a
+row-count diff). Row counts are unchanged from 08-17 for the established reason:
+690 of 690 pages served from cache, no network, and tonight's titles were
+already ranked in them. All 44 carry an `art` block.
+
+Audit sample checked with `evals/check_sample_overlap.py` across all six batch
+nights: **20/20 distinct within the round and independent across every prior
+round** (rc=0).
+
+Catalog after this pass: **390 titles**. **149 pending** — 148 carrying tonight's
+`batch_budget_exhausted` plus Insurgency's non-terminal `stage_failed`, which
+will retry nightly at zero cost until the cache question is answered.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+read across all four playtime cohorts and 10 verdicts spot-checked against their
+splits, nothing inappropriate found.
