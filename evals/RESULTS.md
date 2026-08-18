@@ -907,3 +907,112 @@ run. Nothing shipped on those.
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 read across all four playtime cohorts and 10 verdicts spot-checked against their
 splits, nothing inappropriate found.
+
+---
+
+## 2026-08-17 — 4.1 catalog batch, 40 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **1,983 citations across 40 verdicts, 0 failures** (and 17,719 across all 346, PASS) |
+| Manual audit | 20 citations read — **20/20 clean** |
+| Sample | `evals/audit-4.4-2026-08-17.md`, seed 20260817, stratified 5 per playtime cohort |
+| Scope | 40 verdicts, 1,983 citations |
+| Raw output | `evals/qr4-2026-08-17.txt` — both runs, in-repo and openable |
+
+The gate's raw output is committed this time rather than restated. That is a
+direct consequence of the 2026-08-16 incident entry above: a figure a reader
+cannot open is a figure they have to take on trust, and this file is the one
+place where that is not good enough.
+
+**The run did not finish — the operator lost internet connectivity partway
+through.** 41 titles attempted in 34.1 minutes, **40 published**. The cause is
+confirmed rather than inferred, but the mechanical detail is worth recording
+because it is visible in the artifacts and will be visible again next time:
+
+- The log ends after `RV There Yet?` with **no summary block, no `BUDGET STOP`
+  line and no `interrupt received` line**, so the process exited through none of
+  `run_batch.main()`'s three paths (`run_batch.py:271`, `:256`, `:309-316`).
+  Budget was not the cause — 14 calls remained against the 13 a title needs, so
+  the gate would still have admitted one more.
+- **Two in-flight titles spent quota and left no record of it.** The ledger and
+  the pacer both read 386; the per-title sum in `batch_state.json` reads 372. The
+  14-call difference is exactly `by_appid["2669320"] + by_appid["312520"]` —
+  **EA SPORTS FC 25 (8 calls) and Rain World (6)**, the two workers running at
+  concurrency 2 when the connection dropped. Their `batch_state` entries still
+  read `batch_budget_exhausted` **dated 2026-08-16**, so the file describes last
+  night while tonight's spend on them is invisible in it.
+
+That is the 2026-08-12 BACKLOG entry's shape ("spends quota but leaves no
+trace") reached by a different route — process death rather than an exception
+inside `run_title()` — and it is the second mechanism to produce the same
+accounting hole. Neither title is TERMINAL, so both re-enter the queue normally.
+All five of their partial artifacts under `data/raw/` and `data/filtered/` were
+checked and are valid JSON, so a retry does not read a truncated cache.
+
+**Cost: 372 calls over 40 published titles = 9.30 per title**, against 8.93 on
+08-16. The ledger's 386 is the honest figure for what the night *spent*; the
+14-call difference bought nothing.
+
+One stage failure: **Insurgency (`222880`) at the verdict stage, 0 calls, 1.6
+seconds** — the first title of the night, two seconds in. Second consecutive
+night failing at that same stage, but 08-16 cost 10 calls there and tonight cost
+none: its `filtered/` and `claims/` artifacts are stamped today, so it reached
+synthesis off cache and failed without spending. Not diagnosed — the remaining 14
+calls were not worth spending on it. **No segmentation drops and no timeouts.**
+
+**Verdict mix — 26 Buy, 14 Wait, 0 Skip**, counted from the 40 published files:
+
+| | Buy | Wait | Skip | Buy % |
+|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% |
+| 2026-08-14 (42) | 26 | 15 | 1 | 62% |
+| 2026-08-16 (43) | 26 | 16 | 1 | 60% |
+| 2026-08-17 (40) | 26 | 14 | **0** | **65%** |
+
+The fifth night sits inside the band the 08-16 entry resolved as selection rather
+than scoring drift, so nothing here reopens that. **The first night with zero
+Skips** is the one new thing, and it is left as an observation rather than a
+finding: at 40 titles a night, a night without the rarest of three outcomes is
+not yet evidence of anything. The pool-weighted positivity column that settled
+the 08-16 question is **not extended to tonight** — `evals/positivity_by_night.py`
+carries a hardcoded `NIGHTS` list ending at 2026-08-16 (line 4), so it reports
+171 titles and does not see this batch. Worth extending before the next night
+that needs the comparison; deliberately not done as a ride-along on a batch
+commit.
+
+**Hotline Miami (`219150`) published on its first attempt** — 5 calls, 27
+seconds, **Buy**, resolving the permanent resident the 08-16 entry described. The
+`09fede5` scoped zero-cohort exception did exactly what it was built for: the
+veteran cohort renders muted instead of failing the whole title. It renders as
+"1 reviews · too few to call" — the **pool** figure, per invariant 13. The `n=0`
+in that cohort's `n_note` is the post-filter survivor count and is not what
+reaches the page; a catalog-wide measurement of that field's divergence from
+`pool_n` is recorded in BACKLOG under today's date.
+
+Search index rebuilt: 7,304 core + 23,079 tail rows,
+`generated_at 2026-08-17T15:18:49Z`, all 346 verdict appids confirmed present
+**by set membership, 0 missing**. Row counts are unchanged from 08-16 for the
+same reason as 08-13→08-14: the index is built from cached store-search pages
+(690 of 690 from cache, no network) and tonight's titles were already ranked in
+them. The art map covers 152 of the 346 on the content-hash path.
+
+Audit sample checked with `evals/check_sample_overlap.py`: **20/20 distinct
+within the round and independent across all five batch nights** (rc=0). Run
+across every `audit-4.4-*.md` the checker exits 1, but all three problems are in
+`audit-4.4-hades-hollowknight.md` and `audit-4.4-live.md`, both written before
+the 08-14 dedupe fix and both flagged for exactly the duplication that fix
+addressed. No batch-night round is implicated.
+
+Catalog after this pass: **346 titles**. **193 pending** — 233 at the start less
+the 40 that published, since `TERMINAL` is `{ok, thin_segmentation, qr4_failed}`
+(`run_batch.py:89`) and none of tonight's three unresolved titles qualifies:
+Insurgency carries a non-terminal `stage_failed`, and EA SPORTS FC 25 and Rain
+World still carry last night's `batch_budget_exhausted`. All three retry.
+
+**Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
+read across all four playtime cohorts and 10 verdicts spot-checked against their
+splits, nothing inappropriate found.
