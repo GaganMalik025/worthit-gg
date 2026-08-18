@@ -62,6 +62,51 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-17 | **`n_note` is a post-filter count wearing a user-facing label, one
+wire-up away from breaking invariant 13** | build, confirming Hotline Miami's
+muted veteran cohort | Every muted cohort ships a preformatted string like
+`"n=0 - too few reviews to call"` in `n_note`, and that number is the count of
+reviews SURVIVING THE FILTER, not the pool figure sitting beside it in the same
+object. Measured across all 346 verdicts: **135 muted cohorts, 132 whose `n_note`
+disagrees with their own `pool_n`.** The three that agree
+(Firewatch mid 15, Firewatch veteran 2, Dispatch veteran 3) agree only by
+coincidence — nothing dropped in the filter there. The gap is not marginal at the
+tail: **Path of Exile's refund_window is `pool_n` 77 against `n=18`**, and the
+title that surfaced this, Hotline Miami's veteran cohort, is `pool_n` 1 against
+`n=0`. No unmuted cohort carries an `n_note` at all, so the field exists solely
+for the muted case, which is exactly the case invariant 12 sends to invariant 13
+for its label.
+**Nothing renders it today, and that is the only reason this is a note.**
+`VerdictPage.tsx:139` builds the muted label itself from the pool figure —
+``${b.pool_n} reviews · too few to call`` — so what a reader actually sees on
+Hotline Miami is "1 reviews · too few to call", the pool number, correctly.
+`n_note` is carried into the view model at `site/lib/verdict.ts:159` and then
+read by no component; a grep across `site/components`, `site/app` and `site/lib`
+finds it only in the type, that one mapping line, and two contract-test
+references. It is a pipeline diagnostic, which invariant 13 explicitly permits.
+**Why it is worth recording rather than shrugging at:** every other diagnostic
+invariant 13 tolerates is a bare number that a renderer would have to compose
+into a sentence deliberately. This one arrives pre-composed in the exact register
+of the UI — `n=` prefix, em-dashed explanation, ready to drop into a JSX
+expression — and it sits in the view model beside the field that should be used.
+The cheapest possible mistake, wiring `{c.n_note}` into the muted branch instead
+of rebuilding the string, is a silent invariant-13 violation on 132 of 135 muted
+cohorts, and the resulting page would look completely plausible: a smaller number
+under a "too few reviews" heading reads as correct. The 2026-08-10 sourcing work
+guarded its diagnostics with a render-side contract test using sentinel values
+for precisely this hazard; `n_note` has no equivalent guard.
+**Not fixed** because the honest options are a product call rather than a bug fix,
+and they differ in kind: drop the field from the verdict schema (touches every
+verdict and the pipeline that writes them), rename it to something no one would
+render (`filter_survivors_note` — cheap, but keeps a formatted string nobody
+reads), restate it as a bare integer so it cannot be pasted into the UI at all,
+or add a sentinel contract test in the shape `cdebb6d` already established and
+leave the field alone. The last is the smallest change that closes the actual
+hazard, since the hazard is a future edit rather than current output. Cheap and
+safe whenever the verdict schema or `VerdictPage`'s muted branch is next open.
+Predates tonight's batch and is unrelated to it — Portal, Warframe and Kingdom
+Come II all carry it. Related: [[verify-the-verifier]].
+
 2026-08-17 | **40 citations render an hours figure that contradicts the cohort
 heading above them** | build, cohort-sourcing measurement | Sweeping every
 citation in all 306 verdicts against its cohort's hour range finds **40 of
