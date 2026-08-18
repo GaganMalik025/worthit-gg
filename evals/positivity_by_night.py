@@ -1,7 +1,8 @@
 """Pool-positivity + matched-band analysis, from batch_state.json + verdict JSONs."""
 import json, pathlib, statistics as stats
 ROOT = pathlib.Path("/Users/gaganmalik/Downloads/worthit-gg")
-NIGHTS = ["2026-08-12", "2026-08-13", "2026-08-14", "2026-08-16"]
+NIGHTS = ["2026-08-12", "2026-08-13", "2026-08-14", "2026-08-16",
+          "2026-08-17", "2026-08-18"]
 
 st = json.loads((ROOT / "data/batch_state.json").read_text())
 rows = {n: [] for n in NIGHTS}
