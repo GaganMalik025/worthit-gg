@@ -1,0 +1,723 @@
+{
+  "appid": "1030840",
+  "game_name": "Mafia: Definitive Edition",
+  "generated_at": "2026-08-18T11:36:03Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030840/header.jpg?t=1786727529",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1030840/capsule_231x87.jpg?t=1786727529",
+    "grid": "https://cdn2.steamgriddb.com/grid/edf9ea91fabfb986033870a6c317a7c4.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 7,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "A gorgeous return to the thirties, burdened by stiff handling and technical friction.",
+    "for_you_if": [
+      "you want a story-driven crime drama",
+      "you love cinematic nineteen-thirties atmospheres"
+    ],
+    "not_for_you_if": [
+      "you need smooth vehicle handling",
+      "you get frustrated by difficult racing missions",
+      "you expect an active open-world sandbox"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 43,
+      "pct_positive": 60.5,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 951,
+      "pct_positive": 90.4,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 199,
+      "pct_positive": 94.0,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 7,
+      "pct_positive": 100.0,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Review sentiment grows steadily more positive as players move past initial technical friction into the campaign.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 60.5,
+            "pool_n": 43
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 90.4,
+            "pool_n": 951
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 94.0,
+            "pool_n": 199
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 60.5,
+        "low_pool_n": 43,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 94.0,
+        "high_pool_n": 199,
+        "gap_pts": 33.5
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 43,
+      "pct_positive": 60.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players encounter controller prompt issues and settings that fail to save between launches.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-5a8238",
+              "claim": "Steam controller and general controller inputs fail to display correct on-screen glyphs or button prompts.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "233087148",
+                  "hours_at_review": 0.5,
+                  "voted_up": true,
+                  "date": "2026-08-18",
+                  "review_text": "Steam controller won’t show the glyphs on screen in this game. I had to switch to Xbox controller on PC",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230100508",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "Controller button prompts/hints in the world overlays (not in menus) are blank. If I disable Steam Overlay and enable Steam Input or disable Steam input, then it break controller input entirely. I'm using a Steam Controller (2026). How does something like this even get past QA?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227677445",
+                  "hours_at_review": 1.1,
+                  "voted_up": false,
+                  "date": "2026-06-10",
+                  "review_text": "Controls for controller do not show.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-dd1969",
+              "claim": "Graphics settings and keybind changes fail to save between launches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230319536",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "For whatever reason, it completely crashes the GPU after switching to 1440p. I did some research and came to the conclusion that the game's engine somehow struggles to play at 1440p with a modern GPU. The engine crashes the GPU to the point where you have to use the game's launcher to set it all up manually all over again (or verify the files). However, even at lower resolutions, the game simply is not worth the struggle. The only way to make it playable is in windowed mode, but after 10  minutes of gameplay, it still crashes.\nSomehow the frametime reaches 500ms after 5 minutes into the game. \nI'm running  9070 XT by the way.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229378482",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "Refuses to show keyboard prompts or allow remapping unless I disable steam input. Graphics options and keybind changes refuse to save between launches. Refund time!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 5,
+        "cited_recommend": 1,
+        "divergence_p": 0.0833,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 951,
+      "pct_positive": 90.4,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players praise the atmosphere and story while noting stiff combat, clunky driving, and a notoriously difficult racing mission.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-3bbfaf",
+              "claim": "Reviewers note that the racing mission is exceptionally difficult and frustrating.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 11,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "233093721",
+                  "hours_at_review": 10.6,
+                  "voted_up": true,
+                  "date": "2026-08-18",
+                  "review_text": "Incredible story. Plays really well, runs really well. The mission with the race is literally cancer and should be removed honestly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233013392",
+                  "hours_at_review": 19.3,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "Great story and great atmosphere. One of the best scores in a video game. I wish the world was more vibrant and alive between missions and in Free Ride. The race on Classic is no joke. Definitely worth it if you can find it on sale for <$20",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232797262",
+                  "hours_at_review": 3.1,
+                  "voted_up": true,
+                  "date": "2026-08-14",
+                  "review_text": "Look, I ain't racist or anything, but God forbid you try and finish the racing mission on 'classic' difficulty",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232735679",
+                  "hours_at_review": 6.4,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "its good but the RACE is gut wrenching",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232529444",
+                  "hours_at_review": 13.5,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "everything is all good and i feeling so positive+ about world and story , + okay combat and gun fight and cutscene and facial expression is really really gooooodddd also nice graphic \n\nbut there is one thing only about this game\n\nworst race mission car driving mechanic i ever seen in my entire life\nwhy tf game difficulty has to tied with vehicle driving mechanic? \n(i'm not a main racing realistic gamer i have no really issue with any combat and gun fight in this game at all in \"Classic\" diff  but.. this damn racing ♥♥♥♥♥♥ mission wasting my time so bad , but after so many try i'm finally got the first place without cheese method or giving up  it feel like DEV only focusing on 1 thing and put all developing resources on car driving mechanic and nothing else LOLOLOLOLOLOLOL)\n\ni'm never go driving a car mechanic made by HANGAR13 again in my life thank you MAFIA 2 still the GOAT \n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232450441",
+                  "hours_at_review": 15.6,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "I LOVED it! But I wish the driving was better. The racing chapter sucked...\nAnd I'm not the best at shooters, so Classic difficulty made me want to tear my hair out sometimes. Oh well! I still had a good time, and the writing was great. Not quite The Godfather 1 or 2 level, but close enough.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232255943",
+                  "hours_at_review": 18.8,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "I loved the story, it was really bittersweet and fitting, hated the race mission though 10/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232014656",
+                  "hours_at_review": 7.1,
+                  "voted_up": true,
+                  "date": "2026-08-04",
+                  "review_text": "Great game, awesome story, memorable characters. Some of the missions can get a little repetitve, but overall I had a great time. The race mission is awful on Classic dificulty, but other than that, very doable.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231980839",
+                  "hours_at_review": 4.8,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "30 mins or 1 hour something into the game, this game is speechless. Cinematic, great awesome graphics. The environment. 1930s, you can really feel the society. It's a lot of things to say and do! I love it. I love love it!!\n\nFCK THIS GAME AND THE FCKING RACE MISSION FCK WHOEVER INVENTED THAT MISSION WASTE OF TIME\n\nWon the race!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231633241",
+                  "hours_at_review": 14.3,
+                  "voted_up": true,
+                  "date": "2026-07-30",
+                  "review_text": "fun cinmatic story telling, it puts the story first, not the open world the story fun but diffcult racing misstion took me like 30 aattemets",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231544312",
+                  "hours_at_review": 12.6,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "I went into Mafia: Definitive Edition completely blind, and I honestly didn't expect it to be this good. I won't include any spoilers because this is absolutely a game that's best experienced for yourself.\n\nThe story is excellent, with several moments that are genuinely emotional and, at times, downright heartbreaking. The characters are memorable, and the presentation kept me invested from start to finish.\n\nMy only real criticism is the infamous race mission. It's definitely frustrating, but aside from that, I had a great time.\n\nIf you're even remotely interested in story-driven games, I'd highly recommend giving Mafia: Definitive Edition a try.\n\n9/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231454199",
+                  "hours_at_review": 15.1,
+                  "voted_up": true,
+                  "date": "2026-07-27",
+                  "review_text": "Bought the mafia trilogy whilst it was on sale and didn't expect to stumble on a gold mine with this one. The story is compelling, gameplay was simply but fun and the main character and character dynamics had you attached near to immediately. It's the sort of game I found myself playing the next chapter when I told myself it would be the last chapter. When it ended I was left feeling a bit empty in the best way possible! \n\nMy only problem with it was that damn race level. I must have took over an hour to finish it and I'm pretty sure it was a fluke as well.\n\nCan't comment much on the other aspects since I was a bit tunnel visioned on the story but I imagine it would have been fun to 100% for completionists. Would definitely recommend this game to everyone whether inexperienced in gaming or experienced.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-7dd1b4",
+              "claim": "Reviewers mention that the racing mission is extremely difficult.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233093721",
+                  "hours_at_review": 10.6,
+                  "voted_up": true,
+                  "date": "2026-08-18",
+                  "review_text": "Incredible story. Plays really well, runs really well. The mission with the race is literally cancer and should be removed honestly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232014656",
+                  "hours_at_review": 7.1,
+                  "voted_up": true,
+                  "date": "2026-08-04",
+                  "review_text": "Great game, awesome story, memorable characters. Some of the missions can get a little repetitve, but overall I had a great time. The race mission is awful on Classic dificulty, but other than that, very doable.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-1982bf",
+              "claim": "Reviewers describe vehicle handling and driving mechanics as clunky or difficult to control.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233005414",
+                  "hours_at_review": 19.3,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "This is [b]one of the[/b] worst games I have ever played where I had to tolerate its issues.\n\nI know you'll defend the game, saying it's good. I won't argue with you; it really is. It has a good story and good music, not to mention the clunky car controls. Plus, there's a Free Play (Free Ride) for exploring Lost Heaven, particularly for gathering collectibles.\n\nBut I still can't give it a good rating because of these constant freezing and crashing issues. That's why I don't want to waste my time on the Classic difficulty, which will probably be a double nightmare.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231991273",
+                  "hours_at_review": 10.1,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "Mafia: Definitive Edition is a mixed bag — gorgeous in some ways, rough in others, but still worth the ride.\n\nThe good:\nThe story is genuinely great. It pulls you into the era and nails that retro gangster vibe. The visual fidelity on faces and cars is impressive — you can actually see pores on characters' faces. The music, sound design, models, and textures all show real craftsmanship. Kudos to the team for that.\n\nThe bad:\nControls and animations feel clunky and dated. Vehicle handling is particularly rough — maybe that's intentional, to reflect how much harder cars were to drive back then, but it still doesn't feel great to play.\n\nThere are also technical issues: I get latency/stutter in fullscreen mode that disappears in borderless windowed, but borderless windowed itself bugs out on relaunch and defaults back to fullscreen — I have to keep toggling between the two a few times until it randomly fixes itself. The forced anti-aliasing leaves noticeable ghosting/trails, and the lack of DLAA support is disappointing.\n\nNew York itself feels pale and lifeless — streets feel like an empty sandbox with just a handful of NPCs and cars scattered around. Combined with the technical issues, it gives the impression this was more of a straight port to a new engine than a full remake, so the world ends up feeling plasticky and under-detailed. Half-finished, almost.\n\nVerdict:\nDespite all these issues, I'd still recommend it. It's a unique chance to relive the life of a gangster in that era, and the story and atmosphere carry it even when the tech doesn't.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-04b59a",
+              "claim": "Reviewers state that gunplay and combat mechanics feel stiff or imprecise.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231826816",
+                  "hours_at_review": 15.2,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "Being familiar with the original, I think Mafia: Definitive Edition does a great job modernising the classic while preserving what made the story so memorable.\n\nUnfortunately, the gameplay is much less impressive. I don't mind the story and missions following a linear structure, but the gunplay felt imprecise, with combat relying too heavily on sticking to cover.\n\nI enjoyed my time with it, but once the story was over, I had little motivation to return. Even collecting the remaining collectibles felt more confusing than rewarding. Overall, it's a good remake with a great story, but playing it once will suffice.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231807825",
+                  "hours_at_review": 15.1,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "Gameplay is a little stiff but very good per total, the story was amazing, felt like a movie.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-9ee6b6",
+              "claim": "Reviewers describe visual artifacts including blurriness, anti-aliasing ghosting, and trails.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231991273",
+                  "hours_at_review": 10.1,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "Mafia: Definitive Edition is a mixed bag — gorgeous in some ways, rough in others, but still worth the ride.\n\nThe good:\nThe story is genuinely great. It pulls you into the era and nails that retro gangster vibe. The visual fidelity on faces and cars is impressive — you can actually see pores on characters' faces. The music, sound design, models, and textures all show real craftsmanship. Kudos to the team for that.\n\nThe bad:\nControls and animations feel clunky and dated. Vehicle handling is particularly rough — maybe that's intentional, to reflect how much harder cars were to drive back then, but it still doesn't feel great to play.\n\nThere are also technical issues: I get latency/stutter in fullscreen mode that disappears in borderless windowed, but borderless windowed itself bugs out on relaunch and defaults back to fullscreen — I have to keep toggling between the two a few times until it randomly fixes itself. The forced anti-aliasing leaves noticeable ghosting/trails, and the lack of DLAA support is disappointing.\n\nNew York itself feels pale and lifeless — streets feel like an empty sandbox with just a handful of NPCs and cars scattered around. Combined with the technical issues, it gives the impression this was more of a straight port to a new engine than a full remake, so the world ends up feeling plasticky and under-detailed. Half-finished, almost.\n\nVerdict:\nDespite all these issues, I'd still recommend it. It's a unique chance to relive the life of a gangster in that era, and the story and atmosphere carry it even when the tech doesn't.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231389788",
+                  "hours_at_review": 3.3,
+                  "voted_up": false,
+                  "date": "2026-07-26",
+                  "review_text": "Game looks terrible.\nOn the highest settings it looks like the worst case of DLSS (even though this game has none), blurry everything, ghosting, awful draw distances and no in game settings allow to fix this.\nReally can't play like this.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-e2d76f",
+              "claim": "Reviewers note that fullscreen mode causes latency and stutter.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231991273",
+                  "hours_at_review": 10.1,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "Mafia: Definitive Edition is a mixed bag — gorgeous in some ways, rough in others, but still worth the ride.\n\nThe good:\nThe story is genuinely great. It pulls you into the era and nails that retro gangster vibe. The visual fidelity on faces and cars is impressive — you can actually see pores on characters' faces. The music, sound design, models, and textures all show real craftsmanship. Kudos to the team for that.\n\nThe bad:\nControls and animations feel clunky and dated. Vehicle handling is particularly rough — maybe that's intentional, to reflect how much harder cars were to drive back then, but it still doesn't feel great to play.\n\nThere are also technical issues: I get latency/stutter in fullscreen mode that disappears in borderless windowed, but borderless windowed itself bugs out on relaunch and defaults back to fullscreen — I have to keep toggling between the two a few times until it randomly fixes itself. The forced anti-aliasing leaves noticeable ghosting/trails, and the lack of DLAA support is disappointing.\n\nNew York itself feels pale and lifeless — streets feel like an empty sandbox with just a handful of NPCs and cars scattered around. Combined with the technical issues, it gives the impression this was more of a straight port to a new engine than a full remake, so the world ends up feeling plasticky and under-detailed. Half-finished, almost.\n\nVerdict:\nDespite all these issues, I'd still recommend it. It's a unique chance to relive the life of a gangster in that era, and the story and atmosphere carry it even when the tech doesn't.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231582855",
+                  "hours_at_review": 12.0,
+                  "voted_up": true,
+                  "date": "2026-07-29",
+                  "review_text": "Love it!\n\nGreat gameplay, story, visuals. \n\nPerformance could be better and fullscreen causes lag spikes.\n\nWould recommend.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-35fde1",
+              "claim": "Reviewers state that optimization and stability could be improved.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232143078",
+                  "hours_at_review": 8.3,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "Classic with a fresh paint. Although the optimization and game stability could be much better.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231526742",
+                  "hours_at_review": 12.4,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "very good storyline however it was very hard to enjoy with the optimization this game had it was such a shame but I still recommend it for people who want a deep feel",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-6509c9",
+              "claim": "Reviewers praise the game's story, cutscenes, and 1930s atmosphere.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233109370",
+                  "hours_at_review": 14.6,
+                  "voted_up": true,
+                  "date": "2026-08-18",
+                  "review_text": "Mafia: Definitive Edition is probably one of the best examples of how to remake an old game properly.\n\nThe original Mafia came out in 2002, and instead of just making it look a bit prettier and calling it a day, Hangar 13 basically rebuilt the whole thing.\n\nAnd honestly, it works really well.\n\nYou play as Tommy Angelo, a taxi driver in 1930s Lost Heaven who gets dragged into the Salieri crime family after being in the wrong place at the wrong time.\n\nFrom there, things go downhill pretty quickly.\n\nWhat starts as Tommy doing a few jobs for the family slowly turns into shootouts, car chases, robberies and a lot of people making very bad decisions.\n\nThe story is easily the best part of the game.\n\nIt actually feels like a proper gangster film. The characters are memorable, the cutscenes are great and Tommy is genuinely interesting because he doesn't start off as some unstoppable criminal.\n\nHe's just a normal bloke who gets pulled further and further into that life.\n\nPaulie and Sam are great as well, and by the end of the game you actually care about what happens to everyone.\n\nThe city itself looks brilliant too.\n\nLost Heaven absolutely nails the 1930s atmosphere. The old cars, streets, buildings, music and clothing all make the game feel like it belongs in that time period.\n\nDriving around at night in the rain with some old music playing is honestly a vibe.\n\nThe gameplay is pretty simple.\n\nYou drive somewhere.\n\nShoot some people.\n\nDrive somewhere else.\n\nProbably shoot some more people.\n\nAnd somehow it never really gets boring.\n\nThe shooting isn't anything revolutionary, but it feels decent enough and the missions usually keep things moving.\n\nThe driving is also a big part of the game, although some of the older cars handle like they've got shopping trolley wheels attached to them.\n\nObviously, it's not perfect.\n\nThe biggest problem is probably the open world.\n\nLost Heaven looks like a massive city that you should be able to explore for hours, but there really isn't that m…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232969831",
+                  "hours_at_review": 8.4,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "Mafia: Definitive Edition is a benchmark for ground-up remakes and a glowing showcase of why the Mafia series remains my absolute favourite crime franchise in gaming. Rather than chasing generic open-world padding, it delivers a hyper-focused, cinematic mob masterpiece.\n\nPROS\n\nUnmatched Storytelling: Outstanding voice acting, motion capture, and dynamic character writing that feel straight out of a classic mob film.\nIncredible 1930s Atmosphere: Lost Heaven is rendered in stunning detail, packed with interwar architecture, vintage vehicles, and an authentic period jazz soundtrack.\nSatisfying Gunplay & Driving: Firearms carry genuine weight, and driving period automobiles requires actual skill, especially on classic settings.\nClassic Mode Option: Features optional simulation-style driving physics, strict police responses for minor infractions, and realistic ammo loss on partial reloads.\n\nCONS\n\nStrict Linearity: The open world serves as a cinematic backdrop rather than an interactive sandbox, which may surprise players expecting a free-roam playground.\nMelee Combat: Hand-to-hand brawling feels simple compared to the firearm mechanics.\n\nVERDICT\n\nIf you love mature narrative-driven games, gripping period pieces, or classic mob stories, this is an absolute must-buy. Hangar 13 modernized a classic while preserving every ounce of its soul and emotional weight.\n\nFinal Score: 9.5/10 - Don Salieri sends his regards.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-deec06",
+              "claim": "Reviewers note that the campaign is linear rather than offering an open-world sandbox between missions.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233061163",
+                  "hours_at_review": 10.0,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "In a discount is worth i guess,\r\n\r\nexpect a linear-story campaign instead of open world thing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232969831",
+                  "hours_at_review": 8.4,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "Mafia: Definitive Edition is a benchmark for ground-up remakes and a glowing showcase of why the Mafia series remains my absolute favourite crime franchise in gaming. Rather than chasing generic open-world padding, it delivers a hyper-focused, cinematic mob masterpiece.\n\nPROS\n\nUnmatched Storytelling: Outstanding voice acting, motion capture, and dynamic character writing that feel straight out of a classic mob film.\nIncredible 1930s Atmosphere: Lost Heaven is rendered in stunning detail, packed with interwar architecture, vintage vehicles, and an authentic period jazz soundtrack.\nSatisfying Gunplay & Driving: Firearms carry genuine weight, and driving period automobiles requires actual skill, especially on classic settings.\nClassic Mode Option: Features optional simulation-style driving physics, strict police responses for minor infractions, and realistic ammo loss on partial reloads.\n\nCONS\n\nStrict Linearity: The open world serves as a cinematic backdrop rather than an interactive sandbox, which may surprise players expecting a free-roam playground.\nMelee Combat: Hand-to-hand brawling feels simple compared to the firearm mechanics.\n\nVERDICT\n\nIf you love mature narrative-driven games, gripping period pieces, or classic mob stories, this is an absolute must-buy. Hangar 13 modernized a classic while preserving every ounce of its soul and emotional weight.\n\nFinal Score: 9.5/10 - Don Salieri sends his regards.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-e39e9e",
+              "claim": "Reviewers point out that side missions from the original game are missing in the remake.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233012431",
+                  "hours_at_review": 17.7,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "Exquisite cinematics & great reimagination of the classic. Wish there was no copyright clashes so we could get it in it's full glory, also a lot of side missions are missing from the original, but all that is forgiven as it is a great game overall. 9/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231387664",
+                  "hours_at_review": 17.6,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "What a game, I remember playing the demo for Mafia 1 when I was a kid. It was very hard. I even got thru the entire game later on in life. But now I played the remake and it's a masterpiece. I love the story and gameplay. And the graphics are just perfect. I it's so involving with the cutscenes and the setting. The only thing both Mafia 1 and 2 lacks is more content and less cutting corners. These are such good games they really deserv a AAA title. I wish they got back to their roots and made another game like Mafia 2 where the world evolves with time. And less linear.\n\nAnyway the feelings that you got out of this. Great voice acting, really loved the noire feel to it. Pretty much unmatched these days. I love story driven games. but this gave a challenge as well even if it was quite easy at times. I was more into getting to the next mission rather than thinking about the gameplay and thats a good thing for me.\n100% recommended, dont miss out on Mafia 1 and 2.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 25,
+        "cited_recommend": 23,
+        "divergence_p": 0.707,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 199,
+      "pct_positive": 94.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Longer-term players highlight the frustrating racing challenge and note that the open world is largely empty outside of the campaign.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-b2e7f6",
+              "claim": "Reviewers note that the racing mission on the highest difficulty setting is extremely frustrating and difficult.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229911833",
+                  "hours_at_review": 56.6,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "Having never played the 2002 original, I came into this remake with fresh eyes, and I genuinely think it sets a high bar for how classic games should be remade. Everything feels carefully crafted—from the streets of Lost Heaven and its architecture to the period-appropriate cars and the people going about their daily lives. The story is straightforward and easy to follow, but it's elevated by memorable characters and offers an engaging glimpse into the lives of mobsters during the 1930s.\n\nI played the game on Classic difficulty, and while I encountered a few bugs here and there, they never seriously detracted from the experience. The campaign never overstayed its welcome or became repetitive. It knew the story it wanted to tell and delivered it without unnecessary filler.\n\nExcept for that racing mission.\n\nIt's every bit as infamous as people say. I eventually had to cheat, and modify the games files a bit just to move on. Thankfully, that single frustrating chapter doesn't define the rest of the experience.\n\nIronically, despite the racing mission, I actually enjoyed the driving. The Classic driving model gives the cars a satisfying sense of weight, making every trip across Lost Heaven feel authentic. Considering how much time you'll spend behind the wheel, that's a very good thing. Gunplay is equally solid. The cover system is responsive and reliable, even if it doesn't do anything particularly groundbreaking.\n\nThe open world itself isn't meant to compete with the most dynamic sandbox games. It's primarily a backdrop for the story rather than a playground full of activities, and I know that may disappoint some players. Personally, I didn't mind. Lost Heaven excels as a place to soak in the atmosphere, cruise through its streets, and stop every now and then to admire the scenery or take screenshots. The city invites your imagination to fill in the gaps. If you look too closely, you'll notice that the illusion starts to crack, but as a stage for the narrative, it work…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229884075",
+                  "hours_at_review": 60.8,
+                  "voted_up": true,
+                  "date": "2026-07-07",
+                  "review_text": "9/10\nBeautiful game, strong story, and exciting gameplay. I loved every minute of it except... THE CAR RACE. Dear god.... this level made me want to yeet my controller into a black hole. Whoever designed this \"race\" was on drugs, and not the good kind. They wanted to make you suffer and they do. It is completely broken and unfair. Legit almost made me not finish the game, but if you push through you are rewarded with some incredible scenes with maybe a couple familiar faces if you have played the other games.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228763826",
+                  "hours_at_review": 57.8,
+                  "voted_up": true,
+                  "date": "2026-06-25",
+                  "review_text": "great remake of a classic gem. the race mission is still a pain in the ass though! highly recommend watching a youtube video if stuck. besides that tho, do yourself the favor and play this enjoyable game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226079079",
+                  "hours_at_review": 29.3,
+                  "voted_up": true,
+                  "date": "2026-05-21",
+                  "review_text": "Mafia is a game close to my heart. When I heard that a remake of this legendary and groundbreaking game was in the works, I couldn’t pass it up.\r\n\r\nThe graphics are nice, and I’ve completed the game on the hardest difficulty, “Classic.” Paradoxically, it’s not that difficult to complete, but if there’s one part where you’ll definitely “hit a wall,” it’s the racing mission, which is a real test of patience on the hardest difficulty (I’m glad they stayed true to the original in this regard, where the race was also quite a challenge). In general, the driving in this game can be nerve-wracking, but you’ll get used to it over time! :D\r\n\r\nThe story is phenomenal and is guaranteed to draw you into this fictional world. After finishing the story, you’re free to roam the world at your leisure and use that time, for example, to collect all the collectibles if you’re the type of player who goes for achievements.\r\n\r\n10/10!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225582971",
+                  "hours_at_review": 68.1,
+                  "voted_up": true,
+                  "date": "2026-05-15",
+                  "review_text": "Fantastic game with a great atmosphere, strong story, and memorable characters that make Lost Heaven feel alive from the start. The visuals are excellent, the driving and shooting feel good, and the whole game has a classy old school gangster charm. The only thing worth mentioning is the race mission on Classic difficulty, which feels less like a normal level and more like a cheerful little exercise in gamer masochism, but surviving it  makes the victory even sweeter. I definitely recommend this game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-c2e8b9",
+              "claim": "Reviewers describe the open world outside of the main story missions as empty, with little to do besides collecting items and free-roaming.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232179506",
+                  "hours_at_review": 26.0,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "one of the best story experiences in gaming and fun to play through every single time \n\nwhich makes it more of a shame that hangar 13 didnt make any use of the beautiful open world city except for a watered down free roam with collectibles and a taxi minigame \nstrong 7/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231117885",
+                  "hours_at_review": 23.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Status: 100% Achievements / Platinum\n\nVerdict: Average (Buy on sale only)\n\nPros\nLost Heaven and the car models look stunning. Smooth performance overall (aside from occasional slow texture rendering). Fantastic return of original voice actors (Tommy, Paulie). Reworked missions feel fresh and modern.\n\nCons\nStory & dialogue alterations, worse than the 2002 original. Removing Tommy's framing narration in cutscenes takes away a lot of charm. Frank looks wrong; Salieri looks too young and uninteresting. Freeride mode beautiful world with nothing to do except a few annoying races. Awful collectible design, 195 collectibles is tedious bloat. Worse yet, several are locked inside story-mode interiors and can't be picked up in Free Ride. Motorcycle handling feels atrocious.\n \nNot worth full price. The core story holds up, but narrative downgrades, an empty open world, and obnoxious collectible design hold it back. Grab it on a steep discount or in a bundle.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226213912",
+                  "hours_at_review": 21.1,
+                  "voted_up": true,
+                  "date": "2026-05-23",
+                  "review_text": "Hangar 13 did a very good job with the remake of this game although the story and graphics were very good i only hated the hardest difficulty of this game. i like a little challenge but it was very hard in my opinion also lets not forget the race in chapter 5 named \" fair play \". \r\n\r\ncharacters in the game were a bit mehhh but you can tell that they focused more on the graphics and all but they game is dead outside of the story. the only lively NPC's in the game are the cops that drive around.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227885506",
+                  "hours_at_review": 34.9,
+                  "voted_up": true,
+                  "date": "2026-06-13",
+                  "review_text": "Great game overall. 10/10\n\nI enjoyed the story, graphics, driving mechanics, and atmosphere.\n\nIf you enjoy the mobster genre then this game is absolutely perfect for it. The characters are likeable and the plot is interesting and unique throughout. Almost all the missions are unique and bring something special to the table rather than being repetitive. Its important to note that the game is primarily driven through its story and the free play mode is more of an afterthought which can be seen with the side quests or various small activities in the city. So imagine GTA if it focused more on the story rather than the open world.\n\nFor me, the best seller was the story. A movie in video game form. The dialogue and acting is fantastic and if you love a story game with some combat and driving, then this is a great game to pick up.\n\nThere were moments in the game when the map was raining and dark and you were in a 1930s car, driving around the town with the radio on and it just hit a spot for me.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 9,
+        "cited_recommend": 8,
+        "divergence_p": 0.427,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 7,
+      "pct_positive": 100.0,
+      "muted": true,
+      "n_note": "n=5 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 35915,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

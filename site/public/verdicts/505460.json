@@ -1,0 +1,960 @@
+{
+  "appid": "505460",
+  "game_name": "Foxhole",
+  "generated_at": "2026-08-18T11:27:05Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505460/3b4805691c442e4bd87a8437ee9e8e486274c29c/header_alt_assets_0.jpg?t=1785273455",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/505460/12b8c3fe2ba66081f18a9befb47b363e686e8673/capsule_231x87_alt_assets_0.jpg?t=1785273455",
+    "grid": "https://cdn2.steamgriddb.com/grid/b337e0d04bebfdfa96bb89f9637d3468.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 10,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Skip",
+    "tagline": "A massive tactical war demanding endless hours and external guides.",
+    "for_you_if": [
+      "you want large-scale cooperative warfare",
+      "you enjoy coordinating supply lines",
+      "you run with organized groups"
+    ],
+    "not_for_you_if": [
+      "you prefer playing entirely solo",
+      "you lack time for heavy logistics",
+      "you want clear in-game tutorials",
+      "you encounter performance drops and cheaters"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 32,
+      "pct_positive": 28.1,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 209,
+      "pct_positive": 67.5,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 258,
+      "pct_positive": 58.5,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 702,
+      "pct_positive": 38.7,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "Player sentiment peaks during early hours before declining sharply among long-term participants.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 28.1,
+            "pool_n": 32
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 67.5,
+            "pool_n": 209
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 58.5,
+            "pool_n": 258
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 38.7,
+            "pool_n": 702
+          }
+        ],
+        "shape": "rise_then_fall",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 28.1,
+        "low_pool_n": 32,
+        "high_cohort": "early",
+        "high_cohort_label": "2-20 hours",
+        "high_pct_positive": 67.5,
+        "high_pool_n": 209,
+        "gap_pts": 39.4,
+        "peak_cohort": "early",
+        "peak_pct_positive": 67.5,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 38.7,
+        "drop_after_peak_pts": 28.8
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews show a marked drop in positive sentiment compared to historical averages.",
+      "evidence": {
+        "recent_pool_pct_positive": 47.7,
+        "recent_pool_n": 1201,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 78.1,
+        "steam_total_reviews": 32731,
+        "delta_pts": -30.4
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 32,
+      "pct_positive": 28.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players encounter severe performance issues, clunky elevation mechanics, and demanding logistics systems immediately.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-f070a3",
+              "claim": "Reviewers describe the game as extremely buggy, noting issues with freezing and various aspects of the gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231217269",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "There are so many bugs in certain aspects of the game sucks and the way that logistics works too, especially the supply ships sucks",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227690301",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-06-11",
+                  "review_text": "This game is extremely buggy. You freeze around, and it's overall very confusing to new players. I don't understand how to play the game at all after almost 1 hour. I expect a game to be able to teach you in a good way.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-eb4a04",
+              "claim": "Reviewers state that the logistics system requires heavy work and involves a significant amount of grinding.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231017659",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-22",
+                  "review_text": "Mods are heavily biased (I believe politically but thats just my opinion). \r\nLogi system needs heavy work, you will spend hours building for a single enemy to come by and blow it up with a wet fart.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224459106",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-04-30",
+                  "review_text": "the amount of time you have to put in grinding stuff, even to just join a group, is really not worth it",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-23f109",
+              "claim": "Reviewers mention difficulty with gunplay and elevation mechanics, noting it is hard to tell elevation when shooting at targets in trenches.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231251844",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "insanely hard to tell the elevation of what youre shooting, you can be staring at a guy in a trench across from you aiming right at him and his shots hit and yours don't.  the actual gunplay is very tedious",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224605443",
+                  "hours_at_review": 2.0,
+                  "voted_up": true,
+                  "date": "2026-05-02",
+                  "review_text": "- Load in after an hour on the tutorial island\n- Gear up and head out, looking for any sign of combat or somewhere I can help\n- Gunshots in the distance\n- Follow the gunshots and find two ally's, one dying and the other crouching with his rifle\n- Help him hunt some wabbits, taking potshots at anything suspicious and watching his flank\n- More friendlies show up, 5 of us now\n- No luck finding this guy, decide to pile into a nearby trench for cover\n- Post up, ready for anything\n- Or so I thought\n- Partisan in the bushes blows my head smoov off\n- Guy next to me mag dumps his SMG into said bushes while I bleed to death\n\nGame is fun just jumping in blind with no squad, regiment, or friends. Obviously is greatly enhanced by all of those things. Probably are some flaws that I just haven't encountered yet, but good bones for a fun time. Get on sale if you're still skeptical.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 1,
+        "divergence_p": 0.462,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 209,
+      "pct_positive": 67.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players face steep learning curves, voice chat failures, and team-killing while discovering that advanced content requires external coordination.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-3b0a69",
+              "claim": "Reviewers describe weapon handling and shooting as difficult due to complex elevation mechanics and a lack of visual indicators for height.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231906210",
+                  "hours_at_review": 4.7,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "This game sucks. Played for a few hours and impossible to know where and how to shoot from. Am in a trench peeking out and still getting killed from an enemy while not being able to hit anyone else while I am standing still. 99% of the mechanics you legit have to google and ask about due to the complexity even just apparently elevation and ♥♥♥♥ in a top down game, 0 indicators about your own elevation relation to the area around you. Absolute trash. Wasted my money and my evening.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229888623",
+                  "hours_at_review": 3.0,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Ok so I played foxhole for 3 hours\nNot gonna lie. I don't enjoy it. It's just Arma 3 but third person with the ♥♥♥♥♥♥ project zomboid camera that you can't even zoom out or in. The weapon mechanic is weird, like you have to shoot behind the enemy and not at the enemy, you have this weird stability thing, you have to set spawnpoints, care about supplies, it feels like if you took Hearts of Iron IV's dumbass supply system that just keeps getting worse with every update and Arma 3's simulation mechanics but jank them up. It also just feels so clunky. The animations are stiff as hell, the graphics look like those games from 2000s that try to be realistic, and I'm not usually the one to complain about graphics, I was raised on old games, but this game for some reason makes me feel lost. I can't even see half the field because there is a combass, notification window, chat window, squad window, stamina bar, chosen weapon icon, the name of the chosen weapon, stability float chart. 3/10 it's an acquired taste.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-63ff3d",
+              "claim": "Reviewers report that the game requires learning complex mechanics and consulting external resources, noting that it has a steep learning curve or feels aimless without external guidance.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232378636",
+                  "hours_at_review": 8.7,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "bought this a couple months ago, stopped playing, never want to play again. wasted 30 bucks on this game. too much to learn and not really that fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232375424",
+                  "hours_at_review": 6.6,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "Nearly impossible to get into for a new player. if you are a teenager and have a ton of time on your hands and want to spend a week learning a game before you play it this is for you. Enjoy running around like a chicken with your head cut off and having 0 direction or objective. unless you have friends to bring you into the game and show you the ropes id go play a different game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231906210",
+                  "hours_at_review": 4.7,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "This game sucks. Played for a few hours and impossible to know where and how to shoot from. Am in a trench peeking out and still getting killed from an enemy while not being able to hit anyone else while I am standing still. 99% of the mechanics you legit have to google and ask about due to the complexity even just apparently elevation and ♥♥♥♥ in a top down game, 0 indicators about your own elevation relation to the area around you. Absolute trash. Wasted my money and my evening.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230642891",
+                  "hours_at_review": 5.0,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "Unless you watch tons of tutorials and play with others the game is aimless and boring. Plus can get team killed for no reason and nothing happens to the person in terms of auto-kick or ban for killing me 2-3 times in a row. Filled with large clans taking control of areas when no such mechanic is in the game. Game seems elitist with it's player base.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-9f099a",
+              "claim": "Reviewers experience instances of being team-killed or attacked by their own faction members while performing logistics tasks or handling resources.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "230642891",
+                  "hours_at_review": 5.0,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "Unless you watch tons of tutorials and play with others the game is aimless and boring. Plus can get team killed for no reason and nothing happens to the person in terms of auto-kick or ban for killing me 2-3 times in a row. Filled with large clans taking control of areas when no such mechanic is in the game. Game seems elitist with it's player base.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230483138",
+                  "hours_at_review": 12.8,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "Was grinding components and some random clan on my team stopped my truck, broke it and when I got out they shot me to death because they thought I stole their truck?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227566520",
+                  "hours_at_review": 2.5,
+                  "voted_up": false,
+                  "date": "2026-06-09",
+                  "review_text": "Looked cool on YouTube, but controls are janky, didn't manage to get a single kill. Switch to logi, followed a guide, killed by my own team for \"stealing resources\" - I was just trying to load salvage into my truck. Refunding.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-e1bbd0",
+              "claim": "Reviewers state that experiencing advanced content like tanks and organized operations requires joining external clans or Discord servers.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232744645",
+                  "hours_at_review": 19.9,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "Devs took this game out back and old yellered it\n\nIf you want to do anything of note or have actual fun you need to join a mega clan and treat this like a 9-5 at the whim of some spastic 40 year old larper who treats this like his missed oppurtunity to serve. Same type of community as hell let loose. Much more enjoyable to grab a gun and fight on the frontlines with grunts who are in the same boat.\n\nWant to drive a tank? good luck, a plane? nice try. A ship? are you part of a clan with the time to build and maintain it? with a fully cordinated team? want to join one? please match all the criteria and join some bs discord to experience the full game.\n\nStill a fun game if you find a good group and some nice players to focus on a specific objective with but the player count is dwindling slowly but surely. Play while you can.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232300020",
+                  "hours_at_review": 10.8,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "I really enjoy how the game feels and the atmosphere is really good too, nature is nice and from what I've experienced thus far as a infantryman it also plays well. Two things I do have to say is that you will die a lot, like a lot lot, so don't take a lot of ammo nor equipment because you won't use it up in time. One more thing I've encountered is that for an assault to be successful you need coordination which is usually only found in Discord servers for different regiments, but this is not too difficult of a process.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-337520",
+              "claim": "Reviewers note that solo players face significant difficulty making an impact or progressing without joining a clan or coordinated group.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232744645",
+                  "hours_at_review": 19.9,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "Devs took this game out back and old yellered it\n\nIf you want to do anything of note or have actual fun you need to join a mega clan and treat this like a 9-5 at the whim of some spastic 40 year old larper who treats this like his missed oppurtunity to serve. Same type of community as hell let loose. Much more enjoyable to grab a gun and fight on the frontlines with grunts who are in the same boat.\n\nWant to drive a tank? good luck, a plane? nice try. A ship? are you part of a clan with the time to build and maintain it? with a fully cordinated team? want to join one? please match all the criteria and join some bs discord to experience the full game.\n\nStill a fun game if you find a good group and some nice players to focus on a specific objective with but the player count is dwindling slowly but surely. Play while you can.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232300020",
+                  "hours_at_review": 10.8,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "I really enjoy how the game feels and the atmosphere is really good too, nature is nice and from what I've experienced thus far as a infantryman it also plays well. Two things I do have to say is that you will die a lot, like a lot lot, so don't take a lot of ammo nor equipment because you won't use it up in time. One more thing I've encountered is that for an assault to be successful you need coordination which is usually only found in Discord servers for different regiments, but this is not too difficult of a process.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229939324",
+                  "hours_at_review": 6.9,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "Let me start by saying this: Foxhole is a good game. The concept is brilliant, a persistent, player-driven war where every bullet, tank, and trench is built and fought over by real players. The scale is impressive, the community is passionate, and I can absolutely see why people sink thousands of hours into it.\n\nBut it's not for me.\n\nI play solo and have limited time, and this game is brutally unforgiving to players like me. You hit a hard ceiling fast, you're not capturing towns, running effective logistics, or making any real impact by yourself. Playing with a squad makes life exponentially easier, but I don't want to be glued to a clan every single session just to feel like I'm progressing.\n\nSure, you can drop in and out freely, but the second you log off without a group, you're right back to being a lone cog in a machine that doesn't care about you. 2 Hours is not enough to really understand the game, and by the time you have done 2 hours you cannot refund the game.\n\nFoxhole is a great game. Honestly. Just not for solo casuals like me. If you have a regiment and unlimited time, dive in. If you're a lone wolf with a job? Think twice. Maybe in the future when I have more time I'll change the review but for now I cannot experience it \"fully\" without going over my hours.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228748240",
+                  "hours_at_review": 9.3,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "grab a rifle and run up to get shot by ai emplacements rinse repeat till u uninstall. no point playing unless u got a clan working for tanks or seomthign to beat emplacements",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-01e42b",
+              "claim": "Reviewers report technical issues with in-game voice chat being spotty or failing to function.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "227586558",
+                  "hours_at_review": 3.8,
+                  "voted_up": false,
+                  "date": "2026-06-09",
+                  "review_text": "i can talk with anyone because of a voice chat error that's almost impossible to fix and almost always server side and when it does work its very spotty idk what to do.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227978457",
+                  "hours_at_review": 11.4,
+                  "voted_up": true,
+                  "date": "2026-06-14",
+                  "review_text": "I just wanted to review to balance the field a bit. I think most of the recent negative reviews seem to be from when the developers added a half cooked aerial combat update / a salty dev comment. Seems I've joined after they've pushed another that adds the needed anti air systems, though yes, it could still do with some polish. I thought it would be a good idea to give a thumbs up to give a lil love to the dev team so they don't get disheartened and abandon the project... I'm seeing some negatives from people that have put 1000 hours into game / still actively play, and it seems like the community is basically shooting themselves in the foot by review bombing.\n\nFrom my limited time in game so far, it's well worth a buy for the price.\n\nWhen I joined, some people accused me of being like a spy for the enemy team. Apparently there's a multi accounting issue where some sad no life people buy more copies of the game to sabotage the other team rather than trying to get good themselves. Once I started helping out and got some commends, everyone has been really nice and helpful.\n\nI think honestly the main point of friction for me is the equipment UI.\nYou have to do some juggling. For example if you want to use a medkit, you have to 'load the bandages' into it, but there's no way to load the kit like a gun so you have to unequip and equip. It's a bit dumb to say the least, I think it would be really easy for devs to add a 'reload'. They could do with making your loadouts be able to auto load mags after you spawn too. Little QoL stuff like that would be such an easy win and make gameplay much more fluid.\n\nFor the best experience, it seems you definitely need to squad up, regardless of whether you play front or back lines, you will get some good lol moments with teams.\n\nI guess I feel that designing a game like this is a crazy task, let alone developing it. But yeah, for 20 quid... You will get your monies worth.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 13,
+        "cited_recommend": 2,
+        "divergence_p": 0.000164,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 258,
+      "pct_positive": 58.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Experienced players struggle with cheaters, performance drops, community toxicity, and the heavy time sink of crafting.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-1708c8",
+              "claim": "Reviewers describe encountering cheaters and report a lack of anti-cheat measures.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "233055283",
+                  "hours_at_review": 29.6,
+                  "voted_up": false,
+                  "date": "2026-08-17",
+                  "review_text": "just did my first war, it was completely 1 sided, lasted 5 days, not what ive read, ill give it another shot and maybe change the review but was not very fun and consumed a lot of time in a short span\nAlso seems to be full of cheaters",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232093866",
+                  "hours_at_review": 51.0,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "This game needs anti cheat",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231596743",
+                  "hours_at_review": 75.3,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "We need anticheat. otherwise good",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231166693",
+                  "hours_at_review": 64.9,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "At the moment, playing this game is hard with the amount of cheating.\n\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-b7203a",
+              "claim": "Reviewers report that the game suffers from poor performance and performance drops during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "228196098",
+                  "hours_at_review": 33.3,
+                  "voted_up": false,
+                  "date": "2026-06-17",
+                  "review_text": "poor optimized & not fun for solos",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227845978",
+                  "hours_at_review": 72.0,
+                  "voted_up": false,
+                  "date": "2026-06-13",
+                  "review_text": "game boils down to large groups abusing/bullying small groups and solos. They will regularly mass report people who can't defend themselves just because its a quick way of removing them from the game. Mass reporting is an automatic ban, regardless of whether or not you broke a rule. \nFoxhole is very poorly optimized. The game runs terribly on worse machines despite mundane graphics. I get significant lag flying a plane (rtx 5080 btw)\ndoesnt seem like the devs dont care about these issues and theyre moving onto their next game! Yay!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-92befb",
+              "claim": "Reviewers mention that the game has a steep learning curve and lacks in-game tutorials explaining core mechanics.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230603012",
+                  "hours_at_review": 67.5,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "Time Waster without you getting anything back out of it, it is like a job, that you are refused payment for.\n\nYour wok in the game in not rewarded, you get no ingame money to buy yourself a vehicle or weapon for you to use.\n\nYou also cant make planes for yourself. (I heard the scout was possible)\n\nYou may mine resources, build tens of ships to tech up, They will be sitting there for forever because nobody brings them ammo.\n\nGame gives you no hint as to how to load ammo and where to get it. Or how to produce said ammo and where, how to transport it.\n\nPlenty mechanics game devs never bothered to explain.\n\nSo, what follows. You run into aircraft factory some guru and his followers set up. The guru or his henchmen start shooting at you, as if they own anything without your resources you mined and refined for them.\n\nThen no amount of sunk vehicles will be enough for that kind of treason.\n\nYou build them up with your resource work for actual days and these unthankful wicked people try to kill you, because you are a spy in their paranoia.\n\nGuru and his henchmen are dependent on you and they do not have any rights over anything because you are on the same factional side. Devs set it up differently.\n\nBut the Guru and his henchmen is a mafia system that the devs themselves set up and encourage, thus encourage the worst kind of unwarranted abusive behavior.\n\nDevs gave all the power to the most narcissistic of the playerbase, making evil ooze everywhere.\n\nWith this, unless you only play infantry with a handgun 24/7 you will encounter these toxic buffoons who want to control what you do in your own game you paid for. By definition, such behavior will not be tolerated, but if you will want to hunt every abuser guru and his ilk, because of their abuses, and nobody else doing the justice, then the reason to play this game is completely lost. Devs get to engage you in intrafactional war. And believe me, abusers like the power to group abuse. Pretty sure its the same sort on the othe…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230260824",
+                  "hours_at_review": 48.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "I really like this game, the barrier to entry and time that the game asks you to commit is insane however. I hope a logistics rework happens eventually as i'd hate to see a game like this die out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231162974",
+                  "hours_at_review": 28.9,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "Fun game with tons of depth. Lots of different ways to contribute to the war effort. Word of warning: there is a steep learning curve and the in game etiquette is difficult to learn without someone teaching you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227897236",
+                  "hours_at_review": 72.4,
+                  "voted_up": true,
+                  "date": "2026-06-13",
+                  "review_text": "i love the game but the learning curve is reelly steep and i recommend joining a regi",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-1c5a15",
+              "claim": "Reviewers note that the game features a steep learning curve and is difficult for new players to learn without guidance.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232591374",
+                  "hours_at_review": 65.6,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "I really love the game, and it's really fun to play, but it can definitely be hard for new players.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231162974",
+                  "hours_at_review": 28.9,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "Fun game with tons of depth. Lots of different ways to contribute to the war effort. Word of warning: there is a steep learning curve and the in game etiquette is difficult to learn without someone teaching you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227897236",
+                  "hours_at_review": 72.4,
+                  "voted_up": true,
+                  "date": "2026-06-13",
+                  "review_text": "i love the game but the learning curve is reelly steep and i recommend joining a regi",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-6498fa",
+              "claim": "Reviewers state that playing solo is unrewarding and difficult compared to playing with an organized group or clan.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "230468167",
+                  "hours_at_review": 32.0,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "Everything aside from direct PvP you do in this game feels like an unrewarding soul sucking job (if solo). I take it with a group it gets better but I don't want to talk to people on discord anymore because discord is mostly filled with creeps and weirdos.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230466316",
+                  "hours_at_review": 30.2,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "Fun, but you must join a regiment and do things as a team and do things together to make the most of this game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230158633",
+                  "hours_at_review": 29.1,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "As much as I'd like to love this game, it just isn't it for me. \nYou can't do squat on your own. You need a faction. So off Discord you go, finding a faction, then doing tests to be accepted, then needing to climb the ladder inside said faction (you better be connected when the English speakers are up, otherwise you won't get noticed much). And how do you get noticed? By doing some extremely fun stuff like: collecting ressources for 5 hours or driving for 5 hours or building stuff (and you better build it right) for 5 hours. You also need to do it regularl, even if most guilds will tell you that any amount of work (yes, because everything is a chore). \n\nSo basically highly autistic me with free time after school might have jumped in, real me with real life and with the expectation of actually winding down while playing a game? Absolutly not.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228196098",
+                  "hours_at_review": 33.3,
+                  "voted_up": false,
+                  "date": "2026-06-17",
+                  "review_text": "poor optimized & not fun for solos",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ee137f",
+              "claim": "Reviewers report that logistics and crafting require massive investments of time and resources.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231194719",
+                  "hours_at_review": 44.6,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "Ok, look. I love this game. This game is the exact niche I have wanted for all my life. I will keep playing this game. But in its current state, I just cannot recommend it. Here are the reasons why:\r\n\r\n[h2] General Cost of Logistics [/h2]\r\n\r\nOk, this is one of the biggest issues the game has, and its roots extend to other larger issues. The cost of most things are literally colossal. Bigger ships usually needs upwards of 2k+ rare metal, and that is basically the GDP of three USAs in this game. And the cost, the peril to create the facilities REQUIRED to even build the ship in the first place is gigantic. First, you need a scrap mine. Go to an unoccupied scrap mine, if there is one, and build a factory. Which needs something called \"Maintence supplies\". This is the dealbreaker for most factories in this game. See, factories deplete these stuff by the very second. So if you wanna even create the most basic thing required for your dream fleet, you have to be logged in every day. To create ONE Naval Hull Segment, you need: PMat(processed materials)V, PMat IV, a copious number of all of these, a large assembly station that needs, you guessed it, rare metal to build, a bunch of hours-and also, this is a war game, so expect to get attacked by partisans- to even assemble, and congragulations, you have acquired one naval hull segment. OF MORE THAN TWENTY. This is IMPOSSIBLE for a single player to do. Which causes the issue I have been building up to:\r\n\r\n[h2] The Clan Man. [/h2]\r\n\r\nMost clans in this game, suck. Literally. There is at least 10 clans on every hex. Some large, some small, some in between. Clans dont hesitate to exploit solo players. And when they have an admin on their side? Youre as good as done. Also, they CONSTANTLY fight eachother over resource fields, the most finite thing in this game. Clans pull resources to themselves for operations that will never happen, reserve stockpiles that they will never use, and constantly claim public plots of land to themselv…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230260824",
+                  "hours_at_review": 48.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "I really like this game, the barrier to entry and time that the game asks you to commit is insane however. I hope a logistics rework happens eventually as i'd hate to see a game like this die out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228480382",
+                  "hours_at_review": 67.8,
+                  "voted_up": false,
+                  "date": "2026-06-21",
+                  "review_text": "The game is fun but i refuse to ever play it again ,after the infinite chances i took and all the effort made, after trying and trying to get one single good run, something always happens to ruin your plans and kills you and waist hours and days of preparing,building a ship with all its ammo takes up hours of your time...just for you to drive that boat halfway across the world map and get shot by someone in the first 30 seconds and youll lose everything , including the reason to keep playing...",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-4347cf",
+              "claim": "Reviewers describe negative community behavior, including toxicity, griefing, and the abuse of mass reporting systems by groups.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "231510534",
+                  "hours_at_review": 20.9,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "On week one this game was incredible, it was organic and people would play together. That community very quickly turned toxic and controlling. You spawn in, are immediately reprimanded 5 times for having a female name. You try to mine some scrap. \"You're not assigned logi, go speak to the quartermaster\" goes and sees this mythical player who must dictate how I can play the simplest role. \"you can't pass this gate you're not logi Join our clan discord\"\n\nIt went from a game of cooperation to just cliches that govern who gets to play, what, and where. Has only worsened with more features. People find ways to control the game and deprive you from playing unless you commit to a toxic space.\n\nDeeply disappointed because the game has immense promise.\n\nMaybe it has improved since playing? I would deeply hope so but I doubt it.\nI shouldn't have to commit to a part-time job of a unit/clan just to participate in even the most basic roles.\n\nI wanna be a submariner but must settle for a bullet in my head for disrespecting a power tripping 12 year old\n\nWhy not just do what you want anyway? You get executed or repremanded into hell",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231476232",
+                  "hours_at_review": 65.6,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "New players will get mass reported and suspended.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227845978",
+                  "hours_at_review": 72.0,
+                  "voted_up": false,
+                  "date": "2026-06-13",
+                  "review_text": "game boils down to large groups abusing/bullying small groups and solos. They will regularly mass report people who can't defend themselves just because its a quick way of removing them from the game. Mass reporting is an automatic ban, regardless of whether or not you broke a rule. \nFoxhole is very poorly optimized. The game runs terribly on worse machines despite mundane graphics. I get significant lag flying a plane (rtx 5080 btw)\ndoesnt seem like the devs dont care about these issues and theyre moving onto their next game! Yay!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227833558",
+                  "hours_at_review": 28.4,
+                  "voted_up": false,
+                  "date": "2026-06-13",
+                  "review_text": "The game used to be fun and balanced when it was free, however now is full of entitled people, nobody collaborates because they will murder you if you don´t give them what they want in the game, in short, it´s always a mess since there is no a clear authority.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 19,
+        "cited_recommend": 5,
+        "divergence_p": 0.0046,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 702,
+      "pct_positive": 38.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players highlight worsening queue times, absent moderation, and exhausting logistics loops.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-87dc9c",
+              "claim": "Reviewers describe the game as lacking in-game moderation and effective anti-cheat systems.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "231660148",
+                  "hours_at_review": 1601.5,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "The developers don't fight cheating\n\nI've put serious hours into Foxhole and love the concept, but there's a real problem the devs keep ignoring: cheating and sabotage go almost completely unpunished. There are no proper anti-cheat tools, no effective reporting system, and griefing/sabotage accounts run wild with basically no consequences.\n\nYou can pour hours into building and defending, only to watch it all get wiped by people abusing exploits — and the devs won't compensate the players who lost everything, or even acknowledge it. When cheaters face no risk and honest players get punished for playing fair, it drains the motivation to keep going.\n\nFoxhole has incredible potential, but until the devs take cheating and sabotage seriously and give players real tools to fight it, I can't fully recommend it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231642937",
+                  "hours_at_review": 1278.4,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "After 1,000 hours in the game I’d say save yourself the trouble of getting invested into the loop. The concept is cool, the grind is engaging however the development team has seemingly abandoned the game.\n\nThere is a giant lack of communication from the dev, zero in game or community moderation and rampant cheating, alt accounting and botting. It’s not a game worth picking up and getting into if you’re wanting to play fairly as intended. You’ll waste too much of your time grinding to have it stolen from rule breakers.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231609364",
+                  "hours_at_review": 170.1,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "Game has a lot potential but unfortunately right now is riddled with hackers that openly show how they crack the game without consequences. It doesn't help that game has no in-game moderation and the developer team is radio silent.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231534256",
+                  "hours_at_review": 5530.1,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "Constant cheating. Limited to non existent communication from developers outside of occasional dev branches. Every major update though can offer unique and interesting concepts also introduce a bunch of problems. Lots of Mechanics in the game are very disrespectful of player time and investment.\n\nI would love to recommend this game as there can be very unique experiences to be played through, however the developers are dangerously out of touch with the community. Siege camp should honestly be renamed silent camp, No community manager. \n\nThe game is held back massively by its 'queue system' there is a good reason why experienced players will call this  'Queuehole' as spending 6 hours waiting to join a particular frontline is not unheard of, though admittedly is the extreme end. New player experience is also sadly very challenging, their isn't really a tutorial outside of the 'Home Island' and that in itself isn't very obvious to new players. You essentially have to learn off experienced players who have taught themselves or via YouTube videos. There is 0 guidance on building in the game which will often put new players in conflict with ingame groups when they try to build in areas which have importance or valuable resources.\n\nMore notably there has been consistent and reoccurring incidents of major cheating in the game recently, cheat programmes being openly advertised without little action from the developers. \n\nSiegecamp if you do read these (Which I have to doubt but happy to be wrong) you are in complete estrangement from your community and when you do seem to be willing to communicate its very limited and very much on your own terms. It was nice to see some modicum of responsibility taken in the wake of the disastrous airborne release and the shifting to 6 week wars to facilitate QoL updates but the fact it took mass negative reviews on Steam and a fake dev stream on Twitch to get a response from yourselves sets a dangerous precedent. \n\nI cant help but feel Foxh…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "231473057",
+                  "hours_at_review": 129.2,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "Really fun game that will die if nothing is done about cheaters and exploiters. Obviously implementing anti cheat won't be a silver bullet...but It's obvious this game needs some type of community manager / in game moderation to actively suspend or ban offenders. However, the devs seem to have no interest in making that happen.\r\n\r\nI suggest if you are looking to buy this game you hold off until the Devs actually start to do something about the cheaters and exploiters.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-c27eae",
+              "claim": "Reviewers report lengthy queue times when trying to join active frontlines.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232000807",
+                  "hours_at_review": 1289.2,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "They need an anti-cheat.  The developers 'ought to respect players time.  Queues are killing this game.  There 'ought to be more balance features.  Fighting 5v1 can be demoralizing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231534256",
+                  "hours_at_review": 5530.1,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "Constant cheating. Limited to non existent communication from developers outside of occasional dev branches. Every major update though can offer unique and interesting concepts also introduce a bunch of problems. Lots of Mechanics in the game are very disrespectful of player time and investment.\n\nI would love to recommend this game as there can be very unique experiences to be played through, however the developers are dangerously out of touch with the community. Siege camp should honestly be renamed silent camp, No community manager. \n\nThe game is held back massively by its 'queue system' there is a good reason why experienced players will call this  'Queuehole' as spending 6 hours waiting to join a particular frontline is not unheard of, though admittedly is the extreme end. New player experience is also sadly very challenging, their isn't really a tutorial outside of the 'Home Island' and that in itself isn't very obvious to new players. You essentially have to learn off experienced players who have taught themselves or via YouTube videos. There is 0 guidance on building in the game which will often put new players in conflict with ingame groups when they try to build in areas which have importance or valuable resources.\n\nMore notably there has been consistent and reoccurring incidents of major cheating in the game recently, cheat programmes being openly advertised without little action from the developers. \n\nSiegecamp if you do read these (Which I have to doubt but happy to be wrong) you are in complete estrangement from your community and when you do seem to be willing to communicate its very limited and very much on your own terms. It was nice to see some modicum of responsibility taken in the wake of the disastrous airborne release and the shifting to 6 week wars to facilitate QoL updates but the fact it took mass negative reviews on Steam and a fake dev stream on Twitch to get a response from yourselves sets a dangerous precedent. \n\nI cant help but feel Foxh…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-dc5f4f",
+              "claim": "Reviewers report that the new player experience lacks a proper tutorial, requiring players to learn systems from veteran players or external videos.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232342267",
+                  "hours_at_review": 3410.7,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "To the Game Developers,\n\nThis is a fun game, and I’ve been playing it for quite some time. However, there are many things that I feel could be improved.\n\nYou need to understand that this game already requires much more time to play compared to other games, and the game does not do a very good job of helping new players understand how everything works.\n\nThe decision to merge the servers has also created a very obvious gap between experienced and inexperienced players. I understand that this is not necessarily the game’s fault, but it makes experienced players feel like they are wasting their time and being forced to suffer through unnecessary difficulties.\n\nThe game already demands a lot of time from players, and now experienced players also have to deal with inexperienced players who don’t understand how to play effectively. This can make the overall experience much more frustrating than it needs to be.\n\nAnd this is without even mentioning the updates and the lack of balance between the two sides. Some content and changes simply do not feel fair or equal for both sides.\n\nI really enjoy this game and want to continue playing it, which is why I hope the developers will take these issues seriously and work toward making the game more balanced, more accessible to new players, and less frustrating for experienced players.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231534256",
+                  "hours_at_review": 5530.1,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "Constant cheating. Limited to non existent communication from developers outside of occasional dev branches. Every major update though can offer unique and interesting concepts also introduce a bunch of problems. Lots of Mechanics in the game are very disrespectful of player time and investment.\n\nI would love to recommend this game as there can be very unique experiences to be played through, however the developers are dangerously out of touch with the community. Siege camp should honestly be renamed silent camp, No community manager. \n\nThe game is held back massively by its 'queue system' there is a good reason why experienced players will call this  'Queuehole' as spending 6 hours waiting to join a particular frontline is not unheard of, though admittedly is the extreme end. New player experience is also sadly very challenging, their isn't really a tutorial outside of the 'Home Island' and that in itself isn't very obvious to new players. You essentially have to learn off experienced players who have taught themselves or via YouTube videos. There is 0 guidance on building in the game which will often put new players in conflict with ingame groups when they try to build in areas which have importance or valuable resources.\n\nMore notably there has been consistent and reoccurring incidents of major cheating in the game recently, cheat programmes being openly advertised without little action from the developers. \n\nSiegecamp if you do read these (Which I have to doubt but happy to be wrong) you are in complete estrangement from your community and when you do seem to be willing to communicate its very limited and very much on your own terms. It was nice to see some modicum of responsibility taken in the wake of the disastrous airborne release and the shifting to 6 week wars to facilitate QoL updates but the fact it took mass negative reviews on Steam and a fake dev stream on Twitch to get a response from yourselves sets a dangerous precedent. \n\nI cant help but feel Foxh…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-9bb026",
+              "claim": "Reviewers describe logistics gameplay as requiring an immense time investment that can feel like a second job.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232397564",
+                  "hours_at_review": 5274.0,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "I've enjoyed most of the 5,000 hours. This review is based off a constant nerfing of some of the fundamental elements of the game. That's why I i have finally reviewed the game, The constant nerfs that affect partisan gameplay. You think of big things like the crane change, or you think of small things like the health of the APC. Waiting five months for the para plane doors, and then having a plane that can kill a para plane in seconds, being brought out at the same time that and they finally fix the problem. These are really odd choices from the developers, and it seems like they don't value our time. Particularly like to mention the quality of life changes around facilities, and msupps, and the cost of doing it, because it feels like a second job. thats not a fun element of the game, and the devs are not really doing anything to fix it.\n\nI'd also like to mention just briefly, alting and cheating in the game. This is something that I think the devs desperately need to address. By address, I mean fix it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232300313",
+                  "hours_at_review": 304.8,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "I have no clue what the devs are smoking. The game is unbalanced 95% of the time after each and every update. Asymmetrical warfare makes sense until you look at the navy and air force. In real life, once one military starts using a specific weapon/tactic that works, I can almost guarantee you the other military will adapt and start using the technology themselves. You can have asymmetry that works, but idk why the devs have such a hard on for asymmetry in ways that DONT make sense. Cough cough wardens carrier cough cough no warden CAS and no colonial torpedoe planes cough cough. I miss the old days before the navy and air force update. The game is simply not the same anymore and it's not fun.\n\nThe devs also hate logi players. Logi is essential to the game and wouldn't work without it. But the lack of QoL features is actually insane. This game is treated like a 2nd job when your a logi player. Just go play factorio instead if you are interested in logi.\n\nThere's also little to no moderation for cheaters, exploiters, or griefers. Yayyy....",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232267995",
+                  "hours_at_review": 4075.8,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "Has amazing potential but the devs do very little about cheaters and there are so many bad decisions that ruin wars.\n\nWhy give this a bad review when I have played so many hours? I had a lot of fun doing logistics but it has got to the point where front lines collapse because of bad morale due to cheaters or other dev inaction. Your actions start to feel pointless as there is no one on the front line to use the equipment you made and transported. This game is not beyond saving but based on the devs previous actions that is incredibly unlikely. I will change my review if there are meaningful changes.\n\nIf you do decide to play I would strongly advise you join a regiment that has members from multiple times zones. Playing with a group of friends who only play around 6 hours at the same time in your times zone has so many disadvantages in a 24 hour game.\n\nLet's just use one example, maintenance supplies. Anything you build needs them to not decay. If you only run a base 6 hours a day it still needs a days worth of maintenance supplies for that. A regi with 24 hour coverage is gonna produce 4 times as much for the same amount of msupps as a base that is only running 6 hours a day.\n\nThe logistics in this game is something I enjoy a lot but the combat is such a burn out inducing meat grinder with cheaters that it is killing the game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 10,
+        "cited_recommend": 0,
+        "divergence_p": 0.00749,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1201,
+    "steam_total_reviews": 32731,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

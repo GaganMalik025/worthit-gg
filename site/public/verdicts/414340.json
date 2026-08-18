@@ -1,0 +1,776 @@
+{
+  "appid": "414340",
+  "game_name": "Hellblade: Senua's Sacrifice",
+  "generated_at": "2026-08-18T11:39:45Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/414340/header.jpg?t=1776350290",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/414340/capsule_231x87.jpg?t=1776350290",
+    "grid": "https://cdn2.steamgriddb.com/grid/e26c3e20ad7c46dbb43e2b08fdeb48bd.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 6,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "A striking acoustic journey hampered by early technical friction.",
+    "for_you_if": [
+      "you wear headphones for immersive spatial audio",
+      "you appreciate dark psychological atmospheres"
+    ],
+    "not_for_you_if": [
+      "you experience motion sickness from aggressive camera movement",
+      "you grow impatient with repetitive puzzles",
+      "you need fast combat pacing early on"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 75,
+      "pct_positive": 49.3,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 1079,
+      "pct_positive": 86.1,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 45,
+      "pct_positive": 97.8,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 2,
+      "pct_positive": 100.0,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Initial reactions diverge sharply from later reviews as players progress past the opening hours.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 49.3,
+            "pool_n": 75
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 86.1,
+            "pool_n": 1079
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 97.8,
+            "pool_n": 45
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 49.3,
+        "low_pool_n": 75,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 97.8,
+        "high_pool_n": 45,
+        "gap_pts": 48.5
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 75,
+      "pct_positive": 49.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players report severe technical snags, motion sickness, and a sluggish pace before the experience opens up.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-7fb77f",
+              "claim": "Reviewers experience technical issues involving character collisions and geometry that cause players to get stuck in the environment and force a restart.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "222317822",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-04-02",
+                  "review_text": "- after loading a game doors that i opened before look closed but you can walk through them\n- in some places you can get stuck in incorrectly set up collisions making you having to restart the game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "217018745",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-01-28",
+                  "review_text": "Good art piece but bad game. \nGot slightly bored then got stuck in a tree. That's a nice deep metacommentary, because I can't force myself to continue anyway.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "211465751",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2025-11-28",
+                  "review_text": "keep getting randomly stuck on the spot for no reason and forced to restart massive levels, cant continue playing until they fix this bug",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-c421b3",
+              "claim": "Reviewers experience physical discomfort, including nausea, headaches, and motion sickness, caused by camera movement and the visual style.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "219474174",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-02-28",
+                  "review_text": "Couldn't play it due to horrible motion sickness. No matter what settings I changed, it just wouldn't help. Very disappointing",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219232094",
+                  "hours_at_review": 1.3,
+                  "voted_up": false,
+                  "date": "2026-02-25",
+                  "review_text": "I never had issues with motion sicknes. But this game made me nauseous just a few minutes in. Tried to play it multiple times and had to quit every time after just a few minutes. Idk what it is about this game but I get the worst motion sickness ever playing this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219034864",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-02-23",
+                  "review_text": "i have the game and its sequel sitting and collecting dust in my library and i decide to try it these couple of days. few things to note. the art and possibly the warning of psychosis as mental health warning are loud and clear which i would praise them for. but i can't with the slow jog pacing and walk movement and the clunky battle controls. the swing is slower than i would like, the dodge is also unreal. so all those add together made the experience pretty poor. and i say that as a warning to those who games and experience motion sickness aka simulation sickness. i experience mild nausea and headache each time i play. i realise quickly that it is the movement that made me ill, the bobbing that i have no control over. not even in settings. \n\ni'm sure it is a wonderful game to those who enjoy repetition. some form of exploration, puzzle, fight then next door and repeat. the story may be worthwhile as many have indicated (i won't know because the sickness is getting me to stop every engagement in between)\n\nanother reason i mark this down is possibly as i ask for clarity for game mechanics in discussion; someone replied to me that the focus feature (an integral part of the game) is buggy, can't confirm if that is true, but if so, it makes the game less favourable.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-f40056",
+              "claim": "Reviewers report that the game features slow movement pacing consisting largely of walking and jogging.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "226227496",
+                  "hours_at_review": 0.5,
+                  "voted_up": true,
+                  "date": "2026-05-23",
+                  "review_text": "A powerful experience, even if it was not for me.  \n\nI can recognize when a game reaches the level of great art, even when it does not line up with my own tastes. Hellblade has striking visuals and even better sound design. The movement is very slow, and the running speed is only a small step above walking. I imagine this was intentional for narration and atmosphere, since the game focuses more on the experience than on traditional gameplay.\n\nMost of the game feels like an artistic journey with puzzles and occasional combat added in. I found myself getting bored fairly quickly, but I also know I am not the intended audience. For players who enjoy this kind of slow, immersive, psychological experience, I am sure this will feel like a meaningful journey.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219034864",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-02-23",
+                  "review_text": "i have the game and its sequel sitting and collecting dust in my library and i decide to try it these couple of days. few things to note. the art and possibly the warning of psychosis as mental health warning are loud and clear which i would praise them for. but i can't with the slow jog pacing and walk movement and the clunky battle controls. the swing is slower than i would like, the dodge is also unreal. so all those add together made the experience pretty poor. and i say that as a warning to those who games and experience motion sickness aka simulation sickness. i experience mild nausea and headache each time i play. i realise quickly that it is the movement that made me ill, the bobbing that i have no control over. not even in settings. \n\ni'm sure it is a wonderful game to those who enjoy repetition. some form of exploration, puzzle, fight then next door and repeat. the story may be worthwhile as many have indicated (i won't know because the sickness is getting me to stop every engagement in between)\n\nanother reason i mark this down is possibly as i ask for clarity for game mechanics in discussion; someone replied to me that the focus feature (an integral part of the game) is buggy, can't confirm if that is true, but if so, it makes the game less favourable.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "210734708",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2025-11-26",
+                  "review_text": "jogging simulator, so boring i don't recommend spending time or money on it, i don't want to jog walking very slowly while annoying voices whisper in your ears",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "203240788",
+                  "hours_at_review": 2.0,
+                  "voted_up": false,
+                  "date": "2025-08-31",
+                  "review_text": "Walk.. walk.. walk.. solve a puzzle by looking at the sky and at trees.. walk.. walk.. some boring combat.. walk.. the whole time the talking.. the talking.. it doesn't end.. or does it? What if I uninstall? The voices..",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-b7207a",
+              "claim": "Reviewers describe the gameplay loop as heavily focused on puzzles and walking interspersed with basic combat.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "229582635",
+                  "hours_at_review": 1.1,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "The concept is really cool and I have a lot of respect for the studio being very serious about mental health. However, the combat is very very basic, there's only one enemy in the first hour and a half, and this enemy only has one attack. The puzzles are boring as hell, and they're always the same. The atmosphere is pretty cool though, but I found the voices really annoying: they are pretty dumb and say a lot of uninteresting things.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226227496",
+                  "hours_at_review": 0.5,
+                  "voted_up": true,
+                  "date": "2026-05-23",
+                  "review_text": "A powerful experience, even if it was not for me.  \n\nI can recognize when a game reaches the level of great art, even when it does not line up with my own tastes. Hellblade has striking visuals and even better sound design. The movement is very slow, and the running speed is only a small step above walking. I imagine this was intentional for narration and atmosphere, since the game focuses more on the experience than on traditional gameplay.\n\nMost of the game feels like an artistic journey with puzzles and occasional combat added in. I found myself getting bored fairly quickly, but I also know I am not the intended audience. For players who enjoy this kind of slow, immersive, psychological experience, I am sure this will feel like a meaningful journey.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "208811382",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2025-11-09",
+                  "review_text": "boring game. 90% of the time is u solving puzzles",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "207093766",
+                  "hours_at_review": 1.3,
+                  "voted_up": false,
+                  "date": "2025-10-19",
+                  "review_text": "puzzles are boring, combat is mediocre, and its mostly a walking sim\nbeautiful graphics, good story\ni say no on this one but im still going to try the sequal when its on sale with deep discounts",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "203240788",
+                  "hours_at_review": 2.0,
+                  "voted_up": false,
+                  "date": "2025-08-31",
+                  "review_text": "Walk.. walk.. walk.. solve a puzzle by looking at the sky and at trees.. walk.. walk.. some boring combat.. walk.. the whole time the talking.. the talking.. it doesn't end.. or does it? What if I uninstall? The voices..",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "202432849",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2025-08-19",
+                  "review_text": "Basically this game is walk 5 minutes to do a horrid puzzle for 10 minutes, for 30 seconds of combat, The door puzzles are insufferable.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-9886f4",
+              "claim": "Reviewers report that the game lacks explicit tutorials or explanations for core mechanics such as combat controls and the focus ability.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232468933",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "so the game shows you 2 sets of controls when you pause the game, general, and combat. they both are distinct and you will know when combat controls kick in.\n\ni spent 25 minutes fighting surtr because i did not know how to fight him. i thought the vocies telling me to focus was to literally focus because i was fighting a giant flaming boss in a 1v1.  i  thought i had to wait out his mechanic, then i thought i had to power through his mechanic. nah. nah, i had to ♥♥♥♥♥♥♥ literally use the focus ability which is in the general section to beat him, and at no point prior did i have to use it before hand. thats ass design",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229496322",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "DIRT :  BEWARE GAME IS SCAMING TIME in the beginning\n\nnarrative is Bad its a Walking sim+\nyou have no idea of wtf is going on its has NO linear Explanation you get 20 things trown at you with zero Explanation \n\nthe voice are a pain (they real get to your nerves you cant think for a secound which is bad in A PUZZLE  GAME )its like putting puzzle together with your Friends being drunk & loud & calling you stupid for putting the wrong Piece in the right slot",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "206167101",
+                  "hours_at_review": 1.7,
+                  "voted_up": true,
+                  "date": "2025-10-08",
+                  "review_text": "One of the most powerful experiences I've had in quite a while!\n\nI took this game on somewhat blind.  All I knew was that it was acclaimed, dark in some way, dealt with madness in some fashion, and had a bit of a norse theme.  I intentionally didn't learn any more or watch any videos.\n\nI got the family to bed, turned off the lights, put on my headset and got myself ready to be immersed into something.  I fired this up in the dark where the only light was the monitor.\n\nSo.... if this game had a \"right\" way to play it, I would wager this was it.  I made it like... an hour into the game before I had to stop because I was just too stressed.  The experience was amazing.  And that's kind of how I play... an hour or so a night. \n More than that just gets me a bit too freaked out.  But I'm trying to immerse myself as deeply as I can into it, so your mileage will of course vary if you don't play this way.\n\nA lot isn't explained... like the gamepad controls... but you can always use the options menu to figure that out, and the rest of it I managed to sort out on my own.\n\nIf you are looking for exploration, leveling and abilities, and tightly tuned combat... this is absolutely not the game.  If you are looking for a super dark, well narrated immersive and stressful experience... this game delivers in truckloads of spades.  It knocks it out of the park.\n\nI cannot wait to get further into this absolute gem of a nightmare.  Highly recommended if you enjoy what I said above.\n\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 16,
+        "cited_recommend": 2,
+        "divergence_p": 0.00248,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 1079,
+      "pct_positive": 86.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players later on praise the binaural audio design while noting repetitive combat and slow movement.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-5b8307",
+              "claim": "Reviewers report that the combat mechanics become repetitive and monotonous over the course of the game.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233047499",
+                  "hours_at_review": 6.8,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "Hellblade: Senua’s Sacrifice was a good experience overall, especially considering how old the game is. The story, atmosphere, acting, and cinematic presentation were some of its strongest aspects. The way the game tells Senua’s story and portrays her struggles was very impressive, and the visuals still hold up surprisingly well for a game from 2017.\n\nHowever, I had some problems with the gameplay, especially the combat. The fighting could feel repetitive, and some encounters became more frustrating than enjoyable. The gameplay overall also felt less polished compared with the story and cinematic parts of the game.\n\nDespite those issues, I really liked the presentation and storytelling. The atmosphere is excellent, and the game does a great job of making you feel like you are experiencing Senua’s journey with her.\n\nOverall, Hellblade: Senua’s Sacrifice is a good game with an excellent story and cinematic presentation, but its gameplay has some weaknesses. Considering its age, though, the graphics, atmosphere, and overall presentation are still impressive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233022518",
+                  "hours_at_review": 7.2,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "Made me feel things that no video game - no piece of fiction for that matter - ever has. Superbly written and fiercely, uncompromisingly arresting, the swings that Hellblade takes are worth celebrating on their own. It delivers on a lot of its promise too, but the gameplay itself keeps me from labeling this a masterpiece. It took me a while to understand the games design language, which led to a fair bit of puzzle frustration for me, and the combat grows monotonous very quickly, with only a half dozen or so enemy types all the way through the final boss. Still, it's an achievement of the medium no doubt, and is absolutely singular.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231374353",
+                  "hours_at_review": 11.3,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "Instead of treating Norse mythology as decoration, Hellblade weaponizes it as the brutal vocabulary of Senua's psychosis. Her journey into Helheim is a literal fusion of grief, religious trauma, and northern folklore, where the dark gods are indistinguishable from her madness.\r\n\r\nThe binaural voices trap you directly inside her fractured headspace, seamlessly carrying a relatively simple gameplay loop. The basic environmental puzzles and heavy, repetitive swordplay aren't particularly deep, but they ground her mental collapse into something physical.\r\n\r\nTechnically, the photorealism remains remarkably good. The ray-tracing update refines the damp, oppressive lighting and reflections, but its optimization is strictly average – demanding a heavy performance sacrifice for relatively modest visual gain.\r\n\r\nAn uncompromising, exhausting dive into internal darkness. A masterclass in narrative empathy that understands the ultimate truth of trauma: the most terrifying monsters are the ones built out of our own guilt.\r\n\r\n[spoiler]8 / 10[/spoiler]",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-3db31e",
+              "claim": "Reviewers describe the puzzles as simple and repetitive throughout the experience.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "228260170",
+                  "hours_at_review": 7.8,
+                  "voted_up": false,
+                  "date": "2026-06-18",
+                  "review_text": "Actually painful to complete. \r\n\r\nThere are some good parts, the story, the voices, the acting, some of the areas are genuinely spooky especially towards the end but the game is let down by it's slow and painful puzzles. Every time I seen a 3 rune door I audibly groaned, running around a massive area, (while Senua is quite slow) looking for the runes to progress is torture. This wouldn't be so bad if the game was balanced with combat in between, but for story reasons about halfway through the game, the combat is dialled waaaay back - so it's back to 3-door-rune-hunting again for a few hours.\r\n\r\nMaybe I would have enjoyed this more 10 years ago on release, but it's just so ball bustingly painful to get through I wouldn't recommend it in the big 2026.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225755998",
+                  "hours_at_review": 7.1,
+                  "voted_up": false,
+                  "date": "2026-05-17",
+                  "review_text": "I've had this game in my library for a long time, and finally decided to give it a chance in 2026. So my review is for people like me, that know this game was a big deal back in the day and wanted to see if it was worth.\n\nWhy would I play this: The art is astounding. I would totally play this game if you are looking for some nordic inspiration (maybe for a ttrpg game, drawing, etc). This game is really a beautiful source of ideas.\n\nWhy I don't recommend: The game lacks everywhere else. It is focused on its presentation so the rest is secondary at best.\n\nStory? The voices are constant, so they get really annoying if you want to play this in one sitting. The story itself is  ok, but again... how it is presented has more impact than the content itself. When I could immerse myself in the game it felt awkward and uncomforable, but mostly because of the superb voice acting and some facial animations. For story with limited gameplay I think I'd rather play a Telltale game.\n\nPuzzles? They are simple and repetitive. The only thing that makes them \"harder\" to resolve is how visually cluttered some areas are and you might overlook a small passage or something. There are only 2 kinds of puzzle so it turns tedious quickly. I mean, if you want puzzles just go play Portal (?\n\nCombat? Again, in this case less isn't more. They didn't want to give combat much importance. It feels good, the animations are cool and you have a couple of options like dodge/parry/strike/heavy strike/punch and add sprint to jump and do any of those with a cooler animation. Not much of that matters. In combat against multiple enemies, not having a target selector for example makes it more annoying than difficult.\nI liked that you don't have a health bar so you go down when you are hit many times in a row. But the rest was frustrating. Again, the animations, sounds and art made it enjoyable enough to go through. If you want something similar but more focused on combat, play Shadows over Mordor.\n\nProgression?…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-2efb6b",
+              "claim": "Reviewers state that the character movement speed is very slow when exploring or navigating the world.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230923748",
+                  "hours_at_review": 11.4,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "Its a really enjoyable experience, different to any other game and I love it. \r\nIts lineal, with unique puzzles where you have to actually think, great combat, amazing atmosphere, good story telling, amazing graphics (in my opinion) and its short in a good way! They just knew what they wanted to do and you can feel the love they put into the game.\r\nThe only problem I can think of is that voices are hard to understand so you need subtitles and you move too slow.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229682576",
+                  "hours_at_review": 8.3,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "An amazing little game, suffers from some pacing issues (Senua jogs so slowly it's really painful when you're lost and don't know where to go next) and there's a lot of cutscene watching but it's worth it to experience the full journey. I'm also now 100% convinced Cory Barlog played this before making God of War 2018 since they feel so similar albeit this is way more devoted to delivering a no-cuts cinematic story from end to end since there's literally no bloody HUD except for optional subtitles.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228039929",
+                  "hours_at_review": 9.2,
+                  "voted_up": false,
+                  "date": "2026-06-15",
+                  "review_text": "[h1]Interesting Ideas, Mediocre Execution[/h1]\n\nHellblade is pretty & tackles important subject matter, but the gameplay loop is a slog.\n\n[h2]The Story[/h2]\nA positive. Focuses on mental health, framed within Norse mythology. Cool & underexplored topics in gaming.\n\n[h2]Visuals[/h2]\nVisually compelling. Some stuff like textures is dated, but the facial animations on the main character & environmental design were impressive.\n\n[h2]Mediocre Gameplay[/h2]\nIt's tedious. Looking at Senua's slow running alone drained all my vitality. The repetitive combat put my brain on autopilot. Environmental puzzle solving to open doors did wake me up a bit.\n\n[h2]Replayability[/h2]\nNon-existent. Once you beat it, you're not coming back.\n\n[h2]Subpar Performance[/h2]\nAlmost killed all my patience. No matter what you have, you will have issues on DX12. Switching to DX11 is a bit more stable.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-3338b2",
+              "claim": "Reviewers praise the audio and sound design, specifically recommending headphones for the binaural voices.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232550108",
+                  "hours_at_review": 8.7,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "[h1][b] TLDR: A stunning audio experience that immerses you in psychosis like nothing else, held back by shallow gameplay that borders on a walking simulator. A narrative that is intentionally confusing can also be off-putting.\r\n[/b] [/h1]\r\n\r\n[h1]PROS: [/h1]\r\n➕Excellent audio experience (Headphones recommended)\r\n➕Graphics\r\n➕Norse lore/mythology\r\n➕Interesting portrayal of mental health issues \r\n\r\n[h1]CONS: [/h1]\r\n➖Poor RayTracing performance\r\n➖Narrative is (intentionally) confusing as heck\r\n➖Shallow gameplay\r\n\r\n[h1] [b] Content (Game world/Narrative) – [6/10] [/b] [/h1]\r\nThe game world takes place in a heavily Norse-inspired land. You’ll traverse areas like forests and caves that are strewn with corpses of what I assume are vikings after some sort of raid. There’s not a lot of exploration, it’s a very linear world with only some secrets in the form of lore story stones. \r\nThe world is a product of the narrative in that much of what you explore may or may not be real insofar as the psychosis experienced by the main character. \r\n\r\nThere is a strong focus on the narrative. The purpose of the game is to show how mental ailments manifest in those who suffer from them. You play as Senua, a young Norse woman who is trying to save the soul of her deceased lover by reclaiming it from Hela, the goddess of Hel.\r\nThe problem with displaying such an intense narrative through the lens of a mental affliction, like psychosis, is twofold - One, mental issues tend to be personal, so what manifests for Senua may not be the same for anyone else, thus making it hard to relate. And two, the constant issue of what is real and what isn’t is confusing at best and frustrating at worst from a narrative standpoint for the player. I realize this is the intention, but in a way it hinders as much as it helps the story. \r\n\r\n[h1][b] Gameplay (Mechanics/Difficulty) – [4/10] [/b] [/h1]\r\nThe gameplay loop consists of exploring a linear/enclosed environment to complete a puzzle to unlock the door to the…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232273266",
+                  "hours_at_review": 8.8,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "Decent combat, interesting puzzles and a very immersive vibe about the whole game. Playing with headphones is a must to really feel the scary part about having voices in your head.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230811278",
+                  "hours_at_review": 11.7,
+                  "voted_up": true,
+                  "date": "2026-07-19",
+                  "review_text": "Amazing. I play less than an hour the first time, making the mistake of not wearing headphones.  The binaural audio  and solid graphics make  this one of the top 3 most immersive titles I've ever played.  Don't sleep on this one! Life-changing game; put on the headset, turn down the lights, and experience this one.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-456847",
+              "claim": "Reviewers note that the game features technical issues and bugs, including getting stuck in the geometry or environment.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232093415",
+                  "hours_at_review": 12.1,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "This is a very tight game. Given where it came from, it's far better than one would expect. I did experience a few bugs, like being stuck in the geography, but that happened to me in [i]Elden Ring[/i] for crying out loud, so I can't be mad about it and don't think the people griping about it are being fair - this game was made by a handful of people, not a massive AAA studio. That it looks and performs as well as it does is an absolute triumph, and speaks to the dedication of the team at NinjaTheory. \r\n\r\nThe boss fights are all fantastic, each with wildly different movesets and environmental hazards (so to speak). I can't say much more without getting into spoiler territory and I really don't want to. I knew almost nothing about this game when I played it, except that you play as a ye olde Celtic warrior and it \"deals with\" mental illness. And I am [b]so[/b] glad for it. So if you want more, play it. It's a 10 hour game, you can squeeze it in. \r\n\r\nI haven't experienced psychosis before, but there are other things I can relate to in this game. It deliberately achieves something other games have attributed to them after-the-fact, the idea that overcoming an obstacle in a game can act as a stand-in for depression (etc.) (see [i]How Souls Games Save You[/i] by Daryl Talks Games, and all the videos he cites in that to see what I mean). And especially after watching the mini-documentary once I finished, the respect and care that went into portraying things like voice-hearing and suicidal ideation is beautifully accomplished. I'll probably play a chapter or two over again to look for things they pointed out as representative of various symptoms. \r\n\r\nIt isn't perfect. But for what it is, it's about as close to perfect as it could be. I'm grateful I played this, and I encourage anyone on the fence to take the leap.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230343615",
+                  "hours_at_review": 7.2,
+                  "voted_up": true,
+                  "date": "2026-07-13",
+                  "review_text": "Game is nice. BUT!!!!\nHave some problemls with movment and textures, i was stuck for 7 times in texture, cant run, and at final bridge im stuck anc cant pass to puzzle part, i cant proceede furthure cos of this issue..\n\n30 min of pressing everything reload doesnt help)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227648255",
+                  "hours_at_review": 6.8,
+                  "voted_up": false,
+                  "date": "2026-06-10",
+                  "review_text": "narration, audio, visuals, presentation are all good but I sadly ran into SO many glitches throughout my playthrough, I simply can't recommend it\r\n\r\nSenua frequently ran in place instead of moving forward until I restarted the checkpoint or got hardstuck on obstacles, fell through the map etc. to the point where it probably added like an hour of playtime and due to a gamebreaking bug of me not being able to walk across a beam in [spoiler] Hela's Sanctum [/spoiler] that you need to cross in order to get to the final stretch I wasn't even able to finish it :( very unsatisfying way to abandon my playthrough and very surprising to me to encounter this many bugs in a game that's been out for this long, hope the sequel is more polished because I can definitely see the potential",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 14,
+        "cited_recommend": 10,
+        "divergence_p": 0.119,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 45,
+      "pct_positive": 97.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players embrace the raw atmosphere and mandatory headphones setup despite basic puzzles and combat.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-a2ccbe",
+              "claim": "Reviewers describe the combat system as simple or basic, with repetitive enemies, but note that it feels raw, physical, and atmospheric.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "228517900",
+                  "hours_at_review": 23.5,
+                  "voted_up": true,
+                  "date": "2026-06-21",
+                  "review_text": "If you came looking for a lot of combat and a lot of action, there's plenty of them but being honest, enemies are exceedingly repetitive. However, the strength of Senua doesn't reside in its combat but more in its atmospheres, its stories, its overwhelming pressure. Seeing what see sees, listening what she listens, and struggling as she does is the main adventure. Feel her pain, her sorrow and burden creep deep inside you as you rot and descend madness, that's what Senua is about! \nI wish it had more bosses and more mechanics, so it kinda feels like a demo of something risky and new. And it doesn't disappoint. It's an extremely cinematic game, feels like a really emotional movie.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225255796",
+                  "hours_at_review": 24.4,
+                  "voted_up": true,
+                  "date": "2026-05-11",
+                  "review_text": "Not just a game, but an experience.\n\nHellblade’s sound design, atmosphere, and storytelling are incredible. Playing with headphones is mandatory.\n\nThe combat is basic, but Senua’s journey stays in your head long after finishing the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218525814",
+                  "hours_at_review": 21.6,
+                  "voted_up": true,
+                  "date": "2026-02-17",
+                  "review_text": "The game is short but well-designed. The combat is GREAT – it's not overly complex, but well-animated and has a realistic feel. I recommend it, but wait for a discount guys.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "217968463",
+                  "hours_at_review": 27.9,
+                  "voted_up": true,
+                  "date": "2026-02-09",
+                  "review_text": "Man, the amount of chills and goosebumps this game gave me\nIt's beautifully haunting\nThe work these people put into the game, the historical inspiration, the mental health research done and depicted\nThe visuals, the audio design, the music, the symbolism everything carries\nThe combat, while simple, is so satisfying \nAnd the voices in your head giving you callouts during fight are implemented so well, not breaking the immerssion, but adding to it\nI played this game years ago and now I experienced it again\nEasily one of my favourite games",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "204744830",
+                  "hours_at_review": 20.1,
+                  "voted_up": true,
+                  "date": "2025-09-20",
+                  "review_text": "We need more indie gems like this. Small, narrowly focused games that don't try to do/be more than they need to; just a brilliant little idea executed well. Yeah the combat is a little clunky, yeah the puzzles get a tiny bit repetitive after a while, but it never gets tedious or boring. You're here for the vibe anyway, that unique mix of psychology and nordic mythology, the eerie atmosphere that really can't be matched by any \"A-class\" game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "203444240",
+                  "hours_at_review": 24.1,
+                  "voted_up": true,
+                  "date": "2025-09-03",
+                  "review_text": "Hellblade: Senua’s Sacrifice is one of the most unique and powerful games I’ve ever played. The story is emotional, dark, and deeply personal—it pulls you into Senua’s mind and doesn’t let go. The binaural audio and voice acting are incredible, making the experience feel real and intense.\r\n\r\nThe visuals are stunning, the atmosphere is haunting, and the combat—while simple—feels raw and meaningful. What really makes this game unforgettable is how it mixes gameplay with such an emotional and psychological journey.\r\n\r\nIt’s more than just a game—it’s an experience.\r\n⭐ 8.5/10 – Beautiful, emotional, and unforgettable. A true masterpiece.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-9a9018",
+              "claim": "Reviewers report that the puzzles feature arbitrary or non-intuitive solutions, which can lead to frustration and require looking up a guide.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "225026767",
+                  "hours_at_review": 22.4,
+                  "voted_up": false,
+                  "date": "2026-05-08",
+                  "review_text": "Puzzles are annoying and non-intutive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220946040",
+                  "hours_at_review": 20.8,
+                  "voted_up": true,
+                  "date": "2026-03-18",
+                  "review_text": "Engaging story, deeply written, held back a bit by (imho) the auto-lock mechanic in crowded combats and some puzzles with very arbitrary solutions, that left me frustrated and in search of a guide.\r\nStill absolutely worth it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209881475",
+                  "hours_at_review": 65.8,
+                  "voted_up": true,
+                  "date": "2025-11-22",
+                  "review_text": "My history with this game is a story itself.\r\n\r\nThe first time I downloaded Hellblade, I genuinely thought my game was bugged. I was loving the atmosphere and the story, but I got completely stuck at a certain point. Convinced it was a glitch, I ended up refunding the game on Steam.\r\n\r\nTime passed, and last Christmas, I saw it on sale for a pittance—like $4.00. I figured, \"Why not?\" and decided to give it another shot.\r\n\r\nI am so incredibly glad I did.\r\n\r\nThis time, I pushed through and completed it. What a masterpiece. The game I initially thought was broken was actually a profound and harrowing journey. The sound design, the portrayal of psychosis, and the visceral combat all clicked into place. It's an experience that stays with you long after the credits roll.\r\n\r\nIn fact, I enjoyed it so much that I immediately went and played Hellblade II, which was also phenomenal. This series has now completely won me over. If Ninja Theory ever makes a Hellblade 3, they have a day-one buyer right here.\r\n\r\nMy advice? If you get stuck, don't be like my first attempt. Look up a guide! The puzzle that stumped me was intentional, not a bug. Push through. It is absolutely worth it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-9f4b05",
+              "claim": "Reviewers highlight that playing with headphones is mandatory to experience the binaural audio design and 3D soundscape effectively.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229746668",
+                  "hours_at_review": 20.9,
+                  "voted_up": true,
+                  "date": "2026-07-06",
+                  "review_text": "Everything here is deliberate: every rock, every reflection, every line Senua mutters to herself. Juergens carries the whole thing on her performance alone, and the sound design means every whisper feels like it's coming from inside your own skull (headphones aren't optional here). Doesn't overstay its welcome, doesn't hold your hand, doesn't pretend psychosis is some cool aesthetic thing. Just a really tightly made, unsettling little game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225255796",
+                  "hours_at_review": 24.4,
+                  "voted_up": true,
+                  "date": "2026-05-11",
+                  "review_text": "Not just a game, but an experience.\n\nHellblade’s sound design, atmosphere, and storytelling are incredible. Playing with headphones is mandatory.\n\nThe combat is basic, but Senua’s journey stays in your head long after finishing the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221718801",
+                  "hours_at_review": 28.1,
+                  "voted_up": true,
+                  "date": "2026-03-26",
+                  "review_text": "**Rating: 9/10**\n\nI've played a lot of games that claim to be \"immersive.\" Most of them just mean the graphics are nice. Hellblade is something else entirely. It doesn't just want you to play a game—it wants you to experience what it's like to live inside someone else's mind. And it succeeds in ways that honestly made me uncomfortable in the best possible way.\n\nI picked this up during a sale for around $3 , and after finishing it, I genuinely feel like I robbed the developers. This is one of those rare games that stays with you long after the credits roll .\n\n**The Good:**\n- **The audio design is genuinely groundbreaking.** The game tells you to play with headphones before you even start. Do not ignore this warning. The binaural audio creates a 3D soundscape where voices whisper in your ears, circle around your head, and feel like they're actually in the room with you . You're constantly surrounded by a chorus of voices—some encouraging, some mocking, some arguing with each other. It's unsettling, it's immersive, and I've never experienced anything like it in any other game .\n\n- **The portrayal of psychosis is respectful and authentic.** Ninja Theory worked with mental health specialists, professors of psychology, and people recovering from psychosis to accurately represent Senua's condition . This isn't a gimmick. The voices, the visual distortions, the way reality bends and breaks—it all serves a purpose. One user on Metacritic put it perfectly: \"A game that portrays psychosis in a very powerful way, with impressive graphics, created by an independent studio with a limited team\" .\n\n- **The story is emotionally devastating.** Senua's journey into Norse hell to retrieve the soul of her dead lover is heartbreaking. The game is about grief, loss, trauma, and learning to let go. Without spoiling anything, the ending hit me harder than almost any game I've played. It's the kind of ending that makes you sit in silence through the credits just processing what happened .\n\n-…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-6c0c15",
+              "claim": "Reviewers note that the game features binaural audio and requires headphones to properly experience the 3D soundscape and whispering voices.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229746668",
+                  "hours_at_review": 20.9,
+                  "voted_up": true,
+                  "date": "2026-07-06",
+                  "review_text": "Everything here is deliberate: every rock, every reflection, every line Senua mutters to herself. Juergens carries the whole thing on her performance alone, and the sound design means every whisper feels like it's coming from inside your own skull (headphones aren't optional here). Doesn't overstay its welcome, doesn't hold your hand, doesn't pretend psychosis is some cool aesthetic thing. Just a really tightly made, unsettling little game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225255796",
+                  "hours_at_review": 24.4,
+                  "voted_up": true,
+                  "date": "2026-05-11",
+                  "review_text": "Not just a game, but an experience.\n\nHellblade’s sound design, atmosphere, and storytelling are incredible. Playing with headphones is mandatory.\n\nThe combat is basic, but Senua’s journey stays in your head long after finishing the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221718801",
+                  "hours_at_review": 28.1,
+                  "voted_up": true,
+                  "date": "2026-03-26",
+                  "review_text": "**Rating: 9/10**\n\nI've played a lot of games that claim to be \"immersive.\" Most of them just mean the graphics are nice. Hellblade is something else entirely. It doesn't just want you to play a game—it wants you to experience what it's like to live inside someone else's mind. And it succeeds in ways that honestly made me uncomfortable in the best possible way.\n\nI picked this up during a sale for around $3 , and after finishing it, I genuinely feel like I robbed the developers. This is one of those rare games that stays with you long after the credits roll .\n\n**The Good:**\n- **The audio design is genuinely groundbreaking.** The game tells you to play with headphones before you even start. Do not ignore this warning. The binaural audio creates a 3D soundscape where voices whisper in your ears, circle around your head, and feel like they're actually in the room with you . You're constantly surrounded by a chorus of voices—some encouraging, some mocking, some arguing with each other. It's unsettling, it's immersive, and I've never experienced anything like it in any other game .\n\n- **The portrayal of psychosis is respectful and authentic.** Ninja Theory worked with mental health specialists, professors of psychology, and people recovering from psychosis to accurately represent Senua's condition . This isn't a gimmick. The voices, the visual distortions, the way reality bends and breaks—it all serves a purpose. One user on Metacritic put it perfectly: \"A game that portrays psychosis in a very powerful way, with impressive graphics, created by an independent studio with a limited team\" .\n\n- **The story is emotionally devastating.** Senua's journey into Norse hell to retrieve the soul of her dead lover is heartbreaking. The game is about grief, loss, trauma, and learning to let go. Without spoiling anything, the ending hit me harder than almost any game I've played. It's the kind of ending that makes you sit in silence through the credits just processing what happened .\n\n-…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "205879882",
+                  "hours_at_review": 23.4,
+                  "voted_up": true,
+                  "date": "2025-10-04",
+                  "review_text": " \"If a psychosis was just some synapses misfiring why wouldnt you simply get static? But you don't. You get a carefully crafted and fairly articulate world never seen before\" by Cormac McCarthy\r\n\r\nSome of the best audio design I’ve ever experienced and not a single gunshot needed to make it so. Hellblade Senua’s Sacrifice is a haunting, emotionally charged journey that left a lasting impression on me. From the very beginning, the game pulls you into Senua’s fractured mind and never lets go, crafting one of the most immersive psychological experiences in gaming. The cinematic presentation is absolutely stunning. Every camera angle, every visual transition, feels deliberately crafted to make you feel part of Senua’s world rather than just a spectator. The voice acting deserves particular praise it’s genuinely top tier across the board. Melina Juergens’ performance as Senua is raw and heart wrenching, while Steven Hartley, who plays her father Zynbel, completely steals every scene he’s in. His deep, resonant voice carries a mix of menace and sorrow that lingers long after each encounter, I had goose bumps every time he interjected. What really sets Hellblade apart, though, is how respectfully and authentically it handles its depiction of psychosis. Ninja Theory worked closely with people who actually experience psychosis, as well as mental health professionals, and it shows. The result is an experience that feels terrifyingly real especially with headphones. The whispering voices that constantly surround you, taunting, guiding, or deceiving you, create an atmosphere that’s both unnerving and fascinating. There were moments where I genuinely felt like I was losing my grip on reality right alongside Senua. I genuenly had to take breaks at points just to feel some form of clairvoyance. \"Eeeek!\"\r\n\r\nCombat, while simple, is incredibly satisfying. It’s not overly complex or difficult, but it feels weighty and cinematic, blending seamlessly with the game’s tone. My only real …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "203444240",
+                  "hours_at_review": 24.1,
+                  "voted_up": true,
+                  "date": "2025-09-03",
+                  "review_text": "Hellblade: Senua’s Sacrifice is one of the most unique and powerful games I’ve ever played. The story is emotional, dark, and deeply personal—it pulls you into Senua’s mind and doesn’t let go. The binaural audio and voice acting are incredible, making the experience feel real and intense.\r\n\r\nThe visuals are stunning, the atmosphere is haunting, and the combat—while simple—feels raw and meaningful. What really makes this game unforgettable is how it mixes gameplay with such an emotional and psychological journey.\r\n\r\nIt’s more than just a game—it’s an experience.\r\n⭐ 8.5/10 – Beautiful, emotional, and unforgettable. A true masterpiece.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 12,
+        "cited_recommend": 11,
+        "divergence_p": 0.234,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 2,
+      "pct_positive": 100.0,
+      "muted": true,
+      "n_note": "n=2 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1201,
+    "steam_total_reviews": 34051,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

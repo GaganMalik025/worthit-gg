@@ -1,0 +1,867 @@
+{
+  "appid": "686060",
+  "game_name": "Mewgenics",
+  "generated_at": "2026-08-18T11:45:32Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/686060/aa8075d11165fef4d4d0d09c156f0da0623b5da1/header.jpg?t=1771573546",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/686060/b00ca313f3ac970c3e412280ecc8a5ed65813a0e/capsule_231x87.jpg?t=1771573546",
+    "grid": "https://cdn2.steamgriddb.com/grid/908dd48815ec5c44dec70d524419819b.jpg"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 9,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Brilliant art and music offset by a punishing, tedious grind.",
+    "for_you_if": [
+      "you love deep tactical rogue-likes",
+      "you enjoy intricate pet breeding loops",
+      "you appreciate standout visual art and music"
+    ],
+    "not_for_you_if": [
+      "you hate losing progress to random luck",
+      "you dislike tedious household management menus",
+      "you want clear ability descriptions"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 35,
+      "pct_positive": 48.6,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 358,
+      "pct_positive": 85.8,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 454,
+      "pct_positive": 88.1,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 405,
+      "pct_positive": 92.8,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Reviewer sentiment grows progressively more positive as play time increases from the opening hours into the late game.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 48.6,
+            "pool_n": 35
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 85.8,
+            "pool_n": 358
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 88.1,
+            "pool_n": 454
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 92.8,
+            "pool_n": 405
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 48.6,
+        "low_pool_n": 35,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 92.8,
+        "high_pool_n": 405,
+        "gap_pts": 44.2
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 35,
+      "pct_positive": 48.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early impressions focus on a slow, monotonous, and grindy pace.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-010be8",
+              "claim": "Reviewers describe the game as grindy, monotonous, slow, and tedious.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231479577",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "It's too damn grey.\n\nThe UX just... isn't good for me. And even after just one hour I can tell it's going to be a very grindy experience. I wasn't having fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229384224",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "As much as it hurts me to say, I really don't like this game.\n\nIt's quite a bit grindy, monotonous, and just overall slow. On top of that, the game relies heavily on 'shocking' and 'crude' humor, typical of Edmund, but it's shoved in your face much more than in The Binding of Isaac. Additionally, the 'humor' is overall poorly executed and is practically the same as what Edmund was making on Newgrounds in 2003.\n\nThe gameplay is not only a slog, but also relies extremely heavily on RNG, which is typical of roguelikes, except for the fact that certain events practically end your run instantly. This wouldn't be so bad in isolation, but in combination with the grindy gameplay makes the experience feel mediocre. The game does have some interesting mechanics, but to me is weighed down by all of the issues I have with the game.\n\nOverall, it's not a bad game, but it is aimed at a specific audience I am not a part of.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 2,
+        "cited_recommend": 0,
+        "divergence_p": 0.264,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 358,
+      "pct_positive": 85.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players praise the soundtrack and visual style while struggling with tedious management and luck-heavy combat.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-4fa255",
+              "claim": "Reviewers describe the soundtrack and visual art style as standout positive elements of the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232470024",
+                  "hours_at_review": 14.8,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "The game displayed tediousness and pure randomness that I was not prepared to deal with at the time of playing. And unfortunately I had to invest my time and effort in real life and that drained me enough to dread ever approaching this game for a year at least lest I become a squeezed lemon indeed. Will come back to it, but once I have gained enough charge to go through all the intentional obscurity, randomness and unfriendliness. But yeah, soundtrack is bop, visual style is distinct and appealing. Jokes are, well, meh. Got a chuckle out of me when saw a guy wearing a pink T-shirt printed with B*TCH, but that's about it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231994168",
+                  "hours_at_review": 12.0,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": " The art and classic flash game feel is flawless. The soundtrack is the best thing about this game.\n\nHaving to do runs to grind or with trashcats is tedious and the worst.\n\nThe tactical gameplay is fine, sometimes even quite enjoyable, but it gets not-fine when you have to do it for the 9th time with rando cats you know you probably won't progress with just to grind up for some moderately better stats to then hope the RNG leads to some good breeding. I see what I'm supposed to do, and doing it isn't hard, but I'd rather just... not.\n\nIt's like chewing a cheap piece of gum. The novelty and flavor runs out way sooner than you'd like, and then you're just left gnawing on something boring.\n\nI'd feel bad downvoting this obvious labor of love, but there are enough positive reviews out there to counterbalance it. I'll still listen to a few selections from the soundtrack, though.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-848df3",
+              "claim": "Reviewers describe the cat breeding and house management systems outside of runs as tedious, overwhelming, or lacking quality-of-life features like sorting tables.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232426433",
+                  "hours_at_review": 19.6,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "I want to recommend this game, it's solid in so many ways. 20 hours in and the fundamental mechanic of breeding cats is a huge time suck, and theirs no QoL features to do. Scroll through one cat at a time organizing them. Is it too much to ask for a table?\n\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232201450",
+                  "hours_at_review": 14.0,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "I really want to explore all the fun worlds bosses songs this game has, but I can't enjoy them because I can't stand the cat breeding part of the game when the runs themselves are already long and tedious enough. Imagine if in Isaac you couldn't just instantly drop into a run and instead you had to meticulously manage like 50 different things in your base before a run or else play at a major disadvantage \n\nIt's just silly to me when Edmund's games have always been about quick respawns to offset the difficulty",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-bb776c",
+              "claim": "Reviewers report that the cat breeding and house management aspects outside of combat are tedious, boring, and overwhelming to handle.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 8
+              },
+              "citations": [
+                {
+                  "recommendationid": "232974618",
+                  "hours_at_review": 2.5,
+                  "voted_up": false,
+                  "date": "2026-08-16",
+                  "review_text": "Everything outside of runs is pretty poorly designed and un-fun. The runs themselves while they are fun, aren't overly special or anything amazing and it can get pretty repetitive. I think there are better games you could spend your money on, but don't find this one outright awful. I wish there was a middle ground button. But due to the price it makes me lean towards no.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232849067",
+                  "hours_at_review": 9.0,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "There are too many trivial, confusing, unclear decisions to make in this game.  The little things like which cats to bring, which classes to choose, which items to give which cats, which of the 4 mediocre abilities is slightly less mediocre gets exhaustion, and the consequences for these decisions are often menial or incomprehensible to the player without spending hours on wikis and spreadsheets (breeding and furniture decisions are big culprits here).  The game starts out fun when the excitement of the new abilities, combinations and items outweigh the tedium of the many confusing unfun minor decisions, but as the complexity of the game explodes over time with more classes, items, cats, stats, goals, quests, etc the tedium of constant unclear and often unimportant decision making starts to outweigh the excitement and the game feels more draining than fulfilling.  My real playtime is probably around 30 hours.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232788085",
+                  "hours_at_review": 19.4,
+                  "voted_up": false,
+                  "date": "2026-08-14",
+                  "review_text": "I do enjoy the game but there's a lot of fundamental design issues present. All of the management aspects of the game (basically everything outside of actually doing runs) is so boring it dissuades me from actually coming back to the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232426433",
+                  "hours_at_review": 19.6,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "I want to recommend this game, it's solid in so many ways. 20 hours in and the fundamental mechanic of breeding cats is a huge time suck, and theirs no QoL features to do. Scroll through one cat at a time organizing them. Is it too much to ask for a table?\n\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232201450",
+                  "hours_at_review": 14.0,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "I really want to explore all the fun worlds bosses songs this game has, but I can't enjoy them because I can't stand the cat breeding part of the game when the runs themselves are already long and tedious enough. Imagine if in Isaac you couldn't just instantly drop into a run and instead you had to meticulously manage like 50 different things in your base before a run or else play at a major disadvantage \n\nIt's just silly to me when Edmund's games have always been about quick respawns to offset the difficulty",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231994168",
+                  "hours_at_review": 12.0,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": " The art and classic flash game feel is flawless. The soundtrack is the best thing about this game.\n\nHaving to do runs to grind or with trashcats is tedious and the worst.\n\nThe tactical gameplay is fine, sometimes even quite enjoyable, but it gets not-fine when you have to do it for the 9th time with rando cats you know you probably won't progress with just to grind up for some moderately better stats to then hope the RNG leads to some good breeding. I see what I'm supposed to do, and doing it isn't hard, but I'd rather just... not.\n\nIt's like chewing a cheap piece of gum. The novelty and flavor runs out way sooner than you'd like, and then you're just left gnawing on something boring.\n\nI'd feel bad downvoting this obvious labor of love, but there are enough positive reviews out there to counterbalance it. I'll still listen to a few selections from the soundtrack, though.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231571545",
+                  "hours_at_review": 8.2,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "I really wanted to love this. As someone who has played thousands of hours of BoI and loved the unique art style and weird premise on paper, the potential here seemed massive. Unfortunately, the actual experience ended up being a huge disappointment.\nThe main issue is pacing. Individual runs take way too long—often 30 minutes or more just to crawl through a single map—which completely drains the snappy, arcade-like momentum that made their previous work so addictive. When you finally finish a run, you're funneled back to a home base where you have very little direct control or engaging things to do, making the downtime feel flat and boring.\nTo top it off, the tactical combat system relies too heavily on frustrating RNG and quickly turns into a repetitive, slow slog. Even with room for strategy, it just wears down your patience over time rather than rewarding tight plays. I couldn't even push all the way through the story before it simply became too tedious to keep playing.\nIf you're looking for the tight, high-energy loops of BoI, you'll probably find this surprisingly heavy and exhausting.\n Pros: Unique art style, great concept on paper.\n Cons: Painfully slow run lengths, repetitive and overly random combat, flat base management.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226646983",
+                  "hours_at_review": 19.7,
+                  "voted_up": false,
+                  "date": "2026-05-28",
+                  "review_text": "To be honest, while I enjoyed playing Mewgenics when it came out I don't find it fun anymore. I bought this game mainly because I wanted to support the author (Edmund McMillen) because I love Isaac which literally is my favourite game and still enjoy playing it up to this day\n\nWhile the concept in Mewgenics is fun and cute etc. I find a lot of the game mechanics annoying. For example, the breeding sytem makes sense and seems fun but for me it was kind of overwhelming how to manage my cats. I found it overcomplicated and kinda random to be honest (also the house management and upgrades are a bit.. boring?). \n\nWhen we talk about upgrades and game progression it was imo a HUGE downgrade from what we got in TBOI. It felt underwhelming. The interactions with npcs (a part of upgrading your house or cats etc) are definietly not Edmund's thing. It felt kind of bland and uninteresting at some point. Also, the difficulty. Just like in TBOI, Mewgenics is pretty much an unforgiving game and it is not a bad thing at all. I just think that hardness of this game felt waaaay more annoying. You need to think a lot during battles and again, it is not a bad thing but for example: you do something stupid, might even be a missclick > you ♥♥♥♥ up (one of the cats in your party is basically dead), so what you can do? Use some healing if you managed the party roles correcttly, use a snack, turn back to some safe spot (which is pretty much impossible on harder stages) and even if you do it and try your best YOUR CAT IS ♥♥♥♥♥♥♥ DEAD. But don't worry, it will get revived on the next battle, right? :DD         \n\nehhhh......    \n\nit gets revived > you realise its way weaker then before > it gets killed, finally permanently > the party is way too weak > you cant continue > return if you have the opportunity (you probably won't have) > other members of your party are getting screwed over and over again > there's NOTHING you can do but watch them die tbh\n\nEvery time it pisses me off so much. \nEven…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ea15c7",
+              "claim": "Reviewers praise the game's soundtrack and visual art style.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232609576",
+                  "hours_at_review": 10.4,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "Okay game had lots of fun playing, cool art style and concept, but one thing I have to say is the game is very heavily luck based which draws away from the strategy a lot as well as overused enemy concepts. Oftentimes I find that I simply cannot do battles due to bad luck with cat breeding or cheesy bosses that just run away and do chip damage at a distance, and having bad movement due to bad luck with cat breeding you cant catch up and get useful stats. This is extremely annoying when faced with the fact if you lose even once at early game you just get caught in a cycle of losing and not having any money to buy things that you need to play, such as cat food and consumables. A couple bad bosses to name is rat bomber, leaf cat and flush. All the same concept of just running away and spamming long range moves creating incredibly boring and tedious gameplay. Overall would not recommend for someone looking for an actual skill based strategy game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232514835",
+                  "hours_at_review": 4.4,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "The Music alone is worth the price of the game. 9/10 game best game ive played this year",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232470024",
+                  "hours_at_review": 14.8,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "The game displayed tediousness and pure randomness that I was not prepared to deal with at the time of playing. And unfortunately I had to invest my time and effort in real life and that drained me enough to dread ever approaching this game for a year at least lest I become a squeezed lemon indeed. Will come back to it, but once I have gained enough charge to go through all the intentional obscurity, randomness and unfriendliness. But yeah, soundtrack is bop, visual style is distinct and appealing. Jokes are, well, meh. Got a chuckle out of me when saw a guy wearing a pink T-shirt printed with B*TCH, but that's about it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231994168",
+                  "hours_at_review": 12.0,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": " The art and classic flash game feel is flawless. The soundtrack is the best thing about this game.\n\nHaving to do runs to grind or with trashcats is tedious and the worst.\n\nThe tactical gameplay is fine, sometimes even quite enjoyable, but it gets not-fine when you have to do it for the 9th time with rando cats you know you probably won't progress with just to grind up for some moderately better stats to then hope the RNG leads to some good breeding. I see what I'm supposed to do, and doing it isn't hard, but I'd rather just... not.\n\nIt's like chewing a cheap piece of gum. The novelty and flavor runs out way sooner than you'd like, and then you're just left gnawing on something boring.\n\nI'd feel bad downvoting this obvious labor of love, but there are enough positive reviews out there to counterbalance it. I'll still listen to a few selections from the soundtrack, though.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231571545",
+                  "hours_at_review": 8.2,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "I really wanted to love this. As someone who has played thousands of hours of BoI and loved the unique art style and weird premise on paper, the potential here seemed massive. Unfortunately, the actual experience ended up being a huge disappointment.\nThe main issue is pacing. Individual runs take way too long—often 30 minutes or more just to crawl through a single map—which completely drains the snappy, arcade-like momentum that made their previous work so addictive. When you finally finish a run, you're funneled back to a home base where you have very little direct control or engaging things to do, making the downtime feel flat and boring.\nTo top it off, the tactical combat system relies too heavily on frustrating RNG and quickly turns into a repetitive, slow slog. Even with room for strategy, it just wears down your patience over time rather than rewarding tight plays. I couldn't even push all the way through the story before it simply became too tedious to keep playing.\nIf you're looking for the tight, high-energy loops of BoI, you'll probably find this surprisingly heavy and exhausting.\n Pros: Unique art style, great concept on paper.\n Cons: Painfully slow run lengths, repetitive and overly random combat, flat base management.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-fceecf",
+              "claim": "Reviewers note that the game's difficulty and combat outcomes rely heavily on luck and random generation.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "232609576",
+                  "hours_at_review": 10.4,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "Okay game had lots of fun playing, cool art style and concept, but one thing I have to say is the game is very heavily luck based which draws away from the strategy a lot as well as overused enemy concepts. Oftentimes I find that I simply cannot do battles due to bad luck with cat breeding or cheesy bosses that just run away and do chip damage at a distance, and having bad movement due to bad luck with cat breeding you cant catch up and get useful stats. This is extremely annoying when faced with the fact if you lose even once at early game you just get caught in a cycle of losing and not having any money to buy things that you need to play, such as cat food and consumables. A couple bad bosses to name is rat bomber, leaf cat and flush. All the same concept of just running away and spamming long range moves creating incredibly boring and tedious gameplay. Overall would not recommend for someone looking for an actual skill based strategy game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232532254",
+                  "hours_at_review": 16.2,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "The other elements (gameplay loop, music, etc.) are what bring this to a recommended. \nThe \"difficulty\" being RNG almost makes this a do not recommend.  -3 points \n7/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232470024",
+                  "hours_at_review": 14.8,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "The game displayed tediousness and pure randomness that I was not prepared to deal with at the time of playing. And unfortunately I had to invest my time and effort in real life and that drained me enough to dread ever approaching this game for a year at least lest I become a squeezed lemon indeed. Will come back to it, but once I have gained enough charge to go through all the intentional obscurity, randomness and unfriendliness. But yeah, soundtrack is bop, visual style is distinct and appealing. Jokes are, well, meh. Got a chuckle out of me when saw a guy wearing a pink T-shirt printed with B*TCH, but that's about it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231571545",
+                  "hours_at_review": 8.2,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "I really wanted to love this. As someone who has played thousands of hours of BoI and loved the unique art style and weird premise on paper, the potential here seemed massive. Unfortunately, the actual experience ended up being a huge disappointment.\nThe main issue is pacing. Individual runs take way too long—often 30 minutes or more just to crawl through a single map—which completely drains the snappy, arcade-like momentum that made their previous work so addictive. When you finally finish a run, you're funneled back to a home base where you have very little direct control or engaging things to do, making the downtime feel flat and boring.\nTo top it off, the tactical combat system relies too heavily on frustrating RNG and quickly turns into a repetitive, slow slog. Even with room for strategy, it just wears down your patience over time rather than rewarding tight plays. I couldn't even push all the way through the story before it simply became too tedious to keep playing.\nIf you're looking for the tight, high-energy loops of BoI, you'll probably find this surprisingly heavy and exhausting.\n Pros: Unique art style, great concept on paper.\n Cons: Painfully slow run lengths, repetitive and overly random combat, flat base management.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231560048",
+                  "hours_at_review": 5.8,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "I want to like it, I really do, I love the vibes, the music, the humor, but unfortunately I'd rather slam my ♥♥♥♥ in a car door. I don't want to waste my time hoping RNG favors me... Just stick to The Saac if you like the vibe of this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226646983",
+                  "hours_at_review": 19.7,
+                  "voted_up": false,
+                  "date": "2026-05-28",
+                  "review_text": "To be honest, while I enjoyed playing Mewgenics when it came out I don't find it fun anymore. I bought this game mainly because I wanted to support the author (Edmund McMillen) because I love Isaac which literally is my favourite game and still enjoy playing it up to this day\n\nWhile the concept in Mewgenics is fun and cute etc. I find a lot of the game mechanics annoying. For example, the breeding sytem makes sense and seems fun but for me it was kind of overwhelming how to manage my cats. I found it overcomplicated and kinda random to be honest (also the house management and upgrades are a bit.. boring?). \n\nWhen we talk about upgrades and game progression it was imo a HUGE downgrade from what we got in TBOI. It felt underwhelming. The interactions with npcs (a part of upgrading your house or cats etc) are definietly not Edmund's thing. It felt kind of bland and uninteresting at some point. Also, the difficulty. Just like in TBOI, Mewgenics is pretty much an unforgiving game and it is not a bad thing at all. I just think that hardness of this game felt waaaay more annoying. You need to think a lot during battles and again, it is not a bad thing but for example: you do something stupid, might even be a missclick > you ♥♥♥♥ up (one of the cats in your party is basically dead), so what you can do? Use some healing if you managed the party roles correcttly, use a snack, turn back to some safe spot (which is pretty much impossible on harder stages) and even if you do it and try your best YOUR CAT IS ♥♥♥♥♥♥♥ DEAD. But don't worry, it will get revived on the next battle, right? :DD         \n\nehhhh......    \n\nit gets revived > you realise its way weaker then before > it gets killed, finally permanently > the party is way too weak > you cant continue > return if you have the opportunity (you probably won't have) > other members of your party are getting screwed over and over again > there's NOTHING you can do but watch them die tbh\n\nEvery time it pisses me off so much. \nEven…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 13,
+        "cited_recommend": 2,
+        "divergence_p": 2.79e-08,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 454,
+      "pct_positive": 88.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid-game reviewers highlight exceptional music alongside punishing losses from random events and unpredictable breeding mechanics.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-984cb1",
+              "claim": "Reviewers describe the music and original soundtrack as exceptional and high quality.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232963807",
+                  "hours_at_review": 83.5,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "the game has a weird kookiness and charm to it and is definitely one of the most interesting roguelikes I've ever played\r\nEvery run with my cats manages to be something new and something funny always happens along the way, a very refreshing experience\r\nand the ost is AMAZING!!!!!!! there is not a single track from this game I dislike each track is a blessing to listen to \r\nbuy this game and play it if you have the time and money",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232010918",
+                  "hours_at_review": 98.9,
+                  "voted_up": true,
+                  "date": "2026-08-04",
+                  "review_text": "I cannot put into words how much I adore this game. I heard about it through Isaac earlier in the year and was immediately excited to play it. I literally bought a Gaming PC JUST to play this game. I can confidently say that it exceeded my expectations in a way beyond what I thought was possible. I can go on and on about each individual aspect of this game that makes it so great, but to encapsulate what makes this game so special to me is its soul. Mcmillens art style is on full display, complimenting this games bizarre humour and gameplay. Every Area feels like a whole unique world of trials for your cats. what truly invigorates each area is the incredible, unbelievable, Jaw dropping original soundtrack. each song completely embodies the feeling of whatever threat your facing. The way the music starts off as a mellow, toned down version of the true boss theme is truly special, especially when the boss tracks are good enough to make it on my real life playlist. I still have not finished the game, only because I am dreading the hole in my heart this game will leave me with once I am done. Truly a masterpiece in every facet of the word.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-066d89",
+              "claim": "Reviewers mention that losing a run results in punishing losses of time, resources, and carefully bred cats.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226945714",
+                  "hours_at_review": 54.8,
+                  "voted_up": false,
+                  "date": "2026-06-01",
+                  "review_text": "Well, first of all, I really love this game. It's style and charm are not for everyone, but it has a lot of character. Second, the music is spectacular, probably the best thing about this game. The gameplay is brilliant, I haven't had this much fun in a tactical rpg for a while. That is, of course, until I finished Act 2 and started act 3.\nThe game is very good, but it's in this part where Edmund's love for chaos over balance really hurts the experience. After a while each run stopped feeling fun and just became stressful. This is because losing a run in this game can be severely punishing. You lose your cats, which in this game in particular, with its breeding system, can mean losing up to hours of achieved stats, mutations and abilities. This possibility could make the game more fun for some people, probably, but for me its just a reminder that if I lose a game I might need to complete a ton of Act 1 ♥♥♥♥♥♥ runs to get back to the power level I already achieved.\n\nNow, this in itself wouldn't be that much of a problem, if it wasn't for the [b]extremely[/b] punishing nature of the runs. Which is not a very apt term either, because \"punishing\" would indicate that you made a mistake in the first place. In tboi, for example, picking one particular item in a run could make it essentially over (for expample, picking ipecac with split shots or rubber cement). In this situations however, you have the freedom to just [b]not[/b] pick up the run ending item. This is not the case in mewgenics. With most random events, you can't even choose not to roll the dice. This could be a fun mechanic, if a little anoying at times (like pills in isaac for example (and even then you can always choose not to pop the pills)), but in reality, the random events in mewgenics can and will be EXTREMELY punishing. I'm talking full on god tier runs just dying because your cleric randomly got poopshock syndrome which makes every entity that is not an enemy get covered in ♥♥♥♥ and die whenever you ca…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "226834862",
+                  "hours_at_review": 24.9,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "I really wanted to like Mewgenics, but each run made my dislike it even more. The humour reminds me of people who think they can be funny because they saw South Park without understanding what makes raunchy humour funny. The gameplay walks the line of balanced and fair with a little challange, to your just wasting your time and doomed to fail. Unlike Binding of Isaac where a bad run means a quick restart, here it means so many lost resources and time. \nHonestly I think it's fine to like this game. It's not a bad game, even a good game at times. It's just not for me.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-5eccf0",
+              "claim": "Reviewers note that the breeding system lacks direct control over the traits, skills, and passives passed down to offspring.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232753927",
+                  "hours_at_review": 28.5,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "Overall an amazing game. Gets grindy real quick though and I am sad you cannot use the breeding to control what skills and passives are passed down to make the ultimate cat for each archetype. There's still an element of chance to the game that is fun at first when everything is new, but eventually I know what skills and passives I want for my thief, healer, tank, etc. It's very disappointing I cannot control what abilities kitties are born with through breeding.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226470967",
+                  "hours_at_review": 46.0,
+                  "voted_up": false,
+                  "date": "2026-05-26",
+                  "review_text": "For a turn-based strategy game there is little to no stratergy involved while playing. Every part of the run is decided by an uncontrollable coinflip. The readability is terrible, sometimes it's hard to tell what is happening on the screen or why it's happening, there's no history log to check that. The events that end your run is also a questionable mechanic, your whole party can just die out of nowhere because you low rolled.\nBefore the actual run you need to get through the tedious breeding part that you don't have control over, and when you get the cats you want they could get abilities and passives that are either bad or useless because you don't get to choose for some reason.\nThe soundtrack is the only thing that kept me entertained and helped endure the frustration.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-5de876",
+              "claim": "Reviewers state that random events, encounters, and enemy mechanics can abruptly end a run with little to no counterplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226854662",
+                  "hours_at_review": 49.5,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "Regular enemy big shark goes 2 turns in a round and instakills your cats just by touching them.\nBosses goes 4 turns in a round, focusing in a single cat and kills it in one round.\nIt's hard to recommend the game when its so unfair and most of the times there's nothing you can do.\nSomethimes those random encounters gives you a debuff so crazy it ends your entire run.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226641126",
+                  "hours_at_review": 36.5,
+                  "voted_up": false,
+                  "date": "2026-05-28",
+                  "review_text": "Generally, I'd say this game is a masterpiece. The artstyle is amazing, the classes (The ones ive unlocked atleast) all seem really fun and unique. All this alongside very diverse areas and enemies. \n\nWhy did I not reccomend then, you ask? \n\nIt's simply because half the time I play this game it makes me want to pull my hair out due to the sheer amount of ♥♥♥♥♥♥♥♥ that can ruin a run with literally zero counterplay. Oh, you have a great run going? BAM, random desert encounter that kills one of your cats no matter the way you bodyblock it with the other 3. Oh, you just started? Here, have a random encounter IN THE FIRST SPOT that gives one of your cats -2 con, good luck!\n\nWhat i'm getting at is that this game has so much ♥♥♥♥♥♥♥♥ in it that demotivates me to hell and back to play. Sorry, not so sorry.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ee1c92",
+              "claim": "Reviewers report that losing a run results in severe losses, including permanently losing cats and their built-up stats, abilities, and mutations from the breeding system.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226945714",
+                  "hours_at_review": 54.8,
+                  "voted_up": false,
+                  "date": "2026-06-01",
+                  "review_text": "Well, first of all, I really love this game. It's style and charm are not for everyone, but it has a lot of character. Second, the music is spectacular, probably the best thing about this game. The gameplay is brilliant, I haven't had this much fun in a tactical rpg for a while. That is, of course, until I finished Act 2 and started act 3.\nThe game is very good, but it's in this part where Edmund's love for chaos over balance really hurts the experience. After a while each run stopped feeling fun and just became stressful. This is because losing a run in this game can be severely punishing. You lose your cats, which in this game in particular, with its breeding system, can mean losing up to hours of achieved stats, mutations and abilities. This possibility could make the game more fun for some people, probably, but for me its just a reminder that if I lose a game I might need to complete a ton of Act 1 ♥♥♥♥♥♥ runs to get back to the power level I already achieved.\n\nNow, this in itself wouldn't be that much of a problem, if it wasn't for the [b]extremely[/b] punishing nature of the runs. Which is not a very apt term either, because \"punishing\" would indicate that you made a mistake in the first place. In tboi, for example, picking one particular item in a run could make it essentially over (for expample, picking ipecac with split shots or rubber cement). In this situations however, you have the freedom to just [b]not[/b] pick up the run ending item. This is not the case in mewgenics. With most random events, you can't even choose not to roll the dice. This could be a fun mechanic, if a little anoying at times (like pills in isaac for example (and even then you can always choose not to pop the pills)), but in reality, the random events in mewgenics can and will be EXTREMELY punishing. I'm talking full on god tier runs just dying because your cleric randomly got poopshock syndrome which makes every entity that is not an enemy get covered in ♥♥♥♥ and die whenever you ca…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "228514094",
+                  "hours_at_review": 44.8,
+                  "voted_up": false,
+                  "date": "2026-06-21",
+                  "review_text": "The breeding is supposed to be a pretty big part of this game, but if you start to accumulate more cats its really time consuming and kinda unfun to be honest. There is no way to filter your cats or list them, so you need to cycle trough all of them every time. You cant rename the cats i think, so there is not even a workaround to organize your house. You get additional rooms, but these unlock really really late and the options to customize the house and the breeding are not really there.\n\nThe itemization on the other side does a great job, similar to The Binding of Isaac, but less complex. I only wish you could preserve more of the items to test builds and not be at the mercy of the roguelite nature of the game. Even after many hours in battle i had some unpredictable interactions that would be fun to experience, but many times lead to death of one or all of my party. Its usually ok to lose a run, but in this game its a huge letdown, cause you not only lose your items, but also your cats. That means you need to go back to breed multiple generations to get new ones with better starting stats and do some of the runs you already sucessfully completed.\n\nThis, and the kinda slow battles are responsible for pretty slow progress overall. This game would benefit alot from unlockables that you can rebuy or a mechanic to preserve cats. I realized this early in my playtime, but i stayed for a long time since the music, humor and easter eggs in this game are quite entertainig. If only the mechanics respect the players time more.\n\nIt does not deserve a negative review to be honest. Its a very unique game with high production quality; no bugs or perfmance issues even on steam deck. You can see how much work went into this game. But i dont think they can fix this base with future patches in a way that the loop is less work and more fun.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 9,
+        "cited_recommend": 3,
+        "divergence_p": 0.000173,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 405,
+      "pct_positive": 92.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players still enjoy the soundtrack but note late-game interface friction and unavoidable run-ending events.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-68ad69",
+              "claim": "Reviewers report that household management and cat breeding become tedious during the late game due to a lack of sorting features and the need to manually inspect individual cats.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 5,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "233067362",
+                  "hours_at_review": 168.2,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "This game is really fun with a lot of depth. I keep coming back to it. The house management is really the worst part of the game and I find it quite tedious. It also took me a while to figure out breeding and to understand game progression. All that aside, I have a lot of fun with this game and would recommend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233016343",
+                  "hours_at_review": 115.2,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "The cost / gameplay time ratio is off the charts. Fantastic game with a heckuva lot of replayability. My only complaint is that household management gets a bit tedious in the late game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232971514",
+                  "hours_at_review": 149.5,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "Mewgenics is an awesome game and really addicting. Also, it has one of the best OSTs I've heard in a long time. But, for the love of god, a little bit of QoL won't kill anyone. It won't let me select and/or inspect cats from the family tree view. If I want to check if a cat is better than their parents, I have to look at the name in the family tree, and then switch to regular view, moving the cursor over every cat in the room to search for the cat I want. Also, if said cat is behind another cat, good luck finding it. Multiply this for 5-10 new kittens in each room.\nBecause of this, each day I have to spend around 20 minutes just selecting which cats will stay in the house. A couple of friends of mine abandoned the game after 100+ hours because of this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232844027",
+                  "hours_at_review": 339.6,
+                  "voted_up": true,
+                  "date": "2026-08-14",
+                  "review_text": "[h3] [strike] Isaac and his mother [/strike] \nThe cats lived alone in a small house on a hill... [/h3]\nI enjoyed the time I spent on Mewgenics thoroughly. The main gameplay loop of cat breeding, house upgrading and going on adventures works really well and can be very addictive. There's a lot of stuff to tinker with when coming up with optimal strategies and the game's difficulty certainly encourages making the most of what you've got. While the house/breeding component of the game could use some polishing for easier management of cats, setting cats up for an adventure can get quite laborious thanks to the vast assortment of abilities and items in the game (and the resulting synergies between them), and the adventures themselves can go on for quite a long time, personally I found such shortcomings minor in the grand scheme of what the game has to offer.\n\n[h3] 0,08 € per hour of entertainment [/h3]\nMewgenics manages to keep the gameplay engaging throughout the whole length of the campaign and even the full completion process, as the wide pool of abilities and items that the game has you draft from makes every run unique. Since the player's given a choice from a fairly limited selection of abilities at a time, not every cat manages to get equipment and spells that synergize with one another, but interesting combos happen often enough that I kept always looking forward to the next adventure. For me, the difficulty was tuned just right, as every adventure felt like it had stakes and a sense of danger but it never got overwhelming. Even as I managed to break the game in a way where every run had a near guaranteed success rate, little things like having a kitten be born with some insane new name that I didn't expect contributed to keeping the experience fresh.\n\n[h3] Someone help, the game's out to get me [/h3]\nThe game can feel very unfair at points as the evil, vile rng can ruin the player's carefully crafted plans at the drop of a hat (R.I.P. The Righteous Chubbers, who…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232482512",
+                  "hours_at_review": 252.3,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "Fun combat and amazing music. Breeding cats and item management turns into a slog end game if you're not into it. A lot of interactions, some good and some that feel like absolute bs but you learn constantly. Really good game i like it haha!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226447009",
+                  "hours_at_review": 153.9,
+                  "voted_up": false,
+                  "date": "2026-05-26",
+                  "review_text": "It's a great game bogged down by a lack of streamlining for some of its mechanics. Mainly breeding. As it stands right now, the further you get into the game, the less fun breeding and managing your house becomes. Heres a list of things that are currently hurting the breeding system and house system:\n- The game lacks a way to sort through the cats in your house. If you want to easily find the one with the highest strength or luck, you can't. If you want to, you have to painfully click through your cats to see which ones have the highest stat and lable it, which becomes tedious after the first time you do it.\n- The game lacks a way to quickly break poops that build up in your house. This becomes a big issue later on when you have upwards of 50-100 cats in the house. Poops significantly hurt the ability to breed good cats, so this also becomes a chore.\n- The furniture system is cool but finnicky. Theres a lot of optimisation here, but its hard to do when the sorting system is so odd. If there was an easy way to sort shelves specifically, this would help.\n\nThe game also has some pretty unfair RNG in it that will screw you over with nothing you can really do about it. In general I think this is pushed a bit too far in Mewgenics. McMillens games have always had this sense of ♥♥♥♥♥♥♥♥ to them but it goes towards the unfun end in Mewgenics somewhat. Overall, this is a great game at its core but the lack of streamlining really hurts the experience.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226395743",
+                  "hours_at_review": 188.4,
+                  "voted_up": false,
+                  "date": "2026-05-25",
+                  "review_text": "I just want to launch the game and make runs but the fact that I need to manage my 100+ cats and house useless furnitures is such a weight, at this point let me just have random cats suited for the difficulty set and let me spend 5 min max between each run. Everything is tedious and unfun to manage and you need to do it to keep up with difficulty.\n\nSpeaking of which difficulty being mainly lottery elite buffs is bad, make them preset through the run or something to have more agency and fun trying to overcome it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227441212",
+                  "hours_at_review": 282.4,
+                  "voted_up": false,
+                  "date": "2026-06-07",
+                  "review_text": "Deciding if to recommend or not this game is hard.\nEven if we ignore the incredible nature of the punishing RNG and we laugh at it futility, the game ends bringing one thought to the front.\n\nIt's tedious. \n\nThe management is tedious, lacking an incredible amount of qol features that are standard in other games. The gameplay can become very tedious, if trying to play optimally (and you will be forced to if you are unlucky or in a higher difficulty) becomes extremely tedious.\n\nSpend hours on a run, and you'll be rewarded with coming back to sort through more cats, more items, more stuff wich is not rewarding at all, but mandatory if you want to be able to tackle the more difficult levels of act 3 and harder modes.\n\nEven if we ignore the RNG, the bad events, the forced bad outcomes that can ruin your run. You can't just laugh and start another, you now have to sort through all that mess and hope you can salvage something that won't put your progress back for a few hours.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228608825",
+                  "hours_at_review": 112.8,
+                  "voted_up": false,
+                  "date": "2026-06-23",
+                  "review_text": "Leaving a negative review because so much of this game is poorly designed and wastes your time for no reason:\n[list]\n[*]Side quests are the only reason to make any serious money in this game (most worth while furniture is 80 coins+ and you are capped at 99 for adventures), yet some of them are extremely unfun challenges where you can hit a brick wall 2+ hours into a run. Additionally, of the 20 side quests I've attempted, only 1 was not set in act 1.\n[*]House management is terrible. Absolutely everything about the house feels extremely unsatisfying, as you are severely limited on space, yet most furniture you encounter only gives a very minor 1-4 stat bonus split across several categories. The core conceit of this game is cat breeding, yet it takes several dozen hours before you have the furniture, house space, and monitoring upgrades to boost cats from a 5 point skill average to maybe a 6 point average. Finally, you cannot organize cats based on skills to make breeding easier, you have to click through each cat individually to see what their stats and traits are.\n[*]Enemies can spawn within attacking distance of your units on turn 1, meaning a character that you intended to heal ASAP after getting downed last battled is immediately downed again. Additionally, in The Labs there is a preset which spawns 3 enemies that nearly wall you in a corner, which have the ability to instantly give your cats a permanent stat malus.\n[*]There is no turn rewind system for miss-clicks, nor is there a manual save system. You can exit and return to a battle 4 times, with a nearly insurmountable penalty for the 3rd and 4th retries. I often have to use these because I am running a side quests and the enemy AI destroys a cat's corpse (which often just means AoE spam, dash spam, or an insta corpse destroying spell), causing me to lose the quest item and threatening several hours of time.\n[*]Information is often so poorly presented that I am not sure whether an unexplainable behavior is ca…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-d89c16",
+              "claim": "Reviewers note that the game features a highly praised and exceptional soundtrack.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "233071076",
+                  "hours_at_review": 185.6,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "After so many hours... After so many dead cats... I did it. I beat mewgenics. This game is phenomenal. I hate it. You have to rely on luck almost all of the time. I love this game. The soundtrack is so incredible, I'll be listening to it for years to come. Please, play this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233026774",
+                  "hours_at_review": 120.2,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "At the time of writing this I've written reviews for over 100 Steam games I've played, and Mewgenics is genuinely one of the hardest games I've had to write about. Like what the hell do I say about this game, and how do I say it succinctly without sounding deranged?\n\nMewgenics is a game partially made by Edmund McMillen, a creator who has a knack for creating deep, incremental gameplay from simplistic game design. Much like his past games, Mewgenics starts out as a fairly simple turn-based tactics game with a ridiculous sense of humor and a genuinely legendary soundtrack.\n\nHowever, now being 120 hours and [b]having still not beaten the game[/b], I can tell you that the journey of uncovering the twisted, gnarled core of Mewgenics is not for the faint of heart. This game can be crude, frustratingly difficult, and downright mean at times. But at the core is one of the most addicting, compelling, and well-thought out games I have ever played.\n\nWithin every class, level, and new generation of very unfortunate cats are places to dive deeper into this game. Mewgenics rewards you engaging with its systems to the fullest, yet is shockingly subtle and gentle with introducing it all to you. How well put together this game is blows my mind. I don't know how they made a game with this many classes, enemies, abilities, and all sorts of other random rng nightmares and it just... all fits together. The game never breaks, there's never a strategy that's too good, and never a bad situation you can't work your way out of. Thus, there are near-infinite ways for a run to tell a unique and often hilarious story.\n\nSo who do I recommend this game for? Well I can't just say \"sickos like me\", but it's definitely not a game for everyone. You have to meet Mewgenics on its level, and I don't think everyone will want to. It's not a smooth, cinematic gaming experience that anyone can be immersed into. It's a tangled mess of weird gameplay systems and animal abuse, and I love it just the way it is…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232971514",
+                  "hours_at_review": 149.5,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "Mewgenics is an awesome game and really addicting. Also, it has one of the best OSTs I've heard in a long time. But, for the love of god, a little bit of QoL won't kill anyone. It won't let me select and/or inspect cats from the family tree view. If I want to check if a cat is better than their parents, I have to look at the name in the family tree, and then switch to regular view, moving the cursor over every cat in the room to search for the cat I want. Also, if said cat is behind another cat, good luck finding it. Multiply this for 5-10 new kittens in each room.\nBecause of this, each day I have to spend around 20 minutes just selecting which cats will stay in the house. A couple of friends of mine abandoned the game after 100+ hours because of this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232401218",
+                  "hours_at_review": 142.1,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "Fun game, gets extremely repetitive after you finish the second act however. One of the best soundtracks to a game ever though.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226909207",
+                  "hours_at_review": 226.3,
+                  "voted_up": false,
+                  "date": "2026-06-01",
+                  "review_text": "Another video game coming from the creative input of Edmund McMillen, but perhaps not as great nor memorable as [i]The Binding of Isaac[/i] which was one of my favorites once it started looking like less of a Newgrounds flash game. I can't necessarily give that award to [i]Mewgenics[/i] and I don't really see myself returning to replay the game from a brand new save file as I have done numerously with TBOI. \n\nAs you can expect, it shares in the same humor that McMillen will have become iconic for, but as a turn-based strategy game with some roguelike elements, will play much different to his other video games while showing his versatility for delving into different genres of video game. Unlike other developers that have devolved to sterilize their video games (like those belonging to [i]Borderlands 4[/i]), I can respect that McMillen hasn't \"matured\" away from all the poop jokes and puns and that he knows what his fanbase desires and that he is also willing to supply it. You can tell immediately that this is a McMillen product, if not from the video game's title alone, but also its art style. The soundtrack is also amazing, where many of those songs were trapped in my head for days for how catchy it was, and if the game does win any personal, insignificant awards from an average person like myself, it is perhaps that it can contend at the top for \"best soundtrack.\" \n\nThe gameplay is engaging and there is obviously supposed to be high replayability given its roguelike nature, but I feel like many of my runs are more or less too similar to the previous run, even if I utilize different cats and combat archetypes between tank, damage, cleric, etc. Unlike with TBOI, there isn't that same level of excitement to discovering new items and synergies, as those item rewards are rather sparse. Similarly to TBOI, RNG can screw you over but I find it is much more punishing and unfair in [i]Mewgenics[/i] where it feels as though it does negate your agency and opportunity to win, a…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "226782536",
+                  "hours_at_review": 136.3,
+                  "voted_up": true,
+                  "date": "2026-05-30",
+                  "review_text": "This game is one of the best games I've ever played! Soundtrack is peak.\r\nEvery time you enter a new world, you can't wait to hear the sound track for the boss. It's like an album.\r\nI love roguelikes and this just feels like a love letter to the genre. It's gameplay is very fun with each run having it's own adventure.\r\nPEAK GAME! Would recommend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227136891",
+                  "hours_at_review": 157.7,
+                  "voted_up": true,
+                  "date": "2026-06-04",
+                  "review_text": "This game can be so punishing. Random events can ruin your VERY LONG runs. Some enemies have moves that can ruin your VERY LONG runs. There are hidden mechanics that can ruin your VERY LONG runs. Runs are pretty long in this game. You can have some awful luck in this game and there's nothing you can do to counter it... Though despite all of that, this game is so damn fun. Full of charm and passion, this game just keeps you going and going. SO many classes, abilities, items, enemies, bosses, etc. There is so much content in this game. The areas/levels you go to are all unique in their own way and never get boring. The soundtrack deserves the most praise from me. The songs just kept getting better and better. So many genres of music too. One of my favorite soundtracks of all time. Anyway, this game is definitely worth playing and grinding through the BS moments.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-ade728",
+              "claim": "Reviewers state that certain random events during adventures can force unavoidable negative outcomes that severely penalize the player's run.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232936040",
+                  "hours_at_review": 212.9,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "A triumph of game design. Dismissing this game because of it's seemingly crude humor or silly looking art style would be a tragedy. This is the first single player game in years that I found myself actively thinking about and wanting to play during other activities, and I'm disappointed to have finished, despite the nearly 200 hours it took do so. The amount of polish that went into every nook of this game's design is something that is hard to fully appreciate until you've played it for a while. \r\n\r\nThe game's playable classes have a perfect blend of consistent, reliable strengths at base while allowing you to build upon them with upgrades offered at random as a run progresses. Finding a strong synergy or strategy mid-run is not something that is handed to you on a silver platter, and rewards luck as well as those willing to look deeper and think about how things will play out. You will likely encounter some unique game states where you've made up a strategy that nobody else has ever came up with, due to the sheer volume of potential situations and abilities to select from. It's also not uncommon to feel like you've broken the game and found a combo of abilities and items that feels too good to be true, and yet there it is, and you get to wield it! It's also possible for a random event to absolutely screw one of your cats and leave a previous strategy unusable, forcing you to think on the fly. For as many ways as RNG can screw you over(this IS a roguelike...), there are ways the game will give you a break or be focused on not frustrating you. Except Dybbuk. ♥♥♥♥ Dybbuk.\r\n\r\nThe soundtrack is absolutely unbelievable. Sublime. Laugh-out-loud hilarious. I was consistently thinking \"no, THIS is my new favorite song now\" upon completing an area and initially hearing the next area's theme. I would go so far as to NOT encourage you to listen to the soundtrack before buying the game, as progressing in the game and getting to hear a new song is one of the most enjoyable parts…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232308980",
+                  "hours_at_review": 357.8,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "So I've played this game now for WAYYYY too many hours and I really, really like it. And I really, really hate it. The breeding part of it to get some really cool mutations and see the progress of what you've done with cats over time is cool, really cool. The events are very punishing at times where it doesn't matter if you choose one option or another. You choose a lever, you get rabies. You choose a switch, you get cancer. I spent a TON of time refining my cats genetics to where luck was one (if not the top) stat for all of my cats, in conjunction with the other stats to help improve odds on events.\r\n\r\nIt helped a little. A little. Not a lot.\r\n\r\nThis is a game. It is supposed to be beatable and fun. Not prohibitive and punishing. I won't lie - I had to do some save scumming to get past some of the bosses and had to restart SEVERAL times on some of the wild and crazy bosses. \r\n\r\nIndividual players are not competing with others in this game. Why not make some of these wild-a crazy settings customizable? It would still be fun. I'm at a supposed 357 hours and am putting the game aside. I really, really want to love it, but I can't try to any longer until changes are made. \r\n\r\nThe other thing too is you can't reuse your cats once you've done runs on the map. Sure, it makes sense, but why not allow some reuse to make some really cool and epic cats? What's the harm? Does the universe explode? Guess we'll never find out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227714019",
+                  "hours_at_review": 207.8,
+                  "voted_up": true,
+                  "date": "2026-06-11",
+                  "review_text": "Great game, but the events you encounter during your adventures are somewhat like:\n\nPositive outcome \"Get $3.\"\n\nNegative outcome: \"Give your cat cancer, and break their legs.\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227893572",
+                  "hours_at_review": 183.5,
+                  "voted_up": false,
+                  "date": "2026-06-13",
+                  "review_text": "Would love to give the game a positive review, but one too many \"go f yourself\" events that are unavoidable and completely random such as Sociopathy and Blood Frenzy. Had there been an alternative button to click rather than just receiving it outright (which has been suggested multiple times by players and is apparently going into one ear and out the other) I wouldn't be too upset, but no decision for the player and basically a fat middle finger instead. Until then I think I am done sinking what could be a possible 1hr+ run down the drain.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227441212",
+                  "hours_at_review": 282.4,
+                  "voted_up": false,
+                  "date": "2026-06-07",
+                  "review_text": "Deciding if to recommend or not this game is hard.\nEven if we ignore the incredible nature of the punishing RNG and we laugh at it futility, the game ends bringing one thought to the front.\n\nIt's tedious. \n\nThe management is tedious, lacking an incredible amount of qol features that are standard in other games. The gameplay can become very tedious, if trying to play optimally (and you will be forced to if you are unlucky or in a higher difficulty) becomes extremely tedious.\n\nSpend hours on a run, and you'll be rewarded with coming back to sort through more cats, more items, more stuff wich is not rewarding at all, but mandatory if you want to be able to tackle the more difficult levels of act 3 and harder modes.\n\nEven if we ignore the RNG, the bad events, the forced bad outcomes that can ruin your run. You can't just laugh and start another, you now have to sort through all that mess and hope you can salvage something that won't put your progress back for a few hours.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-5b60d5",
+              "claim": "Reviewers mention that ability descriptions lack clear information regarding ranges and specific mechanics.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226919504",
+                  "hours_at_review": 101.2,
+                  "voted_up": false,
+                  "date": "2026-06-01",
+                  "review_text": "I'm going to leave a negative review for now. There's a good game in here, but my experience so far has been pretty frustrating due to subpar UI design and lack of consistency in ability descriptions.\n\nI understand that there's an element of discovery to this game, and to pretty much every other game by Edmund. Isaac has hundreds of items that do something whacky, and you don't know what it is until you pick them up, knowing that any of them could ruin your run,\n\nBut this is a turn-based strategy game, I don't want to have these kinds of knowledge checks when making level-up choices or deciding what to do on any given turn.\n\nRight now, my melee character has the following abilities:\n- Rocks: \"A lobbed attack\"\n- Stun: \"Chuck a rock at a unit\"\n- Barbed Wire: \"Give a unit +5 Thorns until next turn\"\n\nCan you guess what the ranges are for these abilities? The game doesn't tell you.\nOkay, here we go:\n- Rocks: 4 tiles, ignores line of sight\n- Stun: Infinite range, ignores LoS\n- Barbed Wire: 5 tiles, ignores LoS\nGot that? Were you able to guess from the information I gave you? Because that's all the information given to me by the game.\n\nRound two.\n- Nail Throw: \"Attack a unit in a straight line\"\n- Sudden Affliction: \"Trigger the Poison, Bleed, and Burn effects on a unit\"\n- Shadow: \"Teleport behind a unit\"\n\nNow that you have information from the previous example, you might think, 'Oh, when it said \"Chuck a rock at A unit,\" that meant that the ability has infinite (or long) range and ignores LoS. So these other two abilities that use the same wording must be the same. Let's see if this logic works!\n\n- Nail Throw: 3 tiles in an orthagonal direction\n- Sudden Affliction: 1 tile\n- Shadow: 4 tiles, affected by LoS\nWell, that's really inconsistent. Maybe the 3rd character will make more sense?\n\n- Magic Dart: \"Shoot a charged projectile within your line of sight. This attack counts as both magical and physical\"\n- Dart: \"Throw a nail that ignores shield\"\n- Fire Blast: \"A fireblast th…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "228608825",
+                  "hours_at_review": 112.8,
+                  "voted_up": false,
+                  "date": "2026-06-23",
+                  "review_text": "Leaving a negative review because so much of this game is poorly designed and wastes your time for no reason:\n[list]\n[*]Side quests are the only reason to make any serious money in this game (most worth while furniture is 80 coins+ and you are capped at 99 for adventures), yet some of them are extremely unfun challenges where you can hit a brick wall 2+ hours into a run. Additionally, of the 20 side quests I've attempted, only 1 was not set in act 1.\n[*]House management is terrible. Absolutely everything about the house feels extremely unsatisfying, as you are severely limited on space, yet most furniture you encounter only gives a very minor 1-4 stat bonus split across several categories. The core conceit of this game is cat breeding, yet it takes several dozen hours before you have the furniture, house space, and monitoring upgrades to boost cats from a 5 point skill average to maybe a 6 point average. Finally, you cannot organize cats based on skills to make breeding easier, you have to click through each cat individually to see what their stats and traits are.\n[*]Enemies can spawn within attacking distance of your units on turn 1, meaning a character that you intended to heal ASAP after getting downed last battled is immediately downed again. Additionally, in The Labs there is a preset which spawns 3 enemies that nearly wall you in a corner, which have the ability to instantly give your cats a permanent stat malus.\n[*]There is no turn rewind system for miss-clicks, nor is there a manual save system. You can exit and return to a battle 4 times, with a nearly insurmountable penalty for the 3rd and 4th retries. I often have to use these because I am running a side quests and the enemy AI destroys a cat's corpse (which often just means AoE spam, dash spam, or an insta corpse destroying spell), causing me to lose the quest item and threatening several hours of time.\n[*]Information is often so poorly presented that I am not sure whether an unexplainable behavior is ca…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 20,
+        "cited_recommend": 12,
+        "divergence_p": 4.13e-05,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1252,
+    "steam_total_reviews": 29855,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

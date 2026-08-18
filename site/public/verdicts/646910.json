@@ -1,0 +1,1217 @@
+{
+  "appid": "646910",
+  "game_name": "The Crew™ 2",
+  "generated_at": "2026-08-18T11:51:41Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/646910/header.jpg?t=1777993746",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/646910/capsule_231x87.jpg?t=1777993746",
+    "grid": "https://cdn2.steamgriddb.com/grid/c1eb9116b4d363a26d64b84393e1227b.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 10,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Rough launch leads to a massive open world worth reaching.",
+    "for_you_if": [
+      "you want a massive open world to explore",
+      "you enjoy switching between cars, planes, and boats",
+      "you are willing to push past early technical hurdles"
+    ],
+    "not_for_you_if": [
+      "you will not install a third-party launcher",
+      "you play on Linux",
+      "you rely on a steering wheel peripheral"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 117,
+      "pct_positive": 32.5,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 313,
+      "pct_positive": 79.9,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 271,
+      "pct_positive": 85.6,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 100,
+      "pct_positive": 92.0,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Review sentiment shifts drastically from negative among early refund seekers to highly positive for players with more hours invested.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 32.5,
+            "pool_n": 117
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 79.9,
+            "pool_n": 313
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 85.6,
+            "pool_n": 271
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 92.0,
+            "pool_n": 100
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 32.5,
+        "low_pool_n": 117,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 92.0,
+        "high_pool_n": 100,
+        "gap_pts": 59.5
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 117,
+      "pct_positive": 32.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter severe technical hurdles, launcher errors, and hardware recognition failures right away.",
+      "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-abea73",
+              "claim": "The game requires launching via the Ubisoft Connect service, which reviewers report encounters errors, fails to keep users logged in, or prevents the game from starting from Steam.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 7
+              },
+              "citations": [
+                {
+                  "recommendationid": "232861451",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "Ubisoft launcher is always a problem with Ubisoft games, but in this one it is particularly grim. The game does not successfully launch it so the game cannot be launched from Steam without first having to find an install of Ubisoft Connect and running it (as administrator??) to be able to even launch the game. \n\nControl customization is broken. There are separate control sections for cars, boats, and planes, however paradoxically they are linked such that when I try to change my shift up/shift down car controls, it affects the plane's yaw controls setting them to be something nonsensical. Why have a separate section for plane controls if they aren't actually independent from car controls? \n\nThe engine sounds are extremely quiet, with the music and obnoxious dialog overpowering it. Adjusting audio can mitigate it to a degree, but it's still almost impossible to determine your RPMs by ear alone, meaning you are constantly having to look at the tachometer which is bizarrely designed to be unreadable at a glance. Have the people who made key decisions for this game ever played a racing game before?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231282864",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "logging into ubisoft is and always be a pain",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231102235",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Ah, Ubisoft. You have done it again. Steam claims the game is running beautifully, yet my screen remains completely blank. Meanwhile, Ubisoft Connect forces a manual login every single attempt, entirely ignoring the \"keep me logged in\" option. A truly marvelous test of my patience. Every single time I face an issue like this, it's Ubisoft. What a shame.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230488626",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "can't play the game because it link to a different email account, and i can still use that email if i want it to but i just want to use a different email to login, i paid for this game why does it matter which email i use, Ubisoft go bankrupt already.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229012785",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "Just great. Can't even play the games I paid for, because of the ♥♥♥♥♥♥ Ubisoft launcher. It won't let me log in or create an account it just says (An error occurred while trying to send your request. Please try again later.)\nFirst y'all took Crew now I can't even play Crew 2. Just great, makes me wanna stop buying games and start pirating.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228627465",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-06-23",
+                  "review_text": "I hate this stupid Ubisoft account, when I want play it, I totally forgot the account!!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221627747",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-03-25",
+                  "review_text": "Typical UBI SLOP TRASH, CANT EVEN PLAY THE DAM GAME..... Considering one you have to login into there garbage account......... to even play the game.... But oh wait when you go to make an account as I cant even get into my old one. THERE OWN WEBSITE WONT EVEN ALLOW YOU TO...............",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-6fcdbb",
+              "claim": "Reviewers state that the game fails to run on Linux due to anti-cheat or launcher compatibility issues.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "227736073",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-11",
+                  "review_text": "Completely borked under Linux, all due to Uplay and whatever else Ubisoft added to the game that makes it just, not work at all under linux",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224854624",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-05",
+                  "review_text": "I still can't play it on Linux due to the anti-cheat. Not even after the offline and hybrid mode announcement. Incredibly incompetent again of course from Ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224259323",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-04-28",
+                  "review_text": "Doesn't run on linux for no good reason",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224040452",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-04-25",
+                  "review_text": "Game does not work on Linux and for some reason also fails to launch on GeForce Now, it just give black screen!",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-f5406f",
+              "claim": "Reviewers report that the game requires launching through Ubisoft Connect, which forces manual logins and account linking issues.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 7
+              },
+              "citations": [
+                {
+                  "recommendationid": "232861451",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "Ubisoft launcher is always a problem with Ubisoft games, but in this one it is particularly grim. The game does not successfully launch it so the game cannot be launched from Steam without first having to find an install of Ubisoft Connect and running it (as administrator??) to be able to even launch the game. \n\nControl customization is broken. There are separate control sections for cars, boats, and planes, however paradoxically they are linked such that when I try to change my shift up/shift down car controls, it affects the plane's yaw controls setting them to be something nonsensical. Why have a separate section for plane controls if they aren't actually independent from car controls? \n\nThe engine sounds are extremely quiet, with the music and obnoxious dialog overpowering it. Adjusting audio can mitigate it to a degree, but it's still almost impossible to determine your RPMs by ear alone, meaning you are constantly having to look at the tachometer which is bizarrely designed to be unreadable at a glance. Have the people who made key decisions for this game ever played a racing game before?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231282864",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "logging into ubisoft is and always be a pain",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231102235",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Ah, Ubisoft. You have done it again. Steam claims the game is running beautifully, yet my screen remains completely blank. Meanwhile, Ubisoft Connect forces a manual login every single attempt, entirely ignoring the \"keep me logged in\" option. A truly marvelous test of my patience. Every single time I face an issue like this, it's Ubisoft. What a shame.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230488626",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "can't play the game because it link to a different email account, and i can still use that email if i want it to but i just want to use a different email to login, i paid for this game why does it matter which email i use, Ubisoft go bankrupt already.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229012785",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "Just great. Can't even play the games I paid for, because of the ♥♥♥♥♥♥ Ubisoft launcher. It won't let me log in or create an account it just says (An error occurred while trying to send your request. Please try again later.)\nFirst y'all took Crew now I can't even play Crew 2. Just great, makes me wanna stop buying games and start pirating.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228627465",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-06-23",
+                  "review_text": "I hate this stupid Ubisoft account, when I want play it, I totally forgot the account!!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221627747",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-03-25",
+                  "review_text": "Typical UBI SLOP TRASH, CANT EVEN PLAY THE DAM GAME..... Considering one you have to login into there garbage account......... to even play the game.... But oh wait when you go to make an account as I cant even get into my old one. THERE OWN WEBSITE WONT EVEN ALLOW YOU TO...............",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-e801a5",
+              "claim": "Engine sounds are described as too quiet, while music and dialogue overpower them, making it difficult to judge RPMs by ear.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232861451",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "Ubisoft launcher is always a problem with Ubisoft games, but in this one it is particularly grim. The game does not successfully launch it so the game cannot be launched from Steam without first having to find an install of Ubisoft Connect and running it (as administrator??) to be able to even launch the game. \n\nControl customization is broken. There are separate control sections for cars, boats, and planes, however paradoxically they are linked such that when I try to change my shift up/shift down car controls, it affects the plane's yaw controls setting them to be something nonsensical. Why have a separate section for plane controls if they aren't actually independent from car controls? \n\nThe engine sounds are extremely quiet, with the music and obnoxious dialog overpowering it. Adjusting audio can mitigate it to a degree, but it's still almost impossible to determine your RPMs by ear alone, meaning you are constantly having to look at the tachometer which is bizarrely designed to be unreadable at a glance. Have the people who made key decisions for this game ever played a racing game before?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225443321",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-05-14",
+                  "review_text": "The Crew 1 to my memory was more fun and interesting than The Crew 2. The \"social media\" progression, \"looter shooter\" car parts and the NPC dialogue is cringe as hell.. 1st person driving feels like I'm driving through molasses. Barely got an hour into the game and was so bored the 8 dollars wasnt even worth it.  game might be for others but just was not for me unfortunately..",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-74e3b0",
+              "claim": "Visuals appear muddy and lack detail even on the highest graphics settings, accompanied by a 60 frames-per-second lock.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "231548780",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "The game looks crap on the highest settings available, literally it looks like a water painting and no amount of tinkering with the settings gets rid of the muddyness of the image, its like im playng with DLSS performance, and to top it off it only goes to 60 fps. Woudnt call this a AAA game by any stretch of the imagination.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229340074",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "60FPS LOCK, TERRIBLE FOV, MINIMAL SETTINGS.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227017089",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-06-02",
+                  "review_text": "Alright. I've played like a tiny bit because I just could not stand this ♥♥♥♥.\n\nThe models are crap. The damage is so badly made, the fps is locked to 60 while the motion blur and AA is trash.\n\nFor example. You can Crack your windshield on third person... but it doesn't even show in first.\nWhen you reach top speed the car just kind of... stays there..\n\nThe camera angles are bad and horrific \n\nThe driving feel feels worse than a roblox game.\n\n\nHonestly need for speed heat and FH4 came out at the same time and compared its ass.\n\nI know you can't get FH4 but I mean try FH6 or..  better yet get need for speed hot pursuit remastered. Trust me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220322266",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-10",
+                  "review_text": "Black screen on lenovo 16irx9. Nothing Helps.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-72f831",
+              "claim": "Reviewers experience launch failures and blank screens when attempting to start the game through Steam.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232861451",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "Ubisoft launcher is always a problem with Ubisoft games, but in this one it is particularly grim. The game does not successfully launch it so the game cannot be launched from Steam without first having to find an install of Ubisoft Connect and running it (as administrator??) to be able to even launch the game. \n\nControl customization is broken. There are separate control sections for cars, boats, and planes, however paradoxically they are linked such that when I try to change my shift up/shift down car controls, it affects the plane's yaw controls setting them to be something nonsensical. Why have a separate section for plane controls if they aren't actually independent from car controls? \n\nThe engine sounds are extremely quiet, with the music and obnoxious dialog overpowering it. Adjusting audio can mitigate it to a degree, but it's still almost impossible to determine your RPMs by ear alone, meaning you are constantly having to look at the tachometer which is bizarrely designed to be unreadable at a glance. Have the people who made key decisions for this game ever played a racing game before?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228940494",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "the game doesn't launch. it shows as running in steam and i can see the process in task manager. but it isn't shown in taskbar and doesn't launch. i have tried launching it via steam and via the exe in the file explorer using run as admin, both to no avail. \r\n\r\ni get the battle eye prompt that it is starting and it says launching game. after it closes automatically, nothing happens...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220532943",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-03-13",
+                  "review_text": "Doesn't work , why is this in the store while it doesnt work??",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-398135",
+              "claim": "Reviewers experience launch failures where the game process appears running or shows a black screen without opening properly.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "231102235",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Ah, Ubisoft. You have done it again. Steam claims the game is running beautifully, yet my screen remains completely blank. Meanwhile, Ubisoft Connect forces a manual login every single attempt, entirely ignoring the \"keep me logged in\" option. A truly marvelous test of my patience. Every single time I face an issue like this, it's Ubisoft. What a shame.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228940494",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "the game doesn't launch. it shows as running in steam and i can see the process in task manager. but it isn't shown in taskbar and doesn't launch. i have tried launching it via steam and via the exe in the file explorer using run as admin, both to no avail. \r\n\r\ni get the battle eye prompt that it is starting and it says launching game. after it closes automatically, nothing happens...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224040452",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-04-25",
+                  "review_text": "Game does not work on Linux and for some reason also fails to launch on GeForce Now, it just give black screen!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220532943",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-03-13",
+                  "review_text": "Doesn't work , why is this in the store while it doesnt work??",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220322266",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-10",
+                  "review_text": "Black screen on lenovo 16irx9. Nothing Helps.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-57abbe",
+              "claim": "Reviewers describe the graphics as muddy or blurry, with poorly performing anti-aliasing and motion blur settings.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "231548780",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "The game looks crap on the highest settings available, literally it looks like a water painting and no amount of tinkering with the settings gets rid of the muddyness of the image, its like im playng with DLSS performance, and to top it off it only goes to 60 fps. Woudnt call this a AAA game by any stretch of the imagination.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220322266",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-10",
+                  "review_text": "Black screen on lenovo 16irx9. Nothing Helps.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222029569",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-03-29",
+                  "review_text": "Unbelievable POS. \n\nCompared to first part it can provide you with: degraded graphics; plastic world with removed or downgraded locations; blurry graphics even at 1440p at 100% scaling with AA, Motion blur, Dof disabled; and the most important - worst ever arcade car handling system. Pure idiocy. But we can happily have boats and planes (who tf asked for this???). \n\nThis game is a collection of the most idiotic ideas for how to make a sequel to your racing game.\n\nIsn't even worth 1$, i bought it with. I'd suggest anyone go with The Crew Motorfest, The Crew Unlimited or Forza Horizon 4/5.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-3c8f25",
+              "claim": "Steering wheel peripherals are not detected or cannot be properly configured for gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "229543133",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "wont detect my g29 wheel.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228700756",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "doesnt let me rebind d pad on stiring wheel, so i cant play the game when it comes to flying since i dont have a analog stick on my wheel",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225686416",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-05-16",
+                  "review_text": "DO NOT BUY! You cannot use a steering wheel.... Toy controller only = This game sucks, as that is NOT driving. You turds need to let people know before they spend money. Getting tired on crappy driving games. No wonder this turd was \"ON SALE\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223672349",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-04-20",
+                  "review_text": "So the game itself is okay but, I hate arcade racing games.\r\n\r\nThe steering is awful and the worst part would probably be, I couldnt get my bloody steering wheel connected to the crew 2.\r\n\r\n3/10",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-dc539b",
+              "claim": "Reviewers report steering wheel hardware detection and binding problems, such as unrecognised wheels or unmappable D-pads.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "229543133",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "wont detect my g29 wheel.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228700756",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "doesnt let me rebind d pad on stiring wheel, so i cant play the game when it comes to flying since i dont have a analog stick on my wheel",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225686416",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-05-16",
+                  "review_text": "DO NOT BUY! You cannot use a steering wheel.... Toy controller only = This game sucks, as that is NOT driving. You turds need to let people know before they spend money. Getting tired on crappy driving games. No wonder this turd was \"ON SALE\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223672349",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-04-20",
+                  "review_text": "So the game itself is okay but, I hate arcade racing games.\r\n\r\nThe steering is awful and the worst part would probably be, I couldnt get my bloody steering wheel connected to the crew 2.\r\n\r\n3/10",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 23,
+        "cited_recommend": 0,
+        "divergence_p": 0.000119,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 313,
+      "pct_positive": 79.9,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players discover a vast open world with diverse vehicles, though driving physics and launcher requirements draw complaints.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-5d5416",
+              "claim": "Reviewers note that the game features a large open-world map spanning across the country, allowing for continuous long-distance driving without loading screens.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232215024",
+                  "hours_at_review": 3.5,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "It's an arcadey racing game where you can travel across the entire country of America. It feels like a road trip with lots of activities to do, like stunts, speed traps, regular racing, and finding parts scattered across the map.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232179651",
+                  "hours_at_review": 15.6,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "Great game, really fun, extremely well optimised, fun progression. The off road racing is probably the most fun, and it's incredible to be able to drive from LA to New York in one continuous trip with no loading screens. I highly recommend. My only complaint is that the controls can feel a bit twitchy, and there is some aggressive LOD popping, but it looks great and runs at a locked 60 fps on my potato graphics card",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-89f2a6",
+              "claim": "Reviewers report that the game includes multiple vehicle types such as cars, boats, and planes.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232573765",
+                  "hours_at_review": 2.2,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "⭐ 1/10 — One of the worst games I’ve ever played.\nThe Crew 2 is an absolute mess. The driving feels terrible, the physics are frustrating, and the whole game feels incredibly repetitive. The progression is boring, the AI is ridiculous, and half the time it feels like you’re fighting the game instead of actually having fun.\n\nThe map is huge, but what’s the point when there’s barely anything interesting to do? The missions become repetitive almost immediately, and the constant grinding makes the game feel more like a chore than entertainment.\n\nThe fact that you can switch between cars, boats, and planes sounds cool on paper, but in reality it feels completely unnecessary and poorly implemented.\n\nI genuinely regret wasting my time on this game. There are so many better racing games out there that I cannot understand why anyone would choose this one. Avoid it unless you enjoy endless grinding, boring gameplay, and frustration.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231387270",
+                  "hours_at_review": 18.0,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "This game is good, it definetly has some strong pros against forza horizon, yet I feel like this game wasnt fully for me, it is something like a more arcade Forza horizon, with different vehichle types (offroad, hypercar, drift, street, etc...) and environment (water, air, ground). I can definetly recommend this game to anyone who wants to spend some spare time driving cars. I dont paticulary hate the tuning system, but to my opinion, forza has a better one. With that said, I really loved the boosts you get frome some parts and its different rarity, which allows spending lots of time in this game, if you are a fan of collecting different car part sets and tuning your cars to its absolute maximum. If I have to grade this game, I would put it somewhere around 16/20 = 4/5, I loved spending time playing this game and I cant say I didnt have fun in some part of my gameplay, also the system of different collectibles is pretty fun, although it is kinda long. Which might be a good thing for someone, but not me. With that said, I can confidently say that I RECOMMEND this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229936636",
+                  "hours_at_review": 14.4,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "It's a very fun and also a good game to play if you like to ride with different type of vehicles to choose like watercrafts or aircrafts and also land vehicles like cars or motorcycles\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228917073",
+                  "hours_at_review": 4.0,
+                  "voted_up": true,
+                  "date": "2026-06-27",
+                  "review_text": "From street racing hypercars and F1 racers to aerobatic planes and powerboats, there is something for every racing fantasy.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-02bd36",
+              "claim": "Reviewers describe the driving physics as frustrating or poor, though some mention getting used to them.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232573765",
+                  "hours_at_review": 2.2,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "⭐ 1/10 — One of the worst games I’ve ever played.\nThe Crew 2 is an absolute mess. The driving feels terrible, the physics are frustrating, and the whole game feels incredibly repetitive. The progression is boring, the AI is ridiculous, and half the time it feels like you’re fighting the game instead of actually having fun.\n\nThe map is huge, but what’s the point when there’s barely anything interesting to do? The missions become repetitive almost immediately, and the constant grinding makes the game feel more like a chore than entertainment.\n\nThe fact that you can switch between cars, boats, and planes sounds cool on paper, but in reality it feels completely unnecessary and poorly implemented.\n\nI genuinely regret wasting my time on this game. There are so many better racing games out there that I cannot understand why anyone would choose this one. Avoid it unless you enjoy endless grinding, boring gameplay, and frustration.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230535482",
+                  "hours_at_review": 3.1,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "if you want this game, just know that the physics are very bad, its genuinely the worst ive ever seen. If you want a game where you can fly planes, drive cars, and pilot boats, just get gta V, the physics feel way better imo and you can also do so many other things.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228600605",
+                  "hours_at_review": 2.8,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "One of my favourite racing games. I perfected it and played it a bunch on PS4 many years back, and am happy to start over on PC and do it all again. Picked this up when they put it on sale for absurdly cheap a few years back knowing it'd be good to have, and now that they've added an offline mode, the game is future proofed, which I greatly appreciate.\n\nAs for the game itself, it doesn't have the best physics out there, but you get used to it pretty quick. The world map is nigh on unparalleled, and is excellent for just kicking back and listening to a podcast or an audiobook while you go on long road trips. Would also recommend skipping cutscenes and muting voices, since the story is all about influencer culture with extreme \"how do you do fellow kids\" energy. But yeah, I'd recommend picking this up while you still can, because we're probably not too far away from it getting delisted at this point.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-f4f5aa",
+              "claim": "Reviewers note that the driving and vehicle physics feel arcade-style and low quality.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232496472",
+                  "hours_at_review": 4.6,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "It's aight. Very arcady, but I really wish it had more online content.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231891487",
+                  "hours_at_review": 7.2,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "Simply incredible, the skybox it's just amazing, graphics, and the arcade driving, everything is well fit.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230535482",
+                  "hours_at_review": 3.1,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "if you want this game, just know that the physics are very bad, its genuinely the worst ive ever seen. If you want a game where you can fly planes, drive cars, and pilot boats, just get gta V, the physics feel way better imo and you can also do so many other things.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233104979",
+                  "hours_at_review": 4.8,
+                  "voted_up": false,
+                  "date": "2026-08-18",
+                  "review_text": "Driving related games (of any kind) is not Ubisoft's forte and it shows. Everything from driving, boat riding, to even simple flying, feels too arcade-like in a world that feels low effort, and low quality. All vehicles drive feel the same. The characters, the narration, the AI-driving & even the story feels bleak, like a checkbox Ubisoft had to complete, instead of having any real love. In addition, to get any vehicle you have to massively grind, and tasks as simple as changing the color of a car requires money which is equal to one of your entire race. \r\n\r\nThe Crew 2 is my first game (I have never played Crew 1 or Motorfest.) and thank god I didn't because if this is the state of their latest installment then I can't even fathom what would be their older releases.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-1467cb",
+              "claim": "Reviewers state that the game requires an extensive grind to acquire new vehicles and items.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232573765",
+                  "hours_at_review": 2.2,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "⭐ 1/10 — One of the worst games I’ve ever played.\nThe Crew 2 is an absolute mess. The driving feels terrible, the physics are frustrating, and the whole game feels incredibly repetitive. The progression is boring, the AI is ridiculous, and half the time it feels like you’re fighting the game instead of actually having fun.\n\nThe map is huge, but what’s the point when there’s barely anything interesting to do? The missions become repetitive almost immediately, and the constant grinding makes the game feel more like a chore than entertainment.\n\nThe fact that you can switch between cars, boats, and planes sounds cool on paper, but in reality it feels completely unnecessary and poorly implemented.\n\nI genuinely regret wasting my time on this game. There are so many better racing games out there that I cannot understand why anyone would choose this one. Avoid it unless you enjoy endless grinding, boring gameplay, and frustration.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233104979",
+                  "hours_at_review": 4.8,
+                  "voted_up": false,
+                  "date": "2026-08-18",
+                  "review_text": "Driving related games (of any kind) is not Ubisoft's forte and it shows. Everything from driving, boat riding, to even simple flying, feels too arcade-like in a world that feels low effort, and low quality. All vehicles drive feel the same. The characters, the narration, the AI-driving & even the story feels bleak, like a checkbox Ubisoft had to complete, instead of having any real love. In addition, to get any vehicle you have to massively grind, and tasks as simple as changing the color of a car requires money which is equal to one of your entire race. \r\n\r\nThe Crew 2 is my first game (I have never played Crew 1 or Motorfest.) and thank god I didn't because if this is the state of their latest installment then I can't even fathom what would be their older releases.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-9d1711",
+              "claim": "Reviewers mention that the game runs smoothly and is well-optimized on various hardware setups.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232179651",
+                  "hours_at_review": 15.6,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "Great game, really fun, extremely well optimised, fun progression. The off road racing is probably the most fun, and it's incredible to be able to drive from LA to New York in one continuous trip with no loading screens. I highly recommend. My only complaint is that the controls can feel a bit twitchy, and there is some aggressive LOD popping, but it looks great and runs at a locked 60 fps on my potato graphics card",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231989205",
+                  "hours_at_review": 3.8,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "The game is mooving veryy veryy smoothh\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231928185",
+                  "hours_at_review": 8.3,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "This game feels and plays like no other its very good and runs smooth!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-800ffd",
+              "claim": "Reviewers mention that the game requires using a publisher launcher and lacks Linux support.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231439961",
+                  "hours_at_review": 13.3,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "No linux support, add linux support, also it should be drm free, so that you own your games and not have to use their launcher",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228458874",
+                  "hours_at_review": 4.0,
+                  "voted_up": false,
+                  "date": "2026-06-21",
+                  "review_text": "closed it once now its stuck on \"Stopping\" on steam and I can't launch it or fix it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 15,
+        "cited_recommend": 10,
+        "divergence_p": 0.167,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 271,
+      "pct_positive": 85.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players praise the seamless map and instant vehicle switching while noting frame rate caps and control quirks.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-215f7a",
+              "claim": "The game features a massive open-world map representing the United States that allows players to drive across it seamlessly.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231871311",
+                  "hours_at_review": 53.8,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "The Crew 2 is one of those games I keep coming back to whenever I just want to relax and drive.\r\n\r\nThe map is huge, and being able to drive across a scaled-down version of the entire USA never gets old. If I get bored of cars, I can switch to a bike, a plane, or even a boat without loading into a different game, which keeps things fresh.\r\n\r\nThe handling isn't trying to be a simulator, and that's completely fine. It's an arcade racer, and it's fun because of it. The car variety is massive, and there's always something new to unlock or upgrade.\r\n\r\nSure, the graphics are starting to show their age, and some events can feel repetitive after a while. But the freedom the game gives you makes up for it.\r\n\r\nSometimes I log in with the intention of grinding...\r\n\r\n...and end up spending an hour just cruising across the map with music playing in the background.\r\n\r\nIf you enjoy open-world racing games and just want to drive without overthinking everything, The Crew 2 is an easy recommendation.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231784409",
+                  "hours_at_review": 22.3,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "For a game released back in 2018, The Crew 2 still holds up surprisingly well. One of its biggest strengths is the map, it's huge, giving you plenty of roads to explore and making long drives genuinely enjoyable. If you can pick it up on sale, it's an easy recommendation and well worth the price.\r\n\r\nMy only major concern isn't with The Crew 2 itself, but with Ubisoft's handling of the original The Crew (2014). I checked a while ago to see if I could play it again, only to find out the servers had been shut down. Since the game requires an online connection, you can't even play it offline anymore, you simply can't access the game you paid for. Thanks, Ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228465529",
+                  "hours_at_review": 90.3,
+                  "voted_up": true,
+                  "date": "2026-06-21",
+                  "review_text": "I get that the toneshift from the first game's dark and gritty tone isn't everyone's cup of tea, but personally, I do prefer the more fun-loving race day / festival theme this game has\r\n\r\nWhile the US map has less details than The Crew 1 (including the lack of viewable landmarks), it's definitely larger here and super fun to drive around in\r\n\r\nThe selection of race disciplines is also robust, you pretty much have a lot to do (except boats, they kinda suck here comparing to in Motorfest)\r\n\r\nI'm so glad Ubisoft finally added offline mode into this game after what happened to The Crew 1, 2 years prior to this review (should've done it with that game before the delisting, tbh)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227479264",
+                  "hours_at_review": 45.3,
+                  "voted_up": true,
+                  "date": "2026-06-08",
+                  "review_text": "Crazy Big map of the US, A lot of vehicles, a variety of game modes, online is still alive even in 2026 and there are weekly events with prizes. What I like most is this game isn't only about racing or going fast. You'll spend many hours into this game, especially that you have to do the races in 3 difficulties each time to get gold.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227383206",
+                  "hours_at_review": 36.2,
+                  "voted_up": true,
+                  "date": "2026-06-07",
+                  "review_text": "Overall Rating: ⭐⭐⭐⭐☆ (8/10)\r\n\r\nPros\r\nHuge open-world map based on the United States.\r\nSeamless switching between cars, boats, and airplanes.\r\nLarge variety of vehicles and racing events.\r\nFun arcade-style driving experience.\r\nPlenty of content and updates added over the years.\r\nCons\r\nVehicle handling is not as refined as some competitors.\r\nAI opponents can feel unfair at times.\r\nGraphics and physics show their age compared to newer racing games.\r\nLess realistic than simulation-focused racing titles.\r\nVerdict\r\n\r\nThe Crew 2 is an enjoyable open-world racing game that offers freedom, exploration, and a wide selection of vehicles. While it may not match the driving quality of games like Forza Horizon 6, it remains a great choice for players who enjoy casual racing and exploring a massive map.\r\n\r\nFinal Score: 8/10 – Recommended for fans of arcade racing and open-world exploration.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-7887e1",
+              "claim": "Players can switch instantly between different vehicle types such as cars, bikes, boats, and planes without loading into a separate game.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231871311",
+                  "hours_at_review": 53.8,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "The Crew 2 is one of those games I keep coming back to whenever I just want to relax and drive.\r\n\r\nThe map is huge, and being able to drive across a scaled-down version of the entire USA never gets old. If I get bored of cars, I can switch to a bike, a plane, or even a boat without loading into a different game, which keeps things fresh.\r\n\r\nThe handling isn't trying to be a simulator, and that's completely fine. It's an arcade racer, and it's fun because of it. The car variety is massive, and there's always something new to unlock or upgrade.\r\n\r\nSure, the graphics are starting to show their age, and some events can feel repetitive after a while. But the freedom the game gives you makes up for it.\r\n\r\nSometimes I log in with the intention of grinding...\r\n\r\n...and end up spending an hour just cruising across the map with music playing in the background.\r\n\r\nIf you enjoy open-world racing games and just want to drive without overthinking everything, The Crew 2 is an easy recommendation.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229554673",
+                  "hours_at_review": 33.2,
+                  "voted_up": true,
+                  "date": "2026-07-04",
+                  "review_text": "Let me start with something here. This game is realistic yes lacks police chases, but there are races where you have to take down 8 racers with a police car. You can use cars, motorcyles, planes, and boats. This game is realistic. But the Crew one was a nice game, sadly it shut down. I do recommend this game to the public.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227620798",
+                  "hours_at_review": 96.2,
+                  "voted_up": true,
+                  "date": "2026-06-10",
+                  "review_text": "[h2]Nota Geral | Overall Rating[/h2]\r\n⭐⭐⭐⭐\r\n\r\n[b]The Crew 2 entrega exatamente o que promete: velocidade, variedade e um mapa absurdamente grande para explorar. Não vai te impressionar com narrativa ou direção de arte revolucionária, mas vai te prender por horas com a satisfação de trocar de um carro de corrida para um avião no meio de uma reta. Antes de falar do jogo em si, porém, é impossível ignorar o contexto: a Ubisoft encerrou os servidores de The Crew 1 em abril de 2024 sem modo offline, tornando o jogo completamente injogável e apagando da biblioteca de quem comprou. O escândalo gerou ação coletiva e impulsionou o movimento Stop Killing Games. A Ubisoft aprendeu a lição, e The Crew 2 recebeu modo offline completo em outubro de 2025. É o mínimo que uma empresa pode fazer por quem comprou o produto, mas num mercado onde isso ainda não é padrão, merece ser reconhecido.[/b]\r\n\r\n[i]The Crew 2 delivers exactly what it promises: speed, variety, and an absurdly large map to explore. It won't impress you with narrative depth or revolutionary art direction, but it will keep you hooked for hours with the satisfaction of switching from a race car to a plane mid-straightaway. Before talking about the game itself, though, it's impossible to ignore the context: Ubisoft shut down The Crew 1's servers in April 2024 without an offline mode, rendering the game completely unplayable and wiping it from the libraries of everyone who bought it. The scandal triggered a class-action lawsuit and fueled the Stop Killing Games movement. Ubisoft learned its lesson, and The Crew 2 received a full offline mode in October 2025. It's the bare minimum a company can do for people who paid for the product, but in a market where that still isn't the standard, it deserves to be acknowledged.[/i]\r\n\r\n[h2]Jogabilidade | Gameplay[/h2]\r\n⭐⭐⭐⭐⭐\r\n\r\n[b]A jogabilidade é onde o jogo realmente brilha. A possibilidade de alternar entre carros de rua, motos, lanchas e aviões em tempo real, sem tela de carregam…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "227383206",
+                  "hours_at_review": 36.2,
+                  "voted_up": true,
+                  "date": "2026-06-07",
+                  "review_text": "Overall Rating: ⭐⭐⭐⭐☆ (8/10)\r\n\r\nPros\r\nHuge open-world map based on the United States.\r\nSeamless switching between cars, boats, and airplanes.\r\nLarge variety of vehicles and racing events.\r\nFun arcade-style driving experience.\r\nPlenty of content and updates added over the years.\r\nCons\r\nVehicle handling is not as refined as some competitors.\r\nAI opponents can feel unfair at times.\r\nGraphics and physics show their age compared to newer racing games.\r\nLess realistic than simulation-focused racing titles.\r\nVerdict\r\n\r\nThe Crew 2 is an enjoyable open-world racing game that offers freedom, exploration, and a wide selection of vehicles. While it may not match the driving quality of games like Forza Horizon 6, it remains a great choice for players who enjoy casual racing and exploring a massive map.\r\n\r\nFinal Score: 8/10 – Recommended for fans of arcade racing and open-world exploration.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ffd1dd",
+              "claim": "The game includes an offline mode with separate save data from the online mode.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "228770072",
+                  "hours_at_review": 79.8,
+                  "voted_up": true,
+                  "date": "2026-06-25",
+                  "review_text": "Old game, but still very good, especially since they added an offline mode. That being said, the offline mode and the online mode are TWO separate saves. Nonetheless though, this game does something a lot of racing games wont do, make an entire country the entire map. Its very easy for people who are new to racing games, but unlike Forza horizon games, not a lot of high skill headway.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228465529",
+                  "hours_at_review": 90.3,
+                  "voted_up": true,
+                  "date": "2026-06-21",
+                  "review_text": "I get that the toneshift from the first game's dark and gritty tone isn't everyone's cup of tea, but personally, I do prefer the more fun-loving race day / festival theme this game has\r\n\r\nWhile the US map has less details than The Crew 1 (including the lack of viewable landmarks), it's definitely larger here and super fun to drive around in\r\n\r\nThe selection of race disciplines is also robust, you pretty much have a lot to do (except boats, they kinda suck here comparing to in Motorfest)\r\n\r\nI'm so glad Ubisoft finally added offline mode into this game after what happened to The Crew 1, 2 years prior to this review (should've done it with that game before the delisting, tbh)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227620798",
+                  "hours_at_review": 96.2,
+                  "voted_up": true,
+                  "date": "2026-06-10",
+                  "review_text": "[h2]Nota Geral | Overall Rating[/h2]\r\n⭐⭐⭐⭐\r\n\r\n[b]The Crew 2 entrega exatamente o que promete: velocidade, variedade e um mapa absurdamente grande para explorar. Não vai te impressionar com narrativa ou direção de arte revolucionária, mas vai te prender por horas com a satisfação de trocar de um carro de corrida para um avião no meio de uma reta. Antes de falar do jogo em si, porém, é impossível ignorar o contexto: a Ubisoft encerrou os servidores de The Crew 1 em abril de 2024 sem modo offline, tornando o jogo completamente injogável e apagando da biblioteca de quem comprou. O escândalo gerou ação coletiva e impulsionou o movimento Stop Killing Games. A Ubisoft aprendeu a lição, e The Crew 2 recebeu modo offline completo em outubro de 2025. É o mínimo que uma empresa pode fazer por quem comprou o produto, mas num mercado onde isso ainda não é padrão, merece ser reconhecido.[/b]\r\n\r\n[i]The Crew 2 delivers exactly what it promises: speed, variety, and an absurdly large map to explore. It won't impress you with narrative depth or revolutionary art direction, but it will keep you hooked for hours with the satisfaction of switching from a race car to a plane mid-straightaway. Before talking about the game itself, though, it's impossible to ignore the context: Ubisoft shut down The Crew 1's servers in April 2024 without an offline mode, rendering the game completely unplayable and wiping it from the libraries of everyone who bought it. The scandal triggered a class-action lawsuit and fueled the Stop Killing Games movement. Ubisoft learned its lesson, and The Crew 2 received a full offline mode in October 2025. It's the bare minimum a company can do for people who paid for the product, but in a market where that still isn't the standard, it deserves to be acknowledged.[/i]\r\n\r\n[h2]Jogabilidade | Gameplay[/h2]\r\n⭐⭐⭐⭐⭐\r\n\r\n[b]A jogabilidade é onde o jogo realmente brilha. A possibilidade de alternar entre carros de rua, motos, lanchas e aviões em tempo real, sem tela de carregam…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-191475",
+              "claim": "The frame rate is hard-capped at 60 fps, which cannot be exceeded.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "228786451",
+                  "hours_at_review": 34.6,
+                  "voted_up": true,
+                  "date": "2026-06-25",
+                  "review_text": "can only be capped to 60fps",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227265895",
+                  "hours_at_review": 27.8,
+                  "voted_up": true,
+                  "date": "2026-06-05",
+                  "review_text": "runs very nicely, only problems is that its by ubisoft and that it has a framlimit of 60 fps that u cant go higher, this sucks if you have a 200hz monitor like me",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-dd76db",
+              "claim": "Operating airplanes using keyboard controls is described as difficult.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230599910",
+                  "hours_at_review": 77.1,
+                  "voted_up": true,
+                  "date": "2026-07-16",
+                  "review_text": "I personally like it . A great game , looks good on the eye , a ton load of stuff to do which never bores me . I don't have the money but operating planes on a keyboard is straight up hell . Acrobatics is a cakewalk but those Airplane Time trials are a nightmare so a controller / joystick is advised . The physics feel mediocre but once i got used to it , it barely mattered . Yup , that's it from my side .",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227620798",
+                  "hours_at_review": 96.2,
+                  "voted_up": true,
+                  "date": "2026-06-10",
+                  "review_text": "[h2]Nota Geral | Overall Rating[/h2]\r\n⭐⭐⭐⭐\r\n\r\n[b]The Crew 2 entrega exatamente o que promete: velocidade, variedade e um mapa absurdamente grande para explorar. Não vai te impressionar com narrativa ou direção de arte revolucionária, mas vai te prender por horas com a satisfação de trocar de um carro de corrida para um avião no meio de uma reta. Antes de falar do jogo em si, porém, é impossível ignorar o contexto: a Ubisoft encerrou os servidores de The Crew 1 em abril de 2024 sem modo offline, tornando o jogo completamente injogável e apagando da biblioteca de quem comprou. O escândalo gerou ação coletiva e impulsionou o movimento Stop Killing Games. A Ubisoft aprendeu a lição, e The Crew 2 recebeu modo offline completo em outubro de 2025. É o mínimo que uma empresa pode fazer por quem comprou o produto, mas num mercado onde isso ainda não é padrão, merece ser reconhecido.[/b]\r\n\r\n[i]The Crew 2 delivers exactly what it promises: speed, variety, and an absurdly large map to explore. It won't impress you with narrative depth or revolutionary art direction, but it will keep you hooked for hours with the satisfaction of switching from a race car to a plane mid-straightaway. Before talking about the game itself, though, it's impossible to ignore the context: Ubisoft shut down The Crew 1's servers in April 2024 without an offline mode, rendering the game completely unplayable and wiping it from the libraries of everyone who bought it. The scandal triggered a class-action lawsuit and fueled the Stop Killing Games movement. Ubisoft learned its lesson, and The Crew 2 received a full offline mode in October 2025. It's the bare minimum a company can do for people who paid for the product, but in a market where that still isn't the standard, it deserves to be acknowledged.[/i]\r\n\r\n[h2]Jogabilidade | Gameplay[/h2]\r\n⭐⭐⭐⭐⭐\r\n\r\n[b]A jogabilidade é onde o jogo realmente brilha. A possibilidade de alternar entre carros de rua, motos, lanchas e aviões em tempo real, sem tela de carregam…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 11,
+        "cited_recommend": 11,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 100,
+      "pct_positive": 92.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players continue enjoying the cross-country map and vehicle variety despite encountering cheaters in events.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-46b533",
+              "claim": "The game features a massive open-world map representing the United States, allowing players to drive cross-country and visit recognizable landmarks.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229029131",
+                  "hours_at_review": 225.7,
+                  "voted_up": true,
+                  "date": "2026-06-28",
+                  "review_text": "This is still one of my favorite open world racing games because of the map. It's fun driving across America, seeing all the familiar landmarks like Mount Rushmore, the Statue of Liberty, Golden Gate Bridge, etc. There are a ton of cars to drive, and they feel different.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221019881",
+                  "hours_at_review": 199.2,
+                  "voted_up": true,
+                  "date": "2026-03-19",
+                  "review_text": "[h1]🚗 [i]The Crew™ 2[/i] - America's Open Road Playground[/h1]\n\n[b]What I Played:[/b] Almost 200 hours of tearing across a scaled-down version of the entire United States in everything from hypercars to monster trucks to actual airplanes. I've done street races through Miami, boat races along the California coast, and drifted through the Grand Canyon region more times than I can count.\n\n[b]The Good:[/b]\n[list]\n[*]The open world map is genuinely insane. You can drive from New York to LA and hit recognizable landmarks along the way. It's not perfectly accurate, but the sense of scale still hits different when you're just vibing on a cross-country cruise with no destination in mind.\n[*]Vehicle variety keeps things fresh — I went from drag racing to flying a stunt plane to ripping through off-road trails in the same session. The instant vehicle-swap feature where you just hit a button and you're suddenly in a boat mid-jump? Never gets old.\n[*]The hybrid offline/online mode they added is clutch. Being able to just play without worrying about server issues was a huge quality of life upgrade that honestly should've been there from day one.\n[*]Photo mode is lowkey addicting. I've spent embarrassing amounts of time getting the perfect shot of my Lamborghini at sunset near the Golden Gate Bridge.\n[/list]\n\n[b]The Bad:[/b]\n[list]\n[*]The AI rubber-banding can be absolutely brutal on harder difficulties. Nothing kills the vibe faster than running a flawless race and watching an AI opponent teleport behind you in the last stretch.\n[*]The story and characters are painfully forgettable. Some influencer-chasing narrative that I stopped paying attention to after the first hour. You're here for the driving, not the plot.\n[*]Microtransactions are there and they're annoying, even if you can technically earn most stuff by grinding. The premium currency push feels very Ubisoft.\n[/list]\n\n[b]Verdict:[/b] [b]Recommended[/b] — If you want a chill, massive open-world racer where you can just pi…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-316cc2",
+              "claim": "Reviewers report that the game includes multiple vehicle types spanning cars, motorcycles, boats, and planes with instant switching capabilities.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "226546242",
+                  "hours_at_review": 568.7,
+                  "voted_up": true,
+                  "date": "2026-05-27",
+                  "review_text": "The Crew 2 is the kind of game you do not play for realism — you play it because driving across America, switching from car to plane to boat, and chasing pure arcade freedom just feels good. It is messy, sometimes repetitive, and not always deep, but the vibe is unmatched. Few games let you just cruise, grind, race, collect, and relax like this one. After hundreds of hours, it became less of a racing game and more of a comfort game.\n\nVerdict: Recommended for arcade racing fans.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221019881",
+                  "hours_at_review": 199.2,
+                  "voted_up": true,
+                  "date": "2026-03-19",
+                  "review_text": "[h1]🚗 [i]The Crew™ 2[/i] - America's Open Road Playground[/h1]\n\n[b]What I Played:[/b] Almost 200 hours of tearing across a scaled-down version of the entire United States in everything from hypercars to monster trucks to actual airplanes. I've done street races through Miami, boat races along the California coast, and drifted through the Grand Canyon region more times than I can count.\n\n[b]The Good:[/b]\n[list]\n[*]The open world map is genuinely insane. You can drive from New York to LA and hit recognizable landmarks along the way. It's not perfectly accurate, but the sense of scale still hits different when you're just vibing on a cross-country cruise with no destination in mind.\n[*]Vehicle variety keeps things fresh — I went from drag racing to flying a stunt plane to ripping through off-road trails in the same session. The instant vehicle-swap feature where you just hit a button and you're suddenly in a boat mid-jump? Never gets old.\n[*]The hybrid offline/online mode they added is clutch. Being able to just play without worrying about server issues was a huge quality of life upgrade that honestly should've been there from day one.\n[*]Photo mode is lowkey addicting. I've spent embarrassing amounts of time getting the perfect shot of my Lamborghini at sunset near the Golden Gate Bridge.\n[/list]\n\n[b]The Bad:[/b]\n[list]\n[*]The AI rubber-banding can be absolutely brutal on harder difficulties. Nothing kills the vibe faster than running a flawless race and watching an AI opponent teleport behind you in the last stretch.\n[*]The story and characters are painfully forgettable. Some influencer-chasing narrative that I stopped paying attention to after the first hour. You're here for the driving, not the plot.\n[*]Microtransactions are there and they're annoying, even if you can technically earn most stuff by grinding. The premium currency push feels very Ubisoft.\n[/list]\n\n[b]Verdict:[/b] [b]Recommended[/b] — If you want a chill, massive open-world racer where you can just pi…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-6533f2",
+              "claim": "Reviewers report encountering speed hackers, teleporters, god mode users, and bots competing in races and events.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "225377376",
+                  "hours_at_review": 425.6,
+                  "voted_up": false,
+                  "date": "2026-05-13",
+                  "review_text": "# Review - The Crew 2 😤\r\n\r\n---\r\n\r\n**Title:** Great Concept, Ruined by Cheaters — Not Recommended in Its Current State\r\n\r\n---\r\n\r\nThe Crew 2 had everything going for it — an open-world recreation of the entire United States, an insane variety of vehicles spanning cars, motorcycles, boats, and planes, and a progression system that kept you hooked for hours. On paper, it's a dream game.\r\n\r\nIn reality? It's a nightmare.\r\n\r\n**Cheaters Everywhere — Every Single Type**\r\n\r\nThe moment you jump into any race or time trial, you're immediately greeted by waves of cheaters in every form imaginable:\r\n\r\n- 🚀 **Speed Hackers** — They cross the finish line before you even leave the starting point\r\n- 🔁 **Teleporters** — Disappear and reappear instantly at the front of the pack\r\n- 💥 **God Mode Users** — Completely immune to crashes, collisions, and obstacles\r\n- 📈 **Stat Manipulators** — Leaderboard numbers that defy physics and basic logic\r\n- 🤖 **Bots & Fake Accounts** — Flooding sessions and making any real competition pointless\r\n\r\n**Where is Ubisoft?**\r\n\r\nThis is perhaps the most frustrating part. You submit reports, and they vanish into thin air. There is no meaningful anti-cheat system in place, no visible action being taken, and no communication from the developers reassuring the community that this is being addressed. Honest players are left to suffer while cheaters run completely unchecked.\r\n\r\n**Bottom Line**\r\n\r\nIf you're looking for a solo exploration experience, you might still squeeze some enjoyment out of it. But if you're here for competitive racing or any form of multiplayer, save yourself the frustration.\r\n\r\nThis game deserves better. The players who actually love it deserve better. Until Ubisoft takes cheating seriously, this is impossible to recommend.\r\n\r\n**👎 Not Recommended** — Not because of the game itself, but because the cheating problem has completely destroyed any reason to play it .",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221376480",
+                  "hours_at_review": 402.4,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "aanyone on here is bots ore cheaters\ncan't reach plat in events bacuces bots and cheaters.\npeople fly hack in game to get best scores.\nhow can i get plat rewards in weekly summit legitly, it really seems like cheats are the way to go.\ni refuse to believe there are 4k legit people in summit rewards at this point after release.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 5,
+        "cited_recommend": 3,
+        "divergence_p": 0.0544,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 801,
+    "steam_total_reviews": 31374,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

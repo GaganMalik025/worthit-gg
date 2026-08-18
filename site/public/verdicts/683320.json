@@ -1,0 +1,696 @@
+{
+  "appid": "683320",
+  "game_name": "GRIS",
+  "generated_at": "2026-08-18T11:50:56Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/683320/header.jpg?t=1759429603",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/683320/capsule_231x87.jpg?t=1759429603",
+    "grid": "https://cdn2.steamgriddb.com/grid/3bb8b73487500c1c7285480103be68e6.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 5,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "A breathtaking visual journey hampered by early technical hurdles.",
+    "for_you_if": [
+      "you want a dialogue-free story driven by art",
+      "you enjoy gentle platforming puzzles"
+    ],
+    "not_for_you_if": [
+      "you encounter controller recognition failures",
+      "you are unwilling to troubleshoot frame rate bugs"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 93,
+      "pct_positive": 64.5,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 1085,
+      "pct_positive": 96.1,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 23,
+      "pct_positive": 95.7,
+      "muted": true
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 2,
+      "pct_positive": 100.0,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Reviewer sentiment shifts upward after the opening hours.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 64.5,
+            "pool_n": 93
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 96.1,
+            "pool_n": 1085
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 64.5,
+        "low_pool_n": 93,
+        "high_cohort": "early",
+        "high_cohort_label": "2-20 hours",
+        "high_pct_positive": 96.1,
+        "high_pool_n": 1085,
+        "gap_pts": 31.6
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 93,
+      "pct_positive": 64.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers encounter bugs, controller issues, and softlocks right at the start, though some still recommend the experience despite the frustration.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-1851a1",
+              "claim": "Reviewers report encountering bugs and softlocks during cutscenes or specific levels that prevent progress, such as characters walking in place or getting stuck.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "226843199",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "I softlocked during the small cutscene where you pick up the first orb.\n\nI softlocked twice in a row during the landing cutscene after the first sliding sequence.\nBruh. Relaxing game? I AM NOT RELAXED RN.\n\nWent a little further after the THIRD reset and got green. And guess what? Another sliding scene where the landing had a softlock at the end.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227859311",
+                  "hours_at_review": 1.8,
+                  "voted_up": true,
+                  "date": "2026-06-13",
+                  "review_text": "я хочу play, game is lovely but my game gets a glitch at a certain point in the game. And online fixes dont seem to work",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220695907",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-03-14",
+                  "review_text": "3/10 \nMany bugs\nFun game with good art and music \nStuck against the bird boss and none of the workarounds allow me to get past it when switching the refresh rate to 60hz and im hardlocked out from putting in inputs",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218498241",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-02-16",
+                  "review_text": "Game started softlocking early on where in a cutscene the character would walk in place forever. Apparently only way to fix it is to manually tweak an nvidia driver which i am not comfortable doing. I learned this from a reddit post from around the games tome of release. Fact they havent fixed it in that long with all the success they have had is insane since theres just a random chance you have an unplayable game",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-359859",
+              "claim": "Movement controls are hindered by bugs at the start, requiring players to jump before they are able to walk.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231796271",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-08-01",
+                  "review_text": "非常美丽的游戏但是制作组能不能修一修bug？走路之前必须先跳一下才能走动，过场动画还会卡。那么多人反馈为什么不解决呢?\nIt's a very beautiful game, but could the development team please fix the bugs? Before walking, one must first jump before being able to move. The cutscene animation also gets stuck. So many people have been complaining about this. Why hasn't it been resolved?(machine translation)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224400954",
+                  "hours_at_review": 1.1,
+                  "voted_up": false,
+                  "date": "2026-04-30",
+                  "review_text": "The game is indeed bugged and won’t let me progress.\n\n1.I can’t feed the NPC with apples that are supposed to be dropped from trees, because he glitches and gets stuck inside a fallen apple, moving extremely fast and unnaturally. Unfortunately, this is game-breaking and prevents me from continuing. There’s also a bug with his sudden movements and an issue with the sound during his movement.\n\n2.There are also sound bugs with the mechanisms at the beginning of the game, where you have to jump down from a height and activate a mechanism by pushing it down so the blades start spinning.\n\nVery disappointing.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-6e4516",
+              "claim": "High refresh rate settings cause infinite loops or hardlocks during cutscenes and boss encounters.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "225531862",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-05-15",
+                  "review_text": "Has a Game breaking bug that puts you into an infinite loop cutscene if you don't have your Hz to below 120 though your desktop setting. this game is almost ten years old and this should be fixed.\nAside from that its artsy with nice sound and music, but had very little gameplay of substance.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220695907",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-03-14",
+                  "review_text": "3/10 \nMany bugs\nFun game with good art and music \nStuck against the bird boss and none of the workarounds allow me to get past it when switching the refresh rate to 60hz and im hardlocked out from putting in inputs",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-e22cad",
+              "claim": "Controllers fail to work in-game despite being recognized by Steam, rendering the game unplayable for those trying to use them.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "224826061",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-05",
+                  "review_text": "Doesn't work with my controller. Steam recognizes the controller and it doesn't work in-game. I have tried with and without Steam Input, I have tried several Proton versions etc. I just want to play this game...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220854220",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-03-16",
+                  "review_text": "Unplayable.\n\n\"The developers recommend playing this game with a controller.\"\n\nThere's a Community Discussion dating back to launch day reporting issues with controllers not working.\nIt's 7+ years later, and they never bothered to fix it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-1136f3",
+              "claim": "Reviewers report that the background and foreground visuals can be indistinguishable, making platforming frustrating.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231939145",
+                  "hours_at_review": 1.8,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "This is in a weird spot for me. Were there a no thumbs up option, I would give this that. It is incredibly beautiful, with wonderful art direction and music and sound design. However, the game itself doesn't ever really come together for me personally.\n\nIn a weird way, this game most reminds me of Dark Souls. You travel silently through a sullen world marked by loss, progressing through ruins to discover their secrets. Though by the end of that analogy it's a bit tortured, I do think it aligns, and I don't think this game comes out the better in comparison.\n\nThere is a lack of progress to this - I genuinely have no idea how far I've gotten, how far there is to go, and so it feels eternal. I'm honestly shocked at how little I've played this, it feels like I've played for hours and hours. In Dark Souls, you can see the castles you are ascending - see further locations you go to both above and below, can see where you've come from, etc. I think this game would've benefited from that sort of visual progress.\n\nOther than that it's a 2d side scroller, where you discover additional gameplay mechanics as the game goes on such as different jumps, heavy mode, etc. The gameplay feels very dated and juvenile compared to the rest of the work, which is so high effort I can't in good conscience give this a thumbs down.\n\nI think if you are a little less curmudgeonly than I, you will like this. I think I would prefer this as a short animated series, rather than a game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228910329",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-06-26",
+                  "review_text": "First the positives: aesthetic, sound, and vibe i guess.\n\nBut for me thats it. In Game you spend most of the time just walking. The puzzles are either really obvious or just unintuitive. Background and Foreground are often indistinguishable which makes the Jump n Run - or Jump n Walk in this case - quite frustrating.\n\nI guess if you like artsy simple games with vague stories, it could be for you. For me it was just boring",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 11,
+        "cited_recommend": 2,
+        "divergence_p": 0.00229,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 1085,
+      "pct_positive": 96.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players experience a wordless story of puzzle platforming, while noting that technical issues require specific framerate adjustments.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-04a61b",
+              "claim": "Reviewers report that uncapped framerates cause physical and technical bugs, such as controls locking up during a specific encounter with a screaming bird or cutscenes getting stuck, which require capping the game at 60 FPS or changing monitor refresh rates to resolve.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232757154",
+                  "hours_at_review": 3.6,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "changing monitors frame rate to 60hz every cutscene so it doesnt get bugged is quite annoying\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232061800",
+                  "hours_at_review": 2.9,
+                  "voted_up": true,
+                  "date": "2026-08-04",
+                  "review_text": "Beautiful. Bug at the crow requiring me to switch refresh rate to 60 was a little annoying, but I have no other problems with the game at all. It is exactly what it wants to be\nEDIT: Honestly, having played a bit more, I'm finding myself just not having fun. I'm still leaving it a positive review because it might just not be my type of game and it's absolutely beautiful, but I'm just not really having an actively good time playing this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231480463",
+                  "hours_at_review": 4.6,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "GRIS is one of those rare games that reminds you that a masterpiece doesn't need a single line of dialogue to tell an unforgettable story. Every emotion is conveyed through breathtaking visuals, music, and atmosphere, making the journey deeply personal and incredibly moving. I did run into a couple of minor technical hiccups, like occasional frame stutters and cutscenes getting stuck, but that turned out to be because I had my FPS uncapped. Limiting it to 60 FPS fixed everything, and from that point on the experience was flawless. This is the kind of game that stays with you long after the credits roll. It is a beautiful reminder that games are an art form capable of telling powerful stories without ever saying a word.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230639485",
+                  "hours_at_review": 2.1,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "I was honestly having a decent time with Gris until I ran into a completely game-breaking bug that killed the experience.\n\nDuring the section where the giant bird screams at you, my controls completely locked up. You are supposed to use the \"stone form\" to block the wind, but the game refused to register a single input. I restarted multiple times, but I was softlocked every single time, unable to do anything while this bird just continuously screamed at my screen.\n\nAfter doing some research, I found out this is a widely known issue. Apparently, the game's physics break at higher framerates, and the only way past it is to hard-cap the game at 60 FPS. The kicker is, Gris has incredibly bare-bones graphic settings and zero built-in options for an FPS lock. You have to go out of your way to force a limit through your GPU control panel just to progress.\n\nIt is frankly embarrassing that a major, progression-blocking bug like this still exists years after the game's release. No matter how pretty a game is, it doesn't excuse being unplayable. Cannot recommend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230431198",
+                  "hours_at_review": 5.2,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "I don't remember when I bought this game, but i've slept on it for so long. Feels like watching a very artistic short film, minimalistic, vibrant and beautiful. I originally thought that the was mostly a walking sim, however I was pleasantly surprised. The platforming mechanics in this game is very creative and level design complements it nicely. The levels become more and more complex as you progress and feels satisfying to complete. The soundtrack is soothing, calming and peaceful. Makes it all the more easier to admire the world of Gris. There is no dialogue and the story is abstract, leaving the story up for interpretation. Short game, but it feels like the right length.\n\nThe game is very good, however I did encounter a game breaking bug. If you have above 60fps you will be stuck on this section where a black raven comes down and screams at you. In 60fps you are supposed to be blown backwards. To fix this, close your game, change your refresh rate to 60hz and relaunch. Once you get blown back from the yell, you can set your refresh rate back.\n\n[b][h2]8.7/10[/h2][/b]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230790937",
+                  "hours_at_review": 3.1,
+                  "voted_up": true,
+                  "date": "2026-07-18",
+                  "review_text": "Genuinely one of the most beautiful experiences I've ever had in a video game. The art style, the music, and the way the world slowly brings colour back in... it's just stunning. It feels less like playing a game and more like walking through a living piece of art. An absolute master piece. There were some really obnoxious bugs to do with refresh rate cap but besides that 10/10.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ab9e43",
+              "claim": "Reviewers report that the game features technical issues requiring players to cap the frame rate at 60 FPS or modify monitor settings to resolve bugs and progression-blocking freezes during cutscenes or encounters.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232757154",
+                  "hours_at_review": 3.6,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "changing monitors frame rate to 60hz every cutscene so it doesnt get bugged is quite annoying\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232061800",
+                  "hours_at_review": 2.9,
+                  "voted_up": true,
+                  "date": "2026-08-04",
+                  "review_text": "Beautiful. Bug at the crow requiring me to switch refresh rate to 60 was a little annoying, but I have no other problems with the game at all. It is exactly what it wants to be\nEDIT: Honestly, having played a bit more, I'm finding myself just not having fun. I'm still leaving it a positive review because it might just not be my type of game and it's absolutely beautiful, but I'm just not really having an actively good time playing this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231480463",
+                  "hours_at_review": 4.6,
+                  "voted_up": true,
+                  "date": "2026-07-28",
+                  "review_text": "GRIS is one of those rare games that reminds you that a masterpiece doesn't need a single line of dialogue to tell an unforgettable story. Every emotion is conveyed through breathtaking visuals, music, and atmosphere, making the journey deeply personal and incredibly moving. I did run into a couple of minor technical hiccups, like occasional frame stutters and cutscenes getting stuck, but that turned out to be because I had my FPS uncapped. Limiting it to 60 FPS fixed everything, and from that point on the experience was flawless. This is the kind of game that stays with you long after the credits roll. It is a beautiful reminder that games are an art form capable of telling powerful stories without ever saying a word.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231436066",
+                  "hours_at_review": 10.2,
+                  "voted_up": true,
+                  "date": "2026-07-27",
+                  "review_text": "Yes, but with a warning. The game has some issues with weird/fuzzy and abnormally high animations around the world and that is how to the engine of this game was made. I have a new pc and using full AMD so I had extra troubles even with radeon chill active and setting it to 60fps. If you have similar issues and the game is giving you trouble, try this solution which helped me greatly.\r\n\r\nRight click on GRIS > Properties > General and right down below on Launch Options, paste or type this exactly as you see it: -window-mode exclusive\r\n\r\nIt will force steam to overwrite the monitor's settings to play the game better and more stable. For me, it worked. Ryzen 5600 CPU and Radeon RX 7600 Fighter 8GB. The game is really great despite this small flaw for modern computers and monitors, and that is why I am going the extra mile to include this solution here for people who might not know about it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230790937",
+                  "hours_at_review": 3.1,
+                  "voted_up": true,
+                  "date": "2026-07-18",
+                  "review_text": "Genuinely one of the most beautiful experiences I've ever had in a video game. The art style, the music, and the way the world slowly brings colour back in... it's just stunning. It feels less like playing a game and more like walking through a living piece of art. An absolute master piece. There were some really obnoxious bugs to do with refresh rate cap but besides that 10/10.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230639485",
+                  "hours_at_review": 2.1,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "I was honestly having a decent time with Gris until I ran into a completely game-breaking bug that killed the experience.\n\nDuring the section where the giant bird screams at you, my controls completely locked up. You are supposed to use the \"stone form\" to block the wind, but the game refused to register a single input. I restarted multiple times, but I was softlocked every single time, unable to do anything while this bird just continuously screamed at my screen.\n\nAfter doing some research, I found out this is a widely known issue. Apparently, the game's physics break at higher framerates, and the only way past it is to hard-cap the game at 60 FPS. The kicker is, Gris has incredibly bare-bones graphic settings and zero built-in options for an FPS lock. You have to go out of your way to force a limit through your GPU control panel just to progress.\n\nIt is frankly embarrassing that a major, progression-blocking bug like this still exists years after the game's release. No matter how pretty a game is, it doesn't excuse being unplayable. Cannot recommend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230431198",
+                  "hours_at_review": 5.2,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "I don't remember when I bought this game, but i've slept on it for so long. Feels like watching a very artistic short film, minimalistic, vibrant and beautiful. I originally thought that the was mostly a walking sim, however I was pleasantly surprised. The platforming mechanics in this game is very creative and level design complements it nicely. The levels become more and more complex as you progress and feels satisfying to complete. The soundtrack is soothing, calming and peaceful. Makes it all the more easier to admire the world of Gris. There is no dialogue and the story is abstract, leaving the story up for interpretation. Short game, but it feels like the right length.\n\nThe game is very good, however I did encounter a game breaking bug. If you have above 60fps you will be stuck on this section where a black raven comes down and screams at you. In 60fps you are supposed to be blown backwards. To fix this, close your game, change your refresh rate to 60hz and relaunch. Once you get blown back from the yell, you can set your refresh rate back.\n\n[b][h2]8.7/10[/h2][/b]",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-5be3be",
+              "claim": "Reviewers note that the game tells its story entirely without dialogue or text, relying instead on visual art, animation, and music.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 22,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232947770",
+                  "hours_at_review": 16.4,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "probably one of the most emotionally impactful games I've ever played and there is not a single line of dialogue. just art and music. its beautiful.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232793152",
+                  "hours_at_review": 6.8,
+                  "voted_up": true,
+                  "date": "2026-08-14",
+                  "review_text": "One of my absolute favorite games of all time. The art, the music, and the emotional story with not a single word being spoken. Everything about this game is incredible.\n\nP.S. Don't forget that you can take screenshots by pressing the F12 key. You're gonna press that key a lot.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232684060",
+                  "hours_at_review": 4.8,
+                  "voted_up": true,
+                  "date": "2026-08-12",
+                  "review_text": "One not if not the best Platformer games I have ever played, this game tells a story without saying a single word. The artstyle is stunning and this game will forever be a part of me, I cant explain how much this game is worth for its price. If you are wondering if it is worth buying, I would reply absolutely. Thank you Nomada Studio for this masterpiece, time for Neva",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232426703",
+                  "hours_at_review": 4.0,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": " [h1] A Bit Basic, but Very Beautiful [/h1] \r\n\r\nGris is a minimalistic metroidvania-lite 2D platformer that combines simple jumping and puzzle-solving with a melancholy atmosphere and some truly lovely visuals to create a soothing, calming, eye-pleasing experience, similar to a New Age guided meditation about Overcoming Grief through Inner Strength.\r\nThe game is stylistically closest to Journey and Ori and the Blind Forest, with a similar textless narrative and sincere, somewhat po-faced tone of etherial beauty and melancholy. If you enjoyed either of those games, Gris will probably align a similar chakra. \r\n\r\nPlatforming is enjoyable, but rather easy. This is not a game that's out to challenge your fingers. Rather, you're best off relaxing and letting the gorgeous visuals and ambient music wash over you like an art degree bubble bath. There is some nice thematic stuff about overcoming sadness and finding the strength to go on in the face of grief to mull over and meditate upon as you play, but it is very general and non-specific, equally applicable to a friend not liking your Instagram post or a bad case of period cramps as it would be to a genuine traumatic loss. The game works best as a warm, comforting, soothing bit of digital self-care. I feel like this would make a middle-class teenage girl cry a lot.\r\n\r\nI liked it a lot.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232344993",
+                  "hours_at_review": 19.5,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "Indie games always and indeed forever are meant to be those titles that bring us the genuine feel, enjoyment, and raw emotion every gamer looks for—leaving a lasting impression that stays with you long after the credits roll. GRIS is the absolute definition of that philosophy, standing as a masterclass in visual and emotional storytelling.\n\nFrom the very first moment, the game draws you into a breathtaking, watercolor world that feels like a living painting. Without using a single word of dialogue, it manages to convey a deeply moving journey through grief, restoration, and growth. The stunning hand-drawn art style, combined with an evocative and powerful musical score, creates an atmospheric experience that constantly sparks awe and wonder.\n\nThe gameplay stays delightfully simple, focusing on light platforming and intuitive puzzles that flow seamlessly into the narrative rather than getting in the way of it. It’s a peaceful, mesmerizing journey that respects your time and leaves you with an incredible sense of fulfillment once completed. If you appreciate games as a form of pure art, this is an absolute must-play.\n\nScore: 9.5/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232307378",
+                  "hours_at_review": 6.8,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "Story: 10/10, despite not a single word being spoken.\r\nArt: 10/10, every frame is like a painting.\r\nGameplay: It's not very complex, but it's exactly what it needed to be to let the other parts shine. 10/10.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232180609",
+                  "hours_at_review": 3.0,
+                  "voted_up": true,
+                  "date": "2026-08-06",
+                  "review_text": "Great visuals, really good story, don't hesitate to grab it on a sale !",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231914185",
+                  "hours_at_review": 3.5,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "short but amazing art, sound and story without a single line of dialogue",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231859526",
+                  "hours_at_review": 4.0,
+                  "voted_up": true,
+                  "date": "2026-08-02",
+                  "review_text": "I don't even know where to start... This game is DEEP! The animation, the symbolisms, the designs, and most specially the MUSIC!!! Everything abt this game is Amazing! It doesn't have dialogues nor words, you have to interpretate everything that you see which makes you and this game create a deeper connection. It doesn't tell you where to go nor what to do, you'll just know. I was admiring this game the whole ride. This game didn't say anything but it sure hell showed and made you feel everything. I finished it in just one sitting and ILUVIT!!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231824341",
+                  "hours_at_review": 4.5,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "The artwork had me captivated and the music perfectly complements a beautiful story about processing grief. It says so much without a single line of dialogue.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230947465",
+                  "hours_at_review": 3.0,
+                  "voted_up": true,
+                  "date": "2026-07-21",
+                  "review_text": "This game is a work of art. It shows us how much more videogames can be. No menus, no score, no enemies, not a single word on screen, and it tells a story that's difficult to forget. wish I could forget it to play it again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230890211",
+                  "hours_at_review": 6.6,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "Playing this game felt like watching a beautiful, wordless film.\n\nThere isn't any dialogue, yet I never had trouble understanding its story. The emotions, the art, and the music tell everything so naturally.\n\nIt's a peaceful and elegant experience with puzzles that are challenging enough to stay engaging, but never frustrating. I was able to enjoy the entire journey at my own pace.\n\nA truly beautiful game that proves words aren't always necessary.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230632357",
+                  "hours_at_review": 3.8,
+                  "voted_up": true,
+                  "date": "2026-07-16",
+                  "review_text": "I've started to play this game because a friend told me that I'll love, and I'm so happy that I believed in her because this game is AMAZING! The lyrics and visuals are unbelivable and for me, who is a terrible person playing games, this is kind of easy. It has a lot of levels and sometimes I don't even know where I am, but is funny exploring and find out new thinks! If you are looking for a beautiful game with a good storie ( without dialogue) I highly recommend it! :)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230206825",
+                  "hours_at_review": 10.7,
+                  "voted_up": true,
+                  "date": "2026-07-11",
+                  "review_text": "i havee no idea what im feelingg but im sobbing...\r\ni genuienlyy dont know how im supposed to put this into wordss. howw do youu even revieww smthh likee gris?? thiss wasnt jsut a gamee, it was a piece of art thats filled with emotions. a paintingg that somehow quietly learnedd how to breathee. a symphonyy that quietlyy reachedd into myy heart and pulled everyy feeling i had to the surfacee. ykk im actuallyy sittingg heree with tears in myy eyes, wondering howw a gamee withh zeroo dialoguee managedd to sayy moree than mostt storiess ever could. thee colors. the musics. thee silencee. thee worldd. everyy singlee momentt feltt sooooo alivee. watchingg Gris slowly find herself againn through thee five stages of grief absolutelyy shattered mee. seeingg the world lose its colors, onlyy for hope to slowlyy paint it backk piecee by piece... ill neverr forget tahtt feelingg. i dontt know how theyy did it. i dont knoww how watercolor paintinggs becamee a world i neverr wanted to leavee. i donttt knowwww howw a soundtrackk managed to makee myy chest feel soooo fkin heavyy one moment andd soo lightt thee nextt. i dontt knoww howw silence becamee louderr than words. i justttt... i cantt omg. too mcuhh is goingg withh myy emotions rnn. but yeaa i wannaa writee abt itt, soo lastlyy... this gamee dosent ask youu to understand grief... it asks youu to feel it... GRIS isntt beautiful becausee of its art, it isntt beautiful becausee of its music, it isnt beautifull becausee of its gameplayy. GRIS is beautiful becausee every singlee one of those thingss becomes onee heartbeat<33\r\n\r\nyk backk when i started playingg this gamee, i thought it would be relaxingg (which it ofcc is, dont get me wrongg). but now that ivee finishedd it, it got mee wonderingg that howw smthh so gentle managedd to completelyy break mee. i dont think i played GRIS. i think i experienced it. and somehoww... i alreadyy miss it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230198013",
+                  "hours_at_review": 4.5,
+                  "voted_up": true,
+                  "date": "2026-07-11",
+                  "review_text": "I had this game in my wishlist for YEARS. I recently passed it again online and shortly after it was on sale, so I took it as a sign and finally got it. \nI cannot explain what this game made me feel. I feel like every single aspect was so thought out and you can interpret is as deep or as shallow as you want. Not a single word was said yet so much was told and at the end of it I was crying and I couldn't even explain why. \nI love art, I always have, and this is such a beautiful way to use art to tell a story.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230122942",
+                  "hours_at_review": 6.3,
+                  "voted_up": true,
+                  "date": "2026-07-10",
+                  "review_text": "É um jogo curto e divertido, que diz muito sem usar nenhuma palavra.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229805511",
+                  "hours_at_review": 2.6,
+                  "voted_up": true,
+                  "date": "2026-07-06",
+                  "review_text": "I don’t think I can fully explain how much this game means to me. I’ve played it on multiple platforms, borrowed a friend’s Switch just to play it again, streamed it for my mom, made my best friend play it, watched countless other people experience it for the first time, and bought it for probably six or seven people at this point. I even have Gris tattooed on me.\n\nThere’s just something incredibly human about this game. Grief and loss are things we all experience eventually, and Gris manages to tell that story without needing to say a single word. The music, the art, the way the world changes as she moves through different stages of grief—it all communicates something that I think people can understand even if they don’t know anything about the game going into it.\n\nI especially love that the stages of grief aren’t completely separate from one another. They overlap and bleed into each other, because that’s how grief actually feels. It isn’t a straight line.\n\nI still listen to the soundtrack. I still cry every time I play. I still love watching other people experience it for the first time because I want to know what it makes them feel.\n\nI’ve recommended a lot of games in my life, but this is the only one I’ve repeatedly bought for people just because I genuinely believe it’s worth experiencing.\n\nIf you decide to play Gris, maybe keep some tissues nearby.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229646849",
+                  "hours_at_review": 3.1,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "Just finished this and made me want to write a review. The game is gorgeous and getting new abilities and mechanics as you play through was really cool to keep things fresh and exciting. Loved the art style they used and how they could tell a story without words. Beautiful game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229623865",
+                  "hours_at_review": 4.5,
+                  "voted_up": true,
+                  "date": "2026-07-04",
+                  "review_text": "Gris is a beautiful experience, both visually and musically. Each colorful environment is superb, and the story is told with great finesse, without the need for any dialogue. I think many people have recognized themselves in this game. I really enjoyed playing this myself. \r\nIt’s not a difficult game, but that’s not its goal. Gris focuses above all on atmosphere, emotions and contemplation, and the team behind it has done it brilliantly. I will definitely recommend it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229361786",
+                  "hours_at_review": 8.6,
+                  "voted_up": true,
+                  "date": "2026-07-01",
+                  "review_text": "Simply put:\n[h1]The most beautiful game i have ever seen![/h1]\n[b]Stunning artwork[/b] and a [b]touching story[/b] which is conveyed without words.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229190700",
+                  "hours_at_review": 10.2,
+                  "voted_up": true,
+                  "date": "2026-06-29",
+                  "review_text": "Simplesmente magnífico. \r\nIncrível como um jogo pode dizer tanto sem ter um único diálogo. Gris é uma verdadeira experiência para quem joga, trazendo uma animação maravilhosa, trilha sonora imersiva e um tom de sensibilidade e simbolismo que faz toda diferença para a narrativa. Recomendo muito!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229116479",
+                  "hours_at_review": 6.0,
+                  "voted_up": true,
+                  "date": "2026-06-29",
+                  "review_text": "[u][b]-Quick Review-[/b][/u]\r\nGris is a beautiful artistic 2d platformer indie game developed by Nomada Studio and released in 2018, where you play as a lost girl named Gris who is dealing with a painful experience in her life. The story description is left vague because there’s no dialogue of any kind and the story is told with music and imagery.\r\n\r\n[u][b]Review Video:[/b][/u]\r\nIf you don't like reading, or are curious about watching gameplay check out my video here:\r\nhttps://youtu.be/LG93A0-dGCI\r\n\r\n[u][b]-Detailed breakdown review-[/b][/u]\r\n[b]Story:[/b] As has already been said, the story for Gris is told without dialogue, without narration, without text. Another strength of this style of storytelling in this way is that it becomes universally accessible regardless of your spoken language.\r\nGris (the lost girl) has had her world shattered by some traumatic life event. The visuals are obviously meant to be interpreted metaphorically. The Game starts with Gris being held in the hand of a crumbling statue, Gris attempts to sing but can no longer do so, at this point Gris falls with the crumbling statue and all the color in her world is lost. You’ll spend the next few hours helping Gris struggle her way through the trials and tribulations to bring color back to the world and empower Gris to get through the ordeal.\r\n\r\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3701562967\r\n\r\n[b]Gameplay:[/b] Gris is a 2d platformer, so the controls are super simple, movement is A and D or directional inputs if you’re using a controller, jump, stomp, and sing buttons. I think Gris is slightly better when played with a controller because the layout is more natural, however you can play Gris on several different platforms and it’s good with keyboard controls too… just use what you’ve got available.\r\nOne of my favorite parts of the game is how at the end of each chapter, a new color was added to the world as Gris gets a bit stronger. It’s a very powerful narrative tool and Gris…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-37ff29",
+              "claim": "Reviewers describe the gameplay as involving 2D platforming and puzzles where the player cannot die.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232879894",
+                  "hours_at_review": 3.1,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "Pretentious with no element of substance of fun.\r\nFeatures:\r\n[list]\r\n[*] Endless variations of the same rocky wasteland/temple ruins/scaffolding to walk through\r\n[*] Soundtrack. If you like it or not.\r\n[*] Walking.\r\n[*] Zero challenge. You may have to jump a bit and you may have to be precise about it but you will never die.\r\n[*] More walking.\r\n[*] A story. Sort of. It's mainly walking and no dialogue.\r\n[*] A guaranteed lack of fun.\r\n[*] Did I mention walking yet?\r\n[/list]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230519891",
+                  "hours_at_review": 3.5,
+                  "voted_up": true,
+                  "date": "2026-07-15",
+                  "review_text": "For once I decided to look for a single player game I've been in the mood for some me time and picked a random game from my library that game was Gris.\nThe game's plot is relatively simple. You play as a girl named Gris who's parental figure has died. You are sucked into darkness and go thru the 5 stages of grief. The game doesn't explicitly tell you this but it gives you context clues thru gameplay and cutscenes.\nThe game play is pretty straightforward it's a 2D side scroller platformer with some easy to medium problem solving. This game will not test you you physically cannot die. But given that the game is more of an emotional piece it's perfectly fine and still fun to play with some collectibles in there for trophy chasers.\nBy the end of each stage you get a new color which is the perfect metaphor of going thru grief each level has their own unique colors and themes and the music is very calming. The art direction in this game is spectacular and one of the most beautiful games I have ever played.\nOverall this was a very calming and atmospheric game and I'm very glad I got to play it. It sucks that I'll get no replay value but considering it's $15 price tag I can't complain. This is a perfect example of how video games are a true form of art. 8/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230288288",
+                  "hours_at_review": 3.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "[h2]A Beautiful, Emotional Masterpiece[/h2][b]Visually stunning and mechanically meaningful.[/b][*] [b]Art Style:[/b] Breathtaking, watercolor-like visuals that feel like a living painting.[*] [b]Dynamic Audio:[/b] The incredible soundtrack seamlessly shifts and adapts to the action on screen.[*] [b]Zero Frustration:[/b] A peaceful, few-hour experience with no combat, hazards, or ways to die.[hr][/hr][h2]The Mechanics of Grief[/h2][b]Emotional growth translated perfectly into gameplay.[/b]The game masterfully connects its visual progression to the stages of grief. You start in a monochrome world, but as you heal, you literally bring color back to the environment.[b]A subtle, linear Metroidvania.[/b]As you navigate the emotional landscape, you unlock new abilities. Gaining these powers makes you feel increasingly capable, strong, and in control of a world that initially felt overwhelming.[hr][/hr][h2]Final Verdict: Highly Recommended[/h2]If you want a short, impactful, and artistic journey that proves video games are art, play GRIS. It is an unforgettable emotional experience.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 32,
+        "cited_recommend": 30,
+        "divergence_p": 0.356,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 23,
+      "pct_positive": 95.7,
+      "muted": true,
+      "n_note": "n=18 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 2,
+      "pct_positive": 100.0,
+      "muted": true,
+      "n_note": "n=1 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1203,
+    "steam_total_reviews": 31736,
+    "cohort_count": 2,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
