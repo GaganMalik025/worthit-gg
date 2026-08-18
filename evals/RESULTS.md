@@ -1123,3 +1123,49 @@ will retry nightly at zero cost until the cache question is answered.
 **Developer notes on the audit:** Manual audit confirmed clean — 20/20 citations
 read across all four playtime cohorts and 10 verdicts spot-checked against their
 splits, nothing inappropriate found.
+
+> **2026-08-18, follow-up — the Buy-share swing is RESOLVED as selection, not
+> scoring drift.** The entry above files it as unexplained because the test that
+> settles it could not run; `evals/positivity_by_night.py` has since been
+> extended to 08-17 and 08-18 (`c7789bb`) and run, output committed at
+> `evals/positivity-2026-08-18.txt` — 255 titles loaded, 0 skipped, rc=0.
+>
+> **08-18 drew the least positive input of all six nights:**
+>
+> | night | n | weighted pos% | median | Buy% |
+> |---|---|---|---|---|
+> | 2026-08-12 | 41 | 81.7% | 86.8% | 46% |
+> | 2026-08-13 | 45 | 85.9% | 91.3% | 64% |
+> | 2026-08-14 | 42 | 84.9% | 88.9% | 62% |
+> | 2026-08-16 | 43 | 86.5% | 90.0% | 60% |
+> | 2026-08-17 | 40 | **87.5%** | 90.5% | 65% |
+> | **2026-08-18** | 44 | **81.1%** | **83.3%** | **41%** |
+>
+> 81.1% is below even 08-12's 81.7% and 6.4 points under 08-17, which is itself
+> the most positive night of the six — so the two ends of the swing are the two
+> extremes of the input distribution, in the right order. The per-cohort means
+> rule out a single bucket's artifact: refund 49.8%, early 82.2%, mid 85.0%,
+> veteran 85.5%, each the lowest or near-lowest of the six.
+>
+> **The matched-band test — the same instrument that settled the 08-16 question —
+> agrees, and the extremes remain exactly flat across all six nights:**
+>
+>     band               08-12    08-13    08-14    08-16    08-17    08-18
+>     0-80%              0%(12)   0%(10)   0%(13)   0%(10)    0%(7)   0%(15)
+>     80-86%              0%(7)   40%(5)   25%(4)   20%(5)   33%(9)   9%(11)
+>     86-90%            70%(10)   50%(6)  100%(6)   57%(7)   75%(4)  80%(5)
+>     90-101%          100%(12) 100%(24) 100%(19) 100%(21) 100%(20) 100%(13)
+>
+> Every title under 80% got a non-Buy and every title over 90% got a Buy, on
+> every night including this one. Same rule, different games: **08-18 drew 15
+> titles under 80% and only 13 over 90% — the most and the fewest respectively of
+> any of the six nights** — against 08-17's 7 and 20. That is the whole of the
+> 24-point difference.
+>
+> **The one honest limit, restated rather than buried:** the 80–86% band is the
+> single non-flat cell, reading 9% (1 of 11) tonight against 33% on 08-17. That
+> band has run 0–40% across the six nights, so 9% sits inside the existing spread
+> and is not itself anomalous — but it is not conclusive either, and nothing here
+> rests on it. The conclusion rests on the extremes, where n is adequate and
+> agreement is exact, which is the same basis the 08-16 entry used and the same
+> limit it recorded.
