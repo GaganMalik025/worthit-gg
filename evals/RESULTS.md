@@ -1264,3 +1264,58 @@ nights: **distinct within the round and independent across every prior round**
 Catalog after this pass: **431 titles**. **108 pending** — 106 carrying tonight's
 `batch_budget_exhausted` plus the two non-terminal `stage_failed` entries, both
 of which retry nightly at zero cost.
+
+> **2026-08-20, follow-up on the 2026-08-19 night — the Buy-share rebound is
+> CONFIRMED as selection, on the same instrument that settled 08-16 and 08-18.**
+> The entry above deliberately stopped short of claiming it;
+> `evals/positivity_by_night.py` has since been extended to 2026-08-19
+> (`3709148`) and run, output committed at `evals/positivity-2026-08-19.txt` —
+> 296 titles loaded, 0 skipped, rc=0.
+>
+> **08-19 drew a more positive input than 08-18, and the verdict mix followed:**
+>
+> | night | n | weighted pos% | median | Buy% |
+> |---|---|---|---|---|
+> | 2026-08-12 | 41 | 81.7% | 86.8% | 46% |
+> | 2026-08-13 | 45 | 85.9% | 91.3% | 64% |
+> | 2026-08-14 | 42 | 84.9% | 88.9% | 62% |
+> | 2026-08-16 | 43 | 86.5% | 90.0% | 60% |
+> | 2026-08-17 | 40 | 87.5% | 90.5% | 65% |
+> | 2026-08-18 | 44 | **81.1%** | 83.3% | **41%** |
+> | **2026-08-19** | 41 | **84.9%** | 88.2% | **63%** |
+>
+> Pool-weighted positivity recovered **+3.8 points** off 08-18, and every cohort
+> rose with it rather than one bucket carrying the move: refund 49.8% → 56.8%,
+> early 82.2% → 86.1%, mid 85.0% → 88.1%, veteran 85.5% → 88.6%. Note 84.9% is
+> the same weighted figure as 08-14, which returned 62% Buy against tonight's
+> 63% — the relationship holds across non-adjacent nights, not just against the
+> night before.
+>
+> **The matched-band test agrees, and the extremes remain exactly flat across all
+> seven nights:**
+>
+>     band               08-12    08-13    08-14    08-16    08-17    08-18    08-19
+>     0-80%              0%(12)   0%(10)   0%(13)   0%(10)    0%(7)   0%(15)   0%(12)
+>     80-86%              0%(7)   40%(5)   25%(4)   20%(5)   33%(9)   9%(11)    0%(1)
+>     86-90%            70%(10)   50%(6)  100%(6)   57%(7)   75%(4)  80%(5)   83%(12)
+>     90-101%          100%(12) 100%(24) 100%(19) 100%(21) 100%(20) 100%(13) 100%(16)
+>
+> Every title under 80% got a non-Buy and every title over 90% got a Buy, on
+> every one of the seven nights including this one. Same rule, different games.
+>
+> **The arithmetic closes exactly, which is the strongest form this check
+> takes.** 08-18 drew 15 titles under 80% and 13 over 90%; 08-19 drew **12 under
+> and 16 over, with 12 in the 86-90% band against 08-18's 5**. Applying the band
+> rates to tonight's draw: 16 Buys from the 90%+ band (100% of 16) plus 10 from
+> the 86-90% band (83% of 12) plus zero from both lower bands = **26**, which is
+> the observed Buy count of 26 exactly. The 24-point swing down on 08-18 and the
+> 22-point swing back up tonight are the same mechanism read twice.
+>
+> **The one honest limit, stated rather than buried:** tonight's 80-86% band
+> holds a **single title**, reading 0% Buy. One title is not evidence of
+> anything, in either direction — that cell has run 0-40% across the seven nights
+> and n=1 cannot narrow it. Nothing above rests on it: the conclusion comes from
+> the extremes, where n is adequate and agreement is exact, and from the 86-90%
+> band, which is unusually well populated tonight at n=12. This is the same limit
+> the 08-16 and 08-18 entries recorded, and it is recorded again rather than
+> dropped because the band happens to be even thinner this time.
