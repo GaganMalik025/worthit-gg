@@ -808,9 +808,25 @@ def synthesize_one(client, args, appid):
         # key, and the cache replays the very answer that was just rejected.
         # Stardew Valley burned all three attempts that way: attempt 2 was
         # served from cache and "failed" without a request ever being sent.
+        #
+        # That key stopped a retry from replaying a DIFFERENT attempt's answer.
+        # It did nothing about a retry replaying ITS OWN prior answer on a later
+        # RUN, once that exact prompt had been seen before - and a title that
+        # fails a different way each attempt writes three distinct poisoned
+        # entries, one per key, all of which replay forever. Insurgency (222880)
+        # deadlocked exactly that way: three cached rejections from 2026-08-16
+        # replayed on every subsequent night at 0 calls and 1.7s, so no retry
+        # could ever produce a different answer. See BACKLOG 2026-08-18.
+        #
+        # Hence: only attempt 0 may READ the cache. A whole title regenerated on
+        # identical inputs still costs nothing, which is what the cache is for.
+        # Every retry sends a real request, because the entire purpose of a
+        # retry is an answer DIFFERENT from the one just rejected, and a cached
+        # rejected response can never be that. Writes are unchanged on every
+        # attempt - the entries stay readable for standalone diagnostics.
         cpath = cache_path(appid, "synthesis", args.model, system, prompt,
                            tag="verdict-v1-attempt%d" % attempt)
-        if cpath.exists() and not args.force:
+        if cpath.exists() and not args.force and attempt == 0:
             text = json.loads(cpath.read_text(encoding="utf-8"))["text"]
             print("  [cached] attempt %d" % attempt)
         else:

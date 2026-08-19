@@ -358,6 +358,91 @@ def test_retry_cache_key_includes_the_attempt():
           'tag="verdict-v1-attempt%d" % attempt' in src)
 
 
+def _rejecting_run(appid, tmp, calls, retries=2):
+    """Drive the REAL synthesis retry loop with every answer rejected.
+
+    Returns (n_calls_this_run, stdout). Nothing is sent: call_model and
+    response_text are replaced, so this costs no quota and needs no key.
+    """
+    import argparse
+    import io
+    import contextlib
+    import extract_claims
+    import synthesize as sy
+
+    args = argparse.Namespace(
+        model=None, model_override=None, force_lite=True, flash_day=None,
+        flash_fallback=False, retries=retries, force=False, dry_run=False,
+        show_prompt=False, claims=str(tmp / "claims"),
+        filtered=str(tmp / "filtered"), out=str(tmp / "out"))
+
+    before = len(calls)
+    real_call, real_text, real_pace = sy.call_model, sy.response_text, sy.PACE_SECONDS
+    real_cache = extract_claims.CACHE_DIR
+    try:
+        sy.call_model = lambda *a, **k: calls.append(1) or object()
+        # "{" is unparseable, so check_response is never reached and every
+        # attempt is rejected as invalid_json - which is what forces retries.
+        sy.response_text = lambda resp: ("{", None)
+        sy.PACE_SECONDS = 0
+        extract_claims.CACHE_DIR = tmp / "cache"
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            sy.synthesize_one(None, args, appid)
+        return len(calls) - before, buf.getvalue()
+    finally:
+        sy.call_model, sy.response_text, sy.PACE_SECONDS = real_call, real_text, real_pace
+        extract_claims.CACHE_DIR = real_cache
+
+
+def test_a_retry_never_replays_a_cached_rejection():
+    """BACKLOG 2026-08-18: Insurgency (222880) deadlocked because all three of
+    its synthesis attempts were served from a cache written on 2026-08-16. Every
+    later night replayed the same three rejections at 0 calls, so no retry could
+    ever return a different answer - and a retry exists precisely to return a
+    different answer.
+
+    Keying the cache on the attempt number (the test above) stops a retry
+    replaying a DIFFERENT attempt's answer within one run. It does nothing about
+    the SECOND RUN, where every prompt is byte-identical to the first and each
+    attempt replays its own prior rejection. That is the case here: run 1
+    populates the cache, run 2 is the next night."""
+    print("\nsynthesis: a retry sends a real request even when cached")
+    appid = 233860  # Kenshi - a seed game, so claims/filtered are committed
+    root = Path(__file__).resolve().parent.parent
+    with tempfile.TemporaryDirectory() as d:
+        tmp = Path(d)
+        for sub in ("claims", "filtered"):
+            (tmp / sub).mkdir()
+            (tmp / sub / ("%s.json" % appid)).write_text(
+                (root / "data" / sub / ("%s.json" % appid)).read_text(
+                    encoding="utf-8"), encoding="utf-8")
+        calls = []
+        n1, out1 = _rejecting_run(appid, tmp, calls)
+        # run 1: nothing cached, so all three attempts are real requests
+        check("first run sends one request per attempt", n1 == 3, n1)
+        check("first run reads nothing from cache",
+              "[cached]" not in out1, out1[-400:])
+        cached = sorted((tmp / "cache" / str(appid)).glob("synthesis_*.json"))
+        check("first run wrote a cache entry per attempt", len(cached) == 3,
+              [p.name for p in cached])
+
+        # run 2: the next night, same inputs, every prompt already seen
+        n2, out2 = _rejecting_run(appid, tmp, calls)
+        check("attempt 0 is still served from cache",
+              "[cached] attempt 0" in out2, out2[-400:])
+        check("attempt 1 is NOT served from cache",
+              "[cached] attempt 1" not in out2, out2[-400:])
+        check("attempt 2 is NOT served from cache",
+              "[cached] attempt 2" not in out2, out2[-400:])
+        # THE DEADLOCK ITSELF: under the old unconditional read this is 0, the
+        # whole title resolves in ~1.7s having sent nothing, and it does so
+        # every night forever.
+        check("second run still sends a request for each retry", n2 == 2, n2)
+        check("a repeated title costs less than a fresh one, not the same",
+              n2 < n1, (n1, n2))
+
+
 def test_prompt_names_every_word_the_guard_rejects():
     """The prompt used to carry a hand-written banned list and it fell behind
     the guard: "occasional" was rejected in code and never mentioned in the
@@ -1792,6 +1877,7 @@ if __name__ == "__main__":
     test_both_ledgers_share_one_boundary()
     test_ledger_does_not_reset_at_utc_midnight()
     test_retry_cache_key_includes_the_attempt()
+    test_a_retry_never_replays_a_cached_rejection()
     test_prompt_names_every_word_the_guard_rejects()
     test_flash_tier_allocation()
     test_batch_never_spends_flash()
