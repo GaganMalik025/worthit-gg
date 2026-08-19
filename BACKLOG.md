@@ -319,6 +319,25 @@ question rather than answer it. Related: [[verify-the-verifier]].
 > use, and notes that growth past a handful of entries is the signal the general
 > question needs answering rather than more exceptions.
 
+> **2026-08-19 — SECOND OCCURRENCE, unallowlisted and deliberately so.** A Way
+> Out (`1222700`) failed the filter stage on tonight's batch in exactly this
+> shape: of 400 swept reviews it has **2** veteran reviews, the filter drops both
+> as low-information, and the stage hard-fails the whole title —
+> `FAIL: veteran has 0 surviving reviews - the segment page breaks`. Reproduced
+> standalone at **zero Gemini cost** with the ledger unchanged at 390 either
+> side; raw output committed at `evals/awayout-filter-2026-08-19.txt`. Same
+> cohort as Hotline Miami, one review further along, and the same 0 calls / retry
+> every night at `stage_failed`.
+> **Not added to the allowlist.** The note above says growth past a handful of
+> entries is the signal the general question needs answering rather than more
+> exceptions — so adding a second entry the moment a second title appears would
+> spend the signal instead of reading it. Two titles in four nights, out of 431
+> published, is the first datapoint on the rate that question turns on, and it is
+> recorded here rather than absorbed. What is still undecided is unchanged: **not
+> whether `1222700` should publish, but whether a zero-survivor cohort should
+> mute automatically the way invariant 12 mutes an under-20 one.** Both titles
+> now sit behind that one call. Related: [[verify-the-verifier]].
+
 2026-08-13 | **`pipeline/test_batch_guards.py` failed once, unreproducibly, and
 the evidence was thrown away** | build, regression run before the art commit |
 One run exited 1 where the twelve runs around it exited 0. The failing run's
