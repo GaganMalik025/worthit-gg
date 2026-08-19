@@ -1,0 +1,1144 @@
+{
+  "appid": "470220",
+  "game_name": "UNO",
+  "generated_at": "2026-08-19T17:01:38Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/470220/b8741c3f32ce4560f33d6a7af256ec8c9828f285/header.jpg?t=1779899040",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/470220/e1a01bd700edec5427197c1c57a4315f9bd6ea69/capsule_231x87.jpg?t=1779899040",
+    "grid": "https://cdn2.steamgriddb.com/grid/5abd423b24d4923266eea33e3d6ad044.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 9,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Skip",
+    "tagline": "Classic card matching buried under launchers and fatal crashes.",
+    "for_you_if": [
+      "you want casual card matches with friends",
+      "you have infinite patience for lobby errors"
+    ],
+    "not_for_you_if": [
+      "you will not install a third-party launcher",
+      "you need stable matches without random crashes",
+      "you are short on storage space"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 275,
+      "pct_positive": 27.3,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 714,
+      "pct_positive": 56.6,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 195,
+      "pct_positive": 40.5,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 17,
+      "pct_positive": 70.6,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "Player sentiment rises during the second cohort before dropping in the third cohort.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 27.3,
+            "pool_n": 275
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 56.6,
+            "pool_n": 714
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 40.5,
+            "pool_n": 195
+          }
+        ],
+        "shape": "rise_then_fall",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 27.3,
+        "low_pool_n": 275,
+        "high_cohort": "early",
+        "high_cohort_label": "2-20 hours",
+        "high_pct_positive": 56.6,
+        "high_pool_n": 714,
+        "gap_pts": 29.3,
+        "peak_cohort": "early",
+        "peak_pct_positive": 56.6,
+        "post_peak_low_cohort": "mid",
+        "post_peak_low_pct_positive": 40.5,
+        "drop_after_peak_pts": 16.1
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews score lower than lifetime reviews.",
+      "evidence": {
+        "recent_pool_pct_positive": 47.5,
+        "recent_pool_n": 1201,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 69.9,
+        "steam_total_reviews": 34803,
+        "delta_pts": -22.4
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 275,
+      "pct_positive": 27.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players immediately hit forced launcher logins, account creation errors, massive file sizes, and severe match instability.",
+      "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-f1d029",
+              "claim": "Reviewers report that the game requires installing and signing into the third-party Ubisoft Connect launcher and creating an account.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 13
+              },
+              "citations": [
+                {
+                  "recommendationid": "232518919",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-08-10",
+                  "review_text": "Its decent, however I extremely dislike how Ubisoft Connect is simply terrible to deal with just to play the game. Its fun to play with friends, but the bar is so low to screw up a game like UNO. Do better Ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232154242",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "Once again Ubisoft Uplay basically ruins this game. Me and my friends have problems just booting the game up. You're better off playing Puno a free \"uno substitute\" that's still Uno with a google search. There are so many ways to play Uno with your friends better than this piece of crap right here.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231678115",
+                  "hours_at_review": 1.0,
+                  "voted_up": true,
+                  "date": "2026-07-30",
+                  "review_text": "Gotta make a freaking Ubisoft account to play a damn card game? Ik it’s for online n stuff but come on. Good game otherwise",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231552311",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "Okay, Uno is a good game and a classic but why is it a 10 gig file? Also they just want to seem to focus on online play and selling you themes and cosmetics. I would pay just for a one player offline version without the cosmetics and other BS. Oh and you have to download and use  the Ubisoft launcher with is just awful.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228775070",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-25",
+                  "review_text": "Because Ubisoft Connect kept registering every age I put as invalid, thus preventing me from making an account, I couldn’t even play a game I bought with my own money. I’ve already called for a refund. Worst use of $11.99 in my life.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226350465",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-25",
+                  "review_text": "Had to get a refund on it, because the third party launcher couldn't detect that I had bought the game. Everyone else who already had the game was confused and couldn't figure out how to fix the error I was having. Third party launchers are dumb.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226113600",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-22",
+                  "review_text": "game is trash requires ubisoft account, im not doing that, waste of time and money",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225713648",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-17",
+                  "review_text": "Can't get past the Ubisoft account creation workflow.  All fields pass validation checks, but clicking CONTNIUE yields an error message that something went wrong and to try back later.  Trying back later doesn't seem to fix it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225512920",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-05-14",
+                  "review_text": "I love UNO as much as the next person, but I cannot recommend a game that forces me onto uPlay with an account just to play some cards. I really do not want to have to make a uPlay account just for UNO bro... and then on top of all that according to other reviewers its buggy? Which for Ubisoft just seems par for the course.\r\n\r\nI don't know, UNO is such a simple game, leave it to Ubisoft to make it undesirable though.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225454156",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-05-14",
+                  "review_text": "Little recount:\n\nBought it to play with friends.\nClick \"run\"\nUbisoft Connect installs... great\nApp is in 640x480 and cannot be resized\nI try to make an account\n\"Error processing your request.\"\n4 attempts with different birthdays, emails, passwords, and usernames\nNo effect.\nEventually I go to the game location in Windows Explorer and run\nProper Ubisoft Connect app\nCreate an account with no issue (after deselecting \"Ubisoft can share my data\" because that is defaulted to on)\nFriends have issues and cannot do it so they all head to bed.\nI play a game with bots for fun.\nIt is slow and boring.\nNot fun at all.\nFiled a request to delete my data since I am sure Ubisoft will keep my data if I delete my accound.\n0/10 would not recommend. Filing for refund.\n\n♥♥♥♥ Ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224726540",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-05-04",
+                  "review_text": "You will need a separate account to run this game... \nI am not going to do that... REFUND!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222535170",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-04-04",
+                  "review_text": "There is absolutely zero reason why this game fails to run without forcing the user to download and install a separate application, and forcing the user to create an entire separate account on Ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221351183",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "This UNO game is 9GB and requires a Ubisoft account, should say all you need.Buggy before I got into the game. My friends could not play it with audio issues and constantly kicking people from the lobby.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221225812",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-03-21",
+                  "review_text": "Really, don't buy it, convince your friends that it's not worth it.\n- Requires Ubisoft account and launcher\n- Gameplay is broken and very easy to get softlocked\n- Loading times are ridiculously long\n\nJust, don't. Even if it's on sale",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-be007d",
+              "claim": "Players experience technical issues and error messages during the Ubisoft account creation and login process.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "228775070",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-25",
+                  "review_text": "Because Ubisoft Connect kept registering every age I put as invalid, thus preventing me from making an account, I couldn’t even play a game I bought with my own money. I’ve already called for a refund. Worst use of $11.99 in my life.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225713648",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-17",
+                  "review_text": "Can't get past the Ubisoft account creation workflow.  All fields pass validation checks, but clicking CONTNIUE yields an error message that something went wrong and to try back later.  Trying back later doesn't seem to fix it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225454156",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-05-14",
+                  "review_text": "Little recount:\n\nBought it to play with friends.\nClick \"run\"\nUbisoft Connect installs... great\nApp is in 640x480 and cannot be resized\nI try to make an account\n\"Error processing your request.\"\n4 attempts with different birthdays, emails, passwords, and usernames\nNo effect.\nEventually I go to the game location in Windows Explorer and run\nProper Ubisoft Connect app\nCreate an account with no issue (after deselecting \"Ubisoft can share my data\" because that is defaulted to on)\nFriends have issues and cannot do it so they all head to bed.\nI play a game with bots for fun.\nIt is slow and boring.\nNot fun at all.\nFiled a request to delete my data since I am sure Ubisoft will keep my data if I delete my accound.\n0/10 would not recommend. Filing for refund.\n\n♥♥♥♥ Ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220563931",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-03-13",
+                  "review_text": "it's not the \"uno\" itself. its the ubisoft. i kept getting lgged out and i cant log in coz of temporary block. i cant enjoy playing. in 2 weeks i played for 4 rounds only, then i cant log in anymore",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-0d44e7",
+              "claim": "Reviewers describe encountering errors and validation failures when attempting to create a Ubisoft account.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "228775070",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-25",
+                  "review_text": "Because Ubisoft Connect kept registering every age I put as invalid, thus preventing me from making an account, I couldn’t even play a game I bought with my own money. I’ve already called for a refund. Worst use of $11.99 in my life.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227997750",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-15",
+                  "review_text": "ubisoft's account creation page doesn't even work. this is just a scam",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225713648",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-05-17",
+                  "review_text": "Can't get past the Ubisoft account creation workflow.  All fields pass validation checks, but clicking CONTNIUE yields an error message that something went wrong and to try back later.  Trying back later doesn't seem to fix it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225631117",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-16",
+                  "review_text": "the game couldnt even open becuz ubisoft connections wouldnt even LET ME MAKE AN ACCOUNT and i tried multiple diff methods of fixing it for it to not work ,, i gifted this to my friends and myself during its sale to play but it didn't even work out well",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225454156",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-05-14",
+                  "review_text": "Little recount:\n\nBought it to play with friends.\nClick \"run\"\nUbisoft Connect installs... great\nApp is in 640x480 and cannot be resized\nI try to make an account\n\"Error processing your request.\"\n4 attempts with different birthdays, emails, passwords, and usernames\nNo effect.\nEventually I go to the game location in Windows Explorer and run\nProper Ubisoft Connect app\nCreate an account with no issue (after deselecting \"Ubisoft can share my data\" because that is defaulted to on)\nFriends have issues and cannot do it so they all head to bed.\nI play a game with bots for fun.\nIt is slow and boring.\nNot fun at all.\nFiled a request to delete my data since I am sure Ubisoft will keep my data if I delete my accound.\n0/10 would not recommend. Filing for refund.\n\n♥♥♥♥ Ubisoft.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-2759b0",
+              "claim": "The game suffers from performance issues such as running at an extremely low frame rate and long loading times.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232456449",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "I cannot understand why uno needs to be 3 gigs, ESPECIALLY when none of that used space goes to making sure the game actually works. Can't open in game menus at all, and the whole thing runs at a whopping one (1) frame per second. Incredible.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221225812",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-03-21",
+                  "review_text": "Really, don't buy it, convince your friends that it's not worth it.\n- Requires Ubisoft account and launcher\n- Gameplay is broken and very easy to get softlocked\n- Loading times are ridiculously long\n\nJust, don't. Even if it's on sale",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220863304",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-03-17",
+                  "review_text": "The game is very slow, and very unoptimized. I couldn't join a single online game, and my wifi is gigabit. I kept getting ads for DLC i already owned, there was very few ways to orient the actual game so that it looked good on my monitor, (no borderless, and windowed crops the game screen) Just hoped a card game would be easy to run.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-4598d0",
+              "claim": "Reviewers experience performance issues, frame drops, and severe lag during matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232456449",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "I cannot understand why uno needs to be 3 gigs, ESPECIALLY when none of that used space goes to making sure the game actually works. Can't open in game menus at all, and the whole thing runs at a whopping one (1) frame per second. Incredible.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229016974",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "Always has been a fun party game whether its online or the literal card game in person, will hurt friendships or relationships with family and friends in the process. Played this on the console and now playing this on the PC, I have a couple of things to say.\n\nStill a fun game with friends or people to play with, different rule sets and types of DLCS give the game a more unique feeling.\n\nHere is the catch, this game is so buggy, it lags and frame drops so hard to the point of where you think it made your game freeze. It is a card game.... it has no reason to be this troublesome with bugs and such. Another thing, is that you can't get rid of the bots, hence you needing to play against / or with them when with one other person. This game was really filled with issues on both PC and console. Buy and play at your own risk.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221406328",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "Very buggy and laggy, not worth buying. Play the google play version using Bluestack, it's much better and free",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221351183",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "This UNO game is 9GB and requires a Ubisoft account, should say all you need.Buggy before I got into the game. My friends could not play it with audio issues and constantly kicking people from the lobby.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-24b91d",
+              "claim": "Reviewers note that the game suffers from soft locks and match freezes during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "229016974",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "Always has been a fun party game whether its online or the literal card game in person, will hurt friendships or relationships with family and friends in the process. Played this on the console and now playing this on the PC, I have a couple of things to say.\n\nStill a fun game with friends or people to play with, different rule sets and types of DLCS give the game a more unique feeling.\n\nHere is the catch, this game is so buggy, it lags and frame drops so hard to the point of where you think it made your game freeze. It is a card game.... it has no reason to be this troublesome with bugs and such. Another thing, is that you can't get rid of the bots, hence you needing to play against / or with them when with one other person. This game was really filled with issues on both PC and console. Buy and play at your own risk.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227284534",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-06-06",
+                  "review_text": "I love how must of the time spent on this game so far has been game customization, and I play one game, not even 10 seconds in, I get a soft lock because i placed a 7 and nothing would happen. 100000/10 go ♥♥♥♥ yourself",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221225812",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-03-21",
+                  "review_text": "Really, don't buy it, convince your friends that it's not worth it.\n- Requires Ubisoft account and launcher\n- Gameplay is broken and very easy to get softlocked\n- Loading times are ridiculously long\n\nJust, don't. Even if it's on sale",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-b99660",
+              "claim": "Reviewers report difficulties with online connectivity, including failing to join lobbies, being disconnected, and having to restart lobbies between rounds.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "229798904",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "this game doesn't work anymore for me and the devs have made it a mess to fix. i bought this game under a different account or something so i can't even launch this game unless i buy a new version which i cannot do. i don't even understand the issue, if i launch the game i cant play or connect to the servers. i guess i own this game under some other credentials or something, rebuying the game is a not working. the game is bricked for me, do not buy this game. its fun otherwise.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228751835",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "forced ubislop DRM and connecting to others barely works, no joke the game sabotaged me and my friend when i dealt a 7 and it didnt let me get the deck i picked. wish ubisoft wasnt in charge of uno. Avoid.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223800377",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-04-21",
+                  "review_text": "Saying that this game doesn´t work is an understatement, after every round we had to restart the entire lobby every single time and even that sometimes just didn´t work. I mean what did I even expect from ubisoft :D \n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221445502",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-03-23",
+                  "review_text": "Game doesnt even frikkin work. I try to join my friends and it gets stuck in a loading screen, and even when it does load, the lobby is an empty screen and I can't do anything or even leave.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221351183",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "This UNO game is 9GB and requires a Ubisoft account, should say all you need.Buggy before I got into the game. My friends could not play it with audio issues and constantly kicking people from the lobby.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220863304",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-03-17",
+                  "review_text": "The game is very slow, and very unoptimized. I couldn't join a single online game, and my wifi is gigabit. I kept getting ads for DLC i already owned, there was very few ways to orient the actual game so that it looked good on my monitor, (no borderless, and windowed crops the game screen) Just hoped a card game would be easy to run.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-14ade7",
+              "claim": "Reviewers note that the game has a surprisingly large file size for a card game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "232456449",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "I cannot understand why uno needs to be 3 gigs, ESPECIALLY when none of that used space goes to making sure the game actually works. Can't open in game menus at all, and the whole thing runs at a whopping one (1) frame per second. Incredible.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231552311",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "Okay, Uno is a good game and a classic but why is it a 10 gig file? Also they just want to seem to focus on online play and selling you themes and cosmetics. I would pay just for a one player offline version without the cosmetics and other BS. Oh and you have to download and use  the Ubisoft launcher with is just awful.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231416709",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "bought game. worked for a month. now i have to log in to play a card game.  its 10gb of storage ( rdr1 requires less storage ) filed with unnessery dlcs. for every game they make the console version is smoother. even monoply a game they made is perfect on switch but the steam version is different. janky and bad same with this. just buy table top simulator and use workshop to get all the card/ board games. and also you can use scratch to find this for free.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228618392",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-06-23",
+                  "review_text": "ubisoft more like poobisoft\n\nthis 8GB game is not worth it even for $4",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221351183",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "This UNO game is 9GB and requires a Ubisoft account, should say all you need.Buggy before I got into the game. My friends could not play it with audio issues and constantly kicking people from the lobby.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 28,
+        "cited_recommend": 1,
+        "divergence_p": 0.00153,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 714,
+      "pct_positive": 56.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players experience random crashes, connection drops, and launcher requirements halting online matches.",
+      "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-d9f250",
+              "claim": "Reviewers report that the game requires a third-party Ubisoft Connect account and launcher to play online.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "231981922",
+                  "hours_at_review": 3.2,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "the game itself is fun, it's literally UNO it's kinda hard to mess that up. However, the entire experience is made miserable by being forced to use the barely functional Ubisoft Connect launcher. I just wanna play UNO with my friends, I don't want to deal with an unnecessary convoluted piece of software",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231088708",
+                  "hours_at_review": 12.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "🎭 The Experience It’s UNO. You know how to play it. Your friends know how to play it. You sit down thinking it’s going to be a casual 10-minute card game, and 45 minutes later, relationships are ruined, screaming matches have occurred over a stacked +4, and someone has deleted Discord. Core gameplay is solid, nostalgic, and genuinely a blast when it actually functions.  The Good Classic Rules & Customization: You can toggle popular house rules (7-0 hand swaps, Stacking +2/+4s, Jump-In), which makes matches way more chaotic and fun.  Fun DLC Themes: DLC packs like UNO Flip!, Ray man, and Show 'Em No Mercy actually add interesting mechanics to spice things up.  Great with Mates: If you can get a lobby full of friends, it’s peak banter. The Bad (Why the Steam Recent Reviews are \"Mixed\")Ubisoft Connect Bloat: You buy a basic $10 card game on Steam, only to be forced to launch Ubisoft Connect on top of it. Account linking errors, launcher crashes, and random login bugs plague the startup process.  Connection / Net code Issues: Joining lobbies or staying connected in online matches can feel like a toss-up. Random disconnections, lobby freezes, and host migrations ruin matches mid-game.  DLC Nickel-and-Diming: The base game feels bare-bones, and Ubisoft aggressively pushes cosmetic board themes and rule expansions as extra paid DLC.  Rage-Quitting / Bot Takeover: When playing with randoms online, the moment someone gets hit with a +4, they quit. They get replaced by an AI bot that either plays like a grandmaster or completely throws the match.  💡 The Verdict \"A top-tier party game trapped inside a bottom-tier launcher.\"  If you can catch it on sale for $3 - $4, and you have a dedicated group of 3 or 4 friends to play custom lobbies with, it's worth picking up for a quick laugh. Otherwise, if you just want to play card/board games on PC without the Ubisoft headache, grab Tabletop Simulator instead.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230638592",
+                  "hours_at_review": 11.0,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "[b]Introduction :[/b]\nUNO est l'adaptation officielle du célèbre jeu de cartes, développée et éditée par Ubisoft, sortie en décembre 2016. Le principe est celui que tout le monde connaît depuis les repas de famille : se débarrasser de ses cartes en premier, balancer des +4 au pire moment et crier UNO. Sur le papier, impossible de rater ça. Et pourtant.\n\n[b]Ce que j'ai aimé :[/b]\n[list]\n[*]🃏 Les règles du UNO sont fidèlement reproduites, avec les règles maison activables (empilement de +2/+4, échange de mains) qui font le sel des vraies parties\n[*]🎨 L'interface est propre et lisible, les parties s'enchaînent vite — le cœur du jeu de cartes fonctionne\n[*]🛋️ En local entre amis sur le même écran, ça reste un bon moment sans prise de tête\n[/list]\n\n[b]Ce que j'ai moins aimé :[/b]\n[list]\n[*]📡 Le online est une loterie : déconnexions à répétition même avec une connexion parfaite, parties qui gèlent, hébergement qui exige parfois de bidouiller sa box — pour un jeu dont l'intérêt principal EST le multijoueur, c'est rédhibitoire\n[*]🔌 Ubisoft Connect obligatoire par-dessus Steam, avec son lot de lancements qui échouent et de comptes à lier — une friction inutile pour un simple jeu de cartes\n[*]💸 La politique de DLC est gonflée : des thèmes de cartes vendus à l'unité sur un jeu déjà payant, alors que le contenu de base est squelettique\n[*]👋 Les rage quits ne sont quasiment pas sanctionnés, donc la moitié des parties en ligne se terminent par un abandon dès que quelqu'un perd\n[*]🤝 L'intégration des amis Steam est bancale : invitations peu intuitives, et des fonctions annoncées comme le vrai couch co-op via Remote Play qui fonctionnent mal\n[/list]\n\n[b]Conclusion :[/b]\nUNO version Ubisoft, c'est un bon jeu de cartes enfermé dans une mauvaise application. Le online instable ruine l'expérience, Ubisoft Connect n'a rien à faire là, et les DLC cosmétiques sur un contenu aussi maigre passent mal. Prenez un vrai paquet de cartes à 3 €, ou jouez-y uniquement en local si vous l'avez déjà.…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "228696391",
+                  "hours_at_review": 10.9,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "Don't buy it. Ubisoft, much like EA, force you to download and register with their launcher in order to play their games even if you buy them on Steam.\n\nThis means, even if you bought it on Steam or were given it by a friend on Steam, that you will not be able to play it if Ubisoft's platform bugs out and removes it from your Ubisoft Plus library or Ubisoft themselves just removes it from your library for whatever reason.\n\nThis is what they have done to me and Ubisoft's customer service is terrible; anytime I open a support ticket to deal with the issue, they don't give me time to get around to responding and instead just close the ticket to force me to put in another ticket.\n\nThis has been going on for well over a couple of years now and I've just given up because there's no point in trying to get help from Ubisoft.\n\nSo, I cannot play the game my friend got for me with him anymore, because Ubisoft's platform is terribly made and Ubisoft themselves are a terrible company with terrible customer service.\n\nEven though, again, it was given to me on STEAM. My friend bought it for me ON STEAM. NOT on UBISOFT PLUS.\n\nSteam shouldn't be letting companies force you to install other platforms just to buy the games you buy on Steam, especially since it can lead to situations like mine.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232620243",
+                  "hours_at_review": 11.2,
+                  "voted_up": false,
+                  "date": "2026-08-12",
+                  "review_text": "You need a third party account to online play uno. That's stupid I should just play tabletop games instead where its on there along with a billion other games and I don't need a 3rd party account. Funny how Disclaimer in loading screen says to not play if under influence.. Like.. I'm playing uno not flying a plane how hard can it be???",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230180365",
+                  "hours_at_review": 8.8,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "Horrible software, where I'm lucky to get a game working within the first half hour, and requires a third party login that simply doesn't work for me half the time, then locks me out of my own account. I keep giving it a few more years, after all Ubisoft is a very small company, and if anything it just gets worse.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-91ccc6",
+              "claim": "Reviewers experience random crashes, game freezes, and bugs that prevent matches from being completed.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "232757358",
+                  "hours_at_review": 2.2,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "I have started about 10-15 games with my friends before, not a single one has been finished\n\nHow a simple card game like this can get so desynced that youre praying one random card wont cause a game to freeze is insane. There is no rejoin button either, so you must restart a game.\n\nA joke of a product, play it on tabletop sim or something similar, ANYTHING but this",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231088708",
+                  "hours_at_review": 12.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "🎭 The Experience It’s UNO. You know how to play it. Your friends know how to play it. You sit down thinking it’s going to be a casual 10-minute card game, and 45 minutes later, relationships are ruined, screaming matches have occurred over a stacked +4, and someone has deleted Discord. Core gameplay is solid, nostalgic, and genuinely a blast when it actually functions.  The Good Classic Rules & Customization: You can toggle popular house rules (7-0 hand swaps, Stacking +2/+4s, Jump-In), which makes matches way more chaotic and fun.  Fun DLC Themes: DLC packs like UNO Flip!, Ray man, and Show 'Em No Mercy actually add interesting mechanics to spice things up.  Great with Mates: If you can get a lobby full of friends, it’s peak banter. The Bad (Why the Steam Recent Reviews are \"Mixed\")Ubisoft Connect Bloat: You buy a basic $10 card game on Steam, only to be forced to launch Ubisoft Connect on top of it. Account linking errors, launcher crashes, and random login bugs plague the startup process.  Connection / Net code Issues: Joining lobbies or staying connected in online matches can feel like a toss-up. Random disconnections, lobby freezes, and host migrations ruin matches mid-game.  DLC Nickel-and-Diming: The base game feels bare-bones, and Ubisoft aggressively pushes cosmetic board themes and rule expansions as extra paid DLC.  Rage-Quitting / Bot Takeover: When playing with randoms online, the moment someone gets hit with a +4, they quit. They get replaced by an AI bot that either plays like a grandmaster or completely throws the match.  💡 The Verdict \"A top-tier party game trapped inside a bottom-tier launcher.\"  If you can catch it on sale for $3 - $4, and you have a dedicated group of 3 or 4 friends to play custom lobbies with, it's worth picking up for a quick laugh. Otherwise, if you just want to play card/board games on PC without the Ubisoft headache, grab Tabletop Simulator instead.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230638592",
+                  "hours_at_review": 11.0,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "[b]Introduction :[/b]\nUNO est l'adaptation officielle du célèbre jeu de cartes, développée et éditée par Ubisoft, sortie en décembre 2016. Le principe est celui que tout le monde connaît depuis les repas de famille : se débarrasser de ses cartes en premier, balancer des +4 au pire moment et crier UNO. Sur le papier, impossible de rater ça. Et pourtant.\n\n[b]Ce que j'ai aimé :[/b]\n[list]\n[*]🃏 Les règles du UNO sont fidèlement reproduites, avec les règles maison activables (empilement de +2/+4, échange de mains) qui font le sel des vraies parties\n[*]🎨 L'interface est propre et lisible, les parties s'enchaînent vite — le cœur du jeu de cartes fonctionne\n[*]🛋️ En local entre amis sur le même écran, ça reste un bon moment sans prise de tête\n[/list]\n\n[b]Ce que j'ai moins aimé :[/b]\n[list]\n[*]📡 Le online est une loterie : déconnexions à répétition même avec une connexion parfaite, parties qui gèlent, hébergement qui exige parfois de bidouiller sa box — pour un jeu dont l'intérêt principal EST le multijoueur, c'est rédhibitoire\n[*]🔌 Ubisoft Connect obligatoire par-dessus Steam, avec son lot de lancements qui échouent et de comptes à lier — une friction inutile pour un simple jeu de cartes\n[*]💸 La politique de DLC est gonflée : des thèmes de cartes vendus à l'unité sur un jeu déjà payant, alors que le contenu de base est squelettique\n[*]👋 Les rage quits ne sont quasiment pas sanctionnés, donc la moitié des parties en ligne se terminent par un abandon dès que quelqu'un perd\n[*]🤝 L'intégration des amis Steam est bancale : invitations peu intuitives, et des fonctions annoncées comme le vrai couch co-op via Remote Play qui fonctionnent mal\n[/list]\n\n[b]Conclusion :[/b]\nUNO version Ubisoft, c'est un bon jeu de cartes enfermé dans une mauvaise application. Le online instable ruine l'expérience, Ubisoft Connect n'a rien à faire là, et les DLC cosmétiques sur un contenu aussi maigre passent mal. Prenez un vrai paquet de cartes à 3 €, ou jouez-y uniquement en local si vous l'avez déjà.…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "228766520",
+                  "hours_at_review": 2.3,
+                  "voted_up": false,
+                  "date": "2026-06-25",
+                  "review_text": "If going to play with friends it not worth spending money one as it will freeze and you have to end game and start over. as a solo maybe but who playing this to go against bot the devs need to start from scratch and build a new uno game since the code from the old devs is clearly broken",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228708626",
+                  "hours_at_review": 9.8,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "Buggy, often crashes, devs seem to refuse to address these issues. Don't bother.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227879338",
+                  "hours_at_review": 18.2,
+                  "voted_up": false,
+                  "date": "2026-06-13",
+                  "review_text": "Cool game, but very buggy. You can get softlocked almost everywhere so it's practically impossible to get to 700 points and finish the match",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-14e015",
+              "claim": "Reviewers report that matches freeze or become unresponsive during online play with friends.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232757358",
+                  "hours_at_review": 2.2,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "I have started about 10-15 games with my friends before, not a single one has been finished\n\nHow a simple card game like this can get so desynced that youre praying one random card wont cause a game to freeze is insane. There is no rejoin button either, so you must restart a game.\n\nA joke of a product, play it on tabletop sim or something similar, ANYTHING but this",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230638592",
+                  "hours_at_review": 11.0,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "[b]Introduction :[/b]\nUNO est l'adaptation officielle du célèbre jeu de cartes, développée et éditée par Ubisoft, sortie en décembre 2016. Le principe est celui que tout le monde connaît depuis les repas de famille : se débarrasser de ses cartes en premier, balancer des +4 au pire moment et crier UNO. Sur le papier, impossible de rater ça. Et pourtant.\n\n[b]Ce que j'ai aimé :[/b]\n[list]\n[*]🃏 Les règles du UNO sont fidèlement reproduites, avec les règles maison activables (empilement de +2/+4, échange de mains) qui font le sel des vraies parties\n[*]🎨 L'interface est propre et lisible, les parties s'enchaînent vite — le cœur du jeu de cartes fonctionne\n[*]🛋️ En local entre amis sur le même écran, ça reste un bon moment sans prise de tête\n[/list]\n\n[b]Ce que j'ai moins aimé :[/b]\n[list]\n[*]📡 Le online est une loterie : déconnexions à répétition même avec une connexion parfaite, parties qui gèlent, hébergement qui exige parfois de bidouiller sa box — pour un jeu dont l'intérêt principal EST le multijoueur, c'est rédhibitoire\n[*]🔌 Ubisoft Connect obligatoire par-dessus Steam, avec son lot de lancements qui échouent et de comptes à lier — une friction inutile pour un simple jeu de cartes\n[*]💸 La politique de DLC est gonflée : des thèmes de cartes vendus à l'unité sur un jeu déjà payant, alors que le contenu de base est squelettique\n[*]👋 Les rage quits ne sont quasiment pas sanctionnés, donc la moitié des parties en ligne se terminent par un abandon dès que quelqu'un perd\n[*]🤝 L'intégration des amis Steam est bancale : invitations peu intuitives, et des fonctions annoncées comme le vrai couch co-op via Remote Play qui fonctionnent mal\n[/list]\n\n[b]Conclusion :[/b]\nUNO version Ubisoft, c'est un bon jeu de cartes enfermé dans une mauvaise application. Le online instable ruine l'expérience, Ubisoft Connect n'a rien à faire là, et les DLC cosmétiques sur un contenu aussi maigre passent mal. Prenez un vrai paquet de cartes à 3 €, ou jouez-y uniquement en local si vous l'avez déjà.…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-b8a6b9",
+              "claim": "Reviewers describe encountering random disconnections and connection errors when trying to play online.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232894212",
+                  "hours_at_review": 6.2,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "Cannot connect to servers. One round was permittable by ubisoft, I cannot play any more with my friends or anyone online in fact...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232160430",
+                  "hours_at_review": 14.3,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "IDK what they did to this game but my god its just so bugged, controller doesn't work , constantly disconnecting. literally unplayable smh",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-8a8603",
+              "claim": "Reviewers state that the game crashes during matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229991405",
+                  "hours_at_review": 2.5,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "Every match or two this game crash my windows causing Blue screen of death (BSoD)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228825182",
+                  "hours_at_review": 6.7,
+                  "voted_up": false,
+                  "date": "2026-06-25",
+                  "review_text": "game crashes randomly and cards cant make it to the middle most time just sit in the persons hands face up",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 14,
+        "cited_recommend": 0,
+        "divergence_p": 8.41e-06,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 195,
+      "pct_positive": 40.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Longer term players run into game-breaking loops, freezing turns, launcher login gates, and unexpected language bugs.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-9d7720",
+              "claim": "Reviewers describe game-breaking bugs where players become trapped in infinite loops of drawing cards or having turns skipped indefinitely.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "223911188",
+                  "hours_at_review": 47.1,
+                  "voted_up": false,
+                  "date": "2026-04-23",
+                  "review_text": "Ubisoft are taking stupid pills with this one.   \n\nI get into a match... someone puts down a +4 on my ass, but then the game decides no one is allowed to have a turn after I pickup 4 cards, and skips them all, \n\nWhen it was my turn again, I had to pickup another 4 cards, then it skipped everyone's turn and repeated this over and over. \n\nNobody could play their cards, the only thing they could do was sit and watch it go through the motion of skipping their turns and have my deck get bigger and bigger from one singular +4 that had been put there about 30 turns ago. \n\n\nThis repeated over and over until the game crashed.\n\n\nUbisoft have contracted an outsider dev team to run Uno. New dev team means there will be teething issues... especially since they decided to change the backend, the frontend, you name the ♥♥♥♥♥♥♥ end, so of course this is expected. Have you looked at what they've done to the UI?\n\n\n ...So I waited a few months for the bugs to get fixed.\n  \n\nUno launched in a completely different language than English and just when I was about to look for the settings button, the game crashed. Good job.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223656839",
+                  "hours_at_review": 23.2,
+                  "voted_up": true,
+                  "date": "2026-04-19",
+                  "review_text": "[h1] Funniest matches of UNO I played [/h1]\nThe first five matches of uno flip were fine with occasional bugged cards. Then in the sixth match my friend could not stop drawing even though he pulled mutiple playable cards. After 60 cards the game settled down and allowed him to play one card. Then the next player also had to draw, even though she had playable cards in her deck. When she reached 37 cards, the draw pile disappeared and we were trapped in an infinite circle of Skip Everyone. After 3 minutes of helplessly watching all of our cards light up without being able to do anything, we sadly had to quit the match.\n\nWe then tried to play regular uno and here is when the bugs (Or is this straight up failure?) became very apparant: The custom decks and animation we equipped, did not work at all, except for one player. Selecting a color or whose deck you wanna switch with, was only possible with the arrow keys for two players. The music was getting louder or quieter randomly. Those obnoxious saxophones will haunt me in my dreams and purgatory probably sounds like that too. One player could call out uno anytime, regardless of how many cards there were in the deck. \n\nAll in all, I never laughed that hard in my life. 10/10 recommend for people who like buggy games.\n(0/10 for my friends I played with, but those reviews you can read for themselves)",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-c2ceb4",
+              "claim": "Reviewers report unexpected language changes, such as the game launching in Polish instead of English.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "228915571",
+                  "hours_at_review": 28.1,
+                  "voted_up": false,
+                  "date": "2026-06-26",
+                  "review_text": "When I tried playing uno, Ubisoft started updating then wanted me to log in. Since it has been almost a year since I played it I put in multiple gmails and passwords that I would use. Until after 3 attempts it stated that \"Your Account has been suspended\" ALL BECAUSE I DIDNT KNOW MY GMAIL AND PASSWORD. I later closed the game then re opened it. I finally got into uno without needing to log in until I noticed that the language was set to polish even though I live in New York. I went into settings changing it then I was finally, FINALLY ready to play UNO. I joined a game, and not even 10 seconds into the game. I SOMEHOW GOT KICKED BECAUSE OF MY NETWORK, EVEN THOUGH I USE ETHERNET. This game and Ubisoft itself has become horrible, and I want Ubisoft to FIX THERE GAMES.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227939124",
+                  "hours_at_review": 64.7,
+                  "voted_up": false,
+                  "date": "2026-06-14",
+                  "review_text": "Besides 3rd Party launchers being the bane of my existence, the language somehow automatically switched to Polish on launch, so I had to guess where the language settings were. This happened twice btw and now the game auto-switches me to Polish every time I boot the game up for some reason. I'm not Polish nor live anywhere near Poland",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223911188",
+                  "hours_at_review": 47.1,
+                  "voted_up": false,
+                  "date": "2026-04-23",
+                  "review_text": "Ubisoft are taking stupid pills with this one.   \n\nI get into a match... someone puts down a +4 on my ass, but then the game decides no one is allowed to have a turn after I pickup 4 cards, and skips them all, \n\nWhen it was my turn again, I had to pickup another 4 cards, then it skipped everyone's turn and repeated this over and over. \n\nNobody could play their cards, the only thing they could do was sit and watch it go through the motion of skipping their turns and have my deck get bigger and bigger from one singular +4 that had been put there about 30 turns ago. \n\n\nThis repeated over and over until the game crashed.\n\n\nUbisoft have contracted an outsider dev team to run Uno. New dev team means there will be teething issues... especially since they decided to change the backend, the frontend, you name the ♥♥♥♥♥♥♥ end, so of course this is expected. Have you looked at what they've done to the UI?\n\n\n ...So I waited a few months for the bugs to get fixed.\n  \n\nUno launched in a completely different language than English and just when I was about to look for the settings button, the game crashed. Good job.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-abbb44",
+              "claim": "Reviewers note that the game experiences crashes, freezing, and loading delays during matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "228558487",
+                  "hours_at_review": 61.5,
+                  "voted_up": false,
+                  "date": "2026-06-22",
+                  "review_text": "Super unstable while playing.\r\nloading that takes forever\r\ntiming out\r\ngame getting stuck making people quit mid game\r\nterrible job done ubisoft",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223486046",
+                  "hours_at_review": 26.1,
+                  "voted_up": false,
+                  "date": "2026-04-17",
+                  "review_text": "We litterally can't play a single full game with my friends, because of either one or multiple of the following reasons:\n\n- Lobbies often time out\n- Game crashes\n- Either friends or I can't get into one's lobby\n- First card drafted is glitchy. Best case scenario: try every color until you get it right. Worst case scenario: no card can't be played (not even a joker or a +4) and players are condemned to draft until death.\n- Successful challenges on +4 will both get the attacker and the defender 4 additional cards...\n\nIt is outrageous that a game, which has been out for almost a decade and patched over and over again only to get paid DLCs or cosmetics, won't see any of its critical and game breaking issues resolved despite the numerous complaints from the community.\n\nIn short: a buggy cashgrab joke.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226529160",
+                  "hours_at_review": 35.4,
+                  "voted_up": false,
+                  "date": "2026-05-27",
+                  "review_text": "Buggiest game known to man. Crashes constantly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223911188",
+                  "hours_at_review": 47.1,
+                  "voted_up": false,
+                  "date": "2026-04-23",
+                  "review_text": "Ubisoft are taking stupid pills with this one.   \n\nI get into a match... someone puts down a +4 on my ass, but then the game decides no one is allowed to have a turn after I pickup 4 cards, and skips them all, \n\nWhen it was my turn again, I had to pickup another 4 cards, then it skipped everyone's turn and repeated this over and over. \n\nNobody could play their cards, the only thing they could do was sit and watch it go through the motion of skipping their turns and have my deck get bigger and bigger from one singular +4 that had been put there about 30 turns ago. \n\n\nThis repeated over and over until the game crashed.\n\n\nUbisoft have contracted an outsider dev team to run Uno. New dev team means there will be teething issues... especially since they decided to change the backend, the frontend, you name the ♥♥♥♥♥♥♥ end, so of course this is expected. Have you looked at what they've done to the UI?\n\n\n ...So I waited a few months for the bugs to get fixed.\n  \n\nUno launched in a completely different language than English and just when I was about to look for the settings button, the game crashed. Good job.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-b5ee5c",
+              "claim": "Reviewers report bugs where turns freeze, players become unable to play cards, and matches get stuck forcing endless card drawing loops.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "227770589",
+                  "hours_at_review": 65.1,
+                  "voted_up": false,
+                  "date": "2026-06-12",
+                  "review_text": "Used to work... Now just glitches/bugs out. No idea who's turn it is, sometimes its your turn but you cant play a card and it just makes you pull 75 cards",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223911188",
+                  "hours_at_review": 47.1,
+                  "voted_up": false,
+                  "date": "2026-04-23",
+                  "review_text": "Ubisoft are taking stupid pills with this one.   \n\nI get into a match... someone puts down a +4 on my ass, but then the game decides no one is allowed to have a turn after I pickup 4 cards, and skips them all, \n\nWhen it was my turn again, I had to pickup another 4 cards, then it skipped everyone's turn and repeated this over and over. \n\nNobody could play their cards, the only thing they could do was sit and watch it go through the motion of skipping their turns and have my deck get bigger and bigger from one singular +4 that had been put there about 30 turns ago. \n\n\nThis repeated over and over until the game crashed.\n\n\nUbisoft have contracted an outsider dev team to run Uno. New dev team means there will be teething issues... especially since they decided to change the backend, the frontend, you name the ♥♥♥♥♥♥♥ end, so of course this is expected. Have you looked at what they've done to the UI?\n\n\n ...So I waited a few months for the bugs to get fixed.\n  \n\nUno launched in a completely different language than English and just when I was about to look for the settings button, the game crashed. Good job.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223656839",
+                  "hours_at_review": 23.2,
+                  "voted_up": true,
+                  "date": "2026-04-19",
+                  "review_text": "[h1] Funniest matches of UNO I played [/h1]\nThe first five matches of uno flip were fine with occasional bugged cards. Then in the sixth match my friend could not stop drawing even though he pulled mutiple playable cards. After 60 cards the game settled down and allowed him to play one card. Then the next player also had to draw, even though she had playable cards in her deck. When she reached 37 cards, the draw pile disappeared and we were trapped in an infinite circle of Skip Everyone. After 3 minutes of helplessly watching all of our cards light up without being able to do anything, we sadly had to quit the match.\n\nWe then tried to play regular uno and here is when the bugs (Or is this straight up failure?) became very apparant: The custom decks and animation we equipped, did not work at all, except for one player. Selecting a color or whose deck you wanna switch with, was only possible with the arrow keys for two players. The music was getting louder or quieter randomly. Those obnoxious saxophones will haunt me in my dreams and purgatory probably sounds like that too. One player could call out uno anytime, regardless of how many cards there were in the deck. \n\nAll in all, I never laughed that hard in my life. 10/10 recommend for people who like buggy games.\n(0/10 for my friends I played with, but those reviews you can read for themselves)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223486046",
+                  "hours_at_review": 26.1,
+                  "voted_up": false,
+                  "date": "2026-04-17",
+                  "review_text": "We litterally can't play a single full game with my friends, because of either one or multiple of the following reasons:\n\n- Lobbies often time out\n- Game crashes\n- Either friends or I can't get into one's lobby\n- First card drafted is glitchy. Best case scenario: try every color until you get it right. Worst case scenario: no card can't be played (not even a joker or a +4) and players are condemned to draft until death.\n- Successful challenges on +4 will both get the attacker and the defender 4 additional cards...\n\nIt is outrageous that a game, which has been out for almost a decade and patched over and over again only to get paid DLCs or cosmetics, won't see any of its critical and game breaking issues resolved despite the numerous complaints from the community.\n\nIn short: a buggy cashgrab joke.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225155142",
+                  "hours_at_review": 45.0,
+                  "voted_up": false,
+                  "date": "2026-05-09",
+                  "review_text": "This game is full of bugs nowadays.\r\nJust 3 games in and it bugs out, gives idk how many cards in the start and then we get stuck getting ever more cards.\r\nIf you want to play uno, just buy the fisical cards and forget this ♥♥♥♥.\r\n\r\nWith love,\r\nSomeone who's never gonna play this again.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-a09ca5",
+              "claim": "Reviewers describe crashing issues and game client freezes during matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "228558487",
+                  "hours_at_review": 61.5,
+                  "voted_up": false,
+                  "date": "2026-06-22",
+                  "review_text": "Super unstable while playing.\r\nloading that takes forever\r\ntiming out\r\ngame getting stuck making people quit mid game\r\nterrible job done ubisoft",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226529160",
+                  "hours_at_review": 35.4,
+                  "voted_up": false,
+                  "date": "2026-05-27",
+                  "review_text": "Buggiest game known to man. Crashes constantly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223486046",
+                  "hours_at_review": 26.1,
+                  "voted_up": false,
+                  "date": "2026-04-17",
+                  "review_text": "We litterally can't play a single full game with my friends, because of either one or multiple of the following reasons:\n\n- Lobbies often time out\n- Game crashes\n- Either friends or I can't get into one's lobby\n- First card drafted is glitchy. Best case scenario: try every color until you get it right. Worst case scenario: no card can't be played (not even a joker or a +4) and players are condemned to draft until death.\n- Successful challenges on +4 will both get the attacker and the defender 4 additional cards...\n\nIt is outrageous that a game, which has been out for almost a decade and patched over and over again only to get paid DLCs or cosmetics, won't see any of its critical and game breaking issues resolved despite the numerous complaints from the community.\n\nIn short: a buggy cashgrab joke.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223911188",
+                  "hours_at_review": 47.1,
+                  "voted_up": false,
+                  "date": "2026-04-23",
+                  "review_text": "Ubisoft are taking stupid pills with this one.   \n\nI get into a match... someone puts down a +4 on my ass, but then the game decides no one is allowed to have a turn after I pickup 4 cards, and skips them all, \n\nWhen it was my turn again, I had to pickup another 4 cards, then it skipped everyone's turn and repeated this over and over. \n\nNobody could play their cards, the only thing they could do was sit and watch it go through the motion of skipping their turns and have my deck get bigger and bigger from one singular +4 that had been put there about 30 turns ago. \n\n\nThis repeated over and over until the game crashed.\n\n\nUbisoft have contracted an outsider dev team to run Uno. New dev team means there will be teething issues... especially since they decided to change the backend, the frontend, you name the ♥♥♥♥♥♥♥ end, so of course this is expected. Have you looked at what they've done to the UI?\n\n\n ...So I waited a few months for the bugs to get fixed.\n  \n\nUno launched in a completely different language than English and just when I was about to look for the settings button, the game crashed. Good job.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219664522",
+                  "hours_at_review": 78.9,
+                  "voted_up": false,
+                  "date": "2026-03-02",
+                  "review_text": "This used to be good to play with friends and even solo, now they have ruined it dont fall for the sale. online play does not work and playing with friends does not work it only lets you play with bots and on top of that it kept crashing and only wanted to pop up on my not main monitor and time opend",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "mid-2fd0da",
+              "claim": "Reviewers report that the game requires the third-party Ubisoft launcher or account login to play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "233015575",
+                  "hours_at_review": 21.3,
+                  "voted_up": false,
+                  "date": "2026-08-17",
+                  "review_text": "Game is fine because it doesn't contain the customer service and upper management of Ubisoft.\nUbisoft stole my account claiming I had to prove I was the owner. I gave them receipts and a timeline of my purchases and reward redemptions. They claim it is insufficient proof and that they cannot prove I own the account.  \n\nA massive Merry Kirkin, and many Luigi's to you Ubisoft",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231227464",
+                  "hours_at_review": 56.3,
+                  "voted_up": false,
+                  "date": "2026-07-24",
+                  "review_text": "Great game when it works.\n\nUnless you have a lot of patience with Ubisoft and their janky launcher, this might be a good game for you.\n\nThe Ubisoft game launcher came out in 2009 and seemed to work well.\nThey rebranded in 2012 to Uplay. Around 2018 the launcher became buggy and largely unstable.\nIn 2020 Ubisoft rebranded again to Ubisoft Connect and all of the bugs and instability came with it.\n\nThe core problem is reliability. The launcher needs a full reengineering of its initialization and state management. The reoccurring hangs, spool corruption, and fragile background processes show the underlying code is brittle and poorly handled.\n\nI've had 4 brand-new higher end gaming PC's during this time, so they cannot blame hardware on these issues.\n\nUbisoft should reengineer their embarrassing launcher, or Mattel should revoke their digital licensing rights for UNO and let a different publisher or developer take over their beloved game.\n\nAlmost a decade of frustration. Enough is enough...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228915571",
+                  "hours_at_review": 28.1,
+                  "voted_up": false,
+                  "date": "2026-06-26",
+                  "review_text": "When I tried playing uno, Ubisoft started updating then wanted me to log in. Since it has been almost a year since I played it I put in multiple gmails and passwords that I would use. Until after 3 attempts it stated that \"Your Account has been suspended\" ALL BECAUSE I DIDNT KNOW MY GMAIL AND PASSWORD. I later closed the game then re opened it. I finally got into uno without needing to log in until I noticed that the language was set to polish even though I live in New York. I went into settings changing it then I was finally, FINALLY ready to play UNO. I joined a game, and not even 10 seconds into the game. I SOMEHOW GOT KICKED BECAUSE OF MY NETWORK, EVEN THOUGH I USE ETHERNET. This game and Ubisoft itself has become horrible, and I want Ubisoft to FIX THERE GAMES.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228821646",
+                  "hours_at_review": 36.5,
+                  "voted_up": true,
+                  "date": "2026-06-25",
+                  "review_text": "This is the first game that made me wish there was a star rating system. Originally I would give Uno a 4.5/5 but as of recently that would go down to a 3-3.5/5. My only original complaint was Ubisoft being really not my favorite to work with and needing to create a whole account can be a hassle. Overall the game worked beautifully and my friend group played consistently. However, they recently redid their whole UI and it completely destroyed what we loved. It additionally removed the ability to upload your own pfp which sucks - please correct me if there's a way to do that still. The UI change made my whole gaming group stop playing Uno with hesitance to return. Even before the UI change there were still a lot of bugs and it wasn't uncommon for a player to be randomly dropped from the game. It is wonderful to have the ability to play Uno online as its one of the best party/card games. I just hope they made QOL improvements to make the game just that bit more enjoyable to all players.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228075651",
+                  "hours_at_review": 21.6,
+                  "voted_up": false,
+                  "date": "2026-06-16",
+                  "review_text": "Its honestly impressive how a simple card game can be messed up so badly, because you have to have the Ubisoft launcher after purchase. And it is pretty much just malware on your computer. The game will randomly kick a person just because, some nights it wont, some nights its just unplayable. I wouldn't say to waste your money on this, you can probably just find a uno-like game on a web browser",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218653809",
+                  "hours_at_review": 37.6,
+                  "voted_up": false,
+                  "date": "2026-02-18",
+                  "review_text": "worst software ever created, palantir might be worse but i doubt it, ubisoft is eating my mental, just opening ubisoft connect thtat is forced on you lets you go vertigo and mentally astray, ubisoft try growing wheat and potatoes instead of anything related to PCs, ty",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 15,
+        "cited_recommend": 2,
+        "divergence_p": 0.0248,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 17,
+      "pct_positive": 70.6,
+      "muted": true,
+      "n_note": "n=8 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1201,
+    "steam_total_reviews": 34803,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

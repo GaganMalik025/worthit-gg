@@ -1,0 +1,22 @@
+wordlists: 56 blocking, 403 annotate-only  (thresholds: hearts>=0.020, words>=5, funny>=2)
+
+A Way Out                in   heart  block  joke  lowinfo    kept   drop%
+  refund_window          32       2      0     0        3      27     16%
+  early                 346      10      0     2      135     199     42%
+  mid                    20       0      0     0        8      12     40%
+  veteran                 2       0      0     0        2       0    100%  <-- 2.5x corpus rate
+  ALL                   400                                   238     40%
+  invariant 12: mid has n=12 (<20) - renders muted, carries no claims.
+  FAIL: veteran has 0 surviving reviews - the segment page breaks.
+                     pre pos% post pos%   delta dropped pos%
+  refund_window         34.4%     33.3%    -1.1      40.0%  (n<30, not assessed)
+  early                 90.5%     89.9%    -0.6      91.2%
+  mid                   90.0%     83.3%    -6.7     100.0%  (n<30, not assessed)
+  veteran              100.0%        -%    +0.0     100.0%  (n<30, not assessed)
+  (sentiment shift is reported, never corrected - prevalence comes from the pool block)
+  wrote 238 survivors -> data/filtered/1222700.json
+  wrote 162 dropped   -> data/filtered/1222700.dropped.txt   <- read this
+
+FAILED (a bucket has zero survivors): 1222700
+
+[filter] 0.1s rc=1

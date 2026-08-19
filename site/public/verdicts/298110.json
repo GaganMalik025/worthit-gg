@@ -1,0 +1,898 @@
+{
+  "appid": "298110",
+  "game_name": "Far Cry® 4",
+  "generated_at": "2026-08-19T17:22:23Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/298110/731cff7e53820cb83436f93bfa86e493f6a0af45/header.jpg?t=1785362767",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/298110/69d90231217655f7ec20b9592fa761b66fe1df65/capsule_231x87.jpg?t=1785362767",
+    "grid": "https://cdn2.steamgriddb.com/grid/19e8eca3844064c94a2f9c838df1541d.jpg"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 7,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "A scenic Himalayan open world bogged down by technical friction.",
+    "for_you_if": [
+      "you want to explore a detailed mountain setting",
+      "you enjoy using wingsuits and gyrocopters for traversal",
+      "you are willing to tweak settings for hardware stability"
+    ],
+    "not_for_you_if": [
+      "you will not install the required Ubisoft Connect launcher",
+      "you cannot tolerate startup crashes on modern systems",
+      "you expect cutscenes to be skippable"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 131,
+      "pct_positive": 27.5,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 615,
+      "pct_positive": 80.5,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 440,
+      "pct_positive": 87.7,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 25,
+      "pct_positive": 88.0,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Initial reviews report severe launcher and performance blocks that improve as players spend more time in the world.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 27.5,
+            "pool_n": 131
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 80.5,
+            "pool_n": 615
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 87.7,
+            "pool_n": 440
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 27.5,
+        "low_pool_n": 131,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 87.7,
+        "high_pool_n": 440,
+        "gap_pts": 60.2
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 131,
+      "pct_positive": 27.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Initial players encounter startup crashes, controller bugs, and mandatory launcher hurdles blocking access.",
+      "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-2fbdfa",
+              "claim": "Reviewers report being unable to play the game due to mandatory login requirements, ownership verification errors, and account suspension issues with the Ubisoft Connect launcher.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 42
+              },
+              "citations": [
+                {
+                  "recommendationid": "233054981",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-08-17",
+                  "review_text": "Cannot be played offline and without a ubisoft account",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232401134",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "Cannot access due to Ubisoft connect says I dont own the game. Raised a ticket with them still they are saying I dont own the game. I should take refund.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232341727",
+                  "hours_at_review": 1.7,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "Bought Far Cry 4 on Steam and literally can't play the game because Ubisoft Connect says there's an ownership authentication error.\n\nI've contacted Ubisoft Support multiple times and gave them my proof of purchase, Steam ID, screenshots, launcher logs, account information, and every email I could possibly have used. I followed every troubleshooting step they gave me.\n\nTheir answer? “The game is activated on another account.”\nThen when I ask which account, they say they can't find any account that owns the game.\n\nSo apparently I paid for a game, Steam says I own it, Ubisoft can't find where the activation went, and nobody wants to actually fix the problem.\n\nThis whole situation is ridiculous. At this point it genuinely feels like I'm being charged for a product Ubisoft refuses to provide access to.\n\nHonestly, I hope Valve seriously considers whether companies should be allowed to keep selling games on Steam when their mandatory DRM can leave customers with an unplayable product and support won't resolve it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232088250",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "Once again, ubisoft connect ruining the experience, please, remove this logging BS to play old games.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231123321",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Ubisoft has to be one of the worst companies to ever buy games from. I couldn't start the game at all because the exchange of the verification token between Steam and Ubisoft Launcher is broken, telling me to have Steam online. It was online. I spent the hours I'm off work for 2 work days just to try and fix this thing and play the game. It did not work and I did everything. Never make the mistake of buying from Ubisoft again. Lesson learned.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230454620",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "Ubisoft launcher is straight up menace to human society, it always shows steam connectivity error, in which i spent 100minutes troubleshooting, and at last, i refunded it, die ubislop",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230382664",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "10/10 game but the ubisoft connect ruined it all ! it ruinned all the fun cause WDYM i have to wait 5 day just to loging in and then playy this stupid ubisoft destory it all, and then they cry about why people pirate their games",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230239896",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-11",
+                  "review_text": "I bought this game on STEAM download game normaly, and now need to instal stupid Ubisoft connect broken software where i cant login with my account. I try to make new account and they say \"wrong password\" you cant use that password bla bla bla bla... \nI login on web ubistoft with same info and work, they say 14 years old account and on this c*** cant login to play game.\nBAD REWIEV, not for GAME, bad for UBISTOFT.\nWhy i need to login on some c*** to play game what i bought legaly?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230149572",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "bro literally i bought the game and refunded it bc i cant even make an account bro wth? ubisoft fix ur game i been trying for a whole day to join and make an account but i wont work literally fix ur game and make it simpler and no other network or proxy idfk problems bro",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230051068",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "The game doesn't even start for me. Ubisoft connect sucks",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230034084",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "dumb and pure stupid system to play.\nyou need to create ubisoft account in order to play.\nand to create ubisoft account is frustrating, been trying with app, browser, vpn, and nothing works.\nthanks for this absolute garbage. i will no longer buy any ubisoft games from now on.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230028586",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "Good game but bum ass launcher bru said i dont own the game or whatever",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230026079",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "WHY DO I NEED A FKIN SEPERATE UBISLOP CONNECT ACCOUNT TO PLAY IT",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230019373",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "what a bad experiance even before starting this game. so before playing this game i need to create ubisoft account and remember it like this is some kind of nuclear database. if this kind of ♥♥♥♥ everygame would start asking then fo. u deserve a downfall ubisoft",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229988166",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "i hate ubisoft connect, stop making accounts for games, never needed an account for farcry 4 before. i hate you ubisoft, its like they bought you to run you out of buisness",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229982880",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "overall the best game, but dev is sh*t because my account suspend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229975722",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "This is an absolutely crap of a company, ubisoft needs to fix their infrastructure, \"cant authenticate the ownership\", of course you can't, watch dog is crappy af too, man I miss my PS3.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229857371",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Spent the last 40 minutes waiting cause Ubisoft won't even let me create let alone log in to my account, terrible launcher that you guys force on a game I intend to play SOLO",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229842886",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Cant play it. Ubisoft Login wont let me in. I think its positively stupid that we need dual launchers to play a game. \nTried to reset password. Ubisoft website nothing but captcha loop into suspended account due to to many attempts. same with ubisoft launcher.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229796815",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "UBISOFT CONNECT keeps giving me this error \"STEAM CONNNECTIVITY ISSUE\" and i simply cannot even launch the game, TERRIBLE GAMING COMPANY, TERRIBLE SERVICE!!!\nDO NOT BUY THIS UNTIL IT'S FIXED",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229680511",
+                  "hours_at_review": 0.3,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "GREAT GAME\nCant even log in my account\ndidnt even get log in once\n\"my account is temporarily suspended\"\n10/10\nubisoft 👍👍",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229650306",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-05",
+                  "review_text": "It says account suspended when i am trying to login to ubisoft account like tf did I do? I wasted my money on this game, never buying from ubisoft again",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229641585",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-05",
+                  "review_text": "i cant log in to ubisoft",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229612587",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "Cant login to ubisoft. Suck system",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229584779",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-04",
+                  "review_text": "i even cant play this game lol , i create new account than when i want to log in , it say  my account has been suspended ...dafakkkk",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229525239",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "Ubisoft is so trash that one time the game will work other time it wont, just crack it dont buy it its not worth going through ubisoft launcher headache",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229513262",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "I bought Far Cry 4 through Steam expecting to play the game, but instead I was greeted with an \"Account Ownership Issue.\" This is my first time purchasing the game, and somehow Ubisoft's system thinks I don't own it. The game itself may be great, but Ubisoft's account and DRM system completely ruin the experience. Paying customers shouldn't have to spend hours proving they legally own a game they just purchased.\r\n\r\nWhat's even more frustrating is Ubisoft Support. Instead of investigating the issue properly, they repeatedly send generic troubleshooting steps, ask for the same logs multiple times, and avoid answering the actual question: which Ubisoft account is linked to my Steam purchase?\r\n\r\nThe support process feels unprofessional, slow, and disconnected. Every response looks like a template rather than someone reading the case. Customers are left doing all the investigative work while support keeps asking for more files without explaining why.\r\n\r\nI bought a game, not a technical support subscription. Until Ubisoft fixes both its account linking system and the quality of its customer support, I can't recommend buying this game through Steam.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229485777",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "Honestly not worth it, i bought the game and it does not connect to ubisoft connect and there is apparently nothing the help contacts nor steam can do. So i had to request a refund , do not buy in the summer sale at elast",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229460020",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "So I saw this game on sale and I was like great loved this game when I was a kid and it was a couple of bucks so sure then I downloaded the game and had to make an ubisoft account well that's kinda bull but what ever and you can't make an account anyways so it got refunded immediately don't buy it because you can't play it anyways",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229404191",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "I couldn't even launch the game because Ubisoft Connect isn't working properly—it says there's no connection to Steam even though everything is connected correctly. If you're getting the same error as I am, you have two options to fix it:\nThe first is to hope you get lucky and the game launches.\nThe second is to uninstall the game and everything related to it, and download it via torrent if you really want to play it.\nIt’s best not to buy any games from Ubisoft at all if they require a Uplay connection. Never buy them.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229391443",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "Before anyone buy the game please read this:\n\nbe ready to fix the ubisoft connect activation code, connectivity issues for hours.\nThe stupid launcher keeps throwing steam connectivity issue after hours of struggling.\nAll the best!!!\n\nWorst game experience for me ever!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229382324",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "no lo he jugado pero si se que esta chido. pero tremenda cagada de launcher de ubisoft llevo media hora tratandome de logearme y nada XD",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229357526",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "Was not able to play the game at all due to ubisoft connects keeps suspending me and giving errors whenever i try to login, this is the dumbest decision they ever made makin a seperated launcher. Please crack their games this is not worth to buy, it creates frustration.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229331876",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "Cannot play the game because of this ubisoft connect thing... Simple offline game let us play.... Waste of download and time",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229272297",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": " A few years ago, For Honor was given away on Steam. I also added it to my Steam account. However, I accidentally linked it to the wrong Uplay account. Consequently, I had to buy it twice and delete the wrong account.\n\nAnyways, fast forward to a few days ago. I decided to buy Far Cry 4 because it is one of the best Far Cry games, plus it was dirt cheap during the Steam sale. When I tried to open it, I kept having this issue: \"UBISOFT CONNECT\n\nStarting game\n\nThere was a problem authenticating the ownership of this product and the game cannot be started. Please contact Customer Support.\"\n\nNever had this issue with Far Cry 3 Blood Dragon. In fact, I can open it just fine and it shows up on my Ubisoft Connect Account. But Far Cry 4 doesn't for some reason and I believe that this is the crux of the question.\n\nAfter contacting their support, they straight up just told me that they could not find the account asssociated with the Far Cry 4 account (even though my correct Ubisoft Connect account is linked to my Steam account) and closed the case. That's it, not a single explanation, not injecting the game manually to my Ubisoft Connect account, not even a refund, none of that. I also kept getting errors whenever I tried to open a ticket or upload attachments to aid my case.\n\nSo yeah, ♥♥♥♥ Ubisoft and ♥♥♥♥ their ♥♥♥♥♥♥ launcher and licensing system.\n\nI'll give them this much credit. It is often said that, whenever someone reveals to you who they are, believe them. Between their execs saying that gamers should get used to the idea of not owning games, to them literally getting woke and going broke, to their use of triple or four DRMs in the form of Steam, Ubisoft, Denuvo and another one that I can't remember the name, I already had more than enough red flags to know that I shouldn't hand my money to Ubisoft, no matter how little.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229251988",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "Couldn’t even play the game because Ubisoft Connect has one of the most incompetent and unnecessarily overcomplicated login systems I’ve ever dealt with. No matter how many times I tried, my account got suspended instantly for no good reason.\n\nIt’s honestly insane how they managed to make logging into an offline/single-player game this frustrating. Turning something that should take 10 seconds into a complete nightmare is one of the dumbest decisions Ubisoft has ever made.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229245343",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "REMOVE UBISOFT CONNECT FROM THIS EARTH",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229234343",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "Can't even play it because of Ubisoft Connect launcher issues and no response from support </3 Very unfortunate because it's a great game I played through on PS4 but unfortunately will be refunding here unless I can a human response from Ubisoft support. Gotta love when you buy a game on Steam only for it to force you to open and play it through a third party launcher.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229221510",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "This is CRAZY.. Ubiosft is showing it cannot validate the ownership of this game after i bought it from steam. DON'T BUY UBISOFT GAMES, instead just subscribe to xbox cloud game service where u will be able to play these games anyway without the ubisoft connect bullsh*t.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229074752",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "I ignored the warning about Ubisoft login of some other comments, and GOD does it suck. I've been trying to play for an hour and haven't been able to even open the game. Login in into a new account shouldn't be so damn difficult.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229046732",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "Can someone help me I just bought the game but when i open it shows invalid cd key in ubisoft please help",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229013007",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "I haven't even played it yet because I can't log in to Ubisoft Connect because I forgot my password and Ubisoft insists that all the new passwords I try to create are invalid. These companies are the worst. Ubisoft is the worst of the worst. Scum of the earth.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228960551",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "i was so excited to play this game, then after i saw the ubi**** connect, i was totally disappointed, and i knew it was going to be a bad ending.... Why the hell would you ever need to log in an account on a SINGLE PLAYER GAME? like it doesn't make any sense...\n\nSo before doing all of that, i left far cry to download overnight, because of how bad my internet is, i woke up this morning so much hyped to play the game, launched it, the ubi**** connect appeared, i was like oh god this doesn't look it's going to end up well, and it is.\n\nafter i logged in, waited for the update and stuff, then it tells me that they can't verify the ownership of the product, i thought it was a technical bug, i relaunched the game again, same thing happened, and i was like \"wait they're not joking about it :sob:\" \n\nimmediate uninstall and refund request, ubi**** has always been here to disappoint me and several people...\n\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-b38728",
+              "claim": "Reviewers note that the game crashes or freezes during startup and gameplay on modern systems.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "232743822",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "at least far cry 4 gets in game unline far cry 3, but it still crashes constantly on modern systems",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230563779",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "it works for a while and freezes. unplayable",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230020950",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "Game won't run, keeps freezing for 10+ seconds every 3 seconds, unplayable.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229809851",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Whenever I try to play Far Cry 4, it changes resolutions and when I change it removes the audio and now i cant even play normally. I genuinely feel like Hellen Keller. (Update!) it has decided to shove an An*l Umbrella from the movie The Dictator, and is constantly crashing, my hole is in pain... I just wanted to play peak...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229305665",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-01",
+                  "review_text": "crashes when i try to run. tf you want me to do?",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-feeddf",
+              "claim": "Reviewers report controller support issues where Xbox controllers do not function properly without workarounds.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230572118",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": "As of mid-2026, playing with an Xbox controller is not possible w/o jumping through hoops. Enabling/disabling Steam input does not fix the issue. Enabling Steam input leads to multiple actions per button (pressing A to jump also opens the in-game camera, for example), and when Steam input is disabled, A scrolls one way while B scrolls another way (when they should be confirm and cancel buttons, respectively). \r\n\r\nDon't waste your time on this one unless you're a KB/M player, I guess.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228991201",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "Controller support not working for a game released on consoles. GG Ubisoft.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 50,
+        "cited_recommend": 1,
+        "divergence_p": 2.08e-06,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 615,
+      "pct_positive": 80.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers experience performance drops, unskippable cutscenes, and account verification errors.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-84ebf7",
+              "claim": "Reviewers report that cutscenes and dialogue cannot be skipped.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232336953",
+                  "hours_at_review": 13.2,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "The gameplay is quite good, but the story is nothing special and the cutscenes cannot be skipped...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232219444",
+                  "hours_at_review": 13.1,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "The game lacks important quality of life elements. Between unskippable long cutscenes to the unability to disable bob-heading (wich is quite strong in this game, so prepare for some headaches after a few hours of play).\r\nDefinitly not a game i'd force myself into 100%.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232050280",
+                  "hours_at_review": 3.3,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "SHUT UP AND LET ME PLAY THE DAMN GAME. unskippable dialogue is terrible.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-8965e1",
+              "claim": "Reviewers note that the game features unskippable long cutscenes and strong head-bobbing that can cause headaches.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232219444",
+                  "hours_at_review": 13.1,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "The game lacks important quality of life elements. Between unskippable long cutscenes to the unability to disable bob-heading (wich is quite strong in this game, so prepare for some headaches after a few hours of play).\r\nDefinitly not a game i'd force myself into 100%.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232336953",
+                  "hours_at_review": 13.2,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "The gameplay is quite good, but the story is nothing special and the cutscenes cannot be skipped...",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-9c5150",
+              "claim": "Reviewers experience performance issues on modern hardware, including low frame rates, stuttering, and crashing.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232704463",
+                  "hours_at_review": 7.8,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "The game is very good, having in my opinion the best villain of the Far Cry series. BUT it's horrible having to use Ubisoft Connect just to start the game — you need an internet connection to launch the game even though it's single-player.\n\nAnd finally, the performance - This game has a horrible performance with modern next-generation CPUs playing on ultra or medium, it only allows playing between 60 to 110 FPS, it being extremely rare to reach 100 FPS in most cases. There was already a situation in a mission in the arena where I went down to 40 FPS. The problem that even trying to play with the refresh rate changed to 60Hz (me having a 280Hz monitor) causes an insane input lag that becomes nauseating and unplayable. Needs an update to fix this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231655392",
+                  "hours_at_review": 6.2,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "extremley poor running. low fps on modern hardware, frequent crashing, stuttering etc. dont waste your money, i dont care how good the story is or whatever if i cant play it",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-ebcf22",
+              "claim": "Reviewers state that the game requires Ubisoft Connect and an internet connection to launch, even for single-player.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232704463",
+                  "hours_at_review": 7.8,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "The game is very good, having in my opinion the best villain of the Far Cry series. BUT it's horrible having to use Ubisoft Connect just to start the game — you need an internet connection to launch the game even though it's single-player.\n\nAnd finally, the performance - This game has a horrible performance with modern next-generation CPUs playing on ultra or medium, it only allows playing between 60 to 110 FPS, it being extremely rare to reach 100 FPS in most cases. There was already a situation in a mission in the arena where I went down to 40 FPS. The problem that even trying to play with the refresh rate changed to 60Hz (me having a 280Hz monitor) causes an insane input lag that becomes nauseating and unplayable. Needs an update to fix this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232755473",
+                  "hours_at_review": 15.1,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "bought this for the nostalgia, came out disappointed. Old Ubisoft games were great for their time. once u start replaying them, that nostalgic view of the game quickly disappears.\r\n\r\n- great story\r\n\r\n- enemies suck if ur trying to do stealth. How i would describe the ai is that all the enemies in a certain area are all connected to this hivemind ai cloud computer that goes crazy the moment it feels a disturbance or one enemy dies (doesn't matter whether detected or not, they can somehow sense it even when they're isolated).\r\n\r\n- stealth genuinely sucks, enemies see u from unhuman distances. The bow is somehow ass. and the enemy ai is dookie to deal with\r\n\r\n-THE ANIMALS ARE UR WORST ENEMY, they smell u and detect u behind walls and from great distances. they also ♥♥♥♥ up ur stealth.\r\n\r\n- ubisoft launcher which a lot of people don't like /doesn't work with them\r\n\r\ntoo far deep to not finish this game, 5/10. not worth playing\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ed7e07",
+              "claim": "Reviewers encounter issues with Ubisoft Connect failing to verify game ownership or asking for an activation key after previously working.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232725758",
+                  "hours_at_review": 11.4,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "Far Cry 4 suddenly says I don't own the game I PAID FOR\r\n\r\nI bought Far Cry 4 on Steam and put around 15 hours into it without any problems. I paid for the game, installed it through Steam, linked my Ubisoft account, and actually played it.\r\n\r\nNow, for some reason, Ubisoft Connect has decided that I don't own the game anymore.\r\n\r\nWhen I try to launch Far Cry 4, Ubisoft Connect asks me for an activation key / says it can't authenticate my ownership. The problem is that I bought the game on Steam, so I was never given some separate Ubisoft activation key to enter.\r\n\r\nThis is incredibly frustrating. I paid for this game and was able to play it for around 15 hours, and now the launcher is effectively telling me that my purchase doesn't exist.\r\n\r\nAnd apparently I'm not the only person having this problem. There are multiple reports from other Far Cry 4 players experiencing the exact same Steam/Ubisoft Connect ownership issue.\r\n\r\nI don't understand how a game I legitimately purchased through Steam can suddenly become \"unowned\" because Ubisoft Connect can't verify the license anymore. Steam clearly shows that I own the game.\r\n\r\nPlease fix the Steam ↔ Ubisoft Connect ownership/authentication issue instead of asking customers to purchase the game again or provide an activation key that they were never given.\r\n\r\nI paid for Far Cry 4. I should be able to launch Far Cry 4.\r\n\r\nUbisoft/Steam support, please actually investigate the license/entitlement associated with my Steam purchase and restore access to the game I already paid for. \r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232338343",
+                  "hours_at_review": 3.0,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "game not showing in ubisoft connect.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 8,
+        "cited_recommend": 1,
+        "divergence_p": 7.11e-05,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 440,
+      "pct_positive": 87.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Longer-term players enjoy the detailed environment and traversal tools despite audio bugs and hardware workarounds.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-89a8bd",
+              "claim": "Reviewers experience technical issues on modern PC configurations, requiring players to restrict CPU affinity to physical cores to prevent crashes and stutters.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "233023964",
+                  "hours_at_review": 21.6,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "Far Cry 4 – Still Worth Playing\n\nFirst of all, third-party launchers suck. 😭 Just let me launch the damn game from Steam.\n\nI played this game back in my teenage years, but this time I actually completed it. Let's just say my previous version had a few... problems. 😂 The official version still has some technical issues, but at least I can actually finish the game.\n\nBut the game itself? I actually really enjoyed it. The story is good, and I love the Indian/Himalayan-inspired setting. It gives the game a different feel compared to the other Far Cry games. The Shangri-La missions were probably my favorite part. They were so different from the normal campaign and honestly looked beautiful.\n\nI also really like that the campaign sometimes gives you the choice to kill or spare certain characters. But Ubisoft, why does the achievement just say “Decide ___’s fate”? 😭 Give us different achievements depending on what we choose! Something like RDR2 would have been so much better.\nAlso... this was probably the first game where I heard an NPC swearing at me in my own language. Getting verbally abused in Hindi by an NPC was an experience. 😂\n\nHonestly, I only really like Far Cry 3 and Far Cry 4 in this franchise. But I don't know why Ubisoft loves making the same grindy, copy-paste, repetitive missions in basically every Far Cry game. 😭\n\nAnd finally... this game is OLD. With newer hardware, I literally had to open Task Manager → Details → FarCry4.exe → Set Affinity → disable all processors → select specific cores just to get the damn game running.\nAnd apparently I have to do that every time I launch it. 💀\n\nStill, I had fun with it. The story, setting, and gameplay are good enough to make me come back.\n\n⭐ 8/10 – Still one of my favorite Far Cry games. The setting, story, and Shangri-La made this trip back to Kyrat worth it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232739232",
+                  "hours_at_review": 25.6,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "4/5\r\n\r\nthe gameplay is still good, but it's unplayable on modern PC configs... \r\nConstant stuttering, random crashed. The only way I could play this on Windows 11 is by restricting my CPU to physical cores only via Process Lasso.\r\nStill, the graphics rendering is kinda weird sometimes\r\n\r\nThere are way too many collectibles and secondary missions for the otherwise short campaign.\r\nI gave up finishing this game, it just feels like a hassle at this point, which is a shame, because it was on my bucket list, to play through this game at least once. \r\n\r\nI'd rather reccomend playing Far Cry 5, that's the best Far Cry game in the frenchise for sure.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-9689bd",
+              "claim": "Reviewers report audio bugs, including missing background music or game audio crashing completely during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232962424",
+                  "hours_at_review": 33.3,
+                  "voted_up": true,
+                  "date": "2026-08-16",
+                  "review_text": "i recommend this game warmly, this is my favourite game OAT, but there seems to be a glitch, idk if this happens for you guys, i can't hear background music in-game, i would like to, everything else works, i tried reinstalling the game, but nothing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232768560",
+                  "hours_at_review": 27.1,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "This game runs awful. Everything about it is bad. Combat... bad, steath... bad, overall story... bad, side missions... bad, collectables... bad. I can't name one good this about this satan creation. The game audio crashes multiple times while playing. Overall, the worst game ive even played on my pc.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232363247",
+                  "hours_at_review": 21.6,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "THE SERIES OF BUGS\r\nI don't recommend to buy this: audio bug, quit game bug, can't finish quest buggg,.........\r\nhow can this 8yrs old game can have so much that dumb sh!t bug like this??????",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-6f35c0",
+              "claim": "Reviewers describe the open world as visually impressive with a detailed Himalayan setting, complemented by a variety of traversal tools like the wingsuit and gyrocopter.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233122656",
+                  "hours_at_review": 62.4,
+                  "voted_up": true,
+                  "date": "2026-08-18",
+                  "review_text": "As my first entry into the franchise, Far Cry 4 made an great first impression with its stunning Himalayan setting, chaotic open-world sandbox, and a compelling narrative anchored by the antagonist. Traversing the map with wingsuit and liberating outposts offers great immersion and tactical freedom. However, this is occasionally undercut by repetitive side activities and hundreds of time-wasting collectibles. Overall, it is a fantastic gateway into the series if you just focus on the emergent open-world combat and skip the map bloat.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232559231",
+                  "hours_at_review": 79.9,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "This is my first Far Cry game and I really enjoyed it after 80 hours of playing. 🎮\n\nThe story was better than I expected. You play as Ajay Ghale, who comes to Kyrat for a personal reason, but things quickly become much bigger. I really liked Pagan Min as a character. He is one of the most interesting parts of the game for me. I also liked the different characters and the choices you have during the story. I won't talk about the ending because I don't want to spoil it, but there were some moments that I will remember. 👑\n\nKyrat is probably my favorite part of the game. 🏔️ The map is huge and there is always something to do. You can explore, hunt, capture outposts, find new weapons or just drive around the map. The mountains, forests and snowy areas look beautiful. Going to the highest snowy areas and flying around with the glider was really fun. 🪂 I also enjoyed flying the helicopter and looking at Kyrat from above. 🚁\n\nThe combat is really fun too. 🔫 I especially liked stealth. Using the bow and knives to silently take out enemies was very satisfying. 🏹 But you can also use guns, grenades and grenade launchers if you want to play more aggressively. 💥 I really like that the game gives you freedom to choose how you want to approach each situation.\n\nThere are also a lot of weapons and you can customize them with different attachments. The weapon system reminded me a little of PUBG and Battlefield, which I liked. There are enough different weapons to make the gameplay feel fresh. 🔫\n\nFor a game from 2014, I think the graphics still look really good. 🎨 The mountains, snow, forests and sunsets are beautiful. The environment is probably one of the main reasons I enjoyed exploring the map so much.\n\nThe soundtrack is also really good. 🎵 It fits the world and the atmosphere very well. There is one song that especially stayed with me, The River. The moment when I heard it near the end of the game was really memorable. I won't say more because I don't want to spoil anything, but t…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "232447872",
+                  "hours_at_review": 42.1,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "Farcry 4 improves upon visuals and setting. Accesibility of areas are also improved via wing suit and mini heli vehicle. Sometimes the visuals are breathtaking. Rest is very good but not exceptional. Big brother of Far Cry 3 . For me, story felt like a side quest. You can enjoy your time here nonetheless.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 8,
+        "cited_recommend": 5,
+        "divergence_p": 0.0647,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 25,
+      "pct_positive": 88.0,
+      "muted": true,
+      "n_note": "n=15 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1211,
+    "steam_total_reviews": 26785,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
