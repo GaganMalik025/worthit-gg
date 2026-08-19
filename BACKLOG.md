@@ -62,6 +62,37 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-20 | **The digit-in-prose guard is teaching the model to spell numbers
+out, and one of those spellings shipped** | build, the Insurgency retry-cache fix
+| Insurgency's published verdict carries
+`not_for_you_if: "you run Windows eleven with startup crashes"`. Invariant 13's
+digit rule rejected "Windows 11" on the frozen attempt 1 (`digit_in_prose:
+not_for_you_if[0]`); given a genuinely fresh attempt, the model kept the fact and
+spelled the numeral out instead. **The guard did its job and the output is
+worse** — no reader writes "Windows eleven", and the failure is invisible to the
+guard by construction, since the whole check is for digits. Not a regression
+introduced by the cache fix: the fix is only what made a fresh attempt possible,
+and the same pressure existed on every title whose real story involves a version
+number. **Why it is worth recording rather than shrugging at:** the guard exists
+to stop a *count* being stated as prevalence (invariant 11's territory), and an
+OS version is not a count. This is the same false-positive class the 08-18 entry
+identified in "persistent", one step further along — there the guard blocked a
+true statement, here it deformed one into shipping. **Scope measured rather than
+guessed: exactly 1 occurrence across all 432 published verdicts.** Swept every
+prose field that renders — tagline, `for_you_if`, `not_for_you_if` and every
+cohort summary — for spelled-out numerals (`eleven`, `ten`, `twelve`, `sixty`,
+`ninety`, `seven`, `eight`, `nine`); this is the only hit. So it is a real defect
+with a demonstrably tiny blast radius today, which is an argument for deciding it
+calmly, not for treating it as theoretical: the pressure is structural and the
+catalog keeps growing. **Not fixed
+because the honest options differ in kind:** allow digits when adjacent to a
+known product/OS token (narrow, needs a list nobody maintains), move the check to
+reject only digits in *quantity* contexts (right in principle, and a rewrite of a
+guard that currently has one unambiguous rule), or leave the guard and add
+"spell numerals out" to the banned-phrasing list so the model must drop the
+detail rather than disguise it. The last is smallest and loses information on
+purpose, which is a product call. One observed instance so far.
+
 2026-08-18 | **Insurgency's verdict stage is deadlocked by its own response
 cache — three rejected answers replayed nightly, forever, at zero cost** | build,
 third consecutive failure of `222880` | Diagnosed at **zero Gemini spend**, by
@@ -129,6 +160,59 @@ resumability and denying it to the retries — closest to the intent of the
 buries the question the way the Hotline Miami entry warned against. **(c) looks
 right and (a) is what tonight would want**, but both spend quota to verify, and
 neither should ride along with a batch commit. Related: [[verify-the-verifier]].
+
+> **2026-08-20, RESOLVED — option (c) taken, and Insurgency published on the
+> first real run in four days.** The retry loop no longer reads the cache;
+> attempt 0 still does. One line in `synthesize.py`:
+>
+>     -        if cpath.exists() and not args.force:
+>     +        if cpath.exists() and not args.force and attempt == 0:
+>
+> Writes are unchanged on every attempt, so standalone diagnostics — the way
+> this entry was written in the first place — still work. The comment above the
+> line now states the distinction it got wrong: keying on the attempt number
+> stopped a retry replaying a *different* attempt's answer within one run, and
+> did nothing about a later run where every prompt is byte-identical and each
+> attempt replays *its own* prior rejection.
+>
+> **The real run, `evals/insurgency-verdict-2026-08-20.txt`, 2 calls:**
+>
+>     [cached] attempt 0
+>     attempt 0 rejected:  ! prevalence:tagline:persistent
+>     attempt 1 rejected:  ! prevalence:summary[veteran]:persistent
+>     -> site/public/verdicts/222880.json  [Wait] Tactical shooter depth marred
+>        by startup crashes and anti-cheat hurdles.
+>
+> Attempt 0 replayed the 2026-08-16 cached rejection at 0 calls, exactly as
+> designed — the cache still pays for itself. Attempt 1 was the **first real
+> synthesis request this title has sent since 2026-08-16** and failed on a
+> *different* cohort than any cached attempt (`summary[veteran]`, where the
+> frozen set had `summary[mid]`), which is itself the proof the loop is no
+> longer replaying. Attempt 2 passed. QR-4 on the new verdict: **53 citations,
+> PASS, rc=0**. Ledger 390 → 392, so the whole fix cost **2 calls**.
+>
+> **Mutation-proved 5/5** (`evals/mutate_retry_cache.py`, logs
+> `evals/mutation-logs/m01..m03`, alongside the 24 kept from the earlier
+> campaigns): control green, the pre-fix line puts
+> the suite red, and the failure NAMES the deadlock rather than merely failing —
+> `attempt 1 is NOT served from cache` and `second run still sends a request for
+> each retry`. `synthesize.py` restored byte-identical (sha `8fa530dafbd3` both
+> sides) and green again. The new test drives the real loop twice over committed
+> seed-game fixtures, so run 2 *is* the next night: under the old line it sends 0
+> requests, which is the deadlock itself.
+>
+> **What this does NOT fix, stated so nobody reads it as more than it is.**
+> `stage_failed` is still not TERMINAL, so the third-mechanism finding above —
+> a title that can never resolve retrying nightly at zero cost — is untouched,
+> and the 2026-08-19 zero-cohort entry is a live instance of it. The two guards
+> also still fire on this title's subject matter every attempt; the fix buys
+> fresh attempts, not agreement.
+>
+> **One thing surfaced by the fresh output, worth its own note:** the published
+> `not_for_you_if` reads **"you run Windows eleven with startup crashes"**. The
+> model spelled the OS version out to get past the digit-in-prose guard
+> (invariant 13). It is guard-compliant and it is not prose anyone would write.
+> Recorded below rather than fixed here.
 
 2026-08-17 | **`n_note` is a post-filter count wearing a user-facing label, one
 wire-up away from breaking invariant 13** | build, confirming Hotline Miami's
