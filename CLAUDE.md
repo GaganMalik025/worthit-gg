@@ -147,6 +147,61 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
 - API key lives in `.env` (gitignored). If any code would print, log, or
   commit it, stop and fix.
 
+## Batch-night operating procedure
+
+**This section does not license starting a batch.** The trigger to run
+`pipeline/run_batch.py` always comes from the developer, explicitly, in that
+session. Nothing here is standing permission — not a clean tree, not a full
+400-call ledger, not a stale `LIVE_QUOTA`. Orientation and the quota check are
+free; spending quota is not.
+
+Standing rules, every session:
+
+- **Real measurement before any threshold or rule change.** No "probably".
+- **Break-then-confirm on every new test or guard:** prove it FAILS on a
+  deliberate mutation before trusting that it passes. A green suite is not
+  evidence the suite works.
+- **Mutation drivers, raw logs and cited output live in the repo at a real
+  path** — `evals/` or `pipeline/`, never a `scratchpad/...` path. A citation
+  that cannot be opened is not verifiable. Citing a QR-4 run as evidence means
+  committing the raw output (`evals/qr4-<date>.txt`), not a restatement of it.
+- **Live verification on production before calling anything done.** Passing
+  tests alone do not count as shipped.
+- **Never commit or push without explicit go-ahead.** Report first, every time.
+- **New findings mid-task go to BACKLOG.md's "Captured during build / launch"** —
+  record, don't fix, unless told otherwise. If a fix lands as a side effect of
+  unrelated work, update the entry it closes in the same change: a stale "not
+  yet fixed" entry misleads exactly as much as a wrong one (see the
+  `select_publishable.py` record correction, 2026-08-17).
+- **Report only commands actually run.** Never reconstruct, summarise or
+  predict output that was not produced — see the 2026-08-16 INCIDENT entry in
+  `evals/RESULTS.md`, a fabricated QR-4 PASS caught only because the developer
+  cross-checked file timestamps against the disk. Assume every number, path and
+  timestamp is independently re-derived against the filesystem, every time.
+
+**Post-batch sequence — reference, not an instruction to run it unprompted.**
+Each step waits for the developer.
+
+1. `run_batch.py` completes → report titles attempted, published, gate-drops
+   with reasons, stage failures, calls spent, real cost/title, new published
+   catalog total, Buy/Wait/Skip mix. A run that dies with no
+   summary/interrupt/budget-stop line in the log is reconstructed from what the
+   ledger and `batch_state.json` arithmetic can prove, with the gap stated
+   plainly and the cause asked about — never guessed.
+2. On go-ahead: `pipeline/qr4_gate.py --all` (invariant 8 — any failure blocks).
+3. `pipeline/build_search_index.py` — confirm every verdict appid is present by
+   **set membership, 0 missing**, not a row-count diff.
+4. `evals/make_audit_sample.py --date <date> --seed <YYYYMMDD>` — a new seed per
+   round, never a previous night's.
+5. Developer reads the audit directly. Wait for it.
+6. Commit + `evals/RESULTS.md` entry + push, on explicit go-ahead.
+7. Verify CI/Vercel, then fetch a new verdict from production and confirm it by
+   its real `generated_at`, not by name.
+
+`evals/positivity_by_night.py` carries a hardcoded `NIGHTS` list — extend it
+with tonight's date before running, if the verdict mix looks worth checking
+against the trend.
+
 ## Non-goals — refuse and add to BACKLOG.md instead
 
 No accounts/login/history. No monetization. No non-Steam platforms. No price
@@ -189,8 +244,11 @@ non-goal — they are the reason it is permitted, not decoration.
   code.
 - One commit per completed sub-phase (see `docs/BUILD_PLAN.md` numbering).
   Commit messages reference the sub-phase, e.g. `1.2: content filter layer`.
-- New session per phase; re-read this file, `docs/PRD.md`, and
-  `docs/BUILD_PLAN.md` at session start.
+- New session per phase; at session start re-read this file, `docs/PRD.md`,
+  `docs/BUILD_PLAN.md`, `BACKLOG.md` in full (including every `>` follow-up
+  block — a follow-up often reverses or narrows the entry above it) and
+  `evals/RESULTS.md`'s most recent entries, then `git log --oneline -20`.
+  Confirm the working tree is clean and main matches origin/main before acting.
 - Do NOT write the eval rubric wording or the post-launch decision doc — the
   developer authors those personally (they are interview material). Build the
   harness and tooling around them.
