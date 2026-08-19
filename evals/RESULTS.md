@@ -1169,3 +1169,98 @@ splits, nothing inappropriate found.
 > rests on it. The conclusion rests on the extremes, where n is adequate and
 > agreement is exact, which is the same basis the 08-16 entry used and the same
 > limit it recorded.
+
+---
+
+## 2026-08-19 — 4.1 catalog batch, 41 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **2,215 citations across 41 verdicts, 0 failures** (and **22,239 across all 431, PASS**, `rc=0`) |
+| Manual audit | developer read `evals/audit-4.4-2026-08-19.md` and confirmed it passed |
+| Sample | seed 20260819, stratified 5 per playtime cohort — 10 verdicts, 20 citations |
+| Scope | 41 verdicts, 2,215 citations |
+| Raw output | `evals/qr4-2026-08-19.txt` (all 431) and `evals/qr4-2026-08-19-tonight.txt` (41) — both in-repo and openable |
+
+The two figures reconcile against last night rather than being restated from it:
+22,239 − 20,024 = **2,215**, exactly tonight's contribution. Both runs recorded
+`rc=0`.
+
+**The run finished cleanly** — 149 titles attempted in 34.9 minutes, ending
+through `run_batch.main()`'s budget path with a real summary block and exit 0
+(`evals/batch-2026-08-19.txt`). Of the 149, **43 were actually worked**: 41
+published and 2 stage failures. The remaining 106 were budget-stopped at 0 calls
+once 390 of 400 were spent, which is correct — a title needs 13.
+
+**Cost: 390 calls over 41 published titles = 9.51 per title**, against 9.02 on
+08-18 and 9.30 on 08-17. All synthesis ran on flash-lite; the 20/day flash tier
+was untouched (`flash_used` 0), as was the 100-call live reserve.
+
+**The accounting reconciles three ways**: ledger `batch_used` **390** = pacer
+`today` **390** = the sum of per-title `model_calls` in `batch_state.json`
+**390**. Both failures spent nothing, so the published-title sum is also the
+night's total spend.
+
+**Two stage failures, neither a gate rejection.**
+
+**Insurgency (`222880`), verdict stage, 0 calls, 1.5s — fifth consecutive
+night**, and still the frozen cache diagnosed on 08-18 rather than anything new.
+Confirmed without spending: the three cached synthesis responses under
+`data/cache/extract/222880/` are still stamped **16 Aug 14:53** and untouched, so
+tonight sent no request either. The batch log prints only the one-line `[FAIL]`,
+so the three rejection strings are not re-derived here — the 08-18 standalone
+capture remains that record. `stage_failed` is not TERMINAL, so it retries
+nightly at zero cost until the BACKLOG question is answered.
+
+**A Way Out (`1222700`), filter stage, 0 calls, 39.6s — new tonight, and the
+Hotline Miami shape exactly.** Reproduced standalone at zero Gemini cost, ledger
+unchanged at 390 either side (`evals/awayout-filter-2026-08-19.txt`):
+
+    veteran                 2       0      0     0        2       0    100%
+    invariant 12: mid has n=12 (<20) - renders muted, carries no claims.
+    FAIL: veteran has 0 surviving reviews - the segment page breaks.
+
+Two veteran reviews in the whole 400-review sweep, both dropped as
+low-information, so the cohort has zero survivors and the title fails outright.
+**Not added to `zero_cohort_exceptions.txt`** — the 2026-08-16 resolution note
+says growth past a handful of entries is the signal the general question needs
+answering rather than another exception, and this is the second title to hit it.
+Left for the owner's call; it retries nightly at 0 calls until then.
+
+**Verdict mix — 26 Buy, 13 Wait, 2 Skip**, counted from the 41 published files:
+
+| | Buy | Wait | Skip | Buy % |
+|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% |
+| 2026-08-14 (42) | 26 | 15 | 1 | 62% |
+| 2026-08-16 (43) | 26 | 16 | 1 | 60% |
+| 2026-08-17 (40) | 26 | 14 | 0 | 65% |
+| 2026-08-18 (44) | 18 | 20 | 6 | 41% |
+| **2026-08-19 (41)** | **26** | **13** | **2** | **63%** |
+
+63% rebounds off 08-18's 41% and sits with the 08-13/14/16/17 cluster. Under the
+selection explanation the 08-18 follow-up established, that is the expected
+shape — but **this entry does not claim it yet**: the matched-band test has not
+been run for tonight at the time of writing, and a plausible-looking number is
+not the same as a confirmed one. `evals/positivity_by_night.py`'s `NIGHTS` list
+needs 2026-08-19 added before it can see this night. Result recorded as a
+follow-up below rather than asserted here.
+
+Search index rebuilt: 7,304 core + 23,079 tail rows,
+`generated_at 2026-08-19T17:44:12Z`, **all 431 verdict appids confirmed present
+by set membership, 0 missing** (verdict set minus index set is empty — not a
+row-count diff). Row counts are unchanged from 08-18 for the established reason:
+690 of 690 pages served from cache, no network, and tonight's titles were already
+ranked in them. All 41 carry an `art` block; 184 of 431 sit on the content-hash
+art path.
+
+Audit sample checked with `evals/check_sample_overlap.py` across all seven batch
+nights: **distinct within the round and independent across every prior round**
+(rc=0).
+
+Catalog after this pass: **431 titles**. **108 pending** — 106 carrying tonight's
+`batch_budget_exhausted` plus the two non-terminal `stage_failed` entries, both
+of which retry nightly at zero cost.
