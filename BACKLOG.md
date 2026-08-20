@@ -62,6 +62,44 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-20 | **Two one-off audit rounds read fewer distinct reviews than the 20
+slots they present, and nothing had ever checked them** | build, running
+`check_sample_overlap.py` over every audit file rather than only the batch
+nights | `evals/audit-4.4-hades-hollowknight.md` presents 20 citation slots and
+audits **18** distinct reviews (`229019339` and `229669874` each appear twice);
+`evals/audit-4.4-live.md` presents 20 and audits **19** (`230859797` twice). The
+two rounds also **share 2 reviews** with each other. Counted directly from the
+files, not restated from the checker's output.
+**Not tonight's rounds, and not any batch night.** Scoped to the batch-night
+files the record actually claims — `evals/audit-4.4-2026-*.md`, all eight
+including tonight — the checker exits **0**: distinct within each round,
+independent across every pair. So the "20/20 distinct and independent" claims in
+RESULTS.md are sound as written. These two files are one-off audits from
+2026-08-07 (the live-generated pair) and 2026-08-10 (Hades and Hollow Knight),
+unmodified since, and they surfaced only because tonight's invocation globbed
+`audit-4.4-*.md` instead of the dated subset.
+**Why it is worth recording rather than shrugging at:** QR-4 is the launch gate,
+and a manual audit is the half of it a human performs. A round that says "20
+citations read" and contains 18 distinct ones overstates its own coverage by
+10% — small in size, but the number is the entire evidentiary claim, and the
+same generator produced every batch night's sample. The batch rounds being clean
+today is a fact about their draws, not proof the generator cannot repeat: what
+distinguishes them is unexamined, and a with-replacement draw that has not yet
+collided looks identical to a without-replacement one. The 08-10 round is also
+the one cited in RESULTS.md as the first audit of Hades and Hollow Knight.
+**Not fixed**, and the honest options differ in kind: re-audit the two rounds
+against fresh draws (costs developer reading time, changes a historical record
+that is otherwise accurate about what was read), correct the two files' headline
+counts to 18 and 19 in place (cheapest, but edits an audit record after the
+fact), add the de-duplication guarantee to `make_audit_sample.py` and leave
+history alone (right for the future, silent about the past), or wire
+`check_sample_overlap.py` over the full glob into the post-batch sequence so a
+repeat cannot go unnoticed again. The last two are complementary and are what a
+fix should probably be; none of it belongs in a batch commit. Whether
+`make_audit_sample.py` samples with replacement was NOT determined here — that
+is the question to open with, and it is a code read rather than a guess.
+Related: [[verify-the-verifier]].
+
 2026-08-20 | **`run_batch.py`'s exit code is never printed in its own output, so
 two RESULTS.md entries recorded an exit status that was inferred from a clean
 summary block rather than observed** | build, 2026-08-20 batch night | Tonight's

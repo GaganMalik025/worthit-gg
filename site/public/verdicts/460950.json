@@ -1,0 +1,700 @@
+{
+  "appid": "460950",
+  "game_name": "Katana ZERO",
+  "generated_at": "2026-08-20T11:52:53Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/460950/header.jpg?t=1761066027",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/460950/capsule_231x87.jpg?t=1761066027",
+    "grid": "https://cdn2.steamgriddb.com/grid/591a7d0dd57009b7cbbeb473b12fa992.jpg"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 7,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "Fast-paced action with striking style, though deaths come instantly.",
+    "for_you_if": [
+      "you enjoy precise action platforming",
+      "you want tight controls and stylish combat",
+      "you appreciate branching dialogue systems"
+    ],
+    "not_for_you_if": [
+      "you dislike instant death mechanics",
+      "you want a resolved story ending",
+      "you grow frustrated by repeating difficult stages"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 44,
+      "pct_positive": 63.6,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 1014,
+      "pct_positive": 97.2,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 135,
+      "pct_positive": 99.3,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 8,
+      "pct_positive": 100.0,
+      "muted": true
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Player satisfaction rises sharply as they progress past the initial trial-and-error difficulty spikes.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 63.6,
+            "pool_n": 44
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 97.2,
+            "pool_n": 1014
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 99.3,
+            "pool_n": 135
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 63.6,
+        "low_pool_n": 44,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 99.3,
+        "high_pool_n": 135,
+        "gap_pts": 35.7
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 44,
+      "pct_positive": 63.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players grapple with punishing repetition and trial-and-error design alongside praise for the narrative and dialogue choices.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-9be387",
+              "claim": "Reviewers describe the gameplay as heavily reliant on trial and error, requiring players to restart entire levels after making a mistake.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232565162",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "Poor controls when reaction time so important. Game artificially long due to restarting entire levels after a tiny error. Not a fun game. Very trial and error.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220846192",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-16",
+                  "review_text": "Did not enjoy the gameplay, played a lot of punishing games through the years but this was just unnecessarily stressful, couldn't keep playing after a few tries, the whole \"bring you back to the beginning of each stage\" is just not my thing and ends up being tedious, also relying so much on the slow down mechanic just breaks my rhythm playing, was just coming off of playing nine sols and  bo: path of the teal lotus, and loved those games,  so i wanted to keep on the metroid-vania genre, but this one just wasn't for me, I'm too old to have to invest so much time in just \"getting good\" when there's so many other options. Music, graphics and story (from what I've read), are great, the delivery, not for me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "216988305",
+                  "hours_at_review": 1.4,
+                  "voted_up": true,
+                  "date": "2026-01-28",
+                  "review_text": "Sure, the gameplay is pretty decent, pretty similar to a 2D Platformer take on the Hotline Miami formula--you kill in 1 hit and die in 1 hit (most of the time). It's up to your reaction speed, planning, and repeated attempts to nail down a strategy that will allow you to succeed at a level.\n\nSomething I did not expect out of this game was the incredible presentation on the story--I'd honestly rank that aspect as better and more interesting than the combat. The way the dialogue choice system works is honestly really interesting, you can choose to interrupt characters in the middle of them talking, and your options change the further into their dialogue they get before you speak. Sometimes, options that might seem to be better disappear if you wait too long, so it really incentivizes you to be decisive. This system compliments the games narrative really nicely, but I don't want to talk about that too much since it very quickly gets into spoiler territory. \n\nDefinitely give this game a go if you enjoy fast paced gameplay, and subversive and interactive narrative experiences.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-524456",
+              "claim": "Reviewers describe the game as returning the player to the beginning of a stage or level after making an error.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232565162",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "Poor controls when reaction time so important. Game artificially long due to restarting entire levels after a tiny error. Not a fun game. Very trial and error.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220846192",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-16",
+                  "review_text": "Did not enjoy the gameplay, played a lot of punishing games through the years but this was just unnecessarily stressful, couldn't keep playing after a few tries, the whole \"bring you back to the beginning of each stage\" is just not my thing and ends up being tedious, also relying so much on the slow down mechanic just breaks my rhythm playing, was just coming off of playing nine sols and  bo: path of the teal lotus, and loved those games,  so i wanted to keep on the metroid-vania genre, but this one just wasn't for me, I'm too old to have to invest so much time in just \"getting good\" when there's so many other options. Music, graphics and story (from what I've read), are great, the delivery, not for me.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-8e2354",
+              "claim": "Reviewers report that the game requires trial and error gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232565162",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "Poor controls when reaction time so important. Game artificially long due to restarting entire levels after a tiny error. Not a fun game. Very trial and error.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "208364169",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2025-11-04",
+                  "review_text": "I thought I would enjoy this game because the trial and error gameplay and pixel art reminded me of Hotline Miami. The first few levels were enjoyable enough but it soon becomes monotonous. I never felt like the controls are as tight as they should be for a game that needs perfect timing. I tried both keyboard/mouse and controller. The story is bad. There's no way of skipping it. It feels like it's from a self-indulgent creative writing student.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-21ef2d",
+              "claim": "Reviewers report that the game features a dialogue choice system allowing players to interrupt characters, with choices changing depending on when the player speaks.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230054722",
+                  "hours_at_review": 1.6,
+                  "voted_up": true,
+                  "date": "2026-07-09",
+                  "review_text": "Top Tier game with neat choices",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "216988305",
+                  "hours_at_review": 1.4,
+                  "voted_up": true,
+                  "date": "2026-01-28",
+                  "review_text": "Sure, the gameplay is pretty decent, pretty similar to a 2D Platformer take on the Hotline Miami formula--you kill in 1 hit and die in 1 hit (most of the time). It's up to your reaction speed, planning, and repeated attempts to nail down a strategy that will allow you to succeed at a level.\n\nSomething I did not expect out of this game was the incredible presentation on the story--I'd honestly rank that aspect as better and more interesting than the combat. The way the dialogue choice system works is honestly really interesting, you can choose to interrupt characters in the middle of them talking, and your options change the further into their dialogue they get before you speak. Sometimes, options that might seem to be better disappear if you wait too long, so it really incentivizes you to be decisive. This system compliments the games narrative really nicely, but I don't want to talk about that too much since it very quickly gets into spoiler territory. \n\nDefinitely give this game a go if you enjoy fast paced gameplay, and subversive and interactive narrative experiences.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-03546f",
+              "claim": "Reviewers praise the game's story, art style, and level design.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230486304",
+                  "hours_at_review": 1.0,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "10/10 like how the levels are designed. the replay. the art. the story. the combat",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220846192",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-16",
+                  "review_text": "Did not enjoy the gameplay, played a lot of punishing games through the years but this was just unnecessarily stressful, couldn't keep playing after a few tries, the whole \"bring you back to the beginning of each stage\" is just not my thing and ends up being tedious, also relying so much on the slow down mechanic just breaks my rhythm playing, was just coming off of playing nine sols and  bo: path of the teal lotus, and loved those games,  so i wanted to keep on the metroid-vania genre, but this one just wasn't for me, I'm too old to have to invest so much time in just \"getting good\" when there's so many other options. Music, graphics and story (from what I've read), are great, the delivery, not for me.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 3,
+        "divergence_p": 0.381,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 1014,
+      "pct_positive": 97.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "As the experience opens up, players face brutal one-hit-kill mechanics and an unresolved narrative cliffhanger.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-99b249",
+              "claim": "Reviewers note that the game ends on an unresolved cliffhanger with an incomplete story and missing updates.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "233207170",
+                  "hours_at_review": 4.0,
+                  "voted_up": true,
+                  "date": "2026-08-19",
+                  "review_text": "What we have so far? 10/10, easily.\n\nThe action, art, music, and overall style are just breathtaking. The game is fast paced, and just super well done. However:\nThe story is kind of hard to judge, this game ends on a cliffhanger, and the story right now has a lot of mysteries. So, it's incomplete so far. There's more planned content, but because this game is made by a small team, it likely won't be out for a bit. Just keep that in mind.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233081784",
+                  "hours_at_review": 4.6,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "Short, fun, and really hard at times- Katana Zero is a fun arcade like action game that I'm glad I took a chance on. Its narrative is also really good too. Luckily, there's going to be more of this game when its free DLC \"eventually\" comes out....\r\n\r\n\r\n\r\nany day now.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232706321",
+                  "hours_at_review": 5.4,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "Its pretty challenging so if you aren't down to die and die again, try something else. \n\nThe story is actually pretty interesting and i was captivated with what happens next. Unfortunately, the game ends on a cliffhanger and the game released in 2019 with no story updates. So keep that in mind.\n\nGameplay is very fun. Quick and snappy combat with a very punishing one shot one kill system that applies to both enemy and your character.\n\nA great game to pick up if you are looking for a fast paced challenge.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232517898",
+                  "hours_at_review": 5.0,
+                  "voted_up": true,
+                  "date": "2026-08-10",
+                  "review_text": "This is a fun, bite-sized experience. Great on the Steam Deck, too. \r\n\r\nIt wears its inspiration of HOTLINE MIAMI on its sleeves: you're going to die, a lot, but you'll learn something in each death. Reloads are quick, so there's not much of a sting. \r\n\r\nThe aesthetics are great (like a 90's anime, almost), and the writing is particularly sharp. If I have a knock on it story-wise, it's that [spoiler] it's not a complete story. The ending sets up a sequel, and while I don't mind that necessarily...4 hours IS pretty short for a sequel hook. YMMV, on that though. [/spoiler] \r\n\r\nDefinitely worth a buy. 8.5/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232383288",
+                  "hours_at_review": 5.6,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "I genuinely cant believe it was only 5 hours, peak game and the story was suprisingly good, I thought it was going to be bad but it genuinely shocked me how the plot unfolded. A bit sad it ended on a cliff hanger though",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228869274",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-06-26",
+                  "review_text": "The dev really put a door in the game that says \"Locked... I should come back in a few months.\", announced a free dlc to finish the incomplete story, never released it. Door still says \"months\". 7 years on and the dev cant be arsed to change one word in the code from months to years. \n\nThis game is like a really great action movie with a really great idea for a plot... which then fumbles it by trying to be more than it is and ultimately just leaves you feeling let down, too many unanswered questions and too much intriuge established and squandered. I regret that I cannot recommend this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228744336",
+                  "hours_at_review": 7.8,
+                  "voted_up": true,
+                  "date": "2026-06-24",
+                  "review_text": "pretty nice short game, a good story, pretty badass effects, i really like the glitches, achievements arent that terrible to get (tho i dont think ill get the last 2) unfortunately seems to end in a ''to be continued'' cliffhanger and its been 7 years lol, who knows maybe we get a sequel one day, gameplay is ok, the story is the main deal imo",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-84804e",
+              "claim": "Reviewers describe the gameplay as fast-paced and challenging, featuring a one-hit-kill mechanic that applies to both the player and enemies.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232706321",
+                  "hours_at_review": 5.4,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "Its pretty challenging so if you aren't down to die and die again, try something else. \n\nThe story is actually pretty interesting and i was captivated with what happens next. Unfortunately, the game ends on a cliffhanger and the game released in 2019 with no story updates. So keep that in mind.\n\nGameplay is very fun. Quick and snappy combat with a very punishing one shot one kill system that applies to both enemy and your character.\n\nA great game to pick up if you are looking for a fast paced challenge.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231198518",
+                  "hours_at_review": 8.2,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "Katana Zero feels like Hotline Miami but with a sword instead multiple weapons (and no gun for the player to use). The heart of the game is trial and error; you are meant to die over and over again and try new things. It's fun, but the constant repetition means you don't get a nice flow of carnage going. Beautiful pixel art, film noir vibes, decent music and a promising story that leaves multiple threads open- pretty good game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230138236",
+                  "hours_at_review": 5.2,
+                  "voted_up": true,
+                  "date": "2026-07-10",
+                  "review_text": "Absolutely awesome. The gameplay is very fun, and the plot is very very intriguing, especially in the beginning. The game itself is not as hard as I expected, but it offers a challenge even for professionals in such genres. Every choice you make affects the story, even if just by a little, which is very nice, and provides good immersion. \r\n\r\nIf you seek balanced difficulty, unique fast-paced combat and a rich story with nice graphics, this is the game to take look at.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 9,
+        "cited_recommend": 8,
+        "divergence_p": 0.226,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 135,
+      "pct_positive": 99.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players master fluid movement and time-bending mechanics while noting the brief campaign length and cliffhanger ending.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-0dd687",
+              "claim": "Reviewers note that the game's story ends on an unresolved cliffhanger, leaving players awaiting a promised downloadable content (DLC) expansion.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231781040",
+                  "hours_at_review": 31.5,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "GOAT, best game ever, 100/10 peak music, peak gameplay, peak visuals, great story, but where's dlc, i can't completely tell how good your story if you just never release it fully. Also try SANABI btw.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227784126",
+                  "hours_at_review": 20.3,
+                  "voted_up": true,
+                  "date": "2026-06-12",
+                  "review_text": "Smooth and fun gameplay. Memorable art style. Short, but good for replays. Runs on my potato laptop. Choices in the game are consequential, but they affect only minor occurrences but not the overall fate of the main characters. The plot and and the dialogue intertwine to create a believable and fascinating Cyberpunk world, but don't get your hopes high for the ending because it is a cliffhanger of which the completion depends on a DLC that people have been waiting for years.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227759418",
+                  "hours_at_review": 50.0,
+                  "voted_up": true,
+                  "date": "2026-06-12",
+                  "review_text": "A common comparison you'll hear is that Katana Zero is like if Hotline Miami was 2D, and it's definitely not an inaccurate one. It's just as difficult, but addicting, with a similarly dark and memorable story. It also similarly has a very unique artstyle to match one of the best soundtracks any indie game's ever had. All in all, it is an amazing game that is no question worth the fifteen dollars it's priced, despite being pretty short (about 4 hours, though granted, 100%ing takes a lot more time and is definitely worth doing for both personal achievement and small bonuses).\n\nHowever, do know that going into it you will be playing what is effectively an unfinished game. It ends on an awful cliffhanger that's supposed to lead into a dlc fans have been waiting on for 7 years at the time of writing, a wait longer than the original game's development time, and has (also at the time of writing) no indication of being done soon. I think that it's worth playing through despite this, but any players should know that coming into the game that there's no guarantee it'll ever actually be finished.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223829586",
+                  "hours_at_review": 30.0,
+                  "voted_up": true,
+                  "date": "2026-04-22",
+                  "review_text": "[h1]Masterpiece[/h1]\nKatana ZERO has the best synergy between gameplay features and story elements of any game ever made. The levels are masterfully crafted and introduce new elements at the right time to prevent the player from getting bored. The animations are smooth and responsive. The fast-paced gameplay is accompanied by a great soundtrack. The end of the game doesn't conclude the story, leaving the door open for future content.\n\n[h1]My request to Justin Stander (Askiisoft)[/h1]\nWhenever you conclude the story, please give me the option to save the little girl from those disgusting, creepy men in the masks. I told her: \"I won't let anyone hurt you.\"",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-4069e0",
+              "claim": "Reviewers report that the main campaign is relatively short, lasting about four hours on a standard playthrough.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231213613",
+                  "hours_at_review": 27.6,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "The gameplay is very fluid and smooth and every single chapter has at least one thing gameplay wise that separates it from the rest. The story was great, i love that you can interrupt people mid conversation like “shut up” or “♥♥♥♥ you”, the art is very very good, and the animations are absolutely beautiful. I feel like there’s so much ♥♥♥♥ to talk about with this game but i really dont wanna spoil a single thing and you should just play it cuz it’s only 4 hours long. I beat it in one single sitting cuz i was having such a blast\n\nI will say though, you will get stuck on some parts just because of its sheer difficulty (ESPECIALLY if you play hard mode) and it does definitely ruin the pacing but i feel like the fun of the game is perfecting every section using a route that you came up with through that process of trial and error, and then come up with a long ass string of moves rolling under people, deflecting bullets, throwing smoke grenades, and slashing people up that didnt even know you were there. Once you actually execute your own route that you came up with after tons of attempts it feels amazing.\n\nEven though i love this game, getting that ♥♥♥♥♥♥♥ gold medal achievement was ♥♥♥♥♥♥♥ HORRIBLE and i stg it accounted for over half of my total playtime on the game EASILY. The hard mode achievement was also absolutely horrible. Also they overuse colored text in this game a bit too much.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227759418",
+                  "hours_at_review": 50.0,
+                  "voted_up": true,
+                  "date": "2026-06-12",
+                  "review_text": "A common comparison you'll hear is that Katana Zero is like if Hotline Miami was 2D, and it's definitely not an inaccurate one. It's just as difficult, but addicting, with a similarly dark and memorable story. It also similarly has a very unique artstyle to match one of the best soundtracks any indie game's ever had. All in all, it is an amazing game that is no question worth the fifteen dollars it's priced, despite being pretty short (about 4 hours, though granted, 100%ing takes a lot more time and is definitely worth doing for both personal achievement and small bonuses).\n\nHowever, do know that going into it you will be playing what is effectively an unfinished game. It ends on an awful cliffhanger that's supposed to lead into a dlc fans have been waiting on for 7 years at the time of writing, a wait longer than the original game's development time, and has (also at the time of writing) no indication of being done soon. I think that it's worth playing through despite this, but any players should know that coming into the game that there's no guarantee it'll ever actually be finished.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "215036054",
+                  "hours_at_review": 77.5,
+                  "voted_up": true,
+                  "date": "2026-01-03",
+                  "review_text": "One of the most interesting stories I've experienced in a long time and the gameplay is phenomenal. On top of that the soundtrack is bumping and the art direction for the pixel art couldn't be better. Only complaint is the game is rlly short at roughly 4 hours long - but it does have a lot of replayability with the hard mode / speed run game modes.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209495234",
+                  "hours_at_review": 28.7,
+                  "voted_up": true,
+                  "date": "2025-11-17",
+                  "review_text": "[H1]You believe a man can change his destiny?[/H1]\nKatana Zero... one of my favorite games. I replay it from time to time, and usually it ends up being a longplay. It REALLY has that replaybility thanks to non-linear dialogues and even executions of the scenes.\nWhat do we have? A distopian cyberpunk. We're talking Akira stuff in here. You play as Zero, unnamed self-made samurai with ability to... predict how things will go, plan how you will get through, and get through. But who are you? How come you can do all this? What are you targets? WHY? WHY?!\n\n[H2]Pros:[/H2]\n-Fun fast-paced gameplay\n-Great soundtrack\n-Pretty good animations\n-Great plot\n-Replayability due to non-linear approach on both levels and dialogues\n-Fun little gags here and there\n-Pixelated violence that doesn't go off and can give you some Hotline Miami vibes of \"You enjoy killing. That's why\"\n\nWill be interesting to pin-point some of cons... Let me try.\n[H2]Cons[/H2]\n-Slow-mo will most of the time make you useless\n-The knockout is mostly certainly fatal\n-Interesting usage of russian language that sometimes could be better\n-Too vague to pin-point at least anything realistic going on. Maybe DLC will explain, but I doubt it.\n-Secret boss-fight shouldn't be secret. It's the best ending of the story.\n\nOverall, this game is perfect. It's challenging, it's fun, it's interesting, it's chill. I highly recommend give it a shot since it's 4 hours long. I've checked just now.\n\n[H2]Yes. That should work. 10/10 [/H2]",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-5dce45",
+              "claim": "Reviewers commend the pixel art visuals and the electronic soundtrack.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231781040",
+                  "hours_at_review": 31.5,
+                  "voted_up": true,
+                  "date": "2026-08-01",
+                  "review_text": "GOAT, best game ever, 100/10 peak music, peak gameplay, peak visuals, great story, but where's dlc, i can't completely tell how good your story if you just never release it fully. Also try SANABI btw.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231213613",
+                  "hours_at_review": 27.6,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "The gameplay is very fluid and smooth and every single chapter has at least one thing gameplay wise that separates it from the rest. The story was great, i love that you can interrupt people mid conversation like “shut up” or “♥♥♥♥ you”, the art is very very good, and the animations are absolutely beautiful. I feel like there’s so much ♥♥♥♥ to talk about with this game but i really dont wanna spoil a single thing and you should just play it cuz it’s only 4 hours long. I beat it in one single sitting cuz i was having such a blast\n\nI will say though, you will get stuck on some parts just because of its sheer difficulty (ESPECIALLY if you play hard mode) and it does definitely ruin the pacing but i feel like the fun of the game is perfecting every section using a route that you came up with through that process of trial and error, and then come up with a long ass string of moves rolling under people, deflecting bullets, throwing smoke grenades, and slashing people up that didnt even know you were there. Once you actually execute your own route that you came up with after tons of attempts it feels amazing.\n\nEven though i love this game, getting that ♥♥♥♥♥♥♥ gold medal achievement was ♥♥♥♥♥♥♥ HORRIBLE and i stg it accounted for over half of my total playtime on the game EASILY. The hard mode achievement was also absolutely horrible. Also they overuse colored text in this game a bit too much.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227759418",
+                  "hours_at_review": 50.0,
+                  "voted_up": true,
+                  "date": "2026-06-12",
+                  "review_text": "A common comparison you'll hear is that Katana Zero is like if Hotline Miami was 2D, and it's definitely not an inaccurate one. It's just as difficult, but addicting, with a similarly dark and memorable story. It also similarly has a very unique artstyle to match one of the best soundtracks any indie game's ever had. All in all, it is an amazing game that is no question worth the fifteen dollars it's priced, despite being pretty short (about 4 hours, though granted, 100%ing takes a lot more time and is definitely worth doing for both personal achievement and small bonuses).\n\nHowever, do know that going into it you will be playing what is effectively an unfinished game. It ends on an awful cliffhanger that's supposed to lead into a dlc fans have been waiting on for 7 years at the time of writing, a wait longer than the original game's development time, and has (also at the time of writing) no indication of being done soon. I think that it's worth playing through despite this, but any players should know that coming into the game that there's no guarantee it'll ever actually be finished.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "215036054",
+                  "hours_at_review": 77.5,
+                  "voted_up": true,
+                  "date": "2026-01-03",
+                  "review_text": "One of the most interesting stories I've experienced in a long time and the gameplay is phenomenal. On top of that the soundtrack is bumping and the art direction for the pixel art couldn't be better. Only complaint is the game is rlly short at roughly 4 hours long - but it does have a lot of replayability with the hard mode / speed run game modes.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-2aa786",
+              "claim": "Reviewers describe high difficulty levels, particularly on hard mode and when pursuing speedrun achievements like the gold medal.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231213613",
+                  "hours_at_review": 27.6,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "The gameplay is very fluid and smooth and every single chapter has at least one thing gameplay wise that separates it from the rest. The story was great, i love that you can interrupt people mid conversation like “shut up” or “♥♥♥♥ you”, the art is very very good, and the animations are absolutely beautiful. I feel like there’s so much ♥♥♥♥ to talk about with this game but i really dont wanna spoil a single thing and you should just play it cuz it’s only 4 hours long. I beat it in one single sitting cuz i was having such a blast\n\nI will say though, you will get stuck on some parts just because of its sheer difficulty (ESPECIALLY if you play hard mode) and it does definitely ruin the pacing but i feel like the fun of the game is perfecting every section using a route that you came up with through that process of trial and error, and then come up with a long ass string of moves rolling under people, deflecting bullets, throwing smoke grenades, and slashing people up that didnt even know you were there. Once you actually execute your own route that you came up with after tons of attempts it feels amazing.\n\nEven though i love this game, getting that ♥♥♥♥♥♥♥ gold medal achievement was ♥♥♥♥♥♥♥ HORRIBLE and i stg it accounted for over half of my total playtime on the game EASILY. The hard mode achievement was also absolutely horrible. Also they overuse colored text in this game a bit too much.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230303644",
+                  "hours_at_review": 40.1,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "speedrun achievment is straight cancer spare yourself the hustle",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227278068",
+                  "hours_at_review": 21.8,
+                  "voted_up": true,
+                  "date": "2026-06-06",
+                  "review_text": "Fantastic game, loved every second of it... well, maybe not beating the game on Hard Mode but that's a side thing.\n\nGameplay;\nits great, difficult as hell but whenever you get it down it feels so rewarding to flawlessly clear out a room, learning curve? absolutely.\nStory;\nIntricate, love it. I may not understand every side of it, given the story isn't finished yet (DLC Tomorrow WE JUST GOTTA BELIEVE.) but from the parts I did understand, alongside some slight theories. I loved it.\nMusic;\nGreat, the tracks for the combat parts of levels are great, but I especially have an appreciation for the calmer songs, I dunno man. the songs kinda make those moments, not to say they'd be bad without the music. but it adds emotion to a lot of scenes that wouldn't hit the same without the music.\nExtra;\nShout-out to the devs for being extremely adamant the DLC will be free, even after working on it for multiple years since I'd be willing to pay at this point, seriously respect to that.\nWell that's the review wrapped up, seriously play this game, it's great. go in blind if you haven't been spoiled on anything before.\nI recommend this game HEAVILY.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "216609101",
+                  "hours_at_review": 27.9,
+                  "voted_up": true,
+                  "date": "2026-01-23",
+                  "review_text": "Main game 3 hours. Hard mode 5-8 hours. Gold medal (speedrun) achievement 20-100 hours...\n\nLet see here, there is 4 categories or ranks in speedrun mode: platinum; gold; silver and participation medal (bronze).\n\nI think platinum is for the world record type of player, gold for the speedrun enthusiast and silver should be for the player that put a little of extra effort and time on the game (aka the achievement)... I'm so VERY salty about the gold medal achievement, but the game is really good in all senses and categories: music; gameplay; level/character design; story.\n\nNow the elephant in the room, there is a promised DLC (for free) to be released since 2020... that could potentially increase this game's value or sink it. \n\nThat said it's worth at least 5 USD, maybe 10 with DLC.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-eed4b8",
+              "claim": "Reviewers highlight a one-hit-kill mechanic where both the player character and standard enemies die instantly from a single attack.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "223633598",
+                  "hours_at_review": 36.2,
+                  "voted_up": true,
+                  "date": "2026-04-19",
+                  "review_text": "“Guys, I have this neat, ridiculous idea. How ‘bout we make game where everyone die from one hit”\r\n“What do you mean >>Everyone<<, boss?”\r\n“EEEEEEVERYOOOOOONE!!!!!”\r\n\r\nAnd this is the basic premise of Katana Zero. Your character, as well as all enemies — well, aside bosses — die from one attack. There are no health bars, no damage calculation, no armor to protect you. When the hit connects with you, you are dead. If you think now “cool, just in Hotline Miami” then yes, you are correct. Also, just like in that game, you must clear areas in one go, checkpoints are only when you travel to the next screen. Thankfully levels are small, so you can waste a minute or two on repeating sections (well, at least on normal difficulty…). What is different is perspective — here we have a normal 2D platformer, instead of a top-down view from above… You also cannot use guns or other weapons, just your trusty swords. To protect yourself you can dodge, reflect bullets — but this one is on the cooldown — and slow down time, which is a godsend, because 80% of enemies in this game use firearms. Your objective in every level is very simple:\r\n\r\nKill. All. Bad. Guys. \r\nSlaughter. Them. One. By. One.\r\n\r\nYou are this one cool ninja-samurai guy, pumped on some kind of war drug that allows you to see the future and slow time. So from a story perspective gameplay is not about actual fighting, but about planning all your moves in advance and executing them in the background. It doesn't change anything when playing, but it's a neat idea, connecting lore to players’ agenda. Overall I find the story in this game pretty intriguing — and well executed — and surprisingly deep, at least for a mechanical, challenge oriented game (because compared to more story oriented titles, it's nothing special)… but it’s unfinished. It feels more like a prologue to something bigger, it creates a solid foundation, but leaves players without a proper payout and execution. And considering how long the DLC — yeah, only D…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "214440039",
+                  "hours_at_review": 21.1,
+                  "voted_up": true,
+                  "date": "2025-12-28",
+                  "review_text": "The game Katana ZERO is renowned for its crisp combat mechanics and extremely low tolerance for error. It also features an incredible soundtrack that complements its theme, blending cyberpunk with a vaporwave vibe. The plot is concise yet tragic. At first, when playing as Zero, I thought he was a veteran soldier who suffered memory loss due to combat injuries, trapped in memories of his childhood and haunted by nightmares every night. As the missions progressed, I gradually learned that the protagonist is a super-soldier who injects a special drug to foresee the future, choosing the best method to eliminate enemies from numerous possibilities. Every time the protagonist returns home, a little girl is waiting for him. After becoming familiar, Zero even invites her to his home. However, there is a strange detail: the doll the little girl is looking for bears some resemblance to Zero's memories. During missions, Zero slowly uncovers the side effects of the drug and learns that there are other super-soldiers like him, such as the most intimidating Dragon King. Later, I had the chance to play as him. After completing his final mission, he seems to recall his past—he is not the child but the one who eliminated the child. Dragon King was his teammate, and the little girl from earlier is also a victim (killed alongside the little boy). This is likely the side effect of the drug. The game also has a bad ending, and I am looking forward to the release of the new DLC.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-21afed",
+              "claim": "Reviewers praise the responsive controls, fluid movement, and mechanics that allow players to slow down time and reflect bullets.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231213613",
+                  "hours_at_review": 27.6,
+                  "voted_up": true,
+                  "date": "2026-07-24",
+                  "review_text": "The gameplay is very fluid and smooth and every single chapter has at least one thing gameplay wise that separates it from the rest. The story was great, i love that you can interrupt people mid conversation like “shut up” or “♥♥♥♥ you”, the art is very very good, and the animations are absolutely beautiful. I feel like there’s so much ♥♥♥♥ to talk about with this game but i really dont wanna spoil a single thing and you should just play it cuz it’s only 4 hours long. I beat it in one single sitting cuz i was having such a blast\n\nI will say though, you will get stuck on some parts just because of its sheer difficulty (ESPECIALLY if you play hard mode) and it does definitely ruin the pacing but i feel like the fun of the game is perfecting every section using a route that you came up with through that process of trial and error, and then come up with a long ass string of moves rolling under people, deflecting bullets, throwing smoke grenades, and slashing people up that didnt even know you were there. Once you actually execute your own route that you came up with after tons of attempts it feels amazing.\n\nEven though i love this game, getting that ♥♥♥♥♥♥♥ gold medal achievement was ♥♥♥♥♥♥♥ HORRIBLE and i stg it accounted for over half of my total playtime on the game EASILY. The hard mode achievement was also absolutely horrible. Also they overuse colored text in this game a bit too much.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231151141",
+                  "hours_at_review": 23.6,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "if you're going for 100%, good luck. You're in for a treat and a half. You have NO IDEA the pain.\r\n\r\nHonestly a great game, great gameplay, highly polished input, good background music.\r\nIf you like metroidvanias or 2D platformers this is for you.\r\n\r\nthose minigun men can go **** my ****",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223633598",
+                  "hours_at_review": 36.2,
+                  "voted_up": true,
+                  "date": "2026-04-19",
+                  "review_text": "“Guys, I have this neat, ridiculous idea. How ‘bout we make game where everyone die from one hit”\r\n“What do you mean >>Everyone<<, boss?”\r\n“EEEEEEVERYOOOOOONE!!!!!”\r\n\r\nAnd this is the basic premise of Katana Zero. Your character, as well as all enemies — well, aside bosses — die from one attack. There are no health bars, no damage calculation, no armor to protect you. When the hit connects with you, you are dead. If you think now “cool, just in Hotline Miami” then yes, you are correct. Also, just like in that game, you must clear areas in one go, checkpoints are only when you travel to the next screen. Thankfully levels are small, so you can waste a minute or two on repeating sections (well, at least on normal difficulty…). What is different is perspective — here we have a normal 2D platformer, instead of a top-down view from above… You also cannot use guns or other weapons, just your trusty swords. To protect yourself you can dodge, reflect bullets — but this one is on the cooldown — and slow down time, which is a godsend, because 80% of enemies in this game use firearms. Your objective in every level is very simple:\r\n\r\nKill. All. Bad. Guys. \r\nSlaughter. Them. One. By. One.\r\n\r\nYou are this one cool ninja-samurai guy, pumped on some kind of war drug that allows you to see the future and slow time. So from a story perspective gameplay is not about actual fighting, but about planning all your moves in advance and executing them in the background. It doesn't change anything when playing, but it's a neat idea, connecting lore to players’ agenda. Overall I find the story in this game pretty intriguing — and well executed — and surprisingly deep, at least for a mechanical, challenge oriented game (because compared to more story oriented titles, it's nothing special)… but it’s unfinished. It feels more like a prologue to something bigger, it creates a solid foundation, but leaves players without a proper payout and execution. And considering how long the DLC — yeah, only D…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "214027313",
+                  "hours_at_review": 38.3,
+                  "voted_up": true,
+                  "date": "2025-12-23",
+                  "review_text": "A TOP TIER 2D GAMES\nGameplay:\nThe game features fast-paced gameplay, precise enemy elimination, timely blocking, and smooth movement, all of which contribute to an excellent gameplay experience. Additionally, time slows down, and a second character with impressive abilities appears, serving the story's narrative.\nStory:\nThe story revolves around Zero, who suffers from a disorder and memory loss, the cause of which he later discovers. During your journey, you will encounter several unique characters with distinct appearances and thoughts, and you will have the option to reply to learn more about the story.\nOst&pixelART:\nbest of the best \n9/10\nI want to play more\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 14,
+        "cited_recommend": 14,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 8,
+      "pct_positive": 100.0,
+      "muted": true,
+      "n_note": "n=3 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
+    }
+  ],
+  "footer": {
+    "pool_n": 1201,
+    "steam_total_reviews": 26368,
+    "cohort_count": 3,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

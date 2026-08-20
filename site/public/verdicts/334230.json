@@ -1,0 +1,847 @@
+{
+  "appid": "334230",
+  "game_name": "Town of Salem",
+  "generated_at": "2026-08-20T11:20:19Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/334230/header.jpg?t=1777321060",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/334230/capsule_231x87.jpg?t=1777321060",
+    "grid": "https://cdn2.steamgriddb.com/grid/a04a8189d06ea8e960dd603e7a5bbc1f.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 12,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "A social deduction classic weighed down by toxic chat and technical friction.",
+    "for_you_if": [
+      "you enjoy complex social deduction mechanics",
+      "you already consult external guides for rules"
+    ],
+    "not_for_you_if": [
+      "you will not create an external third-party account",
+      "you lack patience for lengthy lobby wait times",
+      "you expect built-in tutorials and active moderation"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 50,
+      "pct_positive": 48.0,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 352,
+      "pct_positive": 78.1,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 415,
+      "pct_positive": 72.8,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 384,
+      "pct_positive": 64.3,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "Positive sentiment rises after the initial refund window before declining among long term players.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 48.0,
+            "pool_n": 50
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 78.1,
+            "pool_n": 352
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 72.8,
+            "pool_n": 415
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 64.3,
+            "pool_n": 384
+          }
+        ],
+        "shape": "rise_then_fall",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 48.0,
+        "low_pool_n": 50,
+        "high_cohort": "early",
+        "high_cohort_label": "2-20 hours",
+        "high_pct_positive": 78.1,
+        "high_pool_n": 352,
+        "gap_pts": 30.1,
+        "peak_cohort": "early",
+        "peak_pct_positive": 78.1,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 64.3,
+        "drop_after_peak_pts": 13.8
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews score lower than the historical lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 67.3,
+        "recent_pool_n": 358,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 87.3,
+        "steam_total_reviews": 28564,
+        "delta_pts": -20.0,
+        "within_pool_older_pct_positive": 72.0,
+        "within_pool_older_n": 843
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 50,
+      "pct_positive": 48.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers face technical friction during account creation alongside an unwelcoming community environment.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-7c33cd",
+              "claim": "Reviewers describe the community as extremely toxic, filled with hate speech, slurs, and trolling.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "230260488",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-07-12",
+                  "review_text": "I played this game for years back on the site and actually have one of the OG free accounts. But, as other reviews here state the game is trash now due to the community. It's non-stop insanely racist ♥♥♥♥ 24/7. Slurs, people trolling and anyone that has a killing role even town will just slaughter randomly. There's no game anymore, it's just 99% racist trolls and 1% people who don't know what's going on.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228611658",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-06-23",
+                  "review_text": "this community contains some of the worst toxicity and gooner behavior i have seen in a while. it's a fun game as a concept, but playing with randoms is a different story entirely. people are rude when you don't know every single detail as well. just play with friends for the only enjoyable experience.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219382494",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-02-27",
+                  "review_text": "Kind of unplayable on a social level. Which ... kind of defeats the entire point. From match one, the game was inundated with hate speech. Which didn't stop. Grotesqu stuff. And yes, there is a report feature, but it doesn't stop anytbing in the matchmaking lobby. And the games are still filled with it. Then, omce you get a match, about a quarter of the lobby quits because they didn't get the role they wanted. And on the rare occasion when that doesn't happen, it's still not fun. I played unranked classic, and they were pro level players with no patience for anyone learning or relearning the game. I would get it if the lack of patience was people not reading up or knowing what any role does or how the game works. But you shouldn't be upset in unranked when people don't know or use the meta. I'm not trying to throw shade at the devs here. I appreciate the gameplay aspect. I used to love this game back in the day. But I still wanted to provide the review I wish I'd seen before trying to join.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "184488799",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2025-01-02",
+                  "review_text": "I'd like to say first that I used to play this game all the time back in the day when it was a free browser game. It used to be a lot of fun. Now it's dead. You will sit in queue forever, and a ranked game will never pop. Your only option if you ever want to play the game is to go to ranked practice. Coordinated groups will go into the lobbies and take turns leaving seconds before the game launches to stall the lobby indefinitely. The same accounts keep doing it, but the devs/mods don't ban them. Who will they ban though? They will ban long term players you've played for years for the most trivial reasons. I received a strike on my account for \"leaving the game\" because said that I was AFK for one single night. I appealed this strike and the power tripping useless mod tried to tell me that being afk was as good as leaving the game. I pasted the actual rule that said \"don't be afk for an extended period of time.\" He literally responded \"yes, an extended period of time. One night is an extended period of time.\" This C-sucker really told me 40 seconds is an extended period of time. Unbelievable. There are regularly people leaving the game early (you can expect 2 to 3 of them at least every single game). And it's filled with game throwers and trolls. They really shouldn't be able to charge money for this game. The player base is dead, the mods are horrible, and the community is horrible. Do not waste your money.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "184176615",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2024-12-30",
+                  "review_text": "This game has the most horrible community I have ever seen.\nI have 90+ hours on mobile.\n\nPlaying with randoms in this game truly sucks. As with any imposter-style game, the loudest person wins the game. This isn't even Town of Salem's fault. It's the very nature of this TYPE of game. But it is completley unfair that in the RANKED mode, people are allowed to actively troll and grief games and avoid punishment from devs. People will pretend to not know the rules of the game so they can troll. They know. This is ranked. This is a ranked mode. They know. They are trolling. People ruin the integrity of games so often there is practically no point in playing anymore. Your average townie will win the game for evil classes most games. The people who play this game are either braindead with drool coming out of their mouths or trolling. It is the latter, of course.\n\nI'm saying not recommended, not because the game is poorly made, but because the devs refuse to moderate this horrendous community. From the outside looking in, as a new player, this game looks wholesome and a bit nerdy. A good time! Among us but for grown ups! No. I had more to type but I had to delete it or the review will get striked.\n\nIf you are going to buy, get it on sale, and play with friends only. Or never care about winning.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-459611",
+              "claim": "Reviewers report that players disconnect or quit matches early when they do not get their preferred roles or when disagreements occur.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "220924479",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-03-17",
+                  "review_text": "I was a much more active player around 2015-2017 and while the game wasn't perfect, it was in a much better state than it is now. Most games will only last around 2-3 nights because people will dc over the smallest stuff. They don't get the exact role they want? they expose their teammates and dc. You have a goofy/non-role playing name? dc. You slightly disagree on who to vote on? they call you a slur and dc. It has somehow become extremely unwelcoming to both its new and veterans players. I don't recommend you spend your money on this, there's better games you can get for less than 5 bucks\n\nedit: almost forgot ♥♥♥♥ the greedy ass devs, congrats on running a super profitable game into the ground lmao",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219382494",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-02-27",
+                  "review_text": "Kind of unplayable on a social level. Which ... kind of defeats the entire point. From match one, the game was inundated with hate speech. Which didn't stop. Grotesqu stuff. And yes, there is a report feature, but it doesn't stop anytbing in the matchmaking lobby. And the games are still filled with it. Then, omce you get a match, about a quarter of the lobby quits because they didn't get the role they wanted. And on the rare occasion when that doesn't happen, it's still not fun. I played unranked classic, and they were pro level players with no patience for anyone learning or relearning the game. I would get it if the lack of patience was people not reading up or knowing what any role does or how the game works. But you shouldn't be upset in unranked when people don't know or use the meta. I'm not trying to throw shade at the devs here. I appreciate the gameplay aspect. I used to love this game back in the day. But I still wanted to provide the review I wish I'd seen before trying to join.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "184488799",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2025-01-02",
+                  "review_text": "I'd like to say first that I used to play this game all the time back in the day when it was a free browser game. It used to be a lot of fun. Now it's dead. You will sit in queue forever, and a ranked game will never pop. Your only option if you ever want to play the game is to go to ranked practice. Coordinated groups will go into the lobbies and take turns leaving seconds before the game launches to stall the lobby indefinitely. The same accounts keep doing it, but the devs/mods don't ban them. Who will they ban though? They will ban long term players you've played for years for the most trivial reasons. I received a strike on my account for \"leaving the game\" because said that I was AFK for one single night. I appealed this strike and the power tripping useless mod tried to tell me that being afk was as good as leaving the game. I pasted the actual rule that said \"don't be afk for an extended period of time.\" He literally responded \"yes, an extended period of time. One night is an extended period of time.\" This C-sucker really told me 40 seconds is an extended period of time. Unbelievable. There are regularly people leaving the game early (you can expect 2 to 3 of them at least every single game). And it's filled with game throwers and trolls. They really shouldn't be able to charge money for this game. The player base is dead, the mods are horrible, and the community is horrible. Do not waste your money.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-55a2f9",
+              "claim": "Reviewers note that playing requires registering an external third-party account.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "178028799",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2024-10-30",
+                  "review_text": "No mention of the need of an external account registration on the product site; that is a big NoNo.\n\nRemoved from account.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "159696520",
+                  "hours_at_review": 0.1,
+                  "voted_up": true,
+                  "date": "2024-03-02",
+                  "review_text": "You will have to create a ToS account",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-16ea77",
+              "claim": "Reviewers state that the game requires creating an external account.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "178028799",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2024-10-30",
+                  "review_text": "No mention of the need of an external account registration on the product site; that is a big NoNo.\n\nRemoved from account.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "159696520",
+                  "hours_at_review": 0.1,
+                  "voted_up": true,
+                  "date": "2024-03-02",
+                  "review_text": "You will have to create a ToS account",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-06aa96",
+              "claim": "Reviewers experience freezing and lockups when attempting to register an account or play from a Steam account.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "182864756",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2024-12-16",
+                  "review_text": "opened game, made account, got banned before even loading in, refunding",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "162285068",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2024-04-05",
+                  "review_text": "I have uninstalled and re-downloaded this game many different times now and yet the game won't work. When I try to register for an account or play from steam account, it freezes and locks up every time. I want to play this game so badly, but it just wont work.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 10,
+        "cited_recommend": 1,
+        "divergence_p": 0.0148,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 352,
+      "pct_positive": 78.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter long lobby wait times and offensive language in public text chats.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-7e2e74",
+              "claim": "Reviewers mention that the game includes text chat containing slurs and mean language from other players.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230249099",
+                  "hours_at_review": 5.0,
+                  "voted_up": true,
+                  "date": "2026-07-11",
+                  "review_text": "It was a lot of fun! The community that plays this game can be upsetting, though. A lot of slurs and mean language.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "215118278",
+                  "hours_at_review": 11.7,
+                  "voted_up": false,
+                  "date": "2026-01-04",
+                  "review_text": "Used to love this game, but moderation is in the dumps and people feel comfortable being hateful and creepy. Truly would not recommend due to the lack of ability to remove people from lobbies and overall a bad gameplay experience due to it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "206091302",
+                  "hours_at_review": 17.2,
+                  "voted_up": false,
+                  "date": "2025-10-07",
+                  "review_text": "honestly not reccomended just because of how bad the community and moderation is. slurs and cheaters everywhere",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ed2b53",
+              "claim": "Reviewers state that public lobbies contain players using slurs, mean language, and hateful behavior.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230249099",
+                  "hours_at_review": 5.0,
+                  "voted_up": true,
+                  "date": "2026-07-11",
+                  "review_text": "It was a lot of fun! The community that plays this game can be upsetting, though. A lot of slurs and mean language.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "215118278",
+                  "hours_at_review": 11.7,
+                  "voted_up": false,
+                  "date": "2026-01-04",
+                  "review_text": "Used to love this game, but moderation is in the dumps and people feel comfortable being hateful and creepy. Truly would not recommend due to the lack of ability to remove people from lobbies and overall a bad gameplay experience due to it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-c430a9",
+              "claim": "Reviewers report lengthy waiting times when trying to arrange and load into a game lobby.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231137368",
+                  "hours_at_review": 4.5,
+                  "voted_up": true,
+                  "date": "2026-07-23",
+                  "review_text": "Great Game, only downside if the time to load into a game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "213805893",
+                  "hours_at_review": 3.9,
+                  "voted_up": false,
+                  "date": "2025-12-21",
+                  "review_text": "The player base is mean/toxic now... was much better a few years ago.  It also takes like 15 minutes to fully arrange a lobby to play a game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 5,
+        "cited_recommend": 2,
+        "divergence_p": 0.0736,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 415,
+      "pct_positive": 72.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players at this stage note missing tutorials and unmoderated lobbies, alongside unexpected account restrictions.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-80435a",
+              "claim": "Reviewers report that the game lacks a tutorial, advising new players to read the wiki first to understand how to play.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "225608939",
+                  "hours_at_review": 57.9,
+                  "voted_up": true,
+                  "date": "2026-05-15",
+                  "review_text": "Fun games, can be confusing for new players so recommended to read the wiki first before playing",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "207747365",
+                  "hours_at_review": 75.1,
+                  "voted_up": true,
+                  "date": "2025-10-27",
+                  "review_text": "The game as a whole is fun however it is currently suffering from the fact that it's over 10 years old and depending on the time of the day can have anywhere from 20 to 300 players.\nThe system says 4000+ however 8/10 times I will stumble upon the same exact group of people for hours with little to no variety. That is fine however some of the players are quite toxic and are there to just wreak havoc by throwing games on purpose or by harassing people and while there is a reporting system it feels as if there is 1 person keeping an eye on things and they are trying to catch up on sleep and by the time they ban those players they have made new accounts and are back at it again.\nThe reason I am recommending this is because the game is fun. However I do advise you take the time to read up on how the game is played since you don't exactly get a tutorial.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-049639",
+              "claim": "Reviewers describe the game as lacking any built-in tutorial, requiring players to read external wikis or guides to learn how to play.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "225608939",
+                  "hours_at_review": 57.9,
+                  "voted_up": true,
+                  "date": "2026-05-15",
+                  "review_text": "Fun games, can be confusing for new players so recommended to read the wiki first before playing",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "207747365",
+                  "hours_at_review": 75.1,
+                  "voted_up": true,
+                  "date": "2025-10-27",
+                  "review_text": "The game as a whole is fun however it is currently suffering from the fact that it's over 10 years old and depending on the time of the day can have anywhere from 20 to 300 players.\nThe system says 4000+ however 8/10 times I will stumble upon the same exact group of people for hours with little to no variety. That is fine however some of the players are quite toxic and are there to just wreak havoc by throwing games on purpose or by harassing people and while there is a reporting system it feels as if there is 1 person keeping an eye on things and they are trying to catch up on sleep and by the time they ban those players they have made new accounts and are back at it again.\nThe reason I am recommending this is because the game is fun. However I do advise you take the time to read up on how the game is played since you don't exactly get a tutorial.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ef681d",
+              "claim": "Reviewers state that the game lacks moderation against disruptive behaviors such as trolls, game throwers, and bigotry.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230136599",
+                  "hours_at_review": 32.7,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "When this game was popular you could play it ad-free on web. Now, you can only play it on mobile with ads if you connect your facebook account or with your purchased copy. But even then you have to connect your steam account to play Covet mod. Why make it harder for players? No moderation. Ragebaiters, trolls, quitters at first day are common. Sometimes basic game features don't work. Not recommended to buy even if it's on sale unless you have 14 friends who are committed to play.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222374707",
+                  "hours_at_review": 27.6,
+                  "voted_up": false,
+                  "date": "2026-04-03",
+                  "review_text": "This game was fun, but then the trolls, game throwers, and other losers came and ruined it.  Worse yet, the devs don't do anything about it.  There are some things that people get banned for, but no system to segregate the morons from the rest of us.  Fail.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "213303663",
+                  "hours_at_review": 20.9,
+                  "voted_up": true,
+                  "date": "2025-12-14",
+                  "review_text": "It's a great game, don't get me wrong. I do recommend it. But the player base is just FULL of trolls, bigots, and throwers. TBH, Town of Salem 2 is more worth the $5 unless you want to play with goofballs 24/7. All in all, great game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "207747365",
+                  "hours_at_review": 75.1,
+                  "voted_up": true,
+                  "date": "2025-10-27",
+                  "review_text": "The game as a whole is fun however it is currently suffering from the fact that it's over 10 years old and depending on the time of the day can have anywhere from 20 to 300 players.\nThe system says 4000+ however 8/10 times I will stumble upon the same exact group of people for hours with little to no variety. That is fine however some of the players are quite toxic and are there to just wreak havoc by throwing games on purpose or by harassing people and while there is a reporting system it feels as if there is 1 person keeping an eye on things and they are trying to catch up on sleep and by the time they ban those players they have made new accounts and are back at it again.\nThe reason I am recommending this is because the game is fun. However I do advise you take the time to read up on how the game is played since you don't exactly get a tutorial.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-c5186c",
+              "claim": "Reviewers note that lobbiews suffer from long queue times or take several minutes to start up.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "226579623",
+                  "hours_at_review": 60.1,
+                  "voted_up": false,
+                  "date": "2026-05-27",
+                  "review_text": "If you had asked me a good few years ago after this game came out, I would have recommended it 200%.\n\nAbsolutely bonkers amount of fun, with fast games and a decent community who could strategize and feint you out. I have quite a few wins as all the roles, including the evil and neutral ones, just by having a good poker face and knowing what to say. \n\nSince the release of ToS2 though, which I feel was a failed attempt to get people re-invested (and to milk money) this game's community has now been split between those who remained on ToS1 and those who migrated to ToS2.\n\nUnfortunately, ToS1 nowadays is bordering on dead, even though there's a free version accessible through Discord activities. \n\nLobbies take a solid few minutes to even get the 15 players to start, and every time there will be at least 1-3 players who disconnect immediately. Even Chaos - All Any is not much better, even though it seems to be the main mode nowadays. \nA lot of players I have played with over Discord have said the game is plagued by bots and the majority of the 18000-20000 players it claims are online are AFK or Bots, which does coincide with the fact is says only 30-40 actual matches are ongoing at a given time (40*15 = 6000, not even close to the 18000 it claims online).\n\nI would normally say it's an exaggeration, but here I believe it. Barely anyone talks in chat, and as soon as they get taken-out or lynched, they just disconnect. Even actual players don't seem to care about finishing-out matches now, probably because the monetisation is pushed incredibly hard, and the free currency you get is pitiful. \n\nWhat this leads to is roles like the Medium being completely useless, because you can't do anything, leading to incredibly dull games, where you'll want to just AFK/DC or tell one of the evils to get it over with, which just perpetuates the cycle.\n\nI have 60 hours on record, as I used to love this game so much, and had so much fun with it, but I played 3-4 games over Discord with a co…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229022588",
+                  "hours_at_review": 92.9,
+                  "voted_up": true,
+                  "date": "2026-06-28",
+                  "review_text": "it epic, but takes forty eons to queue",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-3425c6",
+              "claim": "Reviewers report that matches suffer from long queue and wait times to get enough players into a lobby.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230072819",
+                  "hours_at_review": 61.1,
+                  "voted_up": true,
+                  "date": "2026-07-09",
+                  "review_text": "Good game even though its a little slow finding a game at times.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229022588",
+                  "hours_at_review": 92.9,
+                  "voted_up": true,
+                  "date": "2026-06-28",
+                  "review_text": "it epic, but takes forty eons to queue",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "203201240",
+                  "hours_at_review": 21.5,
+                  "voted_up": true,
+                  "date": "2025-08-30",
+                  "review_text": "Please play this game I need more people on it to reduce the damn wait time",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-8320e2",
+              "claim": "Reviewers describe receiving account bans unexpectedly after returning to the game after a period of inactivity.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "214129536",
+                  "hours_at_review": 61.3,
+                  "voted_up": false,
+                  "date": "2025-12-25",
+                  "review_text": "I've played this game since it first came out with no issues... all of a sudden after not playing it for a year my accounts banned for game throwing? make that make sense",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "212467876",
+                  "hours_at_review": 91.1,
+                  "voted_up": false,
+                  "date": "2025-12-03",
+                  "review_text": "I dislike that for some reason I got a ban on my account for this game after not playing for years....",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 11,
+        "cited_recommend": 6,
+        "divergence_p": 0.153,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 384,
+      "pct_positive": 64.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Longtime players highlight a steep learning curve, platform performance bugs, and community toxicity.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-b27d52",
+              "claim": "Reviewers mention performance issues on macOS, including frozen animations and unresponsiveness when interacting outside the game window.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "220318406",
+                  "hours_at_review": 121.8,
+                  "voted_up": false,
+                  "date": "2026-03-10",
+                  "review_text": "I thought I'd play a few rounds for nostalgia's sake but ranked games don't seem to work at all and the \"Ranked Practice\" lobbies are just unhappy people intentionally losing while tossing around slurs. Reporting doesn't seem to do anything. Playing against bots would be better.\n\nEdit: I played some more, still the same. I leave it on sometimes just as a sort of chat room where people kill each other but unfortunately it doesn't run very well on mac despite the simple 2D graphics. Animations freeze up entirely and I can't even type when anything is moving. Macbook M1 Pro with 64gb unified memory. \n\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "205493705",
+                  "hours_at_review": 101.9,
+                  "voted_up": false,
+                  "date": "2025-09-29",
+                  "review_text": "Only good if on anything other than macOS, because:\r\nTabbing out of the game, or doing literally anything other than touch the game window will completely freeze it\r\nMoving objects in game are really laggy\r\nScrolling with the trackpad goes INSANELY fast for some reason\r\nSometimes clicks with the trackpad are ignored",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-56ec68",
+              "claim": "Reviewers describe a high learning curve with complex roles and mechanics that make it difficult for new players to enter.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232098180",
+                  "hours_at_review": 3189.3,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "TOS 1 IS NOT DEAD! (....in CAA at least.)\r\n\r\nyes, you'll occasionally get annoying gamethrowers, spammers, salty leavers, and racists. \r\n.....but 99% of the time you'll get an incredible experience!\r\n\r\nHIGH LEARNING CURVE I recommend you watch tutorials/YT because people can be rude to newbies. but besides that, I love ToS, highly recommend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226334850",
+                  "hours_at_review": 366.5,
+                  "voted_up": true,
+                  "date": "2026-05-24",
+                  "review_text": "its a hard learning curve but once you learn it, every game is interesting.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226213343",
+                  "hours_at_review": 404.2,
+                  "voted_up": true,
+                  "date": "2026-05-23",
+                  "review_text": "I have been playing this game for a long time, since it was based in browser. I believe 2013? Anyway, it has always been a game I enjoy and I have met a lot of good friends from ToS. \n\nToS takes quite a bit of time and effort to learn every little mechanic and I could see people having a rough time with the barrier of entry, but I would still recommend it. ToS has to be my all time favorite social deduction game and I have sunk many hours into it, even more than is listed on my Steam. The roles are fun and interesting and nothing is more satisfying than making a successful play and carrying your town.. or Mafia.\n\nI will say though, the community is rough. People are rude, there's a pretty consistent issue of gamethrowers joining lobbies only to throw and no way to remove them from the lobbies. I'm not sure what could be done to stop these throwers, to my knowledge some of them have been banned multiple times but keep coming back one way or another.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "211842901",
+                  "hours_at_review": 383.2,
+                  "voted_up": true,
+                  "date": "2025-11-30",
+                  "review_text": "DARE I SAY BETTER THAN AMONG US\n\nThe game is way harder to pick up than among us, even on a basic level, but the skill ceiling of the game is so much fun. Remembering all the roles, wills, everyone's words and what not. I love the deductions you can do, and even the gamemodes like all any make for fun and chaotic modes that could end up with 10 evils and 5 town, or 13 town and 2 mafiosos, i love it.\n\nAnd ranked... THAT IS NOT A JOKE. PEOPLE ARE SO SWEATY I LOVE IT\n\nbig brain game thats peak. \n\nimma ignore the sequel cuz i aint remembering all them damn roles again",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "212750719",
+                  "hours_at_review": 164.8,
+                  "voted_up": false,
+                  "date": "2025-12-07",
+                  "review_text": "UPDATE: my account was banned because of reports of me from 5+ years ago.  Dont buy this game, stop playing it if you have, and make sure to annoy the mods in the discord and steam forums.  40 year old mod who has nothing better to do has struck again\n\nTown of Salem USED to be a very fun game.  It is such a unique concept that has a high skill curve but is super fun.  What's not fun is two main things:\n1. The lack of players.  If you check the steam charts the game has not had 200 or more players online in more than three months.  The in game counter says 3k which is a lie (bug) the devs know about and will not fix.  So you either take 20 minutes for a game or stay in the same lobby with either really nice players or sweats.\n2. The power tripping mods. Imagine the worse reddit mod, now on a whole different level.  Look at other reviews or discussion boards on here or on their fourm site.  One mod, (I won't say to avoid harrasement) treats moderating a dead game like a full time job and bans everyone.  In their ban appeals out of every 100 maybe 1 gets changed to a suspension.\n\nHundreds of hours and dollars now gone because a 40 year old mod doesn't have a life outside this game.\n\nThis is a relic of old flash gaming, but now its a corpse overshadowed by the sequel.  I will never spend another dime on any blankmedia games or digital bandits game with how your access can just be revoked, and you have to get on your knees for an appeal that will not happen.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-0bff4e",
+              "claim": "Reviewers note that the game features a steep learning curve and requires new players to consult external tutorials or guides.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232098180",
+                  "hours_at_review": 3189.3,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "TOS 1 IS NOT DEAD! (....in CAA at least.)\r\n\r\nyes, you'll occasionally get annoying gamethrowers, spammers, salty leavers, and racists. \r\n.....but 99% of the time you'll get an incredible experience!\r\n\r\nHIGH LEARNING CURVE I recommend you watch tutorials/YT because people can be rude to newbies. but besides that, I love ToS, highly recommend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226334850",
+                  "hours_at_review": 366.5,
+                  "voted_up": true,
+                  "date": "2026-05-24",
+                  "review_text": "its a hard learning curve but once you learn it, every game is interesting.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-6dfe4d",
+              "claim": "Reviewers describe the community as toxic, featuring players who use slurs, troll, and throw games.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232098180",
+                  "hours_at_review": 3189.3,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "TOS 1 IS NOT DEAD! (....in CAA at least.)\r\n\r\nyes, you'll occasionally get annoying gamethrowers, spammers, salty leavers, and racists. \r\n.....but 99% of the time you'll get an incredible experience!\r\n\r\nHIGH LEARNING CURVE I recommend you watch tutorials/YT because people can be rude to newbies. but besides that, I love ToS, highly recommend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220318406",
+                  "hours_at_review": 121.8,
+                  "voted_up": false,
+                  "date": "2026-03-10",
+                  "review_text": "I thought I'd play a few rounds for nostalgia's sake but ranked games don't seem to work at all and the \"Ranked Practice\" lobbies are just unhappy people intentionally losing while tossing around slurs. Reporting doesn't seem to do anything. Playing against bots would be better.\n\nEdit: I played some more, still the same. I leave it on sometimes just as a sort of chat room where people kill each other but unfortunately it doesn't run very well on mac despite the simple 2D graphics. Animations freeze up entirely and I can't even type when anything is moving. Macbook M1 Pro with 64gb unified memory. \n\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 7,
+        "cited_recommend": 4,
+        "divergence_p": 0.484,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1201,
+    "steam_total_reviews": 28564,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

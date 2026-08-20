@@ -1,0 +1,937 @@
+{
+  "appid": "2321470",
+  "game_name": "Deep Rock Galactic: Survivor",
+  "generated_at": "2026-08-20T11:30:30Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2321470/header.jpg?t=1787051272",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2321470/82a1a92836c83b32f83ceb8bff5f9133efb98442/capsule_231x87.jpg?t=1787051272",
+    "grid": "https://cdn2.steamgriddb.com/grid/ac0d6e4d15e7693361c6992e6b4458c6.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 10,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Deep subterranean mining meets chaos, though technical hurdles slow the descent.",
+    "for_you_if": [
+      "you enjoy single-player survivor roguelikes",
+      "you like carving through destructible terrain",
+      "you want deep class variety"
+    ],
+    "not_for_you_if": [
+      "you need cooperative multiplayer with friends",
+      "you expect smooth performance during intense swarms",
+      "you dislike heavy upgrade grinding"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 51,
+      "pct_positive": 51.0,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 432,
+      "pct_positive": 78.2,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 449,
+      "pct_positive": 78.2,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 268,
+      "pct_positive": 85.4,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Reviews trend upward as playtime extends past the initial hours.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 51.0,
+            "pool_n": 51
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 78.2,
+            "pool_n": 432
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 78.2,
+            "pool_n": 449
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 85.4,
+            "pool_n": 268
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 51.0,
+        "low_pool_n": 51,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 85.4,
+        "high_pool_n": 268,
+        "gap_pts": 34.4
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews trend lower than the historical lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 78.7,
+        "recent_pool_n": 1200,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 87.4,
+        "steam_total_reviews": 24755,
+        "delta_pts": -8.7
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 51,
+      "pct_positive": 51.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Reviewers encounter technical instability, missing cooperative features, and tedious upgrade grinding right away.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-a4da18",
+              "claim": "Reviewers note that the game features auto-aim and auto-fire mechanics.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "227919934",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-14",
+                  "review_text": "auto aim and auto fire .... am i playing a fkin mobile game....???? no thanks. potential wasted..",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221980519",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-03-29",
+                  "review_text": "While the game is well made I feel it's very repetitive. The core loop of running around with auto-shoot isn't that interesting. The goal is to get upgrades in order to play harder levels, but I didn't see the appeal in repeatedly playing something I already felt wasn't that interesting. While the formula is similar to Brotato, I feel Brotato did a better job of remaining interesting between playthroughs, primarily due to a more clear system of upgrades and more player choices.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-f75099",
+              "claim": "Reviewers report that the upgrade system requires excessive grinding for minimal stat boosts, such as a one percent increase.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "224487559",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-05-01",
+                  "review_text": "The claim that Vampire Survivors is no longer the top game of it's genre because of this release is absurd.\n\nI put off and was looking forward to playing this game for years and it's such a disappointment to finally try it.\n\nMy main gripe is the upgrade system. It's exactly the same as any other Survivor game only here the upgrades take so long to farm for and are so negligible that it takes all the fun out of the game - spending up to an hour to unlock an extra 1% fire rate? That's reason enough for me to refund this.\n\nAs for the game itself, it's just not fun. Tiny arenas, weapons are either too small to see or aren't visually impressive - the only thing new here is that you have to mine through rocks on every stage for no reason other than it fits the lore.\n\nI would say this is the worst Survivor game I've ever played and I've played a lot of them.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220753856",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-15",
+                  "review_text": "Just another generic survivor game with no special flavor. \n\nSure it has good graphics, and controls are very tight. But actual gameplay holds nothing new into this genre. I thought that given DRG franchise, one would mine ores and craft neat armor, weapons, trinkets, or upgrades. Nope, its just survivor game with purchasing \"number go up\" stats with your mined ores (of which are just a few different). And that number goes up very slowly, for example typical being 1% boost to damage.\n\nNot recommended, refunded the game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-5bee3c",
+              "claim": "Reviewers report that permanent stat upgrades offer very small percentage increases per level.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226908961",
+                  "hours_at_review": 0.1,
+                  "voted_up": true,
+                  "date": "2026-06-01",
+                  "review_text": "Edited Review:\nChanging my recommendation. While my initial review still mostly stands, once you get over the hump, this game kept drawing me in and made me a completionist. I've put 80 hours in and purchased the DLC, and have enjoyed it. \n\nSo milage may vary and you are going to hit walls that absolutely are not fun to grind through, but there is a solid and mindlessly enjoyable game here for $10. Just go in with proper expectations, and pray they keep adding more content.\n\nOriginal Review:\nI've put 20 hour into in on Xbox Live. It's okay. It's a grindfest, but it''s not interesting enough to be a grindfest. \"Infinite Build Options\" is a pretty big lie. The item economy is a terrible thing to base your game around. You'll spend 25 minutes doing one map to get 1 mediocre item and 3 you're gonna salvage. The static upgrades are ridiculously expensive.\n\nYou shouldn't have to play 60 hours of half a game to finally have enough variety to keep you somewhat interested. The 4 characters aren't really different enough from eachother. The only reason to swap between them is because some weapons are locked to a character. If you want to spend 25 minutes for a 1.5-2% upgrade, this this is your game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224487559",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-05-01",
+                  "review_text": "The claim that Vampire Survivors is no longer the top game of it's genre because of this release is absurd.\n\nI put off and was looking forward to playing this game for years and it's such a disappointment to finally try it.\n\nMy main gripe is the upgrade system. It's exactly the same as any other Survivor game only here the upgrades take so long to farm for and are so negligible that it takes all the fun out of the game - spending up to an hour to unlock an extra 1% fire rate? That's reason enough for me to refund this.\n\nAs for the game itself, it's just not fun. Tiny arenas, weapons are either too small to see or aren't visually impressive - the only thing new here is that you have to mine through rocks on every stage for no reason other than it fits the lore.\n\nI would say this is the worst Survivor game I've ever played and I've played a lot of them.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220753856",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-03-15",
+                  "review_text": "Just another generic survivor game with no special flavor. \n\nSure it has good graphics, and controls are very tight. But actual gameplay holds nothing new into this genre. I thought that given DRG franchise, one would mine ores and craft neat armor, weapons, trinkets, or upgrades. Nope, its just survivor game with purchasing \"number go up\" stats with your mined ores (of which are just a few different). And that number goes up very slowly, for example typical being 1% boost to damage.\n\nNot recommended, refunded the game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-6328a0",
+              "claim": "Reviewers describe encountering technical issues such as game crashes, black screens upon startup, and delayed response to controller or keyboard inputs.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "227208237",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-05",
+                  "review_text": "Weird hitching and controller input issues. Wish I could've enjoyed it, but had to return because these issues were annoying.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220109960",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-03-07",
+                  "review_text": "game took several minutes to respond to inputs when \"Press Any Key\" prompt appeared, when I did finally load into the main part of the game, it would force me to move torwards the top left, unless I pressed any movement key (WASD). The second and third time I tried to launch it, a black screen would appear before the game would crash",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-107311",
+              "claim": "Reviewers describe technical issues including hitching and controller input unresponsiveness.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "227208237",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-05",
+                  "review_text": "Weird hitching and controller input issues. Wish I could've enjoyed it, but had to return because these issues were annoying.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220109960",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-03-07",
+                  "review_text": "game took several minutes to respond to inputs when \"Press Any Key\" prompt appeared, when I did finally load into the main part of the game, it would force me to move torwards the top left, unless I pressed any movement key (WASD). The second and third time I tried to launch it, a black screen would appear before the game would crash",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-7a1be6",
+              "claim": "Reviewers note the absence of a multiplayer or cooperative mode.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 4,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "225155495",
+                  "hours_at_review": 1.1,
+                  "voted_up": true,
+                  "date": "2026-05-09",
+                  "review_text": "Fantastic game worth the money. Bought for me by a friend.  The only down side for me is there is no multiplayer.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224689636",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-05-03",
+                  "review_text": "So many things wrong with this game. There is no Tutorial, there are no difficulty settings, you don't get to aim your main weapon or even your grenades. There are no keyboard commands. Monster A.I. is abysmal, they just head towards you like you are a magnet.  Missions are timed, everyone hates that. There is no exploration, the direction you go doesn't matter. You can't even pick the class you want to play at the start. Worst of all? There is no Multi-Player... How can it be called Deep Rock Galactic if it isn't Co-op ???",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224672089",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-05-03",
+                  "review_text": "Esse jogo ser single-player é um dos maiores crimes já cometidos dentro da steam",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224451847",
+                  "hours_at_review": 0.7,
+                  "voted_up": true,
+                  "date": "2026-04-30",
+                  "review_text": "Y U NO multiplayer when the demo was multiplayer? T.T",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220471416",
+                  "hours_at_review": 0.5,
+                  "voted_up": true,
+                  "date": "2026-03-12",
+                  "review_text": "It's okay overall, I would recommend getting if its on sale.\nThe only issue I have with the game is the lack of co-op, which feels odd since the regular Deep Rock is built around it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219572341",
+                  "hours_at_review": 1.1,
+                  "voted_up": false,
+                  "date": "2026-03-01",
+                  "review_text": "Nao entendo o motivo desse jogo ser single player, achei uma vergonha.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "219509993",
+                  "hours_at_review": 1.1,
+                  "voted_up": true,
+                  "date": "2026-03-01",
+                  "review_text": "We need a multiplayer mode\n\n\n\nthats it",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-70c3ac",
+              "claim": "Reviewers report that the game lacks multiplayer functionality.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "225155495",
+                  "hours_at_review": 1.1,
+                  "voted_up": true,
+                  "date": "2026-05-09",
+                  "review_text": "Fantastic game worth the money. Bought for me by a friend.  The only down side for me is there is no multiplayer.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224689636",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-05-03",
+                  "review_text": "So many things wrong with this game. There is no Tutorial, there are no difficulty settings, you don't get to aim your main weapon or even your grenades. There are no keyboard commands. Monster A.I. is abysmal, they just head towards you like you are a magnet.  Missions are timed, everyone hates that. There is no exploration, the direction you go doesn't matter. You can't even pick the class you want to play at the start. Worst of all? There is no Multi-Player... How can it be called Deep Rock Galactic if it isn't Co-op ???",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "220471416",
+                  "hours_at_review": 0.5,
+                  "voted_up": true,
+                  "date": "2026-03-12",
+                  "review_text": "It's okay overall, I would recommend getting if its on sale.\nThe only issue I have with the game is the lack of co-op, which feels odd since the regular Deep Rock is built around it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 14,
+        "cited_recommend": 5,
+        "divergence_p": 0.191,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 432,
+      "pct_positive": 78.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players notice performance drops during intense swarms while still lacking cooperative multiplayer.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-a5667f",
+              "claim": "Reviewers report that the game suffers from frame rate drops and stuttering during high-density situations.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230710530",
+                  "hours_at_review": 13.8,
+                  "voted_up": true,
+                  "date": "2026-07-17",
+                  "review_text": "While I have experienced a few stuttering issues with the game, I still am enjoying my time back in the world of DRG. Instead of squad-based shooting, this time, I'm taking on the hordes solo, a-la Vampire Survivors. It's a blast playing through and while the game is intensely difficult, I find myself coming back for more and more.\r\n\r\nGuess I just have to survive this next wave and I'll be better... right? Right?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228002915",
+                  "hours_at_review": 10.7,
+                  "voted_up": true,
+                  "date": "2026-06-15",
+                  "review_text": "Positive:\n- Straight up a lot of fun\n- Varieties of playstyles and weapons\n- I love mining the minerals (for temporary as well as permanent upgrades)\n- Really appreciate the checkpoints between runs (can quit and continue another time)\n- Destruction feels satisfying\n\n\nNegative:\n- Can be grindy if you tryhard\n- One run can take a lot of time, but u wont realise it ^^\n- Sometimes, FPS drop happens at high density situation\n\nConclusion:\nRecommended if you love killing monsters\nTons of fun, especially when u get it on a discount\nBut, I have not tried the expansion yet",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-2785a4",
+              "claim": "Reviewers note that the game lacks online co-op multiplayer support.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232231704",
+                  "hours_at_review": 9.2,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "This game is fantastic. I didn't see if it had online co-op, but it should. :)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230965571",
+                  "hours_at_review": 3.4,
+                  "voted_up": true,
+                  "date": "2026-07-21",
+                  "review_text": "SUPER GOOD. WITH COOP? GOOOOOOOOOOOOOOODLY GOOD",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228836449",
+                  "hours_at_review": 3.0,
+                  "voted_up": true,
+                  "date": "2026-06-26",
+                  "review_text": "Incredible game.  Just really needs multiplayer.  I want to run this with the boys badly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228600795",
+                  "hours_at_review": 17.8,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "pls add coop, i will play like a crazy madman\ngreat game, just needs coop",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227992835",
+                  "hours_at_review": 5.9,
+                  "voted_up": false,
+                  "date": "2026-06-15",
+                  "review_text": "Feels like a cash-grab using the DRG name. No co-op is a baffling choice.  \nGame is a mid-tier single player rogue-lite with boring unlocks/upgrades.\nMovement and mining feel clunky while the rest of the game tries to be Vampire Survivors.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227842990",
+                  "hours_at_review": 5.5,
+                  "voted_up": true,
+                  "date": "2026-06-13",
+                  "review_text": "Fun game. Would be 100x more fun if i could play with my friends. but seems most devs makeing roguelites dont like us playing together.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 8,
+        "cited_recommend": 7,
+        "divergence_p": 0.86,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 449,
+      "pct_positive": 78.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Automated mining charms some, but stat progression feels tedious and unrewarding.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-2b3b5b",
+              "claim": "Reviewers note that the game features a mining mechanic where the character auto-mines rock and stone when approaching walls.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231964895",
+                  "hours_at_review": 21.1,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "great vampire survivor type game.  The mining really sets it apart",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230456840",
+                  "hours_at_review": 33.6,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "Surprisingly addictive game. It's not a complicated game but somehow they did it really well. You are basically using one button here; that is moving your character (use controller). The dwarf auto-mines when it gets close, he auto-shoots when enemies are close, your job is to just move the dwarf. The weapons are interesting and combining up to four weapons can make some crazy and powerful combinations. I guess that's where the game also hooks you, you start out very weak but you are able to build this powerful fantasy of a dwarf moving down hundreds of bugs. There are upgrades and items and powerups to keep you busy and slowly but surely build a powerful dwarf.\n\nThe simple first impression didn't impress me but glad I kept playing and found out this is the best bullet heaven game out there right now. Strong recommend if you like bullet heavens. For the price there is lot to play.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228514588",
+                  "hours_at_review": 79.3,
+                  "voted_up": true,
+                  "date": "2026-06-21",
+                  "review_text": "Deep Rock Galactic: Survivor rocks hard as a top-down auto-shooter that captures the chaotic dwarf mining vibe perfectly.  Blasting through endless hordes of bugs while tunneling for loot and stacking upgrades feels incredibly satisfying.  The procedural caves keep every run fresh and frantic.  with your arsenal growing more ridiculous by the minute.  I love how the mining adds a clever layer to the survivor formula.  making survival feel rewarding instead of just dodging bullets.  Sure it can get a bit repetitive after long sessions but the sheer fun of rocking and stoning your way to victory more than makes up for it.  If you dig the original Deep Rock Galactic this one is an absolute blast.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-f44a3b",
+              "claim": "Reviewers describe the meta-progression and stat upgrades as offering extremely small, incremental increases that make the grind feel tedious and unrewarding.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232121282",
+                  "hours_at_review": 64.5,
+                  "voted_up": false,
+                  "date": "2026-08-05",
+                  "review_text": "It's a very repetitive Survivor game. There is a lot of micro-progression locked behind challenges that gradually increase your stats by a small amount. Gear that also come with randomized stats, different levels of quality that also bring with it some stat upgrades and effects that can make a run more convenient. Finding gear that is high quality is quite rare, compounded with having to fish for good randomized stats is also prolonging the grind.\n\nThe game itself is quite challenging, more so than most Survivor type games, mainly because you do get heavily swarmed by enemies and a lot of the guns often don't aim where you would want them to. Instead of shooting into a big clump of enemies, your shot can get diverted to a singular nearby unit closest to you. This kind of design made me heavily rely on explosives and guns that provide huge AoE and ground effects. There are weapons that feel absolutely useless, no matter what Overclock you slap onto them. This leads to you leaning onto always fishing for certain weapons, otherwise you are in for a really bad time.\n\nOverclocking. I'm sad that this feature just comes with some of the most bland choices possible. Fire rate and Reload speed, basically just an attack speed buff. Slapping an element on the weapon. Even interesting mechanics, such as grenades doing a \"pull\" on enemies before detonating felt useless. The effect is negligible. Effects like gaining armor while reloading also feels quite useless, considering we talking about a genre where the aim is not to get hit at all. I wish these were a lot more exciting.\n\nThere is a serious lack of variety when it comes to enemies. It's always the same two last bosses. Biomes can have one added unique enemy, and that's about it. It doesn't change the mechanics on how you playing the game, which mostly going to boil down to running around in circles and wait for things to die to your AoE or DoTs. \n\nA run can last quite some time. There are game modes that run from 3, 5, or …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "230546258",
+                  "hours_at_review": 27.5,
+                  "voted_up": false,
+                  "date": "2026-07-15",
+                  "review_text": "All the runs feel pretty much the same. Once you've played a couple times you don't really see much more. I really tried giving it a chance and seeing if things changed once you leveled up your character more, but it just never hooked me. Most of the upgrades are boring incremental (+3% damage) changes instead of interesting decisions between unique choices. It feels like you make a decision when you pick which weapon to take, and then the next 15 minutes are just running in the same circles over and over again getting the obvious upgrades for your weapon. I borderline don't recommend the game, there's something under the cruft that _could_ be good, but it's not there as of yet.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228440226",
+                  "hours_at_review": 58.1,
+                  "voted_up": false,
+                  "date": "2026-06-20",
+                  "review_text": "I've put quite a bit of time into the game and have been there since launch and I must say I do not recommend this game for someone looking for a good, addictive survivor-like game. The game has gotten a bit \"better\" over a few updates, but still suffers from issues that make your runs feel grindy and pointless. The game starts off relatively easy in the beginning, but as you increase in difficulty, the challenge ramps up a ton and there ends up being a massive difficulty spike between difficulties. This game does have meta upgrades, but they are a grind to upgrade. \n\nTakes about a full run, of maybe like 20-30 minutes, to get one upgrade that gives you maybe a 1% increase in a stat. Thanks for the miniscule bonus. Armor you find throughout your runs feels the same too. A whopping 5% bonus to something, maybe a 10% bonus could be nice, sure. Upgrading armor might give you a 0.7% increase on those stats, nice. Most of my stats are maxed out, I have a full gear set that is upgraded and is a \"decent\" level I think, being around 50. I struggled with Hazard 3 but slowly I got through it to unlock the gate for Hazard 4. Pretty difficult, but it felt fair. Now that I'm on Haz4, the difficulty just took a complete nosedive in challenge. This doesn't help that the RNG of upgrades can be insane at times, where you won't get anything good constantly, even with a maxed out luck upgrade.\n\nI barely hurt elites with upgrades, let alone the larger normal bugs. Wave after wave spawns much more aggressively so you are constantly corned and pinned against rocks, which slow you down significantly to mine through. When you find minerals, they just take an ungodly amount of time to mine through to collect, even though my mining speed upgrade is maxed out and I have armor that increases mining speed. Once you get to the end, finishing off the bullet sponge of a boss that has a ridiculous amount of health and deals lethal damage to you with any attack, you have only 30 seconds to get back …",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 3,
+        "divergence_p": 0.122,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 268,
+      "pct_positive": 85.4,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term veterans praise class variety and terrain destruction despite steep endgame walls and expensive expansion pricing.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-5d21c8",
+              "claim": "Reviewers report severe frame rate drops and stuttering during late-game or endless modes when the screen becomes cluttered.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232723351",
+                  "hours_at_review": 104.5,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "[h1] 100+ hours 100% Achievements [/h1]\n[h3] Recommended... kind of. it's generally a fun game (see below for more) [/h3]\n\nThe core gameplay loop is simple. Pick a class, a gun, and go level it up and then pick 3 more guns while you're leveling. Fight for a few levels and then fight a boss (the same 2 bosses for 100+ hr, repeatedly)\n\n[b] Pros: [/b]\n-It's fun when a build comes online and you're nearly invincible killing everything\n-A lot of the guns can become very powerful, there are very few duds \n-The narration and music are great\n\n[b] Cons: [/b]\n-If you're playing to \"beat\" the game, there really isn't a defining metric for that\n-Too grindy at times. If you're playing to get 100% achievements be prepared to grind for 100hrs+ (one of my last achievements was Endurance Kills V (kill 1,000,000 enemies) and it came just after my 100th hour. \n-Performance - on my PC I routinely would drop to 30-40 fps when the screen got too cluttered. I would've quit because of this ages ago but for some reason I committed myself fully to getting 100% and couldn't back out \n\nOverall, it's fun, at times. I think most people would get a solid 20 hours out of it before they started to see its flaws.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231327773",
+                  "hours_at_review": 127.4,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "on infinite, frames dropped to like 5fps and costed me my run after a few hours. F.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228875239",
+                  "hours_at_review": 262.6,
+                  "voted_up": false,
+                  "date": "2026-06-26",
+                  "review_text": "Great game, personally best bullet hell, but with release of endless where they didn't test it, using 2+ beam weapons after level 20 is just ridicolous. After they fix performance they can get positive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227408200",
+                  "hours_at_review": 114.9,
+                  "voted_up": true,
+                  "date": "2026-06-07",
+                  "review_text": "the game is lagging so crazy at endless mode hope you guys can fix this soon also frame rate drops and thank you",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226796178",
+                  "hours_at_review": 118.3,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "Game is fun but very poorly optimized. In endless mode beyond level 17 you are lucky to make it another level due FPS dropping to 40 and consistent, second long, stuttering. Visual clutter is also a big issue and even if you turn visual effects to 0 you can't see much in late game...",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-c356eb",
+              "claim": "Reviewers note that late-game performance degrades significantly, causing major frame rate drops and stuttering during endless mode or higher difficulty hazards.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232723351",
+                  "hours_at_review": 104.5,
+                  "voted_up": true,
+                  "date": "2026-08-13",
+                  "review_text": "[h1] 100+ hours 100% Achievements [/h1]\n[h3] Recommended... kind of. it's generally a fun game (see below for more) [/h3]\n\nThe core gameplay loop is simple. Pick a class, a gun, and go level it up and then pick 3 more guns while you're leveling. Fight for a few levels and then fight a boss (the same 2 bosses for 100+ hr, repeatedly)\n\n[b] Pros: [/b]\n-It's fun when a build comes online and you're nearly invincible killing everything\n-A lot of the guns can become very powerful, there are very few duds \n-The narration and music are great\n\n[b] Cons: [/b]\n-If you're playing to \"beat\" the game, there really isn't a defining metric for that\n-Too grindy at times. If you're playing to get 100% achievements be prepared to grind for 100hrs+ (one of my last achievements was Endurance Kills V (kill 1,000,000 enemies) and it came just after my 100th hour. \n-Performance - on my PC I routinely would drop to 30-40 fps when the screen got too cluttered. I would've quit because of this ages ago but for some reason I committed myself fully to getting 100% and couldn't back out \n\nOverall, it's fun, at times. I think most people would get a solid 20 hours out of it before they started to see its flaws.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231327773",
+                  "hours_at_review": 127.4,
+                  "voted_up": true,
+                  "date": "2026-07-26",
+                  "review_text": "on infinite, frames dropped to like 5fps and costed me my run after a few hours. F.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230423880",
+                  "hours_at_review": 248.1,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "Chill game the dlc 1 is cool.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229212543",
+                  "hours_at_review": 222.5,
+                  "voted_up": false,
+                  "date": "2026-06-30",
+                  "review_text": "Upon reaching Hazard 5, the game really starts to show it's massive flaws. The majority of builds become unfeasible due to the lack of DPS required for larger waves and eventually Deep Rock: Survivor crashes if you don't roll good modifiers. For a rogue lite game, I would expect a plethora of builds to succeed, not a select few out of hundreds (and based around LUCK too, mind you).\n\nThe good:\nPlenty of upgrades available after death\nHigh replay value\nLots of equipment available for min-maxing\nFeels like a Deep Rock game\n\nThe bad:\nVery shallow rogue-lite - only 5 maps, 4 characters, and DPS is the ONLY part that matters. You won't be using the cooler or niche weapons like a boomerang to suck experience up because the game WILL crash if you don't have high DPS. \n\nMissing basic character control - Can't manually aim weapons and it's not possible to avoid mining any blocks you're facing. I can't tell you the amount of times I stall on terrain requiring 12+ hits because there's no option to just STOP mining. Not to mention how horribly programmed the grenades are. Grenades love to prioritize LONE enemies instead of groups containing 60+ enemies, the lack of basic priority fundamentals is astonishing, especially for an auto-battler.\n\nOverall:\nThere's better scaling rogue-lites available on the market. You won't be missing anything if you ultimately decide to pass on Survivors. Roguecore is the genuine successor, you should go play that instead. \n\nDeep Rock: Survivor functions mechanically, but the overall design is hot garbage. With that said, I'm still going to finish the game only because It's in my library, but nothing beyond that. As for my playtime, owned this game for years in EA and recently wiped my progress. 34.3 hours is after a fresh restart upon coming out of EA.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226796178",
+                  "hours_at_review": 118.3,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "Game is fun but very poorly optimized. In endless mode beyond level 17 you are lucky to make it another level due FPS dropping to 40 and consistent, second long, stuttering. Visual clutter is also a big issue and even if you turn visual effects to 0 you can't see much in late game...",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-4168e5",
+              "claim": "Players describe hitting a demanding difficulty wall at endgame or higher hazard levels that requires significant grinding, specific RNG luck, or precise builds to progress.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "233067136",
+                  "hours_at_review": 102.6,
+                  "voted_up": true,
+                  "date": "2026-08-17",
+                  "review_text": "If you're looking for a resource + mob farming management game that keeps you rather active and chasing unlocks + upgrades, this game is a great fit.   Progress is slow and there are periods of times in which you hit challenge walls that can feel daunting however there are typically tracks to get around them while enjoying other aspects and challenges. \r\n\r\nThe only real exception here of course are mission nodes that typically require many, many, MANY resets/runs to achieve the proper RNG to meet the requirements (or fail to trigger when you've met their requirements). Even after you complete them you end up feeling like you've done a chore. which kills the experience.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232740474",
+                  "hours_at_review": 338.2,
+                  "voted_up": false,
+                  "date": "2026-08-13",
+                  "review_text": "This game lies in the title, in the tags and even in the franchise. It's literally the anti survivor.\nThe survivor genre is based upon surviving escalating hordes of enemies, gearing up throughout the match or pauses inbetween. Either towing a fine balanced line with a mix of luck manipulation, defensive and evasive mechanics, all of that often done with emphasis on a fast character progression, or being completely casual about everything and allowing you to reach the apex in a few short matches (vampire survivors being the prime example of this)\n\nThe devs of [strike] DRG[/strike]S decided, in their infinite wisdom, that they couldn't be remotely arsed with any of that. First difficulty is somewhat fine, anything past that is about as fun as smoothing sandpaper with your palms.\n\nThe flaws are uncountable and plaguing every aspect of the game. it is 95% pure luck and 5% being able to press 4 keys to move the character around.\n\nThis game may share the mantle of DRG, the only reason why i bought it in the first place, and yet has nothing more than the skinand name linking them together. Drg knows how to be intense, fast paced, with a rich emphasis on class building and gear unicity, mixing shield recovery, the consumables disrupting effects and mobility gear to control the mission flow.\n\n[strike] DRG[/strike]S on the other hand decided that:\nYou can't aim.\n\nYou can't evade. \n\nYou have no shields.\n\nYou have no meaningful defensive means to tank the horde\n\nAll guns are nearly the same with just different names and skins.\n\nAbout only 3 class bonuses can be considered good.\n\nMap generation is critical and often creates innavigable terrains.\n\nThe game punishes you actively for not having enough DPS by making the enemies stronger and harder to kill the longer the match carries on after the bosses have arrived, making it impossible to complete after a few short minutes if you can't kill them fast enough.\n\nThe overclock are all the same 6 for every similar weapon, which added …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "225587265",
+                  "hours_at_review": 156.3,
+                  "voted_up": true,
+                  "date": "2026-05-15",
+                  "review_text": "Fun but the difficulty curve is dumb at endgame and just there to force you to have to do reruns constantly. Would be a 50ish hour game otherwise. \n\nI'd give it a middling thumb if I could. I'll give it a thumbs up and warn you that you will hit a wall that relies on rng if you want to get all achievements. \n\nDifficulty for the sake of it is dumb. Devs could've found smarter ways to increase difficulty instead of the lazy way.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225427374",
+                  "hours_at_review": 170.6,
+                  "voted_up": false,
+                  "date": "2026-05-13",
+                  "review_text": "Everything is predestined even if you try other strategies\nMaking the game impossible when you didn't hit the perfect combo/build is just dumb\nprobably the worst \"good game\" that I spent money on",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "vet-a6bad7",
+              "claim": "Reviewers note that newer expansion content and DLC are priced similarly to or higher than the base game, drawing criticism from early access supporters.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231965562",
+                  "hours_at_review": 278.0,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "8/10 game and I highly recommend it to any fans of both DRG and games like Vampire Survivors, this is easily the most fun, engaging, and unique take on the Vampire Survivors genre I have ever played. I 100%'d this game yet still play it very regularly, however I'm going to leave some criticisms/feedback below that I think the game should try to do better long term if possible as even some of my favorite games [such as this one] are never perfect.\n\n1 - I wish Bosco had artifacts and/or upgrades for him. It's kind of lame how all you can do is one small gear slot dedicated to him and that's it.\n\n2 - I personally think DLC content should be cosmetic only in the future, the new biome and egg hunt should of just been free additions to the game in my opinion, the new class I can kind of understand being paid but I'm not sure. Maybe I am spoiled too much by regular DRG's monetization model, maybe not, feels like this game really needs a meaningful free content injection for far too long now. Endless mode didn't feel like enough for that major update.\n\n3 - As someone with tons of playtime, it really sucks not being able to spend credits/minerals on re-rolling the stats/attributes for gear to try to get the stats you want to make actual proper builds that synergize with different classes, instead of just slapping the same stuff on all classes all the time. The gear system is close to being awesome but it feels too hard to get stats/attributes you actually want out of it. Plus I think endgame players really need something to spend credits/minerals on endlessly, this would help a bit.\n\n4 - I really want to see online and maybe local co-op support added to this game. A DRG game without co-op being an option just feels weird, and I'd like to note that Vampire Survivors added up to 4 player co-op post launch soh it's possible to make it work in games like this. The developers should look into this long term and maybe look at Vampire Survivors for inspiration, that game had to cha…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "225723652",
+                  "hours_at_review": 193.7,
+                  "voted_up": false,
+                  "date": "2026-05-17",
+                  "review_text": "Hard time supporting this game when new content is going to be released as overpriced slop DLC.  $12 for the base game and then lock new content behind a $10 paywall?  nah.  I bet this is just the beginning of the paid DLC too.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-079b13",
+              "claim": "Reviewers express dissatisfaction with the pricing of downloadable content, stating that the paid expansion costs nearly as much as or more than the base game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "226818234",
+                  "hours_at_review": 145.6,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "The dev's released a relatively small DLC for almost the same price as the base game, which contains many times the content. For those that bought the game on its early access release it actually costs the same (if not more). Absolutely ridiculous, not to mention disrespectful. I was looking forward to this DLC and had intended to buy it on launch, if it was a more developed borderline content expansion akin to what we saw in ages past before companies realised they could nickel and dime consumers I'd have happily put down the cash. \n\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225723652",
+                  "hours_at_review": 193.7,
+                  "voted_up": false,
+                  "date": "2026-05-17",
+                  "review_text": "Hard time supporting this game when new content is going to be released as overpriced slop DLC.  $12 for the base game and then lock new content behind a $10 paywall?  nah.  I bet this is just the beginning of the paid DLC too.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-abc7e1",
+              "claim": "The game features mining mechanics that allow players to dig through terrain, gather resources like gold and nitra, and carve out escape routes.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "228280626",
+                  "hours_at_review": 358.6,
+                  "voted_up": true,
+                  "date": "2026-06-18",
+                  "review_text": "tl,dr: Its alright if you like dwarves, or guns, or both.\r\n\r\nLonger: This is a single-stick \"survivor\"-type game where your primary gameplay loop is to walk around. The walking is complicated slightly by wave upon wave of ravenous bugs. You may also find your stroll interrupted by rock walls, mineable resources, natural hazards, exploding enemies, jump pads, rivers of lava, and more. At no point will you simply go for a stroll.\r\n\r\nYou start every mission with a single weapon in your kit. Mining resources or killing bugs gets you xp; xp lets you level up, raising your hp cap and giving you access to a randomized loot drop. Sometimes this is an upgrade to a gun, and sometimes it's something more general (like move speed or crit rate). If your guns upgrade far enough (lv6, 12, 18) they get Overclocks, which can drastically alter both their power and playstyle. New guns unlock periodically as you progress, tied to your level. \r\n\r\nAt the end of your run you'll find a Very Large Bug (or two) who want to do terrible, horrible things to you. Flatten them and you get to go home a winner. Fall at any point and they'll have to send another dwarf. \r\n\r\n--\r\n\r\nThe game is funny. The voice acting from Mission Control should give a sensible chuckle. The bugs can be frustratingly unfair at times, particularly if you're trying to unlock some of the mission tiers and are up against a checkpoint mission that both increases difficulty and adds special negative modifiers to make things harder.\r\n\r\nBut you're good for it. Dwarves are tough.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228702348",
+                  "hours_at_review": 185.5,
+                  "voted_up": true,
+                  "date": "2026-06-24",
+                  "review_text": "[h1]DRGS[/h1]\r\n[b]TL;DR:[/b] Easily the most polished single-player, top-down auto-shooter to date. If you love the mainline game or want a massive evolution of the Vampire Survivors formula, buying this is a complete no-brainer. Rock and stone!\r\n\r\n---\r\n\r\n[h1]Breakdown[/h1]\r\n\r\n[b]🎮 Gameplay & Mechanics[/b]\r\n[list]\r\n[*] [b]Core Loop:[/b] Drop into Hoxxes, auto-shred thousands of space bugs, mine Nitra and Gold, and desperately race back to the drop pod before the timer runs out. \r\n[*] [b]Controls & Feel:[/b] Absolute perfection. Navigating tight chokepoints and using your pickaxe to actively dig your own escape tunnels feels incredibly responsive and strategic.\r\n[*] [b]Difficulty:[/b] [ ] Walk in the park | [ ] Fair | [X] Steep learning curve | [ ] Soul-crushing\r\n[/list]\r\n\r\n[b]🖼️ Visuals & Audio[/b]\r\n[list]\r\n[*] [b]Art Style:[/b] A flawless translation of the classic low-poly DRG aesthetic into a top-down perspective. Environmental hazards look great and clear.\r\n[*] [b]Soundtrack/SFX:[/b] Exceptional. The satisfying crunch of mining walls, chaotic weapon fire, and the iconic dwarven voicelines keep the adrenaline pumping.\r\n[/list]\r\n\r\n[b]⚙️ Performance & Bugs[/b]\r\n[list]\r\n[*] [b]Optimization:[/b] Rock solid. Even when the screen is completely flooded with swarms, explosions, and floating damage numbers, the framerate stays remarkably smooth.\r\n[*] [b]Bugs:[/b] Clean launch, incredibly polished. Ghost Ship and Funday Games have ironed out everything beautifully.\r\n[/list]\r\n\r\n[b]⏳ Replayability & Value[/b]\r\n[list]\r\n[*] [b]Story/Campaign Length:[/b] Dozens of hours. With multiple distinct classes, weapon overclocks, biomes, and the massive Endless Mode, you can sink 50+ hours into this easily.\r\n[*] [b]Price Tag:[/b] Worth every single penny at full price. \r\n[/list]\r\n\r\n---\r\n\r\n[h1]Final Score[/h1]\r\n[b]⭐⭐⭐⭐⭐ (5 / 5 Stars)[/b]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227523785",
+                  "hours_at_review": 1618.0,
+                  "voted_up": true,
+                  "date": "2026-06-08",
+                  "review_text": "Kept my attention a lot more than other Survivor games, because of the mining for resources in a round and  having an effective end to a run.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-4b88ee",
+              "claim": "Reviewers report that the game offers multiple distinct classes, subspecs, weapon choices, and game modes providing significant variety and replayability.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "227084729",
+                  "hours_at_review": 122.1,
+                  "voted_up": true,
+                  "date": "2026-06-03",
+                  "review_text": "TL;DR dwarf min*rs meet vampire survivors\r\n\r\nWot I liked\r\n- Excellent pacing, each run does not let you let your guard down;\r\n- Adrenaline runs;\r\n- There are occupation-specific weapons and cross-occupation ones;\r\n- Five professions each with 3 subspecs;\r\n- The game can be very grindy if you wanna be tough: masteries provide small but meaningful bonuses;\r\n- There is even equipment to tweak your dwarf's performance;\r\n- Dozens of weapons to blast bugs with;\r\n- Many different bugs with their own behaviour;\r\n- A bunch of biomes with unique interactions;\r\n- If you are a fan of DRG (I am) you will feel right at home: familiar beards, familiar picks, familiar bugs;\r\n- Good music and memorable quips;\r\n- Many game modes, following the modes of the coop game;\r\n- Many game-changing artifacts you unlock by playing.\r\n\r\nWot I disliked\r\n- Very basic settings. The game would play even better if there were some shortcuts;\r\n- I don't get why lootbugs have to be meleed;\r\n- No midrun save - it'll kick you back to the last interlevel shop;\r\n- No R&S hotkey!?\r\n\r\nTo sum it all up, when I first looked at the concept it looked silly. However the end result went beyond my expectations: The devs went a sang a tribute to vampire survivors staying true to their main game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226528559",
+                  "hours_at_review": 136.9,
+                  "voted_up": true,
+                  "date": "2026-05-27",
+                  "review_text": "Excellent bullet hell type game with 5 different characters to choose from with the expansion.Each character has 3 sub specs.So in all thats 15 different specs.The game starts off a challenge but get a little easier each run because of the passive points that you can invest in after each run.Then you hit level 4 and things really start to get hard.You have to be very determined to progress past level 4.Overall i will rate this 10/10 its a really fun grind.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226724333",
+                  "hours_at_review": 122.9,
+                  "voted_up": true,
+                  "date": "2026-05-29",
+                  "review_text": "It's quite impressive with how well made this game is!\r\nI've been playing since the Early Access release in the beginning and watched all the changes and updates to this game, and it has become an incredible game!\r\nEach level and mission are so unique to one another and add so much replayability! The new added challenges with each hazard level makes each replay more unique and difficult than before, and the sheer amount of weapons, upgrades, perks and classes add so much variety to play with!\r\nI highly recommend this game for anyone who enjoys horde shooters as this one is an amazingly made one that's still getting updated and even got a DLC!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 20,
+        "cited_recommend": 13,
+        "divergence_p": 0.0191,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 24755,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
