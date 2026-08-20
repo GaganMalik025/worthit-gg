@@ -62,6 +62,62 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-08-20 | **`run_batch.py`'s exit code is never printed in its own output, so
+two RESULTS.md entries recorded an exit status that was inferred from a clean
+summary block rather than observed** | build, 2026-08-20 batch night | Tonight's
+run returned **1**, which is CORRECT: `run_batch.py:323` is
+`sys.exit(1 if any(d["outcome"] == "stage_failed" for d in done) else 0)`, and A
+Way Out ended `stage_failed`. That line is unchanged since `0054991`
+(2026-08-01, verified with `git log -L 323,323`), and both 08-18 (1 stage
+failure) and 08-19 (2 stage failures) also ended with stage failures — so both
+nights must have returned 1 as well. Both RESULTS.md entries say the run ended
+"with a real summary block and **exit 0**".
+**Neither night's committed log contains an exit code at all.** Checked rather
+than assumed: `grep -n 'rc=\|EXIT\|exit'` over `evals/batch-2026-08-18.txt` and
+`evals/batch-2026-08-19.txt` returns nothing, and both files end at the
+`batch budget : N of 400 left` line. `run_batch.py` prints its summary and then
+calls `sys.exit()` without ever emitting the value, so the log is silent on the
+one number those entries asserted. The claim came from the summary block looking
+clean.
+**Same failure class as the 2026-08-16 INCIDENT, and milder in degree — the
+distinction matters and is not a softening.** There, a QR-4 PASS was fabricated
+for a run that never happened. Here the batches genuinely ran, the summary
+blocks are real, and every other figure in both entries (calls, titles, cost per
+title, the three-way ledger reconciliation) was derived from files on disk and
+is unaffected. What was assumed is exactly one field, and it was assumed because
+the observable — a clean summary — genuinely does correlate with success on most
+nights. That is what makes it the more insidious shape: an inference that is
+usually right, drawn from real evidence, sitting in the same sentence as figures
+that were properly measured, in a file whose whole purpose is to be citable.
+**Not fixed retroactively, because it cannot be.** Those two processes are gone
+and their exit statuses were never written anywhere — no wrapper, no CI record,
+no shell history that captured `$?`. The true values are unrecoverable, so the
+honest repair is a correction appended to each entry saying the figure was
+inferred and is now unknown, which is what was done rather than editing the
+original claims (RESULTS.md is append-only, and the same discipline every other
+correction in that file uses). Any "it must have been 1" written into those rows
+would be a second inference dressed as a fix.
+**Fixed going forward** in `pipeline/run_batch_logged.sh`: the batch is started
+through a wrapper that sets `pipefail`, takes `PIPESTATUS[0]`, and writes
+`EXIT_RC=` into the batch log itself, so the code is in the artifact rather than
+in a session transcript. CLAUDE.md's batch-night section now names it as the
+invocation. **The trap it exists for was measured, not argued** — in this repo's
+shell (zsh 5.9), `( exit 7 ) | tee /dev/null` records `rc=7` under `pipefail`
+and `rc=0` without it, so the naive pipe silently manufactures exactly the "exit
+0" being corrected here. Mutation-proved 9/9 by
+`evals/verify_batch_rc_capture.sh` (raw output
+`evals/batch-rc-capture-2026-08-20.txt`), which drives the real wrapper file
+byte-for-byte inside a throwaway repo with a stub interpreter, and whose case 2
+is a **control that reproduces the bug** — the pre-fix shape recording 0 for a
+batch that exited 3. Without that control a green run would prove nothing, since
+a wrapper that always reported failure would pass the other cases. Case 3 pins
+the opposite direction (a clean batch still records 0) and case 4 pins that a
+second same-day run appends rather than destroying the first run's evidence.
+**What this does NOT fix:** tonight's own log, `evals/batch-2026-08-20.txt`, was
+produced by the pre-wrapper invocation, so its `EXIT_RC=1` was captured in the
+session's task output rather than in the file. The wrapper starts paying from
+the next night. Related: [[verify-the-verifier]].
+
 2026-08-20 | **The digit-in-prose guard is teaching the model to spell numbers
 out, and one of those spellings shipped** | build, the Insurgency retry-cache fix
 | Insurgency's published verdict carries

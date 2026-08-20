@@ -1,0 +1,20 @@
+wrapper under test: /Users/gaganmalik/Downloads/worthit-gg/pipeline/run_batch_logged.sh
+sha256: 03d8474551c52ea466a39133a8ab37fe687ab4400614ee5b57d22f1587857f84
+
+case 1: batch exits 3, via the wrapper
+  PASS  wrapper exit status: 3
+  PASS  EXIT_RC line in log: EXIT_RC=3
+  PASS  summary block still logged: 1
+
+case 2: CONTROL - same failing batch through the pre-fix shape
+  PASS  pre-fix shape misreports as 0: EXIT_RC=0
+
+case 3: batch exits 0, via the wrapper
+  PASS  wrapper exit status: 0
+  PASS  EXIT_RC line in log: EXIT_RC=0
+
+case 4: a second same-day run preserves the first run's log
+  PASS  both runs' codes present: 2
+  PASS  first run's code survives: 1
+
+ALL CASES PASSED - wrapper records the real code, pre-fix shape does not

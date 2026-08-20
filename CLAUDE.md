@@ -178,6 +178,15 @@ Standing rules, every session:
   `evals/RESULTS.md`, a fabricated QR-4 PASS caught only because the developer
   cross-checked file timestamps against the disk. Assume every number, path and
   timestamp is independently re-derived against the filesystem, every time.
+- **Start the batch through `pipeline/run_batch_logged.sh`, never bare.**
+  `run_batch.py` exits 1 when any title ends `stage_failed` and never prints
+  that value, so a log alone cannot show what a run returned — and
+  `python run_batch.py | tee log` makes `$?` **tee's** status, which is 0
+  whenever the file is writable. An "exit 0" read off a clean summary block is
+  therefore an inference, and it was wrong on 08-18 and 08-19 (BACKLOG,
+  2026-08-20). The wrapper sets `pipefail`, reads `PIPESTATUS[0]`, and writes
+  `EXIT_RC=` into the log itself. Never report an exit code the log does not
+  carry.
 
 **Post-batch sequence — reference, not an instruction to run it unprompted.**
 Each step waits for the developer.
