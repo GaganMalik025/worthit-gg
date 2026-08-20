@@ -1359,3 +1359,118 @@ of which retry nightly at zero cost.
 > Filed in BACKLOG under 2026-08-20 alongside the forward fix
 > (`pipeline/run_batch_logged.sh`), which writes `EXIT_RC=` into the batch log
 > so a future reader cites the code instead of inferring it.
+
+---
+
+## 2026-08-20 — 4.1 catalog batch, 45 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **2,327 citations across 45 verdicts, 0 failures** (and **24,619 across all 477, PASS**, `rc=0`) |
+| Manual audit | developer read `evals/audit-4.4-2026-08-20.md` and confirmed it passed |
+| Sample | seed 20260820, stratified 5 per playtime cohort — 10 verdicts, 20 citations |
+| Scope | 45 verdicts, 2,327 citations |
+| Raw output | `evals/qr4-2026-08-20.txt` (all 477) and `evals/qr4-2026-08-20-tonight.txt` (45) — both in-repo and openable |
+
+Both runs recorded `rc=0`. **The two figures reconcile without subtracting one
+from the other**, which the previous nights' entries could do only because
+nothing published between batches: 22,239 (all 431 at 08-19) **+ 53**
+(Insurgency, published this morning by the retry-cache fix, before the batch)
+**+ 2,327** (tonight's 45) = **24,619**. The 53 is the middle term that a bare
+24,619 − 22,239 = 2,380 would have silently absorbed into tonight's
+contribution.
+
+**The run finished cleanly** — 107 titles attempted in 38.2 minutes, ending
+through `run_batch.main()`'s budget path with a real summary block
+(`evals/batch-2026-08-20.txt`). Of the 107, **46 were actually worked**: 45
+published and 1 stage failure. The remaining 61 were budget-stopped at 0 calls
+once 399 of 400 were spent, which is correct — a title needs 13.
+
+**It returned `EXIT_RC=1`, and that is the correct value, not a fault.**
+`run_batch.py:323` exits 1 when any title ends `stage_failed`, and A Way Out
+did. This is the first night the code was observed rather than inferred; the
+08-18 and 08-19 entries have been corrected above, since neither of those logs
+carries an exit code and both nights also had stage failures. One honest limit:
+tonight's `1` was captured in the session's task output, **not** in
+`evals/batch-2026-08-20.txt`, because the run predates the wrapper by minutes.
+`pipeline/run_batch_logged.sh` (`ea3ff88`) writes `EXIT_RC=` into the log itself
+and is the invocation from the next night forward, so this is the last entry
+whose exit code lives outside its own log.
+
+**Cost: 399 calls over 45 published titles = 8.87 per title** (min 4, max 14),
+against 9.51 on 08-19, 9.02 on 08-18 and 9.30 on 08-17 — **the cheapest of the
+recent nights**. All synthesis ran on flash-lite; the 20/day flash tier was
+untouched (`flash_used` 0), as was the 100-call live reserve.
+
+**The accounting reconciles three ways**: ledger `batch_used` **399** = pacer
+`today` **399** = the sum of per-title `model_calls` in `batch_state.json`
+**399**. The one failure spent nothing, so the published-title sum is also the
+night's total spend.
+
+**One stage failure, expected and decided in advance.** A Way Out (`1222700`),
+filter stage, **0 calls** — the zero-survivor veteran cohort from the 08-19
+entry, unchanged. It was deliberately **not** added to
+`zero_cohort_exceptions.txt` before the run: the 2026-08-16 resolution note says
+growth past a handful of entries is the signal the general question needs
+answering rather than another exception, and spending that signal on the second
+title to hit it would read it wrong. It failed in **0s** tonight against 39.6s
+on 08-19 — its `data/filtered/` artifacts were already cached, so nothing
+re-swept. It retries nightly at zero cost until the owner's call.
+
+**Insurgency (`222880`) did not appear in the queue at all**, ending a
+five-night streak of nightly zero-cost retries. Its verdict file now exists, and
+`pending()` checks that at `run_batch.py:103` *before* the state lookup — so the
+stale `stage_failed / published: false` record it still carries from 08-19 (the
+standalone `synthesize.py` fix does not write batch state) costs nothing. That
+skip is the whole 108 → 107 difference in tonight's queue size.
+
+**Verdict mix — 29 Buy, 15 Wait, 1 Skip**, counted from the 45 published files:
+
+| | Buy | Wait | Skip | Buy % |
+|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% |
+| 2026-08-14 (42) | 26 | 15 | 1 | 62% |
+| 2026-08-16 (43) | 26 | 16 | 1 | 60% |
+| 2026-08-17 (40) | 26 | 14 | 0 | 65% |
+| 2026-08-18 (44) | 18 | 20 | 6 | 41% |
+| 2026-08-19 (41) | 26 | 13 | 2 | 63% |
+| **2026-08-20 (45)** | **29** | **15** | **1** | **64%** |
+
+64% sits one point off last night and inside the 08-13/14/16/17/19 cluster.
+**The matched-band check was deliberately NOT run for tonight**, by owner
+decision: `evals/positivity_by_night.py`'s `NIGHTS` list still ends at
+2026-08-19, and an unremarkable figure does not need the instrument that exists
+to explain swings. So this entry makes no claim about *why* the mix landed where
+it did — it is simply consistent with the established range, which is a weaker
+statement than the 08-18 and 08-19 follow-ups make and is meant to be.
+
+Search index rebuilt: 7,304 core + 23,079 tail rows,
+`generated_at 2026-08-20T12:16:26Z`, **all 477 verdict appids confirmed present
+by set membership, 0 missing** (verdict set minus index set is empty — not a
+row-count diff). Row counts are unchanged from 08-19 for the established reason:
+690 of 690 pages served from cache, no network. All 45 carry an `art` block with
+a `header_image`; 261 of 477 sit on the content-hash art path.
+
+Audit sample checked with `evals/check_sample_overlap.py`: across the eight
+dated batch rounds, **distinct within the round and independent across every
+prior round** (`rc=0`). Running the same checker over *every* audit file rather
+than the dated ones surfaced 3 problems in two one-off rounds from 08-07 and
+08-10 — `audit-4.4-hades-hollowknight.md` presents 20 citation slots and reads
+18 distinct reviews, `audit-4.4-live.md` 20 and 19, and the two share 2 reviews.
+No batch night is affected and no claim in this file changes; filed in BACKLOG
+under today's date, including the question it opens with — whether
+`make_audit_sample.py` samples with replacement, which was **not** determined
+and is a code read rather than a guess.
+
+Catalog after this pass: **477 titles**. **62 pending** — 61 carrying tonight's
+`batch_budget_exhausted` plus A Way Out's non-terminal `stage_failed`. The raw
+count of non-terminal records in `batch_state.json` is **63**; the difference is
+Insurgency, whose record is still non-terminal but whose verdict file makes
+`pending()` skip it. 62 is what the next run would actually attempt, and 63 is
+what the state file says — both are right about different things, and the number
+that matters operationally is 62.
+
+**Developer notes on the audit:** audit read and confirmed passed.
