@@ -1170,6 +1170,27 @@ splits, nothing inappropriate found.
 > agreement is exact, which is the same basis the 08-16 entry used and the same
 > limit it recorded.
 
+> **2026-08-20, CORRECTION — the "exit 0" above was inferred, not observed, and
+> the true value is unknown.** This entry states the run ended "through
+> `run_batch.main()`'s budget path with a real summary block and exit 0". The
+> summary block is real and every other figure in this entry was derived from
+> files on disk. The exit code was not: **`run_batch.py` never prints it**, and
+> `evals/batch-2026-08-18.txt` contains no exit code anywhere — it ends at the
+> `batch budget : 3 of 400 left` line. The claim was read off a clean-looking
+> summary.
+> It is also probably wrong. `run_batch.py:323` is
+> `sys.exit(1 if any(d["outcome"] == "stage_failed" for d in done) else 0)`,
+> unchanged since `0054991` (2026-08-01), and this night had one stage failure
+> — Insurgency — so the run almost certainly returned **1**.
+> "Almost certainly" is deliberate and is where this correction stops. The
+> process is gone and its status was never recorded anywhere, so the real value
+> is **unrecoverable**; asserting 1 here would replace one inference with
+> another. The original claim is left standing above rather than rewritten, per
+> this file's append-only discipline. Filed in BACKLOG under 2026-08-20, with
+> the forward fix (`pipeline/run_batch_logged.sh`, which writes `EXIT_RC=` into
+> the log itself) and the measured reason the naive `| tee` pipe produced a
+> false 0.
+
 ---
 
 ## 2026-08-19 — 4.1 catalog batch, 41 new titles
@@ -1319,3 +1340,22 @@ of which retry nightly at zero cost.
 > band, which is unusually well populated tonight at n=12. This is the same limit
 > the 08-16 and 08-18 entries recorded, and it is recorded again rather than
 > dropped because the band happens to be even thinner this time.
+
+> **2026-08-20, CORRECTION — the "exit 0" above was inferred, not observed, and
+> the true value is unknown.** This entry states the run ended "through
+> `run_batch.main()`'s budget path with a real summary block and exit 0", the
+> same wording as the 08-18 entry and with the same defect. `run_batch.py` never
+> prints its exit code, and `evals/batch-2026-08-19.txt` carries none — it ends
+> at the `batch budget : 10 of 400 left` line. Everything else in this entry
+> (390 calls, the three-way reconciliation, the two stage failures, the mix) was
+> derived from files on disk and stands unchanged.
+> This night had **two** stage failures, Insurgency and A Way Out, so under
+> `run_batch.py:323` — `sys.exit(1 if any(...stage_failed...) else 0)`,
+> unchanged since `0054991` — the run almost certainly returned **1**. The
+> process is gone and nothing captured its status, so the real value is
+> **unrecoverable** and is not asserted here. The original claim stays as
+> written; this correction is appended rather than folded in, per this file's
+> append-only discipline.
+> Filed in BACKLOG under 2026-08-20 alongside the forward fix
+> (`pipeline/run_batch_logged.sh`), which writes `EXIT_RC=` into the batch log
+> so a future reader cites the code instead of inferring it.
