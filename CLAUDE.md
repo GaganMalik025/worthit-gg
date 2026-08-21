@@ -101,6 +101,16 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
     True population proportions are computed **in code** from the full
     pre-quota pool and passed through explicitly. If a proportion was not
     passed in that way, it does not get stated.
+    - **Event frequency is not prevalence (2026-08-21).** How often a *thing*
+      happens — "occasional crashes", "persistent startup failures" — is allowed;
+      how many *people* is not. The guard's frequency words were freed in full
+      (`pipeline/prevalence_guard.py`, `FREED_FREQUENCY_PATTERNS`) after they cost
+      real output: RuneScape burned 9 calls and published nothing, Insurgency
+      deadlocked three nights. Population, proportion, ratio, percentage and
+      consensus language stay banned and are what invariant 11 now means.
+      **The prompt is derived from the guard** via `banned_words()` and must never
+      name a word the guard permits — a model told to avoid a word spells around
+      it rather than dropping it.
 12. **Minimum cohort evidence is 20 surviving reviews.** [see invariant 13 for
     how the resulting `n=` label is sourced] Below 20 reviews in a
     bucket after filtering, no claim may be attributed to that cohort; the
@@ -109,6 +119,16 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
     Stranding 26, Stardew Valley 24, **Cyberpunk 2077 12** — already below the
     floor before the filter runs. Cohorts are exhausted at ingestion (kept ==
     pool), so a review the filter drops cannot be replaced.
+    - **ZERO IS INCLUDED, and is the default since 2026-08-21.** A cohort that
+      filters to no survivors mutes exactly like an under-20 one and renders its
+      pool figure. It does **not** fail the title. Settled by three titles in six
+      nights — Hotline Miami (1 of 400 veteran reviews), A Way Out (2 of 400),
+      A Plague Tale: Innocence (1 of 1,203) — all short finite games, where a
+      100-hour cohort is undefined by construction rather than thin by sampling
+      accident. Failing the title published nothing at all instead of three sound
+      cohorts and one honest muted section. `pipeline/data/zero_cohort_exceptions.txt`
+      is superseded by this and decides nothing; its one entry is kept as the
+      record of how the question was decided, and new titles need no entry.
 13. **Every user-facing number is a pool figure.** Split Bar rates, cohort `n=`
     labels, distortion-flag evidence and footer counts all read the `pool` block
     of the verdict JSON. Post-quota and post-filter counts — how many reviews
@@ -265,19 +285,21 @@ non-goal — they are the reason it is permitted, not decoration.
   stop so the developer can read it before the next stage is built.
 - UI work follows `docs/DESIGN.md` exactly. Do not substitute generic
   shadcn-default styling.
-- **Short explanations, complete ones. Brevity is a constraint on WORDING, never
-  on COVERAGE.** Cut restatement, preamble, hedging and narration of process —
-  not findings. Nothing may be dropped, softened or left unsaid because it would
-  make a report longer: not a stage failure, not a caveat, not a number that
-  complicates the story, not a limit on what was actually verified, not an error
-  made mid-task. If it changes what the developer would decide, it ships, however
-  long that makes the report. Prefer tables and lists over paragraphs, one
-  sentence over three, and the finding over the journey to it. **When the two
-  pull against each other, completeness wins and the wording gets tighter
-  instead** — an omission is a silent error, and this file's whole reporting
-  discipline (report only what was run, name the gap, never infer) is worth
-  nothing if the honest figure can be edited out for being inconvenient to
-  phrase briefly.
+- **Reports are SHORT — and shortness NEVER comes from leaving something out.**
+  These are two rules and the second one wins. **Nothing may be omitted,
+  softened, deferred or rounded away to save space**: not a stage failure, a
+  gate result, a caveat, a number that complicates the story, a limit on what
+  was actually verified, an assumption, or an error made mid-task. If it would
+  change what the developer does next, it appears — every time, however tight
+  the report. An omission is a silent error and is strictly worse than a long
+  report. Shortness comes from COMPRESSION instead: headline result, one table
+  of numbers, one line each for anything that failed or needs a decision. No
+  restatement, no preamble, no narration of process, no re-explaining a finding
+  already written to BACKLOG or RESULTS — cite the path. One sentence where
+  three would do. Every item still present, each stated once and briefly rather
+  than argued; the full reasoning lives in the committed entry, which is the
+  citable artifact. **If the two pull against each other, keep the item and cut
+  the words around it.**
 
 ## Key docs
 
