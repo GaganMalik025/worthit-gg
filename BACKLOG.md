@@ -217,6 +217,36 @@ guard that currently has one unambiguous rule), or leave the guard and add
 detail rather than disguise it. The last is smallest and loses information on
 purpose, which is a product call. One observed instance so far.
 
+> **2026-08-21, RESOLVED — narrow allowlist taken, and the shipped string is
+> repaired.** Invariant 13's rule was a bare `\d` with no categories, so the
+> prevalence split could not reach it; it got its own fix.
+> `synthesize.PLATFORM_TOKEN` permits a digit bound into a platform or version
+> name (Windows 11, DirectX 12, RTX 4090, PS5, Core i7) and `has_bare_digit()`
+> rejects every other digit. Quantities are untouched — "20 hours", "6 players",
+> "3 of 5" and a claim id in prose all still fail, which is the half of
+> invariant 13 that carries the weight.
+>
+> **The prompt moved with the guard, and that is the actual fix.** Rule 2 used to
+> end "Any digit in prose is rejected", which is what made the model spell the
+> numeral out; it now teaches the exception by example and names the wrong
+> answer: WRONG "you run Windows eleven", RIGHT "you run Windows 11". This is the
+> `banned_words()` lesson applied to the other guard — a model told to avoid a
+> token spells around it rather than dropping the fact, and a prompt that has
+> fallen behind its guard is how that happens.
+>
+> **222880 regenerated for 1 call** (ledger 397 → 398), `--force-lite`, raw output
+> `evals/insurgency-verdict-2026-08-21.txt`. The published `not_for_you_if` now
+> reads **"you run Windows 11 with BattlEye issues"**. QR-4 on the new verdict:
+> 53 citations, PASS, `rc=0` (`evals/qr4-2026-08-21-insurgency.txt`). Repaired by
+> regeneration, not by editing a published artifact.
+>
+> **Re-measured across all 514 rather than assumed: 0 evasions remain.** The
+> sweep for spelled-out numerals in rendering prose returns 9 occurrences, all
+> ordinary English — "two players", "one-versus-one", "one-shot deaths", "one
+> sitting", "one-hit-kill", "turn-one dominance". None is a numeral in disguise,
+> and writing them as digits would be worse prose and would be rejected as
+> quantities anyway. The one real instance this entry recorded is gone.
+
 2026-08-18 | **Insurgency's verdict stage is deadlocked by its own response
 cache — three rejected answers replayed nightly, forever, at zero cost** | build,
 third consecutive failure of `222880` | Diagnosed at **zero Gemini spend**, by
@@ -545,6 +575,52 @@ question rather than answer it. Related: [[verify-the-verifier]].
 > whether `1222700` should publish, but whether a zero-survivor cohort should
 > mute automatically the way invariant 12 mutes an under-20 one.** Both titles
 > now sit behind that one call. Related: [[verify-the-verifier]].
+
+> **2026-08-21, RESOLVED — the general question is answered, and the answer is
+> the default rather than a third exception.** Owner decision: a zero-survivor
+> cohort MUTES, exactly as invariant 12 already mutes an under-20 one, and does
+> not fail the title. `pipeline/filter_reviews.py`'s two identical gates
+> (`all(st["kept"] > 0 or st.get("zero_cohort_exception") ...)`) now return True;
+> the `FAIL:` report line became an `invariant 12: <cohort> has n=0` line.
+>
+> **What made the question answerable was the third case, not the count.**
+> A Plague Tale: Innocence arrived on the 2026-08-21 batch with veteran `in`=1,
+> `kept`=0. Veteran pool shares across the three: Hotline Miami 1 of 400, A Way
+> Out 2 of 400, A Plague Tale 1 of 1,203 — all short, finite,
+> single-playthrough games. Invariant 2 puts `veteran` at 6000+ minutes, so for a
+> game that ends at ten hours the cohort is **undefined by construction**, not
+> thin by sampling accident. That is what this entry could not see with one
+> title, and it is why the answer is not "mute at zero" as a mechanical rule so
+> much as "a fixed 100-hour bucket is the wrong instrument for a finite game" —
+> muting is the smallest honest response to that, and the only one that does not
+> touch invariant 2 and invalidate every eval result.
+>
+> **Nothing else in the pipeline needed changing, which is the strongest evidence
+> the muted path was always the right one.** `"muted": kept < MIN_COHORT` already
+> covered zero, `extract_claims.py` already skipped it, `post_refund_mean()`
+> already excluded muted cohorts, and `VerdictPage.tsx` already rendered the pool
+> figure. The 2026-08-16 entry guessed "the muted-section path appears to handle
+> it"; that is now checked rather than guessed — Hotline Miami has been publishing
+> in exactly this shape since 08-16 (`veteran muted=true, pool_n=1, 0 claims`,
+> rendering "1 reviews · too few to call").
+>
+> **Both blocked titles verified publishable at ZERO Gemini cost**, ledger
+> unchanged at 397 either side: `generate_one.py 1222700 --stage filter` and
+> `752590 --stage filter` both now exit 0 and report
+> `invariant 12: veteran has n=0 - renders muted, carries no claims`. A Way Out
+> also mutes `mid` at n=12, which the under-20 rule already covered. Neither was
+> force-published tonight; both publish on the next batch night.
+>
+> **Mutation-proved** (`evals/mutate_guard_split_2026-08-21.py`, g09/g09b/g10):
+> the old gate put back into the real file makes a fabricated zero-survivor title
+> fail with `zero survivors`, the file restores byte-identical by sha, and the
+> new gate publishes the same fixture with the cohort muted. The control is the
+> load-bearing half — a filter that published everything would pass g10 alone.
+>
+> **`zero_cohort_exceptions.txt` is superseded and decides nothing.** It is kept,
+> annotated at the top, with `219150` still in it: the record of how this was
+> decided one audited title at a time. New titles need no entry. Its loader still
+> runs so the historical note prints.
 
 2026-08-13 | **`pipeline/test_batch_guards.py` failed once, unreproducibly, and
 the evidence was thrown away** | build, regression run before the art commit |
@@ -1288,6 +1364,54 @@ weakening of invariant 11), or cap the spend rather than the failure (make a
 rejection-exhausted `stage_failed` terminal after N nights, which buries the
 question the 08-16 entry warned against burying). What is newly decidable is the
 priority: this one has a running meter. Related: [[verify-the-verifier]].
+
+> **2026-08-21, RESOLVED — the guard was split, and the fix is proved against
+> the run that failed.** Owner decision: event frequency is not prevalence.
+> `pipeline/prevalence_guard.py` now keeps population, proportion, ratio,
+> percentage and consensus patterns in `PATTERNS`, and moves both frequency
+> categories into `FREED_FREQUENCY_PATTERNS`, which is retained in the file,
+> uncompiled and unchecked, so the history reads and a reversal is one line.
+>
+> **Verified on RuneScape's own cached responses, at zero Gemini cost.**
+> Replaying its three rejected attempts through the new `check_response()`
+> (`evals/diagnose_stage_failures_2026-08-21.py`) flips attempts 0 and 1 from
+> `prevalence:summary[veteran]:occasional` to **PASS**. The title would have
+> published on its first attempt for 1 call instead of failing on three for 9.
+>
+> **One of the three is still rejected, and that is a decision rather than an
+> oversight.** Attempt 2's `not_for_you_if[0]` — "you expect free access to
+> **all** content" — still trips `absolute quantifier`. "All content" is the
+> game's content, not a share of players, so it is the same false-positive
+> family one category over; `all` was deliberately kept banned. Recorded as
+> still-open rather than counted as fixed.
+>
+> **Scope is wider than the instruction that requested it, on an explicit later
+> decision.** Both frequency categories were freed IN FULL, including the extent
+> words `commonly`, `widespread`, `prevalent`, `commonplace`, `widely`,
+> `universally`, `unanimously`, `overwhelmingly`. The instruction had named
+> `commonly` as a population word to keep banned; asked directly, the owner
+> chose to free them with the rest. "widely praised" does lean on how many
+> people, so this is the loosest reading of the split, and it is written down
+> here because a future reader would otherwise find the code contradicting the
+> instruction that produced it.
+>
+> **KNOWN SEAM, not resolved:** `unanimously` is now allowed while `unanimous`
+> and `consensus` stay banned under `consensus language`, a category that was
+> not part of the decision. Nothing in the catalog exercises it today.
+>
+> **Mutation-proved 12/12** (`evals/mutate_guard_split_2026-08-21.py`, logs
+> `evals/mutation-logs/g01..g10`). Every loosened guard carries a CONTROL that
+> reproduces the pre-fix behaviour — g01 rebuilds the old wordlist and rejects
+> RuneScape's real summary, g06 drives the old bare-digit rule, g09 puts the old
+> filter gate back and watches a title fail — because a guard widened too far
+> passes every test written to check it stopped blocking something. g03 pins the
+> nine population phrasings that must STILL be rejected, and a deliberate
+> over-free mutation (`check_claim` returning clean) turns exactly those red and
+> names each one. `filter_reviews.py` restored byte-identical, sha verified.
+>
+> **RuneScape was NOT force-regenerated**, per the owner's call — no quota to
+> spare tonight. It retries on the next batch night, where it should now cost
+> ~1 synthesis call instead of 3.
 
 2026-08-21 | **BidKing: a catalogued title too small to ever produce a verdict,
 refusing correctly and retrying nightly** | build, 2026-08-21 batch night |
