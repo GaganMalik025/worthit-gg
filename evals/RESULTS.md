@@ -1474,3 +1474,183 @@ what the state file says — both are right about different things, and the numb
 that matters operationally is 62.
 
 **Developer notes on the audit:** audit read and confirmed passed.
+
+---
+
+## 2026-08-21 — 4.1 catalog batch, 37 new titles
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **2,187 citations across 37 verdicts, 0 failures** (and **26,806 across all 514, PASS**), both `rc=0` |
+| Manual audit | developer read `evals/audit-4.4-2026-08-21.md` and confirmed all 20 citations and 10 verdicts pass |
+| Sample | seed 20260821, stratified 5 per playtime cohort — 10 verdicts, 20 citations |
+| Scope | 37 verdicts, 2,187 citations |
+| Raw output | `evals/qr4-2026-08-21-tonight.txt` (37) and `evals/qr4-2026-08-21.txt` (all 514) — both in-repo and openable |
+
+**The two figures reconcile additively**: 24,619 (all 477 at 08-20) + 2,187
+(tonight's 37) = **26,806**. Unlike 08-20 there is no middle term — nothing
+published between the batches — but the 37 were gated directly rather than
+inferred by subtraction, so neither figure depends on the other.
+
+**One citation needed a human call and got one.** Sample item #1, Prey
+`230593585`, reads "Prey is soooooo ♥♥♥♥♥♥♥ good". It passed both gates by
+design, not by omission: `filter_reviews.py:165` drops on `hearts >= 3` **and**
+density above threshold, and 7 hearts inside a long review is below the density
+floor ("density, never count"); `qr4_gate.py` has no ♥ handling at all. The
+developer judged it clean — positive sentiment, Steam's own censoring, not
+directed at a person. Recorded because invariant 8 is a launch gate and the
+automated half deliberately does not decide this case.
+
+**The run finished cleanly** — 62 titles attempted in 41.3 minutes, ending
+through the budget path with a real summary block
+(`evals/batch-2026-08-21.txt`). Of the 62, **41 were worked**: 37 published and
+4 stage failures. The remaining 21 were budget-stopped at 0 calls once 391 of
+400 were spent, which is correct — a title needs 13.
+
+**`EXIT_RC=1`, and this is the first night the code was read out of the batch
+log itself.** `pipeline/run_batch_logged.sh` (`ea3ff88`) wrote
+`EXIT_RC=1  (run_batch.py, captured under pipefail + PIPESTATUS)` as the last
+line of `evals/batch-2026-08-21.txt`. The 1 is correct rather than a fault:
+`run_batch.py:323` exits 1 when any title ends `stage_failed`, and four did. The
+08-20 entry called itself "the last entry whose exit code lives outside its own
+log" and that held.
+
+**A related correction, made in-session and worth recording because it is the
+same failure the wrapper exists to prevent.** The first QR-4 invocation piped
+through `tee` and printed `RC=${PIPESTATUS[0]}`, which came back **empty** —
+this repo's interactive shell is zsh, where the array is `$pipestatus` and
+1-indexed, so `PIPESTATUS[0]` names nothing. That reading was discarded and the
+gate re-run without a pipe, so `$?` is the gate's own status. Every `rc=` in
+this entry comes from a pipe-free invocation. The wrapper pins `bash` in its
+shebang for exactly this reason; a one-off command line does not inherit that.
+
+**Cost: 397 calls over 37 published titles = 10.73 per title** (min 4, max 16),
+against 8.87 on 08-20, 9.51 on 08-19, 9.02 on 08-18 and 9.30 on 08-17 — **the
+most expensive of the recent nights**. 9 of those calls produced nothing
+(RuneScape, below), so published work alone is 388/37 = 10.49. All synthesis ran
+on flash-lite; the 20/day flash tier was untouched (`flash_used` 0), as was the
+100-call live reserve.
+
+**The accounting reconciles three ways**: ledger `batch_used` **397** = pacer
+`today` **397** = the sum of per-title `model_calls` in `batch_state.json`
+**397**. The `batch_used: 391` in the budget-stop records is the figure at the
+moment the stop fired, with two workers still finishing; it is not drift.
+
+**Four stage failures — one known, three new. Together they cost 9 calls, all of
+them RuneScape's.**
+
+| Title | Stage | Calls | Cause |
+|---|---|---|---|
+| A Way Out (`1222700`) | filter | 0 | known zero-survivor veteran cohort, unchanged from 08-19 |
+| A Plague Tale: Innocence (`752590`) | filter | 0 | veteran `in`=1 → `kept`=0 — the **third** title in this shape |
+| BidKing (`4128580`) | verdict | 0 | 124 reviews total; every cohort below invariant 12's floor |
+| RuneScape ® (`1343400`) | verdict | **9** | three synthesis attempts, all rejected by the prevalence guard |
+
+**A Plague Tale makes the zero-cohort pattern legible.** Veteran pool shares:
+Hotline Miami 1 of 400, A Way Out 2 of 400, A Plague Tale 1 of 1,203. All three
+are short finite games, and invariant 2 defines `veteran` as 100+ hours — for a
+game that ends at ten hours that cohort is undefined by construction, not thin by
+sampling accident. Not allowlisted, on the 08-16 note's own reasoning that
+growth past a handful of entries is the signal to answer the general question
+rather than add exceptions. Filed in BACKLOG under today's date.
+
+**RuneScape is the cost side of the 08-20 retry-cache fix.** All three rejections
+are invariant-11 prevalence hits and all three are false positives:
+`summary[veteran]` twice on "**occasional** crashes" (frequency adjective), then
+`not_for_you_if[0]` on "free access to **all** content" (absolute quantifier).
+Attempt 2 fixed the summary the guard had just rejected twice and tripped a
+different guard on a different field. Pre-fix this title would have replayed
+cached rejections at 0 calls forever; post-fix the retries are real, which is
+what let Insurgency escape on 08-20 and what makes a title that *cannot* escape
+pay ~9 calls every night, since `stage_failed` is not TERMINAL. Not a reason to
+revert the fix; it is the newly-visible price. Reasons recovered at **zero
+Gemini cost** by replaying `check_response()` over the three cached responses
+(`evals/diagnose_stage_failures_2026-08-21.py`, output
+`evals/stage-failures-2026-08-21.txt`) — the batch runs `quiet=True`, so only
+the `[FAIL]` line reached the batch log.
+
+**Verdict mix — 19 Buy, 15 Wait, 3 Skip**, counted from the 37 published files:
+
+| | Buy | Wait | Skip | Buy % |
+|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% |
+| 2026-08-14 (42) | 26 | 15 | 1 | 62% |
+| 2026-08-16 (43) | 26 | 16 | 1 | 60% |
+| 2026-08-17 (40) | 26 | 14 | 0 | 65% |
+| 2026-08-18 (44) | 18 | 20 | 6 | 41% |
+| 2026-08-19 (41) | 26 | 13 | 2 | 63% |
+| 2026-08-20 (45) | 29 | 15 | 1 | 64% |
+| **2026-08-21 (37)** | **19** | **15** | **3** | **51%** |
+
+**51% is a 13-point drop from last night, and the matched-band check says it is
+SELECTION, not drift — this time the check was run rather than deferred.**
+`evals/positivity_by_night.py`'s `NIGHTS` list was extended with **both** 08-20
+and 08-21 (08-20 was deliberately never run; without it there is no adjacent
+night to compare against). Raw output `evals/positivity-2026-08-21.txt`.
+
+Standardising tonight's band composition against the pooled Buy rate of the
+eight prior nights:
+
+| band (weighted pool positivity) | prior-8 Buy rate | tonight n | expected Buy |
+|---|---|---|---|
+| 0–80% | 0.0% (n=93) | 14 | 0.0 |
+| 80–86% | 20.0% (n=45) | 4 | 0.8 |
+| 86–90% | 75.9% (n=54) | 4 | 3.0 |
+| 90–101% | 100.0% (n=149) | 15 | 15.0 |
+
+**Expected 50.9% (18.84 of 37) against an observed 51.4% (19 of 37) — a
+difference of +0.4 points.** The verdict rule behaved identically to the eight
+previous nights within every band; what changed is which titles arrived. The
+90%+ band is 100% Buy on every night recorded, and it was **40.5% of tonight's
+titles against 53.3% on 08-20** — that composition shift is the whole story.
+Weighted pool positivity fell in step (82.0% tonight, 85.5% on 08-20), as did
+the refund-cohort mean (49.3% against 57.0%).
+
+**The single apparent anomaly is an artifact of the band metric, not a verdict.**
+Tonight is the only night with a Buy below the 80% band (1 of 14, where all eight
+prior nights are 0 of 93): Car Mechanic Simulator 2018 (`645630`) at 79.3%
+weighted. The band metric weights **all four** cohorts; `verdict_for_mean()`
+reads the **post-refund** mean and never sees the refund cohort. That title has
+an unusually large refund cohort (318 of 1,200 pool, 42.8% positive) dragging the
+band figure down, against post-refund cohorts of 91.9% / 93.3% / 97.7%. The Buy
+is correct and the 79.3% is simply a different quantity.
+
+Search index rebuilt: 7,304 core + 23,079 tail rows,
+`generated_at 2026-08-21T16:34:27Z`, **all 514 verdict appids confirmed present
+by set membership, 0 missing** (verdict set minus index set is empty — not a
+row-count diff), `rc=0`, output `evals/searchindex-2026-08-21.txt`. Row counts
+are unchanged from 08-19 and 08-20 for the established reason: 690 of 690 pages
+served from cache, no network. Tonight's 37 were already indexed from the 08-12
+catalog walk, which is exactly why a row-count diff would have proved nothing
+here.
+
+Audit sample checked with `evals/check_sample_overlap.py` across all nine dated
+rounds: **36 pairwise comparisons, distinct within each round and independent
+across every pair, `rc=0`** (`evals/sample-overlap-2026-08-21.txt`).
+
+**The 08-20 entry's open question about the sampler is answered, by the code read
+it asked for rather than by another night of clean draws.**
+`make_audit_sample.py` does **not** sample with replacement and has not since
+`4d3f3c0` (2026-08-14): section B pools one entry per review behind a `seen` set
+of `recommendationid` and draws with `pool[b].pop()`. The fix landed in the 08-14
+batch commit for exactly the Trove duplicate named in its own comment, and the
+committed `audit-4.4-2026-08-14.md` contains no occurrence of `196900480`, so
+that round was regenerated post-fix. The batch rounds are therefore clean by
+construction rather than by luck — the distinction the 08-20 entry correctly
+refused to assume either way. The two one-off rounds it flagged
+(`audit-4.4-live.md`, `audit-4.4-hades-hollowknight.md`) both predate `4d3f3c0`,
+which is why they carry duplicates and no dated round does. **They are still
+unrepaired** and their four options remain open; nothing in this entry changes
+them.
+
+Catalog after this pass: **514 titles**. **25 pending** — 21 carrying tonight's
+`batch_budget_exhausted` plus the 4 non-terminal `stage_failed` records. Three of
+those four (A Way Out, A Plague Tale, BidKing) retry nightly at 0 Gemini calls;
+RuneScape retries at ~9.
+
+**Developer notes on the audit:** audit read and confirmed passed; citation #1's
+♥-sequence judged clean (positive sentiment, Steam's own censoring, not directed
+at a person).
