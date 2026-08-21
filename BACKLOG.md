@@ -100,6 +100,36 @@ fix should probably be; none of it belongs in a batch commit. Whether
 is the question to open with, and it is a code read rather than a guess.
 Related: [[verify-the-verifier]].
 
+> **2026-08-21, the open question is ANSWERED by the code read it asked for:
+> `make_audit_sample.py` does NOT sample with replacement, and has not since
+> `4d3f3c0` (2026-08-14).** Section B builds its pool one entry per REVIEW behind
+> a `seen` set of `recommendationid`, dedup running before the shuffle, and draws
+> with `pool[b].pop()`, which removes the entry. Both halves are needed and both
+> are there, so a review cannot be drawn twice within a round.
+> **The fix was made for exactly this defect, on the round that exhibited it.**
+> The comment above the pool names the case: 2026-08-14 drew `196900480` (Trove)
+> at both #4 and #16, auditing 19 distinct reviews in 20 slots. `git log -L`
+> puts the `seen` set in `4d3f3c0`, the 08-14 batch commit itself — and the
+> committed `evals/audit-4.4-2026-08-14.md` contains **no** occurrence of
+> `196900480`, so that round was regenerated after the fix before it was
+> committed. The 08-14 file on disk is a post-fix sample.
+> **So the batch rounds are clean by construction, not by luck**, which is the
+> half the 08-20 entry could not distinguish and deliberately refused to assume:
+> it wrote that "a with-replacement draw that has not yet collided looks
+> identical to a without-replacement one", and that is the ambiguity now removed.
+> The two one-off rounds it found — `audit-4.4-live.md` (2026-08-07) and
+> `audit-4.4-hades-hollowknight.md` (2026-08-10) — **both predate `4d3f3c0`**,
+> which is the whole reason they carry duplicates and no dated round does.
+> **What this does NOT close.** Those two files still overstate their own
+> coverage (20 slots, 18 and 19 distinct reviews) and are unchanged; the four
+> repair options in the entry above are still the options, and the choice is
+> still the owner's. Nor does it make cross-round independence a guarantee —
+> that comes from each round scoping to one night's `new_ids`, which is a
+> property of the inputs rather than of the dedup. Tonight's round was checked
+> rather than assumed: `evals/check_sample_overlap.py` over all nine dated files,
+> **36 pairwise comparisons, distinct within and independent across, `rc=0`**
+> (`evals/sample-overlap-2026-08-21.txt`).
+
 2026-08-20 | **`run_batch.py`'s exit code is never printed in its own output, so
 two RESULTS.md entries recorded an exit status that was inferred from a clean
 summary block rather than observed** | build, 2026-08-20 batch night | Tonight's
@@ -1170,3 +1200,119 @@ it": a test whose failure output does not identify the failure is not yet a test
 *This file is a case-study artifact. What got deferred, and the reasoning for
 each, is evidence of prioritisation under constraint — link it from the case
 study's decision section.*
+
+2026-08-21 | **A third zero-survivor veteran cohort, and all three titles are
+short finite games — the pattern is now about what the veteran bucket MEANS, not
+about the filter** | build, 2026-08-21 batch night | A Plague Tale: Innocence
+(`752590`) failed the filter stage in the exact shape of the 2026-08-16 Hotline
+Miami and 2026-08-19 A Way Out entries: **veteran `in`=1, `kept`=0** (the single
+review dropped as `low_information`), and the stage hard-fails the whole title.
+0 Gemini calls, 55.4s, all of it Steam ingestion. Read out of
+`data/filtered/752590.json`'s `filter_report`, not re-run.
+**What is new is not the third instance, it is what the three have in common.**
+Veteran pool shares, each measured from its own filtered artifact: Hotline Miami
+**1 of 400**, A Way Out **2 of 400**, A Plague Tale **1 of 1,203** (0.1% of pool,
+against 25,379 reviews on Steam). All three are short, finite, single-playthrough
+games — a 6-hour co-op story, a ~10-hour linear stealth game, a score-attack
+arcade game. Invariant 2 defines `veteran` as 6000+ minutes, i.e. 100 hours, and
+**for a game that ends at ten hours there is no such player**, so the cohort is
+not thin by accident of sampling — it is undefined by construction. Whether the
+rest of the catalog is mostly open-ended by contrast was NOT measured here and is
+not asserted; what is measured is these three.
+**Why that reframes the open question rather than just incrementing it.** The
+2026-08-16 note asks whether *every* zero-survivor cohort should mute
+automatically, and says growth past a handful of entries is the signal to answer
+it rather than add exceptions. Three titles in six nights is that growth — but
+the answer it points at is not "mute at zero". It is that a fixed 100-hour
+veteran bucket is the wrong instrument for a finite game, and muting is the
+smallest of at least three responses: mute the empty cohort (cheapest, keeps the
+bucket definition, renders a section that can never have content), make the top
+bucket relative to the title's own playtime distribution (right in principle,
+**invalidates every eval result** — invariant 2 forbids changing buckets without
+explicit instruction, and this would be exactly that), or let a title publish
+with three cohorts and no veteran section at all (a UI change, honest for a game
+that has no such players). **Not added to `zero_cohort_exceptions.txt`**, on the
+same reasoning A Way Out was not: a third exception spends the signal instead of
+reading it. Both `752590` and `1222700` now retry nightly at 0 calls, costing
+only Steam ingestion time, behind one owner call. Related:
+[[verify-the-verifier]].
+
+2026-08-21 | **The retry-cache fix turned a free deadlock into a paid one — a
+title sitting on a prevalence-guard false positive now burns 9 calls a night
+instead of 0** | build, 2026-08-21 batch night | RuneScape ® (`1343400`)
+exhausted all three synthesis attempts and published nothing, at a cost of **9
+model calls** — 6 extraction (two cohorts needed a grounding retry) plus 3
+synthesis. It is the single largest wasted spend of the night and 2.3% of the
+whole 397-call budget.
+**All three rejections are invariant-11 prevalence hits, and all three are false
+positives of the same family already recorded twice.** Reasons recovered offline
+at **zero Gemini cost** by replaying `synthesize.check_response()` over the three
+cached responses the run left on disk (`evals/diagnose_stage_failures_2026-08-21.py`,
+raw output `evals/stage-failures-2026-08-21.txt`) — the batch runs `quiet=True`,
+so only the `[FAIL]` line reached `evals/batch-2026-08-21.txt`:
+
+| attempt | field | text | guard hit |
+|---|---|---|---|
+| 0 | `summary[veteran]` | "…required memberships, overwhelming interfaces, and **occasional** crashes or blockers." | `occasional`, frequency adjective |
+| 1 | `summary[veteran]` | "…subscription walls, cluttered interfaces, and **occasional** crashes." | `occasional`, frequency adjective |
+| 2 | `not_for_you_if[0]` | "you expect free access to **all** content" | `all`, absolute quantifier |
+
+Neither word is stating prevalence. "Occasional crashes" describes how often a
+*bug* occurs; "all content" describes the *game's* content behind a membership.
+Invariant 11 exists to stop a sample count being read as how many players — and
+on this title it fired three times without a population claim in sight. Attempt 2
+is the informative one: the model **fixed** the veteran summary the guard had
+just rejected twice (dropping the adjective entirely — "content locked behind
+memberships, complex interfaces, and crashes") and tripped a *different*
+guard on a *different* field. That is whack-a-mole, not sloppiness, and it is the
+Insurgency shape exactly.
+**This is the cost side of the 2026-08-20 retry-cache fix, and it is not an
+argument against that fix.** Pre-fix, a title in this state replayed cached
+rejections forever at 0 calls — the deadlock that entry correctly called a bug.
+Post-fix the retries are genuinely fresh, which is what allows a title to escape,
+and Insurgency did escape on attempt 2. The unintended half is that a title
+which CANNOT escape now pays full freight **every night**: RuneScape will spend
+~9 calls again tomorrow and publish nothing again, because `stage_failed` is not
+in `run_batch`'s TERMINAL set. The old failure was free and permanent; the new
+one is recurring and metered. Three cached `synthesis_*.json` files, all stamped
+today, are the proof the requests were real.
+**Fourth title in the guard-false-positive family** — Insurgency's "persistent"
+(08-18), the "Windows eleven" spelling that shipped (08-20), and now two words on
+one title. The 08-20 entry offered three fixes for the digit rule; this entry
+adds the evidence that the prevalence rule has the same shape and now has a
+price attached. **Not fixed**, and the options are unchanged in kind: scope the
+guard to quantity contexts (right, and a rewrite of a rule that currently has one
+unambiguous form), narrow the wordlist by category (`occasional`/`frequent`
+describe events, `most`/`all` describe populations — cheap, and it is a real
+weakening of invariant 11), or cap the spend rather than the failure (make a
+rejection-exhausted `stage_failed` terminal after N nights, which buries the
+question the 08-16 entry warned against burying). What is newly decidable is the
+priority: this one has a running meter. Related: [[verify-the-verifier]].
+
+2026-08-21 | **BidKing: a catalogued title too small to ever produce a verdict,
+refusing correctly and retrying nightly** | build, 2026-08-21 batch night |
+`4128580` failed the verdict stage at **0 calls in 9.1s**. Not a bug and not a
+guard false positive — the title has **124 reviews on Steam in total** (21.8%
+positive), and after filtering every one of its four cohorts sits below
+invariant 12's 20-review floor (`refund_window` 14, `early` 18, `mid` 14,
+`veteran` 3), so extraction skipped all four as `below_cohort_floor`, every
+cohort is muted, `post_refund_mean()` returns `None`, and synthesis refuses
+before sending anything. Verified offline from `data/claims/4128580.json` and
+`load_inputs()`, zero cost. **The refusal is the system working**: a title with
+no cohort clearing the evidence floor has nothing to say, and `MIN_POOL_FOR_MEAN`
+= 30 is what stops it saying it anyway.
+**What is worth recording is that it is on the catalog at all.** `data/catalog.json`
+was assembled 2026-08-12 from a store walk, and a 124-review title got in; it
+will now re-enter the queue every night forever, costing a Steam sweep each time
+and never publishing, because `stage_failed` is non-terminal. Same family as the
+zero-cohort entry above and the 08-18 Insurgency one — a title that can never
+resolve, retried nightly — reached by a **fourth** distinct route: not an empty
+cohort, not a poisoned cache, not a guard, simply not enough reviews to exist.
+**Not fixed**, and unlike the others this one has an obvious cheap answer worth
+weighing: a minimum-reviews floor at catalog-build or queue time would drop it
+before ingestion rather than after, and could be derived from the same
+`steam_total_reviews` the pipeline already reads. That is a catalog change rather
+than a pipeline one, and it wants a measurement first — **how many of the 25
+still-pending and 514 published titles sit near the floor was NOT determined
+here**, and guessing it is exactly the kind of "probably" the standing rules
+forbid.
