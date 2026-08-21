@@ -1654,3 +1654,146 @@ RuneScape retries at ~9.
 **Developer notes on the audit:** audit read and confirmed passed; citation #1's
 ♥-sequence judged clean (positive sentiment, Steam's own censoring, not directed
 at a person).
+
+> **2026-08-21, FOLLOW-UP — the two guards that cost this batch its failures
+> were narrowed the same night, and a bug in that work was caught by the
+> developer before it committed.** Appended rather than folded in, per this
+> file's append-only discipline; nothing above is edited.
+>
+> **What changed.** Invariant 11's guard was split: event frequency describes how
+> often a THING happens, prevalence describes how many PEOPLE, and only the
+> second is what the invariant exists for. `pipeline/prevalence_guard.py` moves
+> both frequency categories into `FREED_FREQUENCY_PATTERNS` — retained,
+> uncompiled, so a reversal is one line — and keeps population, proportion,
+> ratio, percentage and consensus language banned. `banned_words()` drops from
+> 36 words to 7. Invariant 13's rule was a bare `\d` with no categories, so the
+> split could not reach it; it got its own `PLATFORM_TOKEN` allowlist, which
+> permits a digit bound into a platform or version name and rejects every other
+> digit — "20 hours", "6 players" and a claim id in prose all still fail.
+> Invariant 12 now covers zero: a cohort that filters to no survivors mutes like
+> an under-20 one instead of failing the title. Commits `9c8d460`, `1a5027f`,
+> `0f5035b`, `a0461ab`, `e49fb3f`, `aada9b1`.
+>
+> **The prompt moved with both guards, and that is the substantive half.** Rule 2
+> used to end "Any digit in prose is rejected" — that instruction is what made
+> the model ship "you run Windows eleven" rather than drop the fact. Rule 3's
+> banned list was already derived from the patterns via `banned_words()`, so it
+> followed automatically; the digit exception is now taught by example and names
+> the wrong answer. A guard the prompt has fallen behind produces evasion, not
+> compliance, and that is the mechanism this batch demonstrated twice.
+>
+> **RuneScape, replayed against its own failure at zero Gemini cost.** Its three
+> cached responses through the new `check_response()`
+> (`evals/stage-failures-2026-08-21-postfix.txt`): attempts 0 and 1 flip from
+> `prevalence:summary[veteran]:occasional` to **PASS**. The title would have
+> published on its first attempt for 1 call instead of failing on three for 9.
+> **Attempt 2 is still rejected** — "you expect free access to **all** content"
+> trips `absolute quantifier`. That is the same false-positive family one
+> category over, and `all` was kept banned by decision, so it is recorded as
+> open rather than counted as fixed. RuneScape was deliberately **not**
+> force-regenerated (no quota to spare); it retries on the next batch night.
+>
+> **Insurgency regenerated for 1 call** (ledger 397 → 398), `--force-lite`,
+> `generated_at 2026-08-21T17:20:07Z`, raw output
+> `evals/insurgency-verdict-2026-08-21.txt`. `not_for_you_if[0]` now reads
+> **"you run Windows 11 with BattlEye issues"**. QR-4 on the new verdict: **53
+> citations, PASS, `rc=0`** (`evals/qr4-2026-08-21-insurgency.txt`). Confirmed on
+> production by fetching the file and matching its `generated_at`, not its name.
+> Repaired by regeneration, never by editing a published artifact. The catalog
+> stays at 514 — this replaces a verdict rather than adding one.
+>
+> **Spelled-out numerals re-measured across all 514 rather than assumed: 0
+> evasions remain.** The sweep returns 9 occurrences, all ordinary English —
+> "two players", "one-versus-one", "one-shot deaths", "one sitting",
+> "one-hit-kill", "turn-one dominance". None is a numeral in disguise, and
+> writing them as digits would be worse prose and would be rejected as
+> quantities anyway.
+>
+> **Both blocked zero-cohort titles verified publishable at zero Gemini cost**,
+> ledger unchanged either side: `1222700` (veteran `in`=2, `kept`=0) and `752590`
+> (`in`=1, `kept`=0) now write `data/filtered/` with fresh `filtered_at`, veteran
+> `muted: true`, and their `.dropped.txt`. Neither was force-published; both
+> publish on the next batch night.
+>
+> ---
+>
+> **THE PART THAT MATTERS MOST: a real bug shipped into that work, and the
+> verification that was supposed to catch it did not.**
+>
+> The zero-cohort change replaced a gate that appeared **twice at two different
+> indent levels** — once inside `if args.dry_run:` and once at the end of
+> `filter_one()`. The replacement matched on an indentation-blind substring
+> (`"    return all(..."` is a substring of `"        return all(..."`), so the
+> count of 2 passed and the dry-run branch's `return` was rewritten at
+> function-level indent. That hoisted it out of the `if`, so **`filter_one()`
+> returned immediately after printing its report on every invocation** and
+> everything below — building `survivors`, writing `data/filtered/<appid>.json`,
+> writing `.dropped.txt` — became unreachable.
+>
+> **It was caught by the developer, not by this session's verification, and the
+> evidence was a timestamp.** `data/filtered/1222700.json` and `752590.json`
+> still carried `filtered_at` from the batch run at 11:09 and 11:20 UTC. Had the
+> verification step actually written those files, the stamps would have been
+> hours later. They were not, on either file.
+>
+> **What this session checked was a console line and an exit code.** The filter
+> printed `invariant 12: veteran has n=0 - renders muted, carries no claims` and
+> exited 0, and both were reported as proof the change worked. Both were true and
+> neither was evidence: the report is produced *before* the write path, so it is
+> emitted identically whether or not anything lands on disk. The earlier claim in
+> this entry's session that the two titles were "verified publishable at zero
+> Gemini cost" was correct about the cost and wrong about the verification. It
+> only became true after the fix, re-run against `filtered_at`.
+>
+> **The same defect was inside the mutation harness written to prevent exactly
+> this.** Case `g10` asserted `rc == 0` and the presence of that printed line —
+> so **g10 passed against the broken filter**. `g11` was added to read the file
+> the console claims was written, and was proven against the exact shipped bug:
+>
+>     rc                       : 0
+>     g10 assertion (console)  : PASSES  <- blind to the bug
+>     output file written      : False
+>     g11 assertion (artifact) : FAILS   <- catches the bug
+>
+> The driver's own mutation constants carried the same indentation-blindness that
+> caused the bug; they now match each gate at its own indent level.
+>
+> **Why it belongs in this file rather than only in BACKLOG.** The 2026-08-16
+> INCIDENT entry is about a result reported for a run that never happened. This
+> is its quieter relative: a run that genuinely happened, whose output was real,
+> reporting a *different* claim than the one the output supports. "Exit 0 and the
+> right log line" is not "the artifact exists" — the same gap as the `EXIT_RC`
+> correction earlier in this entry, one layer further in, and it survived a
+> mutation campaign because the campaign asked the same insufficient question.
+> An audit of every other verification made that night found no second instance:
+> the search index, the audit sample, the 37 verdicts, the numeral sweep and
+> Insurgency's regeneration were each checked by reading the file back, and QR-4
+> and the test suite write no artifact, so the class does not apply to them.
+>
+> ---
+>
+> **Verification after the fix.** Mutation campaign **13/13**
+> (`evals/mutate_guard_split_2026-08-21.py`, logs `g01`–`g11`), every loosened
+> guard carrying a control that reproduces its pre-fix behaviour; a deliberately
+> over-free `check_claim` turns the nine retained population assertions red and
+> names each one. `pipeline/test_batch_guards.py` green, including 12 assertions
+> rewritten from the old rule to the new one. `filter_reviews.py` restored
+> byte-identical after every mutation, sha verified both sides. CI on `aada9b1`:
+> **`test: success`, `python-guards: success`** (run `32509032509`) — the second
+> job builds a real venv and runs the guard suite on a clean runner, so the
+> rewritten assertions passed off this machine as well as on it.
+>
+> **One honest gap.** A single suite run, immediately after a mutation/restore
+> cycle, showed pacer children failing (`only 4 of 5 children produced a
+> result`). Its full output was not captured, so the cause is **UNVERIFIED** and
+> is recorded as such rather than attributed — it resembles the TOCTOU race in
+> `model_pacer._locked` documented in BACKLOG 2026-08-16, and nothing in these
+> changes touches the pacer, but neither of those is proof. Seven runs since are
+> green.
+>
+> **Still open after tonight**, none of it silently absorbed: "free access to all
+> content" (invariant 11 false positive, one category over); the
+> `unanimously`/`unanimous` seam between the freed frequency list and
+> `consensus language`; BidKing (`4128580`), which refuses correctly at 124 total
+> reviews and will retry nightly at zero cost until the catalog gains a
+> minimum-reviews floor.
