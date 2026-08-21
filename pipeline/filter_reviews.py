@@ -41,14 +41,24 @@ IN_DIR = Path("data/raw")
 OUT_DIR = Path("data/filtered")
 WORDLIST_DIR = Path(__file__).resolve().parent / "wordlists"
 
-# invariant 12: below this many surviving reviews, a cohort carries no claims
+# invariant 12: below this many surviving reviews, a cohort carries no claims.
+# ZERO IS INCLUDED, and is the default since 2026-08-21: a cohort that filters to
+# no survivors mutes and renders its pool figure, exactly as an under-20 cohort
+# does. It does NOT fail the title.
+#
+# What settled it: three titles in six nights - Hotline Miami (1 of 400 veteran
+# reviews), A Way Out (2 of 400), A Plague Tale: Innocence (1 of 1,203) - all
+# short finite games. `veteran` is 6000+ minutes, so for a game that ends at ten
+# hours the cohort is undefined by construction rather than thin by sampling
+# accident, and failing the whole title over it published nothing at all rather
+# than three sound cohorts and one honest muted section. See BACKLOG 2026-08-16
+# and its 2026-08-21 resolution.
 MIN_COHORT = 20
 
-# Per-title exceptions allowed to publish with a cohort at ZERO survivors, muting
-# it the way invariant 12 already mutes an under-20 cohort. Default is unchanged:
-# without a line in this file, zero survivors still fails the whole title. The
-# general question - should every zero-survivor cohort mute? - stays open on
-# purpose; see pipeline/data/zero_cohort_exceptions.txt and BACKLOG 2026-08-16.
+# HISTORICAL. This file decided, per title, that an empty cohort should mute
+# instead of failing - which is now the DEFAULT for every title, so no new appid
+# needs a line here. The existing entry is kept for the record and still prints
+# its note; it no longer changes any outcome.
 ZERO_COHORT_PATH = Path(__file__).resolve().parent / "data/zero_cohort_exceptions.txt"
 
 
@@ -291,11 +301,13 @@ def print_report(game_name, by_bucket, overall_pct, total_in, total_kept):
 
     for name, st in by_bucket.items():
         if st["kept"] == 0 and st.get("zero_cohort_exception"):
-            print("  n=0 EXCEPTION: %s has 0 surviving reviews - muted, not a "
-                  "title-level failure.\n      %s"
+            print("  n=0: %s has 0 surviving reviews - muted (this appid also "
+                  "carries a pre-2026-08-21 exception note, kept for the "
+                  "record).\n      %s"
                   % (name, st.get("exception_note", "")))
         elif st["kept"] == 0:
-            print("  FAIL: %s has 0 surviving reviews - the segment page breaks." % name)
+            print("  invariant 12: %s has n=0 - renders muted, carries no claims."
+                  % name)
         elif st["muted"]:
             print("  invariant 12: %s has n=%d (<%d) - renders muted, carries no claims."
                   % (name, st["kept"], MIN_COHORT))
@@ -392,8 +404,9 @@ def filter_one(appid, args, blocked_re, soft_re):
 
     if args.dry_run:
         print("  (dry run - nothing written)")
-        return all(st["kept"] > 0 or st.get("zero_cohort_exception")
-               for st in by_bucket.values())
+        # Zero survivors no longer fails the title (2026-08-21) - see the return
+        # at the end of this function and the MIN_COHORT note above.
+        return True
 
     survivors = []
     for r in kept_rows:
@@ -427,8 +440,11 @@ def filter_one(appid, args, blocked_re, soft_re):
     print("  wrote %d survivors -> %s" % (len(survivors), out_path))
     print("  wrote %d dropped   -> %s   <- read this" % (len(dropped_rows), txt_path))
 
-    return all(st["kept"] > 0 or st.get("zero_cohort_exception")
-               for st in by_bucket.values())
+    # A zero-survivor cohort no longer fails the title (2026-08-21). It mutes,
+    # exactly as invariant 12 already mutes an under-20 cohort - see the
+    # MIN_COHORT note above. Nothing here can fail a title any more, so this
+    # returns True unconditionally rather than pretending to compute something.
+    return True
 
 
 def main():
