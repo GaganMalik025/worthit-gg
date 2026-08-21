@@ -1,0 +1,886 @@
+{
+  "appid": "645630",
+  "game_name": "Car Mechanic Simulator 2018",
+  "generated_at": "2026-08-21T11:28:52Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/645630/header.jpg?t=1786619288",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/645630/capsule_231x87.jpg?t=1786619288",
+    "grid": "https://cdn2.steamgriddb.com/grid/c537cd408d694af2c2f39807d8bcdb41.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 7,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "A punishing tutorial opens into an absorbing garage sandbox.",
+    "for_you_if": [
+      "you enjoy methodical garage wrenching",
+      "you can push past a rough start"
+    ],
+    "not_for_you_if": [
+      "you need intuitive controls right away",
+      "you expect realistic driving physics"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 318,
+      "pct_positive": 42.8,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 658,
+      "pct_positive": 91.9,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 180,
+      "pct_positive": 93.3,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 44,
+      "pct_positive": 97.7,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Initial reviews show steep resistance during the opening hours that gives way to high satisfaction among longer-term players.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 42.8,
+            "pool_n": 318
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 91.9,
+            "pool_n": 658
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 93.3,
+            "pool_n": 180
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 97.7,
+            "pool_n": 44
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 42.8,
+        "low_pool_n": 318,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 97.7,
+        "high_pool_n": 44,
+        "gap_pts": 54.9
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews reflect a noticeable drop in positive sentiment compared to the historical lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 79.3,
+        "recent_pool_n": 1200,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 89.7,
+        "steam_total_reviews": 24302,
+        "delta_pts": -10.4
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 318,
+      "pct_positive": 42.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players struggle with unhelpful tutorials, clunky mouse input, and settings menus locked behind the main title screen.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-eab6eb",
+              "claim": "Reviewers report that the tutorial lacks sufficient guidance on core mechanics such as using the test track, adding oil, and disassembling or assembling car parts, forcing players to rely on external guides.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 10
+              },
+              "citations": [
+                {
+                  "recommendationid": "232983538",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-16",
+                  "review_text": "Honestly never seen a tutorial so bad. When for example you hover over an interactable tool in your garage, it gives you a text overview with an animation to show you how to use it. This in itself if fine, but the whole \"tutorial\" is just you completing the test track and then you're done. Problem is, the game doesn't tell you how to do that or how to get there. I did figure out how to start the test track mission, however I had no idea how to add oil to my car. Without it, I couldn't start the test track. When I finally did figure it out (through a youtube video), I was already annoyed. Test track felt boring and pretty useless. After I was done with that, I spawned into a smaller garage wich was empty.\n\nFurthermore, to change the volume of the game and the sensitivity of my mouse I had to save the game, return to the main menu to change it there. Idk why there isn't a settings/options menu when you pause the game. This seems like an easy thing to implement, no? \n\nCan't tell you more about the game play loop, because I simply didn't make it far enough into the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231995405",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "don't recomend this game if you don't have expirience with cars. the tutorial is non existent.\n\n*got free key as a temporary offer",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231296609",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "it feels like i wanna put some iron into my mouth and pull the trigger\n\nif u lack of car knowledge the game it self its lack of tutorial so u gotta figure something out on your own\nI don't think this game would be easy for someone who knows absolutely nothing about cars\nbut the game it self is Fun to play and also have a good music playing on the backgorund while you working onto cars\nSo is it a bad game or a good game ? i`d give it 50/50\n\nThank god its Free",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231246062",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "i only got this game because it was free, its a super tough game and i dont recommend it, the tutorial doesnt help at all",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230794648",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "The tutorial is terrible and unclear. On top of that, the disassembling and assembling are buggy and not very fun at all. Wouldn't recommend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230711396",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-17",
+                  "review_text": "i can't even play it. this game is glitchy, the tutorial tells you nothing, and the game is just all around bad.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227288976",
+                  "hours_at_review": 1.4,
+                  "voted_up": true,
+                  "date": "2026-06-06",
+                  "review_text": "its a fun game but the tutorial isnt very good. had to watch a tutorial to complete the ingame tutorial",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227278373",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-06-06",
+                  "review_text": "Actually glad I got this game for free. However, as some negative reviews have said, the tutorial doesn't really teach you how to disassemble \"said\" car part or even assemble back. I was looking forward to playing this game, but oh man... what a letdown.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226889952",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "Tutorial is absolute ass, and what you need to do isn't intuitive enough to be able to play without one. Don't feel like having to search for a guide online like we're back to the stone age of gaming. Also, having the go back to the main menu to tweak things like your mouse sensitivity is nuts.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226773787",
+                  "hours_at_review": 1.1,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "The tutorial doesn't teach you anything, wasted an hour of my life trying to figure out what to do and yet still I have no idea what I am doing. 1/10 will never touch again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226676048",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-05-29",
+                  "review_text": "This game desperately needs an overhauled tutorial. \n\nIt does NO hand holding. Doesn't tell you how to accept quests. Doesn't show you how to find checklist for a car your working on. Doesn't walk you through the story quests or where parts on the car are. The only thing the tutorial in this does is tell you what is in a given shop. \n\nThe rest of the game is kinda awesome but I really can't give this a positive rating with like 0 points in the tutorial for such a technical game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-4258eb",
+              "claim": "Players must return to the main menu to adjust in-game settings like mouse sensitivity and volume.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232983538",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-16",
+                  "review_text": "Honestly never seen a tutorial so bad. When for example you hover over an interactable tool in your garage, it gives you a text overview with an animation to show you how to use it. This in itself if fine, but the whole \"tutorial\" is just you completing the test track and then you're done. Problem is, the game doesn't tell you how to do that or how to get there. I did figure out how to start the test track mission, however I had no idea how to add oil to my car. Without it, I couldn't start the test track. When I finally did figure it out (through a youtube video), I was already annoyed. Test track felt boring and pretty useless. After I was done with that, I spawned into a smaller garage wich was empty.\n\nFurthermore, to change the volume of the game and the sensitivity of my mouse I had to save the game, return to the main menu to change it there. Idk why there isn't a settings/options menu when you pause the game. This seems like an easy thing to implement, no? \n\nCan't tell you more about the game play loop, because I simply didn't make it far enough into the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227540423",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-06-09",
+                  "review_text": "I want to like this game, I want to get into it, but the UI and UX are absolutely atrocious and make me want to uninstall the game before I can even get through the tutorial. It is like pulling teeth! Why can you not access the settings in the tutorial?? Why do I have to quit out to the main menu to try and troubleshoot the settings and load back in and see if the game is playable now? Ridiculous.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226889952",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "Tutorial is absolute ass, and what you need to do isn't intuitive enough to be able to play without one. Don't feel like having to search for a guide online like we're back to the stone age of gaming. Also, having the go back to the main menu to tweak things like your mouse sensitivity is nuts.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226740057",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "The tutorial is absolute ♥♥♥♥♥♥♥♥. The game provides no real guidance on what you are supposed to do. You have to quit the game back to the main menu any time you want to change or adjust settings. The music is too loud even after adjusting the volume percentage in the game. It had to be put down to zero because anything louder was playing at 100 despite being set lower than that. The menus are difficult to navigate and take you around your elbow to get to your ass. It's absolutely ridiculous the amount of time that was wasted just on the tutorial and after said tutorial, the jobs are just as bad.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-5c8c16",
+              "claim": "Reviewers report that the tutorial is unhelpful, failing to explain core tasks or how to progress through early objectives.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 12
+              },
+              "citations": [
+                {
+                  "recommendationid": "232983538",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-16",
+                  "review_text": "Honestly never seen a tutorial so bad. When for example you hover over an interactable tool in your garage, it gives you a text overview with an animation to show you how to use it. This in itself if fine, but the whole \"tutorial\" is just you completing the test track and then you're done. Problem is, the game doesn't tell you how to do that or how to get there. I did figure out how to start the test track mission, however I had no idea how to add oil to my car. Without it, I couldn't start the test track. When I finally did figure it out (through a youtube video), I was already annoyed. Test track felt boring and pretty useless. After I was done with that, I spawned into a smaller garage wich was empty.\n\nFurthermore, to change the volume of the game and the sensitivity of my mouse I had to save the game, return to the main menu to change it there. Idk why there isn't a settings/options menu when you pause the game. This seems like an easy thing to implement, no? \n\nCan't tell you more about the game play loop, because I simply didn't make it far enough into the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232189666",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "Not my type of game tbh. It is not that the game is bad rather it doesn't pertain to my taste. I though it would help me learn more about cars and sort of handhold me for a few missions in the start but it just drops you into the pool to figure out. One can definitely learn from that but not the kind of experience I was hoping for. It is very detailed though and if you are someone who already likes to tinker with cars you will love it. However a new version has released so that would be a better purchase.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231995405",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-08-03",
+                  "review_text": "don't recomend this game if you don't have expirience with cars. the tutorial is non existent.\n\n*got free key as a temporary offer",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231246062",
+                  "hours_at_review": 0.7,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "i only got this game because it was free, its a super tough game and i dont recommend it, the tutorial doesnt help at all",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231098780",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Tutorial is basically useless lol. \nDetails are okay but the controls are really hard to get comfortable with\nEven after learning the game, it still feels like a struggle to understand how things work even with background knowledge of working on cars, its a gameplay issue \nI've Played a mobile version that does a much better job than this game does",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230794648",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-18",
+                  "review_text": "The tutorial is terrible and unclear. On top of that, the disassembling and assembling are buggy and not very fun at all. Wouldn't recommend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230711396",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-17",
+                  "review_text": "i can't even play it. this game is glitchy, the tutorial tells you nothing, and the game is just all around bad.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228459604",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-06-21",
+                  "review_text": "Tutorial is terrible, tells you nothing and controls / gameplay loop is not clear at all.\nThen first task - check brakes - unscrew each of the 20 wheel bolts, then put it back together, next task - same thing but on a different car (wheels are the same), I didn't do 3rd one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227798842",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2026-06-12",
+                  "review_text": "It's cool, but the simulation is very poorly designed... audio and visuals its not there... blocked in a mission where you have to disassemble everything just to found a piece at 70% that is fault in no logic way.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227751108",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-06-11",
+                  "review_text": "Did not like this game at all. I have absolutley no idea what to do. No tutorial what so ever. Just drops you in the game and says have at it. Good Luck. Dont show you how to do anything i dont even know what to do.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226773787",
+                  "hours_at_review": 1.1,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "The tutorial doesn't teach you anything, wasted an hour of my life trying to figure out what to do and yet still I have no idea what I am doing. 1/10 will never touch again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226676048",
+                  "hours_at_review": 0.8,
+                  "voted_up": false,
+                  "date": "2026-05-29",
+                  "review_text": "This game desperately needs an overhauled tutorial. \n\nIt does NO hand holding. Doesn't tell you how to accept quests. Doesn't show you how to find checklist for a car your working on. Doesn't walk you through the story quests or where parts on the car are. The only thing the tutorial in this does is tell you what is in a given shop. \n\nThe rest of the game is kinda awesome but I really can't give this a positive rating with like 0 points in the tutorial for such a technical game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-942c0f",
+              "claim": "Mouse input is described as having forced acceleration, lag, or excessively slow movement.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "229815634",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "cant see my mouse and the menu screen is bugged out with thoses purple squre things. PLEASE FIX THIS",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227640013",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-10",
+                  "review_text": "Game lacks standart requirement of games. no ingame mouse sensitivity fixing and very high dpi in game than actual window game just awful.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227571222",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-09",
+                  "review_text": "Terrible mouse input experience - How did you get this past the playtest?\nIt is delayed for no apparent reason and acceleration is forced by default, disabling it makes the delay even more obvious",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227515528",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-08",
+                  "review_text": "no wonder this pile of cr@p was free.... slowed mouse movement to a crawl is game breaking... more programmer lunacy/head scratching \"WHY?\"",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-4ca367",
+              "claim": "Reviewers state that changing game settings requires exiting to the main menu because there is no settings menu accessible while pausing during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232983538",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-08-16",
+                  "review_text": "Honestly never seen a tutorial so bad. When for example you hover over an interactable tool in your garage, it gives you a text overview with an animation to show you how to use it. This in itself if fine, but the whole \"tutorial\" is just you completing the test track and then you're done. Problem is, the game doesn't tell you how to do that or how to get there. I did figure out how to start the test track mission, however I had no idea how to add oil to my car. Without it, I couldn't start the test track. When I finally did figure it out (through a youtube video), I was already annoyed. Test track felt boring and pretty useless. After I was done with that, I spawned into a smaller garage wich was empty.\n\nFurthermore, to change the volume of the game and the sensitivity of my mouse I had to save the game, return to the main menu to change it there. Idk why there isn't a settings/options menu when you pause the game. This seems like an easy thing to implement, no? \n\nCan't tell you more about the game play loop, because I simply didn't make it far enough into the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227540423",
+                  "hours_at_review": 0.9,
+                  "voted_up": false,
+                  "date": "2026-06-09",
+                  "review_text": "I want to like this game, I want to get into it, but the UI and UX are absolutely atrocious and make me want to uninstall the game before I can even get through the tutorial. It is like pulling teeth! Why can you not access the settings in the tutorial?? Why do I have to quit out to the main menu to try and troubleshoot the settings and load back in and see if the game is playable now? Ridiculous.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226889952",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-31",
+                  "review_text": "Tutorial is absolute ass, and what you need to do isn't intuitive enough to be able to play without one. Don't feel like having to search for a guide online like we're back to the stone age of gaming. Also, having the go back to the main menu to tweak things like your mouse sensitivity is nuts.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226740057",
+                  "hours_at_review": 1.8,
+                  "voted_up": false,
+                  "date": "2026-05-30",
+                  "review_text": "The tutorial is absolute ♥♥♥♥♥♥♥♥. The game provides no real guidance on what you are supposed to do. You have to quit the game back to the main menu any time you want to change or adjust settings. The music is too loud even after adjusting the volume percentage in the game. It had to be put down to zero because anything louder was playing at 100 despite being set lower than that. The menus are difficult to navigate and take you around your elbow to get to your ass. It's absolutely ridiculous the amount of time that was wasted just on the tutorial and after said tutorial, the jobs are just as bad.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-0c0d1d",
+              "claim": "Reviewers note that mouse input suffers from issues such as being unable to see the cursor, forced acceleration, or delayed movement.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "229815634",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "cant see my mouse and the menu screen is bugged out with thoses purple squre things. PLEASE FIX THIS",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227640013",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-10",
+                  "review_text": "Game lacks standart requirement of games. no ingame mouse sensitivity fixing and very high dpi in game than actual window game just awful.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227571222",
+                  "hours_at_review": 0.1,
+                  "voted_up": false,
+                  "date": "2026-06-09",
+                  "review_text": "Terrible mouse input experience - How did you get this past the playtest?\nIt is delayed for no apparent reason and acceleration is forced by default, disabling it makes the delay even more obvious",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227515528",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-06-08",
+                  "review_text": "no wonder this pile of cr@p was free.... slowed mouse movement to a crawl is game breaking... more programmer lunacy/head scratching \"WHY?\"",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 22,
+        "cited_recommend": 1,
+        "divergence_p": 8.03e-05,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 658,
+      "pct_positive": 91.9,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players pushing past the opening hours find engaging tasks despite hidden parts and awkward driving physics.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-870705",
+              "claim": "Reviewers note that the initial tutorial lacks clarity and fails to adequately explain core mechanics or systems at the start.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "231955074",
+                  "hours_at_review": 5.9,
+                  "voted_up": true,
+                  "date": "2026-08-03",
+                  "review_text": "it's fun although the tutorial is not very thorough, you'll know what to do after a few cars though",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230050715",
+                  "hours_at_review": 7.7,
+                  "voted_up": true,
+                  "date": "2026-07-09",
+                  "review_text": "[b]Introduction :[/b]\nDéveloppé par Red Dot Games et édité par PlayWay, Car Mechanic Simulator 2018 est sorti en juillet 2017. Le concept : gérer son propre garage, diagnostiquer des pannes, démonter et remonter des moteurs pièce par pièce, puis faire fructifier son business en retapant des épaves. Un simulateur de mécanique auto complet, avec plus de 40 modèles de voitures et des milliers de composants.\n\n[b]Ce que j'ai aimé :[/b]\n[list]\n[*]🔧 Une simulation mécanique étonnamment complète et intuitive : même sans connaissances en mécanique, on comprend vite ce qu'on fait et pourquoi\n[*]🚗 Les barn finds et les enchères, une vraie bonne idée : dénicher une épave dans une grange, la restaurer entièrement et la revendre, c'est super satisfaisant\n[*]📈 La progression du garage est addictive, on commence dans un atelier minable et on finit à la tête d'un petit empire\n[*]🛠️ Le mode expert, sans aucune aide au diagnostic, offre un vrai challenge pour les passionnés de mécanique\n[*]💰 Des milliers de pièces détachées et la possibilité de tout revendre pour optimiser ses marges\n[/list]\n\n[b]Ce que j'ai moins aimé :[/b]\n[list]\n[*]🔁 Les missions deviennent répétitives : une vidange par-ci, une panne moteur par-là, les commandes finissent par toutes se ressembler\n[*]🏎️ La conduite sur le circuit d'essai est infâme, surtout avec les véhicules puissants\n[*]📚 Le tutoriel est mal fichu et vous noie sous les informations sans explication claire\n[*]🐛 Le lancement en 2017 a été catastrophique (bugs, sauvegardes perdues), même si le jeu a été largement corrigé depuis\n[/list]\n\n[b]Conclusion :[/b]\nAprès un lancement raté pour lequel Red Dot Games s'est publiquement excusé, CMS 2018 est devenu une référence du genre avec 90 % d'évaluations positives sur Steam. Si visser des boulons virtuels pendant des heures vous détend autant que moi, foncez. C'est répétitif, oui, mais c'est aussi ce qui en fait un excellent jeu de décompression. Recommandé à tous les bricoleurs du dimanche, en promo il est …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229914262",
+                  "hours_at_review": 13.6,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "(I got a key for this game when they were giving it out for free one week)\nReally fun game as someone who is into cars but doesn't spend a lot of time working on them.\n\nPros:\n- farily detailed cars and lots of parts (though not too many parts that are only slightly different)\n- parts and repair steps are pretty accurate to real life\n- fun building/restoring/puzzle game with some tycoon elements\n- very satisfying to restore classic cars\n- you'll like it if you like working on cars and have some knowledge about them\n\nCons:\n- didn't find the tutorial very clear at the start, a lot of things weren't obvious (as someone who knows how to do the basics in real life)\n- I don't think this game would be easy for someone who knows absolutely nothing about cars, but it would definitely force them to learn about the basics\n- jobs can be somewhat repetitive depending on your tolerances and it is a grind to level up enough to get all the shop equipment (though that's part of the point of the game)\n- you can drive the cars after you build them but the handling isn't anything special. It's serviceable but didn't blow me away. There's also no proper manually controlled transmission option, which I do greatly prefer.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229675071",
+                  "hours_at_review": 2.5,
+                  "voted_up": true,
+                  "date": "2026-07-05",
+                  "review_text": "Game have poor tutorial, at start you have to press garage and do test drive , then actual game begins, this game is pretty fun though",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-b3810f",
+              "claim": "Reviewers report difficulty in locating specific hidden or unknown parts during jobs, citing instances like the radiator fan taking excessive time to find.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "233257382",
+                  "hours_at_review": 9.1,
+                  "voted_up": true,
+                  "date": "2026-08-20",
+                  "review_text": "Lot of fun in fixing car, at first you doing examine manual and just follow the list, next you will find that has some part needed to be discovered first. It take time at first but after you level up and doing bunch of fixing, the machine to test can be use to make fixing car lot of faster.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230614779",
+                  "hours_at_review": 3.3,
+                  "voted_up": true,
+                  "date": "2026-07-16",
+                  "review_text": "very chill game but looking for those unknown parts can be such a hassle, especially that story vehicle that turned out to be a radiator fan. Alot of people took near hours to find it.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-8c0ab5",
+              "claim": "Reviewers find the mouse and keyboard controls confusing, noting that settings cannot be adjusted from within an active game session and require returning to the main menu.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230915662",
+                  "hours_at_review": 3.6,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "It's pretty fun! A little confusing in terms of controls but once you get the hang of it it's a pretty fun time. Also, I love how you have to remove parts to get to other ones instead of them just magically coming out like some other games. Overall pretty cool game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230155641",
+                  "hours_at_review": 9.0,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "This game sucks, only bought this on sale a couple years ago to make my 9 hours worth it.\r\n--\r\nMouse and keyboard mappings are confusing and hard to change because the settings cannot be accessed in-game (needing to leave your game to the main menu to do anything to make this ♥♥♥♥ bearable).\r\n--\r\nTaking apart the vehicles are kinda fun, putting them back together as well kinda fun. Intended gameplay is intact.\r\n--\r\nMorel of the story, don't waste your money on the headache this game gives me when I open it up and have to manually adjust each setting from video to mouse.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-bdfb11",
+              "claim": "Reviewers describe the driving physics and handling on the test track as poor or unexceptional, particularly with powerful vehicles.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "232263612",
+                  "hours_at_review": 10.3,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "The game is a good simulator considering the year it was released. The gaps in the cars can also be filled by adding mods.\nThe car parts are well designed and many parts have been worked into the cars. The game also has many mods that you can use.\nBut it has a weakness in testing the car on the road, which is not expected much since it is a mechanic simulator game.\ntotal 7.5/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230050715",
+                  "hours_at_review": 7.7,
+                  "voted_up": true,
+                  "date": "2026-07-09",
+                  "review_text": "[b]Introduction :[/b]\nDéveloppé par Red Dot Games et édité par PlayWay, Car Mechanic Simulator 2018 est sorti en juillet 2017. Le concept : gérer son propre garage, diagnostiquer des pannes, démonter et remonter des moteurs pièce par pièce, puis faire fructifier son business en retapant des épaves. Un simulateur de mécanique auto complet, avec plus de 40 modèles de voitures et des milliers de composants.\n\n[b]Ce que j'ai aimé :[/b]\n[list]\n[*]🔧 Une simulation mécanique étonnamment complète et intuitive : même sans connaissances en mécanique, on comprend vite ce qu'on fait et pourquoi\n[*]🚗 Les barn finds et les enchères, une vraie bonne idée : dénicher une épave dans une grange, la restaurer entièrement et la revendre, c'est super satisfaisant\n[*]📈 La progression du garage est addictive, on commence dans un atelier minable et on finit à la tête d'un petit empire\n[*]🛠️ Le mode expert, sans aucune aide au diagnostic, offre un vrai challenge pour les passionnés de mécanique\n[*]💰 Des milliers de pièces détachées et la possibilité de tout revendre pour optimiser ses marges\n[/list]\n\n[b]Ce que j'ai moins aimé :[/b]\n[list]\n[*]🔁 Les missions deviennent répétitives : une vidange par-ci, une panne moteur par-là, les commandes finissent par toutes se ressembler\n[*]🏎️ La conduite sur le circuit d'essai est infâme, surtout avec les véhicules puissants\n[*]📚 Le tutoriel est mal fichu et vous noie sous les informations sans explication claire\n[*]🐛 Le lancement en 2017 a été catastrophique (bugs, sauvegardes perdues), même si le jeu a été largement corrigé depuis\n[/list]\n\n[b]Conclusion :[/b]\nAprès un lancement raté pour lequel Red Dot Games s'est publiquement excusé, CMS 2018 est devenu une référence du genre avec 90 % d'évaluations positives sur Steam. Si visser des boulons virtuels pendant des heures vous détend autant que moi, foncez. C'est répétitif, oui, mais c'est aussi ce qui en fait un excellent jeu de décompression. Recommandé à tous les bricoleurs du dimanche, en promo il est …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229914262",
+                  "hours_at_review": 13.6,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "(I got a key for this game when they were giving it out for free one week)\nReally fun game as someone who is into cars but doesn't spend a lot of time working on them.\n\nPros:\n- farily detailed cars and lots of parts (though not too many parts that are only slightly different)\n- parts and repair steps are pretty accurate to real life\n- fun building/restoring/puzzle game with some tycoon elements\n- very satisfying to restore classic cars\n- you'll like it if you like working on cars and have some knowledge about them\n\nCons:\n- didn't find the tutorial very clear at the start, a lot of things weren't obvious (as someone who knows how to do the basics in real life)\n- I don't think this game would be easy for someone who knows absolutely nothing about cars, but it would definitely force them to learn about the basics\n- jobs can be somewhat repetitive depending on your tolerances and it is a grind to level up enough to get all the shop equipment (though that's part of the point of the game)\n- you can drive the cars after you build them but the handling isn't anything special. It's serviceable but didn't blow me away. There's also no proper manually controlled transmission option, which I do greatly prefer.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 9,
+        "cited_recommend": 8,
+        "divergence_p": 0.532,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 180,
+      "pct_positive": 93.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid-tier players note that wear parts lack visual indicators and purchasing menus feel cumbersome to navigate.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-d65e31",
+              "claim": "Non-metallic wear parts such as rubber bushings, belts, and brake pads have insignificant visual wear effects, making them difficult to inspect visually.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "230547445",
+                  "hours_at_review": 39.0,
+                  "voted_up": true,
+                  "date": "2026-07-15",
+                  "review_text": "cool i guess. being able to dismantle and rebuild different cars is neat. kind of simplified to the most important parts/systems. no fuses or sensors or anything. the one thing that is kind of annoying is the 100% condition cars with suspension/brake issues, those can be a pain if you dont remember what wheel well or side of the car it came off of. its pretty fun driving the souped up cars around the airport",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228179253",
+                  "hours_at_review": 28.1,
+                  "voted_up": false,
+                  "date": "2026-06-17",
+                  "review_text": "There are 40s story quest, though I only managed to finish to 23 story quest. The story progression is insanely slow.... which cost not only your time but mental. I might recommend you to only play the story quest to around 15 then build your own car\n\nTerrible visual feedback on wear parts, while it's easy to spot a rusted exhaust pipe, non-metallic parts like rubber bushing, belts and brake pads are infuriating to inspect visually. The wear color-effect on these materials is so insignificant to the human eye.\n\nThe lack of a simple \"Run in Background\" option is frustating. The game pauses if you change your screen focus (alt+tab) which is annoying, because I do not want to wait the tedious wheel balancer. I have to use BepinEx and mod just to enable this graphic option.\n\nThe only game that makes me need youtube tutorial to finish the game tutorial. There are still a lot of pains this game can offer to you, but hey no pain no gain\n\nThey should advertise that this game is obsolete and recommend players to get 2021 version because there is so much QOL in the CMS 2021\n\nThough, if you want to expand your knowledge about automotive and being a mechanic, I can recommend you. It's been a journey but also painful.\n\nTLDR: Get the CMS 2021, and forget that the CMS 2018 game even exist",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-792edf",
+              "claim": "Reviewers describe the notepad and part purchasing interface as clunky and requiring too much effort to manage items.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231907163",
+                  "hours_at_review": 29.6,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "The notepad needs an improvement. It is very clunky and takes too much effort to add items; we spend almost most of our time going into the market to buy parts while playing the game, which makes no sense. An update needs to come for the notepad regarding this issue",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228115180",
+                  "hours_at_review": 21.3,
+                  "voted_up": true,
+                  "date": "2026-06-16",
+                  "review_text": "This is my introduction to car parts and the general how do they work and all i must say is, this game is f-ing AWESOME. Yeah the tutorial is not a tutorial just a general introduction on what does what in this game but, i just say f it and ill gain knowledge by playing the game naturally and indeed it does. This game making you to have much more better at problem solving by getting better over time even with more vague problems and no parts have founded when you try to fix the car for the first time. \r\n\r\nMy conclusion is that this game is very good if you like cars or just casual car enjoyer and better yet you wanted to know more in depth on the car inside, yeah it maybe not so accurate to real life but this game will make you understand more about the general location of car parts and how do they interact with each other. I can't say more about the good of this game but the downside is just that clunky UI but still the game fun and enjoyment actually outweight that more than you can think.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 2,
+        "divergence_p": 0.0246,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 44,
+      "pct_positive": 97.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players embrace the gameplay loop despite stiff driving physics and extreme achievement grinds.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-84ec4f",
+              "claim": "Reviewers describe the driving physics as stiff and hit-or-miss.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "228248635",
+                  "hours_at_review": 264.5,
+                  "voted_up": true,
+                  "date": "2026-06-18",
+                  "review_text": "A Love Letter to Rust and Wrenches: An Honest Review\nLet’s be real for a second: Car Mechanic Simulator 2018 isn't just about fixing digital cars. It’s a therapeutic escape. It’s about that incredible feeling of finally finding that one tiny, 94% worn-out rubber bushing that was causing the whole engine to knock. If you’ve ever spent hours in real life looking for a dropped 10mm socket, this game will speak directly to your soul.\n\n🛠️ The Joy of Getting Your Hands Dirty\nThe technical depth here is astonishing, but what makes it special is how natural it feels. Taking apart a V8 engine block piece by piece feels like solving a beautiful, greasy puzzle.\n\n•\tThe Magic: The diagnostic process is genuinely rewarding. Using the compression tester or taking the car to the test track to isolate a suspension issue feels like real detective work.\n\n•\tThe Grind: Yes, putting back 50 bolts on a cylinder head can test your patience. But honestly? That’s exactly what real mechanic work is. It’s meditative, if you have the right mindset.\n\n🏎️ From a Rusty Garage to a Dream Workshop\nThe progression captures that classic \"started from the bottom\" feeling. You begin with barely enough tools to change oil, and eventually, you’re bidding on absolute gems hidden in junk yards or forgotten barns. Restoring a completely rusted muscle car and seeing it shiny on the Dyno is a massive dopamine hit.\n\n📉 The Reality Check: The Driving\nWe need to talk about the test drives. The driving physics are... well, stiff. It feels a bit like driving a brick on ice. But let’s be honest: we didn’t install this game to compete in Forza. We came here to build, tune, and bring dead engines back to life.\n\n🏆 The Verdict: Is It Worth Your Time?\nAbsolutely. CMS 2018 has a soul. It respects the car culture and rewards your curiosity. It’s the perfect game to play while listening to a podcast or your favorite music after a long day.\n\n\nDid this review help you look under the hood?\nIf this honest breakdown resonated with…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "226806868",
+                  "hours_at_review": 124.5,
+                  "voted_up": true,
+                  "date": "2026-05-30",
+                  "review_text": "graphically beautiful, easy to get into the rhythm and advance but without adding DLC's can become very repetitive. I have a good amount of hours on the game but like a real mechanic after some tasks I would step away for a smoke, lunch, etc so the hours are a little inflated. \n\nwishlist: for the older cars in the game you shouldn't be able to buy body/interior bits new, find them in junkyards or barns and repair them if you can. crates should not include parts for cars you do not have the DLC for. Barns and junkyards same and occasionally it would be cool to find high performance or quality bits in a barn to try and repair. the auction is neat but bidding against the bots can be frustrating when they only go back and forth among themselves so far but will drive your price up beyond the value every time. also, it would be cool if you could put one of your cars up for sale in the auction instead of relying on some automatic single calculation of a sale price (but then the bots would very likely lowball you). cut down on the variations for the rims which gets extreme when you take the base number of rims and multiply it by the different sizes (12\"-25\"). unless you buy new it is nearly impossible to find 4 of the same rim at the same size. the 'custom' bling bits are a nice touch sometimes but being limited to headlights taillights and hoods quickly takes the fun out of it. where's the body kits? \n\nthe only real downside to the game I found was trying to drive the cars. there's no manual transmissions so you can't shift when you want to and if you really powered up the engine then every gear change could send you sideways as the torque breaks traction. you absolutely positively can not drive the cars without a controller and an analog one at that. one race track and solo? that's the perfect inflection point to race your creations against friends so a missed opportunity there(?)\n\nI picked it up on sale and definitely got my money's worth out of it. I might get the 2026 …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "219343655",
+                  "hours_at_review": 154.4,
+                  "voted_up": true,
+                  "date": "2026-02-27",
+                  "review_text": "A great game if you manage expectations. It's not a substitute for ASE accredited training programs as its a game with a lot of simplifications. It's not a racing game. There are no AI opponents and the driving simulation is not all that..get RevHead instead. What it is for me is a nostalgic replacement for building scale model cars from plastic kits  back in the day with the added bonus of being able to test drive them on in-game provided test, time, and race tracks even though the handling is pretty hit and miss. I also have the 2021 game but I recommend this version especially the CMS 2018 Platinum edition when on steam sale as it has at least 3 or 4 times the car mods in its steam workshop compared to CMS 2021.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-310203",
+              "claim": "Reviewers describe some achievements as an extreme and painful grind, such as requiring tens of thousands of bolt removals or parts examinations.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "229906180",
+                  "hours_at_review": 122.6,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "I came to 2018 after playing through Car Mechanic Simulator 2021. The latter is definitely more polished, has a bunch of QoL features that are lacking in 2018 in terms of shopping, parts lists, level progression. Some of the shopping list stuff I'd recommend modding to make it more player-friendly, but I'd still strongly recommend this game as a fun way to relax and unwind while watching something on TV.\n\nMy only real complaint is I'm going after the achievements now and I will say that 2018 does feel some of the achievements are purely sadistic - I've logged 122hrs and I've unscrewed 20,000 out of 500,000 bolts for one of the achievements.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226125144",
+                  "hours_at_review": 170.2,
+                  "voted_up": true,
+                  "date": "2026-05-22",
+                  "review_text": "Car Mechanic Simulator 2018;\r\n\r\nIs a good game for car people, but not a great game for achievement hunters.\r\n\r\nThe best part is building up cars. Taking an old wreck, stripping it down, replacing parts, fixing the engine, suspension, brakes, bodywork, and then turning it into a finished car is really satisfying. If you are into cars, that side of the game is amazing. The Steam Workshop support also makes it even better because you can mod in your favourite cars and make the garage feel more personal.\r\n\r\nThe main gameplay loop is fun. You take repair jobs, inspect cars, find broken parts, order replacements, unlock better tools, expand your garage, and eventually restore cars from barns, auctions, and junkyards. Players should keep in mind that this is a repetitive game by design. You are repairing, replacing, rebuilding, and restoring cars over and over, so you need to enjoy that kind of loop to get the most out of it.\r\n\r\nThe story jobs are a nice idea, but after a few of them they start to feel like long shopping lists instead of fun missions.\r\n\r\nThe 100% completion is where the game really falls apart for me. The achievements feel like an afterthought, and the grind is ungodly bad. It got to the point where I was using macros overnight just to push progress, which says a lot about how painful the achievement hunt becomes.\r\n\r\nI would only recommend Car Mechanic Simulator 2018 to people who love working on cars or enjoy detailed repair sims. As a car-building game, it can be great. As a 100% completion game, it is not worth it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "217302586",
+                  "hours_at_review": 469.7,
+                  "voted_up": true,
+                  "date": "2026-02-01",
+                  "review_text": "Do you like CMS 2015? Yes? Reading this review for advice? Then go and buy the game. It's the last one, but better graphics, more detailed gameplay in how to fix things, real life cars in the DLC and the ability to buy cars brand new. Literally the only thing I can fault the devs on is how ridiculous requirements some of the achievements are- examining 10,000 parts springs to mind. I get this weird twinge in my left arm just thinking about it. Who am I kidding, I know I'm getting it eventually... only 9,011 parts left to examine",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 6,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 24302,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

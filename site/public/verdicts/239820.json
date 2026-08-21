@@ -1,0 +1,722 @@
+{
+  "appid": "239820",
+  "game_name": "Game Dev Tycoon",
+  "generated_at": "2026-08-21T11:17:48Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/239820/header.jpg?t=1762193894",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/239820/capsule_231x87.jpg?t=1762193894"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 9,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "Build games from a garage despite obscure mechanics and rough edges.",
+    "for_you_if": [
+      "you enjoy managing studio growth from humble beginnings",
+      "you do not mind consulting external guides for mechanics",
+      "you like building games through trial and error"
+    ],
+    "not_for_you_if": [
+      "you need clear in-game explanations for core decisions",
+      "you require stable performance without unexpected slowdowns",
+      "you expect multiple save slots per playthrough"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 65,
+      "pct_positive": 60.0,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 725,
+      "pct_positive": 90.8,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 353,
+      "pct_positive": 95.2,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 57,
+      "pct_positive": 100.0,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Reviewer sentiment grows increasingly positive as play time increases from the initial hours.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 60.0,
+            "pool_n": 65
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 90.8,
+            "pool_n": 725
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 95.2,
+            "pool_n": 353
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 100.0,
+            "pool_n": 57
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 60.0,
+        "low_pool_n": 65,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 100.0,
+        "high_pool_n": 57,
+        "gap_pts": 40.0
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 65,
+      "pct_positive": 60.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early reviewers report confusing mechanics with poor feedback and technical issues when tabbing out.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-514eee",
+              "claim": "Reviewers report that the gameplay relies heavily on moving sliders with a lack of feedback or explanation regarding how decisions impact outcomes.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "216162671",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-01-17",
+                  "review_text": "You move a bunch of sliders around without any feedback about how your decisions impact the outcome. Then you watch a bunch of slow animations. Rinse and repeat. Ridiculously shallow for something with Management/Simulation/Strategy tags.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209057406",
+                  "hours_at_review": 2.0,
+                  "voted_up": false,
+                  "date": "2025-11-12",
+                  "review_text": "This game was frustrating. I wanted to like it but kept feeling like the game wasnt providing enough feedback for me to make any considered changes to anything i was doing and I just found myself not really understanding what would make or break a game. \r\n\r\nIf the reviews provided some feedback, and the sliders showed what they impact, i can see myself at least coming back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "202334316",
+                  "hours_at_review": 1.1,
+                  "voted_up": false,
+                  "date": "2025-08-17",
+                  "review_text": "Appreciate this is their first game but it relies on trial and error followed by memorization to make any progress. Only reliable way to play is to open a wiki and follow the guide on how to interpret the meaningless feedback the game gives you. Not fun at all, especially if you have to just follow an online guide to make any progress.  Penalties are too quick and stiff. Game should give you more understandable feedback as to what you did wrong. Seems like it was developed by a business school professor who never played an actual game before. Glad other people like it, just not for vast majority of gamers.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-e688c2",
+              "claim": "Reviewers note that the game exhibits technical issues such as opening multiple windows upon tabbing out and experiencing performance slowdowns when textboxes appear.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "208370723",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2025-11-04",
+                  "review_text": "I love the concept of the game and I do like the gameplay loop... but holy hell there are some REALLY BIG bugs.\n\nI tabbed out of the game after 5 minutes of playing, and noticed I had 4 windows of the game open... which was odd.\nI failed a contract, clicked on the \"Okay\" button, and it didn't progress. I hit it another time cuz maybe my click didn't register... and then it progressed. I tab out to go tell someone about it and I realise I have 15 (FIFTEEN) separate game windows, all showing the same thing... I don't know how that happens, its actually wild.\n\nThe game doesn't have graphics settings since its a VN, but a resolution slider would've been nice... It's also wild how the game drops frames constantly despite being a super basic game... I don't really know how I can recommend this game for its gameplay.\n\nI'll probably still keep it so that I can support the devs, but this game is wild... I hope the next game gets fixed.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "188084522",
+                  "hours_at_review": 1.9,
+                  "voted_up": false,
+                  "date": "2025-02-16",
+                  "review_text": "Anytime a textbox shows up your entire PC starts to slow down and freeze until it finishes, seen many people complaining about it for over a year but no fixes.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 5,
+        "cited_recommend": 0,
+        "divergence_p": 0.0102,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 725,
+      "pct_positive": 90.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players notice launching glitches and wish for a pause button during gameplay.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-1a5f7c",
+              "claim": "Reviewers report technical issues involving the game launching multiple simultaneous instances and crashing.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231917157",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "muitos problemas de performace. \n\no jogo já crashou sozinho, já perdeu save e pior, recentemente ele abriu tipo 10 vezes junto. se apertar alt + tab deu pra vizualizar como se meu pc tivesse rodando o jogo 10 vezes, ferrendo meu processador. e quando tenta fechar 1 fecha todos. \n\ninfelizmente fico triste pq o game tem bom coração mas já falhou demais comigo. nao pretendo jogar mais",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "226577627",
+                  "hours_at_review": 6.0,
+                  "voted_up": false,
+                  "date": "2026-05-27",
+                  "review_text": "The game has a fun loop but a lot of issues. For starters there is something wrong with the money making system. It seems like it can be next to impossible to make enough money to keep going in the game. Even in a studio with only two people make games with 50k fans and 9 star reviews the amount of money to make the game would not off set the cost over time. \n\nAlso this game opens multiple instances on your computer. I am not sure if I just found a bug, but there would be like 6 windows of this game open and you could not close one or the whole game crashes. Wish I could upload an image.\n\nEdit: Do not buy this there is definitely something wrong with the game. It opens multiple instances and whatever they use to calculate the profit is wrong. In normal play you cannot make enough money even if you stay in your garage. The amount of money you make just goes down for some reason unless you ply in a very specific way.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-7c343a",
+              "claim": "Reviewers describe the game as lacking a pause button or time control feature.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232386964",
+                  "hours_at_review": 4.4,
+                  "voted_up": true,
+                  "date": "2026-08-08",
+                  "review_text": "Good. Lacks pause button, or any time control for that matter...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232383261",
+                  "hours_at_review": 12.6,
+                  "voted_up": false,
+                  "date": "2026-08-08",
+                  "review_text": "Probably being a bit unfair as this game came out years ago, but it's pretty plain, there's very little graphical content on screen and is essentially just shifting a load of sliders repeatedly. I didn't find it very logical in terms of what you do = a good outcome, or a game where you can learn how to get through the game through experience as there's very little feedback as to where you're going wrong, but again, the game is more or less just shifting some sliders and seeing if it works out... not great.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 1,
+        "divergence_p": 0.0029,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 353,
+      "pct_positive": 95.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Progression relies on rigid combinations and trial and error, prompting reliance on external guides.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-0a02f1",
+              "claim": "Reviewers report that the game relies heavily on random number generation, making choices feel insignificant when games receive mediocre reviews despite following recommendations.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "232902861",
+                  "hours_at_review": 28.8,
+                  "voted_up": true,
+                  "date": "2026-08-15",
+                  "review_text": "After playing GOG version, after playing Android version, and after playing Steam version I can tell for sure that the random takes over the game. Your choises does almost nothing. You either does everything recommended or lose\n\n7/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230440990",
+                  "hours_at_review": 30.9,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "Game scores are calculated using hidden, arbitrary rules and formulas which are impossible to keep track of. Makes your decisions in the game completely irrelevant as your games get random, but almost certain mediocre reviews the more you play. \n\nBecomes extremely repetitive after less than 2 hours of gameplay. \n\nMost overrated game of all time.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-2b7a6e",
+              "claim": "Reviewers state that the tutorial and in-game hints fail to explain core mechanics, requiring players to consult external websites and guides to understand how to make a successful game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "221364587",
+                  "hours_at_review": 32.5,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "Frustrating Experience. It's complicated but doesn't explain it, so you have to go through a million websites and links to look for how to actually make a good game, only to be screwed over when you go to the second office to soon, and oh, by the way, hope you didn't want to play with more than 7 topics, cause you'll be spending all your research on engine upgrades, cause when you don't you make a ♥♥♥♥♥♥ game. just honestly exhausting, and if I'm misunderstanding something, then explain it, cause overall your \"hints\" and tutorial, barely explain any of the mechanics. Terrible.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221311177",
+                  "hours_at_review": 22.1,
+                  "voted_up": false,
+                  "date": "2026-03-21",
+                  "review_text": "It's hard for me to judge this game. On the surface it's a fun and relaxing game to chill with. But under the surface its mechanics and systems kind of break apart. Reading on it and how it works made the game so much worse for me.\r\n\r\nIn my first two runs I got pretty far, but I did not end up succeeding. Frustrated, because I did not know what I was doing wrong (and the game did a poor job communicating what I should improve on) I checked the internet. Turns out most game mechanics are just \"tacked on\" and do not actually help in succeeding. So in my 3rd run I completed the game earning millions without ever implementing any research or engaging with almost any of the game elements. It's disapointing",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-8912bf",
+              "claim": "Reviewers describe genre and topic combinations as rigid and arbitrary, forcing players to use specific pre-determined formulas rather than free experimentation.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "224324707",
+                  "hours_at_review": 42.2,
+                  "voted_up": true,
+                  "date": "2026-04-29",
+                  "review_text": "Game Dev Tycoon is a decent tycoon-type game that contains many nods to the history of the video game industry. As a long-time gamer, it is nice to see. You get to go from making games by yourself in your garage, to leading a multi-million dollar gaming corporation. If you are really into video games in general, especially older games and consoles, I think you will enjoy this game. There are just a few little details which bother me.\r\n\r\nWhether or not a game you make is considered \"good\" is pretty much entirely about just pumping numbers as opposed to actually making design decisions. There are some relations between genres and such, but these feel rather arbitrary and are clearly based on the opinions of the Game Dev Tycoon devs (I mean, come on, why is Space/RPG a bad combo? Why do casual games always do poorly on PC?). Once you run through the game once and learn the genre relations it just becomes a matter of only picking complementary ones. If you want to go outside what the game considers \"good\", then your games will always do poorly.\r\n\r\nFor some reason you have to specially unlock the ability to make sequels. If you were playing for the first time you probably already made some games that you thought were sequels, but for some reason Game Dev Tycoon requires you to be a big studio with years of research in order to create a series with a persistent fanbase, which I find bizarre.\r\n\r\nIn my opinion, Game Dev Tycoon is not the sort of game you play more than a few times. Once you have played through a few times you have seen more or less everything. There is not much variation in terms of viable play styles. So keep that in mind. The post-game is also pretty much non-existent.\r\n\r\nOverall, I like the game, I just wish it was a little less restrictive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221435993",
+                  "hours_at_review": 28.3,
+                  "voted_up": false,
+                  "date": "2026-03-22",
+                  "review_text": "the biggest problem with game dev tycoon is luck + how rigid it is.\n\nthere's a few achievements that rely on getting a certain review score - a perfect 10 and one 11 review - two things that took me hours of additional time to ensure due to how random they are. i had countless games scoring within the confines of a nine, sequels upon sequels that would get 9.5 - 9.75 with one or two reviewers, for some seemingly unknown reason, hitting me with a \"almost perfect!\". it took a manual save before one of these games to get a 10/10 title, ranging from a 9.75 to then a 9.25 to then a 10... why? i really couldn't say. it manufactures this need to continue playing that creates confusion rather than a satisfying feeling.\n\ngames have come in all different shapes and sizes over the last fifty years - there's obviously elements between each genre-title that are shared, game dev tycoon knows this, and yet it refuses to budge with subject matters, types, and age-ratings being completely set-in-stone. experimentation is encouraged early on to know which elements work the best together, but later stages force the tried-and-true methods to win with no benefit other than \"knowing\" coming into the fray.\n\non the surface, game dev tycoon is a fantastic way to spend some time, fueling a dream i think many, including myself, have or may currently have (including myself again). it's silly and low-stakes, a nice detour. as it goes a bit further down, the flaws shine uncontrollably bright and showcases exactly how NOT to make a game.\ntruly a frustrating experience.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "218317851",
+                  "hours_at_review": 33.8,
+                  "voted_up": true,
+                  "date": "2026-02-14",
+                  "review_text": "There is a lot to be desired with this game, but it's still pretty fun. The way the game deals with saves is atrocious. It'll show a million empty save slots, but you can only ever save it to one save slot, meaning that you only really ever get one save file per playthrough as a safety net. Here are some other issues that I'd consider very minor\n\n- You can only scrap a project after spending the time to finish the entire thing. It'd be nice if you could scrap a game in development at any point\n\n- Sometimes there is some whackiness with the click system, like when you're trying to choose an engine before starting a game, and clicking brings up different menu as if you weren't in the \"choose an engine\" screen. It's easy to click out of, but it's still annoying\n\n-You can also click \"finish\" for a game after getting the bugs down to 0, and then right before the screen comes up to release the game, another bug pops up and you have no way to stop it or go back because you're stuck in the \"release or trash game\" screen\n\n-For medium and large games, you can't have more than one person work on the same thing to split the time, which is annoying\n\nI'm sure that it'd be too easy if any genre could be good however you designed it (sliders during development phases), but I don't love how you have to make every game a specific way for it to be good. Why can't I have an rpg with a good engine or an action game with fun dialogue and quests? Just because Skyrim released 20 times and still never fixed half their bugs doesn't mean that every rpg game with a good engine should suck. Despite this, the game is still decently fun to go through, but I've spent more time looking at wiki pages and combo charts than the actual game\n\nI'm not sure whether I'd recommend this over other similar games like Mad Games Tycoon or Software Inc because I'm getting into all of them and started with this one. It's alright. I think a 4.3/5 or 8.6/10 solid B is fair. It's really close to being a 4.5/5 or 9/1…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-2f2cfb",
+              "claim": "Reviewers report that the PC and mobile versions lack updates and content that are made exclusive to the Netflix version.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "224171891",
+                  "hours_at_review": 73.1,
+                  "voted_up": false,
+                  "date": "2026-04-26",
+                  "review_text": "[h1]I am honestly disappointed with how Game Dev Tycoon is being handled.[/h1]\n\nThe Netflix version gets an exclusive updated version with more content, improvements and better polish, while people who actually bought the game are left with the older and less complete version. That feels wrong.\n\nI paid for this game and supported the developers directly. Now it feels like the original paying community is being ignored in favor of a Netflix deal. I understand business partnerships, but making the best version of the game exclusive to Netflix customers is a terrible way to treat loyal players.\n\nIf someone buys a game, they should not receive a worse version than people who get it through a subscription service. This makes the paid PC/mobile versions feel outdated and abandoned.\n\nBecause of this kind of business practice, I personally have no interest in supporting Greenheart Games anymore. I will be boycotting their games from now on unless they start treating their paying customers fairly.\n\nIt is sad to see a game I once liked handled this way. Until the same update and content are made available to paying customers, I cannot recommend Game Dev Tycoon.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232094872",
+                  "hours_at_review": 39.0,
+                  "voted_up": true,
+                  "date": "2026-08-05",
+                  "review_text": "Please drop the Netflix version on steam now that it's delisted <3",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "other",
+          "claims": [
+            {
+              "claim_id": "mid-d6585b",
+              "claim": "Reviewers state that the saving system restricts players to a single save slot per playthrough.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "231383270",
+                  "hours_at_review": 48.9,
+                  "voted_up": false,
+                  "date": "2026-07-26",
+                  "review_text": "Probably the Worst game to complete 100%...\nI even have a video about (which i going to place into my guide too) getting 9/9/9/10 (9.25) and 10/10/10/11 (10.25) rating on the same game.\n\nFor the 10/10 and 11/10 achievements there's so much guide exists, but literally all of them are useless, full of misinformations, not up to date at all and written by players who not even completed the game to 100%... it was really hard to find out how the score mechanism works and how i suppose to get high ratings. The best guide was ofc the game's official wikipedia site: https://gamedevtycoon.fandom.com/wiki/Game_Development_Based_on_Experience/1.4.3\n\nBut even on this site there's nothing about you have to save the game right before releasing/finishing a game, so if you get a high rating (9.25+) you can just load that save-file back and the game gives you a totally different rating even having chance for 11/10 (10.25) rating...\nThis thing was only written under a reddit post with an actual explanation. Because the behind the rating the game automatically flip a coin between 9 and 10 rating, so good luck getting 4 of those 10s.\n\nI'm going to actually write my own guide, so players like me who played this game in 2014 and found it again from nowhere they can 100% it without wasting so much time by searching for answers.\n\nAfter all it's not the only reason why i've down-rated this game.\nEven if it gave me a nostalgic feeling while playing, it has an awful optimization which gave a really bad experience time to time after 2 hours of playtime. As you get to the 3rd Office the performance (even if you set to performance-mode in the settings) drops down instantly...\nI didn't check if there's a mod for Game Dev Tycoon which allows you to set the resolution or make the game run smooth, i even linked my PC specs just to prove my point, it's not because of my PC...\n\nForget about those poorly written guides, if you want to get all the achievements i finish my guide in the next few days (mos…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "218317851",
+                  "hours_at_review": 33.8,
+                  "voted_up": true,
+                  "date": "2026-02-14",
+                  "review_text": "There is a lot to be desired with this game, but it's still pretty fun. The way the game deals with saves is atrocious. It'll show a million empty save slots, but you can only ever save it to one save slot, meaning that you only really ever get one save file per playthrough as a safety net. Here are some other issues that I'd consider very minor\n\n- You can only scrap a project after spending the time to finish the entire thing. It'd be nice if you could scrap a game in development at any point\n\n- Sometimes there is some whackiness with the click system, like when you're trying to choose an engine before starting a game, and clicking brings up different menu as if you weren't in the \"choose an engine\" screen. It's easy to click out of, but it's still annoying\n\n-You can also click \"finish\" for a game after getting the bugs down to 0, and then right before the screen comes up to release the game, another bug pops up and you have no way to stop it or go back because you're stuck in the \"release or trash game\" screen\n\n-For medium and large games, you can't have more than one person work on the same thing to split the time, which is annoying\n\nI'm sure that it'd be too easy if any genre could be good however you designed it (sliders during development phases), but I don't love how you have to make every game a specific way for it to be good. Why can't I have an rpg with a good engine or an action game with fun dialogue and quests? Just because Skyrim released 20 times and still never fixed half their bugs doesn't mean that every rpg game with a good engine should suck. Despite this, the game is still decently fun to go through, but I've spent more time looking at wiki pages and combo charts than the actual game\n\nI'm not sure whether I'd recommend this over other similar games like Mad Games Tycoon or Software Inc because I'm getting into all of them and started with this one. It's alright. I think a 4.3/5 or 8.6/10 solid B is fair. It's really close to being a 4.5/5 or 9/1…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 10,
+        "cited_recommend": 4,
+        "divergence_p": 2.17e-06,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 57,
+      "pct_positive": 100.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long term players find the loop simple yet expandable with workshop mods, relying on accumulated knowledge for success.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-d9ffae",
+              "claim": "Reviewers describe the game as simple and repetitive, with a core gameplay loop involving starting in a garage, growing a team, and managing sliders or genres to create games.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "218700759",
+                  "hours_at_review": 255.6,
+                  "voted_up": true,
+                  "date": "2026-02-19",
+                  "review_text": "Game Dev Tycoon is one of those games where you boot it up thinking you'll play for twenty minutes and suddenly it's 2am and you're desperately trying to save your third studio from bankruptcy because you bet everything on a medieval puzzle RPG. The tycoon loop — garage startup, growing team, chasing review scores — is simple but genuinely satisfying, and the clever meta-humor about the gaming industry keeps it charming throughout. That said, once you crack the formula (match your genre to the right platform, balance your sliders correctly), the game does start to feel a bit like appeasing an algorithm rather than making creative choices, and the pacing rushes toward an ending before you feel ready. Mods on the Steam Workshop help a lot if you want more depth or longevity. If you can grab it on sale, it's absolutely worth it for a cozy, self-aware little sim that knows exactly what it is — just don't expect a deep management game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "208458926",
+                  "hours_at_review": 155.4,
+                  "voted_up": true,
+                  "date": "2025-11-05",
+                  "review_text": "There’s something about this game that hooks into my three remaining brain cells when i boot it up and before i notice, I’ve done another run and 3 hours have passed.\n\nIt’s a super simple game, even repetitive, but I keep booting it up YEARS later and spending a few hours trying to match or beat a previous “score”.\n\nI straight up have saves from 11 years ago I keep around as a nostalgic high score of sorts.\n\nPoint is it’s fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "191950685",
+                  "hours_at_review": 657.1,
+                  "voted_up": true,
+                  "date": "2025-04-04",
+                  "review_text": "I bought this game for free and they kept developing it long after selling it to me for ten bux. Now that I have 657 hours playing it, I can surely say it was worth it. This is a very simple Build Your Game Dev Company title. And it works so long as you mute the extremely repetitive music. You create games, release them, and wait for the publishers to sell them. Along the way, you develop new genres for games as well as technologies. If you make enough profit, you can move out of the garage where you start and hire team members in your new office. It's a LOT better than I make it sound.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "198810818",
+                  "hours_at_review": 153.5,
+                  "voted_up": true,
+                  "date": "2025-07-03",
+                  "review_text": "This is a joyful little game that even at $10 full price is very fair for what you get. \r\n\r\nYou develop games by selecting a type and then balancing graphics, story, writing, sound, level design, and 4 other aspects I cant remember in order to create the best possible game. Depending on the genre, you can intuitively figure out that a \"Military\" game would work well as a strategy action simulation game, but a \"Vampire\" game would not work well as a casual-adventure type game. over time technology changes, you upgrade your \"engine' that allows you to put different things into your games based on what you allot to different parts, and how well a game is assembled impacts reviews of the game, which is reflected in sales. \r\n\r\nMost games you release will hit the 6, 7, 8 range and recover a little over the cost it took to make, some games may be sub par and release as a 3, 4, or 5 which could financially hurt you a bit, and every once in a while you crush a game that gets a 9 or even a 10 that makes you BOATLOADS of cash and allows you to expand your staff, research more game technologies, etc. \r\n\r\nTheres dozens of different types of game genres you can pick from, probably a hundred combos for what kind of game you want to design around a specific genre, and there is replayability to this game because the lessons you learn from one playthrough are unlocked and informative to you on the next playthrough. I sunk 150+ hours into quite a few games just to get all the steam achievements for games in my library, and this one is one of the games I have more fond memories of. \r\n\r\nAt $10 this game is worth a pickup for some casual fun and appreciation of gaming. The more on sale it is then the more it becomes worth it.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-0a1ee4",
+              "claim": "Reviewers report that Steam Workshop mods add depth and longevity to the game, though outdated mods can cause issues.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "218700759",
+                  "hours_at_review": 255.6,
+                  "voted_up": true,
+                  "date": "2026-02-19",
+                  "review_text": "Game Dev Tycoon is one of those games where you boot it up thinking you'll play for twenty minutes and suddenly it's 2am and you're desperately trying to save your third studio from bankruptcy because you bet everything on a medieval puzzle RPG. The tycoon loop — garage startup, growing team, chasing review scores — is simple but genuinely satisfying, and the clever meta-humor about the gaming industry keeps it charming throughout. That said, once you crack the formula (match your genre to the right platform, balance your sliders correctly), the game does start to feel a bit like appeasing an algorithm rather than making creative choices, and the pacing rushes toward an ending before you feel ready. Mods on the Steam Workshop help a lot if you want more depth or longevity. If you can grab it on sale, it's absolutely worth it for a cozy, self-aware little sim that knows exactly what it is — just don't expect a deep management game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "204655862",
+                  "hours_at_review": 202.9,
+                  "voted_up": true,
+                  "date": "2025-09-18",
+                  "review_text": "there are better more modern versions of this game but this is the original game dev tycoon and it will always have a place in my heart. is it worth $10? idk, ive gotten years upon years of enjoyment from this game and i cant remember what i paid for it. with mods this game is super fun. i play it sometimes on discord these days with friends... highly recommend picking up on sale. you will not regret it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "195751503",
+                  "hours_at_review": 192.4,
+                  "voted_up": true,
+                  "date": "2025-05-27",
+                  "review_text": "This game is so much fun. I still keep coming back a whole decade later to play again and again with awesome workshop mods. Thanks for being homies Greenheart.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "188608379",
+                  "hours_at_review": 188.5,
+                  "voted_up": true,
+                  "date": "2025-02-23",
+                  "review_text": "dev studio of decent people\nid only play with mods, just make sure theyve been updated around 2023-now or else it will be poop.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-8d15f0",
+              "claim": "Reviewers note that the game features workshop mods which can add longevity and require updates to function properly.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "218700759",
+                  "hours_at_review": 255.6,
+                  "voted_up": true,
+                  "date": "2026-02-19",
+                  "review_text": "Game Dev Tycoon is one of those games where you boot it up thinking you'll play for twenty minutes and suddenly it's 2am and you're desperately trying to save your third studio from bankruptcy because you bet everything on a medieval puzzle RPG. The tycoon loop — garage startup, growing team, chasing review scores — is simple but genuinely satisfying, and the clever meta-humor about the gaming industry keeps it charming throughout. That said, once you crack the formula (match your genre to the right platform, balance your sliders correctly), the game does start to feel a bit like appeasing an algorithm rather than making creative choices, and the pacing rushes toward an ending before you feel ready. Mods on the Steam Workshop help a lot if you want more depth or longevity. If you can grab it on sale, it's absolutely worth it for a cozy, self-aware little sim that knows exactly what it is — just don't expect a deep management game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "195751503",
+                  "hours_at_review": 192.4,
+                  "voted_up": true,
+                  "date": "2025-05-27",
+                  "review_text": "This game is so much fun. I still keep coming back a whole decade later to play again and again with awesome workshop mods. Thanks for being homies Greenheart.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "188608379",
+                  "hours_at_review": 188.5,
+                  "voted_up": true,
+                  "date": "2025-02-23",
+                  "review_text": "dev studio of decent people\nid only play with mods, just make sure theyve been updated around 2023-now or else it will be poop.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-9878c9",
+              "claim": "Reviewers state that playing the game blindly without external guides leads to rough results and requires running experiments during initial playthroughs due to limited in-game explanations.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "218700759",
+                  "hours_at_review": 255.6,
+                  "voted_up": true,
+                  "date": "2026-02-19",
+                  "review_text": "Game Dev Tycoon is one of those games where you boot it up thinking you'll play for twenty minutes and suddenly it's 2am and you're desperately trying to save your third studio from bankruptcy because you bet everything on a medieval puzzle RPG. The tycoon loop — garage startup, growing team, chasing review scores — is simple but genuinely satisfying, and the clever meta-humor about the gaming industry keeps it charming throughout. That said, once you crack the formula (match your genre to the right platform, balance your sliders correctly), the game does start to feel a bit like appeasing an algorithm rather than making creative choices, and the pacing rushes toward an ending before you feel ready. Mods on the Steam Workshop help a lot if you want more depth or longevity. If you can grab it on sale, it's absolutely worth it for a cozy, self-aware little sim that knows exactly what it is — just don't expect a deep management game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "192175945",
+                  "hours_at_review": 104.0,
+                  "voted_up": true,
+                  "date": "2025-04-06",
+                  "review_text": "Relatively fun for the price, EXTREMELY 2013 game design though, so its actually super dated in that aspect. There is little to no explanation and if you go into it blind without looking for sources on the web, you will be basically running experiments and have rough results your first couple playthroughs.\n\nYou can carry over your \"hints\" from \"game reports\" to new games so this is built a bit like a rouge-like (maybe wrong term) where future playthroughs would actually be set up for success. I would say a basic playthrough takes anywhere from 4-6 hours if you arnt rushing and meet the various required benchmarks. \n\nIt is incredibly easy to run and pause/save so this is something i like doing when I am working on something else because i can come back to it, or go in and out.\n\nAt this point though, in 2025, this is extremely dated and while I recommend this game, i also agree with the 68 meta critic score, as its only slightly better then your average idle game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "188550222",
+                  "hours_at_review": 111.9,
+                  "voted_up": true,
+                  "date": "2025-02-23",
+                  "review_text": "[h1] This is a perfect game [/h1]\n\nI discovered it about a decade ago now from Dunkey and immediately went to buy it. I've played through it from start to finish multiple times and while there is definitely a few formulas you discover that are far more successful than others, it is fun discovering what works and what doesn't. It's a blast watching the scores for your game come in then watching the copies sold number/graph rise week over week and checking through your release history to see the numbers. Releasing sequels and creating engines for specific game types is a really good time that helps build a sort of RPG element if that is fun for you.\n\n[b] Make sure you make the game itself while playing to get an achievement [b]",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-c5a434",
+              "claim": "Reviewers report that knowledge or hints gained from previous playthroughs carry over to set up future attempts for success.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "198810818",
+                  "hours_at_review": 153.5,
+                  "voted_up": true,
+                  "date": "2025-07-03",
+                  "review_text": "This is a joyful little game that even at $10 full price is very fair for what you get. \r\n\r\nYou develop games by selecting a type and then balancing graphics, story, writing, sound, level design, and 4 other aspects I cant remember in order to create the best possible game. Depending on the genre, you can intuitively figure out that a \"Military\" game would work well as a strategy action simulation game, but a \"Vampire\" game would not work well as a casual-adventure type game. over time technology changes, you upgrade your \"engine' that allows you to put different things into your games based on what you allot to different parts, and how well a game is assembled impacts reviews of the game, which is reflected in sales. \r\n\r\nMost games you release will hit the 6, 7, 8 range and recover a little over the cost it took to make, some games may be sub par and release as a 3, 4, or 5 which could financially hurt you a bit, and every once in a while you crush a game that gets a 9 or even a 10 that makes you BOATLOADS of cash and allows you to expand your staff, research more game technologies, etc. \r\n\r\nTheres dozens of different types of game genres you can pick from, probably a hundred combos for what kind of game you want to design around a specific genre, and there is replayability to this game because the lessons you learn from one playthrough are unlocked and informative to you on the next playthrough. I sunk 150+ hours into quite a few games just to get all the steam achievements for games in my library, and this one is one of the games I have more fond memories of. \r\n\r\nAt $10 this game is worth a pickup for some casual fun and appreciation of gaming. The more on sale it is then the more it becomes worth it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "192175945",
+                  "hours_at_review": 104.0,
+                  "voted_up": true,
+                  "date": "2025-04-06",
+                  "review_text": "Relatively fun for the price, EXTREMELY 2013 game design though, so its actually super dated in that aspect. There is little to no explanation and if you go into it blind without looking for sources on the web, you will be basically running experiments and have rough results your first couple playthroughs.\n\nYou can carry over your \"hints\" from \"game reports\" to new games so this is built a bit like a rouge-like (maybe wrong term) where future playthroughs would actually be set up for success. I would say a basic playthrough takes anywhere from 4-6 hours if you arnt rushing and meet the various required benchmarks. \n\nIt is incredibly easy to run and pause/save so this is something i like doing when I am working on something else because i can come back to it, or go in and out.\n\nAt this point though, in 2025, this is extremely dated and while I recommend this game, i also agree with the 68 meta critic score, as its only slightly better then your average idle game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "209922992",
+                  "hours_at_review": 105.5,
+                  "voted_up": true,
+                  "date": "2025-11-23",
+                  "review_text": "Really good game, great to pass the time, and required a bit of thought. But the fun part is each playthrough can get easier as you get to understand how it works. I highly recommend this to anyone who like tycoon games, business games, or just want a fun game to pass the time.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-0eb61f",
+              "claim": "Reviewers state that the game design is dated and lacks thorough explanations, requiring players to run experiments during initial playthroughs.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "192175945",
+                  "hours_at_review": 104.0,
+                  "voted_up": true,
+                  "date": "2025-04-06",
+                  "review_text": "Relatively fun for the price, EXTREMELY 2013 game design though, so its actually super dated in that aspect. There is little to no explanation and if you go into it blind without looking for sources on the web, you will be basically running experiments and have rough results your first couple playthroughs.\n\nYou can carry over your \"hints\" from \"game reports\" to new games so this is built a bit like a rouge-like (maybe wrong term) where future playthroughs would actually be set up for success. I would say a basic playthrough takes anywhere from 4-6 hours if you arnt rushing and meet the various required benchmarks. \n\nIt is incredibly easy to run and pause/save so this is something i like doing when I am working on something else because i can come back to it, or go in and out.\n\nAt this point though, in 2025, this is extremely dated and while I recommend this game, i also agree with the 68 meta critic score, as its only slightly better then your average idle game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "188550222",
+                  "hours_at_review": 111.9,
+                  "voted_up": true,
+                  "date": "2025-02-23",
+                  "review_text": "[h1] This is a perfect game [/h1]\n\nI discovered it about a decade ago now from Dunkey and immediately went to buy it. I've played through it from start to finish multiple times and while there is definitely a few formulas you discover that are far more successful than others, it is fun discovering what works and what doesn't. It's a blast watching the scores for your game come in then watching the copies sold number/graph rise week over week and checking through your release history to see the numbers. Releasing sequels and creating engines for specific game types is a really good time that helps build a sort of RPG element if that is fun for you.\n\n[b] Make sure you make the game itself while playing to get an achievement [b]",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 10,
+        "cited_recommend": 10,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 25263,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

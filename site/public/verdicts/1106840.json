@@ -1,0 +1,1267 @@
+{
+  "appid": "1106840",
+  "game_name": "Hydroneer",
+  "generated_at": "2026-08-21T11:50:49Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1106840/header.jpg?t=1777546952",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1106840/capsule_231x87.jpg?t=1777546952",
+    "grid": "https://cdn2.steamgriddb.com/grid/3c802ab9882fef1e043c21f48d08eb9c.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 9,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Wait",
+    "tagline": "Clunky mining mechanics and severe save risks mar a deep sandbox.",
+    "for_you_if": [
+      "you enjoy patient sandbox automation and building",
+      "you play with split screen partners locally"
+    ],
+    "not_for_you_if": [
+      "you risk losing hours of progress to save corruption",
+      "you need online matchmaking instead of split screen",
+      "you expect a helpful introductory tutorial"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 118,
+      "pct_positive": 11.0,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 603,
+      "pct_positive": 80.8,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 382,
+      "pct_positive": 86.9,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 98,
+      "pct_positive": 87.8,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Positive sentiment rises sharply as players move past the initial hours into longer play sessions.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 11.0,
+            "pool_n": 118
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 80.8,
+            "pool_n": 603
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 86.9,
+            "pool_n": 382
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 87.8,
+            "pool_n": 98
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 11.0,
+        "low_pool_n": 118,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 87.8,
+        "high_pool_n": 98,
+        "gap_pts": 76.8
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews show a slight drop in positive sentiment compared to the lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 76.4,
+        "recent_pool_n": 1201,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 86.4,
+        "steam_total_reviews": 20657,
+        "delta_pts": -10.0
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 118,
+      "pct_positive": 11.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players face clunky controls, missing inventory systems, unhelpful tutorials, and save deletion bugs alongside split screen limitations.",
+      "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-787e8f",
+              "claim": "Reviewers report that multiplayer is limited to Steam Remote Play with split-screen rather than featuring native online matchmaking.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "232426698",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-08-09",
+                  "review_text": "The game doesn't offer multiplayer, only \"shared/split screen multiplayer\", which is an insult to all players.\nIt's not the 2000s anymore. People have Internet nowadays.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231306120",
+                  "hours_at_review": 1.2,
+                  "voted_up": false,
+                  "date": "2026-07-25",
+                  "review_text": "I bought Hydroneer because I wanted a factory game to play with my friend. It started up and ran great in single-player. Once we got Steam Remote Play working, we had to use the required split-screen mode that this company forces, which dropped my resolution to 1080p. Which doesn't matter, the game is pretty low quality, so it wasn't a huge deal. However, after about 40 minutes, the game completely froze, and I had to force restart my PC just to get out of it. When my computer started back up, it was still stuck at 1080p and was using my CPU's integrated graphics instead of my dedicated GPU. Somehow, this game ended up corrupting the AMD drivers for my 7900 GRE. I reinstalled the drivers, and everything is working again now, but I have already submitted a refund request for the game.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229818082",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "I hear the actual gameplay is fun, but I only bought it to play multiplayer with a friend and the multiplayer SUCKS. It is the worst multiplayer system I have experienced, requiring steam remote play, which means it will be split screen.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228961648",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-06-27",
+                  "review_text": "Don't buy this if you want to play with your friends!\nOnline multiplayer only works over remote play, that means one person streams his games to all the other players, everyone sees a full split screen view and only one person can use mouse and keyboard.\nApart form that i like the idea of the game but since I don't want to play the game alone i can't rate the game positively.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225157596",
+                  "hours_at_review": 0.6,
+                  "voted_up": true,
+                  "date": "2026-05-10",
+                  "review_text": "Yeah, so... If you're looking to play this game with a friend/friends, unfortunately, it's splitscreen/Steam remote play only, which we didn't know beforehand, not having read the reviews. My friend saw it and recommended it for us to play and subsequently bought it for the both of us. We played through the tutorial, really liked the concept, only then realizing as we were getting ready to play together, that it was splitscreen only. Which, really wouldn't be a problem, if it wasn't Steam remote play, streaming the game to one another and having network fluctuations nearly constantly, effecting the gameplay to a practically unplayable degree. It certainly seemed fun and my best friend and I were excited to give it a shot, being fans of Deep Rock Galactic and all, but... Yeah, if you were looking for a regular online co-op game, that isn't the case for this, as of now, at least. Fingers crossed, they'll release non-splitscreen sometime, but until then... I don't know, maybe give Deep Rock Galactic a shot if you're a fan of similar games. -- Recommended for solo, but for any sort of multiplayer outside of couch co-op, this isn't quite the one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225137367",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-05-09",
+                  "review_text": "seen a video on this game and it looked cool until I went to play with my friends. we are in 2026 and it is using split screens for coop? really?\nthe game looks and acts fine, its just not what I wanted it for.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-c71fb2",
+              "claim": "Reviewers state that items drop to the right of the crosshair rather than where the player is aiming, making precise placement difficult.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "232156488",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "what the hell is the point of a reticle if nothing lines up with it without extra input?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229729840",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "Moving items (a basic and necessary action) is terrible. There is no way to be sure where something you are holding will be put. If objects attracted items when dropped, that wouldn't be a problem, but they don't. Nothing is dropped where your crosshairs are looking, but somewhere to the right of it. The tutorial quickly made me realize this is not a mining or sandbox game. It is a puzzle game and hidden object finder -- because you will be trying to work out where things can go and find things you dropped.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229096541",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-06-28",
+                  "review_text": "The early game is pretty miserable. As others have pointed out, you can only carry one object at a time, which makes everything a little tedious. Even worse, you have to precisely place some objects into other objects, and most of these placements do not line up with the aiming dot, but instead some vague region off to the right of it. How is the mid and late game? I have no idea, and will not find out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225293760",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-11",
+                  "review_text": "I'm fine with the weird inventory system (meaning buckets and carts... there is no inventory system in this game), but nothing is ever dropped where my cursor is. It always drops things toward the bottom right of the screen, so I have to line everything up there, move until its out of sight, THEN drop. I'm on a 3440x1440 monitor, so maybe that's why? But my resolution doesn't cause issues in any other way. Sadly, this genuinely makes the game unplayable. I can't be bothered to drop every single item 5+ times to get it right. And there is a LOT of dropping things into a specific spot in this game. A cursory web search shows that one can hold E to move the item where the cursor is, THEN drop with more precision, but that raises the question: Why even have the default method of dropping?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225079644",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-05-09",
+                  "review_text": "For a game about only being able to hold one item at a time, you would think dropping items, holding items in containers, and placing stuff would be a polished experience?\nNope! Money clips through the pan and lands on the surface beneath. Trying to load a bunch of ore in a pot is tedious because you don't place stuff where you looking, you place below your right hand. Hidden the settings is a switch to turn on a laser sight so you can see where you are dropping it, but even with this, Minecraft has better \"drop held item\" than this game. The worst thing is that the shovel is both to good and really bad at detecting dirt; When you try to scoop up dirt, it misses, you have to click around till the collision finds a cell or something stupid (i have never seen a digging game this bad at digging). When you try to drop the shovel, suddenly the floor is in the way and there is simply no room to drop your shovel on a perfectly flat barren field.\nGood prototype, but don't pay for this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225061603",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-08",
+                  "review_text": "The game seems fun after the early game (as long as your save doesn't delete itself) but getting past the early game is glacially slow and unfun. The lack of QoL (idk like an inventory, a coin purse, or even placing things at your crosshair instead of offset slightly to the right) and any meaningful tutorial makes it not approachable to anyone  who isn't familiar with it prior. The dev has stated that the game is completely finished; and the only updates are from the console team who you will have to hope will add some QoL because I cannot fathom how awful it would feel to try and place anything with the current physics on an anvil or in the pan on a controller.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-e965da",
+              "claim": "Reviewers describe the controls and item placement mechanics as clunky and difficult to manage.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "231906826",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "I'll cut straight to the point here: the controls and UI here are VERY clunky and tedious.\r\n\r\nIf that's the kind of thing that doesn't bother you, then you'll probably find a lot to enjoy here as the systems and interactions seem robust and creative. But I found myself fighting the controls and the lack of an inventory system more than actually dealing with the gameplay itself and that was a real shame.\r\n\r\nAgain, this is really all down to that one central complaint, so if you're okay with some clunkiness and jank, this could absolutely still be worth trying. Just go in knowing that it's a little rough around the edges.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231157269",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Very clunky gameplay, just couldn’t get into it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225874831",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-05-18",
+                  "review_text": "Started in the tutrial as the game advised to get feel for mechanics/controls but the center screen reticle is actually useless nothing but the stores/picking up items seems to accuratelly reflect where the cursor is, placing items on /in objects you have to use the shadow to reliably put them where you want/need. There's a several year saga of a basic tutorial function being lost in the sauce because despite there being muliple ways to achieve early steps the flow text only updates if you follow the exact wording. So you will almost assuredly miss that to make the ring on the anvil you need to smelt your gold, and then reheat the smelted bar (extermely counter inuitive) and then hit the anvil. \n\nFor me *on controler* the game feel isn't good and the game logic feels needlessly obtuse on top of that so I uninstalled.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225339254",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-05-12",
+                  "review_text": "Looks bad ad plays bad. \r\n\r\nJust the first basic action of putting something into something else is an ordeal. Controls are unintuitive, even just picking up something.\r\n\r\nLow poly graphics always look bad, it's never been a style, it's the law of least effort. Early 3D graphics were trying to do something nice with what they had, nowadays low poly is just an excuse. Also don't like the chunky character models.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225140421",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-05-09",
+                  "review_text": "The controls are very awkward and there is so much inconvenience. I hate the early game and did not get past it. I saw there were ways to make some mechanics like transporting less inconvenient but it feels like punishment to do it at the start, and not something I can later look back on with joy how I managed to automate it (if that makes sense).",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223148786",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-04-13",
+                  "review_text": "I love automation games, especially first person and crafting types.  Satisfactory is one of my favorites.\n\nI played this game for a bit and absolutely loathed it.  The crafting seems ok and there are some interesting ideas but the UI and controls are so janky and clunky and awkward that it actually made the game wholly unpleasant.  I quit after about half an hour because I just couldn't stand the awkward cursor selections.  In a game like this you should be focused on organizing the next steps, not worried about fighting with the mouse cursor to see if you can actually pick something up.  It was really dreadful.  Very disappointed.\n\nThe tutorial I also felt was really quite bad.  It doesn't really tell you what you need to know, or at least I felt that in several cases it just missed really important details.  It also doesn't really explain any of the surrounding info.  It's a generally very low effort tutorial that should have had a lot more thought put into it.\n\nIn a game like this, or really in any game, you cannot skimp on the early game effort.  People get 1 to 2 hours to judge a game before refunds expire, and if you can't give a good impression in that time, it doesn't matter how good the game gets later.\n\nI don't even know if this game has potential at mid or later stages because the beginning was just too awful for me to get through, primarily due to the cursor, UI, and control issues above.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-37f81b",
+              "claim": "Reviewers describe the tutorial as unhelpful, confusing, and failing to properly explain core game mechanics.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "230347585",
+                  "hours_at_review": 0.6,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "the introduction wasn't really a good hook for the game, a bit confusing as well, mid game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225874831",
+                  "hours_at_review": 0.3,
+                  "voted_up": false,
+                  "date": "2026-05-18",
+                  "review_text": "Started in the tutrial as the game advised to get feel for mechanics/controls but the center screen reticle is actually useless nothing but the stores/picking up items seems to accuratelly reflect where the cursor is, placing items on /in objects you have to use the shadow to reliably put them where you want/need. There's a several year saga of a basic tutorial function being lost in the sauce because despite there being muliple ways to achieve early steps the flow text only updates if you follow the exact wording. So you will almost assuredly miss that to make the ring on the anvil you need to smelt your gold, and then reheat the smelted bar (extermely counter inuitive) and then hit the anvil. \n\nFor me *on controler* the game feel isn't good and the game logic feels needlessly obtuse on top of that so I uninstalled.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225585420",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-05-15",
+                  "review_text": "So I bought this game cause on paper it looked really cool, the idea behind is very very interesting, but the execution is... bad.\nI played the tutorial, one of the worst tutorials I've ever played, anyway, that's okay-ish. \nThe items don't show you their name when you hover the mouse, you see name of stuff only when you pick it up, honestly pretty dumb already.\nThe tutorial appears in the down side, there's no highlight on the map, no arrows, no pointer, no glowy thingy, so most you really have to figure out the most basic things yourself. \nMy real problem is the control system.\nSo I generally hate grab stuff with E and use with mouse click, I'm more of a left / right click person, but that's fine cause I can technically rebind stuff, I thought I can still give it the benefit of the doubt; what genuinely angered me the most was the \"use system\".\nSo apparently I have only one hand, cause I can hold only one item per time (already a huge minus for me), so I either hold the shovel or the lamp. Ok, I can handle one hand games, in theory.\nSo I go grab the pan, fill it with water and drop it on the floor. It's already too many interactions to fill a pan but whatever. Later I need grab the bucket, position it close to the dig site, drop it (again I have only one hand), the terrain is uneven and the darn bucket doesn't stay upright, that triggered me a lot. Anyway after 10 tries I manage to get the bucket to stay upright, I grab the shovel, shovel dirt into the bucket (the tutorial is pretty luck laster but whatever), and finally after I fill it, I need to drop the shovel, take the bucket, go to the pan, and empty the bucket in the pan. This mechanic is the dumbest, cause the drop \"shadow\" is basically just a shadow, almost invisible to my poor eyes, so guess where the dirt goes 9/10 times? On the floor. Whatever, I drop the bucket, get the dirt and push it in the pan  manually. \nThere's no pour system, it's immediate, so holding E doesn't change anything, that's extremely…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "225247944",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-05-11",
+                  "review_text": "WOW.  Just. SO bad.  Controls are janky as hell.  Tutorial feels like it was written by someone who didn't graduate kindergarten.  DO NO BUY.  I don't understand how this is even on steam.  Enough said.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225090430",
+                  "hours_at_review": 0.2,
+                  "voted_up": false,
+                  "date": "2026-05-09",
+                  "review_text": "The so-called 'tutorial' is extremely clunky and unforgiving. I barely managed more than 10-15 minutes of it before I'd had enough. \nThis might be some peoples idea of fun, but it's certainly not mine.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223148786",
+                  "hours_at_review": 0.4,
+                  "voted_up": false,
+                  "date": "2026-04-13",
+                  "review_text": "I love automation games, especially first person and crafting types.  Satisfactory is one of my favorites.\n\nI played this game for a bit and absolutely loathed it.  The crafting seems ok and there are some interesting ideas but the UI and controls are so janky and clunky and awkward that it actually made the game wholly unpleasant.  I quit after about half an hour because I just couldn't stand the awkward cursor selections.  In a game like this you should be focused on organizing the next steps, not worried about fighting with the mouse cursor to see if you can actually pick something up.  It was really dreadful.  Very disappointed.\n\nThe tutorial I also felt was really quite bad.  It doesn't really tell you what you need to know, or at least I felt that in several cases it just missed really important details.  It also doesn't really explain any of the surrounding info.  It's a generally very low effort tutorial that should have had a lot more thought put into it.\n\nIn a game like this, or really in any game, you cannot skimp on the early game effort.  People get 1 to 2 hours to judge a game before refunds expire, and if you can't give a good impression in that time, it doesn't matter how good the game gets later.\n\nI don't even know if this game has potential at mid or later stages because the beginning was just too awful for me to get through, primarily due to the cursor, UI, and control issues above.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-63b51e",
+              "claim": "Reviewers note that the game lacks an inventory system, requiring players to carry objects and currency manually one at a time.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "231906826",
+                  "hours_at_review": 1.5,
+                  "voted_up": false,
+                  "date": "2026-08-02",
+                  "review_text": "I'll cut straight to the point here: the controls and UI here are VERY clunky and tedious.\r\n\r\nIf that's the kind of thing that doesn't bother you, then you'll probably find a lot to enjoy here as the systems and interactions seem robust and creative. But I found myself fighting the controls and the lack of an inventory system more than actually dealing with the gameplay itself and that was a real shame.\r\n\r\nAgain, this is really all down to that one central complaint, so if you're okay with some clunkiness and jank, this could absolutely still be worth trying. Just go in knowing that it's a little rough around the edges.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229898062",
+                  "hours_at_review": 1.0,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "I only have 1 hour in the game at the time of this review.\nGame looked neat, but it's a grind fest. \nno inventory you have to carry everything including your money. \nitems don't stack, (money does) so if you have 10 gold nuggets you have to move them 1 at a time.\nthe drop off marker is to the right of center, it's often difficult to see where the item your dropping is going to fall.\nyou have to actually drop your panning bucket in the water rather than just pick it up and fill it.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225368918",
+                  "hours_at_review": 1.6,
+                  "voted_up": false,
+                  "date": "2026-05-12",
+                  "review_text": "I have to agree with the latest review; the lack of an inventory system is baffling at best. Managing all those objects so closely is a recipe for motion sickness. You don't even have a wallet; the coins need to be transported one by one, or you can merge them together with a bucket. Honestly, I miss the purpose of having this busywork; it's just not fun. The game seems interesting with the upgrades and automation, but I am not going to suffer an annoying system until the game gets good. I am happy to give it another go if the inventory changes, though.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225151231",
+                  "hours_at_review": 0.5,
+                  "voted_up": false,
+                  "date": "2026-05-09",
+                  "review_text": "Gameplay feels so awkward with a lack of hotbar/inventory, I get this is the direction they want to go with this game but its just going to deter many people from it. And even when having to pick everything up, dropping stuff is also a clunky annoyance as it slight clipping blocks you from dropping, and even if you drop something it doesnt drop where your looking but off to the bottom right, so you have to angle it. Also having to carry your currency around to buy things is extremely dumb, at least if you arent going to make an inventory, allow your coins to be stored in your damn pocket. Everything else about the gameplay is fun tho. If someone makes a mod that adds an inventory and hotbar id gladly rebuy. Otherwise, key gameplay features make this game feel like more of an annoyance to play rather than actual fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225061603",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-08",
+                  "review_text": "The game seems fun after the early game (as long as your save doesn't delete itself) but getting past the early game is glacially slow and unfun. The lack of QoL (idk like an inventory, a coin purse, or even placing things at your crosshair instead of offset slightly to the right) and any meaningful tutorial makes it not approachable to anyone  who isn't familiar with it prior. The dev has stated that the game is completely finished; and the only updates are from the console team who you will have to hope will add some QoL because I cannot fathom how awful it would feel to try and place anything with the current physics on an anvil or in the pan on a controller.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223060175",
+                  "hours_at_review": 1.3,
+                  "voted_up": false,
+                  "date": "2026-04-11",
+                  "review_text": "Man, another reviewer lamented lack of an inventory system, and mentally I was like, that's not a big deal to me.\n\nI have since learned its enough of a deal to me. I play hot mess simulators all the time, but missing putting soil into the bucket again coupled with a lack of inventory system, it just lost whatever I could like about it. I enjoy the premise, but genuinely lack of QoL + single player, they missed out big time. If they ever remake this and fix those two, I'd be down.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-e013f0",
+              "claim": "Reviewers report encountering bugs that cause saved game files to be deleted or emptied.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "225212876",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-10",
+                  "review_text": "this game is +6 years old now and still has a bug that wipes all your progress when you dare to hit \"save and quit\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "224605954",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-02",
+                  "review_text": "my saved games are all just empty",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225061603",
+                  "hours_at_review": 1.4,
+                  "voted_up": false,
+                  "date": "2026-05-08",
+                  "review_text": "The game seems fun after the early game (as long as your save doesn't delete itself) but getting past the early game is glacially slow and unfun. The lack of QoL (idk like an inventory, a coin purse, or even placing things at your crosshair instead of offset slightly to the right) and any meaningful tutorial makes it not approachable to anyone  who isn't familiar with it prior. The dev has stated that the game is completely finished; and the only updates are from the console team who you will have to hope will add some QoL because I cannot fathom how awful it would feel to try and place anything with the current physics on an anvil or in the pan on a controller.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 28,
+        "cited_recommend": 1,
+        "divergence_p": 0.171,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 603,
+      "pct_positive": 80.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players progressing past the start still struggle with manual item carrying, awkward controls, and save corruption risks without built-in tutorials.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-cea45e",
+              "claim": "The game lacks an inventory system, restricting players to carrying only one item at a time.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "232559999",
+                  "hours_at_review": 9.3,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "This game loves to just waste your time. It's a tedious nightmare because you have 0 inventory so you can only hold 1 object at a time. \n\nI gave it a fair shake and realized I wasn't having fun. Why do I have to carry my coins and put them in a bucket to buy things at a vendor and then go to another vendor across town only to realize I left my coins at the previous vendor. There's a section that you have to walk for a minute and a half each way to a vendor up and down an elevator/stairs. So you bring your coins down, pay for your stuff then bring your item up and then go back down to get your coins back. WHY!?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232392176",
+                  "hours_at_review": 7.6,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "This game is cool! \n\nPlease for the love of god tighten up the controls a bit. Having to repeatedly pick up and drop something over and over until I aim it in the right spot just to complete an action SU-UCKS. Also please let me carry more than one item. A bag, hot bar, even just two hands worth of items?? I have two hands, I swear I do\n\nEDIT: I'm now several hours in - my god this game is so fun. What a cool execution of a neat concept. Combines some of my favorite aspects of so many different games. Definitely scratches the Satisfactory itch. My \"let me hold at least more than one single item\" point still stands in my opinion, just seems to unnecessarily slow me down. Otherwise, no complaints so far- having tons of fun!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230131075",
+                  "hours_at_review": 9.3,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "For a game centered around automation and building no inventory system. One item in your hand at a time is mind boggling in a building game. The game turns more so pick up and put down simulator than anything. Don't get me started on the drop system too. Items can overlap at certain times but have hard collision boxes as well. This game could really use some quality of life changes. -10/10 really wanted to like this game and see its potential but in this day and age I really don't want to play another game that just feels like work. Wouldn't recommend this to anyone to be honest.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230076730",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "No inventory so making anything is a running back and forth simulator and controls are so annoying that there is an item in the game to make it less annoying",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229755069",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "I thought this game would start out with a lot of busywork and then slowly get over to the automation fun. And it does...*kinda*. However, a lot of things in this games are just an annoying hassle.\n\nIf you drop things, you don't drop them in front of you, but slightly to the right. While a dropshadow indicates where it lands, it's still a massive annoyance, especially because \"drop things\" is the #1 way of interacting with the world. You cannot, for example, place something in a crucible or on an anvil, you pick it up and drop it.\n\nYou can only ever carry one thing at a time, no inventory. This includes money. This means if you go into a shop you need to carry everything out to the cart, one thing at a time. If you dropped a bunch of ores, you pick them up one at a time. And then drop them in the container you want. Which, as I said before, is on the right of the screen, not the center. And yes, some shops are VERY DEEP inside a mountain so you are running back and forth a bunch of times instead of just having an inventory.\n\nSpent a few hours with this and it was enjoyable enough, but I'm done. There is something of a game here, but it tries its hardest to be as unapproachable as possible.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229837234",
+                  "hours_at_review": 15.7,
+                  "voted_up": true,
+                  "date": "2026-07-07",
+                  "review_text": "The starting is slow af but after everything is setup the game is so easy , the only thing i don't like is not having inventory , its a pain in the but to carry one thing at a time but overall its a really good game!",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-42512c",
+              "claim": "Players must manually carry currency between shops and make multiple trips because money takes up physical inventory space.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "232559999",
+                  "hours_at_review": 9.3,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "This game loves to just waste your time. It's a tedious nightmare because you have 0 inventory so you can only hold 1 object at a time. \n\nI gave it a fair shake and realized I wasn't having fun. Why do I have to carry my coins and put them in a bucket to buy things at a vendor and then go to another vendor across town only to realize I left my coins at the previous vendor. There's a section that you have to walk for a minute and a half each way to a vendor up and down an elevator/stairs. So you bring your coins down, pay for your stuff then bring your item up and then go back down to get your coins back. WHY!?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229790302",
+                  "hours_at_review": 11.9,
+                  "voted_up": true,
+                  "date": "2026-07-06",
+                  "review_text": "Tl;dr: Good enough that I bought it after playing a pirated copy, but it is held back by some truly bizarre design decisions that feel even more frustrating with how obviously the devs possess both skill and motivation.\n\nFirst, the positives. The game runs brilliantly. I have not yet really pushed things, but my rather modest mining setup runs without a single hiccup on my ancient 4670K. The NPCs and their fetch quests make the game world feel more friendly and alive, which is a pleasant departure from the hostile worlds of Factorio and Satisfactory. I absolutely love the aesthetic. I also love how everything runs on water, and that the devs give you a magic water pumping pipe rather than requiring you to power the water pump. I like how the vehicles are so easy to get back upright after flipping them. I like how you can combine gems into larger ones. And of course, I love the built-in mod support.\n\nFor example, aside from a set of basic starting tools, everything you will use has to be bought from shops with money you earn by crafting commodity items like daggers, axes, and jewelry. That itself is fine, but for some reason, the devs think that it is a good idea to have to manually carry your money from shop to shop to buy things which, since you do not have any kind of internal inventory, means either making multiple trips back and forth to carry the money to the shop, bring back each purchase one at a time, and then retrieving your money, or using the in-game pallets which have finite space and take your pace from \"a bit slow\" to \"old man with his shoes tied together.\" This is partly solved once you get one of the trucks, but even that requires you to cheese things by dropping things from above the truck bed in order to get your various items of cargo to phase into each other.\n\nAs others have mentioned, digging mines is a chore, and requires you to either use the shovel to relocate one  basketball-sized piece of soil at a time or use things like explosives or the …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229755069",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "I thought this game would start out with a lot of busywork and then slowly get over to the automation fun. And it does...*kinda*. However, a lot of things in this games are just an annoying hassle.\n\nIf you drop things, you don't drop them in front of you, but slightly to the right. While a dropshadow indicates where it lands, it's still a massive annoyance, especially because \"drop things\" is the #1 way of interacting with the world. You cannot, for example, place something in a crucible or on an anvil, you pick it up and drop it.\n\nYou can only ever carry one thing at a time, no inventory. This includes money. This means if you go into a shop you need to carry everything out to the cart, one thing at a time. If you dropped a bunch of ores, you pick them up one at a time. And then drop them in the container you want. Which, as I said before, is on the right of the screen, not the center. And yes, some shops are VERY DEEP inside a mountain so you are running back and forth a bunch of times instead of just having an inventory.\n\nSpent a few hours with this and it was enjoyable enough, but I'm done. There is something of a game here, but it tries its hardest to be as unapproachable as possible.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229820217",
+                  "hours_at_review": 9.4,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Jank can be fun, but this isn't the right kind. It's difficult to purchase items, build items, transport items, modify terrain... I see the vision with being without an inventory, but you may have gone too far by not even having a place for money. If the intent of the game is base building, it's too much of a pain to play.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-a80482",
+              "claim": "Controls and object placement are described as clunky and difficult for precisely positioning items.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "232392176",
+                  "hours_at_review": 7.6,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "This game is cool! \n\nPlease for the love of god tighten up the controls a bit. Having to repeatedly pick up and drop something over and over until I aim it in the right spot just to complete an action SU-UCKS. Also please let me carry more than one item. A bag, hot bar, even just two hands worth of items?? I have two hands, I swear I do\n\nEDIT: I'm now several hours in - my god this game is so fun. What a cool execution of a neat concept. Combines some of my favorite aspects of so many different games. Definitely scratches the Satisfactory itch. My \"let me hold at least more than one single item\" point still stands in my opinion, just seems to unnecessarily slow me down. Otherwise, no complaints so far- having tons of fun!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232044895",
+                  "hours_at_review": 3.7,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "I am one of those gamers that doesn't mind the grind. just mindless fetch quests that i can do when i don't need any amount of focus to play. it allows me to listen to a podcast, movie, tv show, etc. the constant dropping items, trying to get them into the exact right spot, not dropping it from too high up. I am clearly not the target audience, but unfortunately, i am not able to figure out who the target audience is.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230365517",
+                  "hours_at_review": 2.8,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "bought the game a few years ago, played for 10 minutes and put it down, recently picked it back up since I got interested again and wondered if the devs fixed the game feel. They didn't. \"Hydroneer is a finished product\". \r\n\r\nNow, I will probably change the review to positive once I put more hours into the game and things start to get \"automated\", but for how everything is so poorly executed so far, I can't recommend this. I see the appeal and the vision of the \"no inventory\", and I respect that, but just because it's a design vision doesn't mean it can be an excuse for poor game polish. Tutorial hasn't been changed for (I think) 3 years, things are still a text wall, cart moving is clunky, and on the topic of clunkiness, the player character. Character needs more friction, I enter a hold that I dug but cannot get out and just keeps slipping, and this happens on normal terrain too, the \"unstuck\" button just sends me to the underworld and I have to walk all the way back to early game area.\r\n\r\nThere's often no feedback from when something happens and you NEED to know, things like whether things are in the buckets or not (which the game claims can be used for storage purposes, but guess what, it breaks whenever the bucket is in a cart), when something needs to be rooted instead of just dropped to be used (spent 5 minutes in the TUTORIAL wondering why my anvil doesn't work, turns out I needed to place it, call me dumb I guess but the tutorial should've told me).\r\n\r\nAll of the points above make me not want to play the game even though the gameplay itself is super fun, having 0 QoL, intentional cripples that may or may not be relieved through gameplay (making a \"lock/unlock building\" purchasable item instead of just changing the keybind to something more intuitive), and just general lack of polish.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230076730",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "No inventory so making anything is a running back and forth simulator and controls are so annoying that there is an item in the game to make it less annoying",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230131075",
+                  "hours_at_review": 9.3,
+                  "voted_up": false,
+                  "date": "2026-07-10",
+                  "review_text": "For a game centered around automation and building no inventory system. One item in your hand at a time is mind boggling in a building game. The game turns more so pick up and put down simulator than anything. Don't get me started on the drop system too. Items can overlap at certain times but have hard collision boxes as well. This game could really use some quality of life changes. -10/10 really wanted to like this game and see its potential but in this day and age I really don't want to play another game that just feels like work. Wouldn't recommend this to anyone to be honest.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229755069",
+                  "hours_at_review": 5.5,
+                  "voted_up": false,
+                  "date": "2026-07-06",
+                  "review_text": "I thought this game would start out with a lot of busywork and then slowly get over to the automation fun. And it does...*kinda*. However, a lot of things in this games are just an annoying hassle.\n\nIf you drop things, you don't drop them in front of you, but slightly to the right. While a dropshadow indicates where it lands, it's still a massive annoyance, especially because \"drop things\" is the #1 way of interacting with the world. You cannot, for example, place something in a crucible or on an anvil, you pick it up and drop it.\n\nYou can only ever carry one thing at a time, no inventory. This includes money. This means if you go into a shop you need to carry everything out to the cart, one thing at a time. If you dropped a bunch of ores, you pick them up one at a time. And then drop them in the container you want. Which, as I said before, is on the right of the screen, not the center. And yes, some shops are VERY DEEP inside a mountain so you are running back and forth a bunch of times instead of just having an inventory.\n\nSpent a few hours with this and it was enjoyable enough, but I'm done. There is something of a game here, but it tries its hardest to be as unapproachable as possible.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-667991",
+              "claim": "The starting phase of the game lacks in-game tutorials or clear objectives, requiring external guides.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "233193791",
+                  "hours_at_review": 4.2,
+                  "voted_up": false,
+                  "date": "2026-08-19",
+                  "review_text": "All has been already said about this game :\n- Lack of plenty of QoL features (basic inventory, objectives, tutorial that is part of the game....) \n- Quite buggy/fiddly especialy for an automation game\n\nAll is not wrong with it, there are some qualities but, at the end, I don't recommend the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230365517",
+                  "hours_at_review": 2.8,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "bought the game a few years ago, played for 10 minutes and put it down, recently picked it back up since I got interested again and wondered if the devs fixed the game feel. They didn't. \"Hydroneer is a finished product\". \r\n\r\nNow, I will probably change the review to positive once I put more hours into the game and things start to get \"automated\", but for how everything is so poorly executed so far, I can't recommend this. I see the appeal and the vision of the \"no inventory\", and I respect that, but just because it's a design vision doesn't mean it can be an excuse for poor game polish. Tutorial hasn't been changed for (I think) 3 years, things are still a text wall, cart moving is clunky, and on the topic of clunkiness, the player character. Character needs more friction, I enter a hold that I dug but cannot get out and just keeps slipping, and this happens on normal terrain too, the \"unstuck\" button just sends me to the underworld and I have to walk all the way back to early game area.\r\n\r\nThere's often no feedback from when something happens and you NEED to know, things like whether things are in the buckets or not (which the game claims can be used for storage purposes, but guess what, it breaks whenever the bucket is in a cart), when something needs to be rooted instead of just dropped to be used (spent 5 minutes in the TUTORIAL wondering why my anvil doesn't work, turns out I needed to place it, call me dumb I guess but the tutorial should've told me).\r\n\r\nAll of the points above make me not want to play the game even though the gameplay itself is super fun, having 0 QoL, intentional cripples that may or may not be relieved through gameplay (making a \"lock/unlock building\" purchasable item instead of just changing the keybind to something more intuitive), and just general lack of polish.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229431000",
+                  "hours_at_review": 9.4,
+                  "voted_up": false,
+                  "date": "2026-07-02",
+                  "review_text": "Trying to like it but can’t - it’s frustrating and annoying. Absolutely no clues on what to do so you tube is your only way. \n\nSpend my life going to get more pipe \n\nWant to like but just can’t recommend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231093896",
+                  "hours_at_review": 8.8,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "I have no idea where to even begin with this game. Most infuriating experience of my life.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-c63357",
+              "claim": "Save files can become corrupted or wiped, resulting in complete loss of progress.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "231657602",
+                  "hours_at_review": 7.9,
+                  "voted_up": false,
+                  "date": "2026-07-30",
+                  "review_text": "i played about 8 hours and had a pretty good set up and when i tryed to download a mod it complitly restarted my entire save and form the very start",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230649645",
+                  "hours_at_review": 18.6,
+                  "voted_up": false,
+                  "date": "2026-07-17",
+                  "review_text": "18 hours in, and the save file is corrupted with all data lost and the world wiped. Come to find out, it's an extremely common issue the developers have deliberately chosen not to fix, and it would be a simple enough fix that there are mods to prevent this exact problem. Disappointed because the game is very good, but it somehow manages to discourage the exact style of play that is should encourage.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230350399",
+                  "hours_at_review": 12.7,
+                  "voted_up": false,
+                  "date": "2026-07-13",
+                  "review_text": "It is a very fun game, I was hooked for 8 hours before a very unfortunate crash that reset all my progress (yes I even checked the backups). It's going to be hard to find the will to restart everything, especially after reading that the devs have claimed to fix this. I've read of peoples one hundred hour worlds being corrupted and that makes me weary of putting more time into this.\nUpdate: It happened again after 5 hours.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229997117",
+                  "hours_at_review": 9.8,
+                  "voted_up": false,
+                  "date": "2026-07-09",
+                  "review_text": "the game is over all fun but glitchy and even with cloud backup i got all my saves wiped randomly i wanna love it but loosing all my game files is too much for me too give it a possitive review",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-075591",
+              "claim": "The game does not feature online co-op and only supports split-screen multiplayer.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "233259528",
+                  "hours_at_review": 5.4,
+                  "voted_up": true,
+                  "date": "2026-08-20",
+                  "review_text": "i Bought this game to play with my pal, but sadly this game doesn't have co-op, i also was super sick and playing this game once and i think i got some gold.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231410378",
+                  "hours_at_review": 11.6,
+                  "voted_up": false,
+                  "date": "2026-07-27",
+                  "review_text": "i bought this game to play with my friend because it says multiplayer but all it allows is splitscreen",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229490391",
+                  "hours_at_review": 14.5,
+                  "voted_up": true,
+                  "date": "2026-07-03",
+                  "review_text": "if you are looking for a single player game and love building machine's\r\nthis game is for you, you dig enough materials to afford your next mining upgrade's \r\nmake your whole mining operation automatic with al the drills sorters belts ETC.\r\n\r\nand in the down time you can get your CAR wich runs on WATER and drive around the island trough al the biome's\r\n\r\nyou can sink a lot of hours in to the game.\r\n\r\nonly downside is that it isnt online coop, that would make the game even better",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 20,
+        "cited_recommend": 5,
+        "divergence_p": 1.02e-07,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 382,
+      "pct_positive": 86.9,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid game brings heavy performance drops during automation, unguided mechanics, and randomized save wipes.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-250b3e",
+              "claim": "The game suffers from severe performance issues, lag spikes, and freezes during heavy automation, saving, or when handling large amounts of items and ore.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "233176333",
+                  "hours_at_review": 52.5,
+                  "voted_up": true,
+                  "date": "2026-08-19",
+                  "review_text": "needs major optimization overhaul it gets unreasonably laggy at times and when the game saves it freezes for like 30 seconds to a minute and if you have a bunch of things in your truck hauling them back to your land/plot it could take you a while to get there due to the lag. however the game is really fun if you don't mind all the lag. i think $15 is a reasonable price for this and the DLC bundle",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230945162",
+                  "hours_at_review": 35.3,
+                  "voted_up": false,
+                  "date": "2026-07-21",
+                  "review_text": "I really really want to recommend this game. It can be a lot of fun! But that's the thing.. it CAN be a lot of fun.. the early game is horrible. Many pointed out before that you have either a shovel to gather resources or other items to move terrain that just destroys the resource. but, get that first drill and automate your 5 stupid water filters and you essentially won. No joke, I had this automation set up, built it up until I had 5 basic drills and then accidentally left the game running while I did some other stuff, only to return and have enough money to not know what to do with. Which gets us to the 2nd issue. The lack of content, especially endgame content. There is absolutely no incentive to get any of the better items cause if you did, you would just be making this fatal ending come that much quicker. Not to mention the performance issues.. Once I had auomation set up a bit I found out that sometimes things get stuck between conveyor belt and sorter which leads to pile ups and your machines breaking. \nThe lag I had when trying to move my thousands of gems that accumulated.. Well, let's just say calling it a slideshow would be generous and I run with a 3070 and 32gb of ram.. I should not be having those kinds of lag spikes if the game was more optimized.. it's sad to see a game with such great potential fall so flat. If there were more expensive things, or actual things to strive for, it would be much better. but in the current state, it stops making sense to play after quite a short time",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230018852",
+                  "hours_at_review": 26.8,
+                  "voted_up": true,
+                  "date": "2026-07-09",
+                  "review_text": "Its a good time killer. My only problem with it is the performance in mid-late game. Anytime you try to move pans of massive amounts of ore, it will lag your game out really bad anytime you pick it up or put it down",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-72c457",
+              "claim": "Reviewers note that saves or entire world progress can randomly get wiped or reset upon loading.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "229459197",
+                  "hours_at_review": 34.1,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "Update 07/05/2026 just had 36 hours of a save completely wiped upon booting the game. Don't play this game save your money as the devs clearly don't value your time.\n\n\n The core concept of this game is super fun and addictive—it definitely keeps me coming back. That said, it has some rough edges. The UI and controls for dropping items are awkwardly mapped and just feel clunky. The game also does a terrible job of explaining new mechanics, relying on vague picture boards scattered around the map instead of actual instructions.\n\n Honestly, the base game is missing a ton of basic quality-of-life features. Do yourself a favor: ignore the Steam achievements and just play with Workshop mods. It makes the whole experience so much more enjoyable and manageable. Even if you only use minor tweaks, a digital currency mod is an absolute must. In the vanilla game, money is a physical item, meaning you have to lug buckets of coins from store to store and constantly keep track of which vehicle you left your cash on. A mod that just lets you access your money at the vendor saves you a massive headache.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228914416",
+                  "hours_at_review": 79.8,
+                  "voted_up": true,
+                  "date": "2026-06-26",
+                  "review_text": "Fun but every now and then my world resets but so fun and can make lots of chos would recomend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228371432",
+                  "hours_at_review": 39.5,
+                  "voted_up": false,
+                  "date": "2026-06-20",
+                  "review_text": "This is absolutely inexcusable. This game has been released for six years now, and the devs STILL haven't fixed a game breaking bug where all of your progress is randomly wiped when you load a save and everything  you own is deleted. I would call this unplayable. Both of my saves have had this issue. I used to love this game, and it had serious potential, but I cannot in good faith recommend this to ANYONE at all. Even after a major patch designed to fix issues like this, it still persists. FIX THIS ISSUE FOULBALL HANGOVER.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-a8818f",
+              "claim": "The tutorials fail to properly explain core mechanics, machine connections, or logic systems, forcing players to rely on external wikis or guesswork.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232593399",
+                  "hours_at_review": 32.6,
+                  "voted_up": true,
+                  "date": "2026-08-11",
+                  "review_text": "I admit, I 100% started playing this because of Josh and \"Let's Game it Out\"\r\n\r\nI will say, it's a fun game, but it is *REALLY* tedious. You can only carry things one at a time...which includes money, of all kinds. Only one pipe section at a time, and if you want mods on that pipe, you have to do each of those, also one at a time. Getting sections of floor means multiple trips back and forth in your truck, and, how much you can put in your truck can be trick.\r\n\r\nI legit cringe every time the character makes that sound when you can't place something down, since, I don't know what magic sweet spot to get sometimes before it will get put down, only to then roll off the pallet.\r\n\r\nOutside of that, it's a well done game. The environments are very WoW-esque, but that's just fine, it doesn't need to be more.\r\n\r\nSome things aren't overly clear, but, that was probably more just me learning things. I had to go to the wiki to find out a couple of things, and some, I still don't know if I'm using it right.\r\n\r\nIf you've got patience, and more than ok with the very back and forth of getting things setup like a real job site, this is for you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230584883",
+                  "hours_at_review": 27.7,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": " the game is full of busy work that stretches the play time immensely and ultimately kills the fun of building \r\n-No inventory system for tools or items\r\n-in fact, ou can carry only one item at a time\r\n-No chest or other similar stacking system, stuff you buy just piles on the floor\r\n-Tedious driving from and to stores to purchase each item individually\r\n-Even your money is an item that you have to carry around and move from store to store\r\n\r\n-The tutorial doesnt explain how to connect and built machines, leaving you puzzling out why your automation doesnt work. This is highly frustrating in a game that is already so punishing with experimenting on building anything.\r\n\r\n-The placement system for items is \"clumsy\" at best. The crosshair doesnt match the actual position of where you will drop items, its slightly to the right. For lots of interactions it doesnt even make sense to \"drop\" things, it could simply have implemented to be able to click on the item to be able to transfer what youre holding in your hand (e.g. dirt into a pan)\r\n\r\nIt could have been such an interesting automation building game for digging and expanding a base of operation, but all these issues really ruined the fun and made the game tedious and a tough grind.\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229459197",
+                  "hours_at_review": 34.1,
+                  "voted_up": false,
+                  "date": "2026-07-03",
+                  "review_text": "Update 07/05/2026 just had 36 hours of a save completely wiped upon booting the game. Don't play this game save your money as the devs clearly don't value your time.\n\n\n The core concept of this game is super fun and addictive—it definitely keeps me coming back. That said, it has some rough edges. The UI and controls for dropping items are awkwardly mapped and just feel clunky. The game also does a terrible job of explaining new mechanics, relying on vague picture boards scattered around the map instead of actual instructions.\n\n Honestly, the base game is missing a ton of basic quality-of-life features. Do yourself a favor: ignore the Steam achievements and just play with Workshop mods. It makes the whole experience so much more enjoyable and manageable. Even if you only use minor tweaks, a digital currency mod is an absolute must. In the vanilla game, money is a physical item, meaning you have to lug buckets of coins from store to store and constantly keep track of which vehicle you left your cash on. A mod that just lets you access your money at the vendor saves you a massive headache.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228589927",
+                  "hours_at_review": 64.0,
+                  "voted_up": true,
+                  "date": "2026-06-22",
+                  "review_text": "If you want a good mining experience that's relaxing, this is it. i will say, i wish the logic stuff had a tutorial in game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-187144",
+              "claim": "The game features no inventory system for tools, building pieces, or currency, requiring players to carry and move items physically as 3D objects in the world.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "230584883",
+                  "hours_at_review": 27.7,
+                  "voted_up": false,
+                  "date": "2026-07-16",
+                  "review_text": " the game is full of busy work that stretches the play time immensely and ultimately kills the fun of building \r\n-No inventory system for tools or items\r\n-in fact, ou can carry only one item at a time\r\n-No chest or other similar stacking system, stuff you buy just piles on the floor\r\n-Tedious driving from and to stores to purchase each item individually\r\n-Even your money is an item that you have to carry around and move from store to store\r\n\r\n-The tutorial doesnt explain how to connect and built machines, leaving you puzzling out why your automation doesnt work. This is highly frustrating in a game that is already so punishing with experimenting on building anything.\r\n\r\n-The placement system for items is \"clumsy\" at best. The crosshair doesnt match the actual position of where you will drop items, its slightly to the right. For lots of interactions it doesnt even make sense to \"drop\" things, it could simply have implemented to be able to click on the item to be able to transfer what youre holding in your hand (e.g. dirt into a pan)\r\n\r\nIt could have been such an interesting automation building game for digging and expanding a base of operation, but all these issues really ruined the fun and made the game tedious and a tough grind.\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230265195",
+                  "hours_at_review": 21.3,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "Let me be very clear: I like the GAMEPLAY of this game; the part where I work to get money and then start to make my manual grindset become automated and I get to watch my creation go to work.\r\nI recommend hydroneer for that.\r\n\r\nHOWEVER. This game is a tedious running simulator.\r\nYou have to pick up everything one by one. Every tool, every item, every building piece. Everything.\r\nI enjoy setting up my workplaces. I hate how they have to be set up. One by one.\r\nBuilding a new mine/ refinery line? Here's the step by step process of how to do it :D\r\n1. Go to shop. \r\n2. Move cart to position. \r\n3. Spend 10 minutes, one by one, picking up a bunch of pipes and conveyors (this is excluding buying specific items like sorters, smelters, etc. \r\n4. Buy them and bring them back. \r\n5. Spend another 15 minutes offloading them and trying to poorly organize them. \r\n6. Spend another 45 minutes running each individual piece, one at a time, back and forth, until I've completed the assembly line I had in mind.\r\n\r\nThat's the SIMPLIFIED way of putting it, and I'm being really generous on how much time that actually takes to do; that's not even mentioning the fact that in order to get the miners, you have to bring resources to the forge in Icehelm, forge new miners one by one, and then transport them back and place them one by one.\r\n\r\nFinal words: \r\nThis is a great game that loses a LOT of points because for some reason, an inventory system, or in the very least the ability to hold more than ONE PIPE (or any building item) at a time is too much.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "228735904",
+                  "hours_at_review": 54.0,
+                  "voted_up": false,
+                  "date": "2026-06-24",
+                  "review_text": "Good game to play if you hate yourself.\n\nThe world is utterly static and lifeless. It feels like driving around a test world, where they haven't added any NPCs or other systems. Moving from point A to B is an utterly pointless exercise in time-wasting tedium.\n\nThere's no inventory, which artificially extends the playtime of the game by at least 50%, and keeps you away from the interesting portion of the game by making it too difficult to actually place buildings. Some people find this laudable \"WOW NO INVENTORY EVERYTHING EXISTS AS A 3D MODEL SO REALISTIC\". It's not realistic, because you can stack things infinitely in a cart, where items clip through each other. \n\nIf this game had a simple inventory system, and purchasable upgrades instead of making them physical items like the \"hammer that locks or unlocks items\", this would be a legitimately fun automation game. Instead it ends up feeling like a lifeless slog.\n\nSo, if you are depressed and hate yourself, buy and play this game. Otherwise, play something actually fun like factorio.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 11,
+        "cited_recommend": 6,
+        "divergence_p": 0.00897,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 98,
+      "pct_positive": 87.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long term players encounter frame drops from massive setups alongside save corruption and awkward item handling.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-48b76c",
+              "claim": "This cohort describes experiencing save file corruption, game crashes, and progress loss.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230919319",
+                  "hours_at_review": 181.2,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "the game is great but after a recent optimization update, the game stopped saving for me. now there's basically no point in playing, is this a me issue, i don't know but someone either has to fix this or tell me how because i love the game but now its meh because of this. PLEASE HELP ME WITH THIS ISSUE.  aside from that the open ended-ness along with the great automation system is cool, but i do wish you didn't have to craft harvesters and drills or you could choose between buying or crafting mode or something like that. also i don't know if the game has multiplayer and I'm too lazy to check so if not it should.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230324619",
+                  "hours_at_review": 124.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "Love the game but my saves keep corrupting and I've just lost today one of my 7 hour saves i got quite far and poof it's all gone",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227530016",
+                  "hours_at_review": 172.6,
+                  "voted_up": true,
+                  "date": "2026-06-09",
+                  "review_text": " I recommend  this game highly if you like to craft and build but it crashes a lot and world wipe will take every asset you have, and restoring through steam is a nightmare",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222324162",
+                  "hours_at_review": 201.1,
+                  "voted_up": true,
+                  "date": "2026-04-02",
+                  "review_text": "This is BARELY a thumbs up because the game is SO fun to get into, as you can sync in hundreds of hours on a single file to make the most insane mining set up possible.\r\n\r\nBut throughout the years, losing files to corrupt saves, seeing that get patched only to constantly get hit by the \"your save file doesn't exist, unless you go until your files and delete your save folder to reset\" is so annoying. Apparently it's EXTREMELY rare but so was the save corruption and the hydroneer gods chose me as their strongest warrior with this bad luck.\r\n\r\nAttached my spec to this to help the dev figure out a solution for the next time I jump back but it really needs sorting.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-63bbbd",
+              "claim": "Reviewers report that save files can become corrupted or disappear, causing them to lose hours of progress.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "230919319",
+                  "hours_at_review": 181.2,
+                  "voted_up": true,
+                  "date": "2026-07-20",
+                  "review_text": "the game is great but after a recent optimization update, the game stopped saving for me. now there's basically no point in playing, is this a me issue, i don't know but someone either has to fix this or tell me how because i love the game but now its meh because of this. PLEASE HELP ME WITH THIS ISSUE.  aside from that the open ended-ness along with the great automation system is cool, but i do wish you didn't have to craft harvesters and drills or you could choose between buying or crafting mode or something like that. also i don't know if the game has multiplayer and I'm too lazy to check so if not it should.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230324619",
+                  "hours_at_review": 124.8,
+                  "voted_up": true,
+                  "date": "2026-07-12",
+                  "review_text": "Love the game but my saves keep corrupting and I've just lost today one of my 7 hour saves i got quite far and poof it's all gone",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227530016",
+                  "hours_at_review": 172.6,
+                  "voted_up": true,
+                  "date": "2026-06-09",
+                  "review_text": " I recommend  this game highly if you like to craft and build but it crashes a lot and world wipe will take every asset you have, and restoring through steam is a nightmare",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222324162",
+                  "hours_at_review": 201.1,
+                  "voted_up": true,
+                  "date": "2026-04-02",
+                  "review_text": "This is BARELY a thumbs up because the game is SO fun to get into, as you can sync in hundreds of hours on a single file to make the most insane mining set up possible.\r\n\r\nBut throughout the years, losing files to corrupt saves, seeing that get patched only to constantly get hit by the \"your save file doesn't exist, unless you go until your files and delete your save folder to reset\" is so annoying. Apparently it's EXTREMELY rare but so was the save corruption and the hydroneer gods chose me as their strongest warrior with this bad luck.\r\n\r\nAttached my spec to this to help the dev figure out a solution for the next time I jump back but it really needs sorting.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-1eb3f5",
+              "claim": "Reviewers note that the game experiences severe frame rate drops and lag when running large setups with multiple drills or uncollected resources.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "230756471",
+                  "hours_at_review": 131.6,
+                  "voted_up": true,
+                  "date": "2026-07-18",
+                  "review_text": "One minute you're using a shovel and bucket, next thing you know you're trying to figure why the 32 drill setup you built is giving you 5 fps. Really fun physics based mining sandbox. You can sink countless hours into this game and still not run out of things to do. If you enjoy the base game I highly recommend the dlc. You get a whole new island, cars, mines, towns; it is bigger than the base game. Turn off razer cortex in the task manager if you use it, the game will not run right.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230486409",
+                  "hours_at_review": 136.2,
+                  "voted_up": true,
+                  "date": "2026-07-14",
+                  "review_text": "Great game but the game lag so much after you set up 25+ drill .... super annoying... At least since the update the ore dont get stuck on top of conveyor. But the fact that you cannot set up a bunch of drill even after that update kinda break the game...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227272218",
+                  "hours_at_review": 370.6,
+                  "voted_up": false,
+                  "date": "2026-06-05",
+                  "review_text": "Main game is great and its a lot of fun but the DLC is not only a SLOP like hell with a lot of bugs and when you try to fix them by any mods you will loose your save if you dont backup. Also 90% of the mods are not working or are screwed over by developer. Developer is ani playuer person who disable achievemennts for everyone who want to uuse or fix the game with mods. Also machines from main game will overload after more than 40 miners and screw up all the machinery, belts dont work with tool bags and belts will ctuck with materials between them or between sorters shelf, and the gaame even on the best PC will lagg like hell after few hours.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227155028",
+                  "hours_at_review": 127.4,
+                  "voted_up": true,
+                  "date": "2026-06-04",
+                  "review_text": "I recommend this game, its very chill and relaxed, no health no food or drink mechanics, just you and your claim/s.\r\nIt has a nice vibe to it, and the no inventory system makes it that you need to handle the stuff in the game, dont worry you have vehicles and other means to cart stuff about.\r\nThe only bad aspect is that its too easy, and unless you make up your own reason to progress it will get repetitive, its one of those make your own goals type of game, and it can get laggy if you get too much unprocessed resources hanging around (like a lot of objects).\r\nOverall I find it an excellent little game to relax and just work my claim/s, and happily shape my lands with no time constraints or survival mechanics in sight,",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225243896",
+                  "hours_at_review": 117.2,
+                  "voted_up": false,
+                  "date": "2026-05-11",
+                  "review_text": "Get to about 60 miners and you hit 20~30 fps on a 3090. I have 60 fps with everything running on Mine Mogul. The problem is with their physics engine and the fact they don't do pre calculations for belt handling, so it does belt calculations on the fly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "225168604",
+                  "hours_at_review": 682.3,
+                  "voted_up": false,
+                  "date": "2026-05-10",
+                  "review_text": "I've had this game a long time and played many hours.  The journey was fun once the intiial frind was done, however, once I built more advanced drills and several of them the framerate dropped off a cliff and the latest update promising to fix it has made it far worse - less than 1fps, moving far away with 1 key press and now disappearing under the map!!  Pay Orebound instead, it's basically the same functionality but with more interesting lore and functionality.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "223114798",
+                  "hours_at_review": 133.6,
+                  "voted_up": false,
+                  "date": "2026-04-12",
+                  "review_text": "very poor optimization. got tired of waiting literally half an hour just to pick up a pan full of gemstones to sell. for a factory game it should be expected to have more than one object at a time. \n\n will not be playing again until there's a massive amount of optimization done.\n\nunfortunately the game is super fun to play when it's not taking 20 minutes to compute object physics or whatever it's doing behind the scenes. i say unfortunately, because i want to like this game but can't. staring at a frozen screen just isn't fun. it ran fine right up to the point where i started automating. which is the natural progression of a factory game. \n\nedit: \ninstalled the mega optimization update, did not really notice a big difference in performance. game is still running at 4 fps with a relatively small factory in the starting area. about 20ish drills conveying dirt to a single processor and a few splitter belts to sort everything into their own respective piles. as i'm writing this i'm standing at the jeweler in the starting area trying to drop a pan full of gemstones on the table to sell and it froze the game just by pressing the drop button.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-fc3c7f",
+              "claim": "Reviewers note that item handling and dropping mechanics require adaptation due to off-center placement and difficulties with full inventories.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "226404391",
+                  "hours_at_review": 130.0,
+                  "voted_up": true,
+                  "date": "2026-05-25",
+                  "review_text": "It's fun, I like it.\nThe game mechanics are somewhat weird, but you get used to it. Apparently you only have one hand, but can lift even the heaviest equipment. But once your hand is full (say with some coins), you can't pick up anything else.\n\nAnd it seems your character has some hand-eye coordination issues - it takes some time to get used to how to drop items.\n\nThat being said, it gets quite enjoyable once you've adapted to it. As the title implies, all machinery is water powered (even your truck, heaven knows how), so piping stuff is a core mechanic.\nDesigning how to lead the pipes, aligning machines next to piping, all that is part of the fun. And much trial and error, and digging - most of the time you're underground and need to clear space to put machines. Since that's hard work, you'll likely try to stay as cramped as possible.\n\nThe quests are simple - NPCs demand an item, you provide it. Be it a nugget of a specific size (or bigger) or something more complicated like a sword or a necklace. With specific materials and weights, of course.\n\nThe game has two currencies, the \"normal\" money you earn by selling your spoils directly to a vendor, and the Token, you get from regular NPCs tasks (quests).\nThe token you need for fancy equipment.\n\nIf you don't want to do any quests, but try to create the heaviest gold bar possible - go for it. The game doesn't mind.\n(Note that all bars, or compressed gems have a max SIZE, but no max WEIGHT. A bar with a weight of 200 looks no different from one with a weight of 5000.)\n\nVolcalidus:\nThe DLC, I'll drop a few words about that:\nMore of the same, which IMO is a good thing. Instead of water, here everything uses lava, but the techniques remain.\nWater IS used as well, but this time only for the belts. You have to create your own water, though, because the volcanic island is an ice desert.\n\nAll in all it's as much fun as the base game, though unfortunately (to me) it has no end game. While I don't want the game to end, I'd like t…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "221290654",
+                  "hours_at_review": 140.4,
+                  "voted_up": true,
+                  "date": "2026-03-21",
+                  "review_text": "Ok, this is definitely a niche game.  You have to love go-at-your-own-pace gaming and be willing to set your own goals in a sandbox. It's pretty satisfying for the Minecraft crowd.  \nThere are quirks, some of them are pretty hard to overcome, like the dropping of held items off-center.  When you eventually get used to this as a feature, you can pick rocks, ore, fish, vegetables up and drop them in your container offset to the side rapidly. Learning to position correctly makes a ton of difference in gameplay quality of life.\nAlso, you can hold the drop button to instead place the item at your cursor, that can be really helpful for handing off quest requests or precision placement of buckets and the like.  \nI've got 100 hours, I'm not done with all the goals I've come up with, I know there's a few other easter eggs out there, but mostly I relax with an audiobook and full buckets with dirt, looking for those rare ores.\nThis title just received an optimization for 2026, which is really above and beyond for the development team and I was happy to revisit this review given their dedication to the title.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-c7a638",
+              "claim": "Reviewers describe the controls as challenging or awkward to get used to initially.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "225206270",
+                  "hours_at_review": 193.1,
+                  "voted_up": true,
+                  "date": "2026-05-10",
+                  "review_text": "    This game has a ton of character and personality. It's a nice change from factory games (3500 hrs. in Factorio ;) and can be very relaxing...\n\n    ... once you get used to the controls. They are very challenging at first, but it really pays off (no pun intended) to stick with it. Lots and lots of really nice little dopamine hits - the sound design, the comic style of flat shading, watching things grow as well as the surprises from digging and mining.\n\n    The water system for energy is clever, too, and along with all of the logic parts you can create some really intricate (and sprawling!) machines.\n\n    There's a definite learning curve (mostly with the controls), but practice, experiment, and just enjoy the world that they've built and [if you like factory games as much as I do!] you'll appreciate how entertaining this sim can be!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "221290654",
+                  "hours_at_review": 140.4,
+                  "voted_up": true,
+                  "date": "2026-03-21",
+                  "review_text": "Ok, this is definitely a niche game.  You have to love go-at-your-own-pace gaming and be willing to set your own goals in a sandbox. It's pretty satisfying for the Minecraft crowd.  \nThere are quirks, some of them are pretty hard to overcome, like the dropping of held items off-center.  When you eventually get used to this as a feature, you can pick rocks, ore, fish, vegetables up and drop them in your container offset to the side rapidly. Learning to position correctly makes a ton of difference in gameplay quality of life.\nAlso, you can hold the drop button to instead place the item at your cursor, that can be really helpful for handing off quest requests or precision placement of buckets and the like.  \nI've got 100 hours, I'm not done with all the goals I've come up with, I know there's a few other easter eggs out there, but mostly I relax with an audiobook and full buckets with dirt, looking for those rare ores.\nThis title just received an optimization for 2026, which is really above and beyond for the development team and I was happy to revisit this review given their dedication to the title.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-177ecb",
+              "claim": "This cohort describes multiplayer as restricted to split-screen rather than online play.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "225070937",
+                  "hours_at_review": 108.6,
+                  "voted_up": false,
+                  "date": "2026-05-08",
+                  "review_text": "Couple of hot takes about Hydroneer before I explain why I hate this most recent thing they did. \n\nHydroneer was okay, the 1.0 felt undercooked, the dlc was garbage and pretty much played into all the worst parts of the game by forcing you to run around the entire map to do basically everything, finally calling the game co-op was the most dishonest none sense I have seen in a while. Its not co-op its split screen and more limited than Viva Pinata splitscreen at that.  \n\nAll that but this is actually the worst. \n\nhttps://store.steampowered.com/news/app/1106840/view/694260508207874418?l=english\n\nI call these baitupdates. Basically its an update that they pretend is totally for you and super cool... but its actually ♥♥♥♥ they promised before the dlc dropped and never delivered.... UNTIL they wanted to advertise their new game. This one is bad because its literally basic optimization.\nThat's it. The most baseline thing anyone expects to have. Optimization. \n\n\"We have not updated the game in almost two years but would you pretty please buy our new game\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "222206340",
+                  "hours_at_review": 165.4,
+                  "voted_up": true,
+                  "date": "2026-03-31",
+                  "review_text": "I clearly had fun with the main game and DLC. I can't believe the only multiplayer is split screen though. I'd have lots more hours if there were online.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 16,
+        "cited_recommend": 11,
+        "divergence_p": 0.0371,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1201,
+    "steam_total_reviews": 20657,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}
