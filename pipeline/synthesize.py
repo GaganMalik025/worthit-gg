@@ -28,9 +28,12 @@ reference a claim id or it can reference nothing.
 Enforced in code after the response:
   invariant 4  - unknown claim id rejected; a claim id may only appear under the
                  cohort that produced it
-  invariant 11 - prevalence guard over every sentence the model wrote
-  invariant 12 - a muted cohort carries no claims and no summary
-  invariant 13 - any digit in model prose is rejected; code renders all numbers
+  invariant 11 - prevalence guard over every sentence the model wrote (event
+                 frequency is allowed since 2026-08-21; population is not)
+  invariant 12 - a muted cohort carries no claims and no summary, including a
+                 cohort muted at zero survivors
+  invariant 13 - a digit in model prose is rejected unless it is part of a
+                 platform or version name; code renders all numbers
 
 Usage:
     .venv/bin/python pipeline/synthesize.py 233860
@@ -161,17 +164,21 @@ see ids, \
 and an id in prose is rejected automatically because it contains digits. \
 WRONG: "Players praise the freedom ref-e18e82, ear-6b753e." \
 RIGHT: "Players praise the freedom." with those ids listed in claim_ids.
-2. Write NO numbers of any kind in prose. No digits, no percentages, no \
-counts, no "two thirds", no "half", and never an hour boundary - write "within \
-the refund window", not the hours behind it. The interface renders every figure \
-itself from verified data. Any digit in prose is rejected.
-3. Never state how many or what proportion of players hold a view, and never \
-state how OFTEN something happens. You are looking at a deliberately \
-non-representative sample: thin cohorts are over-sampled on purpose, so \
-counting anything here says nothing about the playerbase, and a rate is as \
-unknowable as a proportion. Simply drop the word - "veterans praise the combat" \
-is stronger than "most veterans praise the combat", and "reviewers report \
-crashes" says everything "occasional crashes" was trying to say. \
+2. Write NO QUANTITIES in prose. No counts, no percentages, no "two thirds", \
+no "half", and never an hour boundary - write "within the refund window", not \
+the hours behind it. The interface renders every figure itself from verified \
+data. ONE EXCEPTION: a digit that is part of a platform or version NAME is \
+fine and you should write it normally - "Windows 11", "DirectX 12", "RTX 4090". \
+Never spell such a name out as words. WRONG: "you run Windows eleven". \
+RIGHT: "you run Windows 11". If a fact needs a number that is not a platform \
+name, drop the fact rather than disguising it.
+3. Never state how many or what proportion of players hold a view. You are \
+looking at a deliberately non-representative sample: thin cohorts are \
+over-sampled on purpose, so counting anything here says nothing about the \
+playerbase. Simply drop the word - "veterans praise the combat" is stronger \
+than "most veterans praise the combat". \
+Describing how often a THING happens is fine ("occasional crashes", \
+"persistent startup failures"); claiming how many PEOPLE is not. \
 BANNED WORDS: %(banned)s. \
 Also banned: percentages, "N out of N", "a third of", "half the players".
 4. Each claim shows what its citing reviewers thought of the GAME overall. That \
@@ -316,6 +323,32 @@ def build_user_turn(game, pool, cohorts, detected, verdict_word):
 # --------------------------------------------------------------------------
 
 DIGIT = re.compile(r"\d")
+
+# invariant 13, NARROWED 2026-08-21. The rule is unchanged in intent - every
+# user-facing NUMBER is a pool figure, rendered by code - but a bare \d also
+# rejected digits that are part of a NAME. Insurgency (222880) hit that on
+# "Windows 11", and the model, told to avoid digits, shipped
+# "you run Windows eleven with startup crashes": guard-compliant, and not prose
+# anyone would write. The failure was invisible to the guard by construction,
+# since the whole check is for digits.
+#
+# So a digit bound into a platform or version token is allowed, and EVERY OTHER
+# digit is still rejected. Quantities are untouched: "20 hours", "6 players",
+# "3 of 5" all still fail, which is the half of invariant 13 that matters.
+#
+# Deliberately a fixed allowlist rather than a quantity-context rule. A list of
+# platform names is small, checkable and boring to extend; "reject digits only
+# in quantity contexts" is a rewrite of a guard that currently has one
+# unambiguous rule, and it would silently permit digits nobody has considered.
+PLATFORM_TOKEN = re.compile(
+    r"\b(?:Windows|DirectX|OpenGL|Vulkan|macOS|OS\s?X|iOS|Android|Linux|"
+    r"RTX|GTX|Radeon|GeForce|Ryzen|Core\s+i|Steam\s+Deck|DLSS|FSR|"
+    r"PlayStation|PS|Xbox)\s?\d+[a-z]*\b", re.I)
+
+
+def has_bare_digit(text):
+    """True when `text` carries a digit that is not part of a platform name."""
+    return bool(DIGIT.search(PLATFORM_TOKEN.sub("", text or "")))
 
 # --------------------------------------------------------------------------
 # THE VERDICT WORD IS COMPUTED HERE, NOT CHOSEN BY THE MODEL
@@ -516,7 +549,7 @@ def check_response(parsed, cohorts, detected, verdict_word):
         prose.append(("flag[%s]" % f.get("flag_id"), f.get("sentence") or ""))
 
     for label, text in prose:
-        if DIGIT.search(text):
+        if has_bare_digit(text):
             failures.append("digit_in_prose:%s" % label)          # invariant 13
         hits = prevalence_guard.check_claim(text)
         if hits:

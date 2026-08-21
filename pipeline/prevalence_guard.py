@@ -47,39 +47,58 @@ PATTERNS = [
     (r"\b(?:all|every|everyone|nobody|no\s+one|none)\s*" + CROWD + r"?\b(?!\s+(?:mission|level|run))",
      "absolute quantifier"),
 
-    # Frequency words that stand in for a rate. Unconditional by design: how
-    # often a bug fires is as unknowable from a quota sample as how many players
-    # hit it, so "frequently fail" is treated exactly like "frequently attacked".
-    # The rephrase is always available - "reviewers report pathfinding failures"
-    # keeps the whole claim and cites the same reviews.
-    (r"\b(?:commonly|frequently|typically|generally|usually|often|rarely|seldom)\b",
-     "frequency adverb"),
-    # ...and the adjective/noun forms of the same idea, which the adverb-only
-    # list used to wave through ("frequent crashes" passed while "frequently
-    # fail" was caught).
-    (r"\b(?:frequent|infrequent|occasional|widespread|prevalent|commonplace)\b",
-     "frequency adjective"),
-    # The persistence forms of the same claim, added after synthesis produced
-    # "constant monetization pushes" and "repeated technical crashes" - both of
-    # which say how OFTEN something happens, from a sample that cannot know it,
-    # and both of which this list waved through while rejecting "occasional".
-    # Same rephrase as always: "reviewers report technical crashes" keeps the
-    # claim and cites the same reviews.
-    (r"\b(?:constant|constantly|repeated|repeatedly|persistent|persistently|"
-     r"continual|continually|regularly|routinely|ongoing)\b",
-     "frequency adjective"),
-    # NOT included: bare "regular" and "routine". Both are ordinary adjectives
-    # in game writing - "regular updates" is a schedule, "routine patrols" is a
-    # description of enemy behaviour - so only the adverb forms are rejected.
-    # NOT included: bare "common" and "rare". In game reviews those are usually
-    # loot-rarity tiers ("rare materials are hard to farm"), not frequency
-    # claims. "commonly" stays banned above.
-    (r"\b(?:widely|universally|unanimously|overwhelmingly)\b", "frequency adverb"),
+    # Consensus language: a claim that everyone agrees IS a claim about how many
+    # people. Kept banned, and deliberately NOT part of the 2026-08-21 frequency
+    # split below - see the KNOWN SEAM note there.
     (r"\bconsensus\b|\bunanimous\b", "consensus language"),
 
     # explicit comparisons of group size
     (r"\bmore\s+" + CROWD + r"\s+(?:than|report|say|complain)", "group comparison"),
     (r"\b(?:vast|large|small)\s+(?:number|proportion|share|chunk)\b", "proportion"),
+]
+
+# ---------------------------------------------------------------------------
+# FREED 2026-08-21 - event frequency is not prevalence (owner decision)
+# ---------------------------------------------------------------------------
+# These patterns are DELIBERATELY NOT CHECKED. They are kept here, uncompiled,
+# so the history is readable and a reversal is one line.
+#
+# Why they were freed. Invariant 11 exists to stop a non-representative sample
+# being read as HOW MANY PLAYERS. These words say how often an EVENT happens -
+# "occasional crashes" is a property of the bug, not a proportion of people -
+# and enforcing them cost real output:
+#
+#   RuneScape (1343400), 2026-08-21: three synthesis attempts, 9 calls, nothing
+#   published. Rejected on "occasional crashes" twice, then, having dropped the
+#   adjective, on "free access to all content".
+#   Insurgency (222880), 2026-08-18: three attempts deadlocked on "persistent",
+#   describing a startup crash that genuinely persists.
+#
+# The argument this replaces is the one the deleted comment made: that how often
+# a bug fires is as unknowable from a quota sample as how many players hit it.
+# That is true of a RATE ("crashes 40% of the time") and the structural patterns
+# above still reject rates. It is not true of an unquantified adjective, and
+# treating the two the same rejected claims no reader would call prevalence.
+#
+# SCOPE, recorded because it is wider than the examples. Both categories are
+# freed IN FULL, including the extent words - commonly, widespread, prevalent,
+# commonplace, widely, universally, unanimously, overwhelmingly. That reverses
+# the "commonly" example in the instruction that requested this split, on an
+# explicit later decision. "widely praised" does lean on how many people, so
+# this is the loosest reading of the split rather than the tightest.
+#
+# KNOWN SEAM, not resolved here: "unanimously" is freed below while "unanimous"
+# and "consensus" stay banned above under `consensus language`, a category that
+# was not part of this decision. See BACKLOG 2026-08-21.
+FREED_FREQUENCY_PATTERNS = [
+    (r"\b(?:commonly|frequently|typically|generally|usually|often|rarely|seldom)\b",
+     "frequency adverb"),
+    (r"\b(?:frequent|infrequent|occasional|widespread|prevalent|commonplace)\b",
+     "frequency adjective"),
+    (r"\b(?:constant|constantly|repeated|repeatedly|persistent|persistently|"
+     r"continual|continually|regularly|routinely|ongoing)\b",
+     "frequency adjective"),
+    (r"\b(?:widely|universally|unanimously|overwhelmingly)\b", "frequency adverb"),
 ]
 
 COMPILED = [(re.compile(p, re.IGNORECASE), label) for p, label in PATTERNS]
@@ -89,13 +108,19 @@ def banned_words():
     """Every literal word the patterns above reject, for the prompt to quote.
 
     The synthesis prompt used to carry its own hand-written banned list, and it
-    drifted: the guard rejects the frequency ADJECTIVES (frequent, occasional,
+    drifted: the guard rejected the frequency ADJECTIVES (frequent, occasional,
     widespread...) while the prompt only ever named the adverbs. Synthesis then
     failed on "occasional technical crashes" - a word the model was never told
-    to avoid. Both models were exposed; flash-lite just reached for it more.
+    to avoid.
 
     Deriving the list from PATTERNS means the prompt cannot fall behind the rule
     it is meant to explain. test_batch_guards asserts the two stay in step.
+
+    That derivation is what makes the 2026-08-21 split safe in BOTH directions.
+    Reading FREED_FREQUENCY_PATTERNS here would tell the model to avoid words the
+    guard no longer rejects, and a model told to avoid "Windows 11" spells it
+    "Windows eleven" rather than dropping the fact - the exact defect shipped on
+    222880. A word is either rejected and named in the prompt, or neither.
     """
     words = set()
     for pattern, _ in PATTERNS:

@@ -454,21 +454,37 @@ def test_prompt_names_every_word_the_guard_rejects():
     missing = [w for w in prevalence_guard.banned_words() if w not in prompt]
     check("every guard-rejected word appears in the prompt", not missing,
           missing)
-    for word in ("occasional", "frequent", "widespread", "consensus",
-                 # the persistence forms, from real synthesis output: ESO wrote
-                 # "constant monetization pushes" and "repeated technical
-                 # crashes" past a list that already rejected "occasional"
-                 "constant", "repeated", "persistent", "ongoing"):
-        check("  frequency/consensus word %r is named" % word, word in prompt)
+    check("  consensus language is still named", "consensus" in prompt)
+    # FREED 2026-08-21: event frequency is not prevalence. These describe how
+    # often a THING happens, not how many PEOPLE, and enforcing them cost real
+    # output - RuneScape (1343400) burned 9 calls and published nothing on
+    # "occasional crashes"; Insurgency (222880) deadlocked on "persistent".
     for phrase in ("constant monetization pushes",
                    "repeated technical crashes",
                    "persistent server problems",
                    "continually reworked systems",
                    "regularly broken matchmaking",
                    "routinely dropped frames",
-                   "ongoing balance problems"):
-        check("  %r is rejected" % phrase, prevalence_guard.check_claim(phrase),
-              phrase)
+                   "ongoing balance problems",
+                   "occasional crashes",
+                   "frequent updates",
+                   "widespread performance issues"):
+        check("  %r now passes" % phrase,
+              not prevalence_guard.check_claim(phrase),
+              str(prevalence_guard.check_claim(phrase)))
+    # ...and the half of invariant 11 that did NOT move. A split that let these
+    # through would have gutted the rule rather than narrowed it, and every
+    # phrase here is the shape the guard exists for: a proportion of PEOPLE.
+    for phrase in ("most players refund early",
+                   "the majority of reviewers agree",
+                   "all players hit this wall",
+                   "free access to all content",
+                   "40% of buyers report crashes",
+                   "a third of reviewers bounce",
+                   "countless players complain",
+                   "the consensus is that it runs badly"):
+        check("  %r is still rejected" % phrase,
+              prevalence_guard.check_claim(phrase), phrase)
     # ordinary game writing that must survive: these are schedules and
     # descriptions, not rates, and banning them would cost real claims
     for phrase in ("regular updates from the studio",
@@ -485,6 +501,16 @@ def test_prompt_names_every_word_the_guard_rejects():
     check("the prompt no longer seeds the banned word 'consensus' itself",
           "into a consensus" not in prompt)
     check("claim ids are forbidden in prose", "1b. Claim ids go in" in prompt)
+    # Same drift hazard, other guard. The prompt used to say "Any digit in
+    # prose is rejected"; the guard now allows a digit inside a platform name,
+    # and a model still told the old rule writes "Windows eleven" (222880,
+    # shipped). Prompt and guard have to move together in BOTH directions.
+    check("the prompt teaches the platform-name digit exception",
+          "Windows 11" in prompt and "Windows eleven" in prompt)
+    check("  and the guard actually allows it",
+          not synthesize.has_bare_digit("you run Windows 11 with crashes"))
+    check("  while quantities are still rejected",
+          synthesize.has_bare_digit("about 20 hours in"))
 
 
 def test_call_counting_is_at_the_call_site():
