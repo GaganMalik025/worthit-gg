@@ -1,0 +1,29 @@
+# Post-fix replay, 2026-08-21, AFTER the prevalence split.
+# The pre-fix record of the same three cached responses is in
+# evals/stage-failures-2026-08-21.txt and is deliberately NOT overwritten:
+# it is what the batch actually hit that night.
+# Zero Gemini cost - same three cached files, new guard.
+
+=== RuneScape ® (1343400) ===
+post-refund mean 75.4% -> verdict word Wait
+  refund_window  pool_n=109    33.9% positive  claims=3  
+  early          pool_n=206    76.2% positive  claims=3  
+  mid            pool_n=187    77.5% positive  claims=2  
+  veteran        pool_n=299    73.6% positive  claims=3  
+
+3 cached synthesis responses, oldest first:
+
+--- synthesis_8053ceb15c5c4ee8.json  (mtime 1787311632.8879986)
+    tagline: A vast world locked behind subscriptions and steep friction.
+    check_response -> PASS (no failures)
+
+--- synthesis_7989fe748c6ed4da.json  (mtime 1787311636.1856854)
+    tagline: Vast world, heavy gates - the subscription wall shapes the journey.
+    check_response -> PASS (no failures)
+
+--- synthesis_3e3c71bcea1f463a.json  (mtime 1787311641.8722646)
+    tagline: An ancient world of deep adventures and steep walls.
+    check_response -> 1 failure(s)
+      prevalence:not_for_you_if[0]:all
+        not_for_you_if[0]: you expect free access to all content
+        flagged word 'all'          present

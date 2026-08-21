@@ -1,0 +1,26 @@
+g10
+post-fix filter reports the veteran cohort muted
+
+PASS
+rc=0
+
+wordlists: 56 blocking, 403 annotate-only  (thresholds: hearts>=0.020, words>=5, funny>=2)
+
+Mutation Fixture         in   heart  block  joke  lowinfo    kept   drop%
+  refund_window          30       0      0     0        0      30      0%
+  early                  30       0      0     0        0      30      0%
+  mid                    30       0      0     0        0      30      0%
+  veteran                 1       0      0     0        1       0    100%  <-- 90.9x corpus rate
+  ALL                    91                                    90      1%
+  invariant 12: veteran has n=0 - renders muted, carries no claims.
+                     pre pos% post pos%   delta dropped pos%
+  refund_window        100.0%    100.0%    +0.0         -%
+  early                100.0%    100.0%    +0.0         -%
+  mid                  100.0%    100.0%    +0.0         -%
+  veteran              100.0%        -%    +0.0     100.0%  (n<30, not assessed)
+  (sentiment shift is reported, never corrected - prevalence comes from the pool block)
+  wrote 90 survivors -> /var/folders/41/hww3xyr91jg0h4t40ybwn81r0000gn/T/tmp_2ore05f/filtered/999999.json
+  wrote 1 dropped   -> /var/folders/41/hww3xyr91jg0h4t40ybwn81r0000gn/T/tmp_2ore05f/filtered/999999.dropped.txt   <- read this
+
+all 1 game(s) filtered
+
