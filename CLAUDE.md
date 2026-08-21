@@ -265,6 +265,19 @@ non-goal — they are the reason it is permitted, not decoration.
   stop so the developer can read it before the next stage is built.
 - UI work follows `docs/DESIGN.md` exactly. Do not substitute generic
   shadcn-default styling.
+- **Short explanations, complete ones. Brevity is a constraint on WORDING, never
+  on COVERAGE.** Cut restatement, preamble, hedging and narration of process —
+  not findings. Nothing may be dropped, softened or left unsaid because it would
+  make a report longer: not a stage failure, not a caveat, not a number that
+  complicates the story, not a limit on what was actually verified, not an error
+  made mid-task. If it changes what the developer would decide, it ships, however
+  long that makes the report. Prefer tables and lists over paragraphs, one
+  sentence over three, and the finding over the journey to it. **When the two
+  pull against each other, completeness wins and the wording gets tighter
+  instead** — an omission is a silent error, and this file's whole reporting
+  discipline (report only what was run, name the gap, never infer) is worth
+  nothing if the honest figure can be edited out for being inconvenient to
+  phrase briefly.
 
 ## Key docs
 
