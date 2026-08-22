@@ -1,0 +1,42 @@
+n03
+a page that renders nothing fails the canary
+
+PASS
+rc=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/n-note-never-renders.contract.test.tsx (0 test)
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  13:27:28
+   Duration  160ms (transform 14ms, setup 0ms, collect 0ms, tests 0ms, environment 0ms, prepare 28ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/n-note-never-renders.contract.test.tsx [ lib/__tests__/n-note-never-renders.contract.test.tsx ]
+Error: Transform failed with 1 error:
+/Users/gaganmalik/Downloads/worthit-gg/site/components/VerdictPage.tsx:161:8: ERROR: Expected "}" but found "."
+  Plugin: vite:esbuild
+  File: /Users/gaganmalik/Downloads/worthit-gg/site/components/VerdictPage.tsx:161:8
+  
+  Expected "}" but found "."
+  159|  
+  160|        <main className="main-col">{null && (
+  161|        {v.cohorts.map((c) => (
+     |          ^
+  162|          <section key={c.bucket} className="cohort">
+  163|            <h2>{c.label}</h2>
+  
+ ❯ failureErrorWithLog node_modules/esbuild/lib/main.js:1472:15
+ ❯ node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout node_modules/esbuild/lib/main.js:600:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+

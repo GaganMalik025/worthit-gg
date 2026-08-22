@@ -1,0 +1,52 @@
+n02
+a fixture with no muted cohort is caught as vacuous
+
+PASS
+rc=1
+
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg/site
+
+ ❯ lib/__tests__/n-note-never-renders.contract.test.tsx (5 tests | 2 failed) 23ms
+   × n_note never renders > the fixture really has a muted cohort - or every assertion here is vacuous 2ms
+     → expected 0 to be greater than 0
+   × n_note never renders > the sentinel survives normalizeVerdict - so the assertions below are real 2ms
+     → expected 'n=0 - too few reviews to call' to be 'n=8675309 - N-NOTE-SENTINEL-DO-NOT-RE…' // Object.is equality
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 3 passed (5)
+   Start at  13:27:28
+   Duration  199ms (transform 26ms, setup 0ms, collect 39ms, tests 23ms, environment 0ms, prepare 25ms)
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  lib/__tests__/n-note-never-renders.contract.test.tsx > n_note never renders > the fixture really has a muted cohort - or every assertion here is vacuous
+AssertionError: expected 0 to be greater than 0
+ ❯ lib/__tests__/n-note-never-renders.contract.test.tsx:79:19
+     77|   it("the fixture really has a muted cohort - or every assertion here …
+     78|     const { muted } = await mutedVerdict();
+     79|     expect(muted).toBeGreaterThan(0);
+       |                   ^
+     80|   });
+     81| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  lib/__tests__/n-note-never-renders.contract.test.tsx > n_note never renders > the sentinel survives normalizeVerdict - so the assertions below are real
+AssertionError: expected 'n=0 - too few reviews to call' to be 'n=8675309 - N-NOTE-SENTINEL-DO-NOT-RE…' // Object.is equality
+
+Expected: "n=8675309 - N-NOTE-SENTINEL-DO-NOT-RENDER"
+Received: "n=0 - too few reviews to call"
+
+ ❯ lib/__tests__/n-note-never-renders.contract.test.tsx:86:28
+     84|     const cohort = verdict.cohorts.find((c) => c.muted);
+     85|     expect(cohort).toBeTruthy();
+     86|     expect(cohort?.n_note).toBe(SENTINEL_NOTE);
+       |                            ^
+     87|   });
+     88| 
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
