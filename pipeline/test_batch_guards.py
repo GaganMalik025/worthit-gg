@@ -24,6 +24,7 @@ neither the path trigger nor any job referenced it (see BACKLOG, e06538a).
 """
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -121,6 +122,68 @@ def test_pacer_ceiling_across_processes():
             check("5 separate processes, 3-rpm ceiling -> 2 had to wait",
                   False, detail)
             check("the shared counter saw all 5", False, detail)
+
+
+def test_a_vanished_lock_is_a_retry_not_a_crash():
+    """The TOCTOU race in _locked's age probe (BACKLOG 2026-08-16).
+
+    The probe was `lock.stat() if lock.exists()` - two syscalls against a path
+    another process is racing to rmdir(). A holder releasing in that window made
+    stat() raise FileNotFoundError, which propagated out of _locked and killed
+    the child BEFORE IT CHARGED. live_quota.charge() shares this helper, so a
+    dead child means a request spent with nothing recorded against it.
+
+    Forced, not waited for: the race is ~1-in-13 under natural contention, and a
+    test that samples a coin flip proves nothing on the run where it passes. The
+    first stat() on the lock path really does rmdir the directory, so the
+    FileNotFoundError comes from the OS on a path that genuinely is not there.
+    """
+    print("\npacer: a lock that vanishes inside the age probe")
+    with tempfile.TemporaryDirectory() as d:
+        path = Path(d) / "q.json"
+        lock = Path(str(path) + ".lock")
+        lock.mkdir()
+
+        real_stat = Path.stat
+        fired = []
+
+        def racing_stat(self, *a, **kw):
+            if str(self) == str(lock) and not fired:
+                fired.append(1)
+                try:
+                    os.rmdir(str(lock))
+                except OSError:
+                    pass
+            return real_stat(self, *a, **kw)
+
+        Path.stat = racing_stat
+        try:
+            with model_pacer._locked(path, timeout=5):
+                held = lock.exists()
+        except FileNotFoundError as exc:
+            # Name the mode. "did not acquire" and "died in the probe" are
+            # different failures and only one of them is this race.
+            check("_locked survives the probe (no FileNotFoundError escapes)",
+                  False, repr(exc))
+            held = False
+        else:
+            check("_locked survives the probe (no FileNotFoundError escapes)",
+                  True)
+        finally:
+            Path.stat = real_stat
+        check("  and it acquired the lock afterwards", held, held)
+        check("  and the probe was actually exercised", bool(fired))
+
+    # age = 0 on a vanished lock must not disable stale-lock breaking, which is
+    # what stops an unattended overnight batch wedging on a killed holder.
+    with tempfile.TemporaryDirectory() as d:
+        path = Path(d) / "q.json"
+        lock = Path(str(path) + ".lock")
+        lock.mkdir()
+        old = time.time() - (model_pacer.LOCK_TIMEOUT + 60)
+        os.utime(lock, (old, old))
+        with model_pacer._locked(path, timeout=model_pacer.LOCK_TIMEOUT):
+            check("a genuinely stale lock is still broken", lock.exists())
 
 
 def test_pacer_narrow_only_lowers():
@@ -1891,6 +1954,7 @@ if __name__ == "__main__":
     print("batch guard tests - offline, no quota spent")
     test_pacer_ceiling_in_one_process()
     test_pacer_ceiling_across_processes()
+    test_a_vanished_lock_is_a_retry_not_a_crash()
     test_pacer_narrow_only_lowers()
     test_pacer_survives_corrupt_state()
     test_batch_cannot_touch_the_live_reserve()

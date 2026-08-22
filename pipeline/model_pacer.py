@@ -104,7 +104,21 @@ def _locked(path, timeout=LOCK_TIMEOUT):
             lock.mkdir()
             break
         except FileExistsError:
-            age = time.time() - lock.stat().st_mtime if lock.exists() else 0
+            # ONE syscall, guarded. This was `lock.stat() if lock.exists()`
+            # - two syscalls against a path another process is racing to
+            # rmdir(), so a holder releasing in that window made stat() raise
+            # FileNotFoundError, which propagated out of _locked and killed the
+            # child BEFORE IT CHARGED. live_quota.charge() shares this helper,
+            # so that cost a real request with nothing recorded against it.
+            # Captured in CI run 31956075631; see BACKLOG 2026-08-16.
+            try:
+                age = time.time() - lock.stat().st_mtime
+            except OSError:
+                # The holder released between our mkdir and this probe, so
+                # there is no lock left to age. Not stale - just gone. Fall
+                # through rather than `continue`, so the overall timeout below
+                # is still checked on every pass.
+                age = 0
             if age > timeout:
                 print("  pacer: breaking a stale lock (%.0fs old)" % age)
                 try:

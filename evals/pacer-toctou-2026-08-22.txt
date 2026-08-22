@@ -1,0 +1,30 @@
+Captured 2026-08-22T06:42:07Z, evals/mutate_pacer_toctou.py case t01.
+PRE-FIX model_pacer._locked, lock removed inside the age probe.
+This traceback is from this run, not copied from BACKLOG.
+
+Traceback (most recent call last):
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/model_pacer.py", line 104, in _locked
+    lock.mkdir()
+    ~~~~~~~~~~^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 1011, in mkdir
+    os.mkdir(self, mode)
+    ~~~~~~~~^^^^^^^^^^^^
+FileExistsError: [Errno 17] File exists: '/var/folders/41/hww3xyr91jg0h4t40ybwn81r0000gn/T/tmpg7pmc6vn/q.json.lock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<string>", line 47, in <module>
+    with model_pacer._locked('/var/folders/41/hww3xyr91jg0h4t40ybwn81r0000gn/T/tmpg7pmc6vn/q.json', timeout=5.0):
+         ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/contextlib.py", line 141, in __enter__
+    return next(self.gen)
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/model_pacer.py", line 107, in _locked
+    age = time.time() - lock.stat().st_mtime if lock.exists() else 0
+                        ~~~~~~~~~^^
+  File "<string>", line 32, in racing_stat
+    return real_stat(self, *a, **kw)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py", line 654, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/var/folders/41/hww3xyr91jg0h4t40ybwn81r0000gn/T/tmpg7pmc6vn/q.json.lock'
