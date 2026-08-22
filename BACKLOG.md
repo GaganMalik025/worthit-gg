@@ -490,6 +490,82 @@ ride-along on a version bump. Until then the suite retains a ~7% false-failure
 rate in CI, which is itself an argument for doing it soon: a gate that cries
 wolf gets ignored. Related: [[verify-the-verifier]].
 
+> **2026-08-22, RESOLVED — fixed exactly as this entry specified, and the
+> reproduction it asked for came first.** `pipeline/model_pacer.py`'s probe is
+> now one guarded syscall:
+>
+>     -  age = time.time() - lock.stat().st_mtime if lock.exists() else 0
+>     +  try:
+>     +      age = time.time() - lock.stat().st_mtime
+>     +  except OSError:
+>     +      age = 0
+>
+> `FileNotFoundError` subclasses `OSError`, so one clause covers both forms this
+> entry named. **`age = 0` and fall through rather than `continue`**, so the
+> `time.time() - start > timeout` check still runs on every pass; the cost is
+> the same ~50ms sleep every other contended iteration already pays. 15 lines
+> added, 1 removed, all inside `_locked`. Nothing else in the file moved, which
+> matters because this is the lock every Gemini charge in the project passes
+> through — `live_quota.charge()` uses it at `live_quota.py:397`, which is why
+> the captured traceback names `q.json.lock` and not the pacer file.
+>
+> **THE WINDOW WAS FORCED, NOT WAITED FOR — that is the part this entry got
+> right and it deserves restating.** The entry measured the race at ~1-in-13
+> under natural contention. A 1-in-13 sample is not a reproduction: the green
+> runs prove nothing and the red one arrives without evidence, which is exactly
+> how the 2026-08-13 entry lost its own failure. So `Path.stat` is patched, for
+> the lock path only, to **actually `rmdir` the directory and then call the real
+> `stat`** — the `FileNotFoundError` comes from the OS on a path that genuinely
+> is not there, and the interleaving is precisely "the holder released inside the
+> probe". The injection is also agnostic to which syscall the code uses, so one
+> harness drives both the pre-fix body (after `exists()` returns True) and the
+> fixed one.
+>
+> **Fresh traceback captured, not copied from this entry**, at
+> `evals/pacer-toctou-2026-08-22.txt` — `model_pacer.py`, line 107, `in _locked`,
+> caret on `lock.stat()`, `FileNotFoundError: [Errno 2] ... q.json.lock`. The
+> same shape as the CI capture above, produced on demand rather than waited for.
+>
+> **Mutation-proved 6/6** (`evals/mutate_pacer_toctou.py`, logs
+> `evals/mutation-logs/t01`–`t06`): t01 is the CONTROL and puts the pre-fix probe
+> back into the real file to watch it die; t02 acquires instead of raising; t03
+> pins that **a genuinely stale lock is still broken** (aged past `LOCK_TIMEOUT`
+> with `os.utime` — `age = 0` must not disable stale-breaking, or an unattended
+> batch could wedge on a killed holder); t04 pins that the lock still BLOCKS on a
+> live holder, so the fix did not turn it into a no-op; t05 runs 12 concurrent
+> `live_quota.charge(1)` children and asserts **the ledger reads 12**, not an
+> exit code and not a console line. `model_pacer.py` restored byte-identical,
+> sha `0130a0cc89fb` both sides.
+>
+> **One case was deliberately DEMOTED rather than kept.** The first draft had a
+> `t05a` control running the charge race against the pre-fix body — hardcoded to
+> pass, because the outcome is a ~1-in-13 coin flip. A case that cannot fail is
+> the vacuity this whole file exists to prevent, so it is now an unnumbered
+> observation that records the sampled figure and asserts nothing. Both runs so
+> far sampled 12 of 12 with no deaths, which is what a 1-in-13 event looks like
+> and is why t01 rather than t05a is the control that proves the defect.
+>
+> **Also covered permanently, by owner decision**, in
+> `test_a_vanished_lock_is_a_retry_not_a_crash` (`pipeline/test_batch_guards.py`)
+> — CI has run `python-guards` on a clean runner since `f9bb6fe`, so this
+> executes on every push touching `pipeline/**`, which the driver alone does not.
+> Proven able to fail: against the pre-fix probe the suite exits 1 and names the
+> mode — `_locked survives the probe (no FileNotFoundError escapes)
+> FileNotFoundError(2, 'No such file or directory')`. The two failure modes
+> ("died in the probe" and "did not acquire") are reported under separate names,
+> because a test whose output does not identify the failure is not yet a test.
+>
+> **Regression: the full suite run 10×, 0 failures, 279 assertions each.** Once
+> would not have been evidence about a race — that is what let this sit open from
+> 2026-08-13.
+>
+> **What this does NOT change.** The lock is still `mkdir`-based with a 120s
+> stale-break; no new dependency, no new mechanism. And the 2026-08-11 standing
+> rule survives untouched: a future flake on `test_ledger_charge_is_atomic` is
+> still **UNVERIFIED** unless its output is kept. This removes one known cause of
+> that flake; it does not license reading the next one as "probably this, now
+> fixed". Related: [[verify-the-verifier]].
+
 2026-08-16 | **The live path keeps a second, doubled ledger on the runner that
 nothing reads** | build, implementing EST_COST reconciliation | The workflow's
 `seed the ledger from the dispatch payload` step writes the site's counters into
