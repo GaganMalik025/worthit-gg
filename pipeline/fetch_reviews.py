@@ -236,6 +236,17 @@ def normalize(review, appid):
         "voted_up": review.get("voted_up"),
         # playtime: stored in HOURS. never hand raw minutes to the model.
         "hours_at_review": round(at_review_min / 60, 1),
+        # ...and the minutes they came from, carried UNROUNDED for one purpose:
+        # the bucket is assigned on minutes (invariant 2) while the display was
+        # rounded from hours, so 118 minutes rendered as "2.0 hrs" under a
+        # "<2h refund window" heading - a receipt that appears to disprove the
+        # heading it sits beneath. See BACKLOG 2026-08-17.
+        # Invariant 1 is unchanged where it matters: the minutes -> hours
+        # conversion still happens exactly once, on the line above, and minutes
+        # must never be DISPLAYED or reach an LLM prompt. They are a precision
+        # input for the renderer and nothing else, which is enforced by
+        # site/lib/__tests__/citation-hours.contract.test.tsx, not by comment.
+        "minutes_at_review": at_review_min,
         "hours_total_now": round((author.get("playtime_forever") or 0) / 60, 1),
         "hours_last_two_weeks": round((author.get("playtime_last_two_weeks") or 0) / 60, 1),
         "bucket": bucket_for(at_review_min),

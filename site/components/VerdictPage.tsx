@@ -16,6 +16,7 @@
  */
 
 import { CaseHero } from "./CaseHero";
+import { citationHours } from "../lib/verdict";
 import type { Sourcing, Verdict } from "../lib/verdict";
 
 /**
@@ -198,7 +199,7 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
                       <div key={cit.recommendationid} className="citation">
                         <div className="meta mono">
                           {cit.voted_up ? "▲ recommends" : "▼ does not recommend"}{" "}
-                          · {(cit.hours_at_review ?? 0).toFixed(1)} hrs ·{" "}
+                          · {citationHours(cit, c.bucket)} hrs ·{" "}
                           {cit.date}
                         </div>
                         <div className="body">{cit.review_text}</div>

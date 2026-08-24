@@ -23,10 +23,62 @@
 export interface Citation {
   recommendationid: string;
   hours_at_review: number | null;
+  /** Raw minutes at review, carried so the DISPLAYED hours can be kept inside
+   *  the cohort it is filed under. Absent on anything ingested before
+   *  2026-08-22, and absent is meaningful - see citationHours below.
+   *
+   *  A PRECISION INPUT, NEVER A DISPLAY VALUE. Invariant 1 forbids minutes
+   *  reaching an LLM prompt, and forbids showing them to a reader; the guard
+   *  for the second half is citation-hours.contract.test.tsx, not this comment. */
+  minutes_at_review?: number | null;
   voted_up: boolean;
   date: string | null;
   review_text: string;
   truncated?: boolean;
+}
+
+/** Bucket bounds in MINUTES (invariant 2). 120 is Steam's refund window. */
+const BUCKET_MINUTES: Record<string, [number, number | null]> = {
+  refund_window: [0, 120],
+  early: [120, 1200],
+  mid: [1200, 6000],
+  veteran: [6000, null],
+};
+
+/**
+ * The hours figure a citation should DISPLAY, to one decimal.
+ *
+ * The bug this exists for: buckets are assigned on raw minutes, the display was
+ * rounded from hours, and the two disagree on the boundary. 118 minutes is
+ * `refund_window` and always was, but 118/60 = 1.966 rounds to "2.0 hrs" and
+ * renders beneath a "<2h refund window" heading. 78 citation instances across
+ * 514 verdicts read that way. The whole point of the citation UI is to let a
+ * sceptical reader check the receipts, so a receipt that appears to disprove
+ * its own heading is worse than a slightly imprecise one - and the reader has
+ * no way to tell rounding from a broken segmentation, which is the product
+ * thesis.
+ *
+ * With minutes: round to one decimal, but if that lands outside the cohort's
+ * own bounds, round TOWARD THE INTERIOR instead (118 -> 1.9, not 2.0).
+ * Without minutes: exactly today's behaviour, so pre-backfill verdicts and the
+ * citations the page cache cannot supply keep rendering as they always have.
+ */
+export function citationHours(cit: Citation, bucket: string): string {
+  const minutes = cit.minutes_at_review;
+  if (minutes === null || minutes === undefined) {
+    return (cit.hours_at_review ?? 0).toFixed(1);
+  }
+  const bounds = BUCKET_MINUTES[bucket];
+  const shown = Number((minutes / 60).toFixed(1));
+  if (!bounds) return shown.toFixed(1);
+  const [lo, hi] = bounds;
+  if (hi !== null && shown * 60 >= hi) {
+    return (Math.floor((minutes / 60) * 10) / 10).toFixed(1);
+  }
+  if (shown * 60 < lo) {
+    return (Math.ceil((minutes / 60) * 10) / 10).toFixed(1);
+  }
+  return shown.toFixed(1);
 }
 
 export interface Claim {

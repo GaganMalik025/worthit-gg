@@ -632,6 +632,10 @@ def build_citation(rid, corpus):
     return {
         "recommendationid": rid,
         "hours_at_review": r.get("hours_at_review"),
+        # Absent on any review ingested before 2026-08-22, and absent is a
+        # meaningful value: the renderer falls back to rounding hours, which is
+        # exactly today's behaviour. See BACKLOG 2026-08-17.
+        "minutes_at_review": r.get("minutes_at_review"),
         "voted_up": r.get("voted_up"),
         "date": (datetime.fromtimestamp(created, timezone.utc).strftime("%Y-%m-%d")
                  if created else None),
