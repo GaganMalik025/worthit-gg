@@ -1614,3 +1614,56 @@ than a pipeline one, and it wants a measurement first — **how many of the 25
 still-pending and 514 published titles sit near the floor was NOT determined
 here**, and guessing it is exactly the kind of "probably" the standing rules
 forbid.
+
+2026-08-24 | **RuneScape's veteran cohort re-extracted for 2 calls on a raw file
+that has not changed, and the cache cannot say why** | build, 2026-08-24 batch
+night | `1343400` published for **3 calls**: 1 synthesis (passed on attempt 0,
+exactly as the 08-21 guard-split replay predicted) plus **2 veteran extraction
+calls**, one of them a grounding retry. The other three cohorts —
+`refund_window`, `early`, `mid` — hit the 08-21 extraction cache at **zero
+cost**, which is what makes the veteran calls odd rather than routine: a changed
+input would have changed all four prompts, not one.
+**What is measured, not inferred.** `data/raw/1343400.json` carries an mtime of
+2026-08-21 16:54:53 and was not rewritten tonight, so ingestion was skipped and
+the swept review set is identical. `data/filtered/1343400.json` WAS rewritten
+(2026-08-24 14:50:01), but `filter_reviews.py`'s only change since 08-21 is the
+zero-survivor gate (`1a5027f`), which alters what fails a title rather than which
+reviews survive. Tonight's three new cache files under
+`data/cache/extract/1343400/` are `veteran_ca08442bc0400b68.json`,
+`veteran_83bb3b0eabea6e83.json` and `synthesis_d5377233b3899b67.json`; the 08-21
+files sit beside them untouched.
+**Why it could not be resolved from disk.** The extraction cache stores only
+`model`, `text` and `usage` — the prompt that produced each key is not kept, so
+two prompts that hashed differently cannot be diffed after the fact. Answering
+this needs a read of how the veteran extraction key is composed
+(`extract_claims.py`), not another night's observation. Deliberately not guessed:
+the plausible candidates (a changed filtered ordering, a cohort-membership
+boundary, a prompt field derived from something that moved on 08-21) are three
+different bugs with three different fixes, and naming one without checking is the
+"probably" the standing rules forbid.
+**Small, and worth recording anyway.** 2 calls of 176. It is here because the
+extraction cache is the mechanism the whole batch's cost model rests on — 21 of
+tonight's 24 titles paid nothing for it working — and a cache miss nobody can
+explain is a cost model nobody can predict. Same family as the 2026-08-18
+Insurgency entry in subject and its opposite in direction: there the cache
+replayed when it should not have, here it missed when it should not have.
+Related: [[verify-the-verifier]].
+
+2026-08-24 | **The catalog is drained — 1 title pending and it can never
+publish** | build, 2026-08-24 batch night | After tonight's 24,
+`run_batch.py --dry-run` reports **1 titles pending**, and it is BidKing
+(`4128580`), which refuses correctly at 124 total reviews and has now failed four
+nights running. Every `batch_budget_exhausted` record from 08-21 cleared.
+`data/catalog.json` was walked 2026-08-12, holds 411 titles, and is exhausted;
+538 verdicts are published. **A batch night now has nothing to run**, and 224 of
+tonight's 400 calls went unspent for want of work rather than for want of budget.
+**Not fixed, and the two options are different decisions rather than a big one
+and a small one.** A fresh store walk is BACKLOG D2 ("Expand catalog beyond ~150
+titles"), deferred on the reasoning that the request queue should reveal real
+demand first — a reason about *product evidence*, which an empty queue does not
+by itself overturn. A minimum-reviews floor at catalog-build time (the 08-21
+BidKing entry) is the smaller change and solves a different problem: it stops the
+one permanent retry, and adds no titles. Neither is a batch-night action, and
+the honest observation is that **the constraint on the catalog has moved from
+quota to supply**, which is new as of tonight and is what the case study's
+"batch quota is the constraint" line in D2 no longer describes.
