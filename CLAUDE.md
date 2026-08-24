@@ -63,7 +63,21 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
 
 1. `playtime_at_review` from Steam is in **MINUTES**. It is converted to hours
    exactly once, at ingestion (`pipeline/fetch_reviews.py:normalize`). Raw
-   minutes must never reach an LLM prompt or the UI.
+   minutes must **never reach an LLM prompt**, and must **never be displayed**.
+   - **Amended 2026-08-22.** This used to read "never reach an LLM prompt or the
+     UI". Citations now carry `minutes_at_review` beside `hours_at_review`,
+     because the bucket is assigned on minutes (invariant 2) while the display
+     was rounded from hours, and the two disagreed at the boundary: 118 minutes
+     is `refund_window` and always was, but rendered as `2.0 hrs` under a
+     `<2h refund window` heading. 78 citation instances across 514 verdicts read
+     that way. Minutes are a **precision input for the renderer and nothing
+     else** — `site/lib/verdict.ts:citationHours` is the only consumer.
+   - The LLM-prompt half is unchanged and absolute. The display half is now
+     enforced in code rather than promised in prose:
+     `site/lib/__tests__/citation-hours.contract.test.tsx` renders a sentinel
+     minutes value and asserts it never reaches the markup. A 60× silent error
+     looks like a plausible number, which is why this gets a test and not a
+     comment.
 2. Playtime buckets (minutes at review): `refund_window` <120, `early`
    120–1200, `mid` 1200–6000, `veteran` 6000+. 120 = Steam's refund window.
    Changing buckets invalidates all eval results — do not change without

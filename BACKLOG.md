@@ -413,6 +413,46 @@ safe whenever the verdict schema or `VerdictPage`'s muted branch is next open.
 Predates tonight's batch and is unrelated to it — Portal, Warframe and Kingdom
 Come II all carry it. Related: [[verify-the-verifier]].
 
+> **2026-08-22, RESOLVED — the last option, and deliberately the smallest one:
+> the field is unchanged and now guarded.** This entry listed four repairs and
+> judged that "add a sentinel contract test in the shape `cdebb6d` already
+> established and leave the field alone" was the smallest change that closes the
+> actual hazard, "since the hazard is a future edit rather than current output".
+> That is what was built. `n_note` is not renamed, not restated as an integer,
+> not dropped from the schema, and every value it carries is exactly what it
+> carried yesterday.
+>
+> `site/lib/__tests__/n-note-never-renders.contract.test.tsx` injects
+> `n=8675309 - N-NOTE-SENTINEL-DO-NOT-RENDER` into every muted cohort and
+> asserts no part of it reaches the markup, plus that the label which DOES render
+> is built from `pool_n`.
+>
+> **The fixture is `219150`, not Kenshi, and that choice is load-bearing.** The
+> sourcing guard this copies uses Kenshi, which has **no muted cohort at all** —
+> so on that fixture every `not.toContain` here would pass while testing
+> nothing. Hotline Miami is committed pipeline output with a genuinely muted
+> veteran cohort (`pool_n` 1, `n_note` "n=0"), which is the disagreement this
+> entry measured at 132 of 135.
+>
+> **Mutation-proved 6/6** (`evals/mutate_n_note_render.py`, logs `n00`–`n05`).
+> n01 is not an invented perturbation — it is the exact edit this entry predicts,
+> `{c.n_note}` wired into the muted branch of the real `VerdictPage.tsx`, and the
+> guard is required to fail **by name**: the driver checks for the string
+> `no part of n_note reaches the markup` in the output, not merely a red run.
+> That distinction was earned during the work: under that mutation the canary and
+> the pool-figure assertions also fail, because the label they search for is the
+> one being replaced, and either could have turned the suite red while proving
+> nothing about whether the diagnostic reached the page.
+> n02 and n03 are the vacuity controls — a fixture with nothing muted, and a
+> page that renders nothing at all, both of which would satisfy every
+> `not.toContain` in the file. `VerdictPage.tsx` and the test restored
+> byte-identical, sha verified.
+>
+> **What this does NOT do:** the underlying disagreement is untouched. `n_note`
+> still reports post-filter survivors while `pool_n` sits beside it, and the
+> three cohorts where they agree still agree only by coincidence. This closes the
+> render hazard, which is what the entry said was worth closing.
+
 2026-08-17 | **40 citations render an hours figure that contradicts the cohort
 heading above them** | build, cohort-sourcing measurement | Sweeping every
 citation in all 306 verdicts against its cohort's hour range finds **40 of
@@ -436,6 +476,64 @@ duration), carry a second decimal at the boundary only (`1.98 hrs`, precise and
 fussy), or keep minutes alongside hours in the citation record so the UI can
 choose. All three touch what renders on every citation on every page, for 40
 cases. Cheap and safe whenever the citation row is next open.
+
+> **2026-08-22, RESOLVED — the third option: minutes are carried and the UI
+> chooses. 78 boundary cases, now 0.**
+>
+> **Re-measured first, and the figure grew with the catalog.** This entry counted
+> 40 of 15,736 at 306 verdicts. At 514 verdicts it is **78 instances / 59
+> distinct of 26,806**, in the same three shapes: `2.0 hrs` under refund_window
+> (63), `20.0` under early (9), `100.0` under mid (6). Same rate, more catalog.
+>
+> **The premise had to be checked before it could be built on, and it was wrong
+> in a way that mattered.** `minutes_at_review` did **not** exist upstream:
+> `fetch_reviews.py:238` does `round(at_review_min / 60, 1)` and keeps no
+> minutes, so raw, filtered, claims and every published verdict had lost them.
+> They were nonetheless recoverable **at zero cost and with no re-fetch**,
+> because `fetch_reviews` caches every raw Steam page verbatim at
+> `data/cache/<appid>/<filter>_<NN>.json` with `playtime_at_review` untouched
+> inside. Recovery measured before any file was written: **26,779 of 26,806
+> citation instances (99.90%)**, all 78 boundary cases included, and this entry's
+> own Arma 3 example (`107410` / `230637493`) recovers as **118 minutes**.
+>
+> **Re-fetching would have been the wrong repair, not merely a slower one.**
+> Steam's corpus moves, cohorts are exhausted at ingestion, and these citations
+> reference specific `recommendationid`s. A re-fetch would not have repaired
+> these files; it would have invalidated them. `pipeline/backfill_minutes.py`
+> therefore reads the page cache and never the network.
+>
+> **What shipped**, in four places and no more:
+> `fetch_reviews.normalize()` carries `minutes_at_review` beside the single
+> hours conversion; `synthesize.build_citation()` threads it into the citation
+> record; `backfill_minutes.py` fills the existing 514 from cache;
+> `site/lib/verdict.ts:citationHours()` derives the displayed figure and is
+> called from the one render site (`VerdictPage.tsx:201` — grepped across
+> `site/lib`, `site/components` and `site/app`; there is no second).
+> The rule: round to one decimal, but if that lands outside the cohort's own
+> minute bounds, round toward the interior. 118 renders `1.9`, 5997 renders
+> `99.9`.
+>
+> **Absent minutes are a supported state, not a gap to paper over.** 27
+> citations — all in `2073850`, the live-generated title whose runner filesystem
+> was discarded — have no cache entry. The key is left absent and
+> `citationHours` falls back to rounding hours, which is exactly today's
+> behaviour, so those citations and every pre-backfill verdict render unchanged.
+> None of the 27 was a boundary case.
+>
+> **Verified by re-sweep, not by inspection: 78 → 0.** The sweep reimplements
+> the display rule in Python rather than calling the renderer's own function,
+> because a sweep that asked the renderer whether the renderer was right would
+> answer yes either way. Backfill proved additive by `--check`: strip the new key
+> and every one of the 514 files is byte-identical to what it was.
+>
+> **Invariant 1 was amended rather than quietly contradicted.** It read "raw
+> minutes must never reach an LLM prompt or the UI", and the citation record puts
+> minutes in the UI. It now forbids minutes being **displayed** and keeps the
+> LLM-prompt half absolute, with
+> `site/lib/__tests__/citation-hours.contract.test.tsx` rendering a sentinel
+> minutes value and asserting it never reaches the markup — the prose promise
+> replaced by a machine-checked one. A 60× silent error looks like a plausible
+> number, which is why it gets a test.
 
 2026-08-16 | **The 2026-08-13 guard-suite flake reproduced in CI, with the
 evidence captured this time — it is a TOCTOU race in `model_pacer._locked`, not
