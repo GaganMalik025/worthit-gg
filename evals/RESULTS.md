@@ -1797,3 +1797,132 @@ at a person).
 > `consensus language`; BidKing (`4128580`), which refuses correctly at 124 total
 > reviews and will retry nightly at zero cost until the catalog gains a
 > minimum-reviews floor.
+
+## 2026-08-24 — 4.1 catalog batch, 24 new titles (the catalog is now drained)
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **1,229 citations across 24 verdicts, 0 failures** (and **28,035 across all 538, PASS**), both `rc=0` |
+| Manual audit | developer read `evals/audit-4.4-2026-08-24.md` and confirmed all 20 citations and 10 verdicts pass |
+| Sample | seed 20260824, stratified 5 per playtime cohort — 10 verdicts, 20 citations |
+| Raw output | `evals/qr4-2026-08-24-tonight.txt` (24) and `evals/qr4-2026-08-24.txt` (all 538) — both in-repo and openable |
+
+**The two figures reconcile additively**: 26,806 (all 514 at 08-21) + 1,229
+(tonight's 24) = **28,035**. The 24 were gated directly rather than inferred by
+subtraction, so neither figure depends on the other. Nothing published between
+the batches, so there is no middle term.
+
+**Batch, first run in three nights** (last was 08-21). Started through
+`pipeline/run_batch_logged.sh`, no flags — the same invocation as every prior
+night. Log `evals/batch-2026-08-24.txt`, which carries
+**`EXIT_RC=1`** in the file rather than in a transcript. That value is CORRECT
+and is what the wrapper exists to record: `run_batch.py:323` returns 1 when any
+title ends `stage_failed`, and BidKing did.
+
+| | |
+|---|---|
+| Attempted / published | 25 / **24** |
+| Gate drops (`thin_segmentation`) | 0 |
+| Stage failures | 1 — BidKing (`4128580`), verdict stage, 0 calls, 1.2s |
+| Model calls | **176**, mean 7.0 per attempted / 7.3 per published title |
+| Wall clock | 16.4 min, 10.8 requests/min effective |
+| Budget left | 224 of 400, live reserve 100 untouched |
+| Catalog after | 514 → **538** published verdicts |
+
+**Calls reconcile four ways at 176** — the run summary, the sum of tonight's
+`data/batch_state.json` records, the ledger's `batch_used`, and the pacer's
+`today`. No drift, so nothing of the 2026-08-12 shape (a title that raises after
+spending and leaves no record) happened tonight.
+
+**Three of the four titles carried over from 08-21 published, exactly as the
+08-21 follow-up predicted they would.** That entry made falsifiable claims about
+work verified offline; this is the first real batch to test them.
+
+| Title | 08-21 | Tonight | Predicted |
+|---|---|---|---|
+| A Way Out (`1222700`) | filter `stage_failed`, 0 calls | **Buy**, 6 calls, veteran muted `pool_n` 2 | publish with a muted veteran cohort |
+| A Plague Tale (`752590`) | filter `stage_failed`, 0 calls | **Buy**, 8 calls, veteran muted `pool_n` 1 | publish with a muted veteran cohort |
+| RuneScape ® (`1343400`) | verdict `stage_failed`, **9 calls** | **Wait**, 3 calls | ~1 synthesis call instead of 3 |
+| BidKing (`4128580`) | verdict `stage_failed`, 0 calls | verdict `stage_failed`, 0 calls | fail again, correctly |
+
+The invariant-12 zero-survivor change (`1a5027f`) is therefore confirmed on real
+output rather than on a fixture: both titles publish with three sound cohorts and
+one honest muted section, which is what the 08-21 owner decision argued for. A
+Way Out also mutes `mid` at `pool_n` 20 under the pre-existing under-20 rule.
+
+**RuneScape's synthesis passed on its first attempt, for 1 call** — the
+prevalence-guard split (`9c8d460`) doing exactly what replaying its cached
+responses said it would. Its other 2 calls were veteran extraction, including
+one grounding retry; the other three cohorts hit the 08-21 extraction cache at
+zero cost. **Why the veteran prompt changed at all was NOT determined**:
+`data/raw/1343400.json` is untouched since 08-21, and the cache files store only
+`model`/`text`/`usage`, so the prompts cannot be diffed from disk. Recorded as
+open rather than attributed — 2 calls, and a guess would be worth less than the
+gap. Filed in BACKLOG under today's date.
+
+**BidKing failed for the fourth night running and is still correct to.** 124
+total reviews, every cohort below invariant 12's floor, `post_refund_mean()`
+returns `None`, synthesis refuses before sending anything. 0 calls, 1.2s. The
+open question is the catalog admitting it, not the pipeline rejecting it — see
+the 2026-08-21 BACKLOG entry.
+
+**Verdict mix — 15 Buy, 8 Wait, 1 Skip**, counted from the 24 published files:
+
+| | Buy | Wait | Skip | Buy % |
+|---|---|---|---|---|
+| 2026-08-12 (41) | 19 | 19 | 3 | 46% |
+| 2026-08-13 (45) | 29 | 14 | 2 | 64% |
+| 2026-08-14 (42) | 26 | 15 | 1 | 62% |
+| 2026-08-16 (43) | 26 | 16 | 1 | 60% |
+| 2026-08-17 (40) | 26 | 14 | 0 | 65% |
+| 2026-08-18 (44) | 18 | 20 | 6 | 41% |
+| 2026-08-19 (41) | 26 | 13 | 2 | 63% |
+| 2026-08-20 (45) | 29 | 15 | 1 | 64% |
+| 2026-08-21 (37) | 19 | 15 | 3 | 51% |
+| **2026-08-24 (24)** | **15** | **8** | **1** | **62.5%** |
+
+**`positivity_by_night.py` was NOT run tonight, deliberately.** CLAUDE.md makes
+it conditional on the mix looking worth checking against the trend, and 62.5%
+sits inside the established band (62–65% on four of the nine prior nights). The
+08-21 entry ran it because a 13-point drop needed explaining; nothing here does.
+Stated rather than silently skipped, because the absence of a check is itself a
+thing a later reader would want to know.
+
+Search index rebuilt: 7,304 core + 23,079 tail rows,
+`generated_at 2026-08-24T10:01:18Z`, **all 538 verdict appids confirmed present
+by set membership, 0 missing** (verdict set minus index set is empty — not a
+row-count diff), `INDEX_RC=0`, output `evals/searchindex-2026-08-24.txt`. Row
+counts are unchanged from 08-18 through 08-21 for the established reason: 690 of
+690 pages served from cache, no network. Tonight's 24 were already indexed from
+the 08-12 catalog walk, which is exactly why a row-count diff would have proved
+nothing and the set check is the one that means anything.
+
+Audit sample checked with `evals/check_sample_overlap.py` across all ten dated
+rounds: **45 pairwise comparisons, distinct within each round and independent
+across every pair, `OVERLAP_RC=0`** (`evals/sample-overlap-2026-08-24.txt`).
+
+**THE CATALOG IS DRAINED, and that is the headline for what happens next.**
+After tonight, `run_batch.py --dry-run` reports **1 title pending**, and that
+title is BidKing, which can never publish. Every `batch_budget_exhausted` record
+from 08-21 cleared. `data/catalog.json` was walked on 2026-08-12 and holds 411
+titles; there is nothing left for a batch night to run. The next one needs
+either a fresh catalog walk (BACKLOG D2) or the minimum-reviews floor the 08-21
+BidKing entry proposes — neither started, both owner calls.
+
+**Two process errors of mine tonight, both caught and corrected before anything
+was committed, recorded because the class matters more than the size.**
+First: the QR-4 rc was captured with `${PIPESTATUS[0]}` under **zsh**, where the
+array is 1-indexed, so the first `evals/qr4-2026-08-24.txt` was written with an
+empty `QR4_RC=`. That is precisely the trap `run_batch_logged.sh`'s own header
+documents and pins the shebang to bash for — walked into while writing an
+evidence file. The whole gate was re-run under `bash` with `pipefail`; the
+committed artifact is from that second run and carries a real code.
+Second: the set-membership script read `.rows`/`.games`, found 0 index ids and
+printed "538 missing" — the index was fine and the checker was wrong (rows live
+under `.t` as `[appid, title]`). The bogus block had already been appended to
+the index log; it was truncated and replaced with the corrected check. **Neither
+error reached an artifact you read, and both are the same shape as the
+2026-08-20 `EXIT_RC` finding: a verification whose own mechanics were not
+verified.** Related: [[verify-the-verifier]].
