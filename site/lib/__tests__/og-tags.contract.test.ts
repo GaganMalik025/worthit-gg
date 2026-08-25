@@ -45,10 +45,18 @@ describe("verdictMetadata", () => {
     expect(m.openGraph.url).toBe(`${SITE_URL}/verdict/233860`);
   });
 
-  it("uses header.jpg, which does not redirect", () => {
+  it("uses a header asset for THIS app, which does not redirect", () => {
     // capsule_616x353.jpg is bigger but 301s on some titles, and unfurlers are
-    // not obliged to follow redirects.
-    expect(m.openGraph.images[0].url).toContain("/233860/header.jpg");
+    // not obliged to follow redirects. What must hold is "a header asset for
+    // this appid, not a capsule" - the exact path LAYOUT is Steam's business
+    // and it serves three: /apps/<id>/header.jpg, /apps/<id>/<sha1>/header.jpg,
+    // and a seasonal /apps/<id>/<sha1>/header_alt_assets_<n>.jpg. This used to
+    // assert `/233860/header.jpg` literally, which pinned the first layout and
+    // went red on 2026-08-25 when the art backfill gave Kenshi the second one
+    // (verified 200, 0 redirects). Pinning a vendor's URL shape tested Steam,
+    // not us.
+    expect(m.openGraph.images[0].url).toContain("/233860/");
+    expect(m.openGraph.images[0].url).toMatch(/\/header[^/]*\.jpg(\?|$)/);
     expect(m.openGraph.images[0].url).not.toContain("capsule");
   });
 
