@@ -1,18 +1,22 @@
-pb01
-BASELINE: directions A and B both pass as committed
+bw01
+BASELINE: the new test passes; banned_words() is 10 words
 
 PASS
 
-A failures: []
-B failures: []
-
-KNOWN GAP (invisible to both, by design of banned_words()' extraction):
-  everyone / nobody were rejected and unnamed until 2026-08-26 and are now named.
-  Multi-word bans still cannot be named at all: "no one" and the crowd-noun rules
-  (all/every/few/half/many/more/several/some + CROWD). Seen only by
-  test_banned_words_names_every_single_word_ban, which starts from PATTERNS.
+banned_words() (10): ['consensus', 'countless', 'everyone', 'majority', 'minority', 'most', 'nobody', 'none', 'numerous', 'unanimous']
+failures: []
 
 full output:
+
+prevalence guard: every single-word ban reaches the prompt
+  the pattern reader finds real single-word bans                 ok
+    and does not flag the whole vocabulary                       ok
+  every single-word ban the guard carries is named               ok
+    including everyone and nobody (fixed 2026-08-26)             ok
+    and banned_words() names nothing extra                       ok
+  no multi-word ban is ever named                                ok
+    'no one' is still rejected, and still cannot be named        ok
+    the crowd-noun rules are the same limit, not new ones        ok
 
 synthesis: prompt banned-list matches the guard
   A: every guard-rejected word appears in the prompt             ok

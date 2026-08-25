@@ -1,4 +1,4 @@
-"""Mutation proof for direction B of test_prompt_names_every_word_the_guard_rejects.
+r"""Mutation proof for direction B of test_prompt_names_every_word_the_guard_rejects.
 
 The test guarded the prompt/guard wiring in ONE direction:
 
@@ -32,13 +32,20 @@ WHY FOUR CONTROLS
        name it, while B passes. The mirror of pb02, proving the two directions
        are independent and neither was replaced by the other.
 
-KNOWN GAP, NOT FIXED HERE
--------------------------
-banned_words()' extraction misses everyone/nobody/no one - the guard rejects them
-but they never reach the prompt (BACKLOG 2026-08-25, pending its own decision;
-fixing it invalidates 1,009 cached prompts). NEITHER direction can see that: A
-reads a list that already omits the word, B never encounters it. pb01 records the
-gap rather than routing around it.
+KNOWN GAP - HALF CLOSED 2026-08-26
+----------------------------------
+banned_words()' extraction used to miss everyone/nobody/no one, and NEITHER
+direction can see that class: A reads a list that already omits the word, B never
+encounters it. `everyone` and `nobody` were fixed on 2026-08-26 by splitting the
+pattern, and the check that DOES see the class - starting from PATTERNS rather
+than from banned_words() - is
+test_batch_guards.test_banned_words_names_every_single_word_ban, proved by
+evals/mutate_banned_words_extraction_2026-08-26.py.
+
+Still open by construction, and pb01 records it rather than routing around it:
+MULTI-WORD bans can never be named. Extractor A drops any alternative containing
+a space, B cannot read across \s+. That is "no one" and the crowd-noun rules
+(all/every/few/half/many/more/several/some + CROWD).
 
 Run:  .venv/bin/python evals/mutate_prompt_banned_direction_2026-08-25.py
 Logs: evals/mutation-logs/pb01..pb04.log
@@ -127,9 +134,14 @@ def main():
     record("pb01", "BASELINE: directions A and B both pass as committed",
            not r.get("error") and not a_fail and not b_fail,
            "A failures: %s\nB failures: %s\n\nKNOWN GAP (invisible to both, by "
-           "design of banned_words()' extraction; BACKLOG 2026-08-25):\n"
-           "  everyone / nobody / no one are rejected by the guard and never "
-           "reach the prompt.\n\nfull output:\n%s"
+           "design of banned_words()' extraction):\n"
+           "  everyone / nobody were rejected and unnamed until 2026-08-26 and "
+           "are now named.\n"
+           "  Multi-word bans still cannot be named at all: \"no one\" and the "
+           "crowd-noun rules\n  (all/every/few/half/many/more/several/some + "
+           "CROWD). Seen only by\n  "
+           "test_banned_words_names_every_single_word_ban, which starts from "
+           "PATTERNS.\n\nfull output:\n%s"
            % (a_fail, b_fail, r.get("out") or r.get("error")))
 
     # ---- pb02 DIRECTION B HAS TEETH -------------------------------------

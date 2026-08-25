@@ -594,6 +594,81 @@ def test_retry_prose_does_not_move_with_the_guards_wordlist():
           before_res["failures"])
 
 
+def test_banned_words_names_every_single_word_ban():
+    r"""The class-level check the two directions of the test below cannot make.
+
+    Both of those start from banned_words() or from the prompt it fills, so a
+    word the EXTRACTOR never harvests is invisible to each: A reads a list that
+    already omits it, B never encounters it. That is how everyone/nobody stayed
+    rejected-but-unnamed through the 08-21 rule and the 08-25 split (BACKLOG
+    2026-08-25, defect 2) - the single group `(?:everyone|nobody|no\s+one)`
+    failed banned_words()' `[a-z|\s]` class on one backslash and took all three
+    words with it.
+
+    So this parses PATTERNS with a deliberately independent reader - strip the
+    regex escapes, take every run of letters - and asks the GUARD, not the
+    extractor, which of them is a ban on its own. A battery written from the
+    rule under test cannot see what that rule stopped catching.
+
+    "On its own" is ONE frame here, not banned_words()' two. banned_words()
+    also accepts a word rejected in "<word> players report problems", which is
+    true of `all`, `every`, `many`, `some`... - words that are only a ban WITH
+    a crowd noun. Those are two-word bans and are handled below as a limit, not
+    demanded of the prompt.
+    """
+    print("\nprevalence guard: every single-word ban reaches the prompt")
+    import prevalence_guard
+
+    def banned_alone(word):
+        """No crowd noun supplied: the word by itself has to be the violation."""
+        return bool(prevalence_guard.check_claim("the game has %s problems"
+                                                 % word))
+
+    banned = prevalence_guard.banned_words()
+    tokens = set()
+    for pattern, _ in prevalence_guard.PATTERNS:
+        # \b, \s, \d... become separators. Without this, "\bmost\b" tokenises
+        # as "bmost" and the whole check silently inspects nothing real - which
+        # is exactly how the first draft of this test passed while blind to a
+        # bare \bnobody\s*\b.
+        tokens |= set(re.findall(r"[a-z]+", re.sub(r"\\.", " ", pattern)))
+
+    qualifying = sorted(w for w in tokens if banned_alone(w))
+    missed = [w for w in qualifying if w not in banned]
+
+    # Anti-vacuity, in both directions: a parser that tokenises wrongly finds no
+    # bans and reports a clean sweep, and a frame that flags everything would
+    # make `missed` meaningless.
+    check("the pattern reader finds real single-word bans", len(qualifying) >= 8,
+          qualifying)
+    check("  and does not flag the whole vocabulary",
+          len(qualifying) < len(tokens) / 2, (len(qualifying), len(tokens)))
+    check("every single-word ban the guard carries is named", not missed, missed)
+    check("  including everyone and nobody (fixed 2026-08-26)",
+          "everyone" in banned and "nobody" in banned, banned)
+    check("  and banned_words() names nothing extra",
+          not [w for w in banned if w not in qualifying],
+          [w for w in banned if w not in qualifying])
+
+    # RECORDED LIMITS. banned_words() drops any alternative containing a space
+    # (extractor A) and cannot read across \s+ (extractor B), so a MULTI-WORD
+    # ban is enforced in code and can never be quoted to the model. Two shapes:
+    # the literal phrase "no one", and the word-outside-group rules that need a
+    # crowd noun. These are one limit with two faces, not a list of oversights,
+    # and if a phrase mechanism is ever added these are what should be revisited.
+    crowd_only = sorted(w for w in tokens if not banned_alone(w)
+                        and prevalence_guard.check_claim(
+                            "%s players report problems" % w))
+    check("no multi-word ban is ever named",
+          not [w for w in banned if " " in w], [w for w in banned if " " in w])
+    check("  'no one' is still rejected, and still cannot be named",
+          bool(prevalence_guard.check_claim("no one finishes the campaign"))
+          and "no one" not in banned)
+    check("  the crowd-noun rules are the same limit, not new ones",
+          crowd_only == ["all", "every", "few", "half", "many", "more",
+                         "several", "some"], crowd_only)
+
+
 def test_prompt_names_every_word_the_guard_rejects():
     """The prompt used to carry a hand-written banned list and it fell behind
     the guard: "occasional" was rejected in code and never mentioned in the
@@ -682,10 +757,13 @@ def test_prompt_names_every_word_the_guard_rejects():
     # construction and test nothing.
     #
     # LIMIT, stated so this pair is not over-trusted: when banned_words()' own
-    # extraction misses a word the guard rejects - the open everyone/nobody/
-    # no one item, BACKLOG 2026-08-25 - NEITHER direction sees it. A reads a
-    # list that already omits the word; B never encounters it. Closing that
-    # needs the extraction fixed, not another assertion here.
+    # extraction misses a word the guard rejects, NEITHER direction sees it. A
+    # reads a list that already omits the word; B never encounters it. That is
+    # not hypothetical - it hid everyone/nobody until 2026-08-26. Closing it
+    # needed the extraction fixed plus a check that starts from PATTERNS, which
+    # is test_banned_words_names_every_single_word_alternation above, not
+    # another assertion here. Still open by construction: multi-word bans like
+    # "no one" and "many players", which the extractor cannot name at all.
     m = re.search(r"BANNED WORDS: ([^.]*)\.", prompt)
     named_in_prompt = [w.strip() for w in m.group(1).split(",")] if m else []
     # Anti-vacuity: without this, a template edit that moves the marker leaves
@@ -2108,6 +2186,7 @@ if __name__ == "__main__":
     test_ledger_does_not_reset_at_utc_midnight()
     test_retry_cache_key_includes_the_attempt()
     test_a_retry_never_replays_a_cached_rejection()
+    test_banned_words_names_every_single_word_ban()
     test_prompt_names_every_word_the_guard_rejects()
     test_retry_prose_does_not_move_with_the_guards_wordlist()
     test_flash_tier_allocation()

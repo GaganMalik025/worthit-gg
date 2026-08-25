@@ -1,0 +1,40 @@
+Cost of the 2026-08-26 banned_words() fix, in cached synthesis prompts
+driver: evals/measure_banned_words_cache_cost_2026-08-26.py   (disk only, 0 Gemini calls)
+old banned list (HEAD, 8 words): consensus, countless, majority, minority, most, none, numerous, unanimous
+new banned list (working tree, 10 words): consensus, countless, everyone, majority, minority, most, nobody, none, numerous, unanimous
+added: everyone, nobody
+
+WHAT IS ON DISK
+  synthesis cache files            : 1009 across 537 titles
+  every one of their keys moves - `system` is hashed at synthesize.py:864
+
+WHAT IS ACTUALLY READ
+  synthesize.py:865 serves the cache only when attempt == 0, so retry
+  entries are written and never replayed. Only attempt-0 entries can
+  cost a repeat call.
+  titles whose attempt-0 prompt rebuilds  : 537
+
+  attempt-0 entries reachable, by guard version:
+    0211b2b^                   ( 7 words) : 25
+    HEAD, before today         ( 8 words) : 0
+    working tree, after today  (10 words) : 0
+
+  ** repeat cost of TODAY's change, in calls : 0 **
+  never-read residue of the 1009 files        : 1009
+  titles that built no prompt               : {'no_prompt_built': 1}
+
+  READ THIS BEFORE QUOTING THE ZERO. The harness is not broken -
+  it resolves 25 attempt-0 entries under 0211b2b^. Nothing is reachable
+  under HEAD because an EARLIER guard change already moved every key,
+  and no title has been synthesised since. Today's change therefore
+  invalidates entries that were already dead: the 1,009 figure is
+  real and its marginal cost is not.
+
+SANITY
+  attempt-0 keys that move (must equal titles rebuilt): 537 of 537
+  titles reachable before but not after (must equal the repeat cost): 0
+  titles whose attempt-0 entry was ALREADY unreachable: 537
+    (an older guard or prompt version, or a title never synthesised from
+     these exact inputs - already costing a call before this change)
+  ANTI-VACUITY: entries resolvable under 0211b2b^ (proves the rebuild is
+  faithful and a zero above is a fact, not a broken harness) : 25

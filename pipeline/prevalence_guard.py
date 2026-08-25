@@ -63,7 +63,19 @@ PATTERNS = [
     # guard - bare population claims would pass unflagged.
     (r"\bnone\b(?!\s+of\b)", "absolute quantifier"),
     # These are about people whatever follows them, so they need no crowd noun.
-    (r"\b(?:everyone|nobody|no\s+one)\b", "absolute quantifier"),
+    # SPLIT 2026-08-26, for the extractor rather than for the rule. As one
+    # group, `no\s+one`'s backslash falls outside banned_words()' [a-z|\s]
+    # class, which fails the WHOLE group - so `everyone` and `nobody` were
+    # rejected in code and never named in the prompt either (BACKLOG
+    # 2026-08-25, defect 2). Same alternatives, same \b anchors, same matches.
+    (r"\b(?:everyone|nobody)\b", "absolute quantifier"),
+    # "no one" stays rejected and stays UNNAMEABLE, and that is a property of
+    # the extractor, not of this line: A discards any alternative containing a
+    # space by design, B cannot read across \s+. No way of writing this pattern
+    # makes it quotable, so nothing here tries. It is the same limit that keeps
+    # "many players" and "few players" out of the prompt - a phrase mechanism
+    # invented for this one case would be a second convention, not a fix.
+    (r"\bno\s+one\b", "absolute quantifier"),
 
     # Consensus language: a claim that everyone agrees IS a claim about how many
     # people. Kept banned, and deliberately NOT part of the 2026-08-21 frequency

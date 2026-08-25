@@ -2245,6 +2245,80 @@ would add words to the prompt and invalidate all 1,009 cached synthesis prompts 
 a spend decision, not a bug fix, and one worth taking deliberately rather than as
 a ride-along. Related: [[verify-the-verifier]].
 
+> **2026-08-26, defect 2 FIXED for `everyone` and `nobody`. `no one` is
+> confirmed unnameable and stays that way. The marginal cost is ZERO calls, not
+> the 1,009 this entry predicted — measured, and the reason matters.**
+>
+> **The fix is a pattern split, for the extractor rather than for the rule.**
+> `\b(?:everyone|nobody|no\s+one)\b` becomes `\b(?:everyone|nobody)\b` plus
+> `\bno\s+one\b`. Same alternatives, same `\b` anchors, same matches;
+> `banned_words()` goes **8 → 10** and the prompt now reads `BANNED WORDS:
+> consensus, countless, everyone, majority, minority, most, nobody, none,
+> numerous, unanimous.`
+>
+> **`no one` cannot be named however the pattern is written — checked, not
+> assumed.** Extractor A discards any alternative containing a space
+> (`if word and " " not in word`), so even a literal `(?:no one)` is dropped;
+> extractor B cannot read across `\s+`. Every candidate form was run through
+> both extractors before choosing. It stays rejected and unnamed. **And the
+> residue is wider than this entry said**: the same limit covers every
+> crowd-noun rule — `all`, `every`, `few`, `half`, `many`, `more`, `several`,
+> `some` — which are bans only WITH a crowd noun and are equally unnameable.
+> One limit with two faces, now enumerated in code rather than in prose. No
+> phrase mechanism was invented for one case; it would be a second convention,
+> not a fix.
+>
+> **The new test starts from PATTERNS, because starting anywhere else cannot
+> see this class.** `test_banned_words_names_every_single_word_ban` strips regex
+> escapes, takes every run of letters, and asks the GUARD which are bans on
+> their own — one frame, `"the game has %s problems"`, not `banned_words()`' two,
+> so crowd-noun words are not falsely demanded of the prompt. Both directions of
+> the existing prompt/guard test stay green under the old pattern (asserted in
+> bw02): they were never capable of seeing it.
+>
+> **Mutation-proved 6/6**, `evals/mutate_banned_words_extraction_2026-08-26.py`,
+> output `evals/banned-words-extraction-mutation-2026-08-26.txt`, logs
+> `bw01..bw06`. bw02 restores the single group and loses both words. bw03 proves
+> only the NAMING changed, on real data: `check_claim`'s matched terms are
+> identical across **8,861 real claims** in `data/claims/` plus 10 probes
+> including `no  one` (two spaces), `no\tone`, `noone` and `no online mode`.
+> bw05 is the one that took two attempts and is worth reading — see the finding
+> below.
+>
+> **COST: 0 calls, and the 1,009 figure needs the same correction the
+> 2026-08-24 retry entry got.** `evals/measure_banned_words_cache_cost_2026-08-26.py`
+> rebuilds all 537 titles' real attempt-0 prompts and resolves the key under
+> three guard versions. Raw output `evals/banned-words-cache-cost-2026-08-26.txt`.
+>
+> | attempt-0 entries reachable | |
+> |---|---|
+> | under `0211b2b^` — the guard the caches were written with | **25** |
+> | under `HEAD`, before today | **0** |
+> | under the working tree, after today | **0** |
+>
+> Every synthesis key does move — `system` is hashed at `synthesize.py:864`. But
+> **only attempt 0 ever reads the cache** (`:865`, deliberate since the
+> Insurgency deadlock, BACKLOG 2026-08-18), and **every attempt-0 entry was
+> already unreachable before today**: the 08-25 `all` split added `none` to
+> `banned_words()` and moved every key then, and no title has been synthesised
+> since. So this change re-invalidates entries that were already dead.
+> **That also corrects the entry above.** "Editing the extractor would invalidate
+> all 1,009 cached synthesis prompts" is true of keys and false of cost: at the
+> moment of the 08-25 split only **25** entries were live, so its own real cost
+> was ≤25 calls, not 1,009. The 1,009 files are ~98% stale already, mostly
+> superseded by the 08-24 `synthesize.py` change (`8da6061`, 14:43) that predates
+> the last synthesis run by 22 minutes.
+> **The zero is proved rather than assumed**: the same harness resolves 25
+> entries under `0211b2b^`, so "nothing reachable" is a fact about the cache and
+> not a broken rebuild.
+>
+> Suite: `evals/batch-guards-2026-08-26-bannedwords.txt`, 327 checks, `EXIT_RC=0`.
+> `test_ground_check.py` green. `mutate_prevalence_all_2026-08-25.py` 9/9 and
+> `mutate_prompt_banned_direction_2026-08-25.py` 5/5 re-run against the change;
+> the latter's "KNOWN GAP" text was updated, since it asserted the gap that
+> closed today.
+
+
 2026-08-25 | **Three prompt strings still name words the guard freed on 08-21,
 and one of them just became load-bearing** | build, reading `_problem_line` for
 the retry-prose fix above | The 08-21 rule is "a word is either rejected and
@@ -2297,4 +2371,42 @@ change string length and so escape by luck rather than design;
 are the ones worth checking. The general lesson is the memory's:
 [[verify-the-verifier]] — a harness that cannot prove WHICH bytes it ran is not
 evidence, and "restored byte-identical" does not imply "re-executed".
+
+2026-08-26 | **`evals/mutate_guard_split_2026-08-21.py` has been failing on
+`main` since the 08-25 split and nobody noticed — its committed log still says
+PASS** | build, re-running the guard drivers after the banned_words() fix | `g03`
+("post-fix guard STILL rejects all 9 population phrasings") asserts that
+`free access to all content` is REJECTED. The 2026-08-25 absolute-quantifier
+split deliberately made that phrase PASS — it is the headline example of that
+change — so the driver now reports **12/13, FAILED: g03**. **Verified to be
+pre-existing and unrelated**: stashed today's work, re-ran against a clean
+`HEAD`, same 12/13. `evals/mutation-logs/g03.log` is left at its committed `PASS`
+rather than overwritten, because it is the record of the 08-21 run and a FAIL
+stamped there today would misrepresent that run; this entry is the record
+instead. **Not fixed, because it is a decision, not a typo:** g03's battery is
+the 08-21 rule, and updating it means moving a phrase from the reject list to the
+pass list in a driver whose whole purpose is to pin the 08-21 behaviour — the
+same edit `test_batch_guards.py` already took on 08-25. What this really shows is
+that **a committed mutation driver is only evidence on the day it is run**;
+nothing re-runs them, so a stale one reads as green history. Related:
+[[verify-the-verifier]].
+
+2026-08-26 | **A mutation control can go green for the wrong reason twice over,
+and both ways were live in one control today** | build, writing `bw05` in
+`evals/mutate_banned_words_extraction_2026-08-26.py` | bw05 has to prove the new
+class-level test is not keyed to one word. Two drafts were wrong in opposite
+directions and BOTH would have shipped a control that proves nothing.
+**1. Deleting the word instead of hiding it.** Removing `nobody` from PATTERNS
+stops the guard REJECTING it, so a test that reports no missing ban is *correct*
+to stay silent. The mutation has to keep the rejection and hide the word from the
+extractor — `\bnobody\s*\b` still matches "nobody" and is invisible to both.
+**2. A tokeniser that reads nothing.** The test's first draft scanned only
+`(?:...)` groups, so a bare `\bnobody\s*\b` was outside its view entirely; a
+later draft tokenised the raw pattern text and produced `bmost` rather than
+`most`, because `\b` donates its `b` to the word. Both versions swept zero real
+bans and reported a clean result. The fix is `re.sub(r"\\.", " ", pattern)` before
+tokenising, plus two anti-vacuity checks — the reader must find ≥8 bans and must
+not flag more than half the vocabulary. **The lesson is the memory's**
+([[narrowing-a-guard-needs-a-coverage-diff]]): a checker written from the rule it
+checks agrees with itself. Only the mutation caught either draft.
 

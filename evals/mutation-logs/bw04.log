@@ -1,0 +1,13 @@
+bw04
+LIMIT: 'no one' stays rejected and stays unnameable, deliberately
+
+PASS
+
+check_claim('no one finishes the campaign') -> ['no one']
+'no one' in banned_words(): False
+any multi-word entry in banned_words(): []
+
+Extractor A drops every alternative containing a space (`" " not in word`)
+and extractor B cannot read across \s+, so NO way of writing this pattern
+makes it quotable. Same class as "many players"/"few players". Not worked around:
+a phrase mechanism for one case would be a second convention, not a fix.
