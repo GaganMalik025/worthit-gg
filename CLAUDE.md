@@ -200,7 +200,13 @@ Standing rules, every session:
   that cannot be opened is not verifiable. Citing a QR-4 run as evidence means
   committing the raw output (`evals/qr4-<date>.txt`), not a restatement of it.
 - **Live verification on production before calling anything done.** Passing
-  tests alone do not count as shipped.
+  tests alone do not count as shipped. This is about output that REACHES USERS —
+  verdicts, the site, published artifacts. A change that ships no new output
+  (guards, tests, eval drivers, prompts, docs) is done when its own committed
+  evidence is green; **do not watch the CI run after pushing it** (developer
+  instruction, 2026-08-26). Report the push and stop. CI failures surface on
+  their own, and are worth checking only when asked or when a later step
+  depends on the run.
 - **Never commit or push without explicit go-ahead.** Report first, every time.
 - **New findings mid-task go to BACKLOG.md's "Captured during build / launch"** —
   record, don't fix, unless told otherwise. If a fix lands as a side effect of
@@ -238,8 +244,9 @@ Each step waits for the developer.
    round, never a previous night's.
 5. Developer reads the audit directly. Wait for it.
 6. Commit + `evals/RESULTS.md` entry + push, on explicit go-ahead.
-7. Verify CI/Vercel, then fetch a new verdict from production and confirm it by
-   its real `generated_at`, not by name.
+7. Verify the Vercel deploy, then fetch a new verdict from production and
+   confirm it by its real `generated_at`, not by name. This step stays — a batch
+   night ships user-facing output. The CI run itself is not watched.
 
 `evals/positivity_by_night.py` carries a hardcoded `NIGHTS` list — extend it
 with tonight's date before running, if the verdict mix looks worth checking
