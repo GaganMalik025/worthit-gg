@@ -1926,3 +1926,96 @@ the index log; it was truncated and replaced with the corrected check. **Neither
 error reached an artifact you read, and both are the same shape as the
 2026-08-20 `EXIT_RC` finding: a verification whose own mechanics were not
 verified.** Related: [[verify-the-verifier]].
+
+## 2026-08-25 — Poster art: a cached network timeout, root cause, and a code-side fix
+
+Not a batch night. **Zero Gemini cost** — Steam and SteamGridDB only; the ledger
+read `batch_used: 176` before and after.
+
+**Found via:** a report that four titles were serving no poster art —
+32370 (KOTOR), 367500 (Dragon's Dogma: Dark Arisen), 239820 (Game Dev Tycoon),
+954850 (Kerbal Space Program 2). Not QR-4's territory and not a grounding or
+safety issue; nothing about it was visible to any existing gate.
+
+**Bug 1 — a failure cached as if it were an answer.** `art.sgdb_grid()` ended in
+an unconditional `path.write_text(...)`, so every outcome was cached forever.
+All four titles' caches read `{"url": null, "reason": "request_failed:
+ConnectTimeout"}`, stamped within four minutes of each other during the
+**2026-08-21 batch** — one transient blip. Preserved before repair at
+`evals/sgdb-request-failed-2026-08-25.txt`, since `data/cache/` is gitignored.
+
+Three mechanisms made it permanent rather than transient, and all three had to
+be true: `art_block()` calls `sgdb_grid()` **without `refresh`**, so the poison
+was read rather than re-asked; `--all` goes through that same call, so it could
+not help either; and `--broken` selected from a list **hand-measured on
+2026-08-13**, which cannot contain a title that broke eight days later.
+
+**Measured before fixing.** 323 cache files: **319 `ok`, 4 `request_failed`, 0
+`not_found`.** Exactly the four reported — not systemic. Re-queried at
+PAUSE=1.0; all four resolved, HTTP 200 `image/png` verified on each URL.
+
+**Bug 2 — 216 verdicts had no `art` key at all, and this is NOT bug 1.** Found
+in the same sweep and cleanly bounded to titles generated 08-10 → 08-13, before
+art capture was wired into generation: never asked, never poisoned (hence 323
+cache files for 538 verdicts). They rendered via the tier-3 legacy pattern, so
+this was degraded rather than broken.
+
+| | before | after |
+|---|---|---|
+| verdicts with a grid | 322 | **537** of 538 |
+| verdicts with no `art` key | 216 | **0** |
+| SGDB cache | 319 `ok`, 4 `request_failed` | **537 `ok`, 1 `not_found`, 0 failures** |
+
+`216 changed = 215 that gained a grid + 1 that gained tier-1 art only`. The one
+is `2995920` (It Takes Two Friend's Pass), cached `not_found` — SteamGridDB
+answering that it has no art. An honest miss, correctly cached, deliberately
+left alone. Verified confined: all **220** modified verdicts parse byte-equal on
+both sides with `art` popped, so nothing outside that key moved.
+
+**Root cause:** the cache had one notion of "outcome" where the domain has two.
+A 404 is SteamGridDB telling us the game is not there; a ConnectTimeout is it
+telling us nothing. The module's own docstring argued for caching the first
+("a miss is an ANSWER, not a failure") and then listed "a 404, a 429, a timeout,
+a missing key" as one undifferentiated class two lines later — the confusion was
+written down before it was coded.
+
+**Real fix — cache only an answer.** `art.ANSWER_REASONS` + `_is_cacheable()`,
+with a guard before the write; a non-answer falls through to tier 3 for that run
+and leaves the cache untouched, so the next run asks again.
+`backfill_art.broken_from_cache()` replaces the hardcoded list, scanning for
+cached non-answers plus published verdicts with no cache entry; `BROKEN` is
+renamed `BROKEN_2026_08_13` and now selects nothing.
+
+**Scope was deliberately widened past the reported defect, in two places.**
+`rate_limited`, `http_*` and `bad_json` are also no longer cached — a 429 during
+a 538-request backfill poisons exactly like a timeout, and a fix covering one
+transport failure of four would read as covering the class. And `--broken`
+scans for non-**answers** rather than non-`ok`, because the literal reading puts
+a real `not_found` back in scope on every run and destroys the "asked once,
+never again" property. Both are one-line reversible and are recorded in BACKLOG
+rather than left in a diff.
+
+**Mutation-proved 6/6** (`evals/mutate_art_cache_2026-08-25.py`, logs `a01`–`a06`,
+output `evals/art-cache-mutation-2026-08-25.txt`). No network: `requests.get` is
+scripted in a child process and raises the same exception class the real failure
+did, so the reason string is byte-identical to the one on disk.
+
+| case | what it pins |
+|---|---|
+| **a01 CONTROL** | pre-fix body restored → `request_failed: ConnectTimeout` cached, `calls_after [3, 3]` — **call 2 issues no request**. The poison reproduced, not argued |
+| a02 | fixed → `calls_after [3, 4]`, returns the URL, caches `ok`. Self-heal |
+| a03 | a real 404 **is** still cached, `calls_after [1, 1]` |
+| a04 | a hit is replayed without a second request |
+| **a05 VACUITY** | "cache nothing" turns **a03 red** — a03 is load-bearing, not decorative |
+| a06 | `art.py` restored byte-identical, sha `e2a489326e8e` both sides |
+
+a05 exists because "stops caching timeouts" is satisfied perfectly by code that
+caches nothing at all, which would silently destroy the property the module was
+built for. A campaign proving only that the timeout is gone would pass on the
+correct fix and on that one equally.
+
+**What this does NOT fix:** a title that times out now pays the full attempt
+budget on every subsequent run rather than once — the deliberate trade, bounded
+by `SGDB_ATTEMPTS` and by the standing rule that art is decoration and must not
+stall a batch. No TTL and no cache-schema change; not caching a transient at all
+is smaller than expiring it and touches none of the 538 existing files.
