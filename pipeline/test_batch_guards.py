@@ -509,13 +509,22 @@ def test_a_retry_never_replays_a_cached_rejection():
 def test_prompt_names_every_word_the_guard_rejects():
     """The prompt used to carry a hand-written banned list and it fell behind
     the guard: "occasional" was rejected in code and never mentioned in the
-    prompt. Deriving one from the other is only safe if this holds."""
+    prompt. Deriving one from the other is only safe if this holds.
+
+    Checked in BOTH directions - see the two labelled blocks below. Direction A
+    is the original one (guard -> prompt); direction B was added 2026-08-25
+    because A alone cannot see a word the prompt names that the guard no longer
+    rejects."""
     print("\nsynthesis: prompt banned-list matches the guard")
     import prevalence_guard
     import synthesize
     prompt = synthesize.SYSTEM_INSTRUCTION
+    # DIRECTION A - banned_words() subset-of prompt. Catches a word the guard
+    # REJECTS but the prompt never NAMES: synthesis then fails on a word nothing
+    # told the model to avoid ("occasional technical crashes", the drift that
+    # created the derivation).
     missing = [w for w in prevalence_guard.banned_words() if w not in prompt]
-    check("every guard-rejected word appears in the prompt", not missing,
+    check("A: every guard-rejected word appears in the prompt", not missing,
           missing)
     check("  consensus language is still named", "consensus" in prompt)
     # FREED 2026-08-21: event frequency is not prevalence. These describe how
@@ -572,6 +581,38 @@ def test_prompt_names_every_word_the_guard_rejects():
           all(prevalence_guard.check_claim("the game has %s problems" % w)
               or prevalence_guard.check_claim("%s players report problems" % w)
               for w in prevalence_guard.banned_words()))
+    # DIRECTION B - prompt subset-of the guard's effective set. Added 2026-08-25.
+    # Catches the mirror of A: a word the prompt NAMES that the guard does not
+    # actually reject. Not hypothetical - the 2026-08-21 split FREED words in
+    # the guard, and a model told to avoid a word it is allowed to use spells
+    # around it rather than dropping the fact (222880 wrote "Windows eleven",
+    # shipped). The check just above is NOT this: it iterates banned_words(),
+    # which already filters by check_claim, so it passes by construction.
+    #
+    # Parsed out of the prompt TEXT rather than re-derived from banned_words():
+    # the two are wired together today, so re-deriving would pass by
+    # construction and test nothing.
+    #
+    # LIMIT, stated so this pair is not over-trusted: when banned_words()' own
+    # extraction misses a word the guard rejects - the open everyone/nobody/
+    # no one item, BACKLOG 2026-08-25 - NEITHER direction sees it. A reads a
+    # list that already omits the word; B never encounters it. Closing that
+    # needs the extraction fixed, not another assertion here.
+    m = re.search(r"BANNED WORDS: ([^.]*)\.", prompt)
+    named_in_prompt = [w.strip() for w in m.group(1).split(",")] if m else []
+    # Anti-vacuity: without this, a template edit that moves the marker leaves
+    # B iterating an empty list and passing while checking nothing.
+    check("B: the prompt's banned list parses and is non-empty",
+          len(named_in_prompt) >= 5, named_in_prompt)
+    # Same two frames banned_words() uses, so "rejected on its own" means the
+    # same thing in both directions.
+    unenforced = [w for w in named_in_prompt
+                  if not (prevalence_guard.check_claim(
+                              "the game has %s problems" % w)
+                          or prevalence_guard.check_claim(
+                              "%s players report problems" % w))]
+    check("B: every word the prompt names is really rejected by the guard",
+          not unenforced, unenforced)
     check("the prompt no longer seeds the banned word 'consensus' itself",
           "into a consensus" not in prompt)
     check("claim ids are forbidden in prose", "1b. Claim ids go in" in prompt)
