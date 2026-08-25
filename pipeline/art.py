@@ -107,6 +107,21 @@ def steam_art(appid, details=None):
 
 
 # ---------------------------------------------------------------- tier 2
+# Outcomes that are an ANSWER ABOUT THE GAME, and so may be cached forever.
+# Everything else - a request that never completed, a 429, a 5xx, unparseable
+# JSON - is a failure of the REQUEST and says nothing about whether art exists.
+# Caching those was the 2026-08-25 defect: four titles from the 2026-08-21 batch
+# froze on {"reason": "request_failed: ConnectTimeout"} and nothing would ever
+# have asked again, because art_block() calls sgdb_grid() WITHOUT refresh and
+# backfill_art --broken ran off a hardcoded list that could not know about them.
+ANSWER_REASONS = ("ok", "not_found", "no_clean_candidate", "unsuccessful")
+
+
+def _is_cacheable(reason):
+    """True when `reason` is SteamGridDB answering, not the request failing."""
+    return (reason or "").split(":", 1)[0].strip() in ANSWER_REASONS
+
+
 def _sgdb_cache_path(appid):
     return CACHE_DIR / str(appid) / "steamgriddb.json"
 
@@ -117,11 +132,16 @@ def sgdb_grid(appid, refresh=False):
     NEVER call this for an OG image - see the module docstring.
 
     Cached permanently on purpose: a title's art does not churn, and the cache
-    records misses as well as hits, so an obscure title is asked about once and
-    never again. Any non-success outcome - 404 "Game not found", a 429, a
+    records real MISSES as well as hits, so an obscure title is asked about once
+    and never again. Any non-success outcome - 404 "Game not found", a 429, a
     timeout, a missing key - returns None so the caller falls through to
     tier 3. It never retries past the attempt budget: art is decoration, and a
     batch night must not stall on a decoration service.
+
+    A MISS AND A FAILURE ARE NOT THE SAME THING, and only the miss is cached.
+    A 404 is SteamGridDB telling us the game is not there; a ConnectTimeout is
+    it telling us nothing. See ANSWER_REASONS above - caching the second kind
+    is what froze four titles for four days (BACKLOG 2026-08-25).
     """
     path = _sgdb_cache_path(appid)
     if path.exists() and not refresh:
@@ -183,6 +203,11 @@ def sgdb_grid(appid, refresh=False):
             reason = "no_clean_candidate"
         break
 
+    if not _is_cacheable(reason):
+        # A non-answer falls through to tier 3 for THIS run and leaves the cache
+        # untouched, so the next run asks again instead of inheriting a network
+        # blip as a permanent miss. picked is None on every such path.
+        return picked
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps({"appid": appid, "url": picked,
                                 "reason": reason, "source": "steamgriddb"},

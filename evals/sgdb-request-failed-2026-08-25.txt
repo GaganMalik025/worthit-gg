@@ -1,0 +1,14 @@
+Poisoned SteamGridDB cache entries, captured 2026-08-25 BEFORE re-query.
+Cause: request_failed cached identically to a real miss (pipeline/art.py:187,
+unconditional write). All four written during the 2026-08-21 batch.
+
+32370    mtime=2026-08-21T16:43:44Z  {"appid": "32370", "url": null, "reason": "request_failed: ConnectTimeout", "source": "steamgriddb"}
+367500   mtime=2026-08-21T16:47:54Z  {"appid": "367500", "url": null, "reason": "request_failed: ConnectTimeout", "source": "steamgriddb"}
+239820   mtime=2026-08-21T16:47:48Z  {"appid": "239820", "url": null, "reason": "request_failed: ConnectTimeout", "source": "steamgriddb"}
+954850   mtime=2026-08-21T16:43:44Z  {"appid": "954850", "url": null, "reason": "request_failed: ConnectTimeout", "source": "steamgriddb"}
+
+--- re-query with refresh=True, PAUSE=1.0 (art.py's own value: 1.0) ---
+32370    reason=ok                     url=https://cdn2.steamgriddb.com/grid/6a0de0c3cc39d88613eac5f05ba6c94f.png
+367500   reason=ok                     url=https://cdn2.steamgriddb.com/grid/df099083450295b1ead6bc471c031a88.png
+239820   reason=ok                     url=https://cdn2.steamgriddb.com/grid/46559f55f8ce2ef22fad777f7883ffc3.png
+954850   reason=ok                     url=https://cdn2.steamgriddb.com/grid/299870d9473dcfa0939ab7dbbbd58ee7.png

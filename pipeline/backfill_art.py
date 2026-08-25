@@ -32,13 +32,50 @@ import fetch_reviews                                   # noqa: E402
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 VERDICTS = ROOT / "site/public/verdicts"
 
-# Measured 2026-08-13 over the full 411-title manifest. The first four are
-# published; the rest are in the manifest and would break as they publish.
-BROKEN = [3527290, 3354750, 3764200, 2623190, 2807960,
-          4704690, 2483190, 3949040, 3513350, 3405690,
-          1374490, 4128580, 3124540]
+# Kept as history, no longer used to select anything. Measured 2026-08-13 over
+# the then-411-title manifest, by hand. A hand-measured list cannot know about a
+# failure that happens after it was written, which is exactly how the 2026-08-25
+# defect hid: 32370, 367500, 239820 and 954850 froze on a ConnectTimeout during
+# the 2026-08-21 batch, were on nobody's list, and so --broken never touched
+# them. broken_from_cache() replaces it by asking the cache instead.
+BROKEN_2026_08_13 = [3527290, 3354750, 3764200, 2623190, 2807960,
+                     4704690, 2483190, 3949040, 3513350, 3405690,
+                     1374490, 4128580, 3124540]
 
 PAUSE = 1.0
+
+
+def broken_from_cache(published):
+    """Published titles we do NOT hold a real SteamGridDB answer for.
+
+    Two ways that happens, and both belong here:
+
+      * a cached outcome that is not an answer (art._is_cacheable) - a timeout,
+        a 429, a 5xx. Since 2026-08-25 art.py no longer writes these, so this
+        branch only ever finds entries left by the pre-fix code. It is kept
+        because those are precisely the ones nothing else can see.
+      * no cache entry at all - the title was never asked.
+
+    A cached `not_found` is deliberately NOT here. It is SteamGridDB answering
+    "that game is not in the database", and re-asking it on every backfill is
+    the exact behaviour the module's docstring exists to prevent ("asked about
+    once and never again"). It Takes Two Friend's Pass (2995920) is the live
+    example: a real miss, correctly cached, correctly left alone.
+    """
+    out = []
+    for appid in published:
+        path = art_mod.CACHE_DIR / str(appid) / "steamgriddb.json"
+        if not path.exists():
+            out.append(appid)
+            continue
+        try:
+            reason = json.loads(path.read_text(encoding="utf-8")).get("reason")
+        except (ValueError, OSError):
+            out.append(appid)           # unreadable is not an answer either
+            continue
+        if not art_mod._is_cacheable(reason):
+            out.append(appid)
+    return out
 
 
 def targets(args):
@@ -47,7 +84,7 @@ def targets(args):
         return published
     if args.appid:
         return list(args.appid)
-    return [a for a in BROKEN if a in published]
+    return broken_from_cache(published)
 
 
 def main():
