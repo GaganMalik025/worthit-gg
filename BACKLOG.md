@@ -2410,3 +2410,45 @@ not flag more than half the vocabulary. **The lesson is the memory's**
 ([[narrowing-a-guard-needs-a-coverage-diff]]): a checker written from the rule it
 checks agrees with itself. Only the mutation caught either draft.
 
+2026-08-26 | **Steam declares a companion listing's parent appid for free, in a
+field the pipeline currently throws away — and the one title it would have
+helped is now backfilled by hand instead** | build, the 2995920 poster-gap
+investigation | `2995920` ("It Takes Two Friend's Pass") was the **only**
+`not_found` in 538 SteamGridDB caches: SteamGridDB indexes the base game
+(`1426210`, `reason: ok`) and not the companion listing. **Fixed for that title
+only, by writing the parent's already-verified grid URL into the published
+verdict's `art` block** — proven confined, byte-equal outside the `art` key, the
+only addition being `grid`. `data/cache/2995920/steamgriddb.json` is
+**deliberately left at `not_found`**: it is a true SteamGridDB answer for that
+appid and overwriting it would cache a lie, the mirror of the 08-25
+`request_failed` bug. Verdicts now carry a grid on **538 of 538**.
+
+**THE SIGNAL, recorded because it is the reusable part.** A fresh unfiltered
+`appdetails` call for 2995920 returns the child's own `name`, `type: "game"` and
+`header_image` on `/apps/2995920/`, but `steam_appid: 1426210` — **Steam
+reporting the parent as the canonical appid**. `fullgame` is **null**, so the
+obvious field is not the one that carries it. This costs **nothing to capture**:
+`fetch_reviews.py:201` already makes this exact request and passes
+`filters=basic`, which is precisely what strips `steam_appid` (it is why the
+cached blob holds only name/header/capsule).
+
+**LIMIT, stated rather than glossed: the control basis is n=4.** `1426210`,
+`1145360` (Hades) and `319630` (Life is Strange - Episode 1) all return
+`steam_appid == requested`, and only 2995920 diverges — so the field fires on
+exactly the companion listing and none of the controls. Four titles is enough to
+show the divergence is real and **not** enough to assume the field's semantics
+generalise. Anything built on it should re-measure across a wider sample first.
+
+**DEFERRED DECISION: a fourth art-resolution tier.** `art.py` resolves three
+tiers (Steam appdetails → SteamGridDB by appid → legacy CDN pattern). The
+generalisable fix is a tier that, on a tier-2 `not_found`, resolves the parent
+appid from `steam_appid` and retries SteamGridDB against it. **Not built, at
+n=1.** A name-regex sweep of all 546 named appids (catalog 411 + verdicts 538)
+finds only **2** companion/demo/pass-style listings, and the other one
+(`319630`) resolves `ok` on its own. That sweep can only find companions that
+say so in their name, so it is a floor; the harder bound is 1 `not_found` in
+538. This earns its complexity only if more companion titles enter the catalog —
+plausible if/when the D2 catalog walk happens, which is the point to revisit it.
+Any such tier must keep tier 2's OG rule intact: a parent's grid is still
+community art and still may never reach an unfurl image.
+
