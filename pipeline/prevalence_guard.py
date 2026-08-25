@@ -44,8 +44,26 @@ PATTERNS = [
     (r"\bnumerous\b|\bcountless\b|\bplenty\s+of\s+" + CROWD, "quantifier over people"),
     (r"\bhalf\s+(?:of\s+)?(?:the\s+)?" + CROWD, "proportion"),
     (r"\b(?:a\s+)?(?:third|quarter|fifth)\s+of\b", "proportion"),
-    (r"\b(?:all|every|everyone|nobody|no\s+one|none)\s*" + CROWD + r"?\b(?!\s+(?:mission|level|run))",
-     "absolute quantifier"),
+    # Absolute quantifiers, split 2026-08-25 on content-vs-population. The old
+    # single rule made CROWD optional, so "all" fired with no crowd noun at all
+    # and rejected "you expect free access to all content" - the game's content,
+    # not a share of players. Same shape as the 2026-08-21 frequency split: the
+    # word is not the violation, the referent is.
+    #
+    # The rule it replaced also carried a (?!\s+(?:mission|level|run)) carve-out
+    # that NEVER FIRED - \s* backtracks over the space and the lookahead is
+    # evaluated past it, so "every mission" matched anyway. Requiring CROWD
+    # covers those properly instead of by denylist, so it is not reinstated.
+    (r"\ball\s+" + CROWD, "absolute quantifier"),
+    (r"\bevery\s+" + CROWD, "absolute quantifier"),
+    (r"\bnone\s+of\s+(?:the\s+)?" + CROWD, "absolute quantifier"),
+    # Bare "none" names no referent, and the elided one in this register is
+    # people: "none recommend the sequel". "none of X" states its referent and
+    # is judged by X, above. Without this the split would have NARROWED the
+    # guard - bare population claims would pass unflagged.
+    (r"\bnone\b(?!\s+of\b)", "absolute quantifier"),
+    # These are about people whatever follows them, so they need no crowd noun.
+    (r"\b(?:everyone|nobody|no\s+one)\b", "absolute quantifier"),
 
     # Consensus language: a claim that everyone agrees IS a claim about how many
     # people. Kept banned, and deliberately NOT part of the 2026-08-21 frequency

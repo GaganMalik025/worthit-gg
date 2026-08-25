@@ -541,7 +541,11 @@ def test_prompt_names_every_word_the_guard_rejects():
     for phrase in ("most players refund early",
                    "the majority of reviewers agree",
                    "all players hit this wall",
-                   "free access to all content",
+                   "every gamer bounces off it",
+                   "none of the players finish it",
+                   # bare "none" - elided subject is people. Freeing "all" for
+                   # content must not narrow this away (BACKLOG 2026-08-25).
+                   "none recommend the sequel",
                    "40% of buyers report crashes",
                    "a third of reviewers bounce",
                    "countless players complain",
@@ -553,7 +557,14 @@ def test_prompt_names_every_word_the_guard_rejects():
     for phrase in ("regular updates from the studio",
                    "routine patrols around the base",
                    "rare crafting materials are hard to farm",
-                   "a common enemy type"):
+                   "a common enemy type",
+                   # 2026-08-25: absolute quantifiers scoping CONTENT. These
+                   # were rejected until the content-vs-population split; the
+                   # first is RuneScape's real attempt-2 string.
+                   "free access to all content",
+                   "all achievements require a subscription",
+                   "every mission ends the same way",
+                   "none of the DLC is worth it"):
         check("  %r still passes" % phrase,
               not prevalence_guard.check_claim(phrase),
               str(prevalence_guard.check_claim(phrase)))
