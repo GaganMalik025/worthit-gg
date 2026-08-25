@@ -130,6 +130,91 @@ Related: [[verify-the-verifier]].
 > **36 pairwise comparisons, distinct within and independent across, `rc=0`**
 > (`evals/sample-overlap-2026-08-21.txt`).
 
+> **2026-08-25, RESOLVED — the RE-AUDIT was taken, over the other three
+> options.** Owner decision. Of the four repairs this entry listed, the other
+> three all decline to re-verify: correcting the headline counts in place edits
+> an audit record after the fact, adding the dedup guarantee to the sampler
+> prevents a repeat without checking the rounds that already happened, and
+> wiring the checker into the post-batch sequence does the same. Only a fresh
+> draw answers the question the entry actually asks — whether those reviews were
+> ever read.
+>
+> **It needed a tool change first, which is why it had not been done.**
+> `make_audit_sample.py` derived its scope solely from `data/batch_state.json`,
+> and **none of the three titles is in that file** — Hades `1145360`, GTA:SA
+> Definitive `1547000` and Hollow Knight `367520` are live-generated or
+> pre-batch, so no `--date` value could reach them. `--appids` now takes an
+> explicit list (or a file path), mirroring `run_batch.py`, and replaces the
+> scope query and nothing else: same RNG, same verdict-word stratification, same
+> `seen`-set dedup, same `pool[b].pop()` draw. **Proved by regression rather than
+> asserted** — regenerating the committed 2026-08-24 round with the new code
+> produces a **byte-identical file**.
+>
+> **ONE round, not two, and that is the substantive decision.** Both originals
+> audit Hades, so their citation pools share all 40 of its cited reviews;
+> two independent 20-draws collide on ~2.4, which is exactly the "share 2
+> reviews with each other" this entry recorded. Regenerating them separately
+> would have presented **40 slots and audited ~38 distinct reviews** — a milder
+> instance of the very defect being repaired — and would have failed
+> `check_sample_overlap.py` on the pair, correctly. The cross-round overlap was
+> never a sampler bug: it is a property of two rounds sharing a title, the same
+> way independence elsewhere is a property of each round scoping to one night's
+> `new_ids`.
+>
+> `evals/audit-4.4-2026-08-25-reaudit.md`, seed `20260825` (unused; the dated
+> rounds hold `20260812`–`20260821` and `20260824`), covers all three titles
+> once: **3 verdicts, 20 slots, 20 distinct reviews, 0 duplicates**, 5 per
+> cohort. `check_sample_overlap.py` across the **11** dated rounds including it:
+> **55 pairwise comparisons, distinct within and independent across, `rc=0`**
+> (`evals/sample-overlap-2026-08-25.txt`). The two remaining one-off files this
+> entry's sweep also touched, `audit-4.4-day3.md` and `audit-4.4-sample.md`,
+> were re-checked and are clean at 20/20 distinct each — so nothing is left
+> unrepaired.
+>
+> **The originals are kept byte-identical** at `evals/superseded-audits/`,
+> verified against their committed blobs. Moved rather than renamed in place so
+> they fall outside the `evals/audit-4.4-*.md` glob: a future checker run cannot
+> then pick up rounds whose duplicates are known and explained and report a
+> failure history has already answered. They are **not annotated** — this entry
+> declined "correct the counts in place" as editing a record after the fact, and
+> prepending a pointer is the same move in a smaller coat. The explanation lives
+> in `evals/superseded-audits/README.md` and in a Supersedes block on the new
+> round.
+>
+> **Audit read, and it passes.** All 20 citations are clean for QR-4: no ♥
+> sequences anywhere in the sample, and the strongest language across the twenty
+> is "Holy crap" and "a massive pile of bugs" — neither NSFW nor a slur. Claims
+> are fair readings of their texts. One citation needed the full review to
+> confirm: #18 (`224167218`) reads as unsupported in the sample, because the
+> claim "original versions were removed from the Steam store" is carried by the
+> review's **last** sentence — "the old version has vanished from the steam
+> store" — which falls past the sample's text truncation. It is properly
+> grounded; the sample just cannot show it. Recorded below as a usability note.
+
+2026-08-25 | **Two small defects in `make_audit_sample.py`, found by using it —
+one fixed as a direct consequence, one recorded** | build, the re-audit above |
+**Fixed, because leaving it would have shipped the defect being repaired:** two
+counts in the output were hardcoded to 10 — the `## A. Ten verdicts to
+spot-check` heading and the `- [ ] Verdicts: all 10 read as defensible` result
+line. Correct for every date-scoped round, which always draws 10, and false for
+an `--appids` round that holds fewer titles. A round asserting "all 10" above a
+list of 3 is precisely the overstated-coverage defect the 2026-08-20 entry is
+about, so it could not be left in place while repairing that. Both now read from
+`len(sample_a)`; a 10-verdict round renders byte-identically, which the 08-24
+regression confirms.
+**Recorded, not fixed:** `--out` has always crashed at the final
+`print(f"wrote {OUT.relative_to(ROOT)}")` when given any path that is not
+absolute-and-inside the repo — `ValueError: not in the subpath`. The file is
+written correctly first, so the failure is cosmetic and post-write, and it went
+unnoticed because every dated round used the default `--out`. One line, but it
+is outside the narrow scope this change was given.
+**Also worth knowing before the next audit is read:** section B truncates review
+text, so a claim supported only by a late sentence looks unsupported in the
+sample. Citation #18 of the 08-25 round is a live example. The auditor's remedy
+is to open the verdict JSON; the alternative — printing whole reviews — would
+make a 20-citation round unreadable. Not a defect so much as a limit worth
+naming, since an auditor who does not know it may record a false finding.
+
 2026-08-20 | **`run_batch.py`'s exit code is never printed in its own output, so
 two RESULTS.md entries recorded an exit status that was inferred from a clean
 summary block rather than observed** | build, 2026-08-20 batch night | Tonight's
@@ -1001,6 +1086,62 @@ wants more than one night of evidence. Cheap interim step when it is picked up:
 record the failure with a `timed_out` outcome, leave it non-terminal, and count
 retries so a permanent failure becomes visible instead of silent.
 
+> **2026-08-25, INVESTIGATED (no code change) — it has not recurred, and the
+> evidence base is smaller than it looks.**
+>
+> **Method.** A title that raises inside `run_title()` never reaches `done`
+> (`run_batch.py:278`), so it is missing from the summary total *and* from
+> `batch_state` — the two cannot disagree about it. Its only direct trace is the
+> `[ERR ]` line at `:280`. So the sweep is: every `[ERR ]` line in every batch
+> log, plus a per-night reconciliation of each log's title lines against its
+> `batch_state` record.
+>
+> | night | log lines | log calls | summary | retried later | no record |
+> |---|---|---|---|---|---|
+> | 2026-08-18 | 45 | 397 | 397 | 1 | **0** |
+> | 2026-08-19 | 43 | 390 | 390 | 1 | **0** |
+> | 2026-08-20 | 46 | 399 | 399 | 1 | **0** |
+> | 2026-08-21 | 41 | 397 | 397 | 4 | **0** |
+> | 2026-08-24 | 25 | 176 | 176 | 0 | **0** |
+>
+> **Zero `[ERR ]` lines in any batch log, and zero titles present in a log but
+> absent from `batch_state`.** Log calls equal the summary figure exactly on all
+> five nights. The "retried later" column is benign and is *not* this bug:
+> `record()` overwrites a title's entry when a later night retries it, so a
+> `stage_failed` title's `at` moves forward (Insurgency 08-18→08-19; A Way Out,
+> A Plague Tale, BidKing, RuneScape 08-21→08-24).
+>
+> **THE LIMIT, which is the most important part of this answer: only five nights
+> can be checked.** Batch logs exist from 08-18 onward — the
+> `run_batch_logged.sh` convention started then — so **08-12 through 08-17 have
+> no log and therefore no `[ERR ]` observable at all**, and the daily ledger is
+> not retained historically. For those six nights the question is not "no" but
+> "unanswerable from the artifacts". Two false leads were chased down and
+> discarded rather than reported: an apparent five-title gap was my own
+> matching error (`run_title` prints `title[:38]`, so the log truncates), and a
+> sixth was a 38-char cut landing on a space (`"Shadow of the Tomb Raider:
+> Definitive "`). Both reconcile exactly once matched on the truncated prefix.
+>
+> **What the un-logged nights DO record, from RESULTS.md, is a SECOND mechanism
+> rather than a recurrence of this one.** 2026-08-17: the operator lost
+> connectivity mid-run, the process died with no summary block, and **two
+> in-flight titles spent 14 calls with no record** — EA SPORTS FC 25 (8) and Rain
+> World (6), ledger and pacer at 386 against `batch_state`'s 372. That entry
+> already names it as "the 2026-08-12 shape reached by a different route —
+> process death rather than an exception inside `run_title()`". Distinct cause,
+> same accounting hole. The 08-16 entry's 10-call gap is **not** an instance:
+> that is Insurgency's failed synthesis, recorded in `batch_state` and merely
+> excluded from the per-published-title mean.
+>
+> **So: one instance of THIS mechanism ever (Spider-Man, 08-12, a timeout), no
+> recurrence across the five nights that can be checked, one instance of a
+> sibling mechanism (08-17), and six nights that cannot be checked either way.**
+> That is not enough to decide timeout-terminal-vs-transient, which is what this
+> entry said it was waiting for. The cheap interim step it proposes — record a
+> `timed_out` outcome in a `finally`, leave it non-terminal, count retries — is
+> unaffected by any of this and would make the next instance visible instead of
+> silent. Still not done. Related: [[verify-the-verifier]].
+
 2026-08-12 | **The live and batch quota ledgers are two independent counters of
 one 500/day budget** | build, pre-batch LIVE_QUOTA check | Tonight's parity check
 found `live_used` at 13 in the `LIVE_QUOTA` GitHub variable against 5 in
@@ -1587,6 +1728,27 @@ priority: this one has a running meter. Related: [[verify-the-verifier]].
 > spare tonight. It retries on the next batch night, where it should now cost
 > ~1 synthesis call instead of 3.
 
+> **2026-08-25, the two items this resolution left open are both closed —
+> differently.**
+>
+> **"free access to all content" is FIXED** by the content-vs-population split
+> in the entry dated today. Not a blanket freeing of `all`: the quantifier now
+> requires a crowd noun, so "all players recommend this" is rejected exactly as
+> before.
+>
+> **The `unanimously`/`unanimous`/`consensus` seam is REVIEWED AND ACCEPTED
+> AS-IS.** No code change. It is cosmetic: `unanimously` is freed as a frequency
+> adverb while `unanimous` and `consensus` stay banned under `consensus
+> language`, a category the 08-21 decision never covered. **Measured rather than
+> assumed before accepting it — 0 occurrences of `unanimously`, `unanimous` or
+> `consensus` in the rendering prose of all 538 published verdicts** (taglines,
+> `for_you_if`, `not_for_you_if`, every cohort summary and claim; citation
+> `review_text` excluded, since that is a reviewer's words and not ours).
+> Nothing in the catalog exercises it, so closing the seam would change no
+> output and would spend a prompt change — and therefore a synthesis cache
+> invalidation across 1,009 entries — to buy nothing. Left as written, with this
+> note as the record that it was looked at rather than forgotten.
+
 2026-08-21 | **BidKing: a catalogued title too small to ever produce a verdict,
 refusing correctly and retrying nightly** | build, 2026-08-21 batch night |
 `4128580` failed the verdict stage at **0 calls in 9.1s**. Not a bug and not a
@@ -1879,3 +2041,102 @@ failures. Proven confined: all 220 modified verdicts parsed on both sides with
 > transient failures with a short expiry) was not taken, because not caching them
 > at all is smaller and needs no schema change to 538 existing files.
 > Related: [[verify-the-verifier]].
+
+2026-08-25 | **"all content" is the game's content, not a share of players —
+the absolute quantifier is split on referent, the way frequency was split on
+2026-08-21** | build, owner decision closing the last open item of the 08-21
+guard split | The 08-21 resolution freed the frequency words and recorded
+`not_for_you_if[0]: "you expect free access to all content"` — RuneScape's
+synthesis attempt 2 — as **still rejected and still a false positive**, "the same
+false-positive family one category over". This closes it.
+**The mechanism, read before anything was changed.** The rule was
+
+    \b(?:all|every|everyone|nobody|no\s+one|none)\s*CROWD?\b(?!\s+(?:mission|level|run))
+
+and `CROWD` is **optional**, so `all` matched with no crowd noun at all. That is
+the whole defect: "all content", "all achievements", "all weapons", "every
+mission" were rejected as population claims. Requiring `CROWD` is the entire fix
+for those, and it leaves "all players recommend this" rejected untouched.
+**Split on whether the word is inherently about people**, five patterns:
+`all`/`every`/`none of` require a crowd noun; `everyone`/`nobody`/`no one` stay
+bare because they are lexically about people whatever follows.
+**Bare `none` needed its own rule, and missing it would have been a silent
+NARROWING.** `none` is not lexically about people ("none of the DLC is worth
+it"), but bare `none` elides its referent and in this register the elided one is
+people — "none recommend the sequel". Requiring `none of the CROWD` alone would
+have let bare population claims through, a case the old optional-`CROWD` rule
+*was* catching. `\bnone\b(?!\s+of\b)` splits it: bare rejects, "none of X" is
+judged by X. **Caught in review of the plan, not by a test** — no test case used
+the bare form — which is why it now carries its own mutation control (q07).
+
+> **Verified, 9/9** (`evals/mutate_prevalence_all_2026-08-25.py`, logs
+> `evals/mutation-logs/q01`–`q09`, output
+> `evals/prevalence-all-mutation-2026-08-25.txt`). **Two controls, because a
+> guard change can fail in both directions and each direction is blind to the
+> other's tests:** q01 restores the pre-split rule and confirms it still rejects
+> RuneScape's real string; q06 deletes the rules entirely and requires all
+> **eleven** population phrases to leak; q07 deletes **only** the bare-`none`
+> rule and requires **exactly** the two bare cases to leak and no others, by
+> name. q04 and q05 are the phrase batteries (11 population REJECT, 7 content
+> PASS), each asserted per phrase so a failure says which one moved.
+> `prevalence_guard.py` restored byte-identical, sha `dbf81862de7e` both sides.
+>
+> **`pipeline/test_batch_guards.py` had encoded the old behaviour and was
+> updated.** The 08-21 work put `"free access to all content"` in its
+> *still-rejected* battery as evidence the frequency split had not gutted the
+> rule. That is now the phrase being freed, so it moves to the must-pass list
+> alongside three more content forms, and the still-rejected list gains
+> "every gamer bounces off it", "none of the players finish it" and bare "none
+> recommend the sequel". **Proven able to fail**: against the pre-split rule the
+> suite reports 4 failures naming each content phrase.
+>
+> **The prompt moves by exactly one word.** `banned_words()` goes 7 → 8, gaining
+> `none` (the other four patterns are written word-outside-the-group like
+> `many`/`few`/`some`, so the extractor does not harvest them). That is
+> **correct rather than a wart** — `most` is already named in the prompt while
+> "the most polished" passes the guard, so a context-dependently rejected word
+> being named is the established design, and it satisfies the 08-21 rule that a
+> word is either rejected and named or neither. **The cost is real and is stated
+> rather than buried: `SYSTEM_INSTRUCTION` changes, so all 1,009 cached
+> synthesis prompts across 537 titles are invalidated** — the 2026-08-24
+> retry-key class. Paid only on a regenerate or `--force` run; a normal batch
+> night skips titles that already have a verdict.
+>
+> **RuneScape was NOT force-regenerated**, per instruction; it retries naturally.
+> **And the planned replay of its three cached responses can no longer
+> demonstrate the flip** — worth stating plainly rather than quietly dropping.
+> Its veteran cohort was re-extracted on 08-24 (the 2 calls investigated that
+> night) and now holds a single claim `vet-396d03`; the two 08-21 cached
+> synthesis responses cite `vet-b1dcba`, `vet-8f9e4c`, `vet-17b053`, which no
+> longer exist, so `check_response()` now rejects them on invariant 4
+> (`unknown_claim_id`) before prevalence is ever evaluated
+> (`evals/stage-failures-2026-08-25-all-freed.txt`). The evidence for the flip is
+> therefore q01/q02 on the exact string, not the replay. The title already
+> published on 08-24, so nothing is waiting on this.
+
+2026-08-25 | **Two latent defects in the same guard, found while reading it —
+recorded, NOT fixed** | build, the absolute-quantifier split above | Both
+predate today's change and neither is touched by it.
+**1. The `(?!\s+(?:mission|level|run))` carve-out never fired.** Someone had
+already hit the content-vs-population problem and patched it with a three-word
+denylist, and the patch was dead: `\s*` backtracks over the space so the
+lookahead is evaluated one position further along, and "every mission" matched
+anyway. Verified directly before the rewrite. It is not reinstated — requiring a
+crowd noun covers `mission`/`level`/`run` properly, since none is a `CROWD`
+noun — but the lesson is that **a lookahead behind a variable-width `\s*` is not
+a guard**, and nothing tested it.
+**2. `banned_words()` silently drops an entire alternation, so five words the
+guard rejects were never named to the model.** Its extractor is
+`re.findall(r"\(\?:([a-z|\s]+)\)", pattern)`; the old absolute-quantifier group
+contained `no\s+one`, whose backslash is not in the `[a-z|\s]` class, so the
+group matched nothing and `all`, `every`, `everyone`, `nobody`, `none` never
+reached the prompt. **This reframes the RuneScape failure**: the model was not
+spelling around a ban the way `Windows eleven` was — it was **never told** `all`
+was banned. That is the 2026-08-21 "either rejected and named, or neither" rule
+already broken, independently of today's split, and `test_batch_guards.py:517`
+cannot see it because it checks only `banned_words() ⊆ prompt`, never the
+reverse. **Still true after today for `everyone`/`nobody`/`no one`**, whose
+pattern keeps the `no\s+one` group. Not fixed because repairing the extractor
+would add words to the prompt and invalidate all 1,009 cached synthesis prompts —
+a spend decision, not a bug fix, and one worth taking deliberately rather than as
+a ride-along. Related: [[verify-the-verifier]].
