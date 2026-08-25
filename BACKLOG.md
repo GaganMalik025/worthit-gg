@@ -1949,6 +1949,104 @@ cost, which is defensible now that the cost has a number. **Explicitly out of
 scope for today by owner instruction.** What today establishes is only that the
 number is 599 and not "unknown". Related: [[verify-the-verifier]].
 
+> **2026-08-25, FIXED — option 1 (canonical failure signature), by owner
+> decision. The property holds and is mutation-proved; the payoff is 14, not
+> 599, and that is the important half of this entry.**
+>
+> **The change is four lines of prose.** `_problem_line`'s `prevalence_language`
+> branch (`extract_claims.py:254`) no longer names the matched terms. It renders
+> a fixed category sentence instead, so nothing derived from
+> `prevalence_guard.PATTERNS` reaches the text `cache_path()` hashes. The guard
+> itself is untouched — same rejections, same
+> `ground_check` failure string `prevalence_language:<terms>`, which is a
+> pipeline diagnostic and never entered a key. The other four branches are
+> byte-identical.
+>
+> **Scope confirmed rather than assumed: extraction is the only place this
+> costs anything.** Synthesis has the same shape — its retry prompt embeds the
+> failure list, prevalence terms included (`synthesize.py:556`) — but
+> `synthesize.py:864` lets **only attempt 0 read the cache**, so a synthesis
+> retry key that moves invalidates nothing that would ever have been replayed.
+> `extract_claims._generate` (:621) reads on every attempt. One readable path,
+> and it is now closed.
+>
+> **The driver reproduces the committed 599 exactly before it is believed.**
+> `evals/measure_retry_key_stability_2026-08-25.py --mode replay0821
+> --patterns-ref 0211b2b^` replays the real 08-21 split against the guard **as
+> it stood that night** (`--patterns-ref` loads `prevalence_guard.py` from a git
+> ref, because `PATTERNS` changed on 08-25 and today's tree cannot be expected
+> to reproduce the number). It returns **599 across 300 titles, 1,803 reachable,
+> cohorts early 170 / mid 173 / refund_window 121 / veteran 135, steps 512 + 87**
+> — every figure in `evals/retry-key-blast-2026-08-24.txt`, independently
+> re-derived. Raw output `evals/retry-key-stability-2026-08-25-replay0821.txt`.
+> Zero Gemini cost, `data/filtered/` + `data/cache/extract/` only.
+>
+> **What the fix would have saved on 08-21: 14 of 599.**
+>
+> | of the 599 invalidated retries | | why |
+> |---|---|---|
+> | no retry issued at all under the new guard | **217** | every claim passes; the call does not happen |
+> | wording-only — same claims, same other reasons, different matched terms | **14** | **what this fix owns** |
+> | a genuinely different complaint | **368** | a reason left the list; the model is told one fewer thing |
+>
+> Under the new prose the same replay invalidates **585 across 297 titles**.
+> All **15** wording-only steps in the corpus are stabilised (0 move; 14 of the
+> 15 have a file on disk, hence 14 rather than 15).
+>
+> **This corrects the cost figure above.** "Roughly 599 calls, 1.5 days of the
+> entire Flash-Lite ceiling" overstates by at least the 217: those cohorts cost
+> one call FEWER after the split, not one more. The repeat cost was ~382, and
+> after this change ~368.
+>
+> **And it corrects the entry's central claim, which generalised from one
+> title.** "The part that changed is the guard's complaint wording, not the
+> grounding verdict" is true of RuneScape and false of the population: for 585
+> of 599 the grounding verdict itself moved. RuneScape is in that majority —
+> `frequent` and `persistent` were its claims' only prevalence terms, so the
+> reason vanished rather than being reworded. **The fix does not save the case
+> that motivated it.** No reading of "canonical signature" would: reason codes
+> without terms still differ between `{only_1, prevalence}` and `{only_1}`.
+>
+> **Forward-looking it is smaller still.** Freeing `numerous` from today's guard
+> (`--mode future --free numerous`,
+> `evals/retry-key-stability-2026-08-25-future-numerous.txt`) moves 55 keys and
+> the fix saves **0** — no claim in the corpus carries `numerous` alongside a
+> second still-banned term. The wording-only class stays rare precisely because
+> `SYSTEM_INSTRUCTION` RULE 3 names the banned words, so the model rarely emits
+> two of them in one claim. The 08-21 blast was large because the frequency
+> words were banned in the guard and **absent from that list**.
+>
+> **Signal, the named trade, read rather than asserted.** Eight real
+> reconstructed problem blocks under TODAY's guard:
+> `evals/retry-prompt-signal-2026-08-25-current-guard.txt` (six under the
+> pre-08-21 guard in `evals/retry-prompt-signal-2026-08-25.txt`). Judgement:
+> adequate. The per-claim attachment still says exactly WHICH claim is the
+> prevalence problem, which is most of the information; every example carries
+> one obvious quantity phrase (`numerous`, `large number`, `very few`), and the
+> preamble permits dropping the claim outright. It degrades on a claim with
+> several quantity-ish nouns ("numerous keybinds, mechanics, and systems"),
+> where the model must now guess which one.
+>
+> **The wording changed mid-task because that spot-check disproved the first
+> draft.** It read "how common something is among players — a count, share or
+> proportion of people", and 95 of the replay's matches are `numerous`
+> describing *buildings, keybinds, drills, DLC packages* — counts of things, not
+> of people. Calling those a claim about players is simply false. Final wording
+> is quantity-general and names no word the guard permits or rejects.
+>
+> **Mutation-proved 6/6**, `evals/mutate_retry_prevalence_prose_2026-08-25.py`,
+> output `evals/retry-prose-mutation-2026-08-25.txt`, logs
+> `evals/mutation-logs/rp01..rp06.log`. rp02 restores the old branch and shows
+> the line AND the key moving for the same claim and word, with the terms
+> visible in the prose — the bug, reproduced. rp03 proves stability alone is
+> worthless (an empty prose string is perfectly stable). rp04 proves the edit
+> was additive to one branch. rp05 proves the fixture's wordlist edit really
+> bites. `extract_claims.py` and `test_batch_guards.py` restored byte-identical.
+> Suite: `evals/batch-guards-2026-08-25-retryprose.txt`, 319 checks, `EXIT_RC=0`.
+>
+> **Not retroactive**, per instruction: the 599 stay paid.
+
+
 2026-08-25 | **A SteamGridDB network timeout was cached exactly like a real
 miss, so four titles lost their poster art permanently and nothing could ever
 have asked again** | build, reported poster resolution on 32370, 367500, 239820,
@@ -2146,3 +2244,57 @@ pattern keeps the `no\s+one` group. Not fixed because repairing the extractor
 would add words to the prompt and invalidate all 1,009 cached synthesis prompts —
 a spend decision, not a bug fix, and one worth taking deliberately rather than as
 a ride-along. Related: [[verify-the-verifier]].
+
+2026-08-25 | **Three prompt strings still name words the guard freed on 08-21,
+and one of them just became load-bearing** | build, reading `_problem_line` for
+the retry-prose fix above | The 08-21 rule is "a word is either rejected and
+named in the prompt, or neither", and `banned_words()` enforces it for
+`synthesize.py` only. Two hand-written lists never joined that derivation:
+**1.** `extract_claims.SYSTEM_INSTRUCTION` RULE 3 names `commonly, widely,
+usually, typically, generally, often` — all freed — and omits `numerous`,
+`countless`, bare `none`, `consensus`, `unanimous`, `all/every + crowd`, which
+are rejected. Wrong in **both** directions, and it is the list the model reads
+while writing every claim. **2.** `RETRY_PREAMBLE`'s fix instruction says
+"restate it without any **frequency**, proportion or quantity language" —
+frequency is permitted. This is the 222880 spell-around hazard (a model told to
+avoid a permitted word spells around it rather than dropping the fact), in the
+extraction prompts rather than the synthesis one. **Not fixed, and the reason is
+cost, not doubt:** `SYSTEM_INSTRUCTION` is in every extraction cache key, so
+editing it invalidates the entire extraction cache — not the 599-retry class,
+all of it — and `RETRY_PREAMBLE` invalidates every retry. That is a spend
+decision like the `banned_words()` extractor one above, and it should be taken
+deliberately rather than as a ride-along. **What changed today is the weight:**
+the retry prompt no longer names the offending word, so RULE 3's list is now the
+model's only enumeration of what is banned. It was stale before and is more
+load-bearing now.
+
+2026-08-25 | **`numerous` and `countless` are counts of THINGS, which is the
+exact referent seam the 08-25 absolute-quantifier split just fixed for
+`all`/`every`** | build, the retry-prose spot-check above | `numerous` is the
+single most-matched term under today's guard — **95 occurrences** across the
+replayed corpus (`evals/retry-key-stability-2026-08-25-future-numerous.txt`) —
+and the sampled instances are `numerous buildings and beavers`, `numerous
+keybinds, mechanics, and systems`, `numerous drills`, `numerous paid DLC
+packages`. None is a claim about how many players anything. That is the same
+argument the 08-25 split accepted for `free access to all content`, applied to a
+pattern the split did not touch, and it is presumably still costing retries the
+way `occasional` did. **Not measured as lost output and not fixed** — it is a
+guard-semantics decision, and it invalidates cached retries like any other
+wordlist edit (which, after the fix above, it now does slightly less).
+
+2026-08-25 | **A mutation driver can be handed a stale result by CPython's
+bytecode cache, and it silently was** | build, writing
+`evals/mutate_retry_prevalence_prose_2026-08-25.py` | Control rp05 swaps `"most"`
+for `"zzzz"` in the suite — **same byte length** — and restores it inside the
+same second. Source size and mtime are therefore both unchanged, so the `.pyc`
+written from the MUTATED file was replayed into the NEXT run's probe: rp01, the
+baseline, went red on a clean tree with matching shas. Caught only because a
+baseline that had passed minutes earlier failed. **Fixed in that driver** —
+`probe()` clears `pipeline/__pycache__` and runs `python -B`; proven by two
+consecutive green runs. **Not audited across the other drivers**, which mostly
+change string length and so escape by luck rather than design;
+`mutate_prompt_banned_direction_2026-08-25.py` and `mutate_guard_split_2026-08-21.py`
+are the ones worth checking. The general lesson is the memory's:
+[[verify-the-verifier]] — a harness that cannot prove WHICH bytes it ran is not
+evidence, and "restored byte-identical" does not imply "re-executed".
+

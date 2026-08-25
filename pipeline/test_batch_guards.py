@@ -506,6 +506,94 @@ def test_a_retry_never_replays_a_cached_rejection():
               n2 < n1, (n1, n2))
 
 
+def test_retry_prose_does_not_move_with_the_guards_wordlist():
+    """The retry prompt is hashed into the extraction cache key, so any
+    guard-derived text inside it makes a wordlist edit a cache-invalidation
+    event. It did: `_problem_line` rendered the matched terms verbatim and the
+    2026-08-21 frequency split invalidated 599 cached retries across 300 titles
+    (evals/retry-key-blast-2026-08-24.txt).
+
+    The prevalence line is now category-level. This asserts the property that
+    buys - the SAME failing claim yields the SAME prose and the SAME cache key
+    under two different wordlists - plus the two things that could make that
+    property worthless: prose that still leaks a matched term, and prose that is
+    stable because it is empty.
+
+    The wordlist is freed IN MEMORY (prevalence_guard.COMPILED) and restored in
+    a finally. Nothing on disk moves.
+    """
+    print("\nretry prompt: prevalence prose is wordlist-independent")
+    import ground_check
+    import extract_claims as ec
+    import prevalence_guard
+
+    # A claim that fails on TWO prevalence terms, so freeing one leaves it still
+    # failing prevalence - the wording-only case, which is the one the fix is
+    # for. It also fails on citations, so the mixed-reason branch is exercised
+    # in the same fixture.
+    claim = {"claim": "most reviewers say the consensus is that it stutters",
+             "supporting_ids": ["11", "22"]}
+    corpus = {"11": {"bucket": "mid", "review_text": "the game stutters badly"},
+              "22": {"bucket": "mid", "review_text": "unrelated text entirely"}}
+    reviews = [{"recommendationid": "11", "hours_at_review": 30.0,
+                "voted_up": True, "review_text": "the game stutters badly"},
+               {"recommendationid": "22", "hours_at_review": 40.0,
+                "voted_up": False, "review_text": "unrelated text entirely"}]
+
+    def render():
+        res = ground_check.check_claim(claim, "mid", corpus)
+        system, _ = ec.build_prompts("Testgame", "mid", reviews)
+        key = ec.cache_path(9999, "mid", "test-model", system,
+                            ec.build_retry_prompt("Testgame", "mid", reviews,
+                                                  [res])).name
+        return res, ec._problem_line(res), key
+
+    saved = list(prevalence_guard.COMPILED)
+    try:
+        before_res, before_line, before_key = render()
+        # simulate a future wordlist edit: free "most", keep "consensus"
+        prevalence_guard.COMPILED = [
+            (rx, lab) for rx, lab in saved if "most" not in rx.pattern]
+        after_res, after_line, after_key = render()
+    finally:
+        prevalence_guard.COMPILED = saved
+
+    def terms(res):
+        return sorted({t for f in res["failures"]
+                       if f.startswith("prevalence_language:")
+                       for t in f.split(":", 1)[1].split(",")})
+
+    t_before, t_after = terms(before_res), terms(after_res)
+    # The fixture only means anything if the wordlist edit actually changed what
+    # the guard matched while still rejecting the claim. Without this the two
+    # renders would be trivially equal and prove nothing.
+    check("fixture: the freed word changes what the guard matched",
+          t_before != t_after and t_before and t_after, (t_before, t_after))
+
+    check("the problem line is byte-identical across the wordlist edit",
+          before_line == after_line, (before_line, after_line))
+    check("the retry cache key does not move", before_key == after_key,
+          (before_key, after_key))
+
+    prose = before_line.split("problem:", 1)[1] if "problem:" in before_line else ""
+    leaked = [t for t in set(t_before) | set(t_after) if t and t in prose]
+    check("no matched term reaches the prose", not leaked, leaked)
+
+    # ANTI-VACUITY: stability is worthless if the branch renders nothing. The
+    # line must still quote the claim and still say what KIND of problem it is.
+    check("the line still quotes the failing claim", claim["claim"] in before_line)
+    check("the prose still names the prevalence category",
+          "how many" in prose and "population" in prose, prose)
+
+    # SCOPE: the edit was additive to one branch. The citation reason, which
+    # carries no wordlist-derived text, must still render alongside it.
+    check("a mixed failure still carries its non-prevalence reason",
+          "only one cited review" in prose, before_line)
+    check("  and the fixture really was mixed",
+          any(f.startswith("only_") for f in before_res["failures"]),
+          before_res["failures"])
+
+
 def test_prompt_names_every_word_the_guard_rejects():
     """The prompt used to carry a hand-written banned list and it fell behind
     the guard: "occasional" was rejected in code and never mentioned in the
@@ -2021,6 +2109,7 @@ if __name__ == "__main__":
     test_retry_cache_key_includes_the_attempt()
     test_a_retry_never_replays_a_cached_rejection()
     test_prompt_names_every_word_the_guard_rejects()
+    test_retry_prose_does_not_move_with_the_guards_wordlist()
     test_flash_tier_allocation()
     test_batch_never_spends_flash()
     test_remote_live_ledger_read_is_offline_and_fail_safe()

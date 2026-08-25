@@ -1,0 +1,49 @@
+Retry-key stability under a SIMULATED wordlist edit
+driver: evals/measure_retry_key_stability_2026-08-25.py   (disk only, 0 Gemini calls)
+simulating: the real 2026-08-21 frequency split (PRE = guard + FREED_FREQUENCY_PATTERNS, POST = guard) with PATTERNS taken from 0211b2b^
+  pattern that differs: \b(?:commonly|frequently|typically|generally|usually|often|rarely|seldom)\b
+  pattern that differs: \b(?:frequent|infrequent|occasional|widespread|prevalent|commonplace)\b
+  pattern that differs: \b(?:constant|constantly|repeated|repeatedly|persistent|persistently|continual|continually|regularly|routinely|ongoing)\b
+  pattern that differs: \b(?:widely|universally|unanimously|overwhelmingly)\b
+
+COMPARABLE FIGURE (the metric evals/retry-key-blast-2026-08-24.txt reported)
+  cached retry files invalidated, OLD prose : 599 across 300 titles
+  cached retry files invalidated, NEW prose : 585 across 297 titles
+  difference (what this fix would have saved): 14
+  of the OLD-prose figure: 217 need no retry at all, 14 are wording-only,
+    368 are a genuinely different complaint
+  by cohort: {'early': 170, 'mid': 173, 'refund_window': 121, 'veteran': 135}
+  by step  : {1: 512, 2: 87}
+
+DENOMINATOR
+  retry steps replayed                    : 1856
+  of which the retry file is on disk today: 1803
+  parse/read errors                       : 0
+  steps the edit actually changes         : 652   (the rest have nothing to stabilise)
+    of which NO RETRY is issued at all    : 231   (all claims now pass - a saved call,
+                                                 not an invalidated one)
+    still retried, so a key exists        : 421
+    (217 of the no-retry steps have a cached retry file on disk, which becomes
+     dead weight rather than a repeat cost)
+
+PREVALENCE TERMS THE GUARD MATCHED ACROSS THE REPLAY
+  {'frequent': 272, 'frequently': 168, 'numerous': 95, 'constant': 80, 'persistent': 71, 'all': 57, 'occasional': 42, 'repeatedly': 42, 'every': 37, 'often': 30, 'constantly': 24, 'repeated': 18, '100%': 16, 'large number': 14, 'very few': 11, 'ongoing': 10, 'most': 7, 'some players': 6, 'majority': 6, 'Some players': 6, 'typically': 5, 'all players': 5, 'small number': 5, 'continually': 4, 'overwhelmingly': 3, 'generally': 3, 'everyone': 2, 'regularly': 2, 'infrequent': 2, 'widely': 2, 'widespread': 2, 'large proportion': 2, 'Numerous': 2, 'rarely': 2, 'usually': 1, 'many players': 1, '80%': 1, '95%': 1, 'persistently': 1, 'Some reviewers': 1, 'some users': 1, 'Several reviewers': 1, 'All': 1, 'none': 1}
+
+STABILITY, steps still retried under both guards (n / old prose moved / new prose moved)
+  class                                        n     old     new
+  prevalence-only                             35      35      27
+  mixed-reason                               386     386     379
+    wording-only  (the fix owns these)        15      15       0
+    set-changing  (legitimate movement)      406     406     406
+
+CROSS-TAB, wording-only x prevalence-only (n / old moved / new moved)
+  wording-only   prevalence-only        8       8       0
+  wording-only   mixed-reason           7       7       0
+  set-changing   prevalence-only       27      27      27
+  set-changing   mixed-reason         379     379     379
+
+VERDICT
+  wording-only steps still moving under the new prose: 0   <- the property the fix claims
+  cached retry files this edit would have invalidated and no longer does: 14
+  distinct titles                                                       : 14
+  by cohort: {'early': 5, 'refund_window': 2, 'veteran': 5, 'mid': 2}

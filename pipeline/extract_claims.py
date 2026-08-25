@@ -252,8 +252,21 @@ def _problem_line(result):
     reasons = []
     for f in result["failures"]:
         if f.startswith("prevalence_language"):
-            terms = f.split(":", 1)[1]
-            reasons.append("states how common something is (%s)" % terms)
+            # Deliberately does NOT name the matched terms. They come from
+            # prevalence_guard.PATTERNS, and build_retry_prompt() hashes this
+            # prose into the extraction cache key, so naming them made every
+            # wordlist edit invalidate cached retries catalog-wide - 599 of
+            # them on 08-21 (evals/retry-key-blast-2026-08-24.txt). The
+            # category is stable; the wordlist is not. Losing "which word"
+            # costs specificity, and that is the accepted trade - the model
+            # still has RULE 3's banned list in SYSTEM_INSTRUCTION to work
+            # from. Phrased over quantity generally, not people: the guard
+            # also rejects "numerous", bare "none" and percentages, which are
+            # counts of things rather than of players.
+            reasons.append("states how many, how much, or what share of "
+                           "something there is - a count or proportion this "
+                           "sample cannot support; restate it without quantity "
+                           "or population language, or drop it")
         elif f.startswith("low_union_coverage"):
             reasons.append("could not be verified against the reviews it cites")
         elif f.startswith("only_"):

@@ -1,0 +1,20 @@
+rp04
+SCOPE: rewording the untouched only_ branch fails the scope check
+
+PASS
+
+scope failures (must be non-empty): ['a mixed failure still carries its non-prevalence reason - "most reviewers say the consensus is that it stutters"\n    problem: needs a second citation; states how many, how much, or what share of something there is - a count or proportion this sample cannot support; restate it without quantity or population language, or drop it']
+stability failures (must be empty - the prevalence prose did not move): []
+
+full output:
+
+retry prompt: prevalence prose is wordlist-independent
+  fixture: the freed word changes what the guard matched         ok
+  the problem line is byte-identical across the wordlist edit    ok
+  the retry cache key does not move                              ok
+  no matched term reaches the prose                              ok
+  the line still quotes the failing claim                        ok
+  the prose still names the prevalence category                  ok
+  a mixed failure still carries its non-prevalence reason        FAIL
+    and the fixture really was mixed                             ok
+

@@ -1,0 +1,43 @@
+Retry-key stability under a SIMULATED wordlist edit
+driver: evals/measure_retry_key_stability_2026-08-25.py   (disk only, 0 Gemini calls)
+simulating: a future edit freeing 'numerous'
+  pattern that differs: \bnumerous\b|\bcountless\b|\bplenty\s+of\s+(?:players?|people|reviewers?|users?|buyers?|gamers?|everyone|the community|folks|fans?)
+
+COMPARABLE FIGURE (the metric evals/retry-key-blast-2026-08-24.txt reported)
+  cached retry files invalidated, OLD prose : 55 across 47 titles
+  cached retry files invalidated, NEW prose : 55 across 47 titles
+  difference (what this fix would have saved): 0
+  of the OLD-prose figure: 21 need no retry at all, 0 are wording-only,
+    34 are a genuinely different complaint
+  by cohort: {'mid': 15, 'veteran': 14, 'early': 14, 'refund_window': 12}
+  by step  : {1: 46, 2: 9}
+
+DENOMINATOR
+  retry steps replayed                    : 1312
+  of which the retry file is on disk today: 923
+  parse/read errors                       : 0
+  steps the edit actually changes         : 87   (the rest have nothing to stabilise)
+    of which NO RETRY is issued at all    : 35   (all claims now pass - a saved call,
+                                                 not an invalidated one)
+    still retried, so a key exists        : 52
+    (21 of the no-retry steps have a cached retry file on disk, which becomes
+     dead weight rather than a repeat cost)
+
+PREVALENCE TERMS THE GUARD MATCHED ACROSS THE REPLAY
+  {'numerous': 85, '100%': 15, 'large number': 14, 'very few': 10, 'most': 7, 'Some players': 6, 'some players': 5, 'all players': 4, 'small number': 4, 'majority': 4, 'everyone': 2, 'large proportion': 2, 'Numerous': 2, 'many players': 1, '80%': 1, '95%': 1, 'Some reviewers': 1, 'some users': 1, 'Several reviewers': 1}
+
+STABILITY, steps still retried under both guards (n / old prose moved / new prose moved)
+  class                                        n     old     new
+  prevalence-only                              0       0       0
+  mixed-reason                                52      52      52
+    wording-only  (the fix owns these)         0       0       0
+    set-changing  (legitimate movement)       52      52      52
+
+CROSS-TAB, wording-only x prevalence-only (n / old moved / new moved)
+  set-changing   mixed-reason          52      52      52
+
+VERDICT
+  wording-only steps still moving under the new prose: 0   <- the property the fix claims
+  cached retry files this edit would have invalidated and no longer does: 0
+  distinct titles                                                       : 0
+  by cohort: {}

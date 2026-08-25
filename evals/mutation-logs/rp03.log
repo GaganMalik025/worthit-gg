@@ -1,0 +1,21 @@
+rp03
+VACUITY: empty prose is stable, and must still fail
+
+PASS
+
+anti-vacuity failures (must be non-empty): ['the prose still names the prevalence category  only one cited review actually supports it; two are required; ']
+stability failures (must be EMPTY - an empty string is stable under any wordlist,
+  which is exactly why stability alone proves nothing): []
+
+full output:
+
+retry prompt: prevalence prose is wordlist-independent
+  fixture: the freed word changes what the guard matched         ok
+  the problem line is byte-identical across the wordlist edit    ok
+  the retry cache key does not move                              ok
+  no matched term reaches the prose                              ok
+  the line still quotes the failing claim                        ok
+  the prose still names the prevalence category                  FAIL
+  a mixed failure still carries its non-prevalence reason        ok
+    and the fixture really was mixed                             ok
+

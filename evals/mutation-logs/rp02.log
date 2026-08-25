@@ -1,0 +1,29 @@
+rp02
+CONTROL: old prose moves the line AND the key for the same word
+
+PASS
+
+stability failures (must be BOTH - line and key): ['the problem line is byte-identical across the wordlist edit (\'- "most reviewers say the consensus is that it stutters"\\n    problem: only one cited review actually supports it; two are required; states how common something is (consensus,most)\', \'- "most reviewers say the consensus is that it stutters"\\n    problem: only one cited review actually supports it; two are required; states how common something is (consensus)\')', "the retry cache key does not move ('mid_ca931e1e22161d66.json', 'mid_f972a6e995841131.json')"]
+leak failures (must be non-empty - the old prose quoted the matched terms): ["no matched term reaches the prose ['most', 'consensus']"]
+fixture guard (must be empty - the wordlist edit still bit): []
+
+The anti-vacuity check ALSO goes red here and that is correct, not a miss: it
+is phrased against the committed wording, which the old prose does not use. It is
+asserted green in rp04/rp05 instead, where the prose is the real one.
+  anti-vacuity: ['the prose still names the prevalence category  only one cited review actually supports it; two are required; states how common something is (consensus,most)']
+
+This is the bug, reproduced: freeing one word from PATTERNS changes the retry prompt
+and therefore its sha256 cache key, while the grounding verdict is unchanged.
+
+full output:
+
+retry prompt: prevalence prose is wordlist-independent
+  fixture: the freed word changes what the guard matched         ok
+  the problem line is byte-identical across the wordlist edit    FAIL
+  the retry cache key does not move                              FAIL
+  no matched term reaches the prose                              FAIL
+  the line still quotes the failing claim                        ok
+  the prose still names the prevalence category                  FAIL
+  a mixed failure still carries its non-prevalence reason        ok
+    and the fixture really was mixed                             ok
+
