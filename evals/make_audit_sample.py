@@ -22,6 +22,11 @@ ap.add_argument("--date", required=True,
                      "published on or after it and names the output file")
 ap.add_argument("--seed", type=int, required=True,
                 help="new seed per round - never reuse a previous night's")
+ap.add_argument("--appids", default=None,
+                help="audit these appids instead of the --date batch scope "
+                     "(comma/space list or a file path). For rounds whose "
+                     "titles are not in batch_state.json at all - live "
+                     "generated or pre-batch - which no --date value can reach.")
 ap.add_argument("--gate-note", default="",
                 help="the automated QR-4 result this sample sits on top of")
 ap.add_argument("--verdicts", type=int, default=10)
@@ -34,9 +39,20 @@ SINCE = args.date
 OUT = pathlib.Path(args.out) if args.out else ROOT / f"evals/audit-4.4-{args.date}.md"
 N_VERDICTS, N_CITATIONS = args.verdicts, args.citations
 
-state = json.loads((ROOT / "data/batch_state.json").read_text())
-new_ids = sorted(int(k) for k, v in state["titles"].items()
-                 if v.get("at", "") > SINCE and v.get("published"))
+# Scope. --appids replaces the query and nothing else: the RNG, the
+# verdict-word stratification, the per-review dedup and the draw below are
+# identical either way. batch_state.json is not read at all on that path,
+# which is the point - the titles it exists for are absent from that file
+# (live-generated or pre-batch), so no --date value can reach them.
+if args.appids:
+    raw = pathlib.Path(args.appids).read_text() \
+        if pathlib.Path(args.appids).exists() else args.appids
+    new_ids = sorted({int(x) for x in raw.replace(",", " ").split()
+                      if x.strip().isdigit()})
+else:
+    state = json.loads((ROOT / "data/batch_state.json").read_text())
+    new_ids = sorted(int(k) for k, v in state["titles"].items()
+                     if v.get("at", "") > SINCE and v.get("published"))
 
 docs = {}
 for appid in new_ids:
@@ -108,10 +124,21 @@ def line(s, n):
 
 
 L = []
-L.append(f"# 4.4 morning audit - sample for manual review ({SINCE} batch)\n")
-L.append(f"Generated from the {len(docs)} verdicts published by the {SINCE} "
-         "overnight batch. Earlier catalog titles are out of scope here - they "
-         "were audited in their own rounds.\n")
+# The batch-night wording is false for an --appids round: nothing was
+# "published by the {SINCE} batch". Conditioned rather than reworded for
+# everyone, so a --date round renders byte-identical to before.
+if args.appids:
+    L.append(f"# 4.4 audit - sample for manual review ({SINCE}, "
+             f"{len(docs)} named titles)\n")
+    L.append(f"Generated from an explicit appid list, not a batch night: "
+             f"{', '.join(str(a) for a in sorted(docs))}. These titles are not "
+             "in data/batch_state.json, so no date-scoped round can reach "
+             "them.\n")
+else:
+    L.append(f"# 4.4 morning audit - sample for manual review ({SINCE} batch)\n")
+    L.append(f"Generated from the {len(docs)} verdicts published by the {SINCE} "
+             "overnight batch. Earlier catalog titles are out of scope here - they "
+             "were audited in their own rounds.\n")
 L.append("Automated QR-4 has already passed on every citation in this set"
          + (f" ({args.gate_note})" if args.gate_note else "")
          + ". This sample is the HUMAN gate that BUILD_PLAN calls the last one "
@@ -120,7 +147,11 @@ L.append(f"Selection is seeded (`SEED = {SEED}`) and stratified: section A "
          "round-robins across verdict words, section B round-robins across the "
          "four playtime cohorts. Re-running the generator reproduces this exact "
          "sample.\n")
-L.append("\n## A. Ten verdicts to spot-check\n")
+# "Ten" was hardcoded and is right for every date-scoped round; an --appids
+# round can hold fewer titles than N_VERDICTS, and a heading that overstates
+# its own coverage is the defect this whole re-audit exists to repair.
+L.append("\n## A. %s verdicts to spot-check\n"
+         % ("Ten" if len(sample_a) == 10 else len(sample_a)))
 for appid in sample_a:
     d = docs[appid]
     tier = d["model"]["synthesis"].replace("gemini-3.5-", "")
@@ -140,7 +171,8 @@ for n, c in enumerate(sample_b, 1):
 
 L.append("\n## Result\n")
 L.append("- [ ] QR-4: all 20 citations clean (any failure blocks deploy)")
-L.append("- [ ] Verdicts: all 10 read as defensible against their split")
+L.append("- [ ] Verdicts: all %d read as defensible against their split"
+         % len(sample_a))
 L.append("\nNotes:\n")
 
 OUT.write_text("\n".join(L), encoding="utf-8")
