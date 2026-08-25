@@ -208,6 +208,12 @@ absolute-and-inside the repo — `ValueError: not in the subpath`. The file is
 written correctly first, so the failure is cosmetic and post-write, and it went
 unnoticed because every dated round used the default `--out`. One line, but it
 is outside the narrow scope this change was given.
+> **Fixed 2026-08-25.** The label is now shortened inside a `try` and printed
+> verbatim on `ValueError`; `OUT.resolve()` first, so a cwd-relative in-repo
+> `--out` still prints short. Confirmed both ways: the pre-fix file raises on
+> an external path with the .md already written, the fixed file prints the
+> absolute path and exits 0, and an in-repo `--out` still prints
+> `evals/<name>.md`. Nothing else about `--out` changed.
 **Also worth knowing before the next audit is read:** section B truncates review
 text, so a claim supported only by a late sentence looks unsupported in the
 sample. Citation #18 of the 08-25 round is a live example. The auditor's remedy

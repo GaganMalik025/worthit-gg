@@ -176,7 +176,14 @@ L.append("- [ ] Verdicts: all %d read as defensible against their split"
 L.append("\nNotes:\n")
 
 OUT.write_text("\n".join(L), encoding="utf-8")
-print(f"wrote {OUT.relative_to(ROOT)}")
+# --out may point anywhere; relative_to(ROOT) raises for any path outside
+# the repo. The file is already written by here, so only the label is at
+# stake: shorten it when we can, print it verbatim when we cannot.
+try:
+    OUT_LABEL = OUT.resolve().relative_to(ROOT)
+except ValueError:
+    OUT_LABEL = OUT
+print(f"wrote {OUT_LABEL}")
 print(f"  verdicts in scope : {len(docs)}")
 print(f"  section A         : {len(sample_a)} verdicts")
 print(f"  section B         : {len(sample_b)} citations")
