@@ -1649,6 +1649,61 @@ Insurgency entry in subject and its opposite in direction: there the cache
 replayed when it should not have, here it missed when it should not have.
 Related: [[verify-the-verifier]].
 
+> **2026-08-24, RESOLVED the same day — and the entry above is WRONG in both of
+> its load-bearing claims. Correcting rather than editing, per this file's
+> discipline.** It says "2 veteran extraction calls, one of them a grounding
+> retry" and reasons that "a changed input would have changed all four prompts,
+> not one". **Both calls were retries; attempt 0 was a cache hit; and no input
+> changed at all.** What changed was `ground_check`'s prevalence wordlist — which
+> is an input to the RETRY prompt's hash, and to nothing else.
+>
+> **Attempt 0 is proven a cache hit by recomputing its key, not by inference.**
+> `cache_path()` (`extract_claims.py:308`) is
+> `sha256(tag, model, system, user)[:16]`, and `build_prompts()` (:275) builds
+> `user` from the bucket's reviews in file order — id, `%.1f` hours, verdict,
+> text. Rebuilt from today's `data/filtered/1343400.json`, all four attempt-0
+> keys resolve to **08-21 files**, veteran included
+> (`veteran_0e58beeb124814d4.json`). So the entry's premise — that the veteran
+> prompt must have changed — is false. Ordering is deterministic too, which the
+> entry listed as a candidate: `filter_reviews.py:411` walks `kept_rows` in raw
+> order, and `random` appears in that file only inside `print_sample`, a
+> diagnostic. `filtered_at` is written into the JSON and never read by the prompt
+> builder, so the rewritten timestamp is inert.
+>
+> **THE MECHANISM: the guard's wordlist is embedded in the retry prompt as
+> PROSE, and therefore in its hash.** `ground_check.py:160` calls
+> `prevalence_guard.check_claim` and records hits as
+> `prevalence_language:<terms>`. `_problem_line()` (`extract_claims.py:244`)
+> renders those terms verbatim into the retry prompt —
+> `"states how common something is (%s)" % terms` — and `build_retry_prompt()`
+> (:269) formats that block into the text that gets hashed. Free a word from the
+> guard and every retry prompt whose predecessor named it hashes differently.
+>
+> **Proved by replaying the chain under both guards, offline, at zero Gemini
+> cost.** Attempt 0's cached response carries two claims containing *frequent*
+> and *persistent*, both freed on 08-21 (`9c8d460`):
+>
+> | guard | failure reasons on those two claims | retry key | on disk |
+> |---|---|---|---|
+> | pre-split | `only_1_supporting…` **+ `prevalence_language:frequent` / `:persistent`** | `veteran_2e841da1dd646085` | 08-21 |
+> | post-split | `only_1_supporting…` only | `veteran_ca08442bc0400b68` | 08-24 |
+>
+> Both reproduce byte-exactly, which independently confirms two things the entry
+> above could not: attempt 0's response is identical across the two nights, and
+> grounding is deterministic. The guard was the only variable.
+>
+> **The freed words rescued nothing.** Both claims still failed on
+> `only_1_supporting_citations(need_2_at_0.10)` under either guard. The split
+> changed only the WORDING of the complaint, and that was enough to change the
+> hash. The 2 calls bought a differently-phrased grievance and then a third
+> attempt, which is where the cohort's single surviving claim came from.
+>
+> **What the entry got right and is worth keeping:** it refused to name one of
+> three candidate mechanisms without checking, and all three were wrong. The
+> real one was not on the list, and was unreachable from the evidence the entry
+> had — it needed the key recomputed, not more nights observed.
+> Catalog-wide consequences measured separately, below.
+
 2026-08-24 | **The catalog is drained — 1 title pending and it can never
 publish** | build, 2026-08-24 batch night | After tonight's 24,
 `run_batch.py --dry-run` reports **1 titles pending**, and it is BidKing
@@ -1667,3 +1722,160 @@ one permanent retry, and adds no titles. Neither is a batch-night action, and
 the honest observation is that **the constraint on the catalog has moved from
 quota to supply**, which is new as of tonight and is what the case study's
 "batch quota is the constraint" line in D2 no longer describes.
+
+2026-08-24 | **The extraction cache key hashes guard-derived prose, so editing
+the prevalence wordlist silently invalidates cached retries catalog-wide — 599
+of them, across 300 titles** | build, the RuneScape investigation above | The
+mechanism is in the entry above; this is its blast radius, measured rather than
+described. Driver `evals/measure_retry_key_blast_2026-08-24.py`, raw output
+`evals/retry-key-blast-2026-08-24.txt`, per-step detail
+`evals/retry-key-blast-2026-08-24.json`. **Zero Gemini cost** — it reads
+`data/filtered/` and `data/cache/extract/` only, replaying `enforce()` +
+`ground_check.check_bucket()` under both the pre- and post-split guard and
+comparing the two retry keys.
+
+| | |
+|---|---|
+| retry cache files on disk (beyond attempt 0) | 2,627 across 532 of 538 titles |
+| reachable by replaying the pre-split chain | 1,803 |
+| **invalidated by the 08-21 split** | **599, across 300 of 538 titles** |
+| by cohort | early 170, mid 173, veteran 135, refund_window 121 |
+| by step | 512 at the first retry, 87 at the second |
+
+Freed terms responsible, by occurrence: `frequent` 250, `frequently` 156,
+`constant` 72, `persistent` 58, `occasional` 39, `repeatedly` 39, `often` 27,
+`constantly` 23, `repeated` 16, then a tail of 12 more at ≤9 each.
+
+**824 retry files could not be reached and are therefore NOT classified** — the
+replay follows the pre-split chain from attempt 0, so a chain whose key already
+diverged (the 24 titles generated post-split tonight, and any earlier prompt or
+threshold change) drops out of the walk. 599 is a floor on the true figure, not
+an estimate of it, and it is stated that way rather than scaled up. Whether the
+824 are reachable at all is a question about which historical prompt versions
+are recoverable, and was not pursued.
+
+**Why the number is not the alarming part.** These caches are only consulted
+when a title is regenerated: `run_batch` skips any appid with a verdict on disk,
+so an ordinary batch night never touches them. The exposure is a `--force` run,
+a re-extraction, or a future full rebuild — where 599 cohort-retries that used
+to be free would each become a paid call. At tonight's rate that is roughly 599
+calls, or **1.5 days of the entire Flash-Lite ceiling**, to buy responses the
+project already owns.
+
+**The uncomfortable half is what it says about the cache's contract.** The key
+is meant to answer "have I sent this exact prompt before". It does that
+correctly — the prompt genuinely did change. But the part that changed is the
+guard's *complaint wording*, not the reviews, not the claims, and not the
+grounding verdict: in RuneScape's case the same two claims failed for the same
+substantive reason under both guards. So the cache is behaving exactly as
+designed while spending real quota on a distinction that carries no information.
+
+**Not fixed, and the fix is a genuine design question rather than a bug.**
+Options differ in kind: hash a *canonical* failure signature (reason codes
+without the matched terms) and keep the prose out of the key — smallest, and it
+deliberately makes two prompts that differ in wording share a cache entry, which
+is a lie the cache would be telling on purpose; version the guard and treat a
+guard change as a cache-epoch bump — honest, and it invalidates everything
+rather than 599; or leave it and accept that wordlist edits are a regeneration
+cost, which is defensible now that the cost has a number. **Explicitly out of
+scope for today by owner instruction.** What today establishes is only that the
+number is 599 and not "unknown". Related: [[verify-the-verifier]].
+
+2026-08-25 | **A SteamGridDB network timeout was cached exactly like a real
+miss, so four titles lost their poster art permanently and nothing could ever
+have asked again** | build, reported poster resolution on 32370, 367500, 239820,
+954850 | `art.sgdb_grid()` ended in an **unconditional**
+`path.write_text(...)` (`art.py:187` pre-fix), so every outcome was cached
+forever. `request_failed: ConnectTimeout` was written with exactly the
+permanence of a documented 404. The four titles' caches read
+`{"url": null, "reason": "request_failed: ConnectTimeout"}`, all four stamped
+within four minutes of each other during the **2026-08-21 batch** (16:43:44,
+16:43:44, 16:47:48, 16:47:54 UTC) — one transient blip, not four failures.
+Captured before repair at `evals/sgdb-request-failed-2026-08-25.txt`, because
+`data/cache/` is gitignored and the re-query destroys the only evidence.
+**Three mechanisms had to line up for it to be permanent, which is why it
+survived four days.** `art_block()` calls `sgdb_grid(appid)` with **no
+`refresh`**, so the poisoned entry was read, not re-asked. `backfill_art --all`
+therefore could not help either — it goes through the same `art_block()`. And
+`--broken` selected from a **hardcoded list measured by hand on 2026-08-13**,
+which by construction cannot contain a title that broke on 08-21. Every repair
+path led back to the same cached lie.
+**Measured before fixing, because "a handful or systemic" changes what the fix
+is.** 323 cache files: **319 `ok`, 4 `request_failed`, and — notably — zero
+`not_found`.** The bug was exactly the four reported. Re-queried with
+`refresh=True` at PAUSE=1.0: all four resolved `ok` with live URLs, HTTP 200
+`image/png` verified on each.
+**A second, larger gap surfaced in the same measurement and is NOT this bug.**
+216 of 538 published verdicts had **no `art` key at all** — cleanly bounded to
+titles generated 08-10 → 08-13, before art capture was wired into generation.
+Not poisoned, never asked (which is why there were 323 cache files for 538
+verdicts). They still rendered, falling through to the tier-3 legacy pattern, so
+this was degraded art rather than broken art. `backfill_art.py --all` closed it:
+**216 changed = 215 that gained a grid + 1 that gained tier-1 art only.** That
+one is `2995920` (It Takes Two Friend's Pass), cached `not_found` — SteamGridDB
+answering that it has no art, which is an honest miss and stays cached. Verdicts
+now carry a grid on **537 of 538**; the cache is 537 `ok` + 1 `not_found`, zero
+failures. Proven confined: all 220 modified verdicts parsed on both sides with
+`art` popped are **byte-equal outside that key**.
+
+> **FIXED the same day, both halves, mutation-proved 6/6.**
+>
+> **`art.py`: only an ANSWER is cached.** `ANSWER_REASONS` +
+> `_is_cacheable(reason)`, and a guard before the write; a non-answer returns
+> and leaves the cache untouched, so the next run asks again. The docstring
+> carried the confusion that produced the bug — it listed "a 404, a 429, a
+> timeout, a missing key" as one undifferentiated class — and now states the
+> distinction: **a miss and a failure are not the same thing, and only the miss
+> is cached.**
+>
+> **`backfill_art.py`: `--broken` derives from the cache.** `broken_from_cache()`
+> scans for cached outcomes that are not answers, plus published verdicts with
+> no cache entry at all. `BROKEN` is renamed `BROKEN_2026_08_13`, kept as history
+> and used to select nothing. Proven in four directions against the live cache:
+> it finds an injected `request_failed` (`[32370]` — precisely the title the
+> hardcoded list could not know about), **ignores a real `not_found`**, finds a
+> missing cache file, and returns empty on today's clean cache.
+>
+> **THE JUDGMENT CALL, recorded because it is wider than what was asked for.**
+> The instruction was to stop caching `request_failed`, and to derive `--broken`
+> by scanning for "non-ok reasons". Both were widened deliberately:
+> * `ANSWER_REASONS` is `ok`, `not_found`, `no_clean_candidate`, `unsuccessful`.
+>   So `rate_limited`, `http_*` and `bad_json` are **also** no longer cached, not
+>   just `request_failed`. A 429 during a 538-request backfill would poison
+>   exactly like a timeout, and shipping a fix that covered one transport failure
+>   while leaving three would read to any later maintainer as covering the class.
+> * Taken literally, "non-ok reasons" includes `not_found` — which would put
+>   `2995920` back in `--broken` on every run and destroy the property the
+>   module's docstring exists to protect ("asked about once and never again"). So
+>   the scan selects non-**answers**, not non-`ok`. A real miss stays cached.
+>
+> Both widenings are reversible in one line each and are written down here rather
+> than left for a reader to discover in a diff.
+>
+> **Mutation campaign** (`evals/mutate_art_cache_2026-08-25.py`, logs
+> `evals/mutation-logs/a01`–`a06`, output
+> `evals/art-cache-mutation-2026-08-25.txt`). The network is never touched —
+> `requests.get` is scripted inside a child process, and the injected exception
+> is the same class the real failure raised, so `type(exc).__name__` formats the
+> identical reason string.
+>
+> **a01 is the CONTROL and is the load-bearing case**: the pre-fix body put back
+> into the real file, reproducing the poison rather than arguing it —
+> `cache_reason: "request_failed: ConnectTimeout"`, `calls_after [3, 3]`, i.e.
+> **call 2 issued no request at all**. Under the fix (a02) the same scenario reads
+> `calls_after [3, 4]` and returns the URL: it asked again and healed.
+> **a05 is the opposite control**, and exists because "stops caching timeouts" is
+> satisfied perfectly by code that caches nothing: an over-broad mutation turns
+> **a03 red**, so a03 ("a real 404 IS still cached, asked once and never again")
+> is proven load-bearing rather than decorative. a04 pins that a hit is still
+> replayed without a second request. a06 verifies `art.py` restored
+> byte-identical, sha `e2a489326e8e` both sides.
+>
+> **What this does NOT fix.** A title that times out now pays the full attempt
+> budget on **every** subsequent run instead of once — that is the deliberate
+> trade, and it is bounded by `SGDB_ATTEMPTS` and by the existing rule that art
+> is decoration and must never stall a batch. Nothing here adds a TTL or a
+> timestamp to the cache schema; the third option from the investigation (cache
+> transient failures with a short expiry) was not taken, because not caching them
+> at all is smaller and needs no schema change to 538 existing files.
+> Related: [[verify-the-verifier]].
