@@ -12,9 +12,31 @@
  * personality from precision rather than jokes. Counts set in mono, because a
  * count is evidence.
  *
- * NO TIME ESTIMATE WHILE QUEUED. Position is a fact; "about six minutes" would
- * be a guess multiplied by an unknown queue. The measured duration appears only
- * once the user's own run is executing.
+ * NO TIME ESTIMATE WHILE QUEUED, and the queued panel's third line is not one.
+ * Position is a fact; "about six minutes" would be a guess multiplied by an
+ * unknown queue, so the WAIT stays unstated. "Once yours starts, it takes a few
+ * minutes" says nothing about the queue - it describes the GENERATION, the
+ * thing that begins when the wait ends, so a queued user knows what they are
+ * waiting for. Queue length x duration is still never multiplied out, which is
+ * the guess the rule above exists to prevent.
+ *
+ * THE DURATION IS UNMEASURED FOR THE LIVE PATH. This comment used to call it
+ * "the measured duration"; that was wrong and is corrected here. Nothing in the
+ * repo has timed an end-to-end live dispatch - generate_one.py does compute
+ * `total_seconds` per run, but it reaches only the run payload and the log,
+ * never a committed artifact. The only committed timing evidence is BATCH:
+ * published titles at 26-121s, median 76s (evals/batch-2026-08-24.txt) and
+ * 68-252s, median 114s (evals/batch-2026-08-21.txt). Batch is not live - it
+ * pushes many titles through one shared pacer, while a live run is a single
+ * always-flash-lite job that also waits on the in-pipeline QR-4 gate before
+ * anything renders. "A few minutes" is consistent with that range and is NOT a
+ * measurement of the thing it describes.
+ *
+ * So this is deliberately the SAME sentence fragment the running state uses,
+ * not a second differently-worded guess: one claim, stated in two places, with
+ * one place to correct it. CLAUDE.md's live-generation guard 3 - "if a measured
+ * run gets slower, the copy changes, not the claim" - needs a measured run
+ * first. BACKLOG 2026-08-26.
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -97,6 +119,9 @@ export function GenerationProgress({
         </p>
         <p className="sub">
           Holding your place for <strong>{gameName}</strong>.
+        </p>
+        <p className="sub">
+          Once yours starts, it takes a few minutes.
         </p>
       </div>
     );

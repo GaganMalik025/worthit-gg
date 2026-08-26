@@ -2452,3 +2452,30 @@ plausible if/when the D2 catalog walk happens, which is the point to revisit it.
 Any such tier must keep tier 2's OG rule intact: a parent's grid is still
 community art and still may never reach an unfurl image.
 
+2026-08-26 | **"A few minutes" is the live path's only duration claim and
+nothing has ever timed the live path** | build, adding the queued-state
+reassurance line to `GenerationProgress.tsx` | CLAUDE.md's live-generation
+guard 3 requires copy "set from measured runs... stated in real observed
+numbers", and BACKLOG I1 admitted live generation partly on that promise
+("honest copy set from measured runs, never 'under a minute'"). The running
+state has said **"This takes a few minutes."** since it was written, and the
+queued state now says **"Once yours starts, it takes a few minutes."**
+Deliberately the same phrase, so it is one claim in two places rather than two
+guesses to keep in step — but it is **not a measurement of the live path**.
+**What is actually measured is BATCH**, and only in two committed logs:
+published titles at **26–121s, median 76s** (`evals/batch-2026-08-24.txt`) and
+**68–252s, median 114s** (`evals/batch-2026-08-21.txt`). Note the logs'
+own "wall clock 39.3s / 39.9s mean per title" headline is **not** the figure to
+quote — it averages in titles that spent 0s because the budget was exhausted
+before they ran. **Batch is not live**: it drives many titles through one shared
+pacer, while a live run is a single always-flash-lite job that additionally
+waits on the in-pipeline QR-4 gate before anything renders. So "a few minutes"
+is *consistent with* the batch range and unverified for the thing it describes.
+**Not fixed, and it is cheap to fix properly:** `generate_one.py:249` already
+computes `timings` and `total_seconds` per run and distinguishes the live ledger
+from batch — the number simply never reaches a committed artifact. One timed
+live dispatch, written to `evals/`, would turn the phrase into a measurement or
+change it. Until then the comment in `GenerationProgress.tsx` says plainly that
+it is unmeasured, so a second usage does not quietly become "the number" by
+repetition. Related: [[verify-the-verifier]].
+
