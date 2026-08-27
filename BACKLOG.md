@@ -2479,3 +2479,94 @@ change it. Until then the comment in `GenerationProgress.tsx` says plainly that
 it is unmeasured, so a second usage does not quietly become "the number" by
 repetition. Related: [[verify-the-verifier]].
 
+
+2026-08-26 | **PostHog analytics shipped, scoped from F7's five events to four —
+and the project key in `.env` is a PERSONAL API key, so nothing has ever been
+able to land** | build, 3.3 | **What was built** (`site/instrumentation-client.ts`,
+`site/lib/analytics.ts`, `site/components/Receipts.tsx`, `VerdictView.tsx`, plus
+call sites in `SearchBox.tsx` / `GenerationProgress.tsx` / `Home.tsx`):
+`citation_expand` {appid, verdict}, `verdict_view` {appid, verdict, source},
+`search` {query_length}, `request_submit` {appid}. **The fifth, "session", was
+deliberately not built** — posthog-js `defaults: '2026-08-29'` autocaptures
+`$pageview`/`$pageleave` with `capture_pageview: 'history_change'`, which covers
+it for free and follows App Router client navigation, which a hand-rolled event
+would not.
+
+**Why this had to land before traffic, and could not wait for it.** PRD §3's
+headline metric is verdict → citation-expand rate ≥30% — the direct test of the
+"claims with receipts" thesis. It is the one number in the whole deliverable
+list that **cannot be recovered retroactively**: un-instrumented traffic is not
+delayed data, it is absent data, and a launch that goes to Reddit before this is
+wired has permanently no "before" measurement to put in the case study. That is
+the entire scoping argument. The other three events are cheap once the transport
+exists; the first one is why the transport exists.
+
+**`request_submit` is not a duplicate of a server-side log — there is no
+server-side log.** This was checked before building it, and the answer changed
+what got built. The "Request verdict" button in `QueueFallback` persisted
+*nothing*: `onClick` set local state and carried the comment "PostHog
+request_submit fires here (3.3)". No fetch, no route, no file. And
+`/api/generate`'s `queue_fallback` branch returns before `recordDispatch`, so
+the quota ledger never sees a fallback either. **So the request queue does not
+currently queue anything**, and this event is now the only record that demand
+existed. That is a product gap, not an analytics one, and it is what D2
+("request queue reveals real demand first") has been waiting on without anyone
+noticing it had nothing to wait on. **Not fixed here** — recording, not fixing.
+
+**THE KEY IS WRONG, AND IT IS A SECRET IN A PUBLIC-BY-DESIGN SLOT.** Every one
+of the four events fires correctly from a real click and is POSTed to
+`us.i.posthog.com`, and PostHog rejects every one with **HTTP 401 "API key is
+not valid: personal_api_key"**. Not inferred from the key's prefix — that is
+PostHog's ingestion naming it. The value in `NEXT_PUBLIC_POSTHOG_KEY` is a
+**personal API key**, an account-scoped secret; client ingestion needs the
+**project** API key. Because `NEXT_PUBLIC_*` is inlined into the browser bundle,
+a deploy with this value set in Vercel would have served an account-scoped
+credential to every visitor as readable JavaScript. It has **not** been
+deployed — Vercel has neither var set, and both `.env` files are gitignored —
+but it has lived on disk in a file destined for a client bundle, so it wants
+**revoking**, not swapping. Blocks: nothing lands in PostHog until it is
+replaced.
+
+**Evidence.** `evals/posthog-events-2026-08-26.txt` — the real payload of each
+event and PostHog's real answer, read through `evals/posthog_capture_proxy.mjs`
+(a pass-through that forwards to the real host, because posthog-js binds its
+transport and logger at init and cannot be observed from outside the page — two
+in-page interception attempts recorded nothing, and that is written down so it
+is not retried). `evals/citation-expand-markup-diff-2026-08-26.txt` — the
+citation `<details>` moved into a client component to carry the event, and the
+rendered HTML of all **539** committed verdicts is byte-identical across the
+swap (same md5, 27,946,505 bytes), with the comparison shown to fail on a
+one-character mutation first. Invariant 9 is intact: the element is still
+server-rendered closed and still opens with no JS.
+`site/lib/__tests__/citation-expand.contract.test.tsx` guards the wiring —
+analytics is fail-silent by design, so a refactor that drops the capture call
+breaks nothing and silently zeroes the headline metric; proven against three
+mutations (call deleted, open-guard removed, citation id leaked into the
+payload) before being trusted. Related: [[verify-the-verifier]].
+
+> **CLOSED 2026-08-27 — key rotated, all four events accepted.** The owner
+> revoked the `phx_` personal key and put a `phc_` PROJECT api key in both
+> `site/.env.local` and the repo-root `.env` (revoked key absent from both,
+> checked by grep). Same verification method re-run — real clicks, payload read
+> off the wire through `evals/posthog_capture_proxy.mjs` — and PostHog now
+> returns **HTTP 200 `{"status":"Ok"}`** for `citation_expand`, `verdict_view`,
+> `search`, `request_submit` and the autocaptured `$pageview`. **19 of 19
+> requests 200, zero 401s**, each named event firing exactly once. Evidence:
+> `evals/posthog-events-2026-08-27.txt`, which supersedes the 08-26 file as
+> current state; the 08-26 file is kept as the record of the 401 run and of how
+> the wrong key was found. Note PostHog's `/e/` answers `{"status":"Ok"}`, not
+> the legacy `{"status":1}` — both mean accepted.
+>
+> **Three things this did NOT close**, all unchanged and all still open:
+> (1) whether the events RENDER in the PostHog UI — ingestion accepted them, but
+> the live-events view filters internal/test users by default and localhost is
+> tagged `$internal_or_test_user: true`, so that check needs the filter off;
+> (2) `verdict_view` with `source:"live"`, which needs `GH_REPO` +
+> `GH_DISPATCH_TOKEN` and a title on the `verdicts` branch — code-reviewed only;
+> (3) **production, where the two `NEXT_PUBLIC_` vars are still not set in
+> Vercel** — a deploy today ships with no key and the init guard makes every
+> capture a silent no-op, which is exactly the failure mode that looks like
+> working software. That is the next thing to do, not an optional follow-up.
+>
+> The `request_submit` finding above stands entirely: there is still no
+> server-side request log, and the button still persists nothing.

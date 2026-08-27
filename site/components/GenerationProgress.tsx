@@ -40,6 +40,7 @@
  */
 
 import { useEffect, useRef, useState } from "react";
+import { capture } from "../lib/analytics";
 
 const STAGES = [
   { key: "ingest", label: "Reading Steam reviews" },
@@ -154,8 +155,16 @@ export function GenerationProgress({
 }
 
 /** Shown for BOTH reserve exhaustion and QR-4 failure — identical copy, because
- *  the distinction is ours, not the buyer's (DESIGN.md). */
-export function QueueFallback({ gameName }: { gameName: string }) {
+ *  the distinction is ours, not the buyer's (DESIGN.md).
+ *
+ *  THIS EVENT IS THE ONLY RECORD THE REQUEST EVER HAPPENED. The button persists
+ *  nothing: no fetch, no API route, no ledger entry. /api/generate's
+ *  queue_fallback branch returns before recordDispatch, so the quota ledger
+ *  does not see it either. So `request_submit` is not a duplicate of a
+ *  server-side log - there is no server-side log, and BACKLOG 2026-08-26
+ *  records that gap as the product question it is. Until it is closed, this
+ *  event is the whole of D2's "request queue reveals real demand". */
+export function QueueFallback({ appid, gameName }: { appid: number; gameName: string }) {
   const [sent, setSent] = useState(false);
   return (
     <div className="gen-panel">
@@ -170,7 +179,7 @@ export function QueueFallback({ gameName }: { gameName: string }) {
           className="cta"
           onClick={() => {
             setSent(true);
-            // PostHog request_submit fires here (3.3)
+            capture("request_submit", { appid: String(appid) });
           }}
         >
           Request verdict

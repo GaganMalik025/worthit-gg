@@ -1,0 +1,136 @@
+POSTHOG EVENT VERIFICATION — BUILD_PLAN 3.3 / PRD F7
+Run 2026-08-26. next 15.5.22, posthog-js 1.419.4, Chrome, `npm run dev`.
+
+HEADLINE: all four events fire from real interactions and are POSTed to
+PostHog. PostHog REJECTS EVERY ONE OF THEM with HTTP 401
+"API key is not valid: personal_api_key". Nothing has landed in the project.
+The wiring is verified; the credential is not valid for ingestion.
+
+--------------------------------------------------------------------------
+HOW THE PAYLOADS WERE READ
+--------------------------------------------------------------------------
+The browser devtools bridge shows the CORS preflight but not POST bodies, and
+posthog-js binds its transport and its logger at init - before any patch
+injected from outside the page can reach either. Two attempts at reading the
+payload in-page (wrapping fetch/sendBeacon/XHR; wrapping console.log) both
+recorded NOTHING for exactly that reason, and are noted here so the next person
+does not repeat them.
+
+What worked: evals/posthog_capture_proxy.mjs, a pass-through that sits in the
+path, logs the decoded payload, FORWARDS to https://us.i.posthog.com and
+returns the real upstream status. So the lines below are a real click, the real
+payload, and PostHog's real answer. During the run only
+NEXT_PUBLIC_POSTHOG_HOST in site/.env.local pointed at the proxy; it has been
+put back to https://us.i.posthog.com (verified after the run).
+
+Interactions were real mouse clicks and real typing in Chrome, not scripted
+dispatch. `citation_expand` was additionally confirmed against posthog-js's own
+debug logger (?__posthog_debug=true), which printed:
+    [13:30:45] [PostHog.js] send "citation_expand" Object
+    [13:30:49] [PostHog.js] Bad HTTP status: 401 API key is not valid: personal_api_key
+
+--------------------------------------------------------------------------
+RESULT PER EVENT — payload as sent, upstream status as returned
+--------------------------------------------------------------------------
+  event            fired  payload correct  PostHog accepted
+  citation_expand   yes        yes            NO - 401
+  verdict_view      yes        yes            NO - 401
+  search            yes        yes            NO - 401
+  request_submit    yes        yes            NO - 401
+  $pageview         yes    (autocapture)      NO - 401
+
+$pageview/$pageleave are autocaptured by `defaults: '2026-08-29'`
+(capture_pageview: 'history_change'). That is why there is no bespoke
+"session" event.
+
+--------------------------------------------------------------------------
+RAW — citation_expand (real click on "Show receipts", Kenshi 233860)
+--------------------------------------------------------------------------
+[2026-08-26T08:04:44.297Z] POST /e/ -> upstream 401 API key is not valid: personal_api_key
+    event=citation_expand  props={"$current_url":"http://localhost:3000/verdict/233860","appid":"233860","verdict":"Buy"}
+
+--------------------------------------------------------------------------
+RAW — verdict_view, search, request_submit (one continuous browser session)
+--------------------------------------------------------------------------
+[2026-08-26T08:06:57.884Z] POST /e/?compression=base64 -> upstream 401 API key is not valid: personal_api_key
+    event=$pageleave  props={"$current_url":"http://localhost:3000/verdict/233860"}
+[2026-08-26T08:06:58.870Z] POST /flags/?v=2&compression=base64 -> upstream 401 {"type":"authentication_error","code":"authentication_failed","detail":"The provided API key is invalid or has expired. Please check your API key and try again.","attr":null}
+    event=undefined  props={}
+[2026-08-26T08:06:58.131Z] GET /array/ph?_<REDACTED>/config.js -> upstream 404 
+[2026-08-26T08:06:59.362Z] GET /array/ph?_<REDACTED>/config -> upstream 404 
+[2026-08-26T08:07:01.867Z] OPTIONS /e/ -> upstream 200 
+[2026-08-26T08:07:02.126Z] POST /e/ -> upstream 401 API key is not valid: personal_api_key
+    event=$set  props={"$current_url":"http://localhost:3000/verdict/233860"}
+    event=verdict_view  props={"$current_url":"http://localhost:3000/verdict/233860","appid":"233860","verdict":"Buy","source":"cache"}
+[2026-08-26T08:07:18.236Z] POST /e/?compression=base64 -> upstream 401 API key is not valid: personal_api_key
+    event=$pageleave  props={"$current_url":"http://localhost:3000/verdict/233860"}
+[2026-08-26T08:07:18.466Z] GET /array/ph?_<REDACTED>/config.js -> upstream 404 
+[2026-08-26T08:07:18.868Z] POST /flags/?v=2&compression=base64 -> upstream 401 {"type":"authentication_error","code":"authentication_failed","detail":"The provided API key is invalid or has expired. Please check your API key and try again.","attr":null}
+    event=undefined  props={}
+[2026-08-26T08:07:19.264Z] GET /array/ph?_<REDACTED>/config -> upstream 404 
+[2026-08-26T08:07:21.866Z] OPTIONS /e/ -> upstream 200 
+[2026-08-26T08:07:22.156Z] POST /e/ -> upstream 401 API key is not valid: personal_api_key
+    event=$set  props={"$current_url":"http://localhost:3000/"}
+[2026-08-26T08:08:24.344Z] OPTIONS /e/ -> upstream 200 
+[2026-08-26T08:08:29.777Z] POST /e/ -> upstream 401 API key is not valid: personal_api_key
+    event=$pageview  props={"$current_url":"http://localhost:3000/"}
+[2026-08-26T08:08:48.867Z] OPTIONS /e/ -> upstream 200 
+[2026-08-26T08:08:50.504Z] POST /e/ -> upstream 401 API key is not valid: personal_api_key
+    event=search  props={"$current_url":"http://localhost:3000/","query_length":5}
+[2026-08-26T08:09:31.918Z] OPTIONS /e/ -> upstream 200 
+[2026-08-26T08:09:32.690Z] POST /e/ -> upstream 401 API key is not valid: personal_api_key
+    event=request_submit  props={"$current_url":"http://localhost:3000/","appid":"755800"}
+
+--------------------------------------------------------------------------
+WHAT EACH PAYLOAD PROVES
+--------------------------------------------------------------------------
+citation_expand {"appid":"233860","verdict":"Buy"}
+  Kenshi, verdict Buy. Correct. No review text, no recommendationid.
+verdict_view {"appid":"233860","verdict":"Buy","source":"cache"}
+  "cache" is right: 233860 is prerendered from site/public/verdicts/.
+  Fired ONCE despite React's dev double-effect (the ref guard holds).
+search {"query_length":5}
+  Typed "hades" - five keystrokes, ONE event, length only, no query text.
+  The 120ms debounce is doing what it was put there for.
+request_submit {"appid":"755800"}
+  Hades' Star, a real cache miss that fell through to the queue panel.
+
+--------------------------------------------------------------------------
+NOT VERIFIED, AND WHY
+--------------------------------------------------------------------------
+1. THAT ANY EVENT APPEARS IN POSTHOG. Blocked by the 401 above. Nothing can
+   land until the key is replaced with the PROJECT API key. This is the whole
+   of what is outstanding.
+2. verdict_view with source:"live". That branch needs GH_REPO and
+   GH_DISPATCH_TOKEN and a title on the `verdicts` branch but not in
+   public/verdicts/ - not reachable locally. The "cache" branch is verified;
+   the "live" branch is code-reviewed only.
+3. Anything on production. Nothing has been deployed. NEXT_PUBLIC_POSTHOG_KEY
+   and NEXT_PUBLIC_POSTHOG_HOST are not set in Vercel, so a deploy today ships
+   with no key and the init guard in instrumentation-client.ts makes every
+   capture a no-op.
+
+--------------------------------------------------------------------------
+THE 401 - WHAT POSTHOG ACTUALLY SAID
+--------------------------------------------------------------------------
+Not an inference from the key's shape. PostHog's ingestion named it:
+
+    HTTP 401  API key is not valid: personal_api_key
+
+and its flags endpoint separately returned:
+
+    {"type":"authentication_error","code":"authentication_failed",
+     "detail":"The provided API key is invalid or has expired."}
+
+The value in NEXT_PUBLIC_POSTHOG_KEY is a PostHog PERSONAL API key. Client-side
+ingestion needs the PROJECT API key (Project Settings), which is a different
+credential.
+
+SECURITY, and this is the part that matters more than the broken events: a
+personal API key is an ACCOUNT-SCOPED SECRET, and it is sitting behind a
+NEXT_PUBLIC_ name. Next inlines NEXT_PUBLIC_* into the browser bundle. Had this
+been set in Vercel and deployed, that key would have been served to every
+visitor in readable JavaScript. It has not been deployed - it exists only in
+the local .env files, both gitignored - but it should be REVOKED in PostHog
+rather than merely swapped out, because it has been on disk in a file destined
+for a client bundle.

@@ -1,0 +1,61 @@
+INVARIANT 9 / 3.3 — the citation <details> moved from VerdictPage into the
+Receipts client component so it could carry `citation_expand`. The claim was
+that the lifted markup is verbatim. This file is the check, not a restatement.
+
+Driver: evals/render_verdict_markup.mjs  (run from site/)
+  cd site && node ../evals/render_verdict_markup.mjs <out.html>
+It renders every JSON in site/public/verdicts/ through VerdictPage with
+renderToStaticMarkup and concatenates the HTML. No assertions - the artifact is
+the evidence.
+
+Run on 2026-08-26. Machine: darwin, node v26.7.0, react 19.2.8, next 15.5.22.
+
+--------------------------------------------------------------------------
+1. BEFORE (inline <details>) vs AFTER (<Receipts>)
+--------------------------------------------------------------------------
+$ node ../evals/render_verdict_markup.mjs markup-before.html   # at HEAD fc0fcd4
+rendered 539 verdicts -> markup-before.html (0 render failures)
+$ node ../evals/render_verdict_markup.mjs markup-after.html    # after the swap
+rendered 539 verdicts -> markup-after.html (0 render failures)
+
+$ cmp markup-before.html markup-after.html && echo IDENTICAL
+IDENTICAL
+
+$ wc -c markup-before.html markup-after.html
+ 27946505 markup-before.html
+ 27946505 markup-after.html
+ 55893010 total
+
+$ md5 -q markup-before.html markup-after.html
+a41664bb6869ac352ea78c9a97203ec5
+a41664bb6869ac352ea78c9a97203ec5
+
+RESULT: byte-identical across all 539 committed verdicts, 27,946,505 bytes each.
+
+--------------------------------------------------------------------------
+2. BREAK-THEN-CONFIRM — does this driver actually see a difference?
+--------------------------------------------------------------------------
+A byte-identical dump proves nothing until the comparison is shown to fail on a
+deliberate mutation. Mutation applied to components/Receipts.tsx: the single
+JSX space separator in the receipts tag widened by one character,
+  ▸ {citations.length}{" "}   ->   ▸ {citations.length}{"  "}
+i.e. exactly the class of whitespace slip a "verbatim lift" could introduce and
+the smallest one that could.
+
+$ cmp -s markup-before.html markup-mutant.html && echo IDENTICAL || echo DIFFER
+DIFFER - driver sees it
+
+$ diff markup-before.html markup-mutant.html | grep -c '^[<>]'
+14752
+
+Sample of the change, from appid 10 (Counter-Strike):
+  before:  <span class="tag mono">▸ 2 reviews</span>
+  mutant:  <span class="tag mono">▸ 2  reviews</span>
+
+$ # mutation reverted, re-rendered
+$ cmp -s markup-before.html markup-revert.html && echo IDENTICAL
+IDENTICAL again
+
+RESULT: the driver fails loudly on a one-character change (14,752 changed
+lines) and returns to identical on revert. The section-1 result is therefore
+evidence and not an artefact of a comparison that cannot fail.

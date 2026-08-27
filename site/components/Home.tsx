@@ -110,7 +110,12 @@ export function Home({ entries }: { entries: CatalogEntry[] }) {
     else setFallback(hit);
   }
 
-  if (fallback) return <main><QueueFallback gameName={fallback.title} /></main>;
+  if (fallback)
+    return (
+      <main>
+        <QueueFallback appid={fallback.appid} gameName={fallback.title} />
+      </main>
+    );
   if (gen)
     return (
       <main>

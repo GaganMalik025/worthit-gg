@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { notFound } from "next/navigation";
 import { VerdictPage } from "../../../components/VerdictPage";
+import { VerdictView } from "../../../components/VerdictView";
 import { loadVerdictStatic, normalizeVerdict, type Verdict } from "../../../lib/verdict";
 import { catalog } from "../../../lib/catalog";
 import { verdictMetadata } from "../../../lib/site";
@@ -13,9 +14,14 @@ export async function generateStaticParams() {
 
 const readSite = (p: string) => readFile(path.join(process.cwd(), p), "utf-8");
 
-async function load(appid: string): Promise<Verdict | null> {
+/** Carries WHICH path answered alongside the verdict, because that is the
+ *  cache/live distinction `verdict_view` reports and this is the only place
+ *  that can tell them apart. Callers that do not care destructure `.verdict`. */
+type Loaded = { verdict: Verdict; source: "cache" | "live" };
+
+async function load(appid: string): Promise<Loaded | null> {
   try {
-    return await loadVerdictStatic(appid, readSite);
+    return { verdict: await loadVerdictStatic(appid, readSite), source: "cache" };
   } catch {
     // freshly generated, not yet merged to main - serve from the verdicts branch
     const repo = process.env.GH_REPO;
@@ -27,7 +33,7 @@ async function load(appid: string): Promise<Verdict | null> {
         next: { revalidate: 300 } },
     );
     if (!res.ok) return null;
-    return normalizeVerdict(JSON.parse(await res.text()));
+    return { verdict: normalizeVerdict(JSON.parse(await res.text())), source: "live" };
   }
 }
 
@@ -48,14 +54,23 @@ async function load(appid: string): Promise<Verdict | null> {
  */
 export async function generateMetadata({ params }: { params: Promise<{ appid: string }> }) {
   const { appid } = await params;
-  const v = await load(appid);
-  if (!v) return { title: "Not found — WorthIt.gg" };
-  return verdictMetadata(v, appid);
+  const loaded = await load(appid);
+  if (!loaded) return { title: "Not found — WorthIt.gg" };
+  return verdictMetadata(loaded.verdict, appid);
 }
 
 export default async function Page({ params }: { params: Promise<{ appid: string }> }) {
   const { appid } = await params;
-  const v = await load(appid);
-  if (!v) notFound();
-  return <VerdictPage verdict={v} />;
+  const loaded = await load(appid);
+  if (!loaded) notFound();
+  return (
+    <>
+      <VerdictView
+        appid={loaded.verdict.appid}
+        verdictWord={loaded.verdict.verdict.word}
+        source={loaded.source}
+      />
+      <VerdictPage verdict={loaded.verdict} />
+    </>
+  );
 }

@@ -16,6 +16,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { CAPSULE, createIndexLoader, search, type Hit } from "../lib/search";
+import { capture } from "../lib/analytics";
 
 export function SearchBox({
   haveVerdict,
@@ -40,6 +41,12 @@ export function SearchBox({
       setHits(res);
       setActive(res.length ? 0 : -1);
       setOpen(res.length > 0);
+      // Inside the debounce on purpose: one event per SETTLED query, not one
+      // per keystroke. LENGTH ONLY - never the string. What someone types into
+      // a search box is theirs, and a game title is enough to identify a person
+      // when it is rare enough; the length still answers the question this
+      // event exists for (are people searching at all, and giving up part-way).
+      if (query.length > 0) capture("search", { query_length: query.length });
     }, 120);
     return () => {
       if (debounce.current) clearTimeout(debounce.current);

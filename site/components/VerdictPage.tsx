@@ -16,7 +16,7 @@
  */
 
 import { CaseHero } from "./CaseHero";
-import { citationHours } from "../lib/verdict";
+import { Receipts } from "./Receipts";
 import type { Sourcing, Verdict } from "../lib/verdict";
 
 /**
@@ -186,26 +186,17 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
               {t.claims.map((cl) => (
                 <div key={cl.claim_id} className="claim">
                   <p className="text">{cl.claim}</p>
-                  {/* invariant 9: review text only behind a citation expand */}
-                  <details>
-                    <summary>
-                      <span className="tag mono">
-                        ▸ {cl.citations.length}{" "}
-                        {cl.citations.length === 1 ? "review" : "reviews"}
-                      </span>
-                      <span className="cta">Show receipts</span>
-                    </summary>
-                    {cl.citations.map((cit) => (
-                      <div key={cit.recommendationid} className="citation">
-                        <div className="meta mono">
-                          {cit.voted_up ? "▲ recommends" : "▼ does not recommend"}{" "}
-                          · {citationHours(cit, c.bucket)} hrs ·{" "}
-                          {cit.date}
-                        </div>
-                        <div className="body">{cit.review_text}</div>
-                      </div>
-                    ))}
-                  </details>
+                  {/* invariant 9: review text only behind a citation expand.
+                      The <details> moved into Receipts (a client component) so
+                      it can carry `citation_expand` - same markup, verified
+                      byte-identical across all 539 committed verdicts, see
+                      evals/citation-expand-markup-diff-2026-08-26.txt. */}
+                  <Receipts
+                    appid={v.appid}
+                    verdictWord={v.verdict.word}
+                    bucket={c.bucket}
+                    citations={cl.citations}
+                  />
                 </div>
               ))}
             </div>
