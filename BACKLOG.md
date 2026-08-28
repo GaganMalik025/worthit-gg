@@ -2570,3 +2570,96 @@ payload) before being trusted. Related: [[verify-the-verifier]].
 >
 > The `request_submit` finding above stands entirely: there is still no
 > server-side request log, and the button still persists nothing.
+
+2026-08-28 | **Three cover-art defects, one story: live generation never had a
+SteamGridDB key, the case hero could not see the art block, and the fallback
+chain preferred a letterboxed landscape over a working portrait** | build,
+investigating 2806050 (blank case face) and 1641890 (low-quality tile) |
+Two reported symptoms, three independent causes, all fixed together.
+
+**1. `STEAMGRIDDB_API_KEY` has never been in any workflow.** Not "was removed" —
+never present: `git log -S STEAMGRIDDB -- .github/workflows/` across `--all`
+returns **nothing**. So on the runner `art.py:_key()` found no env var, fell
+back to a repo-root `.env` that is gitignored and therefore does not exist
+there, returned `None`, and `sgdb_grid()` returned at `if not key` **without
+writing a cache entry**. That last detail is why this hid for so long: there is
+no `data/cache/<appid>/steamgriddb.json` for either title — not `ok`, not
+`not_found`, not `request_failed`. Nothing recorded that the question was never
+asked, so no audit of cache *reasons* could ever have found it.
+**Every live generation has shipped without `art.grid`.** The four earlier live
+titles (367520, 1547000, 1145360, 2073850) look fine only because a local
+`backfill_art.py --all` swept them on 2026-08-25 08:22–08:30Z; 1641890 was
+generated live at **20:33Z the same day**, ~12h after that sweep, and missed it.
+Fixed by adding the secret to the workflow env, with a **non-fatal** set/not-set
+line in `setup` — art is decoration, and killing a run over it would waste
+Gemini quota already spent. **No cache benefit and that is understood:**
+`data/cache/` is gitignored and the runner is ephemeral, so it is one fresh
+SteamGridDB call per live generation. Bounded and checked rather than waved
+through: `LIVE_RESERVE=100 / EST_COST=13` caps live generation at **7/day**, so
+≤7 calls/day, ≤21 if every call exhausts `SGDB_ATTEMPTS=3`; SteamGridDB returns
+no rate-limit headers at all (re-measured 2026-08-27).
+
+**2. `CaseHero.tsx` never read the art block.** It took `appid`/`gameName`/
+`splitBar` and hardcoded the legacy CDN pattern, so it was structurally
+incapable of using art the pipeline had already captured. On 2806050 both legacy
+cover URLs 404 (measured), the chain hit `.art-wrap.motif`
+(`globals.css:218` — `motif img{display:none}`), and the page rendered a blank
+face while a live HTTP 200 `header_image` sat unread in its own JSON. **The
+symptom was not live-vs-static** — the two paths render identically; the hero
+was blind on both.
+
+**3. A working portrait lost to a letterboxed landscape.** For a grid-less title
+the chain started at `art.header_image` (460x215, letterboxed into a portrait
+slot) while `library_600x900.jpg` (300x450, HTTP 200, a real portrait) sat two
+stages later. 1641890 was the **only grid-less verdict of the 539** on main when
+this was measured, which is why one title looked wrong and nothing else did. Order is now **all portraits before all
+landscapes**, with `header.jpg` the true last resort.
+*(The instruction that prompted this asked for `library_600x900` to be moved
+ahead of `header.jpg`. It already was — `Home.tsx:51-52`. The real defect was
+the stored landscape beating the legacy portrait, so the stated principle was
+implemented rather than the literal reorder.)*
+
+**The order now lives in one place**, `site/lib/art.ts:coverStages()`, shared by
+the grid and the hero, because it had already drifted into two different orders
+across two files and that is what let (2) hide behind (3).
+
+**GRID IS A TILE ASSET AND DOES NOT GO ON THE CASE FACE** (owner decision,
+2026-08-28). `allowGrid` is the single documented difference between the two
+surfaces: true for the home grid, false for the hero. Raised because three
+places already said so — `art.py`'s OG rule, `catalog.ts` ("licensed here for
+grid tiles only"), and `DESIGN.md:132` ("the game's real Steam library art") —
+and putting community fan art on the largest image on the page is a different
+claim from putting it in a thumbnail. The hero loses nothing: 2806050's stored
+`header_image` is a live 200 and renders where the blank motif used to be. No
+DESIGN.md amendment needed.
+
+**Evidence:** `evals/cover-stages-2026-08-28.txt` — the `_key()` reproduction
+(including a rebuild of the pre-fix runner state, `.env` absent → `None`), the
+call-volume bound, the three mutations, and the markup diff.
+`site/lib/__tests__/cover-stages.contract.test.tsx` pins the order and drives
+the `onError` walk in jsdom, proved against three mutations (old order restored,
+`allowGrid` ignored, `header.jpg` not last) before being trusted. Rendered
+markup over all 539 verdicts is unchanged except `data-stage="lib"` →
+`data-stage="0"`, an intended consequence of the indexed walk — the cover `src`
+is identical on every one, and there are zero SteamGridDB URLs in hero markup
+before or after.
+
+**MID-SESSION, `2806050` MERGED TO main** (`0e48bb9`, the publish workflow) —
+so the catalog is now **540 verdicts and the grid-less set is two**, 1641890 and
+2806050. The committed evidence keeps its 539 figures because that is what it
+measured; the addendum records the change rather than rewriting the measurement.
+The merge is also what makes the fix checkable against the real artifact instead
+of a fixture: walking 2806050's own art block gives
+`library_600x900` **404** → stored `header_image` **200, letterboxed** →
+`header.jpg` 404. The old walk was 404 → 404 → motif, which is precisely the
+blank face that was reported.
+
+**NOT CLOSED BY THIS.** The workflow fix only helps titles generated *after* it
+lands: **1641890 and 2806050 still have no grid** and need a local
+`backfill_art.py` run, which was out of scope tonight and is the next art task.
+Also left alone deliberately: the disc chain still falls back to a hardcoded
+`library_600x900` rather than the cover's first stage, so on a title where that
+URL 404s the disc and the cover can now disagree about what "reuse the cover
+art" (DESIGN.md:151) means. Not in scope, no symptom reported, recorded so it is
+not rediscovered as a surprise. Related: [[verify-the-verifier]],
+[[narrowing-a-guard-needs-a-coverage-diff]].

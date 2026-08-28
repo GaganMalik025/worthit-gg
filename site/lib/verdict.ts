@@ -20,6 +20,9 @@
  * and not the other is exactly the bug the contract test is looking for.
  */
 
+export type { Art } from "./art";
+import type { Art } from "./art";
+
 export interface Citation {
   recommendationid: string;
   hours_at_review: number | null;
@@ -130,6 +133,11 @@ export interface Verdict {
   appid: string;
   game_name: string;
   generated_at: string;
+  /** Cover art captured at generation time (pipeline/art.py). TYPING ONLY -
+   *  normalizeVerdict spreads `...v` first, so the block has always survived at
+   *  runtime; it was simply never modelled, which is why CaseHero could not
+   *  reach it. Absent on verdicts generated before 2026-08-13. */
+  art?: Art;
   verdict: {
     word: string;
     /** One line about the game. Never an audience, never a condition. */

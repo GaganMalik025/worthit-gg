@@ -9,13 +9,14 @@ const DIR = path.join(process.cwd(), "public/verdicts");
  *
  * `grid` is COMMUNITY-UPLOADED fan art from SteamGridDB and is licensed here
  * for grid tiles only. It must never reach an OpenGraph image - see
- * lib/site.ts, which reads header_image and cannot see this field.
+ * lib/site.ts, which reads header_image and cannot see this field - and as of
+ * 2026-08-28 it does not reach the case hero either: lib/art.ts gates it behind
+ * `allowGrid`, which only the home grid passes.
+ *
+ * One definition, in lib/art.ts, beside the chain that consumes it.
  */
-export interface Art {
-  header_image?: string;
-  capsule_image?: string;
-  grid?: string;
-}
+export type { Art } from "./art";
+import type { Art } from "./art";
 
 export interface CatalogEntry {
   appid: number;

@@ -17,6 +17,7 @@
  */
 
 import { useEffect, useRef } from "react";
+import { coverStages, type Art } from "../lib/art";
 
 const CDN = "https://cdn.cloudflare.steamstatic.com/steam/apps";
 
@@ -24,10 +25,14 @@ export function CaseHero({
   appid,
   gameName,
   splitBar,
+  art,
 }: {
   appid: number | string;
   gameName: string;
   splitBar: { bucket: string; pct_positive: number }[];
+  /** The verdict's captured art block. Absent on pre-2026-08-13 verdicts, which
+   *  simply fall through to the legacy stages exactly as they did before. */
+  art?: Art | null;
 }) {
   const caseRef = useRef<HTMLDivElement>(null);
   const coverRef = useRef<HTMLDivElement>(null);
@@ -67,6 +72,8 @@ export function CaseHero({
     };
   }, []);
 
+  const stages = coverStages(appid, art, { allowGrid: false });
+
   /** Mini Split Bar motif: the last-resort face, and the disc label. */
   const motif = (
     <div className="ms" aria-hidden="true">
@@ -78,21 +85,41 @@ export function CaseHero({
     </div>
   );
 
-  /** Cover chain: library_600x900 -> header letterboxed -> Split Bar motif. */
+  /**
+   * Cover chain, from lib/art.ts so the hero and the home grid cannot drift:
+   * library_600x900 -> art.header_image (letterboxed) -> header.jpg
+   * (letterboxed) -> Split Bar motif.
+   *
+   * `allowGrid: false` - SteamGridDB fan art is a TILE asset and does not go on
+   * the case face (lib/art.ts, DESIGN.md:132). The hero is Valve art or nothing.
+   *
+   * THE STORED HEADER IS THE WHOLE POINT OF THIS CHANGE. This used to jump
+   * straight from the legacy portrait to the legacy header, so a title whose
+   * legacy URLs both 404 - 2806050 - fell to the motif with a live, captured
+   * header_image sitting unread in its own verdict JSON.
+   *
+   * Indexed walk rather than the old two-step, mirroring PosterCard: the number
+   * of stages now varies with what the art block holds.
+   */
   const onCoverError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.currentTarget;
     const wrap = img.parentElement;
     if (!wrap) return;
-    if (img.dataset.stage === "lib") {
-      img.dataset.stage = "header";
-      wrap.classList.add("letterbox");
-      const bg = wrap.querySelector<HTMLImageElement>(".art-bg");
-      if (bg) bg.src = `${CDN}/${appid}/header.jpg`;
-      img.src = `${CDN}/${appid}/header.jpg`;
-    } else {
+    const next = Number(img.dataset.stage ?? "0") + 1;
+    const stage = stages[next];
+    if (!stage) {
       wrap.classList.remove("letterbox");
       wrap.classList.add("motif");
+      return;
     }
+    img.dataset.stage = String(next);
+    wrap.classList.toggle("letterbox", stage.letterbox);
+    // The blurred fill behind a letterboxed face is a scaled copy of the same
+    // image (DESIGN.md:167), so it tracks the stage rather than being pinned to
+    // one URL.
+    const bg = wrap.querySelector<HTMLImageElement>(".art-bg");
+    if (bg) bg.src = stage.src;
+    img.src = stage.src;
   };
 
   /** Disc chain is independent: library_hero -> cover darkened -> motif. */
@@ -129,12 +156,12 @@ export function CaseHero({
           <div className="panel cover" id="cover" ref={coverRef}>
             <div className="face front">
               <div className="band display">PC</div>
-              <div className="art-wrap">
+              <div className={stages[0].letterbox ? "art-wrap letterbox" : "art-wrap"}>
                 <img className="art-bg" alt="" aria-hidden="true" />
                 <img
                   className="art"
-                  data-stage="lib"
-                  src={`${CDN}/${appid}/library_600x900.jpg`}
+                  data-stage="0"
+                  src={stages[0].src}
                   alt={`${gameName} cover art`}
                   onError={onCoverError}
                 />
@@ -144,9 +171,11 @@ export function CaseHero({
             {/* inner-left panel: the cover seen from behind through frosted
                 tinted plastic - mirrored, ghosted, blurred, tinted */}
             <div className="face inside" aria-hidden="true">
+              {/* the same physical object as the front face (DESIGN.md:159),
+                  so it starts from the same stage rather than a pinned URL */}
               <img
                 className="ghost"
-                src={`${CDN}/${appid}/library_600x900.jpg`}
+                src={stages[0].src}
                 alt=""
                 onError={(e) => { e.currentTarget.style.display = "none"; }}
               />

@@ -4,9 +4,8 @@ import { useState } from "react";
 import { SearchBox } from "./SearchBox";
 import { GenerationProgress, QueueFallback } from "./GenerationProgress";
 import type { CatalogEntry } from "../lib/catalog";
+import { coverStages } from "../lib/art";
 import type { Hit } from "../lib/search";
-
-const CDN = "https://cdn.cloudflare.steamstatic.com/steam/apps";
 
 /**
  * A home-grid card: the poster, and nothing else, until you ask.
@@ -20,37 +19,26 @@ const CDN = "https://cdn.cloudflare.steamstatic.com/steam/apps";
  * whether the device can hover, not how wide it is - a touch laptop would fail
  * a width test and leave a card that never reveals its verdict at all.
  *
- * The art fallback chain matches the case hero: library_600x900 -> header
- * (letterboxed) -> no art. If every image fails, the card switches to a text
- * card with the overlay pinned on, because a blank untitled tile is not a
- * degraded card, it is an unusable one.
+ * The art fallback chain is now literally the same function as the case hero's
+ * (lib/art.ts), differing only in that tiles allow SteamGridDB fan art and the
+ * hero does not. If every stage fails, the card switches to a text card with
+ * the overlay pinned on, because a blank untitled tile is not a degraded card,
+ * it is an unusable one.
  */
 /**
- * The tile art chain, resolved at BUILD time from the verdict's `art` block
- * where possible, with the legacy URL pattern as the last resort.
- *
- * Ordered deliberately, and not the same order as the unfurl image:
- *
- *   1. art.grid        - SteamGridDB portrait. Fan art, tiles ONLY. Portrait
- *                        is the shape this grid is designed around (DESIGN.md),
- *                        and for the ~13 titles Steam serves no reachable
- *                        portrait for, this is the only portrait that exists.
- *   2. art.header_image- Steam's own art, but LANDSCAPE, so it letterboxes.
- *   3. legacy pattern  - correct for ~97% of titles, 404s on recently
- *                        refreshed store listings.
+ * The tile art chain now lives in lib/art.ts, shared with the case hero so the
+ * two surfaces cannot drift apart again (they had: the hero could not see the
+ * art block at all). Tiles pass `allowGrid: true` - the home grid is the one
+ * place SteamGridDB fan art is allowed.
  *
  * onError still walks the remaining stages, because a stored URL can rot. It
  * cannot, however, catch Battlefield 6's failure mode: the legacy path returns
  * HTTP 200 with a 1.6KB blank placeholder, so no error ever fires. That title
- * is only fixed by starting from a stored URL - which is the point of tiers 1-2.
+ * is only fixed by starting from a stored URL - which is why grid stays first
+ * here, and why lib/art.ts records what that costs on a grid-less title.
  */
-function tileStages(e: CatalogEntry): { src: string; letterbox: boolean }[] {
-  const stages: { src: string; letterbox: boolean }[] = [];
-  if (e.art?.grid) stages.push({ src: e.art.grid, letterbox: false });
-  if (e.art?.header_image) stages.push({ src: e.art.header_image, letterbox: true });
-  stages.push({ src: `${CDN}/${e.appid}/library_600x900.jpg`, letterbox: false });
-  stages.push({ src: `${CDN}/${e.appid}/header.jpg`, letterbox: true });
-  return stages;
+function tileStages(e: CatalogEntry) {
+  return coverStages(e.appid, e.art, { allowGrid: true });
 }
 
 function PosterCard({ entry: e }: { entry: CatalogEntry }) {

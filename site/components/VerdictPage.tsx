@@ -154,7 +154,12 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
       </header>
 
       <div className="case-col">
-        <CaseHero appid={v.appid} gameName={v.game_name} splitBar={v.split_bar} />
+        <CaseHero
+          appid={v.appid}
+          gameName={v.game_name}
+          splitBar={v.split_bar}
+          art={v.art}
+        />
       </div>
 
       <main className="main-col">

@@ -37,6 +37,17 @@ jobs:
     env:
       APPID: ${{ github.event.client_payload.appid }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      # Cover art tier 2 (pipeline/art.py). Its ABSENCE is why every live
+      # generation shipped without `art.grid`: art.py:_key() reads this exact
+      # name, falls back to a repo-root .env that is gitignored and therefore
+      # does not exist on a runner, and sgdb_grid() then returns at `if not key`
+      # WITHOUT writing a cache entry - so nothing recorded that the question
+      # was never asked. BACKLOG 2026-08-28.
+      #
+      # NO CACHE BENEFIT HERE, and that is understood rather than overlooked:
+      # data/cache/ is gitignored and the runner is ephemeral, so this is one
+      # fresh SteamGridDB call per live generation, every time.
+      STEAMGRIDDB_API_KEY: ${{ secrets.STEAMGRIDDB_API_KEY }}
       # No GH_TOKEN: nothing in this workflow shells out to `gh` any more. The
       # push to `verdicts` uses the credentials actions/checkout persists.
     steps:
@@ -49,6 +60,17 @@ jobs:
           test -n "$APPID" || { echo "no appid in client_payload"; exit 1; }
           test -n "$GEMINI_API_KEY" || {
             echo "::error::GEMINI_API_KEY is not set in Actions secrets"; exit 1; }
+          # DELIBERATELY NON-FATAL, unlike the check above. Cover art is
+          # decoration: synthesize.py degrades to the legacy URL pattern when
+          # the key is absent, and killing a run over it would waste Gemini
+          # quota that has already been spent. This line is also the only way
+          # to observe the wiring without spending a live generation to test it.
+          # Prints set/not-set, never the value.
+          if [ -n "$STEAMGRIDDB_API_KEY" ]; then
+            echo "STEAMGRIDDB_API_KEY: set (cover art tier 2 enabled)"
+          else
+            echo "::warning::STEAMGRIDDB_API_KEY not set - verdicts will ship without art.grid"
+          fi
           # CODE COMES FROM main. FULL STOP.
           #
           # This used to `git checkout verdicts` and then
