@@ -109,6 +109,21 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
   const fit = v.verdict.for_you_if.length || v.verdict.not_for_you_if.length;
   return (
     <div className="layout">
+      {/* The only navigation on the site. Most first-time visitors LAND here
+          from a shared link, so without this there is no route back to the
+          search box except browser back - which a pasted link opened in a new
+          tab does not have.
+
+          A CHILD of .layout, not a sibling, and absolutely positioned: .layout
+          is the position:relative box it resolves against, and an abspos child
+          is not a grid item, so it takes no track in the three explicitly
+          placed columns/rows and adds NO flow height. That is what keeps
+          CaseHero's (scrollY-40)/460 drive and the sticky case byte-identical -
+          measured, see evals/home-link-scroll-2026-08-28.txt. Deliberately not
+          an <h1>: the game title below owns that. */}
+      <a className="site-home" href="/">
+        WorthIt.gg
+      </a>
       <header className="hero-copy">
       <h1>{v.game_name}</h1>
       <div className="stamp-row">

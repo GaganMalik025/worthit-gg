@@ -1,0 +1,92 @@
+CaseHero choreography is unchanged by the home link — measured 2026-08-28
+=======================================================================
+Cited by site/components/VerdictPage.tsx (the .site-home comment).
+
+THE CLAIM UNDER TEST
+--------------------
+CaseHero.tsx:58 drives the case off raw scroll position:
+
+    const p = Math.min(1, Math.max(0, (window.scrollY - 40) / 460));
+
+and globals.css:169 pins .case-scene{position:sticky;top:88px}. CaseHero is NOT
+modified by this change, so the transform is the same pure function of scrollY.
+The only way the link could alter the choreography is by moving content
+vertically relative to scrollY. That is what is measured here.
+
+The link is an absolutely positioned CHILD of .layout. An abspos child of a grid
+container is not a grid item, so it takes no track among the three explicitly
+placed children (.hero-copy col2/row1, .case-col col1/row1-span-2, .main-col
+col2/row2) and contributes no flow height.
+
+HARNESS
+-------
+Chrome via the MCP browser tools, `npm run dev`, /verdict/233860 (Kenshi).
+The tab reports document.visibilityState === "hidden", so requestAnimationFrame
+is throttled to never firing — a first attempt to sample transforms froze at
+scrollY=200 with rAF pending. Run A therefore replaces window.requestAnimationFrame
+with a synchronous shim, which makes CaseHero's own rAF-scheduled drive() run
+inline on a dispatched scroll event. It exercises the real handler.
+
+Run B re-measures with NO shim, reading only getBoundingClientRect/scrollHeight,
+which are synchronous layout reads and need no animation frame. Run B is the
+load-bearing one; Run A adds the transform matrices.
+
+RUN A — transforms + geometry, synchronous-rAF shim, viewport 1470x745
+----------------------------------------------------------------------
+Columns: scrollY | .case-scene top | .case top | h1 top | .layout top
+
+BEFORE (git HEAD, no link)          AFTER (link present)
+  doc height 4093                     doc height 4093
+  a[href="/"] count 0                 a[href="/"] count 1
+  0   | 88 | 129.07 |   48 |   48     0   | 88 | 129.07 |   48 |   48
+  40  | 88 | 129.07 |    8 |    8     40  | 88 | 129.07 |    8 |    8
+  200 | 88 | 132.26 | -152 | -152     200 | 88 | 132.26 | -152 | -152
+  500 | 88 | 133.49 | -452 | -452     500 | 88 | 133.49 | -452 | -452
+
+  .case/.cover matrix3d over all 4 samples, djb2 of the concatenation:
+  BEFORE 3678da5e (909 chars)         AFTER 3678da5e (909 chars)
+
+Identical on every column, and the transform digest is identical. Link box in
+the AFTER run: top 18, bottom 42, left 185, width 71.71 — it ends 46px above
+.case-scene's sticky top:88, so it never meets the case.
+
+RUN B — geometry only, NO shim, viewport 1440x667 (after)
+---------------------------------------------------------
+  rafPatched false
+  doc 4093 | layoutTop 48 | h1Top 48 | sceneTop 88 | caseTop 129.07
+  linkTop 18 | linkBottom 42 | a[href="/"] 1
+
+Every figure matches the BEFORE column of Run A. This is the result that does
+not depend on the shim.
+
+MOBILE — viewport 500x623, mobile CSS confirmed active
+-------------------------------------------------------
+  matchMedia("(max-width:767px)") true
+  .layout display: block          .case-scene position: static
+  link   top 18, left 24, right 95.7, bottom 42
+  h1     top 48
+  overlaps h1: false   overlaps .case-scene: false   inside viewport: true
+
+CONSOLE
+-------
+The shim in Run A makes WaveBackdrop's own rAF loop recurse synchronously and
+throw `RangeError: Maximum call stack size exceeded` (WaveBackdrop.tsx:76). That
+is an artefact of the measurement, not of this change: it is present identically
+in the BEFORE and AFTER runs, and a clean reload with no shim reports zero
+console errors on both the verdict page and home.
+
+LIMITS — what was NOT verified
+------------------------------
+1. 375px was NOT reachable. Chrome refused to size the window below ~500px
+   (asked for 375 and for 420, got 1200 and 500). The mobile media query is
+   active at the 500px that was measured, and the link's box is width-
+   independent (left:0 inside .layout, whose left inset is body's fixed 24px
+   padding at every width), but 375px itself was not observed.
+2. prefers-reduced-motion was NOT emulated — no CDP media override was available
+   through these tools. The reduced-motion path (CaseHero.tsx:41-44, adds
+   html.prm and attaches no scroll listener) is untouched by this change and
+   .site-home carries no animation or transition, but this is reasoning, not a
+   measurement.
+3. Only /verdict/233860 was measured for scroll geometry. The contract test
+   covers link presence across all six committed seed verdicts; the scroll
+   measurement is one title.

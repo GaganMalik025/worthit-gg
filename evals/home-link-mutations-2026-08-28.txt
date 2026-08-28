@@ -1,0 +1,53 @@
+target      : site/components/VerdictPage.tsx
+sha256 before: 075d9faa8ea0ca2938edaa696f27ab1ad6c02b1d6ab2d3115cf62a0fcd59097e
+
+=== UNMUTATED (must PASS) -> rc=0
+   ✓ lib/__tests__/home-link.contract.test.tsx (8 tests) 41ms
+   Test Files  1 passed (1)
+   Tests  8 passed (8)
+
+=== M1 link deleted entirely -> rc=1  CAUGHT (test failed, as required)
+   × every verdict page links back to the catalog > appid 233860: exactly one link to / 20ms
+   × every verdict page links back to the catalog > appid 1091500: exactly one link to / 7ms
+   × every verdict page links back to the catalog > appid 379720: exactly one link to / 4ms
+   × every verdict page links back to the catalog > appid 413150: exactly one link to / 5ms
+   × every verdict page links back to the catalog > appid 553850: exactly one link to / 4ms
+   × every verdict page links back to the catalog > appid 1190460: exactly one link to / 3ms
+   × every verdict page links back to the catalog > it is a real anchor with text, not an icon or an empty box 5ms
+   Test Files  1 failed (1)
+   Tests  7 failed | 1 passed (8)
+
+=== M2 link moved inside the case column -> rc=1  CAUGHT (test failed, as required)
+   × every verdict page links back to the catalog > the link sits OUTSIDE the case column, so choreography cannot gate it 6ms
+   Test Files  1 failed (1)
+   Tests  1 failed | 7 passed (8)
+
+=== M3 anchor emptied (icon-only, no accessible name) -> rc=1  CAUGHT (test failed, as required)
+   × every verdict page links back to the catalog > appid 233860: exactly one link to / 20ms
+   × every verdict page links back to the catalog > appid 1091500: exactly one link to / 4ms
+   × every verdict page links back to the catalog > appid 379720: exactly one link to / 4ms
+   × every verdict page links back to the catalog > appid 413150: exactly one link to / 3ms
+   × every verdict page links back to the catalog > appid 553850: exactly one link to / 3ms
+   × every verdict page links back to the catalog > appid 1190460: exactly one link to / 3ms
+   × every verdict page links back to the catalog > it is a real anchor with text, not an icon or an empty box 4ms
+   Test Files  1 failed (1)
+   Tests  7 failed | 1 passed (8)
+
+=== M4 href changed to a non-home route -> rc=1  CAUGHT (test failed, as required)
+   × every verdict page links back to the catalog > appid 233860: exactly one link to / 21ms
+   × every verdict page links back to the catalog > appid 1091500: exactly one link to / 4ms
+   × every verdict page links back to the catalog > appid 379720: exactly one link to / 4ms
+   × every verdict page links back to the catalog > appid 413150: exactly one link to / 3ms
+   × every verdict page links back to the catalog > appid 553850: exactly one link to / 3ms
+   × every verdict page links back to the catalog > appid 1190460: exactly one link to / 3ms
+   × every verdict page links back to the catalog > it is a real anchor with text, not an icon or an empty box 4ms
+   Test Files  1 failed (1)
+   Tests  7 failed | 1 passed (8)
+
+sha256 after : 075d9faa8ea0ca2938edaa696f27ab1ad6c02b1d6ab2d3115cf62a0fcd59097e  (restored: True)
+=== RESTORED (must PASS again) -> rc=0
+   ✓ lib/__tests__/home-link.contract.test.tsx (8 tests) 43ms
+   Test Files  1 passed (1)
+   Tests  8 passed (8)
+
+ALL MUTATIONS CAUGHT

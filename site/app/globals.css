@@ -28,6 +28,16 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
 .waves{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
 .waves canvas{width:100%;height:100%;display:block}
 
+/* the only navigation on the site: back to the catalog from a shared link.
+   Absolute inside .layout's existing relative box (see the two-column shell
+   below), sitting in body's 48px top padding - it adds no flow height, so the
+   case hero's scrollY-driven choreography is untouched. Ends at y=37 on
+   desktop, clear of .case-scene's sticky top:88px. */
+.site-home{position:absolute;top:-30px;left:0;
+  font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;font-size:15px;
+  letter-spacing:-0.02em;color:var(--text-dim);text-decoration:none}
+.site-home:hover{color:var(--text)}
+
 /* home */
 .wordmark{font-size:32px}
 .promise{color:var(--text-dim);margin:8px 0 32px}

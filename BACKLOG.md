@@ -2735,3 +2735,46 @@ worth it just for this.
 the investigation. Decide separately whether to commit them under `evals/` or
 `pipeline/` for citability — as it stands the evidence above is a restatement,
 not an openable artifact.
+
+---
+
+2026-08-28 | **The verdict page has a way back to home; two verification limits
+recorded with it** | build, the site had no navigation of any kind | The site
+shipped 540 verdict pages with **no route to the search box** — `layout.tsx`
+rendered only the backdrop and children, `VerdictPage` opened straight into the
+game title. Distribution is shared links, so the verdict page is the *landing*
+page for most first visitors, and browser back does not exist in a fresh tab.
+Fixed by one absolutely positioned wordmark link in `VerdictPage.tsx`
+(`.site-home`), on the verdict page only.
+
+**Placement reasoning, so it is not re-litigated:** site-wide in `layout.tsx`
+was rejected because only two routes exist and home is the one place a wordmark
+is redundant — it already has `h1.wordmark` (`Home.tsx:121`, DESIGN.md:264) and
+would have gained a duplicate plus a second `<h1>` on verdict pages. The
+`usePathname` variant was rejected because it makes the root layout a client
+component, against `Receipts.tsx:19`.
+
+**Zero layout shift is measured, not asserted** —
+`evals/home-link-scroll-2026-08-28.txt`. The link is an abspos *child* of
+`.layout`, which is not a grid item and adds no flow height, so CaseHero's
+`(scrollY-40)/460` drive is untouched: doc height 4093, all four scroll-geometry
+rows and the `.case`/`.cover` transform digest `3678da5e` are identical before
+and after, confirmed again on a clean no-shim run. Guarded by
+`site/lib/__tests__/home-link.contract.test.tsx`, proved against 4 mutations
+before being trusted (`evals/home-link-mutations-2026-08-28.txt`).
+
+> **TWO THINGS WERE NOT VERIFIED, and are the reason this entry exists.**
+> 1. **375px was never observed.** Chrome refused to size its window below
+>    ~500px (asked for 375, got 1200; asked for 420, got 500). The mobile media
+>    query is active at the 500px that *was* measured and the link's box is
+>    width-independent, but the width normally used for mobile checks was not
+>    tested. Anyone re-checking mobile should use real device emulation.
+> 2. **`prefers-reduced-motion` was not emulated** — no CDP media override was
+>    available through the browser tools in use. The reduced-motion path
+>    (`CaseHero.tsx:41-44`) is untouched and `.site-home` carries no animation,
+>    but that is reasoning, not measurement.
+>
+> **`docs/DESIGN.md`'s Verdict page anatomy (:317-326) no longer lists every
+> element on the page** — it has six items and does not mention this link.
+> Deliberately NOT amended in this change: the anatomy is design direction the
+> owner authors. Flagged so the omission is a known gap rather than a surprise.
