@@ -2664,6 +2664,25 @@ art" (DESIGN.md:151) means. Not in scope, no symptom reported, recorded so it is
 not rediscovered as a surprise. Related: [[verify-the-verifier]],
 [[narrowing-a-guard-needs-a-coverage-diff]].
 
+> **2026-08-28, the grid half is CLOSED.** Both titles backfilled with
+> `backfill_art.py --appid 1641890 2806050` (scoped, not `--all` — the other 538
+> already hold grid): `2 changed, 0 already current, 0 with no art from any
+> tier`, both resolving `steam+sgdb`, zero Gemini quota. 1641890 →
+> `grid/801a6903ecc9364d4a0d3336453b55a9.png`, 2806050 →
+> `grid/9e00a3de909a5e4ada9324bc7aa1fea2.png`; neither had a SteamGridDB cache
+> entry beforehand, so both were real first asks rather than re-reads. Read back
+> from disk and diffed against the parent commit: `art` is the only changed key
+> on either file, key order unchanged, `header_image`/`capsule_image`
+> byte-identical. **The grid-less set is now empty.**
+>
+> Both CDN images were confirmed live and correct **by the developer**, not by
+> this session — `cdn2.steamgriddb.com` is unreachable from the sandbox the run
+> executed in (connect timeout, `code=000`, while `www.steamgriddb.com/api/v2`
+> answers 200), so the usual portrait/HTTP-200 check on the resulting URLs could
+> not be made here and is not claimed.
+>
+> **The disc-chain divergence above is still open** and is untouched by this.
+
 ---
 
 2026-08-28 | **Adult Only-flagged titles are invisible to the search index (not
