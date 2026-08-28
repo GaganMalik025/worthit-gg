@@ -2663,3 +2663,56 @@ URL 404s the disc and the cover can now disagree about what "reuse the cover
 art" (DESIGN.md:151) means. Not in scope, no symptom reported, recorded so it is
 not rediscovered as a surprise. Related: [[verify-the-verifier]],
 [[narrowing-a-guard-needs-a-coverage-diff]].
+
+---
+
+2026-08-28 | **Adult Only-flagged titles are invisible to the search index (not
+a bug in our code)** | build, investigating why "Claire's Quest" never appears
+in the search box | **Informational — no fix, no decision made.** Steam's own
+anonymous, keyless `/search/results/` endpoint — the one
+`build_search_index.py` is built on — never returns titles carrying the Adult
+Only content-descriptor combination. Confirmed by fetching the raw response
+directly rather than by reading our code: with and without mature-content
+cookies (`birthtime`, `lastagecheckage`, `wants_mature_content`,
+`mature_content`), which change nothing, because the endpoint gates on account
+state we do not have.
+
+Confirmed example: **Claire's Quest: GOLD (1418760)**, 579 reviews (493↑/86↓,
+"Very Positive"), type `game` — clears the 70-review floor comfortably, and is
+absent from all 14 rows (15 without `category1=998`) Steam returns for a search
+that should include it. Absent from all 690 cached `data/cache/searchindex/`
+pages and from both shipped shards.
+
+**Not our parser dropping it** — the row is not in Steam's raw `results_html`,
+so `parse_page()` never sees it. **Not `category1=998`** — measured, not
+inferred: that param is the **Games-type filter**, unrelated to age content.
+Removing it adds DLC and Software rows (`Cyberpunk 2077: Phantom Liberty`,
+`REDmod`, `Bonus Content`; Aseprite itself on an `aseprite` search) and does not
+surface this title. The same appid resolves fine via `api/storesearch/` and its
+own store page (behind an age gate, HTTP 302), so it is not hidden from Steam
+generally — only from the store-search walk this pipeline uses.
+
+**Basis, and its limits.** Correlation across 6 titles — Adult Only descriptor
+combo (`4`, with `3`) → absent (Claire's Quest GOLD, Karryn's Prison, Subverse);
+without it → present (House Party `[1,5]`, Cyberpunk 2077 `[1,2,5]`, Baldur's
+Gate 3 `[1,2,5]`) — plus Steam's own banner on the title's page: *"This game is
+marked as 'Adult Only'."* **Not proven against a logged-in,
+mature-content-opted-in account** — that path was not testable. One inconclusive
+case (`Mirror 2: Project X`, no AO descriptor, also absent, likely just below a
+full 100-row page cutoff) is noted and **excluded** from the pattern rather than
+used to strengthen it.
+
+Same shape as the **Death Stranding** gap `merge_verdicts()` already works
+around (a title Steam's search cannot surface, there for a different reason —
+delisting): a known limit of the keyless architecture, not a defect.
+
+**Options if this becomes worth fixing later, none chosen:** (a) leave as a
+documented limit of the keyless design; (b) a manual allowlist entry per title
+wanted, same mechanism as `pipeline/data/extra_appids.txt`; (c) authenticated
+search (real session or API key) — a bigger architectural change, likely not
+worth it just for this.
+
+**Not committed:** the raw probe driver and its output were scratchpad-only per
+the investigation. Decide separately whether to commit them under `evals/` or
+`pipeline/` for citability — as it stands the evidence above is a restatement,
+not an openable artifact.
