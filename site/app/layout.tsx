@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     description: BLURB,
   },
   twitter: { card: "summary_large_image", title: "WorthIt.gg", description: BLURB },
+  verification: { google: "NeWseGNdEOGOHmSLcPqsF9rmH-9kYAiX-7YS4vy-kaA" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
