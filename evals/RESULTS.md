@@ -2327,3 +2327,36 @@ still -44.5.
 A first run of the driver spent nothing: a path bug failed every title before any call,
 and its catch-all hid that until the control step crashed. The catch-all is gone and the
 driver gained an offline `--check`.
+
+## 2026-11-03 — Hand validation round 2, and QR-6 over the 70 cases
+
+**70 Gemini calls.** The owner scored 6 of 10 random unseen cases on the rubric's own
+question. The other 4 are unscored; the owner said they were fine, and that was not
+converted into scores. Output `evals/hand-validation-round2-comparison-2026-11-03.txt`.
+
+| check | agreement with owner, n=6 |
+|---|---|
+| QR-1, published score | **6/6** |
+| QR-4 | 6/6 |
+| QR-6, owner's >=2 rule | 5/6 (holistic 6/6) |
+
+Against round 1's 3/10, this supports the reading that round 1 was mainly a different
+question. It is not the 10 cases PRD §8 asks for, and six is a small sample. The owner
+agreed on all 6 after being told what the judge had got wrong in round 1, though not
+what it scored on these. The owner's score distribution here (4 twos, 2 ones) cannot
+be compared with 67.1% at this size.
+
+**QR-6 over all 70 (`evals/judge-qr6-all-2026-11-03.txt`): 59 pass, 11 fail.
+THOSE 11 ARE EXACTLY THE 11 CASES** that the July judge run rated as having fewer than
+two supporting citations, a separate run with a different question. So on this set QR-6
+found **no framing failure independent of thin support**, and it passes the case that
+prompted it (`413150-vet-13742e`, a love letter read as a tutorial complaint), which the
+owner's "topic" answer allows. Either misframing of a topic is rare here, or the judge
+cannot see it; these results do not separate the two. 59/70 must not be published as a
+framing score. What it does show, twice over, is that **11 of 70 claims cite two reviews
+with one really supporting them**: invariant 3 holds in form and fails in substance, and
+the lexical grounding check cannot see it. Seed games only, and the judge is lightly
+validated. No catalog figure is claimed.
+
+Flags now render, as of `717024c`, so the 2026-07-31 line that a flag profile is "what a
+reader actually sees" became true today and was false when written.
