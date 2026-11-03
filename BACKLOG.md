@@ -2578,6 +2578,14 @@ payload) before being trusted. Related: [[verify-the-verifier]].
 > The `request_submit` finding above stands entirely: there is still no
 > server-side request log, and the button still persists nothing.
 
+> **2026-11-03, the false promise is gone; the queue is still not built, by owner
+> decision.** The fallback no longer says "within 48 hours" or "Queued". It reads "We
+> can't generate this one right now. Try again tomorrow.", with an "I want this one"
+> button that still fires `request_submit`, so the demand signal survives. Pinned by
+> `queue-copy.contract.test.tsx`, proven against the old strings
+> (`evals/queue-copy-mutation-2026-11-03.txt`). A title that failed QR-4 gets the same
+> copy, and trying again tomorrow may well fail again.
+
 2026-08-28 | **Three cover-art defects, one story: live generation never had a
 SteamGridDB key, the case hero could not see the art block, and the fallback
 chain preferred a letterboxed landscape over a working portrait** | build,

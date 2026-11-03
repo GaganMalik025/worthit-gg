@@ -353,16 +353,17 @@ than precise-and-wrong. Never "under a minute."
 **Queue fallback** — shown when the global reserve is spent or the QR-4 gate
 fails. Same copy for both, because the distinction is ours, not the user's, and
 "we found something unsafe in this game's reviews" is not information a buyer
-asked for: "Not in the catalog yet. Request it and it'll be here within 48
-hours." + button labeled "Request verdict". After submit: "Queued. Check back
-tomorrow." No email asked, ever.
+asked for: "Not in the catalog yet. We can't generate this one right now. Try
+again tomorrow." + button labeled "I want this one". After submit: "Noted." No
+email asked, ever. The copy promises no date because nothing persists a request
+beyond one analytics event (amended 2026-11-03; see BACKLOG 2026-08-26).
 
 ---
 
 ## Copy rules
 
 Active voice, sentence case, plain verbs. Buttons say what they do ("Show
-receipts", "Request verdict"). Numbers are specific and always carry their
+receipts", "I want this one"). Numbers are specific and always carry their
 denominator ("1,930 reviews across 4 cohorts", "47 in the refund window"),
 never vague ("hundreds") and never bare percentages. Denominators read as
 English — "92.9% positive, based on 47 reviews" — never as field names:

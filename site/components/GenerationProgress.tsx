@@ -163,17 +163,22 @@ export function GenerationProgress({
  *  does not see it either. So `request_submit` is not a duplicate of a
  *  server-side log - there is no server-side log, and BACKLOG 2026-08-26
  *  records that gap as the product question it is. Until it is closed, this
- *  event is the whole of D2's "request queue reveals real demand". */
+ *  event is the whole of D2's "request queue reveals real demand".
+ *
+ *  SO THE COPY PROMISES NOTHING. It used to read "it'll be here within 48 hours"
+ *  and "Queued. Check back tomorrow", and nothing was queued. "Try again tomorrow"
+ *  is true of the case that matters, because the reserve resets daily. The button
+ *  says only what it does: it records that someone wanted this title. */
 export function QueueFallback({ appid, gameName }: { appid: number; gameName: string }) {
   const [sent, setSent] = useState(false);
   return (
     <div className="gen-panel">
       <h2 className="display">Not in the catalog yet.</h2>
       <p className="sub">
-        Request it and it&rsquo;ll be here within 48 hours.
+        We can&rsquo;t generate this one right now. Try again tomorrow.
       </p>
       {sent ? (
-        <p className="sub">Queued. Check back tomorrow.</p>
+        <p className="sub">Noted.</p>
       ) : (
         <button
           className="cta"
@@ -182,7 +187,7 @@ export function QueueFallback({ appid, gameName }: { appid: number; gameName: st
             capture("request_submit", { appid: String(appid) });
           }}
         >
-          Request verdict
+          I want this one
         </button>
       )}
       <p className="sub mono">{gameName}</p>

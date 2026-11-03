@@ -69,7 +69,8 @@ Communities like r/ShouldIBuyThisGame exist entirely because this problem is uns
 3. Game not in catalog → **generated live** (a few minutes, with legible
    per-stage progress: ingest → filter → per-cohort extraction → synthesis),
    then cached permanently as static JSON like any other verdict.
-   Falls back to a title request (no email) → batch-generated within 24–48 hrs
+   Falls back to a "try again tomorrow" message with a no-email "I want this
+   one" demand signal, and no promised date (amended 2026-11-03: no queue exists)
    when **either** the global daily generation reserve is spent **or** the
    automated QR-4 gate fails, in which case the title is queued for manual
    audit and nothing is published. Search is selection-only from the static
