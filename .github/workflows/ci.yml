@@ -87,6 +87,11 @@ jobs:
       - name: guard suite
         run: .venv/bin/python pipeline/test_batch_guards.py
 
+      # The Steam wire format, against a stubbed requests.get. Offline. A wrong
+      # parameter here returns 200 with the wrong reviews rather than failing.
+      - name: review transport
+        run: .venv/bin/python pipeline/test_review_transport.py
+
       # Invariant 5's deterministic grounding check. Offline, and until 2026-11-03
       # the one pipeline suite CI never ran.
       - name: grounding check

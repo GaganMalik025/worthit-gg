@@ -77,7 +77,7 @@ Communities like r/ShouldIBuyThisGame exist entirely because this problem is uns
 
 ## 6. Data foundation (validated live)
 
-Source: `GET store.steampowered.com/appreviews/<appid>?json=1`. Public, no API key. Cursor-paginated, up to 100/page.
+Source: `GET api.steampowered.com/IUserReviewsService/GetAppReviews/v1/`, parameters in `input_json`. Public, no API key. Cursor-paginated, up to 100/page. (Migrated 2026-11-03: `store.steampowered.com/appreviews` was retired and now redirects to the store front. See BACKLOG. The traps below predate the migration; `filter=all` no longer exists; the `all` sweep is Helpful at Steam's default `day_range`, because no limit reaches back to launch.)
 
 | Field | Use |
 |---|---|

@@ -10,7 +10,8 @@ What 1.1 added over v0:
   * every raw API page cached to disk; finished games are skipped entirely
   * exponential backoff on 429 / 5xx / network blips
 
-No API key required. Steam's appreviews endpoint is public.
+No API key required. IUserReviewsService/GetAppReviews is public; a publisher key
+only raises the rate limit, and we do not have one.
 
 Usage:
     python3 fetch_reviews.py --seeds
@@ -29,7 +30,9 @@ from pathlib import Path
 
 import requests
 
-ENDPOINT = "https://store.steampowered.com/appreviews/{appid}"
+# store.steampowered.com/appreviews was retired around 2026-10-22: it now answers
+# 302 to the store front page for every appid. See BACKLOG 2026-11-03.
+ENDPOINT = "https://api.steampowered.com/IUserReviewsService/GetAppReviews/v1/"
 DETAILS_ENDPOINT = "https://store.steampowered.com/api/appdetails"
 OUT_DIR = Path("data/raw")
 CACHE_DIR = Path("data/cache")
@@ -59,6 +62,27 @@ BUCKET_NAMES = [name for name, _, _ in BUCKETS] + ["unknown"]
 # "recent" for the temporal pool split / recency flag
 RECENT_WINDOW_DAYS = 365
 
+# The sweep names stay what the rest of this file, the page cache and --filters
+# already call them; only the wire format changed.
+#
+# "all" no longer exists upstream. Helpful at Steam's DEFAULT window is its closest
+# equivalent (owner decision, 2026-11-03). The old sweep was never all-time: its
+# cached pages span months, and Death Stranding's holds 57 reviews.
+#
+# DO NOT add day_range: 0. It reads as the obvious translation of "all" and reaches
+# back to launch, which flipped Cyberpunk from Buy to Wait on launch-era reviews
+# while recent alone stayed Buy - describing a game that no longer exists, which is
+# the bias the PRD names. See evals/review-pool-decomposition-2026-11-03.txt.
+FILTER_PARAMS = {
+    "recent": {"filter": 1},
+    "updated": {"filter": 2},
+    "all": {"filter": 0},
+}
+
+# The default is 0, Steam purchases only: 49,089 of Kenshi's 57,245, measured
+# 2026-11-03. The old sweep asked for every purchase type.
+PURCHASE_TYPE_ALL = 1
+
 # backoff: Steam has no published rate limit, so assume it has one.
 MAX_ATTEMPTS = 5
 BACKOFF_BASE = 2.0
@@ -75,13 +99,19 @@ def bucket_for(minutes):
 # transport: backoff + page cache
 # --------------------------------------------------------------------------
 
-def _get_with_backoff(url, params, timeout=20):
-    """GET with exponential backoff on 429 / 5xx / network errors."""
+def _get_with_backoff(url, params, timeout=20, follow_redirects=True):
+    """GET with exponential backoff on 429 / 5xx / network errors.
+
+    follow_redirects=False makes a 3xx an error. An API that redirects has not
+    answered, and following it is how the retired endpoint's move surfaced as a
+    JSONDecodeError on the store's homepage HTML rather than as what it was.
+    """
     for attempt in range(MAX_ATTEMPTS):
         wait = None
         try:
             r = requests.get(
-                url, params=params, headers={"User-Agent": USER_AGENT}, timeout=timeout
+                url, params=params, headers={"User-Agent": USER_AGENT}, timeout=timeout,
+                allow_redirects=follow_redirects,
             )
         except (requests.Timeout, requests.ConnectionError) as exc:
             wait = BACKOFF_BASE * (2 ** attempt) + random.uniform(0, 0.5)
@@ -97,6 +127,9 @@ def _get_with_backoff(url, params, timeout=20):
                     wait = BACKOFF_BASE * (2 ** attempt) + random.uniform(0, 0.5)
                 reason = "HTTP %s" % r.status_code
             else:
+                if not follow_redirects and 300 <= r.status_code < 400:
+                    raise RuntimeError("redirected (HTTP %s) to %s"
+                                       % (r.status_code, r.headers.get("Location")))
                 r.raise_for_status()
                 return r
 
@@ -158,21 +191,35 @@ def fetch_page(appid, cursor, params, page_idx=0, use_cache=True, sleep=0.0,
         # --restats replays what is on disk and must never touch the network
         raise CacheMiss("%s page %d not cached" % (review_filter, page_idx))
 
+    # input_json, NOT query parameters. Plain parameters return 200 and are silently
+    # ignored: a probe asking for filter=recent got the default Helpful sort back.
+    #
+    # filter_offtopic_activity is deliberately unset, so Steam keeps filtering
+    # off-topic "review bomb" reviews out (owner decision, 2026-11-03). It is never
+    # a way to surface a bomb: flags.py reads recency against the lifetime score.
     q = {
-        "json": 1,
+        "appid": int(appid),
         "cursor": cursor,
         "num_per_page": 100,
-        "language": "english",
-        "purchase_type": "all",
-        "review_type": "all",
-        **params,
+        "languages": ["english"],
+        "purchase_type": PURCHASE_TYPE_ALL,
+        "review_type": 0,
+        **FILTER_PARAMS[review_filter],
     }
     if sleep:
         time.sleep(sleep)  # be polite; Steam will throttle you otherwise
-    r = _get_with_backoff(ENDPOINT.format(appid=appid), q)
-    data = r.json()
-    if data.get("success") != 1:
-        raise RuntimeError("Steam returned success=%s" % data.get("success"))
+    r = _get_with_backoff(ENDPOINT, {"input_json": json.dumps(q)},
+                          follow_redirects=False)
+    # There is no `success` field any more: a bad request is an HTTP error, handled
+    # above, and an appid with no reviews is {"response": {}}, which the sweep reads
+    # as an empty page. Unwrapped so the cached shape stays the one every reader
+    # already expects, including pages cached from the old endpoint.
+    try:
+        data = r.json()["response"]
+    except (ValueError, KeyError, TypeError) as exc:
+        raise RuntimeError("GetAppReviews returned no response body: %r" % exc)
+    if not isinstance(data, dict):
+        raise RuntimeError("GetAppReviews response is not an object")
 
     save_cached_page(appid, review_filter, page_idx, cursor, data)
     return data, False

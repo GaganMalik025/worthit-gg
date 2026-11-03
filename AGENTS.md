@@ -363,8 +363,10 @@ non-goal — they are the reason it is permitted, not decoration.
 
 ## Context: things already true
 
-- Steam endpoint validated live: `store.steampowered.com/appreviews/<appid>?json=1`,
-  public, no key, cursor-paginated. Field traps documented in PRD §6.
+- Steam endpoint validated live: `api.steampowered.com/IUserReviewsService/GetAppReviews/v1/`,
+  public, no key, cursor-paginated, parameters in `input_json` (plain query
+  parameters return 200 and are ignored). `store.steampowered.com/appreviews`
+  redirects to the store front since about 2026-10-22. Field traps in PRD §6.
 - **Gemini `AQ.` auth keys need an explicit service-account binding, and AI
   Studio's key-creation flow omits it.** Symptom: a well-formed `AQ.` key returns
   `401 UNAUTHENTICATED / ACCESS_TOKEN_TYPE_UNSUPPORTED` on every auth form
