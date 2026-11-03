@@ -134,7 +134,8 @@ export function Home({ entries }: { entries: CatalogEntry[] }) {
         ))}
       </div>
       <footer className="mono">
-        Verdicts from real Steam reviews, split by playtime · how this works &rarr;
+        Verdicts from real Steam reviews, split by playtime ·{" "}
+        <a href="/methodology">how this works &rarr;</a>
       </footer>
     </main>
   );

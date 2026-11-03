@@ -7,6 +7,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const entries = await catalog();
   return [
     { url: SITE_URL },
+    { url: `${SITE_URL}/methodology` },
     ...entries.map((e) => ({ url: `${SITE_URL}/verdict/${e.appid}` })),
   ];
 }

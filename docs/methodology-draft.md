@@ -1,6 +1,6 @@
 # How WorthIt.gg works
 
-*Draft for the owner to edit. Not published.*
+*Published at /methodology on 2026-11-03. That page is now the source; this is the approved text.*
 
 Reviews disagree because players are describing different experiences. Someone who
 refunded at two hours and someone at 100 hours played different games, in effect. A

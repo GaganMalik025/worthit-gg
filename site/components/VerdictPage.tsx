@@ -268,7 +268,8 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
       <footer className="mono verdict-footer">
         Data: {v.footer.pool_n.toLocaleString("en-US")} reviews across{" "}
         {v.footer.cohort_count} cohorts · generated{" "}
-        {v.generated_at.slice(0, 10)}
+        {v.generated_at.slice(0, 10)} ·{" "}
+        <a href="/methodology">how this works &rarr;</a>
       </footer>
     </div>
   );

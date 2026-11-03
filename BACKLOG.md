@@ -3041,6 +3041,13 @@ That belongs to D3.
 > reduced motion. Seen and not changed: on desktop the main column sits 12px right of
 > the hero column, and "1723 reviews" in the Split Bar carries no comma.
 
+> **2026-11-03, `/methodology` is published**, owner-approved, and linked from every
+> verdict footer and the home footer. Its figures are pinned to committed evidence by
+> `methodology.contract.test.tsx`, mutation-proved 8/8. Exception: "491 of 533, about 21
+> points" comes from `pipeline/measure_claim_balance.py --quiet` run that day, which
+> needs local data, so CI cannot pin it. Deferred by the owner: the sample-vs-Steam
+> chart and the Death Stranding side-by-side PRD F8 asks for.
+
 2026-11-03 | **Possible features from the codebase analysis, none started** | build,
 roadmap request | Parked under this file's rule 1. None has user evidence yet, so
 none has earned priority (rule 4). Checked against the non-goals; items already
