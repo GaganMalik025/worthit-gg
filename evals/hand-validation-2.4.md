@@ -33,11 +33,11 @@ does not recommend, 48.8 hours at review, 2026-07-10
 
 > Game is fun and at first it seems like  u have a lot of stuff to aim for and unlock. Until you realize everything is just cosmetics, specially the armory. Scopes gives no actual benefits. On my 2nd day i was able to reach Super Helldive difficulty and there is no sense of progression cause there is no way to actually improve your weapons/armor. Stats are always the same, All Magazines have the exact same amount of total bullets despite some being depicted as "High Capacity", same deal for armors, no unique stats or passives. Weapons with X armor piercing doesnt really do anything they still get "deflected" by the same armor they say they pierce. If you want to play max difficulty just buy Exo Suit
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 2
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**Note, only if it was not obvious:** ___
+**Note, only if it was not obvious:** both reviews talk about how progression is meaningless, this is the main gist. More details are ofcourse provided, but the actual claim is this itself.
 
 ---
 
@@ -61,11 +61,11 @@ recommends, 111.0 hours at review, 2026-07-13
 > I have no idea how I got my hours of gameplay. One day my bf recommended this game to me, it looked fun so I played it. Then the next day. Then the next. It got a bit out of hand, all I was doing in my spare time was playing Stardew Valley. I've never heard of it before, so I was figuring stuff out without a guide. Before I knew, I was done with the Community centre and left wondering what to do next. 
 > The obvious of course - start a multiplayer world.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 0
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**Note, only if it was not obvious:** ___
+**Note, only if it was not obvious:** both reviews recommend the game and show their appreciation, where the claim comes off as negative. Both reviews talk about the things they loved doing in the game. "There isn't a tutorial on playing, but your first farm isn't about min/maxing and optimisation. Take your time, learn the mechanics, talk to the villagers, delve into the lore. And have the Wiki open on your second monitor or phone." This is where the claim takes all of it info from, which seems half-assed. 
 
 ---
 
@@ -130,11 +130,11 @@ recommends, 285.6 hours at review, 2022-09-27
 > 
 > Final note: Much of this game is about completing jobs and building things that others can use, and both of those things are just.... SATISFYING.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 0
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**Note, only if it was not obvious:** ___
+**Note, only if it was not obvious:** claim talks specifically about vehicles' bad handling on erratic terrains. This is like only 10% of what both reviews are talking about, missing the entire big picture of what the reviewers actually trying to say.
 
 ---
 
@@ -175,9 +175,9 @@ recommends, 50.9 hours at review, 2026-07-02
 > 
 > I don't enjoy single player games, but this was is very good and special. The combination of choices leading to the ending I wanted was nice too, v healing experience.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 1
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
 **Note, only if it was not obvious:** ___
 
@@ -202,11 +202,11 @@ recommends, 15.8 hours at review, 2026-07-18
 
 > The UI is not the best, but when you understand the logic? behind it, it's usable. Anything else is the best cyberpunk experience I ever enjoyed in a pc game. Not even remotely close to the tabletop rpg, but for a pc game, is the best. Decent ~37 FPS with my rig.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 1
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**Note, only if it was not obvious:** ___
+**Note, only if it was not obvious:** Both reviews complain about UI, but there are other details not mentioned in the claim which is present in the reviews.
 
 ---
 
@@ -254,9 +254,9 @@ recommends, 111.0 hours at review, 2026-07-13
 > I have no idea how I got my hours of gameplay. One day my bf recommended this game to me, it looked fun so I played it. Then the next day. Then the next. It got a bit out of hand, all I was doing in my spare time was playing Stardew Valley. I've never heard of it before, so I was figuring stuff out without a guide. Before I knew, I was done with the Community centre and left wondering what to do next. 
 > The obvious of course - start a multiplayer world.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 1
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
 **Note, only if it was not obvious:** ___
 
@@ -283,11 +283,11 @@ does not recommend, 1.3 hours at review, 2022-08-22
 > 
 > Quite possibly the game play might increase later in the game if you have the patience to wait for it, but I found it too boring. Would have refunded had I not gone past the 48hr cut off. Shame because it looks great and I had high hopes for it but I want to play a game not watch a movie. Feels like it would have been better suited being made as a movie.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 2
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**Note, only if it was not obvious:** ___
+**Note, only if it was not obvious:** Both reviews are complaining about lengthy cinematics, especially in the beginning. 2nd review goes into more detail.
 
 ---
 
@@ -326,11 +326,11 @@ does not recommend, 33.5 hours at review, 2026-05-04
 
 > I so want to recommend this game, it's fun, both playing in combat and trading, but the pathing AI is hot garbage. You will have to micromange any pathing beyond LOS or else you'll suddenly find they decided not to go the same path they have the last 10 times, but instead went on a new path or just decided to stand still and give up letting any skin spider or starving bandit wipe your entire squad. Not so bad when you have one squad or 1 person, but if you want to do any base building you may as well just have everyone sit in the middle of town twiddling their thumbs or else you'll come back to find them running in circles.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 1
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**Note, only if it was not obvious:** ___
+**Note, only if it was not obvious:** claim only captures 1 part of 3 text heavy reviews. Much detail has been omitted.
 
 ---
 
@@ -353,11 +353,11 @@ recommends, 16.1 hours at review, 2026-03-21
 
 > This version has Monster Energy
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 0
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**Note, only if it was not obvious:** ___
+**Note, only if it was not obvious:** Review 2 only says that this version has Monster Energy. So? Thats nothing conclusive and too archaic. Basically, the reviewer is excited of the fact that the game has moster energy and recommends. The claim uses that without knowing what was actually in the review. Missed the context.
 
 ---
 
@@ -399,8 +399,8 @@ recommends, 111.0 hours at review, 2026-07-13
 > I have no idea how I got my hours of gameplay. One day my bf recommended this game to me, it looked fun so I played it. Then the next day. Then the next. It got a bit out of hand, all I was doing in my spare time was playing Stardew Valley. I've never heard of it before, so I was figuring stuff out without a guide. Before I knew, I was done with the Community centre and left wondering what to do next. 
 > The obvious of course - start a multiplayer world.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 1
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
 **Note, only if it was not obvious:** ___

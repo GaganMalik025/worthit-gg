@@ -2250,3 +2250,80 @@ above describes the July verdict.
 > **2026-11-03, follow-up: the human read is CLOSED.** The owner read
 > `evals/audit-4.4-2026-11-03.md` and confirmed it fine. Both titles stay published.
 > This covers the sample's 20 citations and 2 verdicts, read after they went live.
+
+## 2026-11-03 — 2.4 hand validation: the judge is NOT validated
+
+The step PRD §8 requires before judge scores are trusted, run for the first time. The
+owner scored 10 cases blind (`evals/hand-validation-2.4.md`, selected by
+`evals/make_hand_validation.py`); comparison in
+`evals/hand-validation-comparison-2026-11-03.txt`.
+
+| | agreement with owner |
+|---|---|
+| QR-1, published score (>=2 rule) | **3/10** |
+| QR-1, judge's holistic score | 3/10 |
+| QR-4 | **10/10** |
+
+Mean on these 10: owner 0.9, published 1.2, holistic 1.8. Scores of 0/1/2: owner 3/5/2,
+published 0/8/2. The published score was stricter than the holistic one, and the owner
+stricter still on 5 of the 7 disagreements, more lenient on 2.
+
+**The 2026-07-31 baseline's 67.1% and "0 zeros" should not be quoted as validated
+until this is resolved.** They stay above as the record of what was measured. **No
+corrected figure can be derived from this:** 6 of the 10 were selected because the
+judge disagreed with its own rule, so they are the hard cases and not a sample.
+
+Open: per the rubric's "Judge validation" section, divergence is treated as a rubric
+wording problem first and a judge-prompt problem second. The owner's Note lines are
+blank, so the reasons for the 7 disagreements are not yet known.
+
+> **2026-11-03, follow-up: the owner's notes explain most of the 3/10, and it is mainly
+> two different questions rather than a judge that reads badly.** The rubric's QR-1
+> asks whether the reviews support a claim's literal content, and excludes tone. The
+> notes on cases 1, 3, 5, 7 and 8 judge how well the claim captures what the reviewer
+> was mainly saying; case 2's note judges tone as well. That lens is consistent: main
+> gist scored up (1, 7), a side remark or omitted detail scored down (3, 5, 8). This is
+> a reading of the notes, not a re-score, and the owner has not yet re-scored.
+> **It does not validate the judge.** Agreement under the rubric's own question is
+> unmeasured.
+> **One finding is a defect under either reading:** case 9's claim says "Reviewers" on
+> one real reviewer, because its second citation is the whole review "This version has
+> Monster Energy". The lexical grounding check passes it (invariant 3 in form only),
+> and it is live on the Death Stranding page.
+
+## 2026-11-03 — Extraction rule 2 re-tested: FAILED its gate, not rolled out
+
+**94 Gemini calls.** The owner asked about claims built only from complaints in positive
+reviews (Death Stranding veterans: 95.3% positive, three claims, all gripes). This
+re-tests the 2026-08-08 change, rebuilt from that entry's description because its wording
+was not kept: rule 2 leads with "what works", gains a positive example, and says praise
+is evidence on the same terms. Driver `evals/ab_extraction_praise_2026-11-03.py`, gate
+fixed in its docstring before any result; output `evals/ab-extraction-2026-11-03.txt`,
+claims `evals/ab-extraction-2026-11-03.json`. Temp dir: no published verdict changed.
+
+| gate | required | actual | |
+|---|---|---|---|
+| G1 mean \|delta\| improves | >= 33.3% | 19.7 -> 15.1 = **23.4%** | **FAIL** |
+| G2 no title worse than noise | floor 3.0 | none | PASS |
+| G3 no title above +10, DOOM moves < 10 | | none; DOOM 5.0 | PASS |
+| G4 claims survive | >= 75% | 158 -> 170, 108% | PASS |
+
+**The bar was held and the prompt is unchanged.** Seven titles moved toward zero, three
+moved slightly away, all within noise. Death Stranding went -16.5 to -2.0, against -16.5
+for the unchanged prompt re-run, so that move is the prompt. NieR:Automata went -30.0 to
+-14.1. ARK, which blocked this in August, went -15.0 to -13.6, but the unchanged prompt
+re-run gave -12.3, so ARK shows nothing either way. It did not block this time.
+
+**Not comparable with August's 35.7%.** August's titles were picked from the worst of
+the skew; these 7 of 10 were random, and small deltas have little room to improve. That
+is a possible argument against using the same bar on a random set. It is recorded rather
+than acted on, because lowering a bar after seeing the result is what it exists to stop.
+
+**Limits.** Claim quality under the new prompt was only spot-read on 16 claims plus the
+Death Stranding and DOOM samples, which looked specific rather than vague. QR-1 was not
+run on them. And the review-length mechanism from 2026-08-08 remains: Planet Coaster is
+still -44.5.
+
+A first run of the driver spent nothing: a path bug failed every title before any call,
+and its catch-all hid that until the control step crashed. The catch-all is gone and the
+driver gained an offline `--check`.

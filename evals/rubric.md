@@ -1,7 +1,7 @@
 # Eval Rubric — WorthIt.gg
 
 **Author:** Gagan Malik
-**Version:** 1.1
+**Version:** 1.2
 **Applies to:** `evals/candidates.json` — 70 cases, 198 citations, 5 seed games
 **Claims produced by:** `gemini-3.5-flash-lite`, grounding thresholds
 `{min_coverage: 0.25, min_citation_coverage: 0.1, min_supporting: 2}`
@@ -10,10 +10,11 @@ This rubric defines how a generated claim is scored against the reviews cited
 to support it. It exists to answer one question honestly: **can a buyer trust
 what this tool tells them?**
 
-Three checks per case, scored independently. A case can pass two and fail one;
+Four checks per case, scored independently. A case can pass two and fail one;
 record all three regardless.
 
 v1.1 — added compound-claim/component-scoring rule after 553850-ref-ff0ba4 surfaced a rubric gap
+v1.2 — added QR-6 (framing) after the 2.4 hand validation. QR-1, QR-2 and QR-4 definitions unchanged.
 
 ---
 
@@ -175,11 +176,26 @@ that is unkind about a product.
 
 ---
 
+## QR-6 — Framing
+
+Read the actual review and understand the gist, is it positive or negative?
+Edge cases may include where the reviewer talks about difficulty of a game, in a
+positive way but the claim frames that same difficulty in a negative way.
+Evaluation may take help from the actual recommendation of that reviewer
+"recommend" or "not recommend" to pass this judgement. After understanding the
+gist, the claim should frame itself in that relevant way.
+
+The gist is what the reviewer says about the claim's topic, not the review as a
+whole. A case passes when at least two citations frame that topic the way the claim
+does.
+
+---
+
 ## Out of scope
 
 **Tone alignment.** If a case seems to require judging whether the claim's
-tone matches the citation's tone, stop — that is not what any of these checks
-measure. `citation_verdict` already carries the citing reviews' overall
+tone matches the citation's tone, stop — that is not what QR-1, QR-2 or QR-4
+measure; QR-6 is the only check that does. `citation_verdict` already carries the citing reviews' overall
 recommendation separately, and it deliberately answers a different question:
 *did these reviewers recommend the game*, not *is this claim favourable*.
 A veteran who describes frequent crashes and still recommends the game is not
