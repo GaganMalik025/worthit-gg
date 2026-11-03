@@ -77,6 +77,21 @@ describe("a zero-review cohort", () => {
   });
 });
 
+describe("every path that builds a lookup from a URL value validates it first", () => {
+  // Source-level on purpose: these are Next route handlers, which this suite does
+  // not boot. The behaviour itself was checked against a running server.
+  const src = (p: string) =>
+    readFileSync(path.resolve(__dirname, "../..", p), "utf-8");
+
+  for (const [file, guard] of [
+    ["app/api/status/route.ts", "if (!isAppid(appid)) return NextResponse.json"],
+    ["app/api/generate/route.ts", "if (!isAppid(appid)) {"],
+    ["app/verdict/[appid]/page.tsx", "if (!isAppid(appid)) return null;"],
+  ]) {
+    it(file, () => expect(src(file)).toContain(guard));
+  }
+});
+
 describe("isAppid", () => {
   it("accepts what Steam issues", () => {
     for (const ok of ["10", "233860", 413150, "4128580"]) {

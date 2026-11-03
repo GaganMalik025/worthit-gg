@@ -113,7 +113,10 @@ describe("effectiveLiveUsed", () => {
     it("a repeated sweep of an already-known run is a no-op on the state", async () => {
       // the end-to-end version of the same property: sweeping twice must not
       // credit the same generation twice
-      const state: QuotaState = { dispatched: { "413150": "2026-08-16T10:00:00Z" } };
+      const state: QuotaState = {
+        date: "2026-08-16",
+        dispatched: { "413150": "2026-08-16T10:00:00Z" },
+      };
       const deps = depsFor({
         runs: [run(1, "413150")],
         outcomes: { 1: "published" },
@@ -186,6 +189,7 @@ function depsFor(opts: {
 }
 
 const dispatched = (...appids: string[]): QuotaState => ({
+  date: "2026-08-16",
   dispatched: Object.fromEntries(
     appids.map((a, i) => [a, `2026-08-16T10:0${i}:00Z`]),
   ),
@@ -325,6 +329,49 @@ describe("sweepReconciliations", () => {
       costs: { "999999": 9 },
     });
     const out = await sweepReconciliations(dispatched("413150"), deps);
+    expect(out.reconciled ?? {}).toEqual({});
+  });
+
+  /**
+   * THE UNDER-COUNT. live_used is today's reservations, and listRuns spans days.
+   * One reservation today with its run still queued, plus yesterday's finished run
+   * of the same title: crediting yesterday's read as 5 against a true 13.
+   */
+  it("does not credit a run from an earlier quota day", async () => {
+    const deps = depsFor({
+      runs: [
+        run(1, "413150", "completed", "2026-08-15T10:00:00Z"),
+        run(2, "413150", "queued"),
+      ],
+      outcomes: { 1: "published" },
+      costs: { "413150": 5 },
+    });
+    const out = await sweepReconciliations(dispatched("413150"), deps);
+    expect(out.reconciled ?? {}).toEqual({});
+    expect(effectiveLiveUsed({ ...out, live_used: 13 })).toBe(13);
+  });
+
+  it("the day boundary is Pacific, not UTC", async () => {
+    // 05:00 UTC on the 16th is still the 15th in Los Angeles
+    const deps = depsFor({
+      runs: [run(1, "413150", "completed", "2026-08-16T05:00:00Z")],
+      outcomes: { 1: "published" },
+      costs: { "413150": 5 },
+    });
+    const out = await sweepReconciliations(dispatched("413150"), deps);
+    expect(out.reconciled ?? {}).toEqual({});
+  });
+
+  it("a ledger with no date credits nothing", async () => {
+    const deps = depsFor({
+      runs: [run(1, "413150")],
+      outcomes: { 1: "published" },
+      costs: { "413150": 5 },
+    });
+    const out = await sweepReconciliations(
+      { dispatched: { "413150": "2026-08-16T10:00:00Z" } },
+      deps,
+    );
     expect(out.reconciled ?? {}).toEqual({});
   });
 

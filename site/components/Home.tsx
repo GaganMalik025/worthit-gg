@@ -94,6 +94,9 @@ export function Home({ entries }: { entries: CatalogEntry[] }) {
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ appid: hit.appid }),
     }).then((r) => r.json()).catch(() => ({ state: "queue_fallback" }));
+    // The grid and search only know this build's titles, so a verdict generated
+    // since the last deploy reads as "not yet" until the server says otherwise.
+    if (res.state === "exists") return router.push(`/verdict/${hit.appid}`);
     if (res.state === "dispatched") setGen(hit);
     else setFallback(hit);
   }

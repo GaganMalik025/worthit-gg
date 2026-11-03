@@ -45,6 +45,10 @@ const hour = () =>
   `${today()}T${new Date().toLocaleString("en-GB", {
     timeZone: PACIFIC, hour: "2-digit", hour12: false }).slice(0, 2)}`;
 
+/** The quota day an instant belongs to. See sweepReconciliations. */
+export const quotaDay = (iso: string) =>
+  new Date(iso).toLocaleDateString("en-CA", { timeZone: PACIFIC });
+
 export interface QuotaState {
   date?: string;
   live_used?: number;

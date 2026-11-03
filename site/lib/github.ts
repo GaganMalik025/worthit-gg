@@ -4,7 +4,7 @@
  * a proxy rather than the client polling GitHub directly.
  */
 
-import { reconcileKey, type QuotaState } from "./quota";
+import { quotaDay, reconcileKey, type QuotaState } from "./quota";
 
 const API = "https://api.github.com";
 
@@ -36,21 +36,30 @@ async function gh(path: string, init: RequestInit = {}) {
  *  here, always fresh, and it does not trigger a redeploy on every request. */
 export async function readQuota(): Promise<Record<string, unknown>> {
   const res = await gh("/actions/variables/LIVE_QUOTA");
-  if (res.status === 404) return {};
+  if (res.status === 404) return {};   // never written: genuinely nothing spent
   if (!res.ok) throw new Error(`quota read: ${res.status}`);
   const { value } = (await res.json()) as { value: string };
-  try {
-    return JSON.parse(value || "{}");
-  } catch {
-    return {};
+  // CORRUPT IS NOT EMPTY. This used to return {} on a parse failure, which reads
+  // as zero spend - the most permissive ledger there is, and the exact guess
+  // generate-verdict.yml's seed step refuses to make. Callers that admit spend
+  // must fail; a caller that only wants a timestamp can catch this itself.
+  const parsed: unknown = JSON.parse(value);
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+    throw new Error("quota read: LIVE_QUOTA is not an object");
   }
+  return parsed as Record<string, unknown>;
 }
 
 export async function writeQuota(state: Record<string, unknown>) {
   const body = JSON.stringify({ name: "LIVE_QUOTA", value: JSON.stringify(state) });
   const patch = await gh("/actions/variables/LIVE_QUOTA", { method: "PATCH", body });
-  if (patch.ok || patch.status === 204) return;
-  await gh("/actions/variables", { method: "POST", body });
+  if (patch.ok) return;
+  // Only "the variable does not exist yet" may fall through to creating it, and
+  // the create has to be checked. Both failures used to be ignored, so a rejected
+  // write left the reservation unbooked and the dispatch went ahead anyway.
+  if (patch.status !== 404) throw new Error(`quota write: ${patch.status}`);
+  const post = await gh("/actions/variables", { method: "POST", body });
+  if (!post.ok) throw new Error(`quota create: ${post.status}`);
 }
 
 /**
@@ -71,7 +80,6 @@ export async function writeQuota(state: Record<string, unknown>) {
  */
 export async function dispatchGeneration(
   appid: number,
-  ip: string,
   quota: Record<string, unknown> = {},
 ) {
   const COUNTERS = [
@@ -85,7 +93,7 @@ export async function dispatchGeneration(
     method: "POST",
     body: JSON.stringify({
       event_type: "generate-verdict",
-      client_payload: { appid: String(appid), ip, quota: snapshot },
+      client_payload: { appid: String(appid), quota: snapshot },
     }),
   });
   if (!res.ok && res.status !== 204) {
@@ -107,31 +115,33 @@ export async function dispatchGeneration(
  */
 export async function verdictExists(
   appid: number | string,
+  origin: string,
 ): Promise<{ found: boolean; source?: string }> {
-  // 1. main, as of the last build. Anything the nightly publish workflow has
-  //    already squash-merged is prerendered and on disk - no API call needed,
-  //    and a title stays "published" after the merge rather than reverting to
-  //    "queued" because it left the verdicts branch view.
-  try {
-    const fs = await import("node:fs/promises");
-    const path = await import("node:path");
-    await fs.access(
-      path.join(process.cwd(), `public/verdicts/${appid}.json`),
-    );
-    return { found: true, source: "main" };
-  } catch {
-    /* not merged yet - fall through to the branch */
-  }
+  // 1. main, as of the deployed build, asked of the CDN. This used to be
+  //    fs.access() on public/verdicts/, which works locally and NOT in the
+  //    function: production answered "queued" for Kenshi on 2026-11-03, because
+  //    those files are not traced into the serverless bundle. So every catalog
+  //    title read as absent, and nothing noticed while only the search box's
+  //    build-time list stood in front of it.
+  const deployed = await fetch(`${origin}/verdicts/${appid}.json`, {
+    method: "HEAD",
+    cache: "no-store",
+  });
+  if (deployed.ok) return { found: true, source: "main" };
 
   // 2. the verdicts branch. Both layouts are checked: public/verdicts/ was the
   //    path until the Vercel Root Directory move, and verdicts generated before
   //    that move still sit there. Dropping the legacy path would strand them.
+  //
+  //    Only a 404 means absent. Anything else is GitHub failing to answer, which
+  //    says nothing about the verdict, and /api/generate spends quota on "absent".
   for (const [dir, source] of [
     ["site/public/verdicts", "verdicts"],
     ["public/verdicts", "verdicts:legacy-path"],
   ]) {
     const res = await gh(`/contents/${dir}/${appid}.json?ref=verdicts`);
     if (res.ok) return { found: true, source };
+    if (res.status !== 404) throw new Error(`verdict lookup: ${res.status}`);
   }
   return { found: false };
 }
@@ -170,9 +180,9 @@ export async function fetchVerdictCost(
     }
   };
 
-  // Same dual lookup as verdictExists, and in the same order. A live-generated
-  // title is normally still branch-only (main catches up at the nightly
-  // promote), but once promoted the committed file carries the field too.
+  // A live-generated title is normally still branch-only (main catches up at the
+  // nightly promote). This disk read only ever succeeds locally - see
+  // verdictExists - so on production the branch below is the real lookup.
   try {
     const fs = await import("node:fs/promises");
     const path = await import("node:path");
@@ -247,10 +257,23 @@ const TERMINAL_RUN_STATUS = new Set([
  *    way `waiting` did.
  */
 export async function listRuns(): Promise<RunInfo[]> {
+  return fetchRuns(false);
+}
+
+/** For a decision that spends quota: an unreadable list is "unknown", not "none
+ *  running", so this throws where listRuns answers []. */
+export async function listRunsStrict(): Promise<RunInfo[]> {
+  return fetchRuns(true);
+}
+
+async function fetchRuns(strict: boolean): Promise<RunInfo[]> {
   const res = await gh(
     "/actions/workflows/generate-verdict.yml/runs?per_page=50",
   );
-  if (!res.ok) return [];
+  if (!res.ok) {
+    if (strict) throw new Error(`run list: ${res.status}`);
+    return [];
+  }
   const { workflow_runs = [] } = (await res.json()) as {
     workflow_runs: {
       id: number; status: string; conclusion: string | null;
@@ -377,6 +400,11 @@ export async function sweepReconciliations(
       (r) =>
         r.appid !== null &&
         reserved.has(r.appid) &&
+        // TODAY'S RUNS ONLY. Each entry is credited against live_used, which is
+        // today's reservations, and listRuns spans days. A run from an earlier
+        // quota day reserved nothing here, so crediting it under-counts: one
+        // reservation today with its own run still queued read as 5, not 13.
+        quotaDay(r.created_at) === state.date &&
         !isActive(r) &&
         !(reconcileKey(r.appid, r.id) in known),
     )

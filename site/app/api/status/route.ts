@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { isActive, listRuns, readQuota, runOutcome, runSteps, verdictExists } from "../../../lib/github";
 import { dispatchLost, type QuotaState } from "../../../lib/quota";
+import { isAppid } from "../../../lib/verdict";
 
 export const dynamic = "force-dynamic";
 
@@ -23,10 +24,10 @@ export const dynamic = "force-dynamic";
  */
 export async function GET(req: NextRequest) {
   const appid = req.nextUrl.searchParams.get("appid");
-  if (!appid) return NextResponse.json({ error: "appid required" }, { status: 400 });
+  if (!isAppid(appid)) return NextResponse.json({ error: "appid required" }, { status: 400 });
 
   // 1. ground truth: is it actually there?
-  const exists = await verdictExists(appid);
+  const exists = await verdictExists(appid, req.nextUrl.origin);
   if (exists.found) {
     return NextResponse.json({ state: "published", source: exists.source });
   }
@@ -38,7 +39,9 @@ export async function GET(req: NextRequest) {
   //    said nothing. Reading it was therefore always a no-op that looked like a
   //    fast path, so it is gone rather than left as decoration. Terminal state
   //    comes from the run itself in step 4.
-  const quota = (await readQuota()) as QuotaState;
+  //    A corrupt ledger must fail an admission, but nothing is spent here: with
+  //    no timestamp the client simply keeps polling to its own timeout.
+  const quota = (await readQuota().catch(() => ({}))) as QuotaState;
 
   // 3. this request's own run. One listing serves both questions below, so a
   //    poll still costs the same number of GitHub calls as before.
