@@ -2199,3 +2199,50 @@ final `print(f"wrote {OUT.relative_to(ROOT)}")` for any path not
 absolute-and-inside the repo; post-write and cosmetic, unnoticed because every
 dated round used the default. Recorded, not fixed — outside the scope this
 change was given.
+
+## 2026-11-03 — Helldivers 2 regenerated and RimWorld published, on GetAppReviews
+
+Not a batch night. **7 + 12 Gemini calls.** Steam retired `appreviews` around
+2026-10-22, so ingestion moved to `IUserReviewsService/GetAppReviews`
+(`196c496`); BACKLOG 2026-11-03 has the migration and its comparison.
+
+**QR-4 — Content safety: PASS (invariant 8).** Automated gate **28,331 citations
+across 543 verdicts, `QR4_RC=0`** (`evals/qr4-2026-11-03.txt`). **The human read is
+OPEN:** `evals/audit-4.4-2026-11-03.md`, seed 20261103, 2 verdicts, 20 citations,
+independent of the other dated rounds. The owner approved publishing before that read,
+so these two went out on the automated gate. The checkboxes are unticked and stay
+that way until the owner reads them.
+
+| title | was | now | post-refund mean | calls |
+|---|---|---|---|---|
+| HELLDIVERS 2 (`553850`) | Wait, 76.9 | **Skip** | 16.6 | 7 |
+| RimWorld (`294100`) | no verdict | **Buy** | 97.3 | 12 |
+
+**Why Helldivers moved, and how much of it is the sampler.** Its recent reviews fell
+from 83.8% positive in July to 30.1% in October-November, and the new claims name an
+Easy Anti-Cheat update. **The word holds on `recent` alone (mean 30.0,
+`evals/review-pool-decomposition-2026-11-03.txt`).** The published 16.6 is lower than
+that because the Helpful sweep is 0.8% positive at Steam's default window
+(`evals/review-pool-helpful-window-2026-11-03.txt`) and adds about 1,000 reviews
+weighted by votes. So the page's rates overstate how negative recent reviewers are,
+by a sampler that had the same lean in July (old `all` 67.6% against old `recent`
+83.8%). Off-topic reviews stay filtered by Steam's default, so whether this title is
+being review-bombed again was not measured. Steam's lifetime rate has moved only from
+80.1 to 79.0.
+
+**The first synthesis was discarded.** It passed every guard and its veteran summary
+said "reviewers still recommend the game" above a 10.0% positive rate. One forced
+re-synthesis fixed it, for 1 call; nothing was hand-edited. **No guard can see that
+class of contradiction.** Rule 4 of the synthesis prompt asks the model to say so when
+a complaint comes from people who recommend the game, and here it generalised one
+claim's 2u/2d. It was caught by reading the output, so other published summaries may
+carry the same shape; that has not been measured.
+
+**Seed artifacts deliberately unchanged.** `data/raw`, `data/filtered` and
+`data/claims` for 553850 still hold July, so the 2026-07-31 baseline stays
+reproducible, and they no longer describe the published verdict. It was generated in
+a temp working dir (`evals/regenerate_in_tempdir_2026-11-03.sh`, output
+`evals/helldivers-regeneration-2026-11-03.txt`), because the route refuses a title
+with a verdict and the runner would reuse the committed July raw file. The QR-3 row
+above describes the July verdict.
+

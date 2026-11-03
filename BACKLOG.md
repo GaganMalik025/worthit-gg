@@ -3007,12 +3007,22 @@ now stale.
 > **Still open:**
 > - A real cost has not been reconciled. `reconciled` is written at the next dispatch's
 >   sweep, and this one ended at `{}`.
-> - **`STEAMGRIDDB_API_KEY` is not in the repository's Actions secrets.** `gh secret
->   list` shows only `GEMINI_API_KEY`, so the 2026-08-28 workflow fix has nothing to
->   read, and live titles still ship without `art.grid`. The tile falls back to Steam's
->   art. `.env` holds the key locally; adding the secret is the owner's call.
+> - **`STEAMGRIDDB_API_KEY` was not in the repository's Actions secrets**, so the
+>   2026-08-28 workflow fix had nothing to read. **Added 2026-11-03**; RimWorld's art
+>   was backfilled. No live run has used the secret yet, so it is set, not proven.
 > - This verdict has had no human read. Like every live title, it reaches `main` at the
 >   next nightly publish on the automated gate alone.
+
+2026-11-03 | **A model summary can contradict the rate above it, and no guard can
+see it** | build, reading the regenerated Helldivers 2 verdict | The first synthesis
+passed everything and said veterans "still recommend the game" above a 10.0% positive
+rate, generalising one 2u/2d claim. Regenerated rather than edited. **Not measured:**
+how many published summaries carry the same shape. A check is awkward, because
+citation splits are deliberately not claim sentiment (invariant 13); a sweep of
+summaries containing "recommend" against their cohort rate would be a cheap first
+look. Also recorded: `generate_one`'s route refuses existing titles and the runner
+reuses committed seed raw files, so **a stale verdict has no supported refresh path**.
+That belongs to D3.
 
 2026-11-03 | **Possible features from the codebase analysis, none started** | build,
 roadmap request | Parked under this file's rule 1. None has user evidence yet, so

@@ -1,0 +1,47 @@
+# Helldivers 2 (553850) regenerated from fresh reviews, 2026-11-03. Driver: evals/regenerate_in_tempdir_2026-11-03.sh
+
+== ingest
+  positive rate : sample 33%  vs  Steam overall 79%  (delta -46)
+  pages fetched : {'recent': 12, 'all': 12}   (live requests: 24, pool: 2225)
+  refund cohort : PASS (11 reviews)
+--- pool rates (pre-quota, pool_n=2225) - invariant 11 source of truth ---
+  refund_window  pool_n=11      0.5% of pool    27.3% positive
+  early          pool_n=109     4.9% of pool    60.6% positive
+  mid            pool_n=382    17.2% of pool    33.8% positive
+  veteran        pool_n=1723   77.4% of pool    10.0% positive
+  steam overall  pool_n=2225  of 833399 on Steam, 79.0% positive there
+
+== filter
+  ALL                   400                                   313     22%
+  invariant 12: refund_window has n=9 (<20) - renders muted, carries no claims.
+
+== extract
+=== HELLDIVERS™ 2 / refund_window (n=9) - SKIPPED, below the 20-review cohort floor (invariant 12). No claims, no reques
+--- early final: 10 grounded claims, 0 dropped ---
+--- mid final: 4 grounded claims, 0 dropped ---
+--- veteran final: 3 grounded claims, 0 dropped ---
+
+== first synthesis, NOT published: veteran summary contradicted its own rate
+2026-11-03T10:21:54Z
+Long-term players encounter persistent technical faults, broken collision detection, and extensive content locks requiring real money or grinding, though reviewers still recommend the game despite these barriers.
+
+== second synthesis, --force, PUBLISHED
+synthesis model resolves per title via flash_tier.txt (forced flash-lite)
+=== HELLDIVERS™ 2 (553850) ===
+  flag: segmentation [monotonic_decrease], spread 50.6 pts: 2-20 hours 60.6% (pool_n 109) -> 20-100 hours 33.8% (pool_n 382) -> over 100 hours 10.0% (pool_n 1723)
+  flag: recency: last 365 days of the pool run -62.4 pts vs Steam lifetime (16.6% of 2225 pooled vs 79.0% of 833399 lifetime)
+  refund_window  pool_n=11     27.3% positive  claims=0    MUTED
+  early          pool_n=109    60.6% positive  claims=10 
+  mid            pool_n=382    33.8% positive  claims=4  
+  veteran        pool_n=1723   10.0% positive  claims=3  
+  verdict computed from cohort data: Skip (post-refund mean 16.6%)
+    pacer: gemini-3.5-flash-lite go (rpm 6/12, today 7)
+  -> <tmp>/out/553850.json  [Skip] Constant crashes and microtransactions drag down cooperative galactic warfare.
+       + you can look past frequent technical instability
+       + you enjoy cooperative squad-based PvE combat
+       + you do not mind grinding for unlocks
+       - you need stable frame rates and reliable game launches
+       - you want Linux compatibility without anti-cheat blocks
+       - you dislike aggressive microtransactions and paid warbonds
+
+local ledger batch_used 7

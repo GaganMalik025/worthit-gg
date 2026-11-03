@@ -1,53 +1,61 @@
 {
   "appid": "553850",
   "game_name": "HELLDIVERS™ 2",
-  "generated_at": "2026-08-10T10:09:59Z",
+  "generated_at": "2026-11-03T10:22:38Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/850e2f9e5bb15c5706bb9a1edc832f4f782e8be5/header.jpg?t=1786525389",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/6de866c6fb786949a92a28d12f3e1c02d91bce60/capsule_231x87.jpg?t=1786525389",
+    "grid": "https://cdn2.steamgriddb.com/grid/d91629568769942e0569a5ee2844b5da.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 7,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
-    "word": "Wait",
-    "tagline": "Chaotic galactic co-op action shines brightest with a full squad.",
+    "word": "Skip",
+    "tagline": "Constant crashes and microtransactions drag down cooperative galactic warfare.",
     "for_you_if": [
-      "you play exclusively with a dedicated squad of friends",
-      "you enjoy cooperative shooter mechanics despite technical hurdles",
-      "you want intense extraction missions against enemy swarms"
+      "you can look past frequent technical instability",
+      "you enjoy cooperative squad-based PvE combat",
+      "you do not mind grinding for unlocks"
     ],
     "not_for_you_if": [
-      "you need stable frame rates and crash-free sessions",
-      "you dislike heavy grinding or monetization walls for gear",
-      "you experience performance issues and matchmaking errors",
-      "you expect meaningful progression after extended playtime"
+      "you need stable frame rates and reliable game launches",
+      "you want Linux compatibility without anti-cheat blocks",
+      "you dislike aggressive microtransactions and paid warbonds"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 30,
-      "pct_positive": 50.0,
-      "muted": false
+      "pool_n": 11,
+      "pct_positive": 27.3,
+      "muted": true
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 414,
-      "pct_positive": 88.2,
+      "pool_n": 109,
+      "pct_positive": 60.6,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 615,
-      "pct_positive": 85.2,
+      "pool_n": 382,
+      "pct_positive": 33.8,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 871,
-      "pct_positive": 65.7,
+      "pool_n": 1723,
+      "pct_positive": 10.0,
       "muted": false
     }
   ],
@@ -56,50 +64,54 @@
       "flag_id": "cohort_divergence",
       "type": "segmentation",
       "direction": null,
-      "shape": "rise_then_fall",
-      "sentence": "Player sentiment peaks during early squad sessions before declining as technical flaws and repetitive grinds accumulate over time.",
+      "shape": "monotonic_decrease",
+      "sentence": "Positive review rates drop significantly as playtime increases from early sessions to veteran status.",
       "evidence": {
         "sequence": [
           {
-            "cohort": "refund_window",
-            "label": "under 2 hours",
-            "pct_positive": 50.0,
-            "pool_n": 30
-          },
-          {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 88.2,
-            "pool_n": 414
+            "pct_positive": 60.6,
+            "pool_n": 109
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 85.2,
-            "pool_n": 615
+            "pct_positive": 33.8,
+            "pool_n": 382
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 65.7,
-            "pool_n": 871
+            "pct_positive": 10.0,
+            "pool_n": 1723
           }
         ],
-        "shape": "rise_then_fall",
-        "low_cohort": "refund_window",
-        "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 50.0,
-        "low_pool_n": 30,
+        "shape": "monotonic_decrease",
+        "low_cohort": "veteran",
+        "low_cohort_label": "over 100 hours",
+        "low_pct_positive": 10.0,
+        "low_pool_n": 1723,
         "high_cohort": "early",
         "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 88.2,
-        "high_pool_n": 414,
-        "gap_pts": 38.2,
-        "peak_cohort": "early",
-        "peak_pct_positive": 88.2,
-        "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 65.7,
-        "drop_after_peak_pts": 22.5
+        "high_pct_positive": 60.6,
+        "high_pool_n": 109,
+        "gap_pts": 50.6
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews show a sharp decline in positive sentiment compared to the lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 16.6,
+        "recent_pool_n": 2225,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 79.0,
+        "steam_total_reviews": 833399,
+        "delta_pts": -62.4
       }
     }
   ],
@@ -108,277 +120,151 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 30,
-      "pct_positive": 50.0,
-      "muted": false,
-      "n_note": null,
-      "summary": "Players encounter technical instability, matchmaking errors, and forced cinematics upon launch, making solo play difficult.",
-      "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ref-685575",
-              "claim": "Reviewers experience performance issues, bugs, and crashes that interfere with gameplay or prevent the game from starting.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 2,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "231335626",
-                  "hours_at_review": 1.4,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Extremely buggy. Not worth the frustration.",
-                  "truncated": false,
-                  "minutes_at_review": 81
-                },
-                {
-                  "recommendationid": "230477906",
-                  "hours_at_review": 1.3,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "This game doesn't work properly on my damn computer, just look at my screenshots.",
-                  "truncated": false,
-                  "minutes_at_review": 78
-                },
-                {
-                  "recommendationid": "229570595",
-                  "hours_at_review": 1.4,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "Fix your game faster you lazy bums. Video driver crashes every 10 minutes is a fking unacceptable for a game of it budget.",
-                  "truncated": false,
-                  "minutes_at_review": 85
-                },
-                {
-                  "recommendationid": "230099392",
-                  "hours_at_review": 1.3,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "Black screens and crashes too much.\n\nI've been trying to get this game to work for a while. Buying it each sale only for it to black screen my computer. It just refuses to work and crashes on start, its not a computer problem considering I've been ABLE TO RUN <Space Marine 2> and <Cyberpunk 2077> at 30 fps only crashing due to my poor internet connection while Helldivers won't start even after configuring my graphics.\n\nI wouldn't recommend it at its current state mainly because this has been a issue for 2 years now without a fix.\n100% a good game if you can get it to run properly.",
-                  "truncated": false,
-                  "minutes_at_review": 80
-                },
-                {
-                  "recommendationid": "229012463",
-                  "hours_at_review": 0.4,
-                  "voted_up": true,
-                  "date": "2026-06-28",
-                  "review_text": "Pretty good, sadly didnt get full experience due to computer issues.\n6/10",
-                  "truncated": false,
-                  "minutes_at_review": 26
-                },
-                {
-                  "recommendationid": "229316925",
-                  "hours_at_review": 1.6,
-                  "voted_up": true,
-                  "date": "2026-07-01",
-                  "review_text": "Make sure your computer can handle this game before you buy it, learn from my mistake.",
-                  "truncated": false,
-                  "minutes_at_review": 99
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-ff0ba4",
-              "claim": "Reviewers report connection and matchmaking errors, such as failing to join lobbies, connection time-outs, and issues with peer-to-peer connectivity.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "229744856",
-                  "hours_at_review": 1.7,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "600k reviews and its peer to peer connection\n\nimagine space x gathering trillions of dollars and not launching a single rocket",
-                  "truncated": false,
-                  "minutes_at_review": 103
-                },
-                {
-                  "recommendationid": "229440812",
-                  "hours_at_review": 1.6,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "Requested a refund after 1.6 hours.\n\nI never got to experience the actual game because every attempt to join a public lobby ended with \"Failed to join lobby\" or \"Connection timed out.\" Quickplay also searched for several minutes without finding a match. I tried the common fixes but nothing worked. The main reason I bought this was for the multiplayer experience but I ended up trying just to get in a match with other randoms for the entire playtime which is ridiculous, and it just said this same error timed out again and again even though my network was fine. My job is to play not to go around and troubleshoot finding YT tutorials how to disable something just to run a game.\nAfter searching online, I found many players reporting the same issue over the years and still hasn't been fixed as of 3/7/26 . If you're experiencing this too, please upvote this review so the developers can see how widespread it is.",
-                  "truncated": false,
-                  "minutes_at_review": 96
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ref-eac4cf",
-              "claim": "Reviewers state that playing solo is difficult or unenjoyable, and that the game is better experienced with friends.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "229316153",
-                  "hours_at_review": 1.5,
-                  "voted_up": true,
-                  "date": "2026-07-01",
-                  "review_text": "Its fun but having no friends to play with is not fun at all, (refunded it due to no friends)",
-                  "truncated": false,
-                  "minutes_at_review": 89
-                },
-                {
-                  "recommendationid": "230287868",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "The idea is good, graphic as well and gameplay. But if you play alone this game is trash, thats why it gets a dislike, missions are just to hard for solo gameplay.",
-                  "truncated": false,
-                  "minutes_at_review": 111
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ref-4c0377",
-              "claim": "Reviewers mention an unskippable PlayStation cinematic movie that plays upon launching the game.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "229168707",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-06-29",
-                  "review_text": "Genuinely the worst shooter game I have ever played.\n\nFirst of all, there is an UNSKIPPABLE PlayStation cinematic movie that plays every single time you launch the game. They are literally forcing us to worship the enemy just to even play.\n\nLet us also never forget the fiasco of almost forcing us to use a PSN account, and the Discord moderation (power grab) incident.\n\nAs for gameplay itself: the reload system is garbage, the camera movement is bugged, and this game in general is a hodgepodge of theft from other, BETTER shooter games.\n\nSimply just play Warhammer 40,000: Space Marine II. That is the quintessential third-person racism shooter. I would rather support them instead of this garbage that rigged the awards shows only because it was not allowed on Xbox for over a year.",
-                  "truncated": false,
-                  "minutes_at_review": 29
-                },
-                {
-                  "recommendationid": "229656504",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "I love this game as much as I love drinking Sojū, but I play on Xbox. I'm trying to switch to PC, and I have no choice but to start from scratch. I hope that, in the future, AH will add cross-progression between Xbox and PC, or at least allow players to link a PlayStation account with an Xbox account.\n\nIf you're hoping to keep your progress when moving from Xbox to PC, I don't recommend buying the game.\n\nIf you don't mind starting over from zero, then go ahead and buy it, it´s a great game.\n",
-                  "truncated": false,
-                  "minutes_at_review": 20
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 12,
-        "cited_recommend": 3,
-        "divergence_p": 0.073,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
+      "pool_n": 11,
+      "pct_positive": 27.3,
+      "muted": true,
+      "n_note": "n=9 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "sourcing": null
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 414,
-      "pct_positive": 88.2,
+      "pool_n": 109,
+      "pct_positive": 60.6,
       "muted": false,
       "n_note": null,
-      "summary": "The experience improves with squads despite computer crashes, high-difficulty chaos, and missing cross-progression.",
+      "summary": "Players face constant crashes, startup errors, and technical instability alongside frustrating mechanics like ragdolling and locked gear.",
       "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-8a415f",
-              "claim": "Reviewers report that the game lacks cross-progression.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231447709",
-                  "hours_at_review": 3.7,
-                  "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "Cool game where you spread democracy across the galaxy. No cross-progression however. Very bummed because of this.",
-                  "truncated": false,
-                  "minutes_at_review": 222
-                },
-                {
-                  "recommendationid": "229855056",
-                  "hours_at_review": 3.7,
-                  "voted_up": true,
-                  "date": "2026-07-07",
-                  "review_text": "Im here switching from playstation to pc and my switch is mostly great but i do wish there was some form of cross progression cause i played on playstaion since the realese of the game and im gonna miss the molevolent creek cape it was one of my favorites that and the illuminate cape aswell",
-                  "truncated": false,
-                  "minutes_at_review": 224
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-037298",
-              "claim": "Reviewers find solo play less enjoyable or harder compared to playing with friends or random squads.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231483940",
-                  "hours_at_review": 4.6,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Very fun but play with others. Single player isn't as enjoyable. Be paitient with the devs.",
-                  "truncated": false,
-                  "minutes_at_review": 277
-                },
-                {
-                  "recommendationid": "229724405",
-                  "hours_at_review": 19.9,
-                  "voted_up": true,
-                  "date": "2026-07-05",
-                  "review_text": "Hello and welcome to a review of helldivers 2 . If you can't be bothered to read tldr 7.5/10 like the 3rd best horde game on the market . If i could choose neutral i would .\n\n-the Good-\n\n1) A good gameplay loop , this game is effectively a hybrid between horde and extraction games . \n\n2) Many varied mission types , from defending a base , to exterminating everything , to rescuing civilians . \n\n3) Virtually no monetization \n\n4) this game has no classes but you can have pretty much infinite custom classes with the strategems system .\n\n- the Bad -\n\n1) Price . Even if the game is solid 30 dollars is just insane when you can get games like Deep rock galactic and payday 2 for like 10 and 3 respectively . \n\n2) Extremely group heavy even for horde standards , to the point that even if you play solo you have to be playing with random squads otherwise you basically can't win in the last 3 difficulties . \n\n3) There is pretty much no active teamwork in the game besides using different stratagems in the lobby and maybe healing up a teammate . \n\n4) Balance is just godawful especially in mid/high difficulties , What is the point of vehicles existing at all if you can just call a jetpack twice as often , be physically faster that vehicles and also being able to reach high places where enemies can't hit you ? Whats the point of having different enemy factions if the players can just use the same 4 stratagems for everything and still beat them ?\n\n5) The Developers either have HUGE egos in real life or have the effective IQ of a child with 6 different mental disorders . Imagine the community asking you to not nerf for the 7th time a gun NOBODY used anyways , then saying you won't , then nerf it anyways and don't write in the patch notes that you nerfed in ON PURPOSE and then have people find it out anyways and continue getting clowned on .\n\n- the ugly - \n\n1) Crashes and random corrupts of the game just happen for no reason . Its not that bad that i would stop playing but it is bad eno…",
-                  "truncated": true,
-                  "minutes_at_review": 1197
-                },
-                {
-                  "recommendationid": "229901955",
-                  "hours_at_review": 12.9,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "If you want a game to play with friends this is what to buy though solo can get boring at some points. All over a great game with funny situations throughout.",
-                  "truncated": false,
-                  "minutes_at_review": 773
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-7ae9de",
-              "claim": "Reviewers experience computer freezes, crashes, and forced restarts while playing.",
+              "claim_id": "ear-f0a223",
+              "claim": "Reviewers report that the game suffers from technical instability, including constant crashes, failure to launch past intro screens or black splash screens, and startup errors requiring troubleshooting steps like verifying files or clearing shader caches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "239136071",
+                  "hours_at_review": 13.0,
+                  "minutes_at_review": 779,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "The game came out very poorly optimized. It was very laggy and very low frame rates. What really made me quit was the Into the Unjust update, which apparently damaged graphic cards for some players. My computer is my livelyhood (I work remote. Design). A game that breaks hardware is just unacceptable, especially for someone who lives off of their PC.\r\nThe game has had many updates since then, but after that presedent, they can't really go back into my good graces. It is just a risk I can't take.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239093580",
+                  "hours_at_review": 14.5,
+                  "minutes_at_review": 870,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Can't even get it to launch after the anti-cheat update. No mods installed, and fresh installation.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238952040",
+                  "hours_at_review": 15.5,
+                  "minutes_at_review": 930,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Incredible gameplay, but they are trying to polish and dress up a very large turd on a dead engine.\nWhen this game actually works, it’s some of the most chaotic fun you can play. My frame rates are perfectly fine, but everything else surrounding the client is a complete and utter joke.\n\nEvery single patch is exhausting, and what i mean by that is when a new update drops, and instead of just playing, I’m forced into a frustrating routine of troubleshooting; uninstalling, wiping shader caches, and verifying game files just to get past a frozen black splash screen, or wait for it... A CRASH BEFORE IT EVEN LAUNCHES ITSELF!\nWe shouldn't have to act like IT support just to launch a game we paid for.\n\nLike i said earlier, Arrowhead is trying to polish and dress up a very large turd of an 8-year abandoned and discontinued infrastructure. I want to love this game, but I’m sick of fighting the launcher more than the damn automatons. Buy it if you want great gameplay, but prepare to get intensely pissed off by the client. Thank you for coming to my [b] Beerus Talk. [/b]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238593379",
+                  "hours_at_review": 3.1,
+                  "minutes_at_review": 186,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "Crashes on launch, fresh purchase and fresh install. Got it working after mucking around with different suggestions from the discussions. Played 3 rounds and then the whole thing got stuck on a black screen and needed to be force killed.\r\nCan't recommend in its current buggy state.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237193328",
+                  "hours_at_review": 10.1,
+                  "minutes_at_review": 603,
+                  "voted_up": false,
+                  "date": "2026-10-08",
+                  "review_text": "BUGDIVERS 2!\r\nconstant crashes. constant bugs. i bought the game for 30$ and i am struggling to get at least 30 hours on it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238341535",
+                  "hours_at_review": 5.5,
+                  "minutes_at_review": 333,
+                  "voted_up": false,
+                  "date": "2026-10-23",
+                  "review_text": "cant recommend it rn the anti cheat is buggy and makes the game crash",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-09c367",
+              "claim": "Reviewers note that the anti-cheat software causes performance issues, launch failures, and game crashes.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "239142036",
+                  "hours_at_review": 12.7,
+                  "minutes_at_review": 760,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "This has been a crapshoot since day one. A game with so much potential to be great, instead slaughtered by devs, and now this ArrowHead Easy anti cheat which prevents this game from launching all together. Do yourself a favor and pass on this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239069968",
+                  "hours_at_review": 19.2,
+                  "minutes_at_review": 1151,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Latest patch is absolute garbage and the addition of Epic Slop's Easy Anti Cheat alone deserves the review bomb.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238974427",
+                  "hours_at_review": 11.7,
+                  "minutes_at_review": 701,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "Server issues and the new anti-cheat broke the game, can't login in anymore and its completely ruined the experience. Hasn't been resolved for weeks now.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238911245",
+                  "hours_at_review": 5.2,
+                  "minutes_at_review": 311,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "A decent game until Easy Anti Cheat was added and that just pretty much ruined it. There's predatory game mechanics and the game doesn't really run well on PC due to poor optimisation but at least it was playable before Easy Anti Cheat.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238341535",
+                  "hours_at_review": 5.5,
+                  "minutes_at_review": 333,
+                  "voted_up": false,
+                  "date": "2026-10-23",
+                  "review_text": "cant recommend it rn the anti cheat is buggy and makes the game crash",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-5f5750",
+              "claim": "Reviewers report that the game suffers from poor optimization, lagging, and low frame rates.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -386,22 +272,69 @@
               },
               "citations": [
                 {
-                  "recommendationid": "229291222",
-                  "hours_at_review": 7.6,
+                  "recommendationid": "239136071",
+                  "hours_at_review": 13.0,
+                  "minutes_at_review": 779,
                   "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "Bought this game, played and had fun for about 4-5 hours last night.\r\n\r\nBoot up the game today - hard freeze and had to power cycle my PC to unfreeze it.\r\n\r\nReinstalled drivers, updated BIOS, disabled XMP, enabled Secure Boot, deleted shader cache, reinstalled VC, did basically every. fix. imaginable - still crashing. This game is so terrible that there's a community tool made to SPECIFICALLY troubleshoot the game because it's so poorly made and so poorly optimized. I had loads of gun during the gameplay itself but the past day has left such a sore taste in my mouth I vow to not touch this game ever again. Save your money and DO NOT BUY THIS GAME.",
-                  "truncated": false,
-                  "minutes_at_review": 455
+                  "date": "2026-11-01",
+                  "review_text": "The game came out very poorly optimized. It was very laggy and very low frame rates. What really made me quit was the Into the Unjust update, which apparently damaged graphic cards for some players. My computer is my livelyhood (I work remote. Design). A game that breaks hardware is just unacceptable, especially for someone who lives off of their PC.\r\nThe game has had many updates since then, but after that presedent, they can't really go back into my good graces. It is just a risk I can't take.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229120773",
-                  "hours_at_review": 11.5,
+                  "recommendationid": "238721524",
+                  "hours_at_review": 13.7,
+                  "minutes_at_review": 821,
                   "voted_up": false,
-                  "date": "2026-06-29",
-                  "review_text": "Between 10 minute to an hour of playing, the game freezes my entire computer, causing it to automatically restart after about 10 seconds. I've tried several fixes and nothing has worked. This game has now crashed my computer 5-6 times. I would be willing to continue attempt further fixes if testing them didn't take up to an hour before violently forcing my pc to restart. It's frankly ridiculous to expect anyone to put up with this. The 3 friends I'm trying to play with have similar or worse hardware and experience no crashes. What the hell man.",
-                  "truncated": false,
-                  "minutes_at_review": 692
+                  "date": "2026-10-28",
+                  "review_text": "State of game is terrible, no updates, badly optimized, pay 2 win for a lot of stuff. Please fix this game Its really cool but its in a terrible state.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-16308f",
+              "claim": "Reviewers describe encountering crashes, startup failures, and freezing on black screens that require troubleshooting and file verification to launch.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "239142036",
+                  "hours_at_review": 12.7,
+                  "minutes_at_review": 760,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "This has been a crapshoot since day one. A game with so much potential to be great, instead slaughtered by devs, and now this ArrowHead Easy anti cheat which prevents this game from launching all together. Do yourself a favor and pass on this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239093580",
+                  "hours_at_review": 14.5,
+                  "minutes_at_review": 870,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Can't even get it to launch after the anti-cheat update. No mods installed, and fresh installation.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238952040",
+                  "hours_at_review": 15.5,
+                  "minutes_at_review": 930,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Incredible gameplay, but they are trying to polish and dress up a very large turd on a dead engine.\nWhen this game actually works, it’s some of the most chaotic fun you can play. My frame rates are perfectly fine, but everything else surrounding the client is a complete and utter joke.\n\nEvery single patch is exhausting, and what i mean by that is when a new update drops, and instead of just playing, I’m forced into a frustrating routine of troubleshooting; uninstalling, wiping shader caches, and verifying game files just to get past a frozen black splash screen, or wait for it... A CRASH BEFORE IT EVEN LAUNCHES ITSELF!\nWe shouldn't have to act like IT support just to launch a game we paid for.\n\nLike i said earlier, Arrowhead is trying to polish and dress up a very large turd of an 8-year abandoned and discontinued infrastructure. I want to love this game, but I’m sick of fighting the launcher more than the damn automatons. Buy it if you want great gameplay, but prepare to get intensely pissed off by the client. Thank you for coming to my [b] Beerus Talk. [/b]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238593379",
+                  "hours_at_review": 3.1,
+                  "minutes_at_review": 186,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "Crashes on launch, fresh purchase and fresh install. Got it working after mucking around with different suggestions from the discussions. Played 3 rounds and then the whole thing got stuck on a black screen and needed to be force killed.\r\nCan't recommend in its current buggy state.",
+                  "truncated": false
                 }
               ]
             }
@@ -411,118 +344,8 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-96153c",
-              "claim": "Reviewers note that higher difficulties become unplayable due to endless enemy spawns regardless of destroyed spawners.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231465201",
-                  "hours_at_review": 13.7,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "unplayable at higher difficulties, just endlessly spams enemies no matter how many spawners you destroy, it just becomes insufferable to play",
-                  "truncated": false,
-                  "minutes_at_review": 822
-                },
-                {
-                  "recommendationid": "229724405",
-                  "hours_at_review": 19.9,
-                  "voted_up": true,
-                  "date": "2026-07-05",
-                  "review_text": "Hello and welcome to a review of helldivers 2 . If you can't be bothered to read tldr 7.5/10 like the 3rd best horde game on the market . If i could choose neutral i would .\n\n-the Good-\n\n1) A good gameplay loop , this game is effectively a hybrid between horde and extraction games . \n\n2) Many varied mission types , from defending a base , to exterminating everything , to rescuing civilians . \n\n3) Virtually no monetization \n\n4) this game has no classes but you can have pretty much infinite custom classes with the strategems system .\n\n- the Bad -\n\n1) Price . Even if the game is solid 30 dollars is just insane when you can get games like Deep rock galactic and payday 2 for like 10 and 3 respectively . \n\n2) Extremely group heavy even for horde standards , to the point that even if you play solo you have to be playing with random squads otherwise you basically can't win in the last 3 difficulties . \n\n3) There is pretty much no active teamwork in the game besides using different stratagems in the lobby and maybe healing up a teammate . \n\n4) Balance is just godawful especially in mid/high difficulties , What is the point of vehicles existing at all if you can just call a jetpack twice as often , be physically faster that vehicles and also being able to reach high places where enemies can't hit you ? Whats the point of having different enemy factions if the players can just use the same 4 stratagems for everything and still beat them ?\n\n5) The Developers either have HUGE egos in real life or have the effective IQ of a child with 6 different mental disorders . Imagine the community asking you to not nerf for the 7th time a gun NOBODY used anyways , then saying you won't , then nerf it anyways and don't write in the patch notes that you nerfed in ON PURPOSE and then have people find it out anyways and continue getting clowned on .\n\n- the ugly - \n\n1) Crashes and random corrupts of the game just happen for no reason . Its not that bad that i would stop playing but it is bad eno…",
-                  "truncated": true,
-                  "minutes_at_review": 1197
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 8,
-        "cited_recommend": 5,
-        "divergence_p": 0.0583,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "mid",
-      "label": "20-100h",
-      "hours_range": "20-100 hours",
-      "pool_n": 615,
-      "pct_positive": 85.2,
-      "muted": false,
-      "n_note": null,
-      "summary": "Mid-game players report repetitive mission loops, thin rewards, and heavy grinding for premium warbonds.",
-      "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "mid-69a2d4",
-              "claim": "Reviewers report that the game becomes repetitive after playing for dozens of hours.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 4,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231554442",
-                  "hours_at_review": 95.5,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": " Helldivers 2 gameplay mostly consists of you and your squad deploying to different planets to complete operations that have the purpose of winning the galactic war and protecting Super Earth.\n\n You can play alone but its even better if you play with friends or with strangers in voice chat, in particular in higher difficulty missions where things get chaotic, which usually leads to insane moments where you somehow make it out alive out of a situation that looked impossible to survive. In higher difficulties it is almost impossible to complete operations by yourself, often needing teammates that are able to coordinate with you to complete the objectives. \n\n The game also features a few currencies, some to upgrade your destroyers capability, others to buy stratagems, outfits and other items.\n\n The different factions, different creatures such as bile titans and hulks, and planets provide variety in terms of gameplay, difficulty or visuals , some planets are stunning visually, some creatures are immune to certain weapons, different objectives require different strategies. Another factor that helps in gameplay variety is the huge collection of stratagems, where you have support weapons, orbital or eagle strikes and turrets or sentries, this also provides different possibilities when facing a certain mission.\n\nThe only problem is that after several missions, even though there are different factions planets and operations, it might get repetitive, and it gets worse if you play to farm items such as samples, which is not bad, but it usually leads to very repetitive gameplay, so ideally don't stress about quickly getting everything max level and getting game items and focus more on enjoying the gameplay. \n\n When it comes to performance, my specs are not very strong but i am able to play the game at medium settings with around 60fps, which is acceptable for me, if you have better specs then you are probably fine, if your system is weaker then you should be a bit more careful …",
-                  "truncated": true,
-                  "minutes_at_review": 5730
-                },
-                {
-                  "recommendationid": "231511767",
-                  "hours_at_review": 96.1,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "game is good at the start. gets repetitive late game though. still fun with friends.",
-                  "truncated": false,
-                  "minutes_at_review": 5768
-                },
-                {
-                  "recommendationid": "231460378",
-                  "hours_at_review": 58.6,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "cool and fun for a bit but it gets so repetetive",
-                  "truncated": false,
-                  "minutes_at_review": 3514
-                },
-                {
-                  "recommendationid": "231424025",
-                  "hours_at_review": 24.0,
-                  "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "I've been wanting to play Helldivers 2 for the longest time and finally got it on the steam summer sale. It runs very well on my PC. The gameplay can get repetitive, but remains fun. I really enjoy playing it with my friends.",
-                  "truncated": false,
-                  "minutes_at_review": 1439
-                },
-                {
-                  "recommendationid": "230291998",
-                  "hours_at_review": 67.2,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "beside the fact that developers cannot handle the game it was fun. lack of content after 50 hours.",
-                  "truncated": false,
-                  "minutes_at_review": 4030
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-34a199",
-              "claim": "Reviewers note a lack of progression or meaningful rewards after completing missions, stating that items and armor lack unique stats.",
+              "claim_id": "ear-c95c03",
+              "claim": "Reviewers describe mechanics where the game environment and systems actively hinder the player, such as unpredictable ragdolling, turrets targeting allies, and stratagem balls bouncing back.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -530,22 +353,89 @@
               },
               "citations": [
                 {
-                  "recommendationid": "229652325",
-                  "hours_at_review": 67.9,
+                  "recommendationid": "238219703",
+                  "hours_at_review": 8.7,
+                  "minutes_at_review": 523,
                   "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "I haven't been here for all the drama so I'm just basing this review on my gameplay experience. \n\n1. It drives me crazy that your loadout doesn't save between rounds. I avoid purchasing new items because I don't want my loadout screen to have a hundred items that I have to sort through before each mission. \n\nI bought two warbonds with real money and the rest will sit unpurchased because I don't want to have to search through stratagems every mission, they're literally losing money over this.\n\n2. There's not really any incentive to play. You don't really get anything for beating a mission other than some level xp and a few research samples. You can go tens of hours without unlocking anything new, even longer if you're purposefully avoiding useless item unlocks because your loadouts don't save between rounds (see point 1).\n\nThe gameplay is actually fun, but the game itself doesn't feel finished.",
-                  "truncated": false,
-                  "minutes_at_review": 4074
+                  "date": "2026-10-21",
+                  "review_text": "It is pretty clear by now that the developers intentionally want this game to be as frustrating to players as possible because they think it's funny for the characters to be bumbling buffoons that are in way over their head. Unfortunately that means they created a game environment with mechanics that frequently fight against the player to keep up the developer's vision. Mechanics like turrets shooting the player and their allies seemingly on purpose, stratagem balls bouncing around and dropping bombs on you, constantly being knocked down and thrown around by explosions and projectiles. I actually really like this game when it isn't fighting against me but Arrowhead works really hard to make sure that it always does.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230149413",
-                  "hours_at_review": 48.8,
+                  "recommendationid": "238284681",
+                  "hours_at_review": 18.6,
+                  "minutes_at_review": 1116,
                   "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "Game is fun and at first it seems like  u have a lot of stuff to aim for and unlock. Until you realize everything is just cosmetics, specially the armory. Scopes gives no actual benefits. On my 2nd day i was able to reach Super Helldive difficulty and there is no sense of progression cause there is no way to actually improve your weapons/armor. Stats are always the same, All Magazines have the exact same amount of total bullets despite some being depicted as \"High Capacity\", same deal for armors, no unique stats or passives. Weapons with X armor piercing doesnt really do anything they still get \"deflected\" by the same armor they say they pierce. If you want to play max difficulty just buy Exo Suit",
-                  "truncated": false,
-                  "minutes_at_review": 2927
+                  "date": "2026-10-22",
+                  "review_text": "Within 4 days of buying Helldivers 2, Arrowhead has already managed to:\n\nLie about the Major Order reward. It said the reward was going to be a stratagem, but then it turned out to be some reward for the DSS (which I still have no idea what even is). So essentially, the reward was nothing?? What a great first impression of the game and its developers!\n\nAnd implement anti-cheat restrictions to prevent modding because apparently people were having too much fun playing a superior version of the game than AH themselves could develop. There seem to be bugs that have existed since the launch of the game that random vibe coders were able to easily fix, yet instead of implementing these fixes themselves, AH would rather just prevent these mods from functioning. Because they're jealous or something??\n\nBesides that, the game itself has A LOT of potential, but it's just filled with problems that completely ruin the experience. There are so many bugs and janky mechanics that you constantly have to fight against the game itself rather than the enemies. Like the insane ragdolling that makes absolutely no sense and just takes control away from the player.\n\nThen there's the awful predatory progression system that feels like something you'd find in a mobile game. This game costs 40 euros, yet what you get in the base game is so barebones it's actually ridiculous. A few primary weapons, TWO SECONDARIES, FOUR GRENADES. Everything else has to be grinded for.\n\nAnd let's talk about the grind. For some reason, you don't get rewarded more Super Credits for playing on higher difficulties. On average, I get around 10–20 SC at difficulty 10 for each dive, and a single Warbond costs 1k SC. So the only way to get 1k SC within a reasonable amount of time is to waste 2–3 hours of your life playing on the lowest difficulty, mindlessly running around the map collecting this stupid currency instead of actually playing the game.\n\nAnd then, when you finally have enough SC to buy the fucking Warbond, y…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-39cd4d",
+              "claim": "Reviewers report encountering gameplay bugs, janky mechanics, and constant ragdolling that takes control away from the player.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "238219703",
+                  "hours_at_review": 8.7,
+                  "minutes_at_review": 523,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "It is pretty clear by now that the developers intentionally want this game to be as frustrating to players as possible because they think it's funny for the characters to be bumbling buffoons that are in way over their head. Unfortunately that means they created a game environment with mechanics that frequently fight against the player to keep up the developer's vision. Mechanics like turrets shooting the player and their allies seemingly on purpose, stratagem balls bouncing around and dropping bombs on you, constantly being knocked down and thrown around by explosions and projectiles. I actually really like this game when it isn't fighting against me but Arrowhead works really hard to make sure that it always does.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237193328",
+                  "hours_at_review": 10.1,
+                  "minutes_at_review": 603,
+                  "voted_up": false,
+                  "date": "2026-10-08",
+                  "review_text": "BUGDIVERS 2!\r\nconstant crashes. constant bugs. i bought the game for 30$ and i am struggling to get at least 30 hours on it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238284681",
+                  "hours_at_review": 18.6,
+                  "minutes_at_review": 1116,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "Within 4 days of buying Helldivers 2, Arrowhead has already managed to:\n\nLie about the Major Order reward. It said the reward was going to be a stratagem, but then it turned out to be some reward for the DSS (which I still have no idea what even is). So essentially, the reward was nothing?? What a great first impression of the game and its developers!\n\nAnd implement anti-cheat restrictions to prevent modding because apparently people were having too much fun playing a superior version of the game than AH themselves could develop. There seem to be bugs that have existed since the launch of the game that random vibe coders were able to easily fix, yet instead of implementing these fixes themselves, AH would rather just prevent these mods from functioning. Because they're jealous or something??\n\nBesides that, the game itself has A LOT of potential, but it's just filled with problems that completely ruin the experience. There are so many bugs and janky mechanics that you constantly have to fight against the game itself rather than the enemies. Like the insane ragdolling that makes absolutely no sense and just takes control away from the player.\n\nThen there's the awful predatory progression system that feels like something you'd find in a mobile game. This game costs 40 euros, yet what you get in the base game is so barebones it's actually ridiculous. A few primary weapons, TWO SECONDARIES, FOUR GRENADES. Everything else has to be grinded for.\n\nAnd let's talk about the grind. For some reason, you don't get rewarded more Super Credits for playing on higher difficulties. On average, I get around 10–20 SC at difficulty 10 for each dive, and a single Warbond costs 1k SC. So the only way to get 1k SC within a reasonable amount of time is to waste 2–3 hours of your life playing on the lowest difficulty, mindlessly running around the map collecting this stupid currency instead of actually playing the game.\n\nAnd then, when you finally have enough SC to buy the fucking Warbond, y…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ed5cd2",
+              "claim": "Reviewers report mechanical frustrations such as ragdolling, stratagem balls bouncing, and turrets targeting players.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238219703",
+                  "hours_at_review": 8.7,
+                  "minutes_at_review": 523,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "It is pretty clear by now that the developers intentionally want this game to be as frustrating to players as possible because they think it's funny for the characters to be bumbling buffoons that are in way over their head. Unfortunately that means they created a game environment with mechanics that frequently fight against the player to keep up the developer's vision. Mechanics like turrets shooting the player and their allies seemingly on purpose, stratagem balls bouncing around and dropping bombs on you, constantly being knocked down and thrown around by explosions and projectiles. I actually really like this game when it isn't fighting against me but Arrowhead works really hard to make sure that it always does.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238284681",
+                  "hours_at_review": 18.6,
+                  "minutes_at_review": 1116,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "Within 4 days of buying Helldivers 2, Arrowhead has already managed to:\n\nLie about the Major Order reward. It said the reward was going to be a stratagem, but then it turned out to be some reward for the DSS (which I still have no idea what even is). So essentially, the reward was nothing?? What a great first impression of the game and its developers!\n\nAnd implement anti-cheat restrictions to prevent modding because apparently people were having too much fun playing a superior version of the game than AH themselves could develop. There seem to be bugs that have existed since the launch of the game that random vibe coders were able to easily fix, yet instead of implementing these fixes themselves, AH would rather just prevent these mods from functioning. Because they're jealous or something??\n\nBesides that, the game itself has A LOT of potential, but it's just filled with problems that completely ruin the experience. There are so many bugs and janky mechanics that you constantly have to fight against the game itself rather than the enemies. Like the insane ragdolling that makes absolutely no sense and just takes control away from the player.\n\nThen there's the awful predatory progression system that feels like something you'd find in a mobile game. This game costs 40 euros, yet what you get in the base game is so barebones it's actually ridiculous. A few primary weapons, TWO SECONDARIES, FOUR GRENADES. Everything else has to be grinded for.\n\nAnd let's talk about the grind. For some reason, you don't get rewarded more Super Credits for playing on higher difficulties. On average, I get around 10–20 SC at difficulty 10 for each dive, and a single Warbond costs 1k SC. So the only way to get 1k SC within a reasonable amount of time is to waste 2–3 hours of your life playing on the lowest difficulty, mindlessly running around the map collecting this stupid currency instead of actually playing the game.\n\nAnd then, when you finally have enough SC to buy the fucking Warbond, y…",
+                  "truncated": true
                 }
               ]
             }
@@ -555,67 +445,346 @@
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "mid-26e5ec",
-              "claim": "Reviewers state that warbonds and additional content are locked behind paywalls or require excessive grinding for premium currency.",
+              "claim_id": "ear-13a094",
+              "claim": "Reviewers complain that cool items, gear, and progression are locked behind paid warbonds and microtransactions despite the game having an upfront price.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
-                "negative": 5
+                "positive": 0,
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231489830",
-                  "hours_at_review": 99.0,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Its a blast with your friends super credits are a little hard to get without paying but you don't need any warbonds to have a great time.",
-                  "truncated": false,
-                  "minutes_at_review": 5942
+                  "recommendationid": "239157880",
+                  "hours_at_review": 13.6,
+                  "minutes_at_review": 813,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "started hating this game once all of the cool and good shit was locked behind paid warbounds and other isssues do better arrow head",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229387011",
-                  "hours_at_review": 82.5,
+                  "recommendationid": "238175375",
+                  "hours_at_review": 14.0,
+                  "minutes_at_review": 842,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "The warbond system is ass, it's more efficient to work a minimum wage job than farm super credits, that is not hyperbole.",
-                  "truncated": false,
-                  "minutes_at_review": 4952
+                  "date": "2026-10-20",
+                  "review_text": "This games developers are the most petty self serving ego infested unreasonable pos i have ever seen you see the modding community fix your game for you do you help them or even encourage them no they would rather get rid of qol modding because it hurts there fragile egos that people do there job 10x better than they can the constant pushing for causing problems and selling you the fix is disgusting and makes ea and ubisoft look like saints at least they are open about there greedy practices push microtrasactions in a 40$ is disgusting do not buy this game it is garbage and I wish I could get my money back from these Swedish devs who could take a win even if was handed to them",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230057711",
-                  "hours_at_review": 65.2,
+                  "recommendationid": "238284681",
+                  "hours_at_review": 18.6,
+                  "minutes_at_review": 1116,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "Fun game but 90% of gear is locked behind either a paywall or grinding low level boring missions for hours on end and the devs seem more concerned with the people cheating their grindy freemium currency into their accounts than thinking about why people would feel the need to cheat for it in the first place",
-                  "truncated": false,
-                  "minutes_at_review": 3915
+                  "date": "2026-10-22",
+                  "review_text": "Within 4 days of buying Helldivers 2, Arrowhead has already managed to:\n\nLie about the Major Order reward. It said the reward was going to be a stratagem, but then it turned out to be some reward for the DSS (which I still have no idea what even is). So essentially, the reward was nothing?? What a great first impression of the game and its developers!\n\nAnd implement anti-cheat restrictions to prevent modding because apparently people were having too much fun playing a superior version of the game than AH themselves could develop. There seem to be bugs that have existed since the launch of the game that random vibe coders were able to easily fix, yet instead of implementing these fixes themselves, AH would rather just prevent these mods from functioning. Because they're jealous or something??\n\nBesides that, the game itself has A LOT of potential, but it's just filled with problems that completely ruin the experience. There are so many bugs and janky mechanics that you constantly have to fight against the game itself rather than the enemies. Like the insane ragdolling that makes absolutely no sense and just takes control away from the player.\n\nThen there's the awful predatory progression system that feels like something you'd find in a mobile game. This game costs 40 euros, yet what you get in the base game is so barebones it's actually ridiculous. A few primary weapons, TWO SECONDARIES, FOUR GRENADES. Everything else has to be grinded for.\n\nAnd let's talk about the grind. For some reason, you don't get rewarded more Super Credits for playing on higher difficulties. On average, I get around 10–20 SC at difficulty 10 for each dive, and a single Warbond costs 1k SC. So the only way to get 1k SC within a reasonable amount of time is to waste 2–3 hours of your life playing on the lowest difficulty, mindlessly running around the map collecting this stupid currency instead of actually playing the game.\n\nAnd then, when you finally have enough SC to buy the fucking Warbond, y…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "230183655",
-                  "hours_at_review": 94.2,
+                  "recommendationid": "238721524",
+                  "hours_at_review": 13.7,
+                  "minutes_at_review": 821,
                   "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "i paid $60 for this game near launch, and i loved playing it. i upgraded my graphics card so i could witness 380s drop in glorious 1080p. i roleplayed as an ODST when the HALO warbond dropped, and i had so much mf fun. \n\nbut locking additional content behind a $10-15 paywall, regularly, for months on end? Dude, based of the initial valuation of the game (ratio of $60 to fun had, content, etc), this warbond price point is so f****** disrespectful. This game is just not worth $180 ($60 + 12 warbonds x $10) - up front or long term. It just plain isn't. And it certainty isn't worth it to farm the SC manually. to do the rough numbers:\nLets say you farm 600 SC per hour. 1000 SC = $10 USD, which maps out to $6 of value an hour in SC. This is not guaranteed however, so you end up running between a low of maybe 400 and a high of 600 per hour - call it an average of 500. You're getting paid $5 an hour? to sit on the lowest difficulties and spam missions, insta-quitting once all the POIs are done? anyone who says \"just grind for a few hours\" does not understand that you can make more money going to work at a US federal minimum wage job for 2 hrs. Compare soul-crushing grinding to just buying it for almost the same amount of time spent - and bruh why tf are you not buying the SC? they set this s*** up like this! so you are incentivized to purchase the SC, which takes you out of the gameplay loop, and makes the warbonds a momentary inconvenience to your wallet and time instead of the result of play!? TF!?!?! have they forgotten they made a game, not a credit card skimmer??\n\ni'd love to hop in and play the over-the-top and action-packed game i played near launch, where things felt fun and new. but what is the point of playing if all the new toys are locked behind $120 worth of \"well, just buy the new one real quick and don't think too hard about the long term cost!\" disrespectful as hell to shadow-price a game like this. don't get me started on how they downsized warbond content …",
-                  "truncated": true,
-                  "minutes_at_review": 5651
+                  "date": "2026-10-28",
+                  "review_text": "State of game is terrible, no updates, badly optimized, pay 2 win for a lot of stuff. Please fix this game Its really cool but its in a terrible state.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-8c5fed",
+              "claim": "Reviewers state that equipment and progression items are locked behind paid warbounds and a grind.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "239157880",
+                  "hours_at_review": 13.6,
+                  "minutes_at_review": 813,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "started hating this game once all of the cool and good shit was locked behind paid warbounds and other isssues do better arrow head",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230078780",
-                  "hours_at_review": 59.1,
+                  "recommendationid": "238721524",
+                  "hours_at_review": 13.7,
+                  "minutes_at_review": 821,
                   "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "this game is so pay to win its not even funny you get almost nothing if you don't do micro transactions you get one warbond progression and thats it in what world do you pay for a game to play it just to haft to pay more to progress and unlock stuff this game had so much potential but they ruined it with pay for this pay for that pay to play period",
-                  "truncated": false,
-                  "minutes_at_review": 3546
+                  "date": "2026-10-28",
+                  "review_text": "State of game is terrible, no updates, badly optimized, pay 2 win for a lot of stuff. Please fix this game Its really cool but its in a terrible state.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230151755",
-                  "hours_at_review": 76.1,
+                  "recommendationid": "238284681",
+                  "hours_at_review": 18.6,
+                  "minutes_at_review": 1116,
                   "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "No matter what positives I had with this game, it just does not deserve your money.\r\n\r\nThe economy and progression in this game is disgustingly awfull. For the game the main appeal of which is to try to fight through the different levels and enemies with different loadouts, you will slog through the first 20 hours with the same equipment because your earning are ♥♥♥♥, while strugling to even understnad, what is useful and what is not. Next 3 or 4 missions will be spent testing out new weapons after which the realisation hits that the entire game has 3 or 4 usefull primaries and secondaries, and the entre asrenal apart from that is useless trash that exists only to be a waste of your time AND money.\r\n\r\nThe system of Warbonds is honestly the worst part if this game by far. Do you like your full priced games that demand you to pay for microtransactions to continue to play? No? Well, bad luck, buddy, be ready to waste 20 more hours to farm 20 Supecredits per mission to by another 1000 credit warbond with steaming ♥♥♥♥♥♥♥♥♥♥ that will gather dust in your inventory because it's can't even kill medium sized enemies. And don't forget that all your currencies (except for the premium microtransaction one) is capped, so you can't even save up your medals (currency that is used to buy items from warbonds) because they are capped at 250. What if you had more but don't have warbond to spend them on? Tough luck buddy, be ready to waste all your medals!\r\n\r\nThe game is just terminally unfun. The moment anything in this game gets any mileage against enemies, it gets nerfed into the ground, the game demands you to pay for even dare to try to use different equipment, higher difficulties exist only to be annoying and be a waste of your time, bugs are never fixed because fixing them does not bring developers money, and you can't even argue that game has good graphics because you will be blasted by the absurd amount of dust in your face constantly. What is even the point to have a good gr…",
-                  "truncated": true,
-                  "minutes_at_review": 4566
+                  "date": "2026-10-22",
+                  "review_text": "Within 4 days of buying Helldivers 2, Arrowhead has already managed to:\n\nLie about the Major Order reward. It said the reward was going to be a stratagem, but then it turned out to be some reward for the DSS (which I still have no idea what even is). So essentially, the reward was nothing?? What a great first impression of the game and its developers!\n\nAnd implement anti-cheat restrictions to prevent modding because apparently people were having too much fun playing a superior version of the game than AH themselves could develop. There seem to be bugs that have existed since the launch of the game that random vibe coders were able to easily fix, yet instead of implementing these fixes themselves, AH would rather just prevent these mods from functioning. Because they're jealous or something??\n\nBesides that, the game itself has A LOT of potential, but it's just filled with problems that completely ruin the experience. There are so many bugs and janky mechanics that you constantly have to fight against the game itself rather than the enemies. Like the insane ragdolling that makes absolutely no sense and just takes control away from the player.\n\nThen there's the awful predatory progression system that feels like something you'd find in a mobile game. This game costs 40 euros, yet what you get in the base game is so barebones it's actually ridiculous. A few primary weapons, TWO SECONDARIES, FOUR GRENADES. Everything else has to be grinded for.\n\nAnd let's talk about the grind. For some reason, you don't get rewarded more Super Credits for playing on higher difficulties. On average, I get around 10–20 SC at difficulty 10 for each dive, and a single Warbond costs 1k SC. So the only way to get 1k SC within a reasonable amount of time is to waste 2–3 hours of your life playing on the lowest difficulty, mindlessly running around the map collecting this stupid currency instead of actually playing the game.\n\nAnd then, when you finally have enough SC to buy the fucking Warbond, y…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-011032",
+              "claim": "Reviewers note that base game weapon and equipment options are limited, with additional items requiring grinding or purchases from paid warbonds.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "239157880",
+                  "hours_at_review": 13.6,
+                  "minutes_at_review": 813,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "started hating this game once all of the cool and good shit was locked behind paid warbounds and other isssues do better arrow head",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238284681",
+                  "hours_at_review": 18.6,
+                  "minutes_at_review": 1116,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "Within 4 days of buying Helldivers 2, Arrowhead has already managed to:\n\nLie about the Major Order reward. It said the reward was going to be a stratagem, but then it turned out to be some reward for the DSS (which I still have no idea what even is). So essentially, the reward was nothing?? What a great first impression of the game and its developers!\n\nAnd implement anti-cheat restrictions to prevent modding because apparently people were having too much fun playing a superior version of the game than AH themselves could develop. There seem to be bugs that have existed since the launch of the game that random vibe coders were able to easily fix, yet instead of implementing these fixes themselves, AH would rather just prevent these mods from functioning. Because they're jealous or something??\n\nBesides that, the game itself has A LOT of potential, but it's just filled with problems that completely ruin the experience. There are so many bugs and janky mechanics that you constantly have to fight against the game itself rather than the enemies. Like the insane ragdolling that makes absolutely no sense and just takes control away from the player.\n\nThen there's the awful predatory progression system that feels like something you'd find in a mobile game. This game costs 40 euros, yet what you get in the base game is so barebones it's actually ridiculous. A few primary weapons, TWO SECONDARIES, FOUR GRENADES. Everything else has to be grinded for.\n\nAnd let's talk about the grind. For some reason, you don't get rewarded more Super Credits for playing on higher difficulties. On average, I get around 10–20 SC at difficulty 10 for each dive, and a single Warbond costs 1k SC. So the only way to get 1k SC within a reasonable amount of time is to waste 2–3 hours of your life playing on the lowest difficulty, mindlessly running around the map collecting this stupid currency instead of actually playing the game.\n\nAnd then, when you finally have enough SC to buy the fucking Warbond, y…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238721524",
+                  "hours_at_review": 13.7,
+                  "minutes_at_review": 821,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "State of game is terrible, no updates, badly optimized, pay 2 win for a lot of stuff. Please fix this game Its really cool but its in a terrible state.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 15,
+        "cited_recommend": 0,
+        "divergence_p": 8.56e-07,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 382,
+      "pct_positive": 33.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Anti-cheat updates cause performance drops and block Linux play, while weapon balancing and microtransactions frustrate progression.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-c393fd",
+              "claim": "Reviewers report that the introduction of Easy Anti-Cheat causes launch failures, crashes, and performance drops.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "239236473",
+                  "hours_at_review": 27.2,
+                  "minutes_at_review": 1635,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "A game I once enjoyed with friends has been completely ruined! After the last update, and so many different attempts at fixing the game, which we shouldn't have to do, I have had no luck in getting the game to boot up! \n\nMy friend bought this game on Xbox recently because I wanted to enjoy it with them while on PC, thanks to crossplay. Today, we went to boot it up and on PC it wouldn't load - Xbox was fine. \n\nBig thumbs down for a game that was once a thumbs up! Uninstalled for now, don't have time to waste fixing something that never needed fixing...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238278848",
+                  "hours_at_review": 25.2,
+                  "minutes_at_review": 1515,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "Was a good game...\r\n\r\nWhy does anti-cheat even matter in a co-op non-competitive game...?\r\n\r\nThe only thing that has changed for me with them changing anti-cheats is that now I CAN'T LAUNCH THE GAME.  I just get an error.  Never had an issue with cheating before...  cause again... it's not a competitive game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238352239",
+                  "hours_at_review": 53.5,
+                  "minutes_at_review": 3210,
+                  "voted_up": false,
+                  "date": "2026-10-23",
+                  "review_text": "Good game, but the latest update introducing the new anti-cheat system unfortunately broke it.\nI can no longer boot Helldivers 2 up, and no solution seems to fix the problem. gg arrowhead.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238420282",
+                  "hours_at_review": 91.7,
+                  "minutes_at_review": 5501,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "Easy Anti-Cheat has made my game unplayable. Crash on start lmao\r\n\r\nNever had crashing issues before this awful update.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238405152",
+                  "hours_at_review": 85.8,
+                  "minutes_at_review": 5146,
+                  "voted_up": false,
+                  "date": "2026-10-23",
+                  "review_text": "I can no longer play after the latest EAC update as I crash upon landing in game. Regardless of which version of proton I use or if I verify game files and I have also updated my drivers. I have never used any mods. Thank you Easy Anti-cheat.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238418029",
+                  "hours_at_review": 88.0,
+                  "minutes_at_review": 5282,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "woah new update that should only affect people who run mods. Oh it drops my frames to ~70 from ~180, and causes the game to crash constantly.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "mid-defd08",
+              "claim": "Reviewers state that an update introducing Easy Anti-Cheat blocked community mods and made the game unplayable on Linux.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "239235834",
+                  "hours_at_review": 37.2,
+                  "minutes_at_review": 2233,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Guess I'm not allowed to play this game anymore since it seems Arrowhead removed the ability for the game to run under Linux or VMs after switching the anticheat engine to EAC (and I happen to game under a Linux VM).\n\nThanks Arrowhead, I'll be sure to keep this in mind during my future game purchases.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238228556",
+                  "hours_at_review": 24.7,
+                  "minutes_at_review": 1482,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "Despite my relatively short playtime, I have some very strong opinions on this game.\n\nNamely the grind. It is absolutely absurd how much you need to grind as a new player to unlock fun items.\n\nFirst of all, you need to grind a thousand super credits to unlock a warbond. 1500 if it's a crossover one. This takes fucking forever, and the grind to getting super credits is completely unfun, even if you get a mod that shows all the super credit locations on the map. They usually come in batches of 10, and there's normally only a handful of pickups per match.\n\nAfter you've sat through that arduous grind, you finally get the privilege of, guess what, grind even more! You need to grind through and waste hundreds of medals to get to the stuff in the warbond which you actually want to have. You need to go through 3 layers of grinding before you're even allowed to grind for the item that you actually want.\n\nJust about everything you might want to play with in this game is locked behind this ridiculously long grind. And until you get these items, you are virtually dead weight on missions that are even halfway up the difficulty gauge.\n\nTo make this even worse, Arrowhead just released an update which has virtually bricked the game for me on Linux. Even without any mods enabled at all, it always crashes less than ten minutes into a mission. All to make sure people can't use quality of life mods.\n\nI sorely regret spending money on this game. Ever since I bought it, it's done nothing but spit in my face and demand I waste more time and money just to enjoy the game I paid for.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238172388",
+                  "hours_at_review": 66.7,
+                  "minutes_at_review": 4000,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "For the record, this is a great game. And one I planned to put a lot more time into.\nBut as of the most recent update, the devs decided to add EAC, two years into the games life cycle. This isn't a PVP game, it's a co-op horde shooter, but the devs are seemingly allergic to fun, as we're all aware of their notorious treatment and constant nerfs of fun/good weapons.\nBeing a Linux user, I'm unable to even launch the game anymore, I've no doubt a workaround will be found, but this is such a ludicrous decision by the devs. The constant disconnect between them and their playerbase is frankly outstanding. \n\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-3cd849",
+              "claim": "Reviewers describe weapon balancing as frustrating, noting that frequent nerfs make weapons unusable in this cooperative PvE game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "239185253",
+                  "hours_at_review": 28.3,
+                  "minutes_at_review": 1697,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "I cannot in good conscience recommend this game wholeheartedly in its current state. For context, I was a PS5 Helldivers player who played from release and spent hundreds of hours on the game. However, I was forced to move to PC because of PlayStation’s predatory subscription model, which forces players who already bought the game to pay an additional fee just to access it. Eventually, the subscription costs more than the game itself.\r\n\r\nWhy do I not recommend it? You sink hours of your life into this game—maybe even spend extra money on a Warbond to have fun—only to have enemies buffed or weapons nerfed in a PvE game that isn't even a competitive multiplayer experience. I also have to question what the Galactic War and the overarching story are actually about at this point. At every major turning point, there is very little payoff, and creative narrative elements are completely ignored or never implemented. It makes you question the point of sinking hours into completing a campaign. On top of those issues, frequent updates and nerfs either break the game or make it swing wildly between feeling trivial and immensely difficult. Don't waste your time or money if you can spend it on real-life necessities or actual long-term games with a rewarding payoff.\r\n\r\nA separate issue is the community, which has transformed into a toxic cesspool where people can't even agree on a safe space or channel. I was personally deeply discouraged by the charity challenge incident, where someone's entire life was ruined over a playful charity event and Arrowhead made no attempt to step in. Even if the harassment happened outside the game environment, reaching out to the affected person's job or family would have been a show of good faith, yet that didn't happen. It makes you question the authenticity of their in-game charity campaigns. If they truly support players and charitable causes, wouldn't it have made sense to reach out? I'm not saying the charity itself is bad, but I am questionin…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238505018",
+                  "hours_at_review": 55.4,
+                  "minutes_at_review": 3326,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "I can't comprehend how a studio can be this fucking stupid and have such a fragile ego.\n55hrs and even I can see this things...\n1. Years without fixing game-breaking bugs.\n2. A complete lack of understanding of their own game, to the point where modders fixed problems in a matter of days.\n3. Updates that introduce EAC and tank game performance, while breaking mods that add features that should have been in the game since launch.\n4. Alienating their own player base by telling players that they don't understand how the game is supposed to be played.\n5. Doubling down on their \"grunt fantasy\" until the game becomes an absolute chore to play, bugs included.\n6. Brain-dead balance changes that punish players for being creative and finding effective strategies.\n\nFor the record, I enjoy playing Level 10 dives. I like the challenge. But if I'm forced to use only three viable weapons to have a reasonable chance of succeeding because everything else has either been nerfed into the ground or rendered unusable by a bug or glitch that Arrowhead apparently didn't like players exploiting, then that's just bad game design.\n\nIf Arrowhead expects us, to be stupid enough not to notice that so many of these changes seem designed to prove the developers right rather than improve the game, then they clearly don't deserve our time or money.\n\nDON'T MAKE THE SAME MISTAKE LIKE THE REST OF US. DON'T WASTE YOUR TIME OR MONEY ON THIS EXCUSE FOR A GAME THAT CLAIMS TO CARE ABOUT ITS PLAYERS AND THEIR EXPERIENCE.\n\nP.S. This EAC update feels like an excuse for Arrowhead to shut down modding, including mods that objectively improve the game. It honestly wouldn't surprise me if they're just butthurt that modders managed to fix problems the developers themselves claimed they couldn't find solutions for.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238172388",
+                  "hours_at_review": 66.7,
+                  "minutes_at_review": 4000,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "For the record, this is a great game. And one I planned to put a lot more time into.\nBut as of the most recent update, the devs decided to add EAC, two years into the games life cycle. This isn't a PVP game, it's a co-op horde shooter, but the devs are seemingly allergic to fun, as we're all aware of their notorious treatment and constant nerfs of fun/good weapons.\nBeing a Linux user, I'm unable to even launch the game anymore, I've no doubt a workaround will be found, but this is such a ludicrous decision by the devs. The constant disconnect between them and their playerbase is frankly outstanding. \n\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "mid-198fb3",
+              "claim": "Reviewers report an extensive grind to earn or purchase warbonds and super credits to unlock new weapons and gear.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "238213750",
+                  "hours_at_review": 38.4,
+                  "minutes_at_review": 2304,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "\"Listen dude, cheating players that make up 0.001% of the playerbase were somehow a major issue, so this PvE game now has to have a ban system and no longer allow a large majority of mods.\" I'm not even gonna talk about how much this game tries to force you to waste insane amounts of time doing the most meaningless shit (or money) to unlock weapons in a game you've paid for (cause you realistically can't unlock most warbonds just playing the game normally)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238228556",
+                  "hours_at_review": 24.7,
+                  "minutes_at_review": 1482,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "Despite my relatively short playtime, I have some very strong opinions on this game.\n\nNamely the grind. It is absolutely absurd how much you need to grind as a new player to unlock fun items.\n\nFirst of all, you need to grind a thousand super credits to unlock a warbond. 1500 if it's a crossover one. This takes fucking forever, and the grind to getting super credits is completely unfun, even if you get a mod that shows all the super credit locations on the map. They usually come in batches of 10, and there's normally only a handful of pickups per match.\n\nAfter you've sat through that arduous grind, you finally get the privilege of, guess what, grind even more! You need to grind through and waste hundreds of medals to get to the stuff in the warbond which you actually want to have. You need to go through 3 layers of grinding before you're even allowed to grind for the item that you actually want.\n\nJust about everything you might want to play with in this game is locked behind this ridiculously long grind. And until you get these items, you are virtually dead weight on missions that are even halfway up the difficulty gauge.\n\nTo make this even worse, Arrowhead just released an update which has virtually bricked the game for me on Linux. Even without any mods enabled at all, it always crashes less than ten minutes into a mission. All to make sure people can't use quality of life mods.\n\nI sorely regret spending money on this game. Ever since I bought it, it's done nothing but spit in my face and demand I waste more time and money just to enjoy the game I paid for.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237996655",
+                  "hours_at_review": 95.5,
+                  "minutes_at_review": 5727,
+                  "voted_up": false,
+                  "date": "2026-10-18",
+                  "review_text": "I can't recommend the game in the state that its currently in.\n\nHere is the why: \n\nThe game has bugs that are still in it after years of development, some which are of no importance, others that are gamebreaking. \n\nThe devs have a backwards way of balancing, One prime example of this is their need to hide balancing from you. Plenty of things have either gotten shadow nerfed from the players side or shadow buffed from the enemy side. While its gotten better, undocumented changes still happen way more than they should. \nIt's not the end of the world, but its a frustrating part that takes them a long time to adress and in most cases they only do so in the official discord. \n\nThey also have a fundamental disconnect between what the community wants in terms of content and balancing.\n\nBut that's not my largest grievance with the game, my largest grievance is the monitization. \nWhen the game launched, it was all fine and dandy, grind SC or spend a little money to get a singular warbond which made it a fair way to balance free with paid content. \n\nBut now? \n\nNow its a upward hill struggle for anyone new to the game, or anyone who took breaks because AH pumps out warbonds so frequently its honestly astonishing. And because there is basically no progression system past the very early stages there are no other ways to earn weapons, armors, strategems etc, without running the current war campaign, which if you miss by any reason will force you to wait months for the item in that to re-release. \n\nThe problem with this is that 90% of your time will be spent grinding just to catch up to other players in *basic* gameplay capacities, which nobody enjoys doing, which is why cheaters and modding has become so prevelant, or spend hundreds of dollars catching up the fast way. Neither is optimal, and they have spoken about changes to SC for so long and have done nothing that I will be genuienly surprised if anything changes. \n\n\nI like this game, while my hours are not long its inherently…",
+                  "truncated": true
                 }
               ]
             }
@@ -626,8 +795,8 @@
         "level": "baseline",
         "triggers": [],
         "cited_reviews": 13,
-        "cited_recommend": 5,
-        "divergence_p": 0.000147,
+        "cited_recommend": 0,
+        "divergence_p": 0.00469,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -635,113 +804,217 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 871,
-      "pct_positive": 65.7,
+      "pool_n": 1723,
+      "pct_positive": 10.0,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players cite recurring technical crashes alongside exhaustive grinds for locked premium gear.",
+      "summary": "Long-term players highlight persistent bugs, broken mechanics, and anti-cheat issues preventing normal launch.",
       "themes": [
         {
-          "theme": "monetization",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-75dac1",
-              "claim": "Reviewers note that premium currency and warbonds require significant grinding to acquire or involve paid transactions in a non-free-to-play game.",
+              "claim_id": "vet-c8f4a7",
+              "claim": "Reviewers report that the recent anti-cheat update prevents the game from launching or causes continuous crashes on startup for players with unmodded installs.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 7
               },
               "citations": [
                 {
-                  "recommendationid": "231472661",
-                  "hours_at_review": 276.4,
+                  "recommendationid": "239256735",
+                  "hours_at_review": 805.1,
+                  "minutes_at_review": 48309,
                   "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "Garbage game about battlepasses, without adequate implementation of paid currency being acquired for doing anything except grinding lvl 1 mission with a specific pattern of the map. Pay a fortune for the game - pay once more to use weapons that barely find their use on battlefield.",
-                  "truncated": false,
-                  "minutes_at_review": 16586
+                  "date": "2026-11-03",
+                  "review_text": "The game was very fun for a while, recently I have been unable to open the game at all since the Anti Cheat update and I dont use mods or anything. Ive tried redownloading the game and verifying files but it doesnt work. I guess this is where I stop playing",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230042993",
-                  "hours_at_review": 516.1,
+                  "recommendationid": "239240747",
+                  "hours_at_review": 533.2,
+                  "minutes_at_review": 31990,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "tldr: A paid game which is pretty fun but uses egregious F2P monetization. Clear potential for greatness, if only it were in better hands.\n\nSure, I like the gameplay. But SO MUCH of the gear is locked behind premium passes. While you can technically get the premium currency while playing, the rate at which this happens essentially means you'll have no time to play other games if you play normally. Or you'll be spending evenings here and there doing nothing but the lowest most boring difficulty JUST to gather that premium currency efficiently.\n\nSeriously, let's do a quick comparison to Helldivers 1: HD1 has 14 pieces of DLC, the most expensive one being €4.\nHelldivers2 has 22 of these warbonds/premium passes at €10+ each (2 of which cost 50% extra and give back €0 instead of the roughly €3 worth of currency the regular ones do), and counting. My primary issue isn't even the difference in quantity, it's the fact that not a single premium pass feels worth the asking price. To me each warbond is offering roughly the same amount of meaningful content as one HD1 DLC, yet they're double the price.\n\nAdditionally, HD1 DLC actually goes on sale. To my knowledge HD2 warbonds have never gone on sale, not even a reduction in price for the oldest ones.\n\nThere's also been no additions of meaningful progression besides these premium warbonds since (just checking the patch's date here) two years ago, 4th of july 2024. (I'm not counting the gun customization, it's a nice little bonus but it's also quite underbaked and has had no attention since its own implementation. Heck, they don't even properly show the stats that get changed, since the screen claims sway remains the same no matter what).\n\nThere's more issues I have with the game (performance, bugginess, stratagem bounce, biome limitations, the meaninglessness of the overarching forced plot from the perspective of a single player, unreliability of actual in-match difficulty when selecting a difficulty) but I can't really bother t…",
-                  "truncated": true,
-                  "minutes_at_review": 30969
+                  "date": "2026-11-03",
+                  "review_text": "never used mods but now I can not open the game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230052935",
-                  "hours_at_review": 271.4,
+                  "recommendationid": "239232329",
+                  "hours_at_review": 899.0,
+                  "minutes_at_review": 53940,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "A $40 game with a free to play monetization model, the only progression is through battle passes and once you complete the first one that's free, you have to pay real money. Some of the best (and most fun) weapons and armor are behind these passes which is extremely frustrating since this is not a free to play game, yet you still have to pay to get them. While Premium currency can be obtained through gameplay the most optimal methods to do so are not only extremely boring, but very time consuming. It can take upwards of seven hours of grinding (with average luck) to get just a single battle pass (called War Bonds), which will only give you back 300 SC for the next purchase.\n\nIt's such a shame too since behind this atrocious pay-to-progress model, with some of the worst grinding I've seen in a paid game, is an actually fun co-op shooter. I just can't recommend it because the monetization is so greedy and so intrusive that it can really hinder the actual fun part of the game. Wherein if you want to play with some of the coolest items the game has, you will either need to fork out $10, ($15 for the legendary bonds), or grind out hours and hours of boring SC farming just to get it for free.",
-                  "truncated": false,
-                  "minutes_at_review": 16282
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-41022b",
-              "claim": "Reviewers state that premium warbonds and gear are locked behind paid passes or a time-consuming grind for super credits.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230042993",
-                  "hours_at_review": 516.1,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "tldr: A paid game which is pretty fun but uses egregious F2P monetization. Clear potential for greatness, if only it were in better hands.\n\nSure, I like the gameplay. But SO MUCH of the gear is locked behind premium passes. While you can technically get the premium currency while playing, the rate at which this happens essentially means you'll have no time to play other games if you play normally. Or you'll be spending evenings here and there doing nothing but the lowest most boring difficulty JUST to gather that premium currency efficiently.\n\nSeriously, let's do a quick comparison to Helldivers 1: HD1 has 14 pieces of DLC, the most expensive one being €4.\nHelldivers2 has 22 of these warbonds/premium passes at €10+ each (2 of which cost 50% extra and give back €0 instead of the roughly €3 worth of currency the regular ones do), and counting. My primary issue isn't even the difference in quantity, it's the fact that not a single premium pass feels worth the asking price. To me each warbond is offering roughly the same amount of meaningful content as one HD1 DLC, yet they're double the price.\n\nAdditionally, HD1 DLC actually goes on sale. To my knowledge HD2 warbonds have never gone on sale, not even a reduction in price for the oldest ones.\n\nThere's also been no additions of meaningful progression besides these premium warbonds since (just checking the patch's date here) two years ago, 4th of july 2024. (I'm not counting the gun customization, it's a nice little bonus but it's also quite underbaked and has had no attention since its own implementation. Heck, they don't even properly show the stats that get changed, since the screen claims sway remains the same no matter what).\n\nThere's more issues I have with the game (performance, bugginess, stratagem bounce, biome limitations, the meaninglessness of the overarching forced plot from the perspective of a single player, unreliability of actual in-match difficulty when selecting a difficulty) but I can't really bother t…",
-                  "truncated": true,
-                  "minutes_at_review": 30969
+                  "date": "2026-11-03",
+                  "review_text": "The recent change from GameGuard to EAC has been preventing me from playing the game now.\n\nFor context, there's no mods involved whatsoever before this problem props up. Followed community's suggestion to delete some files in appdate, redownloaded the game, restarted steam, used game guard uninstall exe. Despite trying almost every suggestion, I am still getting the same error 0xc0000142, and it's too much for me to keep redoing and retrying every suggested fix, every single day, just to play a single operation.\n\nBugs, nerfs, unsatisfying warbonds, etc, these are issues that still lets me play and enjoy the game regardless. But until this massive EAC issue is resolved, this game is unplayable and is HIGHLY NOT recommended for new Helldivers to spend a single cent nor bother playing it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230052935",
-                  "hours_at_review": 271.4,
+                  "recommendationid": "238173264",
+                  "hours_at_review": 146.0,
+                  "minutes_at_review": 8760,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "A $40 game with a free to play monetization model, the only progression is through battle passes and once you complete the first one that's free, you have to pay real money. Some of the best (and most fun) weapons and armor are behind these passes which is extremely frustrating since this is not a free to play game, yet you still have to pay to get them. While Premium currency can be obtained through gameplay the most optimal methods to do so are not only extremely boring, but very time consuming. It can take upwards of seven hours of grinding (with average luck) to get just a single battle pass (called War Bonds), which will only give you back 300 SC for the next purchase.\n\nIt's such a shame too since behind this atrocious pay-to-progress model, with some of the worst grinding I've seen in a paid game, is an actually fun co-op shooter. I just can't recommend it because the monetization is so greedy and so intrusive that it can really hinder the actual fun part of the game. Wherein if you want to play with some of the coolest items the game has, you will either need to fork out $10, ($15 for the legendary bonds), or grind out hours and hours of boring SC farming just to get it for free.",
-                  "truncated": false,
-                  "minutes_at_review": 16282
+                  "date": "2026-10-20",
+                  "review_text": "Easy Anti-Cheat blocks the game on an unmodded install. \nNo fix works.\n\n(Edit: After 2 days of trying and trying, gguninstall.exe as admin worked)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238724357",
+                  "hours_at_review": 561.8,
+                  "minutes_at_review": 33706,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "Helldivers 2 is a fantastic one-of-a-kind game that I always find myself coming back to. However, the reasons I leave are always due to the negative actions of Arrowhead, and there are only so many times I can do the we're so done, and we're so back cycle before getting permanent burnout.\n\nOne of the many things I absolutely do not understand about Arrowhead is the constant complaining about needing to develop just about anything! We want armor customization; they say it limits their “Design Space”. In a recent video on their YouTube channel. Someone gave an idea for a feature; we get the phrase “It's an amazing idea, but it will make the devs sweat”. Major bugs that have been irritating the community forever get a task force that still hasn't fixed them in all that time. While they get fixed immediately by modders that they shunned away with the anti-cheat update.\n\nWhere do I even begin with the anti-cheat update? My first time booting the game since the update was absolutely horrible.  Crash on startup - try again - crashes again - come back later - crash again - find out that I need to uninstall and reinstall because the previous anti-cheat is still there  - I do that - finally gets to launch - tick one setting - crashes immediately - Crashes on startup and won't stop - find out that a previously fixed bug with dynamic resolution scaling is crashing when turned on again - have to tweak settings manually within the game files to make it work again. This was by far the least tested update I have EVER had in this game (yes, even more than the unjust/untested major update). Not to mention the Linux, virtual machine, and console players who can't even boot the game and can't fix it!\n\nComing back to the previous point about Arrowhead seeming lazy. Why in the hell are they REMOVING most of the content from their major updates when complaining about the difficulty of making content? The machinery of oppression major update gave us a new Major Biome and subfaction, along …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238158618",
+                  "hours_at_review": 3795.8,
+                  "minutes_at_review": 227750,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "Latest update completely borked my ability to play.  The game will load just fine but I can't play for more than five minutes before the game crashes to desktop.  \n\nI have no mods installed.\n\nI have cleared my shadercache.\n\nI have deleted the Game Guard folder.\n\nI have shutdown and restarted my computer.\n\nI have verified the integrity of the game files.\n\nI'm running on Bazzite OS and have tried switching Proton versions. \n\nThe game was running just fine last night.\n\nI don't often get mad, but I am now.\n\nEdit: did a full uninstall and reinstall. ran a solo mission for about ten minutes but crashed to desktop again.  still mad.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238649206",
+                  "hours_at_review": 552.9,
+                  "minutes_at_review": 33171,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "Game will not launch.  Do not Buy.  Steam will not refund, Arrowhead offers no technical support.  \n0xc0000142 error every time I try to launch the game.  uninstalled/reinstalled, rebooted/shutdown pc, etc.",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "monetization",
           "claims": [
             {
-              "claim_id": "vet-bde2cc",
-              "claim": "Reviewers report that the game suffers from recurring crashes and technical instability.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-bed4a1",
+              "claim": "Reviewers state that premium Warbonds cost real money or require extensive grinding, with a significant portion of the game's content locked behind them.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
+                "positive": 2,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "229806573",
-                  "hours_at_review": 615.3,
+                  "recommendationid": "239252538",
+                  "hours_at_review": 922.6,
+                  "minutes_at_review": 55357,
                   "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "I’m marking Helldivers 2 as \"Not Recommended\" for now, even though I’ve genuinely enjoyed the game and put a lot of time and effort into it.\n\nWhen the game is working well, it can be a lot of fun. I’ve been through the highs and lows with Helldivers 2 and tried to stick with it because I really wanted to keep enjoying it. Unfortunately, the current state of the game has made that very difficult. My PC meets, and even exceeds, the required specs, but the game continues to crash repeatedly.\n\nThe biggest issue is that updates often feel unfinished, and instead of improving stability, the game feels more unstable over time. It is frustrating as a consumer to invest so much time into a game for entertainment, only for it to become difficult or impossible to enjoy because of crashes, bugs, and ongoing performance issues.\n\nI really hope the developers are able to get the game into a more stable and playable state. I would like to come back to Helldivers 2 someday and enjoy it again, because there is a great game here when it works. But right now, I cannot recommend it because it simply does not feel stable or reliable enough to play.",
-                  "truncated": false,
-                  "minutes_at_review": 36918
+                  "date": "2026-11-03",
+                  "review_text": "I'm definitely not the first person to bring these things up, but I'd still like to throw in my two cents.\r\n\r\nBetween the large amount of paid content, the growing distrust of the developers, and the recent introduction of Easy Anti-Cheat, I believe I would be right in saying that right now, Helldivers 2 is in a pretty rough state.\r\n\r\nAs of me writing this, a majority of the content released in Helldivers 2 is tied to a paywall. 'Warbonds' as they're called. You get one for free, the other 24 cost $10-20 per Warbond. 80% of your progression in this game is tied to a premium currency which is neither fun nor easy to grind for. \r\n\r\nThen there's the rift between the playerbase and the developers.\r\nFor a while now, there has been a growing amount of frustration within the community of Helldivers 2 over a perceived lack of honesty, or caring for that matter, from the developers, Arrowhead Studios. The devs say they won't nerf a certain weapon, only to then nerf it indirectly. They said they would dial back ragdolling on the Automaton front, only to introduce the warstrider, an extremely annoying enemy that practically specializes in just that. The devs would say they can't add a feature due to limitations within the game engine... and then modders would do it themselves.\r\n\r\nAnd, finally the most recent addition to the game along side the new Scope of Authority Warbond: Easy Anti Cheat. Arrowhead had multiple options to deal with their modding community, and they chose the worst one. They could have made separate lobbies for people with mods, added a mod menu for approved addons, but instead they chose exterminatus and blamed it on cheaters.\r\n\r\nDo you get me?\r\n\r\nI don't hate the developers, and I doubt the other veteran players do either. However, Arrowhead keeps making promises to make Helldivers 2 better, and for every step taken forward, they've taken two back.\r\nI'll believe it when I see it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229746660",
-                  "hours_at_review": 1233.9,
+                  "recommendationid": "239232103",
+                  "hours_at_review": 149.5,
+                  "minutes_at_review": 8968,
                   "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "This is a great game but AH need to work on its stability, crashes so often its unplayable and the game doesn't even detect the crash and thinks its still running so no crash report is sent. Its a great game, if it decides to run.",
-                  "truncated": false,
-                  "minutes_at_review": 74036
+                  "date": "2026-11-03",
+                  "review_text": "Do not buy this game, atleast at the time of me writing this review. The game's got a few very big problems, a major one being the warbond system. ArrowHead locks armors, weapons, and many other things behind warbonds on a game that already costs 40 dollars. Now, you *COULD* get these warbonds for free... Thats if, your willing to do unfun grinding that lasts literal days. Its a free to play strategy on a game thats quite the opposite. Other than that, ArrowHead also has a tendency of releasing updates that are just not fun and can ruin the experience for some, constantly buffing enemies and nerfing player equipment, and above that, the game has become less optimized overtime.  Unless either they get better, or you can get this game for free or at a lower price, it is not worth buying. There are alot more things I can mention here that I wont go into, if you are considering buying this game, I suggest doing more research into it's problems.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238236646",
+                  "hours_at_review": 410.4,
+                  "minutes_at_review": 24625,
+                  "voted_up": true,
+                  "date": "2026-10-21",
+                  "review_text": "Amazing game\nHorrible devs ( sometimes )\n\nIs HD2 worth getting into at this time? I think so\nDoes arrowhead need to fix their damn game? Oh hell yes.\n\nHelldivers 2 is such an amazing game. And i dont think i've had such fun playing with friends and solo in a long time. It's one of those games where even a horrible and frustrating mission can still be fun if you're screwing about with friends. It's incredibly cinematic, and results in such amazing moments that probably 100GB of my storage is dedicated to helldiver clips alone.\n\nThere is quite some content, though most locked behind \"Super Credits\" the games virtual premium currency. \nThis in itself is... Fine... HD2 is a live service game and needs a constant influx of cash to stay viable. Though I wouldn't complain if the game's economy was made a *tad* less grindy. \n\nSuper Credits are scattered throughout most HD2 maps. Even if it's a little. ( It's up to chance regarding how many spawn ) which makes players capable of acquiring this virtual currency for \"free\". \n\nI say \"Free\" because you're still spending more than a couple hours of your life mindlessly grinding for that one warbond you want. Speaking off...\n\nWarbonds in their current state are... Okay. I think they're a good idea. But holy cow are they ridiculously expensive. \n\n10 euros for a standard premium warbond.\n15 euros for a legendary warbond. ( warbonds that feature a collab between Helldivers and other games like warhammer 40k and halo. )\n\nI am fortunate enough to be in a position where I can afford those prices. But I know many of us are not, and I don't agree with their exclusion from otherwise great content. Yes you can technically play this game without needing to unlock any warbonds. But lets be honest to ourselves, a lot of fun content IS locked behind a paywall. Be it paid with money or time... You will have to pay.\n\nThat brings me onto my last point, the developers themselves. And oh boy... Do I have something to say for you, arrowhead.\n\nI under…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238428997",
+                  "hours_at_review": 336.3,
+                  "minutes_at_review": 20178,
+                  "voted_up": true,
+                  "date": "2026-10-24",
+                  "review_text": "The devs really seem to want to fight their playerbase on what is good for the game. They constantly push updates that really don't mesh well with the game then end up walking them back weeks later.\n\nThe game is pay to play but expect to spend another $60 on DLC and another $10 every other month just to have access to the new stuff, or farm the premium currency for 10 hours anytime a new warbond drops.\n\nPlayers want cosmetics? new warbond drops that offers some very minimal cosmetics on items in that warbond\nPlayers complain about ragdoll? increase ragdoll then put an armor in the new warbond that reduces ragdoll\nMods fix major QOL issues and give the hint of visual cosmetics? nuke mods install new anticheat.\n\nAll this being said I really love the gameplay i just wish that the devs weren't constantly trying to get another $10 out of me while telling me that I'm not their target audience and that the game where you have 20 respawns a mission is a milsim.\n\nIf you don't love the gameplay it's a pass but I like it so i'd recommend it with a grain of salt.\n\nEarly on it was a 9/10 game but dev choices over it's life have put it at a 7/10 and I haven't put more than purchase and $20 for war bonds into it since release.\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-0c6b08",
+              "claim": "Reviewers describe long-standing technical issues and unaddressed bugs, including broken hellpod steering, stratagem balls bouncing randomly off flat surfaces, and inconsistent enemy collision detection.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 7
+              },
+              "citations": [
+                {
+                  "recommendationid": "239251936",
+                  "hours_at_review": 913.4,
+                  "minutes_at_review": 54804,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "I loved and enjoyed this game for a while. I can no longer enjoy the game, this frustration has been building up since they continually refuse to bring out QoL updates, with Strategem bouncing (I know its intended; I could careless, it's a bad decision), vaulting/mantling being broken almost 2 years, Bad hellpod steering & rng spawn areas, and never ending mob cliping issues. With canning amazing ideas like the Platoon system, armour customization and Strategems Launchers. Plus no Server/Global chat sucks no way to organize outside of 3rd party sites. The final nails being the false advertising of the new warbond, Making non cheat Mods unplayable, Easy anti cheat breaking the game as usual; not allowing it to run properly/crashing/failing to launch. Its pains me but I find no joy in playing the game anymore. So heres how to fix the game and save it, AH please.. REMOVE EASY ANTI CHEAT ITS A PIECE OF GARBAGE, I'm tired of trouble shooting/reinstalling the game everytime I want to launch the game. Fix all above issues stated. ADD the Platoon system please and allow massive platoons to have platoon regulated DSS' and server/global chat. Buff some of the old under powered weapons show them some love! Buff the turret radius of the maelstrom TD to match the guided missile radius or slightly under it. Add a Main battle tank with a full 360 turret radius w/ an additional manned turret for one of the passenger seats. ADD LOADOUTS PLEASE like 8+ loadout slots. I'm probably forgetting other things but I'm tired Grandpa I don't wanna dig no more holes...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239248620",
+                  "hours_at_review": 1327.5,
+                  "minutes_at_review": 79647,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "I have spent a lot of time playing this game.  The visuals, fun playing with friends, and great gameplay kept me coming back for a long time.  The game developers are artists.  They made the art they wanted.  \n\nThey seem to have no desire to actually fix anything that the players feel is an issue.   Whether it was hellpod steering, strategem bouncing, enemies shooting through bushes or bodies (that the player can't shoot through),  or constant levels of fog so the player can't see more than 10 feet in front of them, Arrowhead (the developer of Helldivers 2) seems to have no interest in fixing any of it.  \n\nThere are still no signs of simple things like armor appearance customization, armor bonus movement (from one set to another), saved loadouts,  full weapon customization for all weapons, despite these being the most requested improvements / mods from players.\n \nIn addition to not having a desire to fix any of these aforementioned issues Arrowhead have a string of out right lies (Coyote nerfs) hidden changes to the game and broken promises of roadmaps, fixes, or apologies.  Arrowhead seems to have a pathological need to nerf things that players enjoy or find engaging.  \n\nWhen modders began to fix / mod things within the game that players wanted, Arrowhead quickly took steps to break those mods and in my opinion lied about why they were changing the anti-cheat program.  \n\nI'm just tired of Arrowhead's lies, their continual treatment of the player base with contempt and their lack of professionalism or care.  If there was some drastic course change or new management,  I'd potentially be willing to come back, but for a good while... I'm just over it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238144365",
+                  "hours_at_review": 649.1,
+                  "minutes_at_review": 38949,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "Cracking down on mods instead of actually fixing issues in the game we have requested for 2 years is a real kick on the balls. \n\n-Stratagem ball bouncing\n-Excessive ragdoll\n-Excessive volumetric fog spam that makes the game run worse\n-Being unable to mix and match armor and armor passives\n-Hellpod steering locking up forcing you to land where the game wants you to go, often leading you to your death\n-Inconsistent Vaulting\n-Enemy Collison not matching what you see \n-Being unable to promote other players as squad leader or to disband squads\n-Can't match armor/helmet colors\n-So many terrible weapons that could use a buff like the M90a, AR One-Two, Arbitrator, Variable, etc.\n\nSide Note : The M6C/SOCOM doesn't even have the smart optic that is does in Halo 3 ODST. I feel like I have been robbed, Twice. First, purchasing the ODST wardbond as my first one because I am a massive Halo fan, only to be disappointed that it doesn't have the smart optic. The second time, AH is gonna prevent me from using the mod that adds the smart optic to the gun. The M6C/SOCOM could have been a far more a unique sidearm by having both the suppressor and scope than just a peacemaker with more damage with a suppressor. \n\nAH could've embraced the mods and have mod support. There could have been workshop support, L4D2 is still thriving to this day. AH could've just had public Vanilla lobbies separate from Modded ones, Baldur's Gate 3 has this! You can filter out Modded online lobbies for a pure vanilla experience. \n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238150972",
+                  "hours_at_review": 506.2,
+                  "minutes_at_review": 30373,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "After years of diving, the new anti-cheat switch to Easy Anti-Cheat and the crackdown on mods is the final straw. \n\nArrowhead has spent more energy blocking community fixes than actually fixing their own game.\n\nLong-standing bugs that modders solved in days or weeks (better stratagem ball bounce, unlocked hellpod steering, shallow water diving, consistent large-enemy corpse collisions, ragdoll sticking, and more) have sat unaddressed by Arrowhead for years. These weren’t cheats—they were basic quality-of-life repairs that made the game functional.\n\nThe existence of these mods is living proof of Arrowhead’s incompetence. A single dedicated modder (and the broader community) repeatedly delivered the exact fixes players begged for while the studio formed councils, issued vague statements, and shipped more broken balance patches and warbonds.\n\nGameplay-affecting mods that improved the experience for everyone are now getting killed alongside actual cheats. \n\nCosmetic and pure QoL tools will break or require constant rework, while core problems (strat bouncing, invisible corpses, collision desync, etc.) return full force.\n\nThe original GameGuard was so ineffective that cheaters and exploiters ran wild for ages. \nSwitching to EAC now feels less like protecting the Galactic War and more like punishing the community that kept the game alive by papering over Arrowhead’s failures.\n\nBalance, performance, and basic polish remain inconsistent. Players still deal with the same frustrating systems the studio has known about forever, yet the priority is shutting down the tools that made the game tolerable.\n\n\nHelldivers 2 had (and still has) incredible potential, but Arrowhead keeps proving they would rather restrict the community than learn from it. Mods didn’t ruin the game—Arrowhead’s inability to ship proper fixes did. This anti-cheat move just makes it official.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238432728",
+                  "hours_at_review": 448.1,
+                  "minutes_at_review": 26886,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "♥♥♥♥♥♥ half baked warbond AND anticheat removing mods?\r\n\r\nLets not pretend like we dont all know what mod is causing the anticheat to be implemented, its Vanilla+\r\n\r\nVanilla+ Megapack's most recent file has 13k unique downloads.\r\nthe previous file has over 22k...\r\nas of RIGHT NOW, HD2 has a 24H peak of just under 65k.\r\nat 22k downloads, thats 33.8% of the playerbase using the same mod.\r\n\r\nif you play with cross platform off, then 1 in every 3 divers you will meet, has this mod installed.\r\nso why get rid of it? is it evil or something?\r\n\r\nlet me list out Vanilla+ it does:\r\nUn-nerfs hellpod steering (which people have been complaining about being broken for 2 years)\r\nUn-nerfs climbing/mantling (which people have been complaining about being broken for 2 years)\r\nUn-nerfs strategem bouncing (which people have been complaining about being broken for 2 years)\r\nFixed Enemy Collisions (which people have been complaining about being broken for 2 years)\r\nFixed Enemy AI (which people have been complaining about being broken for 2 years)\r\nFixed turret AI (which people have been complaining about being broken for 2 years)\r\nFixed vehicle handling (which people have been complaining about being broken for 2 years)\r\nAdded keybinds for the terminals on the ship (which people have been asking for for 2 years)\r\n\r\nSo not only did they nerf/brake these things ignore problems/requests. When the players finally got fed up with this ♥♥♥♥♥♥♥♥, and decided to fix it themselves, AH turns into a bunch of whiney ♥♥♥♥♥-babies and turns it all off. Why? because ♥♥♥♥ the players.\r\n\r\noh and btw, EAC is cataloguing hardware serial numbers so that it can ban you for using mods.\r\ndont care, i liked my mods, now theyre gone. uninstalling regardless.\r\n\r\nidk arrowhead, maybe releasing Pillars of freedom 2 will get your playercount back\r\nReview bomb time!! ↑→↓↓↓\r\n........./ | .,\r\n......../` /` , -/\r\n........! / /_/\r\n....../ / `/\r\n...../_ /\r\n..../: `/\r\n.../' `/\r\n...| ,'\r\n...'\r\n\r\ninb4 \"muh visual mods\" if y…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238171007",
+                  "hours_at_review": 113.8,
+                  "minutes_at_review": 6826,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "This review has been made during the addition of EAC (Easy Anti-Cheat) and could change.\n\nThere is no other words than \"Sheer Developer Incompetence\" when it comes to Helldivers 2. Instead of the developers actually fixing long standing problems that has been in the game for a while, like Stratagem bouncing, Hellpod steering, enemies collision where sometimes the enemies bodies collisions stay in the map but their body despawned, they blatantly walking through terrain or WALLS, literally WALLS, or even something as simple as fixing the Control Center for DX11 users, they instead of doing all of that they simply wanted to call it a day and add EAC to the game to combat a \"\"\"\"Cheater problem\"\"\"\", which is non-existent to a few bad apples having a power fantasy.\n\nThe addition of EAC has pretty much borked most of QOL/Bug Fixes mods due to them working mostly as a script mods and EAC is blocking mainly those, not much to say on armor customization mods and other stuff. If EAC was implemented and a lot of the main gripes with the bugs inside the game have been fixed the community backlash/pushback wouldn't be as bad, but they didn't even do the minimal to do that which is laughable bad.\n\n\"But they said the designed a taskforce to get it fixed by the end of the year!\"\nLet me be real with you, you dont need a taskforce to get it fixed by the end of the year, a competent dev team would get it fixed, and this is generous of my part, within a month or two, but they didn't even get that time window, having to wait till the end of the year to resolve bugs that is being talked and talked over and over again to the death instead of fixing it is a shame and you shouldn't be a developer to the game. And to add more salt to the injure, there is a competent dev team on other games, Warframe devs wouldnt have these bugs sit in the game for months to almost a year, they would have it fixed within the hour with a hotfix or within a week where the next game patch with bugfixes drops.\n\n\"B…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238213564",
+                  "hours_at_review": 832.4,
+                  "minutes_at_review": 49944,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "I genuinely love this game. I want it to succeed. But the largest obstacle for that is the developers. Their vision of the game is so absolute that they cannot stand anyone playing the game in a way that they have not sanctioned. People use hellpod steering to land in a spot the developers did not intend, the developers break the steering. The ship upgrade is now useless. The hellpod will be guided down by invisible walls. I have been killed many times by the steering failing and forcing me to land in lava, molten metal, or the open shredder things in bot maps. They players ask to have it fixed. They devs claim to assemble a task force to fix it. It has been over a year. Either they are not willing to fix it, or they are too incompetent. Players throw strategems in places that the devs did not intend. They now bounce around. It is a common occurrence to have them bounce randomly from whatever surface you throw them at. People ask for it to be fixed. Devs say it is a bug and assemble a taskforce.\n\nThe devs don't tweak a single item to balance it. They balance everything around the item in question. They don't reduce the damage of a weapon. They buff every enemy against the weapon. They randomly make a plant on the ice worlds ragdoll you if you go within ten feet of it. They promised transparency many times. They have reneged on that every time, almost instantly. They actively work against their player base at every opportunity. Every time they regain the community's good faith, they immediately slap us in the face.\n\nNewest thing is mods. I've only ever used the first person mod. None of the quality of life mods that fix the stuff the devs choose to keep broken. Only the first person mod. It helps me focus on what is in front of me. Helps cut down on some of the sensory overload. It doesn't give me an unfair advantage. It doesn't affect any of the players around me. It only gives me the immersion that I need to really enjoy the game. And that is now gone, because a de…",
+                  "truncated": true
                 }
               ]
             }
@@ -751,22 +1024,17 @@
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 5,
-        "cited_recommend": 0,
-        "divergence_p": 0.00475,
+        "cited_reviews": 18,
+        "cited_recommend": 2,
+        "divergence_p": 0.734,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1930,
-    "steam_total_reviews": 815955,
-    "cohort_count": 4,
+    "pool_n": 2225,
+    "steam_total_reviews": 833399,
+    "cohort_count": 3,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/850e2f9e5bb15c5706bb9a1edc832f4f782e8be5/header.jpg?t=1786525389",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/553850/6de866c6fb786949a92a28d12f3e1c02d91bce60/capsule_231x87.jpg?t=1786525389",
-    "grid": "https://cdn2.steamgriddb.com/grid/d91629568769942e0569a5ee2844b5da.png"
   }
 }
