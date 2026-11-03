@@ -16,11 +16,11 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:var(--bg)}
-body{font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;
+body{font-family:var(--font-body),Inter,system-ui,sans-serif;font-size:16px;line-height:1.6;
   color:var(--text);padding:48px 24px 64px}
-h1,h2,h3,.display{font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;
+h1,h2,h3,.display{font-family:var(--font-display),"Space Grotesk",Inter,sans-serif;font-weight:700;
   letter-spacing:-0.02em;line-height:1.1}
-.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px}
+.mono{font-family:var(--font-mono),"IBM Plex Mono",ui-monospace,monospace;font-size:14px}
 a{color:var(--link)}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 :focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:4px}
@@ -34,7 +34,7 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
    case hero's scrollY-driven choreography is untouched. Ends at y=37 on
    desktop, clear of .case-scene's sticky top:88px. */
 .site-home{position:absolute;top:-30px;left:0;
-  font-family:"Space Grotesk",Inter,sans-serif;font-weight:700;font-size:15px;
+  font-family:var(--font-display),"Space Grotesk",Inter,sans-serif;font-weight:700;font-size:15px;
   letter-spacing:-0.02em;color:var(--text-dim);text-decoration:none}
 .site-home:hover{color:var(--text)}
 
@@ -114,7 +114,7 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
 
 /* verdict page */
 .stamp{display:inline-block;padding:6px 18px;border-radius:8px;font-size:24px;
-  font-family:"Space Grotesk",sans-serif;font-weight:700}
+  font-family:var(--font-display),"Space Grotesk",sans-serif;font-weight:700}
 .stamp.buy{color:var(--buy);border:1px solid rgba(74,222,128,.2)}
 .stamp.wait{color:var(--wait);border:1px solid rgba(251,191,36,.2)}
 .stamp.skip{color:var(--skip);border:1px solid rgba(248,113,113,.2)}
@@ -167,6 +167,19 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
 .citation .body{white-space:pre-wrap;overflow-wrap:anywhere}
 footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--hairline);color:var(--text-dim)}
 .gen-panel{margin-top:48px}
+.gen-panel .cta{margin-top:16px;padding:8px 16px;border:1px solid var(--link);
+  border-radius:8px;color:var(--link);font-weight:600}
+.gen-panel .cta:hover{background:rgba(125,211,252,.1)}
+/* distortion flag: a callout, not an alarm. Ported from mockups/kenshi-verdict.html,
+   with a native <details> so the evidence opens with no JS. */
+.flag{margin-top:40px;border-radius:12px;padding:16px 20px;background:rgba(251,191,36,.08)}
+.flag .label{color:var(--wait);letter-spacing:.06em}
+.flag p{margin-top:8px}
+.flag .toggle{margin-top:8px;color:var(--link);font-size:14px;cursor:pointer}
+.flag .evidence{color:var(--text-dim);padding-top:8px}
+.flag .evidence div{display:flex;flex-wrap:wrap;gap:0 16px;line-height:1.9}
+.flag .evidence dt{flex:0 0 auto;min-width:16ch}
+.flag .evidence dd{margin:0}
 .gen-panel .sub{color:var(--text-dim);margin-top:8px}
 .stages{list-style:none;margin-top:24px}
 .stage{display:flex;gap:12px;padding:6px 0;color:var(--text-dim)}

@@ -23,7 +23,7 @@
  * this exists to measure.
  */
 
-import { citationHours } from "../lib/verdict";
+import { citationHours, stripBBCode } from "../lib/verdict";
 import type { Citation } from "../lib/verdict";
 import { capture } from "../lib/analytics";
 
@@ -59,7 +59,7 @@ export function Receipts({
             · {citationHours(cit, bucket)} hrs ·{" "}
             {cit.date}
           </div>
-          <div className="body">{cit.review_text}</div>
+          <div className="body">{stripBBCode(cit.review_text)}</div>
         </div>
       ))}
     </details>

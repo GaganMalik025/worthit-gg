@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
+import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
 import { WaveBackdrop } from "../components/WaveBackdrop";
 import { SITE_URL } from "../lib/site";
 import "./globals.css";
+
+// DESIGN.md's three faces. next/font self-hosts them at build time, so visitors make no
+// request to Google and the text does not shift when a font arrives.
+const body = Inter({ subsets: ["latin"], variable: "--font-body" });
+const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display" });
+const mono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+});
 
 const TAGLINE = "Should you buy it? The verdict, with receipts.";
 const BLURB =
@@ -24,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${body.variable} ${display.variable} ${mono.variable}`}>
       <body>
         <WaveBackdrop />
         {children}

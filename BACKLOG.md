@@ -3032,6 +3032,15 @@ look. Also recorded: `generate_one`'s route refuses existing titles and the runn
 reuses committed seed raw files, so **a stale verdict has no supported refresh path**.
 That belongs to D3.
 
+> **2026-11-03, the page-surface findings from the analysis are closed, except the
+> methodology page.** Distortion flags now render with their evidence on every verdict
+> that has one, the design typefaces load through `next/font`, the fallback button is
+> styled, raw BBCode is removed from citations for display only, and robots, sitemap and
+> favicon exist. Mutation-proved 9/9 (`evals/flags-mutation-2026-11-03.txt`) and checked
+> by eye in headless Chrome at 1280px and 500px, not at a real phone's width or under
+> reduced motion. Seen and not changed: on desktop the main column sits 12px right of
+> the hero column, and "1723 reviews" in the Split Bar carries no comma.
+
 2026-11-03 | **Possible features from the codebase analysis, none started** | build,
 roadmap request | Parked under this file's rule 1. None has user evidence yet, so
 none has earned priority (rule 4). Checked against the non-goals; items already

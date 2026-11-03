@@ -17,7 +17,8 @@
 
 import { CaseHero } from "./CaseHero";
 import { Receipts } from "./Receipts";
-import type { Sourcing, Verdict } from "../lib/verdict";
+import { flagEvidence } from "../lib/verdict";
+import type { DistortionFlag, Sourcing, Verdict } from "../lib/verdict";
 
 /**
  * The sourcing disclosure (B2). Tier 1 is unconditional on every cohort that
@@ -105,6 +106,33 @@ function FitBox({ kind, title, clauses }: {
   );
 }
 
+/**
+ * The distortion strip (DESIGN.md "Distortion flags"). Evidence sits behind a native
+ * <details>, closed by default and working with no JS, like the receipts. Renders
+ * nothing unless it has both its sentence and a pool figure to back it.
+ */
+function FlagStrip({ flag }: { flag: DistortionFlag }) {
+  const rows = flagEvidence(flag);
+  if (!flag.sentence || rows.length === 0) return null;
+  return (
+    <aside className="flag">
+      <div className="label mono">SCORE DISTORTION DETECTED</div>
+      <p>{flag.sentence}</p>
+      <details>
+        <summary className="toggle">Show evidence</summary>
+        <dl className="evidence mono">
+          {rows.map(([label, figure]) => (
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>{figure}</dd>
+            </div>
+          ))}
+        </dl>
+      </details>
+    </aside>
+  );
+}
+
 export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
   const fit = v.verdict.for_you_if.length || v.verdict.not_for_you_if.length;
   return (
@@ -187,6 +215,7 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
       </div>
 
       <main className="main-col">
+      {v.distortion_flags.map((f) => <FlagStrip key={f.flag_id} flag={f} />)}
       {v.cohorts.map((c) => (
         <section key={c.bucket} className="cohort">
           <h2>{c.label}</h2>

@@ -92,6 +92,84 @@ export function citationHours(cit: Citation, bucket: string): string {
   return shown.toFixed(1);
 }
 
+/** Computed in pipeline/flags.py from the pool. Only `sentence` is model prose. */
+export interface DistortionFlag {
+  flag_id: string;
+  type: string;
+  direction?: string | null;
+  shape?: string | null;
+  sentence: string | null;
+  evidence: {
+    sequence?: { label: string; pct_positive: number; pool_n: number }[];
+    gap_pts?: number;
+    recent_pool_pct_positive?: number;
+    recent_pool_n?: number;
+    recent_window_days?: number;
+    steam_lifetime_pct_positive?: number;
+    steam_total_reviews?: number;
+    delta_pts?: number;
+    within_pool_older_pct_positive?: number;
+    within_pool_older_n?: number;
+  };
+}
+
+const n = (v: number) => v.toLocaleString("en-US");
+const rate = (pct: number, count: number) =>
+  `${pct.toFixed(1)}% positive, based on ${n(count)} reviews`;
+
+/**
+ * A flag's evidence as [label, figure] rows, or [] if it cannot cite a pool figure.
+ *
+ * DESIGN.md: "A flag that cannot cite a pool figure does not ship", and invariant 13:
+ * no percentage without its denominator. So [] means the flag does not render at all,
+ * and every rate here is built by `rate`, which cannot omit the count. Field names
+ * never reach the page.
+ */
+export function flagEvidence(f: DistortionFlag): [string, string][] {
+  const e = f.evidence ?? {};
+  if (e.sequence?.length && typeof e.gap_pts === "number") {
+    return [
+      ...e.sequence.map((s): [string, string] => [s.label, rate(s.pct_positive, s.pool_n)]),
+      ["gap", `${e.gap_pts.toFixed(1)} pts between lowest and highest cohort`],
+    ];
+  }
+  if (
+    typeof e.recent_pool_pct_positive === "number" &&
+    typeof e.recent_pool_n === "number" &&
+    typeof e.steam_lifetime_pct_positive === "number" &&
+    typeof e.steam_total_reviews === "number"
+  ) {
+    const rows: [string, string][] = [
+      [
+        `last ${e.recent_window_days ?? 365} days, reviews we read`,
+        rate(e.recent_pool_pct_positive, e.recent_pool_n),
+      ],
+    ];
+    if (
+      typeof e.within_pool_older_pct_positive === "number" &&
+      typeof e.within_pool_older_n === "number"
+    ) {
+      rows.push([
+        "older, reviews we read",
+        rate(e.within_pool_older_pct_positive, e.within_pool_older_n),
+      ]);
+    }
+    rows.push(["all time, on Steam", rate(e.steam_lifetime_pct_positive, e.steam_total_reviews)]);
+    return rows;
+  }
+  return [];
+}
+
+/**
+ * Steam's markup in a review, removed for display. A named list, not any [word],
+ * because reviewers write brackets of their own: "[spoiler]" is markup and "[sic]" is
+ * not. Only tags go: every word the reviewer wrote still renders, and QR-4 still reads
+ * the stored text, unchanged.
+ */
+const BBCODE =
+  /\[\/?(?:h[1-3]|b|i|u|strike|spoiler|noparse|hr|code|quote(?:=[^\]]*)?|url(?:=[^\]]*)?|list|olist|table|tr|th|td|\*)\]/gi;
+export const stripBBCode = (text: string) => text.replace(BBCODE, "");
+
 export interface Claim {
   claim_id: string;
   claim: string;
@@ -163,7 +241,7 @@ export interface Verdict {
     pct_positive: number | null;
     muted: boolean;
   }[];
-  distortion_flags: unknown[];
+  distortion_flags: DistortionFlag[];
   cohorts: Cohort[];
   footer: {
     pool_n: number;
