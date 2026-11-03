@@ -9,7 +9,7 @@ single score averages them away, so we show them apart.
 ## How a verdict is made
 
 **We sweep recent reviews from Steam.** Up to about 2,400 per game, in English: the
-newest, plus the ones Steam ranks most helpful from recent weeks. That sweep is the
+newest, plus the ones Steam ranks highest for helpfulness from recent weeks. That sweep is the
 pool. It is a sample of Steam, not all of it.
 
 **We split the pool by playtime at the moment of review.**
@@ -57,14 +57,15 @@ small test, and these results describe those five games, not the whole catalog.
 the reviews behind the claims were less positive than the reviews available, by about 21
 points on average. Complaints are specific, and praise like "10/10" gives us nothing to
 check. So read a cohort's percentage as how it felt and its claims as what it talked
-about. A page can show a cohort at 95% with only complaints beneath it.
+about. Death Stranding's veterans read 95.3% positive, based on 169 reviews, with three claims
+beneath them, all complaints.
 
 **Some claims are thinner than they look.** In those 70 claims, 11 had one review really
 supporting them even though they cite two. Our check matches words, so it cannot always
 tell.
 
 **The sample is built, not random.** We deliberately keep more of the small cohorts, so
-nothing here says how many players feel a certain way. Our pool also leans on recent
+nothing here says what share of players feel a certain way. Our pool also leans on recent
 reviews and on what Steam ranks helpful, which can run harsher than recent reviews alone.
 
 **Verdicts age.** Each page shows when it was generated, and we do not refresh them on a
