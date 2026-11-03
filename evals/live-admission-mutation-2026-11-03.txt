@@ -1,0 +1,28 @@
+unit cases
+  la01  PASS             CONTROL: nothing mutated, suite green
+  la02  CAUGHT+NAMED     bar percentage guard removed
+  la03  CAUGHT+NAMED     cohort stats guard removed
+  la04  CAUGHT+NAMED     isAppid accepts anything
+  la05  CAUGHT+NAMED     sweep day filter removed
+  la06  CAUGHT+NAMED     sweep day keyed on UTC
+  la07  CAUGHT+NAMED     existing verdict not refused
+  la08  CAUGHT+NAMED     unknown title not refused
+  la09  CAUGHT+NAMED     running title not joined
+  la10  CAUGHT+NAMED     failed ledger write ignored
+  la11  CAUGHT+NAMED     corrupt ledger reads as empty
+  la12  CAUGHT+NAMED     rejected PATCH falls through
+  la13  CAUGHT+NAMED     GitHub failure reads as absent
+  la14  CAUGHT+NAMED     strict run list goes soft
+  la15  CAUGHT+NAMED     client hash is the raw address
+  la16  CAUGHT+NAMED     address back in the dispatch payload
+  la17  CAUGHT+NAMED     a lost dispatch still blocks retries
+  la18  CAUGHT+NAMED     a finished run still blocks retries
+  la19  CAUGHT+NAMED     /api/status guard removed
+  la20  CAUGHT+NAMED     verdict page guard removed
+build cases
+  la21  PASS             next build, zero-pool verdict present, WITH the fix
+  la22  CAUGHT+NAMED     next build, zero-pool verdict present, WITHOUT the fix
+
+files restored byte-identical: yes
+22/22 as expected
+EXIT_RC=0

@@ -1232,6 +1232,13 @@ that is not in the repo, keep the hour suffix, and the guard behaves identically
 (The observed address is deliberately not recorded here — writing it into a
 committed file would reproduce the exact exposure being flagged.)
 
+> **2026-11-03, FIXED on the live path, not yet deployed.** `by_ip_hour` is now keyed
+> on `hashClient()`, an HMAC keyed with the dispatch token, so no new secret or
+> configuration was needed. The address also left the dispatch payload, which nothing
+> read. The one raw address in `LIVE_QUOTA` today clears on the next dispatch's day
+> roll, not before. `pipeline/live_quota.py`'s `--ip` still stores what it is given;
+> only a manual CLI run reaches it, since the CI workflow passes no `--ip`.
+
 2026-07-30 | **Watch claim-drop rate against cohort review length during the
 Phase 4 catalog batch** | build, phase 1.4 | Kenshi's `early` cohort burned both
 grounding retries and still lost 3 of 9 claims, while its other three cohorts
@@ -2778,3 +2785,163 @@ before being trusted (`evals/home-link-mutations-2026-08-28.txt`).
 > element on the page** — it has six items and does not mention this link.
 > Deliberately NOT amended in this change: the anatomy is design direction the
 > owner authors. Flagged so the omission is a known gap rather than a surprise.
+
+---
+
+2026-11-03 | **Full codebase analysis: new findings, recorded and not fixed** |
+build, whole-repo read | Raw output `evals/codebase-analysis-2026-11-03.txt`,
+drivers `evals/measure_codebase_analysis_2026-11-03.py` and
+`evals/analysis-2026-11-03.test.tsx`. Zero Gemini calls. "Reproduced" means the
+output is in that file; "code read" means it was not exercised.
+
+**Product surface missing**
+1. **Distortion flags never render.** 414 flags on 336 of 542 verdicts are
+   computed, and synthesis is required to write and retry a sentence for each, but
+   `VerdictPage.tsx` never reads `distortion_flags`; `git log -S` finds no commit
+   that ever did. The mockup has the strip and the port dropped it. Reproduced on
+   production (`/verdict/1091500` carries none of its flag). **This undercuts a
+   recorded result:** RESULTS 2026-07-31 rests QR-3 on flag profiles because they
+   are "what a reader actually sees on the verdict page".
+2. **`/methodology` is a 404 (PRD F8), and "how this works" on home is plain
+   text.** Neither BACKLOG nor RESULTS mentions it, so nothing records a decision
+   to defer the "trust artifact". Reproduced.
+3. **None of the three design typefaces is loaded.** There is no `next/font` and
+   no Google Fonts link anywhere, so the mono-for-evidence rule (DESIGN.md) renders
+   in system fonts. Reproduced for the stylesheet link on production.
+
+**Defects**
+4. **A cohort with zero pool reviews throws at render, and nothing stops it
+   publishing.** `pool_stats` writes `pct_positive: null` and `VerdictPage` calls
+   `.toFixed` on it. Reproduced: `Cannot read properties of null`. No committed
+   verdict has this today, but Hotline Miami and A Plague Tale hold 1 veteran
+   review each and A Way Out 2. By code read, one such title would break the
+   prerender for the whole site and fail the nightly publish gate for every title
+   queued with it.
+5. **`/api/generate` never checks whether the title exists or is already running.**
+   `Home.tsx`'s `have` is build-time, so a title generated live shows "not yet"
+   until the nightly publish, and selecting it dispatches again: another 13 reserved
+   and real requests spent. A direct POST can regenerate any audited catalog title,
+   and `select_publishable` then promotes the newer file over it with only the
+   automated gate, skipping the human audit. Seven POSTs across two IPs exhaust the
+   day's reserve. Code read, deliberately not fired. 2806050 ran twice 7 minutes
+   apart on 2026-08-27 and the second run failed at its commit step; why it was
+   dispatched twice was not determined.
+6. **`sweepReconciliations` credits runs from an earlier quota day.** It filters on
+   appid and never on run date, while `listRuns` spans days. Reproduced: one
+   reservation today with its run still queued reads raw 13, effective 5. That is
+   the under-count the design calls dangerous, and #5 makes it reachable.
+7. **`/api/status` does not validate `appid`.** Production answers
+   `?appid=..%2F..%2Fpackage` with `{"state":"published","source":"main"}`, which is
+   a file-existence oracle, and the value also reaches a token-authenticated GitHub
+   path. `/api/verdict` validates; this route does not. Reproduced.
+8. **The live ledger fails open, by code read.** `readQuota` turns corrupt JSON into
+   `{}`, i.e. zero spend, the exact guess `generate-verdict.yml` refuses to make.
+   `writeQuota` ignores a failed POST, and the route then dispatches anyway.
+9. **`npm audit --omit=dev`: 2 critical, 4 high.** Next 15.5.22 is advised for RCE
+   in the image optimizer, `dompurify` arrives through posthog-js. 15.5.28 exists.
+   Exploitability here was not tested.
+10. **`fetch_reviews.report()` still fails a title with zero refund-window reviews,
+    by code read,** which contradicts invariant 12's "does not fail the title".
+    It has not fired: 0 ingest failures in `batch_state.json`.
+11. **`extract_bucket` stops retrying on invalid JSON, by code read,** and that
+    response stays cached. 48 unmuted cohorts ship with no claims and 10 with no
+    summary; how many of those this explains was not determined.
+
+**Low**
+12. `run_batch.py`'s `BUDGET STOP` has never fired: 0 lines in all 5 logs. Every
+    future is submitted before any spend, so `can_batch` always passes there and the
+    check inside `generate()` does the stopping. That is why 08-18 reads "193
+    attempted" with 148 at 0 calls. Nothing overspent.
+13. `_acquire` uses `recent[0]`, so past 12 simultaneous waiters the "no more than
+    RPM" guarantee breaks (30 waiters: 30 starts in 60s). Unreachable at concurrency
+    2 or 4, which both hold 12.
+14. CI skips `test_ground_check.py` (invariant 5) and `next build`, and no test
+    covers the API routes. The dual-path contract test exercises
+    `loadVerdictProxied`, while `page.tsx` fetches GitHub directly and checks only
+    the current path, so `/api/verdict` has no production caller.
+15. 1,104 citations show raw BBCode; "Request verdict" has no button styling; a
+    query typed before the index loads is not re-run (`whenComplete` is unused);
+    robots, sitemap and favicon are 404; home is 558 KB of HTML including `split_bar`
+    and `pool_n` it never renders.
+16. Stale: `ci.yml` "306", `live_quota.py` "~1,500" and "committed by the generation
+    workflow", `page.tsx` on `header.jpg`, and `filter_reviews.py`'s unreachable
+    `FAILED` line. `positivity_by_night.py` hardcodes an absolute home path.
+
+**Records gaps.** No record of the 2.4 hand validation that PRD §8 requires before
+judge scores are trusted, so QR-1's 67.1% is unvalidated as far as the files show.
+No post-iteration row exists, QR-5's criteria are blank, and there is no root README.
+**The measurement the 2026-08-26 entry asked for already exists:** six live runs took
+55s to 3m4s by `gh run list`, which covers the workflow only, not queue or deploy.
+
+**Tested and refuted, so nobody re-chases it:** `normalize`'s `or 0` cannot be
+misbucketing reviews here, with 0 of 698,004 cached reviews missing
+`playtime_at_review`. No model prose hits the blocklist or the prevalence guard.
+
+**Process error during this work.** `evals/mutate_guard_split_2026-08-21.py` was
+invoked with `--help` to read its usage. It has no argument parser, so the campaign
+ran and rewrote five committed logs, including g03 to FAIL, the log the 2026-08-26
+entry kept at PASS on purpose. All five restored from HEAD. Pipeline, site, docs and
+the ledgers were confirmed unchanged and the guard suite re-run green. Related:
+[[verify-the-verifier]].
+
+> **2026-11-03, findings 4-9 above FIXED, not yet deployed.** Evidence:
+> `evals/live-admission-mutation-2026-11-03.txt` (22/22, driver
+> `evals/mutate_live_admission_2026-11-03.py`, logs `la01`-`la22`) and
+> `evals/live-admission-routes-2026-11-03.txt` (real `next start`, refusal paths only,
+> plus a markup diff over all 542 verdicts: byte-identical to HEAD).
+>
+> **The analysis understated finding 5, and the fix had to change because of it.**
+> `verdictExists`'s `fs.access` does not work in the serverless function, because
+> `public/` files are not traced into the bundle. Production answered "queued" for
+> Kenshi. A refusal built on it would have let every catalog title through, so it now
+> sends a HEAD to the deployed static file, and the search-index check fetches its
+> shards the same way. `fetchVerdictCost`'s disk read has the same limit and is left
+> alone: its branch fallback is the working path.
+>
+> **Finding 4's build claim is now measured, not inferred:** la22 is a real
+> `next build` failing on `/verdict/999999901` with the `toFixed` error, and la21 is
+> the same fixture building cleanly with the fix.
+>
+> **CI gained `next build` and `test_ground_check.py`.** Proven by running those
+> commands locally; the workflow change itself has not run on GitHub.
+>
+> **Still open, stated so none of this reads as more than it is:**
+> - `npm audit` no longer reports a critical, but `next` (moderate) and `postcss`
+>   (high) remain, and the only offered fix is Next 16. A major upgrade was not taken
+>   as a ride-along.
+> - Requests for many real uncached titles from many IPs can still spend the reserve,
+>   which is guard 1's designed ceiling.
+> - Two simultaneous POSTs can still race, because a repository variable has no
+>   compare-and-swap.
+> - A title that keeps failing QR-4 or a stage is not "existing", so it can be
+>   re-dispatched and re-spend each time.
+> - The `exists` redirect in `Home.tsx` has no browser test, and `req.nextUrl.origin`
+>   behaving on Vercel is unverified until deployed. If it does not, generation falls
+>   back to the queue rather than overspending.
+> - The sweep has still never run against a real generation.
+
+2026-11-03 | **Possible features from the codebase analysis, none started** | build,
+roadmap request | Parked under this file's rule 1. None has user evidence yet, so
+none has earned priority (rule 4). Checked against the non-goals; items already
+tracked (D2, D3, D5, D7, D9, D10, F9, temporal bucketing) are not repeated.
+- **"Was this useful?" on a verdict**, one PostHog event, no account. Gives the one
+  evidence-driven iteration a direct signal, which PRD §3 otherwise lacks.
+- **Deep links to a cohort** (`/verdict/233860#veteran`), so a Reddit reply can point
+  at the exact split it is arguing from.
+- **Copy-as-a-reply button**: verdict, tagline, Split Bar rates with their `pool_n`,
+  and a link. No review text (invariant 9).
+- **"Close call" label**, computed in code, when the post-refund mean's error range
+  crosses a verdict threshold. RESULTS 2026-08-08 measured 17 of 133 titles there
+  and accepted it as a limitation, but a reader cannot see which ones.
+- **"Reviews through {date}"** beside the generated date, from the pool's newest
+  review. Verdicts date from August and the page does not say how recent the
+  reviews behind them are.
+- **Finite-game veteran row**: say the game is too short for a 100-hour cohort
+  instead of "1 reviews · too few to call". Display only; invariant 2 is untouched.
+  This is the third option in the 2026-08-21 entry.
+- **Demand-ranked batch queue**: request counts order the next catalog run. Needs a
+  request log that actually persists first.
+- **Theme filter on a verdict** ("show me only Performance"), client-side, over
+  claims the page already holds.
+- **Steam store page overlay** (userscript or extension) linking to the verdict. A
+  new surface to maintain, so the weakest idea here; listed so it is not re-derived.

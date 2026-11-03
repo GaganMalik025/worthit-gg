@@ -1,0 +1,26 @@
+# Real next build + next start, 2026-11-03. Refusal paths only: nothing here reaches a dispatch.
+ ✓ Compiled successfully in 521ms
+   Generating static pages (0/546) ...
+   Generating static pages (136/546) 
+   Generating static pages (272/546) 
+   Generating static pages (409/546) 
+ ✓ Generating static pages (546/546)
+├ ƒ /api/verdict/[appid]                   131 B         188 kB
+└ ● /verdict/[appid]                        2 kB         189 kB
+status traversal                                               {"error":"appid required"} [400]
+status Kenshi (read "queued" on production before)             {"state":"published","source":"main"} [200]
+generate {"appid":"../../x"}                                   {"error":"appid required"} [400]
+generate {"appid":"1e3"}                                       {"error":"appid required"} [400]
+generate {"appid":-5}                                          {"error":"appid required"} [400]
+generate {}                                                    {"error":"appid required"} [400]
+generate not in index                                          {"error":"not a known title"} [404]
+generate Kenshi, audited catalog title                         {"state":"exists","appid":233860,"source":"main"} [200]
+generate delisted Death Stranding (in index via merge)         {"state":"exists","appid":1190460,"source":"main"} [200]
+verdict page traversal                                         [404]
+verdict page Kenshi                                            [200]
+
+# rendered markup, all committed verdicts, HEAD vs working tree
+e6e711777fc9a03d0a6476aadf286166
+e6e711777fc9a03d0a6476aadf286166
+ 28198411
+IDENTICAL
