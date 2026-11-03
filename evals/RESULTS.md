@@ -2246,3 +2246,7 @@ a temp working dir (`evals/regenerate_in_tempdir_2026-11-03.sh`, output
 with a verdict and the runner would reuse the committed July raw file. The QR-3 row
 above describes the July verdict.
 
+
+> **2026-11-03, follow-up: the human read is CLOSED.** The owner read
+> `evals/audit-4.4-2026-11-03.md` and confirmed it fine. Both titles stay published.
+> This covers the sample's 20 citations and 2 verdicts, read after they went live.
