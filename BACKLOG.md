@@ -2957,6 +2957,40 @@ before generating anything. `fetch_page` should also treat a redirect as a failu
 rather than following it. AGENTS.md's "Steam endpoint validated live" and PRD §6 are
 now stale.
 
+> **2026-11-03, migration built and NOT deployed: the comparison gate stopped it.**
+> `fetch_reviews.py` now calls GetAppReviews through `input_json`, treats a redirect
+> as a failure, and is pinned by `pipeline/test_review_transport.py`, mutation-proved
+> 10/10 (`evals/review-transport-mutation-2026-11-03.txt`).
+>
+> **The API is not the problem.** For the same date window, 97.8-99.8% of the old
+> recent review ids come back (`evals/review-pool-comparison-2026-11-03.txt`, part A).
+>
+> **The second filter is.** Helpful with no date limit was chosen on the belief that
+> the old `all` sweep was all-time. It was not: its cached pages span months, and
+> Death Stranding's holds 57 reviews (`evals/review-pool-decomposition-2026-11-03.txt`).
+> No limit reaches back to launch, which flips Cyberpunk from Buy to Wait on launch-era
+> reviews while `recent` alone stays Buy. Helpful at Steam's default window has the old
+> sweep's shape and leaves 4 of 5 seed words unchanged
+> (`evals/review-pool-helpful-window-2026-11-03.txt`). **Owner decision, same day: use
+> the default window**, reversing the earlier no-limit answer, which rested on a wrong
+> description of the old sweep. Equivalence is measured by shape only, because the old
+> endpoint can no longer be queried. Kenshi returns 338 against 558 and Death Stranding
+> 15 against 57, so thin titles draw their pools almost entirely from `recent`.
+>
+> **Helldivers 2 flips Wait -> Skip under every option, and that is real change.** Its
+> recent reviews fell from 83.8% positive (July) to 30.1% (Oct-Nov). The published
+> verdict is stale, not wrong for its date; nothing was regenerated.
+>
+> **Local data lost during this work.** A bug in the first version of
+> `test_review_transport.py` overwrote `data/cache/413150/all_00.json` and
+> `recent_00.json` with stubs and created `updated_00.json`. Those two raw pages from
+> 2026-07-29 had no other copy: the old endpoint is gone and Time Machine would not
+> mount. The stubs were deleted, because a `--force` re-run would have read a fake
+> review into the pool. Committed `data/raw`, `data/filtered`, `data/claims` and the
+> published verdict are untouched. `--restats` for 413150 no longer works locally, and
+> `backfill_minutes.py` can no longer recover minutes from those two pages. The test
+> now runs entirely in a temp dir, and the later runs changed no cache file.
+
 2026-11-03 | **Possible features from the codebase analysis, none started** | build,
 roadmap request | Parked under this file's rule 1. None has user evidence yet, so
 none has earned priority (rule 4). Checked against the non-goals; items already
