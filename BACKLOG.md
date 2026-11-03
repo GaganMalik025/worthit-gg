@@ -2920,6 +2920,43 @@ the ledgers were confirmed unchanged and the guard suite re-run green. Related:
 >   back to the queue rather than overspending.
 > - The sweep has still never run against a real generation.
 
+2026-11-03 | **Steam retired `appreviews`, so ingestion is broken for every new
+title and every live generation fails** | build, the first real live generation
+after deploying the admission work | Evidence `evals/live-generation-2026-11-03.txt`.
+`store.steampowered.com/appreviews/<appid>?json=1` now answers 302 to the store front
+page, 0 bytes, for every appid tried, every parameter shape and a browser user agent,
+from this machine and from the Actions runner. `requests` follows the redirect, so
+`fetch_page` parses homepage HTML and the ingest stage dies with `JSONDecodeError`.
+Steam's docs mark it deprecated in favour of `IUserReviewsService/GetAppReviews`.
+Third-party reports date the redirect to about 2026-10-22; that date is not from
+Steam, and the last run here to get past ingest was 2026-08-31.
+**Cached verdicts are unaffected.** What is broken: every cache miss (each spends a
+13-request reservation, 0 Gemini calls, then shows queue copy) and any batch run on
+titles not already cached.
+**Two runs for RimWorld (294100) failed this way, 0 Gemini calls, nothing published,
+`live_used` 26 until the day rolls.** The second was a mistake: a verification script
+sent a "must not charge" POST on the assumption that the first had succeeded. The
+code behaved as designed, because a finished failed run may be retried.
+**The sweep has now run for real, on the failure path only:**
+`reconciled` holds `"294100|41586283849": null`, and the second run's entry waits for
+the next dispatch. A real cost has still never been reconciled. The admission refusals,
+the join and hashed `by_ip_hour` keys are confirmed on production; a verdict
+generated through the new path is not.
+**Not fixed; the migration needs its own approval.** A keyless probe of the
+replacement returned 200 with `playtime_at_review` present on 100 of 100 reviews, but
+it passed plain query parameters and the response carried `day_range_used`, a
+Helpful-only field, so **`filter=recent` was probably ignored**. Per the docs, what
+changes: parameters go in `input_json`; `filter` is 0 Helpful, 1 Recent, 2 Updated,
+3 Funny, with no `all`; `purchase_type` defaults to Steam-only and 1 means all (one
+third-party report says otherwise, so verify); `languages` is a list; the body nests
+under `response` with no `success` field; `weighted_vote_score` is a number; and
+`filter_offtopic_activity` controls review-bomb reviews, which matters for Helldivers 2.
+**The risk is comparability, not the transport.** A new pool may differ from what the
+542 published verdicts were built on, so compare pool rates against cached seed pages
+before generating anything. `fetch_page` should also treat a redirect as a failure
+rather than following it. AGENTS.md's "Steam endpoint validated live" and PRD §6 are
+now stale.
+
 2026-11-03 | **Possible features from the codebase analysis, none started** | build,
 roadmap request | Parked under this file's rule 1. None has user evidence yet, so
 none has earned priority (rule 4). Checked against the non-goals; items already

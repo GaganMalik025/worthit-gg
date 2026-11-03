@@ -1,0 +1,50 @@
+# Production, deployed d6f99c6, 2026-11-03T05:50:46Z
+status traversal: {"error":"appid required"} [400]
+status Kenshi: {"state":"published","source":"main"} [200]
+generate traversal: {"error":"appid required"} [400]
+generate not in index: {"error":"not a known title"} [404]
+generate Kenshi: {"state":"exists","appid":233860,"source":"main"} [200]
+verdict page traversal: [400]
+verdict page Kenshi: [200]
+ledger before (date, live_used, generations, reconciled): ["2026-08-31",13,1,{}]
+dispatch RimWorld: {"state":"dispatched","appid":294100} [200]  at 2026-11-03T05:50:55Z
+second POST, must join: {"state":"dispatched","appid":294100,"joined":true} [200]
+ledger after: {"date":"2026-11-02","live_used":13,"generations":1,"outcomes":{},"dispatched":{"294100":"2026-11-03T05:50:54.516Z"},"reconciled":{}}
+by_ip_hour keys are hashes: [true]
+
+# After the run, 2026-11-03T05:51:36Z
+run verdict 294100 failure 2026-11-03T05:50:57Z -> 2026-11-03T05:51:12Z
+  ingest failure 2026-11-03T05:51:08Z 2026-11-03T05:51:09Z
+  filter skipped 2026-11-03T05:51:09Z 2026-11-03T05:51:09Z
+  extract skipped 2026-11-03T05:51:09Z 2026-11-03T05:51:09Z
+  verdict skipped 2026-11-03T05:51:09Z 2026-11-03T05:51:09Z
+  qr4 skipped 2026-11-03T05:51:09Z 2026-11-03T05:51:09Z
+  commit to verdicts branch skipped 2026-11-03T05:51:09Z 2026-11-03T05:51:09Z
+status: {"state":"stage_failed","run_id":41586283849}
+verdict page: [404]
+page title: <title>WorthIt.gg — Should you buy it? The verdict, with receipts.
+artifact generated_at , cost , word 
+generated_at on the page: 1
+third POST, must not charge: {"state":"dispatched","appid":294100} [200]
+ledger: {"live_used":26,"generations":2,"outcomes":{},"dispatched":{"294100":"2026-11-03T05:51:44.249Z"},"reconciled":{"294100|41586283849":null},"date":"2026-11-02"}
+QR-4 on artifact:
+Traceback (most recent call last):
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/qr4_gate.py", line 142, in <module>
+    main()
+    ~~~~^^
+  File "/Users/gaganmalik/Downloads/worthit-gg/pipeline/qr4_gate.py", line 124, in main
+    v = json.loads(p.read_text(encoding="utf-8"))
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/__init__.py", line 352, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/json/decoder.py", line 363, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+# Steam probes, 2026-11-03T05:53:35Z
+store.steampowered.com/appreviews/{233860,294100,1091500}?json=1 (full and bare params, encoded cursor, browser UA): 302 to https://store.steampowered.com/, 0 bytes, from this machine; same failure on the Actions runner (non-JSON at first page)
+appdetails control: 200 JSON
+api.steampowered.com/IUserReviewsService/GetAppReviews/v1/ appid=233860, keyless: {"n":100,"total":49088,"has_playtime":true}
