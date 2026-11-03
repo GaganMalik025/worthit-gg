@@ -57,3 +57,28 @@ kept 400 pool 1200 pages {'recent': 12, 'all': 10} steam_total 143840 steam_pct 
   mid 250 97.2
   veteran 827 98.1
 refund cohort non-empty: True
+
+# Third dispatch, after the migration (8e49807), 2026-11-03T10:07:56Z
+ledger before: {"live_used":26,"generations":2,"outcomes":{},"dispatched":{"294100":"2026-11-03T05:51:44.249Z"},"reconciled":{"294100|41586283849":null},"date":"2026-11-02"}
+active runs before: 0
+dispatch: {"state":"dispatched","appid":294100} [200]
+ledger after: {"date":"2026-11-03","live_used":13,"generations":1,"outcomes":{},"dispatched":{"294100":"2026-11-03T10:08:00.913Z"},"reconciled":{}}
+
+# After the third dispatch, 2026-11-03T10:14:07Z
+run verdict 294100 success 2026-11-03T10:08:04Z -> 2026-11-03T10:13:37Z
+  ingest success 2026-11-03T10:08:23Z 2026-11-03T10:08:49Z
+  filter success 2026-11-03T10:08:49Z 2026-11-03T10:08:49Z
+  extract success 2026-11-03T10:08:49Z 2026-11-03T10:13:17Z
+  verdict success 2026-11-03T10:13:17Z 2026-11-03T10:13:29Z
+  qr4 success 2026-11-03T10:13:29Z 2026-11-03T10:13:29Z
+  commit to verdicts branch success 2026-11-03T10:13:29Z 2026-11-03T10:13:32Z
+status: {"state":"published","source":"verdicts"}
+verdict page: [200]
+page title: <title>RimWorld: Buy — WorthIt.gg
+artifact generated_at 2026-11-03T10:13:29Z, real calls 12, word Buy, model gemini-3.5-flash-lite
+generated date on the page: 1
+tagline on the page: 2
+receipts on the page: 14
+repeat request, artifact confirmed first: {"state":"exists","appid":294100,"source":"verdicts"} [200]
+ledger: {"date":"2026-11-03","live_used":13,"generations":1,"outcomes":{},"dispatched":{"294100":"2026-11-03T10:08:00.913Z"},"reconciled":{}}
+QR-4 on artifact: 30 citations checked across 1 verdicts -> PASS

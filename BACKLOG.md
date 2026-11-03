@@ -2991,6 +2991,29 @@ now stale.
 > `backfill_minutes.py` can no longer recover minutes from those two pages. The test
 > now runs entirely in a temp dir, and the later runs changed no cache file.
 
+> **2026-11-03, migration deployed and proven on a real live generation.** RimWorld
+> (294100) published through the production route: Buy, `generated_at
+> 2026-11-03T10:13:29Z`, 12 real calls, QR-4 30 citations PASS, page 200 on production.
+> A repeat request answered `exists` with the ledger unchanged. Evidence
+> `evals/live-generation-2026-11-03.txt`.
+>
+> **The first measured live timing: 5m33s from run creation to finish**, 268s of it
+> extraction, because Gemini returned 503s and `call_model` backed off (8s, then 16s,
+> and each retry is a charged call). That fits "a few minutes", but it is the slowest
+> run on record and within reach of `GenerationProgress`'s 8-minute timeout, after
+> which a user sees the queue copy while the run may still succeed. The other five
+> successful runs took 55s to 3m4s.
+>
+> **Still open:**
+> - A real cost has not been reconciled. `reconciled` is written at the next dispatch's
+>   sweep, and this one ended at `{}`.
+> - **`STEAMGRIDDB_API_KEY` is not in the repository's Actions secrets.** `gh secret
+>   list` shows only `GEMINI_API_KEY`, so the 2026-08-28 workflow fix has nothing to
+>   read, and live titles still ship without `art.grid`. The tile falls back to Steam's
+>   art. `.env` holds the key locally; adding the secret is the owner's call.
+> - This verdict has had no human read. Like every live title, it reaches `main` at the
+>   next nightly publish on the automated gate alone.
+
 2026-11-03 | **Possible features from the codebase analysis, none started** | build,
 roadmap request | Parked under this file's rule 1. None has user evidence yet, so
 none has earned priority (rule 4). Checked against the non-goals; items already
