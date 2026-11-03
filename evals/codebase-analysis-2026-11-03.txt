@@ -1,0 +1,90 @@
+# Raw output, 2026-11-03 codebase analysis. Zero Gemini calls.
+# git e9f1b9d
+
+== committed verdicts
+  citations                                  28275
+  citations_matching_annotate_only_list      1586
+  citations_with_hearts                      1297
+  citations_with_raw_bbcode                  1104
+  claims                                     8958
+  claims_with_a_digit                        231
+  flags                                      414
+  null_pct_bars                              0
+  unmuted_cohorts_no_claims                  48
+  unmuted_cohorts_no_summary                 10
+  verdicts                                   542
+  verdicts_with_flags                        336
+  titles_with_annotate_only_match            428
+  word mix: {'Buy': 313, 'Wait': 197, 'Skip': 32}
+  citations over the filter's heart-density rule (appid, id, truncated): [('3017860', '233180350', True)]
+
+== playtime_at_review in cached raw pages (this machine)
+  reviews 698004, field missing 0, explicit zero 0
+  (fetch_reviews.normalize's `or 0` would bucket a missing value as refund_window; it does not occur in this corpus)
+
+== model_pacer: documented guarantee vs N simultaneous waiters, rpm=12
+  12 at t=0, then  2 waiters: max starts in any rolling 60s = 12
+  12 at t=0, then  4 waiters: max starts in any rolling 60s = 12
+  12 at t=0, then 30 waiters: max starts in any rolling 60s = 30
+
+== run_batch.py main-loop budget stop vs what the logs recorded
+  batch-2026-08-18.txt           BUDGET STOP lines 0 | 193 attempted in 36.1 min: {"stage_failed": 1, "ok": 44, "batch_budget_exhausted": 148}
+  batch-2026-08-19.txt           BUDGET STOP lines 0 | 149 attempted in 34.9 min: {"stage_failed": 2, "ok": 41, "batch_budget_exhausted": 106}
+  batch-2026-08-20.txt           BUDGET STOP lines 0 | 107 attempted in 38.2 min: {"stage_failed": 1, "ok": 45, "batch_budget_exhausted": 61}
+  batch-2026-08-21.txt           BUDGET STOP lines 0 | 62 attempted in 41.3 min: {"stage_failed": 4, "ok": 37, "batch_budget_exhausted": 21}
+  batch-2026-08-24.txt           BUDGET STOP lines 0 | 25 attempted in 16.4 min: {"ok": 24, "stage_failed": 1}
+EXIT_RC=0
+
+== evals/analysis-2026-11-03.test.tsx
+
+ RUN  v2.1.9 /Users/gaganmalik/Downloads/worthit-gg
+
+stdout | evals/analysis-2026-11-03.test.tsx > sweep: a previous quota day's run of the same appid
+sweep: one reservation today, its run still queued -> reconciled={"42|1":5} raw=13 effective=5
+
+ ✓ evals/analysis-2026-11-03.test.tsx (2 tests) 4ms
+stdout | evals/analysis-2026-11-03.test.tsx > render: a cohort whose pool holds zero reviews
+render with pool_n=0, pct_positive=null: THROWS: Cannot read properties of null (reading 'toFixed')
+
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  10:53:02
+   Duration  240ms (transform 36ms, setup 0ms, collect 62ms, tests 4ms, environment 0ms, prepare 30ms)
+
+== suites
+  pipeline/test_ground_check.py rc=0
+  pipeline/test_verdict_cost.py rc=0
+  pipeline/test_sourcing_contract.py rc=0
+  pipeline/test_batch_guards.py rc=0
+ Test Files  14 passed (14)
+      Tests  129 passed (129)
+  site tsc rc=0
+28275 citations checked across 542 verdicts -> PASS
+
+== production, read-only GETs, 2026-11-03T05:21:39Z
+  200 / (557761 bytes)
+  200 /verdict/1091500 (96196 bytes)
+  404 /methodology (8203 bytes)
+  404 /robots.txt (8203 bytes)
+  404 /sitemap.xml (8203 bytes)
+  404 /favicon.ico (8203 bytes)
+  /verdict/1091500: 'DISTORTION' 0, fonts.googleapis 0, flag sentence present 0
+  committed flag on 1091500: ["recency_shift"]
+  /api/status?appid=..%2F..%2Fpackage -> {"state":"published","source":"main"}
+  /api/status?appid=999999999 -> {"state":"queued","ahead":0}
+
+== live generation history
+  success	verdict 1971870	33451726603	3m4s	2026-08-31T23:41:18Z
+  success	verdict 459220	33192633784	1m26s	2026-08-28T17:00:18Z
+  failure	verdict 2806050	33083103770	1m23s	2026-08-27T14:35:41Z
+  LIVE_QUOTA date: 2026-08-31
+
+== npm audit --omit=dev
+  dompurify critical direct=false
+  nanoid high direct=false
+  next critical direct=true
+  postcss high direct=false
+  sharp high direct=false
+  source-map-js high direct=false
+  
