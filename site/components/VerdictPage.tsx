@@ -152,17 +152,26 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
               {b.label}{" "}
               <span className="mono">
                 {b.muted
-                  ? `${b.pool_n} reviews · too few to call`
+                  ? `${b.pool_n ?? 0} reviews · too few to call`
                   : `· based on ${b.pool_n} reviews`}
               </span>
             </span>
             <span className="bar-track">
-              <span className="bar-fill" style={{ ["--delay" as string]: `${420 + 60 * i}ms` } as React.CSSProperties}>
-                <span className="bar-pos" style={{ width: `${b.pct_positive}%` }} />
-                <span className="bar-neg" style={{ width: `${100 - b.pct_positive}%` }} />
-              </span>
+              {/* No reviews in the pool means no rate: an empty track, and no
+                  percentage, because invariant 13 forbids one without a
+                  denominator and 0 of 0 is not a rate. */}
+              {b.pct_positive === null || b.pct_positive === undefined ? null : (
+                <span className="bar-fill" style={{ ["--delay" as string]: `${420 + 60 * i}ms` } as React.CSSProperties}>
+                  <span className="bar-pos" style={{ width: `${b.pct_positive}%` }} />
+                  <span className="bar-neg" style={{ width: `${100 - b.pct_positive}%` }} />
+                </span>
+              )}
             </span>
-            <span className="bar-pct mono">{b.pct_positive.toFixed(1)}%</span>
+            <span className="bar-pct mono">
+              {b.pct_positive === null || b.pct_positive === undefined
+                ? null
+                : `${b.pct_positive.toFixed(1)}%`}
+            </span>
           </div>
         ))}
       </section>
@@ -182,8 +191,10 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
         <section key={c.bucket} className="cohort">
           <h2>{c.label}</h2>
           <div className="stats mono">
-            {c.hours_range} · {c.pct_positive.toFixed(1)}% positive, based on{" "}
-            {c.pool_n} reviews
+            {c.hours_range} ·{" "}
+            {c.pct_positive === null || c.pct_positive === undefined
+              ? "no reviews in this cohort"
+              : `${c.pct_positive.toFixed(1)}% positive, based on ${c.pool_n} reviews`}
           </div>
           {c.summary ? <p className="summary">{c.summary}</p> : null}
           {/* Sits directly above the claim list because that is what it is

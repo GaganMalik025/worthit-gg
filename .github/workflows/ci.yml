@@ -47,6 +47,12 @@ jobs:
         working-directory: site
       - run: npm test
         working-directory: site
+      # The real build, because vitest cannot see what only prerendering hits: one
+      # verdict that throws at render fails every page of the deploy, and tsc over
+      # the routes runs here too. No env needed - every prerendered path reads
+      # committed files, and the PostHog key guard is a no-op without its key.
+      - run: npm run build
+        working-directory: site
 
   python-guards:
     runs-on: ubuntu-latest
@@ -81,13 +87,18 @@ jobs:
       - name: guard suite
         run: .venv/bin/python pipeline/test_batch_guards.py
 
+      # Invariant 5's deterministic grounding check. Offline, and until 2026-11-03
+      # the one pipeline suite CI never ran.
+      - name: grounding check
+        run: .venv/bin/python pipeline/test_ground_check.py
+
       # Offline: committed seed artifacts only, no Steam, no Gemini, no quota.
       # It runs here for the reason e06538a existed - a suite nothing re-runs on
       # push is verified exactly once, by the person who wrote it.
       - name: verdict cost field
         run: .venv/bin/python pipeline/test_verdict_cost.py
 
-      # Same reasoning, and one step further: this one reads all 306 published
+      # Same reasoning, and one step further: this one reads every published
       # verdicts and recomputes every cohort's sourcing block from the
       # citations in its own file. That makes it a check on the ARTIFACT, not
       # just on the code - a re-extraction that leaves a stale block behind

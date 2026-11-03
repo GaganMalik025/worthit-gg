@@ -29,7 +29,7 @@ export function CaseHero({
 }: {
   appid: number | string;
   gameName: string;
-  splitBar: { bucket: string; pct_positive: number }[];
+  splitBar: { bucket: string; pct_positive: number | null }[];
   /** The verdict's captured art block. Absent on pre-2026-08-13 verdicts, which
    *  simply fall through to the legacy stages exactly as they did before. */
   art?: Art | null;
@@ -79,7 +79,7 @@ export function CaseHero({
     <div className="ms" aria-hidden="true">
       {splitBar.map((b) => (
         <i key={b.bucket}>
-          <b style={{ width: `${b.pct_positive}%` }} />
+          <b style={{ width: `${b.pct_positive ?? 0}%` }} />
         </i>
       ))}
     </div>

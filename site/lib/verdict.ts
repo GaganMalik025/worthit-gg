@@ -40,6 +40,14 @@ export interface Citation {
   truncated?: boolean;
 }
 
+/** A Steam appid as it may travel through a URL or a request body: digits only,
+ *  and short enough to be one. Everything that builds a file path or a GitHub
+ *  path from an appid goes through this first - `/api/status` did not, and
+ *  `?appid=..%2F..%2Fpackage` answered "published" on production. */
+export const isAppid = (v: unknown): v is string | number =>
+  (typeof v === "string" || typeof v === "number") &&
+  /^[1-9]\d{0,9}$/.test(String(v));
+
 /** Bucket bounds in MINUTES (invariant 2). 120 is Steam's refund window. */
 const BUCKET_MINUTES: Record<string, [number, number | null]> = {
   refund_window: [0, 120],
@@ -121,7 +129,9 @@ export interface Cohort {
   label: string;
   hours_range: string;
   pool_n: number;
-  pct_positive: number;
+  /** null when the pool holds no review at all for this cohort - a game too
+   *  short to have 100-hour players can reach this. See VerdictPage. */
+  pct_positive: number | null;
   muted: boolean;
   n_note: string | null;
   summary: string | null;
@@ -150,7 +160,7 @@ export interface Verdict {
     bucket: string;
     label: string;
     pool_n: number;
-    pct_positive: number;
+    pct_positive: number | null;
     muted: boolean;
   }[];
   distortion_flags: unknown[];

@@ -3,7 +3,7 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import { VerdictPage } from "../../../components/VerdictPage";
 import { VerdictView } from "../../../components/VerdictView";
-import { loadVerdictStatic, normalizeVerdict, type Verdict } from "../../../lib/verdict";
+import { isAppid, loadVerdictStatic, normalizeVerdict, type Verdict } from "../../../lib/verdict";
 import { catalog } from "../../../lib/catalog";
 import { verdictMetadata } from "../../../lib/site";
 
@@ -20,6 +20,8 @@ const readSite = (p: string) => readFile(path.join(process.cwd(), p), "utf-8");
 type Loaded = { verdict: Verdict; source: "cache" | "live" };
 
 async function load(appid: string): Promise<Loaded | null> {
+  // Before anything builds a path out of it: this value comes from the URL.
+  if (!isAppid(appid)) return null;
   try {
     return { verdict: await loadVerdictStatic(appid, readSite), source: "cache" };
   } catch {
@@ -27,13 +29,19 @@ async function load(appid: string): Promise<Loaded | null> {
     const repo = process.env.GH_REPO;
     const token = process.env.GH_DISPATCH_TOKEN;
     if (!repo || !token) return null;
-    const res = await fetch(
-      `https://api.github.com/repos/${repo}/contents/site/public/verdicts/${appid}.json?ref=verdicts`,
-      { headers: { accept: "application/vnd.github.raw", authorization: `Bearer ${token}` },
-        next: { revalidate: 300 } },
-    );
-    if (!res.ok) return null;
-    return { verdict: normalizeVerdict(JSON.parse(await res.text())), source: "live" };
+    // Both layouts, like verdictExists: /api/generate now sends a user here when
+    // that function finds a verdict, so the two must agree on where one can be.
+    for (const dir of ["site/public/verdicts", "public/verdicts"]) {
+      const res = await fetch(
+        `https://api.github.com/repos/${repo}/contents/${dir}/${appid}.json?ref=verdicts`,
+        { headers: { accept: "application/vnd.github.raw", authorization: `Bearer ${token}` },
+          next: { revalidate: 300 } },
+      );
+      if (res.ok) {
+        return { verdict: normalizeVerdict(JSON.parse(await res.text())), source: "live" };
+      }
+    }
+    return null;
   }
 }
 
