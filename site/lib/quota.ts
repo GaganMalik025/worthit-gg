@@ -29,11 +29,12 @@ export const IP_LIMIT_PER_HOUR = 5;
  *
  * The correction now happens HERE, on the site side, from the cost the runner
  * writes into the verdict artifact it commits - see effectiveLiveUsed below.
- * 13 stays deliberately conservative: it is roughly p99 of measured cost, not a
- * true ceiling (one title in 295 spent 14), and reconciliation makes
- * over-reserving free, so the safe error is to keep reserving high.
+ * 15 since 2026-11-16 (was 13): the meaning check adds a call per cohort, and the
+ * pilot measured 14, 9, 15, 14 calls a title (evals/RESULTS.md). Deliberately
+ * conservative, not a true ceiling, and reconciliation makes over-reserving
+ * free, so the safe error is to keep reserving high. Mirrors live_quota.py.
  */
-export const EST_COST = 13;
+export const EST_COST = 15;
 
 // Google resets RPD at MIDNIGHT PACIFIC, not midnight UTC. Keying the day on
 // UTC zeroed this ledger seven hours early - the same defect fixed on the

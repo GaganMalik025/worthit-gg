@@ -736,7 +736,7 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
     # WHAT THIS GENERATION COST, written by the last stage that spends a call.
     #
     # It exists so the live path can give budget back. /api/generate reserves
-    # EST_COST=13 up front, because the check and the spend cannot be atomic
+    # EST_COST (15; 13 before 2026-11-16) up front, because the check and the spend cannot be atomic
     # across a repository_dispatch boundary and a burst must not oversubscribe
     # the reserve. The true median is 9 (measured over 295 published titles in
     # data/batch_state.json: p25 7, median 9, p90 12, max 14), so ~34% of every

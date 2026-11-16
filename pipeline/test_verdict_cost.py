@@ -1,7 +1,7 @@
 """
 WorthIt.gg - the cost field synthesize.py writes into every verdict
 
-WHY IT EXISTS. /api/generate charges EST_COST=13 before dispatching, because
+WHY IT EXISTS. /api/generate charges EST_COST (15; 13 before 2026-11-16) before dispatching, because
 the check and the spend cannot be atomic across a repository_dispatch boundary
 and a burst must not oversubscribe the live reserve. The real median is 9 (295
 published titles in data/batch_state.json: p25 7, median 9, p90 12, max 14), so

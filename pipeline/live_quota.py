@@ -91,10 +91,14 @@ FLASH_DAILY_LIMIT = 20
 # Secondary guard only - see the module docstring.
 IP_LIMIT_PER_HOUR = 5
 
-# Worst case for one generation: 4 cohorts x (1 extraction + 2 grounding
-# retries) + 1 synthesis. Charged up front so a burst cannot oversubscribe the
+# Charged up front for one generation, so a burst cannot oversubscribe the
 # reserve between check and record; the true cost is reconciled by record().
-EST_COST = 13
+# 15 since 2026-11-16 (owner): the meaning check adds one call per cohort, and
+# the pilot measured 14, 9, 15, 14 calls a title (RESULTS 2026-11-16), so 13 was
+# below 3 of 4. Like 13 before it, this is near the top of measured cost and
+# not a ceiling: the true worst case is 4 x (1 extraction + 2 retries) + 4 x
+# (1 verify + 1 retry) + 3 synthesis attempts. Mirrored in site/lib/quota.ts.
+EST_COST = 15
 
 
 def _today(clock=None):

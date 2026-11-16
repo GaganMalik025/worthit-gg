@@ -1,7 +1,7 @@
 /**
  * RESERVATION RECONCILIATION
  *
- * /api/generate charges EST_COST=13 before dispatching, because the check and
+ * /api/generate charges EST_COST (15 since 2026-11-16, was 13) before dispatching, because the check and
  * the spend cannot be atomic across a repository_dispatch boundary. Real cost
  * is a median of 9 (295 published titles in data/batch_state.json: p25 7,
  * median 9, p90 12, max 14), so ~34% of every reservation was budget nobody
@@ -15,11 +15,15 @@
  *    applying the same fact twice cannot double-credit. The idempotency tests
  *    below are the whole reason the design has this shape.
  *
- * 2. IT MUST BE ABLE TO CORRECT UPWARD. EST_COST is ~p99 of measured cost, not
- *    a ceiling - 1 of 295 titles spent 14 - so a run that overran has to charge
+ * 2. IT MUST BE ABLE TO CORRECT UPWARD. EST_COST is near the top of measured
+ *    cost, not a ceiling, so a run that overran has to charge
  *    MORE than it reserved. Clamping the term at zero would under-count exactly
  *    those runs, and under-counting is what authorises generation against
  *    budget the Gemini quota does not have.
+ *
+ * FIXTURES ARE WRITTEN IN EST_COST, not as literals: a reservation is EST_COST,
+ * and an overrun is EST_COST + 1. They were literals until the 13 -> 15 change,
+ * which broke eight of them without any behaviour changing.
  *
  * Offline: no network, no token, no quota. The sweep's three IO calls are
  * injected, the same way pipeline/live_quota.py injects its `gh` runner.
@@ -54,32 +58,32 @@ describe("effectiveLiveUsed", () => {
   });
 
   it("gives back the difference between the reservation and the real cost", () => {
-    // two dispatches reserved 26; one of them really cost 9
-    const s: QuotaState = { live_used: 26, reconciled: { "413150|1": 9 } };
-    expect(effectiveLiveUsed(s)).toBe(26 - (EST_COST - 9));
-    expect(effectiveLiveUsed(s)).toBe(22);
+    // two dispatches reserved 2 x EST_COST; one of them really cost 9
+    const s: QuotaState = { live_used: 2 * EST_COST, reconciled: { "413150|1": 9 } };
+    expect(effectiveLiveUsed(s)).toBe(2 * EST_COST - (EST_COST - 9));
+    expect(effectiveLiveUsed(s)).toBe(EST_COST + 9);
   });
 
   /**
-   * THE LOAD-BEARING ONE. A run that spent 14 overran its 13-request
+   * THE LOAD-BEARING ONE. A run that spent EST_COST + 1 overran its
    * reservation, so the ledger must end up HIGHER, not unchanged. Clamping the
    * per-entry term at zero passes every other test in this file and fails only
    * this one.
    */
   it("corrects UPWARD when a run cost more than it reserved", () => {
-    const s: QuotaState = { live_used: 13, reconciled: { "413150|1": 14 } };
-    expect(effectiveLiveUsed(s)).toBe(14);
-    expect(effectiveLiveUsed(s)).toBeGreaterThan(13);
+    const s: QuotaState = { live_used: EST_COST, reconciled: { "413150|1": EST_COST + 1 } };
+    expect(effectiveLiveUsed(s)).toBe(EST_COST + 1);
+    expect(effectiveLiveUsed(s)).toBeGreaterThan(EST_COST);
   });
 
   it("nets a cheap run against an expensive one", () => {
     const s: QuotaState = {
-      live_used: 26,
-      reconciled: { "413150|1": 14, "233860|2": 7 },
+      live_used: 2 * EST_COST,
+      reconciled: { "413150|1": EST_COST + 1, "233860|2": 7 },
     };
-    // -1 for the overrun, +6 for the cheap one
-    expect(effectiveLiveUsed(s)).toBe(26 - (-1 + 6));
-    expect(effectiveLiveUsed(s)).toBe(21);
+    // -1 for the overrun, +(EST_COST - 7) for the cheap one
+    expect(effectiveLiveUsed(s)).toBe(2 * EST_COST - (-1 + (EST_COST - 7)));
+    expect(effectiveLiveUsed(s)).toBe(EST_COST + 8);
   });
 
   it("a null entry keeps the whole reservation", () => {
@@ -95,9 +99,9 @@ describe("effectiveLiveUsed", () => {
 
   describe("idempotency", () => {
     it("re-applying the SAME fact changes nothing", () => {
-      const once: QuotaState = { live_used: 13, reconciled: { "413150|1": 9 } };
+      const once: QuotaState = { live_used: EST_COST, reconciled: { "413150|1": 9 } };
       const twice: QuotaState = {
-        live_used: 13,
+        live_used: EST_COST,
         reconciled: { ...once.reconciled, "413150|1": 9 },
       };
       expect(effectiveLiveUsed(twice)).toBe(effectiveLiveUsed(once));
@@ -125,7 +129,7 @@ describe("effectiveLiveUsed", () => {
       const first = await sweepReconciliations(state, deps);
       const second = await sweepReconciliations(first, deps);
       expect(second.reconciled).toEqual({ "413150|1": 9 });
-      expect(effectiveLiveUsed({ ...second, live_used: 13 })).toBe(9);
+      expect(effectiveLiveUsed({ ...second, live_used: EST_COST })).toBe(9);
       // and the second pass did no work at all
       expect(deps.fetchVerdictCost).toHaveBeenCalledTimes(1);
     });
@@ -133,8 +137,8 @@ describe("effectiveLiveUsed", () => {
 
   describe("the admission path reads the derived figure, not the raw one", () => {
     it("remaining() reflects a reconciled run", () => {
-      const s: QuotaState = { live_used: 26, reconciled: { "413150|1": 9 } };
-      expect(remaining(s)).toBe(LIVE_RESERVE - 22);
+      const s: QuotaState = { live_used: 2 * EST_COST, reconciled: { "413150|1": 9 } };
+      expect(remaining(s)).toBe(LIVE_RESERVE - (EST_COST + 9));
     });
 
     it("a reconciled run can re-open a reserve that reads exhausted", () => {
@@ -143,12 +147,12 @@ describe("effectiveLiveUsed", () => {
       expect(canGenerate(raw, IP).allowed).toBe(false);
       expect(canGenerate(raw, IP).reason).toBe("reserve_exhausted");
 
-      // but four of those generations really cost 7, freeing 24 requests
+      // but four of those generations really cost 7, freeing 4 x (EST_COST - 7)
       const reconciled: QuotaState = {
         ...raw,
         reconciled: { "1|1": 7, "2|2": 7, "3|3": 7, "4|4": 7 },
       };
-      expect(effectiveLiveUsed(reconciled)).toBe(72);
+      expect(effectiveLiveUsed(reconciled)).toBe(96 - 4 * (EST_COST - 7));
       expect(canGenerate(reconciled, IP).allowed).toBe(true);
     });
   });
@@ -254,7 +258,7 @@ describe("sweepReconciliations", () => {
       const out = await sweepReconciliations(dispatched("413150"), deps);
       expect(out.reconciled ?? {}).toEqual({});
       // left standing at the full reservation - the safe direction
-      expect(effectiveLiveUsed({ ...out, live_used: 13 })).toBe(13);
+      expect(effectiveLiveUsed({ ...out, live_used: EST_COST })).toBe(EST_COST);
     });
 
     it("skips a run deriveOutcome cannot call terminal", async () => {
@@ -282,7 +286,7 @@ describe("sweepReconciliations", () => {
     // the artifact was read once, for the run that actually produced it
     expect(deps.fetchVerdictCost).toHaveBeenCalledTimes(1);
     // and the refund is one run's worth, not two
-    expect(effectiveLiveUsed({ ...out, live_used: 26 })).toBe(22);
+    expect(effectiveLiveUsed({ ...out, live_used: 2 * EST_COST })).toBe(EST_COST + 9);
   });
 
   it("caps the sweep, oldest first", async () => {
@@ -348,7 +352,7 @@ describe("sweepReconciliations", () => {
     });
     const out = await sweepReconciliations(dispatched("413150"), deps);
     expect(out.reconciled ?? {}).toEqual({});
-    expect(effectiveLiveUsed({ ...out, live_used: 13 })).toBe(13);
+    expect(effectiveLiveUsed({ ...out, live_used: EST_COST })).toBe(EST_COST);
   });
 
   it("the day boundary is Pacific, not UTC", async () => {
@@ -381,6 +385,6 @@ describe("sweepReconciliations", () => {
     const deps = depsFor({ runs: [] });
     const out = await sweepReconciliations(dispatched("413150"), deps);
     expect(out.reconciled ?? {}).toEqual({});
-    expect(effectiveLiveUsed({ ...out, live_used: 13 })).toBe(13);
+    expect(effectiveLiveUsed({ ...out, live_used: EST_COST })).toBe(EST_COST);
   });
 });
