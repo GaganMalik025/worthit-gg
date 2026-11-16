@@ -109,9 +109,13 @@ export default function Methodology() {
         complaints.
       </p>
       <p>
-        <strong>Some claims are thinner than they look.</strong> In those 70 claims, 11 had
-        one review really supporting them even though they cite two. Our check matches
-        words, so it cannot always tell.
+        <strong>Some claims are thinner than they look.</strong> We checked a random{" "}
+        <span className="mono">300</span> of the{" "}
+        <span className="mono">8,975</span> claims on the site.{" "}
+        <span className="mono">72</span> of them cite two or more reviews but have only one
+        that fully says what the claim says. Often the claim joins two points and one of
+        them rests on a single reviewer, so the real problem is likely smaller than that
+        count. Our automatic check matches words, so it cannot catch this.
       </p>
       <p>
         <strong>The sample is built, not random.</strong> We deliberately keep more of the

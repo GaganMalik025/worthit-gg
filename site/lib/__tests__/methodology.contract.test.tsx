@@ -28,7 +28,13 @@ describe("the methodology page's figures match their evidence", () => {
     const all = Object.values(json("../evals/judge-qr6-all-2026-11-03.json")) as { rule: string }[];
     const pass = all.filter((r) => r.rule === "pass").length;
     expect(html).toContain(`${pass} of ${all.length}`);
-    expect(html).toContain(`${all.length - pass} had`);
+  });
+
+  it("the thin-claims figure is the committed catalog sample", () => {
+    const s = Object.values(json("../evals/thin-claims-sample-2026-11-04.json")) as { yes: number }[];
+    const thin = s.filter((r) => r.yes < 2).length;
+    expect(html).toContain(`<span class="mono">${s.length}</span> of the`);
+    expect(html).toContain(`<span class="mono">${thin}</span> of them cite`);
   });
 
   it("the citation count is the committed QR-4 run, and that run passed", () => {

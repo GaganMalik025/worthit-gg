@@ -14,6 +14,7 @@ PAGE = "app/methodology/page.tsx"
 CASES = [
     ("QR-1 figure inflated", PAGE, "47 of 70 fully, 23 partly", "60 of 70 fully, 10 partly", "QR-1 is the committed judge run"),
     ("two-reviews figure inflated", PAGE, '"59 of 70"', '"69 of 70"', "the two-reviews check"),
+    ("thin-claims count understated", PAGE, '<span className="mono">72</span> of them', '<span className="mono">22</span> of them', "the thin-claims figure"),
     ("citation count stale", PAGE, "0 in 28,331 citations", "0 in 30,000 citations", "the citation count"),
     ("the bad round quietly dropped", PAGE, "agreed on only 3 of 10", "agreed less", "the disappointing results"),
     ("Death Stranding rate wrong", PAGE, ">95.3%<", ">99.3%<", "the Death Stranding example"),
