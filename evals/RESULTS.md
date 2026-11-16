@@ -2387,3 +2387,27 @@ Those claims are true of what reviewers said, and one detail rests on one review
 **Not comparable with the seed set's 11 of 70**, which came from a different judge
 prompt. The judge here is lightly validated: 6 of 6 against the owner on the related QR-1
 question.
+
+## 2026-11-16 — "One point per claim" extraction rule: FAILED its gate, not rolled out
+
+**280 Gemini calls** (53 extraction, 227 judge), all on quota day 2026-11-15. Rule 4
+rewritten so that every detail a claim states must be stated by at least two cited
+reviews. Six random titles, two of them also re-run under the unchanged prompt as a
+control. Driver `evals/ab_extraction_one_point_2026-11-16.py`, gate fixed in its
+docstring before any result; output `evals/ab-extraction-one-point-2026-11-16.txt` and
+`.json`. Temp dir, so no published verdict changed.
+
+| gate | required | actual | |
+|---|---|---|---|
+| G1 thin share falls by a third, beyond noise | <= 14.7%, and a drop above 11.1 pts | 22.0% -> **17.8%** (82 -> 101 claims) | **FAIL** |
+| G2 claims survive | >= 75% | 123% | PASS |
+| G3 skew no worse than +3.0 | | 17.1 -> 15.4 | PASS |
+
+**Inconclusive, not a demonstrated improvement.** The 4.2-point drop is well inside the
+11.1 points the UNCHANGED prompt moved on a control title, so these six titles cannot tell
+the rule from chance. Per title it is mixed: Plants vs. Zombies went 1/4 -> 4/14, Crimson
+Desert 4/29 -> 2/24. Thin claims are rare per title and titles hold few claims, so a test
+with enough power would need several times the titles, roughly 1,000 or more calls at this
+design. The prompt is unchanged. Two side effects worth knowing if this is retried: the
+treated prompt produced 23% more claims, and some dropped the "Reviewers ..." framing
+("The crafting system allows ...").
