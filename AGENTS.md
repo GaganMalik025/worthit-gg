@@ -271,7 +271,9 @@ Each step waits for the developer.
    plainly and the cause asked about — never guessed.
 2. On go-ahead: `pipeline/qr4_gate.py --all` (invariant 8 — any failure blocks).
 3. `pipeline/build_search_index.py` — confirm every verdict appid is present by
-   **set membership, 0 missing**, not a row-count diff.
+   **set membership, 0 missing**, not a row-count diff. Then
+   `pipeline/build_genres.py`, so new titles join their home-page sections (it
+   prints how many titles are in a section, via fallback, and in none).
 4. `evals/make_audit_sample.py --date <date> --seed <YYYYMMDD>` — a new seed per
    round, never a previous night's.
 5. Developer reads the audit directly. Wait for it.

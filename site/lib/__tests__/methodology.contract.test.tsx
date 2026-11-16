@@ -66,7 +66,9 @@ describe("the page is reachable", () => {
   });
 
   it("the home footer links to it", () => {
-    expect(read("components/Home.tsx")).toMatch(/<a href="\/methodology">\s*how this works/);
+    // the footer moved into the shared header shell (2026-11-16), so it is on the
+    // home page and every /browse page
+    expect(read("components/SiteShell.tsx")).toMatch(/<a href="\/methodology">\s*how this works/);
   });
 
   it("it links back to the catalog", () => {

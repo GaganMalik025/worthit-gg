@@ -94,6 +94,11 @@ jobs:
 
       # Invariant 5's deterministic grounding check. Offline, and until 2026-11-03
       # the one pipeline suite CI never ran.
+      # Home-page genre sections: the top-10-tag rule and the Steam fallback.
+      # Offline: build() runs against a temp cache.
+      - name: genre sections
+        run: .venv/bin/python pipeline/test_genres.py
+
       - name: grounding check
         run: .venv/bin/python pipeline/test_ground_check.py
 

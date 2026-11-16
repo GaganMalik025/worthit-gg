@@ -286,6 +286,31 @@ padded with a second review that did not say it. Now it gets its own section.
 ## Page anatomy
 
 ### Home
+
+**Redesigned 2026-11-16 (owner).** The page is full browser width. The header puts
+the wordmark and promise top left and the search top right; on phones they stack.
+Below it, the 3-column grid of every title is replaced by **genre sections**:
+
+- **12 sections, in this order:** Story-driven, Open world, Play with friends
+  (co-op), Shooters, RPGs, Survival & crafting, Strategy & management, Building &
+  sandbox, Horror, Hard & Souls-like, Relaxing & cozy, Free to play. Membership comes
+  from Steam user tags via `pipeline/build_genres.py` (rule in its docstring), and a
+  game can sit in several sections.
+- **Each section** is a heading and **two rows of posters scrolling sideways**: up to
+  30 games, most popular first (Steam review count), filled column by column so the
+  first screen shows the top of the list. The row ends in a two-row-tall
+  **"Show all games →"** wall. ← → buttons sit beside the heading on devices that
+  can hover; touch devices swipe.
+- **Posters are 174px wide**, 75% of the old grid's 232px card. The card itself
+  (art, hover overlay, fallbacks) is unchanged, as described in item 3.
+- **"Show all games"** opens `/browse/<section>`: the same header, the section name,
+  and every game in the section in **five columns**, most popular first. Fewer
+  columns where five do not fit.
+- A title in no section is not lost: search reaches every title we hold.
+
+The numbered items below are the original spec. Items 1 and 3 still hold, and item 2
+holds except for its position and width.
+
 1. Wordmark + one-line promise: "Should you buy it? The verdict, with
    receipts." (This exact line — it names both the product and the mechanism.)
 2. Search box, autofocus on desktop, full-width. Placeholder: "Search a game…"

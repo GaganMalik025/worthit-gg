@@ -1,0 +1,30 @@
+mutate_home_sections_2026-11-16.py --run
+
+  hs01a PASS             CONTROL: lib/__tests__/home-sections.contract.test.tsx green, unmutated
+  hs01b PASS             CONTROL: pipeline/test_genres.py green, unmutated
+  hs02  CAUGHT+NAMED     a section shows 31 games
+  hs03  CAUGHT+NAMED     a section is not capped at all
+  hs04  CAUGHT+NAMED     least popular first
+  hs05  CAUGHT+NAMED     popularity ties keep file order
+  hs06  CAUGHT+NAMED     an empty section is rendered
+  hs07  CAUGHT+NAMED     the Show all games wall is removed
+  hs08  CAUGHT+NAMED     the promise leaves the header
+  hs09  CAUGHT+NAMED     posters back at the old 232px
+  hs10  CAUGHT+NAMED     the browse page has 3 columns
+  hs11  CAUGHT+NAMED     a browse page shows only 30
+  hs12  CAUGHT+NAMED     unknown sections render on demand
+  hs13  CAUGHT+NAMED     a browse page keeps the wordmark as its h1
+  hs14  CAUGHT+NAMED     membership reads the top 11 tags
+  hs15  CAUGHT+NAMED     membership is any tag, not the top 10
+  hs16  CAUGHT+NAMED     a tagged title uses the fallback too
+  hs17  CAUGHT+NAMED     tag ties depend on dict order
+
+restored byte-identical:
+  pipeline/build_genres.py                 True (58600e604296)
+  site/app/browse/[slug]/page.tsx          True (97247927926d)
+  site/app/globals.css                     True (55a7c2f4e5f6)
+  site/components/BrowseSection.tsx        True (c46d54e0a9f2)
+  site/components/SectionRow.tsx           True (b6f9bf01a51a)
+  site/components/SiteShell.tsx            True (eac6e3142d68)
+  site/lib/genres.ts                       True (a4b606e8dfd5)
+18/18 as expected

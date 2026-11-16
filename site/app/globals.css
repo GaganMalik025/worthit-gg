@@ -49,7 +49,7 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
 
 /* home */
 .wordmark{font-size:32px}
-.promise{color:var(--text-dim);margin:8px 0 32px}
+.promise{color:var(--text-dim)}
 .searchbox{position:relative}
 .searchbox input{width:100%;padding:14px 16px;border-radius:12px;font:inherit;
   color:var(--text);background:var(--surface);border:1px solid var(--hairline)}
@@ -64,7 +64,56 @@ main{max-width:720px;margin:0 auto;position:relative;z-index:1}
 .chip.wait{color:var(--wait);border:1px solid rgba(251,191,36,.2)}
 .chip.skip{color:var(--skip);border:1px solid rgba(248,113,113,.2)}
 .chip.none{color:var(--text-dim);border:1px solid var(--hairline)}
-.grid{display:grid;gap:12px;margin-top:32px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+/* home and browse pages: a full-width frame (owner, 2026-11-16; DESIGN.md "Home").
+   Wordmark and promise top left, search top right. The narrow class keeps the
+   live-generation and queue views at their old reading width. */
+main.home-main{max-width:none}
+.home-main .narrow{max-width:720px;margin:48px auto 0}
+.site-header{display:flex;justify-content:space-between;align-items:flex-start;
+  gap:16px 32px;flex-wrap:wrap}
+.brand{display:block;color:inherit;text-decoration:none}
+/* the display face is set here, not only by the h1 rule: on a browse page the
+   wordmark is a <p>, because that page's h1 is the section name */
+.brand .wordmark{display:block;margin:0;font-family:var(--font-display),"Space Grotesk",Inter,sans-serif;
+  font-weight:700;letter-spacing:-0.02em;line-height:1.1}
+.brand .promise{display:block;margin:6px 0 0}
+.header-search{flex:0 1 440px;min-width:0}
+/* the results list floats over the sections instead of pushing them down */
+.site-header .results{position:absolute;left:0;right:0;z-index:5;
+  box-shadow:0 12px 32px rgba(0,0,0,.45)}
+@media (max-width:640px){ .header-search{flex-basis:100%} }
+
+/* sections: two rows of 174px posters - 75% of the old grid's 232px card -
+   scrolling sideways, column-major so the most popular fill the first screen */
+.shelf{margin-top:40px}
+.shelf-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.shelf-head h2{font-size:20px}
+.shelf-arrows{display:flex;gap:8px}
+.shelf-arrows button{width:36px;height:36px;border-radius:999px;
+  border:1px solid var(--hairline);background:var(--surface);color:var(--text-dim)}
+.shelf-arrows button:hover{color:var(--text)}
+@media (hover:none){ .shelf-arrows{display:none} }
+.shelf-row{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,auto);
+  grid-auto-columns:174px;gap:12px;margin-top:12px;padding-bottom:10px;
+  overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;
+  scrollbar-width:thin}
+.shelf-row > *{scroll-snap-align:start}
+.shelf-wall{grid-row:span 2;display:flex;align-items:center;justify-content:center;
+  gap:6px;border:1px solid var(--hairline);border-radius:12px;background:var(--surface);
+  color:var(--link);font-weight:600;text-decoration:none}
+.shelf-wall:hover{background:var(--surface-2)}
+
+/* "Show all games": one section, five columns at the same poster size */
+/* centred as one block, five posters wide (5 x 174 + 4 x 12 = 918px), so a wide
+   screen does not leave the right half empty */
+.browse{margin:32px auto 0;max-width:918px}
+.browse-back{color:var(--text-dim);text-decoration:none;font-size:14px}
+.browse-back:hover{color:var(--text)}
+.browse h1{font-size:28px;margin-top:8px}
+.browse-grid{display:grid;grid-template-columns:repeat(5,174px);gap:12px;margin-top:20px}
+@media (max-width:980px){
+  .browse-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+}
 /* ---- home grid: poster-dominant cards ----------------------------------
    At rest the card is only cover art. The overlay carries the title and the
    verdict chip and fades in on hover.

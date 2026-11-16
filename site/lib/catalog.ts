@@ -1,6 +1,7 @@
 /** Build-time index of the verdicts we hold, read from site/public/verdicts/. */
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { byPopularity } from "./genres";
 
 const DIR = path.join(process.cwd(), "public/verdicts");
 
@@ -23,6 +24,9 @@ export interface CatalogEntry {
   game_name: string;
   word: string;
   pool_n: number;
+  /** Steam's lifetime review count, read from the verdict's footer: the
+   *  popularity order for the home sections (owner, 2026-11-16). 0 when absent. */
+  steam_total_reviews: number;
   art: Art;
   split_bar: { bucket: string; pct_positive: number; muted: boolean }[];
 }
@@ -44,6 +48,7 @@ export async function catalog(): Promise<CatalogEntry[]> {
         // no header prose here on purpose: the home grid is poster + title +
         // chip (DESIGN.md), so carrying it would be a field nothing renders
         pool_n: v.footer?.pool_n ?? 0,
+        steam_total_reviews: v.footer?.steam_total_reviews ?? 0,
         // Older verdicts predate the art block; {} keeps them on the legacy
         // pattern rather than crashing the grid.
         art: (v.art ?? {}) as CatalogEntry["art"],
@@ -53,5 +58,5 @@ export async function catalog(): Promise<CatalogEntry[]> {
       };
     }),
   );
-  return rows.sort((a, b) => b.pool_n - a.pool_n);
+  return rows.sort(byPopularity);
 }
