@@ -1,0 +1,27 @@
+mutate_refresh_2026-11-16.py --run
+
+  rf01  PASS             CONTROL: pipeline/test_refresh.py green, unmutated
+  rf02  CAUGHT+NAMED     selection ignores the meaning-check marker
+  rf03  CAUGHT+NAMED     seed games are refreshed by default
+  rf04  CAUGHT+NAMED     a gate-failed refresh is retried every night
+  rf05  CAUGHT+NAMED     refresh order is by appid, not oldest first
+  rf06  CAUGHT+NAMED     the candidate is written straight to the live directory
+  rf07  CAUGHT+NAMED     a gated candidate is never published
+  rf08  CAUGHT+NAMED     a stale candidate is not cleared
+  rf09  CAUGHT+NAMED     generate() runs the stages in ROOT
+  rf10  CAUGHT+NAMED     run_stage ignores its cwd
+  rf11  CAUGHT+NAMED     the .env key is not passed to a work-dir stage
+  rf12  CAUGHT+NAMED     the segmentation gate reads ROOT's stored ingest
+  rf13  CAUGHT+NAMED     the marker is always True
+  rf14  CAUGHT+NAMED     the budget stop is bypassed
+  rf15  CAUGHT+NAMED     a refusal is recorded as the title's outcome
+  rf16  CAUGHT+NAMED     a refresh keeps the segmentation gate on
+  rf17  CAUGHT+NAMED     a gate-dropped refresh is terminal again
+  rf18  CAUGHT+NAMED     generate() stops marking a budget refusal
+
+restored byte-identical:
+  pipeline/generate_one.py       True (d488c72bf260)
+  pipeline/run_batch.py          True (d94d9adfd55c)
+  pipeline/synthesize.py         True (dd3d8ff60820)
+real state untouched: live_quota.json True, batch_state.json True
+18/18 as expected

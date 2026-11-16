@@ -1,335 +1,177 @@
 {
   "appid": "1332010",
   "game_name": "Stray",
-  "generated_at": "2026-08-10T09:54:30Z",
+  "generated_at": "2026-11-16T13:31:55Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1332010/71daca1910d664d31240b9623a495e0c0828807f/header.jpg?t=1785424330",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1332010/01489897d641b7f2e734a436dfabdd74afd4c677/capsule_231x87.jpg?t=1785424330",
+    "grid": "https://cdn2.steamgriddb.com/grid/5792570eae5e9fd09de1927180ff513c.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 8,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Buy",
-    "tagline": "Step into a feline adventure with cozy puzzles and short journeys.",
+    "tagline": "Step into a feline adventure through a cyber-city of mystery.",
     "for_you_if": [
-      "you want a short adventure",
-      "you enjoy straightforward puzzles"
+      "you enjoy atmospheric exploration",
+      "you want a unique protagonist",
+      "you appreciate detailed sci-fi worlds"
     ],
     "not_for_you_if": [
-      "you are prone to motion sickness",
-      "you need flawless keyboard controls"
+      "you expect free-form platforming mechanics",
+      "you dislike achievement grinds reliant on luck"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 32,
-      "pct_positive": 68.8,
+      "pool_n": 44,
+      "pct_positive": 81.8,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 1140,
-      "pct_positive": 97.8,
+      "pool_n": 1078,
+      "pct_positive": 98.1,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 74,
-      "pct_positive": 100.0,
+      "pool_n": 75,
+      "pct_positive": 97.3,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 11,
+      "pool_n": 3,
       "pct_positive": 100.0,
       "muted": true
     }
   ],
-  "distortion_flags": [
-    {
-      "flag_id": "cohort_divergence",
-      "type": "segmentation",
-      "direction": null,
-      "shape": "monotonic_increase",
-      "sentence": "Initial positive sentiment increases significantly as players progress past the opening hours.",
-      "evidence": {
-        "sequence": [
-          {
-            "cohort": "refund_window",
-            "label": "under 2 hours",
-            "pct_positive": 68.8,
-            "pool_n": 32
-          },
-          {
-            "cohort": "early",
-            "label": "2-20 hours",
-            "pct_positive": 97.8,
-            "pool_n": 1140
-          },
-          {
-            "cohort": "mid",
-            "label": "20-100 hours",
-            "pct_positive": 100.0,
-            "pool_n": 74
-          }
-        ],
-        "shape": "monotonic_increase",
-        "low_cohort": "refund_window",
-        "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 68.8,
-        "low_pool_n": 32,
-        "high_cohort": "mid",
-        "high_cohort_label": "20-100 hours",
-        "high_pct_positive": 100.0,
-        "high_pool_n": 74,
-        "gap_pts": 31.2
-      }
-    }
-  ],
+  "distortion_flags": [],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 32,
-      "pct_positive": 68.8,
+      "pool_n": 44,
+      "pct_positive": 81.8,
       "muted": false,
       "n_note": null,
-      "summary": "Players encountering initial platforming and puzzles decide against recommending the game early on.",
-      "themes": [
+      "summary": "Players stepping into the cyber-city experience an immediate immersion in the feline protagonist's journey, setting a captivating tone early on.",
+      "themes": [],
+      "single_points": [
         {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ref-b69782",
-              "claim": "Reviewers describe the gameplay as heavily featuring platforming elements and puzzles.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231539207",
-                  "hours_at_review": 1.5,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "This blows.  I played for about an hour and a half and it is nothing more than a platform game. To top if off it totally screwed with my graphics settings.  As you can see by my specs, I'm not exactly playing with a tin pot PC, yet the game froze several times requiring me to reboot. Not my cup of tea.",
-                  "truncated": false,
-                  "minutes_at_review": 88
-                },
-                {
-                  "recommendationid": "230187633",
-                  "hours_at_review": 1.3,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "I got really bored. I only played 1.3 hours and the last 30 minutes I've been forcing myself to play to \"see it through\" until I realized I have free will and don't have to put myself through this. The first 10 minutes was cute, but after going through the minimal and very guided platforming, minimal puzzles, the boring robot narrative, I realized this game is barely more than a walking simulator. If I had those expectations going in, I would've  maybe taken a different approach or played it while in a different mood.",
-                  "truncated": false,
-                  "minutes_at_review": 80
-                }
-              ]
-            }
-          ]
+          "point_id": "one-aaec9ca7",
+          "text": "One reviewer says there is no free jump and you can only jump where a prompt allows it, making everything feel restrictive and scripted.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239918122",
+            "hours_at_review": 0.5,
+            "minutes_at_review": 31,
+            "voted_up": false,
+            "date": "2026-11-11",
+            "review_text": "I really don't understand the hype for this game. Yes it's very pretty, but It feels terrible to play. Everything feels so restrictive and scripted. The design decisions are puzzling. There's no free jump, you jump only in places where a prompt tells you you are allowed to jump. You can't even drop off a ledge on your own. This makes it feel less like playing a cat and more like playing a trained dog performing a trick. It also makes the very pretty environment feel hollow: you'll see pipes and ledges you could jump to, but there's no prompt, so you can't. You can feel the devs breathing on your neck every step of the way. The chase sequences are awful, you're as railroaded as in the rest of the game so it's endlessly redoing them until you do them \"right\". No place for going off the beaten track, which is pretty ironic considering you are supposed to be a cat. But at least the kitties are cute I guess...",
+            "truncated": false
+          }
         }
       ],
-      "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 2,
-        "cited_recommend": 0,
-        "divergence_p": 0.0973,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
+      "sourcing": null
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 1140,
-      "pct_positive": 97.8,
+      "pool_n": 1078,
+      "pct_positive": 98.1,
       "muted": false,
       "n_note": null,
-      "summary": "Players note the brief length and simple puzzles, though some report motion sickness and control issues.",
+      "summary": "Reviewers note that traversal relies on fixed paths rather than absolute freedom, and certain completionist tasks demand considerable luck.",
       "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-db8b7d",
-              "claim": "Reviewers note that the game is short, taking roughly between five and twelve hours to complete.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231844568",
-                  "hours_at_review": 10.3,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Fun little game that's worth playing for its incredible lighting and cyberpunk atmosphere. Traversing the environments as a slick cat is also really satisfying, particularly in hubs like The Slums and Midtown. The Slums in particular has a weirdly cozy atmosphere, and its densely packed, layered structure provides quite a bit of room for exploration, even though the overall area is actually pretty small.\n\nThe gameplay itself is fairly standard. Apart from the neat traversal and exploration, it's mostly platforming with several fetch quests and chase sequences, a few annoying stealth sections, and some easy puzzles thrown in. There are also collectibles in the form of badges, which you earn through small side quests or exploration, as well as memories hidden away in various nooks and crannies.\n\nOn a technical note, I also experienced occasional stuttering when performing certain actions or entering certain areas. From what I've heard, this is worse on PC than on consoles and is caused by shader compilation. It was mostly tolerable, but it seemed to happen fairly often in Midtown, which was a bit annoying. Aside from that, the game maintained a rock-solid framerate with low CPU and GPU usage, especially considering how good it looks.\n\nOne thing I really liked was the contrast between the cozy Slums and the eldritch, almost Lovecraftian environments in the Rooftops and Sewers. Some of those areas look like they're straight out of a horror game, and I really wasn't expecting that based on what I'd heard about the game.\n\nThe story itself is pretty bog standard, with robots imitating humans and replicating certain emotions, an evil corporation that wants to work everyone to death, and the usual class tensions between the rich and the poor. Seen it a million times already. My main motivation throughout the game wasn't really the story itself, but just the desire to escape the city and reach the outside to reunite with my friends.\n\nOne thing I didn't like at all was the end…",
-                  "truncated": true,
-                  "minutes_at_review": 618
-                },
-                {
-                  "recommendationid": "231658762",
-                  "hours_at_review": 8.8,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "Adorable game that's nice and short. Great for players who want an entry-level video game. Press circle to meow!",
-                  "truncated": false,
-                  "minutes_at_review": 527
-                },
-                {
-                  "recommendationid": "226518612",
-                  "hours_at_review": 10.8,
-                  "voted_up": true,
-                  "date": "2026-05-27",
-                  "review_text": "This is a story driven game!\r\nI enjoyed my little adventure with Stray. It managed to satisfy an interest story wise and a small thrill of adventure. It is a short game, story with basic exploration should take you around 8 hours mark with 100% can push you to 11/12 hours probably if you did not optimize from the start.\r\n\r\nThe Good:\r\n- Story, I found myself asking questions and making theories about what is going on, was well made.\r\n- World is beautiful and was well done, especially the cities, I found myself explorating the allies/roofs and trying to see everything.\r\n- The concept of being a cat is strong, you can climb a lot of things and jump off places, it was decently done.\r\n\r\nThe Bad:\r\n- Rushed story/encounters. In some situations when you meet and important figure or a scenario it feels so rushed, you can really feel it on the almost none existing chatter and the \"skip\".\r\n- Most puzzles are very simple, maybe it's experience speaking but I don't remember a single one that was close to a challenge.\r\n- This is an opinion but I would say the ending.\r\n- The price is insane for an 8 hours gameplay, overpriced.\r\n\r\n\r\nFun and short game I would recommend this game but get it on an omega sale because it is overpriced like crazy.",
-                  "truncated": false,
-                  "minutes_at_review": 649
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-ef22b7",
-              "claim": "Reviewers report experiencing motion sickness or nausea while playing.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231698136",
-                  "hours_at_review": 5.2,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "I was looking forward to playing this game but had to drop it. The graphics are pretty and the cat is cute, but the gameplay is dull and the camera made me nauseous.",
-                  "truncated": false,
-                  "minutes_at_review": 309
-                },
-                {
-                  "recommendationid": "231690102",
-                  "hours_at_review": 10.8,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "Just finished playing and like all the other comments say, it's a beautiful game. You can tell a lot of heart went into making it. I'm primarily a cozy, puzzle gamer and this was a great cozy \"last of us\" but cats game.  My only critique is I got soooo motion sick while playing this game to the point I almost dnf. I just sat really far away from the computer lol. If possible, a way to turn on crosshairs or center dot would be so helpful. Other than that loved the world building, characters and scenery :)",
-                  "truncated": false,
-                  "minutes_at_review": 651
-                },
-                {
-                  "recommendationid": "231275045",
-                  "hours_at_review": 12.4,
-                  "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "My heart hurts, although it gave me quite the motion sickness, i love the game. the story line is not too confusing but i wish they would give a little bit more clue because cities here kinda feels like a maze",
-                  "truncated": false,
-                  "minutes_at_review": 747
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-c4cf84",
-              "claim": "Reviewers report encountering technical issues with keyboard and mouse controls during specific sections or chapters on PC.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231335880",
-                  "hours_at_review": 19.4,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "For some INEXPLICABLE reason, the Devs decided to stop all mouse controls for the Dead End chapter (which is not even half way through the game!!!) So if you're on PC-you're screwed!  None of the keyboard or mouse controls are working!  I've been all over Google and Discord and tried various suggestions- NOTHING works!   You cannot fight off the Zurks at all because none of the keys seem to be working.  \r\nVery upset and angry.",
-                  "truncated": false,
-                  "minutes_at_review": 1161
-                },
-                {
-                  "recommendationid": "226359584",
-                  "hours_at_review": 3.9,
-                  "voted_up": false,
-                  "date": "2026-05-25",
-                  "review_text": "I'll start with the pros:\n- really impressed with what the indie devs did visually here. On par with top tier studios\n\n- I am the cat lady that this appeals to. I *love* getting to run around as a cat, knock things over, stick my head in a paper bag, scratch at doors to be let out, nuzzle against robots to get them to display heart faces and make happy robot chirps, and run through pool balls to make them roll around. The devs clearly know and love cats and it shows.\n\n- As someone with hypermobile joints and dyspraxia that makes reaction timing hard, I really appreciate the auto-jumping. I know a lot of folks hate this, and it's a pro for me.\n\n- I've read other reviews describe this game as hand-holdy and I think that's a fair complaint. For me, I like how obvious many of the aspects of the interactions and puzzle solving are because I'm not interested in this game to have a big think or a high stress combat experience. I just want to run around as a cat and have fun doing it.\n\nWhich brings me to my cons:\n- Again, with the context that button mashing is murder on hypermobile joints and dyspraxia makes precision timing challenging, the combat runs against the zurks are game ruining for me. I am stuck in chapter 7 because after about 20 tries (and therefore having a clear understanding of the pathing) I can't get past them. I didn't time how much of my 3.9 hours of playtime was spent on the zurk sections and I wish I had that data. I just kept saying to myself 'this isn't fun' and finally quit in frustration.\n\n- As others have mentioned, the gameplay might not be worth the price for those on tight budgets (with an acknowledgment that devs deserve to be paid and indie companies probably have a different funding structure than AAA companies? I'm not sure how all of that works). For me, I would have already returned this game if I had paid full price for it.\n\n- Some have also mentioned that the puzzles are too simple, the exploration too railroaded, and this basically be…",
-                  "truncated": true,
-                  "minutes_at_review": 233
-                },
-                {
-                  "recommendationid": "231871451",
-                  "hours_at_review": 5.5,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "A short little game that definitely exceeded my expectations; has a rather captivating story accompanied by beautiful and descriptive scenery. The overall gameplay is serviceable (as long as you use a controller, cause the keybinds on keyboard are god awful) as it comes with chases, puzzles, and some light exploration. It's easy by nature, but that doesn't necessarily make it bad by any means. The main selling point is for sure the story, and it is one worth experiencing to say the least. Neat little game, strong 8.8/10",
-                  "truncated": false,
-                  "minutes_at_review": 330
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-2ee54b",
-              "claim": "Reviewers describe the game's puzzles as easy and on the simpler side.",
+              "claim_id": "ear-a32983",
+              "claim": "Reviewers describe the platforming as utilizing pre-configured jump paths selected by the player rather than free-form jumping.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 3,
+                "positive": 2,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231844568",
-                  "hours_at_review": 10.3,
+                  "recommendationid": "240312702",
+                  "hours_at_review": 18.1,
+                  "minutes_at_review": 1085,
                   "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Fun little game that's worth playing for its incredible lighting and cyberpunk atmosphere. Traversing the environments as a slick cat is also really satisfying, particularly in hubs like The Slums and Midtown. The Slums in particular has a weirdly cozy atmosphere, and its densely packed, layered structure provides quite a bit of room for exploration, even though the overall area is actually pretty small.\n\nThe gameplay itself is fairly standard. Apart from the neat traversal and exploration, it's mostly platforming with several fetch quests and chase sequences, a few annoying stealth sections, and some easy puzzles thrown in. There are also collectibles in the form of badges, which you earn through small side quests or exploration, as well as memories hidden away in various nooks and crannies.\n\nOn a technical note, I also experienced occasional stuttering when performing certain actions or entering certain areas. From what I've heard, this is worse on PC than on consoles and is caused by shader compilation. It was mostly tolerable, but it seemed to happen fairly often in Midtown, which was a bit annoying. Aside from that, the game maintained a rock-solid framerate with low CPU and GPU usage, especially considering how good it looks.\n\nOne thing I really liked was the contrast between the cozy Slums and the eldritch, almost Lovecraftian environments in the Rooftops and Sewers. Some of those areas look like they're straight out of a horror game, and I really wasn't expecting that based on what I'd heard about the game.\n\nThe story itself is pretty bog standard, with robots imitating humans and replicating certain emotions, an evil corporation that wants to work everyone to death, and the usual class tensions between the rich and the poor. Seen it a million times already. My main motivation throughout the game wasn't really the story itself, but just the desire to escape the city and reach the outside to reunite with my friends.\n\nOne thing I didn't like at all was the end…",
-                  "truncated": true,
-                  "minutes_at_review": 618
+                  "date": "2026-11-15",
+                  "review_text": "I loved this game so much. I hope they continue it with a Stray II. The story is really engaging, the puzzles are fun to solve, and being a cat in a platformer makes the whole experience totally novel since you don't have hands to carry things.  I love the mechanic where your jump path is pre-configured and you just select how you want to go.  My hands don't work too well, so games that require a lot of precision and precise timing don't work too well for me.  This one was great though.  The only thing I really wish was different is the ending cutscene could have been longer and shown more of everyone and everything, but maybe it's left mysterious in case they make a sequel.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231713960",
-                  "hours_at_review": 10.4,
+                  "recommendationid": "238903355",
+                  "hours_at_review": 17.4,
+                  "minutes_at_review": 1042,
                   "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Beautiful graphics, great world. The puzzles are on the simple side but that makes for an excellent casual exploration. It did seem like there were plenty of areas for hidden items but not very many to find. I was hoping for a 10-12 hour game and got exactly that.",
-                  "truncated": false,
-                  "minutes_at_review": 626
-                },
+                  "date": "2026-10-30",
+                  "review_text": "Purchased for 14,24 euros\r\n\r\nI'm a sucker for stories in a post apocalyptic setting and this is a novel take on one of those, what with you being a cat and all. I'm indifferent about cats, by the way, so that wasn't really the draw, but I was curious about how the developers might pull off being a cat in this game. I'm happy to say the cat is indeed very catlike. If you love cats, then you'll be satisfied, I think.\r\n\r\nThe gameplay consists of very light environmental puzzle solving, platforming and some chase sequences. The platforming is different in that you can't freely jump, but have to look for jump prompts that are attached to surfaces. It doesn't really hinder the freedom of exploration and I got used to it pretty quickly, but it might annoy others. The chase sequences can be a bit random in whether or not the enemies get you, but they're not too hard. Same goes for the puzzle solving, which is fairly straightforward, though I like that the developers chose more subtle signs of where to go and what to do then just slapping the classic yellow paint on everything.\r\n\r\nThe vibes are great and the world looks amazing, offering varied environments in a constrained setting and really nailing the atmosphere of a post apocalyptic city. They went for a sort of painted photorealism, which fits both the bleakness of what happened in this world and the optimism of the characters that still inhabit it.\r\n\r\nThe only thing I have a slight problem with is the visual design of the enemies. They're too cute, in my opinion, not really reflecting what they're capable of. It's a minor nitpick, but it took me out of the moment a few times. Silly to say when you're playing a cat with a cute little robot sidekick, but still...\r\n\r\nThe plot is straightforward and forgettable, but this game is more about environmental storytelling and worldbuilding, which it does adequately. There's enough information to piece together how this world came to be and enough room to use your own imagination…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-9ac861",
+              "claim": "Reviewers report that certain achievement requirements rely heavily on RNG and luck.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
                 {
-                  "recommendationid": "226518612",
+                  "recommendationid": "238701338",
                   "hours_at_review": 10.8,
+                  "minutes_at_review": 646,
                   "voted_up": true,
-                  "date": "2026-05-27",
-                  "review_text": "This is a story driven game!\r\nI enjoyed my little adventure with Stray. It managed to satisfy an interest story wise and a small thrill of adventure. It is a short game, story with basic exploration should take you around 8 hours mark with 100% can push you to 11/12 hours probably if you did not optimize from the start.\r\n\r\nThe Good:\r\n- Story, I found myself asking questions and making theories about what is going on, was well made.\r\n- World is beautiful and was well done, especially the cities, I found myself explorating the allies/roofs and trying to see everything.\r\n- The concept of being a cat is strong, you can climb a lot of things and jump off places, it was decently done.\r\n\r\nThe Bad:\r\n- Rushed story/encounters. In some situations when you meet and important figure or a scenario it feels so rushed, you can really feel it on the almost none existing chatter and the \"skip\".\r\n- Most puzzles are very simple, maybe it's experience speaking but I don't remember a single one that was close to a challenge.\r\n- This is an opinion but I would say the ending.\r\n- The price is insane for an 8 hours gameplay, overpriced.\r\n\r\n\r\nFun and short game I would recommend this game but get it on an omega sale because it is overpriced like crazy.",
-                  "truncated": false,
-                  "minutes_at_review": 649
+                  "date": "2026-10-27",
+                  "review_text": "Fun game with a interesting new main character. I enjoyed the story and the graphics. I played it on my steam deck and it ran very smoothly. Now im all for grinding especially if youre an achievement hunter but this has some of the worse grinding achievements. Honestly luck plays 95% of the hidden achievements. Personally I think hidden achievements should be banned. Im leaving this game at 83% complete. I do not like the grind of those achievements, I did attempt way too many times. One is not getting touched in CH2 which you'll waste 3 hours bc it's luck. 2 hour beat was hard as well just bc you have to wait for the robots, I did one attempt at CH8 not being touched like chapter 2 and gave up instantly, it's worse. CH10 has another one but with the bots and their blue light. Still recommend playing it but im.not going to stress myself out on 4 achievements. I might start refunding hidden achievement games. I know it's easy to Google im hust tired of the being sneaky. If they can hide somethings that small imagine what they are hiding elsewhere. Im mad bc you could miss more things in the game, not this one kind of.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238908848",
+                  "hours_at_review": 12.6,
+                  "minutes_at_review": 755,
+                  "voted_up": true,
+                  "date": "2026-10-30",
+                  "review_text": "game has cat, game gud. Although some of the achievments for 100% are a pain in the ass to get.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 10,
-        "cited_recommend": 7,
-        "divergence_p": 0.00114,
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 4,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -337,158 +179,62 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 74,
-      "pct_positive": 100.0,
+      "pool_n": 75,
+      "pct_positive": 97.3,
       "muted": false,
       "n_note": null,
-      "summary": "Players find the puzzles thoughtful yet accessible, while noting the brief overall length.",
-      "themes": [
+      "summary": "The world remains engaging and atmospheric as the journey progresses, maintaining strong enthusiasm among players.",
+      "themes": [],
+      "single_points": [
         {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "mid-7d4822",
-              "claim": "Reviewers note that the game's overall length feels too short.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231202420",
-                  "hours_at_review": 48.3,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "This game has it all. The movement feels slick and satisfying, the story is interesting, and the sound/environment designs are awesome. All the side missions you can do are also memorable along to the story, and overall the game is very immersive and makes for a great experience. If I were to have any sort of quarrel, it is that the game is a little too short but thats also what makes it such a memorable experience.",
-                  "truncated": false,
-                  "minutes_at_review": 2899
-                },
-                {
-                  "recommendationid": "229751006",
-                  "hours_at_review": 27.1,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "Interesting world and environment but the gameplay feels too short.",
-                  "truncated": false,
-                  "minutes_at_review": 1628
-                },
-                {
-                  "recommendationid": "228457248",
-                  "hours_at_review": 22.0,
-                  "voted_up": true,
-                  "date": "2026-06-21",
-                  "review_text": "Loooved this game, the story a little short (found out later how much game time there is for main story) but everything else in the game amazing!!",
-                  "truncated": false,
-                  "minutes_at_review": 1322
-                }
-              ]
-            }
-          ]
+          "point_id": "one-5204679e",
+          "text": "One reviewer says that the gameplay is quite simple, with automated platforming and puzzles that won't make your brain melt.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239204900",
+            "hours_at_review": 33.5,
+            "minutes_at_review": 2009,
+            "voted_up": true,
+            "date": "2026-11-02",
+            "review_text": "10 \"MEOWS\" OUT OF 10. An honest review from a 100% completionist.\n \nI'm writing this after unlocking every single achievement — yes, including the one where you have to sleep for over an hour, and the frustrating \"Can't Cat-ch Me\" run. As someone who has explored every neon-lit corner of this underground world, I can say for sure: Stray is not just a \"cat simulator for a couple of evenings.\" It is a short, incredibly deep, and deeply touching story.\n \nWhat makes this game a masterpiece:\n \n• Atmosphere and Visuals. A cyberpunk world where no humans are left, yet humanity remains. The abandoned cities, neon signs, slums, and robots trying to mimic human life — the artists and designers deserve a standing ovation.\n \n• Authentic Cat Behaviors. The developers brilliantly captured how cats actually behave. It's genuinely satisfying to knock bottles off ledges, scratch carpets, rub against robots' legs, or just curl up into a ball and sleep to the music. The dedicated \"Meow\" button is the best mechanic in video game history.\n \n• Story and Lore. The journey of B-12 and the stray cat is captivating. Behind a simple beginning lies a sad drama about a lost world, environmental collapse, and hope. The ending leaves a powerful, melancholic aftertaste.\n \nA small critique (to be completely honest):\n \nGameplay-wise, it is quite simple. The platforming is automated (you can't miss a jump or fall off a ledge accidentally), and the puzzles won't make your brain melt. But Stray shines through immersion and emotion rather than difficulty.\n \nWho is it for?\n \nEveryone. If you love cats, appreciate a thick post-apocalyptic atmosphere, and want a beautiful aesthetic experience — get it without hesitation. For me, it's one of the most memorable and soulful gaming adventures in recent years.\n \nBottom line: a short, soulful game that's easy to recommend. Highly recommended! 🐾",
+            "truncated": false
+          }
         },
         {
+          "point_id": "one-3b10ecae",
+          "text": "One reviewer says that playing with a keyboard and mouse involves way too much key mashing and recommends using a controller instead.",
           "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-ab9e12",
-              "claim": "Reviewers describe the puzzles as moderately challenging without being overly difficult or requiring outside solutions.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "229195941",
-                  "hours_at_review": 20.4,
-                  "voted_up": true,
-                  "date": "2026-06-29",
-                  "review_text": "Such a lovely game! Atmospheric and beautiful settings to explore. An open-world exploration feeling but within a series of fairly contained spaces. Puzzles are challenging enough that you have to think, go back and review clues, or retrace your steps but not so hard that you have to look anything up (I was able to complete the game without feeling frustrated enough to look up any solutions). The game has a natural flow that guides you to what is next. Highly recommend this game!",
-                  "truncated": false,
-                  "minutes_at_review": 1223
-                },
-                {
-                  "recommendationid": "229121577",
-                  "hours_at_review": 22.2,
-                  "voted_up": true,
-                  "date": "2026-06-29",
-                  "review_text": "This game is by far the best game I've played in 2026! I didn't expect a game, where the playable character is a cat, to have such a rich story. The world is absolutely beautiful. Every character is developed to perfection. The puzzles are just the right amount of challenging. Suspenseful moments are broken up with cute cat naps. I loved this game and I'll probably go back to collect all the achievements, which I rarely ever do. 10/10 would recommend!",
-                  "truncated": false,
-                  "minutes_at_review": 1330
-                },
-                {
-                  "recommendationid": "228376559",
-                  "hours_at_review": 37.1,
-                  "voted_up": true,
-                  "date": "2026-06-20",
-                  "review_text": "Stray completely stole my heart. What I loved most about this game is that there are no humans. It's just robots, cats, and this beautiful world full of mystery. I don't know why, but that made the game feel so special to me. The robots have so much personality, and I became attached to many of them during my journey. The world is absolutely beautiful. The neon lights, the colors, the rainy streets, and all the small details made me stop so many times just to look around. Every area feels unique and full of life. The story is simple but emotional. I loved discovering the world little by little instead of having everything explained to me. It made me feel curious and excited to keep exploring. The soundtrack is also amazing and fits the atmosphere perfectly. It made some moments feel peaceful and others feel emotional. The puzzles are fun and not too difficult. They were just enough to keep me engaged without becoming frustrating.\r\nAnd of course, playing as a cat is sooo cutee <3 Meowing for no reason, taking little naps, scratching things, and knocking objects off shelves made me smile every time. I never thought I could get so attached to a little orange cat.\r\nI've finished Stray several times already, and I still love it every time I play. That's very rare for me. There is just something magical about this game that keeps bringing me back.\r\nI genuinely can't think of a single thing I didn't enjoy.\r\nBeautiful, cozy, emotional, and unforgettable. I fell in love with this dystopian world, its robots, and its little orange cat. One of my favorite games ever. ❤️🐾✨",
-                  "truncated": false,
-                  "minutes_at_review": 2226
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-f3c1a3",
-              "claim": "Reviewers note that the game features puzzles that require thought and retracing steps without being overly frustrating or requiring outside guides.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "229195941",
-                  "hours_at_review": 20.4,
-                  "voted_up": true,
-                  "date": "2026-06-29",
-                  "review_text": "Such a lovely game! Atmospheric and beautiful settings to explore. An open-world exploration feeling but within a series of fairly contained spaces. Puzzles are challenging enough that you have to think, go back and review clues, or retrace your steps but not so hard that you have to look anything up (I was able to complete the game without feeling frustrated enough to look up any solutions). The game has a natural flow that guides you to what is next. Highly recommend this game!",
-                  "truncated": false,
-                  "minutes_at_review": 1223
-                },
-                {
-                  "recommendationid": "228376559",
-                  "hours_at_review": 37.1,
-                  "voted_up": true,
-                  "date": "2026-06-20",
-                  "review_text": "Stray completely stole my heart. What I loved most about this game is that there are no humans. It's just robots, cats, and this beautiful world full of mystery. I don't know why, but that made the game feel so special to me. The robots have so much personality, and I became attached to many of them during my journey. The world is absolutely beautiful. The neon lights, the colors, the rainy streets, and all the small details made me stop so many times just to look around. Every area feels unique and full of life. The story is simple but emotional. I loved discovering the world little by little instead of having everything explained to me. It made me feel curious and excited to keep exploring. The soundtrack is also amazing and fits the atmosphere perfectly. It made some moments feel peaceful and others feel emotional. The puzzles are fun and not too difficult. They were just enough to keep me engaged without becoming frustrating.\r\nAnd of course, playing as a cat is sooo cutee <3 Meowing for no reason, taking little naps, scratching things, and knocking objects off shelves made me smile every time. I never thought I could get so attached to a little orange cat.\r\nI've finished Stray several times already, and I still love it every time I play. That's very rare for me. There is just something magical about this game that keeps bringing me back.\r\nI genuinely can't think of a single thing I didn't enjoy.\r\nBeautiful, cozy, emotional, and unforgettable. I fell in love with this dystopian world, its robots, and its little orange cat. One of my favorite games ever. ❤️🐾✨",
-                  "truncated": false,
-                  "minutes_at_review": 2226
-                }
-              ]
-            }
-          ]
+          "citation": {
+            "recommendationid": "239308686",
+            "hours_at_review": 20.4,
+            "minutes_at_review": 1226,
+            "voted_up": true,
+            "date": "2026-11-03",
+            "review_text": "A glorious game, but one you'll definitely need a controller for. I tried a play through with K&M (before my first controller), and had to abandon 5 hours in. Way too much key mashing, and I had no opportunity to take in the gorgeous surroundings. However, with a controller it definitely hits the spot for me. I'm a dog person, but I definitely fell for Stray, as I did for the story and each of the characters. Loved finding the memories, and the pure relaxing pleasure of it all motivated me to complete. I'm looking forward to getting back to it once I've cleared my backlog.",
+            "truncated": false
+          }
         }
       ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 6,
-        "cited_recommend": 6,
-        "divergence_p": 1.0,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
+      "sourcing": null
     },
     {
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 11,
+      "pool_n": 3,
       "pct_positive": 100.0,
       "muted": true,
-      "n_note": "n=5 - too few reviews to call",
+      "n_note": "n=3 - too few reviews to call",
       "summary": null,
-      "themes": []
+      "themes": [],
+      "single_points": [],
+      "sourcing": null
     }
   ],
   "footer": {
-    "pool_n": 1257,
-    "steam_total_reviews": 89122,
+    "pool_n": 1200,
+    "steam_total_reviews": 90684,
     "cohort_count": 3,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1332010/71daca1910d664d31240b9623a495e0c0828807f/header.jpg?t=1785424330",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1332010/01489897d641b7f2e734a436dfabdd74afd4c677/capsule_231x87.jpg?t=1785424330",
-    "grid": "https://cdn2.steamgriddb.com/grid/5792570eae5e9fd09de1927180ff513c.png"
   }
 }

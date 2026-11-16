@@ -111,12 +111,62 @@ def pending(catalog, state, night, limit, skip_flash_tier=False, only=None):
     return out
 
 
+REFRESH_DIR = ROOT / "data/refresh"
+# The eval baseline. Several committed tests pin these five pages' exact numbers
+# (Kenshi's "based on 47 reviews"), and the July claims under data/ are what the
+# eval harness reproduces. A refresh skips them unless asked by name.
+SEED_APPIDS = {553850, 1091500, 233860, 413150, 1190460}
+# A refresh that failed the safety gate is not retried every night; the old page
+# stays up. thin_segmentation is not here because a refresh skips that gate
+# (owner, 2026-11-16): the title is already published, and a fresh pool drifting
+# just past the limit (Baldur's Gate 3, 60.9% veteran against 60%) would otherwise
+# keep its unverified page for good.
+REFRESH_TERMINAL = {"qr4_failed"}
+
+
+def refresh_pending(state, limit, only=None, include_seeds=False, verdicts=None):
+    """Published titles whose verdict predates the meaning check, oldest first.
+
+    Selected on the verdict's own `claims_verified` marker (synthesize.assemble),
+    so a refreshed title drops out by construction and a resumed run costs
+    nothing for titles already done.
+    """
+    rows = []
+    for p in sorted(Path(verdicts or VERDICTS).glob("*.json")):
+        try:
+            v = json.loads(p.read_text(encoding="utf-8"))
+            appid = int(v["appid"])
+        except (ValueError, KeyError, TypeError):
+            continue
+        if v.get("claims_verified"):
+            continue
+        if appid in SEED_APPIDS and not include_seeds:
+            continue
+        if only is not None and appid not in only:
+            continue
+        prev = state["titles"].get(str(appid)) or {}
+        if prev.get("refresh") and prev.get("outcome") in REFRESH_TERMINAL:
+            continue
+        rows.append({"appid": appid, "title": v.get("game_name") or str(appid),
+                     "class": "refresh", "_at": v.get("generated_at") or ""})
+    rows.sort(key=lambda r: (r["_at"], r["appid"]))
+    return rows[:limit] if limit else rows
+
+
 def run_title(row, state, args):
     appid, title = row["appid"], row["title"]
     t0 = time.time()
+    refresh = getattr(args, "refresh", False)
+    workdir = REFRESH_DIR / str(appid) if refresh else None
     published, result = generate_one.generate(
         appid, reserve=args.reserve, quiet=True,
-        ledger="batch", segmentation_gate=not args.no_gate)
+        ledger="batch", segmentation_gate=not args.no_gate and not refresh,
+        workdir=workdir)
+    if refresh and published:
+        # Keep the fresh raw/filtered/claims for audit; the page and response
+        # caches are the bulk and are never read again once the title is done.
+        import shutil
+        shutil.rmtree(workdir / "data/cache", ignore_errors=True)
     entry = {
         "title": title,
         "outcome": result.get("outcome"),
@@ -128,6 +178,16 @@ def run_title(row, state, args):
     for key in ("reason", "structure", "stage", "detail"):
         if key in result:
             entry[key] = result[key]
+    if refresh:
+        # make_audit_sample.py scopes a night by `at` and `published`, so a
+        # refreshed title joins that night's audit like any new one
+        entry["refresh"] = True
+    if result.get("refused"):
+        # Refused at the budget check: nothing ran, nothing was spent. Recording
+        # it would overwrite the title's real history - refresh night 1 did that
+        # to 518 published titles (BACKLOG 2026-11-16). Counted, never recorded.
+        entry["refused"] = True
+        return entry
     record(state, appid, entry)
 
     mark = {"ok": "ok  ", "thin_segmentation": "thin", "qr4_failed": "QR4!",
@@ -154,6 +214,13 @@ def main():
                     help="disable the measured segmentation gate")
     ap.add_argument("--dry-run", action="store_true",
                     help="show what would run, spend nothing")
+    ap.add_argument("--refresh", action="store_true",
+                    help="regenerate PUBLISHED titles whose verdict predates the "
+                         "meaning check, from fresh reviews, each in its own work "
+                         "dir under data/refresh/. The live page is replaced only "
+                         "by a candidate that passes QR-4. Seeds are skipped.")
+    ap.add_argument("--include-seeds", action="store_true",
+                    help="with --refresh: also refresh the 5 seed games")
     ap.add_argument("--skip-remote-check", action="store_true",
                     help="start even if the live ledger cannot be read. "
                          "Runs on local live_used, which may OVERSTATE batch "
@@ -170,8 +237,11 @@ def main():
             else args.appids
         only = {int(x) for x in raw.replace(",", " ").split() if x.strip().isdigit()}
         print("restricted to %d appids" % len(only))
-    todo = pending(catalog, state, args.night, args.limit,
-                   args.skip_flash_tier, only)
+    if args.refresh:
+        todo = refresh_pending(state, args.limit, only, args.include_seeds)
+    else:
+        todo = pending(catalog, state, args.night, args.limit,
+                       args.skip_flash_tier, only)
 
     q = live_quota.load()
 
@@ -209,8 +279,9 @@ def main():
                  before, q.get("live_used", 0)))
 
     budget = live_quota.batch_remaining(q, args.reserve)
-    print("catalog %s | night %s | %d titles pending"
-          % (catalog["generated_at"], args.night or "all", len(todo)))
+    print("catalog %s | night %s | %d titles pending%s"
+          % (catalog["generated_at"], args.night or "all", len(todo),
+             " (REFRESH: published titles, fresh reviews)" if args.refresh else ""))
     print("batch budget %d of %d remaining (live reserve %d untouched, "
           "live used %d today)"
           % (budget, live_quota.batch_budget(args.reserve), args.reserve,
@@ -231,7 +302,7 @@ def main():
     state["runs"].append({
         "started": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "night": args.night, "pending": len(todo),
-        "concurrency": args.concurrency})
+        "concurrency": args.concurrency, "refresh": bool(args.refresh)})
     save_state(state)
 
     t0, done, stopped = time.time(), [], None
@@ -300,6 +371,11 @@ def main():
         signal.signal(signal.SIGINT, prev_handler)
 
     wall = time.time() - t0
+    refused = sum(1 for d in done if d.get("refused"))
+    done = [d for d in done if not d.get("refused")]
+    if refused:
+        print("\n%d titles queued past the budget were refused before starting "
+              "(0 calls, not recorded); they stay pending" % refused)
     ok = sum(1 for d in done if d["published"])
     calls = sum(d["model_calls"] for d in done)
     by = {}

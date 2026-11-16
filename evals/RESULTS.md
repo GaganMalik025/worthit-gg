@@ -2447,3 +2447,46 @@ the owner on QR-1, n=6), so the 7 disagreements are listed in the output for the
 to read, not scored. This is n=57 on 4 titles. It shows the check runs as designed and
 roughly halves the judge's thin rate on this sample. It is not a measured catalog-wide
 rate.
+
+## 2026-11-16 — Catalog refresh, night 1: 19 titles regenerated with the meaning check
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **28,073 citations across all 543 verdicts, 0 failures**, `EXIT_RC=0`. Raw: `evals/qr4-2026-11-16.txt` |
+| Manual audit | `evals/audit-4.4-2026-11-16.md`, seed 20261116, 10 verdicts, 20 citations. **Read by the coding agent on the owner's instruction, not by the owner.** No NSFW or slur text; one uncensored profanity, which passes rubric QR-4. Findings are in the file's Notes. |
+| Search index | rebuilt, 0 of 543 verdict appids missing by set membership |
+
+**First night of the refresh** (`pipeline/run_batch_logged.sh --refresh`, log
+`evals/batch-2026-11-16.txt`, `EXIT_RC=0`). It regenerates published titles from fresh
+Steam reviews, each in a work dir under `data/refresh/`. The live page is replaced only
+by a candidate that passed QR-4. The 5 seed games are skipped.
+
+| | |
+|---|---|
+| Ran / published | 20 / **19** |
+| Gate drops | 1: Baldur's Gate 3, `thin_segmentation` (60.9% veteran, limit 60%). Old page kept. |
+| Stage failures | 0 |
+| Model calls | **243**, mean 12.8 per published title, range 8–18. Reconciles three ways: run summary, the 20 records in `data/batch_state.json`, ledger 398 − 155 |
+| Over EST_COST 15 | 3: Cult of the Lamb 18, Apex Legends 17, Darktide 16 |
+| Budget left | 2 of 400, live reserve 100 untouched |
+| Catalog | 543, unchanged (a refresh replaces pages) |
+| Verdicts on the 19 | Buy 13 / Wait 6 → **Buy 11 / Wait 8** |
+| Claims on the 19 | 294 → **210**, plus 48 one-reviewer points |
+
+Four verdict words moved with the fresh reviews: Forza Horizon 5 Wait → Buy, and Star
+Wars Jedi: Fallen Order, GTA IV and People Playground each Buy → Wait. Stray is the
+thinnest page, with 2 claims and 3 one-reviewer points (it had 8 claims).
+
+**Two defects surfaced and were fixed the same night** (BACKLOG 2026-11-16):
+
+1. The run overwrote 518 titles' records with `batch_budget_exhausted` at 0 calls. Every
+   pending title is queued before any spends, and a pre-spend refusal was recorded as the
+   title's outcome. Those records were restored from HEAD, and a refusal is no longer
+   recorded.
+2. A refresh dropped by the segmentation gate could never be retried, which left
+   Baldur's Gate 3 on its unverified page for good. A refresh now skips that gate.
+
+Pinned in `pipeline/test_refresh.py`. Break-then-confirm: 18/18
+(`evals/mutate-refresh-2026-11-16.txt`).

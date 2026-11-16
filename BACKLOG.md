@@ -62,6 +62,42 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-11-16 | **The hand audit never samples a one-reviewer point's citation** |
+building `evals/audit-4.4-2026-11-16.md` | `make_audit_sample.py` draws citations from
+`themes[].claims[]` only, so the 48 single-review points on night 1's 19 pages
+cannot be drawn. The automated QR-4 gate does read them (`qr4_gate.iter_citations`,
+28,073 citations, PASS), so invariant 8 holds. The human read does not reach them.
+Not fixed.
+
+2026-11-16 | **A refresh night overwrote 518 titles' batch history with
+`batch_budget_exhausted`** | refresh night 1, `evals/batch-2026-11-16.txt` |
+`run_batch.main()` submits every pending title before any of them spends, so the
+per-submit budget check passed all 538. Each title past the budget then got refused
+inside `generate_one.generate()` at 0 calls, and `run_title` recorded that refusal as
+the title's outcome. On a normal night that only labels new titles. On a refresh it
+replaced each published title's original record (outcome, model_calls, date), and
+that is the cost history EST_COST was measured from. No quota was spent and no page
+changed. `data/batch_state.json` is tracked, so the 518 records restore from HEAD.
+> **Fixed 2026-11-16 (owner).** The 518 records were restored from HEAD (509
+> restored, 9 removed that HEAD never had); only the 20 real refresh results differ.
+> `generate()` now marks a pre-spend refusal `refused`, and `run_title` counts it
+> without recording it. Pinned in `pipeline/test_refresh.py`, mutations rf15/rf18.
+
+2026-11-16 | **Baldur's Gate 3 can never be refreshed: its fresh pool fails the
+segmentation gate** | refresh night 1 | 60.9% of the fresh pool is veteran, against a
+60% limit. The live page (July, Buy, 13 unverified claims) stays up, and
+`thin_segmentation` is terminal for a refresh, so it is never retried.
+> **Fixed 2026-11-16 (owner: skip the gate).** A refresh no longer applies the
+> segmentation gate, since the title is already published, and `thin_segmentation`
+> is no longer terminal for a refresh, so Baldur's Gate 3 is eligible again. A normal
+> batch keeps the gate. Mutations rf16/rf17.
+
+2026-11-16 | **3 of 19 refreshed titles cost more than EST_COST 15** | refresh night 1 |
+Cult of the Lamb 18, Apex Legends 17, Darktide 16 calls; mean 12.8 over the 19. The
+batch stopped on its own ledger with 2 calls left, so nothing overspent. On the live
+path, reconciliation corrects an overrun after the fact. EST_COST stays, and is
+recorded here so a later change is made from this data.
+
 2026-11-16 | **Allowing one-review claims at extraction hollows out the cohort
 sections: 101 of 122 pilot claims cited one review** | pilot,
 `evals/pilot-one-reviewer-2026-11-16-run1/` (4 titles, 45 batch calls, every

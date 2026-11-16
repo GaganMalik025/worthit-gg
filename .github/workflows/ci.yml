@@ -102,6 +102,11 @@ jobs:
       - name: claim verification
         run: .venv/bin/python pipeline/test_claim_verification.py
 
+      # The catalog refresh regenerates LIVE titles: this pins that a failure of
+      # any kind leaves the page readers have untouched. Offline, all stubs.
+      - name: catalog refresh
+        run: .venv/bin/python pipeline/test_refresh.py
+
       # Offline: committed seed artifacts only, no Steam, no Gemini, no quota.
       # It runs here for the reason e06538a existed - a suite nothing re-runs on
       # push is verified exactly once, by the person who wrote it.

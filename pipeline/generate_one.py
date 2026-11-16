@@ -62,7 +62,30 @@ STAGES = [
 ]
 
 
-def run_stage(script_args, appid, timeout=900, extra=(), ledger=None):
+DOTENV = ROOT / ".env"
+
+
+def _dotenv(path=None):
+    """KEY=value pairs from the repo's .env, for a stage running outside ROOT.
+
+    The stages load .env relative to their working directory, so a stage run in a
+    refresh work dir would otherwise start without its API key. Values are only
+    ever placed in the child's environment, never printed or logged.
+    """
+    p = Path(path or DOTENV)
+    out = {}
+    if not p.exists():
+        return out
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        k, v = line.split("=", 1)
+        out[k.strip()] = v.strip().strip("\"'")
+    return out
+
+
+def run_stage(script_args, appid, timeout=900, extra=(), ledger=None, cwd=None):
     """Run one stage as a subprocess, tagged with the title it is charging.
 
     WORTHIT_APPID is how the pacer attributes each request to a title, and
@@ -70,15 +93,38 @@ def run_stage(script_args, appid, timeout=900, extra=(), ledger=None):
     to cross the process boundary because the stages are subprocesses, and both
     are set here rather than inside each script so no stage can forget - which
     is exactly what every stage but qr4 used to do.
+
+    `cwd` is a refresh work dir (run_batch.py --refresh). Every stage reads and
+    writes data/ relative to its working directory, so a stage run there fetches
+    FRESH reviews into an empty data/ and never sees the repo's stored ones. The
+    quota ledger and pacer resolve from ROOT, so the charge lands where it always
+    does.
     """
     import os
     env = dict(os.environ, WORTHIT_APPID=str(appid),
                WORTHIT_LEDGER=str(ledger or "batch"))
+    if cwd is not None:
+        for k, v in _dotenv().items():
+            env.setdefault(k, v)
+    scripts = [s if Path(s).is_absolute() else str(ROOT / s) for s in script_args]
     t0 = time.time()
-    proc = subprocess.run([PY] + script_args + [str(appid)] + list(extra),
-                          cwd=str(ROOT), env=env,
+    proc = subprocess.run([PY] + scripts + [str(appid)] + list(extra),
+                          cwd=str(cwd or ROOT), env=env,
                           capture_output=True, text=True, timeout=timeout)
     return time.time() - t0, proc
+
+
+def publish_candidate(candidate, live):
+    """Replace the live verdict with a gated candidate, atomically.
+
+    Written beside the live file and renamed over it, so a reader never sees a
+    half-written page, and a crash mid-copy leaves the old page whole.
+    """
+    live.parent.mkdir(parents=True, exist_ok=True)
+    tmp = live.with_name(live.name + ".refresh-tmp")
+    tmp.write_bytes(candidate.read_bytes())
+    import os
+    os.replace(tmp, live)
 
 
 def count_model_calls(out):
@@ -100,14 +146,15 @@ def flash_tier_ids():
     return set(synthesize.flash_tier())
 
 
-def cohort_structure(appid):
+def cohort_structure(appid, root=None):
     """Veteran pool share and refund cohort size, read from the ingest output.
 
     Available for FREE after the ingest stage - ingestion talks only to Steam.
     That is what makes the thin-segmentation gate cheap: it sits between the
-    free stage and the first stage that spends Gemini quota.
+    free stage and the first stage that spends Gemini quota. `root` is the
+    refresh work dir when there is one: the fresh ingest is there, not in ROOT.
     """
-    path = ROOT / "data/raw" / ("%s.json" % appid)
+    path = Path(root or ROOT) / "data/raw" / ("%s.json" % appid)
     if not path.exists():
         return None
     pool = json.loads(path.read_text(encoding="utf-8")).get("pool") or {}
@@ -150,8 +197,15 @@ def thin_segmentation(struct, max_veteran_share=0.60, min_cohorts=2):
 
 
 def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
-             ledger="live", segmentation_gate=False):
+             ledger="live", segmentation_gate=False, workdir=None):
     """Returns (published, result). Never leaves an ungated verdict on disk.
+
+    workdir (run_batch.py --refresh, 2026-11-16) regenerates a title that is
+    ALREADY PUBLISHED. Every stage runs inside it, so the reviews are fetched
+    fresh, and the verdict is written there as a candidate. Only a candidate that
+    passes QR-4 replaces the live page. On any failure - a stage, the gate, the
+    segmentation gate - the live page is left exactly as it was: the unlink on a
+    QR-4 failure removes the candidate, never the page readers have.
 
     ledger selects which claim on the daily budget this generation charges:
       "live"  - the reserve carved out for search-box cache misses (guard 1)
@@ -170,15 +224,24 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
     else:
         allowed, reason, detail = live_quota.can_generate(state, ip, reserve)
     if not allowed:
-        # guard 1: reserve spent (or the secondary IP guard) -> queue fallback
+        # guard 1: reserve spent (or the secondary IP guard) -> queue fallback.
+        # `refused`: nothing ran and nothing was spent, so a caller keeping
+        # per-title history must not record this as the title's outcome.
         return False, {"published": False, "outcome": reason, "detail": detail,
-                       "fallback": "queue"}
+                       "fallback": "queue", "refused": True, "model_calls": 0}
 
     # Baseline for REPORTING what this title spent. The charging happens at the
     # choke point every request passes through (model_pacer._acquire), before
     # the request is sent, so failures are charged exactly like successes and no
     # early return can skip it.
     calls_before = model_pacer.calls_for(appid)
+    wd = Path(workdir) if workdir else None
+    out_dir = (wd / "site/public/verdicts") if wd else VERDICTS
+    if wd:
+        wd.mkdir(parents=True, exist_ok=True)
+        # A candidate left by an earlier attempt must never be gated and
+        # published as if this attempt had written it.
+        (out_dir / ("%s.json" % appid)).unlink(missing_ok=True)
     timings, log = [], []
     for key, label, script in STAGES:
         if not quiet:
@@ -188,7 +251,11 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
         # never wait on tomorrow's quota, and a live hit on a tier title would
         # burn a slot the batch reserved.
         extra = ("--force-lite",) if (key == "verdict" and ledger != "batch") else ()
-        dt, proc = run_stage(script, appid, extra=extra, ledger=ledger)
+        if wd and key == "verdict":
+            # explicit, so a future change to synthesize's default cannot send a
+            # refresh candidate straight to the live directory
+            extra = extra + ("--out", str(out_dir))
+        dt, proc = run_stage(script, appid, extra=extra, ledger=ledger, cwd=wd)
         timings.append({"stage": key, "label": label, "seconds": round(dt, 1)})
         log.append(proc.stdout[-4000:])
         if proc.returncode != 0:
@@ -204,7 +271,7 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
         # the measured gate, placed exactly on the cost boundary: ingest is
         # free, everything after "filter" spends quota
         if segmentation_gate and key == "filter":
-            struct = cohort_structure(appid)
+            struct = cohort_structure(appid, root=wd)
             thin, why = thin_segmentation(struct)
             if thin:
                 # the gate fires before any model call, so this is normally 0 -
@@ -216,7 +283,7 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
                                "timings": timings, "model_calls": spent,
                                "fallback": "skip"}
 
-    out_path = VERDICTS / ("%s.json" % appid)
+    out_path = out_dir / ("%s.json" % appid)
     if not out_path.exists():
         spent = model_pacer.calls_for(appid) - calls_before
         return False, {"published": False, "outcome": "no_verdict_written",
@@ -238,10 +305,15 @@ def generate(appid, ip=None, reserve=live_quota.LIVE_RESERVE, quiet=False,
     if not passed:
         # withheld, not served-with-a-warning. Remove the artifact so no static
         # route can pick it up, and queue the title for manual audit.
+        # In refresh mode out_path is the CANDIDATE in the work dir; the live page
+        # is untouched and stays up.
         out_path.unlink()
         return False, {"published": False, "outcome": "qr4_failed",
                        "qr4": report, "timings": timings,
                        "model_calls": cost, "fallback": "queue"}
+
+    if wd:
+        publish_candidate(out_path, VERDICTS / ("%s.json" % appid))
 
     return True, {"published": True, "outcome": "ok", "appid": appid,
                   "game_name": verdict.get("game_name"), "qr4": report,

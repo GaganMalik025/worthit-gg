@@ -1,0 +1,13 @@
+rf06
+the candidate is written straight to the live directory
+
+CAUGHT+NAMED
+file: pipeline/generate_one.py
+expected: a QR-4 failure leaves the live page untouched
+a QR-4 failure leaves the live page untouched                      FAIL
+and removes the candidate, not the page                          FAIL
+a stage failure leaves the live page untouched                     FAIL
+a stale candidate from an earlier attempt is never published       FAIL
+and a thin fresh pool leaves the live page untouched             FAIL
+synthesis writes its candidate into the work dir                   FAIL
+

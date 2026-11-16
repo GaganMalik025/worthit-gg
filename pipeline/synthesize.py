@@ -767,6 +767,10 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
         "appid": appid,
         "game_name": claims_blob.get("game_name"),
         "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        # True when every claim passed verify_claims' meaning check (2026-11-16).
+        # The catalog refresh (run_batch.py --refresh) selects on its absence. A
+        # pipeline marker, never rendered.
+        "claims_verified": bool(claims_blob.get("verified")),
         "art": art,
         "model": {"extraction": claims_blob.get("model"), "synthesis": model},
         "cost": cost,

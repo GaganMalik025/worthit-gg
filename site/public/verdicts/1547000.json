@@ -1,51 +1,62 @@
 {
   "appid": "1547000",
   "game_name": "Grand Theft Auto: San Andreas – The Definitive Edition",
-  "generated_at": "2026-08-10T09:54:39Z",
+  "generated_at": "2026-11-16T13:34:22Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1547000/header.jpg?t=1781138712",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1547000/capsule_231x87.jpg?t=1781138712",
+    "grid": "https://cdn2.steamgriddb.com/grid/b3b4052b43e62e416a26b544933ecbfb.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 15,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Classic chaos returned with rough edges and broken physics.",
+    "tagline": "Classic chaos returns with a heavy coat of technical friction.",
     "for_you_if": [
-      "you want an expanded view of the city",
-      "you plan to navigate missions with updated checkpoints"
+      "you want the sprawling open world of San Andreas",
+      "you appreciate the added mission checkpoints",
+      "you can overlook missing radio tracks"
     ],
     "not_for_you_if": [
-      "you will not install a third-party launcher",
-      "you expect the original atmosphere and physics",
-      "you lack patience for random crashes"
+      "you will not install a third-party Rockstar launcher",
+      "you are sensitive to stuttering and random crashes",
+      "you want aircraft controls to handle smoothly"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 111,
-      "pct_positive": 39.6,
+      "pool_n": 91,
+      "pct_positive": 41.8,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 560,
-      "pct_positive": 81.8,
+      "pool_n": 530,
+      "pct_positive": 82.3,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 506,
-      "pct_positive": 83.4,
+      "pool_n": 540,
+      "pct_positive": 84.3,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 27,
-      "pct_positive": 85.2,
+      "pool_n": 39,
+      "pct_positive": 92.3,
       "muted": false
     }
   ],
@@ -55,38 +66,44 @@
       "type": "segmentation",
       "direction": null,
       "shape": "monotonic_increase",
-      "sentence": "Sentiment shifts from negative at the start to positive among longer sessions.",
+      "sentence": "Player approval increases steadily the longer they spend with the game.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 39.6,
-            "pool_n": 111
+            "pct_positive": 41.8,
+            "pool_n": 91
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 81.8,
-            "pool_n": 560
+            "pct_positive": 82.3,
+            "pool_n": 530
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 83.4,
-            "pool_n": 506
+            "pct_positive": 84.3,
+            "pool_n": 540
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 92.3,
+            "pool_n": 39
           }
         ],
         "shape": "monotonic_increase",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 39.6,
-        "low_pool_n": 111,
-        "high_cohort": "mid",
-        "high_cohort_label": "20-100 hours",
-        "high_pct_positive": 83.4,
-        "high_pool_n": 506,
-        "gap_pts": 43.8
+        "low_pct_positive": 41.8,
+        "low_pool_n": 91,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 92.3,
+        "high_pool_n": 39,
+        "gap_pts": 50.5
       }
     }
   ],
@@ -95,160 +112,77 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 111,
-      "pct_positive": 39.6,
+      "pool_n": 91,
+      "pct_positive": 41.8,
       "muted": false,
       "n_note": null,
-      "summary": "Players face severe technical issues, mandatory online accounts, and altered physics immediately.",
+      "summary": "Early testers run into mandatory account requirements, missing music, and flawed character models.",
       "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ref-36362e",
-              "claim": "Reviewers report that playing above sixty frames per second breaks in-game physics and audio.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "221592303",
-                  "hours_at_review": 0.4,
-                  "voted_up": true,
-                  "date": "2026-03-24",
-                  "review_text": "I'll not write about the game, everyone knows it's a cult classic, a beloved entry of an iconic franchise and it still is so go ahead and enjoy the game and soak in its timeless nostalgia.\n\nThis is purely a technical review and addresses some of the shortcoming on this \"remaster\" release. As of March 2026, the game with some minor issues is finally playable and importantly enjoyable. All these suggestions are valid for the other two games as well.\n\n- The stutters still exists but fixed by using -dx12 in the command line as well as using \"Car reflections\" set to SCREEN. This is a major performance problem because the implementation is broken, just set it to screen and your frames will double. \n- Use Nvidia upscaling, set your resolution higher than your screen and use DLSS Quality (swap using dlss swapper for the latest, v3.10, preset K) for a crystal clear image quality.  Also use classic lightening. \n- LIMIT your frames to 60fps using RTSS ( do not use internal UE limiter, it's bad) because it breaks physics and sounds.\n- If you want more perf. or have a weaker GPU, tweak vehicle lights, volumetric clouds, world shadows and distance. IMO, the only settings that is broken is \"car reflections\", just set it to lowest (screen space).\n- KBM users: the game (and the other two) have aggressive auto-centering which is irritating and near impossible to enjoy the game without a controller. Fix: Use ThirteenAG's Fusion Mods for all these 3 games with a small modification ( do NOT disable intro and menu in the mod options (outside of the game), by default they are set to 1, change it to 0 before starting the game, these mess with Rockstar club and autosave and you'll get errors, (Rockstar's cloud saves are also a bit bugged)\n- There's some minor bugs like camera jumps when you drive inside a tunnel, or your sprint speed is too fast in Vice City DE, etc. Nothing can be done about these atm. \n\nThat's it, after years of patches, mod fixes and community help it's finally here. Wha…",
-                  "truncated": true,
-                  "minutes_at_review": 24
-                },
-                {
-                  "recommendationid": "221137677",
-                  "hours_at_review": 1.0,
-                  "voted_up": false,
-                  "date": "2026-03-20",
-                  "review_text": "anything above 60 fps breaks the physics.",
-                  "truncated": false,
-                  "minutes_at_review": 59
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-316a9a",
-              "claim": "Reviewers experience stuttering and performance issues linked to the Unreal Engine conversion.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "225968160",
-                  "hours_at_review": 1.7,
-                  "voted_up": false,
-                  "date": "2026-05-20",
-                  "review_text": "traversal stutter because trash developers using Unreal Engine",
-                  "truncated": false,
-                  "minutes_at_review": 103
-                },
-                {
-                  "recommendationid": "221592303",
-                  "hours_at_review": 0.4,
-                  "voted_up": true,
-                  "date": "2026-03-24",
-                  "review_text": "I'll not write about the game, everyone knows it's a cult classic, a beloved entry of an iconic franchise and it still is so go ahead and enjoy the game and soak in its timeless nostalgia.\n\nThis is purely a technical review and addresses some of the shortcoming on this \"remaster\" release. As of March 2026, the game with some minor issues is finally playable and importantly enjoyable. All these suggestions are valid for the other two games as well.\n\n- The stutters still exists but fixed by using -dx12 in the command line as well as using \"Car reflections\" set to SCREEN. This is a major performance problem because the implementation is broken, just set it to screen and your frames will double. \n- Use Nvidia upscaling, set your resolution higher than your screen and use DLSS Quality (swap using dlss swapper for the latest, v3.10, preset K) for a crystal clear image quality.  Also use classic lightening. \n- LIMIT your frames to 60fps using RTSS ( do not use internal UE limiter, it's bad) because it breaks physics and sounds.\n- If you want more perf. or have a weaker GPU, tweak vehicle lights, volumetric clouds, world shadows and distance. IMO, the only settings that is broken is \"car reflections\", just set it to lowest (screen space).\n- KBM users: the game (and the other two) have aggressive auto-centering which is irritating and near impossible to enjoy the game without a controller. Fix: Use ThirteenAG's Fusion Mods for all these 3 games with a small modification ( do NOT disable intro and menu in the mod options (outside of the game), by default they are set to 1, change it to 0 before starting the game, these mess with Rockstar club and autosave and you'll get errors, (Rockstar's cloud saves are also a bit bugged)\n- There's some minor bugs like camera jumps when you drive inside a tunnel, or your sprint speed is too fast in Vice City DE, etc. Nothing can be done about these atm. \n\nThat's it, after years of patches, mod fixes and community help it's finally here. Wha…",
-                  "truncated": true,
-                  "minutes_at_review": 24
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "access",
           "claims": [
             {
-              "claim_id": "ref-5cdd83",
-              "claim": "Reviewers report that the single-player game requires an active internet connection and a Rockstar account to launch.",
+              "claim_id": "ref-d85b8b",
+              "claim": "The game requires a third-party Rockstar account and launcher to play, which prevents launching when servers or logins fail.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 4
+                "negative": 7
               },
               "citations": [
                 {
+                  "recommendationid": "239672202",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 112,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "Trash launcher that requires a 3rd party rockstar account and requires online to start the game for a 20yr old plus single player game. Graphics update is ehh. Bought for nostalgia while it was on sale. not worth it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "234445605",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 7,
+                  "voted_up": false,
+                  "date": "2026-09-04",
+                  "review_text": "\"All you had to do, was fixing the damn RS launcher, CJ!\" \n\nRockstar games launcher loading for a few minutes, then proceeds to crash",
+                  "truncated": false
+                },
+                {
                   "recommendationid": "232174053",
                   "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
                   "voted_up": false,
                   "date": "2026-08-06",
                   "review_text": "Couldn't even play the game. I shouldn't need support to access MY ACCOUNT. Can't make a new one and re-link either, cause you need to access the old one first. Absolutely absurd that I spent $60 on this and can't play a SINGLE PLAYER GAME without a Rockstar account. Utter trash. Hope GTA VI flops.",
-                  "truncated": false,
-                  "minutes_at_review": 10
+                  "truncated": false
                 },
                 {
                   "recommendationid": "228089982",
                   "hours_at_review": 0.3,
+                  "minutes_at_review": 19,
                   "voted_up": false,
                   "date": "2026-06-16",
                   "review_text": "cannot connect to rockstar so cannot play at all. can we get our money back or a version of the game that does not require the internet or rockstar games servers as well. i just want to play the game lol. I am sure that there is a few or more people will agree from the looks of it?????????????????????\n",
-                  "truncated": false,
-                  "minutes_at_review": 19
-                },
-                {
-                  "recommendationid": "217524822",
-                  "hours_at_review": 1.3,
-                  "voted_up": false,
-                  "date": "2026-02-03",
-                  "review_text": "Requires internet to launch a single player game. There is no reason that this game should connect to the internet to launch. just pirate the game.",
-                  "truncated": false,
-                  "minutes_at_review": 77
-                },
-                {
-                  "recommendationid": "216716117",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-01-24",
-                  "review_text": "Why the heck does a single player game require an account and active network connection to your services? Just no.",
-                  "truncated": false,
-                  "minutes_at_review": 5
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-44cc59",
-              "claim": "Reviewers state that the Rockstar third-party launcher fails to remember login credentials or process sign-in requests properly.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "227459830",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-06-08",
-                  "review_text": "Rockstar can kiss my A$$ !   Their damn 3rd party launcher on 22 year old game is nuts. \nSo sick of their \"Social Club\".  it never remembers you and it ALWAYS assumes you stole the damn game.  \n\nAVOID ALL ROCKSTAR GAMES  -10/10    \n\nSteam should remove this crap.  it's an insult to the consumer.",
-                  "truncated": false,
-                  "minutes_at_review": 5
+                  "truncated": false
                 },
                 {
                   "recommendationid": "226888421",
                   "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
                   "voted_up": false,
                   "date": "2026-05-31",
                   "review_text": "Attempted to play san andreas because I was feeling nostalgic. Could not even launch the game because the rockstar sign in was having problems, just kept repeating \"could not process your request at this time.\" For a game that originally released in 2004 this is unnecessary and unacceptable.",
-                  "truncated": false,
-                  "minutes_at_review": 25
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "216573586",
-                  "hours_at_review": 0.6,
+                  "recommendationid": "225766140",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 20,
                   "voted_up": false,
-                  "date": "2026-01-22",
-                  "review_text": "Rockstar launcher does not work, support won't help. I own many rockstar games on Steam, can't play any of them.",
-                  "truncated": false,
-                  "minutes_at_review": 36
+                  "date": "2026-05-17",
+                  "review_text": "Unable to play the game as Rockstar Support is unable to verify that I actually purchased their game.  \nDo not purchase any games on Steam that require the Rockstar Launcher.",
+                  "truncated": false
                 }
               ]
             }
@@ -258,84 +192,37 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ref-446750",
-              "claim": "Reviewers state that original versions of the game were removed from the Steam store.",
+              "claim_id": "ref-cc25ce",
+              "claim": "Some original music tracks are missing due to expired licenses.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "224167218",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2026-04-26",
-                  "review_text": "I prefered the old school version, the definitive version is buggy, the characters look bizarre especially Rider, controls are not quite good and some missions you required to take items are not present so you need to restart it quite annoying. My recommandation play it on PS2 or on the original xbox because the old version has vanished from the steam store.",
-                  "truncated": false,
-                  "minutes_at_review": 111
-                },
-                {
-                  "recommendationid": "217415210",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-02-02",
-                  "review_text": "Either fix these lazy remasters or put the original versions back on Steam.\n\nIt's so disappointing because some of the modernizations are nice but the downsides are far too massive and distracting.\n\nEdit: After playing through the og Steam version with mods it makes this version even more pathetic and sad. This port doesn't hold a candle to it and ruins so much about the gameplay because of its mobile-game code. Do not believe the positive reviews, this is not a \"fixed\" it got a color filter that doesn't properly emulate the PS2 games or all of the detailed visual effects they had. R* only ever made this one amazing game and has lost all understanding of why it was so special. I severely doubt they'll ever fix this, and while genuinely great mods can improve it, theres no point in modding this version over the og.",
-                  "truncated": false,
-                  "minutes_at_review": 19
-                },
-                {
-                  "recommendationid": "217282267",
+                  "recommendationid": "237805682",
                   "hours_at_review": 0.9,
+                  "minutes_at_review": 53,
                   "voted_up": false,
-                  "date": "2026-01-31",
-                  "review_text": "The Rockstar Launcher ruins every single game it touches, it makes no sense for a single player game to have to be online just for Rockstars ♥♥♥♥♥♥ service to work. The game also looks horrible, the textures looks like they were ran through an AI Upscaler , to create these sloppy \"polished\" textures. Don't even get me started on the charecter models, CJ for example looks like he has down syndrome, which most likely happened because Rockstar ran the character models and texture through the same ♥♥♥♥♥♥ AI Upscaler, If Rockstar just put a BIT of effort the game may not have looked like this \"polished\" slop trash pit. Gameplay is also tad buggy, but that just might me on my end. I was really hoping for this game is to be a great remaster of the original port, with better textures, and possibly some quality of life improvements, but no. This is a horrible remaster of the orginal port of San Andreas, and of course I can't even play the original port on steam because Rockstar removed it. I'll just stick to playing San Andreas on my PS2, it looks better anyway.",
-                  "truncated": false,
-                  "minutes_at_review": 52
+                  "date": "2026-10-15",
+                  "review_text": "Hollow version of the original.\n- Some of the music that was hugely nostalgic to me is not here, because of non-renewal of licenses;\n- The AI feels quite janky;\n- My Xbox controller does not work in the menu;\n- I am just not used to some of the new controls, like the hold to pedal faster on the cycle. \n\nI was not even in an hour and I got hugely turned off. Just play the original...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236680968",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 83,
+                  "voted_up": false,
+                  "date": "2026-10-02",
+                  "review_text": "Any body telling you this game is \"fixed\" or \"improved\" in any way is purely coping, the game still plays awfully, the graphics are horrid and the missing music and censored artwork does not make this a definitive edition in the slightest, do not buy this game.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ref-8ea087",
-              "claim": "Reviewers describe the color palette and lighting as unfaithful to the original release, citing an unwanted yellow or puke-like tint.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "229545690",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "Not worth the price even at 67% off for this pack of 3. The missions are easier. It's a dumbed down game, when it's meant to be an upgrade. The memories are good, but if you own the originals, you don't need this R* store infested rubbish. The falling off your BMX mechanic animation is awful.\nCJ is also so buff he can run into cars with 3 people inside and he poeses that vehicle in whatever direction you're running.\nIt's pathetic for a 'definitive edition' - The colour of the sky was puke-like. \nThere are also achievements in the R* Store that are not on steam, hence, this is just not meant to be enjoyed by Steam™ gamers.\n\nThe positives were in performance, for an Unreal engine conversion, and everything graphics wise maxed out, the RTX3070ti didn't pass 35 degrees celsius, with the CPU sitting in the low to mid 40's.\n\nThe best thing you can do to prove you love Rockstar is play the originals, play everything up until GTA V - upgraded, and forget GTA VI till it finally releases on PC.\n At least we can spectate their release test on the console-peasants again. That price alone was Take2 robbing 'FOMO gamers'",
-                  "truncated": false,
-                  "minutes_at_review": 115
-                },
-                {
-                  "recommendationid": "225538052",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-05-15",
-                  "review_text": "Personal Rating: Slightly Negative (40%)\n\nI originally thought of giving SA a positive rating, because SA is the only one I wanted out of the trilogy.\nBut no.\n\nEvery positive I could possibly think of would just apply to the original GTA: SA, all the quotes, and all the sound effects. Nostalgia can drive you a long way, but not all the way to a positive review.\n\nThat being said, San Andreas is probably the best out of the Trilogy. It looks graphically alright, even tho I absolutely hate the yellow tint it has on it.\n\nThen there's the whole marketing thing, which I already mentioned in my GTA 3 and Vice City reviews. If they were separate titles, each for 20€, the mistakes in this trilogy would be much more forgivable.",
-                  "truncated": false,
-                  "minutes_at_review": 25
-                },
-                {
-                  "recommendationid": "217434441",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-02-02",
-                  "review_text": "It has been a few years since it dropped and fixes have been made so I decided to give it a try.\nAnd I just cannot enjoy it, the visuals are just far from the original vision and feel of the original game, the warm sunset and lush colors are gone.... I got to play 4 minutes and gave up, I will stick to the PS2 original or emulator.",
-                  "truncated": false,
-                  "minutes_at_review": 5
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-994995",
-              "claim": "Reviewers note that character facial models and textures appear low quality and look as though they were processed through an artificial intelligence upscaler.",
+              "claim_id": "ref-ef1121",
+              "claim": "Character models and textures feature visual flaws such as plastic appearances, neck seams, and poor facial updates.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -345,122 +232,57 @@
                 {
                   "recommendationid": "227766677",
                   "hours_at_review": 1.7,
+                  "minutes_at_review": 100,
                   "voted_up": false,
                   "date": "2026-06-12",
                   "review_text": "Unfortunately even with the updates I can't recommend this San Andreas deserves a real remake not upscaled mobile port. The characters look plastic modders did a better job years ago without AAA money.",
-                  "truncated": false,
-                  "minutes_at_review": 100
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "227088667",
-                  "hours_at_review": 0.9,
-                  "voted_up": false,
-                  "date": "2026-06-03",
-                  "review_text": "I'm going to say the obvious right off the bat. This is not the remake people were expecting nor wanted. People wanted a top town gta5 looking remake. Instead we got a cheap port with AI upscaled textures the community could have made. In fact, you can find community mods that do this and make the textures meet expectations. The sound is still compressed. The game physics are wack. I thought waiting would yield improvements but it looks like this project was abandoned quickly \n\nThe only real upgrades that anyone can bite onto are the lighting and controls (assuming you like modern GTA controls.   If you are looking to upgrade, dont. Just mod the game you have. I can only recommend this if emulation isn't your thing and you're hankering for old GTA.",
-                  "truncated": false,
-                  "minutes_at_review": 55
-                },
-                {
-                  "recommendationid": "217282267",
-                  "hours_at_review": 0.9,
-                  "voted_up": false,
-                  "date": "2026-01-31",
-                  "review_text": "The Rockstar Launcher ruins every single game it touches, it makes no sense for a single player game to have to be online just for Rockstars ♥♥♥♥♥♥ service to work. The game also looks horrible, the textures looks like they were ran through an AI Upscaler , to create these sloppy \"polished\" textures. Don't even get me started on the charecter models, CJ for example looks like he has down syndrome, which most likely happened because Rockstar ran the character models and texture through the same ♥♥♥♥♥♥ AI Upscaler, If Rockstar just put a BIT of effort the game may not have looked like this \"polished\" slop trash pit. Gameplay is also tad buggy, but that just might me on my end. I was really hoping for this game is to be a great remaster of the original port, with better textures, and possibly some quality of life improvements, but no. This is a horrible remaster of the orginal port of San Andreas, and of course I can't even play the original port on steam because Rockstar removed it. I'll just stick to playing San Andreas on my PS2, it looks better anyway.",
-                  "truncated": false,
-                  "minutes_at_review": 52
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ref-c1c174",
-              "claim": "Reviewers report that physics, driving controls, and vehicle-handling mechanics feel worse than the original versions.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "229545690",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "Not worth the price even at 67% off for this pack of 3. The missions are easier. It's a dumbed down game, when it's meant to be an upgrade. The memories are good, but if you own the originals, you don't need this R* store infested rubbish. The falling off your BMX mechanic animation is awful.\nCJ is also so buff he can run into cars with 3 people inside and he poeses that vehicle in whatever direction you're running.\nIt's pathetic for a 'definitive edition' - The colour of the sky was puke-like. \nThere are also achievements in the R* Store that are not on steam, hence, this is just not meant to be enjoyed by Steam™ gamers.\n\nThe positives were in performance, for an Unreal engine conversion, and everything graphics wise maxed out, the RTX3070ti didn't pass 35 degrees celsius, with the CPU sitting in the low to mid 40's.\n\nThe best thing you can do to prove you love Rockstar is play the originals, play everything up until GTA V - upgraded, and forget GTA VI till it finally releases on PC.\n At least we can spectate their release test on the console-peasants again. That price alone was Take2 robbing 'FOMO gamers'",
-                  "truncated": false,
-                  "minutes_at_review": 115
-                },
-                {
-                  "recommendationid": "227088667",
-                  "hours_at_review": 0.9,
-                  "voted_up": false,
-                  "date": "2026-06-03",
-                  "review_text": "I'm going to say the obvious right off the bat. This is not the remake people were expecting nor wanted. People wanted a top town gta5 looking remake. Instead we got a cheap port with AI upscaled textures the community could have made. In fact, you can find community mods that do this and make the textures meet expectations. The sound is still compressed. The game physics are wack. I thought waiting would yield improvements but it looks like this project was abandoned quickly \n\nThe only real upgrades that anyone can bite onto are the lighting and controls (assuming you like modern GTA controls.   If you are looking to upgrade, dont. Just mod the game you have. I can only recommend this if emulation isn't your thing and you're hankering for old GTA.",
-                  "truncated": false,
-                  "minutes_at_review": 55
-                },
-                {
-                  "recommendationid": "217438837",
+                  "recommendationid": "226580506",
                   "hours_at_review": 0.3,
+                  "minutes_at_review": 21,
                   "voted_up": false,
-                  "date": "2026-02-02",
-                  "review_text": "Bad controls, bad driving, a lots of bug. They say this game was fixed, but its not.\n\nIf you want to play this game, just get a PS2.",
-                  "truncated": false,
-                  "minutes_at_review": 20
+                  "date": "2026-05-27",
+                  "review_text": "this game advertises better roads then wat it actually looks like in game and I'm honestly disappointed in how bad this remake looks with it bein 2023 yall be lazy asf rockstar and there is a neck seam on carl like bruh",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "217079096",
+                  "recommendationid": "226529894",
                   "hours_at_review": 1.0,
+                  "minutes_at_review": 62,
                   "voted_up": false,
-                  "date": "2026-01-29",
-                  "review_text": "Refunded with an hour’s playtime. Absolutely terrible. Cheats did not work. Gameplay mechanics that I remember did not work. This is disgusting. Do yourself a favor and track down a refurbished PS2 and a physical copy of the game if you actually want to play it. I wish I could be refunded for my time playing it as well. Disgusting.",
-                  "truncated": false,
-                  "minutes_at_review": 62
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-17f6f4",
-              "claim": "Reviewers note that the game lacks proper native support for PlayStation controllers.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "221592303",
-                  "hours_at_review": 0.4,
-                  "voted_up": true,
-                  "date": "2026-03-24",
-                  "review_text": "I'll not write about the game, everyone knows it's a cult classic, a beloved entry of an iconic franchise and it still is so go ahead and enjoy the game and soak in its timeless nostalgia.\n\nThis is purely a technical review and addresses some of the shortcoming on this \"remaster\" release. As of March 2026, the game with some minor issues is finally playable and importantly enjoyable. All these suggestions are valid for the other two games as well.\n\n- The stutters still exists but fixed by using -dx12 in the command line as well as using \"Car reflections\" set to SCREEN. This is a major performance problem because the implementation is broken, just set it to screen and your frames will double. \n- Use Nvidia upscaling, set your resolution higher than your screen and use DLSS Quality (swap using dlss swapper for the latest, v3.10, preset K) for a crystal clear image quality.  Also use classic lightening. \n- LIMIT your frames to 60fps using RTSS ( do not use internal UE limiter, it's bad) because it breaks physics and sounds.\n- If you want more perf. or have a weaker GPU, tweak vehicle lights, volumetric clouds, world shadows and distance. IMO, the only settings that is broken is \"car reflections\", just set it to lowest (screen space).\n- KBM users: the game (and the other two) have aggressive auto-centering which is irritating and near impossible to enjoy the game without a controller. Fix: Use ThirteenAG's Fusion Mods for all these 3 games with a small modification ( do NOT disable intro and menu in the mod options (outside of the game), by default they are set to 1, change it to 0 before starting the game, these mess with Rockstar club and autosave and you'll get errors, (Rockstar's cloud saves are also a bit bugged)\n- There's some minor bugs like camera jumps when you drive inside a tunnel, or your sprint speed is too fast in Vice City DE, etc. Nothing can be done about these atm. \n\nThat's it, after years of patches, mod fixes and community help it's finally here. Wha…",
-                  "truncated": true,
-                  "minutes_at_review": 24
-                },
-                {
-                  "recommendationid": "216659164",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-01-24",
-                  "review_text": "its terrible. everything is ♥♥♥♥♥♥ at high fps; the movement is jerky, the game stutters like crazy, the dialogue is mistimed, it doesn't even support playstation controllers despite the original version being released on the PS2! i cant believe people actually recommend this game. this abomination is an insult to gamers.",
-                  "truncated": false,
-                  "minutes_at_review": 26
+                  "date": "2026-05-27",
+                  "review_text": "Hmm... So I got this while it was on sale.. Played the original GTA:SA for years, I like the upgraded graphics: the lighting, the weapon shooting the side while looking side to side, The World textures are pretty awesome. The sky, lighting is beautiful. I guess its the doings of Unreal Engine. Looks like some things got an upgrade, but at the same time, some things got a downgrade..: For example on the Player models, the faces look pretty bad as you probably know. Second, i already glitched through the map in the first hour of the play, and also found some issues like objects floating in the air. Overall 5/10.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-6c71761b",
+          "text": "One reviewer says the camera of the game centers each time you move, so when you are running or driving you either look straight ahead or you fight the camera with a constant movement of your mouse.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239820446",
+            "hours_at_review": 1.9,
+            "minutes_at_review": 112,
+            "voted_up": false,
+            "date": "2026-11-09",
+            "review_text": "The camera of the game centers each time you move. So when you're running or driving, you either look stragiht ahead or you fight the camera with a constant movement of your mouse like you were pusing an invisible wall. l can't play it just for this reason. A shame really.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 21,
-        "cited_recommend": 1,
-        "divergence_p": 0.000372,
+        "cited_reviews": 11,
+        "cited_recommend": 0,
+        "divergence_p": 0.0026,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -468,150 +290,206 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 560,
-      "pct_positive": 81.8,
+      "pool_n": 530,
+      "pct_positive": 82.3,
       "muted": false,
       "n_note": null,
-      "summary": "Players notice improved lighting alongside awkward character models and camera lockups.",
+      "summary": "Players stepping into the open world encounter heavy performance stuttering and crashes.",
       "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-f9c140",
-              "claim": "Reviewers note that the game features improved lighting and higher-resolution models, but report that character models can look odd and map textures such as grass can be seen floating.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231098206",
-                  "hours_at_review": 10.8,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "The story follows Carl \"CJ\" Johnson, who returns to Los Santos after his mother's death. Throughout the game, CJ rebuilds his family, fights rival gangs, and uncovers corruption across the state of San Andreas.\r\n\r\nMy Opinion:\r\n\r\nGTA: San Andreas still has one of the best stories in the Grand Theft Auto series.\r\n\r\n\r\nGraphics – ⭐⭐⭐⭐☆ (8.5/10)\r\n\r\nThe Definitive Edition features:\r\n\r\nImproved lighting\r\nBetter textures\r\nHigher-resolution models\r\nLonger draw distance\r\nModern visual effects\r\n\r\nPros\r\n\r\nBeautiful lighting\r\nBetter reflections\r\nSharper textures\r\n\r\nCons\r\n\r\nSome character models still look odd.\r\nA few visual bugs remain.",
-                  "truncated": false,
-                  "minutes_at_review": 650
-                },
-                {
-                  "recommendationid": "231343418",
-                  "hours_at_review": 10.2,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "Beautiful rework of the game, however, the soundtracks [i](cutsenes, voices, car sounds and etc.)[/i] are low quality. There are a few bugs that I don't like as well, for example [b]diving (swimming)[/b] is not possible, it randomly dives, going down/controlling CJ is impossible on PC/Keyboard [i](should work properly on a controller though)[/i].\r\n\r\nThe minimap itself is nicer, it tracks the target/mission like in GTA IV/V, marking a blip works too in this manner.\r\n\r\nThere are some visually dark places which are kind of annoying. Some map textures are just floating around, like grass.\r\n\r\nOverall, very nostalgic game, love it, but would rather choose the original version and mod it instead.",
-                  "truncated": false,
-                  "minutes_at_review": 615
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-3f74e1",
-              "claim": "Reviewers mention that the original gritty atmospheric fog was removed in the remaster, making the map feel smaller and more exposed.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231349647",
-                  "hours_at_review": 5.5,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "Good for a quick spot of childhood nostalgia, but the definitive edition has lost it's San Andreas soul. (Depending on how much the visual changes bother you) If you grew up playing San Andreas, loading up this version on PC is still a decent way to take a quick trip down memory lane. Driving back into Grove Street, listening to the classic radio stations, and hearing CJ’s iconic lines instantly brings back that childhood magic. \n\nThe Major Flaw: It doesn't feel like San Andreas. My biggest issue with this \"Definitive Edition\" is the art direction. The graphics feel overly AI-polished. Everything looks too smooth, plastic, and sterile. When I play a remastered version of a classic, I still want the graphics to look and feel like they originally did—just with the ability to actually run the game on a modern PC. Instead of preserving the game's identity, the Definitive Edition in my opinion stripped away the original charm. They removed the iconic, gritty atmospheric fog that gave Los Santos its distinct mood, making the map feel small and exposed.\n\nVerdict: If you aren't looking to overanalyse it and just want a casual, quick hit of nostalgia on a weekend, it gets the job done. But if you want the authentic San Andreas experience, the AI-polished visuals might ruin the vibe for you. I would only recommend to buy it only on a deep discount.\n\nFinal Score: 6.5/10",
-                  "truncated": false,
-                  "minutes_at_review": 329
-                },
-                {
-                  "recommendationid": "230114279",
-                  "hours_at_review": 4.0,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "I really don't understand why GTA: San Andreas – The Definitive Edition locks the camera, even when I'm just walking or driving. They also removed the high-speed motion blur, and when I play with a controller, it sometimes starts vibrating nonstop for no reason. The only way to fix it is to restart the game. On top of that, the different weather effects don't look nearly as good as they did in the original. Even though this is supposed to be a modernized remaster, I honestly think it looks worse than the original. The original had a much better atmosphere, while this version just feels cheap. I'm really disappointed with these changes.\n\nRockstar, my suggestion is to restore the cut beta missions and other removed content from San Andreas, remove the frame rate cap, and bring the original GTA: San Andreas back to Steam. I think that's much closer to what players actually want.",
-                  "truncated": false,
-                  "minutes_at_review": 238
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ear-7bb3d1",
-              "claim": "Reviewers report camera control issues and locked camera behavior during walking or driving.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231465511",
-                  "hours_at_review": 11.7,
-                  "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "Good game, only downside being the camera control",
-                  "truncated": false,
-                  "minutes_at_review": 704
-                },
-                {
-                  "recommendationid": "230114279",
-                  "hours_at_review": 4.0,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "I really don't understand why GTA: San Andreas – The Definitive Edition locks the camera, even when I'm just walking or driving. They also removed the high-speed motion blur, and when I play with a controller, it sometimes starts vibrating nonstop for no reason. The only way to fix it is to restart the game. On top of that, the different weather effects don't look nearly as good as they did in the original. Even though this is supposed to be a modernized remaster, I honestly think it looks worse than the original. The original had a much better atmosphere, while this version just feels cheap. I'm really disappointed with these changes.\n\nRockstar, my suggestion is to restore the cut beta missions and other removed content from San Andreas, remove the frame rate cap, and bring the original GTA: San Andreas back to Steam. I think that's much closer to what players actually want.",
-                  "truncated": false,
-                  "minutes_at_review": 238
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-f0381d",
-              "claim": "Reviewers state that the game suffers from various bugs and glitches, including issues with NPC behavior and a slow-motion effect.",
-              "citation_verdict": "mixed",
+              "claim_id": "ear-8553b3",
+              "claim": "Reviewers report frequent random crashes and fatal error messages that disrupt gameplay and prevent mission progression.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "237568430",
+                  "hours_at_review": 7.0,
+                  "minutes_at_review": 419,
+                  "voted_up": false,
+                  "date": "2026-10-12",
+                  "review_text": "This game is broken. I spent hours trying to fix a fetal error crash that occurs every now and then. I can't even go on with the main story without the game crashing randomly. I tried all the solutions I could found online, I tried verifying the integrity, reinstalling the game, reinstalling Rockstar Games Launcher, downloading some random player's save game. Nothing worked.\nI contacted Steam Support and they were kind enough to accept a refund. I love you steam\nI got the original game (totally legal way) and made my own remaster with mods and it turns out better than whatever this is. I'm having a blast finishing the game. PUT THE ORIGINAL BACK ON SALE.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237169731",
+                  "hours_at_review": 16.6,
+                  "minutes_at_review": 995,
+                  "voted_up": false,
+                  "date": "2026-10-08",
+                  "review_text": "You know what? The old version is far better than this one. This version is riddled with glitches and crashes due to errors; I can't even complete some missions because the game freezes up. Plus, the original feel and flavor of the game have been lost. I have no idea if there will be an update to fix all these issues or not.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-a65e55",
+              "claim": "Reviewers describe performance issues including stuttering, lag, and poor optimization.",
+              "citation_verdict": "negative",
               "citation_split": {
                 "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240278207",
+                  "hours_at_review": 11.7,
+                  "minutes_at_review": 704,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "Stay away from the GTA Trilogy Definitive Edition if you actually want to enjoy these games. If you want the real experience, play the original versions on PC or consoles. Rockstar completely ruined what the original games were and replaced them with this buggy, poorly optimized mess.\n\nThe mission design is already frustrating enough, but the bugs make everything even worse. For example, during a mission where you're supposed to enter a factory and kill enemies, you automatically get a wanted level. When trying to complete the race challenge, you can end up with a 5-star wanted level, with cops constantly shooting at you. Before you even reach the finish line, your car is likely to explode because of all the damage.\n\nThe vehicle handling is terrible, NPC drivers randomly crash straight into you for absolutely no reason, and the overall driving experience is frustrating. It's the same kind of garbage experience you get with GTA IV's terrible PC optimization.\n\nAnd don't even get me started on Rockstar's so-called Definitive Edition. They somehow managed to make the Trilogy look worse in several aspects, introduce new bugs, mess up the original atmosphere and deliver an experience that feels like a cheap, unfinished remaster rather than a proper upgrade.\n\nPerformance is another disaster. You need proper community mods and fixes just to get the game running at 120 FPS without constant frame drops. Even on high-end hardware, you can experience random drops to 90–100 FPS and noticeable stuttering.\n\nHonestly, I regret buying this version. I can't even get a refund, and this is probably one of the biggest mistakes I've made when purchasing a game. Rockstar took three classic masterpieces and turned them into a buggy, unoptimized mess. Save your money and stay away from this version.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240226194",
+                  "hours_at_review": 6.1,
+                  "minutes_at_review": 365,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "Simply because these mobile game developers cannot do a job properly. Stuttering should not be an issue yet somehow it is. This game ran on a PS2 ffs. How can a PC not give a smoother experience?!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239015105",
+                  "hours_at_review": 8.6,
+                  "minutes_at_review": 516,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "UN PLAYEBELL LAGY AS HELL",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236856947",
+                  "hours_at_review": 3.4,
+                  "minutes_at_review": 204,
+                  "voted_up": false,
+                  "date": "2026-10-04",
+                  "review_text": "he always lagging when im playing for me its not worth it\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236615095",
+                  "hours_at_review": 12.3,
+                  "minutes_at_review": 738,
+                  "voted_up": true,
+                  "date": "2026-10-01",
+                  "review_text": "the game is good as for the story but the optimisation is bad guys\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-2432b4",
+              "claim": "Reviewers experience stuttering and poor optimization on PC hardware.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240278207",
+                  "hours_at_review": 11.7,
+                  "minutes_at_review": 704,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "Stay away from the GTA Trilogy Definitive Edition if you actually want to enjoy these games. If you want the real experience, play the original versions on PC or consoles. Rockstar completely ruined what the original games were and replaced them with this buggy, poorly optimized mess.\n\nThe mission design is already frustrating enough, but the bugs make everything even worse. For example, during a mission where you're supposed to enter a factory and kill enemies, you automatically get a wanted level. When trying to complete the race challenge, you can end up with a 5-star wanted level, with cops constantly shooting at you. Before you even reach the finish line, your car is likely to explode because of all the damage.\n\nThe vehicle handling is terrible, NPC drivers randomly crash straight into you for absolutely no reason, and the overall driving experience is frustrating. It's the same kind of garbage experience you get with GTA IV's terrible PC optimization.\n\nAnd don't even get me started on Rockstar's so-called Definitive Edition. They somehow managed to make the Trilogy look worse in several aspects, introduce new bugs, mess up the original atmosphere and deliver an experience that feels like a cheap, unfinished remaster rather than a proper upgrade.\n\nPerformance is another disaster. You need proper community mods and fixes just to get the game running at 120 FPS without constant frame drops. Even on high-end hardware, you can experience random drops to 90–100 FPS and noticeable stuttering.\n\nHonestly, I regret buying this version. I can't even get a refund, and this is probably one of the biggest mistakes I've made when purchasing a game. Rockstar took three classic masterpieces and turned them into a buggy, unoptimized mess. Save your money and stay away from this version.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240226194",
+                  "hours_at_review": 6.1,
+                  "minutes_at_review": 365,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "Simply because these mobile game developers cannot do a job properly. Stuttering should not be an issue yet somehow it is. This game ran on a PS2 ffs. How can a PC not give a smoother experience?!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236615095",
+                  "hours_at_review": 12.3,
+                  "minutes_at_review": 738,
+                  "voted_up": true,
+                  "date": "2026-10-01",
+                  "review_text": "the game is good as for the story but the optimisation is bad guys\r\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-abe23b",
+              "claim": "Reviewers note that the game features a large open map with plenty of side activities and things to do outside of missions.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
                 "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "230427607",
-                  "hours_at_review": 12.9,
+                  "recommendationid": "238880603",
+                  "hours_at_review": 14.7,
+                  "minutes_at_review": 882,
                   "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "It's a great game and they don't make them like this anymore. Simple storyline and fun mechanics. Not overloaded with cheap gimmicks. However, the remastered version of this was poorly done. Its very glitchy mainly the NPCs. The graphics update didnt feel that much better either. \n\nThey should remaster this game properly. Add more and new NPCs. Add new cars. Improve the soundtrack. The game is set in the 90s but really only exhibits the 90s rap/hiphop of that era. Its missing all the great rock, metal and pop music of the 90s. The huge map is iconic which is why i believe this game deserved a proper revamp not just a rushed graphics update. And it's so glitchy. This would be a really good new release game if they put in a lot more effort to modernize i. It's got the bones.\n\nIt's still a fun game just not worth the $30 price tag at the moment. I got it on discount and im satisfied with my purchase. ",
-                  "truncated": false,
-                  "minutes_at_review": 772
+                  "date": "2026-10-30",
+                  "review_text": "\"Ah sh*t, here we go again!\" San Andreas is easily one of my favorite GTA games. There's just something special about CJ, Grove Street, and the massive world Rockstar created. From Los Santos to San Fierro and Las Venturas, there's an insane amount of things to explore and get into. The Definitive Edition gives the game a fresh coat of paint with improved visuals, lighting, textures, and updated controls. It's great being able to revisit this classic with some modern improvements while still enjoying the original experience. What makes San Andreas so memorable is the sheer amount of content. You have gang wars, territory takeovers, customizable vehicles, properties, businesses, side activities, and an entire story filled with unforgettable characters and hilarious moments. You can spend hours just messing around without even touching the main missions. CJ's journey is one of the best stories in the GTA series, and the soundtrack is packed with classics that make driving around the map even better. The Definitive Edition isn't perfect, and there are still some issues, but getting to experience San Andreas again is absolutely worth it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231247522",
-                  "hours_at_review": 5.4,
+                  "recommendationid": "237296870",
+                  "hours_at_review": 5.5,
+                  "minutes_at_review": 331,
+                  "voted_up": true,
+                  "date": "2026-10-09",
+                  "review_text": "Ovb an amazing game for the time it was produced in, enormous map and a shit ton of stuff to do when you're not on a mission.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237092937",
+                  "hours_at_review": 19.5,
+                  "minutes_at_review": 1168,
                   "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "Alot of bugs, game is like in slow motion, better buy key from site for original GTA SA",
-                  "truncated": false,
-                  "minutes_at_review": 326
+                  "date": "2026-10-07",
+                  "review_text": "Genuine Shite and I'm not just talking about how it is a remake and going to glaze the OG because the story sucks, the missions are almost as bad as GTA3 and the characters (one of the most important parts) are mostly all unlikeable. Would not recommend and probably not even the OG. Vice City and Vice City Stories are 100x better than this.\n\nEdit: I do love how much there is to do in this game. The Map feels big and I really love Las Venturas. I still stand by the majority of the story being mid so far.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-6dcee895",
+          "text": "One reviewer says the game is literally unplayable due to the Rockstar Games Launcher.",
+          "theme": "access",
+          "citation": {
+            "recommendationid": "239385573",
+            "hours_at_review": 8.1,
+            "minutes_at_review": 486,
+            "voted_up": false,
+            "date": "2026-11-04",
+            "review_text": "Literally unplayable due to Shitstar Games Launcher",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 7,
-        "cited_recommend": 5,
-        "divergence_p": 0.373,
+        "cited_reviews": 10,
+        "cited_recommend": 3,
+        "divergence_p": 0.000395,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -619,180 +497,70 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 506,
-      "pct_positive": 83.4,
+      "pool_n": 540,
+      "pct_positive": 84.3,
       "muted": false,
       "n_note": null,
-      "summary": "Deeper play reveals missing original features, difficult vehicle handling, and random crashes.",
+      "summary": "Mid-game explorers find classic activities alongside sensitive aircraft controls and technical bugs.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-db4196",
-              "claim": "Reviewers experience random crashes and fatal Unreal Engine errors during gameplay and mission attempts.",
+              "claim_id": "mid-b093ad",
+              "claim": "Reviewers note that the game suffers from various technical issues including visible bugs, characters and objects looking worse than the original, and missing radio tracks.",
               "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240299032",
+                  "hours_at_review": 28.1,
+                  "minutes_at_review": 1688,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "Garbanzo remake\nIf its your first time playing gta san andreas dont touch this. \n\nairplane controls even worse than the original;\ncant leave the car without closing the door;\ncops spawning every 2 seconds\ncamera bug when driving \nbmx jump bugged\ncharacters look worse than 20 years ago\n\n\nif youre gonna make a remake of a game that has been out for more than 20 years atleast play the game first\n\nim not even gonna talk about the obvious AI slop on the game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239396560",
+                  "hours_at_review": 64.2,
+                  "minutes_at_review": 3853,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "While Rockstar has done some work after the disaster that was the initial release by \"GroveStreet Games\", the end resulting product is still lacking compared to the original. With mods, you could make the original look as good or better than this version. Additionally, this version contains fewer songs due to licenses that were not renewed and some shoddy graphical work due to the undisclosed generative AI used to quickly import and \"update\" the models.\r\n\r\nThe last new issue is unlike the original game, this one also requires the terrible Rockstar app integration and sign-in. Stuttering is also present for no apparent reason after a random amount of time and it doesn't go away but instead progressively gets worse.\r\n\r\nAll in all, it's bully tactics by Rockstar to withhold the superior original version of this title while charging a premium for an inferior product. I would recommend acquiring the original version by whatever other means necessary, such as the used market or console (PS2/Xbox).",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-1ed1ca",
+              "claim": "Reviewers note that the game features missing radio songs compared to the original version.",
+              "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
-                "negative": 3
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "232053415",
-                  "hours_at_review": 48.0,
+                  "recommendationid": "239396560",
+                  "hours_at_review": 64.2,
+                  "minutes_at_review": 3853,
                   "voted_up": false,
-                  "date": "2026-08-04",
-                  "review_text": "The story carried this version of game, the nostalgia. I came to realize that the replayability of this game's edition is 0, compared to the OG that i have finished countless of times. The first thing that came across to my issue was the Audio, some of it are missing, the Loading screen music itself is rare to chime. The NPC's death cries, some are delayed. What i like about the audio of this game is because of the NPC's death cries, and because of this version it was bugged out. The second issue that came across to my journey is the \"Melted House\" constant melted house it was annoying to see that those houses, or terrains are melted. Third issue is the Vehicle Handling system, they made Flying controls harder i had to configure my flying controls because of the mouse involvement, while in the OG flying with mouse is minimal, here in this version it's almost as mandatory. Last issue, NPC Cars/Traffic glitch, There are no traffic or cars roaming around while im halfway at Las Venturas act. This glitch made the game more empty. It's worse than Cyberpunk 2077. Just NPC's roaming around, no cars, no bikes, no motors. I finished the story and it's still bugged. I forgot to mention the Fatal UE4 crashes. Man this game is unbearable to play, the only thing that made me stay is because of the story and the nostalgia + the achievements. \n\nBuy at your own risk, yes the discount is a big help. But i'm more interested replaying the OG version of it (Although this version has bugs in it, but it's not as worse as the Remastered) \n\nOverall - 5.5/10, So many bugs, it is worse than the OG. Though San Andreas will be always my Top 2 GTA, with GTA 4 being Top 1 and GTA 5 as the Top 3.",
-                  "truncated": false,
-                  "minutes_at_review": 2882
+                  "date": "2026-11-04",
+                  "review_text": "While Rockstar has done some work after the disaster that was the initial release by \"GroveStreet Games\", the end resulting product is still lacking compared to the original. With mods, you could make the original look as good or better than this version. Additionally, this version contains fewer songs due to licenses that were not renewed and some shoddy graphical work due to the undisclosed generative AI used to quickly import and \"update\" the models.\r\n\r\nThe last new issue is unlike the original game, this one also requires the terrible Rockstar app integration and sign-in. Stuttering is also present for no apparent reason after a random amount of time and it doesn't go away but instead progressively gets worse.\r\n\r\nAll in all, it's bully tactics by Rockstar to withhold the superior original version of this title while charging a premium for an inferior product. I would recommend acquiring the original version by whatever other means necessary, such as the used market or console (PS2/Xbox).",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231641528",
-                  "hours_at_review": 25.7,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "how is it with almost every product rockstar has released on pc, crashing and corrupt save files forcing you to have multiple saves and hope that you can load a previous one that isnt gonna crash.",
-                  "truncated": false,
-                  "minutes_at_review": 1541
-                },
-                {
-                  "recommendationid": "230661405",
-                  "hours_at_review": 93.2,
+                  "recommendationid": "239395010",
+                  "hours_at_review": 55.1,
+                  "minutes_at_review": 3304,
                   "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "ok let's do these vigilante missions\n....\nok i'm at level 11 nice, just need one more kill aaaand they 1 shot me w a shotgun\nok my fault, lemme just plan better, at level 10 resupply health and armor\n....\nok i'm at level 11 again nice, jsut need one more kill aaaand UE4 fatal error",
-                  "truncated": false,
-                  "minutes_at_review": 5591
-                },
-                {
-                  "recommendationid": "231102676",
-                  "hours_at_review": 27.0,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "UE4 Fatal Error renders the game unplayable due to crashes that occur after any save is made, even the auto saves generated by the game itself. The solution is to roll back to a save that works... unless that save also decides to stop working, despite already saving in another slot from your gameplay on that save file.",
-                  "truncated": false,
-                  "minutes_at_review": 1622
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-b23e88",
-              "claim": "Reviewers report encountering game-breaking bugs that prevent progression, such as invincible ATMs during a bank heist mission.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231145847",
-                  "hours_at_review": 38.5,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "DON'T EVEN THINK ABOUT BUYING THIS. 40 HOURS WASTED.\n\nGTA San Andreas Definitive Edition is an unfinished technical disaster, and the title \"Definitive\" is a cruel joke. Visually it's full of glitches, performance is embarrassing for a two-decade-old game, and the sheer number of bugs is absolutely insane. But that isn't even the worst part.\n\nGame-breaking bug that completely ruined the experience:\nI spent over 50 hours playing this game \"by the book.\" I did things progressively, completed every single side quest available, collected all the tags in Los Santos, all the oysters, snapshots, horseshoes, and did everything humanly possible to build up toward that sweet 100% completion rate.\n\nAfter all that time and effort invested, I finally reach Catalina's bank heist mission.\n\nThe result? The game is completely broken.\n\nThe ATMs are literally INVINCIBLE.\n\nI pumped over 1,000 rounds directly into a single ATM = zero effect.\n\nI threw over 30 satchel charges onto it = still nothing.\n\nI thought I was doing something wrong, so I searched for a fix online. Guess what? It’s a known issue, and the only \"solution\" discovered by the community is to START A BRAND NEW SAVE FROM 0.\n\n50 hours of collectibles, and side content wiped out because Grove Street Games couldn't be bothered to fix a game-breaking progression bug.\n\nFinal Verdict:\nDo not buy this garbage. Stick to the original version with mods if you have it. This edition isn't worth a single cent or a single second of your life.\n\nRating: 1/10 (and that 1 is purely for nostalgia).",
-                  "truncated": false,
-                  "minutes_at_review": 2308
-                },
-                {
-                  "recommendationid": "230794610",
-                  "hours_at_review": 91.7,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "absolutely unplayable and should not even be sold, period. the amount of times ALL of my saves got corrupted made progressing absolutely next to impossible. I wish i was joking when i say unless you keep multitudes (2+) of duplicate backup copies of your saves, and save after every mission, event, or interaction, you might be able to do a few missions before having to restart the game and praying your saves still work. truly disheartening as their most popular classic title since gta3 and vice city played mostly without issues. I genuinely cannot comprehend how this is a real product being sold as this is literally their most popular classic title and it is genuinely unplayable without pulling your hair out. just pirate the original version, or SAM the achievements for this, it's genuinely not worth the complete slog i went thru just for some achievements. :(",
-                  "truncated": false,
-                  "minutes_at_review": 5502
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "mid-ecf7fc",
-              "claim": "Reviewers describe the Rockstar launcher as slow, requiring minutes to launch the game.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232036513",
-                  "hours_at_review": 89.9,
-                  "voted_up": true,
-                  "date": "2026-08-04",
-                  "review_text": "In my opinion, this game is quite good, there may be some things that are still bothering me, for example, the launcher is very slow, I have to wait about than 1-3 minutes for the launch of this game, and some bugs that sometimes still bother me a little. Overall, this game is pretty good, there are several things that I think are helpful, such as checkpoint missions and continuing missions if you fail, which is very helpful. Maybe it's still worth buying if you want to nostalgia GTA SA with a decent graphical upgrade.",
-                  "truncated": false,
-                  "minutes_at_review": 5392
-                },
-                {
-                  "recommendationid": "230515191",
-                  "hours_at_review": 35.5,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "One of the best GTA that Rockstar made. Buy it on sale and have fun. Oh, and f*@k the RS launcher. It works fine most of the time but why even have it.",
-                  "truncated": false,
-                  "minutes_at_review": 2132
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-512799",
-              "claim": "Reviewers report that the original versions were delisted from the store, leaving players with fewer purchasing options.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231935152",
-                  "hours_at_review": 22.0,
-                  "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "Same nobody asked for this cash-grab remaster, and to make it worse, Rockstar delisted the original versions so scalpers are selling old Steam keys for over $100. Absolute clown show, thanks for nothing Rockstar.",
-                  "truncated": false,
-                  "minutes_at_review": 1321
-                },
-                {
-                  "recommendationid": "230556388",
-                  "hours_at_review": 53.5,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Grand Theft Auto: San Andreas is one of the best games ever made and remains a timeless classic. Even decades later, its story, characters, world, and sense of freedom are still easy to appreciate.\n\nUnfortunately, I cannot recommend this version. The Definitive Edition was outsourced rather than developed directly by Rockstar, and it feels like the developers were under significant pressure to release it before it was ready. To this day, the game still suffers from technical issues and performance problems that should not exist in a remaster of a classic title.\n\nWhat makes the situation even more disappointing is that Rockstar delisted the original versions while also taking legal action against modders who had created their own remasters that many fans considered superior.\n\nIf you absolutely insist on playing this version, wait for a deep sale. Grand Theft Auto: San Andreas deserves your time, but this Definitive Edition does not deserve full price.",
-                  "truncated": false,
-                  "minutes_at_review": 3208
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-d5cc77",
-              "claim": "Reviewers report that the PC launcher requires a noticeable waiting period before the game starts up.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232036513",
-                  "hours_at_review": 89.9,
-                  "voted_up": true,
-                  "date": "2026-08-04",
-                  "review_text": "In my opinion, this game is quite good, there may be some things that are still bothering me, for example, the launcher is very slow, I have to wait about than 1-3 minutes for the launch of this game, and some bugs that sometimes still bother me a little. Overall, this game is pretty good, there are several things that I think are helpful, such as checkpoint missions and continuing missions if you fail, which is very helpful. Maybe it's still worth buying if you want to nostalgia GTA SA with a decent graphical upgrade.",
-                  "truncated": false,
-                  "minutes_at_review": 5392
-                },
-                {
-                  "recommendationid": "230515191",
-                  "hours_at_review": 35.5,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "One of the best GTA that Rockstar made. Buy it on sale and have fun. Oh, and f*@k the RS launcher. It works fine most of the time but why even have it.",
-                  "truncated": false,
-                  "minutes_at_review": 2132
+                  "date": "2026-11-04",
+                  "review_text": "Honestly, the current state of the game is fine and fun to play if you keep your expectations realistic.\r\n\r\nThe original was legendary, but playing at 25 fps with heavy fog and short render distance doesn't really hold up anymore. Roaming San Andreas in 4K at 80+ fps with high-res models and updated controls makes replaying it a lot of fun. It is definitely easier with checkpoints, but as someone who already finished the original multiple times, I liked the refreshed experience. Just like the rest of the trilogy, it stuttered out of the box until I used a manual vulkan dll fix, but after that, I played through the entire story without a single crash or major game-breaking bug.\r\n\r\nCons:\r\n- Requires a manual vulkan dll fix to get rid of stuttering\r\n- Missing radio tracks\r\n- Annoying keybinding and control bugs\r\n- Garages still randomly dismiss stored vehicles",
+                  "truncated": false
                 }
               ]
             }
@@ -802,147 +570,51 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-a2da2a",
-              "claim": "Reviewers highlight helpful quality-of-life additions including mission checkpoints and the ability to continue failed missions.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-2aeed3",
+              "claim": "Reviewers state that aircraft controls for planes and helicopters are overly sensitive and harder to handle compared to the original version.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 1
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232036513",
-                  "hours_at_review": 89.9,
+                  "recommendationid": "239059495",
+                  "hours_at_review": 76.4,
+                  "minutes_at_review": 4586,
                   "voted_up": true,
-                  "date": "2026-08-04",
-                  "review_text": "In my opinion, this game is quite good, there may be some things that are still bothering me, for example, the launcher is very slow, I have to wait about than 1-3 minutes for the launch of this game, and some bugs that sometimes still bother me a little. Overall, this game is pretty good, there are several things that I think are helpful, such as checkpoint missions and continuing missions if you fail, which is very helpful. Maybe it's still worth buying if you want to nostalgia GTA SA with a decent graphical upgrade.",
-                  "truncated": false,
-                  "minutes_at_review": 5392
+                  "date": "2026-11-01",
+                  "review_text": "GTA San Andreas is a great game. For me, it is the best in all Grand Theft Auto series, up to this very moment. Yet, the Definitive Edition here... is a seriously overpriced rip-off aimed at those nostalgia players who still care about 100% completion, achievements and such nonsense.\r\n\r\nTwo major things, that frustrate me the most in the Definitive Edition, are the remade controls, especially the flight and other steering controls settings, and the broken math of role-play parameters such as fat, muscle and hunger complex, lung capacity, and other bars. They were more or less predictable in the original, and turned into an absurdity in the reworked overpriced and underfixed Def Edition. Yeah, the RC model sub-games, especially Zero's missions, became much easier. On the other hand, the actual flying missions, suffered from way too much randomness, due to those changes.\r\n\r\nThe game has not become unplayable. In many ways, it is still the San Andreas we know and love.  Yet, it is now just a game from a list of many. Not a 10/10 masterpiece, that is worth replaying every now and then.\r\n\r\nMy mark for the Definitive Edition is 7/10. While the original with some visual mods is still a much better way to cherish your nostalgia... Shame, shame, a simple burger made out of a masterpiece dish. My worst fear is that Rockstar, like many other game studios, has forgotten how and why they are so popular (it is certainly not about Shark Cards).\r\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230108836",
-                  "hours_at_review": 30.9,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "GTA San Andreas itself is a great game but this is a mediocre remaster. The character models look stupid and make The Elder Scrolls Oblivions character models look like they were sculpted by Michelangelo in comparison. \n\nThere's also weird character rigging issues which means during cutscenes they all move and deform unnaturally. The developers AI upscaled all of the textures which looks like crap and they also screwed up the texture mapping leading to seams and distortions throughout the world.\n\nIt's only worth it at half price while using re-texture and radio restoration mods. The addition of checkpointing and modern UX/controls are good additions.\n\nThe real definitive edition is emulating the original 2004 PS2 version which is easy to setup, or building your own remaster by modding the original PC version.",
-                  "truncated": false,
-                  "minutes_at_review": 1857
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-e5d2ff",
-              "claim": "Reviewers report that airplane and helicopter controls feel awkward and require manual remapping to become playable.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "232053415",
-                  "hours_at_review": 48.0,
-                  "voted_up": false,
-                  "date": "2026-08-04",
-                  "review_text": "The story carried this version of game, the nostalgia. I came to realize that the replayability of this game's edition is 0, compared to the OG that i have finished countless of times. The first thing that came across to my issue was the Audio, some of it are missing, the Loading screen music itself is rare to chime. The NPC's death cries, some are delayed. What i like about the audio of this game is because of the NPC's death cries, and because of this version it was bugged out. The second issue that came across to my journey is the \"Melted House\" constant melted house it was annoying to see that those houses, or terrains are melted. Third issue is the Vehicle Handling system, they made Flying controls harder i had to configure my flying controls because of the mouse involvement, while in the OG flying with mouse is minimal, here in this version it's almost as mandatory. Last issue, NPC Cars/Traffic glitch, There are no traffic or cars roaming around while im halfway at Las Venturas act. This glitch made the game more empty. It's worse than Cyberpunk 2077. Just NPC's roaming around, no cars, no bikes, no motors. I finished the story and it's still bugged. I forgot to mention the Fatal UE4 crashes. Man this game is unbearable to play, the only thing that made me stay is because of the story and the nostalgia + the achievements. \n\nBuy at your own risk, yes the discount is a big help. But i'm more interested replaying the OG version of it (Although this version has bugs in it, but it's not as worse as the Remastered) \n\nOverall - 5.5/10, So many bugs, it is worse than the OG. Though San Andreas will be always my Top 2 GTA, with GTA 4 being Top 1 and GTA 5 as the Top 3.",
-                  "truncated": false,
-                  "minutes_at_review": 2882
-                },
-                {
-                  "recommendationid": "231147873",
-                  "hours_at_review": 54.7,
+                  "recommendationid": "237824284",
+                  "hours_at_review": 61.9,
+                  "minutes_at_review": 3712,
                   "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "Just finished game. Took me 54.7 hours.\nYes, the remaster still has plenty of bugs that weren't in the original version - but there's noticeably fewer of them now compared to how it was at launch. What really bugged me though was the controls - I don't understand how they managed to screw them up so badly, especially in the helicopter and plane. Had to get used to a new layout after remapping it myself just to make it somewhat playable.\nBut despite all these issues, I'm genuinely glad I finished it at 100%. San Andreas is one of the first games I ever played, and it's the one that got me hooked on the GTA series in the first place. The atmosphere of Los Santos, San Fierro, and Las Venturas still holds up, and CJ's journey from a guy coming back for his mother's funeral to someone who flips the whole state upside down remains one of the strongest story arcs in the series. The visual upgrades in the Definitive Edition give it a fresh coat of paint without killing the original's charm.\nBugs and all, replaying this game is still a genuine pleasure.",
-                  "truncated": false,
-                  "minutes_at_review": 3282
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-eb85ed",
-              "claim": "Reviewers find the redesigned flying and vehicle controls harder and more awkward to handle compared to the original version.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "232053415",
-                  "hours_at_review": 48.0,
-                  "voted_up": false,
-                  "date": "2026-08-04",
-                  "review_text": "The story carried this version of game, the nostalgia. I came to realize that the replayability of this game's edition is 0, compared to the OG that i have finished countless of times. The first thing that came across to my issue was the Audio, some of it are missing, the Loading screen music itself is rare to chime. The NPC's death cries, some are delayed. What i like about the audio of this game is because of the NPC's death cries, and because of this version it was bugged out. The second issue that came across to my journey is the \"Melted House\" constant melted house it was annoying to see that those houses, or terrains are melted. Third issue is the Vehicle Handling system, they made Flying controls harder i had to configure my flying controls because of the mouse involvement, while in the OG flying with mouse is minimal, here in this version it's almost as mandatory. Last issue, NPC Cars/Traffic glitch, There are no traffic or cars roaming around while im halfway at Las Venturas act. This glitch made the game more empty. It's worse than Cyberpunk 2077. Just NPC's roaming around, no cars, no bikes, no motors. I finished the story and it's still bugged. I forgot to mention the Fatal UE4 crashes. Man this game is unbearable to play, the only thing that made me stay is because of the story and the nostalgia + the achievements. \n\nBuy at your own risk, yes the discount is a big help. But i'm more interested replaying the OG version of it (Although this version has bugs in it, but it's not as worse as the Remastered) \n\nOverall - 5.5/10, So many bugs, it is worse than the OG. Though San Andreas will be always my Top 2 GTA, with GTA 4 being Top 1 and GTA 5 as the Top 3.",
-                  "truncated": false,
-                  "minutes_at_review": 2882
+                  "date": "2026-10-16",
+                  "review_text": "Its fine now, but there are issues. For some reason, they thought it was a good idea to modify how things used to control, bikes and planes for example, especially planes, I don't recall having so many problems trying to control the RC planes and regular planes on the og version as I do with this one on keyboard and mouse.\n\nOn the positive side, you can play it with higher framerate than the original with not as many game breaking bugs as the original, the only problem that remains from playing with higher framerates is that you can move cars with your characters body but outside from that, it works fine.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231879750",
-                  "hours_at_review": 54.8,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "I really enjoyed playing this game. It gives me the old vibes with that old lightning, radio and other things. But i cant really recommend this game because it lacks features from original games + there are still bugs which is unacceptable for 20 years old game which costs 60$. \nThey didnt add Super Sprint which was one of the features in original game, camera is still extremly weird, flight controls are awful and much more annoying things being changed in this version of the game. If you at least gave us an option to buy original game on market then i would change my mind and say that this game is worth but only on sale but because you removed the original and gave us this version which is one of the worst i cant recommend it, just mod original version with graphics and reshade and go play that this is not worth it",
-                  "truncated": false,
-                  "minutes_at_review": 3287
-                },
-                {
-                  "recommendationid": "231147873",
-                  "hours_at_review": 54.7,
+                  "recommendationid": "236875975",
+                  "hours_at_review": 21.2,
+                  "minutes_at_review": 1270,
                   "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "Just finished game. Took me 54.7 hours.\nYes, the remaster still has plenty of bugs that weren't in the original version - but there's noticeably fewer of them now compared to how it was at launch. What really bugged me though was the controls - I don't understand how they managed to screw them up so badly, especially in the helicopter and plane. Had to get used to a new layout after remapping it myself just to make it somewhat playable.\nBut despite all these issues, I'm genuinely glad I finished it at 100%. San Andreas is one of the first games I ever played, and it's the one that got me hooked on the GTA series in the first place. The atmosphere of Los Santos, San Fierro, and Las Venturas still holds up, and CJ's journey from a guy coming back for his mother's funeral to someone who flips the whole state upside down remains one of the strongest story arcs in the series. The visual upgrades in the Definitive Edition give it a fresh coat of paint without killing the original's charm.\nBugs and all, replaying this game is still a genuine pleasure.",
-                  "truncated": false,
-                  "minutes_at_review": 3282
-                },
-                {
-                  "recommendationid": "229905847",
-                  "hours_at_review": 66.3,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "There are two reasons for the downvote:\r\n1. Bugs.\r\n2. Flying is impossibly hard, which was not the case in the original game. \r\n\r\nOne of the issues I had was with the vigilante missions: the game crashed when reaching level 12. The solution I found that worked was to use a hunter helicopter. You can find one either in Verdant Meadows after getting gold in all flying school's missions or in the Heli Hell race (appears in Las Venturas' airport; you can simply fly the helicopter to Verdant Meadows' hangar while in the race, and it will stay there afterwards).",
-                  "truncated": false,
-                  "minutes_at_review": 3979
+                  "date": "2026-10-04",
+                  "review_text": "The game has aged well and the remaster helped it a bit\n\nThe controls are very weird though, I'm feeling like the aircrafts are way too sensitive compared to the original game which is a big issue when you have to fly them to complete the game and there's no other way around that\n\nOverall, i would not recommend buying that if you have the original game though, you should just play the original because it's not too bad after all. I'm gonna leave a positive review just because the game is very much playable and enjoyable it the state it's in",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "content",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-484de3",
-              "claim": "Reviewers note that the updated drawing distance significantly improves the game by preventing sudden object spawning and enhancing city skylines.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231907191",
-                  "hours_at_review": 48.8,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "The most iconic GTA game, the most iconic GTA protagonist, the most iconic GTA villain.\nAfter 5 years on the East Co.... I mean after 4 years of extra development since release Definitive Edition is actually playable. I already have non-Steam OG version GTA San Andreas, as I assume you, dear reader, do too, so I wouldn't buy DE for a full price, but I bought entire trilogy on discount for 20 USD and I'm not complaining.\n\nUnder updated graphics and annoying camera auto-centering it's still good ol San Andreas, place I've revisited, and will keep revisiting, many times. Also, THE UPDATED DRAWING DISTANCE IMPROVES THIS GAME SO MUCH, HOLY ♥♥♥♥♥♥♥♥, NO MORE CRASHING YOUR PLANE INTO SPAWNING TREES, ALSO CITY SKYLINES LOOK SO GOOD NOW. Anyway, good game, worth it on discount.",
-                  "truncated": false,
-                  "minutes_at_review": 2930
-                },
-                {
-                  "recommendationid": "230538528",
-                  "hours_at_review": 51.7,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "As someone who spent most of my childhood practically living in San Andreas even spending years managing SA:MP servers back in the day. This is by far my favourite GTA of all time. I hold this game to an impossibly high standard. While the Definitive Edition doesn't quite capture the flawless, nostalgic magic of our childhood memories, it still stands as a solid, visually upgraded way to experience CJ's legendary journey on modern hardware.\n\nThe sheer scale of the world still holds up beautifully, and the updated lighting does wonders for the diverse environments. Watching the sunset over the Los Santos skyline, driving through the foggy, towering pines of Back O' Beyond, or seeing the neon lights of Las Venturas gleam in the distance feels incredible. On the gameplay side, the modernized shooting controls and GPS navigation are massive upgrades. Gunfights actually feel responsive now, and you no longer have to constantly pause the game to check if you missed a turn on the freeway. It runs smoothly on modern high-end PCs, allowing you to appreciate the massive draw distance that makes San Andreas finally feel like the sprawling state it was always meant to be.\n\nFor anyone who remembers the precise physics and aesthetic of the original, the character models in this version will occasionally make you wince. Some of the iconic Grove Street family members look like glossy action figures, losing that gritty, low poly charm that defined the 2004 release. There are also moments where the missing radio tracks hurt cruising through the desert just doesn't hit quite the same when certain classic songs are missing like \"Killing In the Name and Hellraiser\" from K-DST or Radio X due to expired licenses.\n\nIf you are expecting this to be a flawless, 1 to 1 recreation of the original masterpiece, it isn't. But if you want to experience the massive single player campaign with modern resolutions, great framerates, and smooth controls, it is a very enjoyable ride. It has its flaws, bu…",
-                  "truncated": true,
-                  "minutes_at_review": 3104
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-112c79",
-              "claim": "Reviewers mention that features from the original game, such as Super Sprint, are missing in this version.",
+              "claim_id": "mid-1bc906",
+              "claim": "Reviewers state that the game suffers from stuttering out of the box and requires manual fixes or adjustments.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -950,34 +622,64 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231879750",
-                  "hours_at_review": 54.8,
+                  "recommendationid": "239396560",
+                  "hours_at_review": 64.2,
+                  "minutes_at_review": 3853,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "I really enjoyed playing this game. It gives me the old vibes with that old lightning, radio and other things. But i cant really recommend this game because it lacks features from original games + there are still bugs which is unacceptable for 20 years old game which costs 60$. \nThey didnt add Super Sprint which was one of the features in original game, camera is still extremly weird, flight controls are awful and much more annoying things being changed in this version of the game. If you at least gave us an option to buy original game on market then i would change my mind and say that this game is worth but only on sale but because you removed the original and gave us this version which is one of the worst i cant recommend it, just mod original version with graphics and reshade and go play that this is not worth it",
-                  "truncated": false,
-                  "minutes_at_review": 3287
+                  "date": "2026-11-04",
+                  "review_text": "While Rockstar has done some work after the disaster that was the initial release by \"GroveStreet Games\", the end resulting product is still lacking compared to the original. With mods, you could make the original look as good or better than this version. Additionally, this version contains fewer songs due to licenses that were not renewed and some shoddy graphical work due to the undisclosed generative AI used to quickly import and \"update\" the models.\r\n\r\nThe last new issue is unlike the original game, this one also requires the terrible Rockstar app integration and sign-in. Stuttering is also present for no apparent reason after a random amount of time and it doesn't go away but instead progressively gets worse.\r\n\r\nAll in all, it's bully tactics by Rockstar to withhold the superior original version of this title while charging a premium for an inferior product. I would recommend acquiring the original version by whatever other means necessary, such as the used market or console (PS2/Xbox).",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232243932",
-                  "hours_at_review": 39.5,
+                  "recommendationid": "239395010",
+                  "hours_at_review": 55.1,
+                  "minutes_at_review": 3304,
                   "voted_up": true,
-                  "date": "2026-08-07",
-                  "review_text": "Found visual bugs that have already been reported but looks like Rockstar won't take of them any time soon and also a lot of memorable songs were left out in this version.\n\nIt still is a enjoyable game that brings memories.",
-                  "truncated": false,
-                  "minutes_at_review": 2369
+                  "date": "2026-11-04",
+                  "review_text": "Honestly, the current state of the game is fine and fun to play if you keep your expectations realistic.\r\n\r\nThe original was legendary, but playing at 25 fps with heavy fog and short render distance doesn't really hold up anymore. Roaming San Andreas in 4K at 80+ fps with high-res models and updated controls makes replaying it a lot of fun. It is definitely easier with checkpoints, but as someone who already finished the original multiple times, I liked the refreshed experience. Just like the rest of the trilogy, it stuttered out of the box until I used a manual vulkan dll fix, but after that, I played through the entire story without a single crash or major game-breaking bug.\r\n\r\nCons:\r\n- Requires a manual vulkan dll fix to get rid of stuttering\r\n- Missing radio tracks\r\n- Annoying keybinding and control bugs\r\n- Garages still randomly dismiss stored vehicles",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-37492768",
+          "text": "One reviewer says the game stuttered out of the box until they used a manual vulkan dll fix.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239395010",
+            "hours_at_review": 55.1,
+            "minutes_at_review": 3304,
+            "voted_up": true,
+            "date": "2026-11-04",
+            "review_text": "Honestly, the current state of the game is fine and fun to play if you keep your expectations realistic.\r\n\r\nThe original was legendary, but playing at 25 fps with heavy fog and short render distance doesn't really hold up anymore. Roaming San Andreas in 4K at 80+ fps with high-res models and updated controls makes replaying it a lot of fun. It is definitely easier with checkpoints, but as someone who already finished the original multiple times, I liked the refreshed experience. Just like the rest of the trilogy, it stuttered out of the box until I used a manual vulkan dll fix, but after that, I played through the entire story without a single crash or major game-breaking bug.\r\n\r\nCons:\r\n- Requires a manual vulkan dll fix to get rid of stuttering\r\n- Missing radio tracks\r\n- Annoying keybinding and control bugs\r\n- Garages still randomly dismiss stored vehicles",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-473e3bdc",
+          "text": "One reviewer says the game has loads of immersion breaking textures, spots where you can see under the map, and floating rocks.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "237718665",
+            "hours_at_review": 62.0,
+            "minutes_at_review": 3720,
+            "voted_up": false,
+            "date": "2026-10-14",
+            "review_text": "Sloppy remake that still had loads of immersion breaking textures as well as game breaking bugs. Girlfriends look horrifying and the deserts and streets have plenty of spots you can see under the map and some floating rocks. The casino machines sometimes despawn when reloading the game.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 17,
-        "cited_recommend": 7,
-        "divergence_p": 9.89e-05,
+        "cited_reviews": 6,
+        "cited_recommend": 4,
+        "divergence_p": 0.24,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -985,126 +687,152 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 27,
-      "pct_positive": 85.2,
+      "pool_n": 39,
+      "pct_positive": 92.3,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players continue encountering lingering bugs and erratic pedestrian behavior.",
+      "summary": "Long-term players welcome new checkpoint additions while dealing with persistent crashes and difficult vehicle handling.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-d64f2c",
-              "claim": "Reviewers describe encountering persistent bugs and glitches, including pedestrians panicking for no reason, jetpack audio not working, and helicopters spawning in underground car parks.",
+              "claim_id": "vet-d3d71e",
+              "claim": "Reviewers report persistent bugs and frequent crashes that lead to lost progress during gameplay.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 3
               },
               "citations": [
+                {
+                  "recommendationid": "239499489",
+                  "hours_at_review": 101.5,
+                  "minutes_at_review": 6087,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "Im game modder and PC technician and i used to mod original cd 1.0 version hundreds of hours back in the days with my best friend and this is my review!!!\n\nIt is really hard to recommend this version when you can use silent patch in original version and have better experience.\n\nI played 100% and did all achievements in steam and Rockstar launcher there is few that are not in steam and i even did all things that is not required for 100% like dating all cjs girlfriends to 100%, doing unique stunt jumps, beat the c o c k 2part triathlon, burglary missions and having all gang turfs... all that without using cheats and enduring hundreds of crashes that made me lose progress all the time.\n\n\n[b][h3]POSITIVES[/h3][/b]\n[list]\n[*]Patches actually made this game better fixing most serious problems but still this game is bad mess\n[*]Lightning is actually good but that is mostly Unreal Engine doing the job\n[/list]\n\n\n[b][h3]NEGATIVES (THAT WAS MOST FRUSTRATING FOR ME!)[/h3][/b]\n[list]\n[*]This game version runs so poorly and crashes all the time with my AMD GPUS (RX 6750 XT And RX 7700 XT) that i had to use DXVK to transfer DirectX to vulkan to even play this game  without constant 0fps stutters. My GTX 980 Ti And GTX 980 got better frametimes. I tried SCS killer to preload all shaders and even that did not help and putting all settings to lowest even in 480p did not work or even make difference to the stutters!\nmy game crashed 5 times in row in end of the line mission in first 2 cutscenes like really!! I had to play this game mostly in invisible mode that my steam friends wont get annoyed me constantly starting this game.\n\n[*]I ended using 52 mods to fix this game mostly ai upscale errors in textures like Rosa Project and hand made character mods to make them look \n   natural and not gummy or plastic however you like to call it.\n\n[*]Devs really messed up the flying controls. Those controls are so bad that i was not able to gold medal flying school without using mods like this htt…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "235752918",
+                  "hours_at_review": 128.7,
+                  "minutes_at_review": 7722,
+                  "voted_up": false,
+                  "date": "2026-09-21",
+                  "review_text": "id rather pack my colon with c4 and turn myself into a human firework for the whole world to see then try and 100% this buggy pos again",
+                  "truncated": false
+                },
                 {
                   "recommendationid": "231380239",
                   "hours_at_review": 105.5,
+                  "minutes_at_review": 6333,
                   "voted_up": false,
                   "date": "2026-07-26",
                   "review_text": "I've lost count of the number of bugs and glitches. And, as usual, there are no user tracks in the game!",
-                  "truncated": false,
-                  "minutes_at_review": 6333
-                },
-                {
-                  "recommendationid": "221039151",
-                  "hours_at_review": 113.7,
-                  "voted_up": false,
-                  "date": "2026-03-19",
-                  "review_text": "Even in 2026, after the Definitive Edition was finally 'fixed', this version of San Andreas is a massive pile of bugs and glitches that didn't exist in the OG version of the game. \n\nThe Definitive Edition versions of GTA III and Vice City are largely fine at this point. But San Andreas is still ABSURDLY buggy. Like constantly. Nothing game-breaking. But tons of bugs and glitches happening constantly. I don't think I can go 3 straight minutes without noticing something in the game acting buggy. \n\nPedestrians constantly freaking out for absolutely no reason (screaming and running in a panic when nothing is going on around them). This happens regularly.\n\nJetpack audio not working most of the time. \n\nHelicopters spawning in car parking spots (including UNDERGROUND GARAGES - yes, a helicopter parked in a car's parking space in an underground car park where it's literally impossible to get a helicopter in or out).\n\nRandom instances of texture Z-fighting in certain parts of the map. \n\nA body of water in Las Venturas that has TWO separate water textures right next to each other with a very clear line of separation between them.\n\nThe Mount Chilliad BMX challenge is basically broken, because the spawn location for the bike bugs out after you complete the first BMX race. It will never again spawn where it's supposed to spawn. Most players think the BMX bike stops spawning in completely. As a result, they think the BMX challenges are broken and impossible to complete. \n\nHere's a little hint: After I completed the first BMX race, I found the bike lying on its side on a random part of the mountain. And it was making noise as if its wheels were spinning fast, despite lying motionless on its side. So I got onto the bike and rode it up to the top of the mountain. I parked the bike where it should be parked. Dismounted and then got back on. Then the next BMX race was triggered. This worked.\n\nThere's a good deal of Definitive Edition players who think San Andreas is busted and impossi…",
-                  "truncated": true,
-                  "minutes_at_review": 6822
+                  "truncated": false
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
             {
-              "claim_id": "vet-01bb79",
-              "claim": "Reviewers note the presence of persistent bugs and glitches in the game.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-1e8fc3",
+              "claim": "Reviewers note that vehicle controls, particularly for aircraft and RC toys, remain difficult and frustrating to master.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231380239",
-                  "hours_at_review": 105.5,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "I've lost count of the number of bugs and glitches. And, as usual, there are no user tracks in the game!",
-                  "truncated": false,
-                  "minutes_at_review": 6333
-                },
-                {
-                  "recommendationid": "221039151",
-                  "hours_at_review": 113.7,
-                  "voted_up": false,
-                  "date": "2026-03-19",
-                  "review_text": "Even in 2026, after the Definitive Edition was finally 'fixed', this version of San Andreas is a massive pile of bugs and glitches that didn't exist in the OG version of the game. \n\nThe Definitive Edition versions of GTA III and Vice City are largely fine at this point. But San Andreas is still ABSURDLY buggy. Like constantly. Nothing game-breaking. But tons of bugs and glitches happening constantly. I don't think I can go 3 straight minutes without noticing something in the game acting buggy. \n\nPedestrians constantly freaking out for absolutely no reason (screaming and running in a panic when nothing is going on around them). This happens regularly.\n\nJetpack audio not working most of the time. \n\nHelicopters spawning in car parking spots (including UNDERGROUND GARAGES - yes, a helicopter parked in a car's parking space in an underground car park where it's literally impossible to get a helicopter in or out).\n\nRandom instances of texture Z-fighting in certain parts of the map. \n\nA body of water in Las Venturas that has TWO separate water textures right next to each other with a very clear line of separation between them.\n\nThe Mount Chilliad BMX challenge is basically broken, because the spawn location for the bike bugs out after you complete the first BMX race. It will never again spawn where it's supposed to spawn. Most players think the BMX bike stops spawning in completely. As a result, they think the BMX challenges are broken and impossible to complete. \n\nHere's a little hint: After I completed the first BMX race, I found the bike lying on its side on a random part of the mountain. And it was making noise as if its wheels were spinning fast, despite lying motionless on its side. So I got onto the bike and rode it up to the top of the mountain. I parked the bike where it should be parked. Dismounted and then got back on. Then the next BMX race was triggered. This worked.\n\nThere's a good deal of Definitive Edition players who think San Andreas is busted and impossi…",
-                  "truncated": true,
-                  "minutes_at_review": 6822
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-498d40",
-              "claim": "Reviewers report that pedestrians exhibit panic behavior and scream without any apparent cause.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "221039151",
-                  "hours_at_review": 113.7,
-                  "voted_up": false,
-                  "date": "2026-03-19",
-                  "review_text": "Even in 2026, after the Definitive Edition was finally 'fixed', this version of San Andreas is a massive pile of bugs and glitches that didn't exist in the OG version of the game. \n\nThe Definitive Edition versions of GTA III and Vice City are largely fine at this point. But San Andreas is still ABSURDLY buggy. Like constantly. Nothing game-breaking. But tons of bugs and glitches happening constantly. I don't think I can go 3 straight minutes without noticing something in the game acting buggy. \n\nPedestrians constantly freaking out for absolutely no reason (screaming and running in a panic when nothing is going on around them). This happens regularly.\n\nJetpack audio not working most of the time. \n\nHelicopters spawning in car parking spots (including UNDERGROUND GARAGES - yes, a helicopter parked in a car's parking space in an underground car park where it's literally impossible to get a helicopter in or out).\n\nRandom instances of texture Z-fighting in certain parts of the map. \n\nA body of water in Las Venturas that has TWO separate water textures right next to each other with a very clear line of separation between them.\n\nThe Mount Chilliad BMX challenge is basically broken, because the spawn location for the bike bugs out after you complete the first BMX race. It will never again spawn where it's supposed to spawn. Most players think the BMX bike stops spawning in completely. As a result, they think the BMX challenges are broken and impossible to complete. \n\nHere's a little hint: After I completed the first BMX race, I found the bike lying on its side on a random part of the mountain. And it was making noise as if its wheels were spinning fast, despite lying motionless on its side. So I got onto the bike and rode it up to the top of the mountain. I parked the bike where it should be parked. Dismounted and then got back on. Then the next BMX race was triggered. This worked.\n\nThere's a good deal of Definitive Edition players who think San Andreas is busted and impossi…",
-                  "truncated": true,
-                  "minutes_at_review": 6822
-                },
-                {
-                  "recommendationid": "218420161",
-                  "hours_at_review": 120.2,
+                  "recommendationid": "239831383",
+                  "hours_at_review": 101.7,
+                  "minutes_at_review": 6100,
                   "voted_up": true,
-                  "date": "2026-02-15",
-                  "review_text": "San Andreas has always been my favorite in the series and if anything I would always highly suggest anyone who hasn't played to play and now unfortunately without being able to own the original on Steam I still think it's fantastic to get the Definitive Edition and experience it and with only a few minor issues like occasional world clipping... Overall, I think it’s a great way to relive the original experience.",
-                  "truncated": false,
-                  "minutes_at_review": 7215
+                  "date": "2026-11-10",
+                  "review_text": "A Peak game, bugs may still be there, i dont care, thats what make a lot of old games even funner, the jank. 10/10 story 10/10 characters 8/10 grafix 1/10 plane controls",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236760701",
+                  "hours_at_review": 120.9,
+                  "minutes_at_review": 7254,
+                  "voted_up": true,
+                  "date": "2026-10-03",
+                  "review_text": "★★★★☆ Very good!\r\n\r\n[h1]Action[/h1]\r\n\r\nWhile it may not be the flawless upgrade fans originally hoped for, Grand Theft Auto: San Andreas – The Definitive Edition still delivers the ultimate sandbox experience. \r\n\r\nAs for San Andreas itself, this game’s mission variety, customization options, and scope are impressive. Many of the missions in San Andreas also further ramp up the complexity, spectacle, and set pieces — making some of them a lot longer as a result. Thankfully, a new checkpoint system was implemented in the Definitive Edition, making it so missions can be restarted at specific moments (as opposed to entirely from the beginning).\r\n\r\nHowever, no amount of checkpoints can help my frustration with the RC toy missions across this trilogy. Notably, they did add additional time to some of these to make them more manageable, but these tiny vehicle horrors control just as poorly as I remember.[hr][i][h3]Good old Grand Theft Auto: San Andreas with graphic mods.[/h3][/i][/hr]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "227385286",
+                  "hours_at_review": 283.4,
+                  "minutes_at_review": 17002,
+                  "voted_up": true,
+                  "date": "2026-06-07",
+                  "review_text": "San andreas were punching and knocking everything above its weight for its time, even to this day, modern slops still failed to match to the level of love presented in this piece of gem. Feels good to play even with the defective remake filter. The driving feels incredible, Only small issues were the plane physics which takes some time to master and tame, it took me a total of 7 hours to complete the plane achievement other than that.  Everything presented in this game reminds me of the great times of my childhood where everything were simple and happy. I would like to give this game a whopping 10/10 for me.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-89057b",
+              "claim": "Reviewers mention the inclusion of a new checkpoint system that allows missions to be restarted at specific moments instead of from the beginning.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "236760701",
+                  "hours_at_review": 120.9,
+                  "minutes_at_review": 7254,
+                  "voted_up": true,
+                  "date": "2026-10-03",
+                  "review_text": "★★★★☆ Very good!\r\n\r\n[h1]Action[/h1]\r\n\r\nWhile it may not be the flawless upgrade fans originally hoped for, Grand Theft Auto: San Andreas – The Definitive Edition still delivers the ultimate sandbox experience. \r\n\r\nAs for San Andreas itself, this game’s mission variety, customization options, and scope are impressive. Many of the missions in San Andreas also further ramp up the complexity, spectacle, and set pieces — making some of them a lot longer as a result. Thankfully, a new checkpoint system was implemented in the Definitive Edition, making it so missions can be restarted at specific moments (as opposed to entirely from the beginning).\r\n\r\nHowever, no amount of checkpoints can help my frustration with the RC toy missions across this trilogy. Notably, they did add additional time to some of these to make them more manageable, but these tiny vehicle horrors control just as poorly as I remember.[hr][i][h3]Good old Grand Theft Auto: San Andreas with graphic mods.[/h3][/i][/hr]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236458201",
+                  "hours_at_review": 196.1,
+                  "minutes_at_review": 11766,
+                  "voted_up": true,
+                  "date": "2026-09-29",
+                  "review_text": "Just what I wanted from a remaster. Graphically it ain't perfect by any means but still keeps the authenticity of the original version with more modern graphichs which I do like even tho many dislike the graphics on this remaster specifically.\n\nThe gameplay features and gameplay affecting bugs have been fixed on top of the better graphics so no complaints at all on my behalf despite the common opinion.\n\nBonus points for checkpoint saves during missions!\n\nSummary: Definetly worth it! Despite the negative press this is awesome in my humble opinion :)\nDO NOT LISTEN TO THE PEOPLE WHO WHINE ABOUT THIS NOT HAVING GTA V LEVEL GRAPHICS etc. They are just a bunch of spoiled kids with no idea about anything!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235079628",
+                  "hours_at_review": 117.9,
+                  "minutes_at_review": 7074,
+                  "voted_up": true,
+                  "date": "2026-09-12",
+                  "review_text": "San Andreas is one of my favorite GTA game from the series. I love the mission slop and the weird content it has. I do prefer a more realistic roleplay game like Red Dead 2, but this game is old school so I love it for that. \r\n\r\nSadly the original is gone from Steam. I do like this version better for few things. \r\n\r\nWhats better: \r\nThe Hud, and weapon, and music slot is really easy to navigate. \r\n\r\nThe restart and checkpoints for the game. IF you made a mistake then you can go back to it (but for other missions you would have to restart the whole thing which is soo annoying for new players) \r\n\r\nFixing the glitches. There are some glitches in the game that can just annoy you. Like mission glitches were you have to restart because of some bug. \r\n\r\nAchievements. Getting 100% wasn't that hard and fun. Some of the things to do was annoying but that makes it fun.\r\n\r\nThings I dislike: \r\nFixing the glitches. There are some glitches back in the days that was funny but some of them were fix. Like trying to achievement hunt fast but can't because they fix the sex appeal glitch. \r\n\r\nSadly some of the glitches aren't fix which is good but other time it can be annoying. \r\n\r\nThe texture is so ugly. When I wanted a new version of the game I was looking for updating the texture of the game, or better shadings of everything. No, all they did was smooth everything, so they just removed the pixels and the cars and other stuff. So it looks like everything is melting. The expression faces stayed the game kinda, and nothing much. \r\n\r\nIf you want to play retro then I recommend just playing the emulated old school Playstation 2 or Xbox or the old PC version, and I recommend making save points. \r\n\r\nBut if you just want to try out the game the definitive edition isn't the worse. I still had fun from both games because of the game mission lore and content.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 3,
-        "cited_recommend": 1,
-        "divergence_p": 0.0592,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 8,
+        "cited_recommend": 5,
+        "divergence_p": 0.019,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1204,
-    "steam_total_reviews": 5027,
+    "pool_n": 1200,
+    "steam_total_reviews": 5615,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1547000/header.jpg?t=1781138712",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1547000/capsule_231x87.jpg?t=1781138712",
-    "grid": "https://cdn2.steamgriddb.com/grid/b3b4052b43e62e416a26b544933ecbfb.png"
   }
 }

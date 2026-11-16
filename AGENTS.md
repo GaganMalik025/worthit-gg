@@ -253,6 +253,12 @@ Standing rules, every session:
   2026-08-20). The wrapper sets `pipefail`, reads `PIPESTATUS[0]`, and writes
   `EXIT_RC=` into the log itself. Never report an exit code the log does not
   carry.
+- **Catalog refresh nights** (from 2026-11-16, until every published verdict
+  carries `claims_verified`): `pipeline/run_batch_logged.sh --refresh`. Same
+  trigger rule, same post-batch sequence. Each title regenerates from fresh
+  reviews in `data/refresh/<appid>/`, and the live page is replaced only by a
+  candidate that passed QR-4. The 5 seed games are skipped unless
+  `--include-seeds` is passed.
 
 **Post-batch sequence — reference, not an instruction to run it unprompted.**
 Each step waits for the developer.

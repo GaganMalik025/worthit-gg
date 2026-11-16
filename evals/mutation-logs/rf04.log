@@ -1,0 +1,10 @@
+rf04
+a gate-failed refresh is retried every night
+
+CAUGHT+NAMED
+file: pipeline/run_batch.py
+expected: not retried nightly
+a refresh that failed the gate is not retried nightly              FAIL
+oldest generated_at first                                          FAIL
+--limit caps it                                                    FAIL
+

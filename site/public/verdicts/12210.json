@@ -1,51 +1,62 @@
 {
   "appid": "12210",
   "game_name": "Grand Theft Auto IV: The Complete Edition",
-  "generated_at": "2026-08-10T09:53:45Z",
+  "generated_at": "2026-11-16T13:26:12Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/12210/header.jpg?t=1721061564",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/12210/capsule_231x87.jpg?t=1721061564",
+    "grid": "https://cdn2.steamgriddb.com/grid/a32bc8141e168ff20fdfe3f0fbc72155.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 13,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
-    "word": "Buy",
-    "tagline": "A brilliant open-world crime drama marred by severe technical hurdles.",
+    "word": "Wait",
+    "tagline": "A praised open-world classic trapped behind severe technical hurdles.",
     "for_you_if": [
-      "you want a dark and serious crime story",
-      "you enjoy sprawling open-world exploration"
+      "you already use community mods to stabilize older PC ports",
+      "you can tolerate heavy vehicle handling and missing checkpoints",
+      "you want a celebrated urban crime story"
     ],
     "not_for_you_if": [
-      "you refuse to use a mandatory third-party launcher",
-      "you are unwilling to troubleshoot technical instability",
-      "you lack patience for missing mission checkpoints"
+      "you will not install a third-party launcher",
+      "you need stable frame rates without applying manual fixes",
+      "you cannot endure frequent crashes during mission loading screens"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 82,
-      "pct_positive": 36.6,
+      "pool_n": 60,
+      "pct_positive": 35.0,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 721,
-      "pct_positive": 91.7,
+      "pool_n": 509,
+      "pct_positive": 83.7,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 571,
-      "pct_positive": 87.4,
+      "pool_n": 545,
+      "pct_positive": 85.5,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 85,
-      "pct_positive": 92.9,
+      "pool_n": 86,
+      "pct_positive": 96.5,
       "muted": false
     }
   ],
@@ -54,45 +65,45 @@
       "flag_id": "cohort_divergence",
       "type": "segmentation",
       "direction": null,
-      "shape": "mixed",
-      "sentence": "Initial reviewers report severe crashes and launch failures while veterans praise the game despite technical hurdles.",
+      "shape": "monotonic_increase",
+      "sentence": "Positive review rates increase substantially as playtime increases from the initial hours.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 36.6,
-            "pool_n": 82
+            "pct_positive": 35.0,
+            "pool_n": 60
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 91.7,
-            "pool_n": 721
+            "pct_positive": 83.7,
+            "pool_n": 509
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 87.4,
-            "pool_n": 571
+            "pct_positive": 85.5,
+            "pool_n": 545
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 92.9,
-            "pool_n": 85
+            "pct_positive": 96.5,
+            "pool_n": 86
           }
         ],
-        "shape": "mixed",
+        "shape": "monotonic_increase",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 36.6,
-        "low_pool_n": 82,
+        "low_pct_positive": 35.0,
+        "low_pool_n": 60,
         "high_cohort": "veteran",
         "high_cohort_label": "over 100 hours",
-        "high_pct_positive": 92.9,
-        "high_pool_n": 85,
-        "gap_pts": 56.3
+        "high_pct_positive": 96.5,
+        "high_pool_n": 86,
+        "gap_pts": 61.5
       }
     }
   ],
@@ -101,671 +112,225 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 82,
-      "pct_positive": 36.6,
+      "pool_n": 60,
+      "pct_positive": 35.0,
       "muted": false,
       "n_note": null,
-      "summary": "Initial players struggle with launch failures, severe performance drops, save errors, and forced third-party launcher requirements.",
+      "summary": "Early players face severe launch failures, crashes, and launcher barriers alongside heavy driving physics and a praised atmosphere.",
       "themes": [
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "ref-6d2303",
-              "claim": "Reviewers report that the game requires an internet connection and a mandatory third-party Rockstar launcher to play.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "231834699",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Need a internet connection to play a 20 years game, absolute joke",
-                  "truncated": false,
-                  "minutes_at_review": 22
-                },
-                {
-                  "recommendationid": "231216367",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "Game is great, My only reall issue with it is the game is drm to rockstars lame ass launcher. I cannot recommend it Unless you are willing to go through all the loops to by pass that trash.",
-                  "truncated": false,
-                  "minutes_at_review": 40
-                },
-                {
-                  "recommendationid": "230418328",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "I really hate Rockstar launcher. It makes the game complicated to play. I wish they removed it long time ago.",
-                  "truncated": false,
-                  "minutes_at_review": 40
-                },
-                {
-                  "recommendationid": "229902311",
-                  "hours_at_review": 1.0,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "1; buy my game.\n2; okay rockstar.\n1; mandatory 3rd party launcher.\n2; no rockstar.",
-                  "truncated": false,
-                  "minutes_at_review": 61
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-f31bf7",
-              "claim": "Reviewers experience issues with account creation or signing into the Rockstar service, including being blocked by old email associations.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "230663588",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Purchased this game, only to have it automatically link to an email address somehow that I haven't had in almost 20 years. Probably the original email I had made my steam account with.\n\nSo obviously it asks for a code from that email to play, I can not do that.\n\nI submit a ticket explaining this, with proof of purchase to rockstar, and receipt. They close the ticket and tell me I need to request unlinking steam and fixing this from that email I haven't had in almost 20 years.\n\nYou can't make this up.\n\nRockstar commiting fraud here. I tried to be legit, I guess i'll sail the seas instead.",
-                  "truncated": false,
-                  "minutes_at_review": 17
-                },
-                {
-                  "recommendationid": "230537745",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "I cant sign up to rockstar games account. So... yeah.. i cant recommend for games that need much effort to play.",
-                  "truncated": false,
-                  "minutes_at_review": 8
-                },
-                {
-                  "recommendationid": "230259111",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "requires rockstar launcher, sure fine. got it. made an account, game lags like a mf loading in and i couldn't even start the game in either base GTA IV or the expansions. Refunded after wasting an hour trying to play it. Ill just go buy an Xbox 360 and play this that way. less complications.",
-                  "truncated": false,
-                  "minutes_at_review": 12
-                },
-                {
-                  "recommendationid": "230183294",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "i really wanted to play this game, but my rockstars account is being denied. i hate this, so i am uninstalling.",
-                  "truncated": false,
-                  "minutes_at_review": 9
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ref-d2db29",
-              "claim": "This cohort describes experiencing issues with saving game progress, noting errors related to local storage or failed saves.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230791329",
-                  "hours_at_review": 0.8,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Hustled again...Can't save game progress.",
-                  "truncated": false,
-                  "minutes_at_review": 49
-                },
-                {
-                  "recommendationid": "229669611",
-                  "hours_at_review": 1.0,
-                  "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "Hey, Just dowloaded this game again since I've played it in my xbox360 back when I was a kid. after downloading it when I tried to save it the game says \"saving failed, pleace check the local storage\".",
-                  "truncated": false,
-                  "minutes_at_review": 61
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ref-3d7a92",
-              "claim": "Reviewers state that the game fails to boot or results in a black screen upon launch.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "230773449",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Sh!t is straight up abandonware! There should be an achievement for getting this 5 times in a row : \r\n\r\n\"Unable to launch Grand Theft Auto IV. If you continue to have problems launching the game, please verify the integrity of your game files via the settings menu, or contact Rockstar Games Customer Support at https://support.rockstargames.com. Code:7002.1\"\r\n\r\nIt sucks that the FitGirl gng are getting a far better experience than us, loyal paying customers.",
-                  "truncated": false,
-                  "minutes_at_review": 15
-                },
-                {
-                  "recommendationid": "230388224",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "it doesn't even boot up",
-                  "truncated": false,
-                  "minutes_at_review": 39
-                },
-                {
-                  "recommendationid": "230187315",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "Game turns into a black screen and is very stuttery was really disappointed as I really  wanted to play it had to refund for the first time ever  as it wasn't  playable",
-                  "truncated": false,
-                  "minutes_at_review": 16
-                },
-                {
-                  "recommendationid": "229905966",
-                  "hours_at_review": 1.3,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "screen is black every time i open, what a waste of money.",
-                  "truncated": false,
-                  "minutes_at_review": 78
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-3ec7bb",
-              "claim": "Reviewers report severe performance issues, including extreme lag in menus, low frame rates, and crashes during loading screens or missions.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "230933767",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "legit unplayable. downloaded fusiofix yet im literally getting 3-5 fps. dont buy this slop",
-                  "truncated": false,
-                  "minutes_at_review": 8
-                },
-                {
-                  "recommendationid": "230713680",
-                  "hours_at_review": 0.6,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "I bet this game is actually great but I didn't get the chance to enjoy it, because the pc port is buggy slop. Even with fusion fix and capped framerate my game kept crashing randomly or when roman called me in the first mission. One time when I opened it, it crashed but the audio from the intro kept playing and there wasnt a rockstar or gta iv task open in taskmgr. Very buggy and weird",
-                  "truncated": false,
-                  "minutes_at_review": 34
-                },
-                {
-                  "recommendationid": "230589087",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "The game is so lagged in the main menu I can't even access the game itself. Straight up unplayable for me.",
-                  "truncated": false,
-                  "minutes_at_review": 25
-                },
-                {
-                  "recommendationid": "230415189",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "i cant even play lol keeps crashing in the loading screen.",
-                  "truncated": false,
-                  "minutes_at_review": 27
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 18,
-        "cited_recommend": 0,
-        "divergence_p": 0.000274,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 721,
-      "pct_positive": 91.7,
-      "muted": false,
-      "n_note": null,
-      "summary": "Players encounter unstable performance and loose vehicle handling, while relying on community patches for stability.",
-      "themes": [
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ear-028fd0",
-              "claim": "Reviewers note that vehicle steering and handling feel difficult or loose, comparing it to driving on butter.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231750771",
-                  "hours_at_review": 18.1,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "This games has quite some content and is fun to play. The physics are great to experiment with but driving is a bit difficult.",
-                  "truncated": false,
-                  "minutes_at_review": 1088
-                },
-                {
-                  "recommendationid": "231662000",
-                  "hours_at_review": 7.1,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "Lovely game, lovely story, but the driving is not very good. If you want a dark story, this is the one game you should buy. Its cheap.",
-                  "truncated": false,
-                  "minutes_at_review": 424
-                },
-                {
-                  "recommendationid": "231570370",
-                  "hours_at_review": 10.4,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "The cops are Israeli, and the steering for every single vehicle is like trying to steer a pad of butter over an hot tin plate.",
-                  "truncated": false,
-                  "minutes_at_review": 623
-                },
-                {
-                  "recommendationid": "229611873",
-                  "hours_at_review": 5.1,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "I'm sure it was a great game when it was released. But having played GTA V before this, I just cannot with this game. I can handle the older graphics (that is expected), but the vehicles drive like ♥♥♥♥, and missions are extremely fiddly, at least compared to modern games (such as IV). So just a no for me.",
-                  "truncated": false,
-                  "minutes_at_review": 305
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-80571c",
-              "claim": "Reviewers describe mission structures as repetitive, consisting mainly of driving to a location and eliminating targets.",
+              "claim_id": "ref-ac3e40",
+              "claim": "Reviewers report frequent game crashes, long or infinite loading screens during missions, and failure to launch.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 1,
-                "negative": 2
+                "negative": 11
               },
               "citations": [
                 {
-                  "recommendationid": "231799157",
-                  "hours_at_review": 10.0,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "It's great. But most missions are very dull. Drive to a place, kill one or two guys and maybe drive back.",
-                  "truncated": false,
-                  "minutes_at_review": 601
-                },
-                {
-                  "recommendationid": "231543222",
-                  "hours_at_review": 2.9,
+                  "recommendationid": "240245763",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 28,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Honestly not for me. I know the game is old and won't compare to modern titles today but the port is so unbelievably bad, There's just too many bugs and for the storyline a lot of the missions are just very dry.",
-                  "truncated": false,
-                  "minutes_at_review": 174
+                  "date": "2026-11-15",
+                  "review_text": "I was really excited to download GTA IV on PC before the release of GTA VI, but I was very disappointed. After 30 minutes of playing, the game crashed. It didn't even close with Alt+F4, so I had to restart my computer using the reset button. Even though the game is from 2008, it still crashes on a computer with 2024 hardware. I really hope the PC version of GTA VI won't have these problems.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229818685",
-                  "hours_at_review": 15.2,
+                  "recommendationid": "240238359",
+                  "hours_at_review": 1.8,
+                  "minutes_at_review": 109,
                   "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "I went into this game with very high expectations because of how much people praised it. I constantly heard that it's the best GTA game thanks to its dark, gritty atmosphere and more mature story.\n\nUnfortunately, my experience couldn't have been more different.\n\nThis is easily one of the most frustrating GTA games I've ever played. The controls are incredibly clunky and unresponsive. Yes, the physics are impressive, and the parkour mechanics are a nice idea, but none of that matters when simply controlling your character feels like a struggle.\n\nThe game also boasts a lot of enterable buildings, but most of them are completely empty, making the world feel less interactive than it first appears.\n\nAs for the missions, I kept playing because everyone said the story was worth it. Instead, I spent hours doing repetitive \"go here, kill these people, mission complete\" objectives. To make matters worse, the lack of mission checkpoints means that if you fail because of the game's awkward controls, you're forced to replay the entire mission from the beginning.\n\nI gave the game 11 hours because I genuinely wanted to see what everyone was talking about. I kept waiting for it to get better, but eventually I ran out of patience. It became more exhausting than enjoyable, which was disappointing given all the praise and the high expectations I had going in.\n\nAnd finally, I can't ignore the optimization. This is one of the worst-optimized games I've ever played.",
-                  "truncated": false,
-                  "minutes_at_review": 911
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-f9dbee",
-              "claim": "Reviewers report that the PC port is unstable, poorly optimized, or buggy, and recommend installing community mods like FusionFix to ensure proper stability and performance.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 7,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231790225",
-                  "hours_at_review": 9.8,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Love this game just needs a better port make sure you go to Vortex to get a mod to make it run a bit smoother",
-                  "truncated": false,
-                  "minutes_at_review": 590
+                  "date": "2026-11-15",
+                  "review_text": "This version is a broken buggy mess. I have never had a game crash so many times. And when it doesn't crash, it takes forever to load, if it even does.\n\nStill, the underlying content seems good enough that I have decided I will struggle bus through it all at least for the main story,",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231772914",
-                  "hours_at_review": 15.8,
+                  "recommendationid": "240200078",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 70,
                   "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "By far the best gta game imo and maybe even the best rockstar game ignore the playtime i usually have my wifi off i actually have like 88 hours logged atp and im still not bored just make sure to get the fusion fix mod otherwise this port is ROUGH",
-                  "truncated": false,
-                  "minutes_at_review": 947
+                  "date": "2026-11-14",
+                  "review_text": "really good game but poo pc port mission loads infinitely and only detects 1/8th of my vram",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231523281",
-                  "hours_at_review": 7.0,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Requires 3rd party non-steam workshop mod \"FusionFix\" otherwise game is very unstable. However its a very easy drag and drop mod install. Would also recommend turning off aim assist even with controller because the 1-shot headshot mechanic is very satisfying but the auto aim defaults to torso. \n\nGreat game though once fixed. I watched both the брат movies in uni and it really feels like there was a big inspiration taken from those movies in a good way. Niko is probably the most righteous of all gta protags; just a loyal soldier who came to America to be closer to his brother whose been bragging about living the rich life in the states, just to find out his brother is broke and drowning in the criminal world and only when Niko tries to protect his family is he then entwined into the criminal world.",
-                  "truncated": false,
-                  "minutes_at_review": 418
-                },
-                {
-                  "recommendationid": "229901910",
-                  "hours_at_review": 17.1,
+                  "recommendationid": "240115732",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 33,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "Here is the deal. This is a fantastic game and a terrible port that is fundamentally broken.\r\nIf you're fine with modding the game to fix most of the issues. This is absolutely worth it. \r\n\r\nHowever, since Rockstar/Take2 are selling it in a state this broken and besides shoving in their Rockstar Social Launcher/Account thingy and patches that broke some visual effects. I can't give it a thumbs up.\r\n\r\nWhen it comes to the game itself. The story is imho the best in the series. The driving is the most satisfying. The gunplay and features are serviceable but nothing special. The atmosphere is superb. \r\nWhen using some of the biggest fixes, the graphics hold up fairly ok for what used to be a Xbox 360/PS3 game at one point.\r\n\r\nPerformance is very iffy without mods. On Linux it runs a bit better than on Windows, thanks to DXVK. DXVK however, can also be applied when playing it on Windows, albeit requiring a bit more tinkering.\r\n\r\nAt the time of writing this (July 2026), when using the mods \"FusionFix\", \"VariousFixes\", \"Radio Restoration\" and \"Console Visuals\" you could get a pretty decent experience, playing at a mostly stable 60fps without some of the nasty glitches and broken visuals while also restoring the intended atmosphere.\r\n\r\nConclusion: If you're ok with modding, get it on a sale and it'll probably be worth it. If you don't want to tinker at all, don't bother and maybe wait for a remaster, which could end up as broken as this, if not worse and they might possibly remove this version from the store.",
-                  "truncated": false,
-                  "minutes_at_review": 1026
+                  "date": "2026-11-13",
+                  "review_text": "Unplayable on win11. Stuck on loading screen. The game locked the mouse in the game window, you can't click anywhere else to close the game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229858508",
-                  "hours_at_review": 7.5,
-                  "voted_up": true,
-                  "date": "2026-07-07",
-                  "review_text": "With Essential mods like Fushion Fix and Various fixes this game is somewhat playable.For my spec most of the things i kept at high except or night shadows. And i used the vulcan API not DX9. If you want to play this game cap it at 60 externally or using Fushion FIx and the game works fine. The story is best and i love it.",
-                  "truncated": false,
-                  "minutes_at_review": 452
-                },
-                {
-                  "recommendationid": "229814103",
-                  "hours_at_review": 7.8,
-                  "voted_up": true,
-                  "date": "2026-07-07",
-                  "review_text": "good game. bad port. use fusionfix mod to make it the game it should be.\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 468
-                },
-                {
-                  "recommendationid": "229622222",
-                  "hours_at_review": 12.8,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "Can't go wrong with a classic like GTA 4. Playing this game brings back so many memories. Added mods to enhance the graphics and add some stability to the game, which I highly recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 771
-                },
-                {
-                  "recommendationid": "229625457",
-                  "hours_at_review": 4.8,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "This game held up extremely well for how old it is now. Installed the FusionFix recommended by the community and the bugs are pretty much gone FPS CAP removed graphics are improved.",
-                  "truncated": false,
-                  "minutes_at_review": 285
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "ear-4ad30b",
-              "claim": "Reviewers state that the game requires an internet connection and the third-party Rockstar Launcher to play.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "229563474",
-                  "hours_at_review": 11.6,
+                  "recommendationid": "240070642",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 68,
                   "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "need an internet connection to play a 20 year old game, god save us",
-                  "truncated": false,
-                  "minutes_at_review": 698
+                  "date": "2026-11-13",
+                  "review_text": "I bought the game thinking it was going to be a fun experience just revisiting an old gta but i was wrong. It was super glitchy and it took a million tries to launch and when i would do a mission I'd get stuck on a loading screen and my specs are pretty good so its not my pc for sure. idk if i was playing on 360 fps it was messing anything up but it was bad experience don't recommend as of right now,",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229799683",
-                  "hours_at_review": 10.6,
+                  "recommendationid": "240050582",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 5,
                   "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "Rockstar launcher that requires email code to run an old single-player offline game is a travesty!\nEvery. Single. Time. \nThis is the last money you've seen from me, Rockstar. Go copulate yourself.",
-                  "truncated": false,
-                  "minutes_at_review": 636
+                  "date": "2026-11-12",
+                  "review_text": "I was going to run it back before playing gta VI when it gets released and the stupid game won't even get past the loading screen. Try find an old xbox 360 or something and play it on there cause this ain't the version. Plus you have to use the shitty rockstar launcher",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229808301",
-                  "hours_at_review": 4.7,
+                  "recommendationid": "240050383",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 30,
                   "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "Suspend and resume is broken on SteamOS because of the garbage Rockstar Launcher malware. All of these excellent games are ruined by this trash.",
-                  "truncated": false,
-                  "minutes_at_review": 284
+                  "date": "2026-11-12",
+                  "review_text": "Takes a miracle to get past a loading screen.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229896139",
-                  "hours_at_review": 6.8,
+                  "recommendationid": "239788290",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 81,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "Good game but for no reason they decided to implement a launcher when the game was playable without one before. Bad move let me play my game that I bought.",
-                  "truncated": false,
-                  "minutes_at_review": 409
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "divergent"
-        ],
-        "cited_reviews": 19,
-        "cited_recommend": 10,
-        "divergence_p": 7.97e-06,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "mid",
-      "label": "20-100h",
-      "hours_range": "20-100 hours",
-      "pool_n": 571,
-      "pct_positive": 87.4,
-      "muted": false,
-      "n_note": null,
-      "summary": "Experienced campaigners praise the dark narrative but report technical bugs, missing checkpoints, and final mission progression blocks.",
-      "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "mid-6ca978",
-              "claim": "Reviewers report encountering a game-breaking bug on the final mission where climbing or interacting with the helicopter fails due to frame rate or engine limitations, requiring players to lock the game to 30 frames per second or modify CPU affinity.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 3,
-                "negative": 2
-              },
-              "citations": [
+                  "date": "2026-11-09",
+                  "review_text": "Another broken game being sold on steam. Game can't read vram, freezes loading,, crashes on starting. Don't pay and encourage this false advertising. Go buy Saints Row 3 on GOG and have a fun instead of frustrating time",
+                  "truncated": false
+                },
                 {
-                  "recommendationid": "231867356",
-                  "hours_at_review": 84.1,
+                  "recommendationid": "239578114",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 31,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Wish I could recommend but I cant, unless you enjoy wasting hours in a game you cant finish.  Until that helicopter bug on the final mission is fixed, this shouldnt be sold to PC users.  No one buys a product if theyd known they cant fully consume or use it.",
-                  "truncated": false,
-                  "minutes_at_review": 5047
+                  "date": "2026-11-07",
+                  "review_text": "I really hate this fucking rockstar launcher they force us to download their trash can launcher which don't even work properly and some how if you even manage to let the launcher work and get into game you put your another ass efforts to fix their buggy games which crashes a lot",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231845378",
-                  "hours_at_review": 54.7,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Aside from all the bugs i've encountered, and crashes, finishing the main story, this game truly lives up even after 18 years. don't really like that if we fail the mission we have to replay it again from the beginning.\r\nan important bug that caused me problems, is in the last mission, where niko has to climb the helicopter by tapping rappidly space bar.  problem is you have to get your game locked to 30 fps, because of outdated updates and game engine not registering the action.",
-                  "truncated": false,
-                  "minutes_at_review": 3281
-                },
-                {
-                  "recommendationid": "231832402",
-                  "hours_at_review": 63.6,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I really enjoyed this game. The story is amazing, and after finishing both GTA IV and GTA V, I honestly think GTA IV is the better game. The main reasons are the story, the physics, and how interactive the world feels.\nThe game does have a few annoying bugs, though. For example, during the final mission, I had to set the game's CPU affinity to only CPU 0 in Task Manager, otherwise I couldn't complete the mission. There's also a bug in the \"Union Drive\" mission where the game can get stuck on an infinite loading screen. I fixed it by saving the game at a safe house several times, and after that the mission worked normally. Overall, despite these issues, GTA IV is an incredible game and one of the best GTA titles I've ever played. I highly recommend it",
-                  "truncated": false,
-                  "minutes_at_review": 3814
-                },
-                {
-                  "recommendationid": "229914272",
-                  "hours_at_review": 26.0,
+                  "recommendationid": "239495951",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 22,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "On the last mission the press space/a to get into the chopper will not work so you cannot beat the game.",
-                  "truncated": false,
-                  "minutes_at_review": 1559
+                  "date": "2026-11-06",
+                  "review_text": "Failed to open after 20 mins tried everything from validating to mods i am gonna emulate this now!",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229723839",
-                  "hours_at_review": 32.0,
-                  "voted_up": true,
-                  "date": "2026-07-05",
-                  "review_text": "Leurisi's Playthrough Stats:\r\n[table]\r\n[tr]\r\n\t[th]Difficulty[/th]\r\n\t[th]Deaths[/th]\r\n\t[th]Time to Finish[/th]\r\n[/tr]\r\n[tr]\r\n\t[td]NULL[/td]\r\n\t[td]8[/td]\r\n\t[td]29hrs[/td]\r\n[/tr]\r\n[/table]\r\n\r\nGame Completion: ✅\r\n\r\nFinally finished GTA 4. Niko Bellic is probably my favourite character so far from all GTA's. The PC port is a bit ass though, downloaded 'Fusion Fix' to solve a couple of problems but aside from that a great game. Never really had any issues throughout the game until the very final mission (the rockets kept cooking my chopper SMH).\r\n\r\nI still need to complete TBOGT & TLAD, but that's for another time.",
-                  "truncated": false,
-                  "minutes_at_review": 1921
+                  "recommendationid": "238944789",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "This game has a 10/10 story but for some reason it won't launch on my PC and keeps giving me an error, I never had this problem on my previous laptop but this is so annoying ngl, love this game but it just refuses to launch on my PC",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237901728",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 37,
+                  "voted_up": false,
+                  "date": "2026-10-17",
+                  "review_text": "If you ever alt+tab to check anything the game crashes",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-4a0321",
-              "claim": "Reviewers note that the PC version suffers from technical problems, including crashes, bugs, and performance issues.",
-              "citation_verdict": "positive",
+              "claim_id": "ref-3e2418",
+              "claim": "Reviewers state that the game fails to properly detect VRAM and suffers from low, choppy, or inconsistent frame rates.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 3,
-                "negative": 1
+                "positive": 1,
+                "negative": 5
               },
               "citations": [
                 {
-                  "recommendationid": "231866488",
-                  "hours_at_review": 53.2,
+                  "recommendationid": "240200078",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 70,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "really good game but poo pc port mission loads infinitely and only detects 1/8th of my vram",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240013725",
+                  "hours_at_review": 1.3,
+                  "minutes_at_review": 78,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Un gran juego con una optimización de mierda, si vas por logros procura guardar, le dá por crashear sin motivo alguno, haciéndote perder tiempo porque matar a las putas 100 palomas no te guarda automáticamente el juego, ni los mods que los \"arreglan\" (FusionFix) te salvan del crash.",
-                  "truncated": false,
-                  "minutes_at_review": 3190
+                  "date": "2026-11-12",
+                  "review_text": "Trying to play this game but missions are not loading frame rate choppy i do not want to download mods just to run the game fine ill give it another go and see if mission loads but so far terrible experience",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231845378",
-                  "hours_at_review": 54.7,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Aside from all the bugs i've encountered, and crashes, finishing the main story, this game truly lives up even after 18 years. don't really like that if we fail the mission we have to replay it again from the beginning.\r\nan important bug that caused me problems, is in the last mission, where niko has to climb the helicopter by tapping rappidly space bar.  problem is you have to get your game locked to 30 fps, because of outdated updates and game engine not registering the action.",
-                  "truncated": false,
-                  "minutes_at_review": 3281
+                  "recommendationid": "239916418",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 97,
+                  "voted_up": false,
+                  "date": "2026-11-11",
+                  "review_text": "Terrible pc port even with fusion fix the game can barely run 30 fps, and isn't even consistent if it wants to run 10-15 fps or 25-30 fps even after restarting the game. I know I have a low end pc but that's bs, and the 2nd mission of THE GAME won't even load. There is also a glitch only with this game with medal clipping software were it clips the first 16 sec of the game automatically for not reason. This is beyond stupid and is not worth your 7$ after tax even for a great story.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229950236",
-                  "hours_at_review": 40.0,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "KInda difficult to play it nowadays. Crashes a lot and I'm trying to fix it through mods. Even though, I love GTA 4.",
-                  "truncated": false,
-                  "minutes_at_review": 2400
+                  "recommendationid": "239788290",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 81,
+                  "voted_up": false,
+                  "date": "2026-11-09",
+                  "review_text": "Another broken game being sold on steam. Game can't read vram, freezes loading,, crashes on starting. Don't pay and encourage this false advertising. Go buy Saints Row 3 on GOG and have a fun instead of frustrating time",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229516365",
-                  "hours_at_review": 52.2,
-                  "voted_up": true,
-                  "date": "2026-07-03",
-                  "review_text": "GTA IV is a great game and in my opinion, the best GTA game. However, the PC port of GTA IV is riddled with issues such as visual artifacts, crashing, poor performance and being forced to log in to the Rockstar Launcher to play. Overall, this makes for a relatively subpar experience compared to the console counterparts. Although, most if not all of these problems can be resolved by installing patches like fusionfix, this shouldn't be something you have to do to have a good experience with the game.",
-                  "truncated": false,
-                  "minutes_at_review": 3130
+                  "recommendationid": "239682319",
+                  "hours_at_review": 1.3,
+                  "minutes_at_review": 78,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "Barely runs. Too many glitches, frame drops, broken controls.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239559233",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 36,
+                  "voted_up": false,
+                  "date": "2026-11-07",
+                  "review_text": "lol wtf is this broken game,  some how worse than console  and cant even use  my gpu to nearly its full  extent.",
+                  "truncated": false
                 }
               ]
-            }
-          ]
-        },
-        {
-          "theme": "access",
-          "claims": [
+            },
             {
-              "claim_id": "mid-3cc445",
-              "claim": "Reviewers describe being forced to sign in through a third-party Rockstar launcher account to play the game on Steam.",
-              "citation_verdict": "positive",
+              "claim_id": "ref-41754d",
+              "claim": "Reviewers describe crashing or freezing issues specifically when alt-tabbing out of the game.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 3,
+                "positive": 1,
                 "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231820102",
-                  "hours_at_review": 85.2,
+                  "recommendationid": "239802395",
+                  "hours_at_review": 2.0,
+                  "minutes_at_review": 118,
                   "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I've been meaning to finish this for so long. I never did get all the way through back when it came out. I found it too serious, nothing like my favourite GTA VC. Coming back to GTA4 after all this time, it has aged really well. I feel like the story is one of the best of the series, better than GTA5. Running it on Linux has been perfect, the PC port is known for bad performance and I haven't seen any of that.\r\n\r\nI just hate the Rockstar launcher system.",
-                  "truncated": false,
-                  "minutes_at_review": 5114
+                  "date": "2026-11-09",
+                  "review_text": "good game but u have to have patience to play this game because its kinda buggy when u alt tab and can freeze every 30 minutes",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229888017",
-                  "hours_at_review": 47.2,
-                  "voted_up": true,
-                  "date": "2026-07-07",
-                  "review_text": "GTA4 is a weird game to quantify but despite it being arguably the best GTA game and the gold standard for open world games I don't love it.\r\nMore verbose and autistic individuals than me have made many (many) arguments to GTA4s greatness and I would agree with most points; GTA4 is incredibly ambitious, it improves upon most of the systems from the '3D' trilogy and has an insane attention to detail which mostly add to the experience.\r\nI feel like my two takeaways from replaying this game is that fun has been somewhat sacrificed on the alter of realism and almost every character you interact with is a giant c#ck.\r\nThe story, and your protagonist are generally narratively strong although some of the 'crime doesn't pay' and 'bad people are victims of their history' moral grandstanding comes across as heavy-handed and repetitive especially after the *big story plot point* happens towards the end of the game.\r\nAdditionally, this version IMO requires a certain amount of modding to play smoothly on modern systems as rockstar/TakeTwo only really care about money.\r\nAlso, the rockstar launcher and the forcing of people to sign up to a third party account to play is anti-consumer and frankly cancerous capitalist sh#te.\r\nIn short, better than GTA5 not as good as San Andreas worth your time in general.\r\n(Also also better than spending £90 on GTA6.)",
-                  "truncated": false,
-                  "minutes_at_review": 2834
-                },
-                {
-                  "recommendationid": "229516365",
-                  "hours_at_review": 52.2,
-                  "voted_up": true,
-                  "date": "2026-07-03",
-                  "review_text": "GTA IV is a great game and in my opinion, the best GTA game. However, the PC port of GTA IV is riddled with issues such as visual artifacts, crashing, poor performance and being forced to log in to the Rockstar Launcher to play. Overall, this makes for a relatively subpar experience compared to the console counterparts. Although, most if not all of these problems can be resolved by installing patches like fusionfix, this shouldn't be something you have to do to have a good experience with the game.",
-                  "truncated": false,
-                  "minutes_at_review": 3130
-                },
-                {
-                  "recommendationid": "231658576",
-                  "hours_at_review": 41.3,
+                  "recommendationid": "237901728",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 37,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Unfortunately I cannot recommend any games from Rockstar. When I had originally signed up for an account with Rockstar, I signed up with a Comcast email that I no longer have access to and that is no longer even active. This email was linked from my Rockstar account to my Steam account. As a result, I am no longer able to play any of Rockstar's games on Steam. When you start the game, you are required to sign in through Rockstar's launcher and you have to verify your account by them sending a code to your email. I no longer have access to that email, so I am not able to verify my account. \n\nTHERE IS ABSOLUTELY NO WORKAROUND FOR THIS\n\nI have contacted Rockstar support multiple times to try and fix this, but they close out the support tickets saying that I am not providing enough information, or that I am not putting a ticket through the account that I no longer have access to. Rockstar does not care though, because they are such a huge company, they can afford to lose customers. I suppose they just want me to create a new Steam account and buy their games again, but I am not going to do that. I am very disappointed with Rockstar's customer service. I have bought all of their games MULTIPLE TIMES since the release of GTA III, and they cannot even help fix this small problem. All they have to do is let me link a new email to my Steam account, but they are not willing to do this.\n\nJust be aware if you link your Rockstar account to your Steam account, you have to make sure you keep access to the email account that is linked, because otherwise you will not be able to play any of their games on Steam.",
-                  "truncated": false,
-                  "minutes_at_review": 2476
+                  "date": "2026-10-17",
+                  "review_text": "If you ever alt+tab to check anything the game crashes",
+                  "truncated": false
                 }
               ]
             }
@@ -775,105 +340,31 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-3ed1ca",
-              "claim": "Reviewers describe the story as dark, serious, and centered around Niko Bellic's revenge and immigrant background in Liberty City.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 5,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231871479",
-                  "hours_at_review": 29.9,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "Everyone owns GTA V but I wanted to try and go back and play the previous entries in the series. My start? GTA IV. I think GTA IV is a good game, but I wouldn't necessarily call it great. The main drawback is that I don't think it's aged particularly well in the graphics and gameplay department, but I don't really think I can hold a 2008 game up to 2026 standards (obviously). I like Niko as a protagonist though and enjoyed going on his revenge quest. There is your quintessential cast of goofy GTA characters, but, to me, none stuck super well - except for Roman, of course. Solid game. \n\n\"Niko, it's Roman. Let's go bowling\"\n7/10",
-                  "truncated": false,
-                  "minutes_at_review": 1794
-                },
-                {
-                  "recommendationid": "231844125",
-                  "hours_at_review": 39.6,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "The step up in realism is felt immediately. Liberty City and NY being 1:1 is hilarious. Each borough highlights this, and hosts their own set of colorful characters unique to the area. The only Russian clothing shop being in Hove (not Brighton) Beach hits the sardonic satire R* are specialist at. \r\n\r\nNarratively, its my favorite GTA story and character. While Vice City and San Andreas had obvious film influences, this was a story of revenge and immigrant identity bespoke to Liberty City.\r\n\r\nShame I had to use mods to get it up and running however a true gem and masterpiece in its own right.\r\n\r\n[spoiler] and I will say...killing Darko and then taking the deal is exactly what real Niko would do. After traveling to Liberty City to avenge his comrades, no matter the condition Darko was found in, that had to be done. After his comments of emptiness and that car ride in silence made me think he was ready to move on with his new life. That ultimately yields a nightmare ending which I think fits right into this world. [/spoiler] \r\n\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 2377
-                },
-                {
-                  "recommendationid": "229786914",
-                  "hours_at_review": 23.2,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "my favorite gta game, up there with san andreas. honestly both iv and sa are just as great in my opinion, for different reasons. but gta iv is my new favorite from the series.\n\niv in particular i think has the best story in the series (though not as iconic as sa's), and i don't think we will be getting a gta story this dark and in-depth again.\n\nit's still pretty fun and wacky, it's not all dark, all the time. but there's a lot of emotion here, and a lot of moments that resonated with me. niko is my favorite gta character for sure, and i love his character depth.",
-                  "truncated": false,
-                  "minutes_at_review": 1392
-                },
-                {
-                  "recommendationid": "229517260",
-                  "hours_at_review": 45.4,
-                  "voted_up": true,
-                  "date": "2026-07-03",
-                  "review_text": "Best GTA, not like GTA V with the clown story, GTA IV is more serious, for adults, not 12 year olds.",
-                  "truncated": false,
-                  "minutes_at_review": 2725
-                },
-                {
-                  "recommendationid": "229623442",
-                  "hours_at_review": 41.1,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "GTA IV isn't just my favorite Grand Theft Auto. It's my favorite Rockstar game ever made. 100/10 hands down!\n\nPeople will always say GTA V is bigger, more polished, or more modern. That's fine. None of that makes it better.\n\nGTA IV has something almost no other open-world game has: soul.\n\nLiberty City feels cold, dirty, depressing, and believable. It isn't trying to be a playground where everything is a joke. It feels like a city full of broken people trying to survive.\n\nThen there's Niko Bellic. In my opinion, he's Rockstar's greatest protagonist. He's not a stereotypical action hero or a wisecracking criminal. He's a war veteran carrying trauma that never leaves him. Throughout the game, you hear pieces of his past in conversations that are genuinely disturbing. He talks about the horrors he witnessed during the war and the things he was forced to become. Those moments completely change how you see him. You realize this isn't someone chasing the American Dream. It's someone trying to outrun memories that refuse to let him go.\n\nEven the smallest details tell a story. The way Niko calmly reacts during violent moments, the way he handles a weapon, the way he carries himself... none of it feels exaggerated. It feels like someone who's done terrible things for far too long. Rockstar didn't need to explain everything. They trusted the player to notice.\n\nAnd then there are the physics.\n\nAlmost 20 years later, GTA IV still has some of the most satisfying vehicle physics I've experienced. Cars have weight. They slide, roll, and react to the road in a way that still feels more believable than many modern open-world games. I've played games like Cyberpunk 2077, racing games, and countless other open-world titles, and I still find myself coming back to GTA IV because driving simply feels right.\n\nThe atmosphere is unmatched. The writing is mature. The soundtrack is incredible. The attention to detail is obsessive. Every corner of Liberty City feels handcrafted.\n\nRockstar shoul…",
-                  "truncated": true,
-                  "minutes_at_review": 2464
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-847755",
-              "claim": "Reviewers point out that the game lacks meaningful ways to spend money earned during the later stages of the campaign.",
+              "claim_id": "ref-e07bde",
+              "claim": "Reviewers highlight that the game features a praised story, characters, and atmosphere alongside criticism of repetitive missions or open-world design.",
               "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 2,
-                "negative": 2
+                "positive": 1,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231841886",
-                  "hours_at_review": 74.8,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Although I'm a big fan of the GTA series, until now I had only played the III-VC-SA trilogy, and after many years I finally decided to give GTA IV a chance. It has the familiar feeling of the older GTA games while improving many aspects, such as the combat system, the liveliness of the open world, the vehicle models, and more.\nWhat impressed me the most is how successfully the game portrays the corruption and decay of Western/American society of that era (with the usual doses of satire and exaggeration the series is known for), where mafias, corruption, drugs, and authoritarian policing are everywhere. This is reflected perfectly through the foggy, gloomy environments and the many poorly built and ugly neighborhoods that show poverty and misery.\nOn the other hand, the world feels very realistic. It doesn't feel obvious that NPCs are just walking around following simple patterns like in the older games. They feel much more alive: they are busier during the morning, they exercise in parks, carry coffee, food, and umbrellas when it rains, and generally make the city feel alive.\nAnd during those rare moments when the sun finally comes out, the whole city lights up and suddenly you get a feeling that everything is going to be alright... until the next slap of harsh reality hits you!\nOne big negative for me is that by the time you finish the story you have collected a lot of money, but there is almost nothing meaningful to spend it on besides clothes, weapons, and hospital bills every time you die, which are surprisingly expensive (another realistic, although very annoying, touch).",
-                  "truncated": false,
-                  "minutes_at_review": 4485
-                },
-                {
-                  "recommendationid": "231791858",
-                  "hours_at_review": 35.9,
+                  "recommendationid": "239471367",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 40,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "The atmosphere of this game is the only thing that carries it nowadays. I understand that this was the first game in the HD universe of GTA and Rockstar was traying new things out. The game was probably pretty revolutionary at the time of the release and im sure that many of you have played it back then (like myself), but it simply isnt good enough to play right now.\r\n\r\n1. This point is the most crucial one - the game is ♥♥♥♥♥♥♥ boring. Every single mission is the same, I started going insane while playing through main story line. -Drive all the way across the map in a vechicle that seems to weigh like a ♥♥♥♥♥♥♥ tank, watch a cutscene, and? - oh wow, an ambush! What a ♥♥♥♥♥♥♥ surprise! I definetly havent seem the same plot 30 times already! -Now go kill everybody and drive some guy home. Thats the essence of the game for you, nothing ever changes.\r\n\r\n2. Alredy touched on this point above but anyways. -The driving is horrendous. It feels like you are driving a dumbell on an ice rink. The only viable vechicles are supercars but most of the times you will be forced to drive some ♥♥♥♥♥♥ SUV that accelerates like a turtle and cant turn properly.\r\n\r\n3. There is absolutley no incentive to earn money. What are you gonna do with hundreds of thousands of dollars? -buy a hotdog and some shoes?! You cant buy cars, you cant buy property, you cant gamble, so whats even the point? They could so many ways to spend money but they didnt.\r\n\r\n4. Guns feels like cheap airsoft replicas. The euphoria ragdolls are quite fun but the guns themselves are rather dull. After you get an AK there is no point in using any other weapons. There is also no customisation whatsoever, and im not even talking about some ♥♥♥♥♥♥ skins, although they could add some camos that would break the immersion, but what the definetly couldve added are attachments. Like silencers, scopes, extended mags, underbarrel grenade launchers, etc.\r\n\r\n5. There are no cloud saves. I played through half of the game on my steamde…",
-                  "truncated": true,
-                  "minutes_at_review": 2152
+                  "date": "2026-11-06",
+                  "review_text": "GTA IV has strong narrative and character work — that’s clearly the talent of the original Rockstar team. Niko’s story and the supporting cast are well done.\nI’ve got full GTA fatigue at this point though, and I could care less. The open-world formula just doesn’t do much for me anymore, even when the writing is solid.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231704268",
-                  "hours_at_review": 87.8,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "This game is not only the weakest of all the GTA titles to date, it's also one of the most mid games I've suffered through to date.  One of the highest flaws of this game is the glitches, there's 3 times I've encountered game breaking bugs that I had to find work arounds to get past.  The last game breaking bug was on the final mission that's a marathon of a quest (and if you mess up at any point, you have to restart the whole thing) which caused me to lose any care in completing the game.\n\nThe next massive critique I have is that towards the end where you're swimming in money, you have nothing to spend it on.  There's no properties, there's no cars, there's nothing.  The final massive critique is the constant interruptions from the npcs demanding you hang out with them, or they get mad at you.  Especially towards the end when you're just trying to complete a game you're already burnt out on and you hear \"NIIIIKOOOOO, MY COUSIN!!!! LETS GO TO THE STRIP CLUB!\"\n\nThe storyline is mid at best.  Without spoilers, it's a snowball of a story focused on revenge that just keeps rolling and getting bigger.  The vast majority of characters are either forgettable or obnoxious with only a few that stand out as being okay.  The \"better\" missions in the game feel repetitive, and the \"bad\" missions are noticeable with vehicles, npcs that cannot be killed until you've followed them for x amount of time.  It's a massive step down from San Andreas and it's no wonder that GTA V hit as hard as it did after this lemon of a game.\n\nI genuinely cannot fathom how people enjoy this game, let alone give it a positive rating.",
-                  "truncated": false,
-                  "minutes_at_review": 5265
-                },
-                {
-                  "recommendationid": "229616118",
-                  "hours_at_review": 34.0,
+                  "recommendationid": "239679644",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 65,
                   "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "Greatest GTA of all time. The story is so good that it doesnt need a garage for your cars, gambling, or gun customization. Its just too damn good. We will NEVER have another GTA like this ever again. All the creators of this arent at rockstar anymore. Also, its so not PC. This game is something very special made during a time when men could say, do, and be how they wanted to be.\r\n\r\nThats GTA IV",
-                  "truncated": false,
-                  "minutes_at_review": 2042
+                  "date": "2026-11-08",
+                  "review_text": "GTA IV is not a game everyone will understand, and honestly, not everyone can appreciate its beauty.\r\n\r\nSome people play GTA for chaos, explosions, and endless fun. But GTA IV is different. It's about loneliness, friendship, betrayal, sacrifice, and the dark reality of life.\r\n\r\nLiberty City isn't just a map; it's a world with its own atmosphere, stories, and feelings. Niko Bellic isn't just another GTA protagonist. He's a man trying to escape his past while struggling to build a better future.\r\n\r\nHowever, GTA IV isn't perfect.\r\n\r\nThe driving physics can be frustrating, especially if you're used to the smoother driving in other GTA games. Cars feel heavy, turning takes some getting used to, and some missions can become annoying because of the driving.\r\n\r\nPerformance is another major downside. Even on modern PCs, the game can have optimization issues, stutters, and occasional technical problems. Some missions also feel repetitive, and the lack of certain activities compared to GTA V can make the open world feel limited.\r\n\r\nBut despite all these flaws, GTA IV has something special.\r\n\r\nThe atmosphere, the story, the characters, the soundtrack, and even the rainy streets of Liberty City create an experience that is difficult to forget.\r\n\r\nGTA IV may not be perfect, but it has a soul that many modern games struggle to capture.\r\n\r\nNot everyone understands GTA IV. Not everyone sees its beauty. And that's okay.\r\n\r\nSome games are meant to be played. GTA IV is meant to be felt.\r\n\r\n**10/10 for its soul, story, and atmosphere.**",
+                  "truncated": false
                 }
               ]
             }
@@ -883,186 +374,31 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-88eda2",
-              "claim": "Reviewers describe encountering a game-breaking bug on the final mission that prevents completion without specific workarounds like limiting the frame rate or changing CPU settings.",
+              "claim_id": "ref-71cb5f",
+              "claim": "Reviewers note that driving physics take getting used to, with cars feeling heavy.",
               "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 2,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231867356",
-                  "hours_at_review": 84.1,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Wish I could recommend but I cant, unless you enjoy wasting hours in a game you cant finish.  Until that helicopter bug on the final mission is fixed, this shouldnt be sold to PC users.  No one buys a product if theyd known they cant fully consume or use it.",
-                  "truncated": false,
-                  "minutes_at_review": 5047
-                },
-                {
-                  "recommendationid": "231845378",
-                  "hours_at_review": 54.7,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Aside from all the bugs i've encountered, and crashes, finishing the main story, this game truly lives up even after 18 years. don't really like that if we fail the mission we have to replay it again from the beginning.\r\nan important bug that caused me problems, is in the last mission, where niko has to climb the helicopter by tapping rappidly space bar.  problem is you have to get your game locked to 30 fps, because of outdated updates and game engine not registering the action.",
-                  "truncated": false,
-                  "minutes_at_review": 3281
-                },
-                {
-                  "recommendationid": "231832402",
-                  "hours_at_review": 63.6,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I really enjoyed this game. The story is amazing, and after finishing both GTA IV and GTA V, I honestly think GTA IV is the better game. The main reasons are the story, the physics, and how interactive the world feels.\nThe game does have a few annoying bugs, though. For example, during the final mission, I had to set the game's CPU affinity to only CPU 0 in Task Manager, otherwise I couldn't complete the mission. There's also a bug in the \"Union Drive\" mission where the game can get stuck on an infinite loading screen. I fixed it by saving the game at a safe house several times, and after that the mission worked normally. Overall, despite these issues, GTA IV is an incredible game and one of the best GTA titles I've ever played. I highly recommend it",
-                  "truncated": false,
-                  "minutes_at_review": 3814
-                },
-                {
-                  "recommendationid": "229914272",
-                  "hours_at_review": 26.0,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "On the last mission the press space/a to get into the chopper will not work so you cannot beat the game.",
-                  "truncated": false,
-                  "minutes_at_review": 1559
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-7e4166",
-              "claim": "Reviewers mention that missions do not feature checkpoints, requiring players to restart from the beginning if they fail.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
+                "positive": 1,
                 "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231885939",
-                  "hours_at_review": 39.0,
+                  "recommendationid": "239391609",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 84,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "It's first GTA I've ever played, announcement of GTA VI made me buy it and it is horrible\n- it seems as cheapass port from console\n- controls, camera, aiming with weapon and everything is hella bugged (I lost many missions cause of I couldn't aim properly and my crosshair wasn't moving at all or was moving hella slow, same with repetitively press button segments, I even attached controler to do those but I couldn't and I had to do final missions like 8 times)\n- I think plot is good (besides both endings), but gameplay design is horrible, besides all the bugs that I already wrote about there are no checkpoints, so when you'll fail mission cause of your crosshair was stuck you need to retry 30 minutes boring ass mission for 5th time\n- NPC physics are horrible, sometimes you need to wait literally 5 minutes for NPC to move while doing mission\n- and many many many many many more but I don't even wanna think about this right now, I'm pretty sure original console releases are way better, just buy it on Xbox 360 / PS3",
-                  "truncated": false,
-                  "minutes_at_review": 2343
+                  "date": "2026-11-04",
+                  "review_text": "Ehh... The controls are far too clunky and unresponsive for my taste.\r\n\r\nThe driving feels really good, though. Nice and heavy, as a real car should.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231845378",
-                  "hours_at_review": 54.7,
+                  "recommendationid": "239679644",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 65,
                   "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Aside from all the bugs i've encountered, and crashes, finishing the main story, this game truly lives up even after 18 years. don't really like that if we fail the mission we have to replay it again from the beginning.\r\nan important bug that caused me problems, is in the last mission, where niko has to climb the helicopter by tapping rappidly space bar.  problem is you have to get your game locked to 30 fps, because of outdated updates and game engine not registering the action.",
-                  "truncated": false,
-                  "minutes_at_review": 3281
-                },
-                {
-                  "recommendationid": "229954705",
-                  "hours_at_review": 42.9,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "In my opinion, the best GTA of the series, but this port isn't great. I recommend you either mod this version to fix some of its issues, or simply play it on the Xbox 360 or PS3 (I recommend the 360 for it preforms far better as far as I remember).\n\nThe dark and serious story is great, and the physics are so much fun. The car physics are hard to get used to at first, but at least for me, clicked later and felt great. \n\nThe no autosaving during missions are a real pain to deal with in the older GTAs. I've had it where I'll start a mission, almost fully complete it, but die in the most stupidest way, and then be sent to a hospital and have to drive all the way back to the mission location and start it from the beginning. It sometimes lets you retry the mission from your phone, but weirdly only sometimes appeared for me.\n\nThis game is about £5 on sale. even if your not planning on playing the story, the game itself is generally so much fun, and so unique for a GTA, or even any game in general to be honest. \n\nThe music is iconic, and the City is even more iconic. \n\nRockstar, PLEASE add the Euphoria physics into GTA VI? please.\n\nI've spent much time just living in Liberty City, and not doing any story. I very much recommend this game. In my opinion, it's the best Grand Theft Auto to date.",
-                  "truncated": false,
-                  "minutes_at_review": 2573
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 22,
-        "cited_recommend": 15,
-        "divergence_p": 0.0153,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 85,
-      "pct_positive": 92.9,
-      "muted": false,
-      "n_note": null,
-      "summary": "Long-term players enjoy the open world despite launcher hurdles, poor optimization, and final mission quirks requiring custom frame rate caps.",
-      "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-7c79a8",
-              "claim": "Reviewers report that the PC port suffers from poor optimization, bugs, and performance issues, and recommend installing community mods like FusionFix to ensure a stable experience.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 7,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231864588",
-                  "hours_at_review": 194.4,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "For the best playing experience, be sure to install FusionFix. This rids the game of the common bugs Rockstar never cared to fix themselves, as well as including a few improvements.",
-                  "truncated": false,
-                  "minutes_at_review": 11665
-                },
-                {
-                  "recommendationid": "231744919",
-                  "hours_at_review": 200.0,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "One of the best gta games. Bad pc port though..",
-                  "truncated": false,
-                  "minutes_at_review": 12001
-                },
-                {
-                  "recommendationid": "231599775",
-                  "hours_at_review": 122.0,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Quite possibly the best GTA ever made. The Euphoria physics make this game really fun to play or just mess around in. Niko Bellic is honestly the best protagonist, with a really tragic backstory. The writing is mostly serious, but it can get funny sometimes. Really memorable.\nThe DLCs are amazing as well. Luis comes very close to Niko as my favorite protagonist, and playing as Johnny is very bittersweet, knowing what happens to him in 5.\n\nThe game and it's PC port are pretty outdated though, so sadly you need to mod it, but it's very easy. Just get FusionFix, and if you want slightly more HD textures you can do that as well.\n\n\"Where's luxury condo, where's sports car? Where's Barbara with big titties and Stephanie who sucks like a vacuum?\" - Niko",
-                  "truncated": false,
-                  "minutes_at_review": 7319
-                },
-                {
-                  "recommendationid": "231353769",
-                  "hours_at_review": 160.7,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "please mod the game if you buy it. on keyboard and mouse the base game if you have loads of FPS then your aim will jitter you need to mod it to get the best experience as the port of the game wasn't very good at all \r\n",
-                  "truncated": false,
-                  "minutes_at_review": 9641
-                },
-                {
-                  "recommendationid": "230190011",
-                  "hours_at_review": 257.9,
-                  "voted_up": true,
-                  "date": "2026-07-11",
-                  "review_text": "Peak game, runs bad without mods but with mods it is 100/10.",
-                  "truncated": false,
-                  "minutes_at_review": 15473
-                },
-                {
-                  "recommendationid": "230124388",
-                  "hours_at_review": 440.5,
-                  "voted_up": true,
-                  "date": "2026-07-10",
-                  "review_text": "After almost 20 years of modding community work, this game can finally show itself in the best light where it's worthy of recommendation to any PC gamer. The FusionFix takes care of everything Rockstar's mediocre port didn't, and there are even mods to restore the music Rockstar deleted.\r\n\r\nWith all of this in mind, this is the definitive edition of the game that's the closest to the vanilla vision of the developers. I completed the game multiple times over the last 15 years, and the last time with all the fixes was the most enjoyable. It's a shame it took this long to get to enjoy this game in its full glory.\r\n\r\nHell, it even runs better on Linux than on Windows thanks to Proton and DXVK.",
-                  "truncated": false,
-                  "minutes_at_review": 26432
-                },
-                {
-                  "recommendationid": "230007599",
-                  "hours_at_review": 295.4,
-                  "voted_up": true,
-                  "date": "2026-07-09",
-                  "review_text": "I mostly play this game for LCPDFR and I've been playing that mod for just over 7 years now, however I have played about half of the story and so far the vanilla game is absolutely amazing, it's geniunely the best Grand Theft Auto game I've ever played, for those who think GTA 5 is the best, they need to sit down and play this game whether it's on the Xbox 360/PS3 or the PC Version.\n\nhowever there are a list of issues I have with the game despite being the best in the series:\n\n1. Bugs; however most of the game breaking bugs are fixed, there's still some bugs that you can find within the game\n2. Poor Optimisation; geniunely the worst optimisation in any Rockstar Game I've ever seen\n3. Updates/Bug Patches don't do ♥♥♥♥; none of the updates do anything at all these days, one update was so infamous because it broke ♥♥♥♥.\n4. Rockstar ♥♥♥♥♥♥♥ up the modding community; with the update that merges both IV and EFLC into one package, most if not all mods don't work on the latest patch, only thing you can mod in is custom vehicles, peds, weapons, etc however the infamous taxi bug still exists in the latest from what I remember (fact check me on that)\n5. No Multiplayer/Online; this is self explanatory, like seriously Rockstar, why the ♥♥♥♥ is there no Multiplayer? due to this we have to rely on downgrading the game to 1.0.8.0 if you don't plan on playing LCPDFR Multiplayer, or you could use Grand Theft Auto Connected.\n6. Some Achievements are unobtainable unless you downgrade; for those achievement hunters out there who wants to 100% GTA IV, well I'm sorry you're ♥♥♥♥ outta luck, due to the fact that you can't access the Police Computer without connecting to the GFWL Servers, you cannot obtain all achievements, I accidentally obtained these achievements when CE decided to load my 100% save I use on 1.0.7.0 for LCPDFR so I can have access to all islands",
-                  "truncated": false,
-                  "minutes_at_review": 17721
+                  "date": "2026-11-08",
+                  "review_text": "GTA IV is not a game everyone will understand, and honestly, not everyone can appreciate its beauty.\r\n\r\nSome people play GTA for chaos, explosions, and endless fun. But GTA IV is different. It's about loneliness, friendship, betrayal, sacrifice, and the dark reality of life.\r\n\r\nLiberty City isn't just a map; it's a world with its own atmosphere, stories, and feelings. Niko Bellic isn't just another GTA protagonist. He's a man trying to escape his past while struggling to build a better future.\r\n\r\nHowever, GTA IV isn't perfect.\r\n\r\nThe driving physics can be frustrating, especially if you're used to the smoother driving in other GTA games. Cars feel heavy, turning takes some getting used to, and some missions can become annoying because of the driving.\r\n\r\nPerformance is another major downside. Even on modern PCs, the game can have optimization issues, stutters, and occasional technical problems. Some missions also feel repetitive, and the lack of certain activities compared to GTA V can make the open world feel limited.\r\n\r\nBut despite all these flaws, GTA IV has something special.\r\n\r\nThe atmosphere, the story, the characters, the soundtrack, and even the rainy streets of Liberty City create an experience that is difficult to forget.\r\n\r\nGTA IV may not be perfect, but it has a soul that many modern games struggle to capture.\r\n\r\nNot everyone understands GTA IV. Not everyone sees its beauty. And that's okay.\r\n\r\nSome games are meant to be played. GTA IV is meant to be felt.\r\n\r\n**10/10 for its soul, story, and atmosphere.**",
+                  "truncated": false
                 }
               ]
             }
@@ -1072,87 +408,426 @@
           "theme": "access",
           "claims": [
             {
-              "claim_id": "vet-2f110e",
-              "claim": "Reviewers describe issues with the Rockstar Launcher, noting that forgotten account credentials or required sign-ins can block access to the game entirely.",
-              "citation_verdict": "positive",
+              "claim_id": "ref-fbe56d",
+              "claim": "Reviewers encounter barriers to playing due to the mandatory third-party Rockstar launcher, account login issues, and email verification requirements.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 1
+                "positive": 0,
+                "negative": 7
               },
               "citations": [
                 {
-                  "recommendationid": "231372378",
-                  "hours_at_review": 115.3,
+                  "recommendationid": "240050582",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 5,
                   "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "If you registered with rockstar 18 years ago when this game came out on an email you dont have access to anymore, you are 100% screwed. you will never be able to play this game again as of rockstar's addition of the launcher to this title. I would like my game back please.",
-                  "truncated": false,
-                  "minutes_at_review": 6921
+                  "date": "2026-11-12",
+                  "review_text": "I was going to run it back before playing gta VI when it gets released and the stupid game won't even get past the loading screen. Try find an old xbox 360 or something and play it on there cause this ain't the version. Plus you have to use the shitty rockstar launcher",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231320772",
-                  "hours_at_review": 152.1,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "This is a gem. A crude history with good characters. Another redemption game made by rockstar, but at the end any decision you make you will feel like you didn't made the right choice. \n\nYou can skip the motorcycle DLC, the main character is a ******ker , really. I feel so bad for his interaction in GTA V, but i guess he reaped what he sow. \nBallad of Gay Tony, it's funny, that's all.\n\nBad side:\n* Rockstar Launcher\n* Bad port to pc\n* Rockstar banning mods \n* Rockstar\n",
-                  "truncated": false,
-                  "minutes_at_review": 9128
+                  "recommendationid": "240001916",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 6,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "\"To protect your account, we need to verify your email. Please enter the verification code we sent to-\"\n\nNo. I am not dealing with this crap again. Why do I need to re-verify?? I went through this with RDR2 months ago, and even was locked out of accessing my purchased game due to R*'s inability to send emails in time. Why does a game released two decades ago need stuff like this? RDR\"1\" came out a few years ago on PC, and despite stripping MP from it, it too requires this. What's this launcher BS for, there's no MP in RDR1 and this game doesn't have MP anymore either!\nWhy would I need to re-verify to \"protect\" my account?? Literally nothing has changed on my PC. Not even a single Windows update or driver update for my GPU. Why would I need to re-verify??\n\nNever mind all the other issues this version has, from broken/missing console features (mostly graphical stuff), to pretty bad performance. I couldn't even hold a steady 60fps last time I played this on 1.0.8 with Vulkan and my old PC.\nI'd like to play the Complete Edition for easier modding, but there's no way I am dealing with this. What a disgrace. Just look at the forums for this game and R*'s other games, to see the amount of people tired of this crap. Especially both RDR games, the people on the forums are sick of it.\n\nSuch a shame that PC users keep getting screwed with console ports like this game. Not recommended by me unless you are willing to do legwork and downgrade to an older version, and then hope and pray any fix for performance/visuals you apply doesn't break everything. As-is like this though, 100% not recommended. R* needs to remove the launcher from this game and re-license the removed music.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230573224",
-                  "hours_at_review": 208.8,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "GTA 4 is a prime example on what all Rockstar Games should be. The dark atmosphere to the game gives it a nice and unique touch. I loved playing through all of the different campaigns as Niko, Johnny and Luis. Their stories were quite enamouring and lacked any of that woke pandering ♥♥♥♥♥♥♥♥ that no one wanted. Rockstar didn't even hold back on any of the small details present in this game. Especially when the radio glitches whenever you get a phone call. That was very nostalgic.\n\nI got to admit, GTA 4 was definitely living ahead of its time and it was totally worth it on replaying the entire game. It was quite refreshing to play this game during a time where 90% of game companies have now gone to ♥♥♥♥. This game will forever hold a special place in my heart, even if you need the Rockstar Social Club to run it.",
-                  "truncated": false,
-                  "minutes_at_review": 12525
+                  "recommendationid": "239679658",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 8,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "anything goes wrong with your email Rock Star will tell you to go fuck yourself and then you're locked out of your games. I love being Rockstar's pay pig",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239578114",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 31,
+                  "voted_up": false,
+                  "date": "2026-11-07",
+                  "review_text": "I really hate this fucking rockstar launcher they force us to download their trash can launcher which don't even work properly and some how if you even manage to let the launcher work and get into game you put your another ass efforts to fix their buggy games which crashes a lot",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237967679",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 37,
+                  "voted_up": false,
+                  "date": "2026-10-17",
+                  "review_text": "Has a launcher and requires a mod to play on a ultrawide monitor. Doesn't matter if the game is good. Rockstar is bad.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237677797",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 90,
+                  "voted_up": false,
+                  "date": "2026-10-14",
+                  "review_text": "the game is great but rockstar’s launcher is legitimately unusable, especially for a game without any online mode. the port of the game is also not great. i ended up requesting a refund due to issues with the launcher (it taking an hour to get the game even launched)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237677710",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 7,
+                  "voted_up": false,
+                  "date": "2026-10-14",
+                  "review_text": "Lost access to my Rockstar account so now I can't even play this game nor any other Rockstar game on Steam.\nFuck you Rockstar and your piece of shit 3rd party launcher.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 25,
+        "cited_recommend": 3,
+        "divergence_p": 0.00968,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 509,
+      "pct_positive": 83.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter loading crashes and mandatory launcher requirements, relying heavily on community fixes for stability.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-99164e",
+              "claim": "Reviewers experience frequent crashes and freezing during mission loading screens on PC.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240265169",
+                  "hours_at_review": 4.7,
+                  "minutes_at_review": 279,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "The game does not get past the first mission most of the time (driving to the save location ), it gets stuck on the load screen adter arriving at the house. \n\nWhen I finally got past the frist mission by turning all the graphics settings to as low as possible, the game got stuck loading on the second mission loading screen. \n\nSo I've only played 5 minutes of game play and spent the remaining 4hrs 45 minutes waiting. \n\nMy pc: RTX 3060 12 gb vram, Ryzen 5 3600 6 core processor with 128GB of RAM, 5.91 TB of storage. \n\nI play most modern AAA games comfortably with graphics settings set to high. Usually the games that struggle  often have to be reinstalled from my HDD to my SSD memory, then they work without issue (e.g. Hogwards legacy, Dragon Age Veilguard - assets not loading in time then the character starts falling into endless space).",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240145274",
+                  "hours_at_review": 7.6,
+                  "minutes_at_review": 455,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "game just freezes on mission loading screens.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240045793",
+                  "hours_at_review": 4.4,
+                  "minutes_at_review": 265,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "I spent more time restarting game than playing. Game constantly crashes on loading screen when starting mission. Sadly it's not working product.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-c59545",
-              "claim": "Reviewers report that the game requires signing in or using the Rockstar launcher to play.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-ec6729",
+              "claim": "The PC version requires community mods and community-made bug fixes to run stably without crashing.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 3,
+                "positive": 1,
                 "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231372378",
-                  "hours_at_review": 115.3,
+                  "recommendationid": "240126387",
+                  "hours_at_review": 11.9,
+                  "minutes_at_review": 717,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "This is the definition of a masterpiece, although youll need several fan made fixes to run without crashes on modern pcs.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240194236",
+                  "hours_at_review": 13.2,
+                  "minutes_at_review": 792,
                   "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "If you registered with rockstar 18 years ago when this game came out on an email you dont have access to anymore, you are 100% screwed. you will never be able to play this game again as of rockstar's addition of the launcher to this title. I would like my game back please.",
-                  "truncated": false,
-                  "minutes_at_review": 6921
+                  "date": "2026-11-14",
+                  "review_text": "great game but the pc port is unplayable without mods that fix stability issues",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-d270ec",
+              "claim": "Players are required to use the Rockstar Games Launcher and maintain a constant internet connection to play the single-player game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240142691",
+                  "hours_at_review": 17.8,
+                  "minutes_at_review": 1068,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "I paid for the game.  I own the game.  I launch the game and I'm sitting here staring at a screen claiming that it's trying to contact Rockstar's servers so it can run the launcher.  \r\nFull stop.  This is why you don't buy games that rely on the publisher's launcher.  Ever.  Massive, epic fail.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231320772",
-                  "hours_at_review": 152.1,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "This is a gem. A crude history with good characters. Another redemption game made by rockstar, but at the end any decision you make you will feel like you didn't made the right choice. \n\nYou can skip the motorcycle DLC, the main character is a ******ker , really. I feel so bad for his interaction in GTA V, but i guess he reaped what he sow. \nBallad of Gay Tony, it's funny, that's all.\n\nBad side:\n* Rockstar Launcher\n* Bad port to pc\n* Rockstar banning mods \n* Rockstar\n",
-                  "truncated": false,
-                  "minutes_at_review": 9128
+                  "recommendationid": "240140497",
+                  "hours_at_review": 18.0,
+                  "minutes_at_review": 1081,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "[u][i]This isn't a review on the game. This is a review on CuckStar Games[/i][/u]\r\n\r\nThis game was released in [b]2008[/b], that was [b]18 years ago[/b]. If you was to play this game in [b]2026[/b], [u][b]you'd be required to[/b][/u] \r\n[list][*][b]Have constant internet connection to play[/b] (SINGLE PLAYER GAME BTW)\r\n[/*][*][b]Have CuckStar Launcher installed and open at all times[/b][/*][*][b]Must then spend roughly 5-10 hours on fixing said game[/b][/*][*][b]Finally get it working and load into the very first mission, complete said mission and are [/b][b]greeted[/b] [u][b]\"Save Failed, Check your storage device\"[/b][/u][/*][*][b]Realise [u]CuckDrive[/u] is the reason, uninstall [u]CuckDrive[/u], restart game, complete mission, save successful[/b][/*][*][b]You then spend 6 more hours playing the game reliving your childhood, just to get hit with [u]\"Load Failed. Starting a new game\"[/u][/b][/*][*][b]You're then required to make a [u]FRESH[/u] new Window's account just to actually be able to save game.... this works but don't get your hopes up.[/b][/*][*][b]You then get hit with a [u]\"CuckStar Launcher lost connection\"[/u] then your booted out of your save game and sent into a brand new save setting you back at the starting mission[/b][/*][/list]\r\n[i]You really thought you could play a game YOU bought........[/i]",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231212830",
-                  "hours_at_review": 156.1,
+                  "recommendationid": "240047975",
+                  "hours_at_review": 15.6,
+                  "minutes_at_review": 933,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "No you need to go through rockstar games launcher which corrodes anything it touches and the users brain cells.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 8,
+        "cited_recommend": 1,
+        "divergence_p": 2.1e-05,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 545,
+      "pct_positive": 85.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Progression introduces heavy vehicle handling and missing checkpoints, while technical stability still demands community mods and capped frame rates.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-15e901",
+              "claim": "Reviewers report that the PC version suffers from frequent crashes and loading issues, including infinite load screens and crashes between missions.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240323058",
+                  "hours_at_review": 72.1,
+                  "minutes_at_review": 4327,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Amazing game only when you downgrade it, restore and expand the radio's songs, install mod fixes from the community, install a couple of mods and disable that MF Rockscrap launcher.\r\n\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 9367
+                  "date": "2026-11-16",
+                  "review_text": "It's still my favorite GTA, but it needs some love from rockstar. Lot's of issues with crashing and missions not loading.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230573224",
-                  "hours_at_review": 208.8,
+                  "recommendationid": "240308252",
+                  "hours_at_review": 27.7,
+                  "minutes_at_review": 1662,
                   "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "GTA 4 is a prime example on what all Rockstar Games should be. The dark atmosphere to the game gives it a nice and unique touch. I loved playing through all of the different campaigns as Niko, Johnny and Luis. Their stories were quite enamouring and lacked any of that woke pandering ♥♥♥♥♥♥♥♥ that no one wanted. Rockstar didn't even hold back on any of the small details present in this game. Especially when the radio glitches whenever you get a phone call. That was very nostalgic.\n\nI got to admit, GTA 4 was definitely living ahead of its time and it was totally worth it on replaying the entire game. It was quite refreshing to play this game during a time where 90% of game companies have now gone to ♥♥♥♥. This game will forever hold a special place in my heart, even if you need the Rockstar Social Club to run it.",
-                  "truncated": false,
-                  "minutes_at_review": 12525
+                  "date": "2026-11-15",
+                  "review_text": "The game is old and didn't run perfectly fine right out of the box with some stuttering and occasional infinite load screens, but after installing fusionfix, dxvk, and a 9gb texture pack it runs great and looks amazing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240239468",
+                  "hours_at_review": 69.3,
+                  "minutes_at_review": 4157,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "Its actually insane how poorly the game runs on Windows. Honestly I want to enjoy it but it has too many bugs. \n\nDont purchase. It crashes between loading missions way too fucking oftne to recommend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240139215",
+                  "hours_at_review": 36.3,
+                  "minutes_at_review": 2179,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Only reason this is a negative review is due to many lacking features and the fact that you have to install FusionFix, DXVK, and Various Fixes just to get good performance and fix the copius amount of bugs.\n\nPlus the game is missing MID MISSION CHECKPOINTS for when you run into issues stemming from crappy controls or one of the other many things that could go wrong in a mission, there is no quit to menu button which isn't super important but it is just a basic feature they could have easily coded into the pc port.\n\nFinally for the good part of the game, the main story was great, i haven't played the dlcs yet but if they are as good as i have heard then i can look past the bugs and issues to play them, if you haven't played this game yet wait for a sale and ensure you install the 3 things i mentioned at the start of the review as they are VERY necessary to ensure you can enjoy the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239894206",
+                  "hours_at_review": 43.7,
+                  "minutes_at_review": 2624,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "Buy this game at your own risk. For a 5 billion dollar company that is always weaving \"legacy\" into their storylines... You will have to fix this game yourself with mods. And even after that, your progress will be halted constantly. I lost track how many times I had to rewind an hour and a half on the clock because my game crashed. The only way to be sure is to get back to a safehouse for a manual save. This release is trash.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-fe2991",
+              "claim": "Players note that community-made mods such as FusionFix are necessary to make the PC version stable, fix bugs, and restore proper performance and visuals.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240339454",
+                  "hours_at_review": 49.4,
+                  "minutes_at_review": 2965,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "for a game this old its aged like fine wine the story of niko itself is top 2 in general for me , but do use mods to improve performance",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240333904",
+                  "hours_at_review": 42.1,
+                  "minutes_at_review": 2525,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "Si. Usen FusionFix para mejorar el juego.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240333341",
+                  "hours_at_review": 64.3,
+                  "minutes_at_review": 3858,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "Use FusionFix and TURN OFF NIGHT SHADOWS, and then, it's honestly incredible. On par with GTA V.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240308252",
+                  "hours_at_review": 27.7,
+                  "minutes_at_review": 1662,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "The game is old and didn't run perfectly fine right out of the box with some stuttering and occasional infinite load screens, but after installing fusionfix, dxvk, and a 9gb texture pack it runs great and looks amazing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240139215",
+                  "hours_at_review": 36.3,
+                  "minutes_at_review": 2179,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Only reason this is a negative review is due to many lacking features and the fact that you have to install FusionFix, DXVK, and Various Fixes just to get good performance and fix the copius amount of bugs.\n\nPlus the game is missing MID MISSION CHECKPOINTS for when you run into issues stemming from crappy controls or one of the other many things that could go wrong in a mission, there is no quit to menu button which isn't super important but it is just a basic feature they could have easily coded into the pc port.\n\nFinally for the good part of the game, the main story was great, i haven't played the dlcs yet but if they are as good as i have heard then i can look past the bugs and issues to play them, if you haven't played this game yet wait for a sale and ensure you install the 3 things i mentioned at the start of the review as they are VERY necessary to ensure you can enjoy the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239995153",
+                  "hours_at_review": 38.3,
+                  "minutes_at_review": 2298,
+                  "voted_up": true,
+                  "date": "2026-11-12",
+                  "review_text": "Grand Theft Auto IV comes very close to being a masterpiece. The original hype, launch, and respect it still commands all these years later prove that. From the gritty and grounded story to the well written characters, the satirical humor and parodies that balance out the dark and gloomy atmosphere, the relatable protagonist you play, and the sheer amount of things you can do in Liberty City. Everything clicks together brilliantly.\r\n\r\nWhile the sequel GTA V is great and obviously looks newer, GTA IV actually beats it in several key areas that make it worth playing. The gritty atmosphere and heavier driving physics complement the tight roads of Liberty City, encouraging a very engaging driving experience. On top of that, the Euphoria ragdoll mechanics and the way NPCs react to both the world and Niko make the city feel genuinely alive in a way that makes you forget about its aged graphics. Looks really good though with the FusionFix mod I talk about below.\r\n\r\nImportant Note for PC: The PC port is not well made and barely works. Download and install FusionFix before you start. It’s a simple drag-and-drop mod that fixes performance issues, restores missing console edition visual effects and graphics, and makes the game run the way it was always meant to. Once that's installed, this is easily one of the best open world experiences ever made.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239977715",
+                  "hours_at_review": 55.9,
+                  "minutes_at_review": 3352,
+                  "voted_up": true,
+                  "date": "2026-11-12",
+                  "review_text": "*Played with Fusion Fix*\r\nThis is a phenomenal game. 4 is a 8.5, Lost and the Damned is a 6.5 and The Ballad of Gay Tony is a 9.\r\nFusion fix is the way to play these titles on pc. Easy top install and makes it play and run like a dream. 4 and TBoGT are must play titles in the GTA franchise with TboGT arguably having the best vibes and missions out of the franchise. It aint San Andreas level but even with 5.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-7f85c0",
+              "claim": "The final mission contains a well-known bug involving a prompt to spam the spacebar to board a helicopter, which fails on modern hardware unless frame rates are capped or mods are applied.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240259935",
+                  "hours_at_review": 50.6,
+                  "minutes_at_review": 3039,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "great game if you like other rockstar games so here are some pros and cons\r\nPROS\r\n1.compared to gta 5, this game has a much richer story with (in my opinion) better characters and a better overall cost\r\n2.rockstar REALLY captured the enviorment of liberty city really well in this game and the overall enviorment is perfection\r\n3.great dlc aswell. tlatd and tbogt are both amazing dlc that fit perfectly with the story.\r\nCONS\r\n1.throughout the story you get all this money but there isn't much to spend it on other than clothes and guns.\r\n2. If you have a good pc and try to do the revenge(canon) ending, on the part where you have to spam spacebar to get onto the heli, it just wont work. im prolly gonna post a guide to the fix at some point.\r\n3.the bike handling in this game sucks, like really bad. you cant turn more than 90° without drifting outta control. tlatd dlc is still worth playing, it just sucked having to constantly use a bike.\r\n\r\noverall i would say this game is a must play. and a solid 8/10 and a game  i would reccomend to anyone who is thinking about buying it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240137443",
+                  "hours_at_review": 53.2,
+                  "minutes_at_review": 3191,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "final  mission space buuon not working how to fix.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239993646",
+                  "hours_at_review": 35.6,
+                  "minutes_at_review": 2134,
+                  "voted_up": true,
+                  "date": "2026-11-12",
+                  "review_text": "Classic but my god that ending being so broken really ruined the concluding experience for me. Had to retry the long af chase and shootout like 10 times before I nearly gave up. Capped the game at 30fps with the Nvidia App and it saved the ending for me. Overall had a good time with this game, it's just very disapointing the state that the game has been left in all these years later. GTA 5 was better IMO, still classic ofc.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239978371",
+                  "hours_at_review": 33.5,
+                  "minutes_at_review": 2009,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "lazy port i had to redo the entire final mission because its literally impossible to get into the helicopter without mods\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239902387",
+                  "hours_at_review": 42.3,
+                  "minutes_at_review": 2537,
+                  "voted_up": false,
+                  "date": "2026-11-11",
+                  "review_text": "Best gta game ever story wise, but a billion dollar company won't let you finish the fucking game, with a known bug for years. \nI uninstalled it at the 11th try to get on the fucking chopper.\nDon't give money to these scammy, greedy and  anti-consumer company.\nDisgusting and embarrassing.",
+                  "truncated": false
                 }
               ]
             }
@@ -1162,56 +837,363 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-6c4268",
-              "claim": "Reviewers state that the final mission features a quick-time sequence that fails if the CPU is not artificially limited, requiring players to restart from the beginning due to a lack of checkpoints.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-cbc433",
+              "claim": "Reviewers highlight that the game lacks a mid-mission checkpoint system, forcing players to restart entire missions upon failure.",
+              "citation_verdict": "negative",
               "citation_split": {
                 "positive": 1,
-                "negative": 1
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "230748291",
-                  "hours_at_review": 107.8,
+                  "recommendationid": "240139215",
+                  "hours_at_review": 36.3,
+                  "minutes_at_review": 2179,
                   "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Flaws aside, game is relatively playable until the very end, which is almost unbeatable. In the final mission, there is a quick time sequence which requires you to limit CPU, otherwise the engine freaks out and you inevitably fail and have to restart from scratch, since checkpoints somehow aren't a thing in this game. If you manage to get past that part, you have to deal with the unintuitive helicopter controls that require two hands to pilot it (the vehicle physics in this game are notoriously sluggish and difficult to control) and a third hand in order to simultaneously fire the attached miniguns, which is required. \n\nGood luck not crashing into the river.",
-                  "truncated": false,
-                  "minutes_at_review": 6470
+                  "date": "2026-11-13",
+                  "review_text": "Only reason this is a negative review is due to many lacking features and the fact that you have to install FusionFix, DXVK, and Various Fixes just to get good performance and fix the copius amount of bugs.\n\nPlus the game is missing MID MISSION CHECKPOINTS for when you run into issues stemming from crappy controls or one of the other many things that could go wrong in a mission, there is no quit to menu button which isn't super important but it is just a basic feature they could have easily coded into the pc port.\n\nFinally for the good part of the game, the main story was great, i haven't played the dlcs yet but if they are as good as i have heard then i can look past the bugs and issues to play them, if you haven't played this game yet wait for a sale and ensure you install the 3 things i mentioned at the start of the review as they are VERY necessary to ensure you can enjoy the game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230345047",
-                  "hours_at_review": 161.4,
+                  "recommendationid": "239904801",
+                  "hours_at_review": 26.4,
+                  "minutes_at_review": 1586,
+                  "voted_up": false,
+                  "date": "2026-11-11",
+                  "review_text": "no checkpoints this game is fucking awful",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-e6f0f3",
+              "claim": "Reviewers describe the vehicle handling as heavy and floaty, noting that it has a steep learning curve.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 5,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240252788",
+                  "hours_at_review": 39.7,
+                  "minutes_at_review": 2383,
                   "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "Really good story, Excellent gunplay, Excellent driving. overall an 9/10 (some of the missions at the end were so hard they had me tweaking so one point off)",
-                  "truncated": false,
-                  "minutes_at_review": 9684
+                  "date": "2026-11-15",
+                  "review_text": "The best GTA story of all GTAs series so far. The part has the best driving physics as well as very deep plot that makes a player to choose between a deal or revenge options while each choice has its own consequence. The part is over 15 Y.O and It still feels relevant.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240210366",
+                  "hours_at_review": 74.0,
+                  "minutes_at_review": 4437,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "GTA IV is excellent and still worth a playthrough nowadays (although I applied fusionfix).  I grew to really enjoy the car handling which feels super floaty in the beginning and it feels easy to crash and wipe out, but as you play more and more you get really good at driving and it feels amazing tearing down the road in a Ferrari knowing that a player less skilled wouldn't be able to adjust the inches needed to avoid a total collision.  It has all the excellent things that GTA brings - that moment the right song hits during a thunder storm in the city and it's just perfect, the dialogue where the content is dumb juvenile jokes but presented in an intelligent way, and expansive social/action simulator.\n\nLost and Damned is okay - it's not great.  The story is a bit off - it's about biker gangs and what you see is what you get instead of Rockstar's usual ability to create surprise and layers with characters.  Ballad of Gay Tony is excellent and corrects issues with the first DLC.  It's about being the enforcer of a rich gay club owner drowning in debt.  The action is better, the characters are more interesting, and it just feels more well rounded.  The DLCS are worth going through especially Ballad of Gay Tony.\n\nThere are a couple of frustrating issues.  The controls for flying the helicopter are dumb - you have to use the numpad for part of it and its tough to control and a helicopter's movement is naturally unintuitive, and there are missions where you have to use a helicopter's guns, but you can only fire in a straight line which means you have to maintain your height with one hand, the other control tilting, and when you have a brief half second where things line up you quickly try to shoot - it's frustrating.  The other thing is the penalty for dying.  If you fail a mission you lose your armor and pay a hefty fee to the hospital, which suck but relatively fair punishments.  However, you also lose all ammunition that you used during your attempt - this is worse tha…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "240149895",
+                  "hours_at_review": 32.2,
+                  "minutes_at_review": 1931,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "It's a great game. It's fun as fk to drive. Don't listen to anyone who says otherwise. It takes something called a learning curve, something the complainers don't understand. Fortunately, everything else, such as the gameplay and missions, is fun. The problem is there are a lot of glitches. In fact, I'd recommend just buying a 360 or PS3 to play this shit because Rockstar hates it,  FusionFix (which is the only application that made this shit playable) won't save you if you're playing after 11/13/2026. Just know that you will experience loading issues due to the recent Rockstar update. There are answers in the discussions, which, if you're looking, you'll see multiple more. Would I recommend this game? Hell yeah, 100%. On PC? Fuhuhug no. Play it on original hardware. Rockstar grapes you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239874094",
+                  "hours_at_review": 46.2,
+                  "minutes_at_review": 2774,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "I liked this game, at the beginning, it was a bit harder for me to get into because the atmosphere was so dark. The city itself felt dark and looked quite depressing. But over time, as I progressed through the missions, the atmosphere started to feel lighter, and damn, the city really started to look so good.\r\n\r\nI really loved the story, it was just so damn great, it mixed serious moments with Rockstar's usual humour really well.\r\n\r\nThe driving system, well, this is where I know people's opinions differ. Some like it, some don't. I'm gonna say that personally, I didn't enjoy it that much. At first, it was a bit tricky to get used to, and after playing for a while, I got the hang of it, but I'm still definitely not the biggest fan.\r\n\r\nEven though the game is quite old, it still holds up surprisingly well. It has its flaws, of course, but the story, atmosphere and overall experience make up for them.\r\n\r\nI definitely recommend this game. It has great characters and and an absolutely amazing story.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239856269",
+                  "hours_at_review": 70.3,
+                  "minutes_at_review": 4221,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "I come back to this title every couple years as it is hands down the best story in the GTA franchise. It trades the flair of the other titles and does away with it, opting for a more gritty realism extending into vehicles and their mechanics.\n\nUnfortunately, they trade away a bit too much of what made other games fun. There is no real reason that you cannot modify your vehicles or buy a garage/additional properties for vehicle storage and the world feels maybe a bit lacking in content since there is literally no reason to visit many portions of the map, but that is part of the realism in my opinion.\n\nThe good: Story (so much so that I keep forgetting how bad the ending sequence is), characters, world design\nThe bad: customization options, vehicle storage, unclear/useless instructions(sometimes it tells you to use stealth or a certain approach, only make that the worst possible thing to attempt)\nThe neutral: car realism(I love the stalling, the hit zones, etc, but I can see how it would bum someone else out), lack of monetary value (money is kind of worthless in this title)\n\nThe game is old, but well worth the full price, but is also on sale often enough that it's just worth playing. You should definitely unlock the graphics if you decide to play it though. Otherwise, it's visually rough at best on newer PCs.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 13,
-        "cited_recommend": 11,
-        "divergence_p": 0.235,
+        "cited_reviews": 21,
+        "cited_recommend": 15,
+        "divergence_p": 0.0724,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 86,
+      "pct_positive": 96.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players continue to rely on community mods to manage ongoing optimization problems alongside sluggish driving mechanics.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-efd7c2",
+              "claim": "Reviewers report that the PC port suffers from bugs, technical problems, and poor optimization, requiring mods like FusionFix to run smoothly.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 8,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240097957",
+                  "hours_at_review": 145.5,
+                  "minutes_at_review": 8731,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "Other than the fact the game is horribly optimized, its gta 4 and both dlcs.\nWhat else can I ask for.\n9/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240097087",
+                  "hours_at_review": 137.8,
+                  "minutes_at_review": 8269,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "In my opinion, the best GTA game there ever was, and I doubt GTA 6 will come close to it, in terms of story. \n\nThe vibe of this game is so unique and different from any other GTA game. The story of this game is peak, and it also has the best protagonist of all, Niko. \n\nThe DLCs are also fantastic, and the vibe of them is also very different from each other. The achievements were also very fun, maybe a bit tiring(mostly the 200 pigeons) but overall they're pretty fun to complete if you want to have the full GTA 4 experience.\n\nIt's an absolute must play, but it does require the FusionFix mod to run smoothly. \n\nOverall, GTA 4 is a 10/10 for me, even if Roman won't stop calling me to go bowling.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239840684",
+                  "hours_at_review": 194.3,
+                  "minutes_at_review": 11658,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "Grand theft auto IV is a Classic. No other GTA game has the vibe and atmosphere like this one. Niko bellic and co make this immensely memorable. Main downside is the PC port is broken. FusionFix takes care of most of it though. \n\n95/100",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239563274",
+                  "hours_at_review": 259.4,
+                  "minutes_at_review": 15566,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "Incredible game, and one I always keep coming back to! The story is easily the best of the series and the dark atmosphere is iconic and memorable.\r\n\r\nThe vanilla PC port isnt the best and very buggy with a lot of performance issues, but installing the FusionFix mod pretty much fixes all the issues with the game and makes it a much more enjoyable experience!\r\n\r\n10/10. Iconic game thats always worth going back to no matter how much time passes.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239329541",
+                  "hours_at_review": 101.0,
+                  "minutes_at_review": 6057,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "It was fun, I enjoyed it. \r\n\r\nI tried to play this a while ago but dropped it because of performance issues. Thank you FusionFix for performance fix.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239328752",
+                  "hours_at_review": 120.0,
+                  "minutes_at_review": 7199,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "The best Grand Theft Auto game of them all however this PC port is awful. Please install FusionFix and other amazing mods like Various Fixes and Radio Restoration because otherwise I would say no to buying this and instead tell you to go play it on console.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238519147",
+                  "hours_at_review": 2063.4,
+                  "minutes_at_review": 123806,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "Man where do I even begin with this review. Honestly the main reason why is because GTA 4 was the only ever gta game that I never finished. Sure I played so much of it during my PS3 years but that was all online. Even when I had the PC version all I did was play online back when it had GFLW's. Funny enough I have played the both stand alone dlc's (L&D and BOGT) and finished them multiple times but never 4. My goal was to replay number 4 before number 6 comes out and man I'm sure glad I did. What an experience playing as Niko. I really got to appreciate the multi layers of Niko's personality and beliefs, Also how funny Niko really was too. I'm going to start off with the two major issues I have with this before getting to the good stuff. 1, The PC port itself is awful. For a game that is almost 18 years old, It ran so poorly on my modern PC. Even with mods to help patch some of the issues, I felt there were still some technical issues. 2, The janky mechanics/driving, Man coming back to this I didn't realise how bad the driving really was for this game. Even with movement running around and the covering system feels so dated now which of course I understand that due to it being an older game but It really does show and suffers for it. Okay now to main good bits. The story and our main character along with his side characters is what makes this game stand out. The story is gritty and not glamorised like we see for every criminal/gangster media. The ending (depending on which one out of the two you pick) leaves you wondering was it really all worth it? The city for this one feels so alive compared to previous and future titles that I feel is still unmatched till this day. I found myself just driving or walking around the streets just taking it all in. There is so much more I want to write about this but it would take 20 years so I'm going to summarise it as short as possible. GTA 4 was an experience like no other. For me, top 3 GTA games of all time. Personally I still …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "237844362",
+                  "hours_at_review": 164.9,
+                  "minutes_at_review": 9895,
+                  "voted_up": true,
+                  "date": "2026-10-16",
+                  "review_text": "Despite all the technical problems, I keep coming back to GTA IV. I've played it three times, experienced both expansions, and Niko's story still stays with me.\n\nIt's an old game, yet there still aren't many games that deliver this combination of storytelling, character writing, atmosphere, and physics. It has flaws, but it also has something that makes it unforgettable.\n\nGTA IV is not a perfect game. Its PC port is a mess, some mechanics have aged, and certain features are noticeably absent.\n\nBut the story? The characters? The atmosphere? Absolutely incredible.\n\nMy recommendation: YES.\n\nIf you're a GTA fan, play it. Experience Niko's story, play both expansions, and give the driving physics some time before throwing your keyboard out the window.\n\nJust be prepared to fight a few technical battles before you can enjoy the actual game.\n\nA masterpiece deserves a better PC port.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-f7ddd0",
+              "claim": "The PC version of the game requires mods such as FusionFix to run properly and fix technical issues.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240097087",
+                  "hours_at_review": 137.8,
+                  "minutes_at_review": 8269,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "In my opinion, the best GTA game there ever was, and I doubt GTA 6 will come close to it, in terms of story. \n\nThe vibe of this game is so unique and different from any other GTA game. The story of this game is peak, and it also has the best protagonist of all, Niko. \n\nThe DLCs are also fantastic, and the vibe of them is also very different from each other. The achievements were also very fun, maybe a bit tiring(mostly the 200 pigeons) but overall they're pretty fun to complete if you want to have the full GTA 4 experience.\n\nIt's an absolute must play, but it does require the FusionFix mod to run smoothly. \n\nOverall, GTA 4 is a 10/10 for me, even if Roman won't stop calling me to go bowling.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239840684",
+                  "hours_at_review": 194.3,
+                  "minutes_at_review": 11658,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "Grand theft auto IV is a Classic. No other GTA game has the vibe and atmosphere like this one. Niko bellic and co make this immensely memorable. Main downside is the PC port is broken. FusionFix takes care of most of it though. \n\n95/100",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239563274",
+                  "hours_at_review": 259.4,
+                  "minutes_at_review": 15566,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "Incredible game, and one I always keep coming back to! The story is easily the best of the series and the dark atmosphere is iconic and memorable.\r\n\r\nThe vanilla PC port isnt the best and very buggy with a lot of performance issues, but installing the FusionFix mod pretty much fixes all the issues with the game and makes it a much more enjoyable experience!\r\n\r\n10/10. Iconic game thats always worth going back to no matter how much time passes.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239328752",
+                  "hours_at_review": 120.0,
+                  "minutes_at_review": 7199,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "The best Grand Theft Auto game of them all however this PC port is awful. Please install FusionFix and other amazing mods like Various Fixes and Radio Restoration because otherwise I would say no to buying this and instead tell you to go play it on console.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238141481",
+                  "hours_at_review": 186.3,
+                  "minutes_at_review": 11176,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "DXVK+ FusionFix and this game is suddenly the best, most detailed, most dense GTA there is.\r\nI have a special place in my heart for San Andreas, but this is truely as if it's a generation ahead of that, unlike GTA 4 to GTA 5.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-0124fd",
+              "claim": "Players describe the vehicle handling and driving mechanics as sluggish, difficult, or requiring adjustment.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240300204",
+                  "hours_at_review": 102.8,
+                  "minutes_at_review": 6170,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "Do I think this is the Best GTA Game, Personally for me yes I Adore Many things about this game The Story is still the best in the franchise (so far atleast), The characters are among some of the most memorable in the franchise,  Brucie always makes me crack up and the other side characters have a fairly deep story you learn in entirely OPTIONAL Conversations, Now do i think this games perfect no a game rarley is, peoples main complaint i hear about the game is the Driving and to be fair it is bad its slow it feels sluggish, but personally i thought san andreas's driving was worse, Overall This is my Favourite entry in the Franchise, Niko is by far one of the best characters in the franchise\r\n\r\nTLAD\r\nFor a DLC This was fantastic i thoroughly enjoyed seeing the story from Johnny's Perspective and I thoroughly enjoy Johnny as a character in this short outing as him i already like him more than some other GTA Protagonists\r\n\r\nGTA 5 SPOILERS- \r\nand I think it is absolutely VILE what they do to him in 5, makes absolutely no sense  for his character at the end of this DLC to be the same one in 5 it makes my blood boil thinking about it possibly the worst writing Rockstar has ever done\r\n\r\nTBOGT\r\nI really enjoyed this dlc, it felt more fleshed out than Lost and Damned I enjoyed the story, the music essentially everything, however i think the biggest drawback for me was the fact that aside from like 3 characters everyone else is either incredibly unmemorable or annoying, the achievements were kind of a pain.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239968632",
+                  "hours_at_review": 112.0,
+                  "minutes_at_review": 6723,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "One of, if not THE best Grand Theft Auto game (as I'm writing this, a week before GTA VI comes out.)\r\nThe story is so intricate and show stopping and I truly could not recommend this game enough. \r\nNot to mention the player models look better than GTA V's, in my opinion.\r\nThe driving is annoying at first but you get used to it, I just really didn't like the motorcycle handling.\r\nPS: Always kill Eddie",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239076961",
+                  "hours_at_review": 132.0,
+                  "minutes_at_review": 7920,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Still the most serious and grounded GTA, and I like it more for that. Niko Bellic’s story as an immigrant chasing the American dream while dragging his past along is the best writing in the series, and Liberty City feels like a real, lived-in place. The driving has real weight, so cars slide and crash in a way that takes getting used to, and the gunplay and cover system hold up fine. Side activities like hanging out with Roman and the other characters, darts, and bowling make the world feel alive, though the constant “wanna go bowling?” calls from Roman get old. The Lost and Damned adds a gritty biker story, and The Ballad of Gay Tony is a flashy, over-the-top contrast with new weapons and missions. The PC version can be buggy and needs some patience to get running, and the tone is heavier than later GTAs. Even so, with all three stories in one package, it’s a big, memorable game and well worth playing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238519147",
+                  "hours_at_review": 2063.4,
+                  "minutes_at_review": 123806,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "Man where do I even begin with this review. Honestly the main reason why is because GTA 4 was the only ever gta game that I never finished. Sure I played so much of it during my PS3 years but that was all online. Even when I had the PC version all I did was play online back when it had GFLW's. Funny enough I have played the both stand alone dlc's (L&D and BOGT) and finished them multiple times but never 4. My goal was to replay number 4 before number 6 comes out and man I'm sure glad I did. What an experience playing as Niko. I really got to appreciate the multi layers of Niko's personality and beliefs, Also how funny Niko really was too. I'm going to start off with the two major issues I have with this before getting to the good stuff. 1, The PC port itself is awful. For a game that is almost 18 years old, It ran so poorly on my modern PC. Even with mods to help patch some of the issues, I felt there were still some technical issues. 2, The janky mechanics/driving, Man coming back to this I didn't realise how bad the driving really was for this game. Even with movement running around and the covering system feels so dated now which of course I understand that due to it being an older game but It really does show and suffers for it. Okay now to main good bits. The story and our main character along with his side characters is what makes this game stand out. The story is gritty and not glamorised like we see for every criminal/gangster media. The ending (depending on which one out of the two you pick) leaves you wondering was it really all worth it? The city for this one feels so alive compared to previous and future titles that I feel is still unmatched till this day. I found myself just driving or walking around the streets just taking it all in. There is so much more I want to write about this but it would take 20 years so I'm going to summarise it as short as possible. GTA 4 was an experience like no other. For me, top 3 GTA games of all time. Personally I still …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "237844362",
+                  "hours_at_review": 164.9,
+                  "minutes_at_review": 9895,
+                  "voted_up": true,
+                  "date": "2026-10-16",
+                  "review_text": "Despite all the technical problems, I keep coming back to GTA IV. I've played it three times, experienced both expansions, and Niko's story still stays with me.\n\nIt's an old game, yet there still aren't many games that deliver this combination of storytelling, character writing, atmosphere, and physics. It has flaws, but it also has something that makes it unforgettable.\n\nGTA IV is not a perfect game. Its PC port is a mess, some mechanics have aged, and certain features are noticeably absent.\n\nBut the story? The characters? The atmosphere? Absolutely incredible.\n\nMy recommendation: YES.\n\nIf you're a GTA fan, play it. Experience Niko's story, play both expansions, and give the driving physics some time before throwing your keyboard out the window.\n\nJust be prepared to fight a few technical battles before you can enjoy the actual game.\n\nA masterpiece deserves a better PC port.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-df8e014c",
+          "text": "One reviewer says the GPS itself is pretty slow and inaccurate a lot of the time.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "240323979",
+            "hours_at_review": 107.5,
+            "minutes_at_review": 6448,
+            "voted_up": true,
+            "date": "2026-11-16",
+            "review_text": "I've nostalgia maxxed with GTA VC, SA and V, but somehow, despite completing this back in 2018, I only remember and reminisce about certain parts of it, like the atmosphere of Liberty City, Roman's bowling line, Lil Jacob's Caribbean accent, the banger theme music and how brilliant the ending(s) were. I've come to the realisation that certain things you forget to reminisce about hit harder when the deja vu kicks in and you finally remember and rediscover those forgotten fragments. And then you get miserable about how much you miss the time period when you first encountered this piece of faded, distant memory that you didn't even realise you'd forgotten. It's not necessarily nostalgia for the game itself (tho it is partly that). Sometimes it's nostalgia for the person you were when you first encountered it.\n\nGTA 4 is something along those lines for me. I feel like I'm pretty familiar with both versions of the Los Santos map and Vice City, but Liberty City, for some reason, feels quite enigmatic despite having played two games that feature it. Getting reminded of the UI audio, GPS sounds and voices that I'd completely forgotten about, but which at one point were practically spammed into my ears, felt oddly satisfying. The GPS itself is pretty slow and inaccurate a lot of the time. For some reason I've always felt that 4 is the niche indie darling in the franchise compared to juggernauts like V, VC and SA. Would barely come across people who played 4 but would've played or atleast heard of the other games.\n\nGTA 4 has a smaller map than SA and less mission variety, but it still passed the vibe check for me. After playing all three in quick succession, though, I feel like SA has the best variety of missions, even if some of them can be pretty challenging and act as roadblocks to finishing the game, followed by GTA V with its heists (there should've been more of those, tbh). This version of LC reminds me of Chicago in WD1. It has so much personality because of its lack of…",
+            "truncated": true
+          }
+        },
+        {
+          "point_id": "one-e1fa484f",
+          "text": "One reviewer says the optimization was terrible, and they ran into so many issues with infinite loading screens and cutscenes that simply refused to load.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239837358",
+            "hours_at_review": 188.2,
+            "minutes_at_review": 11293,
+            "voted_up": true,
+            "date": "2026-11-10",
+            "review_text": "Finally done with the entire GTA IV series!\r\n\r\nWhat an unforgettable experience. After finishing the classic GTA trilogy, GTA IV really left a special impression on me. For a game released back in 2008, it's honestly insane how much content it has to offer, which is both a blessing and a curse for someone going for 100% completion.\r\n\r\nThe main story was great and everything ran pretty smoothly, same goes for The Lost and Damned DLC. However, The Ballad of Gay Tony was a completely different story. The optimization was terrible, and I ran into so many issues with infinite loading screens and cutscenes that simply refused to load. I probably spent more time trying to fix those issues than I'd like to admit.\r\n\r\nOverall, GTA IV probably has the best story in the entire GTA franchise, and it's definitely an experience I'll remember for a long time.\r\n\r\nAnd of course, Niko the Serbian absolutely carried the whole thing.",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 12,
+        "cited_recommend": 12,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1459,
-    "steam_total_reviews": 81856,
+    "pool_n": 1200,
+    "steam_total_reviews": 85494,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/12210/header.jpg?t=1721061564",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/12210/capsule_231x87.jpg?t=1721061564",
-    "grid": "https://cdn2.steamgriddb.com/grid/a32bc8141e168ff20fdfe3f0fbc72155.png"
   }
 }
