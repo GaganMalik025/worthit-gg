@@ -202,6 +202,20 @@ export interface Sourcing {
   basis: string;
 }
 
+/**
+ * A point the meaning check found only ONE cited review conveying
+ * (pipeline/verify_claims.py, owner 2026-11-16). It is not a claim: invariant 3
+ * still holds for every claim, and these never feed the summary, the fit lists or
+ * the verdict word. They render only in their own labelled, collapsed section.
+ * `text` always starts "One reviewer" - enforced in the pipeline, not here.
+ */
+export interface SinglePoint {
+  point_id: string;
+  text: string;
+  theme: string | null;
+  citation: Citation;
+}
+
 export interface Cohort {
   bucket: string;
   label: string;
@@ -215,6 +229,9 @@ export interface Cohort {
   summary: string | null;
   sourcing: Sourcing | null;
   themes: { theme: string; claims: Claim[] }[];
+  /** [] on every verdict generated before the meaning check, and on a muted
+   *  cohort (invariant 12 applies to these exactly as to claims). */
+  single_points: SinglePoint[];
 }
 
 export interface Verdict {
@@ -317,6 +334,12 @@ export function normalizeVerdict(raw: unknown): Verdict {
           citations: cl.citations ?? [],
         })),
       })),
+      // Absent before 2026-11-16. A muted cohort renders none even if the file
+      // carries some: invariant 12 is enforced here too, not only in synthesis.
+      // A point without its citation cannot be checked, so it does not render.
+      single_points: c.muted
+        ? []
+        : (c.single_points ?? []).filter((p) => p && p.text && p.citation),
     })),
   };
 }

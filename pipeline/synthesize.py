@@ -620,6 +620,10 @@ def load_inputs(appid, claims_dir, filtered_dir):
             "muted": bool(st.get("muted")),
             "surviving_reviews": st.get("kept"),
             "claims": claims_blob.get("claims_by_bucket", {}).get(name, []),
+            # one-reviewer points (verify_claims.py). Rendered in their own section,
+            # never shown to the model here: no summary, fit list or verdict rests on
+            # a single review.
+            "singles": claims_blob.get("singles_by_bucket", {}).get(name, []),
         })
     return claims_blob, corpus, pool, cohorts
 
@@ -688,6 +692,10 @@ def assemble(appid, claims_blob, corpus, pool, cohorts, detected, parsed,
                 })
             section["themes"] = [{"theme": t, "claims": cs}
                                  for t, cs in themed.items()]
+        section["single_points"] = [] if c["muted"] else [
+            {"point_id": s["point_id"], "text": s["text"], "theme": s.get("theme"),
+             "citation": build_citation(s["supporting_id"], corpus)}
+            for s in c.get("singles") or []]
         # B2 sourcing disclosure. Computed here, from the section as assembled,
         # for the same reason citation_split is computed here: the site is a
         # renderer, and a figure derived in TypeScript is a figure nothing in
@@ -806,6 +814,13 @@ def synthesize_one(client, args, appid):
                     "on flash-lite instead."
                     % (appid, json.dumps(detail)))
     claims_blob, corpus, pool, cohorts = load_inputs(appid, args.claims, args.filtered)
+    # Since 2026-11-16 a claim reaching a page must have passed verify_claims' meaning
+    # check. A claims file written before then, or with --no-verify, holds claims the
+    # word-matching check alone let through, so it may not publish without saying so.
+    if not claims_blob.get("verified") and not getattr(args, "allow_unverified", False):
+        print("  REFUSED: %s's claims were not meaning-checked. Re-run extraction, or "
+              "pass --allow-unverified for diagnostics." % appid)
+        return None
     game = claims_blob.get("game_name") or appid
     detected = flags_mod.detect(pool)
 
@@ -946,6 +961,9 @@ def main():
                     help="if the flash cap is spent, use flash-lite instead of "
                          "refusing")
     ap.add_argument("--retries", type=int, default=2)
+    ap.add_argument("--allow-unverified", action="store_true",
+                    help="synthesize a claims file the meaning check never saw "
+                         "(diagnostics; never for publishing)")
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--show-prompt", action="store_true")

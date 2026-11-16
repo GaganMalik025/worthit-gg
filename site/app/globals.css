@@ -189,6 +189,21 @@ footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--hairline);col
 .flag .evidence div{display:flex;flex-wrap:wrap;gap:0 16px;line-height:1.9}
 .flag .evidence dt{flex:0 0 auto;min-width:16ch}
 .flag .evidence dd{margin:0}
+/* one-reviewer points (DESIGN.md "One-reviewer points"): a slim, neutral strip
+   under the flags, closed by default. Deliberately quieter than .flag - no wash,
+   no verdict colour, label in --text-dim - because these are the thinnest
+   evidence on the page and must not read as an alert or a second verdict. */
+.one-reviewer{margin-top:24px;border-radius:12px;padding:12px 20px;
+  border:1px solid var(--hairline)}
+.one-reviewer > summary{display:flex;justify-content:space-between;gap:16px;
+  cursor:pointer;list-style:none}
+.one-reviewer > summary::-webkit-details-marker{display:none}
+.one-reviewer > summary .label{color:var(--text-dim);letter-spacing:.06em}
+.one-reviewer > summary .cta{color:var(--link);font-size:14px}
+.one-reviewer .intro{margin-top:12px;color:var(--text-dim);font-size:14px}
+.one-reviewer .one-group{margin-top:20px}
+.one-reviewer .one-group h3{font-size:14px;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--text-dim)}
 .gen-panel .sub{color:var(--text-dim);margin-top:8px}
 .stages{list-style:none;margin-top:24px}
 .stage{display:flex;gap:12px;padding:6px 0;color:var(--text-dim)}

@@ -133,6 +133,55 @@ function FlagStrip({ flag }: { flag: DistortionFlag }) {
   );
 }
 
+/**
+ * Points made by one reviewer (owner, 2026-11-16; DESIGN.md "One-reviewer points").
+ *
+ * The meaning check (pipeline/verify_claims.py) keeps a claim only when two or more
+ * of its cited reviews really say it. A point only one review makes used to be
+ * padded with a second review that did not say it; now it lands here instead, in
+ * the singular, with its one review behind the usual receipts expand.
+ *
+ * Slim and closed by default: a native <details>, working with no JS like every
+ * other expand on the page. The summary carries NO COUNT. "12 points" would be a
+ * post-filter number on the page, which invariant 13 forbids; the per-point
+ * receipts tag ("1 review") is the carve-out it already allows.
+ *
+ * Renders nothing when no cohort has a point, so every verdict generated before
+ * the meaning check keeps exactly the page it had.
+ */
+function OneReviewerPoints({ v }: { v: Verdict }) {
+  const groups = v.cohorts.filter((c) => c.single_points.length > 0);
+  if (!groups.length) return null;
+  return (
+    <details className="one-reviewer">
+      <summary>
+        <span className="label mono">POINTS MADE BY ONE REVIEWER</span>
+        <span className="cta">Show points</span>
+      </summary>
+      <p className="intro">
+        Each point below was made by a single review, so it sits apart from the
+        cohort sections. None of them shaped the verdict above.
+      </p>
+      {groups.map((c) => (
+        <section key={c.bucket} className="one-group">
+          <h3>{c.label}</h3>
+          {c.single_points.map((p) => (
+            <div key={p.point_id} className="claim">
+              <p className="text">{p.text}</p>
+              <Receipts
+                appid={v.appid}
+                verdictWord={v.verdict.word}
+                bucket={c.bucket}
+                citations={[p.citation]}
+              />
+            </div>
+          ))}
+        </section>
+      ))}
+    </details>
+  );
+}
+
 export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
   const fit = v.verdict.for_you_if.length || v.verdict.not_for_you_if.length;
   return (
@@ -216,6 +265,7 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
 
       <main className="main-col">
       {v.distortion_flags.map((f) => <FlagStrip key={f.flag_id} flag={f} />)}
+      <OneReviewerPoints v={v} />
       {v.cohorts.map((c) => (
         <section key={c.bucket} className="cohort">
           <h2>{c.label}</h2>

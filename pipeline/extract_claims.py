@@ -20,7 +20,8 @@ Model configuration (verified against current Gemini docs, July 2026):
     apply to this pass.
 
 Enforced in code, never merely requested in the prompt:
-  * invariant 3  - >=2 distinct SURVIVING supporting ids per claim
+  * invariant 3  - >=2 supporting ids per claim, decided by verify_claims.py's meaning
+                   check; a point one review supports becomes a one-reviewer point
   * invariant 11 - countless schema + prevalence-language guard on claim prose
   * invariant 12 - cohorts under the floor are never sent to the model at all
 
@@ -48,6 +49,7 @@ from filter_reviews import MIN_COHORT                  # noqa: E402  (invariant 
 import prevalence_guard                                # noqa: E402
 import ground_check                                    # noqa: E402  (1.4)
 import model_pacer                                     # noqa: E402  (4.1 RPM pacing)
+import verify_claims                                   # noqa: E402  (meaning check)
 
 IN_DIR = Path("data/filtered")
 OUT_DIR = Path("data/claims")
@@ -90,7 +92,7 @@ CLAIM_SCHEMA = {
                 "properties": {
                     "claim": {"type": "string"},
                     "theme": {"type": "string", "enum": THEMES},
-                    "supporting_ids": {"type": "array", "minItems": 2,
+                    "supporting_ids": {"type": "array", "minItems": 1,
                                        "items": {"type": "string"}},
                 },
             },
@@ -108,9 +110,10 @@ when they wrote the review: {cohort_label} ({cohort_range}).
 
 RULES
 
-1. Every claim must be supported by at least TWO of the reviews below, and you \
-must list their recommendationids verbatim in supporting_ids. Copy the ids \
-exactly as given. Never invent an id, never cite an id that is not in this list.
+1. List in supporting_ids every review below that says what the claim says, by \
+its recommendationid, copied verbatim. A point only one review makes is allowed: \
+cite that one review. Never add a review that does not say the same thing, never \
+invent an id, and never cite an id that is not in this list.
 2. A claim states something specific and falsifiable about the game as this \
 cohort experienced it: what breaks, what is hard, what is missing, what works. \
 "The game is good" is not a claim. "Reviewers describe the opening hours as \
@@ -124,16 +127,16 @@ commonly, widely, usually, typically, generally, often, everyone, nobody, \
 percentages, "X out of Y".
    Write "reviewers describe X" or "this cohort reports X".
    Do NOT write "most players find X" or "many reviewers say X".
-4. Do not merge unrelated complaints into one claim. Prefer several precise \
-claims over one broad one.
+4. One point per claim. Do not merge unrelated complaints into one claim, and do \
+not join points made by different reviews. Prefer several precise claims over one \
+broad one.
 5. Say only what the review text supports. No outside knowledge about this game, \
 no inference about the developer's intent, no speculation about patches.
 5b. Do not judge whether reviewers liked the game, and do not soften or \
 harden a claim to match a tone you infer. Report what they describe; whether \
 each cited review was a thumbs-up or thumbs-down is already known and is not \
 your call.
-6. If fewer than two reviews support an observation, omit it entirely. Returning \
-an empty list is a valid and correct answer.
+6. Returning an empty list is a valid and correct answer.
 7. Pick the theme that matches what the claim is ABOUT. These are grouping \
 headers a reader sees, so a wrong one is visible:
    performance  - how it runs: frame rate, stutter, crashes, bugs, load times, \
@@ -270,8 +273,7 @@ def _problem_line(result):
         elif f.startswith("low_union_coverage"):
             reasons.append("could not be verified against the reviews it cites")
         elif f.startswith("only_"):
-            reasons.append("only one cited review actually supports it; two are "
-                           "required")
+            reasons.append("none of its cited reviews could be matched to it")
         elif f.startswith("cited_outside_bucket"):
             reasons.append("cites a review from a different cohort")
         elif f.startswith("ids_not_in_corpus"):
@@ -497,9 +499,11 @@ def enforce(raw_claims, valid_ids, voted_up_by_id=None, bucket=None):
             rejected.append({"claim": text, "reason": "all_ids_unknown",
                              "unknown_ids": unknown})
             continue
-        if len(clean) < 2:
+        # One id is allowed since 2026-11-16: verify_claims decides whether a claim
+        # has the two reviews invariant 3 needs, or becomes a one-reviewer point.
+        if not clean:
             rejected.append({"claim": text,
-                             "reason": "under_two_supporting_reviews",
+                             "reason": "no_supporting_reviews",
                              "kept_ids": clean, "unknown_ids": unknown})
             continue
 
@@ -659,8 +663,11 @@ def main():
                     default=ground_check.MIN_UNION_COVERAGE)
     ap.add_argument("--min-citation-coverage", type=float,
                     default=ground_check.MIN_CITATION_COVERAGE)
-    ap.add_argument("--min-supporting", type=int,
-                    default=ground_check.MIN_SUPPORTING_CITATIONS)
+    # 1, not ground_check's 2: lexical support for one review is enough to reach the
+    # meaning check, which is what now decides between a claim and a one-reviewer point.
+    ap.add_argument("--min-supporting", type=int, default=1)
+    ap.add_argument("--no-verify", action="store_true",
+                    help="skip the meaning check (diagnostics only; never publish)")
     ap.add_argument("--no-ground", action="store_true",
                     help="skip the grounding check (diagnostics only)")
     ap.add_argument("--src", default=str(IN_DIR))
@@ -705,6 +712,23 @@ def main():
                             "skipped": "below_cohort_floor"})
             continue
         out = extract_bucket(client, args, game, args.appid, bucket, reviews)
+        if out and not args.no_verify:
+            corpus = {str(r["recommendationid"]): r for r in reviews}
+            main, singles, vrep = verify_claims.verify_cohort(
+                lambda system, user, schema: response_text(call_model(
+                    client, args.model, system, user, schema=schema,
+                    thinking_level="low"))[0],
+                lambda system, user, tag: cache_path(args.appid, bucket, args.model,
+                                                     system, user, tag=tag),
+                game, args.appid, bucket, out["claims"], corpus)
+            print("\n--- %s verified: %d claims, %d one-reviewer points, %d dropped, "
+                  "%d rewrites rejected, %d citations removed ---"
+                  % (bucket, vrep["kept"], vrep["one_reviewer"], vrep["dropped"],
+                     vrep["rewrite_rejected"], vrep["citations_removed"]))
+            # pre_verify is a diagnostic (the pilot compares it against a per-claim
+            # judge); synthesis reads claims_by_bucket and singles_by_bucket only
+            out.update(pre_verify=out["claims"], claims=main, singles=singles,
+                       verification=vrep, kept=len(main))
         if out:
             results.append(out)
 
@@ -730,7 +754,9 @@ def main():
             "retries_allowed": args.ground_retries,
         },
         "extraction_report": {"buckets": results, "skipped": skipped},
+        "verified": not args.no_verify,
         "claims_by_bucket": {r["bucket"]: r["claims"] for r in results},
+        "singles_by_bucket": {r["bucket"]: r.get("singles", []) for r in results},
     }, indent=2, ensure_ascii=False), encoding="utf-8")
 
     total = sum(r["kept"] for r in results)

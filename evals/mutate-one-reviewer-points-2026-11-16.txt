@@ -1,0 +1,31 @@
+mutate_one_reviewer_points_2026-11-16.py --run
+
+  or01a PASS             CONTROL: pipeline/test_claim_verification.py green, unmutated
+  or01b PASS             CONTROL: pipeline/test_batch_guards.py green, unmutated
+  or01c PASS             CONTROL: lib/__tests__/one-reviewer-points.contract.test.tsx green, unmutated
+  or02  CAUGHT+NAMED     one supporting review is enough for a claim
+  or03  CAUGHT+NAMED     the model's ids are not intersected with the claim's own
+  or04  CAUGHT+NAMED     the rewrite need not be singular
+  or05  CAUGHT+NAMED     the rewrite skips the prevalence guard
+  or06  CAUGHT+NAMED     a claim answered twice is accepted
+  or07  CAUGHT+NAMED     a third attempt is allowed
+  or08  CAUGHT+NAMED     a retry may be served from cache
+  or09  CAUGHT+NAMED     extraction rejects one-review claims again
+  or10  CAUGHT+NAMED     the QR-4 gate skips one-reviewer citations
+  or11  CAUGHT+NAMED     unverified claims synthesize
+  or12  CAUGHT+NAMED     the section summary carries a count
+  or13  CAUGHT+NAMED     the section renders open
+  or14  CAUGHT+NAMED     the section moves below the cohorts
+  or15  CAUGHT+NAMED     points lose their cohort heading
+  or16  CAUGHT+NAMED     review text rendered outside the receipts expand
+  or17  CAUGHT+NAMED     the section renders with no points
+  or18  CAUGHT+NAMED     a muted cohort's points render
+
+restored byte-identical:
+  pipeline/extract_claims.py               True (b539678ffee9)
+  pipeline/qr4_gate.py                     True (c4cfc6a86fcb)
+  pipeline/synthesize.py                   True (cd0e1ba7a9c2)
+  pipeline/verify_claims.py                True (d78ce76eebb0)
+  site/components/VerdictPage.tsx          True (011fd57af0ff)
+  site/lib/verdict.ts                      True (c2e3f5302616)
+20/20 as expected

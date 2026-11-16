@@ -62,6 +62,10 @@ def iter_citations(verdict):
             for claim in theme.get("claims") or []:
                 for cit in claim.get("citations") or []:
                     yield cohort.get("bucket"), claim.get("claim_id"), cit
+        # one-reviewer points render citations too, so they are gated the same way
+        for point in cohort.get("single_points") or []:
+            if point.get("citation"):
+                yield cohort.get("bucket"), point.get("point_id"), point["citation"]
 
 
 def check_verdict(verdict, blocked_re=None):

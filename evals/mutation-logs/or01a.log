@@ -1,0 +1,19 @@
+or01a
+CONTROL: pipeline/test_claim_verification.py green, unmutated
+
+PASS
+1)                        ok
+
+extraction: one id now reaches the meaning check
+  a one-review claim is kept for verification                      ok
+  a claim citing only unknown ids is still rejected                ok
+  the schema allows one id                                         ok
+
+qr4: one-reviewer citations are safety-checked like any other
+  the gate sees the one-reviewer citation                          ok
+
+synthesis: a claims file the meaning check never saw does not publish
+  the refusal is in synthesize_one                                 ok
+
+all claim verification tests passed
+

@@ -97,6 +97,11 @@ jobs:
       - name: grounding check
         run: .venv/bin/python pipeline/test_ground_check.py
 
+      # The meaning check that sorts claims from one-reviewer points (2026-11-16).
+      # Offline: the model is a stub, so this pins code's half of every decision.
+      - name: claim verification
+        run: .venv/bin/python pipeline/test_claim_verification.py
+
       # Offline: committed seed artifacts only, no Steam, no Gemini, no quota.
       # It runs here for the reason e06538a existed - a suite nothing re-runs on
       # push is verified exactly once, by the person who wrote it.

@@ -256,6 +256,31 @@ that cannot cite a pool figure does not ship; "this game looks review-bombed"
 without a number attached is editorializing, which is the one thing flags may
 never do.
 
+## One-reviewer points
+
+Added 2026-11-16 (owner). A point the meaning check (`pipeline/verify_claims.py`)
+finds only one cited review conveying is not a claim (invariant 3). It used to be
+padded with a second review that did not say it. Now it gets its own section.
+
+- **One slim strip directly below the distortion flags**, above the first cohort.
+  It is a native `<details>`, **closed by default**, working with no JS. When
+  closed it is one line: the mono label `POINTS MADE BY ONE REVIEWER` in
+  `--text-dim` and a "Show points" link.
+- **Quieter than a flag, on purpose:** hairline border, no wash, no verdict colour.
+  These are the thinnest evidence on the page, and the strip must not read as an
+  alert or a second verdict.
+- **No count, anywhere on the strip.** "12 points" would be a post-filter number
+  on the page (invariant 13). The only number inside is each point's own receipts
+  tag (`▸ 1 review`), the carve-out that already exists.
+- Opened, it shows one muted intro line ("Each point below was made by a single
+  review… None of them shaped the verdict above.") and then the points **grouped
+  under their cohort's label**, each with the standard receipts expander. The
+  review text sits one more click away, as with every claim (invariant 9).
+- Every point reads in the singular and starts "One reviewer…", which is enforced
+  in the pipeline. A muted cohort contributes none (invariant 12).
+- The strip renders nothing on a verdict with no points, so every page generated
+  before the meaning check is unchanged.
+
 ---
 
 ## Page anatomy
@@ -315,6 +340,7 @@ touch there is no hover to fake: the overlay is simply already there.
    the case is atmosphere around it, not a gate in front of it.
 2. Split Bar block (the spine).
 3. Distortion flags, if any.
+   - One-reviewer points, collapsed, if any (see "One-reviewer points").
 4. Claims grouped by theme (performance / content / monetization / difficulty),
    each with receipts expander.
 5. Hardware context section only when data density permits (F9) — omit

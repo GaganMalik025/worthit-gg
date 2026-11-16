@@ -421,7 +421,7 @@ def test_retry_cache_key_includes_the_attempt():
           'tag="verdict-v1-attempt%d" % attempt' in src)
 
 
-def _rejecting_run(appid, tmp, calls, retries=2):
+def _rejecting_run(appid, tmp, calls, retries=2, allow_unverified=True):
     """Drive the REAL synthesis retry loop with every answer rejected.
 
     Returns (n_calls_this_run, stdout). Nothing is sent: call_model and
@@ -435,6 +435,8 @@ def _rejecting_run(appid, tmp, calls, retries=2):
 
     args = argparse.Namespace(
         model=None, model_override=None, force_lite=True, flash_day=None,
+        # seed claims predate the meaning check; the refusal has its own test
+        allow_unverified=allow_unverified,
         flash_fallback=False, retries=retries, force=False, dry_run=False,
         show_prompt=False, claims=str(tmp / "claims"),
         filtered=str(tmp / "filtered"), out=str(tmp / "out"))
@@ -504,6 +506,36 @@ def test_a_retry_never_replays_a_cached_rejection():
         check("second run still sends a request for each retry", n2 == 2, n2)
         check("a repeated title costs less than a fresh one, not the same",
               n2 < n1, (n1, n2))
+
+
+def test_unverified_claims_do_not_synthesize():
+    """2026-11-16: a claims file the meaning check (verify_claims.py) never saw holds
+    claims only word-matching let through - the padded second citation the check
+    exists to remove. It must not reach a page unless someone says so."""
+    print("\nsynthesis: unverified claims are refused before any request")
+    appid = 233860
+    root = Path(__file__).resolve().parent.parent
+    with tempfile.TemporaryDirectory() as d:
+        tmp = Path(d)
+        for sub in ("claims", "filtered"):
+            (tmp / sub).mkdir()
+            (tmp / sub / ("%s.json" % appid)).write_text(
+                (root / "data" / sub / ("%s.json" % appid)).read_text(
+                    encoding="utf-8"), encoding="utf-8")
+        calls = []
+        n, out = _rejecting_run(appid, tmp, calls, retries=0, allow_unverified=False)
+        check("an unverified claims file sends nothing", n == 0, n)
+        check("  and says why", "REFUSED" in out and "meaning-checked" in out, out[-300:])
+        check("  and writes no verdict", not (tmp / "out" / ("%s.json" % appid)).exists())
+
+        # ANTI-VACUITY: the same file marked verified does reach the model, so the
+        # zero above is the guard, not a harness that never calls anything.
+        path = tmp / "claims" / ("%s.json" % appid)
+        blob = json.loads(path.read_text(encoding="utf-8"))
+        blob["verified"] = True
+        path.write_text(json.dumps(blob), encoding="utf-8")
+        n, out = _rejecting_run(appid, tmp, calls, retries=0, allow_unverified=False)
+        check("a verified claims file is sent", n == 1, (n, out[-300:]))
 
 
 def test_retry_prose_does_not_move_with_the_guards_wordlist():
@@ -588,7 +620,9 @@ def test_retry_prose_does_not_move_with_the_guards_wordlist():
     # SCOPE: the edit was additive to one branch. The citation reason, which
     # carries no wordlist-derived text, must still render alongside it.
     check("a mixed failure still carries its non-prevalence reason",
-          "only one cited review" in prose, before_line)
+          # wording changed 2026-11-16: one supporting review is now legal at
+          # extraction (verify_claims.py sorts it), so `only_` means none matched
+          "none of its cited reviews could be matched" in prose, before_line)
     check("  and the fixture really was mixed",
           any(f.startswith("only_") for f in before_res["failures"]),
           before_res["failures"])
@@ -2186,6 +2220,7 @@ if __name__ == "__main__":
     test_ledger_does_not_reset_at_utc_midnight()
     test_retry_cache_key_includes_the_attempt()
     test_a_retry_never_replays_a_cached_rejection()
+    test_unverified_claims_do_not_synthesize()
     test_banned_words_names_every_single_word_ban()
     test_prompt_names_every_word_the_guard_rejects()
     test_retry_prose_does_not_move_with_the_guards_wordlist()

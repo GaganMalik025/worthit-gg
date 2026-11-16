@@ -89,6 +89,21 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
    explicit instruction.
 3. **Every claim carries ≥2 supporting `recommendationid`s**, enforced in code,
    not just in the prompt.
+   - **Amended 2026-11-16 (owner): "supporting" now means verified by meaning.**
+     Lexical overlap let a second review that shares a word pad a one-review
+     point to two (catalog sample: 72 of 300 claims, RESULTS 2026-11-06).
+     `pipeline/verify_claims.py` asks, per cohort, which of each claim's own
+     citations really convey it. Code keeps a claim only at ≥2 such ids and
+     strips the rest. At exactly 1, the point becomes a **one-reviewer point**:
+     it is rewritten in the singular ("One reviewer says…", checked in code plus
+     the prevalence guard) and lives in `single_points`. At 0, it is dropped. An
+     unverified claims file does not synthesize (`--allow-unverified` exists for
+     diagnostics only).
+   - One-reviewer points are **not claims**. They never reach the synthesis
+     prompt, the summary, the fit lists or the verdict word. They render only in
+     their own collapsed section below the flags (DESIGN.md "One-reviewer
+     points"), with no count on it (invariant 13). They are muted with their
+     cohort (invariant 12) and gated by QR-4 like every citation (invariant 8).
 4. The synthesis pass may only reference claim IDs emitted by the extraction
    pass. Unknown IDs are rejected in code.
 5. A deterministic grounding check (IDs exist + lexical overlap between claim
