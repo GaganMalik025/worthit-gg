@@ -1,0 +1,53 @@
+== 311690 (Enter the Gungeon) ==
+   target=400 quota=100 filters=recent,all max_pages=12
+  [recent] page 1: +100 new (pool 100)
+  [recent] page 2: +99 new (pool 199)
+  [recent] page 3: +100 new (pool 299)
+  [recent] page 4: +100 new (pool 399)
+  [recent] page 5: +100 new (pool 499)
+  [recent] page 6: +100 new (pool 599)
+  [recent] page 7: +100 new (pool 699)
+  [recent] page 8: +100 new (pool 799)
+  [recent] page 9: +100 new (pool 899)
+  [recent] page 10: +100 new (pool 999)
+  [recent] page 11: +100 new (pool 1099)
+  [recent] page 12: +100 new (pool 1199)
+  [recent] every bucket has >= 100; stopping sweep
+  [all] page 1: +0 new (pool 1199)
+  [all] page 2: +0 new (pool 1199)
+  [all] no more reviews returned; stopping
+
+--- aggregate (Steam's own) ---
+  score label   : Overwhelmingly Positive
+  total reviews : 44606
+  positive      : 42409
+  negative      : 2197
+
+--- bucket distribution (playtime at review) ---
+  bucket          kept of pool   positive
+  refund_window    100     103        56%
+  early            100     474        83%
+  mid              100     387        94%
+  veteran          100     235        97%
+  TOTAL            400
+
+  positive rate : sample 82%  vs  Steam overall 95%  (delta -13)
+  sources       : recent+all=125, recent=275
+  pages fetched : {'recent': 12, 'all': 2}   (live requests: 15, pool: 1199)
+
+  hardware data : 28/400 reviews
+  refunded      : 5
+  early access  : 0
+
+  refund cohort : PASS (100 reviews)
+
+--- pool rates (pre-quota, pool_n=1199) - invariant 11 source of truth ---
+  refund_window  pool_n=103     8.6% of pool    56.3% positive
+  early          pool_n=474    39.5% of pool    86.5% positive
+  mid            pool_n=387    32.3% of pool    93.5% positive
+  veteran        pool_n=235    19.6% of pool    97.9% positive
+  steam overall  pool_n=1199  of 44606 on Steam, 95.1% positive there
+
+wrote 400 reviews -> data/raw/311690.json
+
+all 1 game(s) OK

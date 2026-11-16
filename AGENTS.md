@@ -99,6 +99,12 @@ evals/ (Python)    50-case test set + LLM-as-judge → evals/RESULTS.md
      the prevalence guard) and lives in `single_points`. At 0, it is dropped. An
      unverified claims file does not synthesize (`--allow-unverified` exists for
      diagnostics only).
+   - **Extraction still requires two ids.** The 2026-11-16 pilot let extraction
+     cite one review, and the model stopped looking for a second: 101 of 122
+     claims cited one, and the cohort sections emptied into the one-reviewer
+     section (BACKLOG 2026-11-16). One-reviewer points therefore come only from
+     the meaning check demoting a claim that cited two. Do not relax the
+     extraction rule to "fill" the section.
    - One-reviewer points are **not claims**. They never reach the synthesis
      prompt, the summary, the fit lists or the verdict word. They render only in
      their own collapsed section below the flags (DESIGN.md "One-reviewer

@@ -158,17 +158,24 @@ def test_prompt_shape():
     check("no minutes reach the prompt (invariant 1)", "minutes" not in user.lower())
 
 
-def test_extraction_admits_one_review():
-    print("\nextraction: one id now reaches the meaning check")
+def test_extraction_still_requires_two():
+    """Pilot 2026-11-16: telling extraction one review was enough made it stop looking
+    for a second (101 of 122 claims cited one). Extraction keeps invariant 3's two
+    ids; one-reviewer points come only from the meaning check demoting a claim."""
+    print("\nextraction: a claim still needs two ids before the meaning check")
     kept, rejected = ec.enforce([{"claim": "x", "theme": "other", "supporting_ids": ["1"]},
-                                 {"claim": "y", "theme": "other", "supporting_ids": ["9"]}],
-                                {"1"}, {"1": True}, "mid")
-    check("a one-review claim is kept for verification", [k["claim"] for k in kept] == ["x"])
-    check("a claim citing only unknown ids is still rejected",
-          [r["claim"] for r in rejected] == ["y"])
-    check("the schema allows one id",
+                                 {"claim": "y", "theme": "other",
+                                  "supporting_ids": ["1", "2"]}],
+                                {"1", "2"}, {"1": True, "2": True}, "mid")
+    check("a one-review claim is rejected at extraction",
+          [r["claim"] for r in rejected] == ["x"], rejected)
+    check("a two-review claim reaches the meaning check", [k["claim"] for k in kept] == ["y"])
+    check("the schema requires two ids",
           ec.CLAIM_SCHEMA["properties"]["claims"]["items"]["properties"]
-          ["supporting_ids"]["minItems"] == 1)
+          ["supporting_ids"]["minItems"] == 2)
+    check("the prompt asks for two reviews, not one",
+          "at least TWO of the reviews" in ec.SYSTEM_INSTRUCTION
+          and "only one review makes is allowed" not in ec.SYSTEM_INSTRUCTION)
 
 
 def test_qr4_gates_one_reviewer_citations():
@@ -195,7 +202,7 @@ if __name__ == "__main__":
     test_fails_closed()
     test_cache_never_replays_a_retry()
     test_prompt_shape()
-    test_extraction_admits_one_review()
+    test_extraction_still_requires_two()
     test_qr4_gates_one_reviewer_citations()
     test_synthesis_refuses_unverified_claims()
     if FAILURES:

@@ -111,8 +111,12 @@ def run(work, call, answers, out_json):
                     parsed = call(SYSTEM, judge_prompt(game, claim, corpus),
                                   claim["supporting_ids"])
                     break
-                except Exception as exc:  # noqa: BLE001 - re-raised unless overload
-                    if not ("503" in str(exc) or "UNAVAILABLE" in str(exc)) or wait is None:
+                except Exception as exc:  # noqa: BLE001 - re-raised unless transient
+                    # overload, or a read timeout (the first --spend run died on one
+                    # at claim 20; answers were saved and it resumed)
+                    transient = ("503" in str(exc) or "UNAVAILABLE" in str(exc)
+                                 or "timed out" in str(exc).lower())
+                    if not transient or wait is None:
                         raise
                     print("  overloaded at %s; waiting %ds" % (key, wait), flush=True)
                     time.sleep(wait)

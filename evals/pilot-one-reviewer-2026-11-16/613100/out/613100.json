@@ -1,0 +1,673 @@
+{
+  "appid": "613100",
+  "game_name": "House Flipper",
+  "generated_at": "2026-11-16T11:31:20Z",
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/613100/6cee40fe293f0bab47534e78bcda64487902efc1/header.jpg?t=1786633589",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/613100/446e6c6faa35dd9303ae58753b532bdb4ff42960/capsule_231x87.jpg?t=1786633589",
+    "grid": "https://cdn2.steamgriddb.com/grid/3cb48912b5137fa2a450dd80f19c66d6.png"
+  },
+  "model": {
+    "extraction": "gemini-3.5-flash-lite",
+    "synthesis": "gemini-3.5-flash-lite"
+  },
+  "cost": {
+    "model_calls": 26,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
+  "verdict": {
+    "word": "Buy",
+    "tagline": "Renovate, clean, and decorate properties, though initial technical friction runs high.",
+    "for_you_if": [
+      "you enjoy relaxing property renovation and interior design loops",
+      "you want a steady progression of new tools and projects"
+    ],
+    "not_for_you_if": [
+      "you need robust accessibility options and fully remappable controls",
+      "you are bothered by placement bugs and limited base exterior customisation"
+    ]
+  },
+  "split_bar": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "pool_n": 106,
+      "pct_positive": 65.1,
+      "muted": false
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "pool_n": 673,
+      "pct_positive": 93.5,
+      "muted": false
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "pool_n": 330,
+      "pct_positive": 96.4,
+      "muted": false
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "pool_n": 91,
+      "pct_positive": 91.2,
+      "muted": false
+    }
+  ],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "Player sentiment rises sharply after the refund window before dipping slightly among long-term players.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 65.1,
+            "pool_n": 106
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 93.5,
+            "pool_n": 673
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 96.4,
+            "pool_n": 330
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 91.2,
+            "pool_n": 91
+          }
+        ],
+        "shape": "rise_then_fall",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 65.1,
+        "low_pool_n": 106,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 96.4,
+        "high_pool_n": 330,
+        "gap_pts": 31.3,
+        "peak_cohort": "mid",
+        "peak_pct_positive": 96.4,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 91.2,
+        "drop_after_peak_pts": 5.2
+      }
+    }
+  ],
+  "cohorts": [
+    {
+      "bucket": "refund_window",
+      "label": "<2h refund window",
+      "hours_range": "under 2 hours",
+      "pool_n": 106,
+      "pct_positive": 65.1,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players encounter strict control limitations, placement bugs, and missing accessibility features.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-563695",
+              "claim": "Reviewers report that the game lacks basic accessibility features such as UI or HUD sizing sliders for disabled players.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "232294589",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 85,
+                  "voted_up": false,
+                  "date": "2026-08-07",
+                  "review_text": "Hopefully the remastered collection has a UI and HUD slider for disabled people to see the text and objects (or really ANY accessibility features). But somehow, I doubt it's high on their priority list.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230420536",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "Can't rebind controls. I'd refund if I didn't get it for free. Missing basic accessibility features, should not be for sale.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-e9be05",
+              "claim": "Reviewers note that key bindings cannot be successfully configured because key remapping options are restricted or forbidden.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231523089",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 40,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "First of all, what the hell? Open the game and it's automatically advertising me things to buy right from the very start? Immediate turnoff! Try to configure key binds and half of them either won't bind to something or binding to other keys is forbidden. I wanted to like this game, but the short time I tried to play it, it wasn't any fun due to being forced to play a certain control scheme which is not left handed player friendly. The ad pitching on top of that to try get me to buy other things before I've even played was the nail in the coffin. I got the game to play the game not to be served ads within the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230420536",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "Can't rebind controls. I'd refund if I didn't get it for free. Missing basic accessibility features, should not be for sale.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-a7ddaf",
+              "claim": "Reviewers report difficulties with key binding restrictions and an inability to properly configure controls.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "231523089",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 40,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "First of all, what the hell? Open the game and it's automatically advertising me things to buy right from the very start? Immediate turnoff! Try to configure key binds and half of them either won't bind to something or binding to other keys is forbidden. I wanted to like this game, but the short time I tried to play it, it wasn't any fun due to being forced to play a certain control scheme which is not left handed player friendly. The ad pitching on top of that to try get me to buy other things before I've even played was the nail in the coffin. I got the game to play the game not to be served ads within the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "230420536",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
+                  "voted_up": false,
+                  "date": "2026-07-14",
+                  "review_text": "Can't rebind controls. I'd refund if I didn't get it for free. Missing basic accessibility features, should not be for sale.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-ff13ea",
+              "claim": "Reviewers describe struggling to locate hidden items or objectives, such as electrical switches and outlets, during jobs.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "237664322",
+                  "hours_at_review": 1.7,
+                  "minutes_at_review": 100,
+                  "voted_up": false,
+                  "date": "2026-10-13",
+                  "review_text": "Boring. Buggy. Overpriced DLCs. Tedious.\n...\n...\nWhy. \n...\nI genuinely struggle to understand why people like this game so much.\nOh yeah, I`d LOVE to spend 20 minutes looking for a broken outlet, only to look up a guide and find out it`s hidden behind the 27th fucking broken wardrobe.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231536331",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 51,
+                  "voted_up": false,
+                  "date": "2026-07-28",
+                  "review_text": "this game is ragebait i cldnt find the mf switch i give up",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-453925",
+              "claim": "Reviewers describe encountering bugs with furniture and cabinet placement where objects fail to line up correctly with the grid or will not return to their original positions.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "238504587",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 48,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Too many bugs.. can't actually line up furniture/cabinets (even when you're putting them back in the same exact position they started in), missions you can't actually 100% complete which the game penalizes you for, etc. These are known issues I've seen and yet they're already putting out DLC.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235565607",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 59,
+                  "voted_up": false,
+                  "date": "2026-09-18",
+                  "review_text": "so slow, so boring, so repetitive. click and hold to do everything - slowly. half of the objects dont line up with the grid youre supposed to place them on as well",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 7,
+        "cited_recommend": 0,
+        "divergence_p": 0.000631,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 673,
+      "pct_positive": 93.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players jump straight into cleaning, destroying walls, painting, and arranging furniture.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-5f1732",
+              "claim": "Reviewers report that gameplay involves doing tasks such as cleaning, destroying walls, painting, and arranging furniture.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240270762",
+                  "hours_at_review": 16.4,
+                  "minutes_at_review": 985,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "This is a game that has a lot of variety, where you can do everything from tearing down walls, cleaning, decorating, assembling, and much more! The advantage is that you get to choose your own missions. Sometimes you come to houses that might need a little fixing here and there, while other houses are really messy and need a complete makeover. So there really is something for everyone! You can take on missions at a relaxed pace, or go for something more action-packed. The choice is up to you.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238750295",
+                  "hours_at_review": 4.3,
+                  "minutes_at_review": 260,
+                  "voted_up": true,
+                  "date": "2026-10-28",
+                  "review_text": "Got this game for 5 aed on sale it was the most worth it 5 aed i ever spent its long u gain money by doing jobs like breaking walls and adding diffrent layouts paint home's add furniture clean other people's mess and aftet that if u get 60k u can buy your own homes and sell them for profit with u can make themed homes worth it",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 2,
+        "cited_recommend": 2,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 330,
+      "pct_positive": 96.4,
+      "muted": false,
+      "n_note": null,
+      "summary": "The renovation loop proves relaxing, opening up deeper tools and larger projects over time.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-e5710b",
+              "claim": "Reviewers describe the gameplay as relaxing and satisfying, noting that it involves cleaning, fixing, and renovating properties.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240195323",
+                  "hours_at_review": 67.7,
+                  "minutes_at_review": 4063,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "I am really enjoying this game. I enjoy taking the trashed, dirty, disgusting places and making them beautiful. I like the jobs, they teach me how to do stuff. And I like the houses I flip as I have a free hand to do what I like, while trying to keep buyers in mind. I added the garden, pet, and farm add-ons. They add dimensions to the game and more content. Really having a good time with it. Thanks.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238535171",
+                  "hours_at_review": 29.7,
+                  "minutes_at_review": 1781,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "**House Flipper is way more addictive than it has any right to be. 🏠🔨**\r\n\r\nHonestly, I never expected cleaning dirty houses and fixing broken furniture to be this satisfying. At first, you think you're just going to renovate a few houses, make some money, and call it a day. Then suddenly, you've spent hours cleaning walls, removing trash, fixing pipes, painting rooms, and making everything look perfect. 😭\r\n\r\nThe gameplay is surprisingly relaxing. There's something genuinely satisfying about walking into a disgusting, abandoned house and slowly turning it into a clean, beautiful home. Cleaning the dirt, throwing away trash, painting the walls, installing furniture, and watching the whole place transform makes all the effort feel worth it.\r\n\r\nI also love how much freedom the game gives you. You can renovate properties according to your own taste, experiment with different furniture, change the colors, and create rooms that actually feel like your own designs. Whether you want a simple modern house or something more luxurious, there's plenty of room to get creative.\r\n\r\nThe progression system makes the experience even more addictive. You start with basic jobs, earn money, unlock new skills, and gradually take on bigger projects. Eventually, you can buy properties, renovate them, and sell them for a profit. It's genuinely satisfying to see your work pay off, especially when you turn a complete mess into a beautiful house.\r\n\r\nOf course, some tasks can become repetitive after a while, and the gameplay isn't particularly challenging. But honestly, that's part of the appeal. This is the kind of game you play when you want to relax, listen to music, watch videos in the background, and forget about everything else for a bit.\r\n\r\nThere's something almost therapeutic about cleaning a filthy room and watching it become spotless. No stressful boss fights, no zombies chasing you, no complicated combat mechanics. Just you, your tools, and a house that desperately needs some serious w…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-d432df",
+              "claim": "Reviewers note that the game features a progression system where players start with basic jobs and eventually unlock tools and skills to take on larger projects.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240135962",
+                  "hours_at_review": 53.2,
+                  "minutes_at_review": 3190,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "Playing this game I felt like something between an unemployed interior designer with cleaning duties and a housewife with too much free time. The real estate market in this game can make you a millionaire in two days, you can sell a house for more worth than the Buckingham Palace. A really great thing is the progression of your tools and capabilities, it is amazing. At first you can only do a house per play session, but as you progress you can do multiple, it really becomes faster. The DLCs make a really good cleaning sim into a whole empire of house renovation, if cleaning was that good I would do it in real life.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238535171",
+                  "hours_at_review": 29.7,
+                  "minutes_at_review": 1781,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "**House Flipper is way more addictive than it has any right to be. 🏠🔨**\r\n\r\nHonestly, I never expected cleaning dirty houses and fixing broken furniture to be this satisfying. At first, you think you're just going to renovate a few houses, make some money, and call it a day. Then suddenly, you've spent hours cleaning walls, removing trash, fixing pipes, painting rooms, and making everything look perfect. 😭\r\n\r\nThe gameplay is surprisingly relaxing. There's something genuinely satisfying about walking into a disgusting, abandoned house and slowly turning it into a clean, beautiful home. Cleaning the dirt, throwing away trash, painting the walls, installing furniture, and watching the whole place transform makes all the effort feel worth it.\r\n\r\nI also love how much freedom the game gives you. You can renovate properties according to your own taste, experiment with different furniture, change the colors, and create rooms that actually feel like your own designs. Whether you want a simple modern house or something more luxurious, there's plenty of room to get creative.\r\n\r\nThe progression system makes the experience even more addictive. You start with basic jobs, earn money, unlock new skills, and gradually take on bigger projects. Eventually, you can buy properties, renovate them, and sell them for a profit. It's genuinely satisfying to see your work pay off, especially when you turn a complete mess into a beautiful house.\r\n\r\nOf course, some tasks can become repetitive after a while, and the gameplay isn't particularly challenging. But honestly, that's part of the appeal. This is the kind of game you play when you want to relax, listen to music, watch videos in the background, and forget about everything else for a bit.\r\n\r\nThere's something almost therapeutic about cleaning a filthy room and watching it become spotless. No stressful boss fights, no zombies chasing you, no complicated combat mechanics. Just you, your tools, and a house that desperately needs some serious w…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "237768825",
+                  "hours_at_review": 49.6,
+                  "minutes_at_review": 2979,
+                  "voted_up": true,
+                  "date": "2026-10-15",
+                  "review_text": "Entertaining game that simulates house flipping.  There are preset jobs you can do to learn and improve your skills along the way where you earn the money you will need to start buying houses.  Then its all up to your imagination to apply those skills to fix up houses and apartments to earn the most money from each house you flip.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-d1249251",
+          "text": "One reviewer wishes some of the more fun features weren't locked behind DLC, like building your own houses in the farm DLC.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "239737609",
+            "hours_at_review": 94.5,
+            "minutes_at_review": 5671,
+            "voted_up": true,
+            "date": "2026-11-08",
+            "review_text": "Gameplay Genre: Cleanup & decorator sim\nStory Genre: N/A\nStory/Gameplay Ratio: N/A\n\n**Gameplay**\nIdeas: 7/10 | A significant amount of detail, though it is lacking in some specifics.\nExecution: 7/10 | I do wish some of the more fun features weren't locked behind DLC, like building your own houses in the farm DLC and the choices between certain items from a given list in the luxury DLC, but overall it's pretty solid and enjoyable.\n\n**Visuals & Sounds**\nIdeas: 6/10 | Passable. Aiming for semi-realism without much stylistic flavor, which makes sense for the game's premise but isn't particularly interesting.\nExecution: 7/10 | Decent, but I often found myself frustrated at a lack of customizability on some (especially older) items and unable to make the spaces look the way I wanted.\n\nCohesiveness: 9/10 | Coherent all the way through, but there isn't much connecting different jobs. In the end, though, that doesn't end up taking away from the experience.\nPersonal Favor: 7/10 | Fun, if a bit repetitive after a while. I wish there was more variation in floor plan on the houses available to flip.\n\n**OVERALL RATING:** 7/10",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 4,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 91,
+      "pct_positive": 91.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players enjoy extensive customisation while noting base game content limits and occasional physics bugs.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-5c5a55",
+              "claim": "Reviewers report that the base game features limited options for exterior customization and lawn care.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "234523629",
+                  "hours_at_review": 467.2,
+                  "minutes_at_review": 28034,
+                  "voted_up": false,
+                  "date": "2026-09-05",
+                  "review_text": "I'm someone who's played this game both on and off. Buying each bit of DLC that comes out up til the \"remaster\".\r\nThe game sucks.\r\nThe base game is still full of stupid glitches, bugs and poor optimisation such as getting stuck on objects like the rims of staircases, items refusing to place to due invisible geometry and items not placing where the crosshair is aiming at random. The base game is still ultra limiting as you cannot cut grass, have scant few options for external customisation despite being given access at the start of the game with the first office, seriously, if we aren't allowed to customise the outside properly in the base game, why even have it in the first place?\r\nNext, you (Frozen District) CHARGE for the ability to cut grass and customise the outside in a meaningful way despite the game costing £21/$28/$39CAD already, you then charge an extra £13/$17/$24CAD???\r\nBiblical levels of greed that i'd expect out of EA or Paradox.\r\nBut I'm far from done.\r\nNext is the Cyberpunk DLC as a whole. Originally this DLC added like 60 items and a SINGLE NEW PLACE TO GO, and it remained that way for what? 2? 3 years? Before you decided to actually update it?\r\nThere is also the bugginess of the Pets DLC, the sheer unoptimised hell that was the Farm DLC, the unremarkability of the Dining DLC, and the utter disappointment that is the Apocalypse DLC still to this day.\r\nAnd somehow, i'm STILL not done.\r\nYou then release the second game while the first is still a mess, which may i also add, is somehow JUST AS BUGGY. And even then, after that, you have to GALL to do a \"remaster\" that makes the game:\r\n1) Run worse than it already did\r\n2) Fuck up the aiming and placing system more than before\r\n3) Charge EXTRA for shit\r\nand on top of all that, then relase updates that apply to ONLY it?????????\r\nAnd I haven't even hit on stuff like when you set out an ad looking for free QA testing instead of using an ACTUAL QA tester with all that money you fleece from people.\r\n\r\nTL:DR:\r\nDo…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229836949",
+                  "hours_at_review": 100.0,
+                  "minutes_at_review": 6003,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Frozen Way? More like EA.\n\nTo start, I want to say that I enjoy this game. As a creative person I love decorating and designing. I like being able to go in and clean up a house, and I like all the little minigames where you put things together and the painting/tiling. But this game REALLY lacks in the decorating and designing part of house flipping. Almost all of the furniture is either very basic or minimalist and modern so you're very limited in what kind of decor style you want to do unless you buy the overpriced DLC. The creators of this game really enjoy pumping out DLCs. The only saving grace is the workshop which can kind of allow you to add some more variety to your furniture and decorating.\n\nThe game is still pretty buggy and the lighting is terrible, but from what I've seen the lighting hasn't been improved in HF2 or the remastered edition. I genuinely can't recommend getting this game unless it's on sale.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-32d264",
+              "claim": "Reviewers highlight the Steam Workshop as a valuable feature for adding free items and increasing variety.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "235652565",
+                  "hours_at_review": 383.9,
+                  "minutes_at_review": 23031,
+                  "voted_up": true,
+                  "date": "2026-09-20",
+                  "review_text": "House Flipper is the game I really wanted from The Sims as a child, where I would start a new game, cheat for infinite money, build and decorate the house of my dreams, and then take away the swimming ladder and start a new game, rinse & repeat, etc.\n\nThe workshop is what really makes this game shine. So many items are available for free that help flesh out the process. While the QoL of the game and the questionable life choices of the Dev team for the last handful of years have given me the ick, this game still feels worth it. (Honestly, the second game is garbage in comparison and this one goes on sale for super cheap all the time.)\n\nIf you adore decorating and want to experience the cozy side of interior design, get this game! (Also, be aware that while some of DLC are good, the furniture pack DLCs are not worth it)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229836949",
+                  "hours_at_review": 100.0,
+                  "minutes_at_review": 6003,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Frozen Way? More like EA.\n\nTo start, I want to say that I enjoy this game. As a creative person I love decorating and designing. I like being able to go in and clean up a house, and I like all the little minigames where you put things together and the painting/tiling. But this game REALLY lacks in the decorating and designing part of house flipping. Almost all of the furniture is either very basic or minimalist and modern so you're very limited in what kind of decor style you want to do unless you buy the overpriced DLC. The creators of this game really enjoy pumping out DLCs. The only saving grace is the workshop which can kind of allow you to add some more variety to your furniture and decorating.\n\nThe game is still pretty buggy and the lighting is terrible, but from what I've seen the lighting hasn't been improved in HF2 or the remastered edition. I genuinely can't recommend getting this game unless it's on sale.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-a6b860",
+              "claim": "Reviewers state that the game offers extensive options for customization, allowing players to build and decorate houses according to their own styles.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "239917728",
+                  "hours_at_review": 289.9,
+                  "minutes_at_review": 17394,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "Really love this game enough that I got all the DLC so I could have more to do / more options. I love the freedom of being able to customize everything.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229983532",
+                  "hours_at_review": 278.3,
+                  "minutes_at_review": 16698,
+                  "voted_up": true,
+                  "date": "2026-07-08",
+                  "review_text": "I love this game! it gives you so much freedom to explore differnt colors and styles of rooms and even layout! From knocking down walls to rebuilding them this game truely lets you express yourself and have so much fun designing your own houses!",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-be4252",
+              "claim": "Reviewers point out limitations in base game exterior customization and furniture variety, noting that furniture options are heavily basic or modern unless supplemented by DLCs or the workshop.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "234523629",
+                  "hours_at_review": 467.2,
+                  "minutes_at_review": 28034,
+                  "voted_up": false,
+                  "date": "2026-09-05",
+                  "review_text": "I'm someone who's played this game both on and off. Buying each bit of DLC that comes out up til the \"remaster\".\r\nThe game sucks.\r\nThe base game is still full of stupid glitches, bugs and poor optimisation such as getting stuck on objects like the rims of staircases, items refusing to place to due invisible geometry and items not placing where the crosshair is aiming at random. The base game is still ultra limiting as you cannot cut grass, have scant few options for external customisation despite being given access at the start of the game with the first office, seriously, if we aren't allowed to customise the outside properly in the base game, why even have it in the first place?\r\nNext, you (Frozen District) CHARGE for the ability to cut grass and customise the outside in a meaningful way despite the game costing £21/$28/$39CAD already, you then charge an extra £13/$17/$24CAD???\r\nBiblical levels of greed that i'd expect out of EA or Paradox.\r\nBut I'm far from done.\r\nNext is the Cyberpunk DLC as a whole. Originally this DLC added like 60 items and a SINGLE NEW PLACE TO GO, and it remained that way for what? 2? 3 years? Before you decided to actually update it?\r\nThere is also the bugginess of the Pets DLC, the sheer unoptimised hell that was the Farm DLC, the unremarkability of the Dining DLC, and the utter disappointment that is the Apocalypse DLC still to this day.\r\nAnd somehow, i'm STILL not done.\r\nYou then release the second game while the first is still a mess, which may i also add, is somehow JUST AS BUGGY. And even then, after that, you have to GALL to do a \"remaster\" that makes the game:\r\n1) Run worse than it already did\r\n2) Fuck up the aiming and placing system more than before\r\n3) Charge EXTRA for shit\r\nand on top of all that, then relase updates that apply to ONLY it?????????\r\nAnd I haven't even hit on stuff like when you set out an ad looking for free QA testing instead of using an ACTUAL QA tester with all that money you fleece from people.\r\n\r\nTL:DR:\r\nDo…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "229836949",
+                  "hours_at_review": 100.0,
+                  "minutes_at_review": 6003,
+                  "voted_up": false,
+                  "date": "2026-07-07",
+                  "review_text": "Frozen Way? More like EA.\n\nTo start, I want to say that I enjoy this game. As a creative person I love decorating and designing. I like being able to go in and clean up a house, and I like all the little minigames where you put things together and the painting/tiling. But this game REALLY lacks in the decorating and designing part of house flipping. Almost all of the furniture is either very basic or minimalist and modern so you're very limited in what kind of decor style you want to do unless you buy the overpriced DLC. The creators of this game really enjoy pumping out DLCs. The only saving grace is the workshop which can kind of allow you to add some more variety to your furniture and decorating.\n\nThe game is still pretty buggy and the lighting is terrible, but from what I've seen the lighting hasn't been improved in HF2 or the remastered edition. I genuinely can't recommend getting this game unless it's on sale.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-8795b6",
+              "claim": "Reviewers note that the game suffers from bugs and technical issues such as objects clipping, items refusing to place due to invisible geometry, and getting stuck on staircases.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240215731",
+                  "hours_at_review": 209.7,
+                  "minutes_at_review": 12581,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "I love the game on the PC. It is fun and relaxing, the garden decorating is my favorite part... On the switch however, I recommend not getting this game on the switch. A lot of the garden items for the switch have not been ported properly and are unusable. The game is extremely glitchy on the switch, rugs clip through beds and walls for example. \n\nPlay this on PC only.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "234523629",
+                  "hours_at_review": 467.2,
+                  "minutes_at_review": 28034,
+                  "voted_up": false,
+                  "date": "2026-09-05",
+                  "review_text": "I'm someone who's played this game both on and off. Buying each bit of DLC that comes out up til the \"remaster\".\r\nThe game sucks.\r\nThe base game is still full of stupid glitches, bugs and poor optimisation such as getting stuck on objects like the rims of staircases, items refusing to place to due invisible geometry and items not placing where the crosshair is aiming at random. The base game is still ultra limiting as you cannot cut grass, have scant few options for external customisation despite being given access at the start of the game with the first office, seriously, if we aren't allowed to customise the outside properly in the base game, why even have it in the first place?\r\nNext, you (Frozen District) CHARGE for the ability to cut grass and customise the outside in a meaningful way despite the game costing £21/$28/$39CAD already, you then charge an extra £13/$17/$24CAD???\r\nBiblical levels of greed that i'd expect out of EA or Paradox.\r\nBut I'm far from done.\r\nNext is the Cyberpunk DLC as a whole. Originally this DLC added like 60 items and a SINGLE NEW PLACE TO GO, and it remained that way for what? 2? 3 years? Before you decided to actually update it?\r\nThere is also the bugginess of the Pets DLC, the sheer unoptimised hell that was the Farm DLC, the unremarkability of the Dining DLC, and the utter disappointment that is the Apocalypse DLC still to this day.\r\nAnd somehow, i'm STILL not done.\r\nYou then release the second game while the first is still a mess, which may i also add, is somehow JUST AS BUGGY. And even then, after that, you have to GALL to do a \"remaster\" that makes the game:\r\n1) Run worse than it already did\r\n2) Fuck up the aiming and placing system more than before\r\n3) Charge EXTRA for shit\r\nand on top of all that, then relase updates that apply to ONLY it?????????\r\nAnd I haven't even hit on stuff like when you set out an ad looking for free QA testing instead of using an ACTUAL QA tester with all that money you fleece from people.\r\n\r\nTL:DR:\r\nDo…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-5882bc64",
+          "text": "One reviewer says the game is extremely glitchy on the switch, with rugs clipping through beds and walls.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240215731",
+            "hours_at_review": 209.7,
+            "minutes_at_review": 12581,
+            "voted_up": true,
+            "date": "2026-11-14",
+            "review_text": "I love the game on the PC. It is fun and relaxing, the garden decorating is my favorite part... On the switch however, I recommend not getting this game on the switch. A lot of the garden items for the switch have not been ported properly and are unusable. The game is extremely glitchy on the switch, rugs clip through beds and walls for example. \n\nPlay this on PC only.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-1d4ce32b",
+          "text": "One reviewer says the jump feature on ladders gets frustrating when trying to use them for their intended purpose because the jump button gets in the way.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "235811685",
+            "hours_at_review": 105.5,
+            "minutes_at_review": 6331,
+            "voted_up": true,
+            "date": "2026-09-22",
+            "review_text": "This game lived up to every expectation i had for it. i have watched plenty of people play this game since it came out and i couldn't wait to play it myself. I've only ever had two issues with the game and it's that you can't sell broken or fixed sockets in brought houses. is it frustrating? a little bit but it can be covered with furniture so in the end it doesn't really matter. also the jump feature on ladders does get frustrating when you're trying to use them for it's intended purpose and the jump button get in the way. other than that It's really relaxing, I've always wanted a game like this and now that I have it I spend so much time on it.",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 4,
+        "divergence_p": 0.0915,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    }
+  ],
+  "footer": {
+    "pool_n": 1200,
+    "steam_total_reviews": 53760,
+    "cohort_count": 4,
+    "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
+  }
+}

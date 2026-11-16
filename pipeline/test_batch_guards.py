@@ -620,9 +620,7 @@ def test_retry_prose_does_not_move_with_the_guards_wordlist():
     # SCOPE: the edit was additive to one branch. The citation reason, which
     # carries no wordlist-derived text, must still render alongside it.
     check("a mixed failure still carries its non-prevalence reason",
-          # wording changed 2026-11-16: one supporting review is now legal at
-          # extraction (verify_claims.py sorts it), so `only_` means none matched
-          "none of its cited reviews could be matched" in prose, before_line)
+          "only one cited review" in prose, before_line)
     check("  and the fixture really was mixed",
           any(f.startswith("only_") for f in before_res["failures"]),
           before_res["failures"])

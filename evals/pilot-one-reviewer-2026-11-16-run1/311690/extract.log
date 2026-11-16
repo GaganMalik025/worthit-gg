@@ -1,0 +1,442 @@
+extracting Enter the Gungeon (311690) with gemini-3.5-flash-lite
+
+=== Enter the Gungeon / refund_window (n=64, 0-2 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 23)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that the game crashes frequently on the Steam Deck.",
+      "theme": "performance",
+      "supporting_ids": [
+        "239871287"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the game as laggy on Steam compared to other platforms like the Xbox App.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238972729"
+      ]
+    },
+    {
+      "claim": "Reviewers note that native multiplayer is absent, and the alternative of remote play suffers from high input latency.",
+      "theme": "content",
+      "supporting_ids": [
+        "238317586",
+        "238112165"
+      ]
+    },
+    {
+      "claim": "Reviewers report that co-op is restricted to remote play or local play, and note issues with remote play input handling for the second player.",
+      "theme": "content",
+      "supporting_ids": [
+        "237679976",
+        "229770071",
+        "227764678"
+      ]
+    },
+    {
+      "claim": "Reviewers state the game lacks a save and quit feature to interrupt a gaming session and return to it later.",
+      "theme": "content",
+      "supporting_ids": [
+        "236579925"
+      ]
+    },
+    {
+      "claim": "Reviewers report that controller support is broken or restricted, noting issues with non-Xbox controllers failing after short periods of play.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "231881707",
+        "231246532"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the game lacks mixed input support for alternative controller setups like gyro aim devices.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "227924773"
+      ]
+    },
+    {
+      "claim": "Reviewers report that controls feel laggy during the tutorial.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "227832213"
+      ]
+    },
+    {
+      "claim": "Reviewers state the game lacks an option to auto-reload when holding down the shoot button.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "228483676"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the camera movement causes dizziness.",
+      "theme": "performance",
+      "supporting_ids": [
+        "225848284"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 10, enforce rejected 0, grounding rejected 1, accepted 9 ---
+     [grounding] Reviewers report that co-op is restricted to remote play or local play, and note
+          ! low_union_coverage:0.12<0.25
+
+  regenerating refund_window (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 24)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that the game crashes frequently on the Steam Deck and features nonsensical button mapping.",
+      "theme": "performance",
+      "supporting_ids": [
+        "239871287"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the game lags on Steam compared to the Xbox App version.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238972729"
+      ]
+    },
+    {
+      "claim": "Reviewers state that local multiplayer requires sharing a system or using multiple controllers, and that remote play suffers from high latency and input issues.",
+      "theme": "access",
+      "supporting_ids": [
+        "238317586",
+        "238112165",
+        "237679976",
+        "229770071",
+        "227764678"
+      ]
+    },
+    {
+      "claim": "Reviewers point out the absence of a save and quit feature to interrupt a gaming session.",
+      "theme": "content",
+      "supporting_ids": [
+        "236579925"
+      ]
+    },
+    {
+      "claim": "Reviewers report issues with controller support, noting that non-Xbox controllers or Steam input translation layers can cause controls to fail or become unresponsive during gameplay.",
+      "theme": "performance",
+      "supporting_ids": [
+        "231881707",
+        "231246532"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the game lacks mixed input support for tools requiring simultaneous mouse and keyboard or analog stick combinations.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "227924773"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the controls during the tutorial as laggy.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "227832213"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the camera movement causes dizziness.",
+      "theme": "performance",
+      "supporting_ids": [
+        "225848284"
+      ]
+    }
+  ]
+}
+     [dedupe/duplicate] Reviewers report that the game crashes frequently on the Steam Deck and features
+     [dedupe/duplicate] Reviewers point out the absence of a save and quit feature to interrupt a gaming
+     [dedupe/duplicate] Reviewers report issues with controller support, noting that non-Xbox controller
+     [dedupe/duplicate] Reviewers describe the controls during the tutorial as laggy.
+     [dedupe/duplicate] Reviewers report that the camera movement causes dizziness.
+
+--- attempt 1: model returned 8, enforce rejected 0, grounding rejected 0, accepted 8 ---
+
+--- refund_window final: 12 grounded claims, 0 dropped ---
+     (performance | cited reviewers negative 0u/1d) Reviewers report that the game crashes frequently on the Steam Deck.
+        ids: 239871287
+     (performance | cited reviewers positive 1u/0d) Reviewers describe the game as laggy on Steam compared to other platforms like the Xbox App.
+        ids: 238972729
+     (content | cited reviewers negative 0u/2d) Reviewers note that native multiplayer is absent, and the alternative of remote play suffers from high input latency.
+        ids: 238317586, 238112165
+     (content | cited reviewers negative 0u/1d) Reviewers state the game lacks a save and quit feature to interrupt a gaming session and return to it later.
+        ids: 236579925
+     (difficulty | cited reviewers mixed 1u/1d) Reviewers report that controller support is broken or restricted, noting issues with non-Xbox controllers failing after short periods of play.
+        ids: 231881707, 231246532
+     (difficulty | cited reviewers negative 0u/1d) Reviewers state that the game lacks mixed input support for alternative controller setups like gyro aim devices.
+        ids: 227924773
+     (difficulty | cited reviewers negative 0u/1d) Reviewers report that controls feel laggy during the tutorial.
+        ids: 227832213
+     (difficulty | cited reviewers negative 0u/1d) Reviewers state the game lacks an option to auto-reload when holding down the shoot button.
+        ids: 228483676
+     (performance | cited reviewers negative 0u/1d) Reviewers report that the camera movement causes dizziness.
+        ids: 225848284
+     (performance | cited reviewers positive 1u/0d) Reviewers note that the game lags on Steam compared to the Xbox App version.
+        ids: 238972729
+     (access | cited reviewers negative 1u/4d) Reviewers state that local multiplayer requires sharing a system or using multiple controllers, and that remote play suffers from high latency and input issues.
+        ids: 238317586, 238112165, 237679976, 229770071, 227764678
+     (difficulty | cited reviewers negative 0u/1d) Reviewers note that the game lacks mixed input support for tools requiring simultaneous mouse and keyboard or analog stick combinations.
+        ids: 227924773
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 25)
+
+--- refund_window verified: 3 claims, 9 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Enter the Gungeon / early (n=52, 2-20 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 26)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that the game can drop controller inputs periodically.",
+      "theme": "performance",
+      "supporting_ids": [
+        "234837618"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the game is playable on macOS despite store labels stating otherwise.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238080595"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the game as heavily dependent on luck.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240146174"
+      ]
+    },
+    {
+      "claim": "Reviewers state that randomized levels vary too much in difficulty, starting weapons are nerfed, and chests lack keys.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239405353"
+      ]
+    },
+    {
+      "claim": "Reviewers find the game difficult, noting that starting weapons are insufficient past the first chamber and second-chamber bosses feature unavoidable projectile phases.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237130159"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the game as a grindy slog where progression feels out of reach, complaining that the elevator unlock requirements shift constantly and weapon drops are too stingy.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "234766831"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 6, enforce rejected 0, grounding rejected 0, accepted 6 ---
+
+--- early final: 6 grounded claims, 0 dropped ---
+     (performance | cited reviewers negative 0u/1d) Reviewers report that the game can drop controller inputs periodically.
+        ids: 234837618
+     (performance | cited reviewers positive 1u/0d) Reviewers note that the game is playable on macOS despite store labels stating otherwise.
+        ids: 238080595
+     (difficulty | cited reviewers positive 1u/0d) Reviewers describe the game as heavily dependent on luck.
+        ids: 240146174
+     (difficulty | cited reviewers negative 0u/1d) Reviewers state that randomized levels vary too much in difficulty, starting weapons are nerfed, and chests lack keys.
+        ids: 239405353
+     (difficulty | cited reviewers negative 0u/1d) Reviewers find the game difficult, noting that starting weapons are insufficient past the first chamber and second-chamber bosses feature unavoidable projectile phases.
+        ids: 237130159
+     (difficulty | cited reviewers negative 0u/1d) Reviewers describe the game as a grindy slog where progression feels out of reach, complaining that the elevator unlock requirements shift constantly and weapon drops are too stingy.
+        ids: 234766831
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 27)
+
+--- early verified: 0 claims, 6 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Enter the Gungeon / mid (n=71, 20-100 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 28)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Your weapons are mutually exclusive, so your kit tends to stagnate later in a run, and some weapons have unintuitive mechanics that are not explained.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240293888"
+      ]
+    },
+    {
+      "claim": "The Resourceful Rat fist fight is unfair.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240293888"
+      ]
+    },
+    {
+      "claim": "Completing the last achievements, such as Frifle's challenges, killing 100 enemies with chandeliers, or searching for the gunslinger king, is a grindy, awful, and tedious experience.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239762146"
+      ]
+    },
+    {
+      "claim": "A guide is required for the more unconventional secrets.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238748078"
+      ]
+    },
+    {
+      "claim": "The dodge roll mechanic feels out of place and allows the composition of hazards to devolve into a lazy design mess with bullet hell patterns that would otherwise be impossible to avoid.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237393205"
+      ]
+    },
+    {
+      "claim": "In the early game, low firepower RNG makes boss battles drag on and on, straining the player's patience and increasing difficulty.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237393205"
+      ]
+    },
+    {
+      "claim": "The find rate for the junk goober drops from 20% to 1% once unlocked.",
+      "theme": "content",
+      "supporting_ids": [
+        "234862275"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 7, enforce rejected 0, grounding rejected 1, accepted 6 ---
+     [grounding] The find rate for the junk goober drops from 20% to 1% once unlocked.
+          ! prevalence_language:1%,20%
+
+  regenerating mid (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 29)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that weapons are mutually exclusive, leading to kit stagnation later in a run, and mention that some weapons feature unintuitive, unexplained mechanics.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240293888"
+      ]
+    },
+    {
+      "claim": "Reviewers describe late-game achievements, such as completing Frifle's challenges or killing enemies with specific environmental objects, as an awful, tedious, and unnecessary grind.",
+      "theme": "content",
+      "supporting_ids": [
+        "239762146"
+      ]
+    },
+    {
+      "claim": "Reviewers report that external guides are required to find and figure out the more unconventional secrets in the game.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238748078",
+        "237199795"
+      ]
+    },
+    {
+      "claim": "Reviewers report that early-game boss battles drag on and become a slog if the player is dealt low firepower from weapon RNG.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237393205"
+      ]
+    }
+  ]
+}
+     [dedupe/duplicate] Reviewers note that weapons are mutually exclusive, leading to kit stagnation la
+     [dedupe/duplicate] Reviewers describe late-game achievements, such as completing Frifle's challenge
+     [dedupe/superseded] A guide is required for the more unconventional secrets.
+
+--- attempt 1: model returned 4, enforce rejected 0, grounding rejected 0, accepted 4 ---
+
+--- mid final: 7 grounded claims, 0 dropped ---
+     (difficulty | cited reviewers positive 1u/0d) Your weapons are mutually exclusive, so your kit tends to stagnate later in a run, and some weapons have unintuitive mechanics that are not explained.
+        ids: 240293888
+     (difficulty | cited reviewers positive 1u/0d) The Resourceful Rat fist fight is unfair.
+        ids: 240293888
+     (difficulty | cited reviewers positive 1u/0d) Completing the last achievements, such as Frifle's challenges, killing 100 enemies with chandeliers, or searching for the gunslinger king, is a grindy, awful, and tedious experience.
+        ids: 239762146
+     (difficulty | cited reviewers positive 2u/0d) Reviewers report that external guides are required to find and figure out the more unconventional secrets in the game.
+        ids: 238748078, 237199795
+     (difficulty | cited reviewers negative 0u/1d) The dodge roll mechanic feels out of place and allows the composition of hazards to devolve into a lazy design mess with bullet hell patterns that would otherwise be impossible to avoid.
+        ids: 237393205
+     (difficulty | cited reviewers negative 0u/1d) In the early game, low firepower RNG makes boss battles drag on and on, straining the player's patience and increasing difficulty.
+        ids: 237393205
+     (difficulty | cited reviewers negative 0u/1d) Reviewers report that early-game boss battles drag on and become a slog if the player is dealt low firepower from weapon RNG.
+        ids: 237393205
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 30)
+
+--- mid verified: 1 claims, 4 one-reviewer points, 0 dropped, 2 rewrites rejected, 0 citations removed ---
+
+=== Enter the Gungeon / veteran (n=67, 100+ hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 31)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers describe the parkour rooms as bad and express a desire for them not to return in a sequel.",
+      "theme": "content",
+      "supporting_ids": [
+        "239642955"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the enemy hunt quest features abysmal spawn rates for certain enemies, making them take forever to finish.",
+      "theme": "content",
+      "supporting_ids": [
+        "232476493"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the early hours lack a compelling design, making progress difficult and causing frustration until the mechanics click later on.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "233237345"
+      ]
+    },
+    {
+      "claim": "Reviewers describe updates as having made the game notably harder for new players without providing matching benefits.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "232699317"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 4, enforce rejected 0, grounding rejected 0, accepted 4 ---
+
+--- veteran final: 4 grounded claims, 0 dropped ---
+     (content | cited reviewers positive 1u/0d) Reviewers describe the parkour rooms as bad and express a desire for them not to return in a sequel.
+        ids: 239642955
+     (content | cited reviewers positive 1u/0d) Reviewers note that the enemy hunt quest features abysmal spawn rates for certain enemies, making them take forever to finish.
+        ids: 232476493
+     (difficulty | cited reviewers positive 1u/0d) Reviewers report that the early hours lack a compelling design, making progress difficult and causing frustration until the mechanics click later on.
+        ids: 233237345
+     (difficulty | cited reviewers negative 0u/1d) Reviewers describe updates as having made the game notably harder for new players without providing matching benefits.
+        ids: 232699317
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 32)
+
+--- veteran verified: 0 claims, 4 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+wrote 4 claims across 4 cohorts -> data/claims/311690.json

@@ -62,6 +62,28 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-11-16 | **Allowing one-review claims at extraction hollows out the cohort
+sections: 101 of 122 pilot claims cited one review** | pilot,
+`evals/pilot-one-reviewer-2026-11-16-run1/` (4 titles, 45 batch calls, every
+stage rc 0, QR-4 PASS on all 4) | Extraction rule 1 was changed in 470eda1 to say
+"a point only one review makes is allowed: cite that one review", and the model
+then stopped looking for a second review. Citations per claim at extraction,
+1 / 2+: Civ VII 33/2, Ori 21/8, Enter the Gungeon 25/4, House Flipper 22/7. Civ
+VII goes from 22 published claims to 2, with 33 points in the one-reviewer
+section. The meaning check itself barely moved anything (of the 21 claims citing
+2+: 17 kept, 3 demoted, 1 dropped). So the section is being filled by the
+extraction prompt, not by the check catching padding. **This is live on main**:
+every live search and batch night runs it. 0 live generations so far
+(`live_used` 0). The per-claim judge comparison was not run: with most claims
+citing one review it would mostly confirm single citations, about 122 calls to
+learn little.
+> **Fixed 2026-11-16 (owner chose option A).** The extraction prompt, schema
+> (`minItems` 2), enforcement and retry wording are back to the pre-build text,
+> byte-identical. The meaning check stays, so one-reviewer points now come only
+> from a claim that cited two being demoted. Pinned by
+> `test_extraction_still_requires_two` and mutations or09/or19. The re-run
+> pilot is in `evals/pilot-one-reviewer-2026-11-16/`.
+
 2026-08-20 | **Two one-off audit rounds read fewer distinct reviews than the 20
 slots they present, and nothing had ever checked them** | build, running
 `check_sample_overlap.py` over every audit file rather than only the batch

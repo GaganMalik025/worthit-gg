@@ -1,0 +1,412 @@
+extracting Enter the Gungeon (311690) with gemini-3.5-flash-lite
+
+=== Enter the Gungeon / refund_window (n=64, 0-2 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 6/12, today 69)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report frequent crashes and broken button mapping when playing on the Steam Deck.",
+      "theme": "performance",
+      "supporting_ids": [
+        "239871287",
+        "224906928"
+      ]
+    },
+    {
+      "claim": "Reviewers report that controller support breaks during runs, with analog sticks malfunctioning and forcing characters to run into corners when using Steam input layers.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "231881707",
+        "231246532"
+      ]
+    },
+    {
+      "claim": "Reviewers note the absence of a mid-run save and quit feature to interrupt a gaming session.",
+      "theme": "content",
+      "supporting_ids": [
+        "236579925",
+        "231246532"
+      ]
+    },
+    {
+      "claim": "Reviewers state that online multiplayer is missing from the game, leaving Steam Remote Play or Parsec as the only options, which suffer from high input latency.",
+      "theme": "access",
+      "supporting_ids": [
+        "238317586",
+        "238112165",
+        "237679976"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the game is labeled as multiplayer in the store despite lacking native online co-op, with remote play restrictions preventing both players from using mouse and keyboard.",
+      "theme": "access",
+      "supporting_ids": [
+        "238112165",
+        "237764678"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 5, enforce rejected 1, grounding rejected 0, accepted 4 ---
+     [enforce/under_two_supporting_reviews] Reviewers state that the game is labeled as multiplayer in the store despite lac
+
+--- refund_window final: 4 grounded claims, 0 dropped ---
+     (performance | cited reviewers negative 0u/2d) Reviewers report frequent crashes and broken button mapping when playing on the Steam Deck.
+        ids: 239871287, 224906928
+     (difficulty | cited reviewers mixed 1u/1d) Reviewers report that controller support breaks during runs, with analog sticks malfunctioning and forcing characters to run into corners when using Steam input layers.
+        ids: 231881707, 231246532
+     (content | cited reviewers negative 0u/2d) Reviewers note the absence of a mid-run save and quit feature to interrupt a gaming session.
+        ids: 236579925, 231246532
+     (access | cited reviewers negative 1u/2d) Reviewers state that online multiplayer is missing from the game, leaving Steam Remote Play or Parsec as the only options, which suffer from high input latency.
+        ids: 238317586, 238112165, 237679976
+    pacer: gemini-3.5-flash-lite go (rpm 7/12, today 70)
+
+--- refund_window verified: 1 claims, 3 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Enter the Gungeon / early (n=52, 2-20 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 7/12, today 71)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers describe the game as very difficult and challenging, with a steep learning curve.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239447880",
+        "238355122",
+        "238264626",
+        "238258076",
+        "237764476",
+        "237097297"
+      ]
+    },
+    {
+      "claim": "Reviewers report that progression and success heavily depend on finding good weapon drops, noting that starting weapons feel weak or insufficient for later chambers and bosses.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239405353",
+        "237130159",
+        "234766831"
+      ]
+    },
+    {
+      "claim": "Reviewers mention intermittent controller input drops during gameplay.",
+      "theme": "performance",
+      "supporting_ids": [
+        "234837618"
+      ,
+        "240240169"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 3, enforce rejected 0, grounding rejected 1, accepted 2 ---
+     [grounding] Reviewers mention intermittent controller input drops during gameplay.
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating early (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 8/12, today 72)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game features a steep learning curve and high difficulty.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238264626",
+        "238258076",
+        "237097297"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the game as heavily reliant on luck regarding drops and random generation.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240146174",
+        "239405353",
+        "234766831"
+      ]
+    }
+  ]
+}
+     [dedupe/duplicate] Reviewers note that the game features a steep learning curve and high difficulty
+
+--- attempt 1: model returned 2, enforce rejected 0, grounding rejected 0, accepted 2 ---
+
+--- early final: 3 grounded claims, 0 dropped ---
+     (difficulty | cited reviewers positive 6u/0d) Reviewers describe the game as very difficult and challenging, with a steep learning curve.
+        ids: 239447880, 238355122, 238264626, 238258076, 237764476, 237097297
+     (difficulty | cited reviewers negative 0u/3d) Reviewers report that progression and success heavily depend on finding good weapon drops, noting that starting weapons feel weak or insufficient for later chambers and bosses.
+        ids: 239405353, 237130159, 234766831
+     (difficulty | cited reviewers negative 1u/2d) Reviewers describe the game as heavily reliant on luck regarding drops and random generation.
+        ids: 240146174, 239405353, 234766831
+    pacer: gemini-3.5-flash-lite go (rpm 9/12, today 73)
+
+--- early verified: 3 claims, 0 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Enter the Gungeon / mid (n=71, 20-100 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 9/12, today 74)
+    503 UNAVAILABLE. - backing off 2.2s (attempt 1/5)
+    pacer: gemini-3.5-flash-lite go (rpm 9/12, today 75)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game features couch co-op support.",
+      "theme": "content",
+      "supporting_ids": [
+        "240293888",
+        "235566275"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the game as exceptionally difficult, requiring players to learn enemy attack patterns.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240293888",
+        "238054289"
+      ]
+    },
+    {
+      "claim": "Reviewers report that certain weapons have unintuitive mechanics that are not explained in-game.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240293888",
+        "238748078"
+      ]
+    },
+    {
+      "claim": "Reviewers state that completing the final achievements and challenges, such as Frifle's tasks, is overly grindy and tedious.",
+      "theme": "content",
+      "supporting_ids": [
+        "239762146",
+        "24441158"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the dodge roll mechanic is essential for navigating bullet hell hazards, though some find its design makes hazard composition feel lazy.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237464710",
+        "237393205"
+      ]
+    },
+    {
+      "claim": "Reviewers note that weapon and item RNG can cause early boss battles to drag on due to low firepower.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237393205",
+        "238054289"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 6, enforce rejected 2, grounding rejected 3, accepted 1 ---
+     [enforce/under_two_supporting_reviews] Reviewers state that completing the final achievements and challenges, such as F
+     [enforce/under_two_supporting_reviews] Reviewers report that the dodge roll mechanic is essential for navigating bullet
+     [grounding] Reviewers note that the game features couch co-op support.
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers report that certain weapons have unintuitive mechanics that are not ex
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers note that weapon and item RNG can cause early boss battles to drag on 
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating mid (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 9/12, today 76)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game features couch co-op support and local multiplayer options.",
+      "theme": "content",
+      "supporting_ids": [
+        "240293888",
+        "235566275"
+      ]
+    },
+    {
+      "claim": "Reviewers report that certain weapons have unintuitive mechanics that lack in-game explanations.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240293888",
+        "238748078"
+      ]
+    }
+  ]
+}
+
+--- attempt 1: model returned 2, enforce rejected 0, grounding rejected 2, accepted 0 ---
+     [grounding] Reviewers note that the game features couch co-op support and local multiplayer 
+          ! low_union_coverage:0.14<0.25
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers report that certain weapons have unintuitive mechanics that lack in-ga
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating mid (attempt 2 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 10/12, today 77)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 2) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game features couch co-op support.",
+      "theme": "content",
+      "supporting_ids": [
+        "240293888",
+        "235566275"
+      ]
+    },
+    {
+      "claim": "Reviewers report that certain weapons have unintuitive mechanics that lack explanations in the game.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240293888",
+        "238748078"
+      ]
+    }
+  ]
+}
+
+--- attempt 2: model returned 2, enforce rejected 0, grounding rejected 2, accepted 0 ---
+     [grounding] Reviewers note that the game features couch co-op support.
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers report that certain weapons have unintuitive mechanics that lack expla
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+--- mid final: 1 grounded claims, 2 dropped ---
+     (difficulty | cited reviewers positive 2u/0d) Reviewers describe the game as exceptionally difficult, requiring players to learn enemy attack patterns.
+        ids: 240293888, 238054289
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 78)
+
+--- mid verified: 1 claims, 0 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Enter the Gungeon / veteran (n=67, 100+ hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 79)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that the opening hours feature a steep difficulty curve and lack compelling early design, requiring a significant time investment before the gameplay truly clicks.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "234049126",
+        "233237345"
+      ]
+    },
+    {
+      "claim": "Reviewers note that specific achievements, hunt quests, or completion requirements can feel tedious, repetitive, or rely on pixel-perfect precision.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240123815",
+        "235380256",
+        "232476493"
+      ]
+    },
+    {
+      "claim": "Reviewers describe specific traversal rooms, such as parkour sections, as poorly designed and hope they are excluded from future titles.",
+      "theme": "content",
+      "supporting_ids": [
+        "239642955"
+          ,
+        "232699317"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 3, enforce rejected 0, grounding rejected 1, accepted 2 ---
+     [grounding] Reviewers describe specific traversal rooms, such as parkour sections, as poorly
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating veteran (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 80)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the initial learning period features a steep difficulty curve and requires persistence before the game becomes enjoyable.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "234049126",
+        "233237345"
+      ]
+    },
+    {
+      "claim": "Reviewers report that successful runs can feel overly dependent on random number generation.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238644195",
+        "233237345"
+      ]
+    },
+    {
+      "claim": "Reviewers mention that certain enemy hunt quests suffer from extremely low spawn rates.",
+      "theme": "content",
+      "supporting_ids": [
+        "232476493"
+        ,
+        "239074437"
+      ]
+    }
+  ]
+}
+
+--- attempt 1: model returned 3, enforce rejected 0, grounding rejected 1, accepted 2 ---
+     [grounding] Reviewers mention that certain enemy hunt quests suffer from extremely low spawn
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating veteran (attempt 2 of 2)...
+    pacer: gemini-3.5-flash-lite waiting 25.9s (rpm 13/12, today 81)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 2) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the early hours feature a steep difficulty curve and a lack of compelling design that requires patience before the game becomes enjoyable.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "234049126",
+        "233237345"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the game as heavily reliant on RNG during runs.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238644195",
+        "233237345"
+      ]
+    }
+  ]
+}
+     [dedupe/duplicate] Reviewers note that the early hours feature a steep difficulty curve and a lack 
+
+--- attempt 2: model returned 2, enforce rejected 0, grounding rejected 0, accepted 2 ---
+
+--- veteran final: 5 grounded claims, 0 dropped ---
+     (difficulty | cited reviewers positive 2u/0d) Reviewers report that the opening hours feature a steep difficulty curve and lack compelling early design, requiring a significant time investment before the gameplay truly clicks.
+        ids: 234049126, 233237345
+     (difficulty | cited reviewers positive 3u/0d) Reviewers note that specific achievements, hunt quests, or completion requirements can feel tedious, repetitive, or rely on pixel-perfect precision.
+        ids: 240123815, 235380256, 232476493
+     (difficulty | cited reviewers positive 2u/0d) Reviewers note that the initial learning period features a steep difficulty curve and requires persistence before the game becomes enjoyable.
+        ids: 234049126, 233237345
+     (difficulty | cited reviewers positive 2u/0d) Reviewers report that successful runs can feel overly dependent on random number generation.
+        ids: 238644195, 233237345
+     (difficulty | cited reviewers positive 2u/0d) Reviewers describe the game as heavily reliant on RNG during runs.
+        ids: 238644195, 233237345
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 82)
+
+--- veteran verified: 5 claims, 0 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+wrote 10 claims across 4 cohorts -> data/claims/311690.json

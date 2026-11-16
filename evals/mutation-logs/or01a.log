@@ -2,12 +2,11 @@ or01a
 CONTROL: pipeline/test_claim_verification.py green, unmutated
 
 PASS
-1)                        ok
-
-extraction: one id now reaches the meaning check
-  a one-review claim is kept for verification                      ok
-  a claim citing only unknown ids is still rejected                ok
-  the schema allows one id                                         ok
+ng check
+  a one-review claim is rejected at extraction                     ok
+  a two-review claim reaches the meaning check                     ok
+  the schema requires two ids                                      ok
+  the prompt asks for two reviews, not one                         ok
 
 qr4: one-reviewer citations are safety-checked like any other
   the gate sees the one-reviewer citation                          ok

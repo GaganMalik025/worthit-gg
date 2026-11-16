@@ -1,0 +1,453 @@
+extracting House Flipper (613100) with gemini-3.5-flash-lite
+
+=== House Flipper / refund_window (n=57, 0-2 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 4/12, today 84)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that the game lacks basic accessibility features such as UI or HUD sizing sliders for disabled players.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "232294589",
+        "230420536"
+      ]
+    },
+    {
+      "claim": "Reviewers note that key bindings cannot be successfully configured because key remapping options are restricted or forbidden.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "231523089",
+        "230420536"
+      ]
+    },
+    {
+      "claim": "Reviewers experience bugs where objects such as furniture and counters fail to align properly with the placement grid or cannot be moved back to their original positions.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238504587",
+        "25565607"
+      ]
+    },
+    {
+      "claim": "Reviewers describe encountering in-game advertisements or promotional pitches for other products immediately upon opening the game.",
+      "theme": "monetization",
+      "supporting_ids": [
+        "231523089"
+          , "237664322"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 4, enforce rejected 1, grounding rejected 1, accepted 2 ---
+     [enforce/under_two_supporting_reviews] Reviewers experience bugs where objects such as furniture and counters fail to a
+     [grounding] Reviewers describe encountering in-game advertisements or promotional pitches fo
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating refund_window (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 5/12, today 85)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers describe encountering bugs with furniture and cabinet placement where objects fail to line up correctly with the grid or will not return to their original positions.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238504587",
+        "235565607",
+        "234867412"
+      ]
+    },
+    {
+      "claim": "Reviewers report difficulties with key binding restrictions and an inability to properly configure controls.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "231523089",
+        "230420536"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the game lacks basic accessibility features, such as UI or HUD sizing options for disabled users.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "232294589",
+        "230420536"
+      ]
+    },
+    {
+      "claim": "Reviewers describe struggling to locate hidden items or objectives, such as electrical switches and outlets, during jobs.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237664322",
+        "234867412",
+        "231536331"
+      ]
+    }
+  ]
+}
+     [dedupe/duplicate] Reviewers note that the game lacks basic accessibility features, such as UI or H
+
+--- attempt 1: model returned 4, enforce rejected 0, grounding rejected 0, accepted 4 ---
+
+--- refund_window final: 5 grounded claims, 0 dropped ---
+     (difficulty | cited reviewers negative 0u/2d) Reviewers report that the game lacks basic accessibility features such as UI or HUD sizing sliders for disabled players.
+        ids: 232294589, 230420536
+     (difficulty | cited reviewers negative 0u/2d) Reviewers note that key bindings cannot be successfully configured because key remapping options are restricted or forbidden.
+        ids: 231523089, 230420536
+     (performance | cited reviewers negative 0u/3d) Reviewers describe encountering bugs with furniture and cabinet placement where objects fail to line up correctly with the grid or will not return to their original positions.
+        ids: 238504587, 235565607, 234867412
+     (difficulty | cited reviewers negative 0u/2d) Reviewers report difficulties with key binding restrictions and an inability to properly configure controls.
+        ids: 231523089, 230420536
+     (difficulty | cited reviewers negative 0u/3d) Reviewers describe struggling to locate hidden items or objectives, such as electrical switches and outlets, during jobs.
+        ids: 237664322, 234867412, 231536331
+    pacer: gemini-3.5-flash-lite go (rpm 6/12, today 86)
+
+--- refund_window verified: 5 claims, 0 one-reviewer points, 0 dropped, 0 rewrites rejected, 2 citations removed ---
+
+=== House Flipper / early (n=51, 2-20 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 7/12, today 87)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game runs well and can be played on weaker or low-end PCs.",
+      "theme": "performance",
+      "supporting_ids": [
+        "24007150",
+        "239323664",
+        "239104225",
+        "239093969"
+      ]
+    },
+    {
+      "claim": "Reviewers report that gameplay involves doing tasks such as cleaning, destroying walls, painting, and arranging furniture.",
+      "theme": "content",
+      "supporting_ids": [
+        "240270762",
+        "238750295"
+      ]
+    },
+    {
+      "claim": "Reviewers state that certain furniture items do not count toward changing a room type to meet buyer requirements, and there is no in-game communication explaining this.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239687547",
+        "239453930"
+      ]
+    },
+    {
+      "claim": "Reviewers express frustration that content requires purchasing downloadable content packs instead of being included or supported through the workshop.",
+      "theme": "monetization",
+      "supporting_ids": [
+        "239293693",
+        "239001183"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 4, enforce rejected 0, grounding rejected 3, accepted 1 ---
+     [grounding] Reviewers note that the game runs well and can be played on weaker or low-end PC
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers state that certain furniture items do not count toward changing a room
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers express frustration that content requires purchasing downloadable cont
+          ! low_union_coverage:0.08<0.25
+          ! only_0_supporting_citations(need_2_at_0.10)
+
+  regenerating early (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 8/12, today 88)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game runs well on low-end or weak PCs.",
+      "theme": "performance",
+      "supporting_ids": [
+        "239323664",
+        "239104225",
+        "239093969"
+      ]
+    },
+    {
+      "claim": "Reviewers state that additional content requires purchasing downloadable content packs rather than being available through the workshop.",
+      "theme": "monetization",
+      "supporting_ids": [
+        "239293693",
+        "239001183"
+      ]
+    }
+  ]
+}
+
+--- attempt 1: model returned 2, enforce rejected 0, grounding rejected 2, accepted 0 ---
+     [grounding] Reviewers note that the game runs well on low-end or weak PCs.
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers state that additional content requires purchasing downloadable content
+          ! low_union_coverage:0.09<0.25
+          ! only_0_supporting_citations(need_2_at_0.10)
+
+  regenerating early (attempt 2 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 9/12, today 89)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 2) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game runs well on low-end hardware.",
+      "theme": "performance",
+      "supporting_ids": [
+        "239323664",
+        "239104225",
+        "239093969"
+      ]
+    },
+    {
+      "claim": "Reviewers report that additional content is tied to purchasing downloadable content packs rather than being accessible through the workshop.",
+      "theme": "content",
+      "supporting_ids": [
+        "239293693"
+      ,
+        "239001183"
+      ]
+    }
+  ]
+}
+
+--- attempt 2: model returned 2, enforce rejected 0, grounding rejected 2, accepted 0 ---
+     [grounding] Reviewers note that the game runs well on low-end hardware.
+          ! low_union_coverage:0.00<0.25
+          ! only_0_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers report that additional content is tied to purchasing downloadable cont
+          ! low_union_coverage:0.09<0.25
+          ! only_0_supporting_citations(need_2_at_0.10)
+
+--- early final: 1 grounded claims, 2 dropped ---
+     (content | cited reviewers positive 2u/0d) Reviewers report that gameplay involves doing tasks such as cleaning, destroying walls, painting, and arranging furniture.
+        ids: 240270762, 238750295
+    pacer: gemini-3.5-flash-lite go (rpm 10/12, today 90)
+
+--- early verified: 1 claims, 0 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== House Flipper / mid (n=67, 20-100 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 11/12, today 91)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that some items and features are locked behind downloadable content rather than included in the base game.",
+      "theme": "content",
+      "supporting_ids": [
+        "240241020",
+        "240195323",
+        "239737609"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the gameplay as relaxing and satisfying, noting that it involves cleaning, fixing, and renovating properties.",
+      "theme": "content",
+      "supporting_ids": [
+        "240195323",
+        "240135962",
+        "238535171"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the game features a progression system where players start with basic jobs and eventually unlock tools and skills to take on larger projects.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240135962",
+        "238535171",
+        "237768825"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 3, enforce rejected 0, grounding rejected 0, accepted 3 ---
+
+--- mid final: 3 grounded claims, 0 dropped ---
+     (content | cited reviewers positive 3u/0d) Reviewers report that some items and features are locked behind downloadable content rather than included in the base game.
+        ids: 240241020, 240195323, 239737609
+     (content | cited reviewers positive 3u/0d) Reviewers describe the gameplay as relaxing and satisfying, noting that it involves cleaning, fixing, and renovating properties.
+        ids: 240195323, 240135962, 238535171
+     (difficulty | cited reviewers positive 3u/0d) Reviewers note that the game features a progression system where players start with basic jobs and eventually unlock tools and skills to take on larger projects.
+        ids: 240135962, 238535171, 237768825
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 92)
+
+--- mid verified: 2 claims, 1 one-reviewer points, 0 dropped, 0 rewrites rejected, 1 citations removed ---
+
+=== House Flipper / veteran (n=67, 100+ hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 93)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "On the Nintendo Switch version, garden items fail to port properly and remain unusable, alongside graphical glitches such as rugs clipping through beds and walls.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240215731"
+          ,
+        "240215731"
+      ]
+    },
+    {
+      "claim": "The base game experiences technical issues such as getting stuck on staircase rims, invisible geometry preventing item placement, and items not placing where the crosshair aims.",
+      "theme": "performance",
+      "supporting_ids": [
+        "234523629",
+        "229836949"
+      ]
+    },
+    {
+      "claim": "Subscribing to workshop items causes the game to crash and run poorly, and the base game suffers from long loading times reaching up to five minutes, screen tearing, and lag.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238615237",
+        "238615237"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 3, enforce rejected 2, grounding rejected 1, accepted 0 ---
+     [enforce/under_two_supporting_reviews] On the Nintendo Switch version, garden items fail to port properly and remain un
+     [enforce/all_ids_unknown] Subscribing to workshop items causes the game to crash and run poorly, and the b
+     [grounding] The base game experiences technical issues such as getting stuck on staircase ri
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating veteran (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite waiting 0.5s (rpm 13/12, today 94)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game has glitches including rugs clipping through beds and walls.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240215731",
+        "234523629"
+      ]
+    },
+    {
+      "claim": "Reviewers mention issues with the ladder jump feature interfering when attempting to use ladders for their intended purpose.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "235811685",
+        "229273436"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the base game features limited options for exterior customization and lawn care.",
+      "theme": "content",
+      "supporting_ids": [
+        "234523629",
+        "229836949"
+      ]
+    },
+    {
+      "claim": "Reviewers highlight the Steam Workshop as a valuable feature for adding free items and increasing variety.",
+      "theme": "content",
+      "supporting_ids": [
+        "235652565",
+        "229836949"
+      ]
+    },
+    {
+      "claim": "Reviewers report encountering bugs and lagging performance during gameplay.",
+      "theme": "performance",
+      "supporting_ids": [
+        "228615237",
+        "230683955"
+      ]
+    }
+  ]
+}
+
+--- attempt 1: model returned 5, enforce rejected 0, grounding rejected 1, accepted 4 ---
+     [grounding] Reviewers report encountering bugs and lagging performance during gameplay.
+          ! low_union_coverage:0.00<0.25
+          ! only_0_supporting_citations(need_2_at_0.10)
+
+  regenerating veteran (attempt 2 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 12/12, today 95)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 2) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers note that the game suffers from bugs and technical issues such as objects clipping, items refusing to place due to invisible geometry, and getting stuck on staircases.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240215731",
+        "234523629"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the game experiences performance issues, including long loading times lasting up to five minutes, screen tearing, and lagging.",
+      "theme": "performance",
+      "supporting_ids": [
+        "228615237",
+        "234523629"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the game offers extensive options for customization, allowing players to build and decorate houses according to their own styles.",
+      "theme": "content",
+      "supporting_ids": [
+        "239917728",
+        "229983532"
+      ]
+    },
+    {
+      "claim": "Reviewers point out limitations in base game exterior customization and furniture variety, noting that furniture options are heavily basic or modern unless supplemented by DLCs or the workshop.",
+      "theme": "content",
+      "supporting_ids": [
+        "234523629",
+        "229836949"
+      ]
+    },
+    {
+      "claim": "Reviewers describe frustration with ladder mechanics, specifically noting that the jump feature gets in the way when trying to use ladders for their intended purpose.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "235811685",
+        "238293642"
+      ]
+    }
+  ]
+}
+     [dedupe/duplicate] Reviewers describe frustration with ladder mechanics, specifically noting that t
+
+--- attempt 2: model returned 5, enforce rejected 0, grounding rejected 1, accepted 4 ---
+     [grounding] Reviewers report that the game experiences performance issues, including long lo
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+--- veteran final: 7 grounded claims, 1 dropped ---
+     (performance | cited reviewers mixed 1u/1d) Reviewers note that the game has glitches including rugs clipping through beds and walls.
+        ids: 240215731, 234523629
+     (difficulty | cited reviewers positive 2u/0d) Reviewers mention issues with the ladder jump feature interfering when attempting to use ladders for their intended purpose.
+        ids: 235811685, 229273436
+     (content | cited reviewers negative 0u/2d) Reviewers report that the base game features limited options for exterior customization and lawn care.
+        ids: 234523629, 229836949
+     (content | cited reviewers mixed 1u/1d) Reviewers highlight the Steam Workshop as a valuable feature for adding free items and increasing variety.
+        ids: 235652565, 229836949
+     (performance | cited reviewers mixed 1u/1d) Reviewers note that the game suffers from bugs and technical issues such as objects clipping, items refusing to place due to invisible geometry, and getting stuck on staircases.
+        ids: 240215731, 234523629
+     (content | cited reviewers positive 2u/0d) Reviewers state that the game offers extensive options for customization, allowing players to build and decorate houses according to their own styles.
+        ids: 239917728, 229983532
+     (content | cited reviewers negative 0u/2d) Reviewers point out limitations in base game exterior customization and furniture variety, noting that furniture options are heavily basic or modern unless supplemented by DLCs or the workshop.
+        ids: 234523629, 229836949
+    pacer: gemini-3.5-flash-lite waiting 26.0s (rpm 13/12, today 96)
+
+--- veteran verified: 5 claims, 2 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+wrote 13 claims across 4 cohorts -> data/claims/613100.json

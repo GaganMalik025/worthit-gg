@@ -1,0 +1,53 @@
+== 387290 (Ori and the Blind Forest: Definitive Edition) ==
+   target=400 quota=100 filters=recent,all max_pages=12
+  [recent] page 1: +100 new (pool 100)
+  [recent] page 2: +100 new (pool 200)
+  [recent] page 3: +100 new (pool 300)
+  [recent] page 4: +100 new (pool 400)
+  [recent] page 5: +100 new (pool 500)
+  [recent] page 6: +100 new (pool 600)
+  [recent] page 7: +100 new (pool 700)
+  [recent] page 8: +100 new (pool 800)
+  [recent] page 9: +100 new (pool 900)
+  [recent] page 10: +100 new (pool 1000)
+  [recent] page 11: +100 new (pool 1100)
+  [recent] page 12: +100 new (pool 1200)
+  [all] page 1: +0 new (pool 1200)
+  [all] page 2: +0 new (pool 1200)
+  [all] page 3: +0 new (pool 1200)
+  [all] no more reviews returned; stopping
+
+--- aggregate (Steam's own) ---
+  score label   : Very Positive
+  total reviews : 35208
+  positive      : 33122
+  negative      : 2086
+
+--- bucket distribution (playtime at review) ---
+  bucket          kept of pool   positive
+  refund_window     54      54        50%
+  early            169     951        93%
+  mid              168     186        95%
+  veteran            9       9       100%
+  TOTAL            400
+
+  positive rate : sample 88%  vs  Steam overall 94%  (delta -6)
+  sources       : recent+all=219, recent=181
+  pages fetched : {'recent': 12, 'all': 3}   (live requests: 16, pool: 1200)
+
+  hardware data : 65/400 reviews
+  refunded      : 3
+  early access  : 0
+
+  refund cohort : PASS (54 reviews)
+
+--- pool rates (pre-quota, pool_n=1200) - invariant 11 source of truth ---
+  refund_window  pool_n=54      4.5% of pool    50.0% positive
+  early          pool_n=951    79.2% of pool    92.6% positive
+  mid            pool_n=186    15.5% of pool    95.2% positive
+  veteran        pool_n=9       0.8% of pool   100.0% positive
+  steam overall  pool_n=1200  of 35208 on Steam, 94.1% positive there
+
+wrote 400 reviews -> data/raw/387290.json
+
+all 1 game(s) OK

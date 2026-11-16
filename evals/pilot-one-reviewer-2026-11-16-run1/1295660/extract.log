@@ -1,0 +1,457 @@
+extracting Sid Meier's Civilization VII (1295660) with gemini-3.5-flash-lite
+
+=== Sid Meier's Civilization VII / refund_window (n=54, 0-2 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 1/12, today 1)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that the game fails to open.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240147427"
+      ]
+    },
+    {
+      "claim": "Reviewers report encountering an \"Offline Account\" error that disables multiplayer.",
+      "theme": "access",
+      "supporting_ids": [
+        "238498411"
+      ]
+    },
+    {
+      "claim": "Reviewers report that unit movement graphics fail to update and the end turn function stops working.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238423162"
+      ]
+    },
+    {
+      "claim": "Reviewers report frequent crashes.",
+      "theme": "performance",
+      "supporting_ids": [
+        "234992667"
+      ]
+    },
+    {
+      "claim": "Reviewers report that keyboard inputs for map movement get stuck, causing the map to continuously scroll in one direction.",
+      "theme": "performance",
+      "supporting_ids": [
+        "234949260"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the game requires linking to 2K.",
+      "theme": "access",
+      "supporting_ids": [
+        "234999842"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 6, enforce rejected 0, grounding rejected 1, accepted 5 ---
+     [grounding] Reviewers report that keyboard inputs for map movement get stuck, causing the ma
+          ! low_union_coverage:0.22<0.25
+
+  regenerating refund_window (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 2/12, today 2)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report that the game requires linking to a 2k account.",
+      "theme": "access",
+      "supporting_ids": [
+        "234999842"
+      ]
+    },
+    {
+      "claim": "Reviewers experience launch failures and games that will not open.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240147427"
+      ]
+    },
+    {
+      "claim": "Reviewers encounter an Offline Account error that disables multiplayer functionality.",
+      "theme": "access",
+      "supporting_ids": [
+        "238498411"
+      ]
+    },
+    {
+      "claim": "Reviewers report frequent crashes during gameplay.",
+      "theme": "performance",
+      "supporting_ids": [
+        "234992667"
+      ]
+    },
+    {
+      "claim": "Reviewers describe encountering bugs such as unit movement graphics failing to update and end turn failing to work.",
+      "theme": "performance",
+      "supporting_ids": [
+        "238423162"
+      ]
+    }
+  ]
+}
+     [dedupe/duplicate] Reviewers report that the game requires linking to a 2k account.
+     [dedupe/duplicate] Reviewers experience launch failures and games that will not open.
+     [dedupe/duplicate] Reviewers encounter an Offline Account error that disables multiplayer functiona
+     [dedupe/duplicate] Reviewers report frequent crashes during gameplay.
+     [dedupe/duplicate] Reviewers describe encountering bugs such as unit movement graphics failing to u
+
+--- attempt 1: model returned 5, enforce rejected 0, grounding rejected 0, accepted 5 ---
+
+--- refund_window final: 5 grounded claims, 0 dropped ---
+     (performance | cited reviewers negative 0u/1d) Reviewers report that the game fails to open.
+        ids: 240147427
+     (access | cited reviewers negative 0u/1d) Reviewers report encountering an "Offline Account" error that disables multiplayer.
+        ids: 238498411
+     (performance | cited reviewers negative 0u/1d) Reviewers report that unit movement graphics fail to update and the end turn function stops working.
+        ids: 238423162
+     (performance | cited reviewers negative 0u/1d) Reviewers report frequent crashes.
+        ids: 234992667
+     (access | cited reviewers negative 0u/1d) Reviewers report that the game requires linking to 2K.
+        ids: 234999842
+    pacer: gemini-3.5-flash-lite go (rpm 3/12, today 3)
+
+--- refund_window verified: 0 claims, 5 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Sid Meier's Civilization VII / early (n=82, 2-20 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 4/12, today 4)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "The 2K account became unlinked from the Steam account, removing access to DLC and making the game unloadable until fixed.",
+      "theme": "access",
+      "supporting_ids": [
+        "240279661"
+      ]
+    },
+    {
+      "claim": "DLC content feels overpriced and cash-grabby on top of an already expensive base game.",
+      "theme": "monetization",
+      "supporting_ids": [
+        "240276165",
+        "239999703",
+        "239513758",
+        "238870635",
+        "238843203"
+      ]
+    },
+    {
+      "claim": "The game has an era transition system that abruptly decimates civilizations, wipes out sponsored city-states, and resets resources.",
+      "theme": "content",
+      "supporting_ids": [
+        "240128514",
+        "238538615",
+        "238870635",
+        "237730924"
+      ]
+    },
+    {
+      "claim": "Assyrian infantry turn into Indians with turbans in the late game.",
+      "theme": "content",
+      "supporting_ids": [
+        "239999703"
+      ]
+    },
+    {
+      "claim": "The UI resolution is 480p.",
+      "theme": "performance",
+      "supporting_ids": [
+        "239451483"
+      ]
+    },
+    {
+      "claim": "The AI travels halfway across an empty world to settle a city right next to the player with no penalties.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239174321"
+      ]
+    },
+    {
+      "claim": "Village units suddenly spawn two Spearman, an archer, and a leader in a single turn when attacked.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239157468"
+      ]
+    },
+    {
+      "claim": "The game lacks proper information and explanations, making it difficult to understand mechanics like trade routes or negative modifiers.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239109674"
+      ]
+    },
+    {
+      "claim": "Tutorials use many words to explain very little, and buttons directed to click for more information do nothing.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238101234"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 9, enforce rejected 0, grounding rejected 0, accepted 9 ---
+
+--- early final: 9 grounded claims, 0 dropped ---
+     (access | cited reviewers negative 0u/1d) The 2K account became unlinked from the Steam account, removing access to DLC and making the game unloadable until fixed.
+        ids: 240279661
+     (monetization | cited reviewers mixed 2u/3d) DLC content feels overpriced and cash-grabby on top of an already expensive base game.
+        ids: 240276165, 239999703, 239513758, 238870635, 238843203
+     (content | cited reviewers negative 1u/3d) The game has an era transition system that abruptly decimates civilizations, wipes out sponsored city-states, and resets resources.
+        ids: 240128514, 238538615, 238870635, 237730924
+     (content | cited reviewers negative 0u/1d) Assyrian infantry turn into Indians with turbans in the late game.
+        ids: 239999703
+     (performance | cited reviewers negative 0u/1d) The UI resolution is 480p.
+        ids: 239451483
+     (difficulty | cited reviewers negative 0u/1d) The AI travels halfway across an empty world to settle a city right next to the player with no penalties.
+        ids: 239174321
+     (difficulty | cited reviewers negative 0u/1d) Village units suddenly spawn two Spearman, an archer, and a leader in a single turn when attacked.
+        ids: 239157468
+     (difficulty | cited reviewers negative 0u/1d) The game lacks proper information and explanations, making it difficult to understand mechanics like trade routes or negative modifiers.
+        ids: 239109674
+     (difficulty | cited reviewers negative 0u/1d) Tutorials use many words to explain very little, and buttons directed to click for more information do nothing.
+        ids: 238101234
+    pacer: gemini-3.5-flash-lite go (rpm 5/12, today 5)
+
+--- early verified: 2 claims, 7 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Sid Meier's Civilization VII / mid (n=89, 20-100 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 6/12, today 6)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers describe the game as releasing in a late state and report that the latest update broke their game.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240338266"
+      ]
+    },
+    {
+      "claim": "Reviewers state that they wish they did not have to pay for all of the DLC packs.",
+      "theme": "monetization",
+      "supporting_ids": [
+        "240308518"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the city management is too simple and the religion system is underdeveloped.",
+      "theme": "content",
+      "supporting_ids": [
+        "240250782"
+      ]
+    },
+    {
+      "claim": "Reviewers report that settlement placement rules are both complex and opaque.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240242154"
+      ]
+    },
+    {
+      "claim": "Reviewers note that scouts can now pet their dogs after this option was missing on initial release.",
+      "theme": "content",
+      "supporting_ids": [
+        "240238015"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the game stops during intensive war campaigns and initiates a resource collection sequence.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240219141"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the Settler's Edition does not include the paid DLCs, which feature very little content like a couple of extra leaders and civilizations.",
+      "theme": "monetization",
+      "supporting_ids": [
+        "240052523"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the loading screens look ghastly and the game felt bare bones and half baked at launch.",
+      "theme": "content",
+      "supporting_ids": [
+        "239943911"
+      ]
+    },
+    {
+      "claim": "Reviewers report silly UI issues and annoyances, such as having to manually click on 'unit needs orders' repeatedly instead of directly skipping to the next unit.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239891921"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the domination victory condition was changed so that major powers never need to go to war with each other, and note that existing buildings cannot be deconstructed or relocated.",
+      "theme": "content",
+      "supporting_ids": [
+        "239668526"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the user interface gets in the way of basic gameplay and acts as if every new start is the player's first time.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239064464"
+      ]
+    },
+    {
+      "claim": "Reviewers report that city state Suzerain and Befriending status cannot be tracked easily because the dedicated page from Civ 6 is missing, and note that religion identification during the exploration age relies on a tiny icon on the name bar.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238919431"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the user interface is awful and the ruleset is poorly described, leaving players with no idea how rules work in practice.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238913374"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the game lacks distinction between light and heavy cavalry units, and features simplified diplomacy and spying mechanics.",
+      "theme": "content",
+      "supporting_ids": [
+        "238849776"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the game forces the screen to go to towns for upgrades even when the player lacks money.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238671483"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the world map becomes an informational mess and a strain on the eyes by the Exploration and Modern eras, and note that historical factions lack asymmetry with assets being copied and pasted.",
+      "theme": "content",
+      "supporting_ids": [
+        "238605109"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the world map is too graphically busy, causing over-stimulation and making it difficult to easily find and see units and cities.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238314825"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 17, enforce rejected 0, grounding rejected 0, accepted 17 ---
+
+--- mid final: 17 grounded claims, 0 dropped ---
+     (performance | cited reviewers negative 0u/1d) Reviewers describe the game as releasing in a late state and report that the latest update broke their game.
+        ids: 240338266
+     (monetization | cited reviewers positive 1u/0d) Reviewers state that they wish they did not have to pay for all of the DLC packs.
+        ids: 240308518
+     (content | cited reviewers positive 1u/0d) Reviewers report that the city management is too simple and the religion system is underdeveloped.
+        ids: 240250782
+     (difficulty | cited reviewers negative 0u/1d) Reviewers report that settlement placement rules are both complex and opaque.
+        ids: 240242154
+     (content | cited reviewers positive 1u/0d) Reviewers note that scouts can now pet their dogs after this option was missing on initial release.
+        ids: 240238015
+     (performance | cited reviewers negative 0u/1d) Reviewers report that the game stops during intensive war campaigns and initiates a resource collection sequence.
+        ids: 240219141
+     (monetization | cited reviewers negative 0u/1d) Reviewers state that the Settler's Edition does not include the paid DLCs, which feature very little content like a couple of extra leaders and civilizations.
+        ids: 240052523
+     (content | cited reviewers negative 0u/1d) Reviewers state that the loading screens look ghastly and the game felt bare bones and half baked at launch.
+        ids: 239943911
+     (difficulty | cited reviewers positive 1u/0d) Reviewers report silly UI issues and annoyances, such as having to manually click on 'unit needs orders' repeatedly instead of directly skipping to the next unit.
+        ids: 239891921
+     (content | cited reviewers negative 0u/1d) Reviewers state that the domination victory condition was changed so that major powers never need to go to war with each other, and note that existing buildings cannot be deconstructed or relocated.
+        ids: 239668526
+     (difficulty | cited reviewers negative 0u/1d) Reviewers report that the user interface gets in the way of basic gameplay and acts as if every new start is the player's first time.
+        ids: 239064464
+     (difficulty | cited reviewers negative 0u/1d) Reviewers report that city state Suzerain and Befriending status cannot be tracked easily because the dedicated page from Civ 6 is missing, and note that religion identification during the exploration age relies on a tiny icon on the name bar.
+        ids: 238919431
+     (difficulty | cited reviewers negative 0u/1d) Reviewers report that the user interface is awful and the ruleset is poorly described, leaving players with no idea how rules work in practice.
+        ids: 238913374
+     (content | cited reviewers negative 0u/1d) Reviewers state that the game lacks distinction between light and heavy cavalry units, and features simplified diplomacy and spying mechanics.
+        ids: 238849776
+     (difficulty | cited reviewers negative 0u/1d) Reviewers state that the game forces the screen to go to towns for upgrades even when the player lacks money.
+        ids: 238671483
+     (content | cited reviewers negative 0u/1d) Reviewers report that the world map becomes an informational mess and a strain on the eyes by the Exploration and Modern eras, and note that historical factions lack asymmetry with assets being copied and pasted.
+        ids: 238605109
+     (difficulty | cited reviewers negative 0u/1d) Reviewers state that the world map is too graphically busy, causing over-stimulation and making it difficult to easily find and see units and cities.
+        ids: 238314825
+    pacer: gemini-3.5-flash-lite go (rpm 7/12, today 7)
+
+--- mid verified: 0 claims, 17 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Sid Meier's Civilization VII / veteran (n=87, 100+ hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 8/12, today 8)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "The game crashes after a couple of minutes of play.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240069546"
+      ]
+    },
+    {
+      "claim": "Genghis Khan has a coastal start bias while the Mongol plain bias only activates in the exploration age.",
+      "theme": "content",
+      "supporting_ids": [
+        "240200748"
+      ]
+    },
+    {
+      "claim": "Critical progression unlocks are buried in the civic tree with no in-game pointer explaining them, such as how completing Hegemony grants an extra artifact when researchers explore sites.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240195695"
+      ]
+    },
+    {
+      "claim": "Multiplayer is restricted to an 8-civilization limit, leaving a small map with a maximum of 6 AI opponents.",
+      "theme": "content",
+      "supporting_ids": [
+        "237722691"
+      ]
+    },
+    {
+      "claim": "Towns and cities have settlement limits that restrict expansion and cause production to plummet when exceeded.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "238780044"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 5, enforce rejected 1, grounding rejected 0, accepted 4 ---
+     [enforce/all_ids_unknown] Critical progression unlocks are buried in the civic tree with no in-game pointe
+
+--- veteran final: 4 grounded claims, 0 dropped ---
+     (performance | cited reviewers negative 0u/1d) The game crashes after a couple of minutes of play.
+        ids: 240069546
+     (content | cited reviewers negative 0u/1d) Genghis Khan has a coastal start bias while the Mongol plain bias only activates in the exploration age.
+        ids: 240200748
+     (content | cited reviewers positive 1u/0d) Multiplayer is restricted to an 8-civilization limit, leaving a small map with a maximum of 6 AI opponents.
+        ids: 237722691
+     (difficulty | cited reviewers negative 0u/1d) Towns and cities have settlement limits that restrict expansion and cause production to plummet when exceeded.
+        ids: 238780044
+    pacer: gemini-3.5-flash-lite go (rpm 9/12, today 9)
+
+--- veteran verified: 0 claims, 4 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+wrote 2 claims across 4 cohorts -> data/claims/1295660.json

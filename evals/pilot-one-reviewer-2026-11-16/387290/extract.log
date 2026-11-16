@@ -1,0 +1,245 @@
+extracting Ori and the Blind Forest: Definitive Edition (387290) with gemini-3.5-flash-lite
+
+=== Ori and the Blind Forest: Definitive Edition / refund_window (n=41, 0-2 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 5/12, today 60)
+    503 UNAVAILABLE. - backing off 2.0s (attempt 1/5)
+    pacer: gemini-3.5-flash-lite go (rpm 4/12, today 61)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report severe technical issues on modern high-end hardware, including micro-stuttering, game speed acceleration from high-refresh-rate monitors, and crashes.",
+      "theme": "performance",
+      "supporting_ids": [
+        "227891170",
+        "226986718"
+      ]
+    },
+    {
+      "claim": "The game suffers from lag and poor performance on certain PC setups.",
+      "theme": "performance",
+      "supporting_ids": [
+        "237421756",
+        "235413903"
+      ]
+    },
+    {
+      "claim": "Reviewers report issues with the game opening on a secondary screen and failing to map properly to a PS4 controller.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "230272659",
+        "226396377"
+      ]
+    },
+    {
+      "claim": "Controller support is described as poor, with problematic button mappings such as triggers opening menus while also being used to drag objects.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "236463815",
+        "230272659"
+      ]
+    },
+    {
+      "claim": "Reviewers describe the platforming controls as slippery, finicky, and imprecise.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237499173",
+        "236729905"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 5, enforce rejected 0, grounding rejected 3, accepted 2 ---
+     [grounding] Reviewers report severe technical issues on modern high-end hardware, including 
+          ! only_1_supporting_citations(need_2_at_0.10)
+     [grounding] The game suffers from lag and poor performance on certain PC setups.
+          ! low_union_coverage:0.00<0.25
+          ! only_0_supporting_citations(need_2_at_0.10)
+     [grounding] Reviewers report issues with the game opening on a secondary screen and failing 
+          ! only_1_supporting_citations(need_2_at_0.10)
+
+  regenerating refund_window (attempt 1 of 2)...
+    pacer: gemini-3.5-flash-lite go (rpm 3/12, today 62)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 1) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers describe the art style and soundtrack as beautiful and high quality.",
+      "theme": "content",
+      "supporting_ids": [
+        "239668969",
+        "237164396",
+        "236585349"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the controls feel slippery and imprecise during platforming sections.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "237499173",
+        "236729905",
+        "236485499"
+      ]
+    }
+  ]
+}
+     [dedupe/superseded] Reviewers describe the platforming controls as slippery, finicky, and imprecise.
+
+--- attempt 1: model returned 2, enforce rejected 0, grounding rejected 0, accepted 2 ---
+
+--- refund_window final: 3 grounded claims, 0 dropped ---
+     (difficulty | cited reviewers mixed 1u/1d) Controller support is described as poor, with problematic button mappings such as triggers opening menus while also being used to drag objects.
+        ids: 236463815, 230272659
+     (difficulty | cited reviewers negative 0u/3d) Reviewers report that the controls feel slippery and imprecise during platforming sections.
+        ids: 237499173, 236729905, 236485499
+     (content | cited reviewers positive 2u/1d) Reviewers describe the art style and soundtrack as beautiful and high quality.
+        ids: 239668969, 237164396, 236585349
+    pacer: gemini-3.5-flash-lite go (rpm 4/12, today 63)
+
+--- refund_window verified: 2 claims, 1 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Ori and the Blind Forest: Definitive Edition / early (n=123, 2-20 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 5/12, today 64)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers describe the combat system as basic, dull, or lacking compared to the platforming and movement mechanics.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239832478",
+        "239829839",
+        "238451830",
+        "238267932",
+        "238041415",
+        "237851040"
+      ]
+    },
+    {
+      "claim": "Reviewers report that the save system relies on manual player-created soul links using energy rather than frequent autosaves, which can lead to lost progress upon dying.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240201056",
+        "237851040"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the game features high difficulty, with many environmental hazards and enemies capable of dealing massive or one-hit damage.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240010229",
+        "239269934",
+        "239012104",
+        "238110679",
+        "238021904"
+      ]
+    },
+    {
+      "claim": "Reviewers mention that high visual detail and background elements can create visual noise, making it difficult to spot hazards and projectiles on the first try.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "239966723",
+        "239867829",
+        "239012104"
+      ]
+    },
+    {
+      "claim": "Reviewers state that the art style, visual presentation, and music are stunning and of exceptionally high quality.",
+      "theme": "content",
+      "supporting_ids": [
+        "240218912",
+        "240062967",
+        "239906752",
+        "238815727",
+        "238272537",
+        "238116465"
+      ]
+    },
+    {
+      "claim": "Reviewers report technical issues related to Vsync and frame rate drops that negatively affect game performance and controls.",
+      "theme": "performance",
+      "supporting_ids": [
+        "239966723",
+        "238620839",
+        "238505592",
+        "238219316"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 6, enforce rejected 0, grounding rejected 0, accepted 6 ---
+
+--- early final: 6 grounded claims, 0 dropped ---
+     (difficulty | cited reviewers positive 6u/0d) Reviewers describe the combat system as basic, dull, or lacking compared to the platforming and movement mechanics.
+        ids: 239832478, 239829839, 238451830, 238267932, 238041415, 237851040
+     (difficulty | cited reviewers positive 2u/0d) Reviewers report that the save system relies on manual player-created soul links using energy rather than frequent autosaves, which can lead to lost progress upon dying.
+        ids: 240201056, 237851040
+     (difficulty | cited reviewers positive 5u/0d) Reviewers note that the game features high difficulty, with many environmental hazards and enemies capable of dealing massive or one-hit damage.
+        ids: 240010229, 239269934, 239012104, 238110679, 238021904
+     (difficulty | cited reviewers positive 3u/0d) Reviewers mention that high visual detail and background elements can create visual noise, making it difficult to spot hazards and projectiles on the first try.
+        ids: 239966723, 239867829, 239012104
+     (content | cited reviewers positive 6u/0d) Reviewers state that the art style, visual presentation, and music are stunning and of exceptionally high quality.
+        ids: 240218912, 240062967, 239906752, 238815727, 238272537, 238116465
+     (performance | cited reviewers positive 4u/0d) Reviewers report technical issues related to Vsync and frame rate drops that negatively affect game performance and controls.
+        ids: 239966723, 238620839, 238505592, 238219316
+    pacer: gemini-3.5-flash-lite go (rpm 6/12, today 65)
+
+--- early verified: 6 claims, 0 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Ori and the Blind Forest: Definitive Edition / mid (n=124, 20-100 hours played) ===
+    pacer: gemini-3.5-flash-lite go (rpm 7/12, today 66)
+  response parts: 1 (1 text, 0 thought, 1 carrying thought_signature) via parts
+--- RAW MODEL OUTPUT (attempt 0) ---
+{
+  "claims": [
+    {
+      "claim": "Reviewers report technical issues including game crashes during gameplay.",
+      "theme": "performance",
+      "supporting_ids": [
+        "240204410",
+        "232536369"
+      ]
+    },
+    {
+      "claim": "Reviewers note that the visual design makes it difficult to distinguish interactive elements, hazards, or foreground paths from the background artwork.",
+      "theme": "content",
+      "supporting_ids": [
+        "238115632",
+        "23418395",
+        "229370197"
+      ]
+    },
+    {
+      "claim": "Reviewers describe sudden difficulty spikes and high frequency of instant-death obstacles or hazards.",
+      "theme": "difficulty",
+      "supporting_ids": [
+        "240313153",
+        "23805805",
+        "234196126",
+        "23418395"
+      ]
+    }
+  ]
+}
+
+--- attempt 0: model returned 3, enforce rejected 0, grounding rejected 0, accepted 3 ---
+
+--- mid final: 3 grounded claims, 0 dropped ---
+     (performance | cited reviewers positive 2u/0d) Reviewers report technical issues including game crashes during gameplay.
+        ids: 240204410, 232536369
+     (content | cited reviewers positive 2u/0d) Reviewers note that the visual design makes it difficult to distinguish interactive elements, hazards, or foreground paths from the background artwork.
+        ids: 238115632, 229370197
+     (difficulty | cited reviewers negative 0u/2d) Reviewers describe sudden difficulty spikes and high frequency of instant-death obstacles or hazards.
+        ids: 240313153, 234196126
+    pacer: gemini-3.5-flash-lite go (rpm 8/12, today 67)
+
+--- mid verified: 3 claims, 0 one-reviewer points, 0 dropped, 0 rewrites rejected, 0 citations removed ---
+
+=== Ori and the Blind Forest: Definitive Edition / veteran (n=6) - SKIPPED, below the 20-review cohort floor (invariant 12). No claims, no request.
+
+wrote 11 claims across 3 cohorts -> data/claims/387290.json

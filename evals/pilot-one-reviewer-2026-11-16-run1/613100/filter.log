@@ -1,0 +1,18 @@
+wordlists: 56 blocking, 403 annotate-only  (thresholds: hearts>=0.020, words>=5, funny>=2)
+
+House Flipper            in   heart  block  joke  lowinfo    kept   drop%
+  refund_window         103       0      0     4       42      57     45%
+  early                 103       0      0     0       52      51     50%  <-- 1.3x corpus rate
+  mid                   103       0      0     1       35      67     35%
+  veteran                91       0      0     0       24      67     26%
+  ALL                   400                                   242     40%
+                     pre pos% post pos%   delta dropped pos%
+  refund_window         64.1%     61.4%    -2.7      67.4%
+  early                 93.2%     90.2%    -3.0      96.2%
+  mid                   97.1%     95.5%    -1.6     100.0%
+  veteran               91.2%     88.1%    -3.1     100.0%  <-- SHIFT -3.1 pts
+  (sentiment shift is reported, never corrected - prevalence comes from the pool block)
+  wrote 242 survivors -> data/filtered/613100.json
+  wrote 158 dropped   -> data/filtered/613100.dropped.txt   <- read this
+
+all 1 game(s) filtered

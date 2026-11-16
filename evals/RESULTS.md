@@ -2411,3 +2411,39 @@ with enough power would need several times the titles, roughly 1,000 or more cal
 design. The prompt is unchanged. Two side effects worth knowing if this is retried: the
 treated prompt produced 23% more claims, and some dropped the "Reviewers ..." framing
 ("The crafting system allows ...").
+
+## 2026-11-16 — Meaning check + one-reviewer points: pilot on 4 titles
+
+**155 Gemini calls**, all on quota day 2026-11-16, batch ledger: 45 for pilot run 1,
+52 for run 2, 58 for the judge comparison (57 claims, plus 1 call that timed out and was
+retried). Civilization VII, Ori, Enter the Gungeon and House Flipper were regenerated from
+fresh Steam reviews in a working dir inside `evals/`, so no published verdict changed.
+Every stage exited 0 and QR-4 passed on all 8 verdicts. Drivers:
+`evals/pilot_one_reviewer_2026-11-16.sh`, `evals/pilot_compare_2026-11-16.py`.
+
+**Run 1 (`evals/pilot-one-reviewer-2026-11-16-run1/`) was wrong by design, not by
+chance.** Extraction had been told a point one review makes is allowed. 101 of 122
+claims then cited one review, leaving 17 published claims and 99 one-reviewer points
+across the 4 titles. Reverted (BACKLOG 2026-11-16), so extraction again requires two ids.
+
+**Run 2 (`evals/pilot-one-reviewer-2026-11-16/`)**, with the extraction prompt
+byte-identical to before: 46 claims, 11 one-reviewer points, 0 dropped, 0 rewrites
+rejected, and 5 padded citations removed from kept claims. Calls per title were 14, 9, 15
+and 14 (mean 13.0). That puts 3 of 4 titles above live admission's EST_COST of 13.
+
+**Against the per-claim judge** (the 2026-11-04 judge, same wording, one claim per
+call; output `evals/pilot-compare-2026-11-16.txt` and `.json`):
+
+| | judge 0 | judge 1 | judge 2+ |
+|---|---|---|---|
+| verify 1 | 0 | 9 | 2 |
+| verify 2+ | 0 | 5 | 41 |
+
+Same class on 50 of 57 claims, and same verdict on 139 of 152 citations. The check
+kept 5 claims the judge would still call thin. That is 5 of 46 published claims
+(11%), against the 72 of 300 (24%) the judge found catalog-wide before the check. The
+check was stricter than the judge on 2. The judge is not ground truth (6 of 6 against
+the owner on QR-1, n=6), so the 7 disagreements are listed in the output for the owner
+to read, not scored. This is n=57 on 4 titles. It shows the check runs as designed and
+roughly halves the judge's thin rate on this sample. It is not a measured catalog-wide
+rate.
