@@ -2360,3 +2360,30 @@ validated. No catalog figure is claimed.
 
 Flags now render, as of `717024c`, so the 2026-07-31 line that a flag profile is "what a
 reader actually sees" became true today and was false when written.
+
+## 2026-11-06 — Thin claims across the catalog: 24% by a strict reading
+
+**One judge call per claim over a seeded random sample of 300 of the catalog's 8,975
+claims (238 titles). About 470 calls** over 2026-11-05 and 2026-11-06, including about
+170 charged retries during Gemini 503 overload. The run crashed once on overload and
+once on a local network error; it resumed both times, and no claim was judged twice.
+Driver `evals/sample_thin_claims_2026-11-04.py`, output
+`evals/thin-claims-sample-2026-11-04.json`, log `evals/thin-claims-sample-2026-11-04.txt`.
+
+**72 of 300 claims (24.0%, 95% interval 19.5-29.1%) had fewer than two citations
+judged to fully support them.** Every one had exactly one supporting citation; none had
+zero. Claims citing exactly two reviews are thin 64 times in 139, claims citing three or
+more 8 in 161. The rate is flat across cohorts and themes.
+
+**Read as an upper bound on the problem that matters.** The judge prompt asked whether
+each review conveys the WHOLE claim. It omits the rubric's compound-claim rule, under
+which a review that fully supports one listed part earns credit for that part. Six
+flagged claims were read against their reviews. **Two** are a genuinely single-reviewer
+claim (Civilization VII, offline mode; Ori, the short jump), where the second review
+says nothing of it. **Four** are composites (Enter the Gungeon, House Flipper, FPS Chess,
+Chained Together): both reviews back one half, and one review backs the other half.
+Those claims are true of what reviewers said, and one detail rests on one reviewer.
+
+**Not comparable with the seed set's 11 of 70**, which came from a different judge
+prompt. The judge here is lightly validated: 6 of 6 against the owner on the related QR-1
+question.
