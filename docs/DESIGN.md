@@ -264,7 +264,7 @@ padded with a second review that did not say it. Now it gets its own section.
 
 - **One slim strip directly below the distortion flags**, above the first cohort.
   It is a native `<details>`, **closed by default**, working with no JS. When
-  closed it is one line: the mono label `POINTS MADE BY ONE REVIEWER` in
+  closed it is one line: the mono label `POINTS MENTIONED IN ONLY SINGLE REVIEWS` in
   `--text-dim` and a "Show points" link.
 - **Quieter than a flag, on purpose:** hairline border, no wash, no verdict colour.
   These are the thinnest evidence on the page, and the strip must not read as an

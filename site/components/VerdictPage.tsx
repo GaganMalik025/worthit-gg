@@ -134,7 +134,7 @@ function FlagStrip({ flag }: { flag: DistortionFlag }) {
 }
 
 /**
- * Points made by one reviewer (owner, 2026-11-16; DESIGN.md "One-reviewer points").
+ * Points mentioned in only single reviews (owner, 2026-11-16; DESIGN.md "One-reviewer points").
  *
  * The meaning check (pipeline/verify_claims.py) keeps a claim only when two or more
  * of its cited reviews really say it. A point only one review makes used to be
@@ -155,7 +155,7 @@ function OneReviewerPoints({ v }: { v: Verdict }) {
   return (
     <details className="one-reviewer">
       <summary>
-        <span className="label mono">POINTS MADE BY ONE REVIEWER</span>
+        <span className="label mono">POINTS MENTIONED IN ONLY SINGLE REVIEWS</span>
         <span className="cta">Show points</span>
       </summary>
       <p className="intro">

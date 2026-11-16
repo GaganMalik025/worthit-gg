@@ -106,7 +106,7 @@ describe("one-reviewer points", () => {
     const { text } = await fixture();
     const { body } = section(render(normalizeVerdict(JSON.parse(text))));
     const summary = body.slice(body.indexOf("<summary>"), body.indexOf("</summary>"));
-    expect(summary).toContain("POINTS MADE BY ONE REVIEWER");
+    expect(summary).toContain("POINTS MENTIONED IN ONLY SINGLE REVIEWS");
     expect(summary).not.toMatch(/\d/);
   });
 
