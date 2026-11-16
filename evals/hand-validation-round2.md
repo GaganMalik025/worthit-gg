@@ -382,11 +382,11 @@ recommends, 14.5 hours at review, 2026-07-12
 
 > Stardew Valley is a game like no other, for one it's so addicting but other than that fact, the art style is adorable, the minimal story building gets me so excited and its a perfect mix of cosy farming game with a little bit of combat. I'd recommend this game to anyone and everyone, definitely in my top 3 games just for  how it makes me feel, it honestly helps with my anxiety to go into my little farm and just do some farming and mining. Love this game so much and always will!!
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 2
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**QR-6 (pass or fail):** ___
+**QR-6 (pass or fail):** pass
 
 **Note, only if it was not obvious:** ___
 
@@ -435,11 +435,11 @@ recommends, 11.7 hours at review, 2026-07-14
 > 
 > Overall: 9/10
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 2
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**QR-6 (pass or fail):** ___
+**QR-6 (pass or fail):** pass
 
 **Note, only if it was not obvious:** ___
 
@@ -506,11 +506,11 @@ recommends, 71.9 hours at review, 2022-11-14
 
 > 4 words. I. LOVE. THIS. GAME. Open worlds are my absolute favorite and Death Stranding does not disappoint. From how perfectly crafted the missions in this game are, even side ones mind you, to the story itself. Don't get me started on the story. It is AMAZING. I won't spoil of course...but the answer is closer than you think! However, if I was to get a little picky with this, I'd say the start of the game is really confusing for a new player. I had no clue what timefall was for a while! Just stick with it though. Eventually you'll fall in love with this game. :)
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 2
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**QR-6 (pass or fail):** ___
+**QR-6 (pass or fail):** pass
 
 **Note, only if it was not obvious:** ___
 
@@ -561,10 +561,10 @@ recommends, 52.3 hours at review, 2026-05-16
 > In Kenshi, it’s literally just “good luck buddy,” throwing you into the desert without clothes.
 > 10/10, best stockholm syndrome simulation.
 
-**QR-1 score (0, 1 or 2):** ___
+**QR-1 score (0, 1 or 2):** 2
 
-**QR-4 (pass or fail):** ___
+**QR-4 (pass or fail):** pass
 
-**QR-6 (pass or fail):** ___
+**QR-6 (pass or fail):** pass
 
 **Note, only if it was not obvious:** ___

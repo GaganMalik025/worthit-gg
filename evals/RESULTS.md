@@ -2490,3 +2490,35 @@ thinnest page, with 2 claims and 3 one-reviewer points (it had 8 claims).
 
 Pinned in `pipeline/test_refresh.py`. Break-then-confirm: 18/18
 (`evals/mutate-refresh-2026-11-16.txt`).
+
+## 2026-11-16 — Hand validation round 2 completed: 10 of 10 on QR-1
+
+The owner scored the 4 cases left blank in round 2 (`evals/hand-validation-round2.md`,
+cases 7–10). The random 10-case round PRD §8 asks for is now complete. The comparison
+is offline: QR-1 and QR-4 against `evals/judge_scores.json` (July), and QR-6 against
+`evals/judge-qr6-all-2026-11-03.json`. No Gemini calls. Output:
+`evals/hand-validation-round2-complete-2026-11-16.txt`, `EXIT_RC=0`.
+
+| check | agreement with owner, n=10 |
+|---|---|
+| QR-1, published score (>=2 rule) | **10/10** |
+| QR-1, judge's holistic score | 10/10 |
+| QR-4 | 10/10 |
+| QR-6, >=2 rule | 9/10 (holistic 10/10) |
+
+The single QR-6 disagreement is the one already recorded for round 2 (`413150-mid-450890`).
+The first six now read the same against the all-70 QR-6 run as they did against the
+separate round-2 run.
+
+**What this does and does not establish.**
+- **Settled:** the judge's QR-1 reading matches the owner's on a random 10, which is the
+  bar §8 set before judge scores are quoted. The 2026-07-31 baseline (47 / 23 / 0 of 70)
+  can now be cited as judge-scored and hand-validated, rather than "should not be quoted
+  as validated".
+- **The sample is easy, not adversarial.** The owner scored 8 twos and 2 ones, and no
+  zeros. So agreement on what an unsupported claim looks like is untested here. Round 1's
+  3/10 on deliberately hard cases stays on the record, and most of it was traced to a
+  different question.
+- **The scoring was not blind in two ways.** The owner was told in round 1 what the judge
+  had got wrong, and read cases 7–10 once on 2026-11-03 without scoring them. The owner
+  was not shown the judge's scores for any of the ten.

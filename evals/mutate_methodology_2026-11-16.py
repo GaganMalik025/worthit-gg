@@ -34,6 +34,9 @@ CASES = [
      "Pages are being regenerated with it over the coming weeks.",
      "Every page has been regenerated with it.",
      "it says the catalog is still being regenerated"),
+    ("mt05", "the judge-vs-person QR-1 figure is understated",
+     "they agreed on all 10 for the first check", "they agreed on 9 of 10 for the first check",
+     "the judge-vs-person figures are the committed 10-case comparison"),
 ]
 
 

@@ -46,6 +46,19 @@ describe("the methodology page's figures match their evidence", () => {
     expect(html).toContain(`0 in ${Number(n.replace(/,/g, "")).toLocaleString("en-US")} citations`);
   });
 
+  it("the judge-vs-person figures are the committed 10-case comparison", () => {
+    const out = read("../evals/hand-validation-round2-complete-2026-11-16.txt");
+    expect(out).toContain("EXIT_RC=0");
+    const q1 = /QR-1 agreement, published score \(>=2 rule\): (\d+)\/(\d+)/.exec(out)!;
+    const q6 = /QR-6 agreement: >=2 rule (\d+)\/(\d+)/.exec(out)!;
+    const n = q1[2];
+    expect(html).toContain(`On ${n} randomly chosen claims`);
+    expect(html).toContain(
+      q1[1] === n ? `agreed on all ${n} for the first check` : `agreed on ${q1[1]} of ${n}`,
+    );
+    expect(html).toContain(`${q6[1]} of ${q6[2]} for the third`);
+  });
+
   it("the meaning-check pilot figure is the committed comparison", () => {
     const rows = Object.values(json("../evals/pilot-compare-2026-11-16.json")) as {
       verify_backed: string[]; judge_yes: string[];
@@ -71,7 +84,8 @@ describe("the methodology page's figures match their evidence", () => {
   });
 
   it("it reports the disappointing results as well as the good ones", () => {
-    for (const s of ["3 of 10", "Six claims is a small test", "have not fixed that"]) {
+    for (const s of ["3 of 10", "Ten claims is a small test", "have not fixed that",
+                     "it does not show the judge spotting a bad claim"]) {
       expect(html).toContain(s);
     }
   });

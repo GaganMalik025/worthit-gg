@@ -94,11 +94,12 @@ export default function Methodology() {
       </table>
       <p>
         These claim checks cover 70 claims from five games, written in July and scored by
-        an AI judge. So we checked the judge against a person. On 6 randomly chosen claims
-        they agreed on all 6 for the first check, and on 5 of 6 for the third. An earlier
+        an AI judge. So we checked the judge against a person. On 10 randomly chosen claims
+        they agreed on all 10 for the first check, and on 9 of 10 for the third. An earlier
         round agreed on only 3 of 10, mainly because the person was asking a different
         question: whether a claim captures the reviewer&rsquo;s main point, which the first
-        check does not ask. Six claims is a small test, and these results describe those
+        check does not ask. Ten claims is a small test, none of the ten was unsupported, so
+        it does not show the judge spotting a bad claim, and these results describe those
         five games, not the whole catalog.
       </p>
 
