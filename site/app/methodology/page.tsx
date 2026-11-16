@@ -28,7 +28,7 @@ const CHECKS = [
   ["Do at least two reviews back a claim and frame it the same way?",
    "59 of 70", "2026-11-03"],
   ["Any slurs or explicit content in a citation?",
-   "0 in 28,331 citations by wordlist, plus a person reading samples", "2026-11-03"],
+   "0 in 28,073 citations by wordlist, plus samples read after each batch", "2026-11-16"],
 ];
 
 export default function Methodology() {
@@ -69,10 +69,15 @@ export default function Methodology() {
       <p>
         <strong>An AI writes the rest, on a short lead.</strong> It reads each cohort and
         lists claims, each of which must cite at least two reviews. Code checks that those
-        reviews exist, belong to that cohort and share words with the claim. A second pass
-        writes the summary and may only use those claims. Reviews containing slurs or
-        explicit content are filtered out first, and every citation is checked again
-        before anything is published.
+        reviews exist, belong to that cohort and share words with the claim. Then a second
+        AI reads each claim against the reviews it cites, judging meaning rather than
+        shared words, and code keeps a claim only if at least two of them really say it.
+        A cited review that does not is removed from under the claim. A point only one
+        review makes is kept, reworded as one reviewer&rsquo;s view, in a separate list
+        on the page, &ldquo;Points mentioned in only single reviews&rdquo;, and it plays
+        no part in the verdict. A last pass writes the summary and may only use the claims
+        that survived. Reviews containing slurs or explicit content are filtered out
+        first, and every citation is checked again before anything is published.
       </p>
       <p>Every number on a page comes from the pool and shows how many reviews it rests on.</p>
 
@@ -109,13 +114,18 @@ export default function Methodology() {
         complaints.
       </p>
       <p>
-        <strong>Some claims are thinner than they look.</strong> We checked a random{" "}
-        <span className="mono">300</span> of the{" "}
-        <span className="mono">8,975</span> claims on the site.{" "}
+        <strong>Some claims are thinner than they look.</strong> In November we checked a
+        random <span className="mono">300</span> of the{" "}
+        <span className="mono">8,975</span> claims then on the site.{" "}
         <span className="mono">72</span> of them cite two or more reviews but have only one
         that fully says what the claim says. Often the claim joins two points and one of
         them rests on a single reviewer, so the real problem is likely smaller than that
-        count. Our automatic check matches words, so it cannot catch this.
+        count. Our word-matching check could not catch this, which is why the meaning check
+        above was added on 16 November 2026. In a test on four games, the same judge still
+        read <span className="mono">5</span> of the <span className="mono">46</span> claims
+        it kept as thin. Pages are being regenerated with it over the coming weeks. The date
+        at the foot of a page says when it was made, and a page from before 16 November has
+        only the word check.
       </p>
       <p>
         <strong>The sample is built, not random.</strong> We deliberately keep more of the
@@ -124,9 +134,9 @@ export default function Methodology() {
         harsher than recent reviews alone.
       </p>
       <p>
-        <strong>Verdicts age.</strong> Each page shows when it was generated, and we do not
-        refresh them on a schedule. A game that has changed since then may read differently
-        today.
+        <strong>Verdicts age.</strong> Each page shows when it was generated. Pages are
+        regenerated from fresh reviews in batches, not continuously, so a game that has
+        changed since its date may read differently today.
       </p>
     </main>
   );

@@ -38,10 +38,29 @@ describe("the methodology page's figures match their evidence", () => {
   });
 
   it("the citation count is the committed QR-4 run, and that run passed", () => {
-    const qr4 = read("../evals/qr4-2026-11-03.txt");
-    expect(qr4).toContain("QR4_RC=0");
-    const n = /([\d]+) citations checked/.exec(qr4)?.[1] as string;
-    expect(html).toContain(Number(n).toLocaleString("en-US"));
+    // moved to the 2026-11-16 run, the latest over the whole catalog
+    const qr4 = read("../evals/qr4-2026-11-16.txt");
+    expect(qr4).toContain("EXIT_RC=0");
+    const n = /([\d,]+) citations checked across \d+ verdicts -> PASS/.exec(qr4)?.[1] as string;
+    expect(n).toBeTruthy();
+    expect(html).toContain(`0 in ${Number(n.replace(/,/g, "")).toLocaleString("en-US")} citations`);
+  });
+
+  it("the meaning-check pilot figure is the committed comparison", () => {
+    const rows = Object.values(json("../evals/pilot-compare-2026-11-16.json")) as {
+      verify_backed: string[]; judge_yes: string[];
+    }[];
+    const kept = rows.filter((r) => r.verify_backed.length >= 2);
+    const thin = kept.filter((r) => r.judge_yes.length < 2);
+    expect(html).toContain(
+      `<span class="mono">${thin.length}</span> of the <span class="mono">${kept.length}</span> claims`,
+    );
+  });
+
+  it("it says the catalog is still being regenerated, not that it is done", () => {
+    expect(html).toContain("Pages are being regenerated with it");
+    expect(html).toContain("a page from before 16 November has only the word check");
+    expect(html).not.toContain("we do not refresh them on a schedule");
   });
 
   it("the Death Stranding example is what that page shows", () => {

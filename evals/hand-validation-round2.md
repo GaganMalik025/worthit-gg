@@ -7,6 +7,13 @@ Score each case using `evals/rubric.md`. Fill in the lines at the end of each ca
 
 **Do not open `evals/judge_scores.json` until you have finished.**
 
+> **2026-11-16: Cases 7 to 10 are still to score.** Finishing them completes this
+> 10-case random round, which is what PRD §8 asks for before the judge's QR-1 scores
+> are trusted. You read these four once on 2026-11-03 without scoring them, and have
+> not been shown the judge's scores for them. Fill in the three lines at the end of
+> each, then run `.venv/bin/python -B evals/compare_hand_validation.py
+> evals/hand-validation-round2.md` (offline, no Gemini calls).
+
 ---
 
 ## Case 1 of 10: `553850-ear-037298`
