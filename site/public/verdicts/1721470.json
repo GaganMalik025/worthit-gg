@@ -1,51 +1,60 @@
 {
   "appid": "1721470",
   "game_name": "Poppy Playtime",
-  "generated_at": "2026-08-10T09:55:45Z",
+  "generated_at": "2026-11-18T10:04:51Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1721470/00ca34a0c863a8d86c6582904249216d6aa263bd/header.jpg?t=1770858202",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1721470/2d2d1f622b49c8589d67d294e790507715169220/capsule_231x87.jpg?t=1770858202",
+    "grid": "https://cdn2.steamgriddb.com/grid/9bbd2d0d04fba4354ec2b7e3556db142.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 14,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Buy",
-    "tagline": "Spooky puzzles and intense chases, despite some rough technical spots.",
+    "tagline": "Creepy puzzles and clever mechanics, despite some brief chapters.",
     "for_you_if": [
-      "you enjoy story-driven horror campaigns",
-      "you like solving clever puzzles",
-      "you want thrilling chase sequences"
+      "you enjoy puzzle-solving and environmental exploration",
+      "you like tense chase sequences with unique mechanics"
     ],
     "not_for_you_if": [
-      "you are short on storage space",
-      "you dislike encountering bugs and technical crashes",
-      "you expect a lengthy opening chapter"
+      "you expect a long experience in the base game",
+      "you mind paying separately for subsequent chapters",
+      "you require achievements to function properly"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 167,
-      "pct_positive": 74.3,
+      "pool_n": 165,
+      "pct_positive": 72.7,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "pool_n": 641,
-      "pct_positive": 94.1,
+      "pct_positive": 93.0,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 352,
-      "pct_positive": 94.0,
+      "pool_n": 341,
+      "pct_positive": 95.6,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 62,
+      "pool_n": 53,
       "pct_positive": 100.0,
       "muted": false
     }
@@ -56,44 +65,44 @@
       "type": "segmentation",
       "direction": null,
       "shape": "monotonic_increase",
-      "sentence": "Reviewer sentiment grows steadily more positive the longer they play.",
+      "sentence": "Review positivity increases as playtime increases from the initial refund window.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 74.3,
-            "pool_n": 167
+            "pct_positive": 72.7,
+            "pool_n": 165
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 94.1,
+            "pct_positive": 93.0,
             "pool_n": 641
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 94.0,
-            "pool_n": 352
+            "pct_positive": 95.6,
+            "pool_n": 341
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
             "pct_positive": 100.0,
-            "pool_n": 62
+            "pool_n": 53
           }
         ],
         "shape": "monotonic_increase",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 74.3,
-        "low_pool_n": 167,
+        "low_pct_positive": 72.7,
+        "low_pool_n": 165,
         "high_cohort": "veteran",
         "high_cohort_label": "over 100 hours",
         "high_pct_positive": 100.0,
-        "high_pool_n": 62,
-        "gap_pts": 25.7
+        "high_pool_n": 53,
+        "gap_pts": 27.3
       }
     }
   ],
@@ -102,106 +111,163 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 167,
-      "pct_positive": 74.3,
+      "pool_n": 165,
+      "pct_positive": 72.7,
       "muted": false,
       "n_note": null,
-      "summary": "Early players note broken achievements and a brief opening chapter, alongside split chapter purchases.",
+      "summary": "Early players note issues with achievements and the short length.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ref-7de220",
-              "claim": "The game lacks working achievements, with reviewers reporting that achievement progress does not unlock or display.",
-              "citation_verdict": "mixed",
+              "claim_id": "ref-ebdb08",
+              "claim": "Reviewers report that steam achievements fail to unlock or do not work.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
+                "positive": 1,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "230259109",
-                  "hours_at_review": 1.0,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "I wish they would turn achievements back on (IMO), but otherwise the game is good.",
-                  "truncated": false,
-                  "minutes_at_review": 59
-                },
-                {
-                  "recommendationid": "229668461",
-                  "hours_at_review": 1.0,
+                  "recommendationid": "238837355",
+                  "hours_at_review": 1.8,
+                  "minutes_at_review": 105,
                   "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "Achievements do not work. For Chapter 1, and I do not intend to pay for the new chapters.",
-                  "truncated": false,
-                  "minutes_at_review": 59
+                  "date": "2026-10-29",
+                  "review_text": "very cool concept fun little game to play but the fact achievements don't work and haven't worked for almost half a year you wonder if they ever will?! NO! no every game needs them but when it shows it has them it's a bit of a selling point for us steam nerds. LUL\n\nmy only other complaint is how much it the game costs to get you either really love Poppy or you'll try to get it on sale.\n2/5\n$85 smackers is a lot for what this game has to offer in comparison to other more recent horror single players that have dropped.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229630108",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "I can see why players hate this game terrible quality EXTREMELY LAGGY aswell as none of the achivements are not obtainable although i have to admit the PS5 version is  superior compared to this sad piece of  crap would not recommend the PS5 version how ever i would\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 116
-                },
-                {
-                  "recommendationid": "229620188",
+                  "recommendationid": "237171523",
                   "hours_at_review": 1.6,
+                  "minutes_at_review": 96,
                   "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "it's a very good game so far. the only problem i has is that it wont save my achevements, i know i did them but their not showing up :(",
-                  "truncated": false,
-                  "minutes_at_review": 93
+                  "date": "2026-10-08",
+                  "review_text": "other than achievements not popping this was cool",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236983463",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 18,
+                  "voted_up": false,
+                  "date": "2026-10-05",
+                  "review_text": "i really love poppy but the  fact das my achivments dont unlock at all its sad if you think how many chapter this game already got if that get fixed somehow i will give it a Positive",
+                  "truncated": false
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
             {
-              "claim_id": "ref-88d24b",
-              "claim": "Reviewers note that achievements do not unlock or show up properly in the game.",
-              "citation_verdict": "mixed",
+              "claim_id": "ref-f65213",
+              "claim": "Reviewers describe the game as extremely short in length.",
+              "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
-                "negative": 2
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "230259109",
-                  "hours_at_review": 1.0,
+                  "recommendationid": "238746190",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 33,
                   "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "I wish they would turn achievements back on (IMO), but otherwise the game is good.",
-                  "truncated": false,
-                  "minutes_at_review": 59
+                  "date": "2026-10-28",
+                  "review_text": "Recommended only if u just wanna play it as a demo its extremly short but the dlc's are pretty and they are def worth it but play this as a demo the main games  chapter 2 3 4 5",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229668461",
-                  "hours_at_review": 1.0,
-                  "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "Achievements do not work. For Chapter 1, and I do not intend to pay for the new chapters.",
-                  "truncated": false,
-                  "minutes_at_review": 59
-                },
-                {
-                  "recommendationid": "229630108",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "I can see why players hate this game terrible quality EXTREMELY LAGGY aswell as none of the achivements are not obtainable although i have to admit the PS5 version is  superior compared to this sad piece of  crap would not recommend the PS5 version how ever i would\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 116
-                },
-                {
-                  "recommendationid": "229620188",
-                  "hours_at_review": 1.6,
+                  "recommendationid": "238157988",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 39,
                   "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "it's a very good game so far. the only problem i has is that it wont save my achevements, i know i did them but their not showing up :(",
-                  "truncated": false,
-                  "minutes_at_review": 93
+                  "date": "2026-10-20",
+                  "review_text": "best horror game but a lil too short",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237617964",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 39,
+                  "voted_up": false,
+                  "date": "2026-10-13",
+                  "review_text": "maybe next parts would be better, this was just a short experience, will get them once they go on sale",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-b41f2197",
+          "text": "One reviewer says chapter 2 keeps crashing when they open it.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "237218502",
+            "hours_at_review": 1.1,
+            "minutes_at_review": 63,
+            "voted_up": true,
+            "date": "2026-10-08",
+            "review_text": "Hello my poppy playtime chapter 2 keeps crashing when i open it do you know of a way to fix this?",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 3,
+        "divergence_p": 0.207,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 641,
+      "pct_positive": 93.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter minor bugs in later chapters and note the episodic purchase model.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-daaa9c",
+              "claim": "Reviewers note that later chapters encounter bugs and technical issues that break immersion.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "239838218",
+                  "hours_at_review": 19.1,
+                  "minutes_at_review": 1146,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "as someone who originally passed this game off as a cheap cash grab due to the additional chapters all being paid DLC & originally just thinking of it as a FNAF knock-off where you can move around i see that it is so much more than that! \n\nThe lore of this game is extremely intersting, the actual gameplay is fun and not repetitive. The chapters always contain new stuff for the player to experiment with which keeps things new and fresh.\n\nmy only gripes with the game are that certain chapters (3 & 4) can be pretty glitchy at certain points, breaking immersion. \nsometimes it just feels like a chase simulator, and rather than puzzles making sense theyre just thrown in the game to make it run a little longer- sometimes its not very clear \nBUT despite that criticism, the gameplay and lore more than makes up for a bug here or there. \n\ni rate this game a solid 7.5/10\nwith room to improve, of course- but for what it is, it's a very good experience.\n\n(CHAPTER 5 IS THE LATEST CHAPTER OUT AT THE TIME OF THIS REVIEW!)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239538525",
+                  "hours_at_review": 18.4,
+                  "minutes_at_review": 1104,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "I like it when horror games give me a jump. Chapters 1-3 did that pretty well. But past that the game just becomes gory and buggy. Not much that actually scares me.\r\nLater chapters are also super buggy, stiff, and they drag the story out as if to have over 8 chapters. \r\nA Tangible example of this is the swinging mechanic between chapters 3 and 4. It becomes super scripted and unfun to use. There is no real motion and it becomes more of a brief cutscene. All story, no gameplay.\r\nJust watch a Youtuber at this point",
+                  "truncated": false
                 }
               ]
             }
@@ -211,159 +277,94 @@
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "ref-dd11d6",
-              "claim": "Reviewers note that Chapter 1 is free to play, while subsequent chapters must be purchased separately.",
+              "claim_id": "ear-ef7a26",
+              "claim": "Reviewers describe the base game as free while subsequent chapters must be purchased separately as paid DLC.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 5,
-                "negative": 2
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231345005",
-                  "hours_at_review": 0.8,
+                  "recommendationid": "240262448",
+                  "hours_at_review": 12.4,
+                  "minutes_at_review": 742,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "I heard the chapter five wasnt good, obviously this game series has fallen off, still good though just not as good as it used to be. this chapter was good though it being free as well helps the fact that you should play it if you havent",
-                  "truncated": false,
-                  "minutes_at_review": 51
+                  "date": "2026-11-15",
+                  "review_text": "sorta scary if you have headphones on and jumpscares are unexpected good graphics but i dont like how you have to buy the other four chapters after installing the game i rate this a 4.5 star rating\r\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230904276",
-                  "hours_at_review": 0.5,
+                  "recommendationid": "239838218",
+                  "hours_at_review": 19.1,
+                  "minutes_at_review": 1146,
                   "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": "This game revolutionized the horror genre it literally inspired major titles like Five Nights at Freddy's Secret of the Mimic you can really tell they drew inspiration from Poppy Playtime. I’ve only played through it once it’s short but excellent, and it’s a bonus that it’s currently free. I’ll be buying the other chapters soon because I love the direction the series' lore is taking.",
-                  "truncated": false,
-                  "minutes_at_review": 30
-                },
-                {
-                  "recommendationid": "230180917",
-                  "hours_at_review": 1.0,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "Mid, mid. mid. It's definitely scary at the end, but only then. There is barely any gameplay in this first part and the rest cost money. It is free, so don't take this negative review as an \"I shouldn't play it\", just don't expect anything great. Unless you play the next four games, which I cannot judge the quality of, because I wasn't interested enough to play them... Poppy Playtime gets a no from me.",
-                  "truncated": false,
-                  "minutes_at_review": 59
-                },
-                {
-                  "recommendationid": "229376984",
-                  "hours_at_review": 1.2,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Its free why not. Ch. 1 is fairly short but very fun and just as good as people say. I would definitely buy the other chapters except its a steep price :(",
-                  "truncated": false,
-                  "minutes_at_review": 73
-                },
-                {
-                  "recommendationid": "225475589",
-                  "hours_at_review": 1.1,
-                  "voted_up": false,
-                  "date": "2026-05-14",
-                  "review_text": "Every DLC chapter is the price of what the full game should been. Theyre exploiting it. Bad practice.",
-                  "truncated": false,
-                  "minutes_at_review": 63
-                },
-                {
-                  "recommendationid": "226260688",
-                  "hours_at_review": 1.1,
-                  "voted_up": true,
-                  "date": "2026-05-23",
-                  "review_text": "This game is very fun but just a warning its a little scary and hard. I don't like having to pay for every new chapter I play so If I were you I would wait for the next chapter to go on sale and then buy it. Overall 8 out of ten!",
-                  "truncated": false,
-                  "minutes_at_review": 67
-                },
-                {
-                  "recommendationid": "225346887",
-                  "hours_at_review": 0.5,
-                  "voted_up": true,
-                  "date": "2026-05-12",
-                  "review_text": "Poppy Playtime Chapter 1 is a very short horror experience that feels more like an introduction than a full game. The puzzles are simple and the gameplay is quite basic, with most of the focus being on atmosphere and set-up for future chapters.\n\nIt’s free and can be finished in about 30 minutes, so it’s easy to try without commitment. The atmosphere is decent, but overall it feels very limited in depth and gameplay.\n\n5/10",
-                  "truncated": false,
-                  "minutes_at_review": 30
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ref-b2f273",
-              "claim": "The first chapter is very short, taking around thirty minutes to an hour to complete.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "230256820",
-                  "hours_at_review": 0.6,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "first chapter way to short but ima wait to buy the other chapters\n",
-                  "truncated": false,
-                  "minutes_at_review": 38
-                },
-                {
-                  "recommendationid": "229744045",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "just over an hr to complete with 1 chase scene no scares pretty much throughout the whole ch1 besides that end chase scene, even then it felt very simple.\r\nMaybe my expectations were wuite high from other reviews and vids.",
-                  "truncated": false,
-                  "minutes_at_review": 116
-                },
-                {
-                  "recommendationid": "229376984",
-                  "hours_at_review": 1.2,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Its free why not. Ch. 1 is fairly short but very fun and just as good as people say. I would definitely buy the other chapters except its a steep price :(",
-                  "truncated": false,
-                  "minutes_at_review": 73
-                },
-                {
-                  "recommendationid": "225346887",
-                  "hours_at_review": 0.5,
-                  "voted_up": true,
-                  "date": "2026-05-12",
-                  "review_text": "Poppy Playtime Chapter 1 is a very short horror experience that feels more like an introduction than a full game. The puzzles are simple and the gameplay is quite basic, with most of the focus being on atmosphere and set-up for future chapters.\n\nIt’s free and can be finished in about 30 minutes, so it’s easy to try without commitment. The atmosphere is decent, but overall it feels very limited in depth and gameplay.\n\n5/10",
-                  "truncated": false,
-                  "minutes_at_review": 30
+                  "date": "2026-11-10",
+                  "review_text": "as someone who originally passed this game off as a cheap cash grab due to the additional chapters all being paid DLC & originally just thinking of it as a FNAF knock-off where you can move around i see that it is so much more than that! \n\nThe lore of this game is extremely intersting, the actual gameplay is fun and not repetitive. The chapters always contain new stuff for the player to experiment with which keeps things new and fresh.\n\nmy only gripes with the game are that certain chapters (3 & 4) can be pretty glitchy at certain points, breaking immersion. \nsometimes it just feels like a chase simulator, and rather than puzzles making sense theyre just thrown in the game to make it run a little longer- sometimes its not very clear \nBUT despite that criticism, the gameplay and lore more than makes up for a bug here or there. \n\ni rate this game a solid 7.5/10\nwith room to improve, of course- but for what it is, it's a very good experience.\n\n(CHAPTER 5 IS THE LATEST CHAPTER OUT AT THE TIME OF THIS REVIEW!)",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-9402c450",
+          "text": "One reviewer says that if you are playing on a computer that is not expensive you will lag a lot and need to set everything to low.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239318226",
+            "hours_at_review": 11.1,
+            "minutes_at_review": 663,
+            "voted_up": true,
+            "date": "2026-11-04",
+            "review_text": "It is a really nice game with lots of lore, but if you are playing on a computer that is not like $1000 then you will lag a lot. So if you do have a bad computer then I would go on low everything in settings. But over all it is a good game and it is diffintly worth getting.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-88996641",
+          "text": "One reviewer says it is a shame that the achievements do not work.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239532114",
+            "hours_at_review": 5.6,
+            "minutes_at_review": 336,
+            "voted_up": true,
+            "date": "2026-11-06",
+            "review_text": "genuinely my favourite horror game ever, its has that kinda cutesy haunting vibe! Only played 1 & 2 but ive seen playthroughs of 3, 4, 5! cant wait for the next one, love that there's so many achievements to collect especially in chapter 3, as im a huge achievement fiend :P, shame they dont work though, hope they get fixed soon. cant wait to see what comes next!",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 13,
-        "cited_recommend": 8,
-        "divergence_p": 0.224,
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 3,
+        "cited_recommend": 2,
+        "divergence_p": 0.196,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
     {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 641,
-      "pct_positive": 94.1,
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 341,
+      "pct_positive": 95.6,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers find the adventure brief while encountering map clipping issues.",
+      "summary": "Mid-tier players highlight the puzzles, grabpack mechanic, chase scenes, and lore exploration.",
       "themes": [
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-ba679a",
-              "claim": "Reviewers note that the game is quite short.",
+              "claim_id": "mid-714a4f",
+              "claim": "This cohort describes the gameplay as centering around puzzles, chase sequences, and the grabpack mechanic.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 5,
@@ -371,60 +372,55 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231538120",
-                  "hours_at_review": 15.6,
+                  "recommendationid": "240384849",
+                  "hours_at_review": 55.6,
+                  "minutes_at_review": 3339,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "When Poppy Playtime Chapter 1: A Tight Squeeze first dropped, it revitalized the mascot horror genre with a masterclass in tension, nostalgia, and clever puzzle mechanics. While short, it packs an unforgettable punch from start to finish.\n\n​Key Highlights & Atmospheric Brilliance\n​A Deceptive Intro: The game starts with a sweet retro toy commercial, which abruptly cuts to a glitched screen and eerie low music, instantly setting a unsettling tone.\n\n​The Hook: You are driven by a cryptic note that adds deep mystery right away: \"Everyone thinks the staff disappeared 10 years ago. We’re still here. Find the flower.\"\n​Creepy Lore Building: Finding the very first VHS tape delivers a spike of fear and mystery, dropping unsettling hints about the Playtime Co. factory's dark past.\n\n​The GrabPack Begins: Acquiring the iconic blue hand introduces the core mechanics—letting you interact with the environment, pull switches, and conduct electricity in a wonderfully tactile way.\n​\n\nAn Iconic Villain: Enter Huggy Wuggy, the colossal blue mascot who dominates the factory floor. Listening to his deceptively fun song with that slightly eerie, cracked sound to it creates a chilling contrast between childhood playfulness and pure dread.\n\n​Powering Up: Upgrading your GrabPack to unlock the red hand adds a satisfying layer to the puzzles, making you feel increasingly resourceful right before the chaos unfolds.\n​\n​The game is short, but even so, it features one of the most intense boss chases in recent horror gaming. a frantic, claustrophobic run through narrow conveyor belts that feels uniquely special and incredibly memorable. It’s a tight, thrilling experience that leaves you desperately wanting to know what lies deeper inside the factory.",
-                  "truncated": false,
-                  "minutes_at_review": 933
+                  "date": "2026-11-16",
+                  "review_text": "Very fun and cool mechanics for the grabpack. Not very laggy good for its file size",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231486348",
-                  "hours_at_review": 4.5,
+                  "recommendationid": "240178528",
+                  "hours_at_review": 42.1,
+                  "minutes_at_review": 2529,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "it was a very fun game just to short but overall a work of art",
-                  "truncated": false,
-                  "minutes_at_review": 271
+                  "date": "2026-11-14",
+                  "review_text": "i like the puzel and the chase syne",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231240149",
-                  "hours_at_review": 4.3,
+                  "recommendationid": "240070053",
+                  "hours_at_review": 41.6,
+                  "minutes_at_review": 2498,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "I liked the game, it was a little short though",
-                  "truncated": false,
-                  "minutes_at_review": 259
+                  "date": "2026-11-13",
+                  "review_text": "the puzzles and chase scenes are really cool (:",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231212358",
-                  "hours_at_review": 3.4,
+                  "recommendationid": "239944756",
+                  "hours_at_review": 30.5,
+                  "minutes_at_review": 1828,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "A very good horror game with many different monsters the game is a toy factory with monsters that are actually toys but they became real\r\nnot the real story youll find it all out in chapter 5 which is horoffying chapter one is very short only like a tutorial id reccomend doing it before chapter 2",
-                  "truncated": false,
-                  "minutes_at_review": 206
+                  "date": "2026-11-11",
+                  "review_text": "Poppy playtime has to be the most BEST HORROR GAME ever made. after finally playing all the poppy playtime chapters it was so incredibly good. There are not enough words in the dictionary to describe how good this game is. in my opinion chapter 1, 2, 3, and 5 are the best chapters. and I just love this game, the mechanics the Grabpack the hands. everything. if I had to choose between FNAF and poppy playtime its going to be be POPPY Playtime. orverall 10/10.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231083892",
-                  "hours_at_review": 14.3,
+                  "recommendationid": "238671083",
+                  "hours_at_review": 20.8,
+                  "minutes_at_review": 1246,
                   "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "Let me start of by saying that all the chapters of Poppy Playtime are phenomenal. The game runs incredibly well, and seems to be optimized. The story to this game is next level, what started as something with a low budget and was trying to replicate past popular horror, blossomed into it's own identity. Here are my thoughts on each of the chapters.\n\nChapter 1- It was a great introduction to the toy factory, and what Poppy Playtime was supposed to represent. Although the game was a bit short. \n\nChapter 2- My favorite chapter. Mommy Long Legs immediately drew the eyes of many players. She's psychotic and dangerous, but she has a sweet spot for children. This is what solidified Poppy Playtime as the next big horror series.\n\nChapter 3- Everyone was so ramped up for this chapter. Cat Nap was an amazing 'villain'. He was terrifying and his bone-like appearance only catered to this more. An amazing chapter, filled with so much interesting lore about the Poppy Playtime Daycare Facilities.\n\nChapter 4- I really liked the overall theme of violence and senseless slaughter in this chapter. It shows you that some of the 'toys' don't all agree with what the majority are doing. I can't go into it too much without spoilers. I really like how sometimes you can't tell if someone/ something in this game is bad or good. It's always nice to have a grey area.\n\nChapter 5- The expanded lore was great, don't get me wrong, but everyone thought that this would be the last chapter. So expectations were high, and when it delivered a cliffhanger, instead of the final ending, people got upset. I REALLY like Lily and what her whole punishment dynamic represents. I think this was a great lengthy chapter, but just not what I, or anyone was expecting.\n\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 858
+                  "date": "2026-10-27",
+                  "review_text": "Poppy Playtime is honestly pretty damn creepy. The whole setup takes place in an abandoned toy factory, and the game does a great job making you feel completely isolated and on edge the entire time.\n\nThe main mechanic is the Grab Pack, which gives you two long, shootable hands. You use them to grab items from far away, open doors, and route electricity to power up different rooms. The puzzles are decent, though a few sections feel a bit tedious when you are just trying to figure out where the game wants you to attach a wire next.\n\nWhere the game actually shines is the horror. Huggy Wuggy is genuinely terrifying when he starts chasing you. The vents sequence is pure panic, especially with the sound design turning up the pressure while you are scrambling to escape. It nails that specific type of mascot horror where things that should be innocent look completely warped.\n\nThe main issue is just how short it is. You can finish the first chapter in less than an hour, so it feels more like a proof of concept than a full game. It definitely leaves you wanting more, but it is a solid, quick horror experience if you want a good scare. And although the later chapters definitely play a big role, this is a good introduction into what players can expect from the franchise.",
+                  "truncated": false
                 }
               ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
+            },
             {
-              "claim_id": "ear-a83106",
-              "claim": "Reviewers report encountering bugs during gameplay, specifically mentioning chapter two and glitching or clipping out of the map.",
+              "claim_id": "mid-8a1827",
+              "claim": "Reviewers note that the first chapter is notably short in duration.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -432,37 +428,96 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231494457",
-                  "hours_at_review": 11.7,
+                  "recommendationid": "239939951",
+                  "hours_at_review": 33.9,
+                  "minutes_at_review": 2035,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "i like the game. its nice, decent lore and such but i wouldnt really recommend buying chapter 2. to many bugs, save yourself the money and buy 3-5 lol.",
-                  "truncated": false,
-                  "minutes_at_review": 702
+                  "date": "2026-11-11",
+                  "review_text": "love it, poppy playtime is absolute cinema but poppy playtime chapter 1 was mid since it was so short but the chapters got better, keep it up!",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231446624",
-                  "hours_at_review": 18.3,
+                  "recommendationid": "238941004",
+                  "hours_at_review": 42.6,
+                  "minutes_at_review": 2557,
                   "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "Quite buggy, but overall a good game.",
-                  "truncated": false,
-                  "minutes_at_review": 1098
+                  "date": "2026-10-30",
+                  "review_text": "It's a really good game. It has a good story, it's scary, and it's a lot of fun.\nThe only criticism of Chapter 1 is that it's too short (15–30 Minutes).",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231066560",
-                  "hours_at_review": 9.6,
+                  "recommendationid": "238671083",
+                  "hours_at_review": 20.8,
+                  "minutes_at_review": 1246,
                   "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "all the chapters are amazing and recomended to play but theres some bugs in chapter2 like the cart glitch where when i pulled and walked into the cart i nocliped out the map and sometimes when my grabpack gets stuck it glitches a floating black line but everything else is fine.",
-                  "truncated": false,
-                  "minutes_at_review": 573
+                  "date": "2026-10-27",
+                  "review_text": "Poppy Playtime is honestly pretty damn creepy. The whole setup takes place in an abandoned toy factory, and the game does a great job making you feel completely isolated and on edge the entire time.\n\nThe main mechanic is the Grab Pack, which gives you two long, shootable hands. You use them to grab items from far away, open doors, and route electricity to power up different rooms. The puzzles are decent, though a few sections feel a bit tedious when you are just trying to figure out where the game wants you to attach a wire next.\n\nWhere the game actually shines is the horror. Huggy Wuggy is genuinely terrifying when he starts chasing you. The vents sequence is pure panic, especially with the sound design turning up the pressure while you are scrambling to escape. It nails that specific type of mascot horror where things that should be innocent look completely warped.\n\nThe main issue is just how short it is. You can finish the first chapter in less than an hour, so it feels more like a proof of concept than a full game. It definitely leaves you wanting more, but it is a solid, quick horror experience if you want a good scare. And although the later chapters definitely play a big role, this is a good introduction into what players can expect from the franchise.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-a082b2",
+              "claim": "Reviewers mention that the game features puzzles, chase scenes, and lore to explore.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240178528",
+                  "hours_at_review": 42.1,
+                  "minutes_at_review": 2529,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "i like the puzel and the chase syne",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240070053",
+                  "hours_at_review": 41.6,
+                  "minutes_at_review": 2498,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "the puzzles and chase scenes are really cool (:",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-ace5b4",
+              "claim": "Reviewers describe the gameplay as involving puzzle-solving and exploration of the environment.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "238692770",
+                  "hours_at_review": 93.9,
+                  "minutes_at_review": 5635,
+                  "voted_up": true,
+                  "date": "2026-10-27",
+                  "review_text": "What is there to be said about this game? Poppy Playtime is a rollercoaster of an experience - it is frankly impossible to describe, and to the general audience, they might not even believe me if I told them what this game was really about. Yet, while many people seem to be dead set on this game being complete garbage, what you'll actually find in Poppy Playtime is an admittedly inconsistent and flawed, yet extremely fascinating game, slowly weaving a deeply disturbing yet beautiful tale, and brimming with interesting scares, mechanics, and characters that more often than not make a game that ultimately deserves to be the phenomenon that it is. \r\n\r\nLet me make one thing clear, though - this game is not for everyone, and there are a lot of things in this game that could very well turn someone off. At its core, this game is a puzzle/horror game with mild stealth elements. If you do not like story games and/or doing lots and lots of puzzle solving, you will not enjoy this game. If you do not like exploration, finding scraps of story hidden around the environment and piecing together a larger narrative, you will not like this game. Despite its inherent mass appeal, this game is not built for everyone, and its important to set some expectations if you decide to give it a try.\r\n\r\nThat also being said, the game itself is imperfect. Extreme inconsistencies between chapters, both graphically and technically, and a struggle to balance all of its moving parts and elements permeate the entire experience. There is a very clear point in the game where development conditions shifted drastically, resulting in a major narrative seam. On top of all of this, there are many moments where the puzzles do not land, characters and ideas that go extremely underdeveloped, and moments of potentially frustrating game design that might make you wonder why I'd ever recommend this to anyone!\r\n\r\nThe truth is, I recommend this game because I believe that there is something truly special to be found…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238671083",
+                  "hours_at_review": 20.8,
+                  "minutes_at_review": 1246,
+                  "voted_up": true,
+                  "date": "2026-10-27",
+                  "review_text": "Poppy Playtime is honestly pretty damn creepy. The whole setup takes place in an abandoned toy factory, and the game does a great job making you feel completely isolated and on edge the entire time.\n\nThe main mechanic is the Grab Pack, which gives you two long, shootable hands. You use them to grab items from far away, open doors, and route electricity to power up different rooms. The puzzles are decent, though a few sections feel a bit tedious when you are just trying to figure out where the game wants you to attach a wire next.\n\nWhere the game actually shines is the horror. Huggy Wuggy is genuinely terrifying when he starts chasing you. The vents sequence is pure panic, especially with the sound design turning up the pressure while you are scrambling to escape. It nails that specific type of mascot horror where things that should be innocent look completely warped.\n\nThe main issue is just how short it is. You can finish the first chapter in less than an hour, so it feels more like a proof of concept than a full game. It definitely leaves you wanting more, but it is a solid, quick horror experience if you want a good scare. And although the later chapters definitely play a big role, this is a good introduction into what players can expect from the franchise.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
@@ -473,275 +528,21 @@
       }
     },
     {
-      "bucket": "mid",
-      "label": "20-100h",
-      "hours_range": "20-100 hours",
-      "pool_n": 352,
-      "pct_positive": 94.0,
-      "muted": false,
-      "n_note": null,
-      "summary": "Players report technical friction including heavy storage requirements and boss fight bugs.",
-      "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "mid-c7b01c",
-              "claim": "Reviewers report encountering bugs and glitches during the Doey boss fight.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231719132",
-                  "hours_at_review": 22.3,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Ok i LOVE this game so muhc only 1 complaint- I KEPT GLITCHING IN DOEYS BOSS FIGHT! apart from that i really love this game!",
-                  "truncated": false,
-                  "minutes_at_review": 1340
-                },
-                {
-                  "recommendationid": "230735832",
-                  "hours_at_review": 36.2,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Games broken. Keep getting launched through the ceiling out of nowhere while trying to fight Doey. Can't complete the boss fight cause it happens every single time no matter what I do",
-                  "truncated": false,
-                  "minutes_at_review": 2174
-                },
-                {
-                  "recommendationid": "230696280",
-                  "hours_at_review": 32.5,
-                  "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "this game played very well its so good have encountered some glitches like one where in the doey bossfight the gravity changes i call it the doey newton glitch ima report it but the rest of the games are just absolute cinema 5 stars",
-                  "truncated": false,
-                  "minutes_at_review": 1951
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-7b5608",
-              "claim": "Reviewers note that the game requires a significant amount of storage space.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231148168",
-                  "hours_at_review": 27.5,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "I dont have enough disk space and that pisses me off, why",
-                  "truncated": false,
-                  "minutes_at_review": 1651
-                },
-                {
-                  "recommendationid": "230788503",
-                  "hours_at_review": 50.7,
-                  "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": "this game made me learn to never ever trust a fart while playing a horror game 9/10 very fun but takes up ALOT of storge space.\r\nstill, very good game, and a very good to play when constipated, better then laxitives (from pesonal experience)",
-                  "truncated": false,
-                  "minutes_at_review": 3044
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-5f4382",
-              "claim": "Reviewers state that chapter 4 experiences performance lag.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231637257",
-                  "hours_at_review": 22.2,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "It's a pretty fun puzzle game with some really neat lore if you get into it. However, I really do need to stress you need to actually care about the lore, or really like it's puzzle mechanics to get a lot of fun out of this game. I cannot imagine playing this game and not caring about the lore since that's most of what makes it worth playing!! \r\n\r\nAnyways, Chapter 1-2 are decent, Chapter 3 is GREAT in terms of puzzles, worldbuilding, and vibes, though should've done more with the villain. Chapter 4 has amazing lore and story and ok puzzles. \r\n\r\nChapter 5 has the worst gameplay and pacing, but again, good lore and VERY interesting concepts and locations, it is simply held back by the pacing and awful puzzles. \r\n\r\nOverall, I would recommend it if you have the money to spare and enjoy a good mascot horror game with puzzle elements. I found no issues with any chapter on max settings except for chapter 2, which was a launch and sizing issue. I did not softlock once.",
-                  "truncated": false,
-                  "minutes_at_review": 1331
-                },
-                {
-                  "recommendationid": "230532156",
-                  "hours_at_review": 91.4,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "very fun, should totally buy.\r\nchapter 3 and 2 is very scary.\r\nchapter 5 is super fun, buy all chapters.\r\nchapter 4 is very laggy and wierd but its worth to buy",
-                  "truncated": false,
-                  "minutes_at_review": 5484
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 7,
-        "cited_recommend": 5,
-        "divergence_p": 0.0618,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 62,
+      "pool_n": 53,
       "pct_positive": 100.0,
       "muted": false,
       "n_note": null,
-      "summary": "Long term players praise the story and chase scenes despite complex puzzles and technical crashes.",
+      "summary": "Long-term players reiterate the brief nature of the experience.",
       "themes": [
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "vet-741467",
-              "claim": "Reviewers note that puzzles can be complicated and confusing.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230725095",
-                  "hours_at_review": 235.6,
-                  "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": "This review is for Poppy Playtime overall. It is my favorite and go-to game, especially when I have put 233 hours into it. Although, I would minus out the long pauses because there are some checkpoints I do not want to repeat if it doesn't autosave at the right moment. \n\nThis is a fun, immersive, survival horror, mascot game. I recommend it for anyone who enjoys these types of games and is willing to spend the money to have them in their library. The price varies from each chapter, which doesn't bother me because I understand the hard work the developers have to go through to create these high quality graphics. \n\nI enjoy the puzzles throughout the chapters, and they can be a little complicated if you don't know what you're doing. Checking YouTube videos can help you in that department if you get stuck like I have been, or in the discussion boards. \nMajority of the characters are likeable, and some you love to hate them. You'll know which ones as you progress in the DLC's. And I absolutely love the character designs, The Prototype especially because I like clowns and jesters. The backstories for the characters are actually sad, but only a small few I have no remorse for.\n\nI love the overall plot of the games and adore the theme. The scares are minimal in my opinion. Jump scares are mostly from getting caught in chases, or like me, get the life scared out of you from simple things like a blast of steam. You can laugh at that, as it got me multiple times in Chapter 4: Safe Haven, and it has happened in Chapter 2: Fly in a Web.\n\nI suggest trying this game out. 8.5/10 Rating.",
-                  "truncated": false,
-                  "minutes_at_review": 14133
-                },
-                {
-                  "recommendationid": "229603512",
-                  "hours_at_review": 105.8,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "i l.iked the game but the chase scenes were a lot and some puzzles were hard\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 6347
-                },
-                {
-                  "recommendationid": "228471538",
-                  "hours_at_review": 107.3,
-                  "voted_up": true,
-                  "date": "2026-06-21",
-                  "review_text": "its very creative and inspirational and for a first game and only about 30 minutes its really good its scary fun and sometimes confusing but in a good way and it fits the eary scary abandoned vibes and its the greatest of the fnaf succesors (im not good at spelling) but over all its a great game and its my fav horror game franchise of all time and i recommend this game to people who like horror games and over all i rate this 5 stars",
-                  "truncated": false,
-                  "minutes_at_review": 6439
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-069e08",
-              "claim": "Reviewers mention technical issues, bugs, and crashes occurring in specific chapters.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 4,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230220904",
-                  "hours_at_review": 202.4,
-                  "voted_up": true,
-                  "date": "2026-07-11",
-                  "review_text": "huggy wuggys come back in chapter 4 and 5 was grate and i love the grab pack idea i consider poppy playtime to be one of the best  chapter games ever but the glitch in chapter 3 and 4 need some work and the chase scenes in chapter 5 also need some work like in chapter 3 i spent 2 hours in the part were you have to breck the battery case by draping it of the ledge but it wouldn't breck!! mob entertainment pleas fix this but besides that its a good game recommend for players 13 and up in my opinion:)",
-                  "truncated": false,
-                  "minutes_at_review": 12142
-                },
-                {
-                  "recommendationid": "229552860",
-                  "hours_at_review": 226.9,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "Good game but chapter 4 buggy",
-                  "truncated": false,
-                  "minutes_at_review": 13615
-                },
-                {
-                  "recommendationid": "227545708",
-                  "hours_at_review": 158.2,
-                  "voted_up": true,
-                  "date": "2026-06-09",
-                  "review_text": "Everything here in this game is very good but chapter 3 just crashes. tried so many things, couldn't continue.",
-                  "truncated": false,
-                  "minutes_at_review": 9489
-                },
-                {
-                  "recommendationid": "227426960",
-                  "hours_at_review": 103.1,
-                  "voted_up": true,
-                  "date": "2026-06-07",
-                  "review_text": "great story to kill prototype and chapter 4 was buggy it was still a great game",
-                  "truncated": false,
-                  "minutes_at_review": 6188
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-ccaf14",
-              "claim": "Reviewers describe the game as featuring many chase scenes.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230465128",
-                  "hours_at_review": 111.8,
-                  "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "theres chaces puzzles very humor hard fun game\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 6708
-                },
-                {
-                  "recommendationid": "229603512",
-                  "hours_at_review": 105.8,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "i l.iked the game but the chase scenes were a lot and some puzzles were hard\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 6347
-                },
-                {
-                  "recommendationid": "227733310",
-                  "hours_at_review": 195.9,
-                  "voted_up": true,
-                  "date": "2026-06-11",
-                  "review_text": "the game was really fun with the chase seense and boss fights",
-                  "truncated": false,
-                  "minutes_at_review": 11754
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-c260da",
-              "claim": "Reviewers highlight that the game features collectible items and a story-driven campaign.",
+              "claim_id": "vet-0548c9",
+              "claim": "Reviewers describe the game as short, with some sections feeling simple or comparable to a demo.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -749,47 +550,74 @@
               },
               "citations": [
                 {
-                  "recommendationid": "229973791",
-                  "hours_at_review": 207.6,
+                  "recommendationid": "237803266",
+                  "hours_at_review": 131.8,
+                  "minutes_at_review": 7905,
                   "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "Fun replayable from the collectables and the story is really cool\r\nits always fun to try and predict what happens next in this gaint toy factory with creatures by harley saywer!\r\nmy favourite game since it realesed!\r\n(chapter 5 was a quality step-up from 4 still doesnt come close (in my opinion) to the fantastic chapter 3 lighting and atmosphere)",
-                  "truncated": false,
-                  "minutes_at_review": 12455
+                  "date": "2026-10-15",
+                  "review_text": "Poppy Playtime is a creepy, fun little horror game with a great atmosphere. Exploring the abandoned toy factory is genuinely unsettling, and the GrabPack puzzles add a clever twist to the usual hide-and-seek gameplay. Huggy Wuggy is an instantly memorable monster, and the game does a nice job building suspense as you uncover what happened at Playtime Co.\n\nIt’s fairly short, and some sections can feel a bit simple, but the setting and scares make it worth playing—especially if you enjoy puzzle-based horror.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229535936",
-                  "hours_at_review": 136.7,
+                  "recommendationid": "237686869",
+                  "hours_at_review": 114.2,
+                  "minutes_at_review": 6852,
                   "voted_up": true,
-                  "date": "2026-07-03",
-                  "review_text": "This game is amazing and so are all the other poppy playtime chapters I like how long they are and the story, If you are a fan of horror or puzzle story or just gameplay this game would be good for you. (all chapters)",
-                  "truncated": false,
-                  "minutes_at_review": 8204
+                  "date": "2026-10-14",
+                  "review_text": "I will review each chapter on their steam page, this is the first one. I think this is a good introduction to the game, and I can see this being scary as well. This is quite short though, it's more like a demo for the other chapters. Poppy Playtime is a puzzle game, so expect there to be a lot of puzzles throughout all the chapters. If you don't like puzzles, then this isn't the game for you. This chapter has one of the best chase scenes of these chapters, so that's a good thing. Chapter 1 has the weakest story of all of them, but that leaves a lot of mystery for the other chapters to solve. Overall, it is a good introduction and you should definitely play it. Especially since it's free. Then if you enjoyed this, you can get the other chapters. They get better than this one.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-d673d232",
+          "text": "One reviewer says that in chapter 4, it gets hella bright in some areas.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239900249",
+            "hours_at_review": 112.7,
+            "minutes_at_review": 6762,
+            "voted_up": true,
+            "date": "2026-11-11",
+            "review_text": "Best game ever including the dlcs. One little problem. In chapter4, it gets hella bright in some areas. But none other than that, pretty amazing. I will be able to check out five soon and of course I will wait for Chapter soon! Keep up the Good work Mob!",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-4db0c782",
+          "text": "One reviewer says the GrabPack hands solve puzzles for you.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "238654844",
+            "hours_at_review": 209.7,
+            "minutes_at_review": 12584,
+            "voted_up": true,
+            "date": "2026-10-27",
+            "review_text": "Don't usually review games on Steam, but I'll make an acceptation for Poppy. I first encountered this game a little after the first chapter's release, through my little brother of course, and brainrot youtube videos that led me to believe this game was something entirely different from what it really is. Once I played it at some point, a little before the second chapter was published, I instantly fell in love with it.\nChapter 1 is a great introduction. Great mechanics with the GrabPack hands, Poppy Playtime's saving grace---the fun, gummy hands that solve puzzles for you! Cool concept, little hints that pay off later in the series, through posters and VHS tapes, and a terrifying antagonist by the equally terrifying name... Huggy Wuggy... \nHis vent chase is by far the best chase sequence in the series, maybe even topping a specific sequence toward the end of the latest chapter. \nOverall, great demo! Glad it's free now.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 11,
-        "cited_recommend": 11,
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 2,
+        "cited_recommend": 2,
         "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1222,
-    "steam_total_reviews": 61654,
+    "pool_n": 1200,
+    "steam_total_reviews": 63028,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1721470/00ca34a0c863a8d86c6582904249216d6aa263bd/header.jpg?t=1770858202",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1721470/2d2d1f622b49c8589d67d294e790507715169220/capsule_231x87.jpg?t=1770858202",
-    "grid": "https://cdn2.steamgriddb.com/grid/9bbd2d0d04fba4354ec2b7e3556db142.png"
   }
 }

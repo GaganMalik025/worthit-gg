@@ -1,51 +1,62 @@
 {
   "appid": "236390",
   "game_name": "War Thunder",
-  "generated_at": "2026-08-10T09:59:17Z",
+  "generated_at": "2026-11-18T10:24:30Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/236390/65885881b96806d55fea45e130233fdafd78b129/header.jpg?t=1784211516",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/236390/104c3c519fdb3ba92fbe2348ebfadcebf2a7ee8f/capsule_231x87.jpg?t=1784211516",
+    "grid": "https://cdn2.steamgriddb.com/grid/5f82fdf76a0ac0959b3c8327b1f63212.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 15,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
-    "word": "Skip",
-    "tagline": "A sweeping military vehicle combat game bogged down by an exhausting grind.",
+    "word": "Wait",
+    "tagline": "Massive vehicular combat burdened by an endless and punishing grind.",
     "for_you_if": [
-      "you enjoy immersive vehicle combat across land and air",
-      "you can pace yourself through a slow progression system"
+      "you love sprawling vehicular combat across land, sea, and air",
+      "you enjoy mastering complex military machinery over time",
+      "you can pace yourself through a massive progression tree"
     ],
     "not_for_you_if": [
-      "you want balanced matches at top tiers",
-      "you refuse heavy microtransactions to unlock vehicles",
-      "you need external launchers to function without errors"
+      "you want to reach high tiers without a massive grind",
+      "you mind facing heavy pay advantages in matches",
+      "you struggle with confusing menus and steep learning curves"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 44,
-      "pct_positive": 43.2,
+      "pool_n": 55,
+      "pct_positive": 40.0,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 543,
-      "pct_positive": 77.0,
+      "pool_n": 519,
+      "pct_positive": 83.0,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 427,
-      "pct_positive": 65.6,
+      "pool_n": 468,
+      "pct_positive": 74.1,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 983,
-      "pct_positive": 42.0,
+      "pool_n": 902,
+      "pct_positive": 54.4,
       "muted": false
     }
   ],
@@ -55,64 +66,49 @@
       "type": "segmentation",
       "direction": null,
       "shape": "rise_then_fall",
-      "sentence": "Player sentiment peaks briefly among early players before dropping sharply among veteran participants.",
+      "sentence": "Positive sentiment peaks among early players before declining significantly among long-term participants.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 43.2,
-            "pool_n": 44
+            "pct_positive": 40.0,
+            "pool_n": 55
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 77.0,
-            "pool_n": 543
+            "pct_positive": 83.0,
+            "pool_n": 519
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 65.6,
-            "pool_n": 427
+            "pct_positive": 74.1,
+            "pool_n": 468
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 42.0,
-            "pool_n": 983
+            "pct_positive": 54.4,
+            "pool_n": 902
           }
         ],
         "shape": "rise_then_fall",
-        "low_cohort": "veteran",
-        "low_cohort_label": "over 100 hours",
-        "low_pct_positive": 42.0,
-        "low_pool_n": 983,
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 40.0,
+        "low_pool_n": 55,
         "high_cohort": "early",
         "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 77.0,
-        "high_pool_n": 543,
-        "gap_pts": 35.0,
+        "high_pct_positive": 83.0,
+        "high_pool_n": 519,
+        "gap_pts": 43.0,
         "peak_cohort": "early",
-        "peak_pct_positive": 77.0,
+        "peak_pct_positive": 83.0,
         "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 42.0,
-        "drop_after_peak_pts": 35.0
-      }
-    },
-    {
-      "flag_id": "recency_shift",
-      "type": "recency",
-      "direction": "declined",
-      "shape": null,
-      "sentence": "Recent reviews reflect a noticeable drop in positive sentiment compared to the lifetime average.",
-      "evidence": {
-        "recent_pool_pct_positive": 56.6,
-        "recent_pool_n": 1997,
-        "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 72.1,
-        "steam_total_reviews": 321447,
-        "delta_pts": -15.5
+        "post_peak_low_pct_positive": 54.4,
+        "drop_after_peak_pts": 28.6
       }
     }
   ],
@@ -121,173 +117,94 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 44,
-      "pct_positive": 43.2,
+      "pool_n": 55,
+      "pct_positive": 40.0,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers highlight an extremely slow progression grind, heavy pay-to-win elements, and launch errors on specific platforms.",
+      "summary": "New players face steep learning curves, confusing menus, and an intimidating grind right from the start.",
       "themes": [
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ref-9522de",
-              "claim": "Reviewers describe the game's economy and vehicle research progression as extremely slow, difficult, and demanding a massive time investment or premium purchases.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "230945143",
-                  "hours_at_review": 1.0,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "the grind goes for thousands of hours and the packs cost more then a average house yet im addicted",
-                  "truncated": false,
-                  "minutes_at_review": 59
-                },
-                {
-                  "recommendationid": "230500734",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Search vehicles and developing in this game is very difficult and very boring without Premium",
-                  "truncated": false,
-                  "minutes_at_review": 43
-                },
-                {
-                  "recommendationid": "230655523",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "So I've sunk enough time and money into this game to start a successful company by now. (it doesnt show up on steam as i did in in the gaijin launcher version) absolutely do not play this game. I can count the number of times i have genuinely had fun in this game on one hand. It lures you in with the promise of badass military vehicles, but good luck getting them without coughing up the money for premium, and then having absolutely no fun in the battles. even with premium, it still takes a painfully long time even to get to the first tier of jets. This isnt a game meant for you to enjoy, its for Gaijin to make money. unless you have thousands of dollars your willing to give to a greedy corporation in exchange for vehicles that get instantly deleted in battle, dont play this game.",
-                  "truncated": false,
-                  "minutes_at_review": 28
-                },
-                {
-                  "recommendationid": "229292328",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "the game has one of the worst grinds of any game I have ever played. Its all simply profit, with little to no care for the players or player base. There are ridiculously OP vehicles only available for GE or pack vehicles, that will inevitably be nerfed when sales of the vehicle decline and it's outlived its profit capabilities. There is also an atrocious amount of copy-paste vehicles, with the only difference being anime skins and an $80 price tag. That wouldn't be terrible if it wasn't for the fact that the anime girls, skins, and designs for those pack vehicles are almost entirely AI generated. Its all a cheap gimmick to get money. Gaijin as a whole is money obsessed and has created a disgusting, abhorrent business model.",
-                  "truncated": false,
-                  "minutes_at_review": 20
-                },
-                {
-                  "recommendationid": "230283804",
-                  "hours_at_review": 2.0,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "I researched one tank. I accidentally earned a bachelor's degree.",
-                  "truncated": false,
-                  "minutes_at_review": 118
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-82887e",
-              "claim": "Reviewers report that the game is heavily pay-to-win, with powerful or exclusive vehicles locked behind expensive paywalls.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 5
-              },
-              "citations": [
-                {
-                  "recommendationid": "231149902",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "this game is so pay to win it hurts, top tier is ruined by all of these premium Russian tanks, its so bad i cant even enjoy the game anymore",
-                  "truncated": false,
-                  "minutes_at_review": 18
-                },
-                {
-                  "recommendationid": "230890877",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "It's kind of fun to play, but the P2W is strong with this game. Too many vehicles locked behind paywalls for me, and a good portion of those vehicles appear to be far more powerful than the ones you can unlock by playing.",
-                  "truncated": false,
-                  "minutes_at_review": 41
-                },
-                {
-                  "recommendationid": "230655523",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "So I've sunk enough time and money into this game to start a successful company by now. (it doesnt show up on steam as i did in in the gaijin launcher version) absolutely do not play this game. I can count the number of times i have genuinely had fun in this game on one hand. It lures you in with the promise of badass military vehicles, but good luck getting them without coughing up the money for premium, and then having absolutely no fun in the battles. even with premium, it still takes a painfully long time even to get to the first tier of jets. This isnt a game meant for you to enjoy, its for Gaijin to make money. unless you have thousands of dollars your willing to give to a greedy corporation in exchange for vehicles that get instantly deleted in battle, dont play this game.",
-                  "truncated": false,
-                  "minutes_at_review": 28
-                },
-                {
-                  "recommendationid": "229292328",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "the game has one of the worst grinds of any game I have ever played. Its all simply profit, with little to no care for the players or player base. There are ridiculously OP vehicles only available for GE or pack vehicles, that will inevitably be nerfed when sales of the vehicle decline and it's outlived its profit capabilities. There is also an atrocious amount of copy-paste vehicles, with the only difference being anime skins and an $80 price tag. That wouldn't be terrible if it wasn't for the fact that the anime girls, skins, and designs for those pack vehicles are almost entirely AI generated. Its all a cheap gimmick to get money. Gaijin as a whole is money obsessed and has created a disgusting, abhorrent business model.",
-                  "truncated": false,
-                  "minutes_at_review": 20
-                },
-                {
-                  "recommendationid": "230826966",
-                  "hours_at_review": 1.4,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "there are too many p2w vehicles and the new update mostly added premiums and the 10.3  BMPT was extremely overpowered and the \"useful actions\" is very dumb basically forcing you to just get a single kill and then fly around the airfied before you get it then land and repeat\n",
-                  "truncated": false,
-                  "minutes_at_review": 87
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-fae1e7",
-              "claim": "Reviewers report that researching vehicles and progressing through the game takes a very long time without paying.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230500734",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Search vehicles and developing in this game is very difficult and very boring without Premium",
-                  "truncated": false,
-                  "minutes_at_review": 43
-                },
-                {
-                  "recommendationid": "230655523",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "So I've sunk enough time and money into this game to start a successful company by now. (it doesnt show up on steam as i did in in the gaijin launcher version) absolutely do not play this game. I can count the number of times i have genuinely had fun in this game on one hand. It lures you in with the promise of badass military vehicles, but good luck getting them without coughing up the money for premium, and then having absolutely no fun in the battles. even with premium, it still takes a painfully long time even to get to the first tier of jets. This isnt a game meant for you to enjoy, its for Gaijin to make money. unless you have thousands of dollars your willing to give to a greedy corporation in exchange for vehicles that get instantly deleted in battle, dont play this game.",
-                  "truncated": false,
-                  "minutes_at_review": 28
-                },
-                {
-                  "recommendationid": "230283804",
-                  "hours_at_review": 2.0,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "I researched one tank. I accidentally earned a bachelor's degree.",
-                  "truncated": false,
-                  "minutes_at_review": 118
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ref-c14065",
-              "claim": "Reviewers describe vehicle balancing issues, specifically citing overpowered planes in ground battles and dominant premium or Russian vehicles.",
+              "claim_id": "ref-65b145",
+              "claim": "Reviewers describe the progression system as an extremely long and slow grind, requiring significant time investment or financial spending to advance.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239811623",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 12,
+                  "voted_up": true,
+                  "date": "2026-11-09",
+                  "review_text": "friends i have 3000 hours through launcher and this is pain grinding simulator\ni recommend the game but if you want top tier it will take you like 2 or more years\nmy ign\niWBL0SY\npros\nyou can play with friend\ntanks\naviation\n\ncons \nlong grind",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238205935",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 61,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "I don’t have many hours on steam, but I have a few hundred on the regular Gaijin launcher. This game is complete and utter bullshit. Once you reach rank 4 or 5, it becomes basically impossible to progress unless you want to swipe a credit card. I should know, because a kindly friend spent $300 total on things for me, and that’s half the reason I still play. I don’t recommend this game, especially if you have issues already with addictions.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238442694",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 98,
+                  "voted_up": true,
+                  "date": "2026-10-24",
+                  "review_text": "1. Spawn into game.\n2. Drive for 4 minutes.\n3. Get one shot be someone you never saw.\n4. Respawn.\n5. Get bombed.\n6. Respawn again.\n7. Realize you have no sliver lions.\n8. Grind for 3 hours.\n9. Unlock a vehicle.\n10. Realize you need 300,000 RP for the next one.\n11. Repeat until your emotionally damaged.\n\n10/10 would uninstall and reinstall again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239289593",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 115,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "I have wasted too many hours playing this game. The rewards when playing ground is wayyyyyy to slow. I do not recomend to new players. Its like having a second job.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-62d7e2",
+              "claim": "Reviewers note that the initial control calibration and menu navigation are confusing and difficult to set up.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "238112262",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 24,
+                  "voted_up": false,
+                  "date": "2026-10-19",
+                  "review_text": "I waited 8 hours for this game to download. Once I started it forced me to calibrate my HOTAS via an assistant. Hold left on axis for 1 sec. (1 minute later). hold right on axis for 1 sec (registers instantly). in the middle it stops registering at all. I stop it and start the tutorial for mouse and keyboard. once finished i am forced into a match i do not want to play. after pressing ESC and hitting keys on my keyboard in panic I am able to stop this nonsense, go into the settings and set the axis of my HOTAS in less than 5 seconds easily. NOw i want to select the simplest of all helicopters becuase its the only reason I downloaded the game., Unfortunately I have to buy it for 5 dollar or something. \n\nthe only thing I wanted to test is if it has enjoyable helicopter physics. I guess I'll never find out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239722929",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 115,
+                  "voted_up": true,
+                  "date": "2026-11-08",
+                  "review_text": "I haven't played much of this game, but as far as I can tell, it's pretty fun. The tank class is easy to learn, and very fun if you get the right opponents, but if you get good players, consider yourself done for, there is a lot of open space on the maps, and it's very difficult to maneuver yourself out of tricky situations. As for the Aviation class, it's a lot better. The dogfights are long enough that you still get that great feeling of winning, but short enough to where it doesn't take 10 minutes. I like the fact that you can destroy enemy ground vehicles for a little bit of xp points for your crew. The aiming system is very difficult to learn, but that does mean that at the lower levels you don't get hit much. Although the menu's are very confusing in some ways and difficult to learn how to navigate, I don't really mind, because to me that's part of the fun. The high resolution packs don't really do anything though, they do add a little bit of resolution, but just set your graphics to a higher setting. If you have the space, try it out though.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-aa228a",
+              "claim": "Reviewers describe matches as difficult for new players, resulting in quick deaths and being destroyed by experienced opponents without seeing them.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 1,
@@ -295,86 +212,107 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231110180",
-                  "hours_at_review": 1.3,
+                  "recommendationid": "238140776",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 60,
                   "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "this games economy is bad and the balancing is bad and unfair never play the game planes are too overpowered in ground battles.",
-                  "truncated": false,
-                  "minutes_at_review": 79
+                  "date": "2026-10-20",
+                  "review_text": "one hour into the game and i can already tell this game is going to make me disassemble my computer and feed it to my dog, its basically if you dont start out the game with perfect game knowledge you get blown to pieces instantly and the mechanic of if your vehicle is destroyed then you cant use it anymore and if you run out you cant play anymore sounds cool until you get torn apart 2 minutes into every spawn.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231042135",
-                  "hours_at_review": 0.2,
+                  "recommendationid": "238442694",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 98,
                   "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "I have been playing war thunder for years, however I do not play on steam. I do, however, have an amount of hours on the game that some would call “Deeply concerning”. All told, I think it is a good game, but recent actions by Gaijin have forced me to write this. I appreciate and enjoy the base-game, but Gaijin is killing their own game without seeing it. Things like the Russian Bias, the fact that premiums are always better, and that they pretty much only work on top tier air is too much. I will give an example: For the 2026 April Fool's event, they added a mode called Nuclear Thunder, which was incredibly fun. The way you played was by spending in-game currency, silver lions, to spawn top-tier jets, even if you didn’t have them. As you can imagine, this appealed to lower-tier players, so we too could experience jets. You can also imagine the excitement I had when I learned they were bringing it back. However they made it so that you had to have the top tier aircraft in order to participate. This is extremely disappointing, but I then looked and realized something even worse. There was only one premium capable of playing the battle rating required for Nuclear Thunder, and its nation: Russia. It is almost like Gaijin wants to alienate the playerbase. I truly believe the game will die if this behavior continues, and hope that the devs can see the light. They are trying to make it so that, in order to have fun, you must spend money to buy broken vehicles. They also refuse to be creative, in that the new vehicles are almost all premium, copy-paste, goated vehicles. The players now have one course of action left. We will rise up. We will force them to make the game playable. But above all, we must not bow to their standards. I pride myself on never having bought a premium or premium subscription. I request all of you to follow in this, so that we may force their hand. This is simply the only option.",
-                  "truncated": false,
-                  "minutes_at_review": 11
+                  "date": "2026-10-24",
+                  "review_text": "1. Spawn into game.\n2. Drive for 4 minutes.\n3. Get one shot be someone you never saw.\n4. Respawn.\n5. Get bombed.\n6. Respawn again.\n7. Realize you have no sliver lions.\n8. Grind for 3 hours.\n9. Unlock a vehicle.\n10. Realize you need 300,000 RP for the next one.\n11. Repeat until your emotionally damaged.\n\n10/10 would uninstall and reinstall again.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230826966",
-                  "hours_at_review": 1.4,
+                  "recommendationid": "238888427",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 114,
                   "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "there are too many p2w vehicles and the new update mostly added premiums and the 10.3  BMPT was extremely overpowered and the \"useful actions\" is very dumb basically forcing you to just get a single kill and then fly around the airfied before you get it then land and repeat\n",
-                  "truncated": false,
-                  "minutes_at_review": 87
+                  "date": "2026-10-30",
+                  "review_text": "War thunder is the type of game i genuinely despise, awful 70 dollar digital vehicles, a greedy company behind it and horrible updates, yet i still play it and i have absolutely no idea why, this game fills me with nothing but anger and hatred. but how does a new player see this game? well they first log on expecting cool tiger tanks, abrams and more but are then greeted with the massive tech tree, they think \"surely it cant be that hard right?\" so they load into their first match and immediatly get obliterated by a seal clubbing locust from 1km away but they keep playing anyway, why? they NEED to unlock that beautiful top tier tank ive been chasing after for years but they keep DYING and DYING to that damn locust, so what do they do? they fall into gaijins trap by buying a shiny top tier premium to get rid of that damn locust, so they buy that vehicle load into a match and are greeted with even more level 100s and then they get obliterated and obliterated over and over again until they quit.\n\nNext, onto the topic of premiums, i have bought MANY premiums on this game since i have the money but theres only a certain amount of joy u can get out of that shiny new premium before the joy goes away and the grind gets to you, recently i bought the Challenger DS, it was fun for like the first couple games and then i started to get obliterated over and over by t72s, leopards and more while i did get to 6.0 within the first day i still wish i could have gotten a refund because this tank genuinely infuriates me.\n\nAnyway do i reccomend this game? absolutely not, gaijin just keeps getting greedier as the days go by and its rare u ever see an actual unique vehicle in events or just the tech trees in general, a good event vehicle is one like the AMV or the Scimitar Mk 2 (The scimitar however is fucking garbage but atleast its kind of unique) a bad one is like the recent event vehicle which im pretty sure was just a jadgpanther (sorry if i get it wrong) with some camoflauge. So yea…",
+                  "truncated": true
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ref-98b958",
-              "claim": "Reviewers describe technical issues launching the game through Steam on Mac, requiring them to download the launcher directly from the official website.",
-              "citation_verdict": "negative",
+              "claim_id": "ref-468404",
+              "claim": "Reviewers state that the menus are confusing and poorly organized for navigating game features.",
+              "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
-                "negative": 2
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231530343",
+                  "recommendationid": "240086090",
                   "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Very strange game - total mess from first login... seems that developers try to put more and more stuff there but can't organize it properly. Can't recommend",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239722929",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 115,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "When I tried to launch the war thunder on my M4 iMac and launched it through Steam. The laundry would fail and wouldn’t launching it a file corrupted, and it would do this repeatedly, and it would only launch if I went to the war under website and download the launcher from there and not through Steam, the Steam launcher on Mac is broken.",
-                  "truncated": false,
-                  "minutes_at_review": 14
-                },
-                {
-                  "recommendationid": "230734151",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "I hope I CAN LOGIN MY ACCOUNT IN WAR-THUNDER I GET FROM STEAM BUT NOT ONLY THE ONE GET FROM your OFFICIAL WEB",
-                  "truncated": false,
-                  "minutes_at_review": 19
-                },
-                {
-                  "recommendationid": "230654785",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "wanted to play using an existing account, sadly they force you to use their own launcher if you want sign into an account under them and there is no way to link an account once one is already made. its sad that they have it like this and I was actually intrested in playing the game. I shouldnt have to download the game via their downloader just to sign into an account.",
-                  "truncated": false,
-                  "minutes_at_review": 11
+                  "date": "2026-11-08",
+                  "review_text": "I haven't played much of this game, but as far as I can tell, it's pretty fun. The tank class is easy to learn, and very fun if you get the right opponents, but if you get good players, consider yourself done for, there is a lot of open space on the maps, and it's very difficult to maneuver yourself out of tricky situations. As for the Aviation class, it's a lot better. The dogfights are long enough that you still get that great feeling of winning, but short enough to where it doesn't take 10 minutes. I like the fact that you can destroy enemy ground vehicles for a little bit of xp points for your crew. The aiming system is very difficult to learn, but that does mean that at the lower levels you don't get hit much. Although the menu's are very confusing in some ways and difficult to learn how to navigate, I don't really mind, because to me that's part of the fun. The high resolution packs don't really do anything though, they do add a little bit of resolution, but just set your graphics to a higher setting. If you have the space, try it out though.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-16f08f66",
+          "text": "One reviewer says the rewards when playing ground are way too slow and that it is like having a second job.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239289593",
+            "hours_at_review": 1.9,
+            "minutes_at_review": 115,
+            "voted_up": false,
+            "date": "2026-11-03",
+            "review_text": "I have wasted too many hours playing this game. The rewards when playing ground is wayyyyyy to slow. I do not recomend to new players. Its like having a second job.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-2450c32d",
+          "text": "One reviewer says the game crashes really often in the menu and mid game.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "238746691",
+            "hours_at_review": 1.6,
+            "minutes_at_review": 95,
+            "voted_up": false,
+            "date": "2026-10-28",
+            "review_text": "Cool game on it self but crashes realy often on my system sometimes on the menu and sometimes mid game witch is realy annoying",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 13,
-        "cited_recommend": 4,
-        "divergence_p": 0.27,
+        "cited_reviews": 9,
+        "cited_recommend": 3,
+        "divergence_p": 0.483,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -382,126 +320,117 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 543,
-      "pct_positive": 77.0,
+      "pool_n": 519,
+      "pct_positive": 83.0,
       "muted": false,
       "n_note": null,
-      "summary": "Players encounter matchmaking imbalances and spawn camping while noticing the heavy time or financial investment required for progression.",
+      "summary": "Players encounter frustrating menu navigation and find progression demanding a heavy time commitment.",
       "themes": [
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ear-6abc5a",
-              "claim": "Reviewers report that progressing through tech trees and unlocking higher-tier vehicles requires a significant time investment or spending money.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 4,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231729219",
-                  "hours_at_review": 8.3,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "love the graphics best game ever but tricky to progress and get  new planes tanks and more",
-                  "truncated": false,
-                  "minutes_at_review": 496
-                },
-                {
-                  "recommendationid": "231729130",
-                  "hours_at_review": 4.1,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "super fun i recommend it but it might take a long while til u get to the jets and stuff\n",
-                  "truncated": false,
-                  "minutes_at_review": 248
-                },
-                {
-                  "recommendationid": "231680953",
-                  "hours_at_review": 4.9,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "The game has good foundations when tank games are concerned. If we were to consider the big three tank games, aka World of Tanks, War Thunder, and Armored Warfare, this game by far got its bases the best. However despite having strong foundations with the mechanics and such, i still CANNOT recogmend this game. I've been playing this game since years, despite my low playtime here on steam. I started out on console. Been playing this game since Italy came into the game (which was around 2017).\n\nLet me list the reasons why i cannot recogmend:\n\nThe grind - Been painful for a long time now, however nowadays pretty much all nations have grown large. Back then the grind wasnt that big of an issue since you could choose a smaller nation to grind, however nowadays there are NO small nations anymore. Everything has been bloated with copy-paste vehicles. Even with premium account, and a premium vehicle, it still takes a long time to reach higher tiers. (free to play, upwards of a year to reach your first top tier)\n\nCopy paste vehicles - There are a lot of vehicles that have been added to many nations... of course, realisticly, a lot of nations have bought equipment from other nations, but the amount of copy paste vehicles by now is just hurting the game. There are certain vehicles that basicly every nation has by now. The best example for this is the sherman. All nations have a sherman in at least some shape or form. \n\nNow back to higher tiers - The game is severely imbalanced. Close air-support in ground realistic battles (the mode that you will mostly be playing) has always been an issue. You can bring in a plane for unreasonably small amount of points, and with a plane, the tanks on the ground cannot do much against you, even anti-aircraft players will mostly be at a disadvantage against you. Helicopters are another can of worms that is a similar story, so i wont get into that too deeply.\n\nAI usage - For certain vehicle skins. This is huge. For those who dont know, the deve…",
-                  "truncated": true,
-                  "minutes_at_review": 294
-                },
-                {
-                  "recommendationid": "230294145",
-                  "hours_at_review": 10.3,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "all my friends have thousands of hours in this and i just dont get it, game is decent fun but the time between any progression is far too much. play a different game honestly or even get a degree",
-                  "truncated": false,
-                  "minutes_at_review": 620
-                },
-                {
-                  "recommendationid": "229962249",
-                  "hours_at_review": 9.8,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "Good game but you have to spend so much time or money to unlock modern fighter and tank and its a big negative point",
-                  "truncated": false,
-                  "minutes_at_review": 586
-                },
-                {
-                  "recommendationid": "230683366",
-                  "hours_at_review": 2.6,
-                  "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "Great game! One thing I would like yall to change though is it takes thousands of hours to get modern equipment if you dont pay for them. That is really annoying",
-                  "truncated": false,
-                  "minutes_at_review": 157
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-c798f1",
-              "claim": "Reviewers state that spawn camping and players being matched into high-level uptiered lobbies negatively impact gameplay.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-d876d0",
+              "claim": "Reviewers describe the game as heavily dependent on grinding, with progression taking a long time.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
-                "negative": 3
+                "positive": 3,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "230709666",
-                  "hours_at_review": 15.0,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "This game made me very mad from getting spawn camped, and i was yelling at my monitor and scared my dog\r\n\r\nshe then turned to me and said \"Raise your words, not your voice. for ultimately it is not Thunder, but Rain that lets the garden flourish, as your soul may be.\"\r\n\r\nI then choked on water and got spawncamped, not reccommended.",
-                  "truncated": false,
-                  "minutes_at_review": 901
+                  "recommendationid": "240398251",
+                  "hours_at_review": 15.6,
+                  "minutes_at_review": 933,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "grind is impossible gaijin give me free premium",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229997318",
-                  "hours_at_review": 4.3,
+                  "recommendationid": "239289950",
+                  "hours_at_review": 6.0,
+                  "minutes_at_review": 360,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "it sucks. there are players with hundreds of hours of playtime fighting people that just installed the game. besides the horrible economy and skilless idiots preying on noobs, dont install",
-                  "truncated": false,
-                  "minutes_at_review": 261
+                  "date": "2026-11-03",
+                  "review_text": "If I'm being honest it's in my top 5 worst games ever played. It's horrible and just not fun, even with friends. The entire game is filled with microtransactions and grinding. If you want a good tank or plane then have fun getting it in the next month because the amount of mind numbing grinding is off the charts. You will get more enjoyment jerking off with sand paper and gravel than this game. Don't even get me started on the storage requirement because its storage to worth ratio is a billion to zero.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230804152",
-                  "hours_at_review": 10.1,
+                  "recommendationid": "239231426",
+                  "hours_at_review": 6.2,
+                  "minutes_at_review": 373,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "I love it! You need to grind a lot to get good planes tho so dont download the game and expect planes liek the A-10 or F15 etc. You need to grind for weeks possibly months. Anyway i recomend it its super fun. (Once u donload it there is no going back. There is no running from the snail.) Anyway have fun!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239134255",
+                  "hours_at_review": 4.9,
+                  "minutes_at_review": 295,
                   "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "there needs to be a limit on the uptier. every match has people in it that have twice the level of tanks compared to others. there should be the same level tanks in a match. no 1.7 or 1.3 being uptiered by a 2.0 or a 3.0. it happens so much that its bull. the developers need to fix this because it ruins the playability. having played on console and logged a couple thousand hours on it i can honestly say this trashy game needs that changed. plus fix the spawn camping issues. theres always someone sitting near the spawn locations killing the other team. its ridiculous and there shouldnt be a spawn reveal, there should be a safe zone in the spawn so no one can enter or camp it.",
-                  "truncated": false,
-                  "minutes_at_review": 604
+                  "date": "2026-11-01",
+                  "review_text": "Great vehicle physics and realism, but the grind is too much. Progression feels intentionally miserable to force spending. Poor tutorials. Fantastic simulator ruined by corporate greed. I'm no longer playing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239122803",
+                  "hours_at_review": 8.4,
+                  "minutes_at_review": 502,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "great gameplay but hella grindy so expect to spend 8 hours getting one plane",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-e90ac3",
-              "claim": "Reviewers describe experiencing issues with spawn camping where opposing players wait near spawn locations to eliminate newly spawned teams.",
+              "claim_id": "ear-68f0b1",
+              "claim": "Reviewers describe the user interface and menus as confusing or terrible to navigate.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239319178",
+                  "hours_at_review": 2.4,
+                  "minutes_at_review": 145,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "opened the game and started the tutorial it seemed funat first then i started playing against real players it wasn't fun AT ALL and then the queue lines were taking forver the UI in the start menu is shit i couldn't understand it so i stoped playing and some ppl advised me to do so bad game don't play",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239459747",
+                  "hours_at_review": 14.9,
+                  "minutes_at_review": 896,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "Everything costs golden eagles, which you have to purchase, while they give you silver lions. The UI is terrible. I haven't played this in over 2 years and I now see why. Terrible game, and boring.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239127987",
+                  "hours_at_review": 4.1,
+                  "minutes_at_review": 245,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "its a great game but the menu and research thingi is a bit confuzing",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-00e8b8",
+              "claim": "Reviewers state that the game lacks the ability to transfer accounts from consoles to PC.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -509,77 +438,64 @@
               },
               "citations": [
                 {
-                  "recommendationid": "230709666",
-                  "hours_at_review": 15.0,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "This game made me very mad from getting spawn camped, and i was yelling at my monitor and scared my dog\r\n\r\nshe then turned to me and said \"Raise your words, not your voice. for ultimately it is not Thunder, but Rain that lets the garden flourish, as your soul may be.\"\r\n\r\nI then choked on water and got spawncamped, not reccommended.",
-                  "truncated": false,
-                  "minutes_at_review": 901
-                },
-                {
-                  "recommendationid": "230804152",
-                  "hours_at_review": 10.1,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "there needs to be a limit on the uptier. every match has people in it that have twice the level of tanks compared to others. there should be the same level tanks in a match. no 1.7 or 1.3 being uptiered by a 2.0 or a 3.0. it happens so much that its bull. the developers need to fix this because it ruins the playability. having played on console and logged a couple thousand hours on it i can honestly say this trashy game needs that changed. plus fix the spawn camping issues. theres always someone sitting near the spawn locations killing the other team. its ridiculous and there shouldnt be a spawn reveal, there should be a safe zone in the spawn so no one can enter or camp it.",
-                  "truncated": false,
-                  "minutes_at_review": 604
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-f36ddc",
-              "claim": "Reviewers note that unlocking high-tier or modern vehicles requires spending money or investing a significant amount of time.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231680953",
-                  "hours_at_review": 4.9,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "The game has good foundations when tank games are concerned. If we were to consider the big three tank games, aka World of Tanks, War Thunder, and Armored Warfare, this game by far got its bases the best. However despite having strong foundations with the mechanics and such, i still CANNOT recogmend this game. I've been playing this game since years, despite my low playtime here on steam. I started out on console. Been playing this game since Italy came into the game (which was around 2017).\n\nLet me list the reasons why i cannot recogmend:\n\nThe grind - Been painful for a long time now, however nowadays pretty much all nations have grown large. Back then the grind wasnt that big of an issue since you could choose a smaller nation to grind, however nowadays there are NO small nations anymore. Everything has been bloated with copy-paste vehicles. Even with premium account, and a premium vehicle, it still takes a long time to reach higher tiers. (free to play, upwards of a year to reach your first top tier)\n\nCopy paste vehicles - There are a lot of vehicles that have been added to many nations... of course, realisticly, a lot of nations have bought equipment from other nations, but the amount of copy paste vehicles by now is just hurting the game. There are certain vehicles that basicly every nation has by now. The best example for this is the sherman. All nations have a sherman in at least some shape or form. \n\nNow back to higher tiers - The game is severely imbalanced. Close air-support in ground realistic battles (the mode that you will mostly be playing) has always been an issue. You can bring in a plane for unreasonably small amount of points, and with a plane, the tanks on the ground cannot do much against you, even anti-aircraft players will mostly be at a disadvantage against you. Helicopters are another can of worms that is a similar story, so i wont get into that too deeply.\n\nAI usage - For certain vehicle skins. This is huge. For those who dont know, the deve…",
-                  "truncated": true,
-                  "minutes_at_review": 294
-                },
-                {
-                  "recommendationid": "230683366",
-                  "hours_at_review": 2.6,
-                  "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "Great game! One thing I would like yall to change though is it takes thousands of hours to get modern equipment if you dont pay for them. That is really annoying",
-                  "truncated": false,
-                  "minutes_at_review": 157
-                },
-                {
-                  "recommendationid": "229962249",
+                  "recommendationid": "239466144",
                   "hours_at_review": 9.8,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "Good game but you have to spend so much time or money to unlock modern fighter and tank and its a big negative point",
-                  "truncated": false,
-                  "minutes_at_review": 586
+                  "minutes_at_review": 586,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "The worst support ever to talk they even don't talk back the is pay to progress the jets are very expensive the game unfair I have a problem with transfer my game progress from xbox app to steam please don't try this game you well lose money and time this game toke  my soul",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239399172",
+                  "hours_at_review": 2.1,
+                  "minutes_at_review": 124,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "The fact that there is 0 way to transfer console account to PC cuz \"they don't have the the capability to do it\" is utter bullshit.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-b4e80f15",
+          "text": "One reviewer says you get air naval and land tanks and there is tones of differant planes to unlock.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "239486742",
+            "hours_at_review": 6.8,
+            "minutes_at_review": 406,
+            "voted_up": true,
+            "date": "2026-11-06",
+            "review_text": "it is so fun and realistic you get air naval and land (tanks) and there's tones of differant planes to unlock",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-e0e10dc4",
+          "text": "One reviewer notes that you now have to install a questionable rootkit disguised as anti-cheat.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240360877",
+            "hours_at_review": 9.1,
+            "minutes_at_review": 544,
+            "voted_up": false,
+            "date": "2026-11-16",
+            "review_text": "Nice middle ground between arcade and simulator.\r\nEnough complexity to make gamer skill progress rewarding.\r\nUnfortunately you now have to install a questionable rootkit disguised as anti-cheat.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 9,
+        "cited_reviews": 10,
         "cited_recommend": 4,
-        "divergence_p": 0.035,
+        "divergence_p": 0.00271,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -587,106 +503,115 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 427,
-      "pct_positive": 65.6,
+      "pool_n": 468,
+      "pct_positive": 74.1,
       "muted": false,
       "n_note": null,
-      "summary": "While some praise the impressive graphics and performance on modest hardware, others emphasize the intense grind and expensive monetization.",
+      "summary": "Combat spans multiple vehicle types, but unlocking higher tiers requires extensive grinding and navigating monetization hurdles.",
       "themes": [
         {
-          "theme": "content",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-22b064",
-              "claim": "Reviewers describe the vehicle progression and tech tree grind as excessively slow, requiring substantial time investment or spending money.",
-              "citation_verdict": "negative",
+              "claim_id": "mid-b0266a",
+              "claim": "Reviewers describe the progression system as requiring significant grinding to advance through tech trees and unlock higher-tier vehicles.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 6
-              },
-              "citations": [
-                {
-                  "recommendationid": "231622936",
-                  "hours_at_review": 48.8,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Too much predatory tactics to drain your money.\r\nEVERYTHING in this game has some sort of monetization to it. Premium vehicles, premium account, battle pass, another like 2 currencies that are only useful with spending real money. Also, those premium vehicles cost like 70 to 80 ♥♥♥♥♥♥♥ dollars, like what the hell? For this amount of money i could buy a whole library of games that are better, and have developers that actually care about their playerbase.\r\n\r\nProgression system is almost non-existent, you play like 12 rounds that take 10-15 minutes for one vehicle, just to know. There are like 500 of them!!! You need like 3 hours (of winning, bcs you get almost nothing from loosing) to just earn enough currency and research points to buy ONE vehicle.\r\n\r\nCombat is not as bad, i just, dont like it. You usually are always 1-shot away from returning to Steam and uninstalling the game and giving it negative review. But the real problem i have with combat is the matchmaking, the ♥♥♥♥♥♥♥♥♥ MATCHMAKING. You pick team of vehicles with average 3.0 and you end up fighting sometimes 4.3, which really, and like really sucks. BTW the average rating is also stupid, even though it looks like it is average rating of your vehicles, its actually just your highest rated vehicle with maybe like -0.3 to not make it tooooo suspicious.\r\n\r\nThe only redeeming quality are the graphics i guess, if you have strong enough PC for the highest settings(I dont have that strong of PC so idc about this factor that much).\r\n\r\nOh and cherry on top, when they update the game (which happens like once in 3 months), you cant tell a differce between before and after the update. But somehow the size of the update is like 6-10GB. Seriously where is the content?!? Because except of the new battle pass, there is nothing.\r\n\r\nIn summary, dont download this game. There are other Military Multiplayer games like World of Tanks, World of Warships, etc...(even tho these two examples arent that better)\r\nOversized Nothing-ad…",
-                  "truncated": true,
-                  "minutes_at_review": 2926
-                },
-                {
-                  "recommendationid": "229388450",
-                  "hours_at_review": 83.2,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "A very long grind experience I would not recommend at all, this forces people to open their wallets to play the game, which I understand as a free-to-play game there should be some way to earn money, but making life tough for free-to-play players is not the way. The matchmaking is also horrendous; in order to reduce queue times, they include higher and better vehicles with you up by 1.0 BR, which causes some vehicles to not even have a fighting chance, and a good change needs to be made to repair this because it is not right trying to fight all-aspect missiles with no countermeasures. Lastly, regarding the game mode itself, I personally don't really care about historic matches, but the player counts per match are frustrating; at top tier where planes can carry up to 14 missiles, playing a 16v16 creates an incredible amount of missiles in the air, making it absolute hell. I understand that nobody wants to fly for 10 minutes just to die and go back to the lobby, so instead of increasing the map size, they should just reduce the player count to something like a 6v6 and spread the teams out in the corners. While there are complaints by other players about premium vehicles and copy-paste slop, I think this isn't as big of an issue as the ones I have stated above since mine affect gameplay much more directly. For context, I used to use the War Thunder launcher directly so I have around 900 hours and have reached top tier in two nations, and while the problems I have listed are specifically for Air Realistic Battles because I do not play tanks, I assume some of these issues might apply to tanks as well.",
-                  "truncated": false,
-                  "minutes_at_review": 4991
-                },
-                {
-                  "recommendationid": "230592843",
-                  "hours_at_review": 96.0,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "I want so badly to like this game but it's clear that Gaijin only cares about money and sabotages the actual experience to get it. There is literally nothing like this game which is so unfortunate because that let's Gaijin run a MONOPOLY on their experience since nothing else even comes close. It does so many things well but for every thing it does well, it does 25 things WRONG and most of those wrong things feel terrible to experience. \n\nTLDR: [spoiler]This game has so much going right for it, but the negatives of the gameplay, learning experience, the insane grind and the down right disgusting levels of corporate greed force you to either fork over hundreds of dollars to stay competitive (Or even break even), or literally spend the rest of your life playing only this game. \nI would stay far away from this game if you can. Play literally any other war game, I promise you'll have a better time and save money. [/spoiler]\n\n[h3] I'll start with the positives [/h3]\n\n[list]\n    [*] The game is obviously [strike] Very [/strike] Mostly realistic with its simulation. Your weapon and plane matter a LOT which makes choosing planes very cool\n\n    [*] The variety of vehicles is insane. In my 100 hours I didn't even come close to running out of content to work towards. I barely even scratched the surface\n\n    [*] The gameplay offers a variety and a mix of playstyles. Just in aviation there's multiple different classes of planes that serve many roles. If you want a mix of naval and aerial or a bit of ground and aerial, you can do that.\n\n    [*] Learning this game can be super rewarding. There is so much in depth simulation for each aircraft that you can almost learn how to actually fly just by playing this game\n\n    [*] Arcade and realistic can both be fun, although realistic air is a bit too unforgiving. It's definitely a playstyle and rewarding to get kills but it feels awful to fly for 15 minutes after being in queue for 4 just to get one tapped out of nowhere\n[/list]\n\n[h3] No…",
-                  "truncated": true,
-                  "minutes_at_review": 5762
-                },
-                {
-                  "recommendationid": "229985451",
-                  "hours_at_review": 73.3,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "Yk, I played this as a new player and put plenty of hours in the game to the point that i should feel like I'm really progressing. but im not. Obviously I'm not saying I should be able to get to top tier super fast, but I also shouldn't still be at a ~4.0 BR. Sure I didn't purely grind 1 nation, but its bad game design to force the player to use the same tools for a unrealistic amount of time before they get new toys and do the same thing. I wanted to reach an ok BR so some of the people I'm friends with would play with me and all of use have a fun time. But, since none of them want to play from reserve to 3.0 Br, I'm often stuck by myself. The gameplay at first isn't bad. But after awhile, its the same thing for the 1000th time. I never got upset at the game or rage when I lose because 1, I don't get ticked off at games, and 2, I got exhausted before I would even get irritated. But the part that was really the final nail in the coffin, is the ai slop. A game that uses ai to promote it's game is probably one of the biggest deal breakers for me. I hate how every company uses ai like its some trump card. When in reality, you're simply showing me how much you are in it for the money than the actual passion for the game. Not including how harmful ai is especially in the art community\n\nIf you don't want to read that yap session (Don't blame you), to put simply: War thunder fails at good progression for new players, its extremely redundant gameplay, and uses ai to promote it's game and uses ai art in game. With all of these to consider, if you're a new player looking at warthunder, if you want to play the game without spending a dime and don't have anyone to play low BRs with you, I do not recommend this game",
-                  "truncated": false,
-                  "minutes_at_review": 4398
-                },
-                {
-                  "recommendationid": "229975389",
-                  "hours_at_review": 56.0,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "games great just so openly pay to grind, it took me 45 hours as a new player to get a 4.0 lineup as usa, bought a russian 12.0 and got 5.0 lineup in a completly new tech tree in just 12 hours, grinding for free to play players is just terrible but managble if you have 5 hours a day to play the game",
-                  "truncated": false,
-                  "minutes_at_review": 3357
-                },
-                {
-                  "recommendationid": "229380821",
-                  "hours_at_review": 62.9,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "This game is a very special one. Technically the game is \"free\" but if you even thought about using a plane made within the last 15 years, have fun grinding for 2 hours a day for a year and a half. Without premium and realistic battles, this game is genuinely impossible to grind. Arcade is a waste of time. And the performance of this game!!! I have a very impressive spec sheet on my pc, and I have overclocked my GPU. I run at 97-100% utilization consistently and without frame gen, I cant get over 80fps. Cyberpunk 2077 runs better on my system and I have max settings with some ray tracing. Im not even running max settings on War Thunder.",
-                  "truncated": false,
-                  "minutes_at_review": 3772
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-67a8d9",
-              "claim": "Reviewers describe the progression system as requiring an extensive time investment and an intense grind to unlock vehicles.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
+                "positive": 4,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231622936",
-                  "hours_at_review": 48.8,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Too much predatory tactics to drain your money.\r\nEVERYTHING in this game has some sort of monetization to it. Premium vehicles, premium account, battle pass, another like 2 currencies that are only useful with spending real money. Also, those premium vehicles cost like 70 to 80 ♥♥♥♥♥♥♥ dollars, like what the hell? For this amount of money i could buy a whole library of games that are better, and have developers that actually care about their playerbase.\r\n\r\nProgression system is almost non-existent, you play like 12 rounds that take 10-15 minutes for one vehicle, just to know. There are like 500 of them!!! You need like 3 hours (of winning, bcs you get almost nothing from loosing) to just earn enough currency and research points to buy ONE vehicle.\r\n\r\nCombat is not as bad, i just, dont like it. You usually are always 1-shot away from returning to Steam and uninstalling the game and giving it negative review. But the real problem i have with combat is the matchmaking, the ♥♥♥♥♥♥♥♥♥ MATCHMAKING. You pick team of vehicles with average 3.0 and you end up fighting sometimes 4.3, which really, and like really sucks. BTW the average rating is also stupid, even though it looks like it is average rating of your vehicles, its actually just your highest rated vehicle with maybe like -0.3 to not make it tooooo suspicious.\r\n\r\nThe only redeeming quality are the graphics i guess, if you have strong enough PC for the highest settings(I dont have that strong of PC so idc about this factor that much).\r\n\r\nOh and cherry on top, when they update the game (which happens like once in 3 months), you cant tell a differce between before and after the update. But somehow the size of the update is like 6-10GB. Seriously where is the content?!? Because except of the new battle pass, there is nothing.\r\n\r\nIn summary, dont download this game. There are other Military Multiplayer games like World of Tanks, World of Warships, etc...(even tho these two examples arent that better)\r\nOversized Nothing-ad…",
-                  "truncated": true,
-                  "minutes_at_review": 2926
+                  "recommendationid": "240392589",
+                  "hours_at_review": 57.4,
+                  "minutes_at_review": 3446,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "I only play the aviation mode and that is amazing HOWEVER, the grind to get better jets sucks so bad that I quit multiple times. Warthunder if you can see this, MAKE IT SO YOU DON'T HAVE TO BUY THE LAST PLANE TO UNLOCK THE NEXT ONE, IT MAKES IT SO UNFUN AND IT WASTES SO MUCH ******* MONEY.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230592843",
-                  "hours_at_review": 96.0,
+                  "recommendationid": "240315116",
+                  "hours_at_review": 40.4,
+                  "minutes_at_review": 2423,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "Good game just a long ass grind\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239634463",
+                  "hours_at_review": 94.0,
+                  "minutes_at_review": 5638,
                   "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "I want so badly to like this game but it's clear that Gaijin only cares about money and sabotages the actual experience to get it. There is literally nothing like this game which is so unfortunate because that let's Gaijin run a MONOPOLY on their experience since nothing else even comes close. It does so many things well but for every thing it does well, it does 25 things WRONG and most of those wrong things feel terrible to experience. \n\nTLDR: [spoiler]This game has so much going right for it, but the negatives of the gameplay, learning experience, the insane grind and the down right disgusting levels of corporate greed force you to either fork over hundreds of dollars to stay competitive (Or even break even), or literally spend the rest of your life playing only this game. \nI would stay far away from this game if you can. Play literally any other war game, I promise you'll have a better time and save money. [/spoiler]\n\n[h3] I'll start with the positives [/h3]\n\n[list]\n    [*] The game is obviously [strike] Very [/strike] Mostly realistic with its simulation. Your weapon and plane matter a LOT which makes choosing planes very cool\n\n    [*] The variety of vehicles is insane. In my 100 hours I didn't even come close to running out of content to work towards. I barely even scratched the surface\n\n    [*] The gameplay offers a variety and a mix of playstyles. Just in aviation there's multiple different classes of planes that serve many roles. If you want a mix of naval and aerial or a bit of ground and aerial, you can do that.\n\n    [*] Learning this game can be super rewarding. There is so much in depth simulation for each aircraft that you can almost learn how to actually fly just by playing this game\n\n    [*] Arcade and realistic can both be fun, although realistic air is a bit too unforgiving. It's definitely a playstyle and rewarding to get kills but it feels awful to fly for 15 minutes after being in queue for 4 just to get one tapped out of nowhere\n[/list]\n\n[h3] No…",
-                  "truncated": true,
-                  "minutes_at_review": 5762
+                  "date": "2026-11-07",
+                  "review_text": "This game is really not for me. Its waaaayyy to grindy. If you like games like these, go on ahead. But I really think you shouldn't have to invest hundreds of hours into a game just to play with jets. It really sucks cuz this game has probably some of the best fighter mechanics i've seen.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239451843",
+                  "hours_at_review": 68.9,
+                  "minutes_at_review": 4136,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "this game is one of the sweatiest pieces of shit i have ever played. the worst part is that the company knows and makes you addicted and this game is not only horribly paced it takes thousands of hours just to unlock the first 4 tech trees. not only that but this game is a pay to win piece of garbage you can do any progression without spending 600 bucks. and that's not it, this game has the worst player ranking system ever. this game is honestly not worth your time and you will get addicted. not only that, these chuds will not listen to your complaints and will fix nothing and will just drop a new plane to try and distract you, DO NOT TOUCH THIS GAME",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239076454",
+                  "hours_at_review": 90.2,
+                  "minutes_at_review": 5414,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "its a fun break for a while. the grind is insane after 3. they favor USUALLY ussr, china, ect. like, its noticable. they really expect u to drop 70$ for one vehicle all the time. the events are nearly impossible on a free tier. best tank and aviation sim though. ships are fun too.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238761084",
+                  "hours_at_review": 68.4,
+                  "minutes_at_review": 4104,
+                  "voted_up": true,
+                  "date": "2026-10-28",
+                  "review_text": "amzing game highly recmend a bit of a grind and at times the grind sad but overall good",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-c1f010",
+              "claim": "Reviewers report that the progression system requires a substantial time investment or grinding to unlock vehicles.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240392589",
+                  "hours_at_review": 57.4,
+                  "minutes_at_review": 3446,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "I only play the aviation mode and that is amazing HOWEVER, the grind to get better jets sucks so bad that I quit multiple times. Warthunder if you can see this, MAKE IT SO YOU DON'T HAVE TO BUY THE LAST PLANE TO UNLOCK THE NEXT ONE, IT MAKES IT SO UNFUN AND IT WASTES SO MUCH ******* MONEY.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239634463",
+                  "hours_at_review": 94.0,
+                  "minutes_at_review": 5638,
+                  "voted_up": false,
+                  "date": "2026-11-07",
+                  "review_text": "This game is really not for me. Its waaaayyy to grindy. If you like games like these, go on ahead. But I really think you shouldn't have to invest hundreds of hours into a game just to play with jets. It really sucks cuz this game has probably some of the best fighter mechanics i've seen.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239059177",
+                  "hours_at_review": 64.5,
+                  "minutes_at_review": 3871,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Great game, but you need premium account and planes to not take 5 hours for one low tier plane. PAY2WIN/Progress",
+                  "truncated": false
                 }
               ]
             }
@@ -696,133 +621,176 @@
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "mid-3faa0b",
-              "claim": "Reviewers report that the game contains heavy monetization, including expensive premium vehicles and currency systems.",
+              "claim_id": "mid-dae978",
+              "claim": "Reviewers state that the game features pay-to-win elements where paying players or premium vehicles have a distinct advantage.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 5
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231622936",
-                  "hours_at_review": 48.8,
+                  "recommendationid": "240385560",
+                  "hours_at_review": 67.0,
+                  "minutes_at_review": 4017,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Too much predatory tactics to drain your money.\r\nEVERYTHING in this game has some sort of monetization to it. Premium vehicles, premium account, battle pass, another like 2 currencies that are only useful with spending real money. Also, those premium vehicles cost like 70 to 80 ♥♥♥♥♥♥♥ dollars, like what the hell? For this amount of money i could buy a whole library of games that are better, and have developers that actually care about their playerbase.\r\n\r\nProgression system is almost non-existent, you play like 12 rounds that take 10-15 minutes for one vehicle, just to know. There are like 500 of them!!! You need like 3 hours (of winning, bcs you get almost nothing from loosing) to just earn enough currency and research points to buy ONE vehicle.\r\n\r\nCombat is not as bad, i just, dont like it. You usually are always 1-shot away from returning to Steam and uninstalling the game and giving it negative review. But the real problem i have with combat is the matchmaking, the ♥♥♥♥♥♥♥♥♥ MATCHMAKING. You pick team of vehicles with average 3.0 and you end up fighting sometimes 4.3, which really, and like really sucks. BTW the average rating is also stupid, even though it looks like it is average rating of your vehicles, its actually just your highest rated vehicle with maybe like -0.3 to not make it tooooo suspicious.\r\n\r\nThe only redeeming quality are the graphics i guess, if you have strong enough PC for the highest settings(I dont have that strong of PC so idc about this factor that much).\r\n\r\nOh and cherry on top, when they update the game (which happens like once in 3 months), you cant tell a differce between before and after the update. But somehow the size of the update is like 6-10GB. Seriously where is the content?!? Because except of the new battle pass, there is nothing.\r\n\r\nIn summary, dont download this game. There are other Military Multiplayer games like World of Tanks, World of Warships, etc...(even tho these two examples arent that better)\r\nOversized Nothing-ad…",
-                  "truncated": true,
-                  "minutes_at_review": 2926
+                  "date": "2026-11-16",
+                  "review_text": "What the hell even is balance in this game?\r\n\r\nif you don't premium you will be put on team that is out numbered and massively out gunned. One game the other team had 5 more players, and nearly all of them were in cruisers, my team, all destroyers. Aircraft will just disintergrate at the slightest tap, weapons will not fire (even had torpedoes just detonate before hitting).\r\n\r\nseriously the pay to win aspect is insane.\r\n\r\nwhich is a shame because this would be a really good game if there was some god dam balancing",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230393914",
-                  "hours_at_review": 70.5,
+                  "recommendationid": "240324618",
+                  "hours_at_review": 31.1,
+                  "minutes_at_review": 1868,
                   "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Game itself isn't that bad, it's actually pretty fun. Problem is, Gaijin (The company that owns War Thunder) has made the game extremely monetized and has rigged the matchmaking in a way to get you to spend more money on their game. So I refuse to give this game a positive review despite the game itself not being that bad, the company that owns it is just horrible.",
-                  "truncated": false,
-                  "minutes_at_review": 4231
+                  "date": "2026-11-16",
+                  "review_text": "Dont Play all lobbies and servres are full of pay to win people that ruin the gamewarthunder in genral is a pay to win game. addvancing cannont be harder they give you no good ammout of recerch that you need to progress i can get five kills and get hardly any recerch. this game sucks dont get it. addditonally all lobbies are FUll of exspencive tanks and planes. this game is like speedrunning a mental health crissis.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229388450",
-                  "hours_at_review": 83.2,
+                  "recommendationid": "239451843",
+                  "hours_at_review": 68.9,
+                  "minutes_at_review": 4136,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "A very long grind experience I would not recommend at all, this forces people to open their wallets to play the game, which I understand as a free-to-play game there should be some way to earn money, but making life tough for free-to-play players is not the way. The matchmaking is also horrendous; in order to reduce queue times, they include higher and better vehicles with you up by 1.0 BR, which causes some vehicles to not even have a fighting chance, and a good change needs to be made to repair this because it is not right trying to fight all-aspect missiles with no countermeasures. Lastly, regarding the game mode itself, I personally don't really care about historic matches, but the player counts per match are frustrating; at top tier where planes can carry up to 14 missiles, playing a 16v16 creates an incredible amount of missiles in the air, making it absolute hell. I understand that nobody wants to fly for 10 minutes just to die and go back to the lobby, so instead of increasing the map size, they should just reduce the player count to something like a 6v6 and spread the teams out in the corners. While there are complaints by other players about premium vehicles and copy-paste slop, I think this isn't as big of an issue as the ones I have stated above since mine affect gameplay much more directly. For context, I used to use the War Thunder launcher directly so I have around 900 hours and have reached top tier in two nations, and while the problems I have listed are specifically for Air Realistic Battles because I do not play tanks, I assume some of these issues might apply to tanks as well.",
-                  "truncated": false,
-                  "minutes_at_review": 4991
+                  "date": "2026-11-05",
+                  "review_text": "this game is one of the sweatiest pieces of shit i have ever played. the worst part is that the company knows and makes you addicted and this game is not only horribly paced it takes thousands of hours just to unlock the first 4 tech trees. not only that but this game is a pay to win piece of garbage you can do any progression without spending 600 bucks. and that's not it, this game has the worst player ranking system ever. this game is honestly not worth your time and you will get addicted. not only that, these chuds will not listen to your complaints and will fix nothing and will just drop a new plane to try and distract you, DO NOT TOUCH THIS GAME",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230592843",
-                  "hours_at_review": 96.0,
+                  "recommendationid": "238691729",
+                  "hours_at_review": 22.5,
+                  "minutes_at_review": 1352,
                   "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "I want so badly to like this game but it's clear that Gaijin only cares about money and sabotages the actual experience to get it. There is literally nothing like this game which is so unfortunate because that let's Gaijin run a MONOPOLY on their experience since nothing else even comes close. It does so many things well but for every thing it does well, it does 25 things WRONG and most of those wrong things feel terrible to experience. \n\nTLDR: [spoiler]This game has so much going right for it, but the negatives of the gameplay, learning experience, the insane grind and the down right disgusting levels of corporate greed force you to either fork over hundreds of dollars to stay competitive (Or even break even), or literally spend the rest of your life playing only this game. \nI would stay far away from this game if you can. Play literally any other war game, I promise you'll have a better time and save money. [/spoiler]\n\n[h3] I'll start with the positives [/h3]\n\n[list]\n    [*] The game is obviously [strike] Very [/strike] Mostly realistic with its simulation. Your weapon and plane matter a LOT which makes choosing planes very cool\n\n    [*] The variety of vehicles is insane. In my 100 hours I didn't even come close to running out of content to work towards. I barely even scratched the surface\n\n    [*] The gameplay offers a variety and a mix of playstyles. Just in aviation there's multiple different classes of planes that serve many roles. If you want a mix of naval and aerial or a bit of ground and aerial, you can do that.\n\n    [*] Learning this game can be super rewarding. There is so much in depth simulation for each aircraft that you can almost learn how to actually fly just by playing this game\n\n    [*] Arcade and realistic can both be fun, although realistic air is a bit too unforgiving. It's definitely a playstyle and rewarding to get kills but it feels awful to fly for 15 minutes after being in queue for 4 just to get one tapped out of nowhere\n[/list]\n\n[h3] No…",
-                  "truncated": true,
-                  "minutes_at_review": 5762
+                  "date": "2026-10-27",
+                  "review_text": "gaijin really said 'Lest make the most angering game possible.' (i have allot more hours on console just only 20 on pc} \r\n- get shot the and see someone infront of me (gunner unconsicous as always with me for somereason but not with any of my enymies) gets shot again and realize the guy that killed me is in narnia \r\n- shoot a tank 6 times in every possible place get critical hit 3 times do zero damage the hole crews is red and somehow their gunner is still able to fire and gets one shoted instantly\r\non another note this game is way to pay to win it takes months to get the vehicle you want if you dont have premium and siriously i dont no why this game is legal its the exact same  as drugs the 'target destroyed' after a kill is so addicting it might seem like fun but it wil make your life misserable",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-eec733",
+              "claim": "Reviewers report that the game includes pay-to-win elements and requires spending money on premium accounts or vehicles to progress effectively.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240385560",
+                  "hours_at_review": 67.0,
+                  "minutes_at_review": 4017,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "What the hell even is balance in this game?\r\n\r\nif you don't premium you will be put on team that is out numbered and massively out gunned. One game the other team had 5 more players, and nearly all of them were in cruisers, my team, all destroyers. Aircraft will just disintergrate at the slightest tap, weapons will not fire (even had torpedoes just detonate before hitting).\r\n\r\nseriously the pay to win aspect is insane.\r\n\r\nwhich is a shame because this would be a really good game if there was some god dam balancing",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229754739",
-                  "hours_at_review": 59.7,
+                  "recommendationid": "238691729",
+                  "hours_at_review": 22.5,
+                  "minutes_at_review": 1352,
                   "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "pay to play greed BS game\nthe game is a grind simulator expertly tweaked to get you to spend your money\n\ngave it a fair shot: its all a funnel to get you to buy golden shekels. fing store with a game attached where you can show off your purchases\n",
-                  "truncated": false,
-                  "minutes_at_review": 3580
+                  "date": "2026-10-27",
+                  "review_text": "gaijin really said 'Lest make the most angering game possible.' (i have allot more hours on console just only 20 on pc} \r\n- get shot the and see someone infront of me (gunner unconsicous as always with me for somereason but not with any of my enymies) gets shot again and realize the guy that killed me is in narnia \r\n- shoot a tank 6 times in every possible place get critical hit 3 times do zero damage the hole crews is red and somehow their gunner is still able to fire and gets one shoted instantly\r\non another note this game is way to pay to win it takes months to get the vehicle you want if you dont have premium and siriously i dont no why this game is legal its the exact same  as drugs the 'target destroyed' after a kill is so addicting it might seem like fun but it wil make your life misserable",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239059177",
+                  "hours_at_review": 64.5,
+                  "minutes_at_review": 3871,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Great game, but you need premium account and planes to not take 5 hours for one low tier plane. PAY2WIN/Progress",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239451843",
+                  "hours_at_review": 68.9,
+                  "minutes_at_review": 4136,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "this game is one of the sweatiest pieces of shit i have ever played. the worst part is that the company knows and makes you addicted and this game is not only horribly paced it takes thousands of hours just to unlock the first 4 tech trees. not only that but this game is a pay to win piece of garbage you can do any progression without spending 600 bucks. and that's not it, this game has the worst player ranking system ever. this game is honestly not worth your time and you will get addicted. not only that, these chuds will not listen to your complaints and will fix nothing and will just drop a new plane to try and distract you, DO NOT TOUCH THIS GAME",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240324618",
+                  "hours_at_review": 31.1,
+                  "minutes_at_review": 1868,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "Dont Play all lobbies and servres are full of pay to win people that ruin the gamewarthunder in genral is a pay to win game. addvancing cannont be harder they give you no good ammout of recerch that you need to progress i can get five kills and get hardly any recerch. this game sucks dont get it. addditonally all lobbies are FUll of exspencive tanks and planes. this game is like speedrunning a mental health crissis.",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-08a8fd",
-              "claim": "Reviewers report that the game features high visual quality and impressive graphics.",
+              "claim_id": "mid-9e887d",
+              "claim": "Reviewers note that the game features multiple vehicle types including planes, tanks, and boats across separate combat environments.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 4,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231679203",
-                  "hours_at_review": 96.0,
+                  "recommendationid": "240296105",
+                  "hours_at_review": 36.2,
+                  "minutes_at_review": 2173,
                   "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "will never find a more beauty filled game, from the visuals with my pc specs i can run movie settings at 70 is fps, to the community (sometimes). from an avid plane geek it is spectacular, wish they would add new game modes, like 1v1 to 3v3 dogfight modes or large scale combined arms modes, but over all 11/10 would play for the first time again.",
-                  "truncated": false,
-                  "minutes_at_review": 5759
+                  "date": "2026-11-15",
+                  "review_text": "Fun to play and grind..... Different worlds in planes, vs tanks, vs boats!!",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229798881",
-                  "hours_at_review": 20.9,
+                  "recommendationid": "238784066",
+                  "hours_at_review": 31.4,
+                  "minutes_at_review": 1887,
                   "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "It has amazing graphics and really puts you into the perspective of someone in War. Great Game and I definetely recommend it!",
-                  "truncated": false,
-                  "minutes_at_review": 1256
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-b12066",
-              "claim": "Reviewers note that the game can run well on lower-end PC hardware.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231668151",
-                  "hours_at_review": 64.0,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "this is a hard game. but when you get used to it it will be very fun\n",
-                  "truncated": false,
-                  "minutes_at_review": 3840
+                  "date": "2026-10-29",
+                  "review_text": "blow stuff up in plains boats and tanks. literally the best game ever",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230204967",
-                  "hours_at_review": 27.3,
+                  "recommendationid": "238960933",
+                  "hours_at_review": 26.5,
+                  "minutes_at_review": 1590,
                   "voted_up": true,
-                  "date": "2026-07-11",
-                  "review_text": "its realyy best game in this catagory you can play this game  in yor lowend pc too but itst too much grinding but its really good game..",
-                  "truncated": false,
-                  "minutes_at_review": 1638
+                  "date": "2026-10-30",
+                  "review_text": "it was an amasing time playing WAR THUNDER, it is a blast to control tanks, planes, and bo*ts.\r\n\r\n*=A",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-2bc7588a",
+          "text": "One reviewer notes that the game runs extremely well in VR.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "238961730",
+            "hours_at_review": 32.0,
+            "minutes_at_review": 1919,
+            "voted_up": true,
+            "date": "2026-10-30",
+            "review_text": "Game is good but there's a lot of grinding.\r\nAlso, the game runs extremely well in VR, which is surprising since most desktop games with a VR option tend to run like ass in VR.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 12,
-        "cited_recommend": 4,
-        "divergence_p": 0.0229,
+        "cited_reviews": 13,
+        "cited_recommend": 8,
+        "divergence_p": 0.229,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -830,115 +798,104 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 983,
-      "pct_positive": 42.0,
+      "pool_n": 902,
+      "pct_positive": 54.4,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players report severe balancing issues, battle rating compression, and inconsistent armor mechanics alongside deep progression bottlenecks.",
+      "summary": "Long-term players cite severe progression walls, compounding technical issues, and unbalanced matchmaking against veterans.",
       "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-2c8300",
+              "claim": "The game requires extensive time investment or financial purchases to unlock high-tier vehicles like tanks and jets.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240490749",
+                  "hours_at_review": 1988.2,
+                  "minutes_at_review": 119292,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "This game will suck you dry with hours, only way to get to those tanks/ jets you see on social media is to put months worth of constant work or have some very deep pockets. I've got just under 3,000 hrs invested in this game to get the vehicles i wanted to play.    I could be a millionaire..........",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240400526",
+                  "hours_at_review": 1106.4,
+                  "minutes_at_review": 66386,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "War Thunder is a pay-to-win game. If you spend money, you can reach top tier much faster by purchasing premium tanks and a premium account. However, if you play for free, it can take around a year or even longer to fully research an entire nation. Money is what matters most in this game The game is like a drug — it's extremely addictive. Some players are so experienced that you honestly feel like there's nothing you can do against them. Players with 10,000 hours of playtime are on a completely different level. The game can be seriously frustrating, gets under your skin, and is full of toxic players Despite all these problems, I still love this game, and I keep coming back to it because I'm completely addicted. It's hard to go even a single day without playing it. War Thunder has become an addiction I just can't seem to quit So, if you want to install this game and quickly unlock your favorite fighter jet or tank so you can actually enjoy playing it, you have two options.\nThe first option is to spend countless hours grinding without spending any money, potentially wasting months or even years of your life and losing touch with the real world just to unlock the vehicle you want.\nThe second option is much easier: spend a ridiculous amount of money and unlock it in an hour without having to do almost anything.\nBut here's the real problem: you'll end up in matches against players with 2,000 or even 3,000+ hours of playtime. As a newer player, you barely have a chance. You often get destroyed within seconds, before you even understand what happened.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
         {
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "vet-26a6d9",
-              "claim": "Reviewers describe the in-game economy and progression grind as extremely slow, demanding, and heavily incentivizing purchases.",
+              "claim_id": "vet-5c32eb",
+              "claim": "In-game events operate on daily time constraints unless players pay real money to advance.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
-                "negative": 3
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231749343",
-                  "hours_at_review": 2506.4,
+                  "recommendationid": "240478744",
+                  "hours_at_review": 309.0,
+                  "minutes_at_review": 18542,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "I cannot decently recommand this game to anyone. I spent enough time and money on it and came to despise what was a very promising free-to-play game that now has become a predatory cash grab full of AI-slop and poor balancing incenting players to pay to overcome frustration.\n\nI've been playing regularly since 2020 and noticed a drastic drop in quality each update. Most of the vehicles added in recent years are copy/pastes and balancing is all over the roof to push players to buy the last OP thing that came out not to suffer from it, but to have fun by making other players suffer until it is nerfed into oblivion or almost never adressed at all. The fun you can have in this game is mostly based on a FOMO trend hidden behind a paywall (that increasingly got more expsensive with vehicles costing ~80€). The grind is quite unoticeable in the first tiers to lure the player and hook them into one of the most grindy experience I have ever had in a videogame.\n\nAbout the community, I haven't played a single match without witnessing someone typing racist stuff in chat or even litteral neo-nazi emblems on vehicles. Going from Azov battalion to creative recreations of swastikas. It's a game about tanks, I know some of the players are degenerates but moderation feels non-existent or quite permissive in the wrong way.\n\nI've had fun for a while, but don't let yourself get fooled by the many adds Gaijin Entertainment spreads on the Internet : the game is an unfinished mess where issues are not worked on anymore since Gaijin is more focused on adding new stuff (that adds more imbalance and bugs) than fixing game breaking experience/flaws or working on decent moderation.",
-                  "truncated": false,
-                  "minutes_at_review": 150383
+                  "date": "2026-11-18",
+                  "review_text": "Gameplay is good overall, the events and the greediness of the game is very bad though. daily fomo or pay for events. prices too high for what it offers and buggy problems with hit feedback so you cant even tell why your plane shots arent hurting the plane cause wont see where theyre hitting.  dont play if you plan to do events or want to actually collect everything in it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230415532",
-                  "hours_at_review": 2312.3,
-                  "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "War Thunder is a free-to-play game that will cost you your time and mental health, until you eventually give up and spend more money on microtransactions than you would on a paid game. This is a game with the most unrealistic realism, because despite being promised realism, it is simply not there—just like the balance.The tech tree here is longer than the line to Putin's mother in her youth. To get to the modern Abrams or Leopards, you have to go through all the circles of hell. You will spend months driving around in rusty buckets. And when you finally unlock that long-awaited top-tier tank, you'll find out that its stock configuration doesn't even include... a repair kit or a fire extinguisher. In other words, your crew is a suicide squad; upon the very first hit to their tracks, they will just stand in the middle of a field and sadly watch their tank burn because you need to research the fire extinguisher for another 20 matches.The exact kind of game where you get spawn-killed and then press \"Find Match\" in the hope that it won't happen again, but you have no other choice.",
-                  "truncated": false,
-                  "minutes_at_review": 138739
-                },
-                {
-                  "recommendationid": "229424736",
-                  "hours_at_review": 607.1,
+                  "recommendationid": "239197900",
+                  "hours_at_review": 2123.0,
+                  "minutes_at_review": 127378,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "War Thunder offers a military vehicle experience that no other game offers. That being said, the in game economy is terrible. The grind is absolutely unbearable and it is almost impossible for a free-to-play player to have unlock even a third of the vehicles in game in under 5 years. It is totally unreasonable for Gaijin to expect someone to spend 5-10 hours, sometimes even more, researching a single vehicle. Even if you do spend money on this game to buy premium time and/or premium vehicles, you will still spend an unbelievable amount of time tying to get to top tier on just one nation. Not to mention that the game needs serious balancing rework. In Air RB especially, the battle rating is super compressed and makes it almost unplayable for me. I love this game and have been playing for years because it is very fun to play realistic and well made models of historical vehicles. But this game has so many issues that I can't justify telling someone to play it.",
-                  "truncated": false,
-                  "minutes_at_review": 36425
-                },
-                {
-                  "recommendationid": "230778860",
-                  "hours_at_review": 515.2,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "\r\nWar Thunder is a game with an incredibly ambitious concept and an impressive amount of content, but after spending a significant amount of time playing it, I found that its strengths are consistently overshadowed by frustrating design decisions. While it excels in historical authenticity, vehicle variety, and realistic combat mechanics, the overall experience becomes increasingly difficult to enjoy due to its progression system, balance issues, and heavy emphasis on monetization.\r\n\r\nOne of the game's greatest achievements is its enormous collection of military vehicles. Players have access to hundreds of aircraft, tanks, helicopters, and naval vessels from numerous nations, many of which are recreated with an impressive level of detail. The sound design, vehicle models, and damage mechanics demonstrate the amount of effort that has gone into creating an immersive battlefield. At its best, War Thunder delivers tense, rewarding encounters where positioning, map knowledge, and tactical decision-making genuinely matter. Those moments are exciting and memorable, showing the potential of what the game can be.\r\n\r\nUnfortunately, these positive aspects are often overshadowed by an exhausting progression system. Advancing through the technology trees becomes increasingly time-consuming as players reach higher ranks. Research costs continue to increase, vehicle modifications require substantial amounts of experience, and earning enough in-game currency to purchase and maintain vehicles can become a challenge. While the game can technically be enjoyed without spending money, progression frequently feels slow enough that premium accounts, premium vehicles, and various boosters appear less like optional conveniences and more like practical necessities. This creates the impression that the game prioritizes extending player engagement and encouraging purchases rather than providing consistently rewarding progression.\r\n\r\nAnother recurring issue is matchmaking and overall game bala…",
-                  "truncated": true,
-                  "minutes_at_review": 30911
+                  "date": "2026-11-02",
+                  "review_text": "I´ve yet to spend a single cent on this dogwater game and will continue like this.\r\n\r\n- The utter disgust and disappointment I feel while playing this on higher battle ratings is undescribable, seeing *entire* teams composed solely of premium vehichles makes me question why I bothered playing the game so much to achieve so little progress and that is exactly what the greedy snail is going for.\r\n\r\n- \"Did you get to top tier by grinding a single nation most of the time? Well that´s great! In other news, that same vehichle at the end of the tech tree? Yeah that now is a premium that costs 70~euros on another nation´s tree that anyone can skip to.\"\r\n \r\n- Rewards for playing the game well? Nah, you get a pop up on the middle your screen telling you to buy premium account or instead it will be flashed on your face when you finish a battle, telling you how you could have gotten 50% more of what you earned if you had payed for premium acc.\r\n\r\n- Cool unique/interesting vehicles? Sorry bub, best I can do is make them event locked, making so only the unemployed and people who do nothing else other than play this game all day can manage to grind for. Oh? What´s that, you really want it but didn´t have time to gather enough score? Ah, no worries, you can just spend vast amounts of premium currency to complete each task INDIVIDUALLY (most of the time there are 6/7 needed for the vehichle).\r\n\r\n- Balancing? Nah man that´s too hard, just push everything into a higher br and it´ll decompress itself.\r\n\r\n- In short, the game is constantly banking on FOMO, makes paywalled vechicles better in almost every single way than their tech tree variants/counterparts not only for grinding but also stat wise, pushes and nags at you constantly to buy their premium currency/account/whatever the hell else.\r\n\r\nAnd honestly? The devs are as much in fault as the players/community who allow this behaviour, who eat the premium slop they throw at them and ask for more. But whatever, do what you want with y…",
+                  "truncated": true
                 }
               ]
             },
             {
-              "claim_id": "vet-b0dea5",
-              "claim": "Reviewers describe the game as heavily reliant on microtransactions and expensive premium vehicles, requiring significant financial investment or an extreme time commitment to progress through the tech trees.",
+              "claim_id": "vet-dd1b5b",
+              "claim": "Reviewers describe the game as demanding significant real-world time investments or monetary spending to unlock vehicles.",
               "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 2,
-                "negative": 3
+                "positive": 1,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231762509",
-                  "hours_at_review": 4770.8,
+                  "recommendationid": "240490749",
+                  "hours_at_review": 1988.2,
+                  "minutes_at_review": 119292,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "DON'T WASTE YOUR TIME LIKE ME\r\nIF you have nothing to play, try these games\r\n\r\nBioshock 1\r\nBioshock Infinite\r\n     DLC Burial at Sea\r\nDying Light 1\r\n     DLC The Following\r\n7 Days to Die \r\nGreen Hell\r\nMETRO 2033\r\nMETRO Last Light\r\nCrisis 1\r\nFarcry 3 & 4\r\nWatch Dogs 1 & 2\r\nRDR 1 & 2\r\nTitanfall 2\r\nPortal 1 & 2\r\nHalf-Life 2\r\n\r\nSome games in this list aren't cheap, but you can buy all of them on sale in one premium vehicle at full price.\r\nIt's more fun than Grinding in this game without \r\nBUY premium \r\n\r\n\" GO AWAY DON'T WASTE YOUR TIME HERE \"",
-                  "truncated": false,
-                  "minutes_at_review": 286245
+                  "date": "2026-11-18",
+                  "review_text": "This game will suck you dry with hours, only way to get to those tanks/ jets you see on social media is to put months worth of constant work or have some very deep pockets. I've got just under 3,000 hrs invested in this game to get the vehicles i wanted to play.    I could be a millionaire..........",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231749343",
-                  "hours_at_review": 2506.4,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "I cannot decently recommand this game to anyone. I spent enough time and money on it and came to despise what was a very promising free-to-play game that now has become a predatory cash grab full of AI-slop and poor balancing incenting players to pay to overcome frustration.\n\nI've been playing regularly since 2020 and noticed a drastic drop in quality each update. Most of the vehicles added in recent years are copy/pastes and balancing is all over the roof to push players to buy the last OP thing that came out not to suffer from it, but to have fun by making other players suffer until it is nerfed into oblivion or almost never adressed at all. The fun you can have in this game is mostly based on a FOMO trend hidden behind a paywall (that increasingly got more expsensive with vehicles costing ~80€). The grind is quite unoticeable in the first tiers to lure the player and hook them into one of the most grindy experience I have ever had in a videogame.\n\nAbout the community, I haven't played a single match without witnessing someone typing racist stuff in chat or even litteral neo-nazi emblems on vehicles. Going from Azov battalion to creative recreations of swastikas. It's a game about tanks, I know some of the players are degenerates but moderation feels non-existent or quite permissive in the wrong way.\n\nI've had fun for a while, but don't let yourself get fooled by the many adds Gaijin Entertainment spreads on the Internet : the game is an unfinished mess where issues are not worked on anymore since Gaijin is more focused on adding new stuff (that adds more imbalance and bugs) than fixing game breaking experience/flaws or working on decent moderation.",
-                  "truncated": false,
-                  "minutes_at_review": 150383
-                },
-                {
-                  "recommendationid": "230415532",
-                  "hours_at_review": 2312.3,
+                  "recommendationid": "240400526",
+                  "hours_at_review": 1106.4,
+                  "minutes_at_review": 66386,
                   "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "War Thunder is a free-to-play game that will cost you your time and mental health, until you eventually give up and spend more money on microtransactions than you would on a paid game. This is a game with the most unrealistic realism, because despite being promised realism, it is simply not there—just like the balance.The tech tree here is longer than the line to Putin's mother in her youth. To get to the modern Abrams or Leopards, you have to go through all the circles of hell. You will spend months driving around in rusty buckets. And when you finally unlock that long-awaited top-tier tank, you'll find out that its stock configuration doesn't even include... a repair kit or a fire extinguisher. In other words, your crew is a suicide squad; upon the very first hit to their tracks, they will just stand in the middle of a field and sadly watch their tank burn because you need to research the fire extinguisher for another 20 matches.The exact kind of game where you get spawn-killed and then press \"Find Match\" in the hope that it won't happen again, but you have no other choice.",
-                  "truncated": false,
-                  "minutes_at_review": 138739
-                },
-                {
-                  "recommendationid": "230696167",
-                  "hours_at_review": 2214.5,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "After a few thousand hours on steam and a few on console I can pretty confidently say that this game just isn't what it was or what it's trying to be. The game famously relies on players who actually stick around to pay  hundreds if not thousands on premium account and vehicles to be able to unlock new parts of the game. Not only that but most \"new\" features of this game don't really change it. Since 2023 I can't really remember an exciting new vehicle or feature that has really added something new other than something having a new round or armour that  has a slightly higher value as the last.\n\nMost game modes in this game rarely stick with the only playable game mode for naval only playable on  weekends now for some odd reason and the only two played game modes really need work. Maps at top tier need complete re-designs with one side usually having a huge advantage over the other or maps that really just have no life to them and are just unfun to play on, which is a problem that's only getting worse with Gaijin only adding top tier vehicles and almost never expanding the arsenal of mid and  high  tier which leads to a lot of empty BRs that only see full up tiers  or down tiers.\n\nThe last point is that this game has one of  the most hateful and unfunny player bases of any game I have ever played.  In my personal experience with the game I have only seen a handful of players that aren't racist, homophobic or sexist. The entire humour I've seen from players is racist or sexist stereotypical jokes or just straight up saying racist stuff in chat. The player base on this game may genuinely be worse than Genshin Impact or TCOAL.",
-                  "truncated": false,
-                  "minutes_at_review": 132871
-                },
-                {
-                  "recommendationid": "229389805",
-                  "hours_at_review": 1282.4,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "war thunder can be one of the top game OAT if gaijin doesn't stop ruining it\n\nhere is what gaijin can do:\n\n1. stop with the top tier premiums, bring them off sale, maybe keep 1 and if you already have some ofc keep it\n2. somehow idk but make events like the sturmtiger, tog ii, etc available; especially the ones not on the gaijin market\n3. in game items shouldn’t be the price of a AAA game. at most $30 and that’s still a lot for pixels in a combat game\n4. this is more a me opinion, but paper tanks are fine as long as they are not op (maybe these could be premiums idk)\n5. more gamemodes like what enlisted did or bring back the world war mode would be a good start\n6.give us unique vehicles\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 76945
+                  "date": "2026-11-17",
+                  "review_text": "War Thunder is a pay-to-win game. If you spend money, you can reach top tier much faster by purchasing premium tanks and a premium account. However, if you play for free, it can take around a year or even longer to fully research an entire nation. Money is what matters most in this game The game is like a drug — it's extremely addictive. Some players are so experienced that you honestly feel like there's nothing you can do against them. Players with 10,000 hours of playtime are on a completely different level. The game can be seriously frustrating, gets under your skin, and is full of toxic players Despite all these problems, I still love this game, and I keep coming back to it because I'm completely addicted. It's hard to go even a single day without playing it. War Thunder has become an addiction I just can't seem to quit So, if you want to install this game and quickly unlock your favorite fighter jet or tank so you can actually enjoy playing it, you have two options.\nThe first option is to spend countless hours grinding without spending any money, potentially wasting months or even years of your life and losing touch with the real world just to unlock the vehicle you want.\nThe second option is much easier: spend a ridiculous amount of money and unlock it in an hour without having to do almost anything.\nBut here's the real problem: you'll end up in matches against players with 2,000 or even 3,000+ hours of playtime. As a newer player, you barely have a chance. You often get destroyed within seconds, before you even understand what happened.",
+                  "truncated": false
                 }
               ]
             }
@@ -948,55 +905,8 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-2d12d9",
-              "claim": "Reviewers report that top tier battles suffer from severe balance problems and unplayability.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "231711385",
-                  "hours_at_review": 992.3,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "high tier/top tier is literally unplayable unless you main russia",
-                  "truncated": false,
-                  "minutes_at_review": 59539
-                },
-                {
-                  "recommendationid": "230575979",
-                  "hours_at_review": 213.3,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Don't even bother playing this game. Devs don't give a singe care in the world about player experience and actively try to ruin the game. Russian bias is insane and they should be ashamed the game is in this state after being out for ages. Top tier anything is literal cancer and will make you reevaluate your life after grinding for months to be met with ♥♥♥♥♥♥♥. Premium is a must at this point if you want to make any type of progress. Bottom 5 games I've played oat, nuff said.",
-                  "truncated": false,
-                  "minutes_at_review": 12799
-                },
-                {
-                  "recommendationid": "230406537",
-                  "hours_at_review": 1788.8,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "top tier is just unolayable, russian bias is real they have way too op tanks and cas is unbalanced af (for russia best aa and best cas)",
-                  "truncated": false,
-                  "minutes_at_review": 107330
-                },
-                {
-                  "recommendationid": "229562972",
-                  "hours_at_review": 1395.5,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "This game is the worst to play especially in high tier, after adding the BMPT to high tier the games downfall began. I usually play high tier America and I understand that people complain about the armor aspects and how it should be stronger. I do believe it should but it is also because of the Russian line up, I may be saying the game is bias to Russia which it is but it is a huge problem for American and other players as Russia gets more advanced vehicles while all the others get barely anything to compare. FIX YOUR GAME!!",
-                  "truncated": false,
-                  "minutes_at_review": 83728
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-d14fcb",
-              "claim": "Reviewers report that matchmaking suffers from battle rating compression, placing vehicles against vastly superior opponents.",
+              "claim_id": "vet-ddf6e2",
+              "claim": "Matchmaking regularly places players into higher battle rating uptiers.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -1004,78 +914,143 @@
               },
               "citations": [
                 {
-                  "recommendationid": "229707820",
-                  "hours_at_review": 5092.4,
+                  "recommendationid": "238515697",
+                  "hours_at_review": 1478.5,
+                  "minutes_at_review": 88711,
                   "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "First off, the game is unfortunately the only thing like it on the market, because if it wasn't, some smart Devs could easily knock this game off it's pedestal by doing what this game does but actually caring about balance and more then COD style team death match gameplay.\n\nJust some of the major issues this game has.\n\nMatchmaker bracket compression, known in game as Battle ratings (BR) are a two up two down system where you can end up facing vehicles that vastly outperform your chosen vehicle and have been a constant issue since the games inception. The developers insistence that decompression would effect queue times has been their go to response from community demand that they actually decompress the game to bring about something resembling balance and ♥♥♥♥ the queue times have largely been ignored. -- This creates pockets of BR brackets for nations that are practically unplayable because of poor balancing.\n\n-$80 premium vehicles that are placed too low in the matchmaking bracket with broken features that get milked until sales dry up. Further compounding the above issue.\n\n-The developers taking a very inconsistent attitude to implementation of the vehicles in game. Adding things like missiles to some aircraft that were only ever tested on them but not deployed operationally while others will at times not get missiles they actually used for \"balance,\" despite the game being a generally unbalanced mess that gives you the impression no one on the dev team actually plays the game they make.  \n\n-Game modes - The base game is basically COD style team death match in tanks or planes (Naval is a thing but practically abandoned and ignore.) There are game modes that were teased back in 2014 (Enduring Confrontation) that they at most had a few tests on than largely ignored. -- For tanks this means modern battle tanks in what is essentially 1.5km square maps for a good chunk of top BR cod style twitch death matches with the occasional camper sitting and waiting for people t…",
-                  "truncated": true,
-                  "minutes_at_review": 305547
+                  "date": "2026-10-25",
+                  "review_text": "Uptiers ruin the game and Gaijin will say its because there aren't enough people at your BR. That is a lie. They do it so you spend more money. If you're new and thinking about playing this game do yourself a favor and just don't.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229428955",
-                  "hours_at_review": 799.9,
+                  "recommendationid": "238205759",
+                  "hours_at_review": 598.1,
+                  "minutes_at_review": 35887,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I am mostly free to play (I pay for premium) who plays in spare time after work, after my kids go to sleep. The grind is slow and hard, there are a ton of excellent players who will wreck you over and over again unless you have a good mentor to teach you the ways of the game.  Balance barely exists. It practically does not exist above 8.0 (thankfully i'm not there yet). Due to balancing issues and BR compression this game is terrible for new players and the Premium vehicles (great for grinding) are a mix of OP and copy paste vehicles between tech trees (copy paste is better by far than P2W). I would not recommend to new players until they can decompress BRs, introduce era-separated matches, make aircraft cost more to spawn in GROUND RB, and/or reduce the pain of grinding.",
-                  "truncated": false,
-                  "minutes_at_review": 47996
+                  "date": "2026-10-20",
+                  "review_text": "DON'T PLAY THIS GAME .\n\nIs unbalance , the battle rating diff in the game is way to high all , all games are +1 br. , player leave the game after they die 1 time , the reward for wining a game is close to 0 so everyone leaves the game .  my highes br 12 america \n\nKILL THE SNAIL !",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-20e309",
-              "claim": "Reviewers report severe balancing issues and battle rating compression, particularly affecting high-tier gameplay and resulting in mismatched vehicle encounters.",
+              "claim_id": "vet-4a2041",
+              "claim": "Reviewers describe the progression and tech tree unlocks as an extremely long, slow grind that requires spending money or massive amounts of time.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 0,
-                "negative": 5
+                "positive": 2,
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "229707820",
-                  "hours_at_review": 5092.4,
+                  "recommendationid": "240478441",
+                  "hours_at_review": 1167.7,
+                  "minutes_at_review": 70060,
                   "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "First off, the game is unfortunately the only thing like it on the market, because if it wasn't, some smart Devs could easily knock this game off it's pedestal by doing what this game does but actually caring about balance and more then COD style team death match gameplay.\n\nJust some of the major issues this game has.\n\nMatchmaker bracket compression, known in game as Battle ratings (BR) are a two up two down system where you can end up facing vehicles that vastly outperform your chosen vehicle and have been a constant issue since the games inception. The developers insistence that decompression would effect queue times has been their go to response from community demand that they actually decompress the game to bring about something resembling balance and ♥♥♥♥ the queue times have largely been ignored. -- This creates pockets of BR brackets for nations that are practically unplayable because of poor balancing.\n\n-$80 premium vehicles that are placed too low in the matchmaking bracket with broken features that get milked until sales dry up. Further compounding the above issue.\n\n-The developers taking a very inconsistent attitude to implementation of the vehicles in game. Adding things like missiles to some aircraft that were only ever tested on them but not deployed operationally while others will at times not get missiles they actually used for \"balance,\" despite the game being a generally unbalanced mess that gives you the impression no one on the dev team actually plays the game they make.  \n\n-Game modes - The base game is basically COD style team death match in tanks or planes (Naval is a thing but practically abandoned and ignore.) There are game modes that were teased back in 2014 (Enduring Confrontation) that they at most had a few tests on than largely ignored. -- For tanks this means modern battle tanks in what is essentially 1.5km square maps for a good chunk of top BR cod style twitch death matches with the occasional camper sitting and waiting for people t…",
-                  "truncated": true,
-                  "minutes_at_review": 305547
+                  "date": "2026-11-18",
+                  "review_text": "This game saps your time and is the cause of much pain, its more worth it to play league of legends.\nI've haven't played this game in quite a long time beyond a few matches.\n\nUntil the impossible day when the grind can be done within a year for a working person, I'll never be playing this game beyond 2-3 matches a year.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230816446",
-                  "hours_at_review": 141.8,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "Until they fix upscaling in this game I will no longer be playing for the amount of players they boast constantly being put in matches where tanks are several tiers above really impacts on gameplay.",
-                  "truncated": false,
-                  "minutes_at_review": 8510
+                  "recommendationid": "240446575",
+                  "hours_at_review": 4567.4,
+                  "minutes_at_review": 274044,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "This is the longest I've ever played any game (started playing in 2013) and it's amazing but the grind is always there despite the fun gameplay. Premium time is a must if you want to unlock any tech tree so don't be fooled by free to play!",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230406537",
-                  "hours_at_review": 1788.8,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "top tier is just unolayable, russian bias is real they have way too op tanks and cas is unbalanced af (for russia best aa and best cas)",
-                  "truncated": false,
-                  "minutes_at_review": 107330
+                  "recommendationid": "240400526",
+                  "hours_at_review": 1106.4,
+                  "minutes_at_review": 66386,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "War Thunder is a pay-to-win game. If you spend money, you can reach top tier much faster by purchasing premium tanks and a premium account. However, if you play for free, it can take around a year or even longer to fully research an entire nation. Money is what matters most in this game The game is like a drug — it's extremely addictive. Some players are so experienced that you honestly feel like there's nothing you can do against them. Players with 10,000 hours of playtime are on a completely different level. The game can be seriously frustrating, gets under your skin, and is full of toxic players Despite all these problems, I still love this game, and I keep coming back to it because I'm completely addicted. It's hard to go even a single day without playing it. War Thunder has become an addiction I just can't seem to quit So, if you want to install this game and quickly unlock your favorite fighter jet or tank so you can actually enjoy playing it, you have two options.\nThe first option is to spend countless hours grinding without spending any money, potentially wasting months or even years of your life and losing touch with the real world just to unlock the vehicle you want.\nThe second option is much easier: spend a ridiculous amount of money and unlock it in an hour without having to do almost anything.\nBut here's the real problem: you'll end up in matches against players with 2,000 or even 3,000+ hours of playtime. As a newer player, you barely have a chance. You often get destroyed within seconds, before you even understand what happened.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229428955",
-                  "hours_at_review": 799.9,
+                  "recommendationid": "238557912",
+                  "hours_at_review": 139.8,
+                  "minutes_at_review": 8387,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I am mostly free to play (I pay for premium) who plays in spare time after work, after my kids go to sleep. The grind is slow and hard, there are a ton of excellent players who will wreck you over and over again unless you have a good mentor to teach you the ways of the game.  Balance barely exists. It practically does not exist above 8.0 (thankfully i'm not there yet). Due to balancing issues and BR compression this game is terrible for new players and the Premium vehicles (great for grinding) are a mix of OP and copy paste vehicles between tech trees (copy paste is better by far than P2W). I would not recommend to new players until they can decompress BRs, introduce era-separated matches, make aircraft cost more to spawn in GROUND RB, and/or reduce the pain of grinding.",
-                  "truncated": false,
-                  "minutes_at_review": 47996
+                  "date": "2026-10-25",
+                  "review_text": "Grind sucks, game isn't fun, and any vehicles actually worth getting require either taking a loan out on your house, or essentially playing full time to actually get anywhere.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229398489",
-                  "hours_at_review": 103.3,
+                  "recommendationid": "238284221",
+                  "hours_at_review": 265.5,
+                  "minutes_at_review": 15931,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I don’t play War Thunder on Steam anymore, I’ve been using the Gaijin launcher for a long time, but I still play it regularly. And like a lot of people, I’ve seen the community finally start speaking out about how far downhill the game has gone. Honestly, I agree with pretty much all of it. Gaijin Entertainment has become incredibly lazy when it comes to supporting the game.\r\n\r\nOne of the biggest creators, TheCodMineMan, who’s actually part of Gaijin’s partner program, has openly called out the state of the game. And now it’s not just him. Pretty much every major creator is talking about it: PhlyDaily, OddBawz, Spookston, all of them agree something is seriously wrong.\r\n\r\nThe issues are hard to ignore: overpriced pay to win premium vehicles, tons of copy-paste vehicles, and underwhelming event rewards that aren’t worth the grind. There’s also a lack of meaningful game modes,older, more enjoyable modes were removed and never replaced, and new ones just get removed as if they're just nothing, while FOMO tactics and even AI-generated decals have started creeping in.\r\n\r\nNaval feels pointless, A waste of money, and useless, because barely anyone plays it, and there really is no reason to play it, when You can just go play something better at this point such as World of Warships, that has so much love and effort put into it.\r\n\r\nAnd faction matchmaking has become random and unrealistic, which kills immersion compared to how the game used to be.\r\n\r\nBack in 2013–2015, War Thunder actually felt unique. Now it just feels neglected, and it really shows.\r\n\r\nThe difference now is that the people speaking out aren’t just random players, they’re creators inside Gaijin’s own program. That means this can’t just be ignored. If nothing changes, Gaijin risks losing a huge part of its player base, along with revenue and reputation from all the negative attention.\r\n\r\nGaijin, please actually listen to what Your playerbase and Community are speaking about, Please do not neglect this moment …",
-                  "truncated": true,
-                  "minutes_at_review": 6200
+                  "date": "2026-10-22",
+                  "review_text": "Until the devs decide to respect players time i will not recommend this game to anyone. they have purposely made the grind extremely arduous and if you don't pick one of the big 3 (Russia, USA, Germany) you will be shafted at every opportunity (think: the Big 3 get jets a full tier before any minor nation, meaning you will have to level your prop plane up against jets. The minor nations get *insanely* bad options in areas such as helicopters and small boats, and statistic wise your minor nation vehicle is purposely designed to be outclassed by players playing the big 3)\r\n\r\nand if you don't pay them monthly for a subscription they won't call a subscription (because you have to manually pay for it!) you get half the xp and credits of people who do. Now I get that a F2P game needs to make money, so sure, let people get bonus RP/SL. but once you get HALFWAY up the tier list we're talking 40-80 hours of grinding to unlock a new vehicle if you're doing tanks. And if you're leveling up the  UH1B (the first japanese helicopter) good luck. because you'll average ~150-300 RP a game IF you manage to get a kill and it cost 15,000+ per upgrade. of which you'll need 9, not including the tier up unlock.\r\n\r\nThe worst part about it is instead of making >>A GAME<< enjoyable, the devs and fanbois of the game treat minor nations and their players like cannon fodder with a \"its realistic get over it\" mentality and take a \"i can spend 80 hours a week on the game, why can't you?\" approach to the xp grind.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238544024",
+                  "hours_at_review": 985.8,
+                  "minutes_at_review": 59149,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "DO NOT INSTALL THIS GAME, it ruined my life. The only fun you will get is maybe with some friends but other than that, its just a waste of time. You WILL REGRET putting in the hours in this. You won't progress much unless you either 1)spend all your money or 2) sacrfice your soul to gaijin.\n\nMaybe do learn something new and be productive instead of whatever this is if you are bored :)",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-50e464",
+              "claim": "Reviewers report that match making constantly puts players into uptiers against much higher battle ratings and experienced opponents with thousands of hours.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240400526",
+                  "hours_at_review": 1106.4,
+                  "minutes_at_review": 66386,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "War Thunder is a pay-to-win game. If you spend money, you can reach top tier much faster by purchasing premium tanks and a premium account. However, if you play for free, it can take around a year or even longer to fully research an entire nation. Money is what matters most in this game The game is like a drug — it's extremely addictive. Some players are so experienced that you honestly feel like there's nothing you can do against them. Players with 10,000 hours of playtime are on a completely different level. The game can be seriously frustrating, gets under your skin, and is full of toxic players Despite all these problems, I still love this game, and I keep coming back to it because I'm completely addicted. It's hard to go even a single day without playing it. War Thunder has become an addiction I just can't seem to quit So, if you want to install this game and quickly unlock your favorite fighter jet or tank so you can actually enjoy playing it, you have two options.\nThe first option is to spend countless hours grinding without spending any money, potentially wasting months or even years of your life and losing touch with the real world just to unlock the vehicle you want.\nThe second option is much easier: spend a ridiculous amount of money and unlock it in an hour without having to do almost anything.\nBut here's the real problem: you'll end up in matches against players with 2,000 or even 3,000+ hours of playtime. As a newer player, you barely have a chance. You often get destroyed within seconds, before you even understand what happened.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238515697",
+                  "hours_at_review": 1478.5,
+                  "minutes_at_review": 88711,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Uptiers ruin the game and Gaijin will say its because there aren't enough people at your BR. That is a lie. They do it so you spend more money. If you're new and thinking about playing this game do yourself a favor and just don't.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238205759",
+                  "hours_at_review": 598.1,
+                  "minutes_at_review": 35887,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "DON'T PLAY THIS GAME .\n\nIs unbalance , the battle rating diff in the game is way to high all , all games are +1 br. , player leave the game after they die 1 time , the reward for wining a game is close to 0 so everyone leaves the game .  my highes br 12 america \n\nKILL THE SNAIL !",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238881995",
+                  "hours_at_review": 3218.5,
+                  "minutes_at_review": 193110,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Fellow wathunder players its time to review bomb this game into the ground again. After the most recent update moving a lot of vehicles battle ratings around again Russia has been blessed and lowered in rating while the rest of the nations have been moved higher facing things that are way out of their purview. There is no reason the XM800T that only has an offensive 20mm should face MBT to light vehicles that is cannot even hurt. Gaijin you have ruined your game again and to any new players that may see this don't pick this game up walk away. its not worth this time and effort you'd need to advance and get the vehicles you want unless your willing to drop 100$+ and get absolutely destroyed by Chinese players who haven't touched grass or seen sunlight in the last 3 years.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238999935",
+                  "hours_at_review": 145.8,
+                  "minutes_at_review": 8749,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "The game is extremely p2w. Furthermore, skill often doesn't matter; what matters more is the vehicle you use and whether or not it’s a Soviet vehicle. You are constantly matched against players with a higher BR. If you’re a beginner, you’ll always find yourself facing players at lv 70 or 100. On top of that, I’m getting only 30 FPS with a 5070 Ti graphics card, and I experience frequent FPS drops.",
+                  "truncated": false
                 }
               ]
             }
@@ -1085,65 +1060,67 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-c23a93",
-              "claim": "Reviewers state that damage physics and shell penetration are inconsistent, citing problems with volumetric armor mechanics causing high-penetration rounds to fail or get absorbed unexpectedly.",
+              "claim_id": "vet-c6a5ae",
+              "claim": "Reviewers report technical issues including buggy hit feedback, volumetric ammunition failures, and shells sometimes failing to fire at all.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231755561",
-                  "hours_at_review": 1741.8,
+                  "recommendationid": "240478744",
+                  "hours_at_review": 309.0,
+                  "minutes_at_review": 18542,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Im addicted to this piece of idiot bait. I mean sometimes it's fun, but volumetric ♥♥♥♥ and bias ruins the game experience. The tutorials teach you absolutely nothing, so if you're considering playing this game, go and search on YouTube for better tuts. If it goes on like this, I'm going to suffer mental damage",
-                  "truncated": false,
-                  "minutes_at_review": 104506
+                  "date": "2026-11-18",
+                  "review_text": "Gameplay is good overall, the events and the greediness of the game is very bad though. daily fomo or pay for events. prices too high for what it offers and buggy problems with hit feedback so you cant even tell why your plane shots arent hurting the plane cause wont see where theyre hitting.  dont play if you plan to do events or want to actually collect everything in it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229894274",
-                  "hours_at_review": 2072.7,
+                  "recommendationid": "239634856",
+                  "hours_at_review": 1018.1,
+                  "minutes_at_review": 61087,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "Let me start this off I used to play when I was in high school/Covid I had infinite time for this game played it to my hearts content.\n\nThis game isnt what it says it is, \"most realistic\" blah blah blah, their volumetric systems cause your high pen rounds to get eaten by literally nothing/things that should be penned but dont because game glitch and Gaijin doesnt want to fix it.\n\nThe company behind this game is heartless, they just want money back in 2016-2019 if i recall they said they never wanted people to buy their way to the top but if u get the game u can buy any vic and get straight to the highest teir basically even if u dont know what you are doing. Lies, slander, and they add things that shouldn't be as strong as they are more recent events BMPT thing was the most OP thing in the world but its odd why only RUSSIA?? hm thats weird why dont other countries get super OP stuff RUSSIA was given the first long range SPAA, first SAM, first anything OP and other countries get ignored OR they dont get given country specific things they just get reskinned versions of other counties things. Its absolutely terrible with that being said most of their love is given to USA, GERMANY, RUSSIA and the other countries have to beg for scrapes or like youve probably seen resort to sending illegal classified documents. \n\nI beg of you whomever might be reading this if you are trying to get the game just dont, buy gunner HEAT PC, DCS world(free), or another actual game that takes their realism for real unlike this unfair company, HOWEVER if u do get it youll be grinding tech trees for hours till u dont have time because? they want u to buy the premium account they give u for real life money and if u dont get it youll spend HUNDREDS of hours, thousands trying to get through techtrees, vics, or whatever.\n\n\nTLDR: game bad, terrible company, greedy company, terrible reputation, go buy more realistic game unlike this one, this one not realistic at all.\n",
-                  "truncated": false,
-                  "minutes_at_review": 124359
-                },
-                {
-                  "recommendationid": "229792014",
-                  "hours_at_review": 145.4,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "I hate this game, everything is bias i though this game at first would be fun or enjoyable but the more updates the more the community of this game gets ignored, more bugs and more russian tanks, more beautiful tanks behind big pay walls, as someone who loves to grind games I do not enjoy wasting my time on a game that ignores their community and gets more pay to win per day, and not talking about the rest, the ghost shells, european top tier being lego fully model and russia getting more op tanks that you need 1000 pen to kill like bro what the ♥♥♥♥ is happening to this game the only reason is not dead yet is cuz there's no game that does the same as war thunder\nIf your getting started or thinking of playing again save yourself and just dont play",
-                  "truncated": false,
-                  "minutes_at_review": 8726
+                  "date": "2026-11-07",
+                  "review_text": "Matchmaking is horrendous. You will never play a fair game against vehicule of your own battle rating. \n\nVolumetric ammunition is bugged out and your shell will sometimes not even fire.\n\nCash grab on all new premium vehicule.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-683b2016",
+          "text": "One reviewer says hit feedback is buggy so you cannot tell why your plane shots are not hurting.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240478744",
+            "hours_at_review": 309.0,
+            "minutes_at_review": 18542,
+            "voted_up": false,
+            "date": "2026-11-18",
+            "review_text": "Gameplay is good overall, the events and the greediness of the game is very bad though. daily fomo or pay for events. prices too high for what it offers and buggy problems with hit feedback so you cant even tell why your plane shots arent hurting the plane cause wont see where theyre hitting.  dont play if you plan to do events or want to actually collect everything in it.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 18,
+        "cited_reviews": 14,
         "cited_recommend": 2,
-        "divergence_p": 0.0052,
+        "divergence_p": 0.00247,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1997,
-    "steam_total_reviews": 321447,
+    "pool_n": 1944,
+    "steam_total_reviews": 331623,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/236390/65885881b96806d55fea45e130233fdafd78b129/header.jpg?t=1784211516",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/236390/104c3c519fdb3ba92fbe2348ebfadcebf2a7ee8f/capsule_231x87.jpg?t=1784211516",
-    "grid": "https://cdn2.steamgriddb.com/grid/5f82fdf76a0ac0959b3c8327b1f63212.png"
   }
 }

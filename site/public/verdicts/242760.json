@@ -1,118 +1,129 @@
 {
   "appid": "242760",
   "game_name": "The Forest",
-  "generated_at": "2026-08-10T10:00:14Z",
+  "generated_at": "2026-11-18T10:28:14Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/242760/header.jpg?t=1699381053",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/242760/capsule_231x87.jpg?t=1699381053",
+    "grid": "https://cdn2.steamgriddb.com/grid/f03c1b76769ba6af93c93e1247defc35.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 10,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Buy",
-    "tagline": "Survival on a hostile island brings tense combat and creative building.",
+    "tagline": "An immersive survival experience with rough edges and technical hurdles.",
     "for_you_if": [
-      "you enjoy open-ended survival crafting",
-      "you can handle clunky combat mechanics",
-      "you want a tense wilderness experience"
+      "you want to explore with friends",
+      "you enjoy deep survival crafting",
+      "you can overlook a vague narrative"
     ],
     "not_for_you_if": [
-      "you expect clear in-game guidance",
-      "you need reliable base building structures",
-      "you require cross-play support with friends"
+      "you expect polished controller support",
+      "you need stable performance without crashes",
+      "you dislike tedious material gathering"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 44,
-      "pct_positive": 81.8,
+      "pool_n": 46,
+      "pct_positive": 73.9,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 694,
-      "pct_positive": 92.1,
+      "pool_n": 650,
+      "pct_positive": 94.0,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 469,
-      "pct_positive": 94.7,
+      "pool_n": 450,
+      "pct_positive": 96.9,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 41,
-      "pct_positive": 97.6,
+      "pool_n": 54,
+      "pct_positive": 100.0,
       "muted": false
     }
   ],
-  "distortion_flags": [],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Player sentiment improves steadily as playtime increases past the initial hours.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 73.9,
+            "pool_n": 46
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 94.0,
+            "pool_n": 650
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 96.9,
+            "pool_n": 450
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 100.0,
+            "pool_n": 54
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 73.9,
+        "low_pool_n": 46,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 100.0,
+        "high_pool_n": 54,
+        "gap_pts": 26.1
+      }
+    }
+  ],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 44,
-      "pct_positive": 81.8,
+      "pool_n": 46,
+      "pct_positive": 73.9,
       "muted": false,
       "n_note": null,
-      "summary": "New players find an engaging survival sandbox.",
-      "themes": []
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 694,
-      "pct_positive": 92.1,
-      "muted": false,
-      "n_note": null,
-      "summary": "Early explorers praise smooth performance on modest hardware while struggling with finicky combat and building restrictions.",
+      "summary": "Early players report stiff combat mechanics and controller support issues.",
       "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-395d19",
-              "claim": "Reviewers describe the building system as frustrating, restrictive, and difficult to use effectively when constructing custom structures or doors.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231758630",
-                  "hours_at_review": 8.7,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Bordering on unplayable. Super bummed.\n\nI fell in love with Sons Of The Forest and so I decided to try the first game as well. \nThe building system is horrible. I cannot build a functional door on my custom building for the life of me. When I finish building the walls it sometimes shows a second blueprint on top of the first one so it's basically prompting me to double build a structure. What that is about, I have no idea. You also can't remove building blocks you've already placed, you gotta ♥♥♥♥ the whole thing up with an axe to destroy it. And when a building eventually collapses on you because ♥♥♥♥ you, you get like 1 log back from the 90 you used to build said structure.\n\nYou play as Timmy's dad, who's probably dying of COPD judging by the sounds he makes after running a few steps. The survival part is pretty merciless even on normal which could be forgivable if the building system wasn't so ♥♥♥♥♥♥ up. Like you can't ♥♥♥♥♥♥♥ catch a break in this game. The story? Hell if I know, all the game threw at me was that I'm Timmy's dad and I assume I have to look for my son. That's it. \n\nLet's look at the bright side though, the developers have corrected most of their mistakes and made an absolutely fantastic, stylish, super fun sequel to this odd, clunky wheezing simulator.",
-                  "truncated": false,
-                  "minutes_at_review": 519
-                },
-                {
-                  "recommendationid": "227062122",
-                  "hours_at_review": 6.3,
-                  "voted_up": false,
-                  "date": "2026-06-03",
-                  "review_text": "\nI really wanted to enjoy The Forest, but it turned out to be a big letdown. It quickly becomes a repetitive lumberjack simulator filled with endless tree chopping and resource grinding.\n\nThe world feels empty, building is frustratingly restrictive, caves are way too dark, and the cannibals become annoying rather than scary. Hunger management is also too punishing early on.\n\nGreat idea, poor execution. Disappointed.\n",
-                  "truncated": false,
-                  "minutes_at_review": 379
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-5aa761",
-              "claim": "Reviewers describe combat as janky or finicky with poor hit detection.",
+              "claim_id": "ref-b788a7",
+              "claim": "Reviewers report that the combat system feels stiff.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -120,120 +131,165 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231558112",
-                  "hours_at_review": 6.8,
+                  "recommendationid": "239992875",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 50,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "[b]The Forest[/b]\n\nDecent survival horror game. I didn't have the patience to get really get into it but there's some deep story and a good amount of variety in the survival mechanics. The game gives you a lot of different stuff you can find and stuff you can build while still retaining a good degree of realism. Combat can be kind of finicky but enemies are pretty terrifying and formidable.\n\n[b]Rating: 5.0/10[/b]\n\n[url=https://steamcommunity.com/id/_esquie_/]—Esquie[/url]",
-                  "truncated": false,
-                  "minutes_at_review": 409
+                  "date": "2026-11-12",
+                  "review_text": "After sinking countless hours into this back on console, I can safely say it still holds up as one of the best survival horror sandboxes ever made. Crashing onto a mysterious peninsula and slowly turning a desperate stick shelter into a massive, fortified log base never loses its charm.\r\n\r\nWhat really sets it apart is how smart and creepy the cannibal AI feels. Watching scouts silently stalk you from the tree line at dusk before launching a full scale assault on your walls keeps your heart racing, and descending into those pitch black underground caves with nothing but a flickering lighter is pure terror. A few building snap points can be stubborn and the combat feels a little stiff at times, yet the mix of relaxing base building and genuine horror makes it easy to lose entire weekends to this island.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "225608357",
-                  "hours_at_review": 12.8,
+                  "recommendationid": "239247416",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 9,
                   "voted_up": false,
-                  "date": "2026-05-15",
-                  "review_text": "A survival crafting game with almost no reason to actually engage in the base-building mechanics. Combat is easy but exceptionally janky (poor hit detection). The story is somewhat interesting but very poorly told. \r\n\r\nThis game does not hold up in 2026. There are numerous other games in this genre that do everything better.",
-                  "truncated": false,
-                  "minutes_at_review": 768
+                  "date": "2026-11-03",
+                  "review_text": "this game is hot ass, do not buy. I could rant for a while on how bad this game is so don't waste your money on this game. I feel bad though because the dev team must have worked hard on this and I'm just smearing shit all over their name. And I'm sorry but my statement is the truth and the truth hurts sometimes...\n\nreasons why I don't like this game:\n\n1, graphics ass\nThe graphics is just hot booty cheeks (on VR and Desktop)\n\n2, Frames are so bad\nMy pc and PCVR can run a lot of high-end games, but for some reason this game is just always stuck at 15 frames or some shit, Lag spikes every 2 seconds and the frames never boost, EVEN on lowest graphics it still runs slow.\n\n(my ops)\nThe animation in the beginning just sucks and its stiff, and the whole concept of the game isn't the brightest idea? \nI'm not gonna sugar coat it. it is pretty scary.",
+                  "truncated": false
                 }
               ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
+            },
             {
-              "claim_id": "ear-d0a698",
-              "claim": "Reviewers note that the game runs well and can be played smoothly on lower-end hardware or older PCs when adjusting settings.",
-              "citation_verdict": "positive",
+              "claim_id": "ref-34bedc",
+              "claim": "Reviewers note issues with controller support, including Xbox controller jank and lack of good dual shock support.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 3,
-                "negative": 0
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231840682",
-                  "hours_at_review": 8.1,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "good game for pc, but i had to have all the display settings on low because my pc sucks ass😭",
-                  "truncated": false,
-                  "minutes_at_review": 484
-                },
-                {
-                  "recommendationid": "225095885",
-                  "hours_at_review": 3.1,
-                  "voted_up": true,
-                  "date": "2026-05-09",
-                  "review_text": "Even with my potato laptop, it's still running COMPLETELY smoothly and this is the best survival experience I've ever had in a while even after all these years since it came out. Definitely recommend buying.",
-                  "truncated": false,
-                  "minutes_at_review": 187
-                },
-                {
-                  "recommendationid": "227292504",
-                  "hours_at_review": 6.5,
-                  "voted_up": true,
-                  "date": "2026-06-06",
-                  "review_text": "peak game, its fun and can run on almost any pc if you mess with the settings",
-                  "truncated": false,
-                  "minutes_at_review": 388
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ear-92d0f4",
-              "claim": "Reviewers report that the game lacks in-game explanations or guidance, requiring players to consult external guides online.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231690419",
-                  "hours_at_review": 10.4,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "Very good multiplayer and nice for single player can be ran with a pc with older parts, guides may be need here and there but overall good",
-                  "truncated": false,
-                  "minutes_at_review": 627
-                },
-                {
-                  "recommendationid": "231140853",
-                  "hours_at_review": 11.9,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "Recommend it, but very hard to beat if you dont watch tutorials",
-                  "truncated": false,
-                  "minutes_at_review": 717
-                },
-                {
-                  "recommendationid": "228648670",
-                  "hours_at_review": 17.6,
+                  "recommendationid": "239120434",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 28,
                   "voted_up": false,
-                  "date": "2026-06-23",
-                  "review_text": "game milks you for game time doesnt explain anything your doing you have to keep googling what to do next to know what to do ending doesnt feel like an ending it doesnt explain that your making important decisions overall both endings are bad",
-                  "truncated": false,
-                  "minutes_at_review": 1056
+                  "date": "2026-11-01",
+                  "review_text": "The Forest has Xbox controller jank and violates several UI/UX conventions.  It might be a good game, but it feels old in the bad way.  My gaming time is casual and valuable, so The Forest isn't for me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238680520",
+                  "hours_at_review": 1.7,
+                  "minutes_at_review": 102,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "Combat system is really bad. Doesn't have a good dual shock controller support",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 10,
-        "cited_recommend": 6,
-        "divergence_p": 0.00554,
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 1,
+        "divergence_p": 0.0572,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 650,
+      "pct_positive": 94.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players encounter frequent crashes and severe technical instability.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-9825cc",
+              "claim": "Reviewers report frequent crashes and severe technical instability, with some experiencing complete system lockouts or game-breaking bugs.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "240442654",
+                  "hours_at_review": 13.1,
+                  "minutes_at_review": 786,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "I was really starting to like this game, until the point where the game would not stop crashing. I have no clue as to the rating for this game are so high. The game is literally unplayable. Massive frame drop when loading in out of new sections of the game. I wouldn't say that I have the best system ever but with my build I should have 0 problems with running a game from 2018. Tried every work around and absolutely nothing helped or worked. I don't think it would be so bad if there was some sort of auto save system, which The Forest does not have. So you will be exploring a cave or a new area of the map and your last save was 30mins/ 1hr ago and BOOM! The game crashes on you completely erasing all of your progress and you end up having to back track all over you progress you made before the crash. Not very happy at all with The Forest. That and I'm having similar issues with Son's of the Forest as well. Just not as bad. Both of these game are severely under optimized. It really is a shame, was really looking forward to playing this game through to completion. The issue has to be with the Unity engine that they used to developed both The Forest and Son's of the Forest. I have never abandoned a game before without finishing it, but it is looking more and more like The Forest will be checking that box off for me. All I can do is wait/ hope for some sort of patch later on down the road that might fix the issue. The Forest is getting shelved indefinitely. Guess we will see how it goes on Son's of the Forest. Not holding my breath though. Can't recommend  and don't recommend this game. Glad I only paid 3$ for it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240421207",
+                  "hours_at_review": 16.3,
+                  "minutes_at_review": 977,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "in the 16 hours of play my nvidia 5080 crashed and locked me out of my pc 3 times",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239912742",
+                  "hours_at_review": 8.2,
+                  "minutes_at_review": 491,
+                  "voted_up": false,
+                  "date": "2026-11-11",
+                  "review_text": "The game started off pretty fun, but with all of the bugs it is not worth continuing on with. Bugs so far include, glitching enemies, items disappearing, the game crashing/not starting and requiring the game to be completely deleted and redownloaded, to name a few. \nI am disappointed.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239288804",
+                  "hours_at_review": 13.6,
+                  "minutes_at_review": 818,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Gonna be the partypooper here but this game feels like a fantastic early access title that never made it all the way through. Atmosphere and exploration is great but it's littered with game-breaking bugs and clearly unfinished mechanics. E.g. sometimes you will spend HOURS collecting the resources to build something, just for a glitch to make it unusable. I've read that the bugs are mostly in multiplayer so maybe solo is a better experience. No way this deserves anything above 'mixed' reviews.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239510793",
+                  "hours_at_review": 12.5,
+                  "minutes_at_review": 748,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "YOUR KEEPS CRASHING! PLEASE FIX IT :(",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-1a621c10",
+          "text": "One reviewer says stupid survival rules, stupid controls, and a stupid building menu make it no fun at all.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239287837",
+            "hours_at_review": 3.0,
+            "minutes_at_review": 180,
+            "voted_up": false,
+            "date": "2026-11-03",
+            "review_text": "Stupid survival rules, stupid controls, stupid building menu. No fun at all.",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 5,
+        "cited_recommend": 0,
+        "divergence_p": 7.78e-07,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -241,145 +297,103 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 469,
-      "pct_positive": 94.7,
+      "pool_n": 450,
+      "pct_positive": 96.9,
       "muted": false,
       "n_note": null,
-      "summary": "Mid-tier players encounter punishing survival meters and fragile bases alongside tough combat encounters.",
+      "summary": "Progression brings bugs that can cause players to lose hours of progress.",
       "themes": [
         {
-          "theme": "content",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-c1fbc0",
-              "claim": "Reviewers report that multiplayer achievements can be glitchy.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231416199",
-                  "hours_at_review": 64.0,
-                  "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "7/10 platinum exploring all the caves achievemnt is glitched, still good game to play with your friends.",
-                  "truncated": false,
-                  "minutes_at_review": 3843
-                },
-                {
-                  "recommendationid": "231254816",
-                  "hours_at_review": 73.8,
-                  "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "I got this game as a gift from my boyfriend and I can't stop playing it, the various things you can do in this game is so incredibly fun. Some of the achivements were really glitchy in multiplayer though, which was kind of annoying. Regardless of that if you're looking for a good survival game to play either alone or with others I 100% recommend! :3",
-                  "truncated": false,
-                  "minutes_at_review": 4431
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-e8ffa0",
-              "claim": "Reviewers report that base building is hindered by structures being easily destroyed by enemies and buildings disintegrating rather than dropping materials.",
+              "claim_id": "mid-10e82a",
+              "claim": "Reviewers report encountering bugs that can cause players to fall through the ground or lose hours of progress.",
               "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "227239343",
-                  "hours_at_review": 23.9,
-                  "voted_up": false,
-                  "date": "2026-06-05",
-                  "review_text": "The Forest as a game is a mystery to me - because I simply can not understand how an unfinished unoriginal game that has nothing impressive in it can go out of early access and still get this much praise.\n[list]\n    [*] I will start with the most obvious problem: basebuilding. While the game advertises itself with “build a base at day, defend it at night”, the base in question is broken on each and every level. First, building it takes a ridiculous amount of time because of the volume of the required resources. To make things worse - cutting all those trees to make a base makes the local population more aggressive and attacks on your base more often and as a result - instead of being more safe you end up being less safe with a base. The next reason why your base sucks that much is the fact that all of the things you build can be destroyed just in a couple of hits by some monsters or in under a minute by a group of cannibals - and destroyed buildings don’t just drop their materials - they disintegrate forcing you to waste even more time on logging and building. And the last problem with the base makes the whole situation just ridiculous - you don’t even need a base, as enemies are incapable of following you into caves or onto the boat where you can sleep freely and securely.\n    [*] Survival elements. I will never stop hating survival systems where the food and water are abundant and extremely easy to get, but the bars run out so fast that you are constantly nagged with hunger and thirst. And just so you understand how easy the food situation is here - you can forage for berries, hunt for wildlife or eat your enemies - and each of those options can sustain you easily, not to mention that you can combine them however you like.\n    [*] Combat. Oh god, I haven’t seen that much jank in a while. Sure, on one hand locals behave in an interesting way, with their running, screaming from a distance and everything, but when it comes to a fight having those lunatics run in and …",
-                  "truncated": true,
-                  "minutes_at_review": 1431
-                },
-                {
-                  "recommendationid": "225968955",
-                  "hours_at_review": 57.0,
-                  "voted_up": false,
-                  "date": "2026-05-20",
-                  "review_text": "I enjoyed the first few hours but then I quickly came to find the gameplay loop a little too annoying to enjoy myself any longer. I don't really understand how this has such good reviews. There were some things i like and disliked about this. \r\n\r\nThe Bad:\r\n- The food and energy run out way too quickly and yet despite this there is an overabundance of food and water that is constantly respawning. It just turns it into an annoying tedious thing I have to constantly deal with. \r\n- Most of my time was spent walking around in caves which are scarry because they are filled with cannibals and eldritch horror monsters but I just can't see a thing while I'm fighting them, so again it is annoying. \r\n- There isn't really a reason to build bases other than to satisfy your creativity. The enemies just easily destroy your buildings like its nothing and you can actually accidentally hit your own building very easily if you are fighting cannibals near it. \r\n- I didn't finish the story but what i did play felt unintuitive to progress and not particularly interesting.\r\n- The combat is terrible. it is very difficult to hit enemies with your weapons and basic enemies take something like 20 spear stabs to kill. Despite this, the enemies are laughably easy to kill because you just side strafe all their attacks. \r\n- you are constantly bombarded by patrols of cannibals so you never get time to rest, explore, and build. \r\n- Exploration wasn't very rewarding, I swam out to an interesting looking island only be rewarded with absolutely nothing being there.\r\n\r\nThe Good:\r\n- The crafting system is interesting because there are no crafting recipes, just you jamming a bunch of stuff together until you find out what combines into what. \r\n- The game definitely has some scary moments.",
-                  "truncated": false,
-                  "minutes_at_review": 3417
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-1ceb16",
-              "claim": "Reviewers describe the combat as difficult or lopsided.",
-              "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
-                "negative": 1
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "231465919",
-                  "hours_at_review": 21.8,
+                  "recommendationid": "240207615",
+                  "hours_at_review": 20.4,
+                  "minutes_at_review": 1221,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "this game is still a buggy mess after all this time.\r\nsome bugs are purely cosmetic (like animations or vfx) and some are straight up killing hours worth of progress (collectibles that are more/less important).\r\nI really advise to NOT play this for FUN, as majority of content feels like a chore rather than interesting and/or entertaining.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239690185",
+                  "hours_at_review": 45.6,
+                  "minutes_at_review": 2735,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "bug after ending, My character passes through the ground.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239647318",
+                  "hours_at_review": 31.2,
+                  "minutes_at_review": 1873,
+                  "voted_up": false,
+                  "date": "2026-11-07",
+                  "review_text": "This game is conceptually very cool, and I had fun playing it with my friend. That being said, the game is so, so buggy. [spoiler] I was unable to find passengers that were there for my friend, the last big enemy knocked me out of the map and I was unable to even finish the game. [/spoiler]That's just some of the biggest bugs, there were many more. I had to disconnect so my friend at least could finish the game. This would be an easy recommend for me if the game would just work, but unfortunately it doesn't.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239195457",
+                  "hours_at_review": 35.4,
+                  "minutes_at_review": 2125,
                   "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "It's a fun game, specially to play with friends. The visuals are good, and sometimes it can be peaceful,combat is a bit lopsided and hard, but that makes the game more fun to play imo.",
-                  "truncated": false,
-                  "minutes_at_review": 1310
-                },
-                {
-                  "recommendationid": "225968955",
-                  "hours_at_review": 57.0,
-                  "voted_up": false,
-                  "date": "2026-05-20",
-                  "review_text": "I enjoyed the first few hours but then I quickly came to find the gameplay loop a little too annoying to enjoy myself any longer. I don't really understand how this has such good reviews. There were some things i like and disliked about this. \r\n\r\nThe Bad:\r\n- The food and energy run out way too quickly and yet despite this there is an overabundance of food and water that is constantly respawning. It just turns it into an annoying tedious thing I have to constantly deal with. \r\n- Most of my time was spent walking around in caves which are scarry because they are filled with cannibals and eldritch horror monsters but I just can't see a thing while I'm fighting them, so again it is annoying. \r\n- There isn't really a reason to build bases other than to satisfy your creativity. The enemies just easily destroy your buildings like its nothing and you can actually accidentally hit your own building very easily if you are fighting cannibals near it. \r\n- I didn't finish the story but what i did play felt unintuitive to progress and not particularly interesting.\r\n- The combat is terrible. it is very difficult to hit enemies with your weapons and basic enemies take something like 20 spear stabs to kill. Despite this, the enemies are laughably easy to kill because you just side strafe all their attacks. \r\n- you are constantly bombarded by patrols of cannibals so you never get time to rest, explore, and build. \r\n- Exploration wasn't very rewarding, I swam out to an interesting looking island only be rewarded with absolutely nothing being there.\r\n\r\nThe Good:\r\n- The crafting system is interesting because there are no crafting recipes, just you jamming a bunch of stuff together until you find out what combines into what. \r\n- The game definitely has some scary moments.",
-                  "truncated": false,
-                  "minutes_at_review": 3417
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-9da29a",
-              "claim": "Reviewers mention that hunger and thirst meters deplete very quickly.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "227239343",
-                  "hours_at_review": 23.9,
-                  "voted_up": false,
-                  "date": "2026-06-05",
-                  "review_text": "The Forest as a game is a mystery to me - because I simply can not understand how an unfinished unoriginal game that has nothing impressive in it can go out of early access and still get this much praise.\n[list]\n    [*] I will start with the most obvious problem: basebuilding. While the game advertises itself with “build a base at day, defend it at night”, the base in question is broken on each and every level. First, building it takes a ridiculous amount of time because of the volume of the required resources. To make things worse - cutting all those trees to make a base makes the local population more aggressive and attacks on your base more often and as a result - instead of being more safe you end up being less safe with a base. The next reason why your base sucks that much is the fact that all of the things you build can be destroyed just in a couple of hits by some monsters or in under a minute by a group of cannibals - and destroyed buildings don’t just drop their materials - they disintegrate forcing you to waste even more time on logging and building. And the last problem with the base makes the whole situation just ridiculous - you don’t even need a base, as enemies are incapable of following you into caves or onto the boat where you can sleep freely and securely.\n    [*] Survival elements. I will never stop hating survival systems where the food and water are abundant and extremely easy to get, but the bars run out so fast that you are constantly nagged with hunger and thirst. And just so you understand how easy the food situation is here - you can forage for berries, hunt for wildlife or eat your enemies - and each of those options can sustain you easily, not to mention that you can combine them however you like.\n    [*] Combat. Oh god, I haven’t seen that much jank in a while. Sure, on one hand locals behave in an interesting way, with their running, screaming from a distance and everything, but when it comes to a fight having those lunatics run in and …",
-                  "truncated": true,
-                  "minutes_at_review": 1431
-                },
-                {
-                  "recommendationid": "225968955",
-                  "hours_at_review": 57.0,
-                  "voted_up": false,
-                  "date": "2026-05-20",
-                  "review_text": "I enjoyed the first few hours but then I quickly came to find the gameplay loop a little too annoying to enjoy myself any longer. I don't really understand how this has such good reviews. There were some things i like and disliked about this. \r\n\r\nThe Bad:\r\n- The food and energy run out way too quickly and yet despite this there is an overabundance of food and water that is constantly respawning. It just turns it into an annoying tedious thing I have to constantly deal with. \r\n- Most of my time was spent walking around in caves which are scarry because they are filled with cannibals and eldritch horror monsters but I just can't see a thing while I'm fighting them, so again it is annoying. \r\n- There isn't really a reason to build bases other than to satisfy your creativity. The enemies just easily destroy your buildings like its nothing and you can actually accidentally hit your own building very easily if you are fighting cannibals near it. \r\n- I didn't finish the story but what i did play felt unintuitive to progress and not particularly interesting.\r\n- The combat is terrible. it is very difficult to hit enemies with your weapons and basic enemies take something like 20 spear stabs to kill. Despite this, the enemies are laughably easy to kill because you just side strafe all their attacks. \r\n- you are constantly bombarded by patrols of cannibals so you never get time to rest, explore, and build. \r\n- Exploration wasn't very rewarding, I swam out to an interesting looking island only be rewarded with absolutely nothing being there.\r\n\r\nThe Good:\r\n- The crafting system is interesting because there are no crafting recipes, just you jamming a bunch of stuff together until you find out what combines into what. \r\n- The game definitely has some scary moments.",
-                  "truncated": false,
-                  "minutes_at_review": 3417
+                  "date": "2026-11-02",
+                  "review_text": "во время того как я проходил на все достижения я понял что это очень багованая игра после смерти на последнем боссе есть шанс то что ты провалишся под землю то что ты во время босс файта можеш возрождаться сколько угодно раз это очень казуально еще и плюсом есле хост не отвечает сервер становиться просто бумажным и нечего даже поставить нельзя но могу отдать должное графика мега имба в сюжете конечно есть дыры например как то что есть даже достижение не найти своего сына за 100 дней есле есть такое достижение то должно быть и концовка сбежать 1 без тимми но про это сюжет молчит а так все имба по сравнению с сонс оф зефорестом лютейшая имба зе форест в разы лучше",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-cc481613",
+          "text": "One reviewer says the building guidebook needs to explain certain mechanics better, giving the example that catching fish requires placing a rabbit trap in the water.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239979616",
+            "hours_at_review": 42.5,
+            "minutes_at_review": 2548,
+            "voted_up": true,
+            "date": "2026-11-12",
+            "review_text": "The Forest is genuinely an amazing game, especially when it comes to its story. I really enjoyed the mystery, the progression, and especially the ending, which I thought was fantastic. The story was easily one of my favourite parts of the entire experience.\r\n\r\nThe survival mechanics are great, and I honestly don't have any complaints about them. Gathering resources, building a base, and defending yourself against enemies all work really well. The graphics are also surprisingly realistic depending on your quality settings, and the overall environment looks fantastic.\r\n\r\nHowever, there are definitely some things I wish were better.\r\n\r\nFor starters, the building system. I actually really like the idea of using a survival guidebook to construct things, but I wish it were a little more detailed and explained certain mechanics better. For example, there's an achievement that requires you to catch fish using a trap. Sounds simple enough, right? WELL, APPARENTLY YOU HAVE TO PLACE A RABBIT TRAP IN THE WATER. HOW DOES THAT MAKE ANY SENSE??? It's little things like this that make the game unnecessarily confusing. I love the concept of the book, and believe me, I enjoyed using it, but I feel like it wasn't quite there.\r\n\r\nThe caves are another example. I love the idea of exploring these mysterious underground areas, and the enemies and horror atmosphere are genuinely terrifying at times. However, finding important items can be extremely frustrating. Certain items are hidden in specific caves, and figuring out exactly where you're supposed to go can become more annoying than enjoyable. I wish the exploration and progression had been a little more thoughtfully planned out. I'm not saying everything should be handed to the player, but a little more direction would've made a huge difference.\r\n\r\nAND CAN WE TALK ABOUT THE ANIMALS???\r\n\r\nWHY ARE THEY SO CUTE??? WHY THE HECK DO I HAVE TO KILL THESE ADORABLE LITTLE CREATURES TO SURVIVE??? IF YOU'RE GOING TO MAKE ME DO THAT, AT LEAST MAKE…",
+            "truncated": true
+          }
+        },
+        {
+          "point_id": "one-9828f36a",
+          "text": "One reviewer notes that finding important items hidden in specific caves can be extremely frustrating.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "239979616",
+            "hours_at_review": 42.5,
+            "minutes_at_review": 2548,
+            "voted_up": true,
+            "date": "2026-11-12",
+            "review_text": "The Forest is genuinely an amazing game, especially when it comes to its story. I really enjoyed the mystery, the progression, and especially the ending, which I thought was fantastic. The story was easily one of my favourite parts of the entire experience.\r\n\r\nThe survival mechanics are great, and I honestly don't have any complaints about them. Gathering resources, building a base, and defending yourself against enemies all work really well. The graphics are also surprisingly realistic depending on your quality settings, and the overall environment looks fantastic.\r\n\r\nHowever, there are definitely some things I wish were better.\r\n\r\nFor starters, the building system. I actually really like the idea of using a survival guidebook to construct things, but I wish it were a little more detailed and explained certain mechanics better. For example, there's an achievement that requires you to catch fish using a trap. Sounds simple enough, right? WELL, APPARENTLY YOU HAVE TO PLACE A RABBIT TRAP IN THE WATER. HOW DOES THAT MAKE ANY SENSE??? It's little things like this that make the game unnecessarily confusing. I love the concept of the book, and believe me, I enjoyed using it, but I feel like it wasn't quite there.\r\n\r\nThe caves are another example. I love the idea of exploring these mysterious underground areas, and the enemies and horror atmosphere are genuinely terrifying at times. However, finding important items can be extremely frustrating. Certain items are hidden in specific caves, and figuring out exactly where you're supposed to go can become more annoying than enjoyable. I wish the exploration and progression had been a little more thoughtfully planned out. I'm not saying everything should be handed to the player, but a little more direction would've made a huge difference.\r\n\r\nAND CAN WE TALK ABOUT THE ANIMALS???\r\n\r\nWHY ARE THEY SO CUTE??? WHY THE HECK DO I HAVE TO KILL THESE ADORABLE LITTLE CREATURES TO SURVIVE??? IF YOU'RE GOING TO MAKE ME DO THAT, AT LEAST MAKE…",
+            "truncated": true
+          }
+        }
+      ],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 5,
-        "cited_recommend": 3,
-        "divergence_p": 0.0252,
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 1,
+        "divergence_p": 0.000116,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -387,158 +401,203 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 41,
-      "pct_positive": 97.6,
+      "pool_n": 54,
+      "pct_positive": 100.0,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players note missing cross-play support and building alignment issues alongside unique inventory mechanics.",
+      "summary": "Long-term players enjoy cooperative building despite tedious material gathering and a vague story.",
       "themes": [
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-eb360f",
-              "claim": "The inventory system displays collected items spread out on a tarp on the floor rather than using a traditional grid layout.",
+              "claim_id": "vet-443319",
+              "claim": "Reviewers note that material gathering for ambitious construction projects becomes tedious.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 3,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "230496766",
-                  "hours_at_review": 102.5,
+                  "recommendationid": "238678929",
+                  "hours_at_review": 173.7,
+                  "minutes_at_review": 10424,
                   "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "The game has a very unique way to introduce the mysterious lore behind it: You're left completely alone, on an unknown island, with some really messed up wildlife ( Cannibals and mutants ). Your main objective, finding your son, becomes a whole lot more than you expected. Such a simple task turns into an unimaginable nightmare. The loneliness subconsciously pushes you to explore the terrain; you find wrecks, underwater caves, villages, weirds emblems - all sorts of unknown structures. \nAs many say: Don't jugde a book by it's cover. You start off with an ordinary plane crash, and really, and I mean really soon, you realise that you are not only playing a survival game, you're playing a story-deep horror game. There is much more to explore than you think.\nThis game has an amazing way to picture an inventory, unlike most survival game, The Forest does not have a grid, with HUD styles - it has an original way to shows collected items: On the floor, protected by a tarp. How they managed to make an inventory feel like an inventory will forever surprise me.\nThe creepy, and hostile inhabitants of the island makes the game somewhat challenging. The final boss actually feels like a boss rather than a simple enemy. Overall, the PvE is highly focused, and combat is near unskippable.\nMultiplayer is really fun, and can sometimes be hillarious; the bigest downside is that cross-playing is disabled... Meaning that a playstation player will never be able to have an adventure with a pc user. In my opinion, adding this would easily boost the game from a 4.2/5, to a solid 4.8/5.\nOverall, harsh survival and interessting story which follows in the 2nd game: Sons of The Forest. And funny multiplayer, I give this game an excellent 4.2/5.",
-                  "truncated": false,
-                  "minutes_at_review": 6153
+                  "date": "2026-10-27",
+                  "review_text": "All I wanted was to build a nice little cabin in the woods. Apparently, the local residents had other plans.\n\nThe Forest is one of those survival games that gets under your skin without constantly throwing enemies at you. Sometimes it's just the sound of something moving through the trees that makes you reconsider your entire evening.\n\nAnd I love that.\n\nYou start gathering sticks, chopping trees, building a shelter, and convincing yourself you've got everything under control. Then night comes, you hear something screaming outside, and suddenly that lovely little cabin doesn't feel particularly secure anymore.\n\nThe building and crafting are great fun, exploration actually feels dangerous, and the caves are genuinely creepy. Going underground knowing you're probably going to regret it is half the experience.\n\nThere's a proper story to uncover too, if you can stop obsessing over your base long enough to remember why you're on the island in the first place.\n\nIt's definitely showing its age in places. Combat can be awkward, the AI occasionally does something spectacularly stupid, and gathering materials becomes a bit of a chore when you're building something ambitious.\n\nBut none of that really ruins it for me. The Forest has this wonderful ability to make you feel comfortable for five minutes before reminding you that you're absolutely not welcome here.\n\nAnd if you play with friends, the whole thing becomes even more entertaining. Nothing brings people together quite like screaming at each other in a cave.\n\nI still think it's one of the most enjoyable survival horror games out there.\n\nRecommended. Just don't get too attached to your cabin.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230059501",
-                  "hours_at_review": 150.0,
+                  "recommendationid": "236602469",
+                  "hours_at_review": 100.5,
+                  "minutes_at_review": 6028,
                   "voted_up": true,
-                  "date": "2026-07-09",
-                  "review_text": "i am shocked by how this game is open world and you can do what you want! i also love the inventory system too!",
-                  "truncated": false,
-                  "minutes_at_review": 9000
+                  "date": "2026-10-01",
+                  "review_text": "A solid survival game for sure. I can't say I have many games to compare to, but given the fact I've had this game for over 10 years now (yeah, my earliest saves are from 2016) and it's in 1.0 since 2018, I still think it holds up and is worth the money and time. Perhaps wait for a sale though.\n\nThere's a ton to explore and you're rewarded well for doing so, mainly when it comes to new weapons. That you will need, the combat is rather cool, even if ranged weapons are obviously the best, since the threat of the cannibals and mutants is constant and ups in difficulty over time. Which then makes you care about building a defensible base. The building itself gets tedious, but so does basically every survival I've played so far, if you like gathering materials in Minecraft or Don't Starve, you'll enjoy it here as well, I know I don't enjoy it in any game, which is why I appreciate you can build custom stuff or be lazy and use the default structures.\n\nComplaints? Well the story doesn't make much sense, but since I followed this game in its early days, I know it was an afterthought, the devs made a survival game with cannibals and then slapped something resembling a plot on top of it. I enjoy the fact there's a conclusion to the game at least, surviving endlessly to me means I drop the game eventually without a fulfilling end. There's some bugs, for example the cannibal's pathfinding has them run in place, face in a rock, when trying to catch me, that's standing on top of that rock. Do you get that mental image? I hope so, since it's the only thing off the top of my head that I came across. And that's about it for complaints.\n\nSo yeah, good game, if you're into survival games, you'll enjoy that one as well.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-bfa227",
-              "claim": "Reviewers report that the game lacks cross-play support, preventing PlayStation and PC users from playing together.",
+              "claim_id": "vet-db3560",
+              "claim": "Reviewers report that the game offers cooperative multiplayer for playing with friends.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 8,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "230496766",
-                  "hours_at_review": 102.5,
+                  "recommendationid": "239965117",
+                  "hours_at_review": 162.8,
+                  "minutes_at_review": 9770,
                   "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "The game has a very unique way to introduce the mysterious lore behind it: You're left completely alone, on an unknown island, with some really messed up wildlife ( Cannibals and mutants ). Your main objective, finding your son, becomes a whole lot more than you expected. Such a simple task turns into an unimaginable nightmare. The loneliness subconsciously pushes you to explore the terrain; you find wrecks, underwater caves, villages, weirds emblems - all sorts of unknown structures. \nAs many say: Don't jugde a book by it's cover. You start off with an ordinary plane crash, and really, and I mean really soon, you realise that you are not only playing a survival game, you're playing a story-deep horror game. There is much more to explore than you think.\nThis game has an amazing way to picture an inventory, unlike most survival game, The Forest does not have a grid, with HUD styles - it has an original way to shows collected items: On the floor, protected by a tarp. How they managed to make an inventory feel like an inventory will forever surprise me.\nThe creepy, and hostile inhabitants of the island makes the game somewhat challenging. The final boss actually feels like a boss rather than a simple enemy. Overall, the PvE is highly focused, and combat is near unskippable.\nMultiplayer is really fun, and can sometimes be hillarious; the bigest downside is that cross-playing is disabled... Meaning that a playstation player will never be able to have an adventure with a pc user. In my opinion, adding this would easily boost the game from a 4.2/5, to a solid 4.8/5.\nOverall, harsh survival and interessting story which follows in the 2nd game: Sons of The Forest. And funny multiplayer, I give this game an excellent 4.2/5.",
-                  "truncated": false,
-                  "minutes_at_review": 6153
+                  "date": "2026-11-11",
+                  "review_text": "Great survival game, recommend to all especially with friends.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229713177",
-                  "hours_at_review": 112.6,
+                  "recommendationid": "238678929",
+                  "hours_at_review": 173.7,
+                  "minutes_at_review": 10424,
                   "voted_up": true,
-                  "date": "2026-07-05",
-                  "review_text": "Played for 10 years with various friend groups. The goofy antics you can get up to while building a base, scavenging for supplies, and fighting the nightmares of the island make for great replayability. I do wish there was a better system for making a map available, but they fixed that issue in Sons of the Forest, so it's aight.",
-                  "truncated": false,
-                  "minutes_at_review": 6754
+                  "date": "2026-10-27",
+                  "review_text": "All I wanted was to build a nice little cabin in the woods. Apparently, the local residents had other plans.\n\nThe Forest is one of those survival games that gets under your skin without constantly throwing enemies at you. Sometimes it's just the sound of something moving through the trees that makes you reconsider your entire evening.\n\nAnd I love that.\n\nYou start gathering sticks, chopping trees, building a shelter, and convincing yourself you've got everything under control. Then night comes, you hear something screaming outside, and suddenly that lovely little cabin doesn't feel particularly secure anymore.\n\nThe building and crafting are great fun, exploration actually feels dangerous, and the caves are genuinely creepy. Going underground knowing you're probably going to regret it is half the experience.\n\nThere's a proper story to uncover too, if you can stop obsessing over your base long enough to remember why you're on the island in the first place.\n\nIt's definitely showing its age in places. Combat can be awkward, the AI occasionally does something spectacularly stupid, and gathering materials becomes a bit of a chore when you're building something ambitious.\n\nBut none of that really ruins it for me. The Forest has this wonderful ability to make you feel comfortable for five minutes before reminding you that you're absolutely not welcome here.\n\nAnd if you play with friends, the whole thing becomes even more entertaining. Nothing brings people together quite like screaming at each other in a cave.\n\nI still think it's one of the most enjoyable survival horror games out there.\n\nRecommended. Just don't get too attached to your cabin.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239000282",
+                  "hours_at_review": 105.8,
+                  "minutes_at_review": 6346,
+                  "voted_up": true,
+                  "date": "2026-10-31",
+                  "review_text": "great fun to play with friends, especially in VR",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237381013",
+                  "hours_at_review": 222.4,
+                  "minutes_at_review": 13345,
+                  "voted_up": true,
+                  "date": "2026-10-10",
+                  "review_text": "I have been playing The Forest off and on for a  few years now and still come back to it. I liked Sons of The Forest, but there's something about this OG that keeps my attention. It's fun, scary, and amazing with friends! You can build all you want, no need for game progression and you will still get some cannibal action when they come to ask you for a cup of sugar in the middle of the night with 20 of their cannibal buddies.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237234949",
+                  "hours_at_review": 1288.2,
+                  "minutes_at_review": 77294,
+                  "voted_up": true,
+                  "date": "2026-10-08",
+                  "review_text": "Honestly, hands down the best game I’ve ever played with my friends. We originally came here to look for Timmy, but ended up spending hundreds of hours building ridiculous bases, screaming our lungs out in dark caves, and making unforgettable memories together.\r\nMoments like those will never happen again, and I'll cherish them forever.\r\n10/10 — Still haven't bothered saving Timmy, though.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236655488",
+                  "hours_at_review": 210.4,
+                  "minutes_at_review": 12623,
+                  "voted_up": true,
+                  "date": "2026-10-01",
+                  "review_text": "Fun horror survival game with coop",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236606701",
+                  "hours_at_review": 123.8,
+                  "minutes_at_review": 7428,
+                  "voted_up": true,
+                  "date": "2026-10-01",
+                  "review_text": "I loved the fact that there is so much to do. I am playing with my brother and we love the fact that we can build what we want. And the game is really funny.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236405860",
+                  "hours_at_review": 184.9,
+                  "minutes_at_review": 11093,
+                  "voted_up": true,
+                  "date": "2026-09-28",
+                  "review_text": "very good game. fun to play with friends",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-43686e",
-              "claim": "Reviewers describe the building system as frustrating due to components failing to line up properly and directional limitations on doors and ropes.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "230875278",
-                  "hours_at_review": 116.3,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "I've played this about 100 hours now and I wish I hadn't bought it. It's buggy and incomplete and at this point, it doesn't appear the makers have any intention of coming back to fix it. Building *should* be amazing in this game, but it's nothing but a series of disappointments and frustration where you have to keep going back and tearing down work you've put a lot of time into because *one thing* doesn't work right.  Things don't line up properly, you can open a door from one side but not the other, you can climb down a rope but not up again...it's just an exercise in frustration every time I forget how frustrating it is, see some gameplay on Youtube and open it up to give it another try.",
-                  "truncated": false,
-                  "minutes_at_review": 6980
-                },
-                {
-                  "recommendationid": "229713177",
-                  "hours_at_review": 112.6,
-                  "voted_up": true,
-                  "date": "2026-07-05",
-                  "review_text": "Played for 10 years with various friend groups. The goofy antics you can get up to while building a base, scavenging for supplies, and fighting the nightmares of the island make for great replayability. I do wish there was a better system for making a map available, but they fixed that issue in Sons of the Forest, so it's aight.",
-                  "truncated": false,
-                  "minutes_at_review": 6754
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-450c8c",
-              "claim": "Cross-play functionality between PC and PlayStation players is disabled.",
+              "claim_id": "vet-111431",
+              "claim": "Reviewers describe the story as vague, making little sense, or sidelined in favor of gameplay mechanics.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 3,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "230496766",
-                  "hours_at_review": 102.5,
+                  "recommendationid": "239404338",
+                  "hours_at_review": 112.2,
+                  "minutes_at_review": 6733,
                   "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "The game has a very unique way to introduce the mysterious lore behind it: You're left completely alone, on an unknown island, with some really messed up wildlife ( Cannibals and mutants ). Your main objective, finding your son, becomes a whole lot more than you expected. Such a simple task turns into an unimaginable nightmare. The loneliness subconsciously pushes you to explore the terrain; you find wrecks, underwater caves, villages, weirds emblems - all sorts of unknown structures. \nAs many say: Don't jugde a book by it's cover. You start off with an ordinary plane crash, and really, and I mean really soon, you realise that you are not only playing a survival game, you're playing a story-deep horror game. There is much more to explore than you think.\nThis game has an amazing way to picture an inventory, unlike most survival game, The Forest does not have a grid, with HUD styles - it has an original way to shows collected items: On the floor, protected by a tarp. How they managed to make an inventory feel like an inventory will forever surprise me.\nThe creepy, and hostile inhabitants of the island makes the game somewhat challenging. The final boss actually feels like a boss rather than a simple enemy. Overall, the PvE is highly focused, and combat is near unskippable.\nMultiplayer is really fun, and can sometimes be hillarious; the bigest downside is that cross-playing is disabled... Meaning that a playstation player will never be able to have an adventure with a pc user. In my opinion, adding this would easily boost the game from a 4.2/5, to a solid 4.8/5.\nOverall, harsh survival and interessting story which follows in the 2nd game: Sons of The Forest. And funny multiplayer, I give this game an excellent 4.2/5.",
-                  "truncated": false,
-                  "minutes_at_review": 6153
+                  "date": "2026-11-05",
+                  "review_text": "Overall 8/10 survival horror game.\nPros:\nComplex and unique building system\nGreat horror atmosphere\nBig map with lots to find throughout\nIncredible VR support, arguably better than desktop.\n\nCons:\nVague story, sidelined in favor of gameplay (mostly unimportant)\nHard-Survival's mechanics are unnecessarily complex\nModern axe outclasses every other weapon in the game while being easy to get",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229733820",
-                  "hours_at_review": 534.3,
+                  "recommendationid": "236602469",
+                  "hours_at_review": 100.5,
+                  "minutes_at_review": 6028,
                   "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "If chill game you need with giving you goosebumps then this is game you can rely on even on hard times just play with random is very pleasing but some players had a bad behavior so be careful on the also 3rd party cheaters who ruin someone's craft. still love to play this. Been accumulated 527 hrs total playtime on my tab anyways. Happy Playing",
-                  "truncated": false,
-                  "minutes_at_review": 32057
+                  "date": "2026-10-01",
+                  "review_text": "A solid survival game for sure. I can't say I have many games to compare to, but given the fact I've had this game for over 10 years now (yeah, my earliest saves are from 2016) and it's in 1.0 since 2018, I still think it holds up and is worth the money and time. Perhaps wait for a sale though.\n\nThere's a ton to explore and you're rewarded well for doing so, mainly when it comes to new weapons. That you will need, the combat is rather cool, even if ranged weapons are obviously the best, since the threat of the cannibals and mutants is constant and ups in difficulty over time. Which then makes you care about building a defensible base. The building itself gets tedious, but so does basically every survival I've played so far, if you like gathering materials in Minecraft or Don't Starve, you'll enjoy it here as well, I know I don't enjoy it in any game, which is why I appreciate you can build custom stuff or be lazy and use the default structures.\n\nComplaints? Well the story doesn't make much sense, but since I followed this game in its early days, I know it was an afterthought, the devs made a survival game with cannibals and then slapped something resembling a plot on top of it. I enjoy the fact there's a conclusion to the game at least, surviving endlessly to me means I drop the game eventually without a fulfilling end. There's some bugs, for example the cannibal's pathfinding has them run in place, face in a rock, when trying to catch me, that's standing on top of that rock. Do you get that mental image? I hope so, since it's the only thing off the top of my head that I came across. And that's about it for complaints.\n\nSo yeah, good game, if you're into survival games, you'll enjoy that one as well.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-0203add0",
+          "text": "One reviewer says there is no explanation on how to start.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238240644",
+            "hours_at_review": 100.7,
+            "minutes_at_review": 6043,
+            "voted_up": true,
+            "date": "2026-10-21",
+            "review_text": "Crazy fun game no explanation on how to start so grab what you can and start building",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-3800e181",
+          "text": "One reviewer mentions cannibal pathfinding issues where they run in place against a rock.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "236602469",
+            "hours_at_review": 100.5,
+            "minutes_at_review": 6028,
+            "voted_up": true,
+            "date": "2026-10-01",
+            "review_text": "A solid survival game for sure. I can't say I have many games to compare to, but given the fact I've had this game for over 10 years now (yeah, my earliest saves are from 2016) and it's in 1.0 since 2018, I still think it holds up and is worth the money and time. Perhaps wait for a sale though.\n\nThere's a ton to explore and you're rewarded well for doing so, mainly when it comes to new weapons. That you will need, the combat is rather cool, even if ranged weapons are obviously the best, since the threat of the cannibals and mutants is constant and ups in difficulty over time. Which then makes you care about building a defensible base. The building itself gets tedious, but so does basically every survival I've played so far, if you like gathering materials in Minecraft or Don't Starve, you'll enjoy it here as well, I know I don't enjoy it in any game, which is why I appreciate you can build custom stuff or be lazy and use the default structures.\n\nComplaints? Well the story doesn't make much sense, but since I followed this game in its early days, I know it was an afterthought, the devs made a survival game with cannibals and then slapped something resembling a plot on top of it. I enjoy the fact there's a conclusion to the game at least, surviving endlessly to me means I drop the game eventually without a fulfilling end. There's some bugs, for example the cannibal's pathfinding has them run in place, face in a rock, when trying to catch me, that's standing on top of that rock. Do you get that mental image? I hope so, since it's the only thing off the top of my head that I came across. And that's about it for complaints.\n\nSo yeah, good game, if you're into survival games, you'll enjoy that one as well.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 5,
-        "cited_recommend": 4,
-        "divergence_p": 0.114,
+        "cited_reviews": 10,
+        "cited_recommend": 10,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1248,
-    "steam_total_reviews": 211292,
+    "pool_n": 1200,
+    "steam_total_reviews": 212798,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/242760/header.jpg?t=1699381053",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/242760/capsule_231x87.jpg?t=1699381053",
-    "grid": "https://cdn2.steamgriddb.com/grid/f03c1b76769ba6af93c93e1247defc35.png"
   }
 }

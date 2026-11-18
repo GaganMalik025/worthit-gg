@@ -62,6 +62,17 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-11-18 | **The meaning check passes compound claims that a cited review only
+half-supports** | audit reads, refresh nights 1 and 2 | Three of 40 audited citations:
+People Playground "It's a fun sandbox game." under a three-part claim (11-16 #18);
+PAYDAY 2 "pretty buggy" under "buggy and experiences frequent crashes" (11-18 #7);
+Space Engineers multiplayer lag under "crashes, lag, and game-breaking bugs" (11-18 #16).
+`verify_claims.py`'s prompt says a partial conveyance of a joined claim does not count,
+and Flash-Lite counts it anyway. This is the composite pattern the 2026-11-06 sample
+found, now one level smaller. Not fixed. Options: split compound claims at extraction
+(two prompt attempts already failed their gates), or have the check name which part
+each review supports. Either needs a measured gate before rollout.
+
 2026-11-16 | **The hand audit never samples a one-reviewer point's citation** |
 building `evals/audit-4.4-2026-11-16.md` | `make_audit_sample.py` draws citations from
 `themes[].claims[]` only, so the 48 single-review points on night 1's 19 pages

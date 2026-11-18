@@ -1,107 +1,80 @@
 {
   "appid": "1808500",
   "game_name": "ARC Raiders",
-  "generated_at": "2026-08-10T09:56:04Z",
+  "generated_at": "2026-11-18T10:07:59Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1808500/04baafaf64a5aa5f46ecda5d71889a4848dc0628/header.jpg?t=1786961844",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1808500/542a243d39bd7ed791359be9e96c82f419b81475/capsule_231x87.jpg?t=1786961844",
+    "grid": "https://cdn2.steamgriddb.com/grid/ac80b7f0ea728befded9a1c5ba5330d2.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 16,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Skip",
-    "tagline": "Stunning extraction shooter crippled by cheaters, repetition, and extraction campers.",
+    "tagline": "Stunning extraction atmosphere marred by persistent cheaters and forced player combat.",
     "for_you_if": [
-      "you want gorgeous art direction and audio design",
-      "you enjoy high-stakes extraction PvP"
+      "you want intense player-versus-player extraction combat",
+      "you appreciate striking visual design and immersive soundscapes",
+      "you enjoy high-stakes tactical looting loops"
     ],
     "not_for_you_if": [
-      "you have zero tolerance for cheaters and hackers",
-      "you need stable servers and fast matchmaking",
-      "you dislike repetitive endgame loops"
+      "you prefer a cooperative player-versus-environment experience",
+      "you want to avoid rampant cheating and exploiters",
+      "you run into false anti-cheat account bans",
+      "you dislike extraction camping and backstabbing"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 22,
-      "pct_positive": 27.3,
-      "muted": true
+      "pool_n": 24,
+      "pct_positive": 25.0,
+      "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 261,
-      "pct_positive": 66.7,
+      "pool_n": 273,
+      "pct_positive": 69.2,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 480,
-      "pct_positive": 58.1,
+      "pool_n": 647,
+      "pct_positive": 66.6,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 1136,
-      "pct_positive": 38.8,
+      "pool_n": 1161,
+      "pct_positive": 56.9,
       "muted": false
     }
   ],
   "distortion_flags": [
     {
-      "flag_id": "cohort_divergence",
-      "type": "segmentation",
-      "direction": null,
-      "shape": "monotonic_decrease",
-      "sentence": "Satisfaction drops steadily as playtime increases across cohorts.",
-      "evidence": {
-        "sequence": [
-          {
-            "cohort": "early",
-            "label": "2-20 hours",
-            "pct_positive": 66.7,
-            "pool_n": 261
-          },
-          {
-            "cohort": "mid",
-            "label": "20-100 hours",
-            "pct_positive": 58.1,
-            "pool_n": 480
-          },
-          {
-            "cohort": "veteran",
-            "label": "over 100 hours",
-            "pct_positive": 38.8,
-            "pool_n": 1136
-          }
-        ],
-        "shape": "monotonic_decrease",
-        "low_cohort": "veteran",
-        "low_cohort_label": "over 100 hours",
-        "low_pct_positive": 38.8,
-        "low_pool_n": 1136,
-        "high_cohort": "early",
-        "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 66.7,
-        "high_pool_n": 261,
-        "gap_pts": 27.9
-      }
-    },
-    {
       "flag_id": "recency_shift",
       "type": "recency",
       "direction": "declined",
       "shape": null,
-      "sentence": "Recent reviews reflect lower sentiment compared to lifetime scores.",
+      "sentence": "Recent reviews score lower than lifetime averages for the game.",
       "evidence": {
-        "recent_pool_pct_positive": 47.4,
-        "recent_pool_n": 1899,
+        "recent_pool_pct_positive": 61.1,
+        "recent_pool_n": 2105,
         "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 82.1,
-        "steam_total_reviews": 248796,
-        "delta_pts": -34.7
+        "steam_lifetime_pct_positive": 81.0,
+        "steam_total_reviews": 260729,
+        "delta_pts": -19.9
       }
     }
   ],
@@ -110,29 +83,18 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 22,
-      "pct_positive": 27.3,
-      "muted": true,
-      "n_note": "n=18 - too few reviews to call",
-      "summary": null,
-      "themes": []
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 261,
-      "pct_positive": 66.7,
+      "pool_n": 24,
+      "pct_positive": 25.0,
       "muted": false,
       "n_note": null,
-      "summary": "Early players face punishing player-versus-player balancing issues and repetitive gameplay loops.",
+      "summary": "Early players encounter account linking errors and express frustration over the removal of the pure cooperative mode in favor of forced player combat.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-753aea",
-              "claim": "New players are matched against veteran players with significantly better gear, levels, and experience, creating an unbalanced and punishing player-versus-player experience.",
+              "claim_id": "ref-dfd3de",
+              "claim": "Reviewers note that the game features a player-versus-player extraction shooter format.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -140,22 +102,292 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231408955",
-                  "hours_at_review": 5.7,
+                  "recommendationid": "240193287",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 97,
                   "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "Based on my experience, Arc Raiders has some fundamental design issues that make it difficult to recommend.\n\nFrom the very first open-world missions, new players are routinely matched against veterans with hundreds of hours of experience. The result is that you're often eliminated before you have a meaningful chance to learn the game or build your inventory. Even when you avoid other players, the AI can feel overly punishing, with enemy detection and accuracy sometimes giving the impression that they can track you through cover.\n\nThe biggest problem is the lack of progression-based matchmaking or gear balancing. Mixing brand-new players with fully geared, highly experienced players creates a frustrating PvPvE experience where skill progression is overshadowed by massive equipment and experience gaps. A gear score system, beginner protection, or some form of matchmaking based on progression would go a long way toward making the game more approachable.\n\nAs it stands today, I'd only recommend Arc Raiders if you already enjoy extremely unforgiving extraction shooters and don't mind spending a significant amount of time being outmatched while learning. For everyone else, there are currently better looter shooters that offer a fairer onboarding experience.\n",
-                  "truncated": false,
-                  "minutes_at_review": 342
+                  "date": "2026-11-14",
+                  "review_text": "I don’t know what it is, but this game sucks ballz. I have no issue with PvPvPvPvPvPvPvPvEvT or any of the sweaty stinklord dorks who play that… although I prefer PvEvEvEvEvEvE. It’s the content that rubs my buns wrong. Feels like a worse version of every other extraction shooter mixed with tons of flossing, adolescent and unstable Fartnight cringe.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229460598",
-                  "hours_at_review": 5.2,
+                  "recommendationid": "238160115",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 73,
                   "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "TL;DR - Game is made for people with excessive amounts of time that like to grind.  Terrible for new players. If you don't mind having great gear lost by uninitiated PVP by people that are much higher level than you with max gear, this game is for you.  Otherwise, steer clear unless 90% off.  Play Helldivers 2 if PVP is not your thing.  If PVP is your thing but you don't have a lot of time, I'd also avoid this. The recent review score closer to 50% is more accurate.\r\n\r\nDetails:\r\nI tried this game out with a few buddies after one of them expressed interest and had already purchased it.  My first game,  two guys with matching skins killed me on sight.   Maybe they were noobs that purchased the skins, and I was just caught unaware as a noob, but I'm doubting that.  I played many more without getting killed, but here are what I think are inherent flaws:\r\n\r\n1. There is an experience system with small but real buffs for your character via skill points.  You will be matched with people that are much higher level than you and therefore have an inherently stronger character.  So it's not just \"git gud\", it's get so good you can overcome inherently stronger players that may have been playing since the game released, or the season started, and have a lot more time than you.\r\n\r\n2.  You drop nearly everything you have when killed, including your guns, shield, etc.  If you've spent time or precious resources for higher level stuff, that will all be gone if you die.  Hence my reference to grinding. I haven't even played enough to reach this point, but I can already see the grind necessary just to level up facilities and earn currency.\r\n\r\n3.  In line with the previous points, those people with ♥♥♥♥ tons of time or those who cheat will have great gear.  Again, an inherent power difference.  It's not just aim better, use cover, use items, etc better... it's like being level 1 in Wow and being asked to kill the level 40 ganker back in Vanilla.  Only a miracle will save you (like anoth…",
-                  "truncated": true,
-                  "minutes_at_review": 311
+                  "date": "2026-10-20",
+                  "review_text": "I was excited for ARC Raiders when it was presented as a PvE experience, but removing that mode completely killed my interest. \nNot everyone wants to spend their time dealing with PvP players, rats hiding in corners, griefers, and people whose only goal is to ruin someone else's match.\n\nI enjoy cooperative gameplay where players work together against the game's challenges, not constant paranoia about getting ambushed by someone camping an extraction point. \nThe shift to an extraction PvPvE format feels like the game abandoned the audience that was originally interested in it.\n\nIt's disappointing to see a unique PvE concept replaced with yet another PvP-focused experience. \nFor players like me, this change turned a must-play game into an easy pass.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-4b95e2",
+              "claim": "Reviewers report that a pure PvE mode was removed from the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238160115",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 73,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "I was excited for ARC Raiders when it was presented as a PvE experience, but removing that mode completely killed my interest. \nNot everyone wants to spend their time dealing with PvP players, rats hiding in corners, griefers, and people whose only goal is to ruin someone else's match.\n\nI enjoy cooperative gameplay where players work together against the game's challenges, not constant paranoia about getting ambushed by someone camping an extraction point. \nThe shift to an extraction PvPvE format feels like the game abandoned the audience that was originally interested in it.\n\nIt's disappointing to see a unique PvE concept replaced with yet another PvP-focused experience. \nFor players like me, this change turned a must-play game into an easy pass.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238211466",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 67,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "They removed PVE mode the day after I bought the game.  Loaded into a match for my second match and it spawned me on a guy leaving the match with a full backpack.  Killed him and then uninstalled.  That wont be me.  Sorry guy I hope you uninstalled too.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-a2ac34",
+              "claim": "Reviewers describe the game as having transitioned from a PvE experience to a PvPvE extraction format, with complaints about the removal or absence of the PvE mode.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "238160115",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 73,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "I was excited for ARC Raiders when it was presented as a PvE experience, but removing that mode completely killed my interest. \nNot everyone wants to spend their time dealing with PvP players, rats hiding in corners, griefers, and people whose only goal is to ruin someone else's match.\n\nI enjoy cooperative gameplay where players work together against the game's challenges, not constant paranoia about getting ambushed by someone camping an extraction point. \nThe shift to an extraction PvPvE format feels like the game abandoned the audience that was originally interested in it.\n\nIt's disappointing to see a unique PvE concept replaced with yet another PvP-focused experience. \nFor players like me, this change turned a must-play game into an easy pass.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238211466",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 67,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "They removed PVE mode the day after I bought the game.  Loaded into a match for my second match and it spawned me on a guy leaving the match with a full backpack.  Killed him and then uninstalled.  That wont be me.  Sorry guy I hope you uninstalled too.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238153606",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 59,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "PvE was fun even when i did not had time to play much. Will need more balancing from all the horror stories i have heard, maybe some automatic grouping so you cannot die to arc/fall damage and have to rely on people having items to ress you. Maybe allow revives for all in PvE\n\nWill be back once the PvE comes back into the game. Until then not recommended because no PvE.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ref-77fca4",
+              "claim": "Reviewers report encountering difficulties and errors when trying to link accounts or manage cross-progression.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238266380",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "Originally got the game on PlayStation, bought it again on sale when all the recent Sony BS started happening. After 2 straight weeks of trying to link accounts to migrate over from PSN to Steam, the site refusing to link Steam specifically unless I created an entirely new account which would then refuse to link PSN but both times, would link everything from Discord to XBOX when I don't even own an XBOX or this game on XBOX.\nAnd after joining the Discord to try and contact a singular human Customer Service Agent after dealing with their awful AI chat bot, I finally get a hold of someone and upon explaining my situation and all I wanted was to link accounts, which is a service they blatantly advertise both on their website and in game. I got perma-banned with no warning or reason, so despite owning the game for over 2+ weeks, I got a refund, thank you Steam and Embark can go fuck themselves. I actually liked your game, I was excited for pure PvE and I I'm not even allowed to play it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238930607",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 83,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Horrible account system ruins a great game\n\nI really want to play this game, but the account system created by Embark is an absolute nightmare.\nWhen you first launch the game on PC via the Xbox App, the game automatically creates a \"ghost\" Embark ID in the background and locks your Xbox account to it immediately—without asking or giving you a choice. If you already have a main profile (like from PS5) and want to link your Xbox account to use cross-progression, you are completely locked out. The website just gives you a useless error saying \"the account has content saved\", even if you have 0 minutes of playtime on PC.\nThere is NO logout button in the game. You have to contact the support via text tickets and wait for hours or days just to get a simple empty account unlinked. And even AFTER the support finally unlinks it, the system hits you with a hidden, hardcoded 24-hour lockout timer before you can reconnect it to your real profile.\nIt is incredibly frustrating that honest players who actually bought the game are blocked from playing for days because of poorly designed, over-complicated security measures. Fix your login system, Embark. This is completely unacceptable.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-612009",
+              "claim": "Reviewers report severe issues with the account linking and cross-progression systems, including unintended ghost account creation, error messages when trying to connect profiles, and forced lockouts.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238266380",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "Originally got the game on PlayStation, bought it again on sale when all the recent Sony BS started happening. After 2 straight weeks of trying to link accounts to migrate over from PSN to Steam, the site refusing to link Steam specifically unless I created an entirely new account which would then refuse to link PSN but both times, would link everything from Discord to XBOX when I don't even own an XBOX or this game on XBOX.\nAnd after joining the Discord to try and contact a singular human Customer Service Agent after dealing with their awful AI chat bot, I finally get a hold of someone and upon explaining my situation and all I wanted was to link accounts, which is a service they blatantly advertise both on their website and in game. I got perma-banned with no warning or reason, so despite owning the game for over 2+ weeks, I got a refund, thank you Steam and Embark can go fuck themselves. I actually liked your game, I was excited for pure PvE and I I'm not even allowed to play it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238930607",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 83,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Horrible account system ruins a great game\n\nI really want to play this game, but the account system created by Embark is an absolute nightmare.\nWhen you first launch the game on PC via the Xbox App, the game automatically creates a \"ghost\" Embark ID in the background and locks your Xbox account to it immediately—without asking or giving you a choice. If you already have a main profile (like from PS5) and want to link your Xbox account to use cross-progression, you are completely locked out. The website just gives you a useless error saying \"the account has content saved\", even if you have 0 minutes of playtime on PC.\nThere is NO logout button in the game. You have to contact the support via text tickets and wait for hours or days just to get a simple empty account unlinked. And even AFTER the support finally unlinks it, the system hits you with a hidden, hardcoded 24-hour lockout timer before you can reconnect it to your real profile.\nIt is incredibly frustrating that honest players who actually bought the game are blocked from playing for days because of poorly designed, over-complicated security measures. Fix your login system, Embark. This is completely unacceptable.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 0,
+        "divergence_p": 0.178,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 273,
+      "pct_positive": 69.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players praise the striking graphics and atmosphere while warning about severe extraction camping, slow progression grinds, and cheating issues.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-eaefd9",
+              "claim": "Reviewers report that the game suffers from cheating issues.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240475291",
+                  "hours_at_review": 5.9,
+                  "minutes_at_review": 356,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "infested with cheaters... dont buy it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240013276",
+                  "hours_at_review": 15.4,
+                  "minutes_at_review": 927,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "So bad game all playing with hacks and i get banned for transfer my items",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238673615",
+                  "hours_at_review": 18.8,
+                  "minutes_at_review": 1125,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "bro this game is good but not for india high ping no matchmaking the game is good but shit for india with cheaters and no got dam server i will say not to buy this game if you are from india 2/10 for th game",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-af365d",
+              "claim": "Reviewers describe experiencing long matchmaking times or difficulties finding full lobbies to start a match.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240110595",
+                  "hours_at_review": 3.2,
+                  "minutes_at_review": 192,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "I know I havent played much, I got it on sale as well. This game just isnt fun and also takes forever to find a match.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240050554",
+                  "hours_at_review": 11.6,
+                  "minutes_at_review": 698,
+                  "voted_up": true,
+                  "date": "2026-11-12",
+                  "review_text": "Bring out PvE.... I loooooove the game, love PvP and what that brings, the unknown.. but I am tired of only being able to play the game during peak Oceanic times like 6–8+ PM NZT. It is currently 9:40 AM here in NZ, a public holiday, and I have been sitting around for 40 minutes trying to find a match and have finally given up. The game is completely limited to when you can play because it is PvP-only! Don't get me wrong—I love PvP and harassing other players, but life gets in the way and I don't have time to always play during peak hours. I just want to be able to enjoy the game whenever I actually have time to play, and then jump into PvP when my schedule allows it.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238443113",
+                  "hours_at_review": 15.2,
+                  "minutes_at_review": 915,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "Haven't seen a full 30minute lobby in all my time raiding. I thought it was 20mins when I started. Give us the power to start a fresh match instead of shitting us into a half done, fully looted lobby. Not to mention that it takes 10 whole minutes to que a fucking match cause we cant start our own one? WHY CANT MY GAME START A FRESH LOBBY.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-e4713f",
+              "claim": "Reviewers report encountering technical issues such as game loading failures and controller functions not working.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239901308",
+                  "hours_at_review": 6.7,
+                  "minutes_at_review": 404,
+                  "voted_up": false,
+                  "date": "2026-11-11",
+                  "review_text": "Glitchy as f!! hALF THE FUNCTIONS DON'T EVEN WORK FOR CONTROLER",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239893202",
+                  "hours_at_review": 4.1,
+                  "minutes_at_review": 248,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "cant even fucking load the damn game\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240092599",
+                  "hours_at_review": 13.8,
+                  "minutes_at_review": 828,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "It won't let me into the game,fix this.",
+                  "truncated": false
                 }
               ]
             }
@@ -165,8 +397,181 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-bcebb5",
-              "claim": "The game loop becomes repetitive after a number of hours, with complaints of shallow progression and boring, copy-paste quests.",
+              "claim_id": "ear-cb97a4",
+              "claim": "Reviewers praise the game's graphics, atmosphere, and visual design.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240152992",
+                  "hours_at_review": 7.2,
+                  "minutes_at_review": 432,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "cool atmosphere. plays well even on i5 3rd gen with a 1060 3gb. ill buy soon.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239977137",
+                  "hours_at_review": 5.2,
+                  "minutes_at_review": 312,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "⭐⭐⭐⭐⭐ **5/5 Stars**\r\n\r\nARC Raiders is honestly an amazing game. The graphics are great, the gameplay is fun, and every match feels like a new experience. The PvE and PvP elements make every encounter exciting, and the extraction mechanics keep you on your toes. Exploring the world, fighting ARC machines, collecting loot, and escaping with your gear makes the game incredibly satisfying.\r\n\r\nWhether you're playing solo or with friends, there's always something exciting happening. Definitely worth playing if you enjoy extraction shooters. I can't wait to see what the developers add next!\r\n\r\n**10/10 would recommend!**",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238123120",
+                  "hours_at_review": 19.0,
+                  "minutes_at_review": 1142,
+                  "voted_up": false,
+                  "date": "2026-10-19",
+                  "review_text": "[h1] Anthropocentrism [/h1]\r\n\r\nI bought this game because I thought PVE was going to be a permanent solution to a [strike]problem[/strike] \"feature\" that I foresaw when the game first launched. Back then, I knew I wouldn't like it because of the type of players it attracts. When I saw that the game now had a dedicated PVE mode, I bought it thinking I could finally experience the game for its art and world.\r\n\r\nBut it turns out that PVE is [b]not[/b] the solution, because it doesn't fix something you can't fix: the toxicity of the player base.\r\n\r\nI haven't survived a single round of PVP, and I've never been saved by another player when I've been downed.\r\n\r\nIt's just not my cup of tea, but that's not why I don't recommend it.\r\n\r\nThis game has such a cool art direction, great optimization (when it works), and an atmosphere like no other game. The ARC enemies are fun to fight, and the sound design is probably the best I've ever heard in a video game. The sound designers really, really cooked here!!\r\n\r\nThe reason I can't recommend this game is the nature of the gameplay model itself.\r\n\r\nThe players are rough, loud, and annoying, and they find creative ways to mess with you—even in PVE mode. They'll wait until you die to loot your corpse instead of helping you. If you're in a pinch and get the chance to request a supply drop, they'll crawl out of every crevice on the map like moths to a flame—and steal it right in front of you. They'll stand in your way, make loud noises around new players to attract ARC for no reason, and close the extraction point right in front of you. They'll strip the map of valuable loot before you've even figured out where to look for it.\r\n\r\nHalf the time, the loot feels meaningless anyway, yet the game makes sure you'll have to go to YouTube just to figure out what to keep, recycle, or sell. Your inventory is always full, and expanding it gets progressively more expensive, meaning you'll eventually have to get rid of things you originally wanted to…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238678419",
+                  "hours_at_review": 16.9,
+                  "minutes_at_review": 1012,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "Its a very enjoyable fun game. I liked the combat and the enviroment looks amazing! Loved it.\n\nSo why am I not recommending it? Because I bought it specifically for the PvE mode. I bought it knowing it was only for a week and I was okay with it. And coming from a PvE perspective - I cant recommend it simply because...there is no more PvE. \n\nAs much as I enjoyed playing through that week - I wont be coming back until PvE is permament. And all the same - this review wont be positive until said PvE mode will be permament. \n\nFew things from the PvE test to improve before it returns permamently:\n\n1. Turn off player collision completely.\n2. Make it possible for players to lock down the loot room from others. Its dumb to use a card when someone already went through it.\n3. Allow us to revive other players without needing the stimpack(or whatever its called in english)\n\nAlso appearently there are some griefers in PvE mode? I personally havent encountered any but Ive seen many posts online about some toxicity.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238492010",
+                  "hours_at_review": 2.2,
+                  "minutes_at_review": 130,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "I really wanted to like ARC Raiders, especially because the graphics look fantastic, but I just couldn't get into it. The gameplay got repetitive pretty quickly, and I found myself getting more frustrated than actually having fun.\n\nI got tired of constantly going out to collect loot, only to risk losing everything because of another player. I know that's part of an extraction shooter, but it doesn't make it any less annoying. Sometimes I just wanted to explore or complete objectives without having to worry about someone coming along and ruining all that progress.\n\nThe progression also felt like a grind, and after a while, doing the same things over and over became exhausting. I don't mind challenging games, but I want to feel like my time is being rewarded, not wasted.\n\nIt's a shame because the game looks great and has an interesting concept. I can understand why some people enjoy it, but personally, I found it more frustrating than fun. Definitely not worth the hype for me.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-d7a81e",
+              "claim": "Reviewers state that the temporary PvE mode has ended, leaving the game as PvPvE only, and express a desire for permanent PvE options.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "240307193",
+                  "hours_at_review": 6.2,
+                  "minutes_at_review": 373,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "I want to come back to this game for PvE if they ever bring it back",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238138013",
+                  "hours_at_review": 10.9,
+                  "minutes_at_review": 656,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "I only played the game recently, as in the PVE mode trial. I really enjoyed the game and its PVE mode. Very relaxing game and I can see myself spending hours in the game. Unfortunately PVE mode ends soon and so is my time in game. If PVE becomes permanent I will return. I really enjoyed the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238445142",
+                  "hours_at_review": 11.0,
+                  "minutes_at_review": 659,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "bought this during the free weekend where they were testing PvE  instead of being PvP. \n\nIt was fun playing with friends, very hard and can be punishing. But now PvE isn't an option and PvP is full of campers by the exits waiting to pick out newbies.  It is very frustrating and the community kinda sucks.  so that is really ruining the game and I doubt ill pick it up again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238231484",
+                  "hours_at_review": 5.7,
+                  "minutes_at_review": 344,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "Why was PvE removed in so little time? It was the only reason I bought the game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238679772",
+                  "hours_at_review": 6.8,
+                  "minutes_at_review": 408,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "PvE only should be a permanent mode. No PvE no recommendation. Not everyone wants to deal with toxic players...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238149728",
+                  "hours_at_review": 12.8,
+                  "minutes_at_review": 771,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "PvE is the reason I started playing and it was a ton of fun! It's a shame the testing is over for now... I'll install the game again once PvE comes back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238678419",
+                  "hours_at_review": 16.9,
+                  "minutes_at_review": 1012,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "Its a very enjoyable fun game. I liked the combat and the enviroment looks amazing! Loved it.\n\nSo why am I not recommending it? Because I bought it specifically for the PvE mode. I bought it knowing it was only for a week and I was okay with it. And coming from a PvE perspective - I cant recommend it simply because...there is no more PvE. \n\nAs much as I enjoyed playing through that week - I wont be coming back until PvE is permament. And all the same - this review wont be positive until said PvE mode will be permament. \n\nFew things from the PvE test to improve before it returns permamently:\n\n1. Turn off player collision completely.\n2. Make it possible for players to lock down the loot room from others. Its dumb to use a card when someone already went through it.\n3. Allow us to revive other players without needing the stimpack(or whatever its called in english)\n\nAlso appearently there are some griefers in PvE mode? I personally havent encountered any but Ive seen many posts online about some toxicity.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-fe00b9",
+              "claim": "Reviewers highlight problems with extraction camping and players ambushing others near exits to steal loot.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238445142",
+                  "hours_at_review": 11.0,
+                  "minutes_at_review": 659,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "bought this during the free weekend where they were testing PvE  instead of being PvP. \n\nIt was fun playing with friends, very hard and can be punishing. But now PvE isn't an option and PvP is full of campers by the exits waiting to pick out newbies.  It is very frustrating and the community kinda sucks.  so that is really ruining the game and I doubt ill pick it up again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238155919",
+                  "hours_at_review": 9.0,
+                  "minutes_at_review": 539,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "I quite enjoyed the PVE mode and I will be playing again, once it gets live :) I know this game was intended to be PVPVE and I do not mind the shoot offs so to speak but camping rats at the extraction points kind of ruined the game for me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238165489",
+                  "hours_at_review": 6.8,
+                  "minutes_at_review": 405,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "Played this game and stopped instantly after extraction campers made it unbearable. Since the PVE introduction, I enjoyed the game, very challenging at times, but a good balance of progressing and gameplay. With PVE removed now, I will uninstall the game and hopefully wait until it is introduced permananetly. I found the PVE gameplay very enjoyable without getting irritated by cenrtain players. Gave ne chance to enjoy the awesome cinematics. Well put together game, but I found that I enjoy the experience more in the PVE mode without me adding additional stress, lol as if Real life stress is not enough. PVE mode gave me a true escape to just enjoy the game and vast progression system. See you again once PVE is permanent.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-8ac03a",
+              "claim": "Reviewers describe the progression and gun upgrading system as requiring an excessively slow grind.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -174,36 +579,84 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231745289",
-                  "hours_at_review": 2.1,
+                  "recommendationid": "240130583",
+                  "hours_at_review": 12.5,
+                  "minutes_at_review": 749,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "THIS IS GENUINELY THE WORST GAME I HAVE EVER PLAYED, Missions feel like copy-paste chores (go to a location, grab an item, extract) with minimal rewards. Once workbenches are maxed out, there is no meaningful progression or objective left to chase. A persistent bug frequently drops squad fills. The community or the team you fill in are mostly toxic players .This is the first ever game i'm even commenting about. THE PAYMENT IS ALL BUT JUST PURE WASTE. Even though i have a maxed out gpu and cpu the game feels terribly laggy.",
-                  "truncated": false,
-                  "minutes_at_review": 129
+                  "date": "2026-11-13",
+                  "review_text": "Medium-High loot areas are not that rewarding and are very risky. Stopped playing when I got crushed plastic bottle after nearly dying. Gun progression is also way too slow. This game demands way too much grinding for progression you may not have. Hard to grind when the game is too repetitive\n\nGame animations/movement/graphics are top tier though.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230146012",
-                  "hours_at_review": 15.1,
+                  "recommendationid": "238492010",
+                  "hours_at_review": 2.2,
+                  "minutes_at_review": 130,
                   "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "Not Recommended\n\nI was genuinely excited to buy ARC Raiders because it looked like a fun extraction shooter with interesting PvPvE gameplay. From the trailers and gameplay videos, I expected intense fights, rewarding progression, and an experience that would keep me coming back. Unfortunately, after playing it myself, I was left feeling disappointed.\n\nThe biggest issue for me is that the game just isn't fun enough to justify the price. The gameplay becomes repetitive much faster than I expected. Most matches follow the same pattern, and instead of feeling rewarded for taking risks, it often feels like I'm just wasting my time. Losing all of your gear after one bad encounter is part of the extraction genre, but here it often feels frustrating instead of exciting.\n\nThe matchmaking also didn't feel balanced. I frequently ended up fighting players who had much better gear and far more experience, making many encounters feel unfair before they even started. Instead of encouraging me to keep improving, it made me feel like I had little chance of competing.\n\nProgression also feels slower than I expected. I spent hours playing but didn't feel like I was making meaningful progress. Unlocks and rewards weren't satisfying enough to make the grind enjoyable, and after a while every session started to feel the same.\n\nI also ran into performance issues and occasional bugs that hurt the experience. Whether it was stuttering, frame drops, or other technical problems, they made the game even less enjoyable than it already was. For a game at this price, I expected a much smoother experience.\n\nOverall, I gave the game a fair chance because I really wanted to enjoy it, but it simply wasn't what I expected. Instead of looking forward to playing, I found myself forcing myself to launch it, hoping it would finally click. It never did.\n\nBecause of all of these issues, I honestly regret buying the game and would like a refund. I don't feel that I got my money's worth, and I can't recommend …",
-                  "truncated": true,
-                  "minutes_at_review": 908
+                  "date": "2026-10-24",
+                  "review_text": "I really wanted to like ARC Raiders, especially because the graphics look fantastic, but I just couldn't get into it. The gameplay got repetitive pretty quickly, and I found myself getting more frustrated than actually having fun.\n\nI got tired of constantly going out to collect loot, only to risk losing everything because of another player. I know that's part of an extraction shooter, but it doesn't make it any less annoying. Sometimes I just wanted to explore or complete objectives without having to worry about someone coming along and ruining all that progress.\n\nThe progression also felt like a grind, and after a while, doing the same things over and over became exhausting. I don't mind challenging games, but I want to feel like my time is being rewarded, not wasted.\n\nIt's a shame because the game looks great and has an interesting concept. I can understand why some people enjoy it, but personally, I found it more frustrating than fun. Definitely not worth the hype for me.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-6015b9",
+              "claim": "Reviewers complain about permanent account bans resulting from hacking incidents without receiving developer assistance.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240426456",
+                  "hours_at_review": 7.0,
+                  "minutes_at_review": 421,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "So I bought this game in January and it’s just been in my library. The other day I decided to download it to play it. Well low and behold it says I have a permanent ban. I found out my account has been hacked. Well the devs refused to help me at all. Saying it was a legitimate ban. I told them I don’t have family sharing and my account was hacked. Still they refuse to do anything. So if you want to waist your money just know if you account gets hacked they don’t care",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240093221",
+                  "hours_at_review": 15.9,
+                  "minutes_at_review": 956,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "My account was hacked,  i got ban. Embark is not interested to help me. Auto bot answers only.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-55cdbc40",
+          "text": "One reviewer says that constant crashing causes them to lose their loadout.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "238173405",
+            "hours_at_review": 17.8,
+            "minutes_at_review": 1068,
+            "voted_up": false,
+            "date": "2026-10-20",
+            "review_text": "Thought id give the PVE a go, but with the constant crashing losing my loadout looks like its going to be pass!!!",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 4,
-        "cited_recommend": 0,
-        "divergence_p": 0.0123,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 25,
+        "cited_recommend": 8,
+        "divergence_p": 0.000142,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -211,137 +664,68 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 480,
-      "pct_positive": 58.1,
+      "pool_n": 647,
+      "pct_positive": 66.6,
       "muted": false,
       "n_note": null,
-      "summary": "Mid-tier players praise the audio design but struggle with severe matchmaking delays, server instability, inventory limits, and extraction campers.",
+      "summary": "Mid-tier players enjoy the detailed environments and looting loop, but report persistent cheaters, false bans, and deceptive player behavior.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-a21aa9",
-              "claim": "Reviewers report that the game suffers from server crashes and connection instability.",
+              "claim_id": "mid-b49b03",
+              "claim": "Reviewers report encountering cheaters and hackers in matches, affecting the extraction shooter experience.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 1,
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231833822",
-                  "hours_at_review": 72.5,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Where do I begin. This game is broken in so many ways . Even after the « major update » it recently had . The dev refuse to give a PVE mode for the rest of the world except China servers, maybe they think they have some kind of brilliant idea behind that . Everyone else thinks it’s a sh** idea and the game is losing so many players because of that . I stumble upon the same teams game after game . The update didnt do sh** . You still get rats every now and then . The game crashes at least once a day . You wait 5 minutes for matchmaking, you join a game that has 25 minutes left , this does not make any sense . Arcs just annihilate you when you’re on solo sometimes . \nAlso what’s with gun repairs ? Who tf needs to repair a gun that often . Attachment cost tons of resources to make . This game does not make sense in so many ways . I could go on forever .\nCongrats for the devs for waiting that long to not fix anything and driving one of the best upcoming games to the ground . Me and many mates have almost stopped playing this game .",
-                  "truncated": false,
-                  "minutes_at_review": 4353
+                  "recommendationid": "240473957",
+                  "hours_at_review": 54.7,
+                  "minutes_at_review": 3281,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "good game, very addicting but to many cheaters.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230009494",
-                  "hours_at_review": 71.7,
+                  "recommendationid": "240426641",
+                  "hours_at_review": 72.4,
+                  "minutes_at_review": 4344,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "Incredibly unstable servers with no way of compensating lost gear when you get force disconnected. ",
-                  "truncated": false,
-                  "minutes_at_review": 4303
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-893b5a",
-              "claim": "Reviewers report that matching times and loading into servers take an excessive amount of time.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231767112",
-                  "hours_at_review": 94.6,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "This used to be a pretty fun game, now I spend about half my time waiting to connect to a server and doing prep stuff and half in the field. It's a good game to get if you're trying to find a new game to get into. For me, this got me into Grey Zone Warfare... and I don't have to wait forever to get onto their servers to get in the field.",
-                  "truncated": false,
-                  "minutes_at_review": 5675
+                  "date": "2026-11-17",
+                  "review_text": "Negative Review until PvE is added.\n________________________\n--------------------------------------\nI think the community speaks for itself when we say we want PvE to come back. It was a way for some of us to grind out quests, honestly, I stopped played MONTHS ago, until PvE was added. However, I don't think it should be a toggle on the map; there should be a way to separate it from you PvP loot. NOT saying to delete everything we worked for and start over, but some way to split the loot storage so to speak. I found it annoying to just go into a raid and get a bunch of gear only to return and try to make space for it all. (Yes I know that PvP encourages this by making you want to go out and use the gear to potentially lose it and make room for more) but everyone just runs free loadouts on PvP making it stupid to even bother bringing good gear... Not to mention the 5K+ hackers *cough* fix this first *cough*\nOverall, a fun game, ruined by cheaters/cry babies. But I think PvE has a place, and I won't bother playing until it's back.\n\nSomething, somthing Icarus reference.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229412034",
-                  "hours_at_review": 80.3,
+                  "recommendationid": "240418602",
+                  "hours_at_review": 55.9,
+                  "minutes_at_review": 3355,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "Massive disappointment \r\nI have been playing this game for 72 hours and i have to say this is a huge NO for me \r\n\r\nthe good: great graphics, great gameplay, great game progression mech, great ARC inteligence \r\n\r\nTHE BAD \r\n\r\n1. waiting to be spawned can take up to 6.5 minutes. this is not on, i dont understand why you need to wait for more than a minute. DEVELOPERS you need to fix that\r\n\r\n2. the PvP mechanisam is absolute rubbish. i get that this is a dystopian world where everything goes but a large amount of players exploit this. E.g they wait for you to loot or kill bosses than they shoot you in the back and take it. even worse you got players that litreally park at exfill points , kill you and loot you hard earned stuff ! not on !!\r\nif i wanted hectic PVP i would play COD. not good\r\nSo imagine a world where you spawn after 6 minutes and get killed in 2 minutes AND lose all your gear \r\nwhats the \r\nF$$$$$ point ! \r\n\r\nDevelopers take serious notes here \r\n1. you need to have SOLO maps where ARC is increased to make it harder but you do not play with other players. this can be a squad game or whatever. dont force me to play against other players\r\n2. Fix the wait time. 6 minutes where you stare at the screen is not on",
-                  "truncated": false,
-                  "minutes_at_review": 4820
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-0e7000",
-              "claim": "Reviewers describe experiencing long wait times during matchmaking and loading into servers.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231833822",
-                  "hours_at_review": 72.5,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Where do I begin. This game is broken in so many ways . Even after the « major update » it recently had . The dev refuse to give a PVE mode for the rest of the world except China servers, maybe they think they have some kind of brilliant idea behind that . Everyone else thinks it’s a sh** idea and the game is losing so many players because of that . I stumble upon the same teams game after game . The update didnt do sh** . You still get rats every now and then . The game crashes at least once a day . You wait 5 minutes for matchmaking, you join a game that has 25 minutes left , this does not make any sense . Arcs just annihilate you when you’re on solo sometimes . \nAlso what’s with gun repairs ? Who tf needs to repair a gun that often . Attachment cost tons of resources to make . This game does not make sense in so many ways . I could go on forever .\nCongrats for the devs for waiting that long to not fix anything and driving one of the best upcoming games to the ground . Me and many mates have almost stopped playing this game .",
-                  "truncated": false,
-                  "minutes_at_review": 4353
+                  "date": "2026-11-17",
+                  "review_text": " no fix for hackers. and no PVE mode. what's the point? Get map hack by people?",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231767112",
-                  "hours_at_review": 94.6,
+                  "recommendationid": "239009715",
+                  "hours_at_review": 64.4,
+                  "minutes_at_review": 3866,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "This used to be a pretty fun game, now I spend about half my time waiting to connect to a server and doing prep stuff and half in the field. It's a good game to get if you're trying to find a new game to get into. For me, this got me into Grey Zone Warfare... and I don't have to wait forever to get onto their servers to get in the field.",
-                  "truncated": false,
-                  "minutes_at_review": 5675
+                  "date": "2026-10-31",
+                  "review_text": "Combat/movement is great, as are the maps. However, cheaters are everywhere, the matchmaking struggles to put you with people of a similar playstyle, and Embark are really struggling to get the game under control. PvE could have saved the game but Embark botched it and allowed players to steal loot with no repurcussions.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229412034",
-                  "hours_at_review": 80.3,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "Massive disappointment \r\nI have been playing this game for 72 hours and i have to say this is a huge NO for me \r\n\r\nthe good: great graphics, great gameplay, great game progression mech, great ARC inteligence \r\n\r\nTHE BAD \r\n\r\n1. waiting to be spawned can take up to 6.5 minutes. this is not on, i dont understand why you need to wait for more than a minute. DEVELOPERS you need to fix that\r\n\r\n2. the PvP mechanisam is absolute rubbish. i get that this is a dystopian world where everything goes but a large amount of players exploit this. E.g they wait for you to loot or kill bosses than they shoot you in the back and take it. even worse you got players that litreally park at exfill points , kill you and loot you hard earned stuff ! not on !!\r\nif i wanted hectic PVP i would play COD. not good\r\nSo imagine a world where you spawn after 6 minutes and get killed in 2 minutes AND lose all your gear \r\nwhats the \r\nF$$$$$ point ! \r\n\r\nDevelopers take serious notes here \r\n1. you need to have SOLO maps where ARC is increased to make it harder but you do not play with other players. this can be a squad game or whatever. dont force me to play against other players\r\n2. Fix the wait time. 6 minutes where you stare at the screen is not on",
-                  "truncated": false,
-                  "minutes_at_review": 4820
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-4e197a",
-              "claim": "Reviewers report that the game suffers from cheaters and hackers in matches.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231798138",
-                  "hours_at_review": 45.0,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "No end game content, cheaters run rampant, very repetitive.",
-                  "truncated": false,
-                  "minutes_at_review": 2699
-                },
-                {
-                  "recommendationid": "230271473",
+                  "recommendationid": "238418932",
                   "hours_at_review": 96.0,
+                  "minutes_at_review": 5763,
                   "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "Arc Raiders has to be one of the most annoying unbearable games i’ve ever played. All there is to do is run around and wait to be killed by either someone hacking or someone camping with the most annoying gun in the game. Why can’t there be some sort of single played map where I can just loot up and kill arc without some loser piece of trash coming out of no where and killing me instantly.\n\njust unfortunately hoped on the game again and died to hackers and cheaters absolutely immediately. awesome game they have going!",
-                  "truncated": false,
-                  "minutes_at_review": 5758
+                  "date": "2026-10-24",
+                  "review_text": "I had hope for the game with the pve mode! I like pvp in games but with all the hackers, people teaming up and you add the arcs to all that, it's bad!",
+                  "truncated": false
                 }
               ]
             }
@@ -351,103 +735,143 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-51bb41",
-              "claim": "Reviewers state that the game becomes repetitive and lacks endgame content after reaching higher progression tiers.",
-              "citation_verdict": "negative",
+              "claim_id": "mid-15c8b5",
+              "claim": "Reviewers note that the game features detailed environments, sound design, and an immersive atmosphere.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
+                "positive": 2,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231798138",
-                  "hours_at_review": 45.0,
+                  "recommendationid": "240452569",
+                  "hours_at_review": 29.8,
+                  "minutes_at_review": 1790,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "No end game content, cheaters run rampant, very repetitive.",
-                  "truncated": false,
-                  "minutes_at_review": 2699
+                  "date": "2026-11-17",
+                  "review_text": "I don't understand why this game was so popular. The sound design is fantastic and its pretty to look at, but that's about it.  If you are playing single player, the game play loop gets boring and repetitive really quick. Almost all the enemies are bullet sponges. The crafting system blows and so does the upgrade system. Some of the environments are cool, and the only reason to really play is to get cosmetics. This game is the definition of vanilla garbage that gets made for everyone but isn't actually good at anything.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231624581",
-                  "hours_at_review": 83.0,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Fun for the First 50 Hours, But Lacks the Depth to Keep You Coming Back\n\nThis game was really fun for the first 50 hours, but as someone who isn't a casual gamer, 50 hours is just scratching the surface. Hunting down blueprints is a great hook early on, but once you finish your upgrades, the game falls off a cliff. I can't stress enough how fast this gets boring once you hit the endgame.\n\nThe Good\nGreat Visuals & Performance: The game looks fantastic and runs really well.\n\nAccessible Loop: It is a solid, stress-free entry point for casual players or anyone looking for an easier extraction shooter experience. That is not necessarily a bad thing—it's just not for me.\n\nWhy It Falls Short (The Bad)\nShallow PvP & Gunplay: For an extraction shooter, the PvP combat and gun mechanics lack real depth. There just isn't enough mechanical nuance to make firefights rewarding over the long haul.\n\nAnnoying PvE: The PvE enemies go from engaging to just plain annoying once you no longer need their parts for upgrades.\n\nLooting Loses Its Value: Looting is only fun when you actually need those items for progress. Once your upgrades and blueprints are done, searching for loot loses all meaning.\n\nNo Long-Term Hook: Unlike Delta Force, which keeps me coming back because of its deep PvP, exciting high-tier loot drops (like big reds), and an economy like the auction house, ARC Raiders just doesn't have a lasting endgame loop.\n\nThe Verdict\nIf you want an easy, casual-friendly extraction shooter that looks great and runs smooth, you will probably enjoy your time here. But if you are a hardcore player looking for deep PvP combat and an economy you can grind for hundreds of hours, this gets boring very fast.\n\nRating: 6/10 (Good for Casuals, Lacks Endgame Depth)",
-                  "truncated": false,
-                  "minutes_at_review": 4977
+                  "recommendationid": "240385447",
+                  "hours_at_review": 76.6,
+                  "minutes_at_review": 4598,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "ARC Raiders is an incredibly refreshing take on the extraction shooter genre. The combination of exploration, survival, intense encounters, and cooperative gameplay creates an experience that keeps you coming back for more.\r\n\r\nThe world is beautifully designed, the atmosphere is immersive, and the gameplay rewards both strategy and teamwork. Whether you're exploring the surface, collecting valuable resources, or encountering other players, there's always something interesting happening.\r\n\r\nOverall, ARC Raiders is a fantastic experience for anyone looking for something different in the multiplayer shooter genre. Highly recommended! I love interacting with my fellow gamers here always some stories to share after an long day.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238278691",
+                  "hours_at_review": 56.5,
+                  "minutes_at_review": 3390,
+                  "voted_up": true,
+                  "date": "2026-10-22",
+                  "review_text": "One of the Best Games I've Ever Bought\n\nARC Raiders is genuinely one of the best games I've ever purchased. It has an incredibly immersive atmosphere that makes you pay attention to every little detail in the environment, whether you're looking for cover, searching for loot, or simply trying to stay alive.\n\nEven though the maps aren't enormous, the variety of locations, atmospheres, and activities makes each raid feel like a different experience.\n\n### Simple Gameplay, Deep Tactical Experience\n\nARC Raiders has one of the simplest yet most tactical gameplay loops in its genre. The shooting mechanics are straightforward: aim and shoot. However, the variety of guns and weapons keeps combat exciting, whether you're fighting other players or taking on ARC enemies.\n\n### An Incredible Atmosphere\n\nThe detailed environments, dynamic world, and precise sound design take the experience to another level. Sound isn't just there for immersion; it also plays an important tactical role, adding tension, excitement, and a constant sense of uncertainty.\n\nThe game is also exceptionally well optimized. I've experienced no graphical or performance issues, and I can maintain around 100–150 FPS at maximum graphics settings on my PC. That's more than enough for my 75Hz monitor.\n\n### The Perfect Balance Between PvE and PvP\n\nOne of the things I appreciate most is the balance between PvE and PvP. There aren't so many players that quests become constantly frustrating, but the world doesn't feel empty either.\n\nPlayer interactions are unpredictable. Sometimes people are friendly and willing to cooperate; other times, they'll attack you without hesitation. You can never fully trust anyone, and that uncertainty creates a genuine post-apocalyptic survival experience.\n\n### Plenty of Reasons to Keep Playing\n\nThe progression system gives you plenty of reasons to keep coming back. As you advance, you'll need increasingly valuable loot and harder-to-find resources, making progression more challenging and …",
+                  "truncated": true
                 }
               ]
             },
             {
-              "claim_id": "mid-4d8d83",
-              "claim": "Reviewers state that inventory space is limited while the game requires gathering items for crafting and upgrades.",
-              "citation_verdict": "negative",
+              "claim_id": "mid-161eae",
+              "claim": "Reviewers describe the game as having an extraction shooter gameplay loop focused on looting, crafting, and upgrading bases.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
+                "positive": 2,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "230708337",
-                  "hours_at_review": 37.9,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "I recently bought this game after watching a bunch of videos and finally biting the bullet to give it a go since it looked amazing, was reviewed amazingly and what not.\r\n\r\nBut honestly?  I think this game has some of the worst cheating in a shooter... and it feels awful to play when you are constantly running into people cheating.  \r\n\r\nMy last game that I played, I had a guy on my team called \"ICheatMommy\" telling us that he was cheating and that he could see every player on the map, running around murdering everyone and then yelling at the enemies telling them to \"Shut up ♥♥♥♥♥, I am cheating\" on a brand new steam account.  Like how does that get past even a single game???  \r\n\r\nI have had items refunded to me through the systems ban system, from encountering cheaters multiple times... While I appreciate the sentiment, my experience was already ruined.  \r\n\r\nI also joined right when a dupe exploit was found and every single person I have run into has an obscene amount of bombs and what not...  and players are just like \"Oh yeah don't worry about it, they just used the dupe exploit last week\" \r\n\r\nI do have other things about the game that I truly dont like - like how many items their are to gather and how limited the inventory space is.  How the balance of the higher tier guns are out of whack, once you have them it feels broken.  The toxicity of some players (pretty normal in shooters).  But none of these are truly game breaking in my opinion, they are just minor negatives in my opinion.\r\n\r\nIt truly does suck because the games gunplay is phenomenal, the graphics are quite amazing for a shooter and the map design is unparalleled.   Performance is also quite amazing, but that really is quite normal with shooters. \r\n\r\nWhen I was having fun, I was having a LOT of fun.  But more often then not the game left me frustrated and annoyed because of cheaters and the negatives I listed above.",
-                  "truncated": false,
-                  "minutes_at_review": 2276
+                  "recommendationid": "240468644",
+                  "hours_at_review": 54.3,
+                  "minutes_at_review": 3256,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "Super fun looter and extraction shooter!!! Super fun with friends. I have played Escape from Tarkov and enjoy this game so much more because its less hardcore but has the same cool factor and the game is much more polished and less buggy. Definitely would recommened to anyone considering it or who enjoys loot and extraction shooters.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229727546",
-                  "hours_at_review": 93.4,
+                  "recommendationid": "240452569",
+                  "hours_at_review": 29.8,
+                  "minutes_at_review": 1790,
                   "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "The game's engine and technical build quality are great, but it fails in its design elements. The graphics are great and the sound is some of the best implemented in gaming. \r\nIt seems like the designers never figured out what they wanted it to be, and so it feels like it fails in many different areas. The biggest problem is that it has an identify crisis as PVE or PVP. There's no dedicated PVP or PVE servers. PVP proponents gripe and complain because PVE-focused players stopped bringing any decent loot with them, so PVPers waste time waiting in ambush, eventually killing players who drop nothing but crummy freeloadouts (a feature that's being surveyed to be eliminated at this time). PVE players have a hard justification to bring anything because battles are usually won by whoever takes the first shot (or grenade toss, or trap kill, etc.). \r\nA secondary failure is due to spending most of your time in missions scavengering and the game encourages this with missions and rewards for \"collecting x numbers of this material to craft or upgrade so-and-so\", but your inventory maxes out pretty quickly so you spend a ton of time trying to figure out what you might not need to keep. Unless you have players you already know to jump into a game with, you'll spend almost all your time steering clear of other players because you never know when they might take advantage of battle to shoot you in the back. Because decent weapons require so much time to grab materials to craft, you're taking a big risk anytime you go out with them because you might get them stolen. Without good weapons, enemy bots get too challenging pretty quickly. The result is there really isn't any enjoyment in playing it unless you've got a couple friends outside the game you can count on to watch your back.",
-                  "truncated": false,
-                  "minutes_at_review": 5605
+                  "date": "2026-11-17",
+                  "review_text": "I don't understand why this game was so popular. The sound design is fantastic and its pretty to look at, but that's about it.  If you are playing single player, the game play loop gets boring and repetitive really quick. Almost all the enemies are bullet sponges. The crafting system blows and so does the upgrade system. Some of the environments are cool, and the only reason to really play is to get cosmetics. This game is the definition of vanilla garbage that gets made for everyone but isn't actually good at anything.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238212759",
+                  "hours_at_review": 80.1,
+                  "minutes_at_review": 4804,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "This game is only worth getting a positive review from me until they bring back PvE. I fucken hate the idea of having to go back to raiding in PvP only to get my shit taken from me from cheaters. I just want to level up my benches up to level 3 and get a decent amount of blue prints to feel more committed to tackling PvP, cuz I actually like that mode, but only when I got the equipment to go in on that solo or with some mates.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238278691",
+                  "hours_at_review": 56.5,
+                  "minutes_at_review": 3390,
+                  "voted_up": true,
+                  "date": "2026-10-22",
+                  "review_text": "One of the Best Games I've Ever Bought\n\nARC Raiders is genuinely one of the best games I've ever purchased. It has an incredibly immersive atmosphere that makes you pay attention to every little detail in the environment, whether you're looking for cover, searching for loot, or simply trying to stay alive.\n\nEven though the maps aren't enormous, the variety of locations, atmospheres, and activities makes each raid feel like a different experience.\n\n### Simple Gameplay, Deep Tactical Experience\n\nARC Raiders has one of the simplest yet most tactical gameplay loops in its genre. The shooting mechanics are straightforward: aim and shoot. However, the variety of guns and weapons keeps combat exciting, whether you're fighting other players or taking on ARC enemies.\n\n### An Incredible Atmosphere\n\nThe detailed environments, dynamic world, and precise sound design take the experience to another level. Sound isn't just there for immersion; it also plays an important tactical role, adding tension, excitement, and a constant sense of uncertainty.\n\nThe game is also exceptionally well optimized. I've experienced no graphical or performance issues, and I can maintain around 100–150 FPS at maximum graphics settings on my PC. That's more than enough for my 75Hz monitor.\n\n### The Perfect Balance Between PvE and PvP\n\nOne of the things I appreciate most is the balance between PvE and PvP. There aren't so many players that quests become constantly frustrating, but the world doesn't feel empty either.\n\nPlayer interactions are unpredictable. Sometimes people are friendly and willing to cooperate; other times, they'll attack you without hesitation. You can never fully trust anyone, and that uncertainty creates a genuine post-apocalyptic survival experience.\n\n### Plenty of Reasons to Keep Playing\n\nThe progression system gives you plenty of reasons to keep coming back. As you advance, you'll need increasingly valuable loot and harder-to-find resources, making progression more challenging and …",
+                  "truncated": true
                 }
               ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
+            },
             {
-              "claim_id": "mid-d731f8",
-              "claim": "Reviewers praise the game's audio design and sound quality.",
-              "citation_verdict": "positive",
+              "claim_id": "mid-06b54a",
+              "claim": "Players note that a temporary PvE mode was added and subsequently removed, prompting calls for its permanent return.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 3,
-                "negative": 0
+                "positive": 1,
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231740908",
-                  "hours_at_review": 25.4,
+                  "recommendationid": "238151828",
+                  "hours_at_review": 27.4,
+                  "minutes_at_review": 1643,
                   "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "The sound design of this game is crazy good.",
-                  "truncated": false,
-                  "minutes_at_review": 1525
+                  "date": "2026-10-20",
+                  "review_text": "Bought to play PVE, really enjoyed it. Will play more when PVE returns.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231680687",
-                  "hours_at_review": 75.8,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "One of the best PvPvE I've played. Outstanding sound design and acoustics, so crisp, detailed and well localized. Optimized so well it both runs on my home PC (RTX5080S) and Intel Arc laptop. Stylistically beautiful and unique. Good community overall despite some rats and cheaters here and there (hey, rats are people too!)\r\n\r\nDevs, please add loadout presets (3-5 pre-packed loadouts for different play styles) so we don't have to dig in our inventory for so long every time before raid. Add a auto-buy or auto-craft items that player defined to be in one of the presets, if they are missing from inventory.\r\n\r\nAll in all, 10/10, I keep going back everyday.",
-                  "truncated": false,
-                  "minutes_at_review": 4547
+                  "recommendationid": "238174608",
+                  "hours_at_review": 53.4,
+                  "minutes_at_review": 3204,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "No PvE mode = uninstalled. From the beginning people were begging for PvE (which was actually or original vision for the game). You teased it, then told people you'd \"think about it\". Look at the numbers, people loved it, but you remove it anyway.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231614717",
-                  "hours_at_review": 52.6,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Amazingly well executed game. I never understood the appeal of these kinds of extraction games, you start a round to collect loot so you are stronger for the next round in which you will collect more loot. But what really shines for me here are the gameplay and the immersion. This is easily one of the most immersive games I've played, in large parts because of the amazing work by the sound team. The gunplay also feels really good, much better than you'd think when watching videos of the game, partly because the physics of the enemies are super fun to experience.\r\nThe game kinda feels like a zombie survival game but with robots instead of zombies. You start in your base, get a mission to collect something specific for the settlement or check something out, go out to fulfill that mission, encounter all sorts of different interactions during the mission, and finally go back to the base to share what you have found and stock up for the next assignment.\r\nThere are many different progression paths you can follow which really keep the game interesting and always give you something to do.\r\n\r\nFor me they perfected this genre of game and they are far from done with it, as they have major updates announced as of the time I'm writing this. Big recommendation.",
-                  "truncated": false,
-                  "minutes_at_review": 3157
+                  "recommendationid": "238270683",
+                  "hours_at_review": 73.7,
+                  "minutes_at_review": 4420,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "I got in to Arc Raiders and had a lot of fun, until the players became predatory. I bailed when i realized the grind loop meant hours of playtime erased by a exfil camp.\n\nThen a ray of hope....PVE. Had a BLAST, then gone. So uninstall for me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239261623",
+                  "hours_at_review": 80.1,
+                  "minutes_at_review": 4807,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Took a hiatus because forced pvp was ruining it for me, got back when we got the pve toggle, had mad fun, the gunplay is nice, weapons feel great, the look is awesome. Now we are back to forced pvp and I can't even bring myself to boot it up as even tarkov now accommodates pve players, really no excuse to not have a toggle and let us play how we want.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238460681",
+                  "hours_at_review": 61.1,
+                  "minutes_at_review": 3668,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "Came back to the game after a long while of not playing after hearing there's a PvE toggle now, turns out it's already gone as it was a timed feature.\nTo be honest I had a blast playing the game for the first time, it was really fun, but the game was new, and as with time the playerbase grew more into being \"sweaty\" you were more and more likely to have to fight for your life on many interactions since people would often shoot you as soon as they saw you or would act friendly and shoot you off guard.\nPermanently having an option to pick a PvE matchmaking would really make me come back to the game, as I really don't have the mentality to deal with worrying about whether someone will be friendly or not and in-game resources to remake my whole inventory every time I die.\nCan't really recommend the game for now untill there's a permanent PvE option.",
+                  "truncated": false
                 }
               ]
             }
@@ -457,52 +881,140 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-2eeb37",
-              "claim": "Reviewers note that players camp extraction points to kill others and take their loot.",
+              "claim_id": "mid-84bdaf",
+              "claim": "Reviewers report that other players feign friendliness before shooting them in the back or ambushing them at extraction points.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 5
               },
               "citations": [
                 {
-                  "recommendationid": "229412034",
-                  "hours_at_review": 80.3,
+                  "recommendationid": "240437087",
+                  "hours_at_review": 62.5,
+                  "minutes_at_review": 3751,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "Massive disappointment \r\nI have been playing this game for 72 hours and i have to say this is a huge NO for me \r\n\r\nthe good: great graphics, great gameplay, great game progression mech, great ARC inteligence \r\n\r\nTHE BAD \r\n\r\n1. waiting to be spawned can take up to 6.5 minutes. this is not on, i dont understand why you need to wait for more than a minute. DEVELOPERS you need to fix that\r\n\r\n2. the PvP mechanisam is absolute rubbish. i get that this is a dystopian world where everything goes but a large amount of players exploit this. E.g they wait for you to loot or kill bosses than they shoot you in the back and take it. even worse you got players that litreally park at exfill points , kill you and loot you hard earned stuff ! not on !!\r\nif i wanted hectic PVP i would play COD. not good\r\nSo imagine a world where you spawn after 6 minutes and get killed in 2 minutes AND lose all your gear \r\nwhats the \r\nF$$$$$ point ! \r\n\r\nDevelopers take serious notes here \r\n1. you need to have SOLO maps where ARC is increased to make it harder but you do not play with other players. this can be a squad game or whatever. dont force me to play against other players\r\n2. Fix the wait time. 6 minutes where you stare at the screen is not on",
-                  "truncated": false,
-                  "minutes_at_review": 4820
+                  "date": "2026-11-17",
+                  "review_text": "It is an obscenely dumb decision to take so damn long with pvp the game is incredible but Im pve only and I just dont have fun running into supposedly friendly players just to immedietly get shot when I turn my back",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230327913",
-                  "hours_at_review": 21.9,
+                  "recommendationid": "238312105",
+                  "hours_at_review": 34.5,
+                  "minutes_at_review": 2070,
                   "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "never met a more trash community than this everyone does nothing but camp extracts tell me how fun of playstyle is that. played countless games and every single one had extract campers EVERY SINGLE GAME. i can see why this game is doing so bad devs dont give a ♥♥♥♥",
-                  "truncated": false,
-                  "minutes_at_review": 1316
+                  "date": "2026-10-22",
+                  "review_text": "I loved the PvE mode, now I end up getting backstabbed by people after they told me they were friendly. \r\n\r\nNot coming back until PvE also comes back. \r\n\r\nI played PvE to chill and relax after playing super intense games like Bodycam... now I have to worry about trusting or not trusting people too. Not fun anymore, will go enjoy other games while I wait for PvE to come back.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230400778",
-                  "hours_at_review": 74.2,
+                  "recommendationid": "238578535",
+                  "hours_at_review": 91.2,
+                  "minutes_at_review": 5470,
                   "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Matchmaking is a joke. I work 2 jobs and hope to come home to have a couple of hours of casual gaming. I never shot a player in all of my 74h of playing this game. I'm getting killed at the extract  every 3 raids.",
-                  "truncated": false,
-                  "minutes_at_review": 4450
+                  "date": "2026-10-25",
+                  "review_text": "ever since they removed pve, the amount of rats or people just playing for the sole purpose of killing other people have sky rocketed. It's to the point where the game isn't even about the ARCs anymore. I hope to see an improvement.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238605390",
+                  "hours_at_review": 26.3,
+                  "minutes_at_review": 1579,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "This is an awesome world etc. I've only started playing recently with the latest update, right when PvE was introduced. To be honest, PvE is how i've really enjoyed getting to know and enjoy this game. Now that it's gone . . . PvP is so disapointing, while there are some nice moments meeting other players, I found I also got these with PvE. Instead, 1 in 5 interactions are players just shooting me in the back at extract or ambushing right as I'm occupied with some Arc . . . and I refuse to play this way too. Just frustrating, cowardly behavior, not the kinda of stress I want at the end of a stressful day. Can't really reccomend PvP to new players due my experience, I'll be waiting for the return of PvE.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238460681",
+                  "hours_at_review": 61.1,
+                  "minutes_at_review": 3668,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "Came back to the game after a long while of not playing after hearing there's a PvE toggle now, turns out it's already gone as it was a timed feature.\nTo be honest I had a blast playing the game for the first time, it was really fun, but the game was new, and as with time the playerbase grew more into being \"sweaty\" you were more and more likely to have to fight for your life on many interactions since people would often shoot you as soon as they saw you or would act friendly and shoot you off guard.\nPermanently having an option to pick a PvE matchmaking would really make me come back to the game, as I really don't have the mentality to deal with worrying about whether someone will be friendly or not and in-game resources to remake my whole inventory every time I die.\nCan't really recommend the game for now untill there's a permanent PvE option.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "mid-025c34",
+              "claim": "Reviewers state that the game utilizes an anti-cheat system that issues false bans to legitimate players.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240357622",
+                  "hours_at_review": 87.2,
+                  "minutes_at_review": 5234,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "Do not recommend, unless you plan on getting banned for \"cheating\" when you aren't even cheating, and them telling you they won't change anything. This game was fun up until i got accused of a false claim. Don't spend your money on this garbage.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238283720",
+                  "hours_at_review": 26.0,
+                  "minutes_at_review": 1562,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "Embark bans people for killing streamers. This company is so desperate that they think if they cater to streamers their game will stay alive rather then doing their job as developers.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238598966",
+                  "hours_at_review": 83.7,
+                  "minutes_at_review": 5020,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "I was literally just playing the game normally, doing absolutely nothing wrong, and suddenly got hit with a 30-day ban for no reason.\r\n\r\nTheir stupid AI-powered anti-cheat system seems to be handing out bans left and right without any proper verification. Imagine paying for a game, spending your time playing it, and then getting punished because some garbage AI decides you're cheating.\r\n\r\nWhat's even the point of playing if you can randomly lose access to the game for an entire month?\r\n\r\nFix your broken anti-cheat system instead of punishing legitimate players.\r\n\r\nAbsolutely ridiculous. Can't recommend this game to anyone while this nonsense continues.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238229090",
+                  "hours_at_review": 57.5,
+                  "minutes_at_review": 3453,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "Game with PvP where Developers ban people for killing a streamer, with no reason given. \n\nPerhaps Devs should make a non-pvp game so streamers do not get killed. \n\nhttps://www.youtube.com/watch?v=OI7UAPs9sLU",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-ab5f9984",
+          "text": "One reviewer says it did crash and they lost the stuff they went topside with.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240291297",
+            "hours_at_review": 55.0,
+            "minutes_at_review": 3303,
+            "voted_up": true,
+            "date": "2026-11-15",
+            "review_text": "it did crash and I lost the stuff i went topside with but still is a good game the story is also really good for not beaing a story game",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 14,
-        "cited_recommend": 3,
-        "divergence_p": 0.00599,
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 23,
+        "cited_recommend": 5,
+        "divergence_p": 1.35e-05,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -510,59 +1022,272 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 1136,
-      "pct_positive": 38.8,
+      "pool_n": 1161,
+      "pct_positive": 56.9,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players admire the visual presentation while detailing an overwhelming cheater infestation, slow update schedules, and frustrating equipment degradation.",
+      "summary": "Long-term veterans appreciate the high-end visuals and sound design, yet heavily criticize rampant cheating, technical instability, and the total absence of a permanent cooperative mode.",
       "themes": [
         {
-          "theme": "other",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-fcdbb2",
-              "claim": "Reviewers report that the game is overrun with cheaters, hackers, and item dupers, while the anti-cheat system and developer responses are ineffective.",
+              "claim_id": "vet-98e27e",
+              "claim": "Reviewers report that the game suffers from an abundance of cheaters, hackers, and exploiters using tools like wallhacks and tracking, with inadequate anti-cheat measures or developer action.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 0,
-                "negative": 4
+                "positive": 5,
+                "negative": 10
               },
               "citations": [
                 {
-                  "recommendationid": "231876185",
-                  "hours_at_review": 892.5,
+                  "recommendationid": "240490691",
+                  "hours_at_review": 584.4,
+                  "minutes_at_review": 35061,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "to many cheaters, devs doing nothing for community and all kinds of dupers",
-                  "truncated": false,
-                  "minutes_at_review": 53548
+                  "date": "2026-11-18",
+                  "review_text": "The PvP community had high hopes when the Frozen Trail update arrived with the new anti-cheat system. One month later, the cheaters are back with full force, and Embark does not want to acknowledge it, unfortunately. Enough is enough.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231875117",
-                  "hours_at_review": 140.8,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Embark totally has failed this game. every round you get into is filled with cheaters. has one of the worst anti cheats and they do not care about this game AT ALL. this whole game was a money grab. do not buy nor play this game its a waste of money.",
-                  "truncated": false,
-                  "minutes_at_review": 8446
+                  "recommendationid": "240487055",
+                  "hours_at_review": 744.1,
+                  "minutes_at_review": 44646,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Was a fantastic game. Cheaters buried it, devs were too soft to save it. Also the amount of PvE pussies that cry about a PvPvE game being PvPvE is insane. If your a PvE only guy. don't buy it \n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231873141",
-                  "hours_at_review": 1044.8,
+                  "recommendationid": "240482880",
+                  "hours_at_review": 204.8,
+                  "minutes_at_review": 12285,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "For a while, one of the better games to play. Eventually cheaters got the best of this game and is not fun to play anymore unless you even the odds and get cheats yourself. Save your time and money by not investing in this game. You're welcome",
-                  "truncated": false,
-                  "minutes_at_review": 62689
+                  "date": "2026-11-18",
+                  "review_text": "Will return when PVE comes back. Will not support this game until then.  \nYour PVPVE is broken and full of hackers and rats. \nSorry, I refuse to play a game with those type of players.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229742321",
-                  "hours_at_review": 1320.6,
+                  "recommendationid": "240479855",
+                  "hours_at_review": 848.8,
+                  "minutes_at_review": 50928,
                   "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "There are few examples of a company having what could have been a timeless classic and then leaving it to turn to mould in the cupboard, this is one of them.\n\nEmbark would struggle to do a worse job with Arc Raiders if they purposefully tried - cheating and exploiting are extremely prevalent, with what little action they take against it being far too little, far too late.\n\nPre-teaming runs absolutely rampant, with people using the same visual skins, out of game comms and timing their queue initiation to be in the same lobby, often with teams of anywhere from 3-9, the trials aspect of the game is completely deformed, as the vast majority of people \"achieving\" cantina being people who cheat, stack entire lobbies through discord and cycle which team does the trial unchallenged, no separation of solo/duo/trio scoreboards - it isn't a challenge in your skill at the game or dedication, it is a challenge in how hard you can exploit and break the matchmaking system.\n\nCheating rampages alongside the pre-teaming issue, including duplicating items which they have done an unacceptably poor job at resolving multiple times now, every time it returning worse than before, people duplicate entire inventories full of the best PvP firearms and proceed to then pre-team and kill entire lobbies ad nauseum.\n\nThere are twitch streamers utilising the same cheats for over a month, streaming every day using said cheats openly with literal guides on how to do what they are and not a single ban in that time, despite the supposed \"new and improved\" denuvo anticheat.\n\nA single employee being emotionally invested in the success of Arc at Embark would be able to ban these people and get something done. No one cares.\n\nThe matchmaking is so scuffed I struggle to find a way to list just how many issues there is - people from out of region stacking in low population server regions such as Oceanic and Asia to pre-team and kill the entire lobby, if you fire back at someone shooting at you it adds to your…",
-                  "truncated": true,
-                  "minutes_at_review": 79236
+                  "date": "2026-11-18",
+                  "review_text": "Worst pvp on the market, infested by cheaters and RMT entrepreneurs. Abysmal amount of new content throughout a year from release. \nLiterally no in-between: it's either pvp fest with indefinite amouts of late spawners or carebear-holding-hands bs. \nCan't recommend to anyone.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240476677",
+                  "hours_at_review": 558.9,
+                  "minutes_at_review": 33536,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Aside from the major ignored elephant in the room CHEATING \r\nPeak gaming at first then glitches bugs hacks and delayed fixes left in a bad state \r\nJust making the best of it nowadays until the inevitable uninstall happens.\r\nA game that nowadays still feels like a 10/10 some matches but feels like 2.5/10 at its worst.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240475660",
+                  "hours_at_review": 665.3,
+                  "minutes_at_review": 39916,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "too many cheaters game was awesome now more people are cheating because THERE IS NO CONSEQUENCES FOR IT until they actually pull their heads out of there asses do not give them a dime of your money not worth the space on ur pc trust me and good luck reporting the cheaters and \"getting ur kits back\" embark dont give a fuck about fair play",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240472201",
+                  "hours_at_review": 349.4,
+                  "minutes_at_review": 20964,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "I loved playing this game... I just can't stand the fact that embark isn't banning cheaters and working on their anticheat. THE GAME IS UNPLAYABLE PLS DO SOMETHING, I AM BEGGING YOU. \n\nIf this game dies one day it's not going to be because of the lack of content or its quality, but because of cheaters.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240470676",
+                  "hours_at_review": 1602.1,
+                  "minutes_at_review": 96125,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "i would recommend arc raiders if enjoy grinding for loot ,spending hours fighting arc to build up your weapons to lose it all to a RAT then this game is for you. oh and not just any rat one that cant let you know he there and shoots you only when your searching something or in the back.not to mention hackers,cheaters real pieces of $h.t",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240431452",
+                  "hours_at_review": 1568.4,
+                  "minutes_at_review": 94103,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "AMZING GAME. Server lag and cheaters are a huge problem",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240431443",
+                  "hours_at_review": 1273.5,
+                  "minutes_at_review": 76409,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "massive cheater problem. if they somehow manage to fix it the game would be so much better.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239407814",
+                  "hours_at_review": 633.8,
+                  "minutes_at_review": 38028,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "This game is amazing for a shooter looter BUT its filled with HACKERS HACKERS HACKERS, if they could get a hold of it, it would be the best game in the  genre",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238320635",
+                  "hours_at_review": 767.2,
+                  "minutes_at_review": 46034,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "The cheaters ruin this game. Would be an amazing game but instead its just absolutely trash. I have a stash worth almost 3 million right now but me and my buddy have to just run free kits the entire time we play anyway because the second you bring in something better that's actually fun to play with cheaters see what you have and where you are. Which mean if you do a kit and have something better then the trash free kit guns that are not even fun to play with cheaters come straight to you to gun you down just shooting at a red stick figure that outlines you through walls and across the map. I tried streaming this game because I really like it and sometimes do some cool things but nobody cares when your running a free kit every match and their used to glazing streamers who are using cheats to act like they are the most skilled player out there but running in every game with a bobcat is impossible if your not cheating because you will get ratted by cheaters more often then you can make it back out with that gun even if you are just pure talent. It's not like killing one cheater saves the whole lobby your just gunna get third partied by the next cheaters who didn't get to you first. Me and my buddy ended up running into cheaters almost every match last night even on free kits it's awful. We called one team out for it and they revived us right away and said \"just go, we don't even want your stuff\" why did they say that? Because we made little kits with leveled up common guns cheaters don't want that they want the good epic guns and now I can't even imagine if I brought in my amplified guns. They need to actually get rid of cheaters and make the game even less fun for the people who are cheating. Maybe every once in a while do a limited time mode where you can't get anything from the match but you can use bring in any amount of anything so people who play fair can use a cool gun for once idk. Games trash until the cheaters go find something better to do.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239207885",
+                  "hours_at_review": 534.7,
+                  "minutes_at_review": 32083,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "As somebody who has played this game a ton since release, I can't recommend this game for one simple reason: Cheaters. Don't get me wrong, I absolutely love this game but with the cheaters who only run fully kitted gear due to duping or RMT, it's unplayable because they just track your location and hunt you down and kill you the second you're in line of sight. There's almost 0 chance to even defend yourself. I appreciate that Embark has acknowledged the problem and have attempted to rectify it by banning players but they just keep coming back. I quit for months because of the cheaters, came back for the PvE mode and did some PvP but not even 3 weeks later, it's infested with cheaters yet again, probably because that's all who's left. It was fun while it lasted.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238226025",
+                  "hours_at_review": 160.6,
+                  "minutes_at_review": 9636,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "i loved the game, but the unchecked cheating and toxicity killed it for all of us... i got ptsd even thinking about it.... my only solution that i can see for developers who lost control is to create dedicated pve and pvp servers separate to each other, to preserve the player base that is left... other than that the game will die out soon...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238592324",
+                  "hours_at_review": 889.4,
+                  "minutes_at_review": 53363,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "If you love to play a game with all the cheating and exploiting involved, this is right up your alley.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-f22bb3",
+              "claim": "Reviewers experience technical instability including game crashes after updates and map assets or invisible objects blocking movement.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240444495",
+                  "hours_at_review": 203.0,
+                  "minutes_at_review": 12178,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "new update game just keeps crashing\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239168366",
+                  "hours_at_review": 143.8,
+                  "minutes_at_review": 8629,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "The game has always been fun but the recent update seems to have bugged assets, invisible objects suddenly blocking movement. It's upsetting when you die to that. I haven't seen any other review mention this but all of my friends who play the game are also having the same issues. AI coding? X_X, Please fix this then I change review to positive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238696050",
+                  "hours_at_review": 324.1,
+                  "minutes_at_review": 19443,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "Once a decent project, now unstable laggy dogshii game infested with cheaters",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-d83f0d",
+              "claim": "Reviewers report that cheaters are prevalent and undermine matches, with some noting that the anti-cheat system fails to curb the issue effectively.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240490691",
+                  "hours_at_review": 584.4,
+                  "minutes_at_review": 35061,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "The PvP community had high hopes when the Frozen Trail update arrived with the new anti-cheat system. One month later, the cheaters are back with full force, and Embark does not want to acknowledge it, unfortunately. Enough is enough.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240475660",
+                  "hours_at_review": 665.3,
+                  "minutes_at_review": 39916,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "too many cheaters game was awesome now more people are cheating because THERE IS NO CONSEQUENCES FOR IT until they actually pull their heads out of there asses do not give them a dime of your money not worth the space on ur pc trust me and good luck reporting the cheaters and \"getting ur kits back\" embark dont give a fuck about fair play",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238320635",
+                  "hours_at_review": 767.2,
+                  "minutes_at_review": 46034,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "The cheaters ruin this game. Would be an amazing game but instead its just absolutely trash. I have a stash worth almost 3 million right now but me and my buddy have to just run free kits the entire time we play anyway because the second you bring in something better that's actually fun to play with cheaters see what you have and where you are. Which mean if you do a kit and have something better then the trash free kit guns that are not even fun to play with cheaters come straight to you to gun you down just shooting at a red stick figure that outlines you through walls and across the map. I tried streaming this game because I really like it and sometimes do some cool things but nobody cares when your running a free kit every match and their used to glazing streamers who are using cheats to act like they are the most skilled player out there but running in every game with a bobcat is impossible if your not cheating because you will get ratted by cheaters more often then you can make it back out with that gun even if you are just pure talent. It's not like killing one cheater saves the whole lobby your just gunna get third partied by the next cheaters who didn't get to you first. Me and my buddy ended up running into cheaters almost every match last night even on free kits it's awful. We called one team out for it and they revived us right away and said \"just go, we don't even want your stuff\" why did they say that? Because we made little kits with leveled up common guns cheaters don't want that they want the good epic guns and now I can't even imagine if I brought in my amplified guns. They need to actually get rid of cheaters and make the game even less fun for the people who are cheating. Maybe every once in a while do a limited time mode where you can't get anything from the match but you can use bring in any amount of anything so people who play fair can use a cool gun for once idk. Games trash until the cheaters go find something better to do.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-f43363",
+              "claim": "Reviewers report experiencing server lag during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240431452",
+                  "hours_at_review": 1568.4,
+                  "minutes_at_review": 94103,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "AMZING GAME. Server lag and cheaters are a huge problem",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238696050",
+                  "hours_at_review": 324.1,
+                  "minutes_at_review": 19443,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "Once a decent project, now unstable laggy dogshii game infested with cheaters",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239356587",
+                  "hours_at_review": 257.1,
+                  "minutes_at_review": 15429,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "Full of cheaters and aim bots, worst servers i seen for a shoot dnt buy this game",
+                  "truncated": false
                 }
               ]
             }
@@ -572,75 +1297,8 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-4e68a7",
-              "claim": "Reviewers note that updates arrive on a very slow, bi-annual schedule, leading to a massive loss in the player base.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231879569",
-                  "hours_at_review": 1892.6,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "love this game but embark devs really need to pick up the urgency of updates more than 2x a year going from game of the possible decade to losing 50% or more player base is insane to me",
-                  "truncated": false,
-                  "minutes_at_review": 113558
-                },
-                {
-                  "recommendationid": "231869372",
-                  "hours_at_review": 993.1,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "I love this game, but right now the cheaters are awful and the content is coming out at a snails pace. Wait until they fix the cheaters and realize that a bi-annual update schedule is ridiculous. I honestly can't understand why they would want to kill their own game so badly.",
-                  "truncated": false,
-                  "minutes_at_review": 59587
-                },
-                {
-                  "recommendationid": "229730028",
-                  "hours_at_review": 657.5,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "Well it’s about time. Been avoiding a review for so long since this game has kept me split on an opinion for a while.\n\nAs my first extraction shooter I’ve put more than 5 hours into, it was a great experience at the start. For the first 1-2 months of playing, the experience was unmatched. Easily the best experience I’ve had in a video game to date.\nThe game is solid, but the devs just couldn’t keep up with the playerbase. Stuff that should have been nerfed the next day took weeks (looking at you t-nades) and duped items circulated freely for a long time as well. Updates have been lackluster but satisfactory. Cheaters still plague the game and the anti-cheat has done nothing about it, which is mainly why I don’t do PvP, as whenever I do I always seem to get blatant cheaters in my lobbies. One time I spawned in with a free kit and hid in the top room at TSA and eventually surrendered as I had to go. Didn’t engage in any fights and didn’t use any items in the kit. Next day I got the kit back cause somebody around me was cheating. The devs seem to be saying that it’s in the works, but at the same time we were told that major updates are only every 6 months, which everybody and their mother was upset about.\n\nI’m still recommending this game purely to the past times I had; the first time playing was magical. It’s still a solid game and I will continue to play, just letting you know that the devs are struggling to keep the playerbase engaged with content and don’t care about veteran players and their desires.\n\n10/10 for the first experience\n4/10 for the dev team’s engagement with the community\n7/10 overall in its current state",
-                  "truncated": false,
-                  "minutes_at_review": 39449
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-d90e1c",
-              "claim": "Reviewers highlight that weapons degrade too quickly, requiring excessive time spent gathering materials for repairs.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "229856661",
-                  "hours_at_review": 595.9,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "Game was great when it came out, but over time they’ve slowly ruined it. \nGuns break wayyyy too fast now, I have to focus almost entirely on gathering materials to repair my weapon from the current raid, and can barely focus on anything else. Especially with the added arc… I love them, but guns need to last longer. The server stability is also still an issue. And I tried to do trials with my Xbox friends last night but was unable to play with him due to them getting an update early… I voiced my discontent about this in their discord and they permanently banned me for it. \n\nAlso the cosmetics are way too damn expensive, $20 for a skin is ♥♥♥♥♥♥♥ ridiculous!",
-                  "truncated": false,
-                  "minutes_at_review": 35752
-                },
-                {
-                  "recommendationid": "229992509",
-                  "hours_at_review": 472.9,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "This game 100% rewards bad players and ♥♥♥♥♥ on real players. You can load into a match and do absolutely everything that is asked of you. Then, on your way out, there is just a random guy who trapped the extraction hatch and kills you. None of your hard work even counts.The combat balancing is complete trash. At this point, light shields do not even make sense to use because everything breaks them instantly. Some guns use the same ammo type but hit with wildly different damage, and every single reload takes way too long.The skill tree is garbage because it only gives you minimal stat boosts. It honestly feels like a base player is exactly the same as a player with a fully unlocked skill tree.Then there is the game itself. The story is good only if you do not think about it too deeply. Everything is trying to kill you while you play, and all the enemies feel like they are in god mode. You get two-shot by everything, yet there are free kits available. There is next to no real reason to run a full, expensive kit when you can get everything you need for free. It is zero risk and all reward. On top of that, when you do Trials, they dynamically change the game to make it vastly harder to even complete. The loot for big ARC is thin and mostly less valuable than the actual cost to fight them. Crafting costs a ton, and the bot provided for trading always asks for an excessive amount of resources for random, mid-tier items. Why not just provide a player-to-player market lobby? Another thing that people keep talking about is the customization. Everything is locked into set cosmetic packs. There is no mixing and matching allowed. Because of this, everyone looks exactly the same, just slightly different. This system would make way more sense if the outfits were tied to specific groups or factions in the game, but they are not.",
-                  "truncated": false,
-                  "minutes_at_review": 28375
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-31038a",
-              "claim": "Reviewers state that updates arrive on a bi-annual schedule.",
+              "claim_id": "vet-eff599",
+              "claim": "Reviewers note that the game features high-tier Unreal Engine 5 graphics, sound design, realism, and art style.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 2,
@@ -648,139 +1306,78 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231879569",
-                  "hours_at_review": 1892.6,
+                  "recommendationid": "240478877",
+                  "hours_at_review": 166.2,
+                  "minutes_at_review": 9970,
                   "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "love this game but embark devs really need to pick up the urgency of updates more than 2x a year going from game of the possible decade to losing 50% or more player base is insane to me",
-                  "truncated": false,
-                  "minutes_at_review": 113558
+                  "date": "2026-11-18",
+                  "review_text": "It is very realistic.  I like the different maps.  The variety is nice.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231869372",
-                  "hours_at_review": 993.1,
+                  "recommendationid": "238868825",
+                  "hours_at_review": 248.2,
+                  "minutes_at_review": 14892,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "I love this game, but right now the cheaters are awful and the content is coming out at a snails pace. Wait until they fix the cheaters and realize that a bi-annual update schedule is ridiculous. I honestly can't understand why they would want to kill their own game so badly.",
-                  "truncated": false,
-                  "minutes_at_review": 59587
+                  "date": "2026-10-29",
+                  "review_text": "Million-dollar concept completely butchered by brain-dead live-service management. A masterclass in how to kill a game with massive potential.\nLet’s be honest: ARC Raiders has a phenomenal foundation. The Rust Belt setting, the gorgeous Unreal Engine 5 visuals, the snappy movement, and the sheer satisfaction of blowing apart metallic killer robots could have easily flipped the entire extraction shooter genre on its head. It could have been the next decade-defining multiplayer game. Instead, Embark Studios is running it like a complete joke. It honestly feels like this multi-million dollar project is being held hostage by a skeleton crew of three clueless developers who have absolutely no idea how a live-service loop is supposed to function.\nAfter pouring hours into this game, the honeymoon phase is completely dead, and the ugly reality sets in. This game is an empty, mind-numbing chore that completely fails to respect your time.\nHere is a detailed breakdown of why this game is aggressively boring and rapidly bleeding its player base:\n1. A completely dead economy and an insulting loot pool\nThe primary driving force behind any great extraction shooter is the dopamine hit of finding good loot. In this game, 90% of the world is cluttered with low-tier \"white\" and \"green\" garbage that becomes completely useless after your first weekend. There is absolutely no reason to pick most of it up. Why is the loot pool so shallow? Look at games like Terraria—they have thousands of unique items, rare drops, and accessories that make every single run feel like a slot machine jackpot. ARC Raiders doesn't have that. It doesn't even have a basic scrap/recycling mechanic. Why can't I dismantle this endless mountain of useless junk in my workshop to accumulate raw materials for high-tier crafting? Once you get your baseline gear, you stop looting entirely. You are just running through a ghost town looking for the 2 or 3 specific items that actually matter. The economy is fundamentally br…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "229730028",
-                  "hours_at_review": 657.5,
+                  "recommendationid": "238482198",
+                  "hours_at_review": 334.1,
+                  "minutes_at_review": 20048,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "I have over 300 hours on this account and atleast 150 hours on a second account, and I gotta say this game is fucking amazing from the general Gameplay loop, to the world itself, the enemy design, sound design, I LOVE this game. but, ever since the PvE week where the mode was tested.....I never want to go back, ever again, the devs said they tried this game as just a PvE game and they found it boring....but I as well as many others love every other aspect other than the PvP infact the PvP takes away from enjoying the other aspects of the game.  I will still continue to play every now and again, but the desire to grind up the cool new stuff only for it be snagged away by a group of people hiding around a corner, stripping away hours of grinding. I would rather lose it to an insane Arc Bossfight or event, because atleast that was within my control. I will happily change my review to a positive one once there is a Permanent PvE mode introduced",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238106515",
+                  "hours_at_review": 1097.8,
+                  "minutes_at_review": 65869,
                   "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "Well it’s about time. Been avoiding a review for so long since this game has kept me split on an opinion for a while.\n\nAs my first extraction shooter I’ve put more than 5 hours into, it was a great experience at the start. For the first 1-2 months of playing, the experience was unmatched. Easily the best experience I’ve had in a video game to date.\nThe game is solid, but the devs just couldn’t keep up with the playerbase. Stuff that should have been nerfed the next day took weeks (looking at you t-nades) and duped items circulated freely for a long time as well. Updates have been lackluster but satisfactory. Cheaters still plague the game and the anti-cheat has done nothing about it, which is mainly why I don’t do PvP, as whenever I do I always seem to get blatant cheaters in my lobbies. One time I spawned in with a free kit and hid in the top room at TSA and eventually surrendered as I had to go. Didn’t engage in any fights and didn’t use any items in the kit. Next day I got the kit back cause somebody around me was cheating. The devs seem to be saying that it’s in the works, but at the same time we were told that major updates are only every 6 months, which everybody and their mother was upset about.\n\nI’m still recommending this game purely to the past times I had; the first time playing was magical. It’s still a solid game and I will continue to play, just letting you know that the devs are struggling to keep the playerbase engaged with content and don’t care about veteran players and their desires.\n\n10/10 for the first experience\n4/10 for the dev team’s engagement with the community\n7/10 overall in its current state",
-                  "truncated": false,
-                  "minutes_at_review": 39449
-                },
-                {
-                  "recommendationid": "229803729",
-                  "hours_at_review": 278.6,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "This game goes up there as one of the greatest \"what ifs\" in gaming. What if the Devs listened to the community? What if they added a PvE or PvP option? Sometimes after work I don't want to be sweaty and PvP. I want to get loot or do missions cause I don't have hours to play during the week. But no, now I have to spend hours getting friendlies just to get some more loot for a few days, PvP on weekends, then have to do it all over again! What if the Devs didn't take our money and run... twice a year major updates?! For a game that had 100k+ daily players on Steam alone? Next update is when GTA 6 comes out? Game is dead and it's a damn shame.",
-                  "truncated": false,
-                  "minutes_at_review": 16719
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-a0ac85",
-              "claim": "Reviewers state that the game features excellent graphics, art direction, and visual presentation.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231817581",
-                  "hours_at_review": 127.7,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I am so impressed by this title, and I have never played anything quite like it. The closest comparison would be Hunt Showdown: also an extraction shooter with permadeath, also with varied and unpredictable AI enemies, also with a unique setting and aesthetic, also with extremely impressive and informative sound design. In a way I am not surprised, as it comes from the devs who gave me such a good time in The Finals. \r\n\r\nInstead of gushing about every minute detail, I will impress upon you the important parts that Arc gets right. The maps are gorgeous and varied, with elevations and changing environments across huge spaces that lead to interesting fights and hairy situations. I love the extraction zones, which are different from map to map but all force you into contact with other potentially dangerous raiders. Gunplay is (again) varied and satisfying, with an attachment and upgrade system (which cleverly does not improve the damage of weapons - a raider who has thrown a pile of resources into ornamenting their favourite gun will not simply overwhelm everyone else), and an array of consumables of all flavours - in 125hrs I have not used (or even seen) all the guns and deployables on offer. The setting is retro-futuristic (think Alien?) and the enemies match this - you are facing a really (again again) unique selection of extremely adaptive and annoying robots. By land and by air, each has their own behaviours and poses a different threat, and the armour system makes fighting each one a small puzzle and poses dilemmas in your loadout selection. The larger foes are suitably terrifying. \r\n\r\nWhat keeps me here is the depth and variety. Not just in the things already mentioned, but in the progression systems too. There are many, which I think award you progression in gameplay, crafting and customization at a satisfying rate. This includes over 100 quests given to you by NPC's, which flesh out the world and ask you to change your plan and your playstyle to complete them. …",
-                  "truncated": true,
-                  "minutes_at_review": 7660
-                },
-                {
-                  "recommendationid": "231810161",
-                  "hours_at_review": 265.5,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I've played ARC Raiders since launch, and while I had a lot of fun at first, the game quickly became repetitive.\r\n\r\nGameplay – 7/10\r\n\r\nThe core gameplay is solid. The gunplay feels good, exploring the world is fun, and the PvPvE concept is interesting. The atmosphere and art style are also great.\r\n\r\nHowever, after a while, every raid starts to feel the same. Once you've experienced the core loop, there's not much variety to keep you coming back.\r\n\r\nMultiplayer – 7/10\r\n\r\nPlaying with friends is definitely the best way to enjoy ARC Raiders. The tense extraction moments can be exciting, but after enough hours, the lack of content becomes noticeable.\r\n\r\nUnfortunately, I had a feeling this would happen, and I wasn't surprised to see the player base drop so quickly.\r\n\r\nGraphics – 9/10\r\n\r\nThe game looks fantastic. The environments, lighting, and overall art direction are beautiful and help create a unique atmosphere.\r\n\r\nOverall Rating\r\n\r\nGameplay: 7/10\r\nMultiplayer: 7/10\r\nGraphics: 9/10\r\n\r\nFinal Score: 7/10\r\n\r\nARC Raiders is a fun extraction shooter with a strong foundation, but it becomes repetitive too quickly. I enjoyed my time with it, but it didn't keep me playing for long. Hopefully future updates bring more variety and content, because the potential is definitely there.",
-                  "truncated": false,
-                  "minutes_at_review": 15928
-                },
-                {
-                  "recommendationid": "229835731",
-                  "hours_at_review": 202.9,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "Arc Raiders is a gorgeous game with great style and huge potential, but right now it’s practically unplayable unless you enjoy rat‑style PvP, cheating, or camping. Embark refuses to add a PvE flag, so every round is filled with players who do nothing but ambush and grief you. If you want to enjoy quests or PvE progression, forget it — you get killed instantly by rats the moment you spawn, and you can’t even shoot back without being thrown into sweatlord PvP lobbies.\nEmbark clearly doesn’t care, and because of that, the game is already dying. Without PvE players, Arc Raiders has no future — and unless they fix this, it deserves to die early.\n---italiano (la mia lingua) ---\nArc Raiders è un gioco bellissimo, con uno stile incredibile e un potenziale enorme, ma al momento è praticamente ingiocabile a meno che tu non ti diverta con il PvP da ratto, cheat o camping. Embark si rifiuta di aggiungere un flag PvE, quindi ogni round è pieno di giocatori che fanno solo imboscate e griefing. Se vuoi goderti le quest o la progressione PvE, scordatelo — vieni ucciso all’istante da ratti appena spawni, e non puoi nemmeno rispondere al fuoco senza finire nelle lobby PvP estreme.\nEmbark chiaramente se ne frega, e per questo il gioco sta già morendo. Senza i giocatori PvE, Arc Raiders non ha futuro — e se non sistemano questa cosa, merita di morire presto.",
-                  "truncated": false,
-                  "minutes_at_review": 12172
-                },
-                {
-                  "recommendationid": "229819485",
-                  "hours_at_review": 115.4,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "The game becomes very boring, very quickly. They delayed the game and spent 2 years adding PvP. They should have spent that on content and the story. There is just nothing to do in the game. Go up, loot, come back. No vision, no story, no point in playing.\n\nEmbark has great devs. Great visuals, great music and audio engineering. But the game is just about nothing. Very boring.",
-                  "truncated": false,
-                  "minutes_at_review": 6926
+                  "date": "2026-10-19",
+                  "review_text": "well worth the money, fun play through with lots of repeatability, new content at a quarterly pace allows this team to do what they do best and deliver quality over 'new shiny' that a lot of games fall into.  one of the most impressive things with this game is the sound quality and realism.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-e4600d",
-              "claim": "Reviewers describe the game as plagued by cheaters, hackers, and item dupers.",
+              "claim_id": "vet-a04d4e",
+              "claim": "Reviewers note that the game features detailed art direction, sound design, and realistic environments.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 1,
-                "negative": 3
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231876185",
-                  "hours_at_review": 892.5,
+                  "recommendationid": "238868825",
+                  "hours_at_review": 248.2,
+                  "minutes_at_review": 14892,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "to many cheaters, devs doing nothing for community and all kinds of dupers",
-                  "truncated": false,
-                  "minutes_at_review": 53548
+                  "date": "2026-10-29",
+                  "review_text": "Million-dollar concept completely butchered by brain-dead live-service management. A masterclass in how to kill a game with massive potential.\nLet’s be honest: ARC Raiders has a phenomenal foundation. The Rust Belt setting, the gorgeous Unreal Engine 5 visuals, the snappy movement, and the sheer satisfaction of blowing apart metallic killer robots could have easily flipped the entire extraction shooter genre on its head. It could have been the next decade-defining multiplayer game. Instead, Embark Studios is running it like a complete joke. It honestly feels like this multi-million dollar project is being held hostage by a skeleton crew of three clueless developers who have absolutely no idea how a live-service loop is supposed to function.\nAfter pouring hours into this game, the honeymoon phase is completely dead, and the ugly reality sets in. This game is an empty, mind-numbing chore that completely fails to respect your time.\nHere is a detailed breakdown of why this game is aggressively boring and rapidly bleeding its player base:\n1. A completely dead economy and an insulting loot pool\nThe primary driving force behind any great extraction shooter is the dopamine hit of finding good loot. In this game, 90% of the world is cluttered with low-tier \"white\" and \"green\" garbage that becomes completely useless after your first weekend. There is absolutely no reason to pick most of it up. Why is the loot pool so shallow? Look at games like Terraria—they have thousands of unique items, rare drops, and accessories that make every single run feel like a slot machine jackpot. ARC Raiders doesn't have that. It doesn't even have a basic scrap/recycling mechanic. Why can't I dismantle this endless mountain of useless junk in my workshop to accumulate raw materials for high-tier crafting? Once you get your baseline gear, you stop looting entirely. You are just running through a ghost town looking for the 2 or 3 specific items that actually matter. The economy is fundamentally br…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "231873124",
-                  "hours_at_review": 775.1,
+                  "recommendationid": "238482198",
+                  "hours_at_review": 334.1,
+                  "minutes_at_review": 20048,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "I have over 300 hours on this account and atleast 150 hours on a second account, and I gotta say this game is fucking amazing from the general Gameplay loop, to the world itself, the enemy design, sound design, I LOVE this game. but, ever since the PvE week where the mode was tested.....I never want to go back, ever again, the devs said they tried this game as just a PvE game and they found it boring....but I as well as many others love every other aspect other than the PvP infact the PvP takes away from enjoying the other aspects of the game.  I will still continue to play every now and again, but the desire to grind up the cool new stuff only for it be snagged away by a group of people hiding around a corner, stripping away hours of grinding. I would rather lose it to an insane Arc Bossfight or event, because atleast that was within my control. I will happily change my review to a positive one once there is a Permanent PvE mode introduced",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238106515",
+                  "hours_at_review": 1097.8,
+                  "minutes_at_review": 65869,
                   "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "Genuinely the most fun PvP I have had in a TPS in recent memory. Some servers are absolutely infested with cheaters which is affirmed as I regularly get notifications that my reports resulted in bans/action taken against their accounts.\n\nOutside of the cheating though, there is nothing on the market currently that comes close to Arc in terms of the highs and lows you get from a PvP environment that is peppered with oppressive PvE enemies.",
-                  "truncated": false,
-                  "minutes_at_review": 46509
-                },
-                {
-                  "recommendationid": "231869234",
-                  "hours_at_review": 251.3,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "What started out as something revolutionary became one of the biggest disappointments of 2026. These guys made one of the ultimate blueprints to a game and found every single way to fail it and its community. Embark made their bag and ran away with it. I truly am disappointed by the absolute lack of effort this game has become. Community is nothing but hackers/cheaters now and the game has no heart in it.",
-                  "truncated": false,
-                  "minutes_at_review": 15080
-                },
-                {
-                  "recommendationid": "229742321",
-                  "hours_at_review": 1320.6,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "There are few examples of a company having what could have been a timeless classic and then leaving it to turn to mould in the cupboard, this is one of them.\n\nEmbark would struggle to do a worse job with Arc Raiders if they purposefully tried - cheating and exploiting are extremely prevalent, with what little action they take against it being far too little, far too late.\n\nPre-teaming runs absolutely rampant, with people using the same visual skins, out of game comms and timing their queue initiation to be in the same lobby, often with teams of anywhere from 3-9, the trials aspect of the game is completely deformed, as the vast majority of people \"achieving\" cantina being people who cheat, stack entire lobbies through discord and cycle which team does the trial unchallenged, no separation of solo/duo/trio scoreboards - it isn't a challenge in your skill at the game or dedication, it is a challenge in how hard you can exploit and break the matchmaking system.\n\nCheating rampages alongside the pre-teaming issue, including duplicating items which they have done an unacceptably poor job at resolving multiple times now, every time it returning worse than before, people duplicate entire inventories full of the best PvP firearms and proceed to then pre-team and kill entire lobbies ad nauseum.\n\nThere are twitch streamers utilising the same cheats for over a month, streaming every day using said cheats openly with literal guides on how to do what they are and not a single ban in that time, despite the supposed \"new and improved\" denuvo anticheat.\n\nA single employee being emotionally invested in the success of Arc at Embark would be able to ban these people and get something done. No one cares.\n\nThe matchmaking is so scuffed I struggle to find a way to list just how many issues there is - people from out of region stacking in low population server regions such as Oceanic and Asia to pre-team and kill the entire lobby, if you fire back at someone shooting at you it adds to your…",
-                  "truncated": true,
-                  "minutes_at_review": 79236
+                  "date": "2026-10-19",
+                  "review_text": "well worth the money, fun play through with lots of repeatability, new content at a quarterly pace allows this team to do what they do best and deliver quality over 'new shiny' that a lot of games fall into.  one of the most impressive things with this game is the sound quality and realism.",
+                  "truncated": false
                 }
               ]
             }
@@ -790,74 +1387,360 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-cb2a36",
-              "claim": "Reviewers report that players camp extraction points and high-value loot rooms to ambush others.",
+              "claim_id": "vet-0176df",
+              "claim": "Reviewers state that players are frustrated by the lack of a permanent PvE mode and want a dedicated option without forced PvP elements.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 0,
+                "positive": 3,
+                "negative": 21
+              },
+              "citations": [
+                {
+                  "recommendationid": "240487055",
+                  "hours_at_review": 744.1,
+                  "minutes_at_review": 44646,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Was a fantastic game. Cheaters buried it, devs were too soft to save it. Also the amount of PvE pussies that cry about a PvPvE game being PvPvE is insane. If your a PvE only guy. don't buy it \n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240478509",
+                  "hours_at_review": 197.1,
+                  "minutes_at_review": 11823,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "this game is honestly great, but my review shall remain negative until they make PvE mode permanent.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240477409",
+                  "hours_at_review": 153.8,
+                  "minutes_at_review": 9230,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "Would only play this game again if \"PvE Only\" mode will exist (or another mode for friendly players). The gameplay, unfortunately, made for rats and unfriendly players.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240475201",
+                  "hours_at_review": 320.1,
+                  "minutes_at_review": 19205,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "Why is this game tagged with PVE when there is no PVE option?? WTF are we doing.. I get ABMM but you shouldn't be able to tag PVE if there isn't a PVE mode. Come on guys",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240474992",
+                  "hours_at_review": 227.7,
+                  "minutes_at_review": 13659,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "No PVE optionality of any kind.  Gank fest.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238202350",
+                  "hours_at_review": 233.8,
+                  "minutes_at_review": 14028,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "PvP only ruined the game. Player-base too toxic for healthy matchmaking. Uninstalled until PvE is permanent",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238157819",
+                  "hours_at_review": 161.7,
+                  "minutes_at_review": 9700,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "This is the dumbest review I will ever write, but I feel it's the best way to communicate with devs nowadays.\r\nGame is fine, they fixed a bunch of issues I had with it and I love the work they have done so far.\r\nUnfortunately I will not play without PvE mode because I enjoy the game that way. If you are like me you will love playing PvP with your friends, but in SOLO you will not enjoy, and unfortunately a bunch of SOLO needs to be done to progress. \r\n\r\nWhen PvE is back I'll update my review, but until then I don't feel this is a game worth my time.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238162244",
+                  "hours_at_review": 737.7,
+                  "minutes_at_review": 44260,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "This game has no appeal without PVE mode and it was actually fun to play again there for a few days. Without PVE take it out to pasture and say your goodbyes",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238139962",
+                  "hours_at_review": 161.4,
+                  "minutes_at_review": 9687,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "I stopped playing because of toxic pvp and hadn't played for 3/4's of a year. This was unanimous amongst my friends. We have all gotten back in this week because of the PVE toggle and it's brought our interest back. We're out again after tomorrow unless you bring PVE back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238843058",
+                  "hours_at_review": 570.1,
+                  "minutes_at_review": 34207,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Give us PvE. It's been a year, you've lost nearly 100k after the week-long test, just give us what we ask for, for Pete's sake. Some of us have lives and are tired of losing gear to angry ahholes who do nothing but camp and rat. Keep PvP for the sweaty people who live in front of this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238724653",
+                  "hours_at_review": 500.1,
+                  "minutes_at_review": 30006,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "I bring good gear -> Instantly ratted by free kit\n\nI fight back -> I get pvp lobbies for defending myself\nI don't fight back -> I lose the good gear, and still get ratted by free kits????\n\nFIx this garbage. Make a dedicated pvp mode, if I wanted to exclusively play pvp i'd play a good pvp game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238482198",
+                  "hours_at_review": 334.1,
+                  "minutes_at_review": 20048,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "I have over 300 hours on this account and atleast 150 hours on a second account, and I gotta say this game is fucking amazing from the general Gameplay loop, to the world itself, the enemy design, sound design, I LOVE this game. but, ever since the PvE week where the mode was tested.....I never want to go back, ever again, the devs said they tried this game as just a PvE game and they found it boring....but I as well as many others love every other aspect other than the PvP infact the PvP takes away from enjoying the other aspects of the game.  I will still continue to play every now and again, but the desire to grind up the cool new stuff only for it be snagged away by a group of people hiding around a corner, stripping away hours of grinding. I would rather lose it to an insane Arc Bossfight or event, because atleast that was within my control. I will happily change my review to a positive one once there is a Permanent PvE mode introduced",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238433610",
+                  "hours_at_review": 460.2,
+                  "minutes_at_review": 27610,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "PVE only mode should be added. \r\nAt least for me, I do want any PVP experience. \r\nI was able to play with my friends in PVE mode with a lot of fun.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238165454",
+                  "hours_at_review": 201.9,
+                  "minutes_at_review": 12114,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "Loved this game when it first came out, but like most, dropped it after a couple months as the game started to become less about social interactions and just people camping / ratting others. The PVE test mode brought me back and I honestly loved it, couldn't get enough playing again. I'll admit, it's definitely a different experience without the PvP, but the gameplay and world is enjoyable enough without it. Having the option to do either I think is the right way to go. I really hope PVE becomes a main feature. \n\nOh and just to add, me and a mate decided to continue playing the day after they took down PvE, we tried doing the Frigate 4 times and got ganked each time, once by a betrayal, immediately uninstalled again until PvE is back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238170100",
+                  "hours_at_review": 204.8,
+                  "minutes_at_review": 12288,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "After the PVE mode was just removed I can officially say the game is terrible again, first match I go into expecting to kill arc only I get ratted by someone with a maxed out Tempest",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238204797",
+                  "hours_at_review": 181.2,
+                  "minutes_at_review": 10874,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "Really liked the PVE mode and its the only thing that brought me back after months. Won't be playing again until PVE is made permanent. People still play together, have fun and help each other. Player interraction still exist without PVP. Imagine players that only swear by PVP but are mad when people only runs free kits. Maybe PVE kits farming could put something more interesting to loot in PVP lobbies. With PVE lobbies Theburntpeanut will be able to farm his own stuff off stream instead of asking Gingy for a new kit every game. \nNegative review until they stop using *PVE* only to bait people and finally make it permanent.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238612915",
+                  "hours_at_review": 106.1,
+                  "minutes_at_review": 6365,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "I genuinely don’t get why PvE isn’t a default option. I’m just trying to knock out some quests, but I get killed within the first few minutes, ten runs in a row. These pathetic rats camp and wait for you to breach, loot, head to extraction, or get into a fight with ARC, then jump you when your guard is down and you barely have a chance to fight back. What’s the point of buying a Reward Pass or spending money on a game when other players keep making it impossible to enjoy? And the devs just turn a blind eye and keep catering to these clowns instead of giving players the option to enjoy the game without PvP. You even dropped a limited-time PvE mode for just one week, only to crank up the difficulty. Seriously, what is wrong with you? Just give us a permanent PvE mode and let people play the game how they want instead of forcing everyone to deal with rats who get off on ruining other people’s runs.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238165071",
+                  "hours_at_review": 234.3,
+                  "minutes_at_review": 14060,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "PvE mode makes the game more enjoyable after a long hard day at work\n\nEmbark you did a good thing here. Not every age has the time to play. But with PVE made me enjoy the game. \n\nPvE is for those with busy lives that want to jump in for a few then bounce back to real life and sleep.\n\nWill make this as a negative review for now until PVE comes back. Getting tired of these rats",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238154717",
+                  "hours_at_review": 382.3,
+                  "minutes_at_review": 22937,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "I came Back Just To enjoy the PVE And now Its gone Lol...Well time to uninstall again until it comes back..\"if\" they bring it back at all...I was Having A lot of Fun i was finally enjoying the Game to the Max so much to do in this game and so many arcs / bosses ect to fight it was a dream come true..anyways,until Pve Comes Back,Peace and Stay Safe Raider!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238234844",
+                  "hours_at_review": 141.2,
+                  "minutes_at_review": 8470,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "Bring back PvE ASAP. Playing alone saying dont shoot flicking flashlights and getting shot in the back is just traumatizing. Like I wanna do my feats which is e.g. Kill a leaper. Go into round --> no leaper spawns --> get shot in the back with gear for leaper.... Literally unplayable if alone... Why not keep PvE and update it instead of removing??? like what the hell?? Watch your player base get burned again I guess.\n\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238161104",
+                  "hours_at_review": 433.1,
+                  "minutes_at_review": 25989,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "I've played both the PvPvE version  of the game and the PvE version of the game. I like the game in general but too many problematic players to want to play the original version. So until the PvE comes back, I won't be playing. Over 400 hours in the game, 64 hours of which was in the PvE mode. If you want my continued play, have to bring back PvE.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238277217",
+                  "hours_at_review": 394.9,
+                  "minutes_at_review": 23691,
+                  "voted_up": true,
+                  "date": "2026-10-22",
+                  "review_text": "Love the game! But if we don't got PVE i dont wish to play it.\nI dont enjoy PVP, i dont like being betrayed and taken like a fool. I like having cool interactions with people and see goofy things happening. I like learning puzzles from other players, finding a random down players just to be able to rez them and hear how they ended up in that situation. Now thats fun!\nDont really get the battle of people insulting each other for just a game mode, adding PVE to the options will not change the game at all, well, only for the rats.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238172725",
+                  "hours_at_review": 367.3,
+                  "minutes_at_review": 22038,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "i enjoyed PvE only mode.\nTried to play after the test phase ended, i will be uninstalling until PvE-only comes back (if).\nNo time to grind like a sweatlord just to lose everything the next round. \nI also want to enjoy the ARC content, bosses, events in peace, i get enough sweats in real life, no need to spend my limited free time with more rats. \nAt least i got my money's worth out of this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238250418",
+                  "hours_at_review": 201.3,
+                  "minutes_at_review": 12078,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "got back into this for pve until its permanant i cant recomend this game i came here to do qwests chill with friends hunt bots not be third partied by some third worlder 9 year old with no career that eats crayons bring back pve and ill update my review",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-55b065",
+              "claim": "Reviewers describe extraction areas and high-loot zones as heavily camped by players feigning friendliness or hiding to ambush others.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
                 "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231793352",
-                  "hours_at_review": 704.7,
+                  "recommendationid": "240481759",
+                  "hours_at_review": 107.6,
+                  "minutes_at_review": 6456,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "The game is straight ass. They just keep ruining the game with their updates and the stupid stuff they add. Dying game. Only 20,000-30,000 people on the game nowadays. Sick of making a loadout for a night raid because I can't go into a night raid with a free loadout anymore and having other losers just camping high value loot rooms and extraction points because they know they can get a loadout off you.",
-                  "truncated": false,
-                  "minutes_at_review": 42284
+                  "date": "2026-11-18",
+                  "review_text": "If you are looking for a game to play with a full trio in PVE i would highly advise against Arc Raiders until Embark is done with the dedicated PVE mode. You will get nothing done if you are trying to farm items, complete quests. Or fight ARCs. You can have raids where people prepare dedicated ambush kits and just sit there farming people who come by, or roam the map on a warpath for no reason other than to PVP and steal your shit. Keep in mind this game is primarily marketed AND updated as a PVE experience.\nSolo or duo riads are generally highly enjoyable. But as an overall multiplayer experience? I've havent seen many games as toxic as this. Especially with how cancerous farming for components or niche items is. Let alone acquiring any decent gear.\n\nThis doesen't include the heaps of bugs that are also present. Quests unable to be completed due to broken interactions, ARCs being able to see and/or hit you through walls or invisible gaps. Among other things.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229546951",
-                  "hours_at_review": 133.3,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "100 hours in and this is what i have learned.\r\n1. the worst of mankind will camp like rats. they hide at extracts, small looting rooms, and even hack/cheat with aimbots and similar things. \r\n2. Devs do not give a rats A$$ about any of it. they just say its supposed to be people against the arc not each other, but keep the game pvpve. \r\n3. if you do find something really good, refer back to #1. \r\n\r\nnot worth ur dime unless u like to lose everything you work for over and over and over again. the arc in the game is hard enough without dbag rats shooting u while ur killing arc. i will not touch this game till they make it pve, not worth the time or effort when the devs do not care whatso ever to manage the behavior of the waste of air in society from ruining every single match u go in. save ur money.",
-                  "truncated": false,
-                  "minutes_at_review": 7997
+                  "recommendationid": "240481275",
+                  "hours_at_review": 393.8,
+                  "minutes_at_review": 23626,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "10/10 – This game has given me trust issues.\n\nI went into ARC Raiders thinking I'd be fighting robots and collecting loot.\n\nInstead, I've learned that the most dangerous thing in this game is a grown man saying \"friendly, friendly\" over proximity chat.\n\nI've been shot in the back, robbed of everything I own, and emotionally manipulated by someone who sounded like he had a mortgage and three kids.\n\nI'll spend 25 minutes carefully looting, avoiding every possible threat, just to get absolutely folded by a guy named \"xXBootySnatcherXx\" camping extraction.\n\nEvery time I die, I tell myself I'm getting off.\n\nEvery time I get off, I'm back on 10 minutes later.\n\nI have nothing in my stash, no faith in humanity, and a concerning amount of hours played.\n\n10/10. My therapist says I need to learn how to trust people again. I told her \"friendly, friendly\" and stole her wallet.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230713383",
-                  "hours_at_review": 1388.7,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "When *ARC Raiders* first launched, it had one of the best communities I've experienced in a long time. People actually talked over voice chat, teamed up, negotiated, and created memorable encounters. The social aspect was what made the game stand out.\n\nUnfortunately, that community has deteriorated over time. Public voice chat has become a mess, with far too many people treating it like a 2010-era Call of Duty lobby, throwing around racial slurs and other toxic garbage. Instead of adding to the experience, voice chat often makes it worse.\n\nThen there are the rats. Players who sit at extraction waiting to ambush people who've spent an entire raid looting, or the ones who refuse to say a single word over voice chat until after they've already downed you. It completely undermines the unique player interactions that originally made the game special. At this point, it feels less like a game of strategy and more like a contest to see who can exploit other players' time the most.\n\nAnd before anyone says \"get good,\" some of us have careers, families, and responsibilities outside of gaming. I don't have unlimited hours every day to grind or recover from losing everything to someone camping an extract for 20 minutes. I want to play a game where I can make meaningful progress without feeling like every session is wasted.\n\nIf the developers aren't willing to separate the PvP experience, then at least let the community host private servers. Give players the ability to create their own rulesets and communities so those of us who enjoyed the original cooperative, social atmosphere have somewhere to play. Right now, the game's biggest problem isn't its mechanics... it's the culture that's developed around them.  \n\nWith that said, I've uninstalled at this point... I'm moving on...",
-                  "truncated": false,
-                  "minutes_at_review": 83324
+                  "recommendationid": "240456336",
+                  "hours_at_review": 113.3,
+                  "minutes_at_review": 6798,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "love the game but really need a PVE mode to be complete it is very annoying to play against the rats that cheapshot friendly lobbies",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230118443",
-                  "hours_at_review": 477.5,
+                  "recommendationid": "238438658",
+                  "hours_at_review": 110.0,
+                  "minutes_at_review": 6602,
                   "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "This game was amazing when it first came out, the PvP and PvE aspect was amazing. There was something always to do whether it was looting, fighting arc, fighting other players etc.\n\nNow in current day this game is pure hot garbage, want to resource hunt? forget it. Rats, extract campers, unfair exploits. Want to have fun PvP? Even worse experience. I am convinced 30%-40% of the player base is cheating on pc. The worst part is now when you call out a blatant cheater embark does not reimburse your items back despite reporting an obvious cheater. On top of that players are finding exploits now to matchmake in big parties up to 6-9 players all playing on one server killing everyone. This game had a lot of potenial to be a GREAT game, but unfortunately embark has given a middle finger to those who play the game fair and square. Pretty much promoting the game for those who like to cheat and abuse gamebreaking exploits. \n\nI would not reccomend arc in today's current state. \n\nBest way to put it. This game is pure ♥♥♥♥♥♥♥♥.",
-                  "truncated": false,
-                  "minutes_at_review": 28651
+                  "date": "2026-10-24",
+                  "review_text": "Had a blast during PVE then they took it away and now all the lying rats are back pretending to be friendly.  Those guys ruin the game.  I'll return and write a positive review once PVE comes back because the game needs a solution to griefers or a PVE mode to succeed. \r\nGreat Game, Most Pathetic PVP community that ruins it though \r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238556096",
+                  "hours_at_review": 102.6,
+                  "minutes_at_review": 6154,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "I didn’t mind the PvP aspect of this game in the past but there are so many campers just sitting in high loot areas of the map laying mines and waiting for you. It has become so common the game lost any appeal to me and became frustrating.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238205930",
+                  "hours_at_review": 221.7,
+                  "minutes_at_review": 13301,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "Not worth playing until a PVE mode is added, you will just waste your time dying to rats hiding in bushes and extract campers. There isnt even expeditions anymore so you will always be at a disadvantage to players who have 15+ more skill points compared to you plus other perks like 30% more durability when repairing gear.\n\nAlso to add, Embark puts more effort into banning casual Dad gamers that kill streamers: https://www.youtube.com/watch?v=OI7UAPs9sLU \nInstead of the rats who actually grief the game to ruin the experience for other players: https://www.youtube.com/shorts/sloyvfx2E9s\n\nEmbark putting out a half-baked PVE mode with a bunch of asterisks, compared to the PVPVE mode, that was setup for failure before it began so they can say \"We gave it the old college try\" when people complain how broken it was. Disabling tools that affect other raiders should have been obvious before the test even went out, Bull Rush, Tether guns, Yank grenades, Spotter Relays, Snitch Scanners, etc but Embark won't take any action against those players who intentionally grief the PVE test mode and kill other players.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "vet-a3aa31",
+              "claim": "Reviewers report being banned by an automated AI anti-cheat system without explanation or successful appeals.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240442193",
+                  "hours_at_review": 136.7,
+                  "minutes_at_review": 8201,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "DO NOT BUY THIS GAME. READ THE TRUSTPILOT REVIEWS FOR THIS COMPANY. YOU WILL BE WASTING YOUR MONEY. \r\nAfter 136 hours of playing and actively avoiding interacting with other players. No chat. No killing players. No team missions. No foul language. No trades. Not even a revive. I have been given a 1 month ban with no description of the offence by the AI controlled anti-cheat system. Tried to appeal and just get repeated AI responses. They are not reviewing their bans in person nor do they intend to. Look up 'Ark raiders banned for no reason' and see how many people have been screwed over by this terrible company. If you are still considering buying be aware that to get alot of the best kit you have to submit collected loot within a specified time. Once the time is up the loot you put in is lost if you don't complete. Its going to take you hours to collect it all. You're going to get mugged, peppered by drones and possibly die from environmental damage making you lose it all. Right now imagine these incompetent tw@ts have made an AI anti-cheat system with bi polar that can ban you for no reason for a minimum of a month. You lose all loot. You cant play the game. You don't get a reason for the ban AND IT COULD BE PERMANENT. Do you invest any time in that game or do you buy a game that you don't have to worry about any of that and can actually enjoy yourself? Your choice but I'm begging you. DON'T give these guys money. I know the youtube clips look good but its just not worth it. Streamers get priority so never have to suffer this stuff. YOU WILL. Save your money. Make these scumbags pay. DO NOT BUY.\r\n\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239206500",
+                  "hours_at_review": 236.3,
+                  "minutes_at_review": 14178,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "Had a fantastic three weeks playing this game, spent over £30 on DLC, then BANNED for a month. Out of nowhere. They won't tell me why, even after appeal. Absolutely left a sour taste in my mouth.\n\nI know what you're thinking \"then dont cheat u cheater\" never cheated on any game in my life, no bans in 21 years, check my profile. You can see this is a constant issue with this game, loads of videos and forum posts out there about it. They use an AI-based detection system and apparently don't care about false positives. Same with their other game, The Finals. \n\n*Thanks for the correction, Kronzo, I was thinking of Marvel Rivals.\n\n**Having done some research, the ban might be because I switched from controller to KBM! This just makes it even worse, if that's the case.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238401483",
+                  "hours_at_review": 485.2,
+                  "minutes_at_review": 29110,
+                  "voted_up": false,
+                  "date": "2026-10-23",
+                  "review_text": "Loved this games art direction and mechanics sunk 400-ish hours in, The game itself is very good. On the other hand though the anti-cheat and moderation is terrible, I got temp banned mid match for \"cheating\" and got no further explanation as for what I was doing wrong, I was legitimately sad as this is one of my favorite multiplayer games and to be labeled as a cheater for no reason really sucked. I enjoy this game with a passion, why would I go on to ruin that joy for others? I'm not even good at PvP which made the ban make even Less sense. I've been racking my brain for days now trying to figure out why they flagged me. I of course asked for an appeal and they \"reviewed\" it (blew me off) and are now keeping the ban in place. I recommend this game highly to anyone looking for a awesome PVE extraction experience, just avoid the PvP aspect like the plague and don't have any \"behavior inconsistent with normal gameplay\" whatever that means.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 20,
-        "cited_recommend": 5,
-        "divergence_p": 0.149,
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 54,
+        "cited_recommend": 12,
+        "divergence_p": 2.21e-07,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1899,
-    "steam_total_reviews": 248796,
-    "cohort_count": 3,
+    "pool_n": 2105,
+    "steam_total_reviews": 260729,
+    "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1808500/04baafaf64a5aa5f46ecda5d71889a4848dc0628/header.jpg?t=1786961844",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1808500/542a243d39bd7ed791359be9e96c82f419b81475/capsule_231x87.jpg?t=1786961844",
-    "grid": "https://cdn2.steamgriddb.com/grid/ac80b7f0ea728befded9a1c5ba5330d2.png"
   }
 }

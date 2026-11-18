@@ -2522,3 +2522,37 @@ separate round-2 run.
 - **The scoring was not blind in two ways.** The owner was told in round 1 what the judge
   had got wrong, and read cases 7–10 once on 2026-11-03 without scoring them. The owner
   was not shown the judge's scores for any of the ten.
+
+## 2026-11-18 — Catalog refresh, night 2: 32 titles regenerated
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **27,646 citations across all 543 verdicts, 0 failures**, `EXIT_RC=0`. Raw: `evals/qr4-2026-11-18.txt` |
+| Manual audit | `evals/audit-4.4-2026-11-18.md`, seed 20261118, 10 verdicts, 20 citations. **Read by the coding agent, not the owner.** The owner said commit and push without saying they had read it. No NSFW or slur text. One uncensored profanity, which passes rubric QR-4. All 10 verdict words were recomputed from the split-bar figures and agree. |
+| Search index | rebuilt, 0 of 543 verdict appids missing by set membership. Genre sections rebuilt, counts unchanged. |
+
+`pipeline/run_batch_logged.sh --refresh`, log `evals/batch-2026-11-18.txt`, `EXIT_RC=0`.
+
+| | |
+|---|---|
+| Ran / published | 32 / **32**, including Baldur's Gate 3 (the segmentation gate is now skipped on refresh) |
+| Gate drops / stage failures | 0 / 0 |
+| Refused at the budget | 487, at 0 calls, **none recorded**. The night-1 fix held: only the 32 real results changed in `data/batch_state.json`. |
+| Model calls | **391**, mean 12.2, range 7–18. Reconciles three ways: run summary, the 32 records, ledger `batch_used` 391 |
+| Over EST_COST 15 | 4: ARK: Survival Ascended 18, ARC Raiders 16, Assetto Corsa 16, Rust 16. That is 7 of 51 across both nights. |
+| Budget left | 9 of 400, live reserve untouched |
+| Verdicts on the 32 | Buy 20 / Wait 6 / Skip 6 → **Buy 20 / Wait 7 / Skip 5** |
+| Claims on the 32 | 525 → **375**, plus 96 one-reviewer points |
+| Refresh progress | **51 of 538** non-seed titles verified, 487 to go |
+
+Three verdict words moved with the fresh reviews: Warframe Buy → Wait, War Thunder
+Skip → Wait, and Kingdom Come: Deliverance II Wait → Buy.
+
+The audit found a pattern now seen on both nights: the meaning check passes a compound
+claim that a cited review only half-supports (BACKLOG 2026-11-18).
+
+Shipped with this night: each verdict page now shows "As of <date>" under the stamp
+(`site/lib/__tests__/as-of-date.contract.test.tsx`; mutations 6/6,
+`evals/mutate-as-of-2026-11-18.txt`).

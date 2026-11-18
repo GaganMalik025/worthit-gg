@@ -1,51 +1,62 @@
 {
   "appid": "2357570",
   "game_name": "Overwatch®",
-  "generated_at": "2026-08-10T09:58:59Z",
+  "generated_at": "2026-11-18T10:21:55Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/7baa151c768868f1fe1d3aeea2467fa1a35fb531/header_alt_assets_22.jpg?t=1786471282",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/1d0e99bc9ed84abe67862f3176be3ce56018e9b1/capsule_231x87_alt_assets_22.jpg?t=1786471282",
+    "grid": "https://cdn2.steamgriddb.com/grid/4ae54fcc5d76f9dd737f86b0499637d6.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 13,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Skip",
-    "tagline": "Free-to-play hero shooter burdened by technical friction and high cosmetic prices.",
+    "tagline": "Familiar hero shooter action bogged down by technical and monetization hurdles.",
     "for_you_if": [
-      "you enjoy fast-paced team-based hero combat",
-      "you play casually without caring about cosmetic costs"
+      "you want fast team-based hero shooter action",
+      "you enjoy competitive objective modes"
     ],
     "not_for_you_if": [
-      "you object to mandatory phone verification for account creation",
-      "you want reliable server connections without sudden lag spikes",
-      "you expect a robust campaign or PvE mode"
+      "you are blocked by mandatory phone verification",
+      "you want the promised cooperative campaign mode",
+      "you cannot tolerate connection drops and matchmaking penalties",
+      "you dislike aggressive storefront monetization"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 103,
-      "pct_positive": 17.5,
+      "pool_n": 100,
+      "pct_positive": 18.0,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 414,
-      "pct_positive": 54.6,
+      "pool_n": 280,
+      "pct_positive": 59.6,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 504,
-      "pct_positive": 57.1,
+      "pool_n": 366,
+      "pct_positive": 58.7,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 820,
-      "pct_positive": 49.6,
+      "pool_n": 773,
+      "pct_positive": 46.7,
       "muted": false
     }
   ],
@@ -55,49 +66,49 @@
       "type": "segmentation",
       "direction": null,
       "shape": "rise_then_fall",
-      "sentence": "Initial reviews start low, rise through mid-tier play hours, and decline again among veteran players.",
+      "sentence": "Positive review rates peak early before declining among long-term players.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 17.5,
-            "pool_n": 103
+            "pct_positive": 18.0,
+            "pool_n": 100
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 54.6,
-            "pool_n": 414
+            "pct_positive": 59.6,
+            "pool_n": 280
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 57.1,
-            "pool_n": 504
+            "pct_positive": 58.7,
+            "pool_n": 366
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 49.6,
-            "pool_n": 820
+            "pct_positive": 46.7,
+            "pool_n": 773
           }
         ],
         "shape": "rise_then_fall",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 17.5,
-        "low_pool_n": 103,
-        "high_cohort": "mid",
-        "high_cohort_label": "20-100 hours",
-        "high_pct_positive": 57.1,
-        "high_pool_n": 504,
-        "gap_pts": 39.6,
-        "peak_cohort": "mid",
-        "peak_pct_positive": 57.1,
+        "low_pct_positive": 18.0,
+        "low_pool_n": 100,
+        "high_cohort": "early",
+        "high_cohort_label": "2-20 hours",
+        "high_pct_positive": 59.6,
+        "high_pool_n": 280,
+        "gap_pts": 41.6,
+        "peak_cohort": "early",
+        "peak_pct_positive": 59.6,
         "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 49.6,
-        "drop_after_peak_pts": 7.5
+        "post_peak_low_pct_positive": 46.7,
+        "drop_after_peak_pts": 12.9
       }
     },
     {
@@ -105,14 +116,14 @@
       "type": "recency",
       "direction": "improved",
       "shape": null,
-      "sentence": "Recent reviews show a slight upward trend compared to lifetime averages.",
+      "sentence": "Recent reviews reflect a higher positive sentiment compared to the lifetime average.",
       "evidence": {
-        "recent_pool_pct_positive": 51.0,
-        "recent_pool_n": 1841,
+        "recent_pool_pct_positive": 50.1,
+        "recent_pool_n": 1519,
         "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 40.4,
-        "steam_total_reviews": 165448,
-        "delta_pts": 10.6
+        "steam_lifetime_pct_positive": 41.5,
+        "steam_total_reviews": 175198,
+        "delta_pts": 8.6
       }
     }
   ],
@@ -121,56 +132,18 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 103,
-      "pct_positive": 17.5,
+      "pool_n": 100,
+      "pct_positive": 18.0,
       "muted": false,
       "n_note": null,
-      "summary": "Players encounter immediate barriers with mandatory phone verification and severe technical instability during initial startup.",
+      "summary": "Players face immediate roadblocks from mandatory phone verification and cluttered mobile-style menus.",
       "themes": [
         {
           "theme": "access",
           "claims": [
             {
-              "claim_id": "ref-258f87",
-              "claim": "Account creation requires providing a phone number, and verification fails or gets rejected for certain number types such as prepaid numbers.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231736980",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Said adding phone number is optional at first, then asked (forced) me to add phone number and there's no option to cancel or trying another way, when went to add phone number, said \"post-paid number only\" but I don't have one, so now I can't even create an account (feels unnecessary btw), let alone play the game, all this even after they linked their account to my steam account.",
-                  "truncated": false,
-                  "minutes_at_review": 14
-                },
-                {
-                  "recommendationid": "231734074",
-                  "hours_at_review": 0.9,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Bruh, I can't even play the damn game. Battle.net asking me to verify my acc using my phone number thru SMS. The SMS never received on my phone and then it says use postpaid number only like \"WTF?\".",
-                  "truncated": false,
-                  "minutes_at_review": 57
-                },
-                {
-                  "recommendationid": "230021840",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "See my playtime? That's the time I spent trying to register. Now I am at the phone verification step and it reject my phone saying I need a prepaid number, but mine is prepaid already. Such a waste of time!",
-                  "truncated": false,
-                  "minutes_at_review": 22
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-47d5c1",
-              "claim": "The game forces players to link a phone number and complete SMS verification through an external client account system before playing.",
+              "claim_id": "ref-4d8023",
+              "claim": "Reviewers report being blocked from playing because the game requires linking a phone number, which fails verification, rejects certain phone types, or locks accounts after minor input errors.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -178,51 +151,51 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232018261",
-                  "hours_at_review": 0.5,
+                  "recommendationid": "240471007",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
                   "voted_up": false,
-                  "date": "2026-08-04",
-                  "review_text": "Blizzard must have thought that new player wont matter anymore so they set up a very dumb client to access which make no sense for ppl who want to try this game first time. Great work from bunch of moron that asked \"dont u guy have a phone?\"",
-                  "truncated": false,
-                  "minutes_at_review": 31
+                  "date": "2026-11-18",
+                  "review_text": "So this game asks me to provide postpaid phone number wherein it's mostly prepaid here in my home country?\nI have to pay just get a temporary postpaid number to play? I haven't entered the game and it straight up pissed me off. \nNo wonder no. of players are declining, you ain't welcoming newcomers lol.\n\nIll just jerk off to your Rule 34 contents then.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231968599",
+                  "recommendationid": "240364343",
                   "hours_at_review": 0.3,
+                  "minutes_at_review": 20,
                   "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "the account registration system is absolutely terrible its like were living in 2005. but thats not even the worst part: when you go through 10 circles of hell just to register an account they force you to link a phone number but for some reason it won’t link. then they tell you to click on some link—you click it and it gives you an “access denied” error. “thanks \" to the devs for making me waste my time, 90 GB of storage, and a cheap copy of paladins",
-                  "truncated": false,
-                  "minutes_at_review": 18
+                  "date": "2026-11-16",
+                  "review_text": "fuck you blizzard, i cant even log in through steam because it turns out that me pressing \"retry\" after getting a \"phone number invalid\" (it was valid btw) message 5 times permalocked me out of adding my phone number, which is mandatory to open the fucking game. its tragic how far this game has fallen",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230823311",
-                  "hours_at_review": 0.2,
+                  "recommendationid": "239872788",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 18,
                   "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "Here’s my theory on why this project is a total failure and will ultimately fail completely. I play a variety of games, but I’ve never spent this much time just trying to launch one and get into it. I already have a Blizzard account, so I don't get the issue. I launched it through Steam, but the system just refused to cooperate. It started forcing me to create a new account, demanding my email, verification, phone number, and SMS verification—which, of course, never arrived. I wasted like an hour just trying to open the game and log out. I haven't even played a single second, and I already have zero desire to ever open it again. The developers are absolute losers, complete failures. Just look at other companies' products where everything works in two clicks. I’ve never played a Blizzard game before, and I probably never will. Good luck to you.",
-                  "truncated": false,
-                  "minutes_at_review": 12
+                  "date": "2026-11-10",
+                  "review_text": "they need a phone number and they didn't accept mine and the support didn't even try to solve my problem for 5days they didn't do anything playing MarvelRivals is more easier than this game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230347993",
-                  "hours_at_review": 0.2,
+                  "recommendationid": "239597225",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 8,
                   "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "The game requires your phone number to create an account. Don't waste time downloading if you don't want a random game having your personal info...",
-                  "truncated": false,
-                  "minutes_at_review": 12
+                  "date": "2026-11-07",
+                  "review_text": "Don't even waste your time downloading this. When creating an account you will be asked to link your phone number to it, the twist is that it needs to be \"post-paid\" so you will most likely not be able to create an account, let alone play the game. Tried it with a pre-paid and post-paid phone number, still didn't work, so basically: \"don't play our game\".",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ref-31acdd",
-              "claim": "Players experience severe performance issues such as frame drops, stuttering, and freezes that persist despite changing graphics settings.",
+              "claim_id": "ref-27cc0a",
+              "claim": "Reviewers describe the user interface and menus as visually cluttered and resembling mobile gacha games.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -230,34 +203,35 @@
               },
               "citations": [
                 {
-                  "recommendationid": "230544453",
-                  "hours_at_review": 1.3,
+                  "recommendationid": "240456865",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 46,
                   "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "I shouldn't be having any issues with handling this game on my machine. However, i have experienced horrible framedrops ranging from just a small frameskip all the way to a >5 second freeze. I have tried every single graphics preset and nothing helps. (and from my research it appears i'm not the only one experiencing this)\n\nAlso greeting me with an 8GB update right after installing the game was some incredible timing.",
-                  "truncated": false,
-                  "minutes_at_review": 80
+                  "date": "2026-11-17",
+                  "review_text": "Menu is nothing but visual clutter and looks like its from a gacha mobile slop game. You guys remember that saw movie where john kramer pours molten lava down that one guys urethra, me neither but playing this would probably feel like that.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230706052",
-                  "hours_at_review": 1.7,
+                  "recommendationid": "239243335",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 61,
                   "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Overwatch 2 might be one of the most unpleasant playing experiences I ever had. I have tried countless things, from graphics setting changes to hacky solutions. CPU affinity, messing with my driver settings, changing my cache size. Nothing \"fixed\" the problem, the closest it got was Shader Cache Size making the first launch horrible, then about 10% more bearable.\n\nIf I continued to list things I tried, this review would be longer than it would be needed. I ran the game through a quick CapFrameX capture, and the stuttering chart was actually abyssmal. For anybody interested, I have embedded every change I made into my notes for Overwatch 2, where they can permanently stay :D\n\nAll of my gameplay time during this review, has literally all been mindless testing. The game system minimum claimed the game only needed 6 GB of system RAM, yet in-game, it was using more than 9 GB, straining my RAM (which I already cannot afford to buy more of) so badly.\n\nThe game worked fine on a gaming laptop that was horribly built, and deserves more scrutinity tham that version of Overwatch did. I pick the game back up a few years later, and it runs like I have a two core.\n\nPlease do everybody a favor, and do not sink your time into this ♥♥♥♥♥♥♥.",
-                  "truncated": false,
-                  "minutes_at_review": 100
+                  "date": "2026-11-03",
+                  "review_text": "Remember the original Overwatch? Keep remembering, because this ain't it. Everything you liked about the original is gone and what's left is a freemium slop game. Is it the worst one on the market? maybe not, but it's still pretty dang bad. I played OW1 on Xbox One, and while I didn't play it a ton, it was still a good game. I think I tried to load up OW2 when that came out but was met with the infamous waiting queue and then I never played it. I knew it was gonna be bad and I was right. Now the 2 has been dropped and we have this iteration of Overwatch, which I sometimes call Overwatch 3 since it's trying to be more than just whatever Overwatch 2 attempted to be but is nothing like Overwatch 1. I am fully aware that OW2 and OW3 as I sometimes call it are just glorified updates but they were made to be more than just updates, they were made to be inferior replacements, new iterations of the game. I couldn't stand to play long on the current iteration, I didn't want to play it to begin with, but I wanted to get a few rounds in to make a more informed review since I like to write them, but was it really worth it? No. All it did was make me remember how much better the original game was and made me wish I played it more while it was still around. Look how far this franchise has fallen. Many such cases. No sense stickin' around, gotta move on at some point.\n\nAlso the menu UI was extremely overwhelming and poorly designed, it was a great displeasure to look at.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 9,
+        "cited_reviews": 6,
         "cited_recommend": 0,
-        "divergence_p": 0.177,
+        "divergence_p": 0.304,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -265,269 +239,80 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 414,
-      "pct_positive": 54.6,
+      "pool_n": 280,
+      "pct_positive": 59.6,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers encounter frustrating onboarding, severe matchmaking imbalances, and costly microtransactions despite enjoying the core gameplay.",
+      "summary": "Early matches suffer from severe skill imbalances and one-sided blowouts.",
       "themes": [
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-fc9b18",
-              "claim": "Reviewers report facing extremely difficult opponents or experienced players in regular matches.",
+              "claim_id": "ear-e5f062",
+              "claim": "Reviewers report that matchmaking places mismatched skill levels together, resulting in one-sided matches where teams either heavily dominate or get dominated.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 4
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "232163104",
-                  "hours_at_review": 6.2,
+                  "recommendationid": "240454572",
+                  "hours_at_review": 3.1,
+                  "minutes_at_review": 185,
                   "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "Call it skill issue but I can't take these sweaty ranked opponents all over the regular matches. Also the lack of matchmaking other players in other game modes pisses me off. Maybe it's just me not being into FPS games or something idk.",
-                  "truncated": false,
-                  "minutes_at_review": 372
+                  "date": "2026-11-17",
+                  "review_text": "terrible matchmaking, either you stomp or you get stomped most of the time. It didn't use to be like that in ow1.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232160696",
-                  "hours_at_review": 6.5,
+                  "recommendationid": "240237973",
+                  "hours_at_review": 2.0,
+                  "minutes_at_review": 120,
                   "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "smurfing needs to be dealt with via ip done with dealing with people who are clearly over 1k hours, on level 1 characters, yet they have stream proof of smurfing, i can say i suck but ive done 58 and 3 with demo on tf2 with just pipes even then smurfing isnt that bad there, this game is just brutally unbalanced like rainbow cuck siege",
-                  "truncated": false,
-                  "minutes_at_review": 387
+                  "date": "2026-11-15",
+                  "review_text": "First time playing.  Seemingly no matching based on skill-level; all opponents are skinned and clearly just here to hurt feelings.  Game start.  Killed by one-shot, one-shot, one-shot, one-shot, one-shot, one-shot, one-shot... game over.\n\nI get that I'm not the best PvP'er.  That's on me.  And the game runs great, is pretty, has lots going on, lots of characters... just never again.  Kcuf this game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231193126",
-                  "hours_at_review": 6.5,
+                  "recommendationid": "238499119",
+                  "hours_at_review": 13.3,
+                  "minutes_at_review": 797,
                   "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "The Matchmaking is very suck, i'm on lvl 1 but lose bcs of bigger player",
-                  "truncated": false,
-                  "minutes_at_review": 392
-                },
-                {
-                  "recommendationid": "229851639",
-                  "hours_at_review": 5.4,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "Still the same issues as it always had, quickplay and ranked has 0 matchmaking and most games are one sided stomps, not really fun when you either run down the enemy team or get run down. Get the smurf premade in your team = gg. Not even going to mention accounts with thousands of games spamming racial and homophobic slurs in all chat. \nIn 2026 there are just better pvp games out there from devs that actually give a damn.",
-                  "truncated": false,
-                  "minutes_at_review": 322
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-d9280e",
-              "claim": "Reviewers report balance issues, noting that tank roles are overpowered and certain characters overshadow others.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231121030",
-                  "hours_at_review": 17.8,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "i never leave reviews on a game especially negative but man, overwatch is the most unbalanced game i ever played, u have tanks that have 700 hp doing more damage than dps, healers that just get 10k hp heal per game on this said tanks and just make them immortal, the powercreep is so bad its not even funny every year 1 chartacter is unemplayble (beside tanks), dont play this game its a waste of time and not fun, if it was fun at least it will be a good waste of time. \n\nP.S: dont trust blizzard devs with anything about balancing i play a ♥♥♥♥ ton of heartstone and there the balancing is terrible as well.",
-                  "truncated": false,
-                  "minutes_at_review": 1067
-                },
-                {
-                  "recommendationid": "230323551",
-                  "hours_at_review": 11.4,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "Terrible competitive game. Tank role is too overpowered and the game suffers from half the roster being powercrept.",
-                  "truncated": false,
-                  "minutes_at_review": 686
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-9f75ea",
-              "claim": "Reviewers note that matches suffer from unbalanced matchmaking, pairing new or lower-level players against high-ranking opponents.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232112186",
-                  "hours_at_review": 14.8,
-                  "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "This game has the worst matchmaking ever, what do you mean i get paired up against masters in a casual 6v6💔",
-                  "truncated": false,
-                  "minutes_at_review": 887
-                },
-                {
-                  "recommendationid": "231193126",
-                  "hours_at_review": 6.5,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "The Matchmaking is very suck, i'm on lvl 1 but lose bcs of bigger player",
-                  "truncated": false,
-                  "minutes_at_review": 392
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ear-1dff31",
-              "claim": "Reviewers report that individual cosmetics and shop items are very expensive.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230756824",
-                  "hours_at_review": 3.6,
-                  "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": "That game is marvelous, I have played it for over 3000 hours on different accounts (trough battle net) is the most polish free to play game, you don't need to spent a penny to enjoy the game however the skins are expensive as ♥♥♥♥ if you want the brand new ones but you can get some nice old skins no problem just by playing",
-                  "truncated": false,
-                  "minutes_at_review": 214
-                },
-                {
-                  "recommendationid": "230530985",
-                  "hours_at_review": 12.2,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "lowkey a good game, lootboxes are worth but the skins are really pricey",
-                  "truncated": false,
-                  "minutes_at_review": 734
-                },
-                {
-                  "recommendationid": "230341586",
-                  "hours_at_review": 3.7,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "Ive played this game since 2018. i Fell in love with all of the characters. I have so much fun with my friends on this game. Though there are negatives (Lack of PVE, and expensive shop) I still love this game and want to keep playing for years to come.",
-                  "truncated": false,
-                  "minutes_at_review": 221
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "ear-0f1211",
-              "claim": "Reviewers describe the onboarding process as frustrating due to requiring multiple steps and account sign-ups.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230341029",
-                  "hours_at_review": 2.1,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "Genuinely one of the worst onboarding experiences I've ever had in a game. each extra step needed to sign up is another point in which you lose people, and you lost me at the 5th or 6th piece of information I needed to give to just make an account with your ♥♥♥♥♥♥ \"we have steam at home\". I've seen crypto and NFT games with less barriers for entry",
-                  "truncated": false,
-                  "minutes_at_review": 128
-                },
-                {
-                  "recommendationid": "230976906",
-                  "hours_at_review": 14.5,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "My account was permanently banned without any clear explanation I have never used cheats or unauthorized software Support only sent generic replies and refused to explain what I supposedly did wrong\n\nI could easily create a new account, but that's not the point A game where you can lose your account without a clear reason is not worth my time anymore",
-                  "truncated": false,
-                  "minutes_at_review": 870
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-c83f28",
-              "claim": "Reviewers state that the game requires creating an external account and providing multiple pieces of information before playing through Steam.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230976906",
-                  "hours_at_review": 14.5,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "My account was permanently banned without any clear explanation I have never used cheats or unauthorized software Support only sent generic replies and refused to explain what I supposedly did wrong\n\nI could easily create a new account, but that's not the point A game where you can lose your account without a clear reason is not worth my time anymore",
-                  "truncated": false,
-                  "minutes_at_review": 870
-                },
-                {
-                  "recommendationid": "230341029",
-                  "hours_at_review": 2.1,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "Genuinely one of the worst onboarding experiences I've ever had in a game. each extra step needed to sign up is another point in which you lose people, and you lost me at the 5th or 6th piece of information I needed to give to just make an account with your ♥♥♥♥♥♥ \"we have steam at home\". I've seen crypto and NFT games with less barriers for entry",
-                  "truncated": false,
-                  "minutes_at_review": 128
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-6ad692",
-              "claim": "Reviewers describe experiencing random disconnects that erase match scores and player levels.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230409201",
-                  "hours_at_review": 17.9,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Random disconnects with score and level erase.\nTrash game for brain-dead people",
-                  "truncated": false,
-                  "minutes_at_review": 1072
-                },
-                {
-                  "recommendationid": "230621588",
-                  "hours_at_review": 13.6,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "This game is awesome! I don't know what happened, but the opponents—or rather, their textures—have disappeared in matches. There are no hardware or software issues. The problem is clearly with the game. But running around and shooting into the air—well, that's just how it is. Maybe some cheaters have shown up.",
-                  "truncated": false,
-                  "minutes_at_review": 813
+                  "date": "2026-10-24",
+                  "review_text": "matchmaking is terrible, youll be put in a game with 4 bronze players and the enemy team will have 5 gold/plat players and expect you to carry",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-01806824",
+          "text": "One reviewer says the steam version works fine on linux, though it takes a while to compile pre-cached shaders and has early stutters that later improve.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "238769092",
+            "hours_at_review": 3.7,
+            "minutes_at_review": 221,
+            "voted_up": true,
+            "date": "2026-10-28",
+            "review_text": "The steam version works fine on linux, but it may take ages to compile pre-cached shaders and the first runs had a lot of stutters, but it improved.\r\n\r\nThe game itself gets very spammy - good if you have a short attention span.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 14,
-        "cited_recommend": 3,
-        "divergence_p": 0.0124,
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 3,
+        "cited_recommend": 0,
+        "divergence_p": 0.0659,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -535,86 +320,41 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 504,
-      "pct_positive": 57.1,
+      "pool_n": 366,
+      "pct_positive": 58.7,
       "muted": false,
       "n_note": null,
-      "summary": "Players experience sudden server disconnections, flawed matchmaking, and grind-heavy progression systems.",
+      "summary": "Mid-tier players encounter aggressive monetization, toxic communication, unstable servers, and canceled campaign features.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-a3cbe7",
-              "claim": "Reviewers describe the matchmaking system as flawed, producing one-sided matches or completely unbalanced teams.",
+              "claim_id": "mid-b99393",
+              "claim": "Reviewers report frequent connection issues, server crashes, and unexpected matchmaking bans or suspensions.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
-                "negative": 6
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "232191882",
-                  "hours_at_review": 77.9,
-                  "voted_up": true,
-                  "date": "2026-08-06",
-                  "review_text": "Great game, well designed, only issue is matchmaking is a bit flawed but otherwise an enjoyable game",
-                  "truncated": false,
-                  "minutes_at_review": 4673
+                  "recommendationid": "238880048",
+                  "hours_at_review": 46.9,
+                  "minutes_at_review": 2814,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Game server crashes and I get suspended, classic blizzard",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232142150",
-                  "hours_at_review": 21.5,
+                  "recommendationid": "238257543",
+                  "hours_at_review": 39.3,
+                  "minutes_at_review": 2359,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "Probably one of if not the worst game i have ever touched in my life. You can win 2 games and lose 1 but end up losing 2 games worth of progress. Not the mention the lag spike this game gets. I would rather throw a new born child in a toaster then touch this game",
-                  "truncated": false,
-                  "minutes_at_review": 1289
-                },
-                {
-                  "recommendationid": "232084358",
-                  "hours_at_review": 74.0,
-                  "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "Wouldnt recommend playing if you have no friends. Playing with friends is the only way to preserve any sanity that you may have had before starting, and even then with all the new characters being hot ass and blizzard not play testing their game and only ever do things when people cry loud enough. Blizzard is getting into the marvel rivals mindset of if every character sucks to play against then the game will just balance itself out.\n\nAll of the new characters (other than soldier76 reskin character #4) do not feel fun to play, most of them feel like their whole character or bits of it are just ripped from another character making them just feel repulsive to play against or as and it really makes you wonder if blizzard thinks before they add stuff, like jetpack cat. Being boring but a safe option for players, and most of every new character having some sort of ability to help them escape fights instead of punishing bad positioning or terrible plays that should have other wise never been allowed to happen if they never had those abilities. (such as tracers but lights people on fire) \n\nThe matchmaking is also cancer, that for some reason has not been fixed. I wish i had the tolerance to be a tard rangler while the enemy team has 3 gold gun gm's. Seriously? i get i haven't placed yet in ranked, but what kind of skill based match making is that? the whole game feels like a cash grab with the tinest bit of soul. Loot boxes will give you for lack of better words \"stocking stuffers\" such as sprays (nobody uses sprays, why are they in ow2?) Or charms (nobody uses these but esports leagues, they are eye sores) and maybe a skin, but it is rare to get a half decent skin due to the quality giving every character around like 3-4 good skins with 12 filler skins that were made to make it look like a character has more content then they actually do. \n\nQ&A:\nQ: my parents hate me and have placed me on ebay, who do i main when i get started?\nA: jetpack cat or moira (though i do recomme…",
-                  "truncated": true,
-                  "minutes_at_review": 4441
-                },
-                {
-                  "recommendationid": "230059300",
-                  "hours_at_review": 26.7,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "This game uses something called EOMM (Engagement Optimized Matchmaking). The idea is to keep you hovering around a 50% win rate. To do that, it'll regularly throw you into lobbies where you have virtually no chance of winning, but it'll also occasionally give you easy matches where your team completely stomps the enemy.\n\nThe end result is that about half of your games are either complete blowouts or hopeless losses, with very few close, competitive matches. The whole experience is made even worse by the fact that so many people refuse to play tanks or healers and the meta revolves around counter-picking so you are forced into the same 10 heroes if you want to win.\n\nof course, none of this matters if you just \"play for fun\", but i struggle to find the \"fun\" in playing one-sided matches all the time.",
-                  "truncated": false,
-                  "minutes_at_review": 1604
-                },
-                {
-                  "recommendationid": "231242932",
-                  "hours_at_review": 80.5,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "Overwatch will always be a good game, everybody knows what Overwatch is and was once upon a time called Onlywatch. The reason for this being a negative review is the match-making. It's godawful, one game you will have a decent team and an average game. The next 10 games you will have newborns on your team playing against an e-sports team. This is referring to unranked btw, games are decided before you even start the round. Complete stomps total waste of time. Sure the games are ''quick'' and finding another one is also ''quick'' but in those ''quick'' games it will feel like you're watching an un-skippable AD. You also get punished for leaving even when it's inevitable.\n\nRanked is ranked, good player = high rank, Improving player = climbing ranks. Ranked is the only playable mode if you aren't looking to waste your time playing the game, unless you have friends of course. Although the cons are the higher your rank the more is expected of you, which can be draining if you just want to play the game to chill or relax. If you don't mind getting stomped in unranked/quickplay or w/e you want to call it. I might come off as a crying baby, fair.\n\nBut this is not an opinion it's a fact. It's an online PvP hero shooter with match-making slop. I don't mind losing at all, it's just not fun when the loses are only stomps which is 95% of the time in unranked/quickplay. Blizzard fix match-making.",
-                  "truncated": false,
-                  "minutes_at_review": 4827
-                },
-                {
-                  "recommendationid": "231228199",
-                  "hours_at_review": 94.9,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "been playing overwatch for a bit and i am now really sick of it. the matchmaking system is horrible and if i look at all the reviews and comments it seems they wont do ♥♥♥♥♥♥♥♥♥ about it. how can someone enjoy playing this dang game if its actively screwing you over. i'm better off playing a game that was actually made to work against you and i would be less frustrated. it starts fun but then your screwed once you get some hours and levels in this game",
-                  "truncated": false,
-                  "minutes_at_review": 5694
-                },
-                {
-                  "recommendationid": "230933987",
-                  "hours_at_review": 33.1,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "Bear with I'm just a casual, but OH BOY, this game has little to no idea where it's going, if you play for fun, casually, there's no fun to be had, either you crush the enemy team, or your teammates look at the floor half the game.\n\nAdd to this characters with more and more mobility, and smaller hitboxes, if your team can't hit any shot, then good luck trying to win a game, or getting out of spawn even.\n\nAfter years of NOTHING, they finally released new characters, once decent, 3 MEH, and a spawn of Satan that somehow has the smallest hitbox, full flight, heals itself, and can bring an ally that can still shoot in the air (yay Bastion Cat).\n\nI had so much Nostlagia playing this game, and a lot of FOMO because of the tons of events, but the recent changes are too much to handle for me, MONEY MONEY MONEY is the game now, Kiriko released in october 2022 and has a whooping 42 skins, Hazard released 2 years later in 2024 has 4...\n\nDomina is the best release recently because her kit is simple, yet interesting, but what's the point when the other 4 released characters alongside her have mobility, dashes, complete invulnerability zone, better zone heals than lucio (and shoots behind walls)\n\nNew character is also just skin bait to release 30 lines of skin (and reused some of Tracers animations too)\n\nCan't wait to see the next characters they will release (probably someone that gives a pet to an ally that gives heals, damage boosts, and can shoot close enemies, so that Zenyatta ends up completely in the thrash can like my boi Lucio after Mizuki)\n\nI can finally say, I Quit this game, bye.",
-                  "truncated": false,
-                  "minutes_at_review": 1986
+                  "date": "2026-10-21",
+                  "review_text": "There is still on going issues with the games connection. I complete a comp game the when the game had finished. I tried to start another game only to find I had been banned for around an hour. Buti did nothing at all. It does not even give a reason why. There is meant to be some kind of a UI bug making this happen. I am not waiting an hour for nothing there are other games I can play. Especially when I have one nothing wrong. Uninstalled",
+                  "truncated": false
                 }
               ]
             }
@@ -624,67 +364,31 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-a7ab53",
-              "claim": "Reviewers note that characters feature high mobility and diverse abilities, with some new additions considered overpowered or frustrating to play against.",
+              "claim_id": "mid-190255",
+              "claim": "Reviewers note that the promised PvE campaign mode was canceled or scaled down into a watered-down event format.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
-                "negative": 5
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "232155073",
-                  "hours_at_review": 98.0,
-                  "voted_up": true,
-                  "date": "2026-08-06",
-                  "review_text": "Good queer and POC rep - but... MAYBE the Cat Hero is a BIT OP",
-                  "truncated": false,
-                  "minutes_at_review": 5883
+                  "recommendationid": "240490819",
+                  "hours_at_review": 33.9,
+                  "minutes_at_review": 2031,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "They finally had a come back going after all the down down down and now there starting to shaft the supp with hotpotato-ing DPS's headache onto us which gave them a poor justification for why the DPS get 5 new shiny toys while we get a broken Ipod and three. They also never stopped shafting the tanks who only got TWOOOO! Not only is DPS nearly half the games total roster already at 42% before mister Hudson even releases but they REFUSE to fix this by STILL giving DPS the most. As a supp main and tank enjoyer, they have no trust with me anymore and have proven that they simply CANT be trusted in. They say they will do PVE, CANCELED! They say they will make tank more fun, there have been NO END to the pillow biting for them. They promise us for months the cool detective hero is a supp and seemingly start making at least a effort to fixing the hero gap (for supp at least) even if we never asked for the DPS drop out and now with the year ending soon, yet again DPS have had the most additions in the year, supps are expected to shut up about being robbed because \"you still got more heros than tank, tanks got it worse.\" Which also says plenty about how it feels to be the tanks right now.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232134099",
-                  "hours_at_review": 85.1,
+                  "recommendationid": "238710499",
+                  "hours_at_review": 47.7,
+                  "minutes_at_review": 2863,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "Supports are hypermobile? Yeah sure. DPS are hypermobile? Ehhh Ig guess it works. Tanks are hypermobile? You've gotta be kidding me. \n\nAND TANKS CAN DO MORE DAMAGE THAN A DPS??? WHAT THE ♥♥♥♥ IS THIS???",
-                  "truncated": false,
-                  "minutes_at_review": 5104
-                },
-                {
-                  "recommendationid": "232084358",
-                  "hours_at_review": 74.0,
-                  "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "Wouldnt recommend playing if you have no friends. Playing with friends is the only way to preserve any sanity that you may have had before starting, and even then with all the new characters being hot ass and blizzard not play testing their game and only ever do things when people cry loud enough. Blizzard is getting into the marvel rivals mindset of if every character sucks to play against then the game will just balance itself out.\n\nAll of the new characters (other than soldier76 reskin character #4) do not feel fun to play, most of them feel like their whole character or bits of it are just ripped from another character making them just feel repulsive to play against or as and it really makes you wonder if blizzard thinks before they add stuff, like jetpack cat. Being boring but a safe option for players, and most of every new character having some sort of ability to help them escape fights instead of punishing bad positioning or terrible plays that should have other wise never been allowed to happen if they never had those abilities. (such as tracers but lights people on fire) \n\nThe matchmaking is also cancer, that for some reason has not been fixed. I wish i had the tolerance to be a tard rangler while the enemy team has 3 gold gun gm's. Seriously? i get i haven't placed yet in ranked, but what kind of skill based match making is that? the whole game feels like a cash grab with the tinest bit of soul. Loot boxes will give you for lack of better words \"stocking stuffers\" such as sprays (nobody uses sprays, why are they in ow2?) Or charms (nobody uses these but esports leagues, they are eye sores) and maybe a skin, but it is rare to get a half decent skin due to the quality giving every character around like 3-4 good skins with 12 filler skins that were made to make it look like a character has more content then they actually do. \n\nQ&A:\nQ: my parents hate me and have placed me on ebay, who do i main when i get started?\nA: jetpack cat or moira (though i do recomme…",
-                  "truncated": true,
-                  "minutes_at_review": 4441
-                },
-                {
-                  "recommendationid": "230172267",
-                  "hours_at_review": 39.0,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "Genuine awful game they release terrible skins worth 100$ and make all of the new characters disgustingly op they are boring and are unimaginably annoying and cheesy to play against. mauga, domina, anran, mizuki, shion, sierra and that stupid flying rodent, all to add on to the cesspool of sludge from overwatch 1 like zarya, moira, dva, orisa, symettra, sombra, echo. from the bottom of my heart if you play these characters bad times are coming for you wallahi and you deserve it. the game is so sensitive you have to watch everything you type in chat because everyone who plays this game are little special precious babies.\nmade with real heart.\n-add hog mythic \n-buff doom  \n-behead hitscan players \n-braizen bull all sierra players\n-brutalise mei\n-exterminate edating pocket healers",
-                  "truncated": false,
-                  "minutes_at_review": 2342
-                },
-                {
-                  "recommendationid": "231224564",
-                  "hours_at_review": 25.5,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "I have no idea whose toddler was responsible for balancing this game, but maybe we shouldn't keep the results of the ´bring your kid to work day´ in the final product.\n\nDps heroes with mobility skills can be outmaneuvered by tanks. Half of the characters have a completely undodgeable instant kill everything on half the map ultimate while the other half has some pathetic bs that is useful in two situations that will never happen.\nSome characters are superior in every way to others in the same category, some you see every match while others never appear.\nSome get smacked into oblivion if exposed for .1 seconds while others can comfortably outheal the dps output of 5 people.\nStandard attacks can be aoe attacks that take half your health or they're so weak you don't even see the healthbar move, or they move so slow you could outrun them with some characters.\nThe only way you can get a hint of enjoyment is by playing the meta characters.\n\nI think there's supposed to be matchmaking, but I often end up against people that are at least 100 levels above me (♥♥♥♥ you casuals you dont get to have fun youre just entertainment for sweats) and every single game has at least 2 people on some recoil macro / aimbot locked on your head (not the ultimate ability) bs. Slight bonus for not having p2w or unlockable characters\n\nThe game is free, so feel free to try it but keep your expectations very, very, very low (if you think your expectations are low enough you should half them again).",
-                  "truncated": false,
-                  "minutes_at_review": 1531
-                },
-                {
-                  "recommendationid": "230933987",
-                  "hours_at_review": 33.1,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "Bear with I'm just a casual, but OH BOY, this game has little to no idea where it's going, if you play for fun, casually, there's no fun to be had, either you crush the enemy team, or your teammates look at the floor half the game.\n\nAdd to this characters with more and more mobility, and smaller hitboxes, if your team can't hit any shot, then good luck trying to win a game, or getting out of spawn even.\n\nAfter years of NOTHING, they finally released new characters, once decent, 3 MEH, and a spawn of Satan that somehow has the smallest hitbox, full flight, heals itself, and can bring an ally that can still shoot in the air (yay Bastion Cat).\n\nI had so much Nostlagia playing this game, and a lot of FOMO because of the tons of events, but the recent changes are too much to handle for me, MONEY MONEY MONEY is the game now, Kiriko released in october 2022 and has a whooping 42 skins, Hazard released 2 years later in 2024 has 4...\n\nDomina is the best release recently because her kit is simple, yet interesting, but what's the point when the other 4 released characters alongside her have mobility, dashes, complete invulnerability zone, better zone heals than lucio (and shoots behind walls)\n\nNew character is also just skin bait to release 30 lines of skin (and reused some of Tracers animations too)\n\nCan't wait to see the next characters they will release (probably someone that gives a pet to an ally that gives heals, damage boosts, and can shoot close enemies, so that Zenyatta ends up completely in the thrash can like my boi Lucio after Mizuki)\n\nI can finally say, I Quit this game, bye.",
-                  "truncated": false,
-                  "minutes_at_review": 1986
+                  "date": "2026-10-27",
+                  "review_text": "tl;dr - Decent fun if you have a stack to play with. Not worth touching if you're solo. Do not give them money. If you're new to online games, there are better ones out there. Overwatch is not worth your time.\n\nBeen playing off and on since the original OW1 beta, roughly 1000 hours across multiple platforms. The game had a ton of promise, but Activision-Blizzard have bled the IP of pretty much any creativity and innovation that it once had.\n\nThe skins are overpriced, and you can earn most of them for free in lootboxes. Some of the ingame shop bundles cost over $120 USD, sometimes for skins that are just recolors of free skins. The 'Invasion' DLC is a watered down mode that plays similar to the other PvE seasonal events, and is not at all the campaign mode that they had hyped up and been spending dev time on for 5 years. They spent very little dev time on active development and content for those 5 years, so the game stagnated for nothing and now they're struggling to catch back up to the rest of the gaming industry. Stadium mode is listed on the store page still as 'brand new mode', but the mode is no longer getting support- not all characters and maps are playable in this mode. The community is one of the most toxic ones that's still active. Not to mention a heavily overtuned skill-based matchmaking system that all but guarantees that you never win or lose more than 2 games in a row, ever. It can have good moments if you've got a team of friends and everyone's having a good time, but there are other games that do Overwatch's mechanics better, there are games with better communities, there are games where the devs actually add content. Check out Deadlock, Deep Rock Galactic, Helldivers. One of those is free and the others go on sale pretty frequently.",
+                  "truncated": false
                 }
               ]
             }
@@ -694,8 +398,8 @@
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "mid-315d07",
-              "claim": "Reviewers describe the battle pass and event systems as requiring an excessive grind filled with fear-of-missing-out tactics.",
+              "claim_id": "mid-ffa711",
+              "claim": "Reviewers state that the game features overpriced skins and heavily emphasizes monetization and storefront bundles.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -703,71 +407,33 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231020577",
-                  "hours_at_review": 38.7,
+                  "recommendationid": "240428430",
+                  "hours_at_review": 28.4,
+                  "minutes_at_review": 1702,
                   "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "I love the diversity of the characters and the overall polish so much ! Be noted that it is a true free to play too, you have access to every character and that from the get go.\n\nHowever the amount of grind this game requires both in completing events and the pass is unacceptable for me coupled with of course the usual toxic free to play tactics such as Fomo and what not.\n\nOverwatch does not respect your time or money but aside from that its definitely not a bad game.",
-                  "truncated": false,
-                  "minutes_at_review": 2322
+                  "date": "2026-11-17",
+                  "review_text": "I loved this game, once. It was a huge part of my childhood. There is a lot to love here, even still, but it's always with an asterisk. The game is buried under years and years of bad decisions and greed, and every time I start to like it again, I find three new reasons not to.\r\n\r\nIf you want a reason not to play the game, you're spoiled for choice.  Mountains of broken promises, predatory monetization, hugely mishandled story elements, abysmal balancing decisions... And that's not even mentioning all the controversies pinned to Blizzard Inc's back.\r\n\r\nSave yourself the disappointment.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230993990",
-                  "hours_at_review": 63.9,
+                  "recommendationid": "238710499",
+                  "hours_at_review": 47.7,
+                  "minutes_at_review": 2863,
                   "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "Another hero shooter, controlled by profit, pro league and streamers. When will be the day that devs start making games for gamers? Who knows, right now is not that time and this game needs to be avoided. EOMM, SBMM or whatever you want to call it controls every game you play and the RP you get from Ws don't outweigh the Ls in comp so the grind to play is unbearable. Thank god there's an awesome battlepass that takes forever to unlock and rarely has anything good!! YAY FOR SPENDING MORE MONEY ON FREE GAMES THAT DON'T PRIORITIZE GAMEPLAY AND PLAYERS OVER PROFIT.",
-                  "truncated": false,
-                  "minutes_at_review": 3833
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-21d9dc",
-              "claim": "Reviewers report that the game is free to play and does not require paying to unlock characters.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230509996",
-                  "hours_at_review": 54.9,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "Despite all of the negative reviews.\r\n\r\nI enjoy this game. It's free, not pay to win, and overall can be very enjoyable as long as you have a good mental (like how it is for every competitive game).\r\n\r\nWith over 500 hours and playing since the original OW. I can safely say that while the company has done not great things and all that drama, that overall, Overwatch is a game that I got much more enjoyment out of it than pain. Otherwise I wouldn't have spent over 500 hours on it.",
-                  "truncated": false,
-                  "minutes_at_review": 3291
-                },
-                {
-                  "recommendationid": "231020577",
-                  "hours_at_review": 38.7,
-                  "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "I love the diversity of the characters and the overall polish so much ! Be noted that it is a true free to play too, you have access to every character and that from the get go.\n\nHowever the amount of grind this game requires both in completing events and the pass is unacceptable for me coupled with of course the usual toxic free to play tactics such as Fomo and what not.\n\nOverwatch does not respect your time or money but aside from that its definitely not a bad game.",
-                  "truncated": false,
-                  "minutes_at_review": 2322
-                },
-                {
-                  "recommendationid": "231224564",
-                  "hours_at_review": 25.5,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "I have no idea whose toddler was responsible for balancing this game, but maybe we shouldn't keep the results of the ´bring your kid to work day´ in the final product.\n\nDps heroes with mobility skills can be outmaneuvered by tanks. Half of the characters have a completely undodgeable instant kill everything on half the map ultimate while the other half has some pathetic bs that is useful in two situations that will never happen.\nSome characters are superior in every way to others in the same category, some you see every match while others never appear.\nSome get smacked into oblivion if exposed for .1 seconds while others can comfortably outheal the dps output of 5 people.\nStandard attacks can be aoe attacks that take half your health or they're so weak you don't even see the healthbar move, or they move so slow you could outrun them with some characters.\nThe only way you can get a hint of enjoyment is by playing the meta characters.\n\nI think there's supposed to be matchmaking, but I often end up against people that are at least 100 levels above me (♥♥♥♥ you casuals you dont get to have fun youre just entertainment for sweats) and every single game has at least 2 people on some recoil macro / aimbot locked on your head (not the ultimate ability) bs. Slight bonus for not having p2w or unlockable characters\n\nThe game is free, so feel free to try it but keep your expectations very, very, very low (if you think your expectations are low enough you should half them again).",
-                  "truncated": false,
-                  "minutes_at_review": 1531
+                  "date": "2026-10-27",
+                  "review_text": "tl;dr - Decent fun if you have a stack to play with. Not worth touching if you're solo. Do not give them money. If you're new to online games, there are better ones out there. Overwatch is not worth your time.\n\nBeen playing off and on since the original OW1 beta, roughly 1000 hours across multiple platforms. The game had a ton of promise, but Activision-Blizzard have bled the IP of pretty much any creativity and innovation that it once had.\n\nThe skins are overpriced, and you can earn most of them for free in lootboxes. Some of the ingame shop bundles cost over $120 USD, sometimes for skins that are just recolors of free skins. The 'Invasion' DLC is a watered down mode that plays similar to the other PvE seasonal events, and is not at all the campaign mode that they had hyped up and been spending dev time on for 5 years. They spent very little dev time on active development and content for those 5 years, so the game stagnated for nothing and now they're struggling to catch back up to the rest of the gaming industry. Stadium mode is listed on the store page still as 'brand new mode', but the mode is no longer getting support- not all characters and maps are playable in this mode. The community is one of the most toxic ones that's still active. Not to mention a heavily overtuned skill-based matchmaking system that all but guarantees that you never win or lose more than 2 games in a row, ever. It can have good moments if you've got a team of friends and everyone's having a good time, but there are other games that do Overwatch's mechanics better, there are games with better communities, there are games where the devs actually add content. Check out Deadlock, Deep Rock Galactic, Helldivers. One of those is free and the others go on sale pretty frequently.",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-b9b8d2",
-              "claim": "Reviewers describe performance issues involving sudden lag spikes during matches.",
+              "claim_id": "mid-9ef18d",
+              "claim": "Reviewers describe severe toxicity and verbal abuse from teammates in the community, particularly in competitive modes.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -775,176 +441,28 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232142150",
-                  "hours_at_review": 21.5,
+                  "recommendationid": "240331301",
+                  "hours_at_review": 20.1,
+                  "minutes_at_review": 1203,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "Probably one of if not the worst game i have ever touched in my life. You can win 2 games and lose 1 but end up losing 2 games worth of progress. Not the mention the lag spike this game gets. I would rather throw a new born child in a toaster then touch this game",
-                  "truncated": false,
-                  "minutes_at_review": 1289
+                  "date": "2026-11-16",
+                  "review_text": "Absolutely hellishly toxic for anyone who isn't a smurf or some sort of dps god from another game. Constantly get dragged for losing despite doing more healing than anyone else and can't really improve without playing quickplay but constantly told to play against bots which are about as challenging as shooting wet paper targets. For the love of your sanity and your mental health, go play something less toxic, like League of Legends. At least there you can turn off the chat",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230057974",
-                  "hours_at_review": 28.1,
+                  "recommendationid": "239163889",
+                  "hours_at_review": 38.1,
+                  "minutes_at_review": 2286,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "see that its overwatch 1 again -> re download it -> try the cassual gamemode -> start in a match thats about to end since someone dodged -> lags out in spawn room ->banned for 2 days.\r\n>:/ i guess bro il go play valorant or smth\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 1684
+                  "date": "2026-11-02",
+                  "review_text": "Let me start this off by saying; I like the gameplay and I usually enjoy playing this game to a certain degree. However; there are several MAJOR caveats to this game that make it absolutely dreadful to experience 90% of the time.\n\nFirst: The abysmal matchmaking. In the name of quicker matchmaking, you get stuck with the most godless, moronic, delusional teammates this planet has ever seen if you play even remotely well. Meanwhile the opposite team are the most disgusting, showerless, partnerless heathens you'll ever face in your lifetime and get absolutely curbstomped in the dirt.\n\nSecond: This game has a serious balance issue. In tanks you have orisa, zarya, and rein, in dps you have mei, junkrat, sierra, bastion, and healers is surprisingly okay. But if any of the champs I named are on the enemy team, you're gonna suffer the whole time. All of them require next to NO effort to play and can carry a whole team like it's nothing, regardless of skill level.\n\nThird and maybe lastly for me: The community is so hell-bent on being complete and utter trashbags that even the most polite request to swap or advice or critique and you get your head chomped off, or you get blamed for their complete lack of game-sense and general incompetence.\n\nDo NOT play this game if you value your mental health; it just simply isn't worth it. Go play a single player game or something because multiplayer games are a complete cesspool in today's society and will be for the rest of time",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-a2fd54",
-              "claim": "Reviewers report that matches suffer from connection problems that disconnect players and result in matchmaking penalties.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "229844411",
-                  "hours_at_review": 56.9,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "kicked me out of a 12 minute match with 12 seconds remaining because of a game server disconnection, suspended me for queue, and took my endorsement level down from 3 to 2\r\nBlizzard what the hell is wrong with you???",
-                  "truncated": false,
-                  "minutes_at_review": 3415
-                },
-                {
-                  "recommendationid": "230692629",
-                  "hours_at_review": 45.0,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "got disconnected and my connection perfectly fine, then get suspended, this game are so bad dude. I mean disconnected randomly??",
-                  "truncated": false,
-                  "minutes_at_review": 2697
-                },
-                {
-                  "recommendationid": "231257424",
-                  "hours_at_review": 22.0,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "the connection in this game is so bad, its keep disconect me from the game despite having most stable wifi in the world\nAlso marvel rival dont to this to you, if you have bad connection you still in the game not kick out like this one",
-                  "truncated": false,
-                  "minutes_at_review": 1320
-                },
-                {
-                  "recommendationid": "231132332",
-                  "hours_at_review": 81.1,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "the servers are so ass just when u start having fun the game kick you out",
-                  "truncated": false,
-                  "minutes_at_review": 4867
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-972467",
-              "claim": "Reviewers report experiencing random disconnections from matches while running on stable internet connections, resulting in match bans.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "229844411",
-                  "hours_at_review": 56.9,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "kicked me out of a 12 minute match with 12 seconds remaining because of a game server disconnection, suspended me for queue, and took my endorsement level down from 3 to 2\r\nBlizzard what the hell is wrong with you???",
-                  "truncated": false,
-                  "minutes_at_review": 3415
-                },
-                {
-                  "recommendationid": "230692629",
-                  "hours_at_review": 45.0,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "got disconnected and my connection perfectly fine, then get suspended, this game are so bad dude. I mean disconnected randomly??",
-                  "truncated": false,
-                  "minutes_at_review": 2697
-                },
-                {
-                  "recommendationid": "231257424",
-                  "hours_at_review": 22.0,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "the connection in this game is so bad, its keep disconect me from the game despite having most stable wifi in the world\nAlso marvel rival dont to this to you, if you have bad connection you still in the game not kick out like this one",
-                  "truncated": false,
-                  "minutes_at_review": 1320
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 19,
-        "cited_recommend": 3,
-        "divergence_p": 0.000272,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 820,
-      "pct_positive": 49.6,
-      "muted": false,
-      "n_note": null,
-      "summary": "Long-term players voice frustration over missing PvE content, expensive shop prices, and restricted core game modes.",
-      "themes": [
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "vet-e1a50e",
-              "claim": "Reviewers criticize the pricing of cosmetics, pointing out excessive costs for individual skins and bundles.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "232170285",
-                  "hours_at_review": 512.4,
-                  "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "If anyone is wanting to play the game just don't. This game has gone so far down the ♥♥♥♥♥♥♥ it's more funny then it is sad. Mix the greediness of Blizzard, the incompetence of the devs, many issues and a toxic community your mental state goes down the drain. \n\nSKINS AND TRANSACTIONS:\nLets start with the macro transactions. $45AUD for a single skin which is a few pixels on your screen is insane. Then the skins don't even justify their price. Mythic skins wer pretty cool when they released matching something to do with the character and some lore. Now they are just cyberpunk crap for people it doesn't even fit like SewerRat (JunkRat). Plus the price of them is like $80AUD which is the price of a full triple a game. They also know the skins are becoming weaker because they released some tier between Legendary and Mythic which are pretty much just ♥♥♥♥♥♥♥ versions of Mythics. Not to mention its the same characters getting skins over and over. I mean Mercy has two Mythics before half the roster has even got one. It's obvious the game is becoming a skin collector instead of an actual game.\n\nDEVS:\nI used to give them the benifit of the doubt over and over but now I can clearly say they are some of the stupidest people to ever create a game. They throw random darts at a spinning dart board to make decisions. Every character to release is overtuned as ♥♥♥♥ then they nerf them 6ft under and keep them there until they want to buff the numbers. You have poorly designed characters like Maui (Mauga), Sombra and Cat. Mauga's whole kit is to play braindead as possible. Sombra is getting rework after rework because the devs don't know how to make her work, even though they have proven she can work and keep her hero fantasy. They had Mirrorwatch a few years ago where Sombra became a Support and she worked so much better there then as a DPS yet the devs refuse to switch her to Support and Illari to DPS. Cat since release has been one annoying as character. Infinite flight should not …",
-                  "truncated": true,
-                  "minutes_at_review": 30744
-                },
-                {
-                  "recommendationid": "230852765",
-                  "hours_at_review": 341.1,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "TLDR - I used to love Overwatch, it's heroes , and it's story but today's Overwatch is an empty husk of what it could have been.\nI do not recommend putting significant time or money into this game and if you've never played it before please do not start now.\n\n- Activision Blizzard has demonstrated biblical levels of greed in the monetization of this game. I'll use only one example, A one hundred dollar cosmetic pack.\n- Overwatch (formerly Overwatch 2) has delivered on effectively zero of its promises over the last several years including any and all story content \n- The matchmaking is a complete hellscape in any mode \n- Several heroes are simply unplayable unless you learn every single niche interaction they have and even then you will still get abused by any newly released hero\n- Finally there's the endless cycle of recycled content, lack of rewards, and new ways to play being created then inevitably abandoned a year or so later\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 20468
-                },
-                {
-                  "recommendationid": "230503267",
-                  "hours_at_review": 118.8,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Gameplay is... fine, but don't buy anything from the shops. The cosmetics they sell are heavily overpriced.",
-                  "truncated": false,
-                  "minutes_at_review": 7130
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-bc025f",
-              "claim": "Reviewers report that cosmetic items and skins sold in the shop are extremely expensive.",
+              "claim_id": "mid-ed2ce9",
+              "claim": "Reviewers report that the competitive matchmaking system places inconsistent or mismatched players together, leading to unbalanced matches.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -952,238 +470,205 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231209222",
-                  "hours_at_review": 531.3,
+                  "recommendationid": "240226323",
+                  "hours_at_review": 56.0,
+                  "minutes_at_review": 3362,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Oh Overwatch…\r\n\r\nI've played this game on and off since its inception and despite some longer breaks from it, I always keep coming back, main reasons being to socially game with friends and I enjoy the core gameplay. I'm also a fan of many designs and characters in the game and I think its gotten very far in the quality of life department with some gameplay changes over the years. \r\nI still have fun playing it and that is why I give it a thumbs up.\r\n\r\nHowever, some things just fly right past my radar of interest, like how the game does its events and cosmetics. Especially all these different tiers of cosmetics and the cost of them ... these just result in an immediate skip for me.\r\nMy main gripe is actually the menu UI ... it used to be much better in my opinion, it was clearer, neater, not bloated like it is now.\r\nThe game also needs more maps, more so than it needs new heroes.",
-                  "truncated": false,
-                  "minutes_at_review": 31877
+                  "date": "2026-11-14",
+                  "review_text": "You can have an entire session of bad matchmaking, where you're just facing stacks with each member ranked highly in comp, all using the most toxic characters. You can steamroll the occasional team, wondering how the heck matchmaking put those people together. You get matches where both teams overwhelmingly pick Escort, despite one team having next to no hope of winning without coordination and a 2-2-2 class spread. It can be an absolute ****show and there's no way of predicting it. Then you get hit with a penalty when you try to quit out.\n\nBut sometimes you get games where everything is just perfect, where the gap between the teams is small, where each character's unique identity is on full display, and everyone just seems to be enjoying themselves. Yes you have to wade through some absolute dregs to improve, but when you do, more matches will take on a fun complexion, and eventually, you'll be absolutely hooked on the gameplay.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230503267",
-                  "hours_at_review": 118.8,
+                  "recommendationid": "238725942",
+                  "hours_at_review": 68.6,
+                  "minutes_at_review": 4117,
                   "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Gameplay is... fine, but don't buy anything from the shops. The cosmetics they sell are heavily overpriced.",
-                  "truncated": false,
-                  "minutes_at_review": 7130
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-8ff26e",
-              "claim": "Reviewers state that the game lacks promised story and PvE content.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "230568036",
-                  "hours_at_review": 177.0,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Mostly on Battlenet, I have been playing Overwatch almost since its launch. I remember the so-called \"good old days\" with great cinematics, ideas, and even a GOTY to its name. I think fondly about the era when I had an LA Gladiators sticker on my water bottle and looked forward to when Doomfist would finally be added to the game as a DPS hero. But I also remember the rise and fall of OWL, the lootboxes are gambling crisis, the horrendously handled launch of OW2 (now just Overwatch again) and, yes, even the PvE story mode debacle. Overwatch is a horribly handled, mentally tormenting, rage-inducing atrocious 6v6 to 5v5 now to sometimes also 6v6 hero shooter made by an abominable, greedy, maniacal, soulless corporation that would rather give Kiriko another 5 billion skins that stop sexually harassing their employees. It continues only existing so they they can pump out more bundles, battlepasses, and Japanese heroes, and it is a cognitohazard so powerful that it killed Twomad. It sucks, and I hate it.\n\nBut what am I going to do? Not play Overwatch? Hell no.",
-                  "truncated": false,
-                  "minutes_at_review": 10622
-                },
-                {
-                  "recommendationid": "230852765",
-                  "hours_at_review": 341.1,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "TLDR - I used to love Overwatch, it's heroes , and it's story but today's Overwatch is an empty husk of what it could have been.\nI do not recommend putting significant time or money into this game and if you've never played it before please do not start now.\n\n- Activision Blizzard has demonstrated biblical levels of greed in the monetization of this game. I'll use only one example, A one hundred dollar cosmetic pack.\n- Overwatch (formerly Overwatch 2) has delivered on effectively zero of its promises over the last several years including any and all story content \n- The matchmaking is a complete hellscape in any mode \n- Several heroes are simply unplayable unless you learn every single niche interaction they have and even then you will still get abused by any newly released hero\n- Finally there's the endless cycle of recycled content, lack of rewards, and new ways to play being created then inevitably abandoned a year or so later\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 20468
-                },
-                {
-                  "recommendationid": "230646859",
-                  "hours_at_review": 360.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Constant bad decisions from Blizzard are honestly what really makes this game feel unfun or redundant to play. As of right now the only quickplay option is 6v6, and I very much dislike 6v6. I know it's temporary, but having to deal with this after learning stadium is being discontinued has made the game practically unplayable for me.\nBlizzard has a problem with releasing half-baked game modes and giving up on them too quick rather than committing and making them more enjoyable for players. We were supposed to get a story mode PvE but that never happened. Hero mastery was fun even if it wasn't a main game mode, and I am still upset about that being removed. Stadium was flawed, but overall a great addition to the game and I knew so many people who ONLY played Overwatch for stadium. It's disappointing but not surprising that instead of working to improve stadium and add more heroes, Blizzard is simply abandoning it.\nThis current \"hacked\" 1-3-2 6v6 event has made the game unplayable for me. There is no 5v5 quickplay at the moment, and even if I know it's coming back it is upsetting knowing I have to wait until next week just to play this game. \nBlizzard needs to start listening to their player base and put more effort into making this game enjoyable again.",
-                  "truncated": false,
-                  "minutes_at_review": 21615
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-6deeba",
-              "claim": "Reviewers describe temporary game modes like Stadium being discontinued or put into maintenance mode shortly after release.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "230551738",
-                  "hours_at_review": 299.1,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Sadly just had to uninstall this game.\n\nOverwatch has always had it's problems, horrible balancing, & bad matchmaking, however Overwatch Stadium brought something new and refreshing to the game.\n\nIt was just announced they are no longer updating or support Stadium, the only game mode I play, so no point in me having this game any longer.",
-                  "truncated": false,
-                  "minutes_at_review": 17947
-                },
-                {
-                  "recommendationid": "230646859",
-                  "hours_at_review": 360.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Constant bad decisions from Blizzard are honestly what really makes this game feel unfun or redundant to play. As of right now the only quickplay option is 6v6, and I very much dislike 6v6. I know it's temporary, but having to deal with this after learning stadium is being discontinued has made the game practically unplayable for me.\nBlizzard has a problem with releasing half-baked game modes and giving up on them too quick rather than committing and making them more enjoyable for players. We were supposed to get a story mode PvE but that never happened. Hero mastery was fun even if it wasn't a main game mode, and I am still upset about that being removed. Stadium was flawed, but overall a great addition to the game and I knew so many people who ONLY played Overwatch for stadium. It's disappointing but not surprising that instead of working to improve stadium and add more heroes, Blizzard is simply abandoning it.\nThis current \"hacked\" 1-3-2 6v6 event has made the game unplayable for me. There is no 5v5 quickplay at the moment, and even if I know it's coming back it is upsetting knowing I have to wait until next week just to play this game. \nBlizzard needs to start listening to their player base and put more effort into making this game enjoyable again.",
-                  "truncated": false,
-                  "minutes_at_review": 21615
-                },
-                {
-                  "recommendationid": "230591621",
-                  "hours_at_review": 125.7,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "> Add a unique new game mode that combines a hero shooter with a MOBA, without the need to farm mobs or creeps.\n> Take too long to add more heroes to this game mode.\n> Act surprised when people stop playing it.\n\nScrew you, Blizzard. Stadium was a great addition and everything I wanted. And now you’ve basically put it into maintenance mode.\n\n(Soon to) Rest in peace: Blossom Reaper and Blink Juno. I had the most fun playing you.",
-                  "truncated": false,
-                  "minutes_at_review": 7543
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-ce8915",
-              "claim": "Reviewers report that temporary replacement of core unranked modes with alternative rulesets such as 6v6 makes the game unplayable for those who dislike the mode.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230624503",
-                  "hours_at_review": 169.6,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Overwatch wanted to trial a new type of 6v6 quickplay. So, rather than just add it in as an option, or temporarily replace the existing 6v6 quickplay. They instead got rid of the 5v5 quickplay, their most popular gamemode by far. Game is basically unplayable until its reverted unless you wanna play a weird game mode or do comp.",
-                  "truncated": false,
-                  "minutes_at_review": 10175
-                },
-                {
-                  "recommendationid": "230646859",
-                  "hours_at_review": 360.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Constant bad decisions from Blizzard are honestly what really makes this game feel unfun or redundant to play. As of right now the only quickplay option is 6v6, and I very much dislike 6v6. I know it's temporary, but having to deal with this after learning stadium is being discontinued has made the game practically unplayable for me.\nBlizzard has a problem with releasing half-baked game modes and giving up on them too quick rather than committing and making them more enjoyable for players. We were supposed to get a story mode PvE but that never happened. Hero mastery was fun even if it wasn't a main game mode, and I am still upset about that being removed. Stadium was flawed, but overall a great addition to the game and I knew so many people who ONLY played Overwatch for stadium. It's disappointing but not surprising that instead of working to improve stadium and add more heroes, Blizzard is simply abandoning it.\nThis current \"hacked\" 1-3-2 6v6 event has made the game unplayable for me. There is no 5v5 quickplay at the moment, and even if I know it's coming back it is upsetting knowing I have to wait until next week just to play this game. \nBlizzard needs to start listening to their player base and put more effort into making this game enjoyable again.",
-                  "truncated": false,
-                  "minutes_at_review": 21615
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-0625c2",
-              "claim": "Reviewers report that temporary updates and new game modes have replaced the standard 5v5 quickplay mode, leaving them unable to play the core mode they prefer.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "230624503",
-                  "hours_at_review": 169.6,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Overwatch wanted to trial a new type of 6v6 quickplay. So, rather than just add it in as an option, or temporarily replace the existing 6v6 quickplay. They instead got rid of the 5v5 quickplay, their most popular gamemode by far. Game is basically unplayable until its reverted unless you wanna play a weird game mode or do comp.",
-                  "truncated": false,
-                  "minutes_at_review": 10175
-                },
-                {
-                  "recommendationid": "230646859",
-                  "hours_at_review": 360.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Constant bad decisions from Blizzard are honestly what really makes this game feel unfun or redundant to play. As of right now the only quickplay option is 6v6, and I very much dislike 6v6. I know it's temporary, but having to deal with this after learning stadium is being discontinued has made the game practically unplayable for me.\nBlizzard has a problem with releasing half-baked game modes and giving up on them too quick rather than committing and making them more enjoyable for players. We were supposed to get a story mode PvE but that never happened. Hero mastery was fun even if it wasn't a main game mode, and I am still upset about that being removed. Stadium was flawed, but overall a great addition to the game and I knew so many people who ONLY played Overwatch for stadium. It's disappointing but not surprising that instead of working to improve stadium and add more heroes, Blizzard is simply abandoning it.\nThis current \"hacked\" 1-3-2 6v6 event has made the game unplayable for me. There is no 5v5 quickplay at the moment, and even if I know it's coming back it is upsetting knowing I have to wait until next week just to play this game. \nBlizzard needs to start listening to their player base and put more effort into making this game enjoyable again.",
-                  "truncated": false,
-                  "minutes_at_review": 21615
-                },
-                {
-                  "recommendationid": "230658347",
-                  "hours_at_review": 404.5,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Forcing unwanted 6v6 in unranked and taking away your core gamemode from your player base might sound like a good idea if the devs were violently slammed on their heads as babies. But to everyone else, it just kinda sucks. Nobody is asking for this dumb experiment.",
-                  "truncated": false,
-                  "minutes_at_review": 24270
-                },
-                {
-                  "recommendationid": "230661406",
-                  "hours_at_review": 287.1,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "they released a new mode and plastered it all over 5v5 so nobody can play 5v5. the mode sucks. overwatch is balanced for 5v5. keep it that way or ill just go back to rivals\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 17226
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "vet-b1ed94",
-              "claim": "Reviewers state that customer support relies on automated responses that fail to assist with account ban reviews.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230311376",
-                  "hours_at_review": 782.1,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "The Absoulete WORST game devs in all of human history, I have been wrongfully banned and I quite literally have evidence and instead of helping me review my case Blizzard decides to use their ♥♥♥♥♥♥ AI customer service to repeat they same things over and over again and lets talk more about Blizzards obsession with AI, like their ♥♥♥♥♥♥ ban system like cmon instead of focusing on things that matter like smurfs and hacker which are so common in every match they ban people who said the smallest things and snowflakes that cry about it mass report that player and they get banned. And not to even mention the issues with the anniversary event, which I might add is the WORST 10 year event I have EVER seen like a huge milestone and players get RECOLOURS of base skins and a few other skins, and the whole drama with ultra skins. Like blizzard is quite literally the most money hungry-no effort multi billionair company ever. And what kind of game perma bans their paying customers that are helping keep your dogwater game afloat, hundreds of dollars and hours gone because Blizzards ♥♥♥♥♥♥ AI ban system and CS, actually get a grip and make this right.",
-                  "truncated": false,
-                  "minutes_at_review": 46929
-                },
-                {
-                  "recommendationid": "232170285",
-                  "hours_at_review": 512.4,
-                  "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "If anyone is wanting to play the game just don't. This game has gone so far down the ♥♥♥♥♥♥♥ it's more funny then it is sad. Mix the greediness of Blizzard, the incompetence of the devs, many issues and a toxic community your mental state goes down the drain. \n\nSKINS AND TRANSACTIONS:\nLets start with the macro transactions. $45AUD for a single skin which is a few pixels on your screen is insane. Then the skins don't even justify their price. Mythic skins wer pretty cool when they released matching something to do with the character and some lore. Now they are just cyberpunk crap for people it doesn't even fit like SewerRat (JunkRat). Plus the price of them is like $80AUD which is the price of a full triple a game. They also know the skins are becoming weaker because they released some tier between Legendary and Mythic which are pretty much just ♥♥♥♥♥♥♥ versions of Mythics. Not to mention its the same characters getting skins over and over. I mean Mercy has two Mythics before half the roster has even got one. It's obvious the game is becoming a skin collector instead of an actual game.\n\nDEVS:\nI used to give them the benifit of the doubt over and over but now I can clearly say they are some of the stupidest people to ever create a game. They throw random darts at a spinning dart board to make decisions. Every character to release is overtuned as ♥♥♥♥ then they nerf them 6ft under and keep them there until they want to buff the numbers. You have poorly designed characters like Maui (Mauga), Sombra and Cat. Mauga's whole kit is to play braindead as possible. Sombra is getting rework after rework because the devs don't know how to make her work, even though they have proven she can work and keep her hero fantasy. They had Mirrorwatch a few years ago where Sombra became a Support and she worked so much better there then as a DPS yet the devs refuse to switch her to Support and Illari to DPS. Cat since release has been one annoying as character. Infinite flight should not …",
-                  "truncated": true,
-                  "minutes_at_review": 30744
+                  "date": "2026-10-28",
+                  "review_text": "The matchmaking in this game is somehow as bad as—or worse than—Marvel Rivals. I am constantly getting matched with brand-new players who don't understand hero shooters, while the enemy team is stacked with players who are level 100+ on their mains.\n\nThe 'just pick to counter' argument falls apart when every game devolves into both sides swapping to the same 5 or 6 busted meta picks. On top of that, roster balance is in a terrible state—tanks have obvious developer favorites while others sit forgotten, and Mei can somehow still stall a point while completely invulnerable in her ice shell, among a myriad of other balance issues that make some characters literal gods and others complete throws.\n\nIn a proper hero shooter, every character should have a place. When a broken counter-pick meta forces everyone onto the exact same lineup, the game stops being fun. Putting brand-new players against seasoned all-stars isn't balance; it's broken matchmaking.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 12,
+        "cited_reviews": 9,
         "cited_recommend": 1,
-        "divergence_p": 0.00344,
+        "divergence_p": 0.00482,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 773,
+      "pct_positive": 46.7,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players battle poor optimization, high resource usage, frequent disconnects, and unfair matchmaking.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-23eae9",
+              "claim": "Reviewers experience server disconnects and queue wait times.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240431996",
+                  "hours_at_review": 504.8,
+                  "minutes_at_review": 30290,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "shit server, keep disconnecting and huge elo",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239231678",
+                  "hours_at_review": 108.8,
+                  "minutes_at_review": 6529,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "EDIT: IN QUEUE: 20 PLAYERS AHEAD OF YOU.\n\nFix your servers blizzard wtf\n\nThis game is super toxic 👍\n\nMake sure to turn off voice and text chat before playing.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-945d7c",
+              "claim": "The game suffers from high memory usage and poor optimization that leads to performance problems.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239257961",
+                  "hours_at_review": 493.3,
+                  "minutes_at_review": 29596,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "WHY TF am i getting banned from playing when my pc crashes so fucking stupid cuz it happened twice in a row and im banned for over an hour total. my pc isnt a piece of crap and my gaming laptop i bought 4 years ago for 500$ runs this shit better and doesnt crash. fix your game cuz why tf is overwatch taking up 80% of memory on a 32gb ram set, how does it not crash on my laptop with less than 16gb ram.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238987084",
+                  "hours_at_review": 714.0,
+                  "minutes_at_review": 42840,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "game is super shitty and optimized horrid, i can run elden ring on high settings and get less stutters than this game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-979346",
+              "claim": "Players face temporary bans and suspensions when the game crashes or shuts down unexpectedly.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239257961",
+                  "hours_at_review": 493.3,
+                  "minutes_at_review": 29596,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "WHY TF am i getting banned from playing when my pc crashes so fucking stupid cuz it happened twice in a row and im banned for over an hour total. my pc isnt a piece of crap and my gaming laptop i bought 4 years ago for 500$ runs this shit better and doesnt crash. fix your game cuz why tf is overwatch taking up 80% of memory on a 32gb ram set, how does it not crash on my laptop with less than 16gb ram.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239223721",
+                  "hours_at_review": 127.9,
+                  "minutes_at_review": 7674,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "Is quickplay imbalanced? Yes. Is 5v5 ranked imbalanced? Yes. Can you play 6v6 ranked with 5 friends - noone has ever played a match? No - it's a wide group - how the hell is 6*0 wide blizzard? Do you get punished for some random leaving a ranked match and your game crashing? Yes. Will your game crash? Yes. Can our almighty devs tell whether you left on purpose or your game crashed (like every other damn game on the face of planet Earth)? Nah - let's slap a ban, pin a post on the forum and call it a day.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-3a8df7",
+              "claim": "Matchmaking places poorly skilled teammates against coordinated opponents.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "238258253",
+                  "hours_at_review": 248.8,
+                  "minutes_at_review": 14930,
+                  "voted_up": true,
+                  "date": "2026-10-21",
+                  "review_text": "I genuinely don't know how a game can be this good and this annoying at the same time.\r\n\r\nOverwatch 2 has some of the best hero designs, abilities, and team fights I've ever experienced in a game. Every match feels different, and there's always something new to learn. Landing a perfect ultimate, saving your entire team at the last second, or winning a fight that looked completely lost is an unreal feeling.\r\n\r\nBut then you queue ranked, get teammates who look like they've never touched a keyboard before, lose three games in a row, and suddenly you're questioning every decision that led you to download this game.\r\n\r\nThe balance isn't always great, matchmaking can be questionable, and ranked sometimes feels like a social experiment designed to test patience. Still, I keep coming back because when Overwatch is good, it's REALLY good.\r\n\r\nThere's no other game quite like it. The movement, the abilities, the team coordination, the clutch moments, the absolute chaos of a team fight — it's all incredibly satisfying.\r\n\r\nI hate this game and love it at the same. I'll probably be playing it tomorrow.\r\n\r\n10/10 gameplay, 2/10 matchmaking, 0/10 peace of mind. Would recommend.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238958863",
+                  "hours_at_review": 599.0,
+                  "minutes_at_review": 35942,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "The already terrible matchmaking was somehow made worse. Every game I load into it feels like the enemy team is NFL allstars, meanwhile on my team we have at least 1 inbred toddler. I understand I dont always play the best but how am I getting matched with Jimmy 2 fingers over here?\r\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-4f7bfba7",
+          "text": "One reviewer says a recent update causes severe frame rate drops, ping spikes, and disconnections.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239160507",
+            "hours_at_review": 252.5,
+            "minutes_at_review": 15148,
+            "voted_up": false,
+            "date": "2026-11-02",
+            "review_text": "Loved this game since it came out this new update though has made it unplayable I went from a solid 240 fps and 60 ping now I cant even get one game without my frames dropping all over the place and my ping going from 60 too 200 300 400 500 back too 60 then 800 1000 and I'm disconnected and banned for hours ima try out DeadLock",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 7,
+        "cited_recommend": 1,
+        "divergence_p": 0.0872,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1841,
-    "steam_total_reviews": 165448,
+    "pool_n": 1519,
+    "steam_total_reviews": 175198,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/7baa151c768868f1fe1d3aeea2467fa1a35fb531/header_alt_assets_22.jpg?t=1786471282",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2357570/1d0e99bc9ed84abe67862f3176be3ce56018e9b1/capsule_231x87_alt_assets_22.jpg?t=1786471282",
-    "grid": "https://cdn2.steamgriddb.com/grid/4ae54fcc5d76f9dd737f86b0499637d6.png"
   }
 }
