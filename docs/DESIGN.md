@@ -363,6 +363,12 @@ touch there is no hover to fake: the overlay is simply already there.
    visible immediately on load, never gated by scroll — the game title,
    verdict stamp, for-whom line, and Split Bar. The answer comes first;
    the case is atmosphere around it, not a gate in front of it.
+   - **"As of <D Mon YYYY>"** (owner, 2026-11-18): one dim mono line under the
+     stamp row, from the verdict's `generated_at`, the date its reviews were
+     fetched. It sits above the Split Bar because the catalog refresh leaves
+     pages on different dates, and a reader should know the age of the evidence
+     before reading it. It matches the footer's date by construction, and a
+     malformed date renders no line.
 2. Split Bar block (the spine).
 3. Distortion flags, if any.
    - One-reviewer points, collapsed, if any (see "One-reviewer points").

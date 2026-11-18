@@ -17,7 +17,7 @@
 
 import { CaseHero } from "./CaseHero";
 import { Receipts } from "./Receipts";
-import { flagEvidence } from "../lib/verdict";
+import { asOfDate, flagEvidence } from "../lib/verdict";
 import type { DistortionFlag, Sourcing, Verdict } from "../lib/verdict";
 
 /**
@@ -209,6 +209,12 @@ export function VerdictPage({ verdict: v }: { verdict: Verdict }) {
         </span>
         <p className="tagline">{v.verdict.tagline}</p>
       </div>
+      {/* When the evidence is from (owner, 2026-11-18). The catalog refresh
+          leaves pages on different dates, so a reader needs to see it up here,
+          not only in the footer. */}
+      {asOfDate(v.generated_at) ? (
+        <p className="as-of mono">As of {asOfDate(v.generated_at)}</p>
+      ) : null}
 
       {fit ? (
         <div className="fit-grid">

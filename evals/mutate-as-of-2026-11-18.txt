@@ -1,0 +1,11 @@
+mutate_as_of_2026-11-18.py --run
+
+  ao01  PASS             CONTROL: suite green, unmutated
+  ao02  CAUGHT+NAMED     the line is removed
+  ao03  CAUGHT+NAMED     months are off by one
+  ao04  CAUGHT+NAMED     a malformed date still renders a line
+  ao05  CAUGHT+NAMED     a malformed date is not rejected
+  ao06  CAUGHT+NAMED     the line moves below the playtime bars
+
+restored byte-identical: site/components/VerdictPage.tsx True, site/lib/verdict.ts True
+6/6 as expected

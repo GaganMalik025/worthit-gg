@@ -92,6 +92,28 @@ export function citationHours(cit: Citation, bucket: string): string {
   return shown.toFixed(1);
 }
 
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+/**
+ * "18 Nov 2026" from a verdict's generated_at, for the "As of" line under the
+ * stamp (owner, 2026-11-18). The reviews are fetched in the same run, so this is
+ * the date the verdict's evidence is from.
+ *
+ * Read straight off the ISO string's UTC date - the same YYYY-MM-DD the footer
+ * prints - rather than through Date and a locale, so the server render and the
+ * browser can never disagree by a timezone. Anything malformed returns null and
+ * the line does not render.
+ */
+export function asOfDate(generatedAt: string | null | undefined): string | null {
+  const m = /^(\d{4})-(\d{2})-(\d{2})T/.exec(generatedAt ?? "");
+  if (!m) return null;
+  const month = MONTHS[Number(m[2]) - 1];
+  const day = Number(m[3]);
+  if (!month || day < 1 || day > 31) return null;
+  return `${day} ${month} ${m[1]}`;
+}
+
 /** Computed in pipeline/flags.py from the pool. Only `sentence` is model prose. */
 export interface DistortionFlag {
   flag_id: string;
