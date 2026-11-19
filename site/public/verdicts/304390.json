@@ -1,53 +1,61 @@
 {
   "appid": "304390",
   "game_name": "FOR HONOR™",
-  "generated_at": "2026-08-10T10:03:35Z",
+  "generated_at": "2026-11-19T11:36:59Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/304390/2c22776de84112b1c4f39da2597567bb450386a0/header.jpg?t=1785427415",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/304390/5b4909717c94e99511e459aad48cd2202e191046/capsule_231x87.jpg?t=1785427415",
+    "grid": "https://cdn2.steamgriddb.com/grid/44b3b75c339045a8ccbbf374dcc0cdbf.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 15,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Skip",
-    "tagline": "Deep swordplay ruined by launcher errors, connection problems, and toxic matchmaking.",
+    "tagline": "Brutal medieval combat weighed down by platform lockouts and harsh matchmaking.",
     "for_you_if": [
-      "you want deep melee combat mechanics",
-      "you enjoy mastering complex combos",
-      "you prefer playing against artificial intelligence bots"
+      "you are willing to master deep melee mechanics",
+      "you play exclusively on supported Windows systems"
     ],
     "not_for_you_if": [
-      "you will not install a third-party launcher",
-      "you want to avoid cheaters and connection lag",
-      "you are unwilling to grind for hero unlocks",
-      "you expect a welcoming newcomer community"
+      "you rely on Linux or Steam Deck",
+      "you expect fair matchmaking as a newcomer",
+      "you want to avoid third-party launcher hurdles"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 48,
-      "pct_positive": 37.5,
+      "pool_n": 68,
+      "pct_positive": 27.9,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 425,
-      "pct_positive": 67.5,
+      "pool_n": 398,
+      "pct_positive": 56.5,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 366,
-      "pct_positive": 64.2,
+      "pool_n": 365,
+      "pct_positive": 54.8,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 393,
-      "pct_positive": 59.3,
+      "pool_n": 369,
+      "pct_positive": 54.2,
       "muted": false
     }
   ],
@@ -56,50 +64,60 @@
       "flag_id": "cohort_divergence",
       "type": "segmentation",
       "direction": null,
-      "shape": "rise_then_fall",
-      "sentence": "Approval ratings rise initially before declining among players with higher playtime.",
+      "shape": "monotonic_increase",
+      "sentence": "Positive review rates climb significantly after the refund window before stabilizing across longer playtimes.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 37.5,
-            "pool_n": 48
+            "pct_positive": 27.9,
+            "pool_n": 68
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 67.5,
-            "pool_n": 425
+            "pct_positive": 56.5,
+            "pool_n": 398
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 64.2,
-            "pool_n": 366
+            "pct_positive": 54.8,
+            "pool_n": 365
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 59.3,
-            "pool_n": 393
+            "pct_positive": 54.2,
+            "pool_n": 369
           }
         ],
-        "shape": "rise_then_fall",
+        "shape": "monotonic_increase",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 37.5,
-        "low_pool_n": 48,
+        "low_pct_positive": 27.9,
+        "low_pool_n": 68,
         "high_cohort": "early",
         "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 67.5,
-        "high_pool_n": 425,
-        "gap_pts": 30.0,
-        "peak_cohort": "early",
-        "peak_pct_positive": 67.5,
-        "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 59.3,
-        "drop_after_peak_pts": 8.2
+        "high_pct_positive": 56.5,
+        "high_pool_n": 398,
+        "gap_pts": 28.6
+      }
+    },
+    {
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews show a noticeable drop in positive sentiment compared to the lifetime average.",
+      "evidence": {
+        "recent_pool_pct_positive": 53.7,
+        "recent_pool_n": 1200,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 67.9,
+        "steam_total_reviews": 85796,
+        "delta_pts": -14.2
       }
     }
   ],
@@ -108,67 +126,18 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 48,
-      "pct_positive": 37.5,
+      "pool_n": 68,
+      "pct_positive": 27.9,
       "muted": false,
       "n_note": null,
-      "summary": "Early impressions highlight immediate technical roadblocks and unfair matchmaking.",
-      "themes": []
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 425,
-      "pct_positive": 67.5,
-      "muted": false,
-      "n_note": null,
-      "summary": "New players experience launcher failures, steep matchmaking disparities, and connection lag.",
+      "summary": "New players immediately confront aggressive matchmaking against skilled opponents, severe account linking barriers with Ubisoft Connect, and broken platform support.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "access",
           "claims": [
             {
-              "claim_id": "ear-6340a0",
-              "claim": "Reviewers report issues with the Ubisoft launcher causing login errors or preventing the game from starting.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232133735",
-                  "hours_at_review": 6.3,
-                  "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "Purchased this game twice on PS5 and Steam. It won't allow you to run the game with a different Ubisoft email account than purchased.",
-                  "truncated": false,
-                  "minutes_at_review": 376
-                },
-                {
-                  "recommendationid": "231927294",
-                  "hours_at_review": 7.1,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "Good one, but F ubisoft launcher. If not ubisoft  launcher would be 8/10 now 6.5/10",
-                  "truncated": false,
-                  "minutes_at_review": 424
-                },
-                {
-                  "recommendationid": "231564961",
-                  "hours_at_review": 7.2,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "I cant even play! trying to register in Ubisoft keeps showing error. waste of money",
-                  "truncated": false,
-                  "minutes_at_review": 435
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-c9a81f",
-              "claim": "Reviewers describe encountering hackers and lag spikes during matches.",
+              "claim_id": "ref-5e6971",
+              "claim": "Account linking issues between Steam and Ubisoft Connect can cause players to become locked out of their main accounts or assigned the wrong account automatically.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -176,22 +145,282 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232147775",
-                  "hours_at_review": 11.9,
+                  "recommendationid": "239437477",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 32,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "TO MANY HACKERS and it has huge lag spikes \r\nout of my 11 hours of playtime i have seen like 600 ha\\ckers",
-                  "truncated": false,
-                  "minutes_at_review": 714
+                  "date": "2026-11-05",
+                  "review_text": "okay like, when i wass at my uncs place and he told me to play for honor on his pc but i told him i think it would be better if i were to just play it once i get home but he kept insisting so ig i agreed to try it once but then for some reason it logged in his ubisoft account onto my steam account? so i tried to log out his ubi account and log in mine but for some reason. i was still logged into his for honor account on my steam account? even tho i was logged into my ubi and steam acc on his pc. and idk how i got 44 achievements all of a sudden?? he also had 44 achives on his steam account too?? so it's like all of his progress on his for honor account moved into my account?? i tried fixing it for a couple of hours nothing worked so i just gave it a night. i haven't opend for honor since then, i think the time i will be playing this game is probs next year",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231486894",
-                  "hours_at_review": 19.6,
+                  "recommendationid": "236187924",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Randomly will just get Anti Cheat penalties applied to me when trying to matchmake in almost any gamemode. The game is just unplayable. I have a negative win rate, I don't cheat, I am just running For Honor, discord, and spotify for music. I don't understand wth they're doing",
-                  "truncated": false,
-                  "minutes_at_review": 1173
+                  "date": "2026-09-25",
+                  "review_text": "Played the game since roughly 2018 on Ps4. it was on sale so i purchased it to pick back up for the new ranked dominion mode i heard of. Open the game, immediately logged into wrong account via ubisoft connect... try logging out and to my main one, doesnt allow me to sign in to my main one as license is now tied to that acount...\nspend 3 days contacting ubisoft to fix it, they tell me to refund and repurchase the game and close my case. Steam immediately refunds the game with no issues, purchase again, still cant get into my main account...\n\nRespectfully, im not restarting a new account on a game i have roughly 8 years progress in just to risk something like this happening again.\n\nThe game itself is fun despite a 2 year (roughly) hiatus and is something im interested in getting back into as i was pretty decent (Late Diamond, almost master in duel) and with friends its very exciting and competitive, but without access to my main account, its just not something i see playing again. Review will change if they help get this sorted within the next week\n.....................................................................................................................................\n\nEdit: They told me to refund and repurchase AGAIN and that my issue is now resolved so theyre done with it.\n\nQuote \"We kindly ask you to check, before repurchasing, that your Steam account is fully linked to the right Ubisoft account. This to avoid the game to be automatically linked to the wrong account once again.\nIn this case, please refund the purchase and try again.\nWe understand that this is not the outcome you were hoping for, but we are limited in our capacity to facilitate your request.\nSince we have already fulfilled your request, we will be closing this interaction--\"\n\nAlready ensured that all this was the case to the point of removing the wrong account, clearly i will not be getting on my main for honor account again and as dismissive as they've been with no solutions outside th…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-2d6cdc",
+              "claim": "A recent update removed anti-cheat support for Linux and Steam Deck, rendering the game unplayable on those platforms.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 9
+              },
+              "citations": [
+                {
+                  "recommendationid": "239363109",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 115,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "Linux no longer works as it is blocked by ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238116647",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 65,
+                  "voted_up": false,
+                  "date": "2026-10-19",
+                  "review_text": "My 1.1 Hours was a few rounds with a friend after setting up options and controls.  Even though the game ran beautifully and i didn't have any issues inside of the game, it's simply not for me.  I don't have much to say about this title, but a lot more about the company behind it.\n\nAs of a recent update about a month ago of this writing.  Linux users are unable to play For Honor on their PC's because of Ubisoft's decision to remove their anti-cheat support for the OS.  This is not a Linux problem, this is an Ubisoft problem, as other anti-cheats work perfectly fine on Linux.  It's a shame, really.  They have great games, but they gate-keep too hard by controlling how they allow you to play them.  Their piss poor company choices with license revocation, DRM, and ecosystem dependence just leaves a bad taste in my mouth, as there's only victims with this setup.\n\nI wrote this review mainly to add to the awareness that gamers should have the option to play any game they want on any platform they want without annoying launchers, license checks, and other BS that negatively impacts the gamer.  Ubisoft restricts you, therefore Ubisoft doesn't deserve you.\n\nFor those who do enjoy this game and don't care about Ubisoft's business practices, cool.  I'm glad you're having a good time with the title.  We're gamers, we're in the same boat, we're all in this together, and what matters most is that you're happy with your time spent on your favorite games; no if's, and's or but's.  We deserve it.  \n\nEnjoy your time with any Ubisoft title as best and as much as you can.  That time is finite.  One day you'll login into their launcher and the game is gone.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236934024",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 14,
+                  "voted_up": false,
+                  "date": "2026-10-05",
+                  "review_text": "Removing linux support is insane, can't even launch the game offline.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236608023",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 9,
+                  "voted_up": false,
+                  "date": "2026-10-01",
+                  "review_text": "Fun Game, Cool Characters, Sword go bonk.\n\nWHERE IS MY LINUX SUPPORT. IT WAS HERE. IT WORKED.\n\nFun game, dont give Ubisoft your money tho.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236027165",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 5,
+                  "voted_up": false,
+                  "date": "2026-09-24",
+                  "review_text": "Love the game, played a ton on gamepass but they stopped linux support, which is a very weird decision, given its not a dedicated port.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235890616",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 39,
+                  "voted_up": false,
+                  "date": "2026-09-23",
+                  "review_text": "while I did not really enjoy the game due to ubisoft launcher, removing linux and SD support made it even worse.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235887002",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 7,
+                  "voted_up": false,
+                  "date": "2026-09-23",
+                  "review_text": "Can't run this on Deck, can't run this on my PC, and this only because Ubisoft couldn't just leave a 10-years old game the fuck alone.\n\nIt was working fine before, so give it back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235840751",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 38,
+                  "voted_up": false,
+                  "date": "2026-09-22",
+                  "review_text": "Removed linux support out of no where.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235727995",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 5,
+                  "voted_up": false,
+                  "date": "2026-09-20",
+                  "review_text": "I had already owned this game for a while but didn't actually try it despite buying it, until recently. I already knew about the news of Ubisoft intentionally blocking Linux, so I intentionally downloaded and installed 120GB to my machine just so I could write this review, because I hadn't played the game with this account before they blocked Linux.\nNow, finally, I want to say thank you Ubisoft for publicly shaming yourselves. We won't be updating our reviews until you change your mind, but it's not like we need you to do so anyways. Thank you for making me waste my money.\n\nIf you are one of those Windows users trying to ragebait by saying nobody uses Linux and whatnot: We don't have time for you, and we don't care neither about you nor your system. We don't care that you don't care about it the same way.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-388fdb",
+              "claim": "Players report that the game locks available in-game languages based on geographic region.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "239313577",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 65,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "locking languages based on a region is such an inhuman idea that only Ubisoft could have came up with it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238358255",
+                  "hours_at_review": 2.0,
+                  "minutes_at_review": 119,
+                  "voted_up": false,
+                  "date": "2026-10-23",
+                  "review_text": "i just want to play it in English and i cant",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236023591",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 99,
+                  "voted_up": false,
+                  "date": "2026-09-24",
+                  "review_text": "the game is not even that bad, but ubisoft makes it almost unplayable, having separate launcher, no english language, region lock (?), and infestation of cheaters, game is barely playable, go play Street Fighter 6",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235808584",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 47,
+                  "voted_up": false,
+                  "date": "2026-09-22",
+                  "review_text": "i cant believe that this shit has only russian and chinese bcs of my region\nfuck ubisoft",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-b07f38",
+              "claim": "Reviewers report that recent anti-cheat changes block Linux and Steam Deck users from playing the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 8
+              },
+              "citations": [
+                {
+                  "recommendationid": "239363109",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 115,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "Linux no longer works as it is blocked by ubisoft.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238116647",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 65,
+                  "voted_up": false,
+                  "date": "2026-10-19",
+                  "review_text": "My 1.1 Hours was a few rounds with a friend after setting up options and controls.  Even though the game ran beautifully and i didn't have any issues inside of the game, it's simply not for me.  I don't have much to say about this title, but a lot more about the company behind it.\n\nAs of a recent update about a month ago of this writing.  Linux users are unable to play For Honor on their PC's because of Ubisoft's decision to remove their anti-cheat support for the OS.  This is not a Linux problem, this is an Ubisoft problem, as other anti-cheats work perfectly fine on Linux.  It's a shame, really.  They have great games, but they gate-keep too hard by controlling how they allow you to play them.  Their piss poor company choices with license revocation, DRM, and ecosystem dependence just leaves a bad taste in my mouth, as there's only victims with this setup.\n\nI wrote this review mainly to add to the awareness that gamers should have the option to play any game they want on any platform they want without annoying launchers, license checks, and other BS that negatively impacts the gamer.  Ubisoft restricts you, therefore Ubisoft doesn't deserve you.\n\nFor those who do enjoy this game and don't care about Ubisoft's business practices, cool.  I'm glad you're having a good time with the title.  We're gamers, we're in the same boat, we're all in this together, and what matters most is that you're happy with your time spent on your favorite games; no if's, and's or but's.  We deserve it.  \n\nEnjoy your time with any Ubisoft title as best and as much as you can.  That time is finite.  One day you'll login into their launcher and the game is gone.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236183666",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": true,
+                  "date": "2026-09-25",
+                  "review_text": "   If you play on steam deck dont buy this game, Ubisoft just released an anti cheat, so it wont work on console, DONT BUY UNLESS YOU HAVE PC",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236934024",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 14,
+                  "voted_up": false,
+                  "date": "2026-10-05",
+                  "review_text": "Removing linux support is insane, can't even launch the game offline.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236027165",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 5,
+                  "voted_up": false,
+                  "date": "2026-09-24",
+                  "review_text": "Love the game, played a ton on gamepass but they stopped linux support, which is a very weird decision, given its not a dedicated port.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235890616",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 39,
+                  "voted_up": false,
+                  "date": "2026-09-23",
+                  "review_text": "while I did not really enjoy the game due to ubisoft launcher, removing linux and SD support made it even worse.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235887002",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 7,
+                  "voted_up": false,
+                  "date": "2026-09-23",
+                  "review_text": "Can't run this on Deck, can't run this on my PC, and this only because Ubisoft couldn't just leave a 10-years old game the fuck alone.\n\nIt was working fine before, so give it back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235840751",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 38,
+                  "voted_up": false,
+                  "date": "2026-09-22",
+                  "review_text": "Removed linux support out of no where.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235727995",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 5,
+                  "voted_up": false,
+                  "date": "2026-09-20",
+                  "review_text": "I had already owned this game for a while but didn't actually try it despite buying it, until recently. I already knew about the news of Ubisoft intentionally blocking Linux, so I intentionally downloaded and installed 120GB to my machine just so I could write this review, because I hadn't played the game with this account before they blocked Linux.\nNow, finally, I want to say thank you Ubisoft for publicly shaming yourselves. We won't be updating our reviews until you change your mind, but it's not like we need you to do so anyways. Thank you for making me waste my money.\n\nIf you are one of those Windows users trying to ragebait by saying nobody uses Linux and whatnot: We don't have time for you, and we don't care neither about you nor your system. We don't care that you don't care about it the same way.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-8215aa",
+              "claim": "Reviewers describe complications with account linking and logging into Ubisoft Connect via Steam, resulting in progress tied to the wrong account.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239437477",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 32,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "okay like, when i wass at my uncs place and he told me to play for honor on his pc but i told him i think it would be better if i were to just play it once i get home but he kept insisting so ig i agreed to try it once but then for some reason it logged in his ubisoft account onto my steam account? so i tried to log out his ubi account and log in mine but for some reason. i was still logged into his for honor account on my steam account? even tho i was logged into my ubi and steam acc on his pc. and idk how i got 44 achievements all of a sudden?? he also had 44 achives on his steam account too?? so it's like all of his progress on his for honor account moved into my account?? i tried fixing it for a couple of hours nothing worked so i just gave it a night. i haven't opend for honor since then, i think the time i will be playing this game is probs next year",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236187924",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "Played the game since roughly 2018 on Ps4. it was on sale so i purchased it to pick back up for the new ranked dominion mode i heard of. Open the game, immediately logged into wrong account via ubisoft connect... try logging out and to my main one, doesnt allow me to sign in to my main one as license is now tied to that acount...\nspend 3 days contacting ubisoft to fix it, they tell me to refund and repurchase the game and close my case. Steam immediately refunds the game with no issues, purchase again, still cant get into my main account...\n\nRespectfully, im not restarting a new account on a game i have roughly 8 years progress in just to risk something like this happening again.\n\nThe game itself is fun despite a 2 year (roughly) hiatus and is something im interested in getting back into as i was pretty decent (Late Diamond, almost master in duel) and with friends its very exciting and competitive, but without access to my main account, its just not something i see playing again. Review will change if they help get this sorted within the next week\n.....................................................................................................................................\n\nEdit: They told me to refund and repurchase AGAIN and that my issue is now resolved so theyre done with it.\n\nQuote \"We kindly ask you to check, before repurchasing, that your Steam account is fully linked to the right Ubisoft account. This to avoid the game to be automatically linked to the wrong account once again.\nIn this case, please refund the purchase and try again.\nWe understand that this is not the outcome you were hoping for, but we are limited in our capacity to facilitate your request.\nSince we have already fulfilled your request, we will be closing this interaction--\"\n\nAlready ensured that all this was the case to the point of removing the wrong account, clearly i will not be getting on my main for honor account again and as dismissive as they've been with no solutions outside th…",
+                  "truncated": true
                 }
               ]
             }
@@ -201,61 +430,378 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-b49a64",
-              "claim": "Matchmaking pairs new or low-level players against highly skilled opponents.",
+              "claim_id": "ref-cdc817",
+              "claim": "New players face matchmaking that pairs them against experienced or high-skill opponents immediately.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238629347",
+                  "hours_at_review": 1.3,
+                  "minutes_at_review": 79,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "Tried to play the game again after purchasing it 8 years ago, I guess the matchmaking system doesn't like me so I had to play against 4 pro-gamers during my first PVP battle. \n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238567305",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 6,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Not recommended (2000 hours played on Ubisoft)\nI got this game for free, and yet it is the most expensive thing I've ever owned. Every few weeks I uninstall it and tell myself I'm finally free. Within a day, my PC starts whispering to me and I end up redownloading the whole thing again. Once you start playing this game, it's over. There is no going back. \nI can feel my brain cells leaving after each game. The loop is simple you lose a match, get angry, promise yourself one more game, lose again, get even angrier, repeat. \nThe matchmaking system is the final boss. Every game, my enemies are light parry masters who parry my light attacks before I finish the thought of throwing one. Meanwhile, I have two complete potatoes and a bot on my team, and the bot is the one carrying. \n\nThis is not a review. It's a cry for help.\n0/10, please save me",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237015270",
+                  "hours_at_review": 1.7,
+                  "minutes_at_review": 101,
+                  "voted_up": true,
+                  "date": "2026-10-06",
+                  "review_text": "I like this game but every match is the same types of players people better than me and people who spam light attack most frustrating game I recommend as there's nothing else like it unfortunately",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-0572e0",
+              "claim": "Fighting multiple opponents at once makes combat extremely difficult and prone to being ganged up on.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
                 "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "232156120",
-                  "hours_at_review": 5.9,
+                  "recommendationid": "238084767",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 45,
                   "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "game is so ass it matches u with people either insanely good or insanely bad and u get no money for anything",
-                  "truncated": false,
-                  "minutes_at_review": 356
+                  "date": "2026-10-19",
+                  "review_text": "used to like this game but first game back was ganked by entire team, every fight. for a game called for honor most of you players just have 0 and icba to deal with this community anymore dont bother buying even if on sale",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231601859",
-                  "hours_at_review": 3.6,
+                  "recommendationid": "235715133",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 27,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "No new players means your forced to face peaople with hundreds if not thousands of hours that just waste your time by finishing you again and again.",
-                  "truncated": false,
-                  "minutes_at_review": 216
-                },
-                {
-                  "recommendationid": "231562664",
-                  "hours_at_review": 3.5,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Gave me headache my forehead hurts and it literally drives me insane how pay to win this game is...  I am also sick of dealing with the jobless no lives who sweat on this game and making smurf accounts just to play against lower level players!\n\nWELL UNBALANCED!\n\nALSO REINSTALLING GAME TO RAGE MORE WISH ME LUCK!",
-                  "truncated": false,
-                  "minutes_at_review": 208
-                },
-                {
-                  "recommendationid": "225043824",
-                  "hours_at_review": 2.5,
-                  "voted_up": true,
-                  "date": "2026-05-08",
-                  "review_text": "The fact the combat is so comprehensive and easy to understand is a great thing... apart from the fact that you get matched up with literal gods in just the first few matches after the tutorial is a grat representation of the games matchmaking...",
-                  "truncated": false,
-                  "minutes_at_review": 151
+                  "date": "2026-09-20",
+                  "review_text": "Combat design that will put you to sleep and makes it impossible if you face more than a single enemy at once, even if all they do is button mashing. For a game that is solely focus on hand-to-hand combat, the attack feedback is shockingly non existent.\n\nThe game is also very clearly designed for consoles and the keyboard and mouse control just makes it very annoying to use.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-ebd23a52",
+          "text": "One reviewer says the game does not have playstation controller support.",
+          "theme": "access",
+          "citation": {
+            "recommendationid": "236291406",
+            "hours_at_review": 0.5,
+            "minutes_at_review": 28,
+            "voted_up": false,
+            "date": "2026-09-27",
+            "review_text": "Got it for free on Ubisoft and tried it out to maybe consider buying it on steam if PS controllers worked but no. And my lord they don't have playstation controller support the most common console of the world. Indie games on steam have it as plug in and play. Ubisoft does not have it with 17.000 employees sitting in the company. Thank you for nothing. Uninstalled.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-538b4ba3",
+          "text": "One reviewer says the keyboard and mouse control just makes it very annoying to use.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "235715133",
+            "hours_at_review": 0.5,
+            "minutes_at_review": 27,
+            "voted_up": false,
+            "date": "2026-09-20",
+            "review_text": "Combat design that will put you to sleep and makes it impossible if you face more than a single enemy at once, even if all they do is button mashing. For a game that is solely focus on hand-to-hand combat, the attack feedback is shockingly non existent.\n\nThe game is also very clearly designed for consoles and the keyboard and mouse control just makes it very annoying to use.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 9,
+        "cited_reviews": 21,
         "cited_recommend": 2,
-        "divergence_p": 0.00708,
+        "divergence_p": 0.0422,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 398,
+      "pct_positive": 56.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players stepping further in experience prolonged matchmaking delays alongside a hostile, toxic multiplayer environment.",
+      "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "ear-2944dd",
+              "claim": "Reviewers report that the game blocks Linux operating system users from playing.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "239820419",
+                  "hours_at_review": 10.6,
+                  "minutes_at_review": 637,
+                  "voted_up": true,
+                  "date": "2026-11-09",
+                  "review_text": "Coming back after 10 years the game has improved by a lot.\r\nStill really enjoyable to play even though you're bashing your head through a wall.\r\n\r\nI do vehemently hope that linux support does get added back in so I can play on my steamdeck, very sad that it's not possible anymore.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239086338",
+                  "hours_at_review": 5.9,
+                  "minutes_at_review": 353,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Blocking Linux players altogether removed any possibility of me being able to give a second chance to this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238971941",
+                  "hours_at_review": 8.9,
+                  "minutes_at_review": 532,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "Mandatory bad review for the game since they said \"we added spyware so linux cant play anymore gg noobs\".",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238157685",
+                  "hours_at_review": 13.2,
+                  "minutes_at_review": 794,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "game goes out of its way to not support linux",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237841427",
+                  "hours_at_review": 3.9,
+                  "minutes_at_review": 232,
+                  "voted_up": false,
+                  "date": "2026-10-16",
+                  "review_text": "You can not change requirements after game was bought... sure you can. Linux got abandoned by Ubisoft and i can not play this game anymore. Refund was rejected. Welcome gaming 2026.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-418ae0",
+              "claim": "Reviewers state that Linux support was removed, preventing them from playing on their systems.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "239820419",
+                  "hours_at_review": 10.6,
+                  "minutes_at_review": 637,
+                  "voted_up": true,
+                  "date": "2026-11-09",
+                  "review_text": "Coming back after 10 years the game has improved by a lot.\r\nStill really enjoyable to play even though you're bashing your head through a wall.\r\n\r\nI do vehemently hope that linux support does get added back in so I can play on my steamdeck, very sad that it's not possible anymore.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239086338",
+                  "hours_at_review": 5.9,
+                  "minutes_at_review": 353,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Blocking Linux players altogether removed any possibility of me being able to give a second chance to this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238971941",
+                  "hours_at_review": 8.9,
+                  "minutes_at_review": 532,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "Mandatory bad review for the game since they said \"we added spyware so linux cant play anymore gg noobs\".",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238600929",
+                  "hours_at_review": 13.0,
+                  "minutes_at_review": 779,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "They now block Linux users.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238157685",
+                  "hours_at_review": 13.2,
+                  "minutes_at_review": 794,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "game goes out of its way to not support linux",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237841427",
+                  "hours_at_review": 3.9,
+                  "minutes_at_review": 232,
+                  "voted_up": false,
+                  "date": "2026-10-16",
+                  "review_text": "You can not change requirements after game was bought... sure you can. Linux got abandoned by Ubisoft and i can not play this game anymore. Refund was rejected. Welcome gaming 2026.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-1aaa82",
+              "claim": "Reviewers describe the multiplayer community as toxic, filled with emote spam, and hostile toward newer players.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240524597",
+                  "hours_at_review": 3.2,
+                  "minutes_at_review": 191,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "genuinely really cool game with good mechanics community is disgusting though balancing is awful and you have to deal with ubisoft bullshit fun sometimes tho",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240085524",
+                  "hours_at_review": 16.6,
+                  "minutes_at_review": 996,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Genuinely the worst fucking game I've ever touched and the only game I've ever uninstalled out of frustration. It's filled with toxicity, it's unbalanced as fuck and everyone you face has the same shitty tryhard playstyle. Thank God I bought this on a huge sale otherwise it would have been the worst financial decision I've ever made on steam, I would rather eat shards of glass while suffering a fentanyl overdose than ever touch this dog shit again just avoid this game like the plague you'll be wasting your sanity and 121GB of space otherwise.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239992841",
+                  "hours_at_review": 6.4,
+                  "minutes_at_review": 384,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "The core combat system here is genuinely awesome. Reading stances, feinting heavy swings, and landing crisp parries in chaotic medieval duels feels unlike anything else on the market.\r\n\r\nUnfortunately, the community ruins the whole experience before you even get a real chance to learn the ropes. Jumping in as a newer player means dealing with nonstop toxic emote spam, salty quick chat messages, and relentless veteran players who would rather trash talk than let you breathe. A fighting game with this steep of a learning curve desperately needs a welcoming crowd to keep you motivated, and when the vibe in every lobby feels hostile, there is zero reason to stick around.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238569139",
+                  "hours_at_review": 10.3,
+                  "minutes_at_review": 616,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Good game terrible player base",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-6e3c03",
+              "claim": "Reviewers state that matchmaking times are long and matchmaking is not skill-based or fair.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "239079484",
+                  "hours_at_review": 7.9,
+                  "minutes_at_review": 472,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "not good skill based matchmaking, lots of spammers, worst community. can't stop playing",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238206027",
+                  "hours_at_review": 6.6,
+                  "minutes_at_review": 398,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "honestly not a good game anymore. i play it for the nostalgia at this point. the player base isnt big enough for good-fair & quick matchmaking.\r\nwas a much better game back in the day before they catered to the pvp sweatlords with new characters and nerfed the old gen's",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-8f21da",
+              "claim": "Reviewers mention that matchmaking times are long.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239696487",
+                  "hours_at_review": 15.4,
+                  "minutes_at_review": 922,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "I am just sad moment I bought this game I had to leave for a couple of hours letting it consume my played hours, now I cant refund it anymore. Its just stupid, alot of luck in fights and also queue time is long. I am just disappointed that steam didnt let me refund this game :I",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238206027",
+                  "hours_at_review": 6.6,
+                  "minutes_at_review": 398,
+                  "voted_up": false,
+                  "date": "2026-10-20",
+                  "review_text": "honestly not a good game anymore. i play it for the nostalgia at this point. the player base isnt big enough for good-fair & quick matchmaking.\r\nwas a much better game back in the day before they catered to the pvp sweatlords with new characters and nerfed the old gen's",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 13,
+        "cited_recommend": 1,
+        "divergence_p": 0.000357,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -263,133 +809,97 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 366,
-      "pct_positive": 64.2,
+      "pool_n": 365,
+      "pct_positive": 54.8,
       "muted": false,
       "n_note": null,
-      "summary": "Players navigate learning curves alongside cheaters, technical stutters, and server disconnections.",
+      "summary": "Mid-tier players continue to cite mismatched skill pairings and complete platform lockouts.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "access",
           "claims": [
             {
-              "claim_id": "mid-731e8e",
-              "claim": "Reviewers report that the game suffers from cheaters, scripters, and connection manipulation like lag switches and DDOS attacks.",
+              "claim_id": "mid-4db793",
+              "claim": "Reviewers report that the game lacks Linux support, preventing them from playing.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "231592916",
-                  "hours_at_review": 82.7,
+                  "recommendationid": "240455354",
+                  "hours_at_review": 42.7,
+                  "minutes_at_review": 2560,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "To be so honest if you are new to this game it's really not worth it. Don't get me wrong I play frequently, but the amount of cheaters and scripters inn this game just take the fun out of it. And the ban recognition and response id absolutely horrid. Most instances i know of have someone getting banned 4 match after being reported, and in some cases they don't receive a perma-ban either. There are quite a few of players who I see often who are known cheaters and still continue to muddy the game of its fun. it's hit or miss with matchmaking as well. Sometimes you feel like you're a god at the game dropping 30 kills in a dominion just to get clapped the next game after by a bunch of REP 200+ players.",
-                  "truncated": false,
-                  "minutes_at_review": 4964
+                  "date": "2026-11-17",
+                  "review_text": "i have been playing since the beta on console,switched to pc 8 years ago and now i can't play due to Ubisoft dropping playability on Linux. This is my favourite game and the company chose not to allow me to play. Truly Disappointing",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226889057",
-                  "hours_at_review": 73.9,
+                  "recommendationid": "239259134",
+                  "hours_at_review": 82.9,
+                  "minutes_at_review": 4972,
                   "voted_up": false,
-                  "date": "2026-05-31",
-                  "review_text": "If you plan on playing For Honor in 2026 let me break it down for you, grab some popcorn for this one.\n\nCheaters: This game like any other online PVP title is filled with cheaters, how do you cheat in this game you may ask. Well there's scripters, DDOS attacks, lag switches, and much more that I cant name off the top of my head. Sounds like fun right? well we are just getting started.\n\nCommunity: I have a total of 1,913 hours on this game from both console and PC, this is one of my most played games on my accounts and I can say with certainty that this is the most toxic, unemployed, cesspit of a community I've ever had to play with. Most seasoned veterans on this game like myself all share the same opinion and yet we still come back too it, why? ill answer that below.\n\nThe Games Origins: The game when it released 9 years ago was a huge hit in the industry, nobody had ever made a medieval style fighting game like For Honor which created a small but faithful fanbase for the game gaining about 10,000 players on average for the first year of release. Then 2018 came and the game saw a huge spike in players, the largest its ever had when over 250,000 people joined in August. When September came around the player count had dropped severely to only about 40,000 active players, then it was 20,000 in October, I'm sure you get the idea by now but the game could never retain a large player base. After that single spike the player count has remained at a stagnant 5,000 player average since June 2019, but where did everyone go and why within a 2 month timeframe? \n\nThe Base Game: Your first time playing this game feels great, its a breath of fresh air in the fighting genre. Your first few matches go as expected which is multiple deaths and very few eliminations. You think to yourself, this game has quite the learning curve and you attempt to improve your skills. You learn how to parry heavy's and lights, guard breaks to near perfection, deflecting attacks, dodge timing, bashes, co…",
-                  "truncated": true,
-                  "minutes_at_review": 4434
+                  "date": "2026-11-03",
+                  "review_text": "What do you even mean I'm not allowed to play the game I purchased with my own money because of my operating system and your vile anti-cheat. Honestly, fell off after Assassin's Creed Brotherhood. Money grubbing, micro-transactional, \"Own nothing and be happy\" ahh publisher.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238604437",
+                  "hours_at_review": 41.5,
+                  "minutes_at_review": 2487,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "no linux support, stripping customers that could play the game before off there access or how to steal your money.\nTHX for nothing ubi****",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-ccc03c",
-              "claim": "Reviewers describe encountering cheaters, scripters, and connection issues such as getting kicked from servers.",
+              "claim_id": "mid-518cd0",
+              "claim": "Reviewers note that Linux support was dropped, preventing play on that operating system.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231852204",
-                  "hours_at_review": 37.8,
+                  "recommendationid": "240455354",
+                  "hours_at_review": 42.7,
+                  "minutes_at_review": 2560,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "really buggy in my opinion, fun game but gimmicks are annoying with the kicking out of the server",
-                  "truncated": false,
-                  "minutes_at_review": 2268
+                  "date": "2026-11-17",
+                  "review_text": "i have been playing since the beta on console,switched to pc 8 years ago and now i can't play due to Ubisoft dropping playability on Linux. This is my favourite game and the company chose not to allow me to play. Truly Disappointing",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231592916",
-                  "hours_at_review": 82.7,
+                  "recommendationid": "239538210",
+                  "hours_at_review": 28.1,
+                  "minutes_at_review": 1686,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "To be so honest if you are new to this game it's really not worth it. Don't get me wrong I play frequently, but the amount of cheaters and scripters inn this game just take the fun out of it. And the ban recognition and response id absolutely horrid. Most instances i know of have someone getting banned 4 match after being reported, and in some cases they don't receive a perma-ban either. There are quite a few of players who I see often who are known cheaters and still continue to muddy the game of its fun. it's hit or miss with matchmaking as well. Sometimes you feel like you're a god at the game dropping 30 kills in a dominion just to get clapped the next game after by a bunch of REP 200+ players.",
-                  "truncated": false,
-                  "minutes_at_review": 4964
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-ab4cc6",
-              "claim": "Reviewers report technical issues including lag and stuttering during matches and character loading.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231594345",
-                  "hours_at_review": 54.1,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "the game isnt bad its just the game and its player base are toxic and gank squad.\n\nim just going to address the annoying part. the lag the game keeps lagging even when loading up a character on the hero tab. it takes like 5 mins for a single hero to load up and even finding a match it studders and lags dropping my fps from 60 (which idk why my monitor refresh rate is 144) down to 12 or 15 fps.\n\n\nim not gonna be a total ♥♥♥♥♥♥♥ but ubisoft fix the engine please",
-                  "truncated": false,
-                  "minutes_at_review": 3246
+                  "date": "2026-11-06",
+                  "review_text": "they removed linux support for no reason. cheating is not much of a problem for the average player, and even when a cheater gets caught with damning video evidence over the span of months nothing happens to them.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226976797",
-                  "hours_at_review": 26.7,
-                  "voted_up": true,
-                  "date": "2026-06-01",
-                  "review_text": "Boot up is a little clunky for Me, but it boots up and runs well after it does its thing.\nIn case it isnt clear, this is a button combo fighting game and each character plays differently.\nI think the combat system is very fun, i like all the character designs and mobility. I also still enjoy playing against the AI and you can still level up against the bots, so im not forced to play insane pvp matches.\n I would like to see different game types and more expansion on the main story in general, but I have fun memories with friends while playing this game.\n Be prepared to lose all the time.  Enjoy the game for what it is, accept the challenge or uninstall it.\nTrolls are everywhere, everyone loses eventually, and weather you continue to bash your head against a wall is your choice.  own it.\n\nCan't speak for console players, but most of the negative reviews are due to people getting trolled or spam killed.  Unfortunately, thats just being online with other people.  Little to do with the game itself.  Dead by Daylight is much worse. \n I put a lot of time in on console and a small chunk of time on pc.  I wouldve put more time into it if they would make the game size less than 115GB.\n  The other main thing to remember is that if You look at Steam Charts, the same 4000=6000 people are still playing this game since 2018 and they're the ones you're playing against online. There is not much new players in general, so the game is probably going to match you up against someone who has been playing since release.  You won't win against someone like that.",
-                  "truncated": false,
-                  "minutes_at_review": 1600
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "mid-231205",
-              "claim": "Reviewers note that the game features a mode to play and level up against AI bots instead of being forced into PvP matches.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231554927",
-                  "hours_at_review": 25.3,
+                  "recommendationid": "239259134",
+                  "hours_at_review": 82.9,
+                  "minutes_at_review": 4972,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Played it for a few days with a couple friends, decided to buy a hero pack and a one-time welcome bonus pack (around $15 total, not much), and now the game is suddenly flagging me for EAC violation every match (against the practice mode bots mind you), penalizing and temporarily banning me from que'ing for anything, and by definition of being locked out constantly is just preventing me from having access to my \"no refunds allowed\" content. Do NOT buy this game, do NOT buy anything for this game, the devs are inbred children that dont know how to do anything for themselves and should remove themselves from the global gene pool permanently.",
-                  "truncated": false,
-                  "minutes_at_review": 1519
+                  "date": "2026-11-03",
+                  "review_text": "What do you even mean I'm not allowed to play the game I purchased with my own money because of my operating system and your vile anti-cheat. Honestly, fell off after Assassin's Creed Brotherhood. Money grubbing, micro-transactional, \"Own nothing and be happy\" ahh publisher.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226976797",
-                  "hours_at_review": 26.7,
-                  "voted_up": true,
-                  "date": "2026-06-01",
-                  "review_text": "Boot up is a little clunky for Me, but it boots up and runs well after it does its thing.\nIn case it isnt clear, this is a button combo fighting game and each character plays differently.\nI think the combat system is very fun, i like all the character designs and mobility. I also still enjoy playing against the AI and you can still level up against the bots, so im not forced to play insane pvp matches.\n I would like to see different game types and more expansion on the main story in general, but I have fun memories with friends while playing this game.\n Be prepared to lose all the time.  Enjoy the game for what it is, accept the challenge or uninstall it.\nTrolls are everywhere, everyone loses eventually, and weather you continue to bash your head against a wall is your choice.  own it.\n\nCan't speak for console players, but most of the negative reviews are due to people getting trolled or spam killed.  Unfortunately, thats just being online with other people.  Little to do with the game itself.  Dead by Daylight is much worse. \n I put a lot of time in on console and a small chunk of time on pc.  I wouldve put more time into it if they would make the game size less than 115GB.\n  The other main thing to remember is that if You look at Steam Charts, the same 4000=6000 people are still playing this game since 2018 and they're the ones you're playing against online. There is not much new players in general, so the game is probably going to match you up against someone who has been playing since release.  You won't win against someone like that.",
-                  "truncated": false,
-                  "minutes_at_review": 1600
+                  "recommendationid": "238604437",
+                  "hours_at_review": 41.5,
+                  "minutes_at_review": 2487,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "no linux support, stripping customers that could play the game before off there access or how to steal your money.\nTHX for nothing ubi****",
+                  "truncated": false
                 }
               ]
             }
@@ -399,43 +909,68 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-362dd7",
-              "claim": "Reviewers note that the game features a steep learning curve and requires practice to master combos and mechanics.",
+              "claim_id": "mid-479d52",
+              "claim": "Reviewers report that matchmaking frequently pairs players against opponents of much higher skill levels.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
-                "negative": 0
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "232073206",
-                  "hours_at_review": 77.9,
+                  "recommendationid": "239887616",
+                  "hours_at_review": 33.4,
+                  "minutes_at_review": 2006,
                   "voted_up": true,
-                  "date": "2026-08-04",
-                  "review_text": "one of the most unique fighting games i've played, been playing on an off since 2018-19 from PlayStation, to Xbox and now pc in 2026. the game has gotten better over the years, but Ubisoft being Ubisoft is self explanatory.\n\nthe game is more fun now i will admit (with the sole exception of Juren, he should not have every unique in the game, unblock-able's / undodgables, hyper-armour, fast grabs, shoves, etc, you get the idea, although Ubi are doing good at listening to the community, they have nerfed him alot and he is now fun to play against ill admit) \n\nin 2026 this game is still hell, the same bugs from years still exist (you parry an attack, it goes through the animation and you die, it is more rare now ill say), community has 0 honor and is toxic a fair amount (it has gotten less toxic over the years) but they have improved alot, and coming back after 2 years of playing the new characters are pretty fun and fairly balanced\n\nthis is 100% one of those games u HAVE to get used to playing, and need to put in sometime to truly learn the game to have fun.\n\nmy summary: wait till a sale to buy or a free week to try it, it usually goes from 25 down to between 5-2 (the winter sale it went to 1.24) it is very fun to play and mess around in, even with friends, i recommend trying the game at least once but it will take more than 2 hours to get used to the game so refunds might not be an option, you WILL have to learn things for u people with cooked attention spans.\n\nP.S. Ubisoft please update campaign",
-                  "truncated": false,
-                  "minutes_at_review": 4674
+                  "date": "2026-11-10",
+                  "review_text": "I absolutely recommend this game! The story is awesome, the graphics are great, the characters are all so different from each other and there is something for absolutely everyone. However I will not deny that this game is difficult, it takes a good amount of getting used to to finally understand the mechanics. Even with 30 hours, I'm still learning and advancing in something new every time I play.\n\n\nBut then why are people talking about this game like it's the equivalent of sucking on Satan's quilled nutsack while being butt fucked by a red hot poker? I assume its because the online matches are genuine torture, there is an ABSURD amount of people who are CRAZY good at the game, and ! will admit that is not very fair on new players, but its not something to toss the whole game over. This game has an unbelievably high skill ceiling. And the matchmaking isn't that awesome either, sometimes you can get a baby game, and other times you genuinely want to eat your desk. \n\nBut honestly, please don't let these reviews and memes talk about how they want to divorce their wife over this game, it's honestly one of a kind and something that you should really consider if you like fighting games, mediaeval stuff and all kinds of fun juicy details about sword fighting! \n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231475727",
-                  "hours_at_review": 22.9,
+                  "recommendationid": "239129541",
+                  "hours_at_review": 39.8,
+                  "minutes_at_review": 2386,
                   "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "There's a steep learning curve, but when you get used to it, it because an intense highs peed action, and real time strategy to be able to control the points, and it does take a lot of practice to learn the combos, and actually utilize them when you're being attacked.",
-                  "truncated": false,
-                  "minutes_at_review": 1371
+                  "date": "2026-11-01",
+                  "review_text": "Story 4/5\nCombat: 4/5 \nGraphics: Decent\nPvP Difficulty 5/5\nPrice: Buy on sale only\n\nI'm not particularly into hack and slash games so I only recommend you get this if you want to play the Story. It was good enough that I played it in all four difficulty levels. Realistic difficulty was great as it removes the hit indicator so you just rely on pattern recognition. Somehow this didn't really translate to PvP.\n\nIn 17 PvP Duels, I only won 3. Skill issue perhaps or maybe it's because the matchmaking seems to not be able to find players at a similar skill level as me, I kept encountering higher level profiles. Or maybe I just don't have enough hours yet. Only being able to win 20% of the time just isn't for me, it was pretty satisfying to even win a round given how hard it is though.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238776404",
+                  "hours_at_review": 97.5,
+                  "minutes_at_review": 5847,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "Hella toxic game, you will genuinely never get someone even remotely close to your skill level, you need at least 1000+ hours to be any good at this shitty ass game",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-d07fdc44",
+          "text": "One reviewer says you have to learn every character's move set to be half decent.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238786809",
+            "hours_at_review": 70.7,
+            "minutes_at_review": 4241,
+            "voted_up": false,
+            "date": "2026-10-29",
+            "review_text": "if i had to describe this game... your a child again. you keep learning thinking you know everything then you get absolutely destroyed, you learn and learn, watch videos on how to actuly play this game and none of it really tells you. You have to learn every charicters move set to be half decent. i have a 1000 hours on console when you get good through game is really fun to play like HALF DECENT , but getting good is a mf challenge you have to step on lego's over and over then you have to learn how to break muscle memory to get better. I think that this is one of the many few games that a first timer can beat a rep 1000 this game is hell enjoy. i love this game with every bone in my body",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 8,
-        "cited_recommend": 4,
-        "divergence_p": 0.311,
+        "cited_reviews": 7,
+        "cited_recommend": 2,
+        "divergence_p": 0.156,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -443,246 +978,120 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 393,
-      "pct_positive": 59.3,
+      "pool_n": 369,
+      "pct_positive": 54.2,
       "muted": false,
       "n_note": null,
-      "summary": "Longtime participants praise combat systems while noting toxic behaviors, progression walls, and technical crashes.",
+      "summary": "Long-term players point to persistent cheating issues, overpowered character kits disrupting balance, and missing platform compatibility.",
       "themes": [
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "vet-6a9232",
+              "claim": "Reviewers report that the game's publisher removed support for Linux-based operating systems, rendering the game unplayable on Linux and Steam Deck.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "240403324",
+                  "hours_at_review": 262.5,
+                  "minutes_at_review": 15749,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "I actually have more playtime than just Steam since I used to play with Ubisoft Connect as well. \n\nThis game is great, but Ubisoft have done nothing to address actual cheating issues like lag-switching & auto-parry scripting; instead they've broken support for Steam Deck and Linux by \"strengthening\" the EAC under the guise of 'player safety'. Ubisoft doesn't care about player protection and comfort, or they would have done something about the constant derogatory, offensive, genuinely disgusting imagery people use as emblems in the game, which depends on the players to report - do Ubisoft's job for them. \n\nThis game is great. The characters, gameplay, atmosphere is really unique and something I always want to come back to. But the game is impossible to come back to because it barely had a playerbase to begin with, and the people still playing are at a such higher skill level you just get stomped on no matter what. Ubisoft has only just made that issue worse by blocking their Linux & Steam Deck users, further shrinking the already pathetic playerbase size. \n\nEAC was already implmented and functioning while the game was available on Linux. Ubisoft didn't provide any evidence of wrongdoing from Linux/Steam Deck systems. They haven't done anything to fix the actual issues with the game, only worsened some of them.\n\nAlso worth noting that falsly advertising a product as compatible with a certain OS and then purposely breaking support is generally not legal, as has already been tried and tested with the OtherOS debacle.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240246482",
+                  "hours_at_review": 433.7,
+                  "minutes_at_review": 26024,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "No longer playable on Linux, way to further shrink an already small player base",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239976868",
+                  "hours_at_review": 408.5,
+                  "minutes_at_review": 24509,
+                  "voted_up": false,
+                  "date": "2026-11-11",
+                  "review_text": "I had a great time with For Honor and used to happily recommend it to friends. Then Ubisoft blocked Linux and that was it.\n\nUbisoft can call it an anti-cheat measure all they want. From my end, I bought a game that worked and they deliberately made it stop working. After that, I’d have a hard time trusting Ubisoft with another purchase.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239264902",
+                  "hours_at_review": 179.8,
+                  "minutes_at_review": 10789,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Removed perfectly functioning support for Linux, so no Steam Deck/Machine/OS. Can't even start the game, so the game is 100% useless now. Won't buy from Ubisoft ever again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238664491",
+                  "hours_at_review": 224.1,
+                  "minutes_at_review": 13445,
+                  "voted_up": false,
+                  "date": "2026-10-27",
+                  "review_text": "This game was fine until they decided to pull support for Linux-based OSes so they can force you to install some kernelspace spyware and Denuvo DRM in the name of \"security\", because God forbid we use free and open operating systems. This is absolutely disgusting corporate greed and I'm infuriated that my purchase is now unusable. Thanks Ubislop and I hope you get utterly destroyed by the greater open source/reverse engineer/pirate community. Make a real anti-cheat.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239111305",
+                  "hours_at_review": 133.7,
+                  "minutes_at_review": 8024,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Wanted to write a positive review about the game and how unique it is and it deserves more love. But the publisher decided to ruin their reputation more by removing playability on Linux.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-220608",
-              "claim": "The game features a steep learning curve requiring significant time and patience for new players to understand its mechanics.",
-              "citation_verdict": "positive",
+              "claim_id": "vet-d4a665",
+              "claim": "Reviewers report that newer characters feature overpowered kits and hyperarmor that outclass older heroes and create an unbalanced experience.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 5,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232149755",
-                  "hours_at_review": 393.9,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "I primarily played on Xbox when playing For Honor for the majority of my game time (1700 hours give er take), ever since they recently added cross progression, I have completely switched over and now exclusively play on PC. With that in mind, For Honor is a game I would recommend getting on sale. I absolutely fell in love with the game back in 2017 during Year 1 season 5, however it was a buggy mess, frames were stuck at 30 and the servers were hot garbage.\n\nI essentially grew up playing the game and thus saw the many ups and downs in its live service. Learning the game is relatively simple but has a deep combat system than what it presents itself. It is a constant game of chess, between your Hero's' interaction against the opponents. With the amount of Heroes in the game, it will take at least about 100 hours to get a grasp of everything. It may be daunting at first but it is worthwhile. Definitely the hardest part of getting into For Honor is your first 50 reps. You are going to get your ♥♥♥♥ rocked A LOT!\n\nYou will experience the whole spectrum of emotions (Mostly anger and hate) fighting either the enemy or quite frankly your rando teammates. I have essentially become a monk overtime to be able to ground myself so i don't go ♥♥♥♥♥♥♥, I have lost four controllers over the course of my career (not proud of that ngl). You will get tested a lot with your patience, a cool and collected mind will persevere greatly.\n\nI'd say after 1200 hours I got decent at the game reaching Master Rank in duels, I never played competitive For Honor but that's a whole thing on its own. Part of your journey will be doing homework on the game, watching videos, studying frame data and keeping up with the patch notes for each season. The gameplay is unique and partly because Goobysoft patented the \"Art of Battle System\" which makes it quite literally like nothing else. \n\nThe fashion when you reach the higher reps is lovely and what I mostly play for now of days, there is bountiful color pa…",
-                  "truncated": true,
-                  "minutes_at_review": 23637
-                },
-                {
-                  "recommendationid": "231397950",
-                  "hours_at_review": 8134.4,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Honestly, it's a dead game. No new permanent game modes have been added since the games release. MAYBE 1-2 maps, nothing impressive and both maps were ones the game already had, they just expanded on (copy and pasting the existing map into a new game mode and pretend like it's a whole big original idea?). The playerbase is subpar. \"Skill based\" matchmaking is a joke. They keep adding new heroes hoping it'll revive the game but its player count gets lower and lower every year. Constant bugs. No casual games, just you trying to enjoy the game only to fight 4 stack after 4 stack after 4 stack and if you quit because it's such a dogwater experience, you'd BETTER believe you're going to be penalized 15 minutes before you can play another game. There's ZERO balance. There's ZERO fun. It's an impossible learning curve, and I say this as somebody that's been playing the game for like 6 years. It USED to be an amazing game. Now it's a dumpster fire. Full of toxic losers that just run around in groups DESTROYING literally EVERYBODY, both new players and vets alike simply by ganking 3-4 v 1  with overpowered heroes. Devs refuse to acknowledge this. Community keeps abusing this. Your average player continues to get more and more fed up. Campaign in this game has produced nothing but memes. This whole game has become a laughingstock of what it means to play a something that's nothing but ragebait. \nI've already uninstalled for the last time. Do yourself a favor and don't even give this steaming pile of feces a chance. It's not worth your time. It's not worth your money. It's not worth the frustration.\n\nIt's a dead game trying desperately to cling to any sort of life it can find. Typical parasite behavior.",
-                  "truncated": false,
-                  "minutes_at_review": 488064
-                },
-                {
-                  "recommendationid": "231674058",
-                  "hours_at_review": 107.3,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "Steep Learning curve , requires patience and devotion to learn and master , but rewarding. requires decent , but not high end hardware. DLSS is bugged with a memory leak , but FSR seems to work fine. Great tool for training your anger management , haha! Console+PC combined hours 2,5k.",
-                  "truncated": false,
-                  "minutes_at_review": 6438
-                },
-                {
-                  "recommendationid": "231611253",
-                  "hours_at_review": 280.6,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "For Honor is one of the few games that ive played since the first few months, i was there for the mess that was original centurion and ive attempted to be there for every hero release since.\n\nThe game has many ups:\n1. a one of a kind combat system thats relativley easy to understand\n2. interesting heros with unique mechanics for eqach of them\n3. some great cosmetic options\n4. a dev team that interacts with community figureheads \n5. some much needed changes for heros over the years\n\nbut with its ups it also has its downsides:\n1. heros that remain unbalanced for extended periods of time (eggregious examples are new release heros)\n2. a new player unfriendly tutorial that forgets to explain some very important key features\n3. friendly fire that will interrupt your own combos\n4. people with anger issues that rivals other games such as siege\n5. \"scripters\" (people who use external software to read the screen and react to attacks acordingly)\n\nI mostly want to stress, this is not a casual friendly game. if you treat it as such you will be miserable the entire time. there will be things you will have to learn outside the tutorial and if youre not willing to do that you will severly hinder youself and others. but take the time to learn the intricacies of the game and you will have a lot of fun :)\n\nALSO VERY IMPORTANT:\nhonor is not treated as an obligation, what you think is cool and friendly will backfire on you when the guy youre giving a 1v1 to gets his friends to come stomp on you. be \"honorable\" at your discression.",
-                  "truncated": false,
-                  "minutes_at_review": 16833
-                },
-                {
-                  "recommendationid": "231570721",
-                  "hours_at_review": 555.8,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Steep learning curve and it's not for everyone, you have to think when playing this game.\nPredictions are a very big thing which is why some people will argue it's not skill based, but actually it's exactly what makes this game good, it requires some brain activity and a fast reaction time. Whether or not your opponent will feint their attack is unknown but you can make reads based on your opponents play style which makes the game very enjoyable. \n\nTo new players, don't spam side dodge attacks.\nYou WILL get parried.\n\nThis game is also rage inducing to the point of wanting to destroy your setup so please stay calm.",
-                  "truncated": false,
-                  "minutes_at_review": 33347
-                },
-                {
-                  "recommendationid": "231797125",
-                  "hours_at_review": 352.1,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "game is like a toxic relationship w ur ex , you'll love it one day but the next you'll be disgusted. if ur slightly depressed this game is perfect for all the pent up anger, both through the game or your moniter's face card. would rate it 10/10 very unique and in all honesty if you truly take the time to learn the game it becomes a lot more enjoyable. you will not be anywhere close to mastering the game at 100 hours, but i do recommend trying the game out. the community is pretty good most days especially at low reputation which is like your level in the game. idk try it out don't be discouraged from your start it's like learning to fight in real life you gunna get your ass handed to ya for sure, but worth the patience to get good.",
-                  "truncated": false,
-                  "minutes_at_review": 21124
-                },
-                {
-                  "recommendationid": "226573295",
-                  "hours_at_review": 251.5,
-                  "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "[h1] My Honest Review [/h1]\n\n[h3] PROS: [/h3]\n- Flashy animations, edgy characters and immersive combat is there.\n- Character identities are well put. Voice lines and their playstyle are unique.\n- Keybinding customization support both for PC and Console is available.\n- Local pricing is available on Ubisoft Store for ingame items.\n- Lots of customization options for characters\n- Lots of room for strategies, team play and micro/macro gameplay with different objectives/win conditions\n- The combat feedback feels so good. The flashing guard UI before a hit, the deflect animation with lots of sparks (particle effects) and guardbreaks are all visually satisfying and noticable which makes combat feel smooth.\n- Teamplay makes the game so much more fun and easy. If you have premades, macro and teamfights are easier compared to randoms.\n\n[h3] CONS: [/h3]\n- Learning curve is steep because it is almost like a fighting game. A lot to remember and execute.\n- Bot systems are horribly designed. A bot will immediately leave and be replaced with a new connecting player in the middle of combat, revive, or capturing an objective. VERY ANNOYING and UNPREDICTABLE.\n- Ubisoft sells heroes in a game about heroes vs heroes. And by pure chance, as luck would have it, new heroes are slightly better/stronger. So you have to pay to buy them or do daily missions for 10-14 days to unlock ONE.\n- As long as you have a teammate, something will MOST LIKELY will go wrong, even if you're a really high reputation or ranked player. For example: Someone will interrupt your unique character grab attack (Sohei, Shaman, etc.) and relentlessly fill enemy's Revenge bar so that both you and him can die.\n- Game doesn't teach you much, tutorials are outdated. Story Mode abilities and characters abilities and mechanics are irrelevant to current state of the same character in multiplayer mode. (Which is also why nobody really understands how Revenge system works)\n- You have to level up each character seperately by le…",
-                  "truncated": true,
-                  "minutes_at_review": 15092
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-091420",
-              "claim": "Reviewers report that the tutorial fails to explain important core features and is not friendly to new players.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231976351",
-                  "hours_at_review": 243.5,
-                  "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "why you should not play \n1. UBISOFT\n2. UPLAY \n3. the game servers are high key trash \n4. UBISOFT\n5. overall a very toxic game that is not beginner friendly, in their pursue of eliminating \"dumb luck\" in fights that allow you to luckily parry an enemy attack they made the game worse and borderline broken with the classic new broken characters while the old ones are meh",
-                  "truncated": false,
-                  "minutes_at_review": 14608
-                },
-                {
-                  "recommendationid": "231611253",
-                  "hours_at_review": 280.6,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "For Honor is one of the few games that ive played since the first few months, i was there for the mess that was original centurion and ive attempted to be there for every hero release since.\n\nThe game has many ups:\n1. a one of a kind combat system thats relativley easy to understand\n2. interesting heros with unique mechanics for eqach of them\n3. some great cosmetic options\n4. a dev team that interacts with community figureheads \n5. some much needed changes for heros over the years\n\nbut with its ups it also has its downsides:\n1. heros that remain unbalanced for extended periods of time (eggregious examples are new release heros)\n2. a new player unfriendly tutorial that forgets to explain some very important key features\n3. friendly fire that will interrupt your own combos\n4. people with anger issues that rivals other games such as siege\n5. \"scripters\" (people who use external software to read the screen and react to attacks acordingly)\n\nI mostly want to stress, this is not a casual friendly game. if you treat it as such you will be miserable the entire time. there will be things you will have to learn outside the tutorial and if youre not willing to do that you will severly hinder youself and others. but take the time to learn the intricacies of the game and you will have a lot of fun :)\n\nALSO VERY IMPORTANT:\nhonor is not treated as an obligation, what you think is cool and friendly will backfire on you when the guy youre giving a 1v1 to gets his friends to come stomp on you. be \"honorable\" at your discression.",
-                  "truncated": false,
-                  "minutes_at_review": 16833
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "vet-b41f78",
-              "claim": "Reviewers describe the in-game community as toxic, petty, and difficult for newcomers.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 3,
+                "positive": 0,
                 "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "232177136",
-                  "hours_at_review": 411.1,
+                  "recommendationid": "240120773",
+                  "hours_at_review": 317.0,
+                  "minutes_at_review": 19018,
                   "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "Abysmal game, even worse community, it'll take you dozens of hours to get used to everything, and even then you'll be matched against 4 bozos with 1000x your playtime, with a team full of newbies. Do not touch with a 10 foot pole.",
-                  "truncated": false,
-                  "minutes_at_review": 24667
+                  "date": "2026-11-13",
+                  "review_text": "Played this game a lot on xbox and PC, not worth playing anymore. Newest characters are absurdly broken compared to old.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232165657",
-                  "hours_at_review": 121.2,
+                  "recommendationid": "239200573",
+                  "hours_at_review": 279.1,
+                  "minutes_at_review": 16747,
                   "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "I played thousands of hours of League in my time, known for being the most toxic community, but the players in this game are exceptional, and far more petty.\r\n\r\nThe balance is non-existent, and there is no end to weird technical issues. I'm on a 4090 with 30 ping and I'm constantly lagging, and at less than 5fps.\r\n\r\nThere are no fun matchups, they are all insufferable, unless the hero was released within the first year of the game's release, but anyone playing those heroes have sunk thousands of hours into the game and destroy you like an ant caught at the center of a thermonuclear explosion.\r\n\r\nIt also just feels like the rules of the game and it's mechanics never work the way you expect; you're punished for everything, and rewarded for nothing.",
-                  "truncated": false,
-                  "minutes_at_review": 7274
+                  "date": "2026-11-02",
+                  "review_text": "game is fun but the constant addition of busted heroes is just plain stupid. i want to play the cool og charcters but they are outclassed in every way by the new characters. like virtuosa. why is she even in the game??????? a stance that makes her invulnerable to every attack in the game aside from 1 specific type that less than a third of the roster has and never has easy access to? oh yeah sure and give her crushing counters and a bash that makes sense. and then arakure. a feintable fast bash that you can 50/50 with an undodgeable hyperarmor heavy thats also feintable? all raider has is a little hyperarmor and a soft feint unblockable. which is completely countered by her. its infuriating that you guys just dont seem to care about your playerbase and continue to leave half of the roster completely useless against the other half. you are adding way too much bs into this game. her niche is cool but make that her thing. she doesnt need a niche along with everyone else's niche. just like juren. hes in every way better than raider. this game is completely unfair. and honestly it wouldn't be that bad if the new characters weren't just so uncool. i want to play the knight or the viking or the spartan. not some weird butch loser with a mohawk and goofy aesthetic. looks like some weird punk with sticks",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232149755",
-                  "hours_at_review": 393.9,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "I primarily played on Xbox when playing For Honor for the majority of my game time (1700 hours give er take), ever since they recently added cross progression, I have completely switched over and now exclusively play on PC. With that in mind, For Honor is a game I would recommend getting on sale. I absolutely fell in love with the game back in 2017 during Year 1 season 5, however it was a buggy mess, frames were stuck at 30 and the servers were hot garbage.\n\nI essentially grew up playing the game and thus saw the many ups and downs in its live service. Learning the game is relatively simple but has a deep combat system than what it presents itself. It is a constant game of chess, between your Hero's' interaction against the opponents. With the amount of Heroes in the game, it will take at least about 100 hours to get a grasp of everything. It may be daunting at first but it is worthwhile. Definitely the hardest part of getting into For Honor is your first 50 reps. You are going to get your ♥♥♥♥ rocked A LOT!\n\nYou will experience the whole spectrum of emotions (Mostly anger and hate) fighting either the enemy or quite frankly your rando teammates. I have essentially become a monk overtime to be able to ground myself so i don't go ♥♥♥♥♥♥♥, I have lost four controllers over the course of my career (not proud of that ngl). You will get tested a lot with your patience, a cool and collected mind will persevere greatly.\n\nI'd say after 1200 hours I got decent at the game reaching Master Rank in duels, I never played competitive For Honor but that's a whole thing on its own. Part of your journey will be doing homework on the game, watching videos, studying frame data and keeping up with the patch notes for each season. The gameplay is unique and partly because Goobysoft patented the \"Art of Battle System\" which makes it quite literally like nothing else. \n\nThe fashion when you reach the higher reps is lovely and what I mostly play for now of days, there is bountiful color pa…",
-                  "truncated": true,
-                  "minutes_at_review": 23637
-                },
-                {
-                  "recommendationid": "231397950",
-                  "hours_at_review": 8134.4,
+                  "recommendationid": "239641042",
+                  "hours_at_review": 280.1,
+                  "minutes_at_review": 16804,
                   "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Honestly, it's a dead game. No new permanent game modes have been added since the games release. MAYBE 1-2 maps, nothing impressive and both maps were ones the game already had, they just expanded on (copy and pasting the existing map into a new game mode and pretend like it's a whole big original idea?). The playerbase is subpar. \"Skill based\" matchmaking is a joke. They keep adding new heroes hoping it'll revive the game but its player count gets lower and lower every year. Constant bugs. No casual games, just you trying to enjoy the game only to fight 4 stack after 4 stack after 4 stack and if you quit because it's such a dogwater experience, you'd BETTER believe you're going to be penalized 15 minutes before you can play another game. There's ZERO balance. There's ZERO fun. It's an impossible learning curve, and I say this as somebody that's been playing the game for like 6 years. It USED to be an amazing game. Now it's a dumpster fire. Full of toxic losers that just run around in groups DESTROYING literally EVERYBODY, both new players and vets alike simply by ganking 3-4 v 1  with overpowered heroes. Devs refuse to acknowledge this. Community keeps abusing this. Your average player continues to get more and more fed up. Campaign in this game has produced nothing but memes. This whole game has become a laughingstock of what it means to play a something that's nothing but ragebait. \nI've already uninstalled for the last time. Do yourself a favor and don't even give this steaming pile of feces a chance. It's not worth your time. It's not worth your money. It's not worth the frustration.\n\nIt's a dead game trying desperately to cling to any sort of life it can find. Typical parasite behavior.",
-                  "truncated": false,
-                  "minutes_at_review": 488064
-                },
-                {
-                  "recommendationid": "231611253",
-                  "hours_at_review": 280.6,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "For Honor is one of the few games that ive played since the first few months, i was there for the mess that was original centurion and ive attempted to be there for every hero release since.\n\nThe game has many ups:\n1. a one of a kind combat system thats relativley easy to understand\n2. interesting heros with unique mechanics for eqach of them\n3. some great cosmetic options\n4. a dev team that interacts with community figureheads \n5. some much needed changes for heros over the years\n\nbut with its ups it also has its downsides:\n1. heros that remain unbalanced for extended periods of time (eggregious examples are new release heros)\n2. a new player unfriendly tutorial that forgets to explain some very important key features\n3. friendly fire that will interrupt your own combos\n4. people with anger issues that rivals other games such as siege\n5. \"scripters\" (people who use external software to read the screen and react to attacks acordingly)\n\nI mostly want to stress, this is not a casual friendly game. if you treat it as such you will be miserable the entire time. there will be things you will have to learn outside the tutorial and if youre not willing to do that you will severly hinder youself and others. but take the time to learn the intricacies of the game and you will have a lot of fun :)\n\nALSO VERY IMPORTANT:\nhonor is not treated as an obligation, what you think is cool and friendly will backfire on you when the guy youre giving a 1v1 to gets his friends to come stomp on you. be \"honorable\" at your discression.",
-                  "truncated": false,
-                  "minutes_at_review": 16833
-                },
-                {
-                  "recommendationid": "226951858",
-                  "hours_at_review": 779.2,
-                  "voted_up": true,
-                  "date": "2026-06-01",
-                  "review_text": "Its like an abusive relationship. Once you feel happy to be in it , you try to be a kind man and respect it.\r\nThen comes the realisation that everyone in this game hates you, no matter what you do. Be it a light spam or a predictable combo , or a parry that does not makes sense. \r\nYou will get punished and when you find that 1 v 1 match against someone you despise, you will taunt the living duck out of them.\r\n\r\nWhy? because at the end of the day you lost your sanity, YOU THIRST FOR THE EXECUTION, YOU THIRST FOR THE REP LEVEL, YOU THIRST TO TAUNT RAH.\r\n\r\n\r\nBut still I would recommend , if not to enjoy then to lose brain cells.",
-                  "truncated": false,
-                  "minutes_at_review": 46754
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-798404",
-              "claim": "The combat system is described as deep, unique, and satisfying despite the frustration it causes.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 3,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232149755",
-                  "hours_at_review": 393.9,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "I primarily played on Xbox when playing For Honor for the majority of my game time (1700 hours give er take), ever since they recently added cross progression, I have completely switched over and now exclusively play on PC. With that in mind, For Honor is a game I would recommend getting on sale. I absolutely fell in love with the game back in 2017 during Year 1 season 5, however it was a buggy mess, frames were stuck at 30 and the servers were hot garbage.\n\nI essentially grew up playing the game and thus saw the many ups and downs in its live service. Learning the game is relatively simple but has a deep combat system than what it presents itself. It is a constant game of chess, between your Hero's' interaction against the opponents. With the amount of Heroes in the game, it will take at least about 100 hours to get a grasp of everything. It may be daunting at first but it is worthwhile. Definitely the hardest part of getting into For Honor is your first 50 reps. You are going to get your ♥♥♥♥ rocked A LOT!\n\nYou will experience the whole spectrum of emotions (Mostly anger and hate) fighting either the enemy or quite frankly your rando teammates. I have essentially become a monk overtime to be able to ground myself so i don't go ♥♥♥♥♥♥♥, I have lost four controllers over the course of my career (not proud of that ngl). You will get tested a lot with your patience, a cool and collected mind will persevere greatly.\n\nI'd say after 1200 hours I got decent at the game reaching Master Rank in duels, I never played competitive For Honor but that's a whole thing on its own. Part of your journey will be doing homework on the game, watching videos, studying frame data and keeping up with the patch notes for each season. The gameplay is unique and partly because Goobysoft patented the \"Art of Battle System\" which makes it quite literally like nothing else. \n\nThe fashion when you reach the higher reps is lovely and what I mostly play for now of days, there is bountiful color pa…",
-                  "truncated": true,
-                  "minutes_at_review": 23637
-                },
-                {
-                  "recommendationid": "231279112",
-                  "hours_at_review": 217.9,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "It was fun while it lasted. And I had a lot of fun playing this game (I think I have about 1500 hours total)\r\n\r\nI think it's the best multiplayer fighting game out there, the Art of Battle system is goated, even if it's a bit finnicky sometimes.\r\n\r\nBut it feels like the game is getting progressively worse with every update. I don't mind the nerfs/buffs etc, those were fair most of the time.\r\n\r\nWhat I can't get over, however, is that every single new character for the past couple of years was just \"throw every single game mechanic into it, plus more\".\r\n\r\nMaybe, it's just failure to adapt and a skill issue, but I stopped having fun playing this game.\r\n\r\nGet it on a sale, the game is like $2 during those, and well worth it. Just not fun to me anymore (which, yeah, I played it for a fair bit.)",
-                  "truncated": false,
-                  "minutes_at_review": 13076
-                },
-                {
-                  "recommendationid": "226877745",
-                  "hours_at_review": 1220.7,
-                  "voted_up": true,
-                  "date": "2026-05-31",
-                  "review_text": "For Honor stands as a strong title that is only limited by a handful of smaller issues and technical hiccups Ubisoft should address. Its story campaign falls short of the best in the genre, and the matchmaking system still needs refinement. Even so, none of that changes the core truth: the game offers some of the deepest and most satisfying combat mechanics to appear in years. For Honor requires real dedication to learn its systems and master them, but players who invest that time will discover an experience that has few equals in gaming today.",
-                  "truncated": false,
-                  "minutes_at_review": 73239
-                },
-                {
-                  "recommendationid": "226202288",
-                  "hours_at_review": 184.8,
-                  "voted_up": true,
-                  "date": "2026-05-23",
-                  "review_text": "rage inducing game but very fun and unique combat system (my favourite out of any genre like this)\r\n\r\nit is an ubisoft game, which if youve never played or owned an ubi game the company is absolutely abysmal when it comes to customer support and services, across any game. just take that as a fair warning",
-                  "truncated": false,
-                  "minutes_at_review": 11086
-                },
-                {
-                  "recommendationid": "226573295",
-                  "hours_at_review": 251.5,
-                  "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "[h1] My Honest Review [/h1]\n\n[h3] PROS: [/h3]\n- Flashy animations, edgy characters and immersive combat is there.\n- Character identities are well put. Voice lines and their playstyle are unique.\n- Keybinding customization support both for PC and Console is available.\n- Local pricing is available on Ubisoft Store for ingame items.\n- Lots of customization options for characters\n- Lots of room for strategies, team play and micro/macro gameplay with different objectives/win conditions\n- The combat feedback feels so good. The flashing guard UI before a hit, the deflect animation with lots of sparks (particle effects) and guardbreaks are all visually satisfying and noticable which makes combat feel smooth.\n- Teamplay makes the game so much more fun and easy. If you have premades, macro and teamfights are easier compared to randoms.\n\n[h3] CONS: [/h3]\n- Learning curve is steep because it is almost like a fighting game. A lot to remember and execute.\n- Bot systems are horribly designed. A bot will immediately leave and be replaced with a new connecting player in the middle of combat, revive, or capturing an objective. VERY ANNOYING and UNPREDICTABLE.\n- Ubisoft sells heroes in a game about heroes vs heroes. And by pure chance, as luck would have it, new heroes are slightly better/stronger. So you have to pay to buy them or do daily missions for 10-14 days to unlock ONE.\n- As long as you have a teammate, something will MOST LIKELY will go wrong, even if you're a really high reputation or ranked player. For example: Someone will interrupt your unique character grab attack (Sohei, Shaman, etc.) and relentlessly fill enemy's Revenge bar so that both you and him can die.\n- Game doesn't teach you much, tutorials are outdated. Story Mode abilities and characters abilities and mechanics are irrelevant to current state of the same character in multiplayer mode. (Which is also why nobody really understands how Revenge system works)\n- You have to level up each character seperately by le…",
-                  "truncated": true,
-                  "minutes_at_review": 15092
+                  "date": "2026-11-07",
+                  "review_text": "it had such an interesting and unique concept, but the devs made the actual experience such an unpleasant one. it's incredibly infuriating to play against the unbalanced cast full of gimmick-reliant power creeps. the one good thing about this game was the steel currency system but it took so much grinding simply to unlock a new character. on top of everything, i built my computer with this game in mind only last year and installed linux on it, only for linux support to be dropped out of nowhere.\nthis game is a shambling corpse of what could've been a fascinating idea",
+                  "truncated": false
                 }
               ]
             }
@@ -692,8 +1101,8 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-038e29",
-              "claim": "Reviewers report that the game suffers from technical issues, including crashes after finishing matches.",
+              "claim_id": "vet-2a573f",
+              "claim": "Reviewers state that the game suffers from unaddressed issues with cheaters, lag-switching, and auto-parry scripting.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -701,81 +1110,72 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232165657",
-                  "hours_at_review": 121.2,
+                  "recommendationid": "240403324",
+                  "hours_at_review": 262.5,
+                  "minutes_at_review": 15749,
                   "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "I played thousands of hours of League in my time, known for being the most toxic community, but the players in this game are exceptional, and far more petty.\r\n\r\nThe balance is non-existent, and there is no end to weird technical issues. I'm on a 4090 with 30 ping and I'm constantly lagging, and at less than 5fps.\r\n\r\nThere are no fun matchups, they are all insufferable, unless the hero was released within the first year of the game's release, but anyone playing those heroes have sunk thousands of hours into the game and destroy you like an ant caught at the center of a thermonuclear explosion.\r\n\r\nIt also just feels like the rules of the game and it's mechanics never work the way you expect; you're punished for everything, and rewarded for nothing.",
-                  "truncated": false,
-                  "minutes_at_review": 7274
+                  "date": "2026-11-17",
+                  "review_text": "I actually have more playtime than just Steam since I used to play with Ubisoft Connect as well. \n\nThis game is great, but Ubisoft have done nothing to address actual cheating issues like lag-switching & auto-parry scripting; instead they've broken support for Steam Deck and Linux by \"strengthening\" the EAC under the guise of 'player safety'. Ubisoft doesn't care about player protection and comfort, or they would have done something about the constant derogatory, offensive, genuinely disgusting imagery people use as emblems in the game, which depends on the players to report - do Ubisoft's job for them. \n\nThis game is great. The characters, gameplay, atmosphere is really unique and something I always want to come back to. But the game is impossible to come back to because it barely had a playerbase to begin with, and the people still playing are at a such higher skill level you just get stomped on no matter what. Ubisoft has only just made that issue worse by blocking their Linux & Steam Deck users, further shrinking the already pathetic playerbase size. \n\nEAC was already implmented and functioning while the game was available on Linux. Ubisoft didn't provide any evidence of wrongdoing from Linux/Steam Deck systems. They haven't done anything to fix the actual issues with the game, only worsened some of them.\n\nAlso worth noting that falsly advertising a product as compatible with a certain OS and then purposely breaking support is generally not legal, as has already been tried and tested with the OtherOS debacle.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231957863",
-                  "hours_at_review": 2184.1,
+                  "recommendationid": "239531625",
+                  "hours_at_review": 101.0,
+                  "minutes_at_review": 6063,
                   "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "fix the game its the only game that crashes for me every single time after playing one game or another .... i love this game but its a shame it really is until then it stays uninstalled",
-                  "truncated": false,
-                  "minutes_at_review": 131048
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "vet-261ea7",
-              "claim": "Reviewers mention that unlocking new heroes requires either spending real currency or grinding daily missions over a prolonged period.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231416165",
-                  "hours_at_review": 228.1,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "The amount of times I get a match making ban for the game bugging out and sending me back to he menu  is annoying. Plus the grind is terrible. 200 hours...i was able to get 3 heros. If I was able to refund I would. Avoid at all costs",
-                  "truncated": false,
-                  "minutes_at_review": 13687
-                },
-                {
-                  "recommendationid": "226573295",
-                  "hours_at_review": 251.5,
-                  "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "[h1] My Honest Review [/h1]\n\n[h3] PROS: [/h3]\n- Flashy animations, edgy characters and immersive combat is there.\n- Character identities are well put. Voice lines and their playstyle are unique.\n- Keybinding customization support both for PC and Console is available.\n- Local pricing is available on Ubisoft Store for ingame items.\n- Lots of customization options for characters\n- Lots of room for strategies, team play and micro/macro gameplay with different objectives/win conditions\n- The combat feedback feels so good. The flashing guard UI before a hit, the deflect animation with lots of sparks (particle effects) and guardbreaks are all visually satisfying and noticable which makes combat feel smooth.\n- Teamplay makes the game so much more fun and easy. If you have premades, macro and teamfights are easier compared to randoms.\n\n[h3] CONS: [/h3]\n- Learning curve is steep because it is almost like a fighting game. A lot to remember and execute.\n- Bot systems are horribly designed. A bot will immediately leave and be replaced with a new connecting player in the middle of combat, revive, or capturing an objective. VERY ANNOYING and UNPREDICTABLE.\n- Ubisoft sells heroes in a game about heroes vs heroes. And by pure chance, as luck would have it, new heroes are slightly better/stronger. So you have to pay to buy them or do daily missions for 10-14 days to unlock ONE.\n- As long as you have a teammate, something will MOST LIKELY will go wrong, even if you're a really high reputation or ranked player. For example: Someone will interrupt your unique character grab attack (Sohei, Shaman, etc.) and relentlessly fill enemy's Revenge bar so that both you and him can die.\n- Game doesn't teach you much, tutorials are outdated. Story Mode abilities and characters abilities and mechanics are irrelevant to current state of the same character in multiplayer mode. (Which is also why nobody really understands how Revenge system works)\n- You have to level up each character seperately by le…",
-                  "truncated": true,
-                  "minutes_at_review": 15092
+                  "date": "2026-11-06",
+                  "review_text": "trash trash and more trash. the game was good then it died about 7 years ago. toxic players and cheats are super everywhere. dont buy its a waste of money",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-dccf3987",
+          "text": "One reviewer says servers kick you constantly from matches and typing harmless words in chat can result in a temporary ban without explanation or a way to appeal.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "238934320",
+            "hours_at_review": 501.3,
+            "minutes_at_review": 30076,
+            "voted_up": false,
+            "date": "2026-10-30",
+            "review_text": "Servers are kicking you a lot from matches, sometimes while you start a match with friend whule you waiting and loading it can kick a friend out and \nYou can write nothing bad in chat like a word or whatever and you get temp banned with no way to appeal it and they dont even tell you what triggered it",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-338c7376",
+          "text": "One reviewer says unlocking a new character took a lot of grinding simply using the steel currency system.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239641042",
+            "hours_at_review": 280.1,
+            "minutes_at_review": 16804,
+            "voted_up": false,
+            "date": "2026-11-07",
+            "review_text": "it had such an interesting and unique concept, but the devs made the actual experience such an unpleasant one. it's incredibly infuriating to play against the unbalanced cast full of gimmick-reliant power creeps. the one good thing about this game was the steel currency system but it took so much grinding simply to unlock a new character. on top of everything, i built my computer with this game in mind only last year and installed linux on it, only for linux support to be dropped out of nowhere.\nthis game is a shambling corpse of what could've been a fascinating idea",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 16,
-        "cited_recommend": 8,
-        "divergence_p": 0.304,
+        "cited_reviews": 10,
+        "cited_recommend": 0,
+        "divergence_p": 0.000406,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1232,
-    "steam_total_reviews": 83549,
+    "pool_n": 1200,
+    "steam_total_reviews": 85796,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/304390/2c22776de84112b1c4f39da2597567bb450386a0/header.jpg?t=1785427415",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/304390/5b4909717c94e99511e459aad48cd2202e191046/capsule_231x87.jpg?t=1785427415",
-    "grid": "https://cdn2.steamgriddb.com/grid/44b3b75c339045a8ccbbf374dcc0cdbf.png"
   }
 }

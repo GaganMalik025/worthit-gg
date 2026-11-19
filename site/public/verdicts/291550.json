@@ -1,51 +1,61 @@
 {
   "appid": "291550",
   "game_name": "Brawlhalla",
-  "generated_at": "2026-08-10T10:03:01Z",
+  "generated_at": "2026-11-19T11:34:53Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/291550/5a626cc4b6ecf79d47927d771dfad799b7f1b145/header_alt_assets_11.jpg?t=1787157167",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/291550/f556b92e2c31af26bcc9846e1e1e5d49f0b11175/capsule_231x87_alt_assets_11.jpg?t=1787157167",
+    "grid": "https://cdn2.steamgriddb.com/grid/820b5138a91b4a3ef9a7024cbbcc9af9.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 13,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Skip",
-    "tagline": "Fast fights marred by matchmaking gaps and heavy network lag.",
+    "tagline": "Fast fights and constant spam make for a frustrating arena.",
     "for_you_if": [
-      "you want a fighting game that runs smoothly on older hardware",
-      "you enjoy intense competitive brawlers"
+      "you enjoy fast-paced platform fighting action",
+      "you want a wide variety of selectable legends and weapons"
     ],
     "not_for_you_if": [
-      "you encounter severe input delay and server lag",
-      "you struggle against mismatched opponents and move spam",
-      "you want to unlock the full character roster without spending money"
+      "you cannot tolerate server lag and positioning issues",
+      "you are easily frustrated by online signature spam",
+      "you struggle against unbalanced matchmaking and sweaty opponents"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 80,
-      "pct_positive": 38.8,
+      "pool_n": 61,
+      "pct_positive": 57.4,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 314,
-      "pct_positive": 65.3,
+      "pool_n": 307,
+      "pct_positive": 71.0,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 326,
-      "pct_positive": 53.4,
+      "pool_n": 307,
+      "pct_positive": 57.3,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 490,
-      "pct_positive": 43.3,
+      "pool_n": 525,
+      "pct_positive": 44.4,
       "muted": false
     }
   ],
@@ -55,49 +65,49 @@
       "type": "segmentation",
       "direction": null,
       "shape": "rise_then_fall",
-      "sentence": "Sentiment rises initially before dropping sharply among long-term players.",
+      "sentence": "Positive ratings rise initially before dropping sharply over extended play times.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 38.8,
-            "pool_n": 80
+            "pct_positive": 57.4,
+            "pool_n": 61
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 65.3,
-            "pool_n": 314
+            "pct_positive": 71.0,
+            "pool_n": 307
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 53.4,
-            "pool_n": 326
+            "pct_positive": 57.3,
+            "pool_n": 307
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 43.3,
-            "pool_n": 490
+            "pct_positive": 44.4,
+            "pool_n": 525
           }
         ],
         "shape": "rise_then_fall",
-        "low_cohort": "refund_window",
-        "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 38.8,
-        "low_pool_n": 80,
+        "low_cohort": "veteran",
+        "low_cohort_label": "over 100 hours",
+        "low_pct_positive": 44.4,
+        "low_pool_n": 525,
         "high_cohort": "early",
         "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 65.3,
-        "high_pool_n": 314,
-        "gap_pts": 26.5,
+        "high_pct_positive": 71.0,
+        "high_pool_n": 307,
+        "gap_pts": 26.6,
         "peak_cohort": "early",
-        "peak_pct_positive": 65.3,
+        "peak_pct_positive": 71.0,
         "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 43.3,
-        "drop_after_peak_pts": 22.0
+        "post_peak_low_pct_positive": 44.4,
+        "drop_after_peak_pts": 26.6
       }
     },
     {
@@ -105,14 +115,14 @@
       "type": "recency",
       "direction": "declined",
       "shape": null,
-      "sentence": "Recent reviews skew significantly more negative than the historical lifetime average.",
+      "sentence": "Recent reviews score notably lower than the historical lifetime average.",
       "evidence": {
-        "recent_pool_pct_positive": 51.4,
-        "recent_pool_n": 1210,
+        "recent_pool_pct_positive": 55.2,
+        "recent_pool_n": 1200,
         "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 78.0,
-        "steam_total_reviews": 177152,
-        "delta_pts": -26.6
+        "steam_lifetime_pct_positive": 77.4,
+        "steam_total_reviews": 180353,
+        "delta_pts": -22.2
       }
     }
   ],
@@ -121,135 +131,134 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 80,
-      "pct_positive": 38.8,
+      "pool_n": 61,
+      "pct_positive": 57.4,
       "muted": false,
       "n_note": null,
-      "summary": "Beginners face steep barriers against experienced players using complex combos and repetitive moves.",
-      "themes": [
+      "summary": null,
+      "themes": [],
+      "single_points": [
         {
+          "point_id": "one-b65b6c27",
+          "text": "One reviewer says that matchmaking with bots is annoying because they want to measure their skill against actual players.",
           "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ref-dc8b60",
-              "claim": "Reviewers describe struggling against experienced opponents in unranked matches who use repetitive moves or advanced combos that are difficult for beginners to counter.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231229295",
-                  "hours_at_review": 0.9,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "I really wanted to like this game. I saw it, thought it looked fun, and decided to give it a try. After an hour and a few games, though, I'm already done.\r\n\r\nTrying to play unranked as a complete beginner is absolutely miserable. I'm constantly getting destroyed by people who either spam the same moves over and over or pull off perfectly calculated combos that I have absolutely no idea how to counter. I don't mind losing, I expect to lose when I'm new to a game, but there's a huge difference between losing and feeling like you aren't even allowed to play the game.\r\n\r\nHow are you supposed to actually learn and improve when your first experience is getting matched against players who clearly know the game inside and out? There needs to be some kind of proper beginner experience or skill-based matchmaking so new players can actually learn the mechanics, experiment with characters, and slowly improve without getting completely stomped every match.\r\n\r\nMaybe the ranked system is better for this, but why should I have to suffer through unranked matches just to reach a point where the game might actually become enjoyable?\r\n\r\nThe game seemed fun, but I don't even get the chance to properly get into it. It's incredibly frustrating, and honestly, as a new player, I can't recommend it.",
-                  "truncated": false,
-                  "minutes_at_review": 56
-                },
-                {
-                  "recommendationid": "231621936",
-                  "hours_at_review": 1.0,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Played this game for about an hour. Got comboed into oblivion 0.1/10 dont recommend. If you want to go through a couple desks, mice, and keyboards this game is for you.",
-                  "truncated": false,
-                  "minutes_at_review": 58
-                },
-                {
-                  "recommendationid": "229795513",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "This game is sent from hell.\n\nI loaded one match of this god forsaken game and I got matched against the sweatiest no life no hair balding octopus who air combed for the ENTIRE match and made me bash through my drywall with my head witch destroyed my headphones and I sustained a scalp laceration witch hospitalized me for 3 days and had to get stitches and not to mention the cost to repair the drywall is to much so now I just have a \"brawlhalla\" hole in my wall that I get to show guests when they come into my room \n\nOnly install this game if you want a hole in your wall",
-                  "truncated": false,
-                  "minutes_at_review": 14
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-194fb7",
-              "claim": "Reviewers report encountering players who spam moves or perform complex combos, making it difficult for beginners to learn the mechanics or participate in matches.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231229295",
-                  "hours_at_review": 0.9,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "I really wanted to like this game. I saw it, thought it looked fun, and decided to give it a try. After an hour and a few games, though, I'm already done.\r\n\r\nTrying to play unranked as a complete beginner is absolutely miserable. I'm constantly getting destroyed by people who either spam the same moves over and over or pull off perfectly calculated combos that I have absolutely no idea how to counter. I don't mind losing, I expect to lose when I'm new to a game, but there's a huge difference between losing and feeling like you aren't even allowed to play the game.\r\n\r\nHow are you supposed to actually learn and improve when your first experience is getting matched against players who clearly know the game inside and out? There needs to be some kind of proper beginner experience or skill-based matchmaking so new players can actually learn the mechanics, experiment with characters, and slowly improve without getting completely stomped every match.\r\n\r\nMaybe the ranked system is better for this, but why should I have to suffer through unranked matches just to reach a point where the game might actually become enjoyable?\r\n\r\nThe game seemed fun, but I don't even get the chance to properly get into it. It's incredibly frustrating, and honestly, as a new player, I can't recommend it.",
-                  "truncated": false,
-                  "minutes_at_review": 56
-                },
-                {
-                  "recommendationid": "229795513",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "This game is sent from hell.\n\nI loaded one match of this god forsaken game and I got matched against the sweatiest no life no hair balding octopus who air combed for the ENTIRE match and made me bash through my drywall with my head witch destroyed my headphones and I sustained a scalp laceration witch hospitalized me for 3 days and had to get stitches and not to mention the cost to repair the drywall is to much so now I just have a \"brawlhalla\" hole in my wall that I get to show guests when they come into my room \n\nOnly install this game if you want a hole in your wall",
-                  "truncated": false,
-                  "minutes_at_review": 14
-                }
-              ]
-            }
-          ]
+          "citation": {
+            "recommendationid": "239196958",
+            "hours_at_review": 0.3,
+            "minutes_at_review": 18,
+            "voted_up": true,
+            "date": "2026-11-02",
+            "review_text": "though it's completely sucks in comparison to SSB  it seems good. But matchmaking with bots is a bit annoying, yeah it's obvious that this was created to attract new players. But especially i want to measure my skill against actual players, and i guess most of the players who starting to play this are not afraid to get completely obliterated by actual players.\n\nIf it's okay for you to spend some time to cross the barrier of bots, then i will definitely recommend this game for you",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-d3f694d6",
+          "text": "One reviewer notes that the crossovers are not in the All Legends pack.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "239236212",
+            "hours_at_review": 0.2,
+            "minutes_at_review": 12,
+            "voted_up": true,
+            "date": "2026-11-03",
+            "review_text": "Too bad the Crossovers aren't in the All Legends or otherwise :(",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-bb67c7b9",
+          "text": "One reviewer states that early matchmaking is against bots to attract new players, and you have to cross the barrier of bots to play actual players.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239196958",
+            "hours_at_review": 0.3,
+            "minutes_at_review": 18,
+            "voted_up": true,
+            "date": "2026-11-02",
+            "review_text": "though it's completely sucks in comparison to SSB  it seems good. But matchmaking with bots is a bit annoying, yeah it's obvious that this was created to attract new players. But especially i want to measure my skill against actual players, and i guess most of the players who starting to play this are not afraid to get completely obliterated by actual players.\n\nIf it's okay for you to spend some time to cross the barrier of bots, then i will definitely recommend this game for you",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-8bda37c7",
+          "text": "One reviewer feels that you have to pay for almost every fighter.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "237878297",
+            "hours_at_review": 0.2,
+            "minutes_at_review": 15,
+            "voted_up": false,
+            "date": "2026-10-16",
+            "review_text": "this game is compete shit you have to pay for almost every fighter and i feel like these smash clones are mostly shit DO NOT PLAY",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-5adb0a21",
+          "text": "One reviewer reports they could not use their DualSense controller anywhere on this game at all.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238117049",
+            "hours_at_review": 0.7,
+            "minutes_at_review": 42,
+            "voted_up": false,
+            "date": "2026-10-19",
+            "review_text": "Nothing I did/tried resolved the fact that I could not use my DualSense controller anywhere on this game AT ALL!!",
+            "truncated": false
+          }
         }
       ],
-      "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 3,
-        "cited_recommend": 0,
-        "divergence_p": 0.229,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
+      "sourcing": null
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 314,
-      "pct_positive": 65.3,
+      "pool_n": 307,
+      "pct_positive": 71.0,
       "muted": false,
       "n_note": null,
-      "summary": "The game runs well on modest machines, but matchmaking imbalances and frustration quickly set in.",
+      "summary": "Players report severe connection issues alongside unbalanced matchmaking and constant heavy attack spam.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-e62282",
-              "claim": "Reviewers report that the game runs smoothly even on older computer hardware.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-6e342f",
+              "claim": "Reviewers report issues with lag, server stability, and netcode that causes position swapping.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 1,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231612859",
-                  "hours_at_review": 6.2,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "runs smoothly even on my old crappy pc",
-                  "truncated": false,
-                  "minutes_at_review": 375
+                  "recommendationid": "240430239",
+                  "hours_at_review": 10.3,
+                  "minutes_at_review": 618,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "Fix your fuck ass shit servers",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231534825",
-                  "hours_at_review": 11.4,
+                  "recommendationid": "240427897",
+                  "hours_at_review": 4.2,
+                  "minutes_at_review": 255,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "es buenisimo en compu mas que en consola, es mas facil de lo que pensaba",
-                  "truncated": false,
-                  "minutes_at_review": 686
+                  "date": "2026-11-17",
+                  "review_text": "if you hate your pathetic life and have nothing better to do, play Brawlhalla\r\nwe have:\r\n-depression\r\n-fuckers who edge camping\r\n-fuckass netcode for some reason make you swap your position with the enemy\r\n-and your average Ubishit ranked bullshit\r\nand if any of this interest you, congratulation, this is a game for you and if you're keep queuing ranked even after encounter all of those, you probably have stockholm syndrome and you should go get therapy, nevertherless, have \"fun\" with this shitty ass game if you decided to give it a try.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240005627",
+                  "hours_at_review": 2.3,
+                  "minutes_at_review": 138,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "The chaotic 8-player brawls feel like a sweaty mess of constant knockback spam, and every match turns into a desperate scramble for the edge. With over sixty legends, half of them feel useless against the same few tryhards. Free to play, sure, but the grind and lag ruin the fun.",
+                  "truncated": false
                 }
               ]
             }
@@ -259,108 +268,82 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-b1c598",
-              "claim": "Reviewers experience severe matchmaking imbalances, such as low-ranked players facing high-ranked opponents or smurfs.",
+              "claim_id": "ear-a06b05",
+              "claim": "Reviewers describe the matchmaking system as unbalanced, pairing players against opponents with wide skill gaps or resulting in one-sided matches.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231836700",
-                  "hours_at_review": 5.8,
+                  "recommendationid": "240457577",
+                  "hours_at_review": 11.1,
+                  "minutes_at_review": 667,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Ive been playing this game for years and just recently switched to pc, the game feels nice. Honestly it is a solid game but that will all change when u play against a sig spammer who hasnt seen daylight in weeks... or a 1800 elo smurf destroying u back to back games. This game will honestly just give u pain and depression.            Save yourself!!",
-                  "truncated": false,
-                  "minutes_at_review": 350
+                  "date": "2026-11-17",
+                  "review_text": "The game is good at first but then as you play a little more, the matchmaking is horrible, making the game almost impossible to progress.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231565725",
-                  "hours_at_review": 7.7,
+                  "recommendationid": "239573631",
+                  "hours_at_review": 5.7,
+                  "minutes_at_review": 344,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "This game is the most unbalanced, rage inducing, piece of crap game ever. I've almost gotten aneurysm's playing this game from the shear anger that I physically feel course through my body. I am hard stuck silver, because apparently everyone I get paired with in 1v1 rank is a smurf and a loser that probably have 20 alt accounts that have already reached valhallan, bc they do nothing but sit on their ass grinding this game. Mind you, if you want to have good frames on this game you literally have to sell your soul, i've tried everything and have come to this conclusion bc everyone i see sweat on this game is a top tier loser willing to do anything for a win, even if that means no showering or going to the bathroom for a month straight.",
-                  "truncated": false,
-                  "minutes_at_review": 460
-                },
-                {
-                  "recommendationid": "231350998",
-                  "hours_at_review": 3.2,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "tbh addictive game but its just gonna make you want to throw your pc out the window your a bronze ranked vs plat and it just keeps on going",
-                  "truncated": false,
-                  "minutes_at_review": 191
+                  "date": "2026-11-07",
+                  "review_text": "I don't get why the ranked matchmaking is so bad. The players I get are the same in elo but vary wildly in skill. One game I will 3-0 a helpless opponent then lose 0-3 the next game to someone who clearly is not anywhere near the same skill level as the first opponent. How does the ranking system make any sense? I'm not even complaining about losing as I am still ranking up it's just that not having any close games is not an enjoyable experience at all. Not a single game has been close and I have never won or lost 2 in a row. I like the idea of the game I just can't stand playing when either I face a bot or a semi pro player.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-ac3e55",
-              "claim": "Reviewers report that the game induces high levels of rage, stress, and anger.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-d03e8f",
+              "claim": "Reviewers experience frequent heavy attack or signature spam ('sig spam') by opponents during matches.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 4
+                "positive": 2,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231836700",
-                  "hours_at_review": 5.8,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Ive been playing this game for years and just recently switched to pc, the game feels nice. Honestly it is a solid game but that will all change when u play against a sig spammer who hasnt seen daylight in weeks... or a 1800 elo smurf destroying u back to back games. This game will honestly just give u pain and depression.            Save yourself!!",
-                  "truncated": false,
-                  "minutes_at_review": 350
-                },
-                {
-                  "recommendationid": "231722083",
-                  "hours_at_review": 14.9,
+                  "recommendationid": "240013252",
+                  "hours_at_review": 5.9,
+                  "minutes_at_review": 352,
                   "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "fair warning: this is the most rage inducing game you'll ever touch",
-                  "truncated": false,
-                  "minutes_at_review": 895
+                  "date": "2026-11-12",
+                  "review_text": "i have never and i mean NEVER have felt this type of rage before and i murder everyone in my area because of these SIG SPAMMERS",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231715612",
-                  "hours_at_review": 17.1,
+                  "recommendationid": "239910520",
+                  "hours_at_review": 11.9,
+                  "minutes_at_review": 716,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "this is the worst game ever i hate my life beware of the stress,pain,depression this game will give you",
-                  "truncated": false,
-                  "minutes_at_review": 1028
+                  "date": "2026-11-11",
+                  "review_text": "before i played this game my life my very happy then my friend asked me to download it i had heard of it before but never played it i joined their private server then his bitch ass decides to sig spam ive broken 2 controllers sence playing this \"free\" game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231565725",
-                  "hours_at_review": 7.7,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "This game is the most unbalanced, rage inducing, piece of crap game ever. I've almost gotten aneurysm's playing this game from the shear anger that I physically feel course through my body. I am hard stuck silver, because apparently everyone I get paired with in 1v1 rank is a smurf and a loser that probably have 20 alt accounts that have already reached valhallan, bc they do nothing but sit on their ass grinding this game. Mind you, if you want to have good frames on this game you literally have to sell your soul, i've tried everything and have come to this conclusion bc everyone i see sweat on this game is a top tier loser willing to do anything for a win, even if that means no showering or going to the bathroom for a month straight.",
-                  "truncated": false,
-                  "minutes_at_review": 460
-                },
-                {
-                  "recommendationid": "229381444",
-                  "hours_at_review": 7.9,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "For every cell in my body, wouldn't describe how much I HATE this game, I NEVER WANT TO SEE THIS GAME IN MY SCREEN AGAIN, THIS GAME GOT ME SO MAD AFTER THE BULL I EXPERIENCE AND WILL FOREVER BE MY MOST HATED GAME",
-                  "truncated": false,
-                  "minutes_at_review": 475
+                  "recommendationid": "239501565",
+                  "hours_at_review": 9.9,
+                  "minutes_at_review": 597,
+                  "voted_up": true,
+                  "date": "2026-11-06",
+                  "review_text": "Recommended\r\nHonestly, Brawlhalla is a really good game, but the sig spammers make me want to rip my hair out.\r\nThe movement and combat feel great, and it's awesome that it's actually free-to-play without any pay-to-win trash. It’s super addictive to just hop on and play.\r\nBut matchmaking is literally just fighting people who mash the heavy attack button over and over. It's not that they're impossible to beat, it’s just that playing against it is incredibly boring and frustrating. It ruins the fun of the match.\r\nPlay it if you want a great platform fighter, just prepare to lose your sanity to spam.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
         "cited_reviews": 8,
         "cited_recommend": 3,
-        "divergence_p": 0.103,
+        "divergence_p": 0.0505,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -368,134 +351,141 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 326,
-      "pct_positive": 53.4,
+      "pool_n": 307,
+      "pct_positive": 57.3,
       "muted": false,
       "n_note": null,
-      "summary": "Players contend with attack spam and mismatched opponents while noticing roster costs.",
+      "summary": "Experienced players encounter extreme frustration, relentless signature move spam, and highly difficult opponents.",
       "themes": [
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-6651a5",
-              "claim": "Reviewers report that heavy attack spamming is a major source of frustration during matches.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-9b4dbe",
+              "claim": "Reviewers report that the game causes extreme frustration, anger, and rage.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
+                "positive": 0,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231850466",
-                  "hours_at_review": 59.0,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I played this game for at least 250 hours including on phone when I did not have a pc\nThis game is one of the best 2d fighting games ever, it has a forgiving learning curve (unless you decide to main any scythe character), it has a pretty unique style and mechanics yet delivers the best out of it, the dopamine rush when you win a round and do a 0-death combo is amazing.\n\nThe worst part about this game is spamming, i understand that new player don't know how combos work yet, but its extremely irritating to play against someone who mains a new character (ex. loki when he first came out) and spams me with heavy attacks, this should be reportable as unfair play (i dont know if that exists in-game), it would be better to have a cool down between repetitive heavy attacks but well i dont think thats possible because of how that will alter massive gameplay mechanics, but yes, its a nice game, no pay2win, 100% rage quitting all of the time because of spammers",
-                  "truncated": false,
-                  "minutes_at_review": 3539
-                },
-                {
-                  "recommendationid": "231565918",
-                  "hours_at_review": 72.8,
+                  "recommendationid": "240537346",
+                  "hours_at_review": 36.2,
+                  "minutes_at_review": 2170,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Jesus christ this game is a hopeless pit of fire and poo never play this unless you need a reason to commit suicide ive genuinely never felt a rage like this in my life i feel like i could rip the skin off the everyone that plays this game and not even flinch this game has horrible devs that obviously are related to satan since this game is the bottom layer of hell and if you want to keep your sanity never touch this god forsaken ♥♥♥♥ game. Also the fact that everyone that plays this game is either someone's dad that's hopping on after a 14 hour shift or a basement dweller that hasn't seen daylight in years. The dev's being ♥♥♥♥ is one thing but for ♥♥♥♥♥ sake this player base makes me want mag dump my skull and blow up the planet this game is actually a cover up for a torture simulator there is no brawling in this ♥♥♥♥ game all thats happening is me getting sig spammed until im due to have a baby in 9 months. I cant get over the fact that i spent money on this game when i used to play against AI and it was actually fun now i just want to put myself in a brazen bull.",
-                  "truncated": false,
-                  "minutes_at_review": 4369
+                  "date": "2026-11-18",
+                  "review_text": "dont play you get cancer cortisol and there is no cure , its better to play league of legends that game is heaven compared to this bullshit,there is no skill involved you just spam side signature and signature and you get wins,i feel depressed because of this game,ive broken 3 keyboards and 1 mouse along with all of my sanity please dont install",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231481898",
-                  "hours_at_review": 84.2,
+                  "recommendationid": "240318289",
+                  "hours_at_review": 34.7,
+                  "minutes_at_review": 2081,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "this is the worst game I have ever stumbled on. Every time I play ranked i get jobless ♥♥♥♥♥ that are in placement or random people who were previously  platinum or  diamond and dont even get me started on those pesky sig spammers. Went from 1372 elo to 1290 with a total of 68 wins. I wish I would get my wasted time back",
-                  "truncated": false,
-                  "minutes_at_review": 5051
-                },
-                {
-                  "recommendationid": "231151718",
-                  "hours_at_review": 54.3,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "This game is... an interesting experience. One moment you are playing with your friends, and you are laughing your but off because they are in a rage because you are denying them their weapons with Ruptues side sigs, and then the next moment you are playing against a sigging Loki, and you are the one who is crashing out. But overall it can be fun, especially if you do find one of the few respectable players that you actually have fun fighting with. I would not particularly suggest playing online if you value your sanity, but if you are playing it with your friends or family as a couch party game, it's great. \n\n8.5/10 as a couch party game\n4/10 as an online game (Unless you don't value your mental health or sanity like me, then it's 10/10)",
-                  "truncated": false,
-                  "minutes_at_review": 3259
+                  "date": "2026-11-15",
+                  "review_text": "i am beyond fuming, i dont think i have ever raged harder at a video game in my life this game has made me want to put curses on someone elses soul, i wish for the creators of this game to be exiled immediatley. tell me why i am trying to have a chill time on brawlhalla like anyone has ever had a chill time on this game. and then i get hit with 83 sigs not counting in air sigs and 4 light attacks in ranked 10 GAMES IN A ROW. i got so mad to the point where i started seeing stars, i was sweating, crying, felt the need to puke, my desk had caved in completely and much more. PLAY THIS GAME AT YOUR MENTAL HEALTHS COST THIS GAME IS NOT FOR THE WEAK. this is not my first time playing brawlhalla as i have 500+ hours on xbox and 200+ hours on mobile. this is the only game where i have ever wished death in various different crucial ways upon my opponent. i have never had a dying hate so much as i have had to brawlhalla. this game is like a disease where you hate it but can NOT stop playing it will always come back to you. i wish the owner of this game or whoever even pondered of creating such excrument be tortured and be forced to play ranked for a whole year straight being fed only once per day and is locked in the same position for the whole year and he only will face sig spammers. i hope you pick wisely/ second thought downloading this game. it is nightmare fuel.\r\n",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-058a0b",
-              "claim": "Reviewers describe ranked matchmaking as problematic, citing encounters with opponents of significantly higher skill or rank.",
-              "citation_verdict": "negative",
+              "claim_id": "mid-2a91cd",
+              "claim": "Reviewers describe encountering many opponents who spam signature moves in matches.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 1,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231643943",
-                  "hours_at_review": 75.8,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "broken game, broken matchmaking, 5 matches with the same enemy higher elo",
-                  "truncated": false,
-                  "minutes_at_review": 4547
+                  "recommendationid": "240345736",
+                  "hours_at_review": 48.0,
+                  "minutes_at_review": 2883,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "Brawhalla i love your game and all of that BUT PLEASE LET SPAMMERS PLAY AGAINST SPAMMERS!!!\nhow can i join ranked with SPAMMERS ALL ON MEE!! ;-; :(",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231481898",
-                  "hours_at_review": 84.2,
+                  "recommendationid": "240318289",
+                  "hours_at_review": 34.7,
+                  "minutes_at_review": 2081,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "this is the worst game I have ever stumbled on. Every time I play ranked i get jobless ♥♥♥♥♥ that are in placement or random people who were previously  platinum or  diamond and dont even get me started on those pesky sig spammers. Went from 1372 elo to 1290 with a total of 68 wins. I wish I would get my wasted time back",
-                  "truncated": false,
-                  "minutes_at_review": 5051
+                  "date": "2026-11-15",
+                  "review_text": "i am beyond fuming, i dont think i have ever raged harder at a video game in my life this game has made me want to put curses on someone elses soul, i wish for the creators of this game to be exiled immediatley. tell me why i am trying to have a chill time on brawlhalla like anyone has ever had a chill time on this game. and then i get hit with 83 sigs not counting in air sigs and 4 light attacks in ranked 10 GAMES IN A ROW. i got so mad to the point where i started seeing stars, i was sweating, crying, felt the need to puke, my desk had caved in completely and much more. PLAY THIS GAME AT YOUR MENTAL HEALTHS COST THIS GAME IS NOT FOR THE WEAK. this is not my first time playing brawlhalla as i have 500+ hours on xbox and 200+ hours on mobile. this is the only game where i have ever wished death in various different crucial ways upon my opponent. i have never had a dying hate so much as i have had to brawlhalla. this game is like a disease where you hate it but can NOT stop playing it will always come back to you. i wish the owner of this game or whoever even pondered of creating such excrument be tortured and be forced to play ranked for a whole year straight being fed only once per day and is locked in the same position for the whole year and he only will face sig spammers. i hope you pick wisely/ second thought downloading this game. it is nightmare fuel.\r\n",
+                  "truncated": false
                 }
               ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
+            },
             {
-              "claim_id": "mid-34e222",
-              "claim": "Reviewers note that purchasing the complete character roster requires spending money.",
+              "claim_id": "mid-1fcf6f",
+              "claim": "Reviewers note that online opponents are very sweaty and difficult for beginners.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240354432",
+                  "hours_at_review": 22.8,
+                  "minutes_at_review": 1367,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "game is too sweaty for new players",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239955689",
+                  "hours_at_review": 59.2,
+                  "minutes_at_review": 3555,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "very nice and frustrating game online very sweaty people come tough for beginners",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-b2b876",
+              "claim": "Reviewers report facing opponents who repeatedly use signature attacks, often referred to as spamming.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 0,
+                "positive": 1,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231816765",
-                  "hours_at_review": 64.5,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Legit the 2k of fighting games. Not only do you have to spend $40 bucks to buy the whole roster, but the whole gameplay is so trash the playerbase calls spamming basically something like a smash attack from Smash Bros \"Sig Spamming\". Like how bad at a fighting game can you possibly be to call something that braindead of a play something that salty people can use to feel better about themselves lol. Play literally any other fighting game, and if you're able to figure out emulation hop on Slippi.",
-                  "truncated": false,
-                  "minutes_at_review": 3870
+                  "recommendationid": "240345736",
+                  "hours_at_review": 48.0,
+                  "minutes_at_review": 2883,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "Brawhalla i love your game and all of that BUT PLEASE LET SPAMMERS PLAY AGAINST SPAMMERS!!!\nhow can i join ranked with SPAMMERS ALL ON MEE!! ;-; :(",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231565918",
-                  "hours_at_review": 72.8,
+                  "recommendationid": "240318289",
+                  "hours_at_review": 34.7,
+                  "minutes_at_review": 2081,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Jesus christ this game is a hopeless pit of fire and poo never play this unless you need a reason to commit suicide ive genuinely never felt a rage like this in my life i feel like i could rip the skin off the everyone that plays this game and not even flinch this game has horrible devs that obviously are related to satan since this game is the bottom layer of hell and if you want to keep your sanity never touch this god forsaken ♥♥♥♥ game. Also the fact that everyone that plays this game is either someone's dad that's hopping on after a 14 hour shift or a basement dweller that hasn't seen daylight in years. The dev's being ♥♥♥♥ is one thing but for ♥♥♥♥♥ sake this player base makes me want mag dump my skull and blow up the planet this game is actually a cover up for a torture simulator there is no brawling in this ♥♥♥♥ game all thats happening is me getting sig spammed until im due to have a baby in 9 months. I cant get over the fact that i spent money on this game when i used to play against AI and it was actually fun now i just want to put myself in a brazen bull.",
-                  "truncated": false,
-                  "minutes_at_review": 4369
+                  "date": "2026-11-15",
+                  "review_text": "i am beyond fuming, i dont think i have ever raged harder at a video game in my life this game has made me want to put curses on someone elses soul, i wish for the creators of this game to be exiled immediatley. tell me why i am trying to have a chill time on brawlhalla like anyone has ever had a chill time on this game. and then i get hit with 83 sigs not counting in air sigs and 4 light attacks in ranked 10 GAMES IN A ROW. i got so mad to the point where i started seeing stars, i was sweating, crying, felt the need to puke, my desk had caved in completely and much more. PLAY THIS GAME AT YOUR MENTAL HEALTHS COST THIS GAME IS NOT FOR THE WEAK. this is not my first time playing brawlhalla as i have 500+ hours on xbox and 200+ hours on mobile. this is the only game where i have ever wished death in various different crucial ways upon my opponent. i have never had a dying hate so much as i have had to brawlhalla. this game is like a disease where you hate it but can NOT stop playing it will always come back to you. i wish the owner of this game or whoever even pondered of creating such excrument be tortured and be forced to play ranked for a whole year straight being fed only once per day and is locked in the same position for the whole year and he only will face sig spammers. i hope you pick wisely/ second thought downloading this game. it is nightmare fuel.\r\n",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 6,
+        "cited_reviews": 5,
         "cited_recommend": 2,
-        "divergence_p": 0.282,
+        "divergence_p": 0.365,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -503,140 +493,127 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 490,
-      "pct_positive": 43.3,
+      "pool_n": 525,
+      "pct_positive": 44.4,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term participants report severe input delay, network lag, and server crashes.",
+      "summary": "Long-term players appreciate the diverse weapon and character roster while finding fault with the movement and controls.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-9de23f",
-              "claim": "Reviewers experience severe input delay and network lag issues while playing.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-fc3c5c",
+              "claim": "Reviewers note that the game features a variety of weapons, attacks, and legends, and includes crossover content.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 5
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231846968",
-                  "hours_at_review": 393.0,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Far and away the worst game I've ever played in my entire life. Not only is the input delay horrible 95% of the time, even on the 5% where it isn't, some severely recessed 65 IQ loser will spam the signature move button until you find it in your heart to break your controller. After the loss of your controller, you'll find yourself coping about this as an opportunity to switch to keyboard like the pros do. Shortly following this switch, you might even win a couple of games, until someone the same thing happens and you uninstall the game. This game was not made for players to have fun, it is a mass psychological operation and you should not take part in it.",
-                  "truncated": false,
-                  "minutes_at_review": 23580
+                  "recommendationid": "240506134",
+                  "hours_at_review": 419.7,
+                  "minutes_at_review": 25180,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Has some learning curve to it. Amazing game though, really love the crossovers.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231561529",
-                  "hours_at_review": 1446.9,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "if you want to lag and be tortured please download this game",
-                  "truncated": false,
-                  "minutes_at_review": 86815
-                },
-                {
-                  "recommendationid": "229430318",
-                  "hours_at_review": 243.2,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "this game is so fcking trash every time i want to play it i have problem with servers a lot of freezes and lags unplayable",
-                  "truncated": false,
-                  "minutes_at_review": 14591
-                },
-                {
-                  "recommendationid": "229420897",
-                  "hours_at_review": 875.4,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "This game is the worst fighting platform game u will ever play the servers are cheeks and crash every second, the games free but is it really you know the religion of the creators don't play this game if u want to have a balanced mindset, im 3 stocks all of a sudden the servers crash and ive lost to a bum who doesnt know which direction they are dodging in.",
-                  "truncated": false,
-                  "minutes_at_review": 52521
-                },
-                {
-                  "recommendationid": "229307489",
-                  "hours_at_review": 757.1,
-                  "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "Can you guys please please please fix your servers holy this is literally the only game I lag out on.",
-                  "truncated": false,
-                  "minutes_at_review": 45425
+                  "recommendationid": "240140134",
+                  "hours_at_review": 265.3,
+                  "minutes_at_review": 15919,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "Looks simple but the inside is complex. A variety of weapons, attacks, legends to fit to any playstyle. Recently got back on this game and now can not even go a day without playing it. Sometimes can also be maddening. To end on a high note this game is very exhilarating due to being able to duel friends",
+                  "truncated": false
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
             {
-              "claim_id": "vet-439379",
-              "claim": "Reviewers experience server issues, including lag, freezing, and crashes during matches.",
+              "claim_id": "vet-c52274",
+              "claim": "Reviewers describe the movement as snappy and the controls as simple and intuitive to pick up.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 4
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231561529",
-                  "hours_at_review": 1446.9,
+                  "recommendationid": "240377381",
+                  "hours_at_review": 472.1,
+                  "minutes_at_review": 28327,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "if you want to lag and be tortured please download this game",
-                  "truncated": false,
-                  "minutes_at_review": 86815
+                  "date": "2026-11-16",
+                  "review_text": "The Addiction PartIt’s stupidly easy to pick up. You jump in, fling people off stages with a spear or gauntlets, and twenty minutes later you’ve somehow spent three hours in ranked. The movement is snappy, the combos feel good when they land, and the “one more game” loop is merciless. There are always new legends, new skins, ranked seasons, and that tiny voice in your head saying “I can still climb out of gold.” Before you know it you’re queuing at 2 a.m. telling yourself this is the last match.It’s the kind of game that doesn’t feel like it demands much… until it owns your free time.The Hate PartAnd yet, almost nobody talks about Brawlhalla without a side of pure venom.The community is infamous. Toxic ranked players, endless “this legend is broken” arguments, and a special brand of salt that only platform fighters can produce. One bad loss and the chat turns into a war crime. Balance patches somehow manage to make half the roster feel unplayable while the other half feels illegal. Matchmaking will gift you the most tilted teammates imaginable, then punish you for existing.People don’t just dislike Brawlhalla. They hate it with the kind of passion usually reserved for broken controllers and people who main the current top legend. It’s the game you uninstall in rage… then reinstall two days later because you’re still thinking about that one match.Final VerdictBrawlhalla is addictive trash. It’s fun, it’s free, it’s competitive, and it will make you question your life choices. It’s the most hated game that somehow keeps millions of people coming back for more punishment.10/10 would get tilted again.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229430318",
-                  "hours_at_review": 243.2,
+                  "recommendationid": "239995001",
+                  "hours_at_review": 781.5,
+                  "minutes_at_review": 46890,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "this game is so fcking trash every time i want to play it i have problem with servers a lot of freezes and lags unplayable",
-                  "truncated": false,
-                  "minutes_at_review": 14591
-                },
-                {
-                  "recommendationid": "229420897",
-                  "hours_at_review": 875.4,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "This game is the worst fighting platform game u will ever play the servers are cheeks and crash every second, the games free but is it really you know the religion of the creators don't play this game if u want to have a balanced mindset, im 3 stocks all of a sudden the servers crash and ive lost to a bum who doesnt know which direction they are dodging in.",
-                  "truncated": false,
-                  "minutes_at_review": 52521
-                },
-                {
-                  "recommendationid": "229307489",
-                  "hours_at_review": 757.1,
-                  "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "Can you guys please please please fix your servers holy this is literally the only game I lag out on.",
-                  "truncated": false,
-                  "minutes_at_review": 45425
+                  "date": "2026-11-12",
+                  "review_text": "This game gives such a mixed feeling in my mind. I really wish I could recommend this game to new players. Unfortunately, Brawlhalla as it exists (as far as I can tell for the predictable future) has become such a mixed bag that in my opinion the cons outweigh the pros for recommending anyone new to the game. \r\n\r\nFor full disclosure, I have earned every character in the game with in-game currency, the only items I have bought for this game is a single taunt (worth around $5). I also bought the all-characters pack for ps4 because I refused to grind the entire roster out a second time. \r\n\r\n\r\nI have played this game since the 2010s when the roster was about 10 characters and dashing didn't even exist in the game. I obviously enjoy the gameplay, apparent by my around 800+ hours of time spent since leaving this review. Unfortunately, I have also watched the game's development company completely forget the game it used to be and focus almost exclusively on new characters and weapons that outclass every one of the original characters they have forgotten existed in the roster. They have also altered the primary art direction so drastically that any of the original visual clarity in the game has been painted over with bright neons and cluttery clashing color palettes.\r\n\r\nWhen this game is played casually, it is an absolute blast. Character movement flows smoothly and the basic controls are fairly simple and intuitive to pick up for newcomers after about a couple hours of playing. Brawlhalla excels at creating a welcoming environment for personal games with friends. Where things begin to go astray is once you start attempting to climb the skill ladder in ranked play.  \r\n\r\nBrawlhalla's movement tech and more advanced move sets are not explained to the new player until they either search around the main menu and find the tutorials (that I never knew existed until well over 500 hours into gameplay) or you look up tutorials on the internet. Otherwise, you will be completely outma…",
+                  "truncated": true
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-107e1be0",
+          "text": "One reviewer says the game suffers from internet latency and frame stuttering on PC.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240545901",
+            "hours_at_review": 796.7,
+            "minutes_at_review": 47803,
+            "voted_up": false,
+            "date": "2026-11-19",
+            "review_text": "The game has been out for more than 10 years and its still not optimized for PC wtf arethey doing this is an indie game and yet it still has these issues half the time its internet latency or frame stuttering, i have no problems playing any other online game, so why is it just this INDIE game that has these problems. FIX YOUR GAME.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-d43175dd",
+          "text": "One reviewer states that matchmaking is trash and that wins net you morsels while losses destroy your ELO.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "240526827",
+            "hours_at_review": 669.4,
+            "minutes_at_review": 40163,
+            "voted_up": false,
+            "date": "2026-11-18",
+            "review_text": "I stopped playing this game was when Onyx came out because my Xbox broke. I remembered playing this with my sibling, loving the character designs and having so much fun with it. When I finally having came back to the game when Arcadia was introduced I had fun with the game, playing free for all until I thought I was good enough to do 1v1s. I started playing Strikeout, which became my favourite game mode. I got better and better, I even fought against high plat and low diamond players and convincingly won a lot of those games. Then slowly the fan base became one of the most fucked up assortment of creatures I dread to call human beings. I 3 stock a guy playing his main three in strikeout, mind you I'm playing randomised legends to train at the game, he beats me narrowly, invites me to a private lobby and calls me trash, even though I 3 stock him last game, and leaves. Some while after this, I took a break from the game. When I came back, these braindead homunculi got worse somehow. I persisted, got better at the game and said \"Let's try ranked.\", I'm sad to say the experience is just awful, horrible, atrocious, downright devious, if you will. Wins net you morsels and losses destroy your ELO. Tell me why, when I've beaten three players significantly above 1700 ELO, why am I still at 1500-1600 ELO, when I started at low 1500. Not to mention that the matchmaking is trash. Does it even account for players maximum rank, if it does the system doesn't work, if it doesn't just why. The game's trash don't spend your time on this.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 5,
-        "cited_recommend": 0,
-        "divergence_p": 0.0586,
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 2,
+        "divergence_p": 0.766,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1210,
-    "steam_total_reviews": 177152,
+    "pool_n": 1200,
+    "steam_total_reviews": 180353,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/291550/5a626cc4b6ecf79d47927d771dfad799b7f1b145/header_alt_assets_11.jpg?t=1787157167",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/291550/f556b92e2c31af26bcc9846e1e1e5d49f0b11175/capsule_231x87_alt_assets_11.jpg?t=1787157167",
-    "grid": "https://cdn2.steamgriddb.com/grid/820b5138a91b4a3ef9a7024cbbcc9af9.png"
   }
 }

@@ -1,151 +1,128 @@
 {
   "appid": "2622380",
   "game_name": "ELDEN RING NIGHTREIGN",
-  "generated_at": "2026-08-10T10:01:37Z",
+  "generated_at": "2026-11-19T11:25:14Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2622380/header.jpg?t=1773099036",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2622380/8ebc4260af27bc55ba8b88982fd7eb7f970d43c9/capsule_231x87.jpg?t=1773099036",
+    "grid": "https://cdn2.steamgriddb.com/grid/a3284b3b073bc55151be33829602250a.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 14,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "A fast-paced cooperative challenge plagued by technical friction",
+    "tagline": "Technical instability overshadows an otherwise engaging cooperative experience.",
     "for_you_if": [
-      "you enjoy fast tactical co-op challenges",
-      "you have a dedicated group to play with",
-      "you can figure out hidden mechanics independently"
+      "you play exclusively in coordinated groups",
+      "you enjoy cooperative expedition challenges"
     ],
     "not_for_you_if": [
-      "you experience random crashes and poor optimization",
-      "you want clear tutorials for character builds",
-      "you encounter teammates abandoning matches prematurely"
+      "you need stable frame rates without crashing",
+      "you play primarily as a solo adventurer",
+      "you expect ongoing content updates"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 22,
-      "pct_positive": 9.1,
-      "muted": true
+      "pool_n": 31,
+      "pct_positive": 35.5,
+      "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 312,
-      "pct_positive": 84.3,
+      "pool_n": 219,
+      "pct_positive": 82.2,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 481,
-      "pct_positive": 84.8,
+      "pool_n": 442,
+      "pct_positive": 87.1,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 441,
-      "pct_positive": 84.6,
+      "pool_n": 508,
+      "pct_positive": 88.8,
       "muted": false
     }
   ],
-  "distortion_flags": [],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Review ratings increase steadily across longer playtimes.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 35.5,
+            "pool_n": 31
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 82.2,
+            "pool_n": 219
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 87.1,
+            "pool_n": 442
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 88.8,
+            "pool_n": 508
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 35.5,
+        "low_pool_n": 31,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 88.8,
+        "high_pool_n": 508,
+        "gap_pts": 53.3
+      }
+    }
+  ],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 22,
-      "pct_positive": 9.1,
-      "muted": true,
-      "n_note": "n=14 - too few reviews to call",
-      "summary": null,
-      "themes": []
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 312,
-      "pct_positive": 84.3,
+      "pool_n": 31,
+      "pct_positive": 35.5,
       "muted": false,
       "n_note": null,
-      "summary": "Early players navigate a fast-paced map facing performance hiccups, hidden mechanics, and balancing issues in solo play.",
+      "summary": "Early players encounter technical instability and minimal introductory guidance.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-6b02a2",
-              "claim": "Optimization is described as poor, with the game capped at 60fps and suffering from heavy screen tearing and stuttering.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231859248",
-                  "hours_at_review": 14.4,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "Surprisingly like it a lot more than Elden Ring. Very fun game with friends and even with randoms, although the connection can be awful with randoms. \nNot recommended for solo play, it is possible but not balanced around it and can feel unfair at times.\n\nBetter balancing and less cheapness than Elden Ring.\nOptimization is bad and it’s capped at 60fps, and the graphics are not good.\nAll characters feel fun and different to use, and there are some great skins for them. Although it is very grindy to get these skins.\nThere is a good amount of content and lots of replay value, but not enough RNG in some areas.\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 867
-                },
-                {
-                  "recommendationid": "231249046",
-                  "hours_at_review": 12.8,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "great for speed running not really a rogue lite\n\nalso max 60fps and crazy screen tear in 2026 :|",
-                  "truncated": false,
-                  "minutes_at_review": 767
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-80859e",
-              "claim": "Players experience technical issues including random game crashes, Easy Anti-Cheat errors, and infinite loading screens.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231412055",
-                  "hours_at_review": 19.0,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "I wholeheartedly dissuade anyone from purchasing this game on PC. This is the most unstable game FromSoft has ever put out, and that's saying something.\n\nNo amount of reinstallations, reconfigurations, eradication of potentially conflicting software, blood sacrifices to eldritch gods, etc. could prevent this game from crashing at random. There is nothing more crushing than nearing the end of an excellent run and crashing halfway through a boss. \n\nI hate this game because I want to play it, and it won't let me.",
-                  "truncated": false,
-                  "minutes_at_review": 1140
-                },
-                {
-                  "recommendationid": "230891293",
-                  "hours_at_review": 9.1,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "Decent game but dogwater EAC that kept crashing my computer randomly in an interval between 5min-1hour.",
-                  "truncated": false,
-                  "minutes_at_review": 544
-                },
-                {
-                  "recommendationid": "230499379",
-                  "hours_at_review": 5.2,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Played for multiple attempts across a couple of days and multiple losses. Finally get to the Night Lord and hit an infinite loading screen (which apparently is a known bug) which causes us all to have to quit the game (via task manager) and get no credit for any of that run, which was our first great run.\r\nDisappointing that such a glaring issue can be released in a \"game\" and be called functional.",
-                  "truncated": false,
-                  "minutes_at_review": 313
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-1c34fb",
-              "claim": "Reviewers report experiencing random game crashes during play.",
+              "claim_id": "ref-76db22",
+              "claim": "Reviewers report that the game suffers from constant crashing issues.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -153,22 +130,22 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231412055",
-                  "hours_at_review": 19.0,
+                  "recommendationid": "240426376",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 67,
                   "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "I wholeheartedly dissuade anyone from purchasing this game on PC. This is the most unstable game FromSoft has ever put out, and that's saying something.\n\nNo amount of reinstallations, reconfigurations, eradication of potentially conflicting software, blood sacrifices to eldritch gods, etc. could prevent this game from crashing at random. There is nothing more crushing than nearing the end of an excellent run and crashing halfway through a boss. \n\nI hate this game because I want to play it, and it won't let me.",
-                  "truncated": false,
-                  "minutes_at_review": 1140
+                  "date": "2026-11-17",
+                  "review_text": "Crashes after 5 minutes and there are zero ways to fix it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230891293",
-                  "hours_at_review": 9.1,
+                  "recommendationid": "235744354",
+                  "hours_at_review": 1.7,
+                  "minutes_at_review": 103,
                   "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "Decent game but dogwater EAC that kept crashing my computer randomly in an interval between 5min-1hour.",
-                  "truncated": false,
-                  "minutes_at_review": 544
+                  "date": "2026-09-21",
+                  "review_text": "Crashes constantly for no reasen",
+                  "truncated": false
                 }
               ]
             }
@@ -178,245 +155,254 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-3b1edb",
-              "claim": "The game features a faster-paced, time-dependent structure where players rush across a mostly static map to fight bosses before a timer runs out.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231803729",
-                  "hours_at_review": 19.2,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Fromsoft design are either awesome great game or just straight up  ♥♥♥♥♥♥♥ bad.\n\nI love this game but the fact they only add like 10-20 new type enemy and decided to sale it as whole game .\nThis game is great the combat is far more fluid but you don't grt anything new if you already have the previous game.\nMost of the world were poorly designed simply because the game run on time to get you at one point as fast as possible this is why they skip tons of detail .\n\nIt's a disgrace to even had elden ring name in it .",
-                  "truncated": false,
-                  "minutes_at_review": 1153
-                },
-                {
-                  "recommendationid": "231727092",
-                  "hours_at_review": 16.5,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Nightreign was a good time, though it has to be said that as both a multiplayer-focused game and a FromSoftware game it's almost disappointing. There's a fun game in here, especially if you have 2 friends to roll with (I didn't even bother trying to play with randoms), but it does somewhat feel like this was a very fast project meant to cash in on the IP. There's more jank than usual, and the bosses don't all feel like they were designed to fight more than one person at a time. Fighting common enemies is a trivial waste of time, and the game quickly devolves into a sprint around the mostly static map to crush as many bosses as possible before the time is up. There's some solid entertainment here, but it can't be helped that this feels like one of the most \"had potential\" games ever. I think a [b]3 out of 5[/b] is fair; it's acceptable due to the quality of the gameplay, but just barely. FromSoft are masters of asset re-use, it just usually feels better than this. I'd wait for a sale.",
-                  "truncated": false,
-                  "minutes_at_review": 989
-                },
-                {
-                  "recommendationid": "231149392",
-                  "hours_at_review": 8.7,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "Really cool multiplayer soulsborne game. If you like the genre this will definitely be one that you'll enjoy and  overall a really polished game. Compared to other soulsbornes it is a bit different and more fast paced/time dependent but all in all a big favourite for me and my friends.",
-                  "truncated": false,
-                  "minutes_at_review": 523
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-8d6fdd",
-              "claim": "Reviewers note that the game reuses assets from previous titles and includes a limited variety of new enemies.",
+              "claim_id": "ref-edf7ab",
+              "claim": "Reviewers report that the game lacks a new storyline or lore explanations during gameplay.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
+                "positive": 0,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231803729",
-                  "hours_at_review": 19.2,
+                  "recommendationid": "240163073",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 30,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Fromsoft design are either awesome great game or just straight up  ♥♥♥♥♥♥♥ bad.\n\nI love this game but the fact they only add like 10-20 new type enemy and decided to sale it as whole game .\nThis game is great the combat is far more fluid but you don't grt anything new if you already have the previous game.\nMost of the world were poorly designed simply because the game run on time to get you at one point as fast as possible this is why they skip tons of detail .\n\nIt's a disgrace to even had elden ring name in it .",
-                  "truncated": false,
-                  "minutes_at_review": 1153
+                  "date": "2026-11-14",
+                  "review_text": "I'll be fair about it was excited when it was coming out but when i tried it the actions in it where very good with the climbing on the obstacle cliffs and whatnot as far as playing its disappointing was wanting a new storyline to this and buck up on your perks like the first Elden ring this was a waste of 40 bucks if you like the whole combat and explicit classes where you don't get buck your own perks this is it but this was horrid and disappointing for this POS I'm sorry this was I thought was gonna be good for storyline and customizing perks but in reality it's like Godfall and you only chose what classes it gives you.\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231727092",
-                  "hours_at_review": 16.5,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Nightreign was a good time, though it has to be said that as both a multiplayer-focused game and a FromSoftware game it's almost disappointing. There's a fun game in here, especially if you have 2 friends to roll with (I didn't even bother trying to play with randoms), but it does somewhat feel like this was a very fast project meant to cash in on the IP. There's more jank than usual, and the bosses don't all feel like they were designed to fight more than one person at a time. Fighting common enemies is a trivial waste of time, and the game quickly devolves into a sprint around the mostly static map to crush as many bosses as possible before the time is up. There's some solid entertainment here, but it can't be helped that this feels like one of the most \"had potential\" games ever. I think a [b]3 out of 5[/b] is fair; it's acceptable due to the quality of the gameplay, but just barely. FromSoft are masters of asset re-use, it just usually feels better than this. I'd wait for a sale.",
-                  "truncated": false,
-                  "minutes_at_review": 989
-                },
-                {
-                  "recommendationid": "231133601",
-                  "hours_at_review": 12.3,
+                  "recommendationid": "236092606",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 90,
                   "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "this is a kookily fromsoft onboarding project, posted 8 years too late for the battle royale trend, IT WILL NOT GET ANY MORE UPDATES. having only a few new assets, as for the rest they're ripped or skin masked from other titles. the only reason why this exists could be due to shareholders wanting to make more elden ring affiliated IPs. it is also filled with technical errors, because of the newbie programmers. \r\n\r\nthe 'souls' titles has been on a down trend since dark souls 3, however this is truly the first fromsoft L -i really do want my £35 back.",
-                  "truncated": false,
-                  "minutes_at_review": 740
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-a78c9d",
-              "claim": "Reviewers state that the game lacks updates from the developers.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231205750",
-                  "hours_at_review": 5.7,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "i miss night reign alot. as far as replayability goes its good but fromsoft has seamingly abandoned night reign please from soft update the game or atleast announce a update",
-                  "truncated": false,
-                  "minutes_at_review": 339
-                },
-                {
-                  "recommendationid": "228113959",
-                  "hours_at_review": 12.5,
-                  "voted_up": false,
-                  "date": "2026-06-16",
-                  "review_text": "Quite a fun game with friends, but it's really sad to see it not getting any updates anymore.",
-                  "truncated": false,
-                  "minutes_at_review": 748
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ear-b8f832",
-              "claim": "Solo play is described as unbalanced and unfair compared to playing with friends or groups.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231859248",
-                  "hours_at_review": 14.4,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "Surprisingly like it a lot more than Elden Ring. Very fun game with friends and even with randoms, although the connection can be awful with randoms. \nNot recommended for solo play, it is possible but not balanced around it and can feel unfair at times.\n\nBetter balancing and less cheapness than Elden Ring.\nOptimization is bad and it’s capped at 60fps, and the graphics are not good.\nAll characters feel fun and different to use, and there are some great skins for them. Although it is very grindy to get these skins.\nThere is a good amount of content and lots of replay value, but not enough RNG in some areas.\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 867
-                },
-                {
-                  "recommendationid": "231727092",
-                  "hours_at_review": 16.5,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Nightreign was a good time, though it has to be said that as both a multiplayer-focused game and a FromSoftware game it's almost disappointing. There's a fun game in here, especially if you have 2 friends to roll with (I didn't even bother trying to play with randoms), but it does somewhat feel like this was a very fast project meant to cash in on the IP. There's more jank than usual, and the bosses don't all feel like they were designed to fight more than one person at a time. Fighting common enemies is a trivial waste of time, and the game quickly devolves into a sprint around the mostly static map to crush as many bosses as possible before the time is up. There's some solid entertainment here, but it can't be helped that this feels like one of the most \"had potential\" games ever. I think a [b]3 out of 5[/b] is fair; it's acceptable due to the quality of the gameplay, but just barely. FromSoft are masters of asset re-use, it just usually feels better than this. I'd wait for a sale.",
-                  "truncated": false,
-                  "minutes_at_review": 989
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-9ba2e9",
-              "claim": "Reviewers describe the opening hours as confusing for newcomers who need guidance from experienced players.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231716614",
-                  "hours_at_review": 6.0,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "actually a good & fun game when u know wtf you're doing - recommend playing with someone that can teach you cause the game is very confusing at first",
-                  "truncated": false,
-                  "minutes_at_review": 359
-                },
-                {
-                  "recommendationid": "230993239",
-                  "hours_at_review": 18.1,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "If you like Souls, this game is really fun expecially to play with friends! (But there are many important things kind of hidden, but game changers, so read carefully and look for tips online)",
-                  "truncated": false,
-                  "minutes_at_review": 1085
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-9948b6",
-              "claim": "Reviewers describe the opening hours as confusing due to important game mechanics being hidden or unguided.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231716614",
-                  "hours_at_review": 6.0,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "actually a good & fun game when u know wtf you're doing - recommend playing with someone that can teach you cause the game is very confusing at first",
-                  "truncated": false,
-                  "minutes_at_review": 359
-                },
-                {
-                  "recommendationid": "230993239",
-                  "hours_at_review": 18.1,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "If you like Souls, this game is really fun expecially to play with friends! (But there are many important things kind of hidden, but game changers, so read carefully and look for tips online)",
-                  "truncated": false,
-                  "minutes_at_review": 1085
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ear-adccdd",
-              "claim": "Reviewers point out that unlocking character skins requires a significant grind.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231859248",
-                  "hours_at_review": 14.4,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "Surprisingly like it a lot more than Elden Ring. Very fun game with friends and even with randoms, although the connection can be awful with randoms. \nNot recommended for solo play, it is possible but not balanced around it and can feel unfair at times.\n\nBetter balancing and less cheapness than Elden Ring.\nOptimization is bad and it’s capped at 60fps, and the graphics are not good.\nAll characters feel fun and different to use, and there are some great skins for them. Although it is very grindy to get these skins.\nThere is a good amount of content and lots of replay value, but not enough RNG in some areas.\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 867
-                },
-                {
-                  "recommendationid": "230740010",
-                  "hours_at_review": 3.8,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Grindy rng based pve snore fest",
-                  "truncated": false,
-                  "minutes_at_review": 227
+                  "date": "2026-09-24",
+                  "review_text": "I played an entire match with two other people and nothing but the loot made sense, no lore of any kind except for the intro cutscene, you are thrown somewhere with a swift slap on the butt and no explanation as to what you are doing there and then a kill zone closes in on you in a very short amount of time. No time to think at all really.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-3906ff6c",
+          "text": "One reviewer says there is a white screen for about 20 seconds and then the game crashes.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "235077793",
+            "hours_at_review": 0.4,
+            "minutes_at_review": 23,
+            "voted_up": false,
+            "date": "2026-09-12",
+            "review_text": "There's a white screen for ~20 seconds and then it crashes. I have tried dozens of solutions and none of them worked. My 23 minutes in this game are from testing about 70 times. Steam denied my refund because I stupidly waited longer than 2 weeks to request one. So I basically just threw $50 in the garbage because the game just doesn't work.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-5b70ba0d",
+          "text": "One reviewer says you have to finish the whole DLC in one run.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "240003595",
+            "hours_at_review": 1.9,
+            "minutes_at_review": 111,
+            "voted_up": false,
+            "date": "2026-11-12",
+            "review_text": "Damn, they fucked up a beautiful game.  This is a you have to finish  whole DLC in one run . There are a lot of people who have jobs who don't have a lot of time to play for hours, so it's not good...",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 0,
+        "divergence_p": 0.173,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 219,
+      "pct_positive": 82.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Newer participants find the experience improves with friends despite technical hiccups and static content.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-4cbb1c",
+              "claim": "Reviewers state that playing with friends or having a coordinated team makes the game significantly better and easier.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240301329",
+                  "hours_at_review": 12.6,
+                  "minutes_at_review": 755,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "good multiplayer  game to play with yours friends",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240208647",
+                  "hours_at_review": 16.0,
+                  "minutes_at_review": 960,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "for me , the sequel of original eldenring . i have an advise that you should have a friend to play this game easier i swear that very necessary.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237899953",
+                  "hours_at_review": 18.4,
+                  "minutes_at_review": 1106,
+                  "voted_up": true,
+                  "date": "2026-10-17",
+                  "review_text": "V good game, v good, sucks that its near impossible to play single player, but good game if you have any friends\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-cca70c",
+              "claim": "Reviewers mention a lack of new content updates for the game.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240097030",
+                  "hours_at_review": 19.6,
+                  "minutes_at_review": 1179,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "so fun if you play with friends, i have it on Xbox with 100% achievments and 200+ hours. can get repetetive after beating all the bosses but it can still be fun. sadly looks like there are no more content updates coming which makes it dying fast imo. still one of the best games ive ever played.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239062682",
+                  "hours_at_review": 12.0,
+                  "minutes_at_review": 718,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Game doesn't get new content </3",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238553044",
+                  "hours_at_review": 3.7,
+                  "minutes_at_review": 221,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "one of the best games i ever played but they ruined it by adding no updates",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-0a0441",
+              "claim": "Reviewers report experiencing frequent game crashes during play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239334507",
+                  "hours_at_review": 3.2,
+                  "minutes_at_review": 193,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "Literally constantly crashing. I cant even get to the night lord before I crash.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238884812",
+                  "hours_at_review": 4.3,
+                  "minutes_at_review": 258,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Really wanna like this game, but SO MANY CRASHES and crappy performance overall, which sucks.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-9940f010",
+          "text": "One reviewer says dying causes extreme punishment like losing the entire run, losing a level, and doing unnecessary backtracking to get souls before fighting the boss again.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "240520579",
+            "hours_at_review": 6.4,
+            "minutes_at_review": 385,
+            "voted_up": false,
+            "date": "2026-11-18",
+            "review_text": "Honestly, it's more of rogue-like than soul-like and time pressure is massive.\r\nThere is not enough time to read what the items even do, when you need to make the selection.\r\nThe map is uninspired, the tutorial doesn't even tell you what the icons on map mean.\r\n\r\nAnd the worst part is that it's just unenjoyable. I don't have the time to see around the map or fight normal mobs becouse you are forced to rush bosses. No time to read items in shop or boss rewards. And the extreme punishment for dying often means losing the entire run. The stable of souls-like was\r\ndying to boss -> running up to arena -> fight the boss again and optionally get your souls back.\r\n\r\nHere you also lose 1 level, so you need to get souls back and then go to a fire, before finnaly fighting the boss again, which is a lot of unneccessary backtracting and costs a lot of time. Or you can fight the boss with 1 level down, which is harder and might straight up disable your weapon (they are level restricted).\r\n\r\nHonestly, i still wouldn't mind it, if we had a mode with double the times and poor rewards so i can put the time and effort into learning the game myslef, but devs decided it's better to put a link to a guide in a menu and call it a day...",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-775ac4dc",
+          "text": "One reviewer says time pressure is massive, leaving no time to read what items do or what is in the shop and forcing you to rush bosses.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "240520579",
+            "hours_at_review": 6.4,
+            "minutes_at_review": 385,
+            "voted_up": false,
+            "date": "2026-11-18",
+            "review_text": "Honestly, it's more of rogue-like than soul-like and time pressure is massive.\r\nThere is not enough time to read what the items even do, when you need to make the selection.\r\nThe map is uninspired, the tutorial doesn't even tell you what the icons on map mean.\r\n\r\nAnd the worst part is that it's just unenjoyable. I don't have the time to see around the map or fight normal mobs becouse you are forced to rush bosses. No time to read items in shop or boss rewards. And the extreme punishment for dying often means losing the entire run. The stable of souls-like was\r\ndying to boss -> running up to arena -> fight the boss again and optionally get your souls back.\r\n\r\nHere you also lose 1 level, so you need to get souls back and then go to a fire, before finnaly fighting the boss again, which is a lot of unneccessary backtracting and costs a lot of time. Or you can fight the boss with 1 level down, which is harder and might straight up disable your weapon (they are level restricted).\r\n\r\nHonestly, i still wouldn't mind it, if we had a mode with double the times and poor rewards so i can put the time and effort into learning the game myslef, but devs decided it's better to put a link to a guide in a menu and call it a day...",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-959259d9",
+          "text": "One reviewer says dying causes you to lose one level, requiring you to get souls back and go to a fire before fighting the boss again, which costs a lot of time.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "240520579",
+            "hours_at_review": 6.4,
+            "minutes_at_review": 385,
+            "voted_up": false,
+            "date": "2026-11-18",
+            "review_text": "Honestly, it's more of rogue-like than soul-like and time pressure is massive.\r\nThere is not enough time to read what the items even do, when you need to make the selection.\r\nThe map is uninspired, the tutorial doesn't even tell you what the icons on map mean.\r\n\r\nAnd the worst part is that it's just unenjoyable. I don't have the time to see around the map or fight normal mobs becouse you are forced to rush bosses. No time to read items in shop or boss rewards. And the extreme punishment for dying often means losing the entire run. The stable of souls-like was\r\ndying to boss -> running up to arena -> fight the boss again and optionally get your souls back.\r\n\r\nHere you also lose 1 level, so you need to get souls back and then go to a fire, before finnaly fighting the boss again, which is a lot of unneccessary backtracting and costs a lot of time. Or you can fight the boss with 1 level down, which is harder and might straight up disable your weapon (they are level restricted).\r\n\r\nHonestly, i still wouldn't mind it, if we had a mode with double the times and poor rewards so i can put the time and effort into learning the game myslef, but devs decided it's better to put a link to a guide in a menu and call it a day...",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 14,
-        "cited_recommend": 6,
-        "divergence_p": 0.000452,
+        "cited_reviews": 8,
+        "cited_recommend": 5,
+        "divergence_p": 0.157,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -424,18 +410,18 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 481,
-      "pct_positive": 84.8,
+      "pool_n": 442,
+      "pct_positive": 87.1,
       "muted": false,
       "n_note": null,
-      "summary": "Mid-game reviewers cite startup crashes, limited post-launch updates, and matches disrupted by disconnecting teammates.",
+      "summary": "Experienced players rely heavily on cooperative play while facing persistent crashes and a static world.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-41d3c9",
-              "claim": "The game suffers from persistent crashing issues upon startup or during early gameplay sessions following updates.",
+              "claim_id": "mid-ad4478",
+              "claim": "Reviewers report frequent frame rate drops and regular crashes during gameplay.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -443,58 +429,170 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231794689",
-                  "hours_at_review": 61.5,
+                  "recommendationid": "240482092",
+                  "hours_at_review": 37.2,
+                  "minutes_at_review": 2235,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "kinda sad i have to make this, because i absolutely enjoyed the game when i could play it. \n\nBut eversince the DLC released it keeps crashing. I installed it on my laptop which is waayy more powerful than my desktop just to make sure its not any hardware related issue, but that didnt change anything. \n\nIt just boots me back to desktop when i start the game up, sometimes i reach Roundtable-Hold, but thats lucky if i get that far. From what i gathered so far i´m not the only one with this issue, and i´m not reinstalling windows or excluding the game from my firewall just to play it. \n\n",
-                  "truncated": false,
-                  "minutes_at_review": 3692
+                  "date": "2026-11-18",
+                  "review_text": "Overall 6/10\r\n\r\nI enjoyed some time in this game but... \r\n\r\na) it feels very \"lazy\" and unfinished - basically its Elden Ring models+combat , slightly expedited. The experiment in roguelite genre is welcome, but it doesn't come off as a game which got a lot of love - esp. post release. \r\nb) Even with a considerable rig, I REGULARLY dropped from 85->20FPS. I tried increasing shader size, tuning shadows, etc etc to no avail. The game is clearly unoptimised and that doesn't align with this studios normal quality.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231713547",
-                  "hours_at_review": 40.9,
+                  "recommendationid": "239769789",
+                  "hours_at_review": 81.0,
+                  "minutes_at_review": 4862,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "PLEASE HELP\n\n\nI love this game dearly but recently as of the past month it non stops crashing not even letting me play. If anyone knows the answer please respond I would love to sit down and play this again but currently I cant!",
-                  "truncated": false,
-                  "minutes_at_review": 2454
+                  "date": "2026-11-09",
+                  "review_text": "Its a great game up until it stopped wanting to work, it crashes all the time, it freezes and i have no idea what to do if someone has a solution please lmk because ive exhausted most options",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231338354",
-                  "hours_at_review": 27.0,
+                  "recommendationid": "239474799",
+                  "hours_at_review": 20.9,
+                  "minutes_at_review": 1256,
                   "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Game ran perfectly now it crashes if i have it open for more than a minute, tried everything cant fix it",
-                  "truncated": false,
-                  "minutes_at_review": 1621
+                  "date": "2026-11-06",
+                  "review_text": "I really liked this game, but recently, it just crashes nonstop. I have so many modern games on my computer, and this is the only one that crashes. I can play for about 20 minutes, then the game crashes. I relaunch and it crashes when I rejoin my session, sometimes in the menu.\n\nThe only fix is to restart my computer and that just buys me another 20 minutes before I go back into the crashing cycle. Breaks my heart because I really enjoyed playing it. Beat several bosses, but as of last week, the game is broken for me.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231309686",
-                  "hours_at_review": 92.8,
+                  "recommendationid": "239436155",
+                  "hours_at_review": 36.5,
+                  "minutes_at_review": 2191,
                   "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "it always closes the game at day 1 now \r\nits not a performance issue and game use to run fine now it just closes",
-                  "truncated": false,
-                  "minutes_at_review": 5567
+                  "date": "2026-11-05",
+                  "review_text": "I payed money for a game that doesn't work half the time and it makes the experience worse for everyone. everyday crashes really discourages from playing the game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "228761450",
-                  "hours_at_review": 46.2,
+                  "recommendationid": "239019700",
+                  "hours_at_review": 99.9,
+                  "minutes_at_review": 5994,
                   "voted_up": false,
-                  "date": "2026-06-25",
-                  "review_text": "This SHOULD be a positive review considering the following: If you like Elden Ring but want it in a more bite-sized and replayable form, this is exactly that. Very fun, approximately 1 hour runs, lots of diversity when using multiple different characters. It's just fun! I really enjoyed playing it.\r\n\r\nThe bad: For some reason after the 40ish hour mark, the game just suddenly decided it wouldn't work anymore. I could load into the Roundtable Hold and queue for a match, then as soon as I finish queueing the game crashes instantly. That's how it started anyway, now it just crashes on start-up. After attempts to update my drivers, optimize the gameplay settings, etc. I looked up any fixes and it turns out this is a rampant issue that I need to hunt down a solution to with the Admin console in my own pc to resolve some sort of conflict with Windows. While that's fine and dandy for some tech gurus, or even barely novice technology afficianados, I'm too stubborn or too stupid (probably both) to bother with hunting down a fix for a game that should work (and it did for over 40 hours!) when I open it so long as my PC has the appropriate specs.",
-                  "truncated": false,
-                  "minutes_at_review": 2773
+                  "date": "2026-10-31",
+                  "review_text": "The game is pretty good but some EAC update completely broke it and a lot of people are now randomly crashing all the time (myself included). The game literally just turns off, no logs, nothing, and if you reconnect to the same session sometimes the game just instantly closes again, leaving the other players without a teammate and no way to rejoin.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226810334",
-                  "hours_at_review": 55.2,
+                  "recommendationid": "238854432",
+                  "hours_at_review": 56.0,
+                  "minutes_at_review": 3360,
                   "voted_up": false,
-                  "date": "2026-05-30",
-                  "review_text": "started playing the game again after 6 months and it constantly crashes",
-                  "truncated": false,
-                  "minutes_at_review": 3311
+                  "date": "2026-10-29",
+                  "review_text": "it keeps on crashing for no reason",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-7cc2b3",
+              "claim": "Reviewers experience frequent game crashes that interrupt sessions and force restarts.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "239769789",
+                  "hours_at_review": 81.0,
+                  "minutes_at_review": 4862,
+                  "voted_up": false,
+                  "date": "2026-11-09",
+                  "review_text": "Its a great game up until it stopped wanting to work, it crashes all the time, it freezes and i have no idea what to do if someone has a solution please lmk because ive exhausted most options",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239474799",
+                  "hours_at_review": 20.9,
+                  "minutes_at_review": 1256,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "I really liked this game, but recently, it just crashes nonstop. I have so many modern games on my computer, and this is the only one that crashes. I can play for about 20 minutes, then the game crashes. I relaunch and it crashes when I rejoin my session, sometimes in the menu.\n\nThe only fix is to restart my computer and that just buys me another 20 minutes before I go back into the crashing cycle. Breaks my heart because I really enjoyed playing it. Beat several bosses, but as of last week, the game is broken for me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239436155",
+                  "hours_at_review": 36.5,
+                  "minutes_at_review": 2191,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "I payed money for a game that doesn't work half the time and it makes the experience worse for everyone. everyday crashes really discourages from playing the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239019700",
+                  "hours_at_review": 99.9,
+                  "minutes_at_review": 5994,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "The game is pretty good but some EAC update completely broke it and a lot of people are now randomly crashing all the time (myself included). The game literally just turns off, no logs, nothing, and if you reconnect to the same session sometimes the game just instantly closes again, leaving the other players without a teammate and no way to rejoin.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238854432",
+                  "hours_at_review": 56.0,
+                  "minutes_at_review": 3360,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "it keeps on crashing for no reason",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-f009e5",
+              "claim": "Reviewers experience frequent, unprovoked game crashes that cause sudden closures without logs and disrupt active sessions.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "239769789",
+                  "hours_at_review": 81.0,
+                  "minutes_at_review": 4862,
+                  "voted_up": false,
+                  "date": "2026-11-09",
+                  "review_text": "Its a great game up until it stopped wanting to work, it crashes all the time, it freezes and i have no idea what to do if someone has a solution please lmk because ive exhausted most options",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239474799",
+                  "hours_at_review": 20.9,
+                  "minutes_at_review": 1256,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "I really liked this game, but recently, it just crashes nonstop. I have so many modern games on my computer, and this is the only one that crashes. I can play for about 20 minutes, then the game crashes. I relaunch and it crashes when I rejoin my session, sometimes in the menu.\n\nThe only fix is to restart my computer and that just buys me another 20 minutes before I go back into the crashing cycle. Breaks my heart because I really enjoyed playing it. Beat several bosses, but as of last week, the game is broken for me.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239436155",
+                  "hours_at_review": 36.5,
+                  "minutes_at_review": 2191,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "I payed money for a game that doesn't work half the time and it makes the experience worse for everyone. everyday crashes really discourages from playing the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239019700",
+                  "hours_at_review": 99.9,
+                  "minutes_at_review": 5994,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "The game is pretty good but some EAC update completely broke it and a lot of people are now randomly crashing all the time (myself included). The game literally just turns off, no logs, nothing, and if you reconnect to the same session sometimes the game just instantly closes again, leaving the other players without a teammate and no way to rejoin.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238854432",
+                  "hours_at_review": 56.0,
+                  "minutes_at_review": 3360,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "it keeps on crashing for no reason",
+                  "truncated": false
                 }
               ]
             }
@@ -504,169 +602,141 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-ff32ee",
-              "claim": "Reviewers report that the game lacks sufficient post-launch content, new maps, weapons, and ongoing developer updates.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-87e0a9",
+              "claim": "Reviewers mention that the game suffers from a lack of post-release updates, content additions, and map variety.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 7,
-                "negative": 5
+                "positive": 5,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231794991",
-                  "hours_at_review": 74.3,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Dont waste your money on this game, just dont. its not worth 40 bucks, the dlc is very lacking and the new map sucks major ass. Each run feels very repetitive and the same, theres not a lot of variety, and your forced to stick with certain weapons that fit your stats depending on your character, and with characters like recluse or ironeye, its either get a good staff/bow or be completely useless to your team. Its more worth to buy risk of rain for 40 bucks, you'll get a ♥♥♥♥ ton more hours, mods are very easy to install, the music is banger, and the dlc's provide good content for the price. Unless fromsoft does something with this game (they wont and i will keep coping) its sadly not worth getting",
-                  "truncated": false,
-                  "minutes_at_review": 4460
-                },
-                {
-                  "recommendationid": "231678235",
-                  "hours_at_review": 53.0,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Поиграл скормные 53 часа, заркрыл дефолтных боссов, добралься до 3 его ранга ТЕМНОЙ ТЕМНОЙ ночи. Крайне скучно после того как увидел всех сильных и усиленных боссов, и собрал фулл билд для своего перса, офк не ГОДРОЛЛ билд, но вцелом уже закрывать соло темную ночь можно.\r\nКрайне мало кантента. Не рекомендую всем кто не любит жанр рогаликов\\соулс игр.",
-                  "truncated": false,
-                  "minutes_at_review": 3182
-                },
-                {
-                  "recommendationid": "231589343",
-                  "hours_at_review": 41.9,
+                  "recommendationid": "240543089",
+                  "hours_at_review": 73.2,
+                  "minutes_at_review": 4393,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Quick version of Elden Ring. Pretty cool but wish there was more bosses/content. Still good to jump on for a run or 3. Wish they would add bosses from all DS games just to beef it up a bit.",
-                  "truncated": false,
-                  "minutes_at_review": 2514
+                  "date": "2026-11-19",
+                  "review_text": "Its badass this concept worked and im sad its support was cut so quickly.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231461523",
-                  "hours_at_review": 35.7,
+                  "recommendationid": "239985049",
+                  "hours_at_review": 78.9,
+                  "minutes_at_review": 4734,
                   "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "Great game, it should get regular updates tho'",
-                  "truncated": false,
-                  "minutes_at_review": 2143
+                  "date": "2026-11-12",
+                  "review_text": "I like this game a lot i just wished we got at least ONE more update bro PLEASE FROMSOFT.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231225107",
-                  "hours_at_review": 69.7,
+                  "recommendationid": "239367453",
+                  "hours_at_review": 20.6,
+                  "minutes_at_review": 1235,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Very great game i absolutely recommend playing. Too bad fromslop decided to give up on it after giving it a single trash dlc with 2 nightlords out of which only 1 is fun so they can sell microtransactions for elden ring. Its still a great game, but maybe hold out on buying the dlc until you decide you absolutely need it.",
-                  "truncated": false,
-                  "minutes_at_review": 4182
+                  "date": "2026-11-04",
+                  "review_text": "If you want some Souls fix but can't be bothered restarting a whole character and doing a full playthrough, just play this. \n\nIt could have been so much more. Very disappointed they didn't continue to update with more bosses and map variety. But still fun. \n\nRating: 7/10\nCompleted: October 2026",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231152983",
-                  "hours_at_review": 70.4,
+                  "recommendationid": "239230851",
+                  "hours_at_review": 72.1,
+                  "minutes_at_review": 4324,
                   "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "Dreglord sucks ass. Please, fix him, From Software",
-                  "truncated": false,
-                  "minutes_at_review": 4222
+                  "date": "2026-11-02",
+                  "review_text": "hi devs update ur game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231136635",
-                  "hours_at_review": 35.7,
+                  "recommendationid": "239095155",
+                  "hours_at_review": 93.9,
+                  "minutes_at_review": 5633,
                   "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "Played 1206 hrs on ps5, decided buy it for my steam deck oled, so i can play this wherever and whenever i go. Runs good on 30 fps for about 2 and half full matches before low batt warning. Really hope fromsoft add more dlc, nightlord, maps, or even any new weapon will do. One of best purchase for only 40 bucks.",
-                  "truncated": false,
-                  "minutes_at_review": 2142
-                },
-                {
-                  "recommendationid": "226861523",
-                  "hours_at_review": 56.2,
-                  "voted_up": false,
-                  "date": "2026-05-31",
-                  "review_text": "THIS GAME NEEDS MORE CONTENT. DON T LET NIGHTEREIGN DIE. \n\nI am leaving this negative review because FromSoftware and Bandai Namco have completely abandoned Elden Ring Nightreign.\n\nThis game has a brilliant cooperative and roguelite foundation, but it severely lacks variety. We are feeling completely left behind. We supported this project from day one, and instead of giving it the long-term content and updates it deserves, the developers dropped a couple of minor patches and walked away to focus on other franchises.\n\nJust because FromSoftware has achieved massive success with Dark Souls and the main Elden Ring game doesn't mean they can treat players of their spin-offs as secondary customers. This absolute lack of post-launch support heavily damages the studio's prestige and reputation.\n\nWe DO NOT WANT this game to die. We demand substantial content updates, more boss variety, classes, or whatever. Until FromSoftware shows they care about this community and adds real content, this review will remain negative.\n\n(To everyone reading this: if you feel as abandoned as we do, do not stay silent. Leave your own negative review, spread the word, and vote this up. The only way to pressure FromSoftware and Bandai Namco into listening is by hitting their score. Join the protest and make our voices heard <3)",
-                  "truncated": false,
-                  "minutes_at_review": 3375
-                },
-                {
-                  "recommendationid": "226827680",
-                  "hours_at_review": 87.7,
-                  "voted_up": true,
-                  "date": "2026-05-31",
-                  "review_text": "A fun idea and executed rather well, with amazing bosses and replayability, however some new weapons and more dlc would go a loooong way in keeping the game fun and relevent.",
-                  "truncated": false,
-                  "minutes_at_review": 5259
-                },
-                {
-                  "recommendationid": "227582801",
-                  "hours_at_review": 84.3,
-                  "voted_up": false,
-                  "date": "2026-06-09",
-                  "review_text": "It would be a creat game if it got content, it have not gotten any content in a year\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 5057
-                },
-                {
-                  "recommendationid": "228222032",
-                  "hours_at_review": 75.7,
-                  "voted_up": true,
-                  "date": "2026-06-18",
-                  "review_text": "I NEED MORE CONTENT. Still a great game, but I keep telling my friends WE NEED MORE DLC.",
-                  "truncated": false,
-                  "minutes_at_review": 4541
-                },
-                {
-                  "recommendationid": "227116531",
-                  "hours_at_review": 49.9,
-                  "voted_up": false,
-                  "date": "2026-06-03",
-                  "review_text": "The game itself is really fun, but please release more content. More weapons especially (shadow of the erdtree). It feels like an unfinished game, please do not abandon it, the bosses are absolutely awesome and the character abilities are really fun, but it really really needs more",
-                  "truncated": false,
-                  "minutes_at_review": 2995
+                  "date": "2026-11-01",
+                  "review_text": "I really don't want to recommend this game. As if there's a ghost of Miyazaki standing behind me getting ready to take his socks off if I don't recommend it.... So, I will. Not because of any foot related threats but because it's a good game. If any other studio made this game it would be a towering accomplishment. Here's the \"But\"..... BUT it's FromSoftware. \n\nMake a game with the title Elden Ring, attach a roguelite to it with asynchronous character classes that do unique things and you have a recipe for success. What we ended up getting was a complete lack of replayability because the upgrades are uninspired, ONE map pre-DLC, and variation so poor that you see pretty much everything within the first 10 hours of gameplay. \n\n\nThere's a lot of good here but it is over-shadu'd by it's flaws.\nThe potential here is too damn high to let them off easy. It's fun, and modding helps fill the gaps. Yet a lot of us will wonder what could have been.",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "other",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-de08d6",
-              "claim": "Players experience matches being ruined by teammates disconnecting or abandoning games prematurely, compounded by penalties for remaining players who leave.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-73748f",
+              "claim": "Reviewers state that the game is significantly more enjoyable and better experienced when playing with friends in co-op rather than solo.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 1
+                "positive": 6,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231454908",
-                  "hours_at_review": 35.5,
+                  "recommendationid": "240543068",
+                  "hours_at_review": 45.3,
+                  "minutes_at_review": 2716,
                   "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "Despite all the skepticism at the announcement, I'm glad I was proven wrong about this project.\r\n\r\nIt's a new Soul's experience, but within the confines of a Battle Royale, it turns out to be a good and engaging thing.\r\nA tandem I had little expectation of, and even less ability to play.\r\nThere are a lot of borrowings, a lot of nostalgia, which is deliberately played on.\r\nBut it's still wonderful...\r\n\r\nMy main gripe with this game is players leaving matches for reasons (often as petty as their sense of dignity) or for no reason.\r\nFor some, dying to a simple mob on the first day is apparently a real tragedy, and therefore they may run away. It's a shame there's no serious punishment for this; otherwise, perhaps they would have overcome the difficulties, which is exactly what FromSoftware games demand of you.\r\n\r\nAnd finally, I can't ignore the Ⓜ️usic in this game!\r\nHuge respect and thanks to the composers for these new musical masterpieces!",
-                  "truncated": false,
-                  "minutes_at_review": 2128
+                  "date": "2026-11-19",
+                  "review_text": "10000000000% more fun if you play with friends.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226634252",
-                  "hours_at_review": 50.0,
-                  "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "Good game, terrible community. The devs actively punish the player who is stuck in a match where their teammates DC because YOU will get a DC penalty if you leave a match despite being the ONLY person in it. If you get the game, just find a group of friends or a Discord group and then play the game together or just mod it so you can play offline without having to deal with matchmaking and the many, many lost matches due to players who leave, grief, cheat, or more.",
-                  "truncated": false,
-                  "minutes_at_review": 3000
+                  "recommendationid": "240359334",
+                  "hours_at_review": 78.7,
+                  "minutes_at_review": 4719,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "Only fun with friends! Suffer together!!~",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239897712",
+                  "hours_at_review": 69.3,
+                  "minutes_at_review": 4156,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "It's not really like Fortnite, despite what Penguin Zero says. Ez, it's a fun game. I would say some of its best moments are those just insane clutches you could get with your teammates. Don't really know about the single-player experience at all because I don't play this game solo, but my god, can that moment be sweet. It's just you against the boss, and both your friends are down. The only thing you could do is hold out, and you hit that one alt that manages to get your friends up, and you're back in the game. Ugh, sweet like candy.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239793093",
+                  "hours_at_review": 76.0,
+                  "minutes_at_review": 4561,
+                  "voted_up": true,
+                  "date": "2026-11-09",
+                  "review_text": "good game with friends. wont recommend if solo",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238945620",
+                  "hours_at_review": 54.8,
+                  "minutes_at_review": 3290,
+                  "voted_up": true,
+                  "date": "2026-10-30",
+                  "review_text": "Had some problems with playing this on linux with nvidia driver updates but I could dance around it.\nGame is fun, the re starts can be brutal. Just wanting to fight the boss again but having to wait another hour to try can be tiring. \nGreat with friends!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238924428",
+                  "hours_at_review": 45.7,
+                  "minutes_at_review": 2744,
+                  "voted_up": true,
+                  "date": "2026-10-30",
+                  "review_text": "i'd say its pretty fun albeit repetitive if you like elden ring or any other souls game and looking to venture outside the traditional formula you might as well give it a try that said i highly recommend playing with a duo or a trio \n",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "divergent"
-        ],
-        "cited_reviews": 20,
-        "cited_recommend": 8,
-        "divergence_p": 5.74e-06,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 17,
+        "cited_recommend": 11,
+        "divergence_p": 0.016,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -674,56 +744,81 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 441,
-      "pct_positive": 84.6,
+      "pool_n": 508,
+      "pct_positive": 88.8,
       "muted": false,
       "n_note": null,
-      "summary": "Veterans highlight missing build tutorials and point penalties stemming from early match departures.",
+      "summary": "Long-term players highlight connection instability and a lack of expanded content support.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-cfcd8f",
-              "claim": "Reviewers note that players who leave matches prematurely penalize their remaining teammates' points.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-fbb171",
+              "claim": "The game suffers from server disconnection issues that cause players to lose active runs and receive penalties.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 3
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231613042",
-                  "hours_at_review": 215.9,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Probably the worst fromsoft game released. Only thing left to do is reach deep of the night lvl 5 but people leave too often to make it seem possible. You either follow your team or they leave. Run off past the closest boss, die, leave is a solid 80% of the game. The dlc made it even worse with a terrible map design it'll force you to play at times and what feels like the same rotation of bosses. If your teammate leaves, you either wait for a deduction in points or leave and get a higher deduction. The player base has by far one of the worst communities available. 0 communication makes it worse. If you enjoy the game as it is I highly recommend avoiding the dlc since there's no base game deep of the night otherwise. The characters are cool but the map is awful and being forced into it by trying to progress the only thing left to do gets annoying. If you run off and die that is on you, not the team you ran away from.",
-                  "truncated": false,
-                  "minutes_at_review": 12957
+                  "recommendationid": "240407832",
+                  "hours_at_review": 774.6,
+                  "minutes_at_review": 46477,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "The game is very good and very entertaining, the match making is kinda bad not due to the game, but due to ragequiters and trolls(RAGEQUITERS need to be punished), people eventually learn to play, I too did (never played and souls game). But the one thing that I really hate is the SERVERS, the servers SUCK, the servers randomly disconnect and POOF goes your RUN, and you'll even get PENALISED for their OWN SERVER ISSUES. Other then this I'll really recommend playing this game, and trust me you'll eventually learn and enjoy this game. CHEERS",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226574246",
-                  "hours_at_review": 528.7,
-                  "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "The Deep of Night mode is such a joke. You have to complete a run to get points to rank up but the entire time you have to pray that you don't end up with a team that will either constantly die or rage quit and make the run literally impossible and pointless. \n\nThe game Expects you to keep playing the THREE player game and waste 30 minutes to an hour of your life just to end up losing because you're missing your other players, but the moment you leave to requeue, the game punishes you for it. Then the game rubs salt in your wound by acknowledging your team raged quit but still punishes you for it. It doesn't matter if they take less points away from you for it because it becomes an uneven number and you end up needing to play an extra game or two or three especially if you're in the higher ranks and the punishment becomes too much and you can't recover. I've went from being almost rank 4 to permanently stuck at rank 2 or freshly 3 because the game punishes me for something that's not my fault.\n\nIts about time we stop defending bad game design just because its a \"Souls like game\" or people only knowing how to say \"Git Gud\" or \"Skill issue\". For too long these games get away from just doing random things that either don't make sense or shouldn't even happen just because the developers say its to make the games harder. It doesn't make the game more challenging it makes it more annoying.",
-                  "truncated": false,
-                  "minutes_at_review": 31721
-                },
-                {
-                  "recommendationid": "231328543",
-                  "hours_at_review": 110.2,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "It's okay if you don't play well, but if you just quit the game because of a mistake and cause your teammates to lose points for no reason, then show your profile so others can insult you. Stop fooling yourself like a baby who never grew up in their mom's arms. You're spineless, you're nothing, ♥♥♥♥ you.",
-                  "truncated": false,
-                  "minutes_at_review": 6611
+                  "recommendationid": "240213693",
+                  "hours_at_review": 348.0,
+                  "minutes_at_review": 20879,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "Please fix the regional matchmaking issues.\n\nI'm constantly getting matched with players who have extremely high ping and noticeable input delay in Deep of Night.\n\nOn top of that, hosts keep disconnecting immediately after we defeat the final boss, causing everyone else to lose rating points.\n\nThis makes climbing the ranks with random players almost impossible. It's incredibly frustrating to lose points after successfully completing an expedition because the host disconnects.\n\nPlease address these issues, especially the regional matchmaking and disconnect penalties.\n\nOnly giving the thumbs up if you are with 3 people",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-a45bf8",
-              "claim": "Reviewers describe the game as lacking a tutorial or clear explanations for character builds, items, and passive effects.",
+              "claim_id": "vet-56323c",
+              "claim": "Reviewers describe experiencing random server disconnections during matches that reset progress and penalize players.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240407832",
+                  "hours_at_review": 774.6,
+                  "minutes_at_review": 46477,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "The game is very good and very entertaining, the match making is kinda bad not due to the game, but due to ragequiters and trolls(RAGEQUITERS need to be punished), people eventually learn to play, I too did (never played and souls game). But the one thing that I really hate is the SERVERS, the servers SUCK, the servers randomly disconnect and POOF goes your RUN, and you'll even get PENALISED for their OWN SERVER ISSUES. Other then this I'll really recommend playing this game, and trust me you'll eventually learn and enjoy this game. CHEERS",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240213693",
+                  "hours_at_review": 348.0,
+                  "minutes_at_review": 20879,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "Please fix the regional matchmaking issues.\n\nI'm constantly getting matched with players who have extremely high ping and noticeable input delay in Deep of Night.\n\nOn top of that, hosts keep disconnecting immediately after we defeat the final boss, causing everyone else to lose rating points.\n\nThis makes climbing the ranks with random players almost impossible. It's incredibly frustrating to lose points after successfully completing an expedition because the host disconnects.\n\nPlease address these issues, especially the regional matchmaking and disconnect penalties.\n\nOnly giving the thumbs up if you are with 3 people",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-200dc7",
+              "claim": "Reviewers state that the game lacks long-term content updates and new expansions following its post-launch period.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -731,47 +826,186 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231551852",
-                  "hours_at_review": 1009.5,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "TLDR: Great game. Love it to death. Ignore the review and play it if you're looking for a good time. Read on if you care about the current state of multiplayer in FromSoft titles (and are a fellow masochist).\n\nI forgot to review this game back when I was actually playing it. To remedy this tragedy, here is a reality check:\n\nNightreign is the poster child of lost opportunity, the ultimate example of what could have been. As a friend put it, a bastion of lost potential.\n\nI am not talking about what some complain to be the lack of content in a game teeming with reused assets. \n\nI am not complaining about the lack of true PoI and boss randomisation in what is a roguelike spinoff. \n\nI am not even complaining about the gameplay balance or the misleading, opaque descriptions of items, passive effects and abilities.\n\nNo, all those pale in comparison to the most barebones implementation of multiplayer functionality in any game I've ever seen, such as:\n\n- No crossplay\n- No regional matchmaking \n- No ping limits\n- No or too few measures targetting cheaters, hackers and griefers\n- No proper communication system beyond simple pings\n- No dedicated lobbies with matchmaking filters, such as for expedition time, dlc ownership, etc.\n\nThis isn't anything new. Some of these were common complaints from the network test. What's baffling is that, one year later, they have not been addressed. With the most recent patch being more than six months ago, I am not convinced they ever will be.\n\nFor a game whose entire shtick is coop, this spells doom for its future. There is no longevity baked into what is otherwise a fantastic game. There is no clarification of the support timeline post-dlc release. There is no apparent improvement to the legacy net code that haunts the mind and spirit of every souls player, with its game-breaking desync's and jarring packet loss. To top it off, complete radio silence from FromSoft that they even recognise these longstanding issues raised by the player base, in…",
-                  "truncated": true,
-                  "minutes_at_review": 60570
+                  "recommendationid": "240325756",
+                  "hours_at_review": 726.7,
+                  "minutes_at_review": 43603,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "It's a great game to play with friends; and I appreciate the Deep of Night update since it gives you a reason to keep grinding. \n\nUnfortunately, though, it's become clear that Nightreign was never meant to be a long-term game in the series. Rather, it's a quick cash grab by reusing as many assets as possible while dedicating the bare minimum development resources they could get away with. \n\nThere hasn't been a single content update in almost a year and I'm fairly confident there won't ever be another. Now they'll just be watching the sales numbers to see when the revenue from the game falls beneath the cost to keep the servers running. When that happens I guess it's goodbye. This game deserves far more than the slow death they always planned for it to have.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231348500",
-                  "hours_at_review": 278.7,
+                  "recommendationid": "239545784",
+                  "hours_at_review": 322.1,
+                  "minutes_at_review": 19327,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "The game simply doesn't care about the player's experience, either quantitatively or qualitatively. Let me explain.\r\n\r\nIn terms of quantity, the game has very little content, with a rather lackluster paid expansion released a few months after the game's launch (May 2025, December 2025). I'm writing this review in November 2026, and we still haven't seen anything new: no balance changes, no new skins, no new characters, no new weapons (the game is still missing all the weapons from Shadow of the Erdtree, which could easily be copy-pasted into Nightreign without too much trouble!). A huge disappointment.\r\n\r\nIn terms of quality, the game suffers from some serious design issues. The biggest one is onboarding and learning the maps. The game pushes you to do everything as quickly as possible. How am I supposed to learn the map if, in order to win and avoid getting wiped out on the first night, I have to rush through very specific locations so quickly that I can't even stop for a moment?\r\nThis has been particularly problematic with the new map, which for quite some time was a source of frustration whenever it appeared on screen, precisely because of its convoluted layout\r\n\r\nAm I really supposed to watch YouTubers' gameplay videos? It's the equivalent of buying an IKEA piece of furniture that comes without instructions and then having to watch some guy on YouTube explain how to put it together. I want to have the manual and the tools to learn the map on my own. There's not even a free-roam mode, and there's absolutely no reason for that.\r\n\r\nAnother example of this disconnect between the speed and urgency the game demands and the knowledge the game itself requires can be found in certain moments when you acquire a new ability or item but literally don't have enough time to read its description and understand the tool you've just obtained.\r\n\r\nThis is a design philosophy that only works if the player base relies on YouTubers, streamers, and wikis. And there's nothing inherentl…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-eab462",
+              "claim": "Reviewers report a lack of new content updates and state that the developers have stopped maintaining the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240325756",
+                  "hours_at_review": 726.7,
+                  "minutes_at_review": 43603,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "I’ve put a lot of hours into Elden Ring Nightreign, mostly playing with the same group of friends over the past year. Most of them were completely new to Soulslike games, while I was already familiar with FromSoftware’s style, and somehow the game managed to work equally well for all of us.\r\n\r\nNightreign is surprisingly grounded and restrained. It isn’t constantly throwing flashy rewards or endless explanations at you, and that is part of what makes it so satisfying. Every character supports a variety of builds and playstyles, but in classic FromSoftware fashion, the game barely explains any of them. You have to experiment, explore and gradually figure out what works.\r\n\r\nOnce you learn the basics, the game becomes incredibly addictive. The moment-to-moment gameplay is consistently fun, whether you are underpowered at the beginning of a run, fully equipped near the end, playing alone or fighting alongside friends. There is a particular kind of magic to its gameplay loop that keeps pulling you back for another run.\r\n\r\nBetween the bosses, enemies, weapons, character builds and small hidden mechanics, there is always something new to discover or master. Even after playing for so long, it still feels like there is never enough time to explore everything the game has to offer.\r\n\r\nIt does sometimes feel as though the developers have forgotten about the game, but the community collectively shares the delusion that new content will arrive one day. Until then, community mods have been a blessing. Some of them add so much high-quality content that you occasionally forget you are playing fan-made additions rather than official updates.\r\n\r\nAnyone who has played another FromSoftware game will immediately feel at home. Nightreign builds on knowledge you already have from games such as Elden Ring, but reshapes those familiar mechanics to fit a completely different structure. As someone who also played Elden Ring with the Seamless Co-op mod, Nightreign feels very different during ex…",
-                  "truncated": true,
-                  "minutes_at_review": 16721
+                  "date": "2026-11-16",
+                  "review_text": "It's a great game to play with friends; and I appreciate the Deep of Night update since it gives you a reason to keep grinding. \n\nUnfortunately, though, it's become clear that Nightreign was never meant to be a long-term game in the series. Rather, it's a quick cash grab by reusing as many assets as possible while dedicating the bare minimum development resources they could get away with. \n\nThere hasn't been a single content update in almost a year and I'm fairly confident there won't ever be another. Now they'll just be watching the sales numbers to see when the revenue from the game falls beneath the cost to keep the servers running. When that happens I guess it's goodbye. This game deserves far more than the slow death they always planned for it to have.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239892013",
+                  "hours_at_review": 478.0,
+                  "minutes_at_review": 28680,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "I loved this game so much.. and am really heart broken they abandoned it. Come this December in 2026 they will have not updated their game for a year. I would recommended this game but as of right now I would not.. if you had the expectations of a live service game...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239545784",
+                  "hours_at_review": 322.1,
+                  "minutes_at_review": 19327,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "The game simply doesn't care about the player's experience, either quantitatively or qualitatively. Let me explain.\r\n\r\nIn terms of quantity, the game has very little content, with a rather lackluster paid expansion released a few months after the game's launch (May 2025, December 2025). I'm writing this review in November 2026, and we still haven't seen anything new: no balance changes, no new skins, no new characters, no new weapons (the game is still missing all the weapons from Shadow of the Erdtree, which could easily be copy-pasted into Nightreign without too much trouble!). A huge disappointment.\r\n\r\nIn terms of quality, the game suffers from some serious design issues. The biggest one is onboarding and learning the maps. The game pushes you to do everything as quickly as possible. How am I supposed to learn the map if, in order to win and avoid getting wiped out on the first night, I have to rush through very specific locations so quickly that I can't even stop for a moment?\r\nThis has been particularly problematic with the new map, which for quite some time was a source of frustration whenever it appeared on screen, precisely because of its convoluted layout\r\n\r\nAm I really supposed to watch YouTubers' gameplay videos? It's the equivalent of buying an IKEA piece of furniture that comes without instructions and then having to watch some guy on YouTube explain how to put it together. I want to have the manual and the tools to learn the map on my own. There's not even a free-roam mode, and there's absolutely no reason for that.\r\n\r\nAnother example of this disconnect between the speed and urgency the game demands and the knowledge the game itself requires can be found in certain moments when you acquire a new ability or item but literally don't have enough time to read its description and understand the tool you've just obtained.\r\n\r\nThis is a design philosophy that only works if the player base relies on YouTubers, streamers, and wikis. And there's nothing inherentl…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-e9d8fb",
+              "claim": "Matchmaking experiences issues with teammates disconnecting, ragequitting, and griefing runs.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240407832",
+                  "hours_at_review": 774.6,
+                  "minutes_at_review": 46477,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "The game is very good and very entertaining, the match making is kinda bad not due to the game, but due to ragequiters and trolls(RAGEQUITERS need to be punished), people eventually learn to play, I too did (never played and souls game). But the one thing that I really hate is the SERVERS, the servers SUCK, the servers randomly disconnect and POOF goes your RUN, and you'll even get PENALISED for their OWN SERVER ISSUES. Other then this I'll really recommend playing this game, and trust me you'll eventually learn and enjoy this game. CHEERS",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239293562",
+                  "hours_at_review": 117.4,
+                  "minutes_at_review": 7043,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "When I saw that this was a multiplayer i steered well clear of it. Zero interest in dealing with what multiplayer brings with it these days. \nI bought it last month during a dull point in the weekend. \nI'll say ive completed all reembraces except scholars and gotten all the achievements and completed it on all characters bar him (i just cba to play him). \nI've not done the deep of the night ones and tbh i probably won't.. just done have the interest tbh\n\n\nI quickly realized that its nothing new for the most part. \nThe characters fly in to start (i think ive seen that done elsewhere), there's a barrier of 'night rain' closing in to shrink the map in (also sounds familiar). \nThe design/enemies are mostly things you've seen in eldin ring/souls already.. few new things but nothing super different.\nThe relics are a nice idea, at least to give some customization to the characters\nThe storyline is a bit weak and a blast of characters thrown in with some relations. \n\nThe biggest issue are the people you play with.. the lag from others messed so many games up I ended up just leaving. \nGriefers.. guys who spam the map.. run in and die alone, the guys who follow you everywhere and spam to pick up anything that drops. \n- i did have a few good games with seemingly cool people so ofc its not all. \n\nBut I gave it a shot regardless and in the end, the whole thing feels/felt a bit underwhelming and repetitive. \nThats just my opinion and from the ratings i am def in the minority so take of that what you will. Great that others are enjoying it \n\n",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-19ebd9f3",
+          "text": "One reviewer states that runs become repetitive due to encountering the same map seeds, recycled field bosses, and predictable camp layouts.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "239986470",
+            "hours_at_review": 100.2,
+            "minutes_at_review": 6010,
+            "voted_up": true,
+            "date": "2026-11-12",
+            "review_text": "The first dozen hours are an absolute blast. Taking Elden Ring's combat and cranking the speed up with wall jumps, distinct Nightfarer abilities, and frantic three day runs feels super fresh at first. Sprinting through Limveld with a squad to grab quick upgrades before the circle closes in creates some awesome, high energy boss fights against the Night Lords.\r\n\r\nUnfortunately, the novelty wears off way faster than it should. Instead of true roguelike variety, you quickly start running into the exact same map seeds, recycled field bosses, and predictable camp layouts over and over. Once you learn the optimal routes to hit max level, every forty minute run starts blending together into a repetitive chore. It is a really fun remix for a weekend or two, especially if you love the base game's combat, but it just lacks the depth and randomness to stay enjoyable long term.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-e732b471",
+          "text": "One reviewer states that learning the maps and routes presents a difficult onboarding curve, particularly when forced to rush through areas.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239545784",
+            "hours_at_review": 322.1,
+            "minutes_at_review": 19327,
+            "voted_up": false,
+            "date": "2026-11-06",
+            "review_text": "The game simply doesn't care about the player's experience, either quantitatively or qualitatively. Let me explain.\r\n\r\nIn terms of quantity, the game has very little content, with a rather lackluster paid expansion released a few months after the game's launch (May 2025, December 2025). I'm writing this review in November 2026, and we still haven't seen anything new: no balance changes, no new skins, no new characters, no new weapons (the game is still missing all the weapons from Shadow of the Erdtree, which could easily be copy-pasted into Nightreign without too much trouble!). A huge disappointment.\r\n\r\nIn terms of quality, the game suffers from some serious design issues. The biggest one is onboarding and learning the maps. The game pushes you to do everything as quickly as possible. How am I supposed to learn the map if, in order to win and avoid getting wiped out on the first night, I have to rush through very specific locations so quickly that I can't even stop for a moment?\r\nThis has been particularly problematic with the new map, which for quite some time was a source of frustration whenever it appeared on screen, precisely because of its convoluted layout\r\n\r\nAm I really supposed to watch YouTubers' gameplay videos? It's the equivalent of buying an IKEA piece of furniture that comes without instructions and then having to watch some guy on YouTube explain how to put it together. I want to have the manual and the tools to learn the map on my own. There's not even a free-roam mode, and there's absolutely no reason for that.\r\n\r\nAnother example of this disconnect between the speed and urgency the game demands and the knowledge the game itself requires can be found in certain moments when you acquire a new ability or item but literally don't have enough time to read its description and understand the tool you've just obtained.\r\n\r\nThis is a design philosophy that only works if the player base relies on YouTubers, streamers, and wikis. And there's nothing inherentl…",
+            "truncated": true
+          }
+        },
+        {
+          "point_id": "one-a42bd25a",
+          "text": "One reviewer states that higher difficulties in Deep of Night make enemies excessively tanky, causing fights to drag on.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239410324",
+            "hours_at_review": 186.1,
+            "minutes_at_review": 11168,
+            "voted_up": true,
+            "date": "2026-11-05",
+            "review_text": "This game is great, I'm not good at it, but wow is it fun. Deep of night past difficulty 2 or 3 kind of sucks though, everything just ends up being so tanky, fights feel like they take forever.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-40f4ac04",
+          "text": "One reviewer reports that learning the maps and routing is difficult and rushed because the game mechanics pressure players to move quickly to survive the first night.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239545784",
+            "hours_at_review": 322.1,
+            "minutes_at_review": 19327,
+            "voted_up": false,
+            "date": "2026-11-06",
+            "review_text": "The game simply doesn't care about the player's experience, either quantitatively or qualitatively. Let me explain.\r\n\r\nIn terms of quantity, the game has very little content, with a rather lackluster paid expansion released a few months after the game's launch (May 2025, December 2025). I'm writing this review in November 2026, and we still haven't seen anything new: no balance changes, no new skins, no new characters, no new weapons (the game is still missing all the weapons from Shadow of the Erdtree, which could easily be copy-pasted into Nightreign without too much trouble!). A huge disappointment.\r\n\r\nIn terms of quality, the game suffers from some serious design issues. The biggest one is onboarding and learning the maps. The game pushes you to do everything as quickly as possible. How am I supposed to learn the map if, in order to win and avoid getting wiped out on the first night, I have to rush through very specific locations so quickly that I can't even stop for a moment?\r\nThis has been particularly problematic with the new map, which for quite some time was a source of frustration whenever it appeared on screen, precisely because of its convoluted layout\r\n\r\nAm I really supposed to watch YouTubers' gameplay videos? It's the equivalent of buying an IKEA piece of furniture that comes without instructions and then having to watch some guy on YouTube explain how to put it together. I want to have the manual and the tools to learn the map on my own. There's not even a free-roam mode, and there's absolutely no reason for that.\r\n\r\nAnother example of this disconnect between the speed and urgency the game demands and the knowledge the game itself requires can be found in certain moments when you acquire a new ability or item but literally don't have enough time to read its description and understand the tool you've just obtained.\r\n\r\nThis is a design philosophy that only works if the player base relies on YouTubers, streamers, and wikis. And there's nothing inherentl…",
+            "truncated": true
+          }
+        },
+        {
+          "point_id": "one-107e4cbc",
+          "text": "One reviewer states that learning the maps and routes poses a difficult onboarding challenge, particularly due to the fast pace required to avoid wiping on the first night.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239545784",
+            "hours_at_review": 322.1,
+            "minutes_at_review": 19327,
+            "voted_up": false,
+            "date": "2026-11-06",
+            "review_text": "The game simply doesn't care about the player's experience, either quantitatively or qualitatively. Let me explain.\r\n\r\nIn terms of quantity, the game has very little content, with a rather lackluster paid expansion released a few months after the game's launch (May 2025, December 2025). I'm writing this review in November 2026, and we still haven't seen anything new: no balance changes, no new skins, no new characters, no new weapons (the game is still missing all the weapons from Shadow of the Erdtree, which could easily be copy-pasted into Nightreign without too much trouble!). A huge disappointment.\r\n\r\nIn terms of quality, the game suffers from some serious design issues. The biggest one is onboarding and learning the maps. The game pushes you to do everything as quickly as possible. How am I supposed to learn the map if, in order to win and avoid getting wiped out on the first night, I have to rush through very specific locations so quickly that I can't even stop for a moment?\r\nThis has been particularly problematic with the new map, which for quite some time was a source of frustration whenever it appeared on screen, precisely because of its convoluted layout\r\n\r\nAm I really supposed to watch YouTubers' gameplay videos? It's the equivalent of buying an IKEA piece of furniture that comes without instructions and then having to watch some guy on YouTube explain how to put it together. I want to have the manual and the tools to learn the map on my own. There's not even a free-roam mode, and there's absolutely no reason for that.\r\n\r\nAnother example of this disconnect between the speed and urgency the game demands and the knowledge the game itself requires can be found in certain moments when you acquire a new ability or item but literally don't have enough time to read its description and understand the tool you've just obtained.\r\n\r\nThis is a design philosophy that only works if the player base relies on YouTubers, streamers, and wikis. And there's nothing inherentl…",
+            "truncated": true
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 5,
-        "cited_recommend": 1,
-        "divergence_p": 0.00247,
+        "cited_reviews": 6,
+        "cited_recommend": 3,
+        "divergence_p": 0.0216,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1256,
-    "steam_total_reviews": 95974,
-    "cohort_count": 3,
+    "pool_n": 1200,
+    "steam_total_reviews": 97794,
+    "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2622380/header.jpg?t=1773099036",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2622380/8ebc4260af27bc55ba8b88982fd7eb7f970d43c9/capsule_231x87.jpg?t=1773099036",
-    "grid": "https://cdn2.steamgriddb.com/grid/a3284b3b073bc55151be33829602250a.png"
   }
 }

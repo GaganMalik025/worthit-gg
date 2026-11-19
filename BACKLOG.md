@@ -72,6 +72,10 @@ and Flash-Lite counts it anyway. This is the composite pattern the 2026-11-06 sa
 found, now one level smaller. Not fixed. Options: split compound claims at extraction
 (two prompt attempts already failed their gates), or have the check name which part
 each review supports. Either needs a measured gate before rollout.
+> **2026-11-19, night 3's audit: 3 more of 20** (#7 Don't Starve Together, #11 Marvel
+> Rivals, #19 Elden Ring Nightreign; `evals/audit-4.4-2026-11-19.md`). That makes 6 of
+> 60 audited citations across three nights. These are agent reads, not a judge
+> measurement, so it is a recurrence count, not a rate. Still not fixed.
 
 2026-11-16 | **The hand audit never samples a one-reviewer point's citation** |
 building `evals/audit-4.4-2026-11-16.md` | `make_audit_sample.py` draws citations from

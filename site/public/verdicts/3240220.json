@@ -1,51 +1,62 @@
 {
   "appid": "3240220",
   "game_name": "Grand Theft Auto V Enhanced",
-  "generated_at": "2026-08-10T10:04:33Z",
+  "generated_at": "2026-11-19T11:45:13Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg?t=1781187782",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
+    "grid": "https://cdn2.steamgriddb.com/grid/a300cda08d24b7cf1cf45bd4eba1ae0b.jpg"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 14,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
-    "word": "Wait",
-    "tagline": "A sprawling criminal sandbox weighed down by launcher issues and heavy grinds.",
+    "word": "Buy",
+    "tagline": "A sprawling sandbox plagued by stubborn launchers and crowded lobbies.",
     "for_you_if": [
-      "you want the expanded content additions in story mode",
-      "you are strictly playing offline without third-party launchers"
+      "you want an expansive open world to explore",
+      "you enjoy diving into massive multiplayer sandboxes",
+      "you can overlook online economic grinds"
     ],
     "not_for_you_if": [
-      "you rely on stable third-party launcher access",
-      "you want balanced online payouts without excessive grinds",
-      "you play in public sessions plagued by cheaters"
+      "you will not deal with third-party launchers",
+      "you play on Linux systems",
+      "you need lobbies free of cheaters"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 78,
-      "pct_positive": 34.6,
+      "pool_n": 44,
+      "pct_positive": 54.5,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 660,
-      "pct_positive": 84.7,
+      "pool_n": 632,
+      "pct_positive": 88.8,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 860,
-      "pct_positive": 75.5,
+      "pool_n": 824,
+      "pct_positive": 90.7,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 639,
-      "pct_positive": 42.3,
+      "pool_n": 458,
+      "pct_positive": 89.3,
       "muted": false
     }
   ],
@@ -54,65 +65,45 @@
       "flag_id": "cohort_divergence",
       "type": "segmentation",
       "direction": null,
-      "shape": "rise_then_fall",
-      "sentence": "Approval ratings rise sharply after the initial hours before dropping significantly among long-term players.",
+      "shape": "monotonic_increase",
+      "sentence": "Early players express significantly more friction with access systems than those who push past the opening hours.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 34.6,
-            "pool_n": 78
+            "pct_positive": 54.5,
+            "pool_n": 44
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 84.7,
-            "pool_n": 660
+            "pct_positive": 88.8,
+            "pool_n": 632
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 75.5,
-            "pool_n": 860
+            "pct_positive": 90.7,
+            "pool_n": 824
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 42.3,
-            "pool_n": 639
+            "pct_positive": 89.3,
+            "pool_n": 458
           }
         ],
-        "shape": "rise_then_fall",
+        "shape": "monotonic_increase",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 34.6,
-        "low_pool_n": 78,
-        "high_cohort": "early",
-        "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 84.7,
-        "high_pool_n": 660,
-        "gap_pts": 50.1,
-        "peak_cohort": "early",
-        "peak_pct_positive": 84.7,
-        "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 42.3,
-        "drop_after_peak_pts": 42.4
-      }
-    },
-    {
-      "flag_id": "recency_shift",
-      "type": "recency",
-      "direction": "declined",
-      "shape": null,
-      "sentence": "Recent reviews express lower sentiment than the historical lifetime average.",
-      "evidence": {
-        "recent_pool_pct_positive": 67.3,
-        "recent_pool_n": 2237,
-        "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 79.8,
-        "steam_total_reviews": 76999,
-        "delta_pts": -12.5
+        "low_pct_positive": 54.5,
+        "low_pool_n": 44,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 90.7,
+        "high_pool_n": 824,
+        "gap_pts": 36.2
       }
     }
   ],
@@ -121,199 +112,132 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 78,
-      "pct_positive": 34.6,
+      "pool_n": 44,
+      "pct_positive": 54.5,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers encounter technical launch failures, account linking errors, and launcher blocks that prevent playing.",
+      "summary": "Players struggle with external account requirements and launcher blocks right at the start.",
       "themes": [
         {
           "theme": "access",
           "claims": [
             {
-              "claim_id": "ref-ac8ca1",
-              "claim": "Reviewers report that the game requires creating or linking a Rockstar account and using the Rockstar launcher to play the singleplayer campaign, which can result in errors and login failures.",
+              "claim_id": "ref-e52e50",
+              "claim": "Reviewers report that the game requires a third-party Rockstar account, a launcher, and authentication systems that prevent them from launching or playing the game.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 0,
-                "negative": 3
+                "positive": 2,
+                "negative": 7
               },
               "citations": [
                 {
-                  "recommendationid": "231503147",
+                  "recommendationid": "240358005",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "Thanks to Rockstar retroactively adding in the shitty Rockstar Launcher to this game with invasive DRM, I can't even launch this game anymore! Valve shouldn't allow these game companies to pull shit like this! I bought this game before this was implemented and have 120 hours in the \"Legacy version\", and now I can't even run it on my Linux PC. I hate Windows 11 and refuse to run it on my machine. I can't even refund this shit now. Fuck you Rockstar! I will never buy anything from you greedy fucks again!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240275679",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 34,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "bro fix your fucking launcher. i cant even play the game. ive tried lots of tutorial videos on youtube but i still cant run this fucking game!!!!!!!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238318337",
                   "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Just pirate the game at this point.\n\nI bought the game and I needed to make a rockstar account, and when I tried to make one, I get an error saying they can't handle my request at this time. and don't get me started on how utterly useless rockstar support is.\n\nI suggest you just pirate this game, you're not entitled to support a company if they aren't entitled to giving their own customers a fair and reliable service.",
-                  "truncated": false,
-                  "minutes_at_review": 26
+                  "date": "2026-10-22",
+                  "review_text": "In the end though, I dislike the Rockstar launcher more than I like the game.\n\nThe piece of software actively stops me from playing.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230858453",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "Requires a Rockstar Games launcher (sigh ok), a Rockstar account (sigh ok), and a third party anti-cheat system to launch the SINGLE PLAYER campaign. Instant refund.",
-                  "truncated": false,
-                  "minutes_at_review": 8
-                },
-                {
-                  "recommendationid": "229546991",
-                  "hours_at_review": 1.1,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "i had to log in to rockstar games account just to play the game and i had been trying to log in for days but it could not let me dont buy this game!! rockstar can you add an option to play as guest so i dont have to log in?",
-                  "truncated": false,
-                  "minutes_at_review": 63
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-d272d9",
-              "claim": "Reviewers describe losing access to their game entirely due to unhelpful customer support and issues with the Rockstar account recovery, password reset, or email linking systems.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 5
-              },
-              "citations": [
-                {
-                  "recommendationid": "230594783",
-                  "hours_at_review": 1.1,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Rockstar support is the worst thing on this planet!\nI never write reviews but I'm so frustrated and disappointed in rockstar. I can't log into my account that's linked to my Steam account because I'm not getting the verification code for my email. I'd wasted hours trying to talk to Rockstar to get this fixed!\n\nHonestly Rockstar if this is how you treat loyal customers then I'll be glad to not getting GTA 6 or any other future title on console or PC.",
-                  "truncated": false,
-                  "minutes_at_review": 63
-                },
-                {
-                  "recommendationid": "230987127",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "I'm getting the run around from Rockstar support. I can't play the game I legally own because I no longer have access to the email I registered the game with nearly a decade ago. Considering their idea of customer service is to close the ticket without helping, it's hard to recommend buying this game.",
-                  "truncated": false,
-                  "minutes_at_review": 32
-                },
-                {
-                  "recommendationid": "230646083",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Lost access to my RockStar account, email is no longer accessible, raised it with RockStar Support multiple times but to no avail, tickets closed without any additional explanation. \r\n\r\nCan't play this game now for which I paid for, can't even access it in offline mode, I bought it off steam but RockStar needs their additional verification checks. \r\n\r\nCorpo bs, glad I bought it heavily discounted and will just steal it now.\r\n\r\nI hope Steam makes them remove these addtional utterly useless checks.",
-                  "truncated": false,
-                  "minutes_at_review": 12
-                },
-                {
-                  "recommendationid": "231235481",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "- Buys a game from Steam.\n- Rockstar Launcher hijacks and links it to an account.\n- Years pass, wants to play again. Old email is dead.\n- Contacts rockstar support 5 times. Rejected. No support.\n- Can't play the games I bought, won't be able to buy new games,\n- Because locked out of my games by a 3rd party launcher.\n\n100% would \"close-up photo of a young woman with short dark brown hair and micro bangs, playful mischievous smile, holding a small silver spoon vertically beside her cheek, wearing a red ribbed knit top, sheer white curtain background with warm light, vintage 35mm film aesthetic\" again. (she has better customer support than Rockstar)",
-                  "truncated": false,
-                  "minutes_at_review": 20
-                },
-                {
-                  "recommendationid": "229380252",
-                  "hours_at_review": 1.5,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I wish this review were about gameplay, graphics, or missions… but I haven’t been able to play any of that because I’ve been stuck dealing with Rockstar’s absurdly slow password reset system. I got locked out of my account, and what should’ve been a simple “click link, reset password, get back in” turned into a multi‑hour waiting game. For 8 Days, that’s just unacceptable.\n\nThe worst part is how outdated the whole process feels. You request a reset, and then you sit there refreshing your inbox like it’s 2005, hoping the email finally arrives. When it does, it’s often delayed so long that the link is practically useless by the time you get it. I’ve spent more time trying to regain access to the game than I’ve ever spent actually playing it on Steam.\n\nFor a studio with the resources Rockstar has, this is embarrassing. GTA 5 is supposed to be a premium experience, but the account system feels like it was built by a completely different company—one that doesn’t care about user experience at all. If you ever lose access to your account, prepare to wait, and wait, and wait some more.\n\nI bought the game to play it, not to fight with a broken password reset system. Until Rockstar fixes this, I can’t recommend GTA 5 on Steam. A great game means nothing if you can’t even log in.\n",
-                  "truncated": false,
-                  "minutes_at_review": 88
-                },
-                {
-                  "recommendationid": "230742559",
-                  "hours_at_review": 0.1,
-                  "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": "it is amazing trash ass support wont let me reset my rockstar account to play the damn game again.",
-                  "truncated": false,
-                  "minutes_at_review": 5
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ref-083e9c",
-              "claim": "Reviewers experience technical launch failures where the game crashes on startup, throws missing file errors, or fails to open despite troubleshooting.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231372708",
+                  "recommendationid": "239261854",
                   "hours_at_review": 0.7,
+                  "minutes_at_review": 39,
                   "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Você paga pelo jogo e não consegue abrir de jeito nenhum, nojento \n\nO jogo simplesmente não abre e não fecha, quebrado, bugado",
-                  "truncated": false,
-                  "minutes_at_review": 40
+                  "date": "2026-11-03",
+                  "review_text": "Audio issues they havent fixed for years, cant have decent in game sound, stop kissing up to rockstar please!!!! they have bad account systems and they introduce game breaking limitation in their \"enhanced\" version, uneccessary launchers and unecessary account tie ins when you just want to play single player.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230254254",
+                  "recommendationid": "238577093",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 51,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "you stupid fucks making the game impossible to play actually crazy why do i need rockstar launcher and all this authentication garbage yopu stupid greedy fucks i wont spend another dime on your garbage and i cant wait for the pirites to get gta 6 actually fucking crazy",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239198229",
                   "hours_at_review": 0.2,
+                  "minutes_at_review": 11,
                   "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "well, usually love GTA, but I couldn't get this one to run. So I gotta vote for the original. Followed advice reddit and 3 youtube videos for a total of 2hrs, couldn't get past screen going black then crashing. GTA5 legacy and like every other game works fine.\nTried:\n- deleting settings.xml\n- ensuring discord, steam, and nvidia overlays were off\n- deleting all but the latest visual c++ redist\n- moving game storage to and from C:\n- updating GPU drivers\n- restarting\n- purposely setting.xml to low specs any pc could run\n- updating rockstar launcher\n- running both game and launcher as admin and disabled screen enhancements\n- combinations of the above",
-                  "truncated": false,
-                  "minutes_at_review": 14
+                  "date": "2026-11-02",
+                  "review_text": "i have an Rockstar games account which is working properly on my laptop. i am trying to open the same account in this desktop pc its showing server error all the time. i visit support section also but didn't get any relevant solution. i have paid plan kindly help me. my email.radhica81@gmail.com",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229444950",
-                  "hours_at_review": 0.3,
+                  "recommendationid": "238421294",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 11,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "0/10 Launcher, 10/10 Game I Haven't Played\n\nBought GTA V Enhanced. 16hr download. 6hr troubleshooting. 0 minutes gameplay.\n\nLaunch error: \"rune64.dll not found\". Steam verify 40min x2 did nothing. Rockstar Launcher says \"all files good\" but game won't start. No BattleEye folder, no Install_BattlEye.bat, no fix.\n\nSteam shows \"4.3 hours played\" all of it staring at the error message. \n\nRockstar's PC port is broken. If you buy this, budget extra time to become an IT technician. Avoid until they fix BattleEye install.",
-                  "truncated": false,
-                  "minutes_at_review": 17
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-c23a17",
-              "claim": "Reviewers state that multiplayer features do not work on Linux because BattlEye kicks players immediately upon character creation.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "230047081",
-                  "hours_at_review": 1.6,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "Multiplayer doesn't work under Linux, because BattlEye keeps kicking you for unknown reasons every time directly after creating your character.",
-                  "truncated": false,
-                  "minutes_at_review": 95
+                  "date": "2026-10-24",
+                  "review_text": "Literally cannot play it because of Rockstar's horrible 2FA system.\n\n\"request an email\" it says, but no email comes through. Tried multiple times but nothing happens.\n\nNo way to change my email, as even the website login locks me into this BS issue of going in circles hoping something changes.\n\nSo I guess i'm not playing GTA V again before GTA VI at this rate. No use in contacting support cause they are the most useless department in that entire company.\n\nFuck you, Rockstar.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229509380",
+                  "recommendationid": "239279441",
                   "hours_at_review": 0.1,
+                  "minutes_at_review": 7,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Shove your piece of shyte launcher deep in your arse and fuck off.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238648879",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 39,
                   "voted_up": true,
-                  "date": "2026-07-03",
-                  "review_text": "I have played this about 600h on Winslop throught the RockstarLauncher, I only bought it on Steam because the Linux compatibility of the RockstarLauncher is absolute ♥♥♥♥♥, just to run into the next problem:\nRockstar disabled BattleEye compatibility for GTAV online on Linux (which works fine for Arma3 by the way) this is not stated on the store page. Therefore you can't play GTA Online, which was my sole reason to buy this game.",
-                  "truncated": false,
-                  "minutes_at_review": 7
+                  "date": "2026-10-27",
+                  "review_text": "rock star stop logging me out of my rockstar account",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-1b1fc912",
+          "text": "One reviewer notes that the game uses kernel-level anti-cheat BattlEye which requires manual removal after game uninstall.",
+          "theme": "access",
+          "citation": {
+            "recommendationid": "238880415",
+            "hours_at_review": 0.8,
+            "minutes_at_review": 48,
+            "voted_up": false,
+            "date": "2026-10-30",
+            "review_text": "Requires 3rd-Party Account: Rockstar Games\n\nUses Kernel Level Anti-Cheat\nBattlEye - Requires manual removal after game uninstall\n\nRequires agreement to a 3rd-party EULA\nGrand Theft Auto V Enhanced EULA\n",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 14,
+        "cited_reviews": 9,
         "cited_recommend": 2,
-        "divergence_p": 0.0887,
+        "divergence_p": 0.053,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -321,238 +245,18 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 660,
-      "pct_positive": 84.7,
+      "pool_n": 632,
+      "pct_positive": 88.8,
       "muted": false,
       "n_note": null,
-      "summary": "Players experience new story content alongside random crashes, overlay incompatibilities, launcher failures, and reduced online payouts.",
+      "summary": "New players encounter launcher freezes and background process persistence issues after closing.",
       "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-83cb17",
-              "claim": "Players experience random freezing during story mode gameplay on fresh installations.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230951349",
-                  "hours_at_review": 10.6,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "1st time playing this version of GTA5 and fresh install and it just keeps freezing during story mode game play. This game has been out for probably 20 years already and Rockstar is probably worth about $100B at this point and they can't make a decent working game, lol. I hope GTA6 works...",
-                  "truncated": false,
-                  "minutes_at_review": 637
-                },
-                {
-                  "recommendationid": "230921790",
-                  "hours_at_review": 3.5,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "I purchased this game back in 2016. Because my old computer had poor performance, the game kept freezing, so I uninstalled it after playing for just a little while. Now, 10 years later, I have finally bought a new computer and downloaded the game again to play it.However, I lost access to my old email address, so I cannot enter the verification code. I already contacted support, but they refused to help, stating 'insufficient evidence, you are not the owner of the account.'I am the original owner of this account. Please let me know what specific proofs or purchase history you need so I can prove my ownership and regain access.\"",
-                  "truncated": false,
-                  "minutes_at_review": 212
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-994f45",
-              "claim": "The game crashes when using overlay applications such as the NVIDIA App or when enabling FSR3 upscaling in the graphics settings.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230806732",
-                  "hours_at_review": 12.7,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "Game is carshing a lot when any overlay App is used such as NVDIA App And if we use FSR3 upscalling method in graphics settings,",
-                  "truncated": false,
-                  "minutes_at_review": 764
-                },
-                {
-                  "recommendationid": "231238380",
-                  "hours_at_review": 13.8,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "good game no fps spikes at high settings runs smoothly with my pc",
-                  "truncated": false,
-                  "minutes_at_review": 826
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ear-041401",
-              "claim": "GTA Online payouts for heists have been reduced through updates.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 5
-              },
-              "citations": [
-                {
-                  "recommendationid": "230514362",
-                  "hours_at_review": 6.2,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "I've loved this game ever since I first played it on my Xbox 360. I've played it on PC, PS4, and lately on PS5. The single-player is still a 10/10 experience. The online mode is fine—or at least it was before the huge nerfs to the heist final payouts. Now, I've lost all my willingness to play this game. I wanted to grind some more, but after finishing the new heist a few times, I don't even see the point anymore. You turned a great online game with a good gameplay loop into something where you only play two heists once a week and then forget about it. It's kind of sad that you see your online product as some mobile gacha cash grab. I'm looking forward to some changes, but for now, playing feels completely pointless.",
-                  "truncated": false,
-                  "minutes_at_review": 373
-                },
-                {
-                  "recommendationid": "230607041",
-                  "hours_at_review": 3.8,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "I enjoyd over 1000 hours (PS4&PS5) but sadly cant recommend it anymore because online heist money nerfs..",
-                  "truncated": false,
-                  "minutes_at_review": 230
-                },
-                {
-                  "recommendationid": "230492223",
-                  "hours_at_review": 4.2,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "DO NOT BUY THIS GAME. IF YOU HAVE PRE-ORDER GTA 6, CANCEL YOUR PRE-ORDER.\n\nThe update released today has officially destroyed the game. Most content, especially the most beloved content, is now no longer worth playing due to poor payouts.\n\nThis is clearly an attempt at cash grabbing by trying to make an incentive to buy in-game microtransactions, or by making you subscribe to their \"GTA+\" subscription. Do not buy either of those, and do not buy this game.\n\nIf you buy this game, you might as well go play a game where everything is locked behind a paywall.",
-                  "truncated": false,
-                  "minutes_at_review": 254
-                },
-                {
-                  "recommendationid": "230483890",
-                  "hours_at_review": 8.2,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "Nerfed all the GTA Online heists and activities removing any incentive to play the game at all.",
-                  "truncated": false,
-                  "minutes_at_review": 494
-                },
-                {
-                  "recommendationid": "231142443",
-                  "hours_at_review": 19.7,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "13 years of nickel and diming just to give every player one last kick in the balls with the heist nerfs. Story mode's okay though.",
-                  "truncated": false,
-                  "minutes_at_review": 1182
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-edb94f",
-              "claim": "The game suffers from balance issues and reduced payouts in online heists, creating an excessive grind or incentive for microtransactions.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "230514362",
-                  "hours_at_review": 6.2,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "I've loved this game ever since I first played it on my Xbox 360. I've played it on PC, PS4, and lately on PS5. The single-player is still a 10/10 experience. The online mode is fine—or at least it was before the huge nerfs to the heist final payouts. Now, I've lost all my willingness to play this game. I wanted to grind some more, but after finishing the new heist a few times, I don't even see the point anymore. You turned a great online game with a good gameplay loop into something where you only play two heists once a week and then forget about it. It's kind of sad that you see your online product as some mobile gacha cash grab. I'm looking forward to some changes, but for now, playing feels completely pointless.",
-                  "truncated": false,
-                  "minutes_at_review": 373
-                },
-                {
-                  "recommendationid": "230492223",
-                  "hours_at_review": 4.2,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "DO NOT BUY THIS GAME. IF YOU HAVE PRE-ORDER GTA 6, CANCEL YOUR PRE-ORDER.\n\nThe update released today has officially destroyed the game. Most content, especially the most beloved content, is now no longer worth playing due to poor payouts.\n\nThis is clearly an attempt at cash grabbing by trying to make an incentive to buy in-game microtransactions, or by making you subscribe to their \"GTA+\" subscription. Do not buy either of those, and do not buy this game.\n\nIf you buy this game, you might as well go play a game where everything is locked behind a paywall.",
-                  "truncated": false,
-                  "minutes_at_review": 254
-                },
-                {
-                  "recommendationid": "230563981",
-                  "hours_at_review": 11.7,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Whoever says EA is a bad company clearly hasn't experienced a Rockstar game before. Ranging from customer support that doesn't give a modicum of a crap about the issues players experience (for example, I filled out a ticket for an issue I was having back in June, got a reply almost exactly a month later, and the agent who responded to it closed the ticket pretty much right after he messaged me, not even giving me a chance to respond), to not patching issues that have been in the game for literally years, to trying to bottleneck players into spending obscene amounts of money on microtransactions (with the alternative being tons of grinding, not helped by them nerfing the few moneymaking techniques that are actually FUN), and harshly punishing players for things that either aren't their fault - such as an ex-friend of mine being banned and having his character deleted as a consequence of something a hacker in his online lobby did - or are poorly designed/described by Rockstar themselves.\r\n\r\nGiven how much of a grind-heavy, poorly-managed experience GTA Online is (as well as how the story mode of GTA V is a considerable letdown compared to GTA IV and its DLC), I don't pity anyone who's foolish enough to buy or especially preorder GTA VI, let alone anyone who would play this one. The nicest things I can say about GTA V/Online are that the gameplay itself and graphics are pretty good, but the issues I mentioned before render this beyond salvaging.",
-                  "truncated": false,
-                  "minutes_at_review": 704
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "access",
           "claims": [
             {
-              "claim_id": "ear-db66ed",
-              "claim": "Players are required to install the BattleEye anti-cheat software, which causes random session disconnections.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230654560",
-                  "hours_at_review": 6.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "ok so where do i start rockstar? \n\nok first off battleye needs a lot of improvment it keeps kicking people out of sessions randomly for no reason also not every game needs anti cheat unless someone puts a gun on ur head and told u to do so but still it was better before without anti cheat because it ruins the entire game for everyone how do u expect people to play gta 6 if gta 5 keeps kicking people randomly out of sessions even tho they are not cheating like make it make sense if gta 6 includes battleeye anti cheat i need everyone from the comments to speak up to rockstar and tell them we dont want it before things get worse also gta 6 having battleye is just gonna make it even worse dont go down the drain like sony",
-                  "truncated": false,
-                  "minutes_at_review": 372
-                },
-                {
-                  "recommendationid": "230994852",
-                  "hours_at_review": 3.5,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "I really want to like the game after enjoying older GTA games like San Andreas.  I've tried to get into it several times over the years, but I keep putting it down because of three reasons:\n\n-Animations are very slow and clunky.  Getting into and out of a car for example, is painful.\n\n-Control overload.  Every button on a controller is mapped several times over and rapidly changes depending on what the character is doing.  If you are a casual gamer who picks up a game for a few hours a week, its very difficult to remember and master so many controls.  Very easy to press a wrong button and do something totally unexpected, which ends up costing you a mission.\n\n-Invasive BattleEye anti-cheat software needs to be installed to play the game.",
-                  "truncated": false,
-                  "minutes_at_review": 209
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-3f7b6a",
-              "claim": "Players encounter issues with the Rockstar launcher failing to work or making the game unplayable.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231884513",
-                  "hours_at_review": 2.6,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "ROCSTAR LUNCHER IS NOT WORKING. GAME DEVELOPER IS NOT RESPONDING. I WANT A REFUND EMOUND RIGHT NOW. I WANT TO PURCHASE ANOTHER GAME",
-                  "truncated": false,
-                  "minutes_at_review": 158
-                },
-                {
-                  "recommendationid": "229464701",
-                  "hours_at_review": 6.8,
-                  "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "I would highly recommend buying this game if it were made by anyone other than Rockstar. Rockstar is a plague. the rockstar launcher is an abomination that has ruined this game and made it literally unplayable.",
-                  "truncated": false,
-                  "minutes_at_review": 405
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-b5f581",
-              "claim": "The third-party launcher and account verification systems prevent players from accessing the game on Steam.",
+              "claim_id": "ear-f39ddf",
+              "claim": "Reviewers describe encountering issues with the Rockstar launcher freezing or failing to launch the game properly.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -560,76 +264,42 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231884513",
-                  "hours_at_review": 2.6,
+                  "recommendationid": "239576437",
+                  "hours_at_review": 3.1,
+                  "minutes_at_review": 189,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "ROCSTAR LUNCHER IS NOT WORKING. GAME DEVELOPER IS NOT RESPONDING. I WANT A REFUND EMOUND RIGHT NOW. I WANT TO PURCHASE ANOTHER GAME",
-                  "truncated": false,
-                  "minutes_at_review": 158
+                  "date": "2026-11-07",
+                  "review_text": "rockstar launcher freezes, wont let me load the game, Shitty company",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231282174",
-                  "hours_at_review": 8.9,
+                  "recommendationid": "239041624",
+                  "hours_at_review": 6.2,
+                  "minutes_at_review": 370,
                   "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "Greedy worthless dogsh*t motherf*ckers f*ck rockstar locking me out of a f*cking game I bought on STEAM because they need to verify my account (Why the f*ck am I forced online?) through some random f*cking email address I have never heard of or seen F*CK ROCKSTAR.",
-                  "truncated": false,
-                  "minutes_at_review": 536
+                  "date": "2026-10-31",
+                  "review_text": "uninstalling cuz i'm tired of their shitty launcher, someone get a llm to bypass it or smth please",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229464701",
-                  "hours_at_review": 6.8,
+                  "recommendationid": "238978644",
+                  "hours_at_review": 2.5,
+                  "minutes_at_review": 148,
                   "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "I would highly recommend buying this game if it were made by anyone other than Rockstar. Rockstar is a plague. the rockstar launcher is an abomination that has ruined this game and made it literally unplayable.",
-                  "truncated": false,
-                  "minutes_at_review": 405
+                  "date": "2026-10-31",
+                  "review_text": "Full of bugs, skybox flickers for some reason. Rockstar launcher is the worst piece of software I've ever seen, and it's ludicrous that Steam pushes these updates out as a game update every single time. \r\n\r\nThe launcher failed to run the game, I clicked Restart, it told me it failed again, then the game popped up. When I closed the game it had yet another error saying the game was already running. \r\n\r\nI think we're done here.",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "content",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-0636c6",
-              "claim": "The enhanced version features new content such as HSW and the weaponized Ignus that were absent in the legacy version.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231833149",
-                  "hours_at_review": 16.6,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "has some bugs but alot of things that legacy doesnt have like the hsw, weponaised ignus etc enchanced does have so thats a plus",
-                  "truncated": false,
-                  "minutes_at_review": 999
-                },
-                {
-                  "recommendationid": "230873266",
-                  "hours_at_review": 8.5,
-                  "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": "Really Good Game, Both Online & Story Mode are 100% Worth Playing, GTA Enhanced Version is Worth Upgrading to if you only have the original version of the pc game, the graphics are stunning & beautiful, especially if you have a high end pc like myself.\n\n100% Recommended & 100% Worth Buying!",
-                  "truncated": false,
-                  "minutes_at_review": 512
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ear-804e39",
-              "claim": "Online mode features ongoing bugs such as continuous phone calls and a cooldown timer for texting other players.",
+              "claim_id": "ear-450d6a",
+              "claim": "Reviewers note that the game remains running in the task manager as a background process and refuses to close normally after exiting.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -637,36 +307,81 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231835346",
-                  "hours_at_review": 4.0,
+                  "recommendationid": "239451707",
+                  "hours_at_review": 5.3,
+                  "minutes_at_review": 319,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "the enhanced version looks better yes,\r\nbut the Online Bugs are still there , you still get spam called by every bajeezus and their mothers and extended family , theyve removed text chat , now to text someone you need to use the phone with around 5 minutes of cooldown between messages ,from my experience and it runs like .... well ♥♥♥♥",
-                  "truncated": false,
-                  "minutes_at_review": 237
+                  "date": "2026-11-05",
+                  "review_text": "game if total bullshayc always having some kind of a problem like i js want to play the game not spend 1 hour fixing it then also when i want to close the game it doesnt want to an it js stays in the task menager like its a background process i think if i paid for the game i should be able to close it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230532731",
+                  "recommendationid": "238978644",
                   "hours_at_review": 2.5,
+                  "minutes_at_review": 148,
                   "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "I cant play online because of a bug from when this port launched that still hasn't been fixed \n\nlegacy is better anyways, enhanced sucks ass 0/10",
-                  "truncated": false,
-                  "minutes_at_review": 147
+                  "date": "2026-10-31",
+                  "review_text": "Full of bugs, skybox flickers for some reason. Rockstar launcher is the worst piece of software I've ever seen, and it's ludicrous that Steam pushes these updates out as a game update every single time. \r\n\r\nThe launcher failed to run the game, I clicked Restart, it told me it failed again, then the game popped up. When I closed the game it had yet another error saying the game was already running. \r\n\r\nI think we're done here.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-f25610",
+              "claim": "Reviewers report that the game process continues to run in the task manager after closing.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239451707",
+                  "hours_at_review": 5.3,
+                  "minutes_at_review": 319,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "game if total bullshayc always having some kind of a problem like i js want to play the game not spend 1 hour fixing it then also when i want to close the game it doesnt want to an it js stays in the task menager like its a background process i think if i paid for the game i should be able to close it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238978644",
+                  "hours_at_review": 2.5,
+                  "minutes_at_review": 148,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "Full of bugs, skybox flickers for some reason. Rockstar launcher is the worst piece of software I've ever seen, and it's ludicrous that Steam pushes these updates out as a game update every single time. \r\n\r\nThe launcher failed to run the game, I clicked Restart, it told me it failed again, then the game popped up. When I closed the game it had yet another error saying the game was already running. \r\n\r\nI think we're done here.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-4eb70051",
+          "text": "One reviewer says there is no skip cutscene option in online mode.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "239220000",
+            "hours_at_review": 2.5,
+            "minutes_at_review": 150,
+            "voted_up": true,
+            "date": "2026-11-02",
+            "review_text": "Great Game But the issue comes when there is no skip cutscene option in online mode side characters larp too much \n",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "escalated",
         "triggers": [
-          "divergent"
+          "thin"
         ],
-        "cited_reviews": 19,
-        "cited_recommend": 4,
-        "divergence_p": 1.23e-09,
+        "cited_reviews": 4,
+        "cited_recommend": 0,
+        "divergence_p": 0.000157,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -674,149 +389,18 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 860,
-      "pct_positive": 75.5,
+      "pool_n": 824,
+      "pct_positive": 90.7,
       "muted": false,
       "n_note": null,
-      "summary": "Mid-game reviewers cite heavy microtransactions, severe online grinds, and diminished heist payouts from recent updates.",
+      "summary": "Players note slow launcher loading times and missing in-game communication features online.",
       "themes": [
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "mid-770123",
-              "claim": "Reviewers report that the Rockstar launcher features poor customer support and technical issues.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231884932",
-                  "hours_at_review": 24.0,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Can`t recommend any rockstar game cause rockstar launcher. I have newer seen so bad customer support than they have in rockstar. you could imagine it would at least be decent for such of big company",
-                  "truncated": false,
-                  "minutes_at_review": 1438
-                },
-                {
-                  "recommendationid": "230487895",
-                  "hours_at_review": 86.2,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "Rockstar Games has become one of the most anti-consumer companies in the industry. The pricing of in-game items encourages players to buy Shark Cards or GTA+, making the grind so time-consuming that spending money becomes the practical alternative for many players.\r\n\r\nThat isn't even mentioning the numerous controversies over the years, including taking down community mods, releasing half-baked remasters, and creating unnecessary platform disparities. Rockstar, we don't want your terrible launcher or awful customer support—we want you to listen to your community.\r\n\r\nThe newest update is a perfect example of why so many players are frustrated. Older heists, which were some of the best ways to earn money, were heavily nerfed so the newest heist could become the \"highest-paying\" activity. The Kortz Center Heist is overpriced, underwhelming, and uninspired. Yet it seems like Rockstar expects players to rush into buying it and spend countless hours grinding through recycled content.\r\n\r\nTo anyone reading this review, I strongly recommend waiting until after GTA VI releases to see what players have to say before deciding whether it's worth your money.\r\n\r\n#PlayersNotProfit",
-                  "truncated": false,
-                  "minutes_at_review": 5169
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "mid-ffd426",
-              "claim": "Reviewers note that the game features expensive in-game item pricing and heavily relies on microtransactions like Shark Cards.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230750444",
-                  "hours_at_review": 95.2,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "GTA 5 is one of the best single-player games, as almost everyone knows. Right now I'm not evaluating its story mode. This review is solely about its online mode. \nPersonally, I love grind games, especially achievements that are hard to obtain.  In total, I've probably put in 1,200 hours (600 hours on Steam Legacy, 100 hours on Enhanced, and about 500 hours on Xbox). Despite this, GTA Online is one of the worst games that doesn't care about your free time. The game mechanics are filled with senselessly drawn-out actions: want to take down a picture? 10 seconds of doing nothing on a screen; want to hack something? 15 seconds of waiting for a line to fill on the screen. There are countless examples like this that just drag out time, when they could have either simply cut the wait time or had an action happen in 1-2 seconds. \nThe ridiculously inflated inflation is another issue. Over the years, the price of simple items has increased so much that you need to grind for several hours just to afford them. There's no need to talk about the prices of sports cars and businesses. We all know why everything is so expensive. Rockstar is an extremely greedy company; they want to sell as many Shark Cards as possible. \nThe last update is so terrible, it made me decide to delete the game. I can't remember an update this bad in any game. Did I mention Rockstar is a cheap bastard? They ruined the old content, nerfed the money-making methods, I've lost count of how many times they've crippled Cayo Perico. Why? So they can milk players before GTA 6 is out. On top of that, the new content isn't good either. The Kortz Center Heist is a copy-paste of the casino heist; the setup missions are identical. You'd think it was made by AI.\nModern GTA Online has become like a mobile game, crammed with microtransactions, pay-to-win and pointlessly dragged activities. Based on Rockstar's recent actions, I'm already scared of what GTA 6 will be like in future.",
-                  "truncated": false,
-                  "minutes_at_review": 5712
-                },
-                {
-                  "recommendationid": "230487895",
-                  "hours_at_review": 86.2,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "Rockstar Games has become one of the most anti-consumer companies in the industry. The pricing of in-game items encourages players to buy Shark Cards or GTA+, making the grind so time-consuming that spending money becomes the practical alternative for many players.\r\n\r\nThat isn't even mentioning the numerous controversies over the years, including taking down community mods, releasing half-baked remasters, and creating unnecessary platform disparities. Rockstar, we don't want your terrible launcher or awful customer support—we want you to listen to your community.\r\n\r\nThe newest update is a perfect example of why so many players are frustrated. Older heists, which were some of the best ways to earn money, were heavily nerfed so the newest heist could become the \"highest-paying\" activity. The Kortz Center Heist is overpriced, underwhelming, and uninspired. Yet it seems like Rockstar expects players to rush into buying it and spend countless hours grinding through recycled content.\r\n\r\nTo anyone reading this review, I strongly recommend waiting until after GTA VI releases to see what players have to say before deciding whether it's worth your money.\r\n\r\n#PlayersNotProfit",
-                  "truncated": false,
-                  "minutes_at_review": 5169
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-90d6e4",
-              "claim": "Reviewers report that recent updates heavily reduced payouts for existing heists and introduced a diminishing returns mechanic for repeating them.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230557765",
-                  "hours_at_review": 25.1,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Don't waste your time. Patch 1.73 completely killed the game for solo grinders. This new \"buyer fatigue\" mechanic literally ruins your payouts if you replay a heist or mission within a week. Even the Dr. Dre contract got nerfed for no reason. Everything is just an aggressive push to force you into buying GTA+. If this is how they're going to treat our time, I'm completely skipping GTA 6.",
-                  "truncated": false,
-                  "minutes_at_review": 1507
-                },
-                {
-                  "recommendationid": "230548882",
-                  "hours_at_review": 72.0,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Since the latest update, Rockstar has ruined GTA Online. Virtually all heists (Cayo Perico, Casino, “Judgment Day,” and apartment heists) now only pay out a decent amount once a week, and after that—peanuts. \r\nThe new heist turned out to be the same: it’s profitable the first time, but then the reward drops sharply. Instead of rewarding players, Rockstar is simply artificially cutting earnings and dragging out progress. That’s a major downside to this update.",
-                  "truncated": false,
-                  "minutes_at_review": 4320
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-aa80d2",
-              "claim": "Reviewers describe the online mode as excessively grindy with low payouts from missions and heists.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231860799",
-                  "hours_at_review": 23.3,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Trash, complete trash.\nYou wanna come back and have fun? good luck. Every update they release a car, house, weaponized vehicle that is priced at 2-4 million minimum. Every job pays out mostly 20k to 40k max. The heists? have fun putting all your time and effort into multiple days to not get paid for every setup mission but the people you bring do. you only get paid after that heist maybe 1 to 2 mil. On another note, the NPC A.I. is terrible. They always crash into you when driving and you wont be able to ever enjoy riding a motorcycle. The slightest nudge makes you go flying. \"oh, but that's just how the drivers are to make them seem dumb!\" cool. that's funny for the first maybe 5 minutes.",
-                  "truncated": false,
-                  "minutes_at_review": 1399
-                },
-                {
-                  "recommendationid": "230583771",
-                  "hours_at_review": 74.3,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "I have been a long time fan of the GTA series. Genuinely enjoyed every single one of them. This game....oooohhh this game. Where to begin. It used to be good, over the years this game has been out I feel that R* has destroyed GTA and for what? ABSOLUTELY NOTHING! Want a car? Grind for a week and you can afford a basic one. Want a tattoo? Grind for a whole day and you can have one and only one. This latest heist was actually fun, but what the actual heck. The first time payout was mediocre at best, but the real kicker? Can't loot very much while on the heist and on subsequent playthroughs earn enough for the gas to get to the destination. OK, what about other means of making money? NOPE. Every single heist is now the same way. Crappy payouts all across the board. I can maybe juuust maybe forgive the once a week big payout but when everything in the game cost millions of dollars and you wanna award me will 300k to do a hard heist? nah fam. How about sell missions for businesses? It's ok at best. The top dog is still the nightclub but the minimal time you could make a mil is about 20 hours of actual game time, physically playing the game. Don't even get me started on the weak vehicle health, super aim bot npc's, super heavy armor that is like wearing a paper bag, horrendous AI driving behavior,  aaannd the constant dsyncing in lobbies. The only thing I've seen lately worth it is the original apartment heist, but then again you need 4 people in total and no one seems to want to play them or meet new people to hang and play the game with. This latest update as of 7/16 has completely trashed the game. Now I understand that R* don't care about its players that much to flesh out the game they sooo desperately want, but when is it enough? I am sadly leaving this game a negative review in hopes that others that understand the pain do the same and force the developers to respond and change things quickly before the next game ends up on the trash heap too. It's bad enough that …",
-                  "truncated": true,
-                  "minutes_at_review": 4461
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-316cfe",
-              "claim": "Reviewers state that recent updates nerfed payouts across multiple heists.",
+              "claim_id": "mid-cb497d",
+              "claim": "Reviewers state that the online mode lacks in-game text and voice chat.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -824,36 +408,71 @@
               },
               "citations": [
                 {
-                  "recommendationid": "230465182",
-                  "hours_at_review": 76.8,
+                  "recommendationid": "239830977",
+                  "hours_at_review": 75.2,
+                  "minutes_at_review": 4511,
                   "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "I just played the new heist and we were very confused on not being able to set cuts. we complete the heist, turns out the host got 2 mil. while me and a another player only got ~400k ONLY! not only does this heist not pay out well with a group, you nerf casino, cayo, dre, and knoway out buy ~30%-40%. plus ive heard you can only do a certain number of the new heist per week. \nWORST update in history.",
-                  "truncated": false,
-                  "minutes_at_review": 4606
+                  "date": "2026-11-10",
+                  "review_text": "The enhanced version came out more than a year ago and to this day STILL doesn't have in-game text or voice chat in online. Classic example of Rockstar just letting online modes of their games rot",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230477981",
-                  "hours_at_review": 52.1,
+                  "recommendationid": "239641536",
+                  "hours_at_review": 61.5,
+                  "minutes_at_review": 3690,
                   "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "Magnificent job Rockstar Games in trying to be on top of the most anti-consumer companies ever. Heavily nerfing few years old heists that were the best in the game (They even nerfed Doomsday heists LMAO) just for the new heist to be \"the most paying one\" XD. Yes yes we will rush to buy your Shark Cards or GTA+ and enjoy your recycled content over and over again for more than 1000 hours of grind. Oh and dont forget to nerf Cayo Perico again next update because u havent nerfed it enough this time! As a reward for your amazing job I am canceling my GTA 6 Pre-Order ❤",
-                  "truncated": false,
-                  "minutes_at_review": 3124
+                  "date": "2026-11-07",
+                  "review_text": "I understand that there were some toxic people, but removing the chat completely made the game pointless. Now the whole game is antisocial and other people are just threats and nothing more.\r\nI had 3k hours in gta online and the fact that I only have 60 hours in this version speaks volumes.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "mid-5ba12b",
+              "claim": "Reviewers state that the Rockstar Launcher is buggy, loads significantly slower than the game itself, and requires repeated log-ins.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "239204203",
+                  "hours_at_review": 82.9,
+                  "minutes_at_review": 4976,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "Enhanced edition and game by itself - is not bad. Not San Andreas, less tuning less races. But not bad.\n\nBut there is one big fucking but - FUCKING STUPID Rockstar Launcher which is buggy mess - launcher loading 4 to 7 times longer than game itself. And fucking core anticheat because:\n1. Privacy concerns, if rockstar will be hacked - through this bs hackers can force your PC to do anything they want, brick it or mine on it, or zombie botnet - anything, and you will be fucked without every knowing of it.\n2. It's not stopping any cheaters - when you trying to compare results in story mode with online - in some races you get best result of other players like 1 second for the race which is impossible\n3. Why you even need this BS core anticheat for story mode? people who play online never go into story, and people who playing story never going into online.\n4. Online sucks - too many russian toxic animals, too many cheaters(but you must to install anticheat), broken economy. \n\nMy recommendations - game is good, I've bought it on release, preordered for 50 USD. Now, it's not worth so much money, today - 30USD max, or skip it all together like \"definitive\" junk. \n\nPlot and characters are very shallow, it's GTA, world is not as big as you think, after playing some time it became very small. Amount of quests - very little. Races - almost non existing. Cars - not bad variety, but tuning all the same nothing special. \n\nIf you want to go online - it's nothing like private RP servers. It's in most cases coop + chaos from russian toxic animals which has only one goal - do lives of people miserable, cause they are broke and miserable.\n\nP.S. Enhanced version I've got for free, ty. Original I've preordered back then. This review about Enhanced version.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239488097",
+                  "hours_at_review": 58.7,
+                  "minutes_at_review": 3524,
+                  "voted_up": true,
+                  "date": "2026-11-06",
+                  "review_text": "perfect game lots of hours rebought it again because the rockstar launcher keeps logging me out",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "escalated",
         "triggers": [
-          "divergent"
+          "thin"
         ],
-        "cited_reviews": 9,
-        "cited_recommend": 0,
-        "divergence_p": 3.18e-06,
+        "cited_reviews": 4,
+        "cited_recommend": 1,
+        "divergence_p": 0.00299,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -861,88 +480,59 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 639,
-      "pct_positive": 42.3,
+      "pool_n": 458,
+      "pct_positive": 89.3,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players report pervasive cheaters, severe economic nerfs, and broken missions in public online sessions.",
+      "summary": "Long-term players point out severe economic grinds, cheater-filled lobbies, and compatibility limits.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-177ac9",
-              "claim": "Public online sessions suffer from cheaters, mod menus, and griefing via vehicles like the Oppressor Mk II.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-153405",
+              "claim": "Reviewers report that public online lobbies are filled with hackers, cheaters, and griefers who cause crashes or disrupt gameplay.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 3
+                "positive": 3,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231745295",
+                  "recommendationid": "240512523",
+                  "hours_at_review": 108.8,
+                  "minutes_at_review": 6531,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Game is fun but griefers and hackers are in every public lobby",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238440629",
+                  "hours_at_review": 367.7,
+                  "minutes_at_review": 22064,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "The game plays fine, but what I want to know is why you have an anticheat that stops anyone using linux to play this game meanwhile it does nothing to prevent cheaters/hackers. I have been in more hacker filled lobbies than I haven't been, I have been randomly booted out of not just the current game but my entire game more times than I cant count due to hackers. The anticheat isn't there to protect anyone or to stop hacking it's to gather information that's it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239917697",
                   "hours_at_review": 110.5,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "TO  MANY MODERS AND CHEATERS DONT PLAY IN  PPL  SERVER IS NOT WORTH FOUND SOME FRIENDS TO PLAY  PRIVE",
-                  "truncated": false,
-                  "minutes_at_review": 6627
+                  "minutes_at_review": 6631,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "Game is fun,if you play solo,if you play in lobby count WAAAAAY to many griefers and cheaters,if you want to play in online lobby,get cheats and do it since rocstar is doing nothing about them.Out of many seessions online lobbys 70% were griefers and hackers.Only way to deal with them,get cheats and eliminate them all.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230312709",
-                  "hours_at_review": 138.0,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "I actually love the core of this game, but I’m leaving a negative review because if the player base doesn't push back on the current state of PC lobbies, the developers are never going to change how they handle networking and PvP.\r\n\r\nThe PvE: S-Tier\r\nWhen you are actually allowed to play the game, the PvE is brilliant. The heist setups, the solo business grinding, the properties—it’s genuinely some of the best sandbox progression in gaming. If you can get into an Invite-Only lobby and just run your empire, it is an incredible experience.\r\n\r\nThe PvP & Technical State: F-Tier\r\nPublic lobbies are an absolute unplayable joke right now.\r\n\r\n1. The Oppressor Mk II: It completely removes any actual skill or driving from vehicle combat.\r\n\r\n2. Limp, Passive-Aggressive Tactics: People will randomly kill you when you spawn on the beach, then instantly job-warp across the map, hide inside an apartment, or leave the session the second you try to fight back. It is incredibly cowardly behavior.\r\n\r\n3. Garbage Matchmaking: The peer-to-peer network is so outdated that the game constantly fails its connection handshakes. You will finish a mission and get consistently dumped into a public lobby completely by yourself because the game’s networking simply breaks.\r\n\r\n4. Mod Menus & Crashes: Rockstar finally added BattlEye, but it’s completely failing against the current wave of menus. Script kiddies aren't just using menus to script-kick everyone from the session—they can literally force-crash your desktop client, forcing you to Alt+F4 and completely restart your game.\r\n\r\nThe Future (GTA 6)\r\nWith GTA 6 around the corner, Rockstar’s current direction isn’t inspiring confidence. They’ve already confirmed the sequel will be console-only at launch, physical copies are essentially digital-only (just a download code in a plastic box), it's a single-player only experience right now, and they are already locking in-game content behind a $100 Ultimate Edition paywall.\r\n\r\nBuy this game for the solo …",
-                  "truncated": true,
-                  "minutes_at_review": 8280
-                },
-                {
-                  "recommendationid": "230703118",
-                  "hours_at_review": 398.8,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "yay i love being killed by a hacker or a 3000+ level with a Flying Jet Bike as soon as i enter a lobby \nyes give me more point A to B missions in the middle of a full cheater lobby \nWhat's that? you want to farm money to buy the same stuff?? NONO none of that\n\nso fun \nso fun \nso fun",
-                  "truncated": false,
-                  "minutes_at_review": 23926
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-699b05",
-              "claim": "Recent updates introduced massive nerfs to heist payouts and added replay penalties within the same week, making money-making significantly slower and harder for solo and new players.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231795044",
-                  "hours_at_review": 107.4,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "I came back to GTA:O to play around for a bit and see how things had progressed since my days of playing the game on xbox. Did heists (that were nerfed into the ground) and got all the properties to fully realize just how blitheringly tedious playing Online is. Almost every single part of the player experience was put in to make you waste as much time as possible or just flat stonewall you so you can't do anything. I have a thousand little nitpicks that I would be better off making a video essay to cover. But I will say this, Rockstar is a billion dollar company and enterprise that has racked up billions off of this game, and every dollar they put into working on Online was spent making sure that you do not have fun.",
-                  "truncated": false,
-                  "minutes_at_review": 6446
-                },
-                {
-                  "recommendationid": "230457144",
-                  "hours_at_review": 590.1,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "After playing this game for almost 2000 hours across all platforms, (PS3, PS4, PS5, PC Enhanced, and PC Legacy) seeing Rockstar stooping as low as going out of their way to nerf each and every single heist to absolute abysmal dog water to a point where the former best heist in the game (Cayo Perico) which used to give out up to $2M+ solo, to now barely paying $400k for the Tequila has made me realize how much not just this game, but Rockstar as a whole has gone to ♥♥♥♥. Our expectations for you were low, but ♥♥♥♥♥♥♥♥ you went lower than the damn earth's core. And to think this was covered up with giving players a one time bonus per week for doing previous heists to promote players \"revisiting older content\" is an absolute joke. Probably gonna quit GTA after this since as Pavel once said. \"I think this is the strike that broke the camel's hump.\"",
-                  "truncated": false,
-                  "minutes_at_review": 35409
-                },
-                {
-                  "recommendationid": "230588636",
-                  "hours_at_review": 249.7,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Looking past the horrible amount of cheaters that plague the game and the endless amount of bugs plus the new heist and challenges that make absolutely make no sense to complete. The latest patch made it so you get a reduced amount on old heists if you replay them in the same week but instead you will get a slight bonus for each one you do the first time of each week. Do rockstar want people to actually play this game? Why would they implement such a massive nerf such late into the games lifecycle? This absolutely screws over new players that don't have diverse businesses to get their weekly \"bonus\" for each heist/heist like activity. Us veterans have no trouble going back to selling MC and Bunker stuff and quiting heist activities but if you're a new player? Better buy a ♥♥♥♥♥♥♥ shark card or two! Rockstar make a million dollars a day from this game and introduce even more nerfs to make more money...",
-                  "truncated": false,
-                  "minutes_at_review": 14981
+                  "recommendationid": "239167724",
+                  "hours_at_review": 529.6,
+                  "minutes_at_review": 31777,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "While not as good as GTA 4, there is a lot of fun to be had with 5.  The online mode is full of cheaters that will freeze and/or crash your game for looking at them the wrong way, but overall is decent.  Story mode leaves some to be desired in regard to activities / content.  ",
+                  "truncated": false
                 }
               ]
             }
@@ -952,51 +542,8 @@
           "theme": "access",
           "claims": [
             {
-              "claim_id": "vet-931e71",
-              "claim": "Australian players are restricted from accessing casino game functionalities in the game.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231852709",
-                  "hours_at_review": 396.4,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "i dont recomend as recent changes in Australia have prohibbeted me from accessing the entire game now.\r\n\r\nget politians out of our games!!",
-                  "truncated": false,
-                  "minutes_at_review": 23782
-                },
-                {
-                  "recommendationid": "231722551",
-                  "hours_at_review": 607.3,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "disgusting how they limit australian players to use casino. watch the refunds start happening for gta 6",
-                  "truncated": false,
-                  "minutes_at_review": 36438
-                },
-                {
-                  "recommendationid": "231710110",
-                  "hours_at_review": 165.1,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "rockstar took away casino game functionality from australians now i feel it is not fair for us",
-                  "truncated": false,
-                  "minutes_at_review": 9903
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-de118f",
-              "claim": "Reviewers report that recent updates added a repeating heist located at an art building and tied new content behind expensive mansions.",
+              "claim_id": "vet-cf992d",
+              "claim": "Reviewers note that the anti-cheat software prevents Linux users from running the game.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -1004,51 +551,22 @@
               },
               "citations": [
                 {
-                  "recommendationid": "230490406",
-                  "hours_at_review": 487.7,
+                  "recommendationid": "238440629",
+                  "hours_at_review": 367.7,
+                  "minutes_at_review": 22064,
                   "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "Holy divebomb right into the gutter, Past few years have been tons of QoL doing more SOLO playability and selling... very nice... then they started added REALLY good features... behind GTA+... very cring but most of these features are something most well off players really don't need....\n\nFinal final for real final heist hitting that same damn art building we've flown over a thousand times, in that fancy new mansion with neiche perks as a heist place... insanely overpriced racking up to 18+MILLION. Sure we have mega millions jumbo jets but money dumps are not the problem. The new heist is slapdash, kitbash, rushed, buggy, pays poorly, with NO SPLITTING OF CUTS???? And after the first Per week, you get less than the worst cayo luck and bags.\n\nAND THEN THE PRICE CUTS????? AND THEN THE PRICE REDUCTIONS PER REPLAY???????????\n\nrockstar could not bury this game into the grave right before gta6 any harder honestly.",
-                  "truncated": false,
-                  "minutes_at_review": 29260
+                  "date": "2026-10-24",
+                  "review_text": "The game plays fine, but what I want to know is why you have an anticheat that stops anyone using linux to play this game meanwhile it does nothing to prevent cheaters/hackers. I have been in more hacker filled lobbies than I haven't been, I have been randomly booted out of not just the current game but my entire game more times than I cant count due to hackers. The anticheat isn't there to protect anyone or to stop hacking it's to gather information that's it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231082463",
-                  "hours_at_review": 264.1,
+                  "recommendationid": "239802487",
+                  "hours_at_review": 104.8,
+                  "minutes_at_review": 6290,
                   "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "I was initially really excited for the Kortz Center heist update as we hadn't had a proper heist in years. I expected great things since Rockstar had done such great work on the other heists that this one would be the most refined and enjoyable. I was however a little sceptical on it as it was a heavily stealth based heist and stealth in this game has never been the best but I tried to stay positive.\n\nAfter playing this update I can confidently say that this might has been the worse update to ever release. I'd say it's even worse than the 'San Andreas Mercenaries' update (The one that removed around 200 cars from the websites)\n\nThis update nerfed every single heist pay out and they even tried to hide it under a positive change. Now when you play a heist for the first time in a week you get a bonus pay. However if you want to play that heist again within that week then the pay out is dropped significantly, way lower than the original pay outs before the update\n\nThe actual heist of this update is broken, annoying, and even unfair at times. Stealth is bad as guards can get trigged over nothing (had once drove up to the checkpoint for the Alpha Mail approach just for it to go loud for no reason why we were in the loading freeze), the laser room is cool but the parts where you have to jump a laser feels more like a gamble on if you avoid it or not, but the worst part of it all is that there are no stealth checkpoints.\n\nThe heist has checkpoints but if you screw up and the heist goes loud then you have to restart the whole heist as if you try to die to respawn at your last checkpoint it will spawn you with the alarm blaring regardless if you made to the checkpoint stealth or not. This is in my opinion the worse part of this heist, every other one you can die and start at a checkpoint in stealth but for some reason they made it so this one you can't. That means you can be at the laser vault, set off the alarm, have to quit the heist, start it again, and then do the long dr…",
-                  "truncated": true,
-                  "minutes_at_review": 15847
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-a36361",
-              "claim": "Reviewers describe the new heist update as introducing a scripted helicopter escape route that consistently crashes and fails the mission.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230503028",
-                  "hours_at_review": 436.2,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "I wanna start this by saying I have put so much time into this game and at its core I really do love it. The recent update is a ♥♥♥♥♥♥♥ tragedy. They nerfed all of the heists, and also made it so you can't assign cuts on the new heist, making it so blatantly obvious that all they want for their players, new and old, is to buy shark cards. The new heist has been probably 90% recycled content gameplaywise. The helicopter escape route on it is completely broken, the flyer gets to the end of his path and crashes the damn thing failing the heist every time. A SCRIPTED FLIGHT PATH FAILS THE HEIST EVERY SINGLE TIME YOU TRY IT AND YOU HAVE NO WAY TO STOP IT. SHAME ON YOU ROCKSTAR. TRULY SHAME ON YOU.",
-                  "truncated": false,
-                  "minutes_at_review": 26173
-                },
-                {
-                  "recommendationid": "231082463",
-                  "hours_at_review": 264.1,
-                  "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "I was initially really excited for the Kortz Center heist update as we hadn't had a proper heist in years. I expected great things since Rockstar had done such great work on the other heists that this one would be the most refined and enjoyable. I was however a little sceptical on it as it was a heavily stealth based heist and stealth in this game has never been the best but I tried to stay positive.\n\nAfter playing this update I can confidently say that this might has been the worse update to ever release. I'd say it's even worse than the 'San Andreas Mercenaries' update (The one that removed around 200 cars from the websites)\n\nThis update nerfed every single heist pay out and they even tried to hide it under a positive change. Now when you play a heist for the first time in a week you get a bonus pay. However if you want to play that heist again within that week then the pay out is dropped significantly, way lower than the original pay outs before the update\n\nThe actual heist of this update is broken, annoying, and even unfair at times. Stealth is bad as guards can get trigged over nothing (had once drove up to the checkpoint for the Alpha Mail approach just for it to go loud for no reason why we were in the loading freeze), the laser room is cool but the parts where you have to jump a laser feels more like a gamble on if you avoid it or not, but the worst part of it all is that there are no stealth checkpoints.\n\nThe heist has checkpoints but if you screw up and the heist goes loud then you have to restart the whole heist as if you try to die to respawn at your last checkpoint it will spawn you with the alarm blaring regardless if you made to the checkpoint stealth or not. This is in my opinion the worse part of this heist, every other one you can die and start at a checkpoint in stealth but for some reason they made it so this one you can't. That means you can be at the laser vault, set off the alarm, have to quit the heist, start it again, and then do the long dr…",
-                  "truncated": true,
-                  "minutes_at_review": 15847
+                  "date": "2026-11-09",
+                  "review_text": "hate cheating and cheaters, hate battleeye because it wont run on linux, so now i can't play,",
+                  "truncated": false
                 }
               ]
             }
@@ -1058,56 +576,133 @@
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "vet-d15101",
-              "claim": "Reviewers state that recent updates reduced payouts for existing heists while significantly increasing the cost of in-game properties and items.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-921fb0",
+              "claim": "Reviewers describe GTA Online as excessively grindy and expensive to acquire items.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
+                "positive": 2,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "230883216",
-                  "hours_at_review": 163.1,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "The Kortz Center heist update was greenlit by lobotomized execs with long COVID and CTE. Who tf wants to play a heist with literally a dozen setup missions, guards that pop out of nowhere and set the alarm off, and the clunkiest forced-animation-laser-dodging mechanic that doesn't belong in a game from 2006, let alone an update for a AAA game in 2026? And to top it off, every heist has had their payouts reduced by 30-40%. This is by far the most disgustingly greedy and incompetent update this game has ever gotten in its entire history. It's so obvious that 75% of the devs were laid off and replaced with AI.",
-                  "truncated": false,
-                  "minutes_at_review": 9787
+                  "recommendationid": "238852902",
+                  "hours_at_review": 452.3,
+                  "minutes_at_review": 27137,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "⭐⭐⭐⭐⭐\n\nGTA Online is the perfect example of a game where you can spend 1000 hours and still have no idea what you're doing.\n\nFrom running businesses and doing heists to buying expensive cars just to drive around the map for 10 minutes, there's always something to do. The freedom this game offers is insane.\n\nThe only downside? Rockstar's pricing, hackers, and the fact that every update makes you want to grind for another 10 hours just to afford one car.\n\nBut honestly, despite all the bugs, modders, and questionable life choices, there's nothing quite like GTA Online.\n\n10/10 would go broke buying virtual cars again.\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230541660",
-                  "hours_at_review": 114.8,
+                  "recommendationid": "239877717",
+                  "hours_at_review": 156.3,
+                  "minutes_at_review": 9377,
                   "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "The recent Kortz Center Heist update is probably one of the most hated ones, as it ruined the game economy. \n\nThere has been a major nerf on Heist earnings up to 40% on a game where constant grind is considered to be normal due to expensive apartments, mansions, submarines and businesses that can take over 50.000.000$ to purchase and now a 15% cut on a random Cayo Perico Heist gives me less than 160.000$.\n\nThe experience for newcomers is going to be horrible especially for solo players with the amount of grind the game now requires.\n\nIt was rough but tolerable before on sessions with friends, now it's a nightmare and probably unplayable for solo players.",
-                  "truncated": false,
-                  "minutes_at_review": 6888
+                  "date": "2026-11-10",
+                  "review_text": "GTA Online is the most miserable online gaming experience I've ever had. It's extremely buggy, has incredibly unfair gameplay, is full of predatory ways to get money out of your wallet, festering with hackers and is just a boring, grindy snoozefest. I'm dumbfounded as to how this game has lasted 13+ years with the way the devs treat the game as a whole and the updates they push out. In saying that, I have 460+ hours on epic games and 200 hours on PlayStation. I love this game for reasons beyond me. It's like the toxic ex I keep coming back to, even though I know it's a bad idea. Ultimatly the decision to restrict aussies from using the free spin wheel in the Diamond Casino for no REASONABLE reason is what killed my last bit of interest in this game. Hopefully GTA 6 Online doesn't follow in it's predecessors footsteps.\n\nGTA 5's singleplayer is PEAK and worth playing. I wish I could play it for the first time again.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238631114",
+                  "hours_at_review": 1000.6,
+                  "minutes_at_review": 60035,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "Very good game although gta 6 modders glitches and grindyness kinda ruin it still a very fun game\r\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-6a2e8b",
+              "claim": "Reviewers describe the online mode as exceptionally grindy, requiring substantial time investment to earn money for businesses and vehicles.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "238852902",
+                  "hours_at_review": 452.3,
+                  "minutes_at_review": 27137,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "⭐⭐⭐⭐⭐\n\nGTA Online is the perfect example of a game where you can spend 1000 hours and still have no idea what you're doing.\n\nFrom running businesses and doing heists to buying expensive cars just to drive around the map for 10 minutes, there's always something to do. The freedom this game offers is insane.\n\nThe only downside? Rockstar's pricing, hackers, and the fact that every update makes you want to grind for another 10 hours just to afford one car.\n\nBut honestly, despite all the bugs, modders, and questionable life choices, there's nothing quite like GTA Online.\n\n10/10 would go broke buying virtual cars again.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239597757",
+                  "hours_at_review": 165.5,
+                  "minutes_at_review": 9930,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "Game is good, its gta5, gta online is fun but holy shit it is grindy. is an easy must play if you are one of the 6 people who still havent played gta5, especially the story mode, the online, not so much",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239620139",
+                  "hours_at_review": 1300.5,
+                  "minutes_at_review": 78030,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "Despite its age, there is still nothing quite like GTA Online. Driving around Los Santos, running heists with friends, and messing around in free roam never really gets old if you play casually. Yes, the grind is real if you want the newest supercars or businesses right away, and public lobbies can be chaotic, running private or invite-only sessions completely fixes the experience. If you have friends to play with, it's worth it",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-1c54fcf6",
+          "text": "One reviewer says the game still has bugs in it for over ten years that never got fixed.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "238615033",
+            "hours_at_review": 145.6,
+            "minutes_at_review": 8738,
+            "voted_up": true,
+            "date": "2026-10-26",
+            "review_text": "I Like it still has buggs in it for over ten years that never got fixed. Hopefully when gta 6 comes out they will listen to the community.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-e864f656",
+          "text": "One reviewer states that the game crashes all of the time on PC, making the Cayo Perico heist impossible to do because of crashes and bugs.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239293229",
+            "hours_at_review": 122.3,
+            "minutes_at_review": 7336,
+            "voted_up": false,
+            "date": "2026-11-03",
+            "review_text": "before coming gta 6 they broke gta 5 totally!! why you dont give the game for pc too then?? you destroy whole gta 5 for pc players! crashing all of the time.. cayo perico heist unposible to doo becouse of crashes and bugs!! amazing job... never buy this game again!! cash grabers!!",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 14,
-        "cited_recommend": 0,
-        "divergence_p": 0.000453,
+        "cited_reviews": 10,
+        "cited_recommend": 7,
+        "divergence_p": 0.0828,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 2237,
-    "steam_total_reviews": 76999,
+    "pool_n": 1958,
+    "steam_total_reviews": 88374,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/header.jpg?t=1781187782",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3240220/a318bd9affe8eee32984b18794b273c256e9b2d6/capsule_231x87.jpg?t=1781187782",
-    "grid": "https://cdn2.steamgriddb.com/grid/a300cda08d24b7cf1cf45bd4eba1ae0b.jpg"
   }
 }

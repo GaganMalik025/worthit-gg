@@ -1,191 +1,234 @@
 {
   "appid": "264710",
   "game_name": "Subnautica",
-  "generated_at": "2026-08-10T10:01:41Z",
+  "generated_at": "2026-11-19T11:26:06Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/264710/header.jpg?t=1777456112",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87.jpg?t=1777456112",
+    "grid": "https://cdn2.steamgriddb.com/grid/50896c8a37922749110dae272e7a345b.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 10,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Buy",
-    "tagline": "Deep ocean exploration that hooks you, despite minor friction.",
+    "tagline": "Deep ocean exploration that rewards curiosity and self-reliance.",
     "for_you_if": [
-      "you want immersive underwater survival",
-      "you enjoy gathering resources and building bases",
-      "you play portably on the Steam Deck"
+      "you enjoy self-directed open world survival",
+      "you like uncovering mysteries without a waypoint",
+      "you want a smooth experience on modest hardware"
     ],
     "not_for_you_if": [
-      "you rely on auto-save to protect your progress",
-      "you dislike tedious survival loops and material grinding",
-      "you are frustrated by terrain bugs trapping vehicles"
+      "you need clear guidance for progression",
+      "you dislike heavy resource gathering",
+      "you are frustrated by buggy vehicle mechanics"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 25,
-      "pct_positive": 84.0,
+      "pool_n": 32,
+      "pct_positive": 71.9,
       "muted": true
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 510,
-      "pct_positive": 97.3,
+      "pool_n": 467,
+      "pct_positive": 94.0,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 782,
-      "pct_positive": 98.3,
+      "pool_n": 594,
+      "pct_positive": 98.0,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 102,
-      "pct_positive": 97.1,
+      "pool_n": 107,
+      "pct_positive": 100.0,
       "muted": false
     }
   ],
-  "distortion_flags": [],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Player sentiment improves steadily from the opening hours into the deep endgame.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 71.9,
+            "pool_n": 32
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 94.0,
+            "pool_n": 467
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 98.0,
+            "pool_n": 594
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 100.0,
+            "pool_n": 107
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 71.9,
+        "low_pool_n": 32,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 100.0,
+        "high_pool_n": 107,
+        "gap_pts": 28.1
+      }
+    }
+  ],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 25,
-      "pct_positive": 84.0,
+      "pool_n": 32,
+      "pct_positive": 71.9,
       "muted": true,
-      "n_note": "n=17 - too few reviews to call",
+      "n_note": "n=18 - too few reviews to call",
       "summary": null,
-      "themes": []
+      "themes": [],
+      "single_points": [],
+      "sourcing": null
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 510,
-      "pct_positive": 97.3,
+      "pool_n": 467,
+      "pct_positive": 94.0,
       "muted": false,
       "n_note": null,
-      "summary": "Early players highlight engaging survival elements alongside tedious material gathering and terrain bugs affecting vehicles.",
+      "summary": "Players starting out find the initial progression slow and unguided, struggling to figure out where to go next.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-c09367",
-              "claim": "Reviewers note that vehicles like the Seamoth can get stuck or caught in the terrain due to bugs.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231249626",
-                  "hours_at_review": 11.1,
-                  "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "Cool concept and beautiful game, but janky, unintuitive, and obtuse at times. If you are hoping for some sort of guide or for a game that will hold your game, this isn't it. The game has a story, but you are very much encouraged to decipher it yourself. I didn't mind the loose story or the open-ended exploration. What kind of soured the experience was the bugs which almost make me want to not recommend the game. It's been 8 years and the amount of unfixed bugs is astounding; a problem like Seamoths getting caught in terrain is still a problem all these years later. I am glad I got it on sale as I wouldn't recommend it at regular price. Fun game, but frustrating at times.",
-                  "truncated": false,
-                  "minutes_at_review": 666
-                },
-                {
-                  "recommendationid": "229728934",
-                  "hours_at_review": 16.5,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "---{ Graphics }---\n☐ You forget what reality is\n☑ Beautiful\n☐ Good\n☐ Decent\n☐ Bad\n☐ Don‘t look too long at it\n☐ MS-DOS\n\n---{ Gameplay }---\n☑ Very good\n☐ Good\n☐ It's just gameplay\n☐ Mehh\n☐ Watch paint dry instead\n☐ Just don't\n\n---{ Audio }---\n☑ Eargasm\n☐ Very good\n☐ Good\n☐ Not too bad\n☐ Bad\n☐ I'm now deaf\n\n---{ Audience }---\n☐ Kids\n☑ Teens\n☑ Adults\n☐ Grandma\n\n---{ PC Requirements }---\n☐ Check if you can run paint\n☐ Potato\n☑ Decent\n☐ Fast\n☐ Rich boi\n☐ Ask NASA if they have a spare computer\n\n---{ Game Size }---\n☐ Floppy Disk\n☐ Old Fashioned\n☑ Workable\n☐ Big\n☐ Will eat 15% of your 1TB hard drive\n☐ You will want an entire hard drive to hold it\n☐ You will need to invest in a black hole to hold all the data\n\n---{ Difficulty }---\n☐ Just press 'W'\n☐ Easy\n☑ Easy to learn / Hard to master\n☐ Significant brain usage\n☐ Difficult\n☐ Dark Souls\n\n---{ Grind }---\n☐ Nothing to grind\n☐ Only if u care about leaderboards/ranks\n☐ Isn't necessary to progress\n☑ Average grind level\n☐ Too much grind\n☐ You'll need a second life for grinding\n\n---{ Story }---\n☐ No Story\n☐ Some lore\n☑ Average\n☐ Good\n☐ Lovely\n☐ It'll replace your life\n\n---{ Game Time }---\n☐ Long enough for a cup of coffee\n☐ Short\n☐ Average\n☑ Long\n☐ To infinity and beyond\n\n---{ Price }---\n☐ It's free!\n☑ Worth the price\n☐ If it's on sale\n☐ If u have some spare money left\n☐ Not recommended\n☐ You could also just burn your money\n\n---{ Bugs }---\n☑ Never heard of\n☐ Minor bugs\n☐ Can get annoying\n☐ ARK: Survival Evolved\n☐ The game itself is a big terrarium for bugs\n\n---{ ? / 10 }---\n☐ 1\n☐ 2\n☐ 3\n☐ 4\n☐ 5\n☐ 6\n☐ 7\n☐ 8\n☑ 9\n☐ 10\n\nDidn't think I'd like it but I figured it's pretty cheap so why not because I was looking for something different to play. Well today I played 9 hours straight, the longest I've played anything in a long time. Very relaxing in some spots and kinda terrifying in others, I totally get what everyone is saying about the scary factor. Great game, highly recommended",
-                  "truncated": false,
-                  "minutes_at_review": 990
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-77ff88",
-              "claim": "Reviewers experience constant survival mechanics involving the regular consumption of food and water.",
-              "citation_verdict": "mixed",
+              "claim_id": "ear-cb7ff1",
+              "claim": "Reviewers report that the game lacks direction or guidance for story progression, leaving players without clear instructions on where to go.",
+              "citation_verdict": "negative",
               "citation_split": {
                 "positive": 1,
-                "negative": 1
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231638979",
-                  "hours_at_review": 11.0,
+                  "recommendationid": "240393803",
+                  "hours_at_review": 3.7,
+                  "minutes_at_review": 223,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "This is a very stupid game. Possibly the worst game I have ever played. I spent 11 hours on it according to my Steam client, so I believe I gave it a fair shot. First of all, there are absolutely no rails on this game at all. You are dropped into the middle of the ocean and you have no idea what any of your long or short term objectives are, other than to not die. So you swim around picking up various items to build other items. But you need to drink fresh water and eat food regularly or else you die. The food and water requirement is constant and never ending and it is a chore. Not fun. Games are supposed to be fun. This is not. 11 hours into the game and I still do not know what my overall goal is supposed to me. Imagine watching a streaming series and you are 11 episodes into it and you still do not know what the main conflict and plot is supposed to be. I am astounded by the positive reviews of this game.",
-                  "truncated": false,
-                  "minutes_at_review": 660
+                  "date": "2026-11-17",
+                  "review_text": "The game has no direction unless you analyze 100 different voicelines mid game and has unneccesarry amounts of travelling at times you are playing back and forth sim 1/10 playthrough experience it is at least pretty",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231103753",
-                  "hours_at_review": 6.9,
+                  "recommendationid": "240104686",
+                  "hours_at_review": 5.3,
+                  "minutes_at_review": 321,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Unfortunately, the story is simply not interesting enough to keep me engaged, and the early game is so slow that it really becomes tedious to even play, let alone try to actually progress. A game can be slow and still be good if executed properly and if the mechanics are good enough to stand on their own or if the slow nature of the progression complements the story. Here, though, neither is true.\n\nBefore I continue, I want to note that the visuals have a distinct style, the sound design is superb, and the atmosphere is done really well, but these are bogged down by everything else I'm going to touch on below.\n\nAfter waking up in your lifepod, you're basically given no directions on where to go as far as story progression. For a sandbox game, that is fine; for a story or even a hybrid game, it's not. Swimming around, grabbing fish, and collecting resources is fun for a bit, but then you ask yourself, \"What next?\" Sometimes you'll find a data log or receive a radio message, which will point you to a lifepod, debris, abandoned structure, or some other thing related to the story, which is cool, but then the trail goes cold again for the next couple of in-game days until you receive the next scripted radio message, and then the cycle repeats. I wouldn't even really mind this if the world was cool enough to explore, which would then justify the wait, but after the initial novelty of the starting area evaporates, it becomes boring and repetitive. Maybe some late-game locations are cooler and more interesting to explore, I wouldn't know, but the game lost me here, and I don't think I'll be coming back anytime soon.\n\nThe survival mechanics and crafting honestly feel more tacked-on than anything else, because they're so simple and basic that they really feel like an afterthought, which doesn't help the game's case. For crafting specifically, all you have to do is learn the recipe, collect the resources, and click, at which point the fabricator thingy does everything else. Ev…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "240074151",
+                  "hours_at_review": 6.3,
+                  "minutes_at_review": 377,
                   "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "Subnautica makes you think through events to survive. It is at your pace. Swimming endlessly in the water enjoyable. The knife if you flash it during the day time you get ate. So do not keep it in your hand. You fabricate items as you pick up substances and debris out in the ocean. You can have fish raw or cooked. Fish provide bottled water.  Creepy vines withe yellow flowers that you have to have that get you radiated. Makes you sentient. I am 66 and using the controller to maintain fine motor skills for that Texas test for driving now added. Pleasurable way to do and under the sea intriguing, a bit of danger and gorgeous to view.",
-                  "truncated": false,
-                  "minutes_at_review": 412
+                  "date": "2026-11-13",
+                  "review_text": "Ok it says I've played for 6 hrs I don't think that's true, maybe 6 hrs played while online? Because I probably played six hours of it the night I got it. I love the ocean, I love animals, I love exploring. I would reccomend this to any body who likes fo3/skyrim, BOTW/TOTK. It's a completely different vibe and story but they share a lot of elements. Though my only complaint is I often just don't know what I am supposed to do. I am someone who doesn't like spoilers or to look up the answers. But that could easily just be a me problem and I wouldn't dock a star for that. I really love this game.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-a14848",
-              "claim": "Reviewers report that resource gathering and searching for specific materials can become tedious and grindy.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-0e0c0b",
+              "claim": "Reviewers describe the early game and progression as slow, repetitive, or tedious, involving a lot of resource gathering, blueprint hunting, and back-and-forth travel.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 1
+                "positive": 0,
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "229437744",
-                  "hours_at_review": 17.8,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Thalassophobia Simulator\n\nIf you've not heard of this game by now you must have been living under a rock, as this game defined the underwater survival genre — and it did it horrifyingly so.\n\nThis game is an absolute work of art. It has spectacular visuals and an abundance of replayability. It certainly does not disappoint; from its captivating exploration to its below-the-surface horror aspects, it is just outright amazing.\n\nThe progression of equipment and upgrades is nice, but it can be slightly tedious if you're missing one particular material and have to swim all the way back to where you came from to get it.\n\nThe atmosphere on Planet 4546b is just perfect. From the safe shallows to... well, not the safe shallows, there is beauty around every corner.\n\nThe sound design is phenomenal and the commentary is unforgettable. Literally unforgettable. Like, it's stuck in my head. I can hear it in my sleep. Help me.\n\nAs for the story? There isn't much direction for progression, but do get ready to be invested. It's great.\n\nIf I were the protagonist I would've peed my pants so many times, but you wouldn't have known this because I would be underwater.\n\nA really fun and beautiful game, I would highly recommend you play it if you haven't! The experience of this game is worth full price, but honestly wait until it goes on offer as it does so frequently.\n\n[i]Beware the Reaper Leviathan. If you can hear it, it has already seen you.[/i] 9.2/10",
-                  "truncated": false,
-                  "minutes_at_review": 1065
-                },
-                {
-                  "recommendationid": "229549903",
-                  "hours_at_review": 7.8,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "Good, not great. The ambience of Subnautica is really good at the start, but the open underwater world gets pretty tedious and grindy. Still think it's worth it on a sale.",
-                  "truncated": false,
-                  "minutes_at_review": 469
-                },
-                {
-                  "recommendationid": "229725993",
-                  "hours_at_review": 7.3,
+                  "recommendationid": "240504263",
+                  "hours_at_review": 15.8,
+                  "minutes_at_review": 949,
                   "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "The idea is great, but it gets tedious with most of your time spent swimming and searching rather than building or problem solving.  If you liked Red Dead Redemption 2 but wished you had to spend more time fishing, riding between towns, and skinning animals, but less time in combat and story this is your game.",
-                  "truncated": false,
-                  "minutes_at_review": 440
+                  "date": "2026-11-18",
+                  "review_text": "Very repetitive and boring after a while.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240393803",
+                  "hours_at_review": 3.7,
+                  "minutes_at_review": 223,
+                  "voted_up": false,
+                  "date": "2026-11-17",
+                  "review_text": "The game has no direction unless you analyze 100 different voicelines mid game and has unneccesarry amounts of travelling at times you are playing back and forth sim 1/10 playthrough experience it is at least pretty",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240120304",
+                  "hours_at_review": 6.6,
+                  "minutes_at_review": 398,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Game has some of the worst progression of any survival game I've ever played, spend hours searching wreckage sites trying to find a fragment for basic water traversal. Hunger and thirst drain very quick. Storage is terrible, items have a max stack of 1. Control scheme is also bad. How is this so well reviewed? Game is a hot bowl of squirt",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240104686",
+                  "hours_at_review": 5.3,
+                  "minutes_at_review": 321,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Unfortunately, the story is simply not interesting enough to keep me engaged, and the early game is so slow that it really becomes tedious to even play, let alone try to actually progress. A game can be slow and still be good if executed properly and if the mechanics are good enough to stand on their own or if the slow nature of the progression complements the story. Here, though, neither is true.\n\nBefore I continue, I want to note that the visuals have a distinct style, the sound design is superb, and the atmosphere is done really well, but these are bogged down by everything else I'm going to touch on below.\n\nAfter waking up in your lifepod, you're basically given no directions on where to go as far as story progression. For a sandbox game, that is fine; for a story or even a hybrid game, it's not. Swimming around, grabbing fish, and collecting resources is fun for a bit, but then you ask yourself, \"What next?\" Sometimes you'll find a data log or receive a radio message, which will point you to a lifepod, debris, abandoned structure, or some other thing related to the story, which is cool, but then the trail goes cold again for the next couple of in-game days until you receive the next scripted radio message, and then the cycle repeats. I wouldn't even really mind this if the world was cool enough to explore, which would then justify the wait, but after the initial novelty of the starting area evaporates, it becomes boring and repetitive. Maybe some late-game locations are cooler and more interesting to explore, I wouldn't know, but the game lost me here, and I don't think I'll be coming back anytime soon.\n\nThe survival mechanics and crafting honestly feel more tacked-on than anything else, because they're so simple and basic that they really feel like an afterthought, which doesn't help the game's case. For crafting specifically, all you have to do is learn the recipe, collect the resources, and click, at which point the fabricator thingy does everything else. Ev…",
+                  "truncated": true
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 7,
-        "cited_recommend": 5,
-        "divergence_p": 0.014,
+        "cited_reviews": 5,
+        "cited_recommend": 1,
+        "divergence_p": 6.17e-05,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -193,18 +236,18 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 782,
-      "pct_positive": 98.3,
+      "pool_n": 594,
+      "pct_positive": 98.0,
       "muted": false,
       "n_note": null,
-      "summary": "Mid-game players praise the strong overall performance and Steam Deck compatibility while noting minor bugs and repetitive survival loops.",
+      "summary": "Mid-game players embrace the minimal direction through exploration while encountering some vehicle bugs and missing quality-of-life crafting features.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-1c58ce",
-              "claim": "Reviewers describe the game as running very well on the Steam Deck.",
+              "claim_id": "mid-c8a773",
+              "claim": "Reviewers note that vehicle movement and mechanics can be buggy or glitchy.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -212,51 +255,22 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231677236",
-                  "hours_at_review": 38.9,
+                  "recommendationid": "240456885",
+                  "hours_at_review": 30.8,
+                  "minutes_at_review": 1845,
                   "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "What a game. I got completely sucked in every time I booted it up.\nI did very nearly stop playing for a while after a botched attempt to get to the Lost River, but I got over myself and devoured the rest of the game. I even got emotional at the end - that's not happened to me with a game before.\nIt also runs really well on the Steam Deck.\nI did encounter a couple of bugs - resources that had spawned below the floor, mostly. I floated through the roof of my Cyclops twice, those were definitely brown-trouser moments, but I save often, so I just closed + reopened and all was well.\n\nI've immediately become nostalgic for the game and will likely need to replay it.",
-                  "truncated": false,
-                  "minutes_at_review": 2333
+                  "date": "2026-11-17",
+                  "review_text": "Great game that keeps your fear high and is always thrilling on each new challenge. There is very limited amounts of grinding which makes for very fun progression. However, I do think it could be a bit more polished in terms of glitches with vehicles.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231534894",
-                  "hours_at_review": 71.2,
+                  "recommendationid": "239666481",
+                  "hours_at_review": 51.2,
+                  "minutes_at_review": 3071,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "One of my favorite games of all time!\r\nI loved this game. I played it all the way through on Steamdeck.\r\nTips:\r\n1. I managed to get my full size sub down into the lowest levels (use those external cameras and channel your inner Austin Powers in a golf cart, lol). It was great because it would constantly re-charge the batteries over the lava and I used it as a mobile home base for the moth and the mech suit.\r\n2. My other tip is building a second base in the lower levels, but it makes you do that a little higher than the lava level so I used it to stash loot.\r\n3. You can grow plants in your sub in planters and stash extra loot in duffle bags.",
-                  "truncated": false,
-                  "minutes_at_review": 4275
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-88a5dc",
-              "claim": "Reviewers mention encountering small bugs that can be annoying while noting that the game runs extremely well overall.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "229604162",
-                  "hours_at_review": 27.4,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "Easily the best game in its genre. It has the full package of a great told story, well crafted world, interesting traversal through the world and enough semi-horror to keep you on your toes. I found a lot of small bugs (not insects) that were pretty annoying, but not enough to detract from the experience.  Ran extremely well!\r\n\r\n9/10",
-                  "truncated": false,
-                  "minutes_at_review": 1642
-                },
-                {
-                  "recommendationid": "231547089",
-                  "hours_at_review": 27.0,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "This game might be my favorite survival game, Light on the survival until the deep parts and really beautiful. I had some issues but overall the game ran fine.",
-                  "truncated": false,
-                  "minutes_at_review": 1621
+                  "date": "2026-11-08",
+                  "review_text": "perfect game i love it so much although buggy sometimes its really fun and even better with mods\r\n",
+                  "truncated": false
                 }
               ]
             }
@@ -266,8 +280,8 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-2cf533",
-              "claim": "Reviewers experience annoyance with certain survival mechanics and resource gathering loops.",
+              "claim_id": "mid-fd4bcd",
+              "claim": "Reviewers note that the game features minimal instructions and guidance, requiring players to rely on exploration and curiosity to progress.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -275,28 +289,63 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231702547",
-                  "hours_at_review": 48.6,
+                  "recommendationid": "240026144",
+                  "hours_at_review": 24.0,
+                  "minutes_at_review": 1440,
                   "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "I have been waiting to play this game for some time. I went in knowing as little information as possible which I think is the best way to experience the first playthrough. While survival game mechanics in general can be annoying to deal with at times, I felt this game was quite well-balanced in that respect. The world is so thoughtfully designed, and I wish I could re-experience the joy of entering a new biome for the first time again. This game gave me jump scares, filled me with dread and tension, encouraged my curiousity to learn about the world, and ended with a sense of accomplishment. \r\n\r\nThis is a game where you crash land on a water planet and must figure out how to survive. To say any more would be to take away from the joy of exploration and mystery that this game brings. \r\n\r\nHighly recommend!!",
-                  "truncated": false,
-                  "minutes_at_review": 2917
+                  "date": "2026-11-12",
+                  "review_text": "Halfway through - amazingly fun with many surprises. Instructions are minimal; exploration and curiosity are fundamental to achieving progress. Highly recommend NOT playing on absolute hardest difficulty first time around (dying in game means restarting) since you can easily die any number of ways. Overall and excellent game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229632039",
-                  "hours_at_review": 39.5,
+                  "recommendationid": "240203294",
+                  "hours_at_review": 32.0,
+                  "minutes_at_review": 1923,
                   "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "7/10 really. Not into \"picking up and smashing rocks all the time\" loop.",
-                  "truncated": false,
-                  "minutes_at_review": 2367
+                  "date": "2026-11-14",
+                  "review_text": "Fun survival game.Very interesting story .I could talk days about this game and what i like. When i first played it i didnt know what to do .pda helped but not enought,There was a time when i hit a plato in the progress line and didnt know waht to do so i just spend most of the time (2-3 rl days)wondering waht to do.Maybe the developers should put some clues. (english is not my first language so there may be mistakes)",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-94dbdb",
+              "claim": "Reviewers mention that crafting and base building lack certain quality-of-life features, which can be addressed using game modifications.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240531761",
+                  "hours_at_review": 51.0,
+                  "minutes_at_review": 3058,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "So 50 hours to beat the game of which about 30 were peaceful diving in early to mid game and chasing radio signals, 5 hours were the final game with all the pain it is to go from point A to point B and at least 10 hours were literally crawling the ocean to find the missing pieces for what I needed to build and they never spawned until I went to the end of the map and beyond. So yeah, the ocean is beautiful, the adventure is fun, until there is a story and then there is the total emptiness when the story ends. At least I made a nice base with a nuclear reactor next to my bedroom. But for new players: use mods - the bed-teleport mod is a life-saver also the resource scanner. Also know that you might write 1 cheat and then disable it and your achievements are gone. Yay.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239876112",
+                  "hours_at_review": 31.1,
+                  "minutes_at_review": 1864,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "Missing some QOL stuff in the crafting and base building department, but those can be fixed with mods if they bug you. Other than that, amazing game that is so immersive.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
@@ -310,68 +359,134 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 102,
-      "pct_positive": 97.1,
+      "pool_n": 107,
+      "pct_positive": 100.0,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players highlight the frustration of missing auto-save functionality leading to lost progress.",
+      "summary": "Long-term players praise the smooth performance on varied hardware and the rewarding tech tree progression.",
       "themes": [
         {
-          "theme": "other",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-a7ac60",
-              "claim": "Reviewers note that the game lacks an auto-save feature, which can result in losing progress.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-caa5ee",
+              "claim": "Reviewers report that the game can run smoothly even on lower-specification hardware and laptops.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "230248192",
-                  "hours_at_review": 101.8,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "As an enjoyer of the survival, base-building genre, the game itself is a blast, but the inability to run the game without crashing every 20 minutes is absolutely horrendous. Most of my time was spent AFK in the main menu, and the rest of the time was spent catching up to where I last crashed at. It's my first time and I wanted to play on hardcore, but without the ability to consistently save it's an absolute nightmare. I will not be playing more of Subnautica and I will not be playing or buying Subnautica 2. Googling \"Why does subnautica\" with the first two autofill results showing \"keep crashing\" and \"2 keep crashing\" is my sign.",
-                  "truncated": false,
-                  "minutes_at_review": 6106
+                  "recommendationid": "239391662",
+                  "hours_at_review": 124.2,
+                  "minutes_at_review": 7455,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "Amazing game runs great i also played it on my shitty laptop with a celebron cpu im not sure if it had intergraded graphics but i dont think so regardless game runs amazing",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229703670",
-                  "hours_at_review": 143.7,
-                  "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "Doesn't have auto save, you could lose everything in a few clicks.",
-                  "truncated": false,
-                  "minutes_at_review": 8619
+                  "recommendationid": "238270930",
+                  "hours_at_review": 215.1,
+                  "minutes_at_review": 12903,
+                  "voted_up": true,
+                  "date": "2026-10-21",
+                  "review_text": "In concept and execution, this game is a work of genius. It runs smoothly even on my low specs PC, and is unlike any other game I've experienced. The attention to detail is extraordinary. The world it presents is beautiful and terrifying. Only by exploring it will you survive. If you haven't already, take the plunge.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237323180",
+                  "hours_at_review": 198.0,
+                  "minutes_at_review": 11882,
+                  "voted_up": true,
+                  "date": "2026-10-09",
+                  "review_text": "its very easy to run even for laptops",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-6a8a7e",
+              "claim": "Reviewers describe the progression as being driven by a tech tree and exploration, with story elements initially guiding the player before leaving them to figure out how to proceed on their own.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "238916832",
+                  "hours_at_review": 136.7,
+                  "minutes_at_review": 8202,
+                  "voted_up": true,
+                  "date": "2026-10-30",
+                  "review_text": "PepperTuna's Rate-O-Meter: 0 NO, 1 terrible, 2 bad, 3 subpar, 4 mediocre, 5 average, 6 decent, 7 good, 8 great, 9 amazing, 10 my favourite. Rating: 8 (great) or 9 (amazing).\n\nGameplay: The player manages 4 stats: Healthpoints, hunger, thirst and oxygen, with thirst draining faster than hunger and oxygen drain and quantity being dependent on your equipment and depth underwater. Progression is tech tree-driven with the bulk of playtime being well-paced as a result of this, as you need to explore to find resources and blueprints to craft equipment that lets you explore ever-further. Pacing starts to taper off in the late-game and can be a slog at the endgame. Certain story elements are used to kickstart progression and guide the player in the right direction by giving them waypoints, but after that they are (literally) left in the deep end on how to progress, which can cause friction if not patient or explorative enough. As this is an open world survival-craft game, you may have a vastly different experience from the next player. You might spend over 100 hours devoted largely to base building, or maybe you'll rush through in 15 hours without any change in pace. Base building works as follows: Place the start of your base anywhere, then make it branch out in what's essentially a grid. You can decorate the interiors, however there's only so much flexibility with what you're given.\n\nPlay Level: You are free to choose which direction you explore, limited only by your equipment and in the late-game the terrain too. You start out in the middle of the map, and going in any direction will eventually lead you closer to the ending. You will need to travel between various points on the map, though with how resources are spread some areas aren't vital to visit for progression or story completion. Terrain naturally guides your eye towards POIs, take for example a canyon leading towards a wreck you can loot, rather than over-relying on yellow paint methods of guiding the player. The…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238789695",
+                  "hours_at_review": 158.4,
+                  "minutes_at_review": 9504,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "My first survival game, and it certainly did not disappoint!\n\nThe concept of having most of the game take place underwater is refreshing, especially since getting your bearings in such an environment can be quite challenging. Exploration is at the heart of the experience, with different biomes to discover, each presenting its own challenges.\n\nI did have to consult a few guides along the way, as there were times when I felt the story wasn't progressing. More often than not, the answer lay in an area I hadn't explored yet. This does mean the game requires a significant time commitment, particularly if you want to figure things out on your own.\n\nThe sense of progression is very satisfying. As you discover and craft new tools and equipment, exploring the more challenging biomes becomes easier. However, the game never lets you feel completely invincible, maintaining a sense of danger and vulnerability throughout.\n\nWhat kept me going was the intriguing story, which gradually unfolds as you explore. It was ultimately my biggest motivation to see the game through to the end.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-28cce91b",
+          "text": "One reviewer says that the game had quite a few glitches that caused them to have to start the game over at least once, losing all progress because the save became unplayable.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239532924",
+            "hours_at_review": 129.8,
+            "minutes_at_review": 7791,
+            "voted_up": true,
+            "date": "2026-11-06",
+            "review_text": "Absolutely loved this game. I'd seen many clips over the years and thought I might be interested in it, but never pushed play and actually dove in. Was finally convinced to give it a try; sooooooooo glad I finally took the plunge! What a great story, experience and a unique send-off for future players. Love, love, love. My only complaint is that the game had quite a few glitches that caused me to have to start the game over at least once losing all my progress because the glitch was so bad it made that game save unplayable. Would still play again though, even knowing I might run into that issue again.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-d082677f",
+          "text": "One reviewer says they had to consult a few guides along the way, as there were times when they felt the story wasn't progressing.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238789695",
+            "hours_at_review": 158.4,
+            "minutes_at_review": 9504,
+            "voted_up": true,
+            "date": "2026-10-29",
+            "review_text": "My first survival game, and it certainly did not disappoint!\n\nThe concept of having most of the game take place underwater is refreshing, especially since getting your bearings in such an environment can be quite challenging. Exploration is at the heart of the experience, with different biomes to discover, each presenting its own challenges.\n\nI did have to consult a few guides along the way, as there were times when I felt the story wasn't progressing. More often than not, the answer lay in an area I hadn't explored yet. This does mean the game requires a significant time commitment, particularly if you want to figure things out on your own.\n\nThe sense of progression is very satisfying. As you discover and craft new tools and equipment, exploring the more challenging biomes becomes easier. However, the game never lets you feel completely invincible, maintaining a sense of danger and vulnerability throughout.\n\nWhat kept me going was the intriguing story, which gradually unfolds as you explore. It was ultimately my biggest motivation to see the game through to the end.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 2,
-        "cited_recommend": 0,
-        "divergence_p": 0.000841,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 5,
+        "cited_recommend": 5,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1419,
-    "steam_total_reviews": 208386,
+    "pool_n": 1200,
+    "steam_total_reviews": 210791,
     "cohort_count": 3,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/264710/header.jpg?t=1777456112",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/264710/capsule_231x87.jpg?t=1777456112",
-    "grid": "https://cdn2.steamgriddb.com/grid/50896c8a37922749110dae272e7a345b.png"
   }
 }

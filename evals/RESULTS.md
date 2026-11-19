@@ -2556,3 +2556,33 @@ claim that a cited review only half-supports (BACKLOG 2026-11-18).
 Shipped with this night: each verdict page now shows "As of <date>" under the stamp
 (`site/lib/__tests__/as-of-date.contract.test.tsx`; mutations 6/6,
 `evals/mutate-as-of-2026-11-18.txt`).
+
+## 2026-11-19 — Catalog refresh, night 3: 31 titles regenerated
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **27,178 citations across all 543 verdicts, 0 failures**, `EXIT_RC=0`. Raw: `evals/qr4-2026-11-19.txt` |
+| Manual audit | `evals/audit-4.4-2026-11-19.md`, seed 20261119, 10 verdicts, 20 citations. **Read by the coding agent on the owner's instruction, not by the owner.** No NSFW or slur text. All 10 verdict words were recomputed from the split-bar figures and agree. |
+| Search index | rebuilt, 0 of 543 verdict appids missing by set membership. Genre sections rebuilt, counts unchanged. |
+
+`pipeline/run_batch_logged.sh --refresh`, log `evals/batch-2026-11-19.txt`, `EXIT_RC=0`.
+
+| | |
+|---|---|
+| Ran / published | 31 / **31** |
+| Gate drops / stage failures | 0 / 0 |
+| Refused at the budget | 456 at 0 calls, none recorded. Only the 31 real results changed in `data/batch_state.json`. |
+| Model calls | **393**, mean 12.7. Reconciles three ways: run summary, the 31 records, ledger `batch_used` 393 |
+| Over EST_COST 15 | 4: Megabonk 18, Rainbow Six Siege 17, Cities: Skylines 17, Unturned 16. That is 11 of 82 across three nights. |
+| Budget left | 7 of 400, live reserve untouched |
+| Verdicts on the 31 | Buy 16 / Wait 12 / Skip 3 before and after, with 6 words moving |
+| Claims on the 31 | 549 → **393**, plus 94 one-reviewer points |
+| Refresh progress | **82 of 538** non-seed titles verified, 456 to go |
+
+Six verdict words moved with the fresh reviews. Buy → Wait: Unturned, Cities: Skylines,
+Civilization VI. Wait → Buy: Slay the Spire 2, GTA V Enhanced, Darkest Dungeon.
+
+The audit found 3 more citations that support only part of their claim (BACKLOG
+2026-11-18 follow-up). That is 6 of 60 audited citations over three nights.
