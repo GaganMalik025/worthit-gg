@@ -1,52 +1,60 @@
 {
   "appid": "393380",
   "game_name": "Squad",
-  "generated_at": "2026-08-10T10:07:11Z",
+  "generated_at": "2026-11-21T02:33:08Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/393380/0b19b50aabea356bd8f534fbe7d6db9bd227810a/header.jpg?t=1784319638",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/393380/e069cbeca98b633002e2d2202b4cc4ae58138549/capsule_231x87.jpg?t=1784319638",
+    "grid": "https://cdn2.steamgriddb.com/grid/15a0c610810751360d1943952a8b5193.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 15,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Tactical teamwork hampered by technical instability and poor server tools.",
+    "tagline": "Rough performance and broken queues block the way.",
     "for_you_if": [
-      "you enjoy deep military coordination",
-      "you tolerate steep learning curves",
-      "you play with dedicated squads"
+      "you are willing to master a steep learning curve",
+      "you rely on constant microphone communication with teammates"
     ],
     "not_for_you_if": [
-      "you need stable frame rates",
-      "you expect a functional server browser",
-      "you want smooth vehicle controls"
+      "you need stable frame rates without crashes",
+      "you expect functional server browsers and matchmaking"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 68,
-      "pct_positive": 36.8,
+      "pool_n": 110,
+      "pct_positive": 23.6,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 392,
-      "pct_positive": 74.7,
+      "pool_n": 287,
+      "pct_positive": 72.5,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 354,
-      "pct_positive": 80.2,
+      "pool_n": 196,
+      "pct_positive": 81.6,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 411,
-      "pct_positive": 72.7,
+      "pool_n": 307,
+      "pct_positive": 64.2,
       "muted": false
     }
   ],
@@ -56,49 +64,49 @@
       "type": "segmentation",
       "direction": null,
       "shape": "rise_then_fall",
-      "sentence": "Positive ratings rise after the initial hours before dropping among veterans.",
+      "sentence": "Review sentiment shifts significantly across playtime, peaking before declining among long-term players.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 36.8,
-            "pool_n": 68
+            "pct_positive": 23.6,
+            "pool_n": 110
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 74.7,
-            "pool_n": 392
+            "pct_positive": 72.5,
+            "pool_n": 287
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 80.2,
-            "pool_n": 354
+            "pct_positive": 81.6,
+            "pool_n": 196
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 72.7,
-            "pool_n": 411
+            "pct_positive": 64.2,
+            "pool_n": 307
           }
         ],
         "shape": "rise_then_fall",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 36.8,
-        "low_pool_n": 68,
+        "low_pct_positive": 23.6,
+        "low_pool_n": 110,
         "high_cohort": "mid",
         "high_cohort_label": "20-100 hours",
-        "high_pct_positive": 80.2,
-        "high_pool_n": 354,
-        "gap_pts": 43.4,
+        "high_pct_positive": 81.6,
+        "high_pool_n": 196,
+        "gap_pts": 58.0,
         "peak_cohort": "mid",
-        "peak_pct_positive": 80.2,
+        "peak_pct_positive": 81.6,
         "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 72.7,
-        "drop_after_peak_pts": 7.5
+        "post_peak_low_pct_positive": 64.2,
+        "drop_after_peak_pts": 17.4
       }
     },
     {
@@ -106,14 +114,14 @@
       "type": "recency",
       "direction": "declined",
       "shape": null,
-      "sentence": "Recent reviews score lower than lifetime averages.",
+      "sentence": "Recent reviews show a decline in positive sentiment compared to the lifetime average.",
       "evidence": {
-        "recent_pool_pct_positive": 73.6,
-        "recent_pool_n": 1225,
+        "recent_pool_pct_positive": 65.7,
+        "recent_pool_n": 900,
         "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 82.5,
-        "steam_total_reviews": 110943,
-        "delta_pts": -8.9
+        "steam_lifetime_pct_positive": 82.3,
+        "steam_total_reviews": 112456,
+        "delta_pts": -16.6
       }
     }
   ],
@@ -122,117 +130,440 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 68,
-      "pct_positive": 36.8,
+      "pool_n": 110,
+      "pct_positive": 23.6,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers face startup crashes, poor optimization, and a lack of support for peripheral control devices alongside language barriers on servers.",
+      "summary": "Early players experience severe technical instability, broken matchmaking, and non-functional tutorials.",
       "themes": [
         {
-          "theme": "content",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "ref-f6538d",
-              "claim": "Reviewers report difficulty finding English-speaking servers or encountering servers where other languages are predominantly spoken.",
+              "claim_id": "ref-2d5cd0",
+              "claim": "Reviewers report technical instability, including game crashes, infinite loading screens, and unexpected resolution or display mode changes.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 4
+                "negative": 6
               },
               "citations": [
                 {
-                  "recommendationid": "231883113",
-                  "hours_at_review": 1.8,
+                  "recommendationid": "239677686",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 32,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "My first impression of this game is a mixed bag,\n\n1st server: genuine fun and enjoyment that has grabbed my attention to actually play this game more.\n\n2nd - 11th server: getting kicked because power abusing admins don't like that I won't communicate in russian.\n(This whole game has converted it's community to Russian, good luck finding a good one)",
-                  "truncated": false,
-                  "minutes_at_review": 109
+                  "date": "2026-11-08",
+                  "review_text": "I've only spent less then an hour and already disappointed. I've been playing arma for awhile and thought it might be fun to try this game as I've seen good things about it. the tutorials that i tried to do were both broken and first time i tried to join a game i got stuck loading. and some of the controller binds are not shown in the training leading to confusion as i tried to figure it out. i can not recommend this game over other games and genuinely am debating grabbing a refund. if i don't and decide to try and play this again and have a better time ill update my review but if my first introduction to the game is the base game tutorials not working it leaves me with a really sour taste in my mouth.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231612785",
-                  "hours_at_review": 1.9,
+                  "recommendationid": "236284613",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 20,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "I had high hopes for this game from all the videos i've seen online, spent about an hour just trying to find a server where people spoke english even after selecting english servers. did not find one, tried to play regardless but kept getting kicked out of squads as soon as i joined leaving me with a rifle and no ammo. honestly i spent 2 hours just being annoyed for trying to play a game.",
-                  "truncated": false,
-                  "minutes_at_review": 115
+                  "date": "2026-09-27",
+                  "review_text": "One of the worst games out there, I downloaded it, tried playing a game, the amazing game crashed and now it black screens off the start, great game, I have 20 minutes played and its me trying to fix the piece of shit.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229214177",
+                  "recommendationid": "236226716",
                   "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
                   "voted_up": false,
-                  "date": "2026-06-30",
-                  "review_text": "I will not talked about gameplay, because i barely get into any of it due to lacking servers, This will only applied in SEA region.\n\nThere's so few English speaking server in this region when you put on Friendly friendly server there's only around 4-5 servers that speaks English,  and 3 of them is full and the rest have single digit players. The rest are Chinese so if you can speak it then i recommended. but this is from my non Chinese speaking ahh perspective, that's why i wouldn't recommended for fellow jungles asians brothers. Anyway if anyone sees this, is Arma Reforger feels better than this? I wouldn't mind an AI like at all.",
-                  "truncated": false,
-                  "minutes_at_review": 25
+                  "date": "2026-09-26",
+                  "review_text": "Game is so poorly optimized that I barely even had a chance to play it besides the tutorial and a quick online match. What I mean by poorly optimized? The game exits itself from borderless and enters full screen mode OUT OF THE BLUE in a weird resolution, it's so bad that I can't access the settings tab anymore in the main menu. Not even custom launch options helped resolve this or ALT + Enter. \n\nThen there is the game itself (Which I got to \"enjoy\" briefly before the bug occurred), I joined a random server and I couldn't select any spawn point except for the main spawn (even though there seemed to be multiple spawn points spread across the map for my faction). \nI then tried getting in a truck that was waiting on me and some others, holding F (like the game says you're supposed to) does nothing...So I couldn't enter the truck and they left without me. Great!\n\nThe graphics and animations also look very lacking even when all the settings are maxed out, there was a point during the tutorial for example where you had to crawl whilst your surroundings were being shot to pieces above you. You could see debris falling in the ditch in front of you and de-spawning maybe a second later as you're crawling towards it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226765314",
+                  "recommendationid": "236226404",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 112,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "I get on the game, the graphics look like ones of a mobile game, spend an hour adjusting the graphics and looking at youtube tutorials, then i load into a game, works just fine. I get on tommorow try to load into another server but i get kicked out, then i get put into an infinite black loading screen, this is why arma is better and squad is shit.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236172820",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 54,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "Try to join a server, game crashes. UI buggy, PvE mode just... boring. Waste of time",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-38ae86",
+              "claim": "Reviewers report that the game suffers from poor optimization, leading to low frame rates and visual performance issues.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "239738308",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 92,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "By far the worst shooter game ever. Really bad optimized and nothing makes sense",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236408855",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 18,
+                  "voted_up": false,
+                  "date": "2026-09-28",
+                  "review_text": "Performance is awful, servers are a pain to get into, bugs everywhere, and the game feels unnecessarily frustrating for new players. Great concept, but too many technical and server issues ruin the experience.\n\nbtw not optimized.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236337360",
                   "hours_at_review": 1.0,
+                  "minutes_at_review": 62,
                   "voted_up": false,
-                  "date": "2026-05-30",
-                  "review_text": "Genuinely GREATLY Let down by this game. \n\nI wanted to love Squad. On paper, it sounds like everything I’ve wanted out of a tactical shooter — teamwork, communication, realism, coordination, and intense firefights where strategy actually matters. Instead, what I got was one of the most frustrating multiplayer experiences I’ve had in years.\n\nThe biggest issue? Communication is practically dead unless you’re lucky enough to land in the perfect server at the perfect time. This is a game BUILT around teamwork and voice communication, yet half the matches feel like you’re dropped into total silence. Nobody talks, nobody coordinates, nobody listens. And when people DO finally start talking, half the time I can’t even understand them because nobody is speaking English on the servers I keep getting thrown into.\n\nI don’t care where people are from — genuinely. But if the entire game depends on communication and coordination, there has to be better server organization or filtering. It becomes impossible to enjoy a tactical game when every squad sounds like six different conversations happening in languages you don’t understand while the squad leader blasts music into the mic and drives a transport truck straight into an ambush.\n\nThen there’s the community side of things, which somehow manages to be even worse. I’ve heard people openly praising or joking about genuinely heinous extremist groups and violent ideologies during gameplay, and way too often nobody even bats an eye. Instead of getting shut down, it gets laughed off like “edgy humor.” It completely kills the atmosphere and makes the community feel toxic in a way that goes beyond normal online trash talk.\n\nAnd that’s what irritates me most: Squad SHOULD be incredible. The gunplay can feel immersive. The sound design is fantastic. Some moments genuinely feel like you’re inside a war movie. But those moments are buried under poor communication, disconnected teammates, dead squads, language barriers with no good matchmaki…",
-                  "truncated": true,
-                  "minutes_at_review": 60
+                  "date": "2026-09-27",
+                  "review_text": "Probably the worst large scale mil sim type game I have played and runs very poorly at low settings even on my middle end system. Plays and feels like an early access title, would not spend the money they want for a game like this. I am sure the mod servers are probably lots of fun for some people though, but i'd rather not waste my time finding out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236307646",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 28,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "Maybe, 5\\10, ultra bad fps, better than Arma R in terms of controls, but otherwise it feels worse.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236226716",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "Game is so poorly optimized that I barely even had a chance to play it besides the tutorial and a quick online match. What I mean by poorly optimized? The game exits itself from borderless and enters full screen mode OUT OF THE BLUE in a weird resolution, it's so bad that I can't access the settings tab anymore in the main menu. Not even custom launch options helped resolve this or ALT + Enter. \n\nThen there is the game itself (Which I got to \"enjoy\" briefly before the bug occurred), I joined a random server and I couldn't select any spawn point except for the main spawn (even though there seemed to be multiple spawn points spread across the map for my faction). \nI then tried getting in a truck that was waiting on me and some others, holding F (like the game says you're supposed to) does nothing...So I couldn't enter the truck and they left without me. Great!\n\nThe graphics and animations also look very lacking even when all the settings are maxed out, there was a point during the tutorial for example where you had to crawl whilst your surroundings were being shot to pieces above you. You could see debris falling in the ditch in front of you and de-spawning maybe a second later as you're crawling towards it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236181997",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 60,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "game sucks, dont reccomend performance is bad 80fps on good pc at epic 1440p  while still looking horrid",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ref-7bca2f",
-              "claim": "Reviewers report that the game lacks support for HOTAS peripherals for driving vehicles and flying helicopters.",
+              "claim_id": "ref-2a46fb",
+              "claim": "Reviewers note that the built-in matchmaking and server browser are broken, slow, or result in long wait times and queue durations.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 6
               },
               "citations": [
                 {
-                  "recommendationid": "231848287",
-                  "hours_at_review": 1.3,
+                  "recommendationid": "236479216",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 87,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Do like to drive vehicles and fly helicopters? Or play in games where your drivers and pilots are offerd the tools to be the best they can? Well then go buy Arma. Variable inputs like joysticks, throttles, thumbsticks, and triggers are essential for satifying vehicle handling but this game esentially forces MKB on everything and it's truly awful. You get can get a MUCH better experience in other games as both a vehicle operator and as a passenger.",
-                  "truncated": false,
-                  "minutes_at_review": 80
+                  "date": "2026-09-29",
+                  "review_text": "1 saat maç bekledim gene bulmadı",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231489728",
-                  "hours_at_review": 1.7,
+                  "recommendationid": "236357017",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 40,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Can't give a good review with no hotas support, its crazy for a milsim to be missing such a basic feature",
-                  "truncated": false,
-                  "minutes_at_review": 101
+                  "date": "2026-09-27",
+                  "review_text": "Literally hours waiting for matchmaking with no success.\nNot even restarting the game solved the issue.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236334792",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 12,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "tried to play this game on free weekened and sat in que for 12 minutes",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236283460",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 22,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "Wasted over 30 mins total sitting in server matchmakings. Find match is broken, only way is by looking at server list and join. First game in, Squad crashed before firing a single bullet. Rubbish",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236205297",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 53,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "hours of waiting finding match... even i put any still no find match wow ok back to the game what i really play thanks for free to play trial so I leave negative for a while but it was neutral suppose to be",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236176376",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "sat in a queue for 20 min didn't find a match",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ref-8cbada",
-              "claim": "Reviewers report that variable input devices like joysticks lack support in the game.",
+              "claim_id": "ref-0cc98a",
+              "claim": "Reviewers report that the automated matchmaker and server browser fail to find matches or function properly, leading to extended wait times.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 5
               },
               "citations": [
                 {
-                  "recommendationid": "231848287",
-                  "hours_at_review": 1.3,
+                  "recommendationid": "236357017",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 40,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Do like to drive vehicles and fly helicopters? Or play in games where your drivers and pilots are offerd the tools to be the best they can? Well then go buy Arma. Variable inputs like joysticks, throttles, thumbsticks, and triggers are essential for satifying vehicle handling but this game esentially forces MKB on everything and it's truly awful. You get can get a MUCH better experience in other games as both a vehicle operator and as a passenger.",
-                  "truncated": false,
-                  "minutes_at_review": 80
+                  "date": "2026-09-27",
+                  "review_text": "Literally hours waiting for matchmaking with no success.\nNot even restarting the game solved the issue.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231489728",
-                  "hours_at_review": 1.7,
+                  "recommendationid": "236283460",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 22,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Can't give a good review with no hotas support, its crazy for a milsim to be missing such a basic feature",
-                  "truncated": false,
-                  "minutes_at_review": 101
+                  "date": "2026-09-27",
+                  "review_text": "Wasted over 30 mins total sitting in server matchmakings. Find match is broken, only way is by looking at server list and join. First game in, Squad crashed before firing a single bullet. Rubbish",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236205297",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 53,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "hours of waiting finding match... even i put any still no find match wow ok back to the game what i really play thanks for free to play trial so I leave negative for a while but it was neutral suppose to be",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236176376",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "sat in a queue for 20 min didn't find a match",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-530c4c",
+              "claim": "Reviewers describe encountering crashes, infinite loading screens, and unexpected resolution shifts.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 7
+              },
+              "citations": [
+                {
+                  "recommendationid": "239677686",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 32,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "I've only spent less then an hour and already disappointed. I've been playing arma for awhile and thought it might be fun to try this game as I've seen good things about it. the tutorials that i tried to do were both broken and first time i tried to join a game i got stuck loading. and some of the controller binds are not shown in the training leading to confusion as i tried to figure it out. i can not recommend this game over other games and genuinely am debating grabbing a refund. if i don't and decide to try and play this again and have a better time ill update my review but if my first introduction to the game is the base game tutorials not working it leaves me with a really sour taste in my mouth.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236284613",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 20,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "One of the worst games out there, I downloaded it, tried playing a game, the amazing game crashed and now it black screens off the start, great game, I have 20 minutes played and its me trying to fix the piece of shit.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236283460",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 22,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "Wasted over 30 mins total sitting in server matchmakings. Find match is broken, only way is by looking at server list and join. First game in, Squad crashed before firing a single bullet. Rubbish",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236226716",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "Game is so poorly optimized that I barely even had a chance to play it besides the tutorial and a quick online match. What I mean by poorly optimized? The game exits itself from borderless and enters full screen mode OUT OF THE BLUE in a weird resolution, it's so bad that I can't access the settings tab anymore in the main menu. Not even custom launch options helped resolve this or ALT + Enter. \n\nThen there is the game itself (Which I got to \"enjoy\" briefly before the bug occurred), I joined a random server and I couldn't select any spawn point except for the main spawn (even though there seemed to be multiple spawn points spread across the map for my faction). \nI then tried getting in a truck that was waiting on me and some others, holding F (like the game says you're supposed to) does nothing...So I couldn't enter the truck and they left without me. Great!\n\nThe graphics and animations also look very lacking even when all the settings are maxed out, there was a point during the tutorial for example where you had to crawl whilst your surroundings were being shot to pieces above you. You could see debris falling in the ditch in front of you and de-spawning maybe a second later as you're crawling towards it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236226404",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 112,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "I get on the game, the graphics look like ones of a mobile game, spend an hour adjusting the graphics and looking at youtube tutorials, then i load into a game, works just fine. I get on tommorow try to load into another server but i get kicked out, then i get put into an infinite black loading screen, this is why arma is better and squad is shit.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236172820",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 54,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "Try to join a server, game crashes. UI buggy, PvE mode just... boring. Waste of time",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-bef34a",
+              "claim": "Reviewers report that matchmaking features fail to find games, leading to long waits without success.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "236479216",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 87,
+                  "voted_up": false,
+                  "date": "2026-09-29",
+                  "review_text": "1 saat maç bekledim gene bulmadı",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236357017",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 40,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "Literally hours waiting for matchmaking with no success.\nNot even restarting the game solved the issue.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236353542",
+                  "hours_at_review": 1.3,
+                  "minutes_at_review": 76,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "i did the training tried to find match and got nothing and eventually got into game but weird guy started shooting pistol to sides of players which i shot them for and host left game after and theirs no shotguns would never try again",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236263762",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 19,
+                  "voted_up": true,
+                  "date": "2026-09-26",
+                  "review_text": "- launched the game\n- waited 20 minutes for a match\n- didn't find a match\n- left \n\ntruly a masterpiece",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236205297",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 53,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "hours of waiting finding match... even i put any still no find match wow ok back to the game what i really play thanks for free to play trial so I leave negative for a while but it was neutral suppose to be",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236176376",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "sat in a queue for 20 min didn't find a match",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-fea6a8",
+              "claim": "Reviewers state that the game suffers from poor optimization, technical issues, and crashes.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "239738308",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 92,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "By far the worst shooter game ever. Really bad optimized and nothing makes sense",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236408855",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 18,
+                  "voted_up": false,
+                  "date": "2026-09-28",
+                  "review_text": "Performance is awful, servers are a pain to get into, bugs everywhere, and the game feels unnecessarily frustrating for new players. Great concept, but too many technical and server issues ruin the experience.\n\nbtw not optimized.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236337360",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 62,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "Probably the worst large scale mil sim type game I have played and runs very poorly at low settings even on my middle end system. Plays and feels like an early access title, would not spend the money they want for a game like this. I am sure the mod servers are probably lots of fun for some people though, but i'd rather not waste my time finding out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236284613",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 20,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "One of the worst games out there, I downloaded it, tried playing a game, the amazing game crashed and now it black screens off the start, great game, I have 20 minutes played and its me trying to fix the piece of shit.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236226716",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "Game is so poorly optimized that I barely even had a chance to play it besides the tutorial and a quick online match. What I mean by poorly optimized? The game exits itself from borderless and enters full screen mode OUT OF THE BLUE in a weird resolution, it's so bad that I can't access the settings tab anymore in the main menu. Not even custom launch options helped resolve this or ALT + Enter. \n\nThen there is the game itself (Which I got to \"enjoy\" briefly before the bug occurred), I joined a random server and I couldn't select any spawn point except for the main spawn (even though there seemed to be multiple spawn points spread across the map for my faction). \nI then tried getting in a truck that was waiting on me and some others, holding F (like the game says you're supposed to) does nothing...So I couldn't enter the truck and they left without me. Great!\n\nThe graphics and animations also look very lacking even when all the settings are maxed out, there was a point during the tutorial for example where you had to crawl whilst your surroundings were being shot to pieces above you. You could see debris falling in the ditch in front of you and de-spawning maybe a second later as you're crawling towards it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236172820",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 54,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "Try to join a server, game crashes. UI buggy, PvE mode just... boring. Waste of time",
+                  "truncated": false
                 }
               ]
             }
@@ -242,8 +573,46 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ref-10fd2c",
-              "claim": "Reviewers experience issues with vehicle controls, noting a lack of support for devices like HOTAS and forced mouse and keyboard setups.",
+              "claim_id": "ref-551a7c",
+              "claim": "Reviewers state that the tutorials are broken, incomplete, or fail to explain basic game controls and mechanics.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "239677686",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 32,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "I've only spent less then an hour and already disappointed. I've been playing arma for awhile and thought it might be fun to try this game as I've seen good things about it. the tutorials that i tried to do were both broken and first time i tried to join a game i got stuck loading. and some of the controller binds are not shown in the training leading to confusion as i tried to figure it out. i can not recommend this game over other games and genuinely am debating grabbing a refund. if i don't and decide to try and play this again and have a better time ill update my review but if my first introduction to the game is the base game tutorials not working it leaves me with a really sour taste in my mouth.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236286305",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 42,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "Thought about buying this some day and now got to play it during the free weekend\r\n\r\nJust no. This game sucks. Hard and nothing to explain to you what you are supposed to do.\r\n\r\nI would rather buy WinRar than this",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236171142",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 9,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "Outdated graphics. Took too long to get into a server and into the tutorial (?!). Tutorial wasn't good so I quit right away. Wouldn't recommend.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-b003be",
+              "claim": "Reviewers note that the base game tutorial is broken and does not work properly.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -251,144 +620,50 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231848287",
-                  "hours_at_review": 1.3,
+                  "recommendationid": "239677686",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 32,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Do like to drive vehicles and fly helicopters? Or play in games where your drivers and pilots are offerd the tools to be the best they can? Well then go buy Arma. Variable inputs like joysticks, throttles, thumbsticks, and triggers are essential for satifying vehicle handling but this game esentially forces MKB on everything and it's truly awful. You get can get a MUCH better experience in other games as both a vehicle operator and as a passenger.",
-                  "truncated": false,
-                  "minutes_at_review": 80
+                  "date": "2026-11-08",
+                  "review_text": "I've only spent less then an hour and already disappointed. I've been playing arma for awhile and thought it might be fun to try this game as I've seen good things about it. the tutorials that i tried to do were both broken and first time i tried to join a game i got stuck loading. and some of the controller binds are not shown in the training leading to confusion as i tried to figure it out. i can not recommend this game over other games and genuinely am debating grabbing a refund. if i don't and decide to try and play this again and have a better time ill update my review but if my first introduction to the game is the base game tutorials not working it leaves me with a really sour taste in my mouth.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231489728",
-                  "hours_at_review": 1.7,
+                  "recommendationid": "236401809",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 27,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Can't give a good review with no hotas support, its crazy for a milsim to be missing such a basic feature",
-                  "truncated": false,
-                  "minutes_at_review": 101
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ref-a10406",
-              "claim": "Reviewers report experiencing game crashes on startup or during matches.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "227632080",
-                  "hours_at_review": 0.1,
-                  "voted_up": true,
-                  "date": "2026-06-10",
-                  "review_text": "Fix the game, Would really want to play it but it crashes on startup. It's not my computer, my computer is a monster.",
-                  "truncated": false,
-                  "minutes_at_review": 5
-                },
-                {
-                  "recommendationid": "226651878",
-                  "hours_at_review": 0.6,
-                  "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "I spent over half an hour trying to trouble shoot this turd of a game by getting rid of discord and updating my drivers and everything in-between and it still cant launch without crashing. Save your money and buy Arma.",
-                  "truncated": false,
-                  "minutes_at_review": 34
-                },
-                {
-                  "recommendationid": "226947683",
-                  "hours_at_review": 1.5,
-                  "voted_up": false,
-                  "date": "2026-06-01",
-                  "review_text": "Joined 3 matches, got kicked from the first two because I was new, third match I met someone who was inviting and willing to get me up to speed, then the server crashed, not worth my time.",
-                  "truncated": false,
-                  "minutes_at_review": 88
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-b59719",
-              "claim": "Reviewers note poor optimization and performance issues despite having capable hardware.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "227060172",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-06-03",
-                  "review_text": "Garbage. The servers don't even load. Terrible optimization.",
-                  "truncated": false,
-                  "minutes_at_review": 23
-                },
-                {
-                  "recommendationid": "226509471",
-                  "hours_at_review": 1.8,
-                  "voted_up": false,
-                  "date": "2026-05-26",
-                  "review_text": "3 years of updates and still horrible optimisation",
-                  "truncated": false,
-                  "minutes_at_review": 107
-                },
-                {
-                  "recommendationid": "226273028",
-                  "hours_at_review": 0.6,
-                  "voted_up": false,
-                  "date": "2026-05-24",
-                  "review_text": "This Game is so unplayable. I  have more then capable PC to play this and its so bad",
-                  "truncated": false,
-                  "minutes_at_review": 34
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-0e25a8",
-              "claim": "Reviewers experience technical issues where the game crashes on startup or fails to launch.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "227632080",
-                  "hours_at_review": 0.1,
-                  "voted_up": true,
-                  "date": "2026-06-10",
-                  "review_text": "Fix the game, Would really want to play it but it crashes on startup. It's not my computer, my computer is a monster.",
-                  "truncated": false,
-                  "minutes_at_review": 5
-                },
-                {
-                  "recommendationid": "226651878",
-                  "hours_at_review": 0.6,
-                  "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "I spent over half an hour trying to trouble shoot this turd of a game by getting rid of discord and updating my drivers and everything in-between and it still cant launch without crashing. Save your money and buy Arma.",
-                  "truncated": false,
-                  "minutes_at_review": 34
+                  "date": "2026-09-28",
+                  "review_text": "Could not get past tutorial >○<",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-54e8e1c0",
+          "text": "One reviewer says that when you go into an online game without a mic, you are getting kicked.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "236220558",
+            "hours_at_review": 1.4,
+            "minutes_at_review": 86,
+            "voted_up": false,
+            "date": "2026-09-26",
+            "review_text": "Its alright, but when you go into an online game without a mic, your getting kicked. very hard to play on your own too.\nAlso, always getting a texture loss bug where everything is blurry and its very laggy otherwise",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 12,
+        "cited_reviews": 21,
         "cited_recommend": 1,
-        "divergence_p": 0.0324,
+        "divergence_p": 0.0263,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -396,296 +671,224 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 392,
-      "pct_positive": 74.7,
+      "pool_n": 287,
+      "pct_positive": 72.5,
       "muted": false,
       "n_note": null,
-      "summary": "Players encounter engine update performance drops, basic server browser shortcomings, and extensive travel times across maps.",
+      "summary": "Players starting out face a steep learning curve, required visual identification, and ongoing performance drops.",
       "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-c4cb3b",
-              "claim": "Performance and optimization are poor following the engine upgrade to UE5.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 5
-              },
-              "citations": [
-                {
-                  "recommendationid": "231838337",
-                  "hours_at_review": 12.4,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "The optimization has gone way down. I played the game some years ago before it got the big engine overhaul to UE5 and it was fantastic and smooth. Now with the new engine it's not any prettier and it's a whole lot laggier. I specifically wanted to play this game again cause I figured it could run on my older PC as I, like a lot of people, wait for parts to go down in pricing. I was disappointed to see they decided to in the midst of poorly optimized games to join the bandwagon of producing even more poorly optimized games. If they ever elect to really dig down to make their game less of a resource hog I would gladly change my review because the ACTUAL game once able to be accessed is fantastic.",
-                  "truncated": false,
-                  "minutes_at_review": 745
-                },
-                {
-                  "recommendationid": "231303681",
-                  "hours_at_review": 11.6,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "Amazing realism. Terrible optimization. 😅 My biggest issue isn't even the performance—it's the lack of meaningful official content. The default game modes and missions feel neglected, almost like they were left unfinished. Squad is an incredible foundation, but it deserved much better post-launch support. 🎮",
-                  "truncated": false,
-                  "minutes_at_review": 698
-                },
-                {
-                  "recommendationid": "230781923",
-                  "hours_at_review": 4.7,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "I feel this game is extremely boring and unoptimized. From my perspective not worth the asked price.",
-                  "truncated": false,
-                  "minutes_at_review": 281
-                },
-                {
-                  "recommendationid": "225007993",
-                  "hours_at_review": 9.5,
-                  "voted_up": false,
-                  "date": "2026-05-08",
-                  "review_text": "Bought this game years ago, and I wish I didn't. Picked it up again recently, and I'm blown away at how it still feels like an early access game. Nothing feels polished at all. Not to mention this game runs on UE5 now, and to the surprise of no one, runs horribly.",
-                  "truncated": false,
-                  "minutes_at_review": 571
-                },
-                {
-                  "recommendationid": "224838090",
-                  "hours_at_review": 4.6,
-                  "voted_up": false,
-                  "date": "2026-05-05",
-                  "review_text": "I came into Squad expecting something close to ARMA, where I’ve logged thousands of hours. That expectation was a mistake — these games aim for different experiences, and Squad doesn’t deliver what ARMA players might expect.\r\n\r\nThe pacing is one of the biggest issues. You can spend 10–15 minutes just getting to the frontline, only to die quickly and repeat the process. That might be acceptable if the combat felt rewarding — but it doesn’t.\r\n\r\nWeapon handling feels off. Scopes, especially for marksman/sniper roles, are underwhelming — limited zoom and awkward visual scaling make long-range engagement frustrating rather than satisfying. Gunplay overall lacks precision, which is a serious problem in a game that leans heavily on realism.\r\n\r\nThe UI and controls don’t help either. Basic actions like switching weapons or managing loadout feel unnecessarily clunky. The lack of intuitive key bindings and smooth inventory interaction adds friction where there shouldn’t be any.\r\n\r\nTo be fair, the game does have strengths — sound design, teamwork emphasis, and some aspects of realism are solid. But they don’t compensate for the core gameplay issues.\r\n\r\nBottom line: if you’re expecting an ARMA-like sandbox, this isn’t it. For me, it ended up feeling like a poor trade-off between realism and playability. I would have been better off going with Arma Reforger.\r\n\r\nAfter 4 hours in Squad, I’m uninstalling.\r\n\r\nThe result is a game where the time investment is high, but the payoff isn’t. I can see the intention — teamwork, realism, slower pacing — but the execution makes it feel more frustrating than rewarding.\r\n\r\nI’d rather spend my time in Arma, where the balance between realism and playability works better for me.",
-                  "truncated": false,
-                  "minutes_at_review": 278
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-da4db0",
-              "claim": "Voice chat functionality encounters persistent microphone issues.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231317659",
-                  "hours_at_review": 3.6,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "I have repeatedly tried to get into squad. Not only has the gunplay felt worse every time, but I have never had my microphone work even once. This issue would occasionally get fixed only to remerge on reboot. I cannot recommend this game and have no real faith left in the situation improving. buy reforger instead and get a game that at least works sometimes.",
-                  "truncated": false,
-                  "minutes_at_review": 215
-                },
-                {
-                  "recommendationid": "231227922",
-                  "hours_at_review": 11.2,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "Lots of bugs the worst being the mic issue.",
-                  "truncated": false,
-                  "minutes_at_review": 670
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ear-dc6c2b",
-              "claim": "The server browser lacks basic usability features such as region sorting, ping display, and a refresh button.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231822461",
-                  "hours_at_review": 2.5,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "It is truly not possible for me to play this game. The server browser doesn't have a refresh button, doesn't show ping, and doesn't allow for region sorting. When I do manage to get into an actual server, its unpopulated and crashes within seconds. How can Offworld think that it's acceptable to make a multiplayer game without a functioning multiplayer component? How many players have refunded the game because of the server browser barely functioning and offering precisely zero important information?",
-                  "truncated": false,
-                  "minutes_at_review": 150
-                },
-                {
-                  "recommendationid": "231085091",
-                  "hours_at_review": 12.9,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "It's so hard to find any good or even functional servers that meets my region. which is PH.\nMost servers that are available to me are Chinese Servers. This game is big, and I expected to be like it. But as I said, there are limited servers that work. I can't even play this game that much.\n\nIf you know servers that work in Asia, hopefully Hongkong, Singapore, Japan, or even Australia and New Zealand. Please do tell. I don't want my hard earned money and high hopes go to waste with this awesome game.",
-                  "truncated": false,
-                  "minutes_at_review": 772
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-390df6",
-              "claim": "Matches involve long travel times of ten to twenty minutes just to reach the frontline or objectives.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 3,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231849495",
-                  "hours_at_review": 5.4,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "super clunky firearms and movement, everything is freaking far away so you end up playing a 30m match where you spend 20m running to objectives. really boring gameplay, heroes and generals was a better game same with battlefield badcompany wtf is the hype with this game? it is a horrible fps, realistic? sure, for a video game. Fun?  no.",
-                  "truncated": false,
-                  "minutes_at_review": 324
-                },
-                {
-                  "recommendationid": "231073914",
-                  "hours_at_review": 12.6,
-                  "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "walk 10 min dont see enemy for 3 hours get shot from nowhere and ofc your squad is dumb ahh simulator",
-                  "truncated": false,
-                  "minutes_at_review": 755
-                },
-                {
-                  "recommendationid": "230931298",
-                  "hours_at_review": 3.0,
-                  "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": ">first game\n>competent squad members\n>\"do you want to live forever\"\n>charge enemy fob\n>entire squad blows up instantly\n\n>second game\n>squad splits in half because of leadership conflict\n>get dropped off in the desert and told \"alright everyone out\"\n>have to stay with this half because i'm the medic\n>walk across the desert for 15 minutes\n>get shot from 400m away and die\n\n>third game\n>push into a forest to hold a front\n>allied apc approaches to give support\n>\"hey did one of you guys just shoot at m-\"\n>rocket comes out of nowhere and explodes the apc\n>6 dead \n\nthe perfect ptsd simulator",
-                  "truncated": false,
-                  "minutes_at_review": 179
-                },
-                {
-                  "recommendationid": "230510920",
-                  "hours_at_review": 2.6,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "Ran for 15 minutes\nDied instantly\nDidnt even hear the shot.",
-                  "truncated": false,
-                  "minutes_at_review": 157
-                },
-                {
-                  "recommendationid": "224838090",
-                  "hours_at_review": 4.6,
-                  "voted_up": false,
-                  "date": "2026-05-05",
-                  "review_text": "I came into Squad expecting something close to ARMA, where I’ve logged thousands of hours. That expectation was a mistake — these games aim for different experiences, and Squad doesn’t deliver what ARMA players might expect.\r\n\r\nThe pacing is one of the biggest issues. You can spend 10–15 minutes just getting to the frontline, only to die quickly and repeat the process. That might be acceptable if the combat felt rewarding — but it doesn’t.\r\n\r\nWeapon handling feels off. Scopes, especially for marksman/sniper roles, are underwhelming — limited zoom and awkward visual scaling make long-range engagement frustrating rather than satisfying. Gunplay overall lacks precision, which is a serious problem in a game that leans heavily on realism.\r\n\r\nThe UI and controls don’t help either. Basic actions like switching weapons or managing loadout feel unnecessarily clunky. The lack of intuitive key bindings and smooth inventory interaction adds friction where there shouldn’t be any.\r\n\r\nTo be fair, the game does have strengths — sound design, teamwork emphasis, and some aspects of realism are solid. But they don’t compensate for the core gameplay issues.\r\n\r\nBottom line: if you’re expecting an ARMA-like sandbox, this isn’t it. For me, it ended up feeling like a poor trade-off between realism and playability. I would have been better off going with Arma Reforger.\r\n\r\nAfter 4 hours in Squad, I’m uninstalling.\r\n\r\nThe result is a game where the time investment is high, but the payoff isn’t. I can see the intention — teamwork, realism, slower pacing — but the execution makes it feel more frustrating than rewarding.\r\n\r\nI’d rather spend my time in Arma, where the balance between realism and playability works better for me.",
-                  "truncated": false,
-                  "minutes_at_review": 278
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-db480b",
-              "claim": "Weapon handling, aiming, and movement feel clunky and difficult.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-eac717",
+              "claim": "Reviewers note that the game features a steep learning curve and can be very difficult for new players to understand.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 4
+                "positive": 5,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231849495",
-                  "hours_at_review": 5.4,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "super clunky firearms and movement, everything is freaking far away so you end up playing a 30m match where you spend 20m running to objectives. really boring gameplay, heroes and generals was a better game same with battlefield badcompany wtf is the hype with this game? it is a horrible fps, realistic? sure, for a video game. Fun?  no.",
-                  "truncated": false,
-                  "minutes_at_review": 324
+                  "recommendationid": "240635748",
+                  "hours_at_review": 6.0,
+                  "minutes_at_review": 358,
+                  "voted_up": true,
+                  "date": "2026-11-20",
+                  "review_text": "good game liked that but preety hard to play if you begginer\r\n\r\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231613333",
-                  "hours_at_review": 5.1,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Not a game for me. I can't tell friend from foe, and the aiming is absolutely horrendous. It feels like I'm fighting the stamina UI instead of actually interacting with a gun. I can definitely see the appeal for a lot of people, but in my opinion, it just isn't for me.\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 305
+                  "recommendationid": "239319651",
+                  "hours_at_review": 5.2,
+                  "minutes_at_review": 310,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "Good game if you're up to the challenge, there is quite a steep learning curve when you play SQUAD. If you do not like steep learning curves, then do not get this game. Communication is key within playing, and you need to be on high alert when surrounded by other players, enemies are not marked nor are your teammates. Overall, the game is good but is quite difficult.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231464197",
-                  "hours_at_review": 3.8,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "feels like moving through soup... it's slow, cumbersome and I can't figure it out... I came back to revisit having heard something about some Starwars mod or something but if it's going to play/feel this bad, I'm not going to even bother trying to figure it out.",
-                  "truncated": false,
-                  "minutes_at_review": 227
+                  "recommendationid": "238414672",
+                  "hours_at_review": 6.1,
+                  "minutes_at_review": 366,
+                  "voted_up": true,
+                  "date": "2026-10-23",
+                  "review_text": "Very difficult to navigate as a new player, but man... alot of fun.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "224838090",
-                  "hours_at_review": 4.6,
-                  "voted_up": false,
-                  "date": "2026-05-05",
-                  "review_text": "I came into Squad expecting something close to ARMA, where I’ve logged thousands of hours. That expectation was a mistake — these games aim for different experiences, and Squad doesn’t deliver what ARMA players might expect.\r\n\r\nThe pacing is one of the biggest issues. You can spend 10–15 minutes just getting to the frontline, only to die quickly and repeat the process. That might be acceptable if the combat felt rewarding — but it doesn’t.\r\n\r\nWeapon handling feels off. Scopes, especially for marksman/sniper roles, are underwhelming — limited zoom and awkward visual scaling make long-range engagement frustrating rather than satisfying. Gunplay overall lacks precision, which is a serious problem in a game that leans heavily on realism.\r\n\r\nThe UI and controls don’t help either. Basic actions like switching weapons or managing loadout feel unnecessarily clunky. The lack of intuitive key bindings and smooth inventory interaction adds friction where there shouldn’t be any.\r\n\r\nTo be fair, the game does have strengths — sound design, teamwork emphasis, and some aspects of realism are solid. But they don’t compensate for the core gameplay issues.\r\n\r\nBottom line: if you’re expecting an ARMA-like sandbox, this isn’t it. For me, it ended up feeling like a poor trade-off between realism and playability. I would have been better off going with Arma Reforger.\r\n\r\nAfter 4 hours in Squad, I’m uninstalling.\r\n\r\nThe result is a game where the time investment is high, but the payoff isn’t. I can see the intention — teamwork, realism, slower pacing — but the execution makes it feel more frustrating than rewarding.\r\n\r\nI’d rather spend my time in Arma, where the balance between realism and playability works better for me.",
-                  "truncated": false,
-                  "minutes_at_review": 278
+                  "recommendationid": "237881464",
+                  "hours_at_review": 11.7,
+                  "minutes_at_review": 704,
+                  "voted_up": true,
+                  "date": "2026-10-16",
+                  "review_text": "no hackers fun game but, its a little hard to learn to play you should deffently play!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237726429",
+                  "hours_at_review": 17.0,
+                  "minutes_at_review": 1020,
+                  "voted_up": true,
+                  "date": "2026-10-14",
+                  "review_text": "Really fun, it has a big learning curve though",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-f32d48",
-              "claim": "Match sessions involve spending extended periods of time walking or running long distances across the map to reach objectives or the frontline.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-9fd671",
+              "claim": "Reviewers state that enemy and teammate positions are not marked on the interface, requiring players to visually identify uniforms and rely heavily on communication.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 2
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231849495",
-                  "hours_at_review": 5.4,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "super clunky firearms and movement, everything is freaking far away so you end up playing a 30m match where you spend 20m running to objectives. really boring gameplay, heroes and generals was a better game same with battlefield badcompany wtf is the hype with this game? it is a horrible fps, realistic? sure, for a video game. Fun?  no.",
-                  "truncated": false,
-                  "minutes_at_review": 324
-                },
-                {
-                  "recommendationid": "231073914",
-                  "hours_at_review": 12.6,
+                  "recommendationid": "239319651",
+                  "hours_at_review": 5.2,
+                  "minutes_at_review": 310,
                   "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "walk 10 min dont see enemy for 3 hours get shot from nowhere and ofc your squad is dumb ahh simulator",
-                  "truncated": false,
-                  "minutes_at_review": 755
+                  "date": "2026-11-04",
+                  "review_text": "Good game if you're up to the challenge, there is quite a steep learning curve when you play SQUAD. If you do not like steep learning curves, then do not get this game. Communication is key within playing, and you need to be on high alert when surrounded by other players, enemies are not marked nor are your teammates. Overall, the game is good but is quite difficult.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "224838090",
-                  "hours_at_review": 4.6,
+                  "recommendationid": "237365126",
+                  "hours_at_review": 6.1,
+                  "minutes_at_review": 364,
+                  "voted_up": true,
+                  "date": "2026-10-10",
+                  "review_text": "Unique game. They seem to do many things right.\nE.g.\n- the suppresion mechanics degrading vision and aim;\n- enemy markers are placed deliberately on the map / there is no just marking enemies with binoculars like in wardogs, so using concealment is still possible in this game here\n- weapons have recoil, and you can't just sprint-shoot; you have to stabilize your aim to shoot accurately; quite frankly the button to focus aim is the same button as run - if you use directional buttons with it then you run and not aim, and if you press it without directional buttons then you aim and not run; quite genius actually and makes absolute sense\n- the 'PvP wiggle' is severely reduced (i.e. that moving left and right rapidly in pvp shooter games that people do to reduce chance of being shot at accurately), so shooting mechanics are way more realistic\n- guns pack a punch and look good - audio visuals are A-OK.,\n- it may be unclear to you who is friend and who is a foe, because you only recognize peers at close ranges, otherwise they are not marked, so you have to suss it out, read the situation, and stay your fire before you decide to shoot or not to shoot. \n- getting revived doesn't mean you're automatically fully well - you're at a near-death state still for a while after, where your vision/functioning is impaired\netc etc.\n\nThough\n\nThe mechanic of magically stripping you of loadout if you're not part of some squad voice chat, or you leave it, or the leader disconnects... is so incredibly punishing and non-immersive - what were the developers even thinking?!\n\nI spent like 4 consecutive runs back and forth to re-pick up loadout from the base, and return to the front lines, over and over, because of the game's insistence we have to be on voice chats at all times.\n\nIf devs want to punish leavers somehow - create some comms interference thereafter; where the player is cut off from seeing the map, until they reestablish communications by joining another squad for example. \nAs seeing …",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-e05cbc",
+              "claim": "Reviewers report that the game suffers from poor optimization, performance drops, and frequent crashes.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "240487079",
+                  "hours_at_review": 6.5,
+                  "minutes_at_review": 392,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "vry gut game, but crash too much and ageing",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240307342",
+                  "hours_at_review": 3.9,
+                  "minutes_at_review": 234,
                   "voted_up": false,
-                  "date": "2026-05-05",
-                  "review_text": "I came into Squad expecting something close to ARMA, where I’ve logged thousands of hours. That expectation was a mistake — these games aim for different experiences, and Squad doesn’t deliver what ARMA players might expect.\r\n\r\nThe pacing is one of the biggest issues. You can spend 10–15 minutes just getting to the frontline, only to die quickly and repeat the process. That might be acceptable if the combat felt rewarding — but it doesn’t.\r\n\r\nWeapon handling feels off. Scopes, especially for marksman/sniper roles, are underwhelming — limited zoom and awkward visual scaling make long-range engagement frustrating rather than satisfying. Gunplay overall lacks precision, which is a serious problem in a game that leans heavily on realism.\r\n\r\nThe UI and controls don’t help either. Basic actions like switching weapons or managing loadout feel unnecessarily clunky. The lack of intuitive key bindings and smooth inventory interaction adds friction where there shouldn’t be any.\r\n\r\nTo be fair, the game does have strengths — sound design, teamwork emphasis, and some aspects of realism are solid. But they don’t compensate for the core gameplay issues.\r\n\r\nBottom line: if you’re expecting an ARMA-like sandbox, this isn’t it. For me, it ended up feeling like a poor trade-off between realism and playability. I would have been better off going with Arma Reforger.\r\n\r\nAfter 4 hours in Squad, I’m uninstalling.\r\n\r\nThe result is a game where the time investment is high, but the payoff isn’t. I can see the intention — teamwork, realism, slower pacing — but the execution makes it feel more frustrating than rewarding.\r\n\r\nI’d rather spend my time in Arma, where the balance between realism and playability works better for me.",
-                  "truncated": false,
-                  "minutes_at_review": 278
+                  "date": "2026-11-15",
+                  "review_text": "Wow this game is unoptimized. Sure real time lighting is good BUT PLEASE FOR THE LOVE OF CHRIST PLEASE STARTING BAKING INTERIOR LIGHTING!!! Its hard to play when ive got barely any fps cause the is trynna calculate a shit ton of rays in a corner in a house!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239406383",
+                  "hours_at_review": 5.3,
+                  "minutes_at_review": 316,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "It's been out for six years and is still unoptimized and has a terrible UI. Disappointing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239329118",
+                  "hours_at_review": 11.7,
+                  "minutes_at_review": 700,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "Haven't played in a couple years, in which time I upgraded my PC. The game runs worse now than it did before.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238474227",
+                  "hours_at_review": 13.4,
+                  "minutes_at_review": 805,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "runs bad on minimum requirements, runs even worse on better than recommended requirements, idk how this is still a thing after 6 years of being published",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237658569",
+                  "hours_at_review": 10.7,
+                  "minutes_at_review": 644,
+                  "voted_up": false,
+                  "date": "2026-10-13",
+                  "review_text": "I had fun with this game for about a week, but then they released an update that made the game unplayable due to poor optimisation, quite upsetting as it was a pretty good game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-692ca0",
+              "claim": "Reviewers note that updates can cause technical problems, including long installation times and blocking access to the tutorial.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "238820012",
+                  "hours_at_review": 2.2,
+                  "minutes_at_review": 133,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "This game was working fine with very little lag. Then the update screwed it all up. I can't even access the tutorial which is the only level I successfully played.\nI'll be asking for a refund. Very sorry about that as it looked enjoyable and, as a CDN Veteran, I was excited to try it out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238737158",
+                  "hours_at_review": 4.4,
+                  "minutes_at_review": 264,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "200 mb update takes seconds to download but over 20 minutes to install because the devs couldnt be bothered packing it correctly, same thing Arrowhead does except they were worse because reinstalling the whole game was faster than updates but anyway, behaviour like this makes it a write off of a game on both accounts imo.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-4537b3ad",
+          "text": "One reviewer says a 200 mb update takes seconds to download but over 20 minutes to install because the devs could not be bothered packing it correctly.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "238737158",
+            "hours_at_review": 4.4,
+            "minutes_at_review": 264,
+            "voted_up": false,
+            "date": "2026-10-28",
+            "review_text": "200 mb update takes seconds to download but over 20 minutes to install because the devs couldnt be bothered packing it correctly, same thing Arrowhead does except they were worse because reinstalling the whole game was faster than updates but anyway, behaviour like this makes it a write off of a game on both accounts imo.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "divergent"
-        ],
-        "cited_reviews": 15,
-        "cited_recommend": 3,
-        "divergence_p": 1.41e-05,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 14,
+        "cited_recommend": 8,
+        "divergence_p": 0.161,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -693,112 +896,18 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 354,
-      "pct_positive": 80.2,
+      "pool_n": 196,
+      "pct_positive": 81.6,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers navigate a steep learning curve with minimal tutorials, alongside server connection struggles and voice communication failures.",
+      "summary": "Experienced players find teamwork and microphone communication mandatory for winning matches.",
       "themes": [
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-27bd33",
-              "claim": "Reviewers note that the game features a steep learning curve and requires time to understand mechanics and roles.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 4,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231829754",
-                  "hours_at_review": 51.8,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "This game definitely takes some getting use to. I've played for 50hrs and there are still some things I need to learn. That doesn't mean its not fun though! I feel like Squad bridges the gap between a military sim and an arcade shooter perfectly! The players in it (Most of the time) are nice and understanding and the have specific servers for when your just starting out. Overall Squad is a fun game. yea",
-                  "truncated": false,
-                  "minutes_at_review": 3105
-                },
-                {
-                  "recommendationid": "231615156",
-                  "hours_at_review": 46.1,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Best mil sim of all time great community 100% buy it very hard at first but is one of my favourite games to play",
-                  "truncated": false,
-                  "minutes_at_review": 2765
-                },
-                {
-                  "recommendationid": "230875093",
-                  "hours_at_review": 51.9,
-                  "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": "def gets more fun once you understand whats going on (expect about 30-40hrs if you watching youtube guides)",
-                  "truncated": false,
-                  "minutes_at_review": 3116
-                },
-                {
-                  "recommendationid": "224412608",
-                  "hours_at_review": 27.1,
-                  "voted_up": true,
-                  "date": "2026-04-30",
-                  "review_text": "Really complicated and comes with a steep learning curve, but it really is worth it. First time I played I got overwhelmed and logged off for months. Recently I've been back and addicted. Worth the money.",
-                  "truncated": false,
-                  "minutes_at_review": 1629
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-c44e89",
-              "claim": "Reviewers note that distinguishing between friendly and enemy players is difficult due to similar uniforms and a lack of clear markers at a distance.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231825751",
-                  "hours_at_review": 65.9,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "very nice, very hard to not tk. i came from Hell Let Loose and you got a blue bubble above friendlies but its gone in this game. You actually have to look at uniforms or your map to decide whose friendly and whose not",
-                  "truncated": false,
-                  "minutes_at_review": 3954
-                },
-                {
-                  "recommendationid": "230413275",
-                  "hours_at_review": 81.2,
-                  "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "OK people! I was super disappointed in this game when I first started and thats why Ive made a new post about it. It was a love and hate relationship, lol...... Yes I still think maps are WAY to big, respawning points are just to far away when you die and everyone looks the same at a distance more than 20 meters. BUT now that Ive played the game for 80hrs its finally starting to grow on me. I went from trying to run with infantry to simply being a medic to save as many points as I could keeping soldiers alive. I think running with the squad and simply healing and reviving the team is great fun because your always needed and it gives you something the entire match from start to finish. A player will actually be told to keep me alive because all the tokens I save per game. Very realistic game and graphics are great! Just make sure you take your time and dont just jump right in to a game without lots and lots of research and training, youll thank me later.... Good Luck Soldiers!",
-                  "truncated": false,
-                  "minutes_at_review": 4871
-                },
-                {
-                  "recommendationid": "230187318",
-                  "hours_at_review": 25.6,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "no official servers and not fun if you're playing solo and 2 army has some color so that let you don't know which one enamy or freinds  😢",
-                  "truncated": false,
-                  "minutes_at_review": 1536
-                },
-                {
-                  "recommendationid": "231096093",
-                  "hours_at_review": 25.6,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "Impossible to tell people apart.\n\nServers filled with people locking squad so forced to be squad leader. \n\nJank in the name of realism.",
-                  "truncated": false,
-                  "minutes_at_review": 1533
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-33a186",
-              "claim": "Reviewers describe a steep learning curve with a lack of in-game explanations or tutorials for different classes and core mechanics.",
+              "claim_id": "mid-7dec2a",
+              "claim": "Reviewers state that players face a steep learning curve with frequent deaths and slow pacing when starting out.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -806,265 +915,82 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231366635",
-                  "hours_at_review": 30.1,
+                  "recommendationid": "240107398",
+                  "hours_at_review": 82.5,
+                  "minutes_at_review": 4948,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "Got this game years ago when ibought my pc. Then my PC died and never fixed it or bought one until 3 weeks ago.\r\n\r\nThe game is amazing when you have a good squadleader and people on comms. The effects and sounds are awesome. I have nothing bad to say about this game.\r\n\r\nIt does have a bit of a learning curve and not really a lot of explanation regarding the different classes. \r\n\r\nIf you're  new, be sure to join new player friendly servers and just have a blast.",
-                  "truncated": false,
-                  "minutes_at_review": 1806
+                  "date": "2026-11-13",
+                  "review_text": "Really fun game to play with friends and randoms (if they talk lol). The gun play feel great, and teamwork is mandatory to win. This game definitely hits the spot when i want to play something like battlefield but more \"realistic\". Its slow paced but fast enough to not get my ADHD brain into a coma. Definitely recommend it if you like games like bf and insurgency, and if you like team coordination. \n(Keep in mind, sometimes the game can be REALLY slow. Especially if you keep dying, witch may happen a lot on your first \"attempts\")",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "224412608",
-                  "hours_at_review": 27.1,
+                  "recommendationid": "238944279",
+                  "hours_at_review": 76.1,
+                  "minutes_at_review": 4568,
                   "voted_up": true,
-                  "date": "2026-04-30",
-                  "review_text": "Really complicated and comes with a steep learning curve, but it really is worth it. First time I played I got overwhelmed and logged off for months. Recently I've been back and addicted. Worth the money.",
-                  "truncated": false,
-                  "minutes_at_review": 1629
+                  "date": "2026-10-30",
+                  "review_text": "There is a small learning curve where you die a lot and its not so fun, but if you can make it past that, the game is one of the best and most fun that I've played.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230875093",
-                  "hours_at_review": 51.9,
+                  "recommendationid": "237810124",
+                  "hours_at_review": 34.3,
+                  "minutes_at_review": 2060,
                   "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": "def gets more fun once you understand whats going on (expect about 30-40hrs if you watching youtube guides)",
-                  "truncated": false,
-                  "minutes_at_review": 3116
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "mid-9031cf",
-              "claim": "Players experience performance and optimization issues, resulting in unstable frame rates or hardware bottlenecks.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231742249",
-                  "hours_at_review": 87.9,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "The game is actually good in terms of gameplay, mechanics, ideas, etc. but the implementation part isn't good enough to leave a positive review.\n\nThe game has too many bugs to play it seriously and competitively. The servers functionality consistently breaks a few times a week so you can't just search and connect to servers which makes the game unplayable. Optimization isn't the best, on mid-range PC you will have raw 100 FPS as peak, and 50-80 in intense scenarios, but this is acceptable for UE5 engine game.\n\nThe game has a lot of inconsistencies in UI/UX.",
-                  "truncated": false,
-                  "minutes_at_review": 5276
-                },
-                {
-                  "recommendationid": "230372609",
-                  "hours_at_review": 42.0,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "♥♥♥♥ optimization. I can barely play the game at an unstable 60 fps with hitches. It isn't worth a single cent until they fix the game. I have an RTX 4050 GPU, 32GB of RAM, and a 13th gen i7 processor, but I'm experiencing a CPU bottleneck. I cannot get proper performance.",
-                  "truncated": false,
-                  "minutes_at_review": 2520
-                },
-                {
-                  "recommendationid": "224666249",
-                  "hours_at_review": 62.1,
-                  "voted_up": true,
-                  "date": "2026-05-03",
-                  "review_text": "I really like this game, its realistic, gunplay feels amazing (for me), its not slow, but not fast either.\r\nEven tho the optimization could be better, it runs fine on my old ahh CPU, which u can see below. I get like 40 to 70 fps, on MAX Settings, and im getting the same performance on low settings, cuz of my big ass bottleneck (I only found 1 map where i get like 20-30 fps, for no reason) \r\n",
-                  "truncated": false,
-                  "minutes_at_review": 3728
-                },
-                {
-                  "recommendationid": "225538834",
-                  "hours_at_review": 30.3,
-                  "voted_up": false,
-                  "date": "2026-05-15",
-                  "review_text": "I just can't recommend it. \n\nThe game takes some learning, and nothing's wrong with that. The learning curve isn't too steep outside of certain vehicles and mechanics - Which many lobbies will require you to have X amount of hours training on that particular vehicle before you can even think about touching it. The community? Well, very hit and miss. These days it seems more miss than anything. For a game that likes to talk about communication being key, there certainly isn't a whole lot of it. Even on the \" Beginner Friendly \" servers there's not much of it going on, which doesn't help the new folks who are trying to get into the game. There's also quite a number of hackers in the game also, so that's a thing, unfortunately.\n\nThe gameplay is okay and decently responsive, feeling weighty but not clunky outside of stance change, vaulting, and vehicle and loadout manipulation. Okay, that means half the total movement and interactions are clunky. Whoops, but true. The vehicle damage system is absolutely horrendous and it's frankly insulting that it's so bad. As much as I hate to mention War Thunder - Squad could learn at least 2 things from the damage model system. Especially since the combat in this game is supposed to feel respectably authentic and realistic. Then there's the game's lack of optimization and performance issues even on medium and low settings. \n\nIt's one of those games that is best played with some friends rather than solo. Solo playing simple isn't ideal because you just can't count on your random teammates to help you when you need it. Playing with friends, I wasn't let down. Randoms, I was. There isn't much cohesion at all in Squad these days.",
-                  "truncated": false,
-                  "minutes_at_review": 1816
+                  "date": "2026-10-15",
+                  "review_text": "super fun, it will be hard starting out but if you communicate and you ask your squad mates how to do things, more than likely they will help you out. and take your time. this isnt call of duty so relax and take it easy.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-d14ed9",
-              "claim": "The game encounters persistent connection issues and long server queues that hinder joining matches.",
-              "citation_verdict": "negative",
+              "claim_id": "mid-51192a",
+              "claim": "Reviewers describe teamwork and microphone communication as mandatory for winning matches.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 3
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231852257",
-                  "hours_at_review": 56.0,
+                  "recommendationid": "240107398",
+                  "hours_at_review": 82.5,
+                  "minutes_at_review": 4948,
                   "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Great Game, or at least it was, until I tried to get into my friends game when someone left and rushed to open the game after reinstalling, then I was met with a 5 min opening cutscene explaining what the game is that I cant skip at maximum volume, and now I'm sitting in que for 15 mins. Terrible game.",
-                  "truncated": false,
-                  "minutes_at_review": 3358
+                  "date": "2026-11-13",
+                  "review_text": "Really fun game to play with friends and randoms (if they talk lol). The gun play feel great, and teamwork is mandatory to win. This game definitely hits the spot when i want to play something like battlefield but more \"realistic\". Its slow paced but fast enough to not get my ADHD brain into a coma. Definitely recommend it if you like games like bf and insurgency, and if you like team coordination. \n(Keep in mind, sometimes the game can be REALLY slow. Especially if you keep dying, witch may happen a lot on your first \"attempts\")",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231742249",
-                  "hours_at_review": 87.9,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "The game is actually good in terms of gameplay, mechanics, ideas, etc. but the implementation part isn't good enough to leave a positive review.\n\nThe game has too many bugs to play it seriously and competitively. The servers functionality consistently breaks a few times a week so you can't just search and connect to servers which makes the game unplayable. Optimization isn't the best, on mid-range PC you will have raw 100 FPS as peak, and 50-80 in intense scenarios, but this is acceptable for UE5 engine game.\n\nThe game has a lot of inconsistencies in UI/UX.",
-                  "truncated": false,
-                  "minutes_at_review": 5276
-                },
-                {
-                  "recommendationid": "230711750",
-                  "hours_at_review": 69.7,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "they can't fix the simplest connection issues",
-                  "truncated": false,
-                  "minutes_at_review": 4184
-                },
-                {
-                  "recommendationid": "230290013",
-                  "hours_at_review": 81.6,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "EIther empty or overly full servers.\r\nFor a returning player (or new player too I guess) it's kind of hard to actually get into a game or rather join a server worth joining... if you get what I mean.\r\n\r\nIt has a healthy player base I guess, but it feels very hard to \"just play\" a few rounds.\r\n\r\nTried for a bit and uninstalling again. Sadly, I always liked the game.",
-                  "truncated": false,
-                  "minutes_at_review": 4898
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-5e0286",
-              "claim": "Reviewers encounter technical difficulties with server connection functionality and queue times.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231852257",
-                  "hours_at_review": 56.0,
+                  "recommendationid": "238376460",
+                  "hours_at_review": 25.1,
+                  "minutes_at_review": 1504,
                   "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Great Game, or at least it was, until I tried to get into my friends game when someone left and rushed to open the game after reinstalling, then I was met with a 5 min opening cutscene explaining what the game is that I cant skip at maximum volume, and now I'm sitting in que for 15 mins. Terrible game.",
-                  "truncated": false,
-                  "minutes_at_review": 3358
+                  "date": "2026-10-23",
+                  "review_text": "I enjoyed the realisim and communication between teammates.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231742249",
-                  "hours_at_review": 87.9,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "The game is actually good in terms of gameplay, mechanics, ideas, etc. but the implementation part isn't good enough to leave a positive review.\n\nThe game has too many bugs to play it seriously and competitively. The servers functionality consistently breaks a few times a week so you can't just search and connect to servers which makes the game unplayable. Optimization isn't the best, on mid-range PC you will have raw 100 FPS as peak, and 50-80 in intense scenarios, but this is acceptable for UE5 engine game.\n\nThe game has a lot of inconsistencies in UI/UX.",
-                  "truncated": false,
-                  "minutes_at_review": 5276
-                },
-                {
-                  "recommendationid": "230290013",
-                  "hours_at_review": 81.6,
-                  "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "EIther empty or overly full servers.\r\nFor a returning player (or new player too I guess) it's kind of hard to actually get into a game or rather join a server worth joining... if you get what I mean.\r\n\r\nIt has a healthy player base I guess, but it feels very hard to \"just play\" a few rounds.\r\n\r\nTried for a bit and uninstalling again. Sadly, I always liked the game.",
-                  "truncated": false,
-                  "minutes_at_review": 4898
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-4c6cf1",
-              "claim": "Reviewers report that the game suffers from poor optimization, performance drops, and instability on certain PC hardware.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231742249",
-                  "hours_at_review": 87.9,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "The game is actually good in terms of gameplay, mechanics, ideas, etc. but the implementation part isn't good enough to leave a positive review.\n\nThe game has too many bugs to play it seriously and competitively. The servers functionality consistently breaks a few times a week so you can't just search and connect to servers which makes the game unplayable. Optimization isn't the best, on mid-range PC you will have raw 100 FPS as peak, and 50-80 in intense scenarios, but this is acceptable for UE5 engine game.\n\nThe game has a lot of inconsistencies in UI/UX.",
-                  "truncated": false,
-                  "minutes_at_review": 5276
-                },
-                {
-                  "recommendationid": "230372609",
-                  "hours_at_review": 42.0,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "♥♥♥♥ optimization. I can barely play the game at an unstable 60 fps with hitches. It isn't worth a single cent until they fix the game. I have an RTX 4050 GPU, 32GB of RAM, and a 13th gen i7 processor, but I'm experiencing a CPU bottleneck. I cannot get proper performance.",
-                  "truncated": false,
-                  "minutes_at_review": 2520
-                },
-                {
-                  "recommendationid": "224666249",
-                  "hours_at_review": 62.1,
+                  "recommendationid": "238316499",
+                  "hours_at_review": 38.4,
+                  "minutes_at_review": 2306,
                   "voted_up": true,
-                  "date": "2026-05-03",
-                  "review_text": "I really like this game, its realistic, gunplay feels amazing (for me), its not slow, but not fast either.\r\nEven tho the optimization could be better, it runs fine on my old ahh CPU, which u can see below. I get like 40 to 70 fps, on MAX Settings, and im getting the same performance on low settings, cuz of my big ass bottleneck (I only found 1 map where i get like 20-30 fps, for no reason) \r\n",
-                  "truncated": false,
-                  "minutes_at_review": 3728
-                },
-                {
-                  "recommendationid": "224583782",
-                  "hours_at_review": 58.0,
-                  "voted_up": true,
-                  "date": "2026-05-02",
-                  "review_text": "Very good military game, but the performance could be better",
-                  "truncated": false,
-                  "minutes_at_review": 3479
-                },
-                {
-                  "recommendationid": "225538834",
-                  "hours_at_review": 30.3,
-                  "voted_up": false,
-                  "date": "2026-05-15",
-                  "review_text": "I just can't recommend it. \n\nThe game takes some learning, and nothing's wrong with that. The learning curve isn't too steep outside of certain vehicles and mechanics - Which many lobbies will require you to have X amount of hours training on that particular vehicle before you can even think about touching it. The community? Well, very hit and miss. These days it seems more miss than anything. For a game that likes to talk about communication being key, there certainly isn't a whole lot of it. Even on the \" Beginner Friendly \" servers there's not much of it going on, which doesn't help the new folks who are trying to get into the game. There's also quite a number of hackers in the game also, so that's a thing, unfortunately.\n\nThe gameplay is okay and decently responsive, feeling weighty but not clunky outside of stance change, vaulting, and vehicle and loadout manipulation. Okay, that means half the total movement and interactions are clunky. Whoops, but true. The vehicle damage system is absolutely horrendous and it's frankly insulting that it's so bad. As much as I hate to mention War Thunder - Squad could learn at least 2 things from the damage model system. Especially since the combat in this game is supposed to feel respectably authentic and realistic. Then there's the game's lack of optimization and performance issues even on medium and low settings. \n\nIt's one of those games that is best played with some friends rather than solo. Solo playing simple isn't ideal because you just can't count on your random teammates to help you when you need it. Playing with friends, I wasn't let down. Randoms, I was. There isn't much cohesion at all in Squad these days.",
-                  "truncated": false,
-                  "minutes_at_review": 1816
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-ca5540",
-              "claim": "Players report microphone and voice chat issues that prevent communication, which is considered essential for the game.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230119621",
-                  "hours_at_review": 26.7,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "I really wanted to enjoy Squad, but after hours of troubleshooting I still can’t get my microphone to work. I use a SteelSeries Arctis 7+, and the mic works perfectly everywhere else, including Windows and every other game I own. I’ve tried changing input devices, setting it as the default communication device, checking Windows permissions, verifying game files, reinstalling, and following every fix I could find. Nothing works.\n\nAfter digging around, it’s clear I’m not the only one. There are countless comments on YouTube and forum posts from people dealing with the exact same issue, especially with headsets that work flawlessly outside of Squad. Communication is the core of this game, so when voice chat doesn’t work, it ruins the experience.\n\nUntil this issue is properly addressed, I can’t recommend Squad to anyone.",
-                  "truncated": false,
-                  "minutes_at_review": 1604
-                },
-                {
-                  "recommendationid": "225538834",
-                  "hours_at_review": 30.3,
-                  "voted_up": false,
-                  "date": "2026-05-15",
-                  "review_text": "I just can't recommend it. \n\nThe game takes some learning, and nothing's wrong with that. The learning curve isn't too steep outside of certain vehicles and mechanics - Which many lobbies will require you to have X amount of hours training on that particular vehicle before you can even think about touching it. The community? Well, very hit and miss. These days it seems more miss than anything. For a game that likes to talk about communication being key, there certainly isn't a whole lot of it. Even on the \" Beginner Friendly \" servers there's not much of it going on, which doesn't help the new folks who are trying to get into the game. There's also quite a number of hackers in the game also, so that's a thing, unfortunately.\n\nThe gameplay is okay and decently responsive, feeling weighty but not clunky outside of stance change, vaulting, and vehicle and loadout manipulation. Okay, that means half the total movement and interactions are clunky. Whoops, but true. The vehicle damage system is absolutely horrendous and it's frankly insulting that it's so bad. As much as I hate to mention War Thunder - Squad could learn at least 2 things from the damage model system. Especially since the combat in this game is supposed to feel respectably authentic and realistic. Then there's the game's lack of optimization and performance issues even on medium and low settings. \n\nIt's one of those games that is best played with some friends rather than solo. Solo playing simple isn't ideal because you just can't count on your random teammates to help you when you need it. Playing with friends, I wasn't let down. Randoms, I was. There isn't much cohesion at all in Squad these days.",
-                  "truncated": false,
-                  "minutes_at_review": 1816
+                  "date": "2026-10-22",
+                  "review_text": "Large-scale tactical shooter where you'll quickly learn that teamwork is key. While Rambos and lone wolves don't last long, squads that communicate and play the objectives, dominate the battlefield.\nThe pushes are slow, which makes it feel earned.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 18,
-        "cited_recommend": 10,
-        "divergence_p": 0.0153,
+        "cited_reviews": 5,
+        "cited_recommend": 5,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -1072,311 +998,280 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 411,
-      "pct_positive": 72.7,
+      "pool_n": 307,
+      "pct_positive": 64.2,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players report frame rate drops following engine updates, broken server browser functionality, and restrictive scope mechanics.",
+      "summary": "Long-term players cite persistent server browser UI flaws, queueing bugs, and engine update instability.",
       "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-81e8e6",
-              "claim": "Reviewers report issues with the server browser, specifically mentioning that it fails to show available servers and lacks a refresh function.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 6
-              },
-              "citations": [
-                {
-                  "recommendationid": "231846206",
-                  "hours_at_review": 513.9,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Get rid of the intro video and fix your server browser its been actual years. There's no excuse.",
-                  "truncated": false,
-                  "minutes_at_review": 30833
-                },
-                {
-                  "recommendationid": "231743192",
-                  "hours_at_review": 123.5,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Honestly the game is mediocre at best, each match is repetitive and shallow, and most of the time you cant even play because there are no servers showing on the list. overall a waste of money.\r\n\r\nbuy arma, or play on roblox.",
-                  "truncated": false,
-                  "minutes_at_review": 7411
-                },
-                {
-                  "recommendationid": "231552460",
-                  "hours_at_review": 116.5,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Good game but after the updated to new engine holy bugs. I cant even play my sever browser is half the time circle of doom and guess what cant refresh it since that doesn't exist",
-                  "truncated": false,
-                  "minutes_at_review": 6989
-                },
-                {
-                  "recommendationid": "231454420",
-                  "hours_at_review": 323.0,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "I have played this game for so many hours, I bought it gods know how many years ago, way before the UE5 update, way before most of the factions and maps we have to day, and I hate to say this game got worse for me. It crashes CONSTANTLY now, which makes NO sense because I have a top of the line PC, one a thousand times better than the one I had last time I downloaded the game. Also the server browser is TERRIBLE, doesn't show most of the available servers AND YOU CAN'T REFRESH THE SERVER PAGE.\n\nI REPEAT, YOU CANNOT REFRESH THE SERVER PAGE. Which means that if the devil wants to f*ck you in the ass, you'll open the game, open the server page, and you'll get maybe three full servers with long queues, the rest will be basically empty, and 80% of servers you KNOW exist and should be showing up for you are nowhere to be seen, and you CANNOT REFRESH THE PAGE SO THE GAME TRIES AGAIN.\n\nIf I could get a refund, I would. Do not buy this game, Offworld butchered it and the game survives purely on the nostalgia of the game it once was.",
-                  "truncated": false,
-                  "minutes_at_review": 19381
-                },
-                {
-                  "recommendationid": "230937588",
-                  "hours_at_review": 231.3,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "stopped working for me cant see server did everything on the internet to fix this nothing worked",
-                  "truncated": false,
-                  "minutes_at_review": 13881
-                },
-                {
-                  "recommendationid": "230997066",
-                  "hours_at_review": 2278.7,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "It can be fun at times, but the community has been becoming more toxic and frustrating to play with. Different servers help, but the browser's been reworked so it's a pain to try and join them. That was a change that really missed the mark and I think it's a contributing factor to the decline in quality of matches. \n\nSquad leading can be rewarding, but when you're constantly stuck doing it the game slowly loses the appeal and you feel burned out trying to play a game. It ends up being you running around making sure everyone else gets to spawn forward or stays engaged. The community seems to have forgotten this is a team game. People are more obsessed with creating content that they will play in a way so it's to the detriment of 40 other people, and it's becoming much more commonplace amongst some communities to tolerate it. \n\nGameplay and mechanics are all great, explosions sound like explosions. Watching the shockwave in the distance and hearing it a few moments later is awesome. Weapons, recoil, vehicles, not being able to sprint miles with a 100 lbs of gear, all supremely well done. It's just the other part that really can ruin the experience.",
-                  "truncated": false,
-                  "minutes_at_review": 136721
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-4fd29d",
-              "claim": "Reviewers experience performance drops, frame rate issues, and constant stuttering following the Unreal Engine 5 update.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 5
-              },
-              "citations": [
-                {
-                  "recommendationid": "231700840",
-                  "hours_at_review": 786.3,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Loved this game. Supported it since it was in closed alpha because I was close to the original devs (modders  that created Project Reality). Those guys are long gone, and the company changed a lot. So, it breaks my heart to say that you should no longer buy this game. Some bugs from the early days are still there - even though they switched to UE5... And dont get me started on UE5.. the game still looks like it's been made 20 years ago, but now it has the performance of UE5 with it's constant frame drops etc.. On the other hand, OWI (devs) STILL haven't delievered on all the promises from the original kickstarter campaign... but they did have enough time to pick up a couple of military contracts in the meantime.\r\n\r\nThe game is jank, it's clunky, it has no idea what it wants to be after all these years, and the devs made a ingenious decision to rework the scopes.. so now, unlike any other game, when you ADS with a scope, all that happens is that your whole screen blurs out, and then only the middle of it is visible and the scope itself shows the zoomed in picture.. So basically 95% of your screen blurs out, and doesn't zoom (like getting your eye closer to the scope) but instead only the middle of the screen is occupied with the scope that zooms in like.. idk 2x or whatever.\r\nDon't get me started on the intro video that YOU CANNOT SKIP. The only way to skip it is to delete it from the game files, but when you verify the files (and you'll do that almost every other time a server crashes) you need to delete it again.. Not only that the intro video is LOUD af, but it's like 4 minutes long. So every time you boot up the game you have to sit there and do nothing.\r\n\r\n\r\nWith all the things like that, it has become literally unplayable. And trust me, those things will NEVER get fixed, because 7 year old bugs/issues never got fixed/resolved.\r\n\r\nSo yeah, don't buy ANY of their products.",
-                  "truncated": false,
-                  "minutes_at_review": 47178
-                },
-                {
-                  "recommendationid": "231207773",
-                  "hours_at_review": 291.5,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "i love walking\n\nalso slideshow on sanxian pls fix",
-                  "truncated": false,
-                  "minutes_at_review": 17491
-                },
-                {
-                  "recommendationid": "231313405",
-                  "hours_at_review": 1281.3,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "I cannot stress enough how bad the state of the game is with bugs and broken gameplay, tanks stuck in the ground, vehicles handle horribly somehow there is both massive understeer and massive oversteer. Gunplay is atrocious it feels like I'm playing as a child soldier instead of a, supposedly, professional infantryman. The devs claim they sped up the ADS animation but they added a little wobble at the end that completely cancels out the change and makes it even worse than before. This problem is exaggerated when using binoculars or AT weapons. \n\nNon-existent optimisation on UE5 and constant graphical glitches and rgb strobelights dancing on screen in low light areas and black boxes on AMD GPU's...how is this the only UE5 game that I own that performs horribly??? Devs live in their own bubble it seems like and just ignore player feedback because it feels like nothing from the surveys they had was implemented the way it was supposed to be but instead they passed it around to their \"F*ck it up\" department before it reached actual programmers. \n\n1.2k hours but holy hell has my patience run out",
-                  "truncated": false,
-                  "minutes_at_review": 76878
-                },
-                {
-                  "recommendationid": "224660290",
-                  "hours_at_review": 5059.3,
-                  "voted_up": false,
-                  "date": "2026-05-03",
-                  "review_text": "Just buy Arma instead\r\n\r\n5k hours so think Im in an informed position to comment - 3.5k gaming around 1.5 admin and seeding\r\nPre-ICO gameplay was more realistic than the post ICO nonsense the short sighted developers forced on the community. 2-3 years of \"we wont change it\" from the developers and consequential fallout from the community, the developers have finally got with the program and reworked the game again in the latest update. At the same time they introduced controller support which Im not sure anyone asked for, and in doing so removed half of the customisation for key binds and input sensitivity.\r\n\r\nPerformance is terrible, on med-high settings im lucky to see 50 frames with a 4080. There has been no tangible improvement to performance in the last 3 years, if anything with the move to UE5 performance dropped.\r\n\r\nThe devs themselves seem to be lacking basic project management ability, patches rollout which break the game and need to be rolled back. As an example rolling out a patch which turned materials and shades inside out\r\n\r\nThings the community has been asking for for years:\r\nFastropes\r\nimproved heli flight model\r\nOPTIMISATION\r\n\r\nWhat we got:\r\nDLC (paid for) weapon skins",
-                  "truncated": false,
-                  "minutes_at_review": 303559
-                },
-                {
-                  "recommendationid": "225499230",
-                  "hours_at_review": 287.4,
-                  "voted_up": false,
-                  "date": "2026-05-14",
-                  "review_text": "i enjoy this game greatly. its very fun. if you like hell let lose or arma this is a great game. its not as micro as arma. but still needs more thought than a normal FPS. but negative because after this update my performance has been destroyed. i used to get 50-90 fps on high settings. after update it went down to 10-30. i had to set my settings to low to keep it over 30. and if there are too many trees and explosions ill go down to 20. my specs arent the best. but this is unacceptable.\n(after checking the specs i see i just barely exceed the recommended specs. frankly these specs are the minimum to actually play the game. anything lower and you can only load the game.)",
-                  "truncated": false,
-                  "minutes_at_review": 17242
-                },
-                {
-                  "recommendationid": "225518378",
-                  "hours_at_review": 169.3,
-                  "voted_up": false,
-                  "date": "2026-05-14",
-                  "review_text": "Good game, bad review because of it's performance. Bought the game prior to UE5, now I have to resort to spells, witchcraft and dark rituals to (maybe) get 30FPS. Game needs far more optimization rather than upgraded graphics, this is an old game afterall.",
-                  "truncated": false,
-                  "minutes_at_review": 10157
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "vet-551302",
-              "claim": "Reviewers note that the game features an unskippable intro video upon launch.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231846206",
-                  "hours_at_review": 513.9,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Get rid of the intro video and fix your server browser its been actual years. There's no excuse.",
-                  "truncated": false,
-                  "minutes_at_review": 30833
-                },
-                {
-                  "recommendationid": "231700840",
-                  "hours_at_review": 786.3,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Loved this game. Supported it since it was in closed alpha because I was close to the original devs (modders  that created Project Reality). Those guys are long gone, and the company changed a lot. So, it breaks my heart to say that you should no longer buy this game. Some bugs from the early days are still there - even though they switched to UE5... And dont get me started on UE5.. the game still looks like it's been made 20 years ago, but now it has the performance of UE5 with it's constant frame drops etc.. On the other hand, OWI (devs) STILL haven't delievered on all the promises from the original kickstarter campaign... but they did have enough time to pick up a couple of military contracts in the meantime.\r\n\r\nThe game is jank, it's clunky, it has no idea what it wants to be after all these years, and the devs made a ingenious decision to rework the scopes.. so now, unlike any other game, when you ADS with a scope, all that happens is that your whole screen blurs out, and then only the middle of it is visible and the scope itself shows the zoomed in picture.. So basically 95% of your screen blurs out, and doesn't zoom (like getting your eye closer to the scope) but instead only the middle of the screen is occupied with the scope that zooms in like.. idk 2x or whatever.\r\nDon't get me started on the intro video that YOU CANNOT SKIP. The only way to skip it is to delete it from the game files, but when you verify the files (and you'll do that almost every other time a server crashes) you need to delete it again.. Not only that the intro video is LOUD af, but it's like 4 minutes long. So every time you boot up the game you have to sit there and do nothing.\r\n\r\n\r\nWith all the things like that, it has become literally unplayable. And trust me, those things will NEVER get fixed, because 7 year old bugs/issues never got fixed/resolved.\r\n\r\nSo yeah, don't buy ANY of their products.",
-                  "truncated": false,
-                  "minutes_at_review": 47178
-                },
-                {
-                  "recommendationid": "230642776",
-                  "hours_at_review": 766.4,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Delete the freaking opening escene i almost cant skip it and its annoying",
-                  "truncated": false,
-                  "minutes_at_review": 45984
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-746347",
-              "claim": "Reviewers report issues with the server browser, including missing servers and the inability to refresh the server list.",
+              "claim_id": "vet-48533d",
+              "claim": "Reviewers describe the server browser UI as flawed, noting problems such as an automatic refresh feature that constantly moves the list, missing refresh buttons, and details being obscured by pop-up windows.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 0,
-                "negative": 6
-              },
-              "citations": [
-                {
-                  "recommendationid": "231846206",
-                  "hours_at_review": 513.9,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Get rid of the intro video and fix your server browser its been actual years. There's no excuse.",
-                  "truncated": false,
-                  "minutes_at_review": 30833
-                },
-                {
-                  "recommendationid": "231743192",
-                  "hours_at_review": 123.5,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Honestly the game is mediocre at best, each match is repetitive and shallow, and most of the time you cant even play because there are no servers showing on the list. overall a waste of money.\r\n\r\nbuy arma, or play on roblox.",
-                  "truncated": false,
-                  "minutes_at_review": 7411
-                },
-                {
-                  "recommendationid": "231552460",
-                  "hours_at_review": 116.5,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Good game but after the updated to new engine holy bugs. I cant even play my sever browser is half the time circle of doom and guess what cant refresh it since that doesn't exist",
-                  "truncated": false,
-                  "minutes_at_review": 6989
-                },
-                {
-                  "recommendationid": "231454420",
-                  "hours_at_review": 323.0,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "I have played this game for so many hours, I bought it gods know how many years ago, way before the UE5 update, way before most of the factions and maps we have to day, and I hate to say this game got worse for me. It crashes CONSTANTLY now, which makes NO sense because I have a top of the line PC, one a thousand times better than the one I had last time I downloaded the game. Also the server browser is TERRIBLE, doesn't show most of the available servers AND YOU CAN'T REFRESH THE SERVER PAGE.\n\nI REPEAT, YOU CANNOT REFRESH THE SERVER PAGE. Which means that if the devil wants to f*ck you in the ass, you'll open the game, open the server page, and you'll get maybe three full servers with long queues, the rest will be basically empty, and 80% of servers you KNOW exist and should be showing up for you are nowhere to be seen, and you CANNOT REFRESH THE PAGE SO THE GAME TRIES AGAIN.\n\nIf I could get a refund, I would. Do not buy this game, Offworld butchered it and the game survives purely on the nostalgia of the game it once was.",
-                  "truncated": false,
-                  "minutes_at_review": 19381
-                },
-                {
-                  "recommendationid": "230997066",
-                  "hours_at_review": 2278.7,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "It can be fun at times, but the community has been becoming more toxic and frustrating to play with. Different servers help, but the browser's been reworked so it's a pain to try and join them. That was a change that really missed the mark and I think it's a contributing factor to the decline in quality of matches. \n\nSquad leading can be rewarding, but when you're constantly stuck doing it the game slowly loses the appeal and you feel burned out trying to play a game. It ends up being you running around making sure everyone else gets to spawn forward or stays engaged. The community seems to have forgotten this is a team game. People are more obsessed with creating content that they will play in a way so it's to the detriment of 40 other people, and it's becoming much more commonplace amongst some communities to tolerate it. \n\nGameplay and mechanics are all great, explosions sound like explosions. Watching the shockwave in the distance and hearing it a few moments later is awesome. Weapons, recoil, vehicles, not being able to sprint miles with a 100 lbs of gear, all supremely well done. It's just the other part that really can ruin the experience.",
-                  "truncated": false,
-                  "minutes_at_review": 136721
-                },
-                {
-                  "recommendationid": "230937588",
-                  "hours_at_review": 231.3,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "stopped working for me cant see server did everything on the internet to fix this nothing worked",
-                  "truncated": false,
-                  "minutes_at_review": 13881
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-16a39a",
-              "claim": "Reviewers describe scope aiming mechanics that blur a large portion of the screen surrounding the zoomed-in optic.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
+                "positive": 1,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231700840",
-                  "hours_at_review": 786.3,
+                  "recommendationid": "240496425",
+                  "hours_at_review": 289.2,
+                  "minutes_at_review": 17350,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Loved this game. Supported it since it was in closed alpha because I was close to the original devs (modders  that created Project Reality). Those guys are long gone, and the company changed a lot. So, it breaks my heart to say that you should no longer buy this game. Some bugs from the early days are still there - even though they switched to UE5... And dont get me started on UE5.. the game still looks like it's been made 20 years ago, but now it has the performance of UE5 with it's constant frame drops etc.. On the other hand, OWI (devs) STILL haven't delievered on all the promises from the original kickstarter campaign... but they did have enough time to pick up a couple of military contracts in the meantime.\r\n\r\nThe game is jank, it's clunky, it has no idea what it wants to be after all these years, and the devs made a ingenious decision to rework the scopes.. so now, unlike any other game, when you ADS with a scope, all that happens is that your whole screen blurs out, and then only the middle of it is visible and the scope itself shows the zoomed in picture.. So basically 95% of your screen blurs out, and doesn't zoom (like getting your eye closer to the scope) but instead only the middle of the screen is occupied with the scope that zooms in like.. idk 2x or whatever.\r\nDon't get me started on the intro video that YOU CANNOT SKIP. The only way to skip it is to delete it from the game files, but when you verify the files (and you'll do that almost every other time a server crashes) you need to delete it again.. Not only that the intro video is LOUD af, but it's like 4 minutes long. So every time you boot up the game you have to sit there and do nothing.\r\n\r\n\r\nWith all the things like that, it has become literally unplayable. And trust me, those things will NEVER get fixed, because 7 year old bugs/issues never got fixed/resolved.\r\n\r\nSo yeah, don't buy ANY of their products.",
-                  "truncated": false,
-                  "minutes_at_review": 47178
+                  "date": "2026-11-18",
+                  "review_text": "The gameplay is great, when the game works and there are decent squad leaders stepping up.\n\n\nI came back after awhile to play.\n\nThe new UI feels prettier, but there are obvious flaws. If I select a server, a new window opens up with selected server details, but it covers up the entire right side of the server browser and blurs important information on other servers (notably/importantly for me: ping) with very much wasted space, which hurts the browsing experience.\nThe automatic refresh constantly (every 7 seconds or so) hops the entire server list, which is really annoying, when I wanted to click something in the list. And I think the constant updating and me scanning this hopping list is hurting my eyes. Again, hurts the browsing experience.\n\nThere aren't any EU servers to play in as an English speaker during the off-hours. Sry, but I'm a player that does other things during the on-hours. \n\nI joined a server to seed it, then tried to queue in an American server. The game got stuck so nothing responded, not the Esc button or the \"leave queue\" on the server I queued in. I had to alt+F4 out of the game.\n\nI'm beginning to understand why so many old veteran players view this game with animosity, because it feels like it's getting worse with time, thanks to all the old bugs still being present on top of the new ones and questionable development decisions (like the new UI described before and the automatic server list refresh).\n\nI'm on the verge of uninstalling. I will probably be back to check the next couple of updates, but I think I will be done after that, if there are no meaningful improvements.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231313405",
-                  "hours_at_review": 1281.3,
+                  "recommendationid": "238639053",
+                  "hours_at_review": 125.2,
+                  "minutes_at_review": 7511,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "Where my refresh button at tho 😫",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238576671",
+                  "hours_at_review": 460.1,
+                  "minutes_at_review": 27606,
                   "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "I cannot stress enough how bad the state of the game is with bugs and broken gameplay, tanks stuck in the ground, vehicles handle horribly somehow there is both massive understeer and massive oversteer. Gunplay is atrocious it feels like I'm playing as a child soldier instead of a, supposedly, professional infantryman. The devs claim they sped up the ADS animation but they added a little wobble at the end that completely cancels out the change and makes it even worse than before. This problem is exaggerated when using binoculars or AT weapons. \n\nNon-existent optimisation on UE5 and constant graphical glitches and rgb strobelights dancing on screen in low light areas and black boxes on AMD GPU's...how is this the only UE5 game that I own that performs horribly??? Devs live in their own bubble it seems like and just ignore player feedback because it feels like nothing from the surveys they had was implemented the way it was supposed to be but instead they passed it around to their \"F*ck it up\" department before it reached actual programmers. \n\n1.2k hours but holy hell has my patience run out",
-                  "truncated": false,
-                  "minutes_at_review": 76878
+                  "date": "2026-10-25",
+                  "review_text": "Can't even play this game, there's no server refresh button so you're stuck looking at an empty screen if your internet doesn't load them.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-248db1",
+              "claim": "Reviewers report that the user interface update causes issues such as broken elements, server browser information being obscured, and difficulties with queueing and loading into servers.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240563822",
+                  "hours_at_review": 431.7,
+                  "minutes_at_review": 25904,
+                  "voted_up": true,
+                  "date": "2026-11-19",
+                  "review_text": "Squad in my opinion is a fun game , with it offering unique gameplays regardless of whatever matchup or map it is. However,there are some core bugs that has to be addressed such as vehicles getting stuck sometimes and especially the queueing problems. Not only does it sometimes show 0/0 for some reason , but also it cuts me off from queue everytime a server changes maps. Leading to a lot of wasted time. \r\nIn conclusion, squad is definitely a game worth returning to, as it provides teamwork and hospitality not many games provides. However what must be improved is the core bugs affecting players everyday",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240496425",
+                  "hours_at_review": 289.2,
+                  "minutes_at_review": 17350,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "The gameplay is great, when the game works and there are decent squad leaders stepping up.\n\n\nI came back after awhile to play.\n\nThe new UI feels prettier, but there are obvious flaws. If I select a server, a new window opens up with selected server details, but it covers up the entire right side of the server browser and blurs important information on other servers (notably/importantly for me: ping) with very much wasted space, which hurts the browsing experience.\nThe automatic refresh constantly (every 7 seconds or so) hops the entire server list, which is really annoying, when I wanted to click something in the list. And I think the constant updating and me scanning this hopping list is hurting my eyes. Again, hurts the browsing experience.\n\nThere aren't any EU servers to play in as an English speaker during the off-hours. Sry, but I'm a player that does other things during the on-hours. \n\nI joined a server to seed it, then tried to queue in an American server. The game got stuck so nothing responded, not the Esc button or the \"leave queue\" on the server I queued in. I had to alt+F4 out of the game.\n\nI'm beginning to understand why so many old veteran players view this game with animosity, because it feels like it's getting worse with time, thanks to all the old bugs still being present on top of the new ones and questionable development decisions (like the new UI described before and the automatic server list refresh).\n\nI'm on the verge of uninstalling. I will probably be back to check the next couple of updates, but I think I will be done after that, if there are no meaningful improvements.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239631153",
+                  "hours_at_review": 148.3,
+                  "minutes_at_review": 8901,
+                  "voted_up": false,
+                  "date": "2026-11-07",
+                  "review_text": "New update broke evry ui in the game to the pointy its game breaking, loading into servers 0/0 bug ui not going in game.... never seen an update break so much of the game\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238644674",
+                  "hours_at_review": 1958.8,
+                  "minutes_at_review": 117525,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "Was this game worth it a year or two ago? Yes.\r\n\r\nIs it worth it now? No.\r\n\r\nShould you buy it so the playerbase gets better and it becomes worth it again? Probably.\r\n\r\n/srs Recent updates have been going down in quality, a LOT, and the playerbase has as well as experienced players leave or drift away. There are lots of pretty easy and dumb development mistakes & bugs that appear, and there was a UI overhaul that looks worse than like, a roblox pre-pre-alpha.\r\n\r\nAlso, console release is coming, so crossplay servers are gonna be hell on earth due to the already experience-lacking playerbase.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-963358",
+              "claim": "Reviewers note that the server browser lacks a functional refresh button or features automatic refreshing that disrupts navigation.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240496425",
+                  "hours_at_review": 289.2,
+                  "minutes_at_review": 17350,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "The gameplay is great, when the game works and there are decent squad leaders stepping up.\n\n\nI came back after awhile to play.\n\nThe new UI feels prettier, but there are obvious flaws. If I select a server, a new window opens up with selected server details, but it covers up the entire right side of the server browser and blurs important information on other servers (notably/importantly for me: ping) with very much wasted space, which hurts the browsing experience.\nThe automatic refresh constantly (every 7 seconds or so) hops the entire server list, which is really annoying, when I wanted to click something in the list. And I think the constant updating and me scanning this hopping list is hurting my eyes. Again, hurts the browsing experience.\n\nThere aren't any EU servers to play in as an English speaker during the off-hours. Sry, but I'm a player that does other things during the on-hours. \n\nI joined a server to seed it, then tried to queue in an American server. The game got stuck so nothing responded, not the Esc button or the \"leave queue\" on the server I queued in. I had to alt+F4 out of the game.\n\nI'm beginning to understand why so many old veteran players view this game with animosity, because it feels like it's getting worse with time, thanks to all the old bugs still being present on top of the new ones and questionable development decisions (like the new UI described before and the automatic server list refresh).\n\nI'm on the verge of uninstalling. I will probably be back to check the next couple of updates, but I think I will be done after that, if there are no meaningful improvements.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238639053",
+                  "hours_at_review": 125.2,
+                  "minutes_at_review": 7511,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "Where my refresh button at tho 😫",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238576671",
+                  "hours_at_review": 460.1,
+                  "minutes_at_review": 27606,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Can't even play this game, there's no server refresh button so you're stuck looking at an empty screen if your internet doesn't load them.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-6b9e82",
+              "claim": "Reviewers note that queuing for servers presents issues, including getting cut off from queues upon map changes and encountering full queues or bugs that prevent leaving the queue.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240563822",
+                  "hours_at_review": 431.7,
+                  "minutes_at_review": 25904,
+                  "voted_up": true,
+                  "date": "2026-11-19",
+                  "review_text": "Squad in my opinion is a fun game , with it offering unique gameplays regardless of whatever matchup or map it is. However,there are some core bugs that has to be addressed such as vehicles getting stuck sometimes and especially the queueing problems. Not only does it sometimes show 0/0 for some reason , but also it cuts me off from queue everytime a server changes maps. Leading to a lot of wasted time. \r\nIn conclusion, squad is definitely a game worth returning to, as it provides teamwork and hospitality not many games provides. However what must be improved is the core bugs affecting players everyday",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240496425",
+                  "hours_at_review": 289.2,
+                  "minutes_at_review": 17350,
+                  "voted_up": false,
+                  "date": "2026-11-18",
+                  "review_text": "The gameplay is great, when the game works and there are decent squad leaders stepping up.\n\n\nI came back after awhile to play.\n\nThe new UI feels prettier, but there are obvious flaws. If I select a server, a new window opens up with selected server details, but it covers up the entire right side of the server browser and blurs important information on other servers (notably/importantly for me: ping) with very much wasted space, which hurts the browsing experience.\nThe automatic refresh constantly (every 7 seconds or so) hops the entire server list, which is really annoying, when I wanted to click something in the list. And I think the constant updating and me scanning this hopping list is hurting my eyes. Again, hurts the browsing experience.\n\nThere aren't any EU servers to play in as an English speaker during the off-hours. Sry, but I'm a player that does other things during the on-hours. \n\nI joined a server to seed it, then tried to queue in an American server. The game got stuck so nothing responded, not the Esc button or the \"leave queue\" on the server I queued in. I had to alt+F4 out of the game.\n\nI'm beginning to understand why so many old veteran players view this game with animosity, because it feels like it's getting worse with time, thanks to all the old bugs still being present on top of the new ones and questionable development decisions (like the new UI described before and the automatic server list refresh).\n\nI'm on the verge of uninstalling. I will probably be back to check the next couple of updates, but I think I will be done after that, if there are no meaningful improvements.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238463747",
+                  "hours_at_review": 1990.0,
+                  "minutes_at_review": 119399,
+                  "voted_up": true,
+                  "date": "2026-10-24",
+                  "review_text": "Something Oceania players should know before buying is that the population can make the game borderline unplayable. \n\nServers need to be basically full (100 players) for the game to be enjoyable and since WarDogs' release the player base currently only supports one server each night. This has led to a serious problem where it can be impossible to join the only playable server for multiple hours due to:\n1. The queue being 20 people long.\n2. The queue being capped at 20 people (you can't join the queue if it is full).\n3. Priority queue making wait times longer.\n\nPrior to WarDogs release the population was large enough to support 2-4 servers on weekends and 1-2 servers on week days. So the game is worth buying if the population recovers.\n\nThis might sound like an ad for WarDogs, but no other mil-sim really compares to Squad. Squad forces player to participate in team work through its squad system (9 players a squad with one acting as leader) this does lead to gameplay which you will find in no other game, so I think it is worth at least trying to see if you prefer it over other options.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-43dc2e",
+              "claim": "Reviewers state that using a microphone and communicating with teammates are absolute requirements for playing the game.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240322299",
+                  "hours_at_review": 188.2,
+                  "minutes_at_review": 11293,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "Win or lose, I always have a good time on Squad. Gunplay is difficult and rewarding to land shots and kills. Vehicles are fairly balanced and most factions are viable (although not all divisons are well balanced for certain maps). However, this balance issue only affects servers that have faction/map voting at the end of rounds. \r\n\r\nHaving a microphone is an absolute MUST to play this game. Communication is the key to teamwork and teamwork is the key to victory in Squad. The Squad leaders greatest weapon isnt the ability to build or call in a rally point to spawn allies, it relies in is connection to command chat that allows him to communicate with other squad leaders and call in support. Dont worry about being uncomfortable on the mic - Squads community is very welcoming and friendly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239634863",
+                  "hours_at_review": 525.3,
+                  "minutes_at_review": 31519,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "Great game with a big learning curve for people coming from arcade shooters. \nMic and communication is key, once you find a good squad that works together this game is the best.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238480410",
+                  "hours_at_review": 981.1,
+                  "minutes_at_review": 58868,
+                  "voted_up": true,
+                  "date": "2026-10-24",
+                  "review_text": "My favourite first person shooter. Sometimes can be a highly frustrating experience, but when Squad is at its best it has some of the greatest gaming moments that you can't get anywhere else. Expect to use your mic and be asked to follow order and communicate, this is not a game for lone wolfing.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-27ae4a",
+              "claim": "Reviewers experience performance instability, bugs, and technical issues following the Unreal Engine 5 update.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239929053",
+                  "hours_at_review": 321.1,
+                  "minutes_at_review": 19265,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "really nice game but since UE5 this game gotten very unstable",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239313686",
+                  "hours_at_review": 223.1,
+                  "minutes_at_review": 13386,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "i used to love this game now i get less than 30fps the UE5 update ruined me",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238604132",
+                  "hours_at_review": 1000.7,
+                  "minutes_at_review": 60044,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "they implemented the ICO, it made the game shit, everybody who knows how to play the game left, they pulled it back but all are gone. the engine \"Upgrade\" only brought a lot of bugs and issues. the current state of the game feels like early access. feels insane to me when i think back and it was a perfectly working game back then",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "divergent"
-        ],
+        "level": "baseline",
+        "triggers": [],
         "cited_reviews": 13,
-        "cited_recommend": 1,
-        "divergence_p": 1.67e-06,
+        "cited_recommend": 8,
+        "divergence_p": 0.524,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1225,
-    "steam_total_reviews": 110943,
+    "pool_n": 900,
+    "steam_total_reviews": 112456,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/393380/0b19b50aabea356bd8f534fbe7d6db9bd227810a/header.jpg?t=1784319638",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/393380/e069cbeca98b633002e2d2202b4cc4ae58138549/capsule_231x87.jpg?t=1784319638",
-    "grid": "https://cdn2.steamgriddb.com/grid/15a0c610810751360d1943952a8b5193.png"
   }
 }

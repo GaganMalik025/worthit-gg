@@ -1,68 +1,115 @@
 {
   "appid": "594650",
   "game_name": "Hunt: Showdown 1896",
-  "generated_at": "2026-08-10T10:10:42Z",
+  "generated_at": "2026-11-21T02:54:43Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/594650/279c054bf947c40225a8f2f56b15bf7f817976f0/header_alt_assets_27.jpg?t=1785847079",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/594650/db8d00180552bbcf7068dffda7bf5ce8b4ae0041/capsule_231x87.jpg?t=1785847079",
+    "grid": "https://cdn2.steamgriddb.com/grid/fbc9b51da15391491dfead2ce7830a00.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 15,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Atmospheric tension clashes with brutal matchmaking and optimization struggles.",
+    "tagline": "Atmospheric tension clashes with technical instability and cheaters.",
     "for_you_if": [
-      "you love high stakes tactical shooters",
-      "you appreciate exceptional spatial audio design"
+      "you master steep learning curves",
+      "you value tactical sound design",
+      "you enjoy slow tactical firefights"
     ],
     "not_for_you_if": [
-      "you are unwilling to face veteran opponents early",
-      "you need stable performance without technical drops",
-      "you want matches free from cheaters"
+      "you encounter frequent game crashes",
+      "you face unfair matchmaking ranks",
+      "you run into cheaters often",
+      "you need stable server connections"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 32,
-      "pct_positive": 50.0,
-      "muted": true
+      "pool_n": 38,
+      "pct_positive": 42.1,
+      "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 327,
-      "pct_positive": 64.2,
+      "pool_n": 240,
+      "pct_positive": 66.2,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 297,
-      "pct_positive": 74.7,
+      "pool_n": 255,
+      "pct_positive": 77.3,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 582,
-      "pct_positive": 66.2,
+      "pool_n": 666,
+      "pct_positive": 69.5,
       "muted": false
     }
   ],
   "distortion_flags": [
     {
-      "flag_id": "recency_shift",
-      "type": "recency",
-      "direction": "declined",
-      "shape": null,
-      "sentence": "Recent review scores trail the historical lifetime average.",
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "rise_then_fall",
+      "sentence": "Positive sentiment rises through mid-play before declining among veteran players.",
       "evidence": {
-        "recent_pool_pct_positive": 67.3,
-        "recent_pool_n": 1238,
-        "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 76.2,
-        "steam_total_reviews": 118781,
-        "delta_pts": -8.9
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 42.1,
+            "pool_n": 38
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 66.2,
+            "pool_n": 240
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 77.3,
+            "pool_n": 255
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 69.5,
+            "pool_n": 666
+          }
+        ],
+        "shape": "rise_then_fall",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 42.1,
+        "low_pool_n": 38,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 77.3,
+        "high_pool_n": 255,
+        "gap_pts": 35.2,
+        "peak_cohort": "mid",
+        "peak_pct_positive": 77.3,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 69.5,
+        "drop_after_peak_pts": 7.8
       }
     }
   ],
@@ -71,243 +118,215 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 32,
-      "pct_positive": 50.0,
-      "muted": true,
-      "n_note": "n=14 - too few reviews to call",
-      "summary": null,
-      "themes": []
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 327,
-      "pct_positive": 64.2,
+      "pool_n": 38,
+      "pct_positive": 42.1,
       "muted": false,
       "n_note": null,
-      "summary": "New players face punishing matchmaking against veterans after the initial bot phase, alongside clumsy menus and praised sound design.",
+      "summary": "New players face a steep learning curve and lack cross-play support.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-16bf5a",
-              "claim": "Matchmaking places new players against opponents with high prestige levels and hundreds or thousands of hours of experience.",
+              "claim_id": "ref-b42af0",
+              "claim": "Reviewers report that the game lacks cross-play between PC and consoles.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 8
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231544332",
-                  "hours_at_review": 7.8,
+                  "recommendationid": "236841743",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 34,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Game is clearly designed about never getting new players as the onboarding is nonexistent apart from the regular \"use wasd to move, here is how you kill an enemy, good luck\" BS. After that you are thrown into lobbies with players with hundreds of hours straight away.\r\n\r\nBut at least they show you the brand new battle pass before you get into your first round.",
-                  "truncated": false,
-                  "minutes_at_review": 468
+                  "date": "2026-10-04",
+                  "review_text": "only problem with this game is i cant play with my friends on console",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231540605",
-                  "hours_at_review": 5.5,
+                  "recommendationid": "235729057",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 44,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Trainee mode ends at bloodline level 11 and that's when you stop going against bots, by then you would have over 2h of the game which makes it so you can no longer refund it.\r\n\r\nThe problem is that despite being low level you will get matched with people who have prestiged like 7 times or more (prestige = reached bloodline level 100). So you have freshies level 11 going against dudes who have hundreds of levels more compared to you. MMR is a thing, but at one star I've been matched with 3-4 stars before (6 stars is max), and having played many other competitive games before, this is the first game that matchmaking is an actual issue.\r\n\r\nI understand that the game is niche but that doesn't change the fact that the problem exist.",
-                  "truncated": false,
-                  "minutes_at_review": 331
-                },
-                {
-                  "recommendationid": "231385855",
-                  "hours_at_review": 4.9,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Cool premise and gun play however the matchmaking is so horrendous you will want to turn your gun on yourself 5 minutes in. Completely new player getting matched against prestige 19 chuds making it unplayable",
-                  "truncated": false,
-                  "minutes_at_review": 296
-                },
-                {
-                  "recommendationid": "231289024",
-                  "hours_at_review": 6.0,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "Bought the game today and every single person i died to had played this game for thousands of hours when I'm just trying to learn. Prestige 50 hiding in a tent boom one shot. You want to learn? 45 unemployed max level losers in bushes and tents waiting for you. Game needs better matchmaking I cant compete with thousands of hours when I don't have time to learn anything about the game because I'm put against 30 year old bald sweaty losers in their mothers basements.",
-                  "truncated": false,
-                  "minutes_at_review": 358
-                },
-                {
-                  "recommendationid": "230776560",
-                  "hours_at_review": 4.4,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Started playing the game with a buddy, we notice you play vs. bots.\nWe both max out the starting character and get pushed to rank 18 ???\nSuddenly we get matched with high MMR players and can't do ♥♥♥♥ cause we have 0 equipment like they do, no perks no nothing.\n\nMatchmaking is just broken, we play vs. people who are on high prestige ranks while we have a few hours played in the game.",
-                  "truncated": false,
-                  "minutes_at_review": 263
-                },
-                {
-                  "recommendationid": "230456018",
-                  "hours_at_review": 13.3,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "Issues i found in the game in the first 14 hours while playing with a friend:\n\n-paid outfits are darker than the free ones, often dlc locked too\n-You will go agaist people who have 500 hours in the game, because there is no matchmaking, everyone goes into the same match regardless of their knowledge, rank or skill",
-                  "truncated": false,
-                  "minutes_at_review": 800
-                },
-                {
-                  "recommendationid": "230369053",
-                  "hours_at_review": 10.5,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Honestly I wish this game could be fun for me but the matchmaking is a joke and the lobbies are never balanced, you always get one guy cheating or just running around hard meta in low level lobbies with 20+ prestige under their belt.\nIt's a slog and it can't even begin to be fun because the second you finish the tutorial you get no-lifers like this ruining every possible lobby you could get",
-                  "truncated": false,
-                  "minutes_at_review": 630
-                },
-                {
-                  "recommendationid": "227084066",
-                  "hours_at_review": 9.9,
-                  "voted_up": false,
-                  "date": "2026-06-03",
-                  "review_text": "One of the most unfair sweat lord games I have played so far!\r\n\r\nGame design - (10/10) Beautiful art style skins for characters look cool and some out of this world cool.\r\n\r\nSound design - (10/10) Its perfect every loud noise comes with a cost same with movement.\r\n\r\nGameplay - (6/10) It feels good in some parts and other times it is a little bit overwhelming and feels to clunky/ floaty feeling with people jump spamming and shooting.\r\n\r\nMatchmaking - (MMR) 0/10 Absolutely non existent. (Although they are supposed to be working on this)\r\n\r\nThe matchmaking system is so bad that it generally ruins it for me, I am prestige 0 level 39 fairly new to the game on steam and I am always being put with teams of prestige 100 level 100 characters every match is just a race to finding the bounty then camping and being shot in the back by a bush camper it annoys me so much! \r\n\r\nCommunity 2/10? Maybe I have had bad luck with the people I play with on it but some of these random players the matchmaking puts me in with take this game WAY to much! It is usually mostly these prestige 100 sweat lords though! \r\n\r\nEasily a fun game if you enjoy making rage people mad I suppose.. I have had so many people raging in the in game voice chat at me even with me being level 39 trying to learn the game like damn ya'll aughta need to go relax and chill out maybe go touch grass!  HAHA\r\n\r\nCrazy how the rest of the game is amazing but the actual balance and matchmaking itself is so unfair.",
-                  "truncated": false,
-                  "minutes_at_review": 596
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-25c512",
-              "claim": "The game provides a trainee mode with bots up until bloodline level 11 before transitioning players into regular lobbies.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231540605",
-                  "hours_at_review": 5.5,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Trainee mode ends at bloodline level 11 and that's when you stop going against bots, by then you would have over 2h of the game which makes it so you can no longer refund it.\r\n\r\nThe problem is that despite being low level you will get matched with people who have prestiged like 7 times or more (prestige = reached bloodline level 100). So you have freshies level 11 going against dudes who have hundreds of levels more compared to you. MMR is a thing, but at one star I've been matched with 3-4 stars before (6 stars is max), and having played many other competitive games before, this is the first game that matchmaking is an actual issue.\r\n\r\nI understand that the game is niche but that doesn't change the fact that the problem exist.",
-                  "truncated": false,
-                  "minutes_at_review": 331
-                },
-                {
-                  "recommendationid": "230875991",
-                  "hours_at_review": 13.0,
-                  "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": "I've been looking for a good shooter for a while. Game and shooting mechanics are very good. It is confusing all the options you have and like traits and stuff. All of that could've been better explained. However, I have learned much from the randoms I played with. A lot of them are super nice and see that I'm a noob to this game and take the time to explain some of the stuff. 10/10 community, very positive. Anyone looking for a good shooter should at least give it a try. Oh btw, they throw you with bots until like level 11 so that part is boring, but after they throw you in with the real players it gets intense but very much fun.",
-                  "truncated": false,
-                  "minutes_at_review": 782
-                },
-                {
-                  "recommendationid": "230776560",
-                  "hours_at_review": 4.4,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Started playing the game with a buddy, we notice you play vs. bots.\nWe both max out the starting character and get pushed to rank 18 ???\nSuddenly we get matched with high MMR players and can't do ♥♥♥♥ cause we have 0 equipment like they do, no perks no nothing.\n\nMatchmaking is just broken, we play vs. people who are on high prestige ranks while we have a few hours played in the game.",
-                  "truncated": false,
-                  "minutes_at_review": 263
-                },
-                {
-                  "recommendationid": "230048888",
-                  "hours_at_review": 8.6,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "I'm not spending 10 years of my life just to get \"okay\" at the game.\nI'd rather have fun, than hoping it's going to be fun at some point.\nPeak nolife experience.\n\nAlso, the game is 100% a scam. Putting players in \"trainee mode\", where you bascially play with bots up until level 11, which means by the time you get to play with real people (aka. the people who are spendling majority of their life playing this trash heap) you can't give it back.",
-                  "truncated": false,
-                  "minutes_at_review": 517
+                  "date": "2026-09-20",
+                  "review_text": "Can't cross play from pc to ps5 dumb",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "other",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-b0c490",
-              "claim": "Reviewers praise the sound design for being well done and immersive.",
-              "citation_verdict": "mixed",
+              "claim_id": "ref-3845c5",
+              "claim": "Reviewers describe a steep learning curve with complex mechanics, AI enemies, and game knowledge required to improve.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 3,
-                "negative": 2
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231676247",
-                  "hours_at_review": 18.6,
+                  "recommendationid": "240412485",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 22,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "Amazing game with a very unique gameplay loop.\n\nThe gunfights in this game are unlike anything else. The slower rate of fire makes every shot count, forcing you to think twice before pulling the trigger. Positioning, sound awareness and knowing when to engage or disengage it's important.\n\nThe mechanics are pretty unforgiving, but that's exactly what makes the game fun. Be warned, though: it has a very steep learning curve, with a lot of mechanics, enemies and game knowledge to learn before you can really get comfortable.\n\nEven the AI enemies require some knowledge to deal with efficiently, as different enemies have different weaknesses and ways of being dealt with. And while you're busy taking care of them, you always have to keep an eye out for other players who might be listening to every sound you make.\n\nDespite all the good things this game has to offer, there are three main issues I have with it.\n\n1. Content\n\nThings have improved now that the studio has decided to focus its resources on this game, but even so, there are still periods where absolutely nothing is going on. No events, no seasons, no new content, nothing. Sometimes it feels like the game just enters a content drought and stays there for a while.\n\n2. Bush campers\n\nThis is probably one of my biggest frustrations. The game increasingly feels like a horror game where you never know when a bush is going to jumpscare you with a headshot from 6 km away.\n\nAnd while this has improved somewhat, the main difference nowadays is that instead of getting shot from 6 km away by a silenced sniper rifle, you get shot from 6 km away by an unsilenced sniper rifle.\n\n3. Cheaters\n\nUnfortunately, the game has recently been dealing with waves of cheaters who repeatedly show up in matches using aimbot and wallhacks. It's particularly frustrating since it stopped being once in a while to a couple times a day.\n\nThankfully, they're usually fairly easy to report, and the developers are actively working on the issue. Hopefully, …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "237625812",
+                  "hours_at_review": 1.8,
+                  "minutes_at_review": 109,
+                  "voted_up": true,
+                  "date": "2026-10-13",
+                  "review_text": "This can be a cruel game.. But it is also unbelievably rewarding to come out of a firefight and get some loot before escaping the map with your life (meaning you get to keep your character).  Once you learn more or less how to deal with npc mobs and the emviroment.. you'll just get better. This game comes with a huge learning curve to most. But it is an amazing game!",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 2,
+        "divergence_p": 0.796,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 240,
+      "pct_positive": 66.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Matchmaking pairs novices against veterans while performance issues and solo penalties frustrate sessions, despite praised sound design.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-7f7fd5",
+              "claim": "Reviewers describe the matchmaking system as unbalanced, placing new players against highly experienced or high-ranking veterans.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "239599248",
+                  "hours_at_review": 14.3,
+                  "minutes_at_review": 860,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "One of the most underrated games ever made\r\nthe game is really good and fun\r\nthe only 2 bad parts are the skill ceiling which is too high and really hard for beginners\r\nand the matchmaking where newbies are matched with vetarans and so on\r\napart fromt that the game is good in EVERY way!\r\n\r\nRecommending everyopne to play\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239573787",
+                  "hours_at_review": 6.9,
+                  "minutes_at_review": 414,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Pros:\n- Beautiful graphics\n- Buttery smooth gun controls\n- Great atmosphere + tension\n- Immersive sound design\n- Zero p2w\n- Huge roster of cool DLC characters + weapons + animations\n\nCons:\n- 1 shot insta-deaths\n- Skill issues nightmare (bottomless floor; enormous ceiling)\n- Release 2019 + low player count + only 4 maps = lobbies filled with highly experienced players who know how to send you back to the lobby after 5 minutes wandering through the environment killing zombie npcs without ever seeing them.",
-                  "truncated": false,
-                  "minutes_at_review": 1118
+                  "date": "2026-11-07",
+                  "review_text": "Fun until you get out of begging mode. Get paired with and agaisnt pay way too experienced,  too quickly.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231581538",
-                  "hours_at_review": 10.7,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "i just started but i can already tell this game is beautifully made from the atmosphere to the audio and gunplay its an extraction shooter where they remove luck and external factors from engagements if you land a headshot they die a matzka helmet wont save them and the audio is so well done that listening most of the time will win you engagements if you like hardcore shooters this is the game for you",
-                  "truncated": false,
-                  "minutes_at_review": 642
-                },
-                {
-                  "recommendationid": "230749291",
-                  "hours_at_review": 10.6,
-                  "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": " I only have about 10 hours in Hunt: Showdown, but I am already completely hooked! A friend of mine has played it forever; he often streamed it for me and explained how everything works. Thanks to him, I had the perfect start. The atmosphere in the swamps is incredibly dark and gripping. The mix of hunting monsters and the constant risk of running into other players creates pure suspense. Every match feels important, and the sound design is the best I have ever heard in a shooter. An absolutely brilliant game that is even more fun with friends!",
-                  "truncated": false,
-                  "minutes_at_review": 635
-                },
-                {
-                  "recommendationid": "230175177",
-                  "hours_at_review": 10.1,
-                  "voted_up": true,
-                  "date": "2026-07-11",
-                  "review_text": "An absolute unique fps experience with incredible sound design and a fantastic freaky world.",
-                  "truncated": false,
-                  "minutes_at_review": 604
-                },
-                {
-                  "recommendationid": "227084066",
-                  "hours_at_review": 9.9,
+                  "recommendationid": "239186056",
+                  "hours_at_review": 12.1,
+                  "minutes_at_review": 723,
                   "voted_up": false,
-                  "date": "2026-06-03",
-                  "review_text": "One of the most unfair sweat lord games I have played so far!\r\n\r\nGame design - (10/10) Beautiful art style skins for characters look cool and some out of this world cool.\r\n\r\nSound design - (10/10) Its perfect every loud noise comes with a cost same with movement.\r\n\r\nGameplay - (6/10) It feels good in some parts and other times it is a little bit overwhelming and feels to clunky/ floaty feeling with people jump spamming and shooting.\r\n\r\nMatchmaking - (MMR) 0/10 Absolutely non existent. (Although they are supposed to be working on this)\r\n\r\nThe matchmaking system is so bad that it generally ruins it for me, I am prestige 0 level 39 fairly new to the game on steam and I am always being put with teams of prestige 100 level 100 characters every match is just a race to finding the bounty then camping and being shot in the back by a bush camper it annoys me so much! \r\n\r\nCommunity 2/10? Maybe I have had bad luck with the people I play with on it but some of these random players the matchmaking puts me in with take this game WAY to much! It is usually mostly these prestige 100 sweat lords though! \r\n\r\nEasily a fun game if you enjoy making rage people mad I suppose.. I have had so many people raging in the in game voice chat at me even with me being level 39 trying to learn the game like damn ya'll aughta need to go relax and chill out maybe go touch grass!  HAHA\r\n\r\nCrazy how the rest of the game is amazing but the actual balance and matchmaking itself is so unfair.",
-                  "truncated": false,
-                  "minutes_at_review": 596
+                  "date": "2026-11-02",
+                  "review_text": "Love this games Graphics, love the mechanics, love the map and concept. Badly want to enjoy it but sweats ruin it everytime.... Sad :( Not new player friendly at all. Lobby's not balanced well enough for someone new to get anywhere. loose your best hunters the moment they put you in normal lobby's where you fighting level 100 prestige level 100 players xD I'm gonna keep playing for a bit as I'm past the refund time but can't bring myself to recommend. They've had over 8 years to sort this out so its safe to say it won't be. Wanna save youself money and sanity don't buy this. Unless its on like a 2 dollar sale xD",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238699649",
+                  "hours_at_review": 8.2,
+                  "minutes_at_review": 494,
+                  "voted_up": true,
+                  "date": "2026-10-27",
+                  "review_text": "Awesome game, but for the LOVE OF FUCK. FIX THE FUCKING MATCHMAKING. I'M LEVEL 25 AND IM GETTING PEOPLE LEVEL 400, WHAT IN THE ACTUAL FUCK.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238425594",
+                  "hours_at_review": 6.4,
+                  "minutes_at_review": 382,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "I want my money back lmfao, just started going against prestige 50's.\nactually the worst queueing system I've seen in any game. do better.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237512113",
+                  "hours_at_review": 8.5,
+                  "minutes_at_review": 511,
+                  "voted_up": false,
+                  "date": "2026-10-12",
+                  "review_text": "The MMR system in this game is non-functional. For the first two hours you will be placed in tutorial mode against bots from then on new players can expect to only ever run into people with hundreds more hours than them with high level traits and weapons. The inventory system punishes you for dying to people with more experience and gear and then puts you back in queue with people with more experience and gear. All of this is explained by saying that 'The MMR will eventually balance out if you just play a few more matches', but it never does. I have seen groups with an 'average team MMR' lower than the lowest MMR of any member on their team. THIS GAME DELIBERATELY MAKES THE GAME INVITING FOR THE FIRST TWO HOURS OF GAMEPLAY BEFORE PUNISHING PLAYERS WHO HAVE NOT BEEN BUYING IN-GAME CONTENT HABITUALLY. STEAM AUTOMATICALLY REFUSES REFUNDS MADE BASED AROUND THIS COMPLAINT. STAY AWAY, THIS COMPANY DOESN'T CARE ABOUT NEW PLAYERS AND NEVER WILL.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237503437",
+                  "hours_at_review": 4.8,
+                  "minutes_at_review": 287,
+                  "voted_up": false,
+                  "date": "2026-10-11",
+                  "review_text": "I'm fighting 100/100 prestige/rank  5&6 star mmr after just getting the game and trying to learn how to play. Not a new player friendly game. Also getting shot from across the map at the start of a match is cool too dogshit game",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-ecf53a",
-              "claim": "The user interface and menu navigation are criticized as poorly designed and frustrating to use.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-5ed99b",
+              "claim": "Reviewers note that solo play is punishing, tedious, and difficult compared to playing in teams.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 2,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231447575",
-                  "hours_at_review": 17.9,
+                  "recommendationid": "239468040",
+                  "hours_at_review": 13.6,
+                  "minutes_at_review": 814,
                   "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "next update please hire a UI designer",
-                  "truncated": false,
-                  "minutes_at_review": 1071
+                  "date": "2026-11-05",
+                  "review_text": "\r\nA Unique Masterpiece Undermined by Its Own Systems\r\n\r\nHunt: Showdown 1896 remains one of the most uniquely tense tactical shooters on PC, presenting an atmosphere and audio framework that no other game can match. However, your enjoyment of this brutal extraction shooter depends almost entirely on who you play with, as a frustrating matchmaking system and a severe lack of permanent game modes drag down an otherwise brilliant experience.\r\n+------------------------------------+------------------------------------+\r\n\r\n| The Good                           | The Bad                            |\r\n+------------------------------------+------------------------------------+\r\n\r\n| • Masterful PC gunplay & audio    | • Wildly inconsistent matchmaking  |\r\n| • Highly rewarding team play       | • Punishing, tedious solo experience|\r\n| • Mechanically unique atmosphere   | • Barely any permanent game modes  |\r\n+------------------------------------+------------------------------------+\r\n\r\nThe Friend Factor: Duo/Trio Brilliance vs. Solo Misery\r\n\r\nOn PC, where precision aiming elevates the stakes, Hunt is a masterpiece when played with a dedicated group of friends. Coordinating flanks, managing sound discipline, and executing dynamic pushes in duos or trios showcases the game at its absolute best.\r\nPlaying solo, however, feels like a completely different—and often miserable—game. While Crytek gives solo players certain trait advantages, going alone turns Hunt into an exhausting, hyper-passive waiting game. One wrong step means immediate death with zero room for error, pushing solo play into a tedious, ultra-stealth playstyle that strips away the dynamic fun of team firefights.\r\n\r\nHorrible Matchmaking\r\n\r\nThe biggest barrier to enjoying the game consistently is its wildly erratic matchmaking system.\r\n• On the Steam Community Forums, players frequently complain that the Matchmaking Rating (MMR) is fundamentally broken, regularly throwing lower-tier players or casual duos into lobbies wi…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "226117390",
-                  "hours_at_review": 8.7,
-                  "voted_up": false,
-                  "date": "2026-05-22",
-                  "review_text": "I had over 4000h in Hunt on console and I stopped playing for a year now because I really was sad about the state of the game and the devs messed everything up. Now i came back after a year, this time on PC and I am even more disappointed. The state of the game is horrible, the matchmaking (like everybody knows) is a joke. Menu? Yes, still a disgrace to any human being.\nI played Hunt since it was released and it breaks my heart to see this game failing so HARD! I will now, after thousands and thousands of hours in this game, say goodbye for ever. Looking at what the devs did to this once masterpiece is a joke and i dearly hope that when HUNGER and Beautiful light release, this game will lose its base to better games and finally disappear.\nMasterpiece ruined.",
-                  "truncated": false,
-                  "minutes_at_review": 523
+                  "recommendationid": "239390515",
+                  "hours_at_review": 4.2,
+                  "minutes_at_review": 249,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "угарненько в пати, и иногда страшненько, в соло утомительно",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238336311",
+                  "hours_at_review": 12.4,
+                  "minutes_at_review": 743,
+                  "voted_up": true,
+                  "date": "2026-10-22",
+                  "review_text": "After around 12 hours in Hunt: Showdown 1896, I can say it is a really well-made extraction shooter. It has much more going on than simply loading into a match, killing a few people, and extracting. The atmosphere, the tension, and the way every match can play out differently make it stand out from other games in the genre.\n\nPlaying with random teammates can be fun, but it is not always reliable. Sometimes you get good communication and exciting matches; other times, it can be frustrating. Solo play is honestly not for me. It feels scary and often boring, especially because you are usually fighting against duos or trios alone. You need a lot of patience and confidence to enjoy that mode.\n\nI would mainly recommend Hunt: Showdown 1896 to friends who can play together and to experienced shooter players. With a team, the game becomes much more fun and memorable. It is challenging, tense, and rewarding when things go well.",
+                  "truncated": false
                 }
               ]
             }
@@ -317,8 +336,78 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-143c6c",
-              "claim": "Reviewers note that the game features a training period up to bloodline level eleven that utilizes bots before matching players against experienced opponents.",
+              "claim_id": "ear-99817f",
+              "claim": "Reviewers praise the game's sound design and audio mechanics for pinpointing enemy positions and creating atmosphere.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239468040",
+                  "hours_at_review": 13.6,
+                  "minutes_at_review": 814,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "\r\nA Unique Masterpiece Undermined by Its Own Systems\r\n\r\nHunt: Showdown 1896 remains one of the most uniquely tense tactical shooters on PC, presenting an atmosphere and audio framework that no other game can match. However, your enjoyment of this brutal extraction shooter depends almost entirely on who you play with, as a frustrating matchmaking system and a severe lack of permanent game modes drag down an otherwise brilliant experience.\r\n+------------------------------------+------------------------------------+\r\n\r\n| The Good                           | The Bad                            |\r\n+------------------------------------+------------------------------------+\r\n\r\n| • Masterful PC gunplay & audio    | • Wildly inconsistent matchmaking  |\r\n| • Highly rewarding team play       | • Punishing, tedious solo experience|\r\n| • Mechanically unique atmosphere   | • Barely any permanent game modes  |\r\n+------------------------------------+------------------------------------+\r\n\r\nThe Friend Factor: Duo/Trio Brilliance vs. Solo Misery\r\n\r\nOn PC, where precision aiming elevates the stakes, Hunt is a masterpiece when played with a dedicated group of friends. Coordinating flanks, managing sound discipline, and executing dynamic pushes in duos or trios showcases the game at its absolute best.\r\nPlaying solo, however, feels like a completely different—and often miserable—game. While Crytek gives solo players certain trait advantages, going alone turns Hunt into an exhausting, hyper-passive waiting game. One wrong step means immediate death with zero room for error, pushing solo play into a tedious, ultra-stealth playstyle that strips away the dynamic fun of team firefights.\r\n\r\nHorrible Matchmaking\r\n\r\nThe biggest barrier to enjoying the game consistently is its wildly erratic matchmaking system.\r\n• On the Steam Community Forums, players frequently complain that the Matchmaking Rating (MMR) is fundamentally broken, regularly throwing lower-tier players or casual duos into lobbies wi…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "239144996",
+                  "hours_at_review": 15.8,
+                  "minutes_at_review": 946,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "The sound design, the atmosphere. Its peak.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239089628",
+                  "hours_at_review": 18.8,
+                  "minutes_at_review": 1129,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Playing this game feels like you are in a harsh and high-stakes \"multiplayer RE7\". Sound and visuals are great, as expected from Crytek. WIth friends in a team, memorable time is guaranteed, regardless if we win or take some L's :D",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239069765",
+                  "hours_at_review": 2.6,
+                  "minutes_at_review": 159,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Very Good. Won't bore with details you've heard before (good strategy, no loot fatigue, amazing sound design, etc). The game is fun and the gameplay loop is unique and varied.\n\nBut I swear to God they lifted the setting from re7",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237594154",
+                  "hours_at_review": 16.4,
+                  "minutes_at_review": 981,
+                  "voted_up": true,
+                  "date": "2026-10-13",
+                  "review_text": "I absolutely love this game. The audio is amazing and I can actually pin point which way the enemy players are coming from. This game is so entertaining and addictive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237345978",
+                  "hours_at_review": 14.0,
+                  "minutes_at_review": 838,
+                  "voted_up": false,
+                  "date": "2026-10-10",
+                  "review_text": "I LOVE this game, Its probably the best multiplayer shooter on the market! \nthe sound the gun play, the horror. Its all perfect.\n\nWhat isnt perfect is the cheaters, and even worse the report system. \nI was headshot through a wall, and spectating the cheater I see he 360 scopes and shoots another player through another wall. So I want to report the guy. Well I get met with a huge wall of progress, I need to \n1) go to their website\n2) make an account on said website\n3) UPLOAD A VIDEO of the person cheating to youtube unlisted, and link it in the support ticket.\n\n\nwhat? WHAT?!?!?\n\nI can image why there is a cheating issue, the steps to report are more tedious to get than an associates degree. \n\nIF you can stand a cheater and not really be able to report them, then this game is for you. if not, welp too bad, cause this game is otherwise great.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-0153c5",
+              "claim": "Reviewers experience technical performance issues including game crashes and connection losses during matches.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -326,34 +415,50 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231540605",
-                  "hours_at_review": 5.5,
+                  "recommendationid": "239970777",
+                  "hours_at_review": 8.1,
+                  "minutes_at_review": 484,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Trainee mode ends at bloodline level 11 and that's when you stop going against bots, by then you would have over 2h of the game which makes it so you can no longer refund it.\r\n\r\nThe problem is that despite being low level you will get matched with people who have prestiged like 7 times or more (prestige = reached bloodline level 100). So you have freshies level 11 going against dudes who have hundreds of levels more compared to you. MMR is a thing, but at one star I've been matched with 3-4 stars before (6 stars is max), and having played many other competitive games before, this is the first game that matchmaking is an actual issue.\r\n\r\nI understand that the game is niche but that doesn't change the fact that the problem exist.",
-                  "truncated": false,
-                  "minutes_at_review": 331
+                  "date": "2026-11-11",
+                  "review_text": "played 8 matches with friends and in 5 of them someone had their game crashing or losing connection at least once",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230048888",
-                  "hours_at_review": 8.6,
+                  "recommendationid": "238976488",
+                  "hours_at_review": 18.9,
+                  "minutes_at_review": 1137,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "I'm not spending 10 years of my life just to get \"okay\" at the game.\nI'd rather have fun, than hoping it's going to be fun at some point.\nPeak nolife experience.\n\nAlso, the game is 100% a scam. Putting players in \"trainee mode\", where you bascially play with bots up until level 11, which means by the time you get to play with real people (aka. the people who are spendling majority of their life playing this trash heap) you can't give it back.",
-                  "truncated": false,
-                  "minutes_at_review": 517
+                  "date": "2026-10-31",
+                  "review_text": "It keeps crashing on me. I love this game but FOR CHRISTS SAKE FIX YOUR DAMN GAME.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-c8a35f7e",
+          "text": "One reviewer says the game has an issue with cheaters and that the reporting process requires making a website account and uploading an unlisted YouTube video.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "237345978",
+            "hours_at_review": 14.0,
+            "minutes_at_review": 838,
+            "voted_up": false,
+            "date": "2026-10-10",
+            "review_text": "I LOVE this game, Its probably the best multiplayer shooter on the market! \nthe sound the gun play, the horror. Its all perfect.\n\nWhat isnt perfect is the cheaters, and even worse the report system. \nI was headshot through a wall, and spectating the cheater I see he 360 scopes and shoots another player through another wall. So I want to report the guy. Well I get met with a huge wall of progress, I need to \n1) go to their website\n2) make an account on said website\n3) UPLOAD A VIDEO of the person cheating to youtube unlisted, and link it in the support ticket.\n\n\nwhat? WHAT?!?!?\n\nI can image why there is a cheating issue, the steps to report are more tedious to get than an associates degree. \n\nIF you can stand a cheater and not really be able to report them, then this game is for you. if not, welp too bad, cause this game is otherwise great.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 16,
-        "cited_recommend": 4,
-        "divergence_p": 0.00164,
+        "cited_reviews": 17,
+        "cited_recommend": 8,
+        "divergence_p": 0.0817,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -361,277 +466,198 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 297,
-      "pct_positive": 74.7,
+      "pool_n": 255,
+      "pct_positive": 77.3,
       "muted": false,
       "n_note": null,
-      "summary": "Mid tier matches introduce cheaters while the immersive cowboy setting and spatial audio continue to shine.",
+      "summary": "Strong atmosphere and sound design shine alongside persistent complaints about cheaters, connection drops, and mismatched opponents.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-b05bc0",
-              "claim": "Reviewers report encountering cheaters in matches.",
+              "claim_id": "mid-7c9b92",
+              "claim": "Reviewers report encountering many cheaters and hackers in matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "240338217",
+                  "hours_at_review": 68.1,
+                  "minutes_at_review": 4086,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "HACKERS PARADISE!!! UNINSTALLED - Cannot recommend in it's current hacker infested state. - Very cool game HOWEVER, it is plagued by hackers and you have no safety from them, the game is awesome otherwise. I would not have bought the game if I knew how prolific the hackers were in game, there are mechanics where you can use a view to see the enemy at certian times but this is not what I am on about, I am talking about exploits besides in-game reveals etc. If you are interested in purchasing the game, go to youtube and search a few videos before you buy. I detest games that are plaqued with hackers and my goto now is, first research and if the hacker problem is there, abundantly, I stay away because at the end of the day I will just avoid the game due to in game frustration witrh hackers, so why pay for something I know will p!ss me off at the end off the day, rather dont pay for it in the first place. Spend your moneyu elsewhere. That being said, I occassionally go back to games I like to \"test the water \" so to speak, and if the problem persists then pack it away again. If the devs are not interested or good enough to sort out the problem then the review will stay negative.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238311935",
+                  "hours_at_review": 58.2,
+                  "minutes_at_review": 3493,
+                  "voted_up": false,
+                  "date": "2026-10-22",
+                  "review_text": "i loved this on xbox..got it on pc and i swear its full of cheaters...no matter what i do every match people find me very quickly and i get killed with 1 shot...why are you letting cheaters ruin your game...If you cheat you are jus sad and i wonder why you even play games..truley does amaze me how cheating is rewarding...ooo i jus wanna win cause i have no brain power",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238626699",
+                  "hours_at_review": 38.5,
+                  "minutes_at_review": 2309,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "The game is interesting at first and has the potential to be enjoyable, but it quickly loses its appeal. After a while, the gameplay starts to feel repetitive, and there isn't enough fresh content to keep things exciting in the long run. One of the biggest problems, however, is the community, which is extremely toxic and makes the overall experience much worse than it should be.\nOn top of that, It still has connection and stability issues, even after all this time since launch + the unpleasant community, there aren't enough positives to justify spending money on it. It might be worth trying for free, but I definitely wouldn't recommend investing any money into it\n\nP.S. I forgot to mention the hackers. There are quite a lot of them, and they don't even bother hiding anymore",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237834086",
+                  "hours_at_review": 46.8,
+                  "minutes_at_review": 2805,
+                  "voted_up": true,
+                  "date": "2026-10-16",
+                  "review_text": "Once you start playing the game, you can vividly witness the developers' passion for it. from the soundtracks to visuals to the mesmerizing environment of the game, to the detailed design of the guns. \r\nThe only problem I've had with the game so far is apparently the abundance of cheaters, which I really believe can and will kill the vibe of the game,",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237426093",
+                  "hours_at_review": 47.9,
+                  "minutes_at_review": 2874,
+                  "voted_up": false,
+                  "date": "2026-10-11",
+                  "review_text": "Way too many cheaters with no updates from the devs and no communication, don't let steam charts numbers fool you, this game is dead in the water without better anticheat. Pursue a different pvp game, not this one",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237644220",
+                  "hours_at_review": 83.4,
+                  "minutes_at_review": 5004,
+                  "voted_up": false,
+                  "date": "2026-10-13",
+                  "review_text": "The most discusting and overpriced camping simulator on market.\nUpdate: Enjoy playing against no life losers with 50000 hours who ARE THE SAME SKILL LEVEL AS YOU ACCORDING TO GAME, are you having fun yet?\nUpdate 2: Got killed by a rusian hacker today with my team, only perfect wallbanging, piece of shit has 4000+ hours and game is fine with that, better bring your money to roblox, than this steaming pile of feces that some asshole at crytek had audacity to call a game and unironically sell to people. Fuck you. Uninstalled.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237045531",
+                  "hours_at_review": 43.1,
+                  "minutes_at_review": 2586,
+                  "voted_up": true,
+                  "date": "2026-10-06",
+                  "review_text": "The game content is quite good, especially the kill experience, which is highly immersive. However, the servers keep crashing, and there are many cheaters in higher ranks. I hope these issues can be improved.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-f8b9ae",
+              "claim": "Reviewers mention connection problems, server instability, or high ping during matches.",
               "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231519722",
-                  "hours_at_review": 44.5,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Reinstalled recently to give it another try and it's clear very quickly that it's swamped with cheaters. Just gonna uninstall again",
-                  "truncated": false,
-                  "minutes_at_review": 2671
-                },
-                {
-                  "recommendationid": "230466448",
-                  "hours_at_review": 51.9,
-                  "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "Ngl very fun and interesting game, only complaint is the mmr system and the amount of cheaters on the game",
-                  "truncated": false,
-                  "minutes_at_review": 3116
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "mid-e46ec7",
-              "claim": "Reviewers praise the game's sound design and audio cues for locating other players.",
-              "citation_verdict": "positive",
-              "citation_split": {
                 "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231836406",
-                  "hours_at_review": 58.0,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Easy to learn, hard to master. Excellent sound, great music, incredible atmosphere - I actually feel repulsion towards The Spider boss.\nThe CRYENGINE is unmatched in rendering nature and open spaces.\n\nThe gun handling is really really good. You have single action, double action, one-shot, repetition and semiautomatic weapons.\nFor some weapons you will have one missing bullet because it is actually loaded into the barrel by the gun's mechanics (which is what happens in real life)\nFor better handling you'll have to go to Ready or Not, Gray Zone Warfare, Operator, (the great) ARMA.\n\nAlso, this game has an incredible feeling of fox and hounds. The sound design is fantastic and usually you can figure out where the players are. But this also means that explosions, loud noises will mask the movement of a player and everything turns into a play of who can make the other guy miscalculate shots and positions.\n\nSo I got into this game after trying out ARC Raiders and Marathon.\n\nI could not bring myself to shoot another player in ARC Raiders. For me that game is too social and the world does not make sense for players to shoot each other - thankfully there are the CareBear lobbies :D\nMost of the hunters here are very very evil persons so I have no issue in shooting a player in the back - actually after a while you won't care about the bounties, you just want to hunt other players.\n\nPersonally I think this game works as PVP because if you are skillful enough you can one-shot a veteran player (headshots FTW) - which does not apply to Marathon because the purple shield is impenetrable by a white weapon. \nHunt also does not have weapon mods which reload the weapon while holstered or some crazy stuff like that.\n\n#rise-up-dead-man",
-                  "truncated": false,
-                  "minutes_at_review": 3479
-                },
-                {
-                  "recommendationid": "230635572",
-                  "hours_at_review": 36.1,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "Going in, you should know that this game is extremely hardcore.\n\nThere are almost no second chances, suboptimal gameplay gets shut down extremely fast, and the entire map is designed to rat out your position.\nThe matchmaking is based entirely on, nothing else. That means that you will be sent into a match with people that have thousands of hours, putting you in a natural disadvantage every game if you are new.\nThat said, the gameplay itself is wonderful. The world is immersive, the sounds are implemented well, and the graphics are awesome. The guns are balanced - whenever by the damage, velocity, accuracy or price. There is no unfair weapon in this game.\nEven the cheapest 25 bucks revolver can one-shot to the head, which makes this game more skill dependent than money dependent. That characteristic is really attractive, since domination through wealth is something that most other extraction shooters struggle with.\n\nI would recommend this game to people that already have a lot of experience with various PVP shooters, or to those that have the grit to push through irritating, unforgiving and unfair matches at the start. \n\nPass the whiskey.",
-                  "truncated": false,
-                  "minutes_at_review": 2168
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-288058",
-              "claim": "Reviewers praise the graphics, cowboy theme, and immersive atmosphere.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231836406",
-                  "hours_at_review": 58.0,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Easy to learn, hard to master. Excellent sound, great music, incredible atmosphere - I actually feel repulsion towards The Spider boss.\nThe CRYENGINE is unmatched in rendering nature and open spaces.\n\nThe gun handling is really really good. You have single action, double action, one-shot, repetition and semiautomatic weapons.\nFor some weapons you will have one missing bullet because it is actually loaded into the barrel by the gun's mechanics (which is what happens in real life)\nFor better handling you'll have to go to Ready or Not, Gray Zone Warfare, Operator, (the great) ARMA.\n\nAlso, this game has an incredible feeling of fox and hounds. The sound design is fantastic and usually you can figure out where the players are. But this also means that explosions, loud noises will mask the movement of a player and everything turns into a play of who can make the other guy miscalculate shots and positions.\n\nSo I got into this game after trying out ARC Raiders and Marathon.\n\nI could not bring myself to shoot another player in ARC Raiders. For me that game is too social and the world does not make sense for players to shoot each other - thankfully there are the CareBear lobbies :D\nMost of the hunters here are very very evil persons so I have no issue in shooting a player in the back - actually after a while you won't care about the bounties, you just want to hunt other players.\n\nPersonally I think this game works as PVP because if you are skillful enough you can one-shot a veteran player (headshots FTW) - which does not apply to Marathon because the purple shield is impenetrable by a white weapon. \nHunt also does not have weapon mods which reload the weapon while holstered or some crazy stuff like that.\n\n#rise-up-dead-man",
-                  "truncated": false,
-                  "minutes_at_review": 3479
-                },
-                {
-                  "recommendationid": "230635572",
-                  "hours_at_review": 36.1,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "Going in, you should know that this game is extremely hardcore.\n\nThere are almost no second chances, suboptimal gameplay gets shut down extremely fast, and the entire map is designed to rat out your position.\nThe matchmaking is based entirely on, nothing else. That means that you will be sent into a match with people that have thousands of hours, putting you in a natural disadvantage every game if you are new.\nThat said, the gameplay itself is wonderful. The world is immersive, the sounds are implemented well, and the graphics are awesome. The guns are balanced - whenever by the damage, velocity, accuracy or price. There is no unfair weapon in this game.\nEven the cheapest 25 bucks revolver can one-shot to the head, which makes this game more skill dependent than money dependent. That characteristic is really attractive, since domination through wealth is something that most other extraction shooters struggle with.\n\nI would recommend this game to people that already have a lot of experience with various PVP shooters, or to those that have the grit to push through irritating, unforgiving and unfair matches at the start. \n\nPass the whiskey.",
-                  "truncated": false,
-                  "minutes_at_review": 2168
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-ff6529",
-              "claim": "Reviewers note that the learning curve is steep or requires significant time to master.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231385027",
-                  "hours_at_review": 23.9,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "Most fun shooter I have ever played. Brutal learning curve though",
-                  "truncated": false,
-                  "minutes_at_review": 1436
-                },
-                {
-                  "recommendationid": "230489685",
-                  "hours_at_review": 37.0,
-                  "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "Lot of fun. steep learning curve for people just starting out. however there is gear loss protection for low level players. cowboy vibes all the way.",
-                  "truncated": false,
-                  "minutes_at_review": 2219
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 6,
-        "cited_recommend": 5,
-        "divergence_p": 0.826,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 582,
-      "pct_positive": 66.2,
-      "muted": false,
-      "n_note": null,
-      "summary": "Longtime players highlight brilliant tactical sound design weighed down by cheaters, high CPU loads, and regional ping issues.",
-      "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-4554b0",
-              "claim": "Reviewers report that high MMR lobbies are plagued by cheaters using wallhacks and aimbots.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "231405439",
-                  "hours_at_review": 2509.5,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "This is one of my favourite games of all time. I have lots of positive things to say about the core gameplay. The issue is that you can't and won't enjoy it because the game is completely plagued by cheaters. Whole clans who blatantly admit to cheating in game and on their steam profiles run rampant in high MMR matches. They display KDA's and headshot stats that are obviously obtained through cheating. I have played long enough to make these accusations. Whether it's soft cheating (through wall ESP, radar etc.) or blatant aim-lock cheats, you will experience it, you will be frustrated about it, and it will happen again and again.\n\nThe problem is Crytek. Their ineptitude with managing cheating needs to be studied. Crytek is spitting and laughing in the face of their paying customers. I have played many, many hours on this game and feel completely abandoned by thier \"developers.\" Anti-cheat doesn't exist, they don't ban cheaters, and your in-game reports likely get instantly deleted and never reviewed by anyone. There's no feedback system to reporting, and you will find yourself reporting the the same people over and over again with no action. \n\nCrytek will take your money and laugh at you. They don't care about you, they just want your money. They don't care about the state of their game because they don't play it. Hunt Showdown is borderline unplayable and Crytek hasn't even admitted that the game is in a cheating crisis. Crytek is incompetent and needs to spend less time on in game microtransactions and battle-passes and invest more into an actual anti-cheat system.\n",
-                  "truncated": false,
-                  "minutes_at_review": 150569
-                },
-                {
-                  "recommendationid": "231405114",
-                  "hours_at_review": 852.1,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "Don't get me wrong, it is an amazing game when it is fair. Unfortunately every single lobby in High MMR has a cheater, and you will get used to the clans that blatantly cheat. You will die from the same people over and over again through wall with 0 intel, first shot headshots. I can not recommend this game in this state, get a damn anti-cheat Crytek...",
-                  "truncated": false,
-                  "minutes_at_review": 51124
-                },
-                {
-                  "recommendationid": "225586372",
-                  "hours_at_review": 3779.6,
-                  "voted_up": false,
-                  "date": "2026-05-15",
-                  "review_text": "I love this game so much, but sadly I will now stop playing for the time being after almost 3.8k hours and spending easily over 500–700 euros.\r\nSix‑star lobbies in Europe are a complete ♥♥♥♥♥♥♥♥… hackers, ping abusers, and so on. In almost every round, enemy players seem to smell you from five miles away.\r\nThis game has so much potential and so much to offer, but getting demolished every round by extremely suspicious players is no longer bearable.\r\n\r\nDon’t get me wrong: I’m completely fine with losing a fair gunfight, getting shot from behind, or being third‑partied. But dying to players who see you for 0.1 seconds and land the most questionable shots is just not okay.\r\nI’ve been a six‑star player since before the 1896 update, and I know six‑star lobbies are sweaty — but not like this, not like in the last couple of months.\r\n\r\nYou can report players in‑game and on Steam, but it doesn’t matter. They can just keep playing without facing any consequences.\r\nSometimes they are even showing their cheats on their Steam Page for everyone to see.\r\nAnd no, it shouldn’t be that the only way Crytek looks into hackers is when you report them through their website. That is pathetic in 2026, in my opinion, if that’s the only real way to get these players banned.\r\n\r\nWhat would help the game?\r\n\r\nPing limit / region lock\r\n\r\nActive devs who actually investigate suspicious players and ban them\r\n\r\nIt could be so simple, but it seems like Crytek doesn’t really care.\r\n\r\nAs far as I know, these problems are much more common in six‑star lobbies and less so in lower‑star brackets.\r\nSo if you’re new to the game or still in lower‑star lobbies: enjoy it, and hope you never reach six stars — they will ruin your Hunt days.",
-                  "truncated": false,
-                  "minutes_at_review": 226778
-                },
-                {
-                  "recommendationid": "226624946",
-                  "hours_at_review": 3995.2,
-                  "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "I have almost 4,000 hours in this game. It was by far my favorite game of the last 5 years.\nUnfortunately it is now rampant with cheating, macro-using, exploit-abusing players that have gone unchecked for years. I did my part- I recorded, emailed, talked with support, and still run into the same cheating users over and over.\nCrytek refuses to address this problem- not for months, BUT YEARS. They love getting up on their social-media platforms announcing their fair-play taskforce and 'we hear you,' but its just a bladder of hot air.\nSave your money and the pain of playing a PvP game where you're just going to get stomped on. Go buy something else.",
-                  "truncated": false,
-                  "minutes_at_review": 239710
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-bd8146",
-              "claim": "Reviewers note that the game suffers from optimization issues, poor graphics, and high CPU load following engine updates.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231871122",
-                  "hours_at_review": 860.1,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "This game provides an incredible take on first-person shooters, with a great atmosphere to the game. The major downside is the inability for the game developers and staff to handle blatant cheating. For a game that is already dying you would think they would take more time and care into their player base other than making more simple-looking skins and or items solely for the purpose of generating revenue without providing unique or inspiring prospects to the game. The playdough-like graphics and poor optimization even after years after developments showcases the lack of care the team has for player experience. While the guns are truly fascinating and compounds are fairly unique, it is a shame the game offers very little in gameplay variance within environmental constructs of the overall maps and compounds. Events are lasting several months in support of the battle pass, but lack depth to engage players long-term; just enough to keep returning players and the slim potential to attract some new players.  While I have my gripes about the game, I really do think the idea and concept of the world and objectives to be unique and fun to play. One of my biggest issues is the player base. Blatant cheaters and veteran players who have thousands of hours in the game, combined with godawful matchmaking, leads to games where there is little to no battle between teams, and more of a slaughter taking seconds for players to be killed without chance to fight. While this may be a given when encountering players of other skill levels, the inability to provide balanced matchmaking, and in their case, pretending to offer a balanced matchmaking experience, only negatively affects the players experience. This greatly alters the ability for people to truly enjoy the game at their own skill levels due to the mechanics of the game supporting those of higher skill level and MMR regardless of relation to other hunters within the same game.",
-                  "truncated": false,
-                  "minutes_at_review": 51606
-                },
-                {
-                  "recommendationid": "224868464",
-                  "hours_at_review": 1490.4,
-                  "voted_up": false,
-                  "date": "2026-05-06",
-                  "review_text": "English:\n\nHuge congrats to the Crytek team; over the last 8 years, you’ve somehow managed to consistently make the game worse under the guise of \"updates.\" You probably thought you were pulling off a revolution by updating CryEngine and sending the CPU load through the roof, but all you did was kick out thousands of long-time players with older systems—or forced the rest of us into this optimization-deprived, disastrous experience. I guess you don't really care about ruining the game as long as you can squeeze more money out of the console market, but hey, did you at least pull it off?\n\nIt’s been all these years and you still haven't implemented a detailed analysis system that shows exactly who killed us how, from how many meters, with what ammo, or how we took/dealt damage. We’re literally out here Googling \"Hunt map,\" squinting at screenshots, and trying to calculate coordinates ourselves just to figure out how many meters was the shot that we dealt. It’s unbelievable. At the end of a match, there's zero info, zero detail. We can’t even see a proper breakdown of the damage we dealt. \"Your teammate downed this hunter\" — Oh, really? Which teammate? How? Even putting that aside, at least let us see the stats for the players we downed: the distance, the weapon, the damage... If you kill someone and then die a bit later, that kill or damage doesn't even show up in the \"Damage History.\" Instead of putting cowboy hats on flying bugs, how about you fix the thousands of \"bugs\" in this game? If you can't do it yourselves, get some help from players like RachtaZ who have put thousands of hours into this. You’ve even taken away our freedom to just load into a map solo to quietly explore and learn the layout. You break working systems and the UI with every single patch, then spend months \"fixing\" them and bringing them back in a broken state as if you’re doing us a huge favor. You call this innovation? The \"Revive Bolt\" move was the peak of this nonsense; it’s a miracle that I…",
-                  "truncated": true,
-                  "minutes_at_review": 89422
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-806584",
-              "claim": "Reviewers report that ping abusers and players from other regions negatively impact matches.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
                 "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "231342881",
-                  "hours_at_review": 232.7,
+                  "recommendationid": "239041664",
+                  "hours_at_review": 41.0,
+                  "minutes_at_review": 2461,
                   "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Chinese playing on EU Sever all day, every day. Some of them legit, some of them with cheats. \n\nAnd the best thing is. If you complain on the official Discord you will get a warn for racism. 🏳️‍🌈 crytek 🤡🤡🤡\n\nAt this point, I really hope this game goes down the drain since a company who constantly ignored the community and their concerns. Doesnt deserve to have a working game out on the market.",
-                  "truncated": false,
-                  "minutes_at_review": 13963
+                  "date": "2026-10-31",
+                  "review_text": "Servers are complete and utter garbage 300 ms every other match while internet is perfect unplayable...",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "225586372",
-                  "hours_at_review": 3779.6,
+                  "recommendationid": "238626699",
+                  "hours_at_review": 38.5,
+                  "minutes_at_review": 2309,
                   "voted_up": false,
-                  "date": "2026-05-15",
-                  "review_text": "I love this game so much, but sadly I will now stop playing for the time being after almost 3.8k hours and spending easily over 500–700 euros.\r\nSix‑star lobbies in Europe are a complete ♥♥♥♥♥♥♥♥… hackers, ping abusers, and so on. In almost every round, enemy players seem to smell you from five miles away.\r\nThis game has so much potential and so much to offer, but getting demolished every round by extremely suspicious players is no longer bearable.\r\n\r\nDon’t get me wrong: I’m completely fine with losing a fair gunfight, getting shot from behind, or being third‑partied. But dying to players who see you for 0.1 seconds and land the most questionable shots is just not okay.\r\nI’ve been a six‑star player since before the 1896 update, and I know six‑star lobbies are sweaty — but not like this, not like in the last couple of months.\r\n\r\nYou can report players in‑game and on Steam, but it doesn’t matter. They can just keep playing without facing any consequences.\r\nSometimes they are even showing their cheats on their Steam Page for everyone to see.\r\nAnd no, it shouldn’t be that the only way Crytek looks into hackers is when you report them through their website. That is pathetic in 2026, in my opinion, if that’s the only real way to get these players banned.\r\n\r\nWhat would help the game?\r\n\r\nPing limit / region lock\r\n\r\nActive devs who actually investigate suspicious players and ban them\r\n\r\nIt could be so simple, but it seems like Crytek doesn’t really care.\r\n\r\nAs far as I know, these problems are much more common in six‑star lobbies and less so in lower‑star brackets.\r\nSo if you’re new to the game or still in lower‑star lobbies: enjoy it, and hope you never reach six stars — they will ruin your Hunt days.",
-                  "truncated": false,
-                  "minutes_at_review": 226778
+                  "date": "2026-10-26",
+                  "review_text": "The game is interesting at first and has the potential to be enjoyable, but it quickly loses its appeal. After a while, the gameplay starts to feel repetitive, and there isn't enough fresh content to keep things exciting in the long run. One of the biggest problems, however, is the community, which is extremely toxic and makes the overall experience much worse than it should be.\nOn top of that, It still has connection and stability issues, even after all this time since launch + the unpleasant community, there aren't enough positives to justify spending money on it. It might be worth trying for free, but I definitely wouldn't recommend investing any money into it\n\nP.S. I forgot to mention the hackers. There are quite a lot of them, and they don't even bother hiding anymore",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226140377",
-                  "hours_at_review": 2580.9,
+                  "recommendationid": "237450207",
+                  "hours_at_review": 58.6,
+                  "minutes_at_review": 3514,
+                  "voted_up": true,
+                  "date": "2026-10-11",
+                  "review_text": "The best first person extraction shooter GAME i have seen in my life one thing that bothers me that this game does not has a singapore server thats why i have to play with too much high ping and that thing ruins the game this game should add a singapore server. \r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237305279",
+                  "hours_at_review": 28.2,
+                  "minutes_at_review": 1694,
                   "voted_up": false,
-                  "date": "2026-05-22",
-                  "review_text": "After 2500 hours in game I have finally uninstalled this. Its fun don't get me wrong but the devs don't do anything about the Ping Abusers, cheaters, or fix the ranking system. it makes the game unplayable when 4 out of 5 matches you are killed by someone cheating or the highest ranked player going into a half rank lobby. They are coming out with new content via events and battle passes but it just not worth the hassle of loading in game have your trio wiped via headshot through the wall at 200+m and sent back to lobby. It has only gotten worse over the years I have played and there are better games out there to enjoy your time on.",
-                  "truncated": false,
-                  "minutes_at_review": 154856
+                  "date": "2026-10-09",
+                  "review_text": "Bugs encountered in one session (ca. 5 rounds):\n\n- changing a keybind mid round resulting in being unable to leave the settings menu no matter what\n- random disconnect from a match mid game with no possibility to reconnect\n- redeeming a daily challenge with no popup screen showing the reward, not knowing if the reward screen is bugged or the whole challenge and if i actually got a reward\n\nThere's an ingame shop which gets inflatet with new skins, and its sorting making absolutely no sense. It's all over the place making it an annoyance to scroll through. Like most other menus in the game.\n\nSince the engine update sound traps frequently don't make a warning noise for you if you come near if there is no line of sight, resulting in you going around a corner and suddenly standing IN a sound trap which you then have to set off. Stuff like this can cost your character in the worst case.\n\nDevs making some game mechanics to be more casual saying they want to keep new players (which i understand and kinda support) but on the other side changing other (core) mechanics of the game to be so much more complicated. Yes, it's easier to reverse the permanent health reduction after being revived from death, and to get money or rewards now even if you don't win a round. But i.e. understanding the loadout/ammo system is so counter intuitive now. Two pistols of the same size; one can be equipped with your gun, the other can't. The experienced player knows it's for balancing reasons but for a newbie, and from a logical perspective, it makes absolutely no sense. And you get this feeling regularly, where you think something would be possible but it isn't. And sometimes it is. It's just inconsistent.\nOften those balancing fixes are healthy for the game. But they are implemented in a way that feels like a band aid cause it works against the game flow and player intuition. \n\nThe gunplay at its core is one of the best the FPS genre has to offer. At its best moments the game may be the stronge…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "237045531",
+                  "hours_at_review": 43.1,
+                  "minutes_at_review": 2586,
+                  "voted_up": true,
+                  "date": "2026-10-06",
+                  "review_text": "The game content is quite good, especially the kill experience, which is highly immersive. However, the servers keep crashing, and there are many cheaters in higher ranks. I hope these issues can be improved.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-5d4c97",
+              "claim": "Reviewers experience connection issues, including server lag, high ping, and random mid-game disconnects.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 2,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "239041664",
+                  "hours_at_review": 41.0,
+                  "minutes_at_review": 2461,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "Servers are complete and utter garbage 300 ms every other match while internet is perfect unplayable...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238626699",
+                  "hours_at_review": 38.5,
+                  "minutes_at_review": 2309,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "The game is interesting at first and has the potential to be enjoyable, but it quickly loses its appeal. After a while, the gameplay starts to feel repetitive, and there isn't enough fresh content to keep things exciting in the long run. One of the biggest problems, however, is the community, which is extremely toxic and makes the overall experience much worse than it should be.\nOn top of that, It still has connection and stability issues, even after all this time since launch + the unpleasant community, there aren't enough positives to justify spending money on it. It might be worth trying for free, but I definitely wouldn't recommend investing any money into it\n\nP.S. I forgot to mention the hackers. There are quite a lot of them, and they don't even bother hiding anymore",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237450207",
+                  "hours_at_review": 58.6,
+                  "minutes_at_review": 3514,
+                  "voted_up": true,
+                  "date": "2026-10-11",
+                  "review_text": "The best first person extraction shooter GAME i have seen in my life one thing that bothers me that this game does not has a singapore server thats why i have to play with too much high ping and that thing ruins the game this game should add a singapore server. \r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237305279",
+                  "hours_at_review": 28.2,
+                  "minutes_at_review": 1694,
+                  "voted_up": false,
+                  "date": "2026-10-09",
+                  "review_text": "Bugs encountered in one session (ca. 5 rounds):\n\n- changing a keybind mid round resulting in being unable to leave the settings menu no matter what\n- random disconnect from a match mid game with no possibility to reconnect\n- redeeming a daily challenge with no popup screen showing the reward, not knowing if the reward screen is bugged or the whole challenge and if i actually got a reward\n\nThere's an ingame shop which gets inflatet with new skins, and its sorting making absolutely no sense. It's all over the place making it an annoyance to scroll through. Like most other menus in the game.\n\nSince the engine update sound traps frequently don't make a warning noise for you if you come near if there is no line of sight, resulting in you going around a corner and suddenly standing IN a sound trap which you then have to set off. Stuff like this can cost your character in the worst case.\n\nDevs making some game mechanics to be more casual saying they want to keep new players (which i understand and kinda support) but on the other side changing other (core) mechanics of the game to be so much more complicated. Yes, it's easier to reverse the permanent health reduction after being revived from death, and to get money or rewards now even if you don't win a round. But i.e. understanding the loadout/ammo system is so counter intuitive now. Two pistols of the same size; one can be equipped with your gun, the other can't. The experienced player knows it's for balancing reasons but for a newbie, and from a logical perspective, it makes absolutely no sense. And you get this feeling regularly, where you think something would be possible but it isn't. And sometimes it is. It's just inconsistent.\nOften those balancing fixes are healthy for the game. But they are implemented in a way that feels like a band aid cause it works against the game flow and player intuition. \n\nThe gunplay at its core is one of the best the FPS genre has to offer. At its best moments the game may be the stronge…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "237045531",
+                  "hours_at_review": 43.1,
+                  "minutes_at_review": 2586,
+                  "voted_up": true,
+                  "date": "2026-10-06",
+                  "review_text": "The game content is quite good, especially the kill experience, which is highly immersive. However, the servers keep crashing, and there are many cheaters in higher ranks. I hope these issues can be improved.",
+                  "truncated": false
                 }
               ]
             }
@@ -641,31 +667,76 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-7ac2fe",
-              "claim": "Reviewers praise the game's spatial sound design and audio cues, noting how footsteps and gunshots inform tactical decisions.",
+              "claim_id": "mid-a4632f",
+              "claim": "Reviewers note that the game features a setting and atmosphere with great sound design.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 7,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231377354",
-                  "hours_at_review": 414.6,
+                  "recommendationid": "239710569",
+                  "hours_at_review": 30.1,
+                  "minutes_at_review": 1803,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "!!!!! YOU SHOULD BUY THIS GAME IN 2026 !!!!!!\n\nAfter 414 hours in the Bayou, I can confidently say this isn't just the best extraction shooter on the market. It is quite possibly the best game I have ever played. It is a pure dopamine machine.\n\nHere is why Hunt: Showdown stands in a league of its own:\n\n--Brains Over Aim--\nIn 2026, let's be honest: everyone has decent aim. While raw mechanical skill and flick shots might carry you in other shooters like Counter Strike 2, here, they won't save you if you get outsmarted. Hunt is a high IQ game that heavily rewards positioning, patience, and strategy over mindless running and gunning.\n\n--Near Perfect Balance--\nThe game is 95% perfectly balanced. Literally every single weapon is viable and deadly if you understand its strengths and use it in the right context. There is no absolute \"meta\" that you are forced to play.\n\n--The Best Sound Design in Gaming History--\nThis is the true game changer and what separates Hunt from every other game ever made. The audio is an absolute 10/10. You could almost play this game blindfolded. The spatial audio is insanely realistic. A gunshot echoes exactly how it should whether it’s 25, 200, or 800 meters away. Because it’s a PvPvE environment, every snapped twig, heavy footstep, or aggravated monster serves as a critical sound cue. You have to play attentively. The audio doesn't just immerse you, It decides on what choices your gonna be making next. I've never seen another game utilize sound like this.\n\n--A Solid Community--\nThe community is surprisingly fantastic (about 80% perfect, which is rare for competitive shooters). If you don't want to roll the dice with randoms, the official Discord is packed with chill people ready to squad up and communicate.\n\n--Respect for the Player (Zero Pay to Win)--\nThe developers respect your wallet. The graphics are a gorgeous 10/10 (especially with the recent engine updates), and while the DLCs and skins are incredibly well designed, they are 100% cosmet…",
-                  "truncated": true,
-                  "minutes_at_review": 24877
+                  "date": "2026-11-08",
+                  "review_text": "This game is addictive!  It has a wide skill level so there you are always learning and adjusting techniques.  The weapons are awesome and it doesnt seem like there are too many that are overpowered / meta.  Love the audio graphics and atmosphere.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231095363",
-                  "hours_at_review": 581.5,
+                  "recommendationid": "239056266",
+                  "hours_at_review": 79.5,
+                  "minutes_at_review": 4772,
                   "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "[h3]The Bayou Calls[/h3]\n\n\nExtraction shooters typically breed a specific kind of anxiety: the hoarding complex. Games like The Cycle (rest in peace, though it was never quite my cuppa) and Arc Raiders often turn me into a digital pack rat, leaving me more concerned with stockpiling gear than actually using it. Hunt: Showdown 1896 operates on a distinctly different wavelength, sitting somewhere between a battle royale and a Tarkov-lite to forge a subgenre entirely its own. You don’t scavenge for your kit; you curate it beforehand. You bring exactly what you want to use, provided you can afford the in-game currency to buy it.\n\nThat economy is a fascinating engine. For veterans sitting on years of playtime who refuse to prestige, the currency has long lost its meaning. But I am someone who resets the loop. I prestige, and because of that, the economic treadmill remains genuinely engaging. It forces you to interact with the sheer variety of weaponry and the distinct tactics they demand. Yes, there are undeniable meta choices, especially with the game's new loadout system, but Hunt remains remarkably balanced by the great equalizer of a well-placed bullet. Gear does not guarantee survival. There is a specific thrill in taking a \"free\" hunter into the mud and—through pure skill, positioning, and patience—wiping a trio of players who just spent a small fortune on their loadouts.\n\nVisually, it is gorgeous for a multiplayer title, but the true gem here is the texture of the sound design. I find the audio to be nothing short of phenomenal. It is incredibly rare to play a shooter where you can rely on acoustic cues with unwavering faith. You can sit in the brush and count three distinct sets of footsteps rushing past a compound. From a quarter of the map away, you can listen to a distant firefight, identify the exact firearms the other teams brought in, and make a decision on whether you have the tools to outgun them. The audio isn't just window dressing; it is radar, intelli…",
-                  "truncated": true,
-                  "minutes_at_review": 34889
+                  "date": "2026-11-01",
+                  "review_text": "Disadvantages:\r\n1) Rat simulator gameplay\r\n2) Too many players no-life this game \r\n3) The only noob in this game is you\r\n4) Lowest ranking player apart from you is at least prestige 10 with 200 hours minimum \r\n\r\nAdvantages:\r\n1) Fantastic guns\r\n2) Great ballistics\r\n3) Skins are a chefs kiss\r\n4) Interesting gameplay modes \r\n5) Very enjoyable headshots\r\n6) Can play as solo or with friends\r\n7) Setting and atmosphere\r\n8) One day you may get good (not likely)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237902782",
+                  "hours_at_review": 51.6,
+                  "minutes_at_review": 3094,
+                  "voted_up": true,
+                  "date": "2026-10-17",
+                  "review_text": "Dark, gritty, and unlike other extraction shooters I have played. Occult themes, and a great sound design that gives enviromental/enemy info.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237834086",
+                  "hours_at_review": 46.8,
+                  "minutes_at_review": 2805,
+                  "voted_up": true,
+                  "date": "2026-10-16",
+                  "review_text": "Once you start playing the game, you can vividly witness the developers' passion for it. from the soundtracks to visuals to the mesmerizing environment of the game, to the detailed design of the guns. \r\nThe only problem I've had with the game so far is apparently the abundance of cheaters, which I really believe can and will kill the vibe of the game,",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237076193",
+                  "hours_at_review": 42.1,
+                  "minutes_at_review": 2525,
+                  "voted_up": true,
+                  "date": "2026-10-06",
+                  "review_text": "I like alot of things about this game, specifically, the sound design, gun design, atmosphere, and gunplay. Me personally, I'm not a big fan of how slow bullets travel but, I understand that, that's how it's supposed to work due to the time period, some of my friends like it but It's not for me I guess.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236987503",
+                  "hours_at_review": 93.4,
+                  "minutes_at_review": 5605,
+                  "voted_up": true,
+                  "date": "2026-10-05",
+                  "review_text": "I've been enjoying this game as long as my teammates don't act stupid. For example, reviving each other when enemies are within a 5-meter radius. The graphics are phenomenal, but I feel a bit dizzy after playing it for two hours straight.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236620990",
+                  "hours_at_review": 56.1,
+                  "minutes_at_review": 3367,
+                  "voted_up": true,
+                  "date": "2026-10-01",
+                  "review_text": "One of the most intense and immersive games I’ve ever played. The atmosphere is amazing, the gunplay feels satisfying, and every match creates unforgettable moments. You never know what’s going to happen, and that’s what makes Hunt so addictive. 56 hours in and I still can’t get enough of it. Absolutely love this game! 🔥",
+                  "truncated": false
                 }
               ]
             }
@@ -675,8 +746,82 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-f0c79e",
-              "claim": "Reviewers state that the game features a steep learning curve and punishing mechanics requiring patience and strategy.",
+              "claim_id": "mid-fca246",
+              "claim": "Reviewers describe the matchmaking as placing newer or lower-ranked players against highly experienced or high-level opponents.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "239245700",
+                  "hours_at_review": 97.6,
+                  "minutes_at_review": 5857,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": " Hunt: Showdown 1896: A Frustrating Experience for New Players\n\nMy experience with *Hunt: Showdown 1896* has been quite disappointing. While the game features an excellent setting and interesting mechanics, the multiplayer experience can be extremely frustrating—especially when you are still learning the ropes.\n\nOne of the biggest issues I encountered concerns matchmaking in three-player teams. You may end up paired with two experienced players who expect you to perform at their level, failing to consider that you are still a beginner. When things go wrong, instead of offering help, they might hurl insults, blame you for the defeat, or even actively troll you.\n\nWorst of all is encountering teammates who deliberately refuse to revive you, abandon you mid-match, or simply run off, leaving you behind. What is the point of a cooperative game if your own teammates can turn the experience into a humiliating ordeal?\n\nCompounding this is the frustration of facing \"Prestige 100\" players—opponents with a massive experience advantage—alongside the persistent concern regarding cheaters, an issue Crytek has officially acknowledged through their own ban reports.\n\nThe problem isn't losing; defeat is a natural part of any competitive game. The issue is that, all too often, you don’t feel like you’re learning or competing on fair terms—instead, you feel punished for being a beginner, sometimes even by the very people who are supposed to be your teammates.\n\n*Hunt: Showdown 1896* has potential, but its community can be deeply toxic, and the experience for newcomers leaves much to be desired. A lack of camaraderie, intentional abandonment, verbal abuse, and vast gaps in experience levels can make playing with strangers far more unpleasant than it is enjoyable.\n\nI do not recommend this game to those seeking a friendly cooperative experience or hoping to learn at their own pace. While the game’s core concept may be excellent, the actual experience of playing with random teammates can be …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "239056266",
+                  "hours_at_review": 79.5,
+                  "minutes_at_review": 4772,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Disadvantages:\r\n1) Rat simulator gameplay\r\n2) Too many players no-life this game \r\n3) The only noob in this game is you\r\n4) Lowest ranking player apart from you is at least prestige 10 with 200 hours minimum \r\n\r\nAdvantages:\r\n1) Fantastic guns\r\n2) Great ballistics\r\n3) Skins are a chefs kiss\r\n4) Interesting gameplay modes \r\n5) Very enjoyable headshots\r\n6) Can play as solo or with friends\r\n7) Setting and atmosphere\r\n8) One day you may get good (not likely)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238132159",
+                  "hours_at_review": 85.6,
+                  "minutes_at_review": 5136,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "WHATS THE FUCKING POINT OF THE STAR RANKING IF YOURE GONNA GET PUT WITH WHOEVER THE FUCK ANYWAY\r\n\r\ni have fun sometimes",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237989231",
+                  "hours_at_review": 39.3,
+                  "minutes_at_review": 2356,
+                  "voted_up": false,
+                  "date": "2026-10-18",
+                  "review_text": "Balance be damned this game curses you with only 1000+ hour players",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237644220",
+                  "hours_at_review": 83.4,
+                  "minutes_at_review": 5004,
+                  "voted_up": false,
+                  "date": "2026-10-13",
+                  "review_text": "The most discusting and overpriced camping simulator on market.\nUpdate: Enjoy playing against no life losers with 50000 hours who ARE THE SAME SKILL LEVEL AS YOU ACCORDING TO GAME, are you having fun yet?\nUpdate 2: Got killed by a rusian hacker today with my team, only perfect wallbanging, piece of shit has 4000+ hours and game is fine with that, better bring your money to roblox, than this steaming pile of feces that some asshole at crytek had audacity to call a game and unironically sell to people. Fuck you. Uninstalled.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237306354",
+                  "hours_at_review": 37.9,
+                  "minutes_at_review": 2271,
+                  "voted_up": false,
+                  "date": "2026-10-09",
+                  "review_text": "Regardless of all the supposed hacking and what not going on and the questionable monetization the game is terrible for new players.\n\nIf you are a new player, you will be fed to max level players with legendary gear. The first time I got killed, it was by some guy who was level 100 with his super rare native american winchester. It was my first character. I was maybe like level 3 or so and a playtime of <1hr. In a game with persistent death. Wtf. The gear you start out with is trash and you instantly get paired with guys who have maxed level and gear.\n\nI assume that is a way of retaining players/whales by giving them easy wins against beginners?\n\nSince this is a review for possible new players, just dont.\n\nAlso, for a game that has maps that are like 30-50% water, there are some horrendous visual bugs/glitches specific to said water that absolutely destroy the mood (specifically the reflection of your own weapon in the water)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237283279",
+                  "hours_at_review": 20.1,
+                  "minutes_at_review": 1208,
+                  "voted_up": true,
+                  "date": "2026-10-09",
+                  "review_text": "get touched by veteran players \r\neasy to learn hard to master\r\n10/10\r\n",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-e7ba81",
+              "claim": "Reviewers note that the game features a challenging learning curve and slow bullet travel times.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 4,
@@ -684,65 +829,648 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231537328",
-                  "hours_at_review": 1306.7,
+                  "recommendationid": "240274117",
+                  "hours_at_review": 39.9,
+                  "minutes_at_review": 2396,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Hunt: Showdown is one of the best and fairest games ever made.\n\nThe learning curve can be steep at first, as there are many features and mechanics to explore and master. However, once you understand the basics, you can truly immerse yourself in the beautiful horrors of this gritty world.\nWhether it’s the freedom to choose your own playstyle and tactics, or the thrill of the extraction mechanics combined with masterclass sound design, the game offers endless replayability.\nThe progression system is exceptionally fair. Every week, players get new challenges that reward them with experience and \"premium currency.\" This currency can be earned in various ways and is strictly spent on cosmetic skins and animations (the main in-game currency cannot be bought with real money).\n\nThe developer, Crytek, stays in close contact with the community, actively listening to feedback and implementing it into the ongoing development. \nHunt: Showdown was built for the long haul—a fact supported by its steadily growing player base over the years.",
-                  "truncated": false,
-                  "minutes_at_review": 78400
+                  "date": "2026-11-15",
+                  "review_text": "The game is challenging and the fire rate of weapons is slow compared to other games. But this is what that makes this game interesting and different.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231478192",
-                  "hours_at_review": 1181.9,
+                  "recommendationid": "239192915",
+                  "hours_at_review": 51.6,
+                  "minutes_at_review": 3096,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "This title is an unpolished gem. It carries imperfections, certainly, but if approached with a composed, deliberate mindset, it reveals itself as a masterwork of tactical design. Those burdened by rigid expectations or an unyielding demand for artificial perfection will fail to appreciate what is truly being offered: a visceral micro-model of real-world friction, harsh constraints, and probabilistic uncertainty.\r\nAt its core, this is a cerebral endeavor, tailored for the strategic scholar and the tactician alike. The design respects the player by offering no hand-holding or forgiving safety nets; its steep skill ceiling demands genuine mastery, disciplined squad coordination, and adaptive execution. Victory is never guaranteed. It emerges from navigating stochastic chaos, calculating risks under pressure, and executing flawless tactical maneuvers when the variables align.\r\nThe atmosphere is immersive and uncompromising, offering a paradoxical sanctuary: a game whose unyielding brutality temporarily relieves you of the mundane weight of reality by forcing absolute presence. Ignore the superficial detractors who lack the patience for depth. Experience it firsthand, master its mechanics, and embrace the friction.",
-                  "truncated": false,
-                  "minutes_at_review": 70916
+                  "date": "2026-11-02",
+                  "review_text": "challenging game its been around for years so the active playerbase is very knowledgable about gameplay mechanics, theres a bit of a learning curve getting into it but overall a very rewarding experience if you have the ability to soak a couple hundred hours into it. also fun to play with friends as a sort of dude night casual game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230864382",
-                  "hours_at_review": 333.7,
+                  "recommendationid": "237806738",
+                  "hours_at_review": 50.1,
+                  "minutes_at_review": 3006,
                   "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "I can't count how many times the bushes killed me :D\nSometimes you get to play against cheaters with insane K/D and wiped teams and locked accounts. But I still like this game, you can judge by 100% that I did on it.\nHunt has a steep learning curve, but the gunfights are pleasant. So is the PvP and PvE. Some skins may be considered p2w, but it depends on how you look at it, they are just darker which gives some advantage, but I didn't have much of an issue. \n\nStill, it would be GREAT to see some new content like new bosses maybe? The new map compounds are cool though.",
-                  "truncated": false,
-                  "minutes_at_review": 20021
+                  "date": "2026-10-15",
+                  "review_text": "it has challenging learning curve but I do love the game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231012064",
-                  "hours_at_review": 725.9,
+                  "recommendationid": "237076193",
+                  "hours_at_review": 42.1,
+                  "minutes_at_review": 2525,
                   "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "Beautifully crafted extraction shooter that is very challenging and unique. The ONLY downside here is that there is no solo mode other than \"Soul Survivor\" which is different from the main mode \"Bounty Hunt\" which means youll need friends to play with unless you're looking to 1v3. \nIt is so very rewarding but also very punishing, but its all part of the ride. \n\nYou definitely want to find light hearted and fun people to play with because the challenge tends to get a little dreadful and playing with people that rage all the time will not make it any better. I was definitely one of those people that raged all the time and was a complete party pooper but ive gotten better at managing it.\n\nThe theme and aesthetic in general is just cool too. It's a gothic themed cowboy game with freaking zombies and monsters which is SO dope. This game has also taught me discipline and patience as a competitive player and it has helped me get used to MnK as I was someone that played on controller for years.\n\nI find I need frequent breaks but ultimately Hunt: Showdown is such a unique and fun experience and is most definitely worth your money if you're looking for a challenge. Cheers and happy hunting (:",
-                  "truncated": false,
-                  "minutes_at_review": 43552
+                  "date": "2026-10-06",
+                  "review_text": "I like alot of things about this game, specifically, the sound design, gun design, atmosphere, and gunplay. Me personally, I'm not a big fan of how slow bullets travel but, I understand that, that's how it's supposed to work due to the time period, some of my friends like it but It's not for me I guess.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 14,
-        "cited_recommend": 6,
-        "divergence_p": 0.0622,
+        "cited_reviews": 24,
+        "cited_recommend": 14,
+        "divergence_p": 0.0297,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 666,
+      "pct_positive": 69.5,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players praise tactical depth and audio cues, but report severe issues with crashes, netcode delays, cheaters, and matchmaking.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-32de49",
+              "claim": "Reviewers report frequent game crashes, random disconnections from matches, and bugs that disrupt gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "240224540",
+                  "hours_at_review": 635.2,
+                  "minutes_at_review": 38110,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "if u dont mind making shots that the shot registering doent fucking register loosing hunters to crashes and get killed behind rocks from ping abusers buy the game its good",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240214296",
+                  "hours_at_review": 122.4,
+                  "minutes_at_review": 7344,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "First of all, this game is broken. I love playing Hunt, but bro, I can't even play anymore due to errors and bugs. I couldn't even finish my last 4 matches because of this. Maybe instead of publishing new DLCs, you should fix the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240182819",
+                  "hours_at_review": 299.4,
+                  "minutes_at_review": 17966,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "After 300 Hours, I can say that I do not recommend this game at all.\nCrytek should learn to fix and optimize their game, the game crashes randomly, sometimes to the desktop, sometimes it just kicks you out of a match for no reason, I tried contacting customer support, they did not answer after 3 weeks, I contacted them again, still nothing, Crytek Customer support is pure trash, I contacted one of the Devs in discord and they  said that my windows version is old (my Win Version Is Win 11 26H2), I sadly don't have a time machine and I cant get more than 26H2 now because its the latest windows release, this game is buggy, always crashes, its full of cheaters and the customer support literally does not exist, so no, its not recommended, please don't waste your time here for this absolute garbage like I did.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239380108",
+                  "hours_at_review": 3448.1,
+                  "minutes_at_review": 206888,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "+The games sound, grafics, skins very good. \r\n+Takes time to get a hold how weapons, distance, sounds work.\r\n-Playerbase full of cheaters and the developers don't do anything about it. (Streamers shown facts and the \"team\" didn't react.)\r\n-Bug don't get fixet until next battlepass time limit.\r\n-Sudden crash come and go (No resson why&what fix it after several days)\r\n-Regional cross don't work. Servers full or \"cube\" names ect.\r\n\r\nSum: Play as a team of 3 its fun, weekdays and between 11:00-17:00 (after that its a nightmare in EU).  How much i loved the game, the dissapointed i got. If anyone feels like trying out, watch few streamers for a week and if still feels like go, take that ride. Invest few rounds only a day.\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239173694",
+                  "hours_at_review": 248.9,
+                  "minutes_at_review": 14933,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "You need to fix the server issues urgently. Don't just focus on releasing DLC. You want the game to be good, but you're ignoring your own shortcomings. Fix the terrible servers! The game has been out for nearly 10 years, yet they still haven’t fixed the server lag, disconnections, or crashes. bruh dev",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-00ce9d",
+              "claim": "Reviewers describe widespread cheating and the presence of wallhacks and aimbots, particularly affecting higher matchmaking ranks.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 5
+              },
+              "citations": [
+                {
+                  "recommendationid": "240610007",
+                  "hours_at_review": 1044.2,
+                  "minutes_at_review": 62650,
+                  "voted_up": true,
+                  "date": "2026-11-20",
+                  "review_text": "[h1]Hunt Showdown 1896[/h1]\n[h2]Uno de los mejores shooters PvP de la historia[/h2] \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3842720190\nGráficos excelentes, estética hermosa, sonido posicional preciso y realista, música zarpada, armas geniales, gunplay espectacular, habilidades bien pensadas, y lo mejor... una tensión continua con picos de adrenalina y una rica dopamina al salir con vida de ellos. \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3684276371\nSólo hay que tenerle paciencia hasta agarrarle la mano. Vas a morir. A cada rato. Y por todo. Es así. Pero tranqui, porque después cuando ya le hayas agarrado la mano, también vas a morir por todo y cada rato.\nCheaters, campers, pros, bichos, puertas. De todo va a matarte. Vas a perder tu cazador con todo su equipamiento y rasgos mil y una veces. Hacete a la idea. Es así.\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3835424619\n[h3]Entonces?[/h3]\nSi te va la onda del viejo, lejano, y más salvaje que nunca Oeste, y te gustan los shooters PvP difíciles y frustrantes pero hermosos y geniales... compralo de una vez!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240434151",
+                  "hours_at_review": 2146.9,
+                  "minutes_at_review": 128814,
+                  "voted_up": true,
+                  "date": "2026-11-17",
+                  "review_text": "Its a great Online Coop Shooter which did all right counterstrike did wrong, big maps to big to know everything by heart so no stupid nade spot learning etc. several teams one round 45 minutes , if you have cheaters in your round the chance to meat them is less then 30%. Anyway the plague of modern competitive shooters didnt spare hunt but the Crytek team does something to keep them as controlled as possible, i rarely meet aimbot users or any obvious cheaters maybe 1 out of 100 rounds. Though the higher ranks 5 and 6 stars(ranks generally between 2 and 6 stars, 1 star is complete noob) in hunt showdown are barely playable through the massive,and easy to hide, use of wallhacks. But this isnt cryteks fault and i didnt see one game that got it better. Its time for the Goverment to get theire asses up and give the comnpanys the right to sew cheaters for hacking so they can fine every Hacker for 3000 euro cause of copyright violations... How fast this sickness would be gone... THANKS GOVERMENT FOR YOUR \"COMPETENCE\"! Once Shooters were the top notch of online gaming before the plague occured...",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240351269",
+                  "hours_at_review": 412.6,
+                  "minutes_at_review": 24754,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "by far the best extraction shooter you can play right now, the cheaters seem to be a problem in higher mmrs but I've yet to find a game pvp or pve that doesn't suffer from this",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240096606",
+                  "hours_at_review": 376.1,
+                  "minutes_at_review": 22567,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Game is loaded with asians cheating, and useless developers dont do anything about it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239892180",
+                  "hours_at_review": 208.4,
+                  "minutes_at_review": 12504,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "Sadly this game is a farcry from what it was about 6 years ago.\nThe servers are invaded by cheaters, mostly using wallhack and aimbot, you get shot in the head with a lousy Nagant through an obstance from a distance of over 100 meters, reporting cheaters doesn't help, Crytek doesn't care about it's player base, not even a bit, they prefer releasing silly skins every month instead of doing something to protect its player base.\nI do not recommend this game at this moment, not even on sale.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239831922",
+                  "hours_at_review": 688.1,
+                  "minutes_at_review": 41285,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "Game is unplayable with all these cheaters.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239380108",
+                  "hours_at_review": 3448.1,
+                  "minutes_at_review": 206888,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "+The games sound, grafics, skins very good. \r\n+Takes time to get a hold how weapons, distance, sounds work.\r\n-Playerbase full of cheaters and the developers don't do anything about it. (Streamers shown facts and the \"team\" didn't react.)\r\n-Bug don't get fixet until next battlepass time limit.\r\n-Sudden crash come and go (No resson why&what fix it after several days)\r\n-Regional cross don't work. Servers full or \"cube\" names ect.\r\n\r\nSum: Play as a team of 3 its fun, weekdays and between 11:00-17:00 (after that its a nightmare in EU).  How much i loved the game, the dissapointed i got. If anyone feels like trying out, watch few streamers for a week and if still feels like go, take that ride. Invest few rounds only a day.\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239227758",
+                  "hours_at_review": 105.1,
+                  "minutes_at_review": 6306,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "FIx your broken *** game Crytek it's bad enough that every match is full of sweaties and cheaters but having to uninstall multiple time and verify my file every other day I want to try and play the game and **** with the dog**** easy anti-cheat that doesn't stop ****  anyone from cheating other then making the game not ******* work and crash randomly.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-db5065",
+              "claim": "Reviewers report persistent problems with hit registration delays, trading kills, and getting shot through obstacles due to netcode or ping issues.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240224540",
+                  "hours_at_review": 635.2,
+                  "minutes_at_review": 38110,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "if u dont mind making shots that the shot registering doent fucking register loosing hunters to crashes and get killed behind rocks from ping abusers buy the game its good",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240201835",
+                  "hours_at_review": 1425.7,
+                  "minutes_at_review": 85540,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "HATE IT NOW INCENDIARY BULLETS IS OP KILLED BEHIND TREE, NO WONDER THE SERVERS ARE DEAD",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239757370",
+                  "hours_at_review": 136.5,
+                  "minutes_at_review": 8190,
+                  "voted_up": false,
+                  "date": "2026-11-09",
+                  "review_text": "shots randomly don't go through objects such as rat cages. some m0ron manager keeps trying to put pressure to make them try to make new weather types, but anything other than sunny is cr4p. leg and arm damage make the game softcore, two hots from a high caliber in arms or legs? shotgun shot 2 inches away to legs? he'll tank the shot. they tank everything no problem.  weapons are pea shooters. they keep trying to put new stuff in instead of fixing the problems. crytek is fully braindead. no punishment for things that should be punished such as reloading the avto from close, but you can use bulletgrubber and cancel the reload and insta shoot, or hitting a bolt from ultra close might not kill in legs, wtf. getting punished for certain things should be a sure thing, tactical failures without punishment make the game worse. shotguns should be stronger, the netcode is bad, the \"devs\" have no vision.(click and drag, not real development anymore)\nI play it a lot, I enjoy it, but my love for it makes me hate the decisions that are made around it that are making it sh1t",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239711935",
+                  "hours_at_review": 348.1,
+                  "minutes_at_review": 20883,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "Game has become worse and worse with the years, servers are still bad (trading kills 75% of the time, delayed footsteps etc).\r\n\r\nDev support is also abysmal, after my steam account got hacked and a cheater used my account to play the game they just said \"it's your responsibility to secure your account\"\r\n\r\nYeah bro I'm sorry if my credentials got leaked in a data breach I'll stop them next time somehow.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-045c5a",
+              "claim": "Reviewers criticize customer support for being unresponsive or unhelpful when handling account and technical problems.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240182819",
+                  "hours_at_review": 299.4,
+                  "minutes_at_review": 17966,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "After 300 Hours, I can say that I do not recommend this game at all.\nCrytek should learn to fix and optimize their game, the game crashes randomly, sometimes to the desktop, sometimes it just kicks you out of a match for no reason, I tried contacting customer support, they did not answer after 3 weeks, I contacted them again, still nothing, Crytek Customer support is pure trash, I contacted one of the Devs in discord and they  said that my windows version is old (my Win Version Is Win 11 26H2), I sadly don't have a time machine and I cant get more than 26H2 now because its the latest windows release, this game is buggy, always crashes, its full of cheaters and the customer support literally does not exist, so no, its not recommended, please don't waste your time here for this absolute garbage like I did.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239711935",
+                  "hours_at_review": 348.1,
+                  "minutes_at_review": 20883,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "Game has become worse and worse with the years, servers are still bad (trading kills 75% of the time, delayed footsteps etc).\r\n\r\nDev support is also abysmal, after my steam account got hacked and a cheater used my account to play the game they just said \"it's your responsibility to secure your account\"\r\n\r\nYeah bro I'm sorry if my credentials got leaked in a data breach I'll stop them next time somehow.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-6742f4",
+              "claim": "Reviewers describe experiencing random game crashes and technical instability during matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240182819",
+                  "hours_at_review": 299.4,
+                  "minutes_at_review": 17966,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "After 300 Hours, I can say that I do not recommend this game at all.\nCrytek should learn to fix and optimize their game, the game crashes randomly, sometimes to the desktop, sometimes it just kicks you out of a match for no reason, I tried contacting customer support, they did not answer after 3 weeks, I contacted them again, still nothing, Crytek Customer support is pure trash, I contacted one of the Devs in discord and they  said that my windows version is old (my Win Version Is Win 11 26H2), I sadly don't have a time machine and I cant get more than 26H2 now because its the latest windows release, this game is buggy, always crashes, its full of cheaters and the customer support literally does not exist, so no, its not recommended, please don't waste your time here for this absolute garbage like I did.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239380108",
+                  "hours_at_review": 3448.1,
+                  "minutes_at_review": 206888,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "+The games sound, grafics, skins very good. \r\n+Takes time to get a hold how weapons, distance, sounds work.\r\n-Playerbase full of cheaters and the developers don't do anything about it. (Streamers shown facts and the \"team\" didn't react.)\r\n-Bug don't get fixet until next battlepass time limit.\r\n-Sudden crash come and go (No resson why&what fix it after several days)\r\n-Regional cross don't work. Servers full or \"cube\" names ect.\r\n\r\nSum: Play as a team of 3 its fun, weekdays and between 11:00-17:00 (after that its a nightmare in EU).  How much i loved the game, the dissapointed i got. If anyone feels like trying out, watch few streamers for a week and if still feels like go, take that ride. Invest few rounds only a day.\r\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-ed865f",
+              "claim": "Reviewers praise the game's rich atmosphere, detailed environments, and high-quality sound design that allows tracking players by audio.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 8,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240610007",
+                  "hours_at_review": 1044.2,
+                  "minutes_at_review": 62650,
+                  "voted_up": true,
+                  "date": "2026-11-20",
+                  "review_text": "[h1]Hunt Showdown 1896[/h1]\n[h2]Uno de los mejores shooters PvP de la historia[/h2] \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3842720190\nGráficos excelentes, estética hermosa, sonido posicional preciso y realista, música zarpada, armas geniales, gunplay espectacular, habilidades bien pensadas, y lo mejor... una tensión continua con picos de adrenalina y una rica dopamina al salir con vida de ellos. \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3684276371\nSólo hay que tenerle paciencia hasta agarrarle la mano. Vas a morir. A cada rato. Y por todo. Es así. Pero tranqui, porque después cuando ya le hayas agarrado la mano, también vas a morir por todo y cada rato.\nCheaters, campers, pros, bichos, puertas. De todo va a matarte. Vas a perder tu cazador con todo su equipamiento y rasgos mil y una veces. Hacete a la idea. Es así.\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3835424619\n[h3]Entonces?[/h3]\nSi te va la onda del viejo, lejano, y más salvaje que nunca Oeste, y te gustan los shooters PvP difíciles y frustrantes pero hermosos y geniales... compralo de una vez!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240483492",
+                  "hours_at_review": 903.1,
+                  "minutes_at_review": 54186,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Great game! It has a learning curve. The atmosphere is amazing and the world feels lived in. The lore is well developed, though hard to find. The nature of the weapons in this game slow down firefights when compared to Hunt's contemporaries which adds to the intensity of gameplay. \n\nThe developers have shown they listen to the player-base by adding countermeasures for high ping players and cheaters, however it remains to be seen how effective they will be. \n\nThe game is getting old and still holding strong. It is a great time to start playing!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240233085",
+                  "hours_at_review": 1844.0,
+                  "minutes_at_review": 110638,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "Been playing Hunt for over 5 years now. Still the best audio, most intense encounters and a blast to play. Steep learning curve, but stick with it and you won't regret it. It's a definite must buy",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240272345",
+                  "hours_at_review": 433.2,
+                  "minutes_at_review": 25990,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "Incredible game, completely addictive. \nSure, like any game it has its issues, but the gunfights (when they actually happen...) are thrilling, the sound design is amazing, and once you put some time and effort into it, it's incredibly rewarding.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240134716",
+                  "hours_at_review": 113.0,
+                  "minutes_at_review": 6777,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "Hunt: Showdown 1896 is easily the most recommended game in my Steam library.\r\n\r\nNothing else comes close to delivering the same hardcore competitive experience, with its unique Wild West and post-apocalyptic atmosphere combined with an extraction shooter gameplay loop.\r\n\r\nThe attention to detail, immersive atmosphere, sound design, and gameplay are absolutely insane. Every match feels intense and unpredictable, and the game rewards skill, patience, and strategy in a way that very few shooters can match.\r\n\r\nHonestly, Hunt: Showdown 1896 does so many things better than most extraction shooters and competitive FPS games out there. It's a one-of-a-kind experience that keeps me coming back.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239852460",
+                  "hours_at_review": 261.8,
+                  "minutes_at_review": 15706,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "[h1]Hunt: Showdown 1896 – 10/10. We Had a Plan. Then Honza Shot a Lantern.[/h1]\nI started playing Hunt: Showdown back in its early days with two friends, Honza and Jirka.\n\nWe were supposed to be professional bounty hunters.\nUnfortunately, our team had certain organisational difficulties.\n\nI was the one making plans, marking enemy positions, coordinating movements, and trying to keep everyone alive.\n\nJirka was our professional loot goblin. If there was something worth stealing, he'd find it. If a firefight started, he'd usually find an excellent reason to be somewhere else.\n\nAnd Honza?\nHonza was a walking declaration of war.\n\nOne day, during what was supposed to be a carefully coordinated operation, he accidentally shot a lantern. The lantern ignited some oil. The oil ignited nearby barrels. The barrels exploded.\nOur stealth operation was now a public announcement to the entire goddamn server.\n\n[b]Fuck it. Fix bayonets. We're going in.[/b]\n\nAnd that's how many of our hunting expeditions went.\n\n[h2]When the Bayou Was Truly Terrifying[/h2]\nWhat made the original Hunt special to me was its atmosphere.\n\nThe dark, oppressive Louisiana swamps, abandoned buildings, disturbing creatures, incredible sound design, and fascinating lore created something genuinely unique.\n\nIt wasn't simply another multiplayer shooter with monsters.\n\nIt was a brutal, atmospheric experience where every gunshot mattered, every mistake could get you killed, and sometimes the smartest decision was to stay quiet and listen.\nI loved that feeling.\n\nThe maps seemed dangerous and alive. Even moving between objectives demanded attention.\n\nAnd when another team appeared, things could turn ugly very quickly.\n\n[h2]Old Guns, Bad Decisions, and Beautiful Chaos[/h2]\nI loved the weapons.\n\nSniper rifles, powerful single-shot firearms, the Henry-style rifle, revolvers, bayonets, dynamite, and explosives.\n\nThere was something incredibly satisfying about the slower pace of historical gunfights. You couldn't simply sp…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "239092266",
+                  "hours_at_review": 1283.9,
+                  "minutes_at_review": 77034,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Steep learning curve that may scare you away at first (we have all been there) but easily the best PvPvE extraction shooter out there. \n\nThe gunplay feels very satisfying, the sound design is immaculate, and overcoming that initial learningc curve is super rewarding. Over time you realise that aim is not what will always win you fights and that's the best feeling ever imo (take this from a person with terrible aim that often clutches or manages to still rez teamates in a 1v2/1v3)\n\nSome aspects can be improved further around the bounty and economy, such as the value of the bounty itself or the fact that some of the currencies feel a bit pointless with the re-balancing of events, but overall is not something that'd ruin you gameplay experience at all.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240552550",
+                  "hours_at_review": 408.7,
+                  "minutes_at_review": 24522,
+                  "voted_up": true,
+                  "date": "2026-11-19",
+                  "review_text": "If you are looking for a game that has lots of action and honestly fun combat, this is definitely one of them. I have had this game for a few years now and always find myself returning off and on throughout the years.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-f09e3f",
+              "claim": "The game features detailed sound design and precise positional audio that allows players to track others.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240610007",
+                  "hours_at_review": 1044.2,
+                  "minutes_at_review": 62650,
+                  "voted_up": true,
+                  "date": "2026-11-20",
+                  "review_text": "[h1]Hunt Showdown 1896[/h1]\n[h2]Uno de los mejores shooters PvP de la historia[/h2] \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3842720190\nGráficos excelentes, estética hermosa, sonido posicional preciso y realista, música zarpada, armas geniales, gunplay espectacular, habilidades bien pensadas, y lo mejor... una tensión continua con picos de adrenalina y una rica dopamina al salir con vida de ellos. \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3684276371\nSólo hay que tenerle paciencia hasta agarrarle la mano. Vas a morir. A cada rato. Y por todo. Es así. Pero tranqui, porque después cuando ya le hayas agarrado la mano, también vas a morir por todo y cada rato.\nCheaters, campers, pros, bichos, puertas. De todo va a matarte. Vas a perder tu cazador con todo su equipamiento y rasgos mil y una veces. Hacete a la idea. Es así.\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3835424619\n[h3]Entonces?[/h3]\nSi te va la onda del viejo, lejano, y más salvaje que nunca Oeste, y te gustan los shooters PvP difíciles y frustrantes pero hermosos y geniales... compralo de una vez!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240298843",
+                  "hours_at_review": 999.7,
+                  "minutes_at_review": 59983,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "100's of hours ago I thought I would only write a review if I hit a 1000's hours, as that's a good amount of playtime for a game like this.\nHunt is IMO the best type of game like this around, it's very light on extraction elements but with genre defining gunplay.\n\nIn Hunt the best aim does not always win, when to pick a fight is the most important aspect of this game, so the learning curve is immense and you will never truly master it, with every loss something new is learned, a peak, a gap in a wall, an audio cue, positioning, when to retreat or push, it's a methodical dance between Hunters. You can be an aggressive player or passive, and that's why it's fantastic as it caters for all game styles.\n\nJust be prepared to die allot early on, but as you play your own style will come through and you will start getting kills.\n\nYou can play solo or in a team of 2 or 3, and this doesn't mean as a solo you play only against other solo's, no, you will fight against teams of 2 or 3 and get slaughtered, but persist and you will become a lethal hunter, and it all goes back to knowing when to pick a fight, wiping teams as a solo there is nothing else like it in gaming. Just make sure to play in teams, as for me it feels like a different playstyle from solo, and in teams you will get into more gunfights which helps with gun knowledge.\n\nI could talk about this game all day, the Audio is amazing, you learn to track Hunter's through sound alone, very much like the old days of Doom and Quake where hearing a player pick up a first aid kit revealed their location and you knew they would run this way into your crosshairs. In Hunt a Hunter will jump over a fence and it leaves a mark, these subtle audio/visual clues which you pick up will push you towards becoming a better Hunter, and the better you become the more immersed you feel into Hunt's world and lore.\n\n\"Hunt giveth, Hunt taketh away\"\n\nBest game ever.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-0fd0ca",
+              "claim": "Reviewers highlight the slow-firing, historical weapon arsenal which emphasizes positioning, tactical planning, and timing over rapid shooting.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240483492",
+                  "hours_at_review": 903.1,
+                  "minutes_at_review": 54186,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Great game! It has a learning curve. The atmosphere is amazing and the world feels lived in. The lore is well developed, though hard to find. The nature of the weapons in this game slow down firefights when compared to Hunt's contemporaries which adds to the intensity of gameplay. \n\nThe developers have shown they listen to the player-base by adding countermeasures for high ping players and cheaters, however it remains to be seen how effective they will be. \n\nThe game is getting old and still holding strong. It is a great time to start playing!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240298843",
+                  "hours_at_review": 999.7,
+                  "minutes_at_review": 59983,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "100's of hours ago I thought I would only write a review if I hit a 1000's hours, as that's a good amount of playtime for a game like this.\nHunt is IMO the best type of game like this around, it's very light on extraction elements but with genre defining gunplay.\n\nIn Hunt the best aim does not always win, when to pick a fight is the most important aspect of this game, so the learning curve is immense and you will never truly master it, with every loss something new is learned, a peak, a gap in a wall, an audio cue, positioning, when to retreat or push, it's a methodical dance between Hunters. You can be an aggressive player or passive, and that's why it's fantastic as it caters for all game styles.\n\nJust be prepared to die allot early on, but as you play your own style will come through and you will start getting kills.\n\nYou can play solo or in a team of 2 or 3, and this doesn't mean as a solo you play only against other solo's, no, you will fight against teams of 2 or 3 and get slaughtered, but persist and you will become a lethal hunter, and it all goes back to knowing when to pick a fight, wiping teams as a solo there is nothing else like it in gaming. Just make sure to play in teams, as for me it feels like a different playstyle from solo, and in teams you will get into more gunfights which helps with gun knowledge.\n\nI could talk about this game all day, the Audio is amazing, you learn to track Hunter's through sound alone, very much like the old days of Doom and Quake where hearing a player pick up a first aid kit revealed their location and you knew they would run this way into your crosshairs. In Hunt a Hunter will jump over a fence and it leaves a mark, these subtle audio/visual clues which you pick up will push you towards becoming a better Hunter, and the better you become the more immersed you feel into Hunt's world and lore.\n\n\"Hunt giveth, Hunt taketh away\"\n\nBest game ever.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239655759",
+                  "hours_at_review": 3633.9,
+                  "minutes_at_review": 218034,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "TL;DR: In case you don't want to read my love letter, this game is an amazing extraction shooter that doesn't require too much investment once you get past the initial learning curve. The fantastic art direction, exceptional sound design, super fun to use weapons, and wisely implemented yet simple hunter advancement system provides a fun experience as a solo or with friends. If you are looking to have some fun cowboy chaos, then you should try this one out.\n-----------------------------------------------\n\nI've never reviewed a Steam game, but after over 3000 hours of enjoyment with Hunt: Showdown, I feel like I'm obligated. I'll explain why this is downright my favorite shooter. Hunt:Showdown is an extraction shooter based in the late 1800s in the Louisiana bayou (with a Colorado map as well) that includes dark fantasy elements that make up both the 'E' in \"PVPVE\" and some abilities granted to your player that really complement the gunplay mechanics.\n\nThe Gunplay\nThe arsenal primarily consists of weapons available in that time period, with a few that are somewhat of a creative twist (like the bomb lance, a harpoon that can be used as a melee weapon or shot as a projectile). These weapons consisting of bolt and lever action rifles, non-automatic shotguns (mostly), revolvers, crossbow, bow and arrow, and a plethora of melee weapons, create a vastly different dynamic than your typical shooter with multiple fully automatic options. It encourages more of a flick-style of gunplay that rewards clean shots over spamming. Coming from more modern shooters, I really did have to get accustomed to this and found great satisfaction in finally getting the hang of them. \n\nThe Maps/Compounds\nFrom an aesthetic point of view, they've done a fantastic job. From old mines, churches, farms, and more, they leave little to be desired. These compounds slot well into the swampy or mountainy maps in which they're placed. From a tactical/balance standpoint, I can only name one or two compounds…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-ad243c",
+              "claim": "Reviewers describe an extremely steep learning curve with frequent deaths and heavy frustration for newcomers before mastering the mechanics.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240610007",
+                  "hours_at_review": 1044.2,
+                  "minutes_at_review": 62650,
+                  "voted_up": true,
+                  "date": "2026-11-20",
+                  "review_text": "[h1]Hunt Showdown 1896[/h1]\n[h2]Uno de los mejores shooters PvP de la historia[/h2] \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3842720190\nGráficos excelentes, estética hermosa, sonido posicional preciso y realista, música zarpada, armas geniales, gunplay espectacular, habilidades bien pensadas, y lo mejor... una tensión continua con picos de adrenalina y una rica dopamina al salir con vida de ellos. \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3684276371\nSólo hay que tenerle paciencia hasta agarrarle la mano. Vas a morir. A cada rato. Y por todo. Es así. Pero tranqui, porque después cuando ya le hayas agarrado la mano, también vas a morir por todo y cada rato.\nCheaters, campers, pros, bichos, puertas. De todo va a matarte. Vas a perder tu cazador con todo su equipamiento y rasgos mil y una veces. Hacete a la idea. Es así.\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3835424619\n[h3]Entonces?[/h3]\nSi te va la onda del viejo, lejano, y más salvaje que nunca Oeste, y te gustan los shooters PvP difíciles y frustrantes pero hermosos y geniales... compralo de una vez!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240483492",
+                  "hours_at_review": 903.1,
+                  "minutes_at_review": 54186,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Great game! It has a learning curve. The atmosphere is amazing and the world feels lived in. The lore is well developed, though hard to find. The nature of the weapons in this game slow down firefights when compared to Hunt's contemporaries which adds to the intensity of gameplay. \n\nThe developers have shown they listen to the player-base by adding countermeasures for high ping players and cheaters, however it remains to be seen how effective they will be. \n\nThe game is getting old and still holding strong. It is a great time to start playing!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240233085",
+                  "hours_at_review": 1844.0,
+                  "minutes_at_review": 110638,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "Been playing Hunt for over 5 years now. Still the best audio, most intense encounters and a blast to play. Steep learning curve, but stick with it and you won't regret it. It's a definite must buy",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240298843",
+                  "hours_at_review": 999.7,
+                  "minutes_at_review": 59983,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "100's of hours ago I thought I would only write a review if I hit a 1000's hours, as that's a good amount of playtime for a game like this.\nHunt is IMO the best type of game like this around, it's very light on extraction elements but with genre defining gunplay.\n\nIn Hunt the best aim does not always win, when to pick a fight is the most important aspect of this game, so the learning curve is immense and you will never truly master it, with every loss something new is learned, a peak, a gap in a wall, an audio cue, positioning, when to retreat or push, it's a methodical dance between Hunters. You can be an aggressive player or passive, and that's why it's fantastic as it caters for all game styles.\n\nJust be prepared to die allot early on, but as you play your own style will come through and you will start getting kills.\n\nYou can play solo or in a team of 2 or 3, and this doesn't mean as a solo you play only against other solo's, no, you will fight against teams of 2 or 3 and get slaughtered, but persist and you will become a lethal hunter, and it all goes back to knowing when to pick a fight, wiping teams as a solo there is nothing else like it in gaming. Just make sure to play in teams, as for me it feels like a different playstyle from solo, and in teams you will get into more gunfights which helps with gun knowledge.\n\nI could talk about this game all day, the Audio is amazing, you learn to track Hunter's through sound alone, very much like the old days of Doom and Quake where hearing a player pick up a first aid kit revealed their location and you knew they would run this way into your crosshairs. In Hunt a Hunter will jump over a fence and it leaves a mark, these subtle audio/visual clues which you pick up will push you towards becoming a better Hunter, and the better you become the more immersed you feel into Hunt's world and lore.\n\n\"Hunt giveth, Hunt taketh away\"\n\nBest game ever.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239635140",
+                  "hours_at_review": 108.7,
+                  "minutes_at_review": 6520,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "nice game, a bit hard for newcommers, on the heavier side but still manageable with my specs, again hard for newcommers, but nothing is similar to it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239092266",
+                  "hours_at_review": 1283.9,
+                  "minutes_at_review": 77034,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Steep learning curve that may scare you away at first (we have all been there) but easily the best PvPvE extraction shooter out there. \n\nThe gunplay feels very satisfying, the sound design is immaculate, and overcoming that initial learningc curve is super rewarding. Over time you realise that aim is not what will always win you fights and that's the best feeling ever imo (take this from a person with terrible aim that often clutches or manages to still rez teamates in a 1v2/1v3)\n\nSome aspects can be improved further around the bounty and economy, such as the value of the bounty itself or the fact that some of the currencies feel a bit pointless with the re-balancing of events, but overall is not something that'd ruin you gameplay experience at all.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-843105",
+              "claim": "Matchmaking places lower-ranked players against higher-ranked opponents with significantly more experience or higher skill ratings.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239680444",
+                  "hours_at_review": 1141.1,
+                  "minutes_at_review": 68464,
+                  "voted_up": false,
+                  "date": "2026-11-08",
+                  "review_text": "Hunt has been something serious special for myself, wife and buddy's to play. However lately it seems every match is a slugfest of players with way more time to play. I have 1000+ hours and I sit around 3 to 5 stars mmr and team mmr is 3 to 3.5. But we are always paired with 100/100 players that are 5 stars with team of 4 to 5 stars.\n\n We left the game for two month and came back to what feels like a less enjoyable game. Again its probably a skill issue but we should not always have what feels like sweaty lobbies. \n\nI would recommend this game but the mmr system has felt worse and worse.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239301468",
+                  "hours_at_review": 1822.2,
+                  "minutes_at_review": 109334,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Crytek fundamentally misunderstands that sacrificing player experience for faster que times wont bring in more players it'll just make me uninstall when my 5th match in a row has me against a 3 stack of 2.0 + kd players that wipe the server of 1.3 kd players they put them in (also the number of known hackers in this game makes it very hard to give benefit of the doubt when they hs you the milisecond you peek)",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-ae1dab",
+              "claim": "Reviewers describe an immense learning curve where players must learn positioning, audio cues, and map knowledge rather than relying purely on aim.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240298843",
+                  "hours_at_review": 999.7,
+                  "minutes_at_review": 59983,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "100's of hours ago I thought I would only write a review if I hit a 1000's hours, as that's a good amount of playtime for a game like this.\nHunt is IMO the best type of game like this around, it's very light on extraction elements but with genre defining gunplay.\n\nIn Hunt the best aim does not always win, when to pick a fight is the most important aspect of this game, so the learning curve is immense and you will never truly master it, with every loss something new is learned, a peak, a gap in a wall, an audio cue, positioning, when to retreat or push, it's a methodical dance between Hunters. You can be an aggressive player or passive, and that's why it's fantastic as it caters for all game styles.\n\nJust be prepared to die allot early on, but as you play your own style will come through and you will start getting kills.\n\nYou can play solo or in a team of 2 or 3, and this doesn't mean as a solo you play only against other solo's, no, you will fight against teams of 2 or 3 and get slaughtered, but persist and you will become a lethal hunter, and it all goes back to knowing when to pick a fight, wiping teams as a solo there is nothing else like it in gaming. Just make sure to play in teams, as for me it feels like a different playstyle from solo, and in teams you will get into more gunfights which helps with gun knowledge.\n\nI could talk about this game all day, the Audio is amazing, you learn to track Hunter's through sound alone, very much like the old days of Doom and Quake where hearing a player pick up a first aid kit revealed their location and you knew they would run this way into your crosshairs. In Hunt a Hunter will jump over a fence and it leaves a mark, these subtle audio/visual clues which you pick up will push you towards becoming a better Hunter, and the better you become the more immersed you feel into Hunt's world and lore.\n\n\"Hunt giveth, Hunt taketh away\"\n\nBest game ever.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239092266",
+                  "hours_at_review": 1283.9,
+                  "minutes_at_review": 77034,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Steep learning curve that may scare you away at first (we have all been there) but easily the best PvPvE extraction shooter out there. \n\nThe gunplay feels very satisfying, the sound design is immaculate, and overcoming that initial learningc curve is super rewarding. Over time you realise that aim is not what will always win you fights and that's the best feeling ever imo (take this from a person with terrible aim that often clutches or manages to still rez teamates in a 1v2/1v3)\n\nSome aspects can be improved further around the bounty and economy, such as the value of the bounty itself or the fact that some of the currencies feel a bit pointless with the re-balancing of events, but overall is not something that'd ruin you gameplay experience at all.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "vet-875bf1",
+              "claim": "Reviewers complain that recent ping restrictions and matchmaking changes create long queue times and poor connection experiences for players in regions without local servers.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240340673",
+                  "hours_at_review": 4329.6,
+                  "minutes_at_review": 259775,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "The time has come to say goodbye. It's been fun while it lasted.\r\n\r\nUnfortunately, it seems the developers have completely forgotten about the players who don't have access to local servers. Ever since the implementation of the new ping restrictions, matchmaking has become an absolute joke.\r\n\r\nPlayers in regions without local servers are now forced to sit through ridiculously long queue times just to find a game. All because of a ping system that seems to punish players for something completely beyond their control.\r\n\r\nIt's incredibly disappointing to see a game we genuinely love being ruined by decisions that completely disregard a portion of its player base.\r\n\r\nWe supported this game, invested countless hours into it, and stuck around through its ups and downs. But apparently, players like us don't matter.\r\n\r\nA massive thank you to the developers for taking a game we loved and making it increasingly impossible for us to enjoy.\r\n\r\nIt's been a good run, but enough is enough.\r\n\r\nGoodbye, Hunt: Showdown.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239380108",
+                  "hours_at_review": 3448.1,
+                  "minutes_at_review": 206888,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "+The games sound, grafics, skins very good. \r\n+Takes time to get a hold how weapons, distance, sounds work.\r\n-Playerbase full of cheaters and the developers don't do anything about it. (Streamers shown facts and the \"team\" didn't react.)\r\n-Bug don't get fixet until next battlepass time limit.\r\n-Sudden crash come and go (No resson why&what fix it after several days)\r\n-Regional cross don't work. Servers full or \"cube\" names ect.\r\n\r\nSum: Play as a team of 3 its fun, weekdays and between 11:00-17:00 (after that its a nightmare in EU).  How much i loved the game, the dissapointed i got. If anyone feels like trying out, watch few streamers for a week and if still feels like go, take that ride. Invest few rounds only a day.\r\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 28,
+        "cited_recommend": 13,
+        "divergence_p": 0.00915,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1238,
-    "steam_total_reviews": 118781,
-    "cohort_count": 3,
+    "pool_n": 1199,
+    "steam_total_reviews": 120119,
+    "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/594650/279c054bf947c40225a8f2f56b15bf7f817976f0/header_alt_assets_27.jpg?t=1785847079",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/594650/db8d00180552bbcf7068dffda7bf5ce8b4ae0041/capsule_231x87.jpg?t=1785847079",
-    "grid": "https://cdn2.steamgriddb.com/grid/fbc9b51da15391491dfead2ce7830a00.png"
   }
 }

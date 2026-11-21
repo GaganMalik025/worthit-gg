@@ -11,7 +11,8 @@ have stays up. Pinned here:
                      on a QR-4 failure, a stage failure, or a stale candidate
   3. fresh reviews - every stage runs in the work dir, never ROOT, so the stored
                      July reviews are never read
-  4. budget stop   - a refresh run stops before any title when the budget is spent
+  4. budget stop   - a refresh run stops before any title when the budget is spent,
+                     and a title starts only if it and every running title fit
   5. the marker    - synthesis writes claims_verified from the claims file
 
 No network, no Gemini, no quota: run_stage, the gate and the ledger are stubs, and
@@ -243,7 +244,9 @@ def test_run_title_records_only_what_ran():
         state = {"runs": [], "titles": {"77": {"outcome": "ok", "model_calls": 9,
                                                "at": "2026-08-12T00:00:00Z"}}}
         with patched(run_batch, STATE=state_path, REFRESH_DIR=Path(d) / "refresh"), \
-             patched(generate_one, generate=fake_generate):
+             patched(generate_one, generate=fake_generate), \
+             patched(live_quota, load=lambda *a, **k: {}), \
+             patched(model_pacer, calls_for=lambda *a, **k: 0):
             fake_generate.result = (False, {"published": False,
                                             "outcome": "batch_budget_exhausted",
                                             "refused": True, "model_calls": 0})
@@ -274,6 +277,82 @@ def test_run_title_records_only_what_ran():
         pub, res = generate_one.generate(77, quiet=True, ledger="batch")
     check("generate() marks a budget refusal as refused, at 0 calls",
           not pub and res.get("refused") is True and res.get("model_calls") == 0, res)
+
+
+def test_inflight_reservation():
+    print("\nreservation: a title starts only if it and every running title still fit")
+    fits, R = run_batch.fits, run_batch.TITLE_RESERVE
+    check("the reservation is the measured maximum, 18", R == 18, R)
+    check("one title alone fits on exactly 18 left", fits(18, []))
+    check("one title alone does not fit on 17 left", not fits(17, []))
+    # night 4's last start: 16 left on the ledger, the other worker 3 calls in
+    check("night 4: 16 left with a title 3 calls in refuses the next title",
+          not fits(16, [3]))
+    check("two fresh titles need 36 left, not 35", fits(36, [0]) and not fits(35, [0]))
+    check("30 left with a title 3 calls in refuses the next (15 still owed)",
+          not fits(30, [3]))
+    check("a running title past 18 owes nothing more", fits(18, [25]))
+
+    # replay night 4's real costs at concurrency 2, one call per step per worker
+    # (data/batch_state.json, the 32 refresh records dated 2026-11-21; sum 404)
+    costs = [11, 12, 13, 18, 14, 14, 12, 7, 15, 12, 11, 8, 15, 14, 10, 11,
+             11, 17, 16, 16, 13, 14, 11, 16, 11, 8, 9, 10, 14, 13, 13, 15]
+    check("the replayed costs are night 4's 404 calls", sum(costs) == 404, sum(costs))
+    for cap in (400, 37, 36, 35, 18, 17):
+        queue, used, running = list(costs), 0, []   # running: [cost, spent]
+        while queue or running:
+            while queue and len(running) < 2 and fits(cap - used, [s for _, s in running]):
+                running.append([queue.pop(0), 0])
+            if not running:
+                break
+            for r in running:
+                r[1] += 1
+                used += 1
+            running = [r for r in running if r[1] < r[0]]
+        check("night 4's costs never spend past a budget of %d" % cap, used <= cap,
+              "used %d" % used)
+
+    led = {"n": 0}
+    with patched(live_quota, load=lambda *a, **k: {},
+                 batch_remaining=lambda *a, **k: led["left"]), \
+         patched(model_pacer, calls_for=lambda a, *x, **k: led.get(a, 0)):
+        run_batch._inflight.clear()
+        led.update(left=30, A=10)       # A already spent 10 earlier today
+        check("first title admitted on 30", run_batch.admit("A", 100) is None)
+        check("A's earlier calls today are not counted as progress (B refused on 30)",
+              run_batch.admit("B", 100) is not None)
+        led.update(left=36)
+        check("B admitted on 36", run_batch.admit("B", 100) is None)
+        check("a third is refused while both run", run_batch.admit("C", 100) is not None)
+        run_batch.release("A")
+        check("releasing a title frees its slot", run_batch.admit("C", 100) is None)
+        run_batch._inflight.clear()
+
+        args = SimpleNamespace(reserve=100, no_gate=False, refresh=False)
+        led.update(left=17)
+        ran = []
+        # STATE redirected: under a mutation that skips admission, the stub title
+        # reaches record(). Once it did, and overwrote the real batch state.
+        tmp = Path(tempfile.mkdtemp())
+        with patched(generate_one, generate=lambda *a, **k: ran.append(a) or (True, {})), \
+             patched(run_batch, STATE=tmp / "state.json"):
+            entry = run_batch.run_title({"appid": 9, "title": "T"}, {"titles": {}}, args)
+        check("a title that does not fit never reaches generate()",
+              not ran and entry.get("refused") is True and entry.get("model_calls") == 0, entry)
+
+        led.update(left=400)
+
+        def boom(*a, **k):
+            raise RuntimeError("stage blew up")
+        with patched(generate_one, generate=boom), \
+             patched(run_batch, STATE=tmp / "state.json"):
+            try:
+                run_batch.run_title({"appid": 9, "title": "T"}, {"titles": {}}, args)
+            except RuntimeError:
+                pass
+        check("a title that raises still releases its reservation",
+              9 not in run_batch._inflight, dict(run_batch._inflight))
+        run_batch._inflight.clear()
 
 
 def test_budget_stop_holds_for_a_refresh():
@@ -337,6 +416,7 @@ if __name__ == "__main__":
     test_live_page_survives_every_failure()
     test_stages_run_in_the_work_dir()
     test_run_title_records_only_what_ran()
+    test_inflight_reservation()
     test_budget_stop_holds_for_a_refresh()
     test_synthesis_writes_the_marker()
     if FAILURES:

@@ -1,0 +1,13 @@
+mutate_inflight_reservation_2026-11-21.py --run
+
+  ir01  PASS             CONTROL: pipeline/test_refresh.py green, unmutated
+  ir02  CAUGHT+NAMED     the pre-fix rule: 15 left is enough, running titles ignored
+  ir03  CAUGHT+NAMED     running titles owe nothing
+  ir04  CAUGHT+NAMED     progress counted from midnight, not from admission
+  ir05  CAUGHT+NAMED     run_title skips the admission check
+  ir06  CAUGHT+NAMED     a title that raises keeps its reservation
+
+restored byte-identical:
+  pipeline/run_batch.py          True (0c31f7954ae0)
+real state untouched: live_quota.json True, batch_state.json True
+6/6 as expected

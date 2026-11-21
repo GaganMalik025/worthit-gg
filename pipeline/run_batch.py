@@ -153,15 +153,67 @@ def refresh_pending(state, limit, only=None, include_seeds=False, verdicts=None)
     return rows[:limit] if limit else rows
 
 
+# THE IN-FLIGHT RESERVATION (refresh night 4, 2026-11-21). generate() checks the
+# ledger before it starts, but the ledger only counts calls already SENT. With two
+# workers, a title could start on 16 calls left while the other title still had
+# most of its calls to come; both finished, and the night spent 404 of 400
+# (BACKLOG 2026-11-21). So a title now starts only if it AND every title already
+# running can each still reach TITLE_RESERVE calls inside what is left.
+#
+# 18 is the most any title has ever cost: max model_calls over all 528 published
+# records in data/batch_state.json on 2026-11-21, reached by 4 refresh titles. It
+# is a measurement, not a ceiling. A title above 18 can still overshoot by its
+# excess, and the true worst case is unbounded because the pacer charges every
+# attempt, transient retries included. If a night records a title above 18, raise
+# this to the new maximum.
+TITLE_RESERVE = 18
+_inflight_lock = threading.Lock()
+_inflight = {}  # appid -> calls_for(appid) when it was admitted
+
+
+def fits(left, inflight_spent, per_title=TITLE_RESERVE):
+    """Can one more title start? `left` is batch headroom from the ledger;
+    `inflight_spent` is what each running title has spent since it started."""
+    owed = sum(max(0, per_title - s) for s in inflight_spent)
+    return left - owed >= per_title
+
+
+def admit(appid, reserve):
+    """Reserve a slot for this title, or return the refusal detail."""
+    with _inflight_lock:
+        left = live_quota.batch_remaining(live_quota.load(), reserve)
+        spent = [model_pacer.calls_for(a) - base for a, base in _inflight.items()]
+        if not fits(left, spent):
+            return {"remaining": left, "in_flight": len(spent),
+                    "in_flight_spent": spent, "per_title": TITLE_RESERVE}
+        _inflight[appid] = model_pacer.calls_for(appid)
+        return None
+
+
+def release(appid):
+    with _inflight_lock:
+        _inflight.pop(appid, None)
+
+
 def run_title(row, state, args):
     appid, title = row["appid"], row["title"]
     t0 = time.time()
     refresh = getattr(args, "refresh", False)
     workdir = REFRESH_DIR / str(appid) if refresh else None
-    published, result = generate_one.generate(
-        appid, reserve=args.reserve, quiet=True,
-        ledger="batch", segmentation_gate=not args.no_gate and not refresh,
-        workdir=workdir)
+    refusal = admit(appid, args.reserve)
+    if refusal is not None:
+        # Same contract as a refusal inside generate(): nothing ran, nothing was
+        # spent, nothing is recorded.
+        return {"title": title, "outcome": "batch_budget_reserved",
+                "published": False, "model_calls": 0, "refused": True,
+                "detail": refusal}
+    try:
+        published, result = generate_one.generate(
+            appid, reserve=args.reserve, quiet=True,
+            ledger="batch", segmentation_gate=not args.no_gate and not refresh,
+            workdir=workdir)
+    finally:
+        release(appid)
     if refresh and published:
         # Keep the fresh raw/filtered/claims for audit; the page and response
         # caches are the bulk and are never read again once the title is done.

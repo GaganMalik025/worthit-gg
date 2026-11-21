@@ -1,51 +1,60 @@
 {
   "appid": "581320",
   "game_name": "Insurgency: Sandstorm",
-  "generated_at": "2026-08-10T10:10:18Z",
+  "generated_at": "2026-11-21T02:52:13Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/581320/5cea6f39f733394deda9f85e36722d4ca5e3db5f/header.jpg?t=1779984920",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/581320/a528a5c27d1a8eb3068dea3a10397e11b21ccbe6/capsule_231x87.jpg?t=1779984920",
+    "grid": "https://cdn2.steamgriddb.com/grid/f42fc75eac59b332ae535e1a6bcc0713.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 16,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Intense tactical gunplay hampered by technical friction and cheaters.",
+    "tagline": "Tense tactical combat marred by persistent technical issues and matchmaking flaws.",
     "for_you_if": [
-      "you want slow tactical multiplayer combat",
-      "you enjoy cooperative shooter coordination"
+      "you enjoy cooperative player versus environment modes",
+      "you want immersive and chaotic sound design"
     ],
     "not_for_you_if": [
-      "you cannot stand cheaters in public matches",
-      "you need reliable server connections and stable performance",
-      "you are sensitive to broken mod support"
+      "you need stable performance without frequent crashes",
+      "you want reliable matchmaking away from ongoing matches"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 73,
-      "pct_positive": 45.2,
+      "pool_n": 70,
+      "pct_positive": 44.3,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 510,
-      "pct_positive": 85.1,
+      "pool_n": 495,
+      "pct_positive": 83.0,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 359,
-      "pct_positive": 82.2,
+      "pool_n": 368,
+      "pct_positive": 84.5,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 258,
-      "pct_positive": 81.0,
+      "pool_n": 267,
+      "pct_positive": 81.3,
       "muted": false
     }
   ],
@@ -54,45 +63,50 @@
       "flag_id": "cohort_divergence",
       "type": "segmentation",
       "direction": null,
-      "shape": "monotonic_increase",
-      "sentence": "Sentiment rises sharply after the initial hours before stabilizing among experienced players.",
+      "shape": "rise_then_fall",
+      "sentence": "Initial positive impressions rise after the refund window before gradually declining among long-term players.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 45.2,
-            "pool_n": 73
+            "pct_positive": 44.3,
+            "pool_n": 70
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 85.1,
-            "pool_n": 510
+            "pct_positive": 83.0,
+            "pool_n": 495
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 82.2,
-            "pool_n": 359
+            "pct_positive": 84.5,
+            "pool_n": 368
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 81.0,
-            "pool_n": 258
+            "pct_positive": 81.3,
+            "pool_n": 267
           }
         ],
-        "shape": "monotonic_increase",
+        "shape": "rise_then_fall",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 45.2,
-        "low_pool_n": 73,
-        "high_cohort": "early",
-        "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 85.1,
-        "high_pool_n": 510,
-        "gap_pts": 39.9
+        "low_pct_positive": 44.3,
+        "low_pool_n": 70,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 84.5,
+        "high_pool_n": 368,
+        "gap_pts": 40.2,
+        "peak_cohort": "mid",
+        "peak_pct_positive": 84.5,
+        "post_peak_low_cohort": "veteran",
+        "post_peak_low_pct_positive": 81.3,
+        "drop_after_peak_pts": 3.2
       }
     }
   ],
@@ -101,200 +115,103 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 73,
-      "pct_positive": 45.2,
+      "pool_n": 70,
+      "pct_positive": 44.3,
       "muted": false,
       "n_note": null,
-      "summary": "Early players hit loading blocks and harsh cooperative bots.",
-      "themes": [
+      "summary": null,
+      "themes": [],
+      "single_points": [
         {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ref-82d756",
-              "claim": "Reviewers report technical launch failures, noting the game gets stuck on loading screens or fails to open entirely.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "229506903",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "I've downloaded this game twice now but it does not even open. It just gets stuck on the loading screen.",
-                  "truncated": false,
-                  "minutes_at_review": 29
-                },
-                {
-                  "recommendationid": "223130965",
-                  "hours_at_review": 1.1,
-                  "voted_up": false,
-                  "date": "2026-04-12",
-                  "review_text": "game does not work, at all. it launched then i looked at a splash screen.",
-                  "truncated": false,
-                  "minutes_at_review": 64
-                }
-              ]
-            }
-          ]
+          "point_id": "one-e505db91",
+          "text": "One reviewer says they cannot assign multiple keys for specific actions or assign the same key to multiple actions.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "237751148",
+            "hours_at_review": 0.2,
+            "minutes_at_review": 12,
+            "voted_up": false,
+            "date": "2026-10-15",
+            "review_text": "Cant assign multiple keys for specific actions in key bindings in an FPS game what a sad joke :(\nAnd I cant assign same keys to multiple actions either.. Devs Fix it please!!",
+            "truncated": false
+          }
         },
         {
+          "point_id": "one-6c24af6a",
+          "text": "One reviewer says the game is not crossplay compatible with console on the steam version.",
+          "theme": "access",
+          "citation": {
+            "recommendationid": "233466782",
+            "hours_at_review": 0.1,
+            "minutes_at_review": 8,
+            "voted_up": false,
+            "date": "2026-08-22",
+            "review_text": "game is not crossplay compatible with console on the steam/epic games store version of insurgency sandstorm.\nI can't play the game with my friends who only own a console. lost my only reason to play because either the devs or microsoft want to force me to buy the game again. 0/10",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-8d707a84",
+          "text": "One reviewer says they can't assign multiple keys for specific actions or assign the same key to multiple actions.",
           "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ref-096473",
-              "claim": "The cooperative AI is described as possessing the ability to see through walls and eliminate players with a single hit.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "227353863",
-                  "hours_at_review": 1.6,
-                  "voted_up": false,
-                  "date": "2026-06-06",
-                  "review_text": "AI can see you through walls and 1-hit you each time",
-                  "truncated": false,
-                  "minutes_at_review": 93
-                },
-                {
-                  "recommendationid": "229042666",
-                  "hours_at_review": 1.0,
-                  "voted_up": false,
-                  "date": "2026-06-28",
-                  "review_text": "Just doesn't feel good. I haven't played the prevoius games (the OG and Day of Infamy) for years but I still have the feeling that those were better despite the small community.\n\nShooting feels off, it goes from pretty satisfying to this weird clunky unresponsiveness. Shooting NPCs rival Arma with its weird sponge-delay-drop dead thing or something is wrong with my game/pc. \n\nI would have probably sticked to this game if it had a campaign mode but Skin sets are more profitable it seems. Sandstorm has those notes that I want but it doesn't sing for me..",
-                  "truncated": false,
-                  "minutes_at_review": 59
-                }
-              ]
-            }
-          ]
+          "citation": {
+            "recommendationid": "237751148",
+            "hours_at_review": 0.2,
+            "minutes_at_review": 12,
+            "voted_up": false,
+            "date": "2026-10-15",
+            "review_text": "Cant assign multiple keys for specific actions in key bindings in an FPS game what a sad joke :(\nAnd I cant assign same keys to multiple actions either.. Devs Fix it please!!",
+            "truncated": false
+          }
         }
       ],
-      "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 4,
-        "cited_recommend": 0,
-        "divergence_p": 0.0902,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
+      "sourcing": null
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 510,
-      "pct_positive": 85.1,
+      "pool_n": 495,
+      "pct_positive": 83.0,
       "muted": false,
       "n_note": null,
-      "summary": "As players settle in, gunplay and audio win praise despite connection drops.",
+      "summary": "Early players praise the exceptional sound design and enjoyable co-op modes, while encountering performance drops, crashing, and limited options for private matches.",
       "themes": [
         {
-          "theme": "other",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-4d13fa",
-              "claim": "Reviewers note that the loadout menu lacks a confirmation button, causing customized loadouts to be disrupted upon respawn.",
-              "citation_verdict": "mixed",
+              "claim_id": "ear-29f661",
+              "claim": "Reviewers note that the game lacks private lobbies or a straightforward way to play in private matches with friends.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
-                "negative": 1
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231615662",
-                  "hours_at_review": 18.1,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Very nice game. Unfortunately not great. Just very nice.\r\n\r\nThe devs absolutely need to:\r\n- Add free look. The fact that you can't look a different way while running somewhere is very stupid.\r\n- Improve the load out menu. It is stupid there is no confirm button so you can just play around with it without it ♥♥♥♥♥♥♥ up your current load out when you respawn.\r\n- Add some fun game modes. The current game mods are kinda ass in co-op. They should look at objectives of in Wolfenstein: Enemy Territory. That was very fun shooter with a similar class system.",
-                  "truncated": false,
-                  "minutes_at_review": 1088
+                  "recommendationid": "239840008",
+                  "hours_at_review": 6.9,
+                  "minutes_at_review": 413,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "shit players ruin game, desperately needs private lobbies.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231032102",
-                  "hours_at_review": 10.9,
+                  "recommendationid": "238066567",
+                  "hours_at_review": 9.1,
+                  "minutes_at_review": 545,
                   "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "Game is amazing, but sadly the game has 0 support. its just a Cash cow. Saber only maintains the servers, but they wont fix anything or finish the work the original Dev team started. The biggest flop is the Mods. the Dev team partnered with Mod.io but there is no way to load your mods without going to confusing console commands or trying third party launchers. completly ridiculous that Saber just leaves this amazing game Half backed. so sad. but they will Gladly sell you skins for this game // avoid, only buy on Deep Deep sale for the local play w/ admin menu, just to pass the time and get that Tactical gameplay in. So sad what happen to this game.",
-                  "truncated": false,
-                  "minutes_at_review": 652
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-491847",
-              "claim": "Reviewers encounter technical issues involving server disconnections and lost connections during online play.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "230803848",
-                  "hours_at_review": 3.5,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "there's no option for a nuetral finger, because it seems to be a good game, i feel like such a noob, But it's because i keep losing connection to their servers as usual with these pvp co-op, online multiplayer games. these guys are too good, it's hard for me to kill 1. iv'e had Alot of issues with this game & have done what the guides said making changes i am Still losing connection though. i like how the game has Both their servers & Steams shown on my screen & if they're Green or Not. i can only enjoy playing this game if i don't keep getting disconnected. i just saw something ive never seen before in a war game, Holding a point& being fired on Dust Clouds of smoke Explosions, incredible.",
-                  "truncated": false,
-                  "minutes_at_review": 211
-                },
-                {
-                  "recommendationid": "231032102",
-                  "hours_at_review": 10.9,
-                  "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "Game is amazing, but sadly the game has 0 support. its just a Cash cow. Saber only maintains the servers, but they wont fix anything or finish the work the original Dev team started. The biggest flop is the Mods. the Dev team partnered with Mod.io but there is no way to load your mods without going to confusing console commands or trying third party launchers. completly ridiculous that Saber just leaves this amazing game Half backed. so sad. but they will Gladly sell you skins for this game // avoid, only buy on Deep Deep sale for the local play w/ admin menu, just to pass the time and get that Tactical gameplay in. So sad what happen to this game.",
-                  "truncated": false,
-                  "minutes_at_review": 652
+                  "date": "2026-10-19",
+                  "review_text": "This game is really cool. I bought 2 copies, one for me and my son to both play. Little did I know that we were walking into a MASSIVE DISSAPOINTMENT. NO PRIVATE MATCHES? WHAT IN THE WORLD GUYS???  \n\nDeleted.\n\nNot gonna just sit here and play a bunch of bots, some sweaty strangers, or bend over backwards trying to set up some goofy private server and do the dev's job for them with the little free time that I do have. Sorry. \nSuch an awesome game, but oh, \"whoops we forgot to add the primary feature that birthed FPS games in the first place.\" \n\nI really hope the devs fix this amazing game, cuz every FPS should have a way to easily play with friends and/or private multiplayer matches. If they do I would definitely push more people I know to get in on it (and also change my review to \"recommend\"). If not, I'll probably never play it again because it's just too frustrating to play something so good that is also so unfinished.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-998dcc",
-              "claim": "Reviewers note that the gunplay features heavy, weighty weapons where aim-down-sights (ADS) times can feel slow.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231793049",
-                  "hours_at_review": 5.5,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "VERY milsim... The guns are cluncky and have weight so the ADS time can feel very slow to those come from games like cod or battlefield. The focus is realism, so if that's what you are going for, this game is for you.",
-                  "truncated": false,
-                  "minutes_at_review": 333
-                },
-                {
-                  "recommendationid": "231206699",
-                  "hours_at_review": 12.1,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "The gunplay and audio design in this game are absolutely top-tier, every gunshot feels punchy and intense. However, the experience gets weighed down by lingering optimization stutters, frustrating AI aimbots in co-op, and a pretty unforgiving learning curve. It's a solid tactical shooter when everything works, but it can be a headache to get to those good moments. Grab it on sale if you like brutal, slow-paced firefights.",
-                  "truncated": false,
-                  "minutes_at_review": 725
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-e2a7a7",
-              "claim": "Reviewers praise the audio design and gunshots for feeling punchy, intense, and immersive.",
+              "claim_id": "ear-5b3655",
+              "claim": "Reviewers mention that the sound design is exceptional, contributing heavily to the game's immersive and chaotic atmosphere.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -302,72 +219,202 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231206699",
-                  "hours_at_review": 12.1,
+                  "recommendationid": "238016412",
+                  "hours_at_review": 3.4,
+                  "minutes_at_review": 206,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "The gunplay and audio design in this game are absolutely top-tier, every gunshot feels punchy and intense. However, the experience gets weighed down by lingering optimization stutters, frustrating AI aimbots in co-op, and a pretty unforgiving learning curve. It's a solid tactical shooter when everything works, but it can be a headache to get to those good moments. Grab it on sale if you like brutal, slow-paced firefights.",
-                  "truncated": false,
-                  "minutes_at_review": 725
+                  "date": "2026-10-18",
+                  "review_text": "Having a blast, playing exclusively against bots. I can even pause mid match, sound design is great for the chaotic feeling, graphics can be very crisp, advanced smaa plus over 100% resolution at stable +100fps.\r\n\r\nI would say to play solo there is a slight mismatch where point defending turns cheesy for a moment, but other than that forgot last time i would come back whenever i got some time avaiable like good old CS times.\r\n\r\nFor the price, flexibility, nuanced loadouts, aesthetic only dlc, chip in.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230564045",
-                  "hours_at_review": 15.0,
+                  "recommendationid": "237830026",
+                  "hours_at_review": 3.4,
+                  "minutes_at_review": 204,
                   "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "Nothing will ever beat the feeling of dropping someone like a sack of potatoes with 2 shots, game runs good and plays good, the audio is eargasm.\n\nbut i really wish they would add more smgs like the thompson, ak9/vityaz, ump, mp9, pp bizon, ppsh41 and 43, maybe those improvised looking ones like the owen gun and some other WW2 stuff instead of the 852nd random 9mm pistol nobody uses",
-                  "truncated": false,
-                  "minutes_at_review": 902
+                  "date": "2026-10-16",
+                  "review_text": "Whenever I play this game I am honestly terrified, the sound design is absolutely amazing, and the gun play feels authentic. Sad to see that the game is slowly dying.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230546115",
-                  "hours_at_review": 9.2,
+                  "recommendationid": "237666412",
+                  "hours_at_review": 16.6,
+                  "minutes_at_review": 996,
                   "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "The game is great, gun play is great, very immersive and runs impressively smooth.",
-                  "truncated": false,
-                  "minutes_at_review": 550
+                  "date": "2026-10-14",
+                  "review_text": "Sandstorm has plenty of hours of fun in co-op, game has amazing sound, smaller-than-deserved yet steady playerbase, mods and a server browser, and that isn't even touching the pvp. Plenty tactical and punishing, yet also casual enough you can pick it up any time.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-367d4f",
-              "claim": "Reviewers describe experiencing connection drops and losing server connection during online matches.",
-              "citation_verdict": "mixed",
+              "claim_id": "ear-d2ed81",
+              "claim": "Reviewers report that the game gets repetitive after extended play sessions.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 1
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231032102",
-                  "hours_at_review": 10.9,
-                  "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "Game is amazing, but sadly the game has 0 support. its just a Cash cow. Saber only maintains the servers, but they wont fix anything or finish the work the original Dev team started. The biggest flop is the Mods. the Dev team partnered with Mod.io but there is no way to load your mods without going to confusing console commands or trying third party launchers. completly ridiculous that Saber just leaves this amazing game Half backed. so sad. but they will Gladly sell you skins for this game // avoid, only buy on Deep Deep sale for the local play w/ admin menu, just to pass the time and get that Tactical gameplay in. So sad what happen to this game.",
-                  "truncated": false,
-                  "minutes_at_review": 652
+                  "recommendationid": "240309769",
+                  "hours_at_review": 8.5,
+                  "minutes_at_review": 508,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "kinda repetitive but fun with friends and a mic",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230803848",
-                  "hours_at_review": 3.5,
+                  "recommendationid": "238362807",
+                  "hours_at_review": 11.7,
+                  "minutes_at_review": 699,
                   "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "there's no option for a nuetral finger, because it seems to be a good game, i feel like such a noob, But it's because i keep losing connection to their servers as usual with these pvp co-op, online multiplayer games. these guys are too good, it's hard for me to kill 1. iv'e had Alot of issues with this game & have done what the guides said making changes i am Still losing connection though. i like how the game has Both their servers & Steams shown on my screen & if they're Green or Not. i can only enjoy playing this game if i don't keep getting disconnected. i just saw something ive never seen before in a war game, Holding a point& being fired on Dust Clouds of smoke Explosions, incredible.",
-                  "truncated": false,
-                  "minutes_at_review": 211
+                  "date": "2026-10-23",
+                  "review_text": "I have played Insurgency: Sandstorm for around 20 hours, and the gunplay is easily the best part of the game. It feels intense, realistic, and really satisfying. Every weapon has weight to it, and firefights can get chaotic very quickly.\r\n\r\nI also really enjoyed the Player vs. Bot mode. It is a great option when you want tactical action without having to deal with sweaty PvP matches all the time. The game can become a little repetitive after a while, though, especially if you keep playing the same modes.\r\n\r\nI would definitely recommend it to people who enjoy realistic shooters. However, if you want something even more extreme in terms of realism, there are games like Bodycam. Still, Insurgency: Sandstorm is a very fun and solid tactical shooter.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-03a744",
+              "claim": "Reviewers report that the co-op player versus environment mode provides an enjoyable experience compared to player versus player matches.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "238562646",
+                  "hours_at_review": 16.6,
+                  "minutes_at_review": 997,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "I am playing this game purely for its co-op as the versus mode is extremely sweaty for me (as people with the most unhuman reflexes are there), however, I %100 recommend this game, even for just its co-op. I've got no words to describe it. Give it a try and have fun!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238362807",
+                  "hours_at_review": 11.7,
+                  "minutes_at_review": 699,
+                  "voted_up": true,
+                  "date": "2026-10-23",
+                  "review_text": "I have played Insurgency: Sandstorm for around 20 hours, and the gunplay is easily the best part of the game. It feels intense, realistic, and really satisfying. Every weapon has weight to it, and firefights can get chaotic very quickly.\r\n\r\nI also really enjoyed the Player vs. Bot mode. It is a great option when you want tactical action without having to deal with sweaty PvP matches all the time. The game can become a little repetitive after a while, though, especially if you keep playing the same modes.\r\n\r\nI would definitely recommend it to people who enjoy realistic shooters. However, if you want something even more extreme in terms of realism, there are games like Bodycam. Still, Insurgency: Sandstorm is a very fun and solid tactical shooter.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237502928",
+                  "hours_at_review": 5.1,
+                  "minutes_at_review": 306,
+                  "voted_up": true,
+                  "date": "2026-10-11",
+                  "review_text": "PvP SUCKS but the PvE is very fun",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-359cfe",
+              "claim": "Reviewers experience persistent crashing and performance problems that hinder playability.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238848314",
+                  "hours_at_review": 4.0,
+                  "minutes_at_review": 242,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Never have I ever seen such an extremely bad performing game. It doesnt even work on the lowest settings with a fps cap of 30.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238347700",
+                  "hours_at_review": 2.4,
+                  "minutes_at_review": 146,
+                  "voted_up": false,
+                  "date": "2026-10-23",
+                  "review_text": "Non stop crashing, dev team is kill, do not buy this shit.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-b23d65ab",
+          "text": "One reviewer says the AI in the co-op mode can be a little stupid while still surprising you at times.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "239407772",
+            "hours_at_review": 15.1,
+            "minutes_at_review": 904,
+            "voted_up": true,
+            "date": "2026-11-05",
+            "review_text": " A great game, while the AI in the co-op mode can be a lil stupid lol, they can still surprise you at times, especially in hardcore. The communication aspect of this game is also pretty nice (When people actually talk lmao), it can get very immersive at times with the right crowd. All in all, a pretty good game, with a good balance between milsim and arcade (in my opinion).",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-1c55db1e",
+          "text": "One reviewer says the gunplay is the best part of the game, feeling intense, realistic, and satisfying with every weapon having weight.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238362807",
+            "hours_at_review": 11.7,
+            "minutes_at_review": 699,
+            "voted_up": true,
+            "date": "2026-10-23",
+            "review_text": "I have played Insurgency: Sandstorm for around 20 hours, and the gunplay is easily the best part of the game. It feels intense, realistic, and really satisfying. Every weapon has weight to it, and firefights can get chaotic very quickly.\r\n\r\nI also really enjoyed the Player vs. Bot mode. It is a great option when you want tactical action without having to deal with sweaty PvP matches all the time. The game can become a little repetitive after a while, though, especially if you keep playing the same modes.\r\n\r\nI would definitely recommend it to people who enjoy realistic shooters. However, if you want something even more extreme in terms of realism, there are games like Bodycam. Still, Insurgency: Sandstorm is a very fun and solid tactical shooter.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-84a913c2",
+          "text": "One reviewer says when gear is allowed or not allowed to be equipped is very difficult to understand and not intuitive at all.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238865368",
+            "hours_at_review": 3.0,
+            "minutes_at_review": 180,
+            "voted_up": false,
+            "date": "2026-10-29",
+            "review_text": "Too many bugs and problems:\n\nFire on ground will burn you in an area wider than the actual fire. Helicopters with miniguns will shoot you through foot thick stone walls. Insurgency suicider bombers will explode and kill you despite being on the other side of a big obstacle. Armored enemies can tank sometimes +5 shots of the highest calibers without flinching running straight up to you and instakill you with melee. Getting hit by the \"blast\" of a molotov cocktail instakills you even if you are in the perifery of the explosion.\n\nWhen gear is allowed or not allowed to be equipped is very difficult to understand and not intuitive at all. It seems that different missions will sometimes have different loadout, or the loadout will change, or a lot of gear is not able to be selected. And you never get any explanation why this is so.\n\nWhen you join a match you may have to wait up to 4 minutes before the other players clear an objective and you are actually allowed to play.\n\n.... etc etc.\n\nGraphics are fairly plain and not up to 2018 standards, when the game got released. It's not terrible, it just feels like its graphics was already obsolete even for 2018.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-b172e590",
+          "text": "One reviewer says helicopters with miniguns will shoot you through foot thick stone walls and suicide bombers will kill you through a big obstacle.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238865368",
+            "hours_at_review": 3.0,
+            "minutes_at_review": 180,
+            "voted_up": false,
+            "date": "2026-10-29",
+            "review_text": "Too many bugs and problems:\n\nFire on ground will burn you in an area wider than the actual fire. Helicopters with miniguns will shoot you through foot thick stone walls. Insurgency suicider bombers will explode and kill you despite being on the other side of a big obstacle. Armored enemies can tank sometimes +5 shots of the highest calibers without flinching running straight up to you and instakill you with melee. Getting hit by the \"blast\" of a molotov cocktail instakills you even if you are in the perifery of the explosion.\n\nWhen gear is allowed or not allowed to be equipped is very difficult to understand and not intuitive at all. It seems that different missions will sometimes have different loadout, or the loadout will change, or a lot of gear is not able to be selected. And you never get any explanation why this is so.\n\nWhen you join a match you may have to wait up to 4 minutes before the other players clear an objective and you are actually allowed to play.\n\n.... etc etc.\n\nGraphics are fairly plain and not up to 2018 standards, when the game got released. It's not terrible, it just feels like its graphics was already obsolete even for 2018.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 7,
-        "cited_recommend": 6,
-        "divergence_p": 0.677,
+        "cited_reviews": 11,
+        "cited_recommend": 7,
+        "divergence_p": 0.101,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -375,234 +422,18 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 359,
-      "pct_positive": 82.2,
+      "pool_n": 368,
+      "pct_positive": 84.5,
       "muted": false,
       "n_note": null,
-      "summary": "Mid-tier players praise cosmetic monetization while battling cheaters, stuttering, and clumsy menu layouts.",
+      "summary": "Mid-tier players highlight matchmaking dropping them into ongoing matches, voice chat toxicity, and performance lag.",
       "themes": [
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-76f57e",
-              "claim": "Reviewers report that public PvP lobbies contain cheaters using wall hacks, aimbots, and ESP.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231552621",
-                  "hours_at_review": 31.2,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Co op is fun, just avoid the pvp gamemodes as it's dominated by sweats and hackers.",
-                  "truncated": false,
-                  "minutes_at_review": 1873
-                },
-                {
-                  "recommendationid": "229019033",
-                  "hours_at_review": 65.0,
-                  "voted_up": false,
-                  "date": "2026-06-28",
-                  "review_text": "NWI has sold out to a bunch of shady ceo's and investors in it for the money, never buy this game thinking its like the old insurgency, game has been left in the dust, as all the og creators have been pushed out, game studio ceo don't even play games, also so many cheaters in the games that use ESP and aimbot, BUY ARMA OR SQAUD OR HELLLET LOOSE, anything but this dog sh:t",
-                  "truncated": false,
-                  "minutes_at_review": 3900
-                },
-                {
-                  "recommendationid": "228982011",
-                  "hours_at_review": 79.7,
-                  "voted_up": false,
-                  "date": "2026-06-27",
-                  "review_text": "Game is full of ESP aimbot cheaters with wall hacks - don't even bother buying this game - clunky mess with movement of a crippled whale. Avoid trash game - could be great - needs ALOT of work. \n\nUpdate 06/07/26 - Game is RIDDLED WITH CHEATERS, DO NOT BUY THIS GAME!\n\n*Update 31/07/26* Game is still a buggy mess riddled with cheaters - DO NOT WASTE YOUR MONEY ON IT! : )",
-                  "truncated": false,
-                  "minutes_at_review": 4784
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-1ab6e5",
-              "claim": "Reviewers report encountering cheaters and hackers in the game's multiplayer and PvP modes.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231764750",
-                  "hours_at_review": 34.8,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "PvP is full of cheaters\nPvE is good and fun but easy to get bored bc there are no goals or rewards",
-                  "truncated": false,
-                  "minutes_at_review": 2088
-                },
-                {
-                  "recommendationid": "231552621",
-                  "hours_at_review": 31.2,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Co op is fun, just avoid the pvp gamemodes as it's dominated by sweats and hackers.",
-                  "truncated": false,
-                  "minutes_at_review": 1873
-                },
-                {
-                  "recommendationid": "229019033",
-                  "hours_at_review": 65.0,
-                  "voted_up": false,
-                  "date": "2026-06-28",
-                  "review_text": "NWI has sold out to a bunch of shady ceo's and investors in it for the money, never buy this game thinking its like the old insurgency, game has been left in the dust, as all the og creators have been pushed out, game studio ceo don't even play games, also so many cheaters in the games that use ESP and aimbot, BUY ARMA OR SQAUD OR HELLLET LOOSE, anything but this dog sh:t",
-                  "truncated": false,
-                  "minutes_at_review": 3900
-                },
-                {
-                  "recommendationid": "228982011",
-                  "hours_at_review": 79.7,
-                  "voted_up": false,
-                  "date": "2026-06-27",
-                  "review_text": "Game is full of ESP aimbot cheaters with wall hacks - don't even bother buying this game - clunky mess with movement of a crippled whale. Avoid trash game - could be great - needs ALOT of work. \n\nUpdate 06/07/26 - Game is RIDDLED WITH CHEATERS, DO NOT BUY THIS GAME!\n\n*Update 31/07/26* Game is still a buggy mess riddled with cheaters - DO NOT WASTE YOUR MONEY ON IT! : )",
-                  "truncated": false,
-                  "minutes_at_review": 4784
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-61628f",
-              "claim": "Reviewers note that attempting to go prone under enemy fire can cause characters to stand back up instead, which prevents going prone.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231759023",
-                  "hours_at_review": 44.0,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "There's a very nasty bug where you attempt to go prone and what your character does next is standing back up. Under enemy fire this is deadly. Doesn't matter how many times you press the prone button; until the character stands up it won't go prone.\n\nThis hurts my user experience very badly.\nI would like to kindly ask the game developers to fix this ♥♥♥♥♥♥♥ bug, thank you.",
-                  "truncated": false,
-                  "minutes_at_review": 2638
-                },
-                {
-                  "recommendationid": "228311591",
-                  "hours_at_review": 54.8,
-                  "voted_up": true,
-                  "date": "2026-06-19",
-                  "review_text": "Pretty fun. Not so fun when you have to create separate loadouts for both insurgents and security where each has variations for day and night for each class (up to 8 classes) AND also it's gamemode dependent, so separate loadouts for Co-op vs PVP, as well as some other gamemodes (like outpost and survival) having separate loadouts as well.\n\nCo-op has 8 classes. 2 teams. Day & night. That is 32 if you make 1 loadout for each class. One loadout for each class is not enough of variantion IMO, so I ended up making on average 5 loadouts for each class. That's 160 loadouts. But that's just for Co-op. I'll need to make separate loadouts for PVP, though I heard there are lots of cheaters, so I stuck with Co-op for now. (Night time maps rarely get picked, so don't bother making as many loadouts as I did for that. 2 to 3 is fine.)\n\nGet this though. The \"not so fun\" part is not the part where you make the loadouts. It's when the game randomly decides to copy one of your loadouts onto another, thus replacing it. Unless I'm completely blind, there is no way to copy a loadout, so you can't just simply and quickly copy your Co-op classes into PVP. But the game sure as hell sometimes decides that the two loadouts I already have with M1 Garand are not enough and copies one of them over my AWP loadout so I need to remake it if I want to use that bolt-action rifle instead of a semi-auto WW2 rifle.\n\nAlso, sometimes the game forgets that you have a bipod on your gun. It will appear in-game, but your character doesn't use it and you can't fold it either. You have to go to the loadout menu, unequip the bipod and re-equip it. Then you have to actually resupply in-game to get the \"new\" loadout. Does your gun automatically come with a bipod? Great. Remove the gun and re-add it AND ALSO all the other attachments you had on it. Very fun times indeed.\n\nAnyway, fun to play when you're actually playing it and not doing maintenance.",
-                  "truncated": false,
-                  "minutes_at_review": 3288
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "mid-a748dc",
-              "claim": "Reviewers note that the game features microtransactions that are strictly cosmetic and do not impact gameplay or progression.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231552372",
-                  "hours_at_review": 56.9,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "I really like the system of Proximity chat to the enemy team, it adds more variety to hilarious moments! I also enjoy that they FINALLY made shotgun distance realistic, where it can hit targets from further away and still deal a great amount of damage instead of dealing 1 hp when further than 8 feet. And yeah, there are microtransactions, but those microtransactions are all cosmetic and dont impact the actual game or the progression in it.\r\n\r\nThis game is difficult to navigate at first, because its a realistic military shooter (as in 3 shots could kill you, and you better prioritize taking cover instead of charging forward), but you get the mechanics down pretty easily. However, multiplayer is the most difficult, and i'm not gonna jump to conclusions and say \"CHEATERS!!!\", because its more likely sweats whove played nothing but realistic military shooters all their life. But if you want something just slightly easier, I'd recommend playing checkpoint, where its Player vs AI. And the AI is still fairly challenging enough to where you will get your head blown off if you run out in the open for more than 2 seconds. And its just unpredictable enough to where you will still get suprised by a grenade coming through a window your in, or an RPG striking your position dead-on.\r\n\r\nAnd finally, I like the component of the Commander and Observer. It gives players power to turn the tides in the war, yet it has the slightest restriction being that you need one person to command the airstrikes, and one other person to radio it in, and ensure neither of them die during their call for fire support.\r\n\r\nI highly recommend this game for its great mix of challenging and understandable, and great mix of simulation and FPS.",
-                  "truncated": false,
-                  "minutes_at_review": 3415
-                },
-                {
-                  "recommendationid": "229522440",
-                  "hours_at_review": 26.8,
-                  "voted_up": true,
-                  "date": "2026-07-03",
-                  "review_text": "No slop included. Coops fun PVP is like a game of chess. No battlepass, no FOMO rotating storefront. Guns are loud as hell, hit hard, and feel good. Cosmetics are unlocked ingame through ingame money. DLC is nothing but cosmetics and there like a dollar on a sale. Gunplay's really good and immersive. Yallah Yallah.",
-                  "truncated": false,
-                  "minutes_at_review": 1607
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "mid-6c014b",
-              "claim": "Reviewers describe encountering performance issues including rubber banding and consistent stuttering/lag during gameplay.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231327554",
-                  "hours_at_review": 58.4,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "rubber banding at 40 ping",
-                  "truncated": false,
-                  "minutes_at_review": 3501
-                },
-                {
-                  "recommendationid": "228048042",
-                  "hours_at_review": 58.4,
-                  "voted_up": false,
-                  "date": "2026-06-15",
-                  "review_text": "I wouldve loved this game if it didnt stuter with lag consistently every  seconds I cant really enjoy whatever there tying to make here the stutter is horrible\n\nOkay I take back ny edit im still getting lag killed and other players are experiencing severe stuttering making the game unplayable",
-                  "truncated": false,
-                  "minutes_at_review": 3505
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-accc20",
-              "claim": "Reviewers describe the user interface and menus as a backward step compared to previous titles, noting they were designed with console versions in mind.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230780092",
-                  "hours_at_review": 48.0,
-                  "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": "I'm not a big fan of the menus, I get that they were made taking into consideration the console versions, however on keyboard is a huge step backwards compared to the 2014 insurgency, I still haven't gotten used to it... \r\nOverall is a fun game, been enjoying it despite my nitpicks in some of the changes in direction compared to their standalone debut.\r\nRuns fine on my low end gaming laptop albeit having to use the minimal graphics settings due to the 4gb of vram my dedicated gpu has, otherwise I could probably crank it further.",
-                  "truncated": false,
-                  "minutes_at_review": 2882
-                },
-                {
-                  "recommendationid": "228311591",
-                  "hours_at_review": 54.8,
-                  "voted_up": true,
-                  "date": "2026-06-19",
-                  "review_text": "Pretty fun. Not so fun when you have to create separate loadouts for both insurgents and security where each has variations for day and night for each class (up to 8 classes) AND also it's gamemode dependent, so separate loadouts for Co-op vs PVP, as well as some other gamemodes (like outpost and survival) having separate loadouts as well.\n\nCo-op has 8 classes. 2 teams. Day & night. That is 32 if you make 1 loadout for each class. One loadout for each class is not enough of variantion IMO, so I ended up making on average 5 loadouts for each class. That's 160 loadouts. But that's just for Co-op. I'll need to make separate loadouts for PVP, though I heard there are lots of cheaters, so I stuck with Co-op for now. (Night time maps rarely get picked, so don't bother making as many loadouts as I did for that. 2 to 3 is fine.)\n\nGet this though. The \"not so fun\" part is not the part where you make the loadouts. It's when the game randomly decides to copy one of your loadouts onto another, thus replacing it. Unless I'm completely blind, there is no way to copy a loadout, so you can't just simply and quickly copy your Co-op classes into PVP. But the game sure as hell sometimes decides that the two loadouts I already have with M1 Garand are not enough and copies one of them over my AWP loadout so I need to remake it if I want to use that bolt-action rifle instead of a semi-auto WW2 rifle.\n\nAlso, sometimes the game forgets that you have a bipod on your gun. It will appear in-game, but your character doesn't use it and you can't fold it either. You have to go to the loadout menu, unequip the bipod and re-equip it. Then you have to actually resupply in-game to get the \"new\" loadout. Does your gun automatically come with a bipod? Great. Remove the gun and re-add it AND ALSO all the other attachments you had on it. Very fun times indeed.\n\nAnyway, fun to play when you're actually playing it and not doing maintenance.",
-                  "truncated": false,
-                  "minutes_at_review": 3288
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-508a02",
-              "claim": "Reviewers state that the user interface menus are poorly designed for keyboard controls.",
+              "claim_id": "mid-2df33d",
+              "claim": "Matchmaking frequently drops players into ongoing matches that are already halfway complete or nearing their end.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -610,148 +441,56 @@
               },
               "citations": [
                 {
-                  "recommendationid": "230804971",
-                  "hours_at_review": 25.4,
+                  "recommendationid": "239926238",
+                  "hours_at_review": 58.1,
+                  "minutes_at_review": 3484,
                   "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "One of the handful of shooters that works on Linux and honestly wish I could recommend the game but as it is now I can't. \n\nIt's fun but there is a severe lack of ability to just play with friends without having to jump into the cod brained, loser filled public lobbies, try and find a community server that fits what you want, or go through to process of hosting your own server. Steam gives you the tools so we can play with friends but you guys just refuse to actually put the effort into using it.\n\nEvery update is a handful of bug fixes, maybe one or two new additions, and 10 new cosmetic dlc's. For a game that is priced at $29.99 id expect there to be enough content to back up the price tag and insane amount of \"DLC's\", but the game is still fairly bare bones and feels like an early access. Yeah their are a decent number of maps but most of them feel so similar \n\nThe customization for each class is pretty awful and insanely restrictive so if you want to actually use anything alongside your primary weapon you can really only afford 1 or 2 attachments. Which can get fairly aggravating pretty fast.\n\nBesides the insanely greedy people behind it, this game its pretty interesting. If you're going to get it, get it while its 75%+ off otherwise its just not worth the money. It's fairly optimized, its a nice mix between COD, ARMA, and other tactical FPS games but, as it is now its not worth the price. It's yet another case I wish steam gave us a mixed option. But here the con's are enough I'd rather give it a thumbs down than thumbs up.",
-                  "truncated": false,
-                  "minutes_at_review": 1525
+                  "date": "2026-11-11",
+                  "review_text": "The gameplay itself is exceptionally well done, it's more realistic than just about any shooter I've played, very fun, and the coop element is well done, can't say much about PvP as I don't really care about that.\n\nHowever, while the gameplay and game design are great, their infrastructure is ABOMINABLE and someone needs to get fired ASAP. Assume that roughly 1 in 5 games will terminate either by the server dropping everyone or by making everyone lag so hard there's nothing left to do but leave. I don't know what kind of potato farms they're labeling as servers, but they suck ass.\n\nThe matchmaking also leaves  a lot to be desired, the only thing you can do is queue up, you can't filter which maps/lighting settings you want, can't choose to start a new match, most of the time you'll just be thrown into whatever match is already underway, half the time right as it ends, other times you'll have to wait 2-3 minutes to actually be spawned in because the team needs to capture an objective to respawn you. The wait is fine, but getting tossed into matches that are halfway through gets annoying fast.\n\nI strongly recommend this game only if you're willing to run your own servers or know someone who does, community servers work very well, server hosting is fairly simple, but their own servers are absolute ass",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230780092",
-                  "hours_at_review": 48.0,
+                  "recommendationid": "236841339",
+                  "hours_at_review": 23.3,
+                  "minutes_at_review": 1396,
                   "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": "I'm not a big fan of the menus, I get that they were made taking into consideration the console versions, however on keyboard is a huge step backwards compared to the 2014 insurgency, I still haven't gotten used to it... \r\nOverall is a fun game, been enjoying it despite my nitpicks in some of the changes in direction compared to their standalone debut.\r\nRuns fine on my low end gaming laptop albeit having to use the minimal graphics settings due to the 4gb of vram my dedicated gpu has, otherwise I could probably crank it further.",
-                  "truncated": false,
-                  "minutes_at_review": 2882
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 12,
-        "cited_recommend": 7,
-        "divergence_p": 0.0469,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 258,
-      "pct_positive": 81.0,
-      "muted": false,
-      "n_note": null,
-      "summary": "Long-term players appreciate the deliberate pacing while struggling with broken mod integration and unfair matchmaking.",
-      "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-168414",
-              "claim": "Mod support through mod.io is broken, making it difficult or impossible to download mods or join modded servers like ISMC.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "230192771",
-                  "hours_at_review": 573.5,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "All the good mods are broken because of the terrible mod.io integration and the absolute lack of ♥♥♥♥♥ given by the current developers the vanilla is still alright but going from ISMC to vanilla is a real downer and don't think I'll come back to the game until ISMC are gets updated or something similar comes out, If you feel the same as I do leave a negative review because the Devs keep screwing over the modders and without them this game will eventually die",
-                  "truncated": false,
-                  "minutes_at_review": 34408
-                },
-                {
-                  "recommendationid": "230128593",
-                  "hours_at_review": 231.0,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "used to be able to just hop on a modded server and play, but now basically all mod support appears to be broken. can't download mods on the mod.io page, cant thumbs up or down any mods, cant even download mods when trying to join a server. game has become basically unplayable for me as i'm mostly intersted in playing ISMC mod",
-                  "truncated": false,
-                  "minutes_at_review": 13861
-                },
-                {
-                  "recommendationid": "227190967",
-                  "hours_at_review": 100.1,
-                  "voted_up": false,
-                  "date": "2026-06-04",
-                  "review_text": "It's gonna be the best shooter you've ever played if you're a Johnny Gamer who only likes Call of Duty Cold Ops Black Warfare Modern Nicki Minaj Warzone Vanguard MCMXCVIII ft. Peter Griffin. Or it'll make you feel like you don't know how to play FPS games anymore, leading to a rage quit and a refund. Depends on how much you like shooter games really.\n\nIf you come here from more \"immersive\" types of shooters you'll enjoy the first 50 hours or so playing with vanilla gear, until you play a server (if those exist) that has the ISMC2 or Fullkit mods running. From that point on you'll never be able to enjoy vanilla as much, and you'll feel lazy if you ever try to reinstall the game, because mod support is complete poo poo for this game and NWI probably won't ever fix it. Takes forever to get a server to run, and some of them have way too many mods - more than they should have.\n\nNegative review because instead of fixing their mod management over the 8 years this game has been out, they release 2 guns, 2 sights, 1 map and a paid cosmetic pack every -decently sized- update. Once they actually try to develop the game, I'll change this. Steam Workshop is right there.",
-                  "truncated": false,
-                  "minutes_at_review": 6006
+                  "date": "2026-10-04",
+                  "review_text": "eos eats fps and cant get into a not already started game }:\n",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "difficulty",
+          "theme": "other",
           "claims": [
             {
-              "claim_id": "vet-3f8828",
-              "claim": "Character movements, reloads, weapon swapping, and other actions are intentionally slow to emphasize a tactical feel.",
-              "citation_verdict": "positive",
+              "claim_id": "mid-68ca43",
+              "claim": "Voice chat channels frequently feature toxic and racist behavior from other players.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231148232",
-                  "hours_at_review": 178.6,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "I've been playing Insurgency Sandstorm since the Exodus update, and still find myself coming back at least once every summer to play. The game still feels solid to play, and the lethality of the firefights still feel amazing years later. However, if you are an avid milsim/realistic shooter player, please note that this game came out during the era of: tactical = slow and methodical. In the case of Insurgency, this means your character always feels like he has been sedated and does literally every action in slow motion. Absolutely nothing is done quickly in this game. Reloads, weapon swapping, grenade throwing, and environmental interactions all feel like they've been slowed down to artificially amplify the \"tacticool\" and \"hardcore\" nature of the game. \n\nThe community is still solid, and I have yet to witness any notable toxicity in my 178 hours in the game. Matches still fill up quickly in NA, though if you play fairly consistently, you'll notice that you end up playing with the same guys more often than not. \n\nThe game has been out more than long enough for people to learn the ins and outs of every map, so matches against experienced players (which is most matches since the game came out in 2018) can quickly become cases of navigating around/finding the head-peeking m240 gunner with 4000 hours on the game sniping you across the map. This wouldn't be as much of an issue if 90% of the maps weren't open fields with a few shacks strewn about as \"cover\". The game really shines in its chaotic urban combat, but shows its cracks in its attempt at open combat.\n\nI would say buy the game on sale at this point in its lifespan. Content updates are free (but slow), the community is tight knit, and the combat is hectic and fun (when it's an urban map). However, the game it does show its age in a few ways. Your character feels like he was animated by an overweight Black Rifle vetbro, and the maps are heavily cheesed as players have stress tested each possible inch of them for 8 y…",
-                  "truncated": true,
-                  "minutes_at_review": 10715
+                  "recommendationid": "239020790",
+                  "hours_at_review": 49.8,
+                  "minutes_at_review": 2988,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "Not sure what it is about insurgency...\n\nGunplay is excellent all around, TTK is extremely short, maps and movement are great, fire support is really enjoyable and when your lobbies click, well that just ties it all together. That said, this game is dying, and the prime reason why is because it's community sucks.\n\nThe people with thousands of hours in insurgency seem to be some of the most unforgiving, toxic, unhelpful, and genuinely angry people that I have ever played games with. Matches are long, team play is important, and communication is paramount. So when you have a toxic, racist, deeply angry individual on your team, the game suffers, and the player base leaves. I like everything about this game except for the moderation. It's genuinely the wild west out there, which can result in a beautiful experience where the team excels independent of the individual. But in my experience about 7/10 games result in someone spouting racism, toxicity, and other forms of hate into voip. Mute works, sure but at the end of the day if you remove communication from insurgency, you lose what makes the game good.\n\nI really want to love this game, but the lack of moderation and the absolutely terrible community prevent me from giving it a recommendation in 2026. Maybe it was different when there were more players, but as it stands now, let the assholes have their game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229448319",
-                  "hours_at_review": 294.1,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Dislikes:\n1. Unstable matchmaking in PvP – often strong players end up on the same team.\n2. Animations and interface occasionally malfunction.\n3. Low player count.\n\nWhat makes the game interesting for me:\n1. Low TTK.\n2. Realistic setting.\n3. Tactics: good sound, shoot-through walls, smoke mechanics.\n4. Variety of gameplay styles.\n5. Technical aspects: the game runs smoothly on Proton 9.0-4 on Linux.\n6. Continuous development: released in 2018 but still gets updates.\n7. Moderate character customization.\n\nFor me, intense, close-score matches in Domination make up for all the game’s flaws.",
-                  "truncated": false,
-                  "minutes_at_review": 17645
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-359176",
-              "claim": "Co-op mode features artificial intelligence bots that can spot and shoot players through smoke and cover or spawn directly behind them.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "229439172",
-                  "hours_at_review": 426.6,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "One of my favorite realistic shooter titles of recent memory. Especially impressed by the functionality and attention to detail in the weaponry. If only the same engine and mechanics could also be used to make similar titles in other settings- Desert Storm I, Gothic Serpent, relevant modern real-world conflicts, or even WWII for that matter.\r\n\r\nDisclosure- I spend the vast majority of my time playing co-op modes. My only gripes are that as of the current iteration (this review written on 7/2/2026, came back recently after a long absence) fire support seems like it had been changed at some point. Helicopters get shot down left and right by the bots, but they're still extremely dangerous to human players, which seems like the worst of both worlds. A-10 gun runs feel badly neutered, they no longer destroy weapon caches and seldom get kills like they used to. I don't mind when hostile fire support is in practice, just high intensity ambiance. I do mind when mine does nothing. Mixed feelings about the nerf to the mounted .50 on technicals. Liked how absolutely terrifying these weapons were, if the bots were just too dangerous while using it- then nerf the bots not the weapon.\r\n\r\nAnd as for the bots themselves, they're wildly inconsistent. That's not necessarily a bad thing, keeps things interesting. The trouble is that sometimes the bots just can't decide if they're Elmer Fudd or Simo Hayha. Sometimes a bot will see and shoot you right through smoke and cover, sometimes you can camp in the same room as him and have a nice conversation with him before anyone starts shooting. Their movement can also be janky but that might just be map geometry. I repeat, not necessarily a problem, just very strange.",
-                  "truncated": false,
-                  "minutes_at_review": 25598
-                },
-                {
-                  "recommendationid": "227924870",
-                  "hours_at_review": 133.8,
-                  "voted_up": true,
-                  "date": "2026-06-14",
-                  "review_text": "I LOVE HOW OTHER PLAYERS JUST APPEAR BEHIND ME AND KILL ME! NO FOOTSTEP NOISE IS PEAK!!!!!!\nco-op mode is rigged af with the most op bots ever, just phantom spawning directly behind you and killing you too! \nNo but really everything else about this game rules tho",
-                  "truncated": false,
-                  "minutes_at_review": 8027
+                  "recommendationid": "236550157",
+                  "hours_at_review": 22.8,
+                  "minutes_at_review": 1370,
+                  "voted_up": false,
+                  "date": "2026-09-30",
+                  "review_text": "Great guns and graphics with fun gameplay that are ruined by an army of racist, moronic kids and a lack of game mode variety in a game with an already shrunk playerbase (why is there no deathmatch). Maybe start by monitoring VC and removing racist filth from your game to show some respect towards it. These 4chan edgelords are being mass produced because no one knows how to raise good kids anymore.\n\nYou’re not getting any new players if the game is mostly just waiting simulator cake with racist icing..",
+                  "truncated": false
                 }
               ]
             }
@@ -761,94 +500,303 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-809926",
-              "claim": "Matchmaking and team balancing can result in lopsided matches where experienced players end up grouped together on the same team.",
-              "citation_verdict": "positive",
+              "claim_id": "mid-1cb5c0",
+              "claim": "Reviewers report that the game lacks smooth performance and suffers from lag even when running on the lowest graphics settings.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 1,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231148232",
-                  "hours_at_review": 178.6,
+                  "recommendationid": "239285594",
+                  "hours_at_review": 26.2,
+                  "minutes_at_review": 1572,
                   "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "I've been playing Insurgency Sandstorm since the Exodus update, and still find myself coming back at least once every summer to play. The game still feels solid to play, and the lethality of the firefights still feel amazing years later. However, if you are an avid milsim/realistic shooter player, please note that this game came out during the era of: tactical = slow and methodical. In the case of Insurgency, this means your character always feels like he has been sedated and does literally every action in slow motion. Absolutely nothing is done quickly in this game. Reloads, weapon swapping, grenade throwing, and environmental interactions all feel like they've been slowed down to artificially amplify the \"tacticool\" and \"hardcore\" nature of the game. \n\nThe community is still solid, and I have yet to witness any notable toxicity in my 178 hours in the game. Matches still fill up quickly in NA, though if you play fairly consistently, you'll notice that you end up playing with the same guys more often than not. \n\nThe game has been out more than long enough for people to learn the ins and outs of every map, so matches against experienced players (which is most matches since the game came out in 2018) can quickly become cases of navigating around/finding the head-peeking m240 gunner with 4000 hours on the game sniping you across the map. This wouldn't be as much of an issue if 90% of the maps weren't open fields with a few shacks strewn about as \"cover\". The game really shines in its chaotic urban combat, but shows its cracks in its attempt at open combat.\n\nI would say buy the game on sale at this point in its lifespan. Content updates are free (but slow), the community is tight knit, and the combat is hectic and fun (when it's an urban map). However, the game it does show its age in a few ways. Your character feels like he was animated by an overweight Black Rifle vetbro, and the maps are heavily cheesed as players have stress tested each possible inch of them for 8 y…",
-                  "truncated": true,
-                  "minutes_at_review": 10715
+                  "date": "2026-11-03",
+                  "review_text": "The game is a fun mix of arcade and hardcore shooter , its hard and easy enough to to be a fun and challenging  game  but the game is kinda unoptimised i would always experience some lag while playing even at low settigs . the game is  active enough to find coop matces without waiting but its hard to find pcp matches (in asia) also the custom servers list arent working as of now .",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229448319",
-                  "hours_at_review": 294.1,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Dislikes:\n1. Unstable matchmaking in PvP – often strong players end up on the same team.\n2. Animations and interface occasionally malfunction.\n3. Low player count.\n\nWhat makes the game interesting for me:\n1. Low TTK.\n2. Realistic setting.\n3. Tactics: good sound, shoot-through walls, smoke mechanics.\n4. Variety of gameplay styles.\n5. Technical aspects: the game runs smoothly on Proton 9.0-4 on Linux.\n6. Continuous development: released in 2018 but still gets updates.\n7. Moderate character customization.\n\nFor me, intense, close-score matches in Domination make up for all the game’s flaws.",
-                  "truncated": false,
-                  "minutes_at_review": 17645
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-3bbaec",
-              "claim": "Reviewers describe issues with mod integration, stating that downloading or managing mods through mod.io fails when trying to join servers.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "230192771",
-                  "hours_at_review": 573.5,
+                  "recommendationid": "237273394",
+                  "hours_at_review": 31.0,
+                  "minutes_at_review": 1861,
                   "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "All the good mods are broken because of the terrible mod.io integration and the absolute lack of ♥♥♥♥♥ given by the current developers the vanilla is still alright but going from ISMC to vanilla is a real downer and don't think I'll come back to the game until ISMC are gets updated or something similar comes out, If you feel the same as I do leave a negative review because the Devs keep screwing over the modders and without them this game will eventually die",
-                  "truncated": false,
-                  "minutes_at_review": 34408
-                },
-                {
-                  "recommendationid": "230128593",
-                  "hours_at_review": 231.0,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "used to be able to just hop on a modded server and play, but now basically all mod support appears to be broken. can't download mods on the mod.io page, cant thumbs up or down any mods, cant even download mods when trying to join a server. game has become basically unplayable for me as i'm mostly intersted in playing ISMC mod",
-                  "truncated": false,
-                  "minutes_at_review": 13861
-                },
-                {
-                  "recommendationid": "227190967",
-                  "hours_at_review": 100.1,
-                  "voted_up": false,
-                  "date": "2026-06-04",
-                  "review_text": "It's gonna be the best shooter you've ever played if you're a Johnny Gamer who only likes Call of Duty Cold Ops Black Warfare Modern Nicki Minaj Warzone Vanguard MCMXCVIII ft. Peter Griffin. Or it'll make you feel like you don't know how to play FPS games anymore, leading to a rage quit and a refund. Depends on how much you like shooter games really.\n\nIf you come here from more \"immersive\" types of shooters you'll enjoy the first 50 hours or so playing with vanilla gear, until you play a server (if those exist) that has the ISMC2 or Fullkit mods running. From that point on you'll never be able to enjoy vanilla as much, and you'll feel lazy if you ever try to reinstall the game, because mod support is complete poo poo for this game and NWI probably won't ever fix it. Takes forever to get a server to run, and some of them have way too many mods - more than they should have.\n\nNegative review because instead of fixing their mod management over the 8 years this game has been out, they release 2 guns, 2 sights, 1 map and a paid cosmetic pack every -decently sized- update. Once they actually try to develop the game, I'll change this. Steam Workshop is right there.",
-                  "truncated": false,
-                  "minutes_at_review": 6006
+                  "date": "2026-10-09",
+                  "review_text": "good game. i had to give up. it doesn't run smooth even on lowest settings. i hope i can refund. too late tho",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-6997411e",
+          "text": "One reviewer reports encountering cheaters literally speedhacking and spinbotting.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "236222125",
+            "hours_at_review": 38.0,
+            "minutes_at_review": 2283,
+            "voted_up": false,
+            "date": "2026-09-26",
+            "review_text": "Chill game if you want to play co-op. Good game mechanics, graphics and performance\nBUT\nCheaters not getting banned for thousands hours. Literally speedhacking and spinbotting",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-91273e28",
+          "text": "One reviewer states that this game has very good pve modes and it even have a localplay mode.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "238780894",
+            "hours_at_review": 43.2,
+            "minutes_at_review": 2592,
+            "voted_up": true,
+            "date": "2026-10-28",
+            "review_text": "This game has very good pve modes and it even have a localplay mode.",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 2,
+        "divergence_p": 0.00665,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 267,
+      "pct_positive": 81.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Veterans report ongoing connection issues, server lag, unexpected crashes, and repetitive matchmaking loops.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-117272",
+              "claim": "Players experience frequent connection losses, server lag, and being placed back into matches they just left.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240552166",
+                  "hours_at_review": 1124.1,
+                  "minutes_at_review": 67444,
+                  "voted_up": false,
+                  "date": "2026-11-19",
+                  "review_text": "Trash since other devs took over. dead game, cheaters, high ping.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238747902",
+                  "hours_at_review": 317.4,
+                  "minutes_at_review": 19044,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "tried it again. you people cant seem to fix the lag in this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238503860",
+                  "hours_at_review": 506.6,
+                  "minutes_at_review": 30397,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "I wish Steam had a sideways thumb, because I've never had such a love-hate relationship with a game.\n\nEver since they introduced cross-platform play, the connection issues have been absolutely insane. They existed before, but they've gotten significantly worse.\n\nI actually jumped back on today after taking a long break and decided to try the new CHAD666 content.\n\nFirst game? Connection lost.\n\nSecond game? Connection lost.\n\nThere's nothing quite like being deep into a match, having a great time, and suddenly noticing everyone running endlessly into walls. You know exactly what's coming next. It's infuriating.\n\nAfter 30 minutes, I uninstalled the game again.\n\nHere's the thing, though. I have over 500 hours in *Insurgency: Sandstorm*, so I'm certainly not going to pretend I haven't gotten my money's worth. When the game actually works, it's fantastic. The gunplay is excellent, the atmosphere is intense, and the developers consistently release new content. There's a lot to love here.\n\nBut you know what I'd love even more than new content? **Being able to play the damn game without getting disconnected.**\n\nThat's what makes this so frustrating. Underneath all these connection issues is a genuinely great shooter that I've spent hundreds of hours enjoying. I want to keep playing it, but the game seems determined not to let me.\n\nSo, the thumbs-up is for the 500 hours of great memories and the genuinely fantastic gameplay.\n\nThe thumbs-down is for the current state of the servers and the fact that I can't seem to finish a match without getting disconnected.\n\n**Final verdict: 👍👎 — I love this game. I also hate this game. And apparently, the servers hate me.**",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235822763",
+                  "hours_at_review": 278.1,
+                  "minutes_at_review": 16683,
+                  "voted_up": false,
+                  "date": "2026-09-22",
+                  "review_text": "mad under-rated... only FPS that NAILS shotguns\n\nEDIT: swapping my review to negative... if i leave a match it is for a reason, such as a hopeless team, but this game just puts you back in the match you left most of the time",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-01abd7",
+              "claim": "Leaving a multiplayer match repeatedly drops the player back into the same active session.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "237745151",
+                  "hours_at_review": 225.6,
+                  "minutes_at_review": 13533,
+                  "voted_up": false,
+                  "date": "2026-10-15",
+                  "review_text": "While this game used to be one of my favorite semi-tactical shooters, unfortunately the players who still do play this game haven't stopped playing and are just way to good. The player count is also low enough to that you can't leave and join another game because it'll just drop you into the same server. If you are new to this game, avoid it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235822763",
+                  "hours_at_review": 278.1,
+                  "minutes_at_review": 16683,
+                  "voted_up": false,
+                  "date": "2026-09-22",
+                  "review_text": "mad under-rated... only FPS that NAILS shotguns\n\nEDIT: swapping my review to negative... if i leave a match it is for a reason, such as a hopeless team, but this game just puts you back in the match you left most of the time",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-2b6ee3",
+              "claim": "Reviewers encounter unexpected crashes during gameplay.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "237047346",
+                  "hours_at_review": 293.2,
+                  "minutes_at_review": 17595,
+                  "voted_up": false,
+                  "date": "2026-10-06",
+                  "review_text": "keep crashing while i send bomb strike lol",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235996675",
+                  "hours_at_review": 1264.9,
+                  "minutes_at_review": 75892,
+                  "voted_up": false,
+                  "date": "2026-09-24",
+                  "review_text": "stupid crashes and situations. hardcore almost unplayable after updates",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-ca21ff",
+              "claim": "Reviewers report that leaving a match can result in the matchmaking system immediately placing the player back into the same match.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "237745151",
+                  "hours_at_review": 225.6,
+                  "minutes_at_review": 13533,
+                  "voted_up": false,
+                  "date": "2026-10-15",
+                  "review_text": "While this game used to be one of my favorite semi-tactical shooters, unfortunately the players who still do play this game haven't stopped playing and are just way to good. The player count is also low enough to that you can't leave and join another game because it'll just drop you into the same server. If you are new to this game, avoid it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235822763",
+                  "hours_at_review": 278.1,
+                  "minutes_at_review": 16683,
+                  "voted_up": false,
+                  "date": "2026-09-22",
+                  "review_text": "mad under-rated... only FPS that NAILS shotguns\n\nEDIT: swapping my review to negative... if i leave a match it is for a reason, such as a hopeless team, but this game just puts you back in the match you left most of the time",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-3512bbc0",
+          "text": "One reviewer says that night maps have broken shaders with glowing textures that are visible to the whole server.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240606713",
+            "hours_at_review": 331.6,
+            "minutes_at_review": 19899,
+            "voted_up": false,
+            "date": "2026-11-20",
+            "review_text": "open game, check community servers, 0 servers found, click refresh button, does nothing. go to Mods, sign in required, click mod.io button, does nothing. open mod.io in steam overlay, log in, requires verification code from email, does nothing because it only accepts codes from the same browser, cannot resend code for 15 minutes.\n\njoin with matchmaking, night map, go to capture point, mosque has broken shaders, glowing textures, not client side, whole server sees it. gun with a bipod, click bipod key, does nothing. rebind key, does nothing. shoot AI bots, they have spawn protection for 30 seconds. bullets, do nothing.\n\nwell done guys hey dont forget to link your Epic Games account, your PROS account, and your Mod.io account to get the full experience just kidding because that also does nothing",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-a784ea32",
+          "text": "One reviewer notes that heavy armor is almost completely useless and anything over 9mm will penetrate it easily.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239898420",
+            "hours_at_review": 167.9,
+            "minutes_at_review": 10073,
+            "voted_up": true,
+            "date": "2026-11-10",
+            "review_text": "After revisiting the game after many years. game is in a pretty good spot. It does a lot of things well: lethality, sound design, and customization. Poor balancing mechanics though, every game is a dice roll. Also they have made heavy armor almost completely useless, anything over 9mm will pen heavy armor pretty easily. Overall it has held up well.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-91439fd1",
+          "text": "One reviewer mentions that favorites will not stay chosen and they are no longer able to enter an IP address into the game.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "237867629",
+            "hours_at_review": 2637.8,
+            "minutes_at_review": 158271,
+            "voted_up": false,
+            "date": "2026-10-16",
+            "review_text": "Every time an update is done, new problems are made. Now, the favorites will not stay chosen. Also, I'm now not able to enter an IP address into the game. There are also some maps that I can not play, while friends can't play other maps.\r\nMore testing is required before releasing the updates.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-0bfb4c63",
+          "text": "One reviewer says mod.io basically broke their personal favorite part of the game.",
+          "theme": "access",
+          "citation": {
+            "recommendationid": "234421709",
+            "hours_at_review": 1259.6,
+            "minutes_at_review": 75574,
+            "voted_up": false,
+            "date": "2026-09-04",
+            "review_text": "Used to be an amazing game, specifically the modding side. Mod.io basically broke my personal favorite part of the game tho. a real shame",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
         "cited_reviews": 7,
-        "cited_recommend": 4,
-        "divergence_p": 0.131,
+        "cited_recommend": 1,
+        "divergence_p": 0.000251,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
     "pool_n": 1200,
-    "steam_total_reviews": 74300,
+    "steam_total_reviews": 74765,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/581320/5cea6f39f733394deda9f85e36722d4ca5e3db5f/header.jpg?t=1779984920",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/581320/a528a5c27d1a8eb3068dea3a10397e11b21ccbe6/capsule_231x87.jpg?t=1779984920",
-    "grid": "https://cdn2.steamgriddb.com/grid/f42fc75eac59b332ae535e1a6bcc0713.png"
   }
 }

@@ -62,6 +62,53 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-11-21 | **Refresh night 4 spent 404 of its 400 batch calls** | `evals/batch-2026-11-21.txt` |
+generate() checked the ledger before starting a title, but the ledger counts only
+calls already sent. With two workers, the last titles started on about 16 calls left,
+while the other title still had most of its calls to come. Dead by Daylight cost 18.
+Live had 96 rather than 100 that day; live usage was 0. **Fixed 2026-11-21 (owner: "fix
+it")**: `run_batch.py` admits a title only if it and every running title can each
+still reach `TITLE_RESERVE` = 18 calls, the highest any of 528 published records has
+cost. It is a measurement, not a ceiling: a title above 18 can still overshoot by its
+excess. Tests: `pipeline/test_refresh.py` (night 4's 32 real costs replayed at six
+budgets). Mutations: `evals/mutate-inflight-reservation-2026-11-21.txt`, 6/6. Cost: the
+night stops one title earlier.
+
+2026-11-21 | **INCIDENT: a mutation run overwrote the real `data/batch_state.json`** |
+first run of `evals/mutate_inflight_reservation_2026-11-21.py` | Case ir05 skipped the
+admission check, so a stub title in the new test reached `record()`. The test had not
+redirected `run_batch.STATE`, so night 4's 32 records were replaced with one fake
+record. Night 4's records were uncommitted, and no backup existed. The driver's
+end-of-run check reported "batch_state.json False", but it did not restore the file.
+**Rebuilt by `evals/reconstruct_batch_state_2026-11-21.py`** from three sources:
+HEAD (all records through night 3, byte-exact), the batch log (calls; seconds, rounded
+to whole seconds), and the verdict files (appid; `at` from the mtime, about 1 s before
+the original stamp). The night-4 run entry's `started` comes from the wrapper header.
+Each rebuilt record carries `"reconstructed": true`. The rebuilt calls sequence matched,
+in file order, the one read from the real file minutes before it was lost. Guards since:
+the test redirects `STATE`, and the driver now restores real state after every case and
+fails if any case reached it. The committed mutation log is from the second, clean run.
+
+2026-11-21 | **Agent audit reads before tonight judged QR-4 on the printed 260
+characters only** | `evals/audit-4.4-2026-11-21.md` #11 | `make_audit_sample.py` cuts
+review text at about 260 characters (entry 2026-11-16, recorded then as a problem for
+judging support). It matters for QR-4 too: tonight's Far Cry 5 citation has its
+problem line after the cut. The 11-16, 11-18 and 11-19 agent reads covered only the cut
+text, so their "no NSFW or slur text" covers those characters, not the whole reviews.
+The automated gate read every citation in full on every night, but it is a wordlist.
+Not fixed. Either the sampler prints full text, or every read pulls it from the
+verdict file, as tonight's did.
+
+2026-11-21 | **The automated QR-4 gate cannot see hate speech without a listed term** |
+Far Cry 5 `240601374` | "bought out by Israel and then liquidated and scattered to the
+winds" passed `qr4_gate.py`, because no word in it is on `block_en.txt`, and none should
+be. Only a human or a model judge reads it as hostile. A model QR-4 pass would cost
+quota on every generation; this needs a measured proposal before anything is built.
+> **2026-11-21, owner decision: A, fail it.** Far Cry 5's refresh was held back. The
+> live page stays at its 2026-08-10 version, and the title is recorded `qr4_failed`
+> (`manual: true`), so the refresh never retries it. Refreshing it again needs a way to
+> keep this review out of the sample, and that does not exist yet.
+
 2026-11-18 | **The meaning check passes compound claims that a cited review only
 half-supports** | audit reads, refresh nights 1 and 2 | Three of 40 audited citations:
 People Playground "It's a fun sandbox game." under a three-part claim (11-16 #18);
@@ -76,6 +123,11 @@ each review supports. Either needs a measured gate before rollout.
 > Rivals, #19 Elden Ring Nightreign; `evals/audit-4.4-2026-11-19.md`). That makes 6 of
 > 60 audited citations across three nights. These are agent reads, not a judge
 > measurement, so it is a recurrence count, not a rate. Still not fixed.
+> **2026-11-21, owner decision: accepted, won't fix.** "Claims are created based on
+> reviews, and those same reviews are under 'receipts' of that claim. So it's fine."
+> The receipts are the reviews the claim was built from, so a reader can see exactly
+> what each one says. Audit reads no longer flag this pattern, and no fix is planned.
+> Reopen only on the owner's word.
 
 2026-11-16 | **The hand audit never samples a one-reviewer point's citation** |
 building `evals/audit-4.4-2026-11-16.md` | `make_audit_sample.py` draws citations from

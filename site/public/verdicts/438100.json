@@ -1,104 +1,80 @@
 {
   "appid": "438100",
   "game_name": "VRChat",
-  "generated_at": "2026-08-10T10:08:16Z",
+  "generated_at": "2026-11-21T02:38:31Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/438100/header.jpg?t=1762366454",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/438100/capsule_231x87.jpg?t=1762366454",
+    "grid": "https://cdn2.steamgriddb.com/grid/28dafe9cfbcf6f32037bd9b80b97dc4e.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 12,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
-    "word": "Wait",
-    "tagline": "Endless social worlds driven by user creation, plagued by technical friction and toxicity.",
+    "word": "Skip",
+    "tagline": "Boundless social spaces compromised by severe moderation flaws and invasive anti-cheat.",
     "for_you_if": [
-      "you seek boundless social spaces to explore with friends",
-      "you stick to private lobbies to avoid public toxicity",
-      "you enjoy discovering user-created worlds and avatars"
+      "you seek vast user-generated social worlds",
+      "you organize private sessions with trusted friends",
+      "you build custom avatars and environments"
     ],
     "not_for_you_if": [
-      "you want stable performance in virtual reality mode",
-      "you expect robust content moderation in public spaces",
-      "you refuse to pay for age verification features"
+      "you rely on public lobbies for social interaction",
+      "you need stable frame rates and smooth performance",
+      "you are unwilling to navigate intrusive anti-cheat software",
+      "you expect reliable moderation in public spaces"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 79,
-      "pct_positive": 38.0,
+      "pool_n": 90,
+      "pct_positive": 11.1,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 472,
-      "pct_positive": 70.8,
+      "pool_n": 349,
+      "pct_positive": 28.1,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 384,
-      "pct_positive": 74.7,
+      "pool_n": 392,
+      "pct_positive": 22.7,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 518,
-      "pct_positive": 67.8,
+      "pool_n": 1307,
+      "pct_positive": 14.4,
       "muted": false
     }
   ],
   "distortion_flags": [
     {
-      "flag_id": "cohort_divergence",
-      "type": "segmentation",
-      "direction": null,
-      "shape": "rise_then_fall",
-      "sentence": "Reviewer sentiment rises past the refund window before dipping among long-term players.",
+      "flag_id": "recency_shift",
+      "type": "recency",
+      "direction": "declined",
+      "shape": null,
+      "sentence": "Recent reviews reflect a sharp drop in overall approval compared to lifetime ratings.",
       "evidence": {
-        "sequence": [
-          {
-            "cohort": "refund_window",
-            "label": "under 2 hours",
-            "pct_positive": 38.0,
-            "pool_n": 79
-          },
-          {
-            "cohort": "early",
-            "label": "2-20 hours",
-            "pct_positive": 70.8,
-            "pool_n": 472
-          },
-          {
-            "cohort": "mid",
-            "label": "20-100 hours",
-            "pct_positive": 74.7,
-            "pool_n": 384
-          },
-          {
-            "cohort": "veteran",
-            "label": "over 100 hours",
-            "pct_positive": 67.8,
-            "pool_n": 518
-          }
-        ],
-        "shape": "rise_then_fall",
-        "low_cohort": "refund_window",
-        "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 38.0,
-        "low_pool_n": 79,
-        "high_cohort": "mid",
-        "high_cohort_label": "20-100 hours",
-        "high_pct_positive": 74.7,
-        "high_pool_n": 384,
-        "gap_pts": 36.7,
-        "peak_cohort": "mid",
-        "peak_pct_positive": 74.7,
-        "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 67.8,
-        "drop_after_peak_pts": 6.9
+        "recent_pool_pct_positive": 18.0,
+        "recent_pool_n": 2138,
+        "recent_window_days": 365,
+        "steam_lifetime_pct_positive": 69.0,
+        "steam_total_reviews": 182813,
+        "delta_pts": -51.0
       }
     }
   ],
@@ -107,18 +83,86 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 79,
-      "pct_positive": 38.0,
+      "pool_n": 90,
+      "pct_positive": 11.1,
       "muted": false,
       "n_note": null,
-      "summary": "Early players encounter toxic behavior and paid age verification gates immediately.",
+      "summary": "Early players encounter invasive anti-cheat issues and monetization hurdles for age verification.",
       "themes": [
         {
-          "theme": "other",
+          "theme": "monetization",
           "claims": [
             {
-              "claim_id": "ref-430319",
-              "claim": "Reviewers report encountering users shouting racial slurs in public spaces.",
+              "claim_id": "ref-cfd5a3",
+              "claim": "Reviewers report that age verification requires a paid subscription.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240388754",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 93,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "you have to pay money to verify that you are 18+, a monthly subscription or yearly is required to be able to do anything and it's a miracle no one's made a different version of vrc that isn't like this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239987195",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 31,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "have to pay money to get age verified\n",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-cba1da",
+              "claim": "Reviewers report technical issues with the Easy Anti-Cheat software, including instances where legitimate system files were flagged or where the software required manual termination upon uninstalling.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239851567",
+                  "hours_at_review": 1.1,
+                  "minutes_at_review": 68,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "anti cheat so bad it identified a SYSTEM32 file as untrusted",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239103912",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 95,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Dev's refuse to comply with steam guidelines on AI Usage and labelling. \nDo not install, Do not trust these devs.\n\nDev's are also incompentent and you have to manually kill Easy Antii-Cheat on uninstall. Is this 2007?",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ref-3c282c",
+              "claim": "Reviewers report that the developers conducted a community survey regarding generative AI content, and the developers chose not to implement labels or filters.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -126,86 +170,68 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231078211",
-                  "hours_at_review": 0.3,
+                  "recommendationid": "239811129",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 70,
                   "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "Did not like being called profanities and slurs on this game. Big nope for me.",
-                  "truncated": false,
-                  "minutes_at_review": 19
+                  "date": "2026-11-09",
+                  "review_text": "So.... community feedback request about AI, then ignore the 95% because management is full into it, like the head-of-\"community\" who self-professed to be invested in Palantir of all things. It does explain why they chose Palantir... sorry, Persona, as an ID verification vendor.\n\nThey could have been going after the toxic elements, but instead joined up with the sludge.\n\nTheir stance on filters is \"you forget them\"... yeah, I want those to stay like that, like my NSFW/Gore/etc filters. Do you want to reset those as well?",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229562236",
-                  "hours_at_review": 0.8,
+                  "recommendationid": "239426316",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 61,
                   "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "im not saying the game itself is bad but the people who play it are just toxic, racist and more that will probably get censored by steam. ive seen people roleplaying very weird stuff like being a nazi, beating up black people and calling them the n word and more disturbing stuff. and just by the fact that i only played 80 minutes and saw these stuff is very bad since many kids play this game. sorry for any bad english.",
-                  "truncated": false,
-                  "minutes_at_review": 46
+                  "date": "2026-11-05",
+                  "review_text": "Asked the community about ai, got an overwhelmingly negative response, decides to do nothing about that anyway. Oh wait no they didn't, they turned around and flat out side \"we know better than u\".",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229969944",
-                  "hours_at_review": 1.7,
+                  "recommendationid": "239229617",
+                  "hours_at_review": 1.8,
+                  "minutes_at_review": 105,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "Too many racists I got called the n word I don't think the person who called me the n word is banned",
-                  "truncated": false,
-                  "minutes_at_review": 101
+                  "date": "2026-11-02",
+                  "review_text": "They conducted a survey where 95% of their user base said they wanted AI generated content labeled within the game. They ignored the survey and decided to continue allowing AI generated content to go unlabeled.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229979414",
-                  "hours_at_review": 0.5,
+                  "recommendationid": "238809162",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 111,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "4/10. Could be worse\n\nSo many racial slurs.",
-                  "truncated": false,
-                  "minutes_at_review": 31
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ref-450a8d",
-              "claim": "Reviewers note that the game requires personal identification or payment in order to use age verification features.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231836779",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Can't play if you're an Australian\nlaunched for first time and to even do anything they want full goverment id\nI just wanted to play a lil fishing game with friends, why do they want personal information for that?",
-                  "truncated": false,
-                  "minutes_at_review": 43
-                },
-                {
-                  "recommendationid": "230726291",
-                  "hours_at_review": 0.6,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "you gotta pay to get age verified. Because you totally want to give your personal info to a video game company.",
-                  "truncated": false,
-                  "minutes_at_review": 34
+                  "date": "2026-10-29",
+                  "review_text": "The devs of this game refuse to label AI generated content. They also refuse to provide an option for players to filter out AI generated content. As someone who actively avoids communities and products that support AI, this is absolutely unacceptable to me.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-0368577b",
+          "text": "One reviewer says the anti cheat is so bad it identified a SYSTEM32 file as untrusted.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "239851567",
+            "hours_at_review": 1.1,
+            "minutes_at_review": 68,
+            "voted_up": false,
+            "date": "2026-11-10",
+            "review_text": "anti cheat so bad it identified a SYSTEM32 file as untrusted",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 6,
+        "cited_reviews": 8,
         "cited_recommend": 0,
-        "divergence_p": 0.0568,
+        "divergence_p": 0.39,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -213,96 +239,340 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 472,
-      "pct_positive": 70.8,
+      "pool_n": 349,
+      "pct_positive": 28.1,
       "muted": false,
       "n_note": null,
-      "summary": "Players run into loading crashes and offensive public interactions.",
+      "summary": "New arrivals face widespread inappropriate behavior in public lobbies alongside unaddressed community concerns.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-546a65",
-              "claim": "Reviewers note the presence of toxic behavior, harassment, and offensive language such as racial slurs in public spaces.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-a78cf7",
+              "claim": "Reviewers report that the developers declined to implement a filter or label for generative AI content despite survey results showing overwhelming player support for it.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 3,
-                "negative": 0
+                "positive": 0,
+                "negative": 17
               },
               "citations": [
                 {
-                  "recommendationid": "231701733",
-                  "hours_at_review": 2.3,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "I never write reviews for games but I want to give my input. When I played VRChat back in like, maybe 2018 (I currently play primarily on VR so I don't have a lot of hours on my pc), it was so much fun and less toxic compared to now days. Derogatory slurs to POC/Queer individuals, harassment both on a cyberbullying level or inappropriately and just generally more annoying individuals like trolls or people who just have no respect for others personal spaces, interests or comfortability. This game *can* be fun, but you really need to find your group of people and if you're not the offensive type intentionally or for dark humor, then your chances of finding people to hang out with are slim unless you know where to look before hand.\nIf you get easily offended or any mental disorders like depression or anxiety, I strongly suggest either coming into this game with extreme caution or just avoiding it all together and that isn't to be rude... It's really bad.\n\nThese issues probably wont ever be fixed because the moderation from what I've heard is garbage, which is probably why its such a rampant issue because they know they can get away with it lol.\n\nIf you already have a group of friends, I do recommend playing it, but doing friends/invite only worlds or worlds who are strictly moderated. Which is the only reason why I'm giving this game a thumbs up, because like I said, it *can* be fun, it's just so damn specific...",
-                  "truncated": false,
-                  "minutes_at_review": 140
+                  "recommendationid": "240625478",
+                  "hours_at_review": 7.5,
+                  "minutes_at_review": 451,
+                  "voted_up": false,
+                  "date": "2026-11-20",
+                  "review_text": "Step 1: ask your users if you should require a label for AI generated content\nStep 2: get results that 95% of players say yes\nStep 3: ignore the answer and just don’t do it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229911013",
+                  "recommendationid": "240567113",
+                  "hours_at_review": 3.8,
+                  "minutes_at_review": 229,
+                  "voted_up": false,
+                  "date": "2026-11-19",
+                  "review_text": "Only \"good\" thing about this game is popcorn palace. Even then, it's literally pirated movies. \n\nMy friends were groomed on this game. Each of them having a horror story about it. Now I hear they are refusing to label ai generated content as AI after 95% of people who did the survey said to add it? What's the point of even putting out a survey? This game is creepy. Why is there so much anime fan service as well? \n\nI never understood why people enjoyed this game other then strictly playing in private servers.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238817049",
+                  "hours_at_review": 10.7,
+                  "minutes_at_review": 639,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "95% poll in favor of anti-AI filters. And the developers said no. They made the poll with the option and when their entire playerbase said \"yes, please do this\", they said \"Nah, jk, eat your garbage.\"\n\nAside from that though. My god is this thing littered with kids. And oh boy is it easy for them to get their hands on adult content in here. This is not a \"throw little timmy into the digital daycare\" type of game. This is \"throw little timmy into the freggin redlight district\". It makes me feel like I'm going to get put on a list just for booting up the game, when every time I enter a public lobby there's some pre-pubescent child running around in a half naked anime girl avatar with jiggle physics screaming slurs at everyone. I guarantee any adult tech savvy enough to be able to monitor what their kids are doing in VR would NEVER allow them to even boot up this game, because they'd be tech savvy enough to know how stupid that is before even seeing it. And that's not to say the adult stuff being there is bad. I want it to be there. The issue is how easy it is for kids to access and how willing parents are to just drop their kid into a virtual space they can't look inside of and just expect it to be fine. Another case of Idiot parents, kids, and greedy corporations ruining good things for everybody else. Anything where online users are given free reign to produce practically anything they want should be treated with absolute caution from parents, but the vast majority of them just, don't care. All they care is they get to spend a one time payment of 500$ for a device that gives them day care for years, and they could care less what it's actually doing. Any parents reading this, it's not the program's fault, it's yours for letting your kid use it in the first place. These things are ungovernable. No matter how hard developers try, you cannot prevent edge cases from leaking through in an unlimited sandbox. The best you can hope for is mitigation. Roblox is a perfect exam…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238886082",
+                  "hours_at_review": 12.5,
+                  "minutes_at_review": 751,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "\"So we saw 95% of you want AI tagged, which is why we're not adding an AI tagging feature, because you might turn it on!!\"\n\nAlso they have age verification, where you scan your ID in and send it off to Palantir or something, and use easy anti-cheat to shut down accessibility mods.\n\nJust every decision this company makes is terrible. Resonite is calling.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238883145",
+                  "hours_at_review": 8.1,
+                  "minutes_at_review": 486,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Be VRChat.\n\nBe in early access.\n\nSend out a survey asking for a community feature.\n\nGet overwhelming response from 21k players, some, if not most with hundred if not thousands of hours in your platform. Most of which probably used VRC+\n\n95% of responses were mostly asking for removal or at least a filter of AI generated content.\n\nTell your customers that you don't want to add an AI filter because you people would use it.(?!)\n\nTell your customers you are going fully support AI generated content. \n\nBunch of people cancel VRC+, move to other platforms, and leave bad reviews.\n\nBut hey, at least you got a bunch of slop on the platform that no one engages with, congrats?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238775330",
+                  "hours_at_review": 6.8,
+                  "minutes_at_review": 407,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "VRChat has decided not to disclose when a world is made with gen-ai, so into the garbage goes the whole game.  It would have been so easy to take a stand on this, but y'all are apparently cowards who don't care.  Goodbye forever.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238872129",
+                  "hours_at_review": 10.9,
+                  "minutes_at_review": 654,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Cancelling my vrchat+ subscription due to their unwillingness to label AI content - and be able to block it in its entirety.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238786102",
+                  "hours_at_review": 16.4,
+                  "minutes_at_review": 983,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Cannot recommend this game until the devs decide to stop being cowards and implement flagging for ai slopcoded worlds. 95% of the community want this, per their own data\n\nReally validating my decision to cancel VRC+",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238885468",
                   "hours_at_review": 14.8,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "BAD: Kids screaming racial slurs, weird E-couples.\r\ngood: Really cool skin to try, and play with THE BOYZZ",
-                  "truncated": false,
-                  "minutes_at_review": 889
+                  "minutes_at_review": 890,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "despite asking for(and receiving) feedback, VRChat has decided to ignore the 95% majority consensus to add an AI tag to content found in-game\n\nnot even demanding it be removed(which, let's face it, it should be) just asking for a tag, so that human players can continue to interact with human-made content",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229927635",
-                  "hours_at_review": 11.2,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "i saw a  trans furry call someone the n word \r\n\r\n\r\n10/10 would witness racism again",
-                  "truncated": false,
-                  "minutes_at_review": 675
+                  "recommendationid": "238840679",
+                  "hours_at_review": 8.9,
+                  "minutes_at_review": 534,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Very weak AI policy. They asked for feedback from the community and instead of accepting that most of the community would rather have tags and ways to avoid AI content, their spine was too lacking to go through with proper tagging and filters for it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238814939",
+                  "hours_at_review": 12.9,
+                  "minutes_at_review": 777,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Devs decided to pick shooting themselves in the foot as their favorite hobby by completely going against 95% of their playerbase regarding labelling AI content.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238824598",
+                  "hours_at_review": 18.8,
+                  "minutes_at_review": 1127,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Defending AI usage and ignoring the overwhelming majority of your users is downright absurd. It would be comical if it wasn't so depressing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239324879",
+                  "hours_at_review": 17.9,
+                  "minutes_at_review": 1073,
+                  "voted_up": false,
+                  "date": "2026-11-04",
+                  "review_text": "The developers chose to alienate a large portion of their player base by not requiring any filter or warning on user generated content featuring ai generated content despite the vast majority voted to at least include a label for such content.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238878781",
+                  "hours_at_review": 19.2,
+                  "minutes_at_review": 1155,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "the company is focusing on using ai then keeping their players informed about it with just adding a label to ai generated content, 95 percent of there users said they wanted these labels.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238958343",
+                  "hours_at_review": 2.5,
+                  "minutes_at_review": 150,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Getting 95% of people to agree on basically anything is unheard of. You achieved that, and promptly ignored all of them.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238884727",
+                  "hours_at_review": 17.0,
+                  "minutes_at_review": 1022,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Undisclosed AI content of all kinds. Absolute failure to listen to their user's concerns about AI use in content, VRC is unwilling to allow users to filter AI content, and self-moderation/curation is sorely lacking. Age verification is dangerous and cumbersome and requires a paid account. It's just a clusterf*** of bad decisions over the course of years - and there are better metaverse options to choose from.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238843335",
+                  "hours_at_review": 10.2,
+                  "minutes_at_review": 611,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "I wanted to like this game and enjoy it to bond with friends, but the decision of the developers to flat out REFUSE to label AI-generated content or give users a filter is antithetical to the foundation of creative mind that made it what it is today.\n\nJustifying not giving a filter because \"you never see that part of VRChat again\" is absolutely ridiculous, that is the entire point of a filter. I don't think any big company was ever worried about their users \"never seeing\" adult or violent content when they apply filters on those.",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "access",
           "claims": [
             {
-              "claim_id": "ear-fda0b9",
-              "claim": "Reviewers report that the game crashes while loading into worlds or sessions.",
+              "claim_id": "ear-701737",
+              "claim": "Reviewers state that age verification requires a paid subscription.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "231863239",
-                  "hours_at_review": 7.4,
+                  "recommendationid": "240495736",
+                  "hours_at_review": 4.2,
+                  "minutes_at_review": 255,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "game crash, weird people, kids e-dating, furry.",
-                  "truncated": false,
-                  "minutes_at_review": 443
+                  "date": "2026-11-18",
+                  "review_text": "> Find a group that I really like\n> Heard they have a VR Chat server\n> I went there to only find out that I need to be 18+ to join their server\n> No problem. I'm already 24--you need an ID to verify your age.\n> Not a good start but I'm sure its not that big of a --\n> You need a VRC+ to verify your fucking age.\n> Man, fuck this.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231680327",
-                  "hours_at_review": 14.2,
+                  "recommendationid": "238846817",
+                  "hours_at_review": 5.2,
+                  "minutes_at_review": 314,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "it keeps crashing every time i load into a game",
-                  "truncated": false,
-                  "minutes_at_review": 852
+                  "date": "2026-10-29",
+                  "review_text": "The only reason I 'play' this game is to use VRC avatars for Vtubing and that is it. If anything this thing is a tool.\nThey are going against Steam's TOS by not disclosing AI usage, refuse to add filters and treat their own users like dirt. Not to mention the lack of moderation makes public worlds a breeding ground for abusers and bad actors. The age verification does not work and you need to pay in order to get checked at all. IF YOU HAVE STEAM FAMILY OR ARE UNDER 18, STAY AWAY.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238884727",
+                  "hours_at_review": 17.0,
+                  "minutes_at_review": 1022,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Undisclosed AI content of all kinds. Absolute failure to listen to their user's concerns about AI use in content, VRC is unwilling to allow users to filter AI content, and self-moderation/curation is sorely lacking. Age verification is dangerous and cumbersome and requires a paid account. It's just a clusterf*** of bad decisions over the course of years - and there are better metaverse options to choose from.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-11a5b9",
+              "claim": "Reviewers note that public lobbies contain inappropriate behavior, harassment, and exposure of minors to adult content.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 7
+              },
+              "citations": [
+                {
+                  "recommendationid": "240613854",
+                  "hours_at_review": 16.1,
+                  "minutes_at_review": 968,
+                  "voted_up": false,
+                  "date": "2026-11-20",
+                  "review_text": "The way they handled the ai content on this game was down right disrespectful to the talented creators on this app, also the lack of a decent moderation system lets child predators run rampant.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240567113",
+                  "hours_at_review": 3.8,
+                  "minutes_at_review": 229,
+                  "voted_up": false,
+                  "date": "2026-11-19",
+                  "review_text": "Only \"good\" thing about this game is popcorn palace. Even then, it's literally pirated movies. \n\nMy friends were groomed on this game. Each of them having a horror story about it. Now I hear they are refusing to label ai generated content as AI after 95% of people who did the survey said to add it? What's the point of even putting out a survey? This game is creepy. Why is there so much anime fan service as well? \n\nI never understood why people enjoyed this game other then strictly playing in private servers.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240553183",
+                  "hours_at_review": 9.8,
+                  "minutes_at_review": 585,
+                  "voted_up": false,
+                  "date": "2026-11-19",
+                  "review_text": "like its fun sometmes i guess but this game genuinely ruined my life. players are rude, and predators are EVERYWHERE",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238817049",
+                  "hours_at_review": 10.7,
+                  "minutes_at_review": 639,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "95% poll in favor of anti-AI filters. And the developers said no. They made the poll with the option and when their entire playerbase said \"yes, please do this\", they said \"Nah, jk, eat your garbage.\"\n\nAside from that though. My god is this thing littered with kids. And oh boy is it easy for them to get their hands on adult content in here. This is not a \"throw little timmy into the digital daycare\" type of game. This is \"throw little timmy into the freggin redlight district\". It makes me feel like I'm going to get put on a list just for booting up the game, when every time I enter a public lobby there's some pre-pubescent child running around in a half naked anime girl avatar with jiggle physics screaming slurs at everyone. I guarantee any adult tech savvy enough to be able to monitor what their kids are doing in VR would NEVER allow them to even boot up this game, because they'd be tech savvy enough to know how stupid that is before even seeing it. And that's not to say the adult stuff being there is bad. I want it to be there. The issue is how easy it is for kids to access and how willing parents are to just drop their kid into a virtual space they can't look inside of and just expect it to be fine. Another case of Idiot parents, kids, and greedy corporations ruining good things for everybody else. Anything where online users are given free reign to produce practically anything they want should be treated with absolute caution from parents, but the vast majority of them just, don't care. All they care is they get to spend a one time payment of 500$ for a device that gives them day care for years, and they could care less what it's actually doing. Any parents reading this, it's not the program's fault, it's yours for letting your kid use it in the first place. These things are ungovernable. No matter how hard developers try, you cannot prevent edge cases from leaking through in an unlimited sandbox. The best you can hope for is mitigation. Roblox is a perfect exam…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238786623",
+                  "hours_at_review": 7.8,
+                  "minutes_at_review": 467,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "VRChat makes it really easy to explore some of the coolest community maps ever made in VR, either by yourself or with friends. Unfortunately, the rest of VR Chat also exists...\n\nFor real though, I don't give a fuck what consenting adults do to each other with their VR headsets, seriously, go nuts. But for fucks sake, either make the game 18+ or figure out how to make it IMPOSSIBLE for kids to see that shit. Seriously, how does a studio not go into nuclear emergency mode the first time their game and grooming are mentioned in the same sentence. Genuinely, what the fuck are you doing?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240162855",
+                  "hours_at_review": 10.3,
+                  "minutes_at_review": 620,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "15 minutes in and someone called me the n word, harrassing me and making inapropriate comments. \r\nThere are some seriously twisted people in there, would absolutely NOT recommend for anyone under 18",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238846817",
+                  "hours_at_review": 5.2,
+                  "minutes_at_review": 314,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "The only reason I 'play' this game is to use VRC avatars for Vtubing and that is it. If anything this thing is a tool.\nThey are going against Steam's TOS by not disclosing AI usage, refuse to add filters and treat their own users like dirt. Not to mention the lack of moderation makes public worlds a breeding ground for abusers and bad actors. The age verification does not work and you need to pay in order to get checked at all. IF YOU HAVE STEAM FAMILY OR ARE UNDER 18, STAY AWAY.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-c3ed34",
+              "claim": "Reviewers note that the moderation system is inadequate, leaving public spaces vulnerable to abusive behavior and exposure of children to inappropriate content.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240613854",
+                  "hours_at_review": 16.1,
+                  "minutes_at_review": 968,
+                  "voted_up": false,
+                  "date": "2026-11-20",
+                  "review_text": "The way they handled the ai content on this game was down right disrespectful to the talented creators on this app, also the lack of a decent moderation system lets child predators run rampant.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238846817",
+                  "hours_at_review": 5.2,
+                  "minutes_at_review": 314,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "The only reason I 'play' this game is to use VRC avatars for Vtubing and that is it. If anything this thing is a tool.\nThey are going against Steam's TOS by not disclosing AI usage, refuse to add filters and treat their own users like dirt. Not to mention the lack of moderation makes public worlds a breeding ground for abusers and bad actors. The age verification does not work and you need to pay in order to get checked at all. IF YOU HAVE STEAM FAMILY OR ARE UNDER 18, STAY AWAY.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 5,
-        "cited_recommend": 3,
-        "divergence_p": 0.455,
+        "cited_reviews": 23,
+        "cited_recommend": 0,
+        "divergence_p": 0.000507,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -310,125 +580,209 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 384,
-      "pct_positive": 74.7,
+      "pool_n": 392,
+      "pct_positive": 22.7,
       "muted": false,
       "n_note": null,
-      "summary": "Experiences improve when moving away from public spaces into private sessions with friends.",
+      "summary": "Regular players report performance lags and disruptive public spaces, alongside frustrating anti-cheat limitations.",
       "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-06505c",
+              "claim": "Reviewers report performance issues on PC, describing the game as laggy.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240589419",
+                  "hours_at_review": 38.8,
+                  "minutes_at_review": 2325,
+                  "voted_up": true,
+                  "date": "2026-11-19",
+                  "review_text": "great for hanging out and goofing but is laggy af on pc",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238919327",
+                  "hours_at_review": 70.9,
+                  "minutes_at_review": 4252,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Vrchat has had almost a decade in development, and to this day is an inconsistent, buggy, and laggy experience. The literal only thing that kept this game alive was the community and the humans in that community having the talent to create worlds and avatars. So here we are, a decade into development, with practically the exact same issues this game has always had still unfixed, and the developers of Vrchat decide that prioritizing AI is the best move. Even despite a near 100% of players being in favor of stricter rules and controls for AI content. Unbelievable behavior. Maybe next time listen to the people who play your game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-849069",
+              "claim": "Reviewers note that the developers implemented anti-cheat, which blocked client-side accessibility and quality-of-life mods while failing to stop particle-based crashing and avatar ripping.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239148305",
+                  "hours_at_review": 53.1,
+                  "minutes_at_review": 3189,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "> Adds Anti-cheat nobody asked for, making countless community accessibility mods impossible\r\n[four years later]\r\n> Hey people! do you want an AI-disclosure to avoid slop??\r\n[Yes, yes we do]\r\n> Too bad, not getting it anyway because we said so.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239216221",
+                  "hours_at_review": 57.9,
+                  "minutes_at_review": 3471,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "While this game is one of the biggest reasons I even got into VR, I cannot say I can recommend it.\n\nBack in July 2022, the developers added Easy Anti Cheat to prevent malicious mods/clients that crashed and harassed other users. Despite this, crashing other users through particle-based methods and ripping avatars remain relatively easy, while EAC blocks any way for client side QOL or accessibility mods to be used. This is also why I dislike VRC+. Some functionality that was previously available through these client side mods, such as expanded avatar favorites through eg. FavCat, is now locked behind this subscription.\n\nThe developers also recently decided against adding any way to label AI generated content. I personally feel that users should be able to tell whether content was made using generative AI, especially those who would rather avoid it.\n\nIt's a shame to have to create this review, because I used to really like this game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-294ac5",
-              "claim": "Reviewers state that the game is significantly better and more enjoyable when played with friends or in private lobbies compared to public spaces.",
-              "citation_verdict": "positive",
+              "claim_id": "mid-29f3c0",
+              "claim": "Reviewers describe public lobbies as filled with harassment, slurs, loud children, and lewd or oversized avatars.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 7,
-                "negative": 3
+                "positive": 3,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231785240",
-                  "hours_at_review": 79.8,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "It's really fun when you have a group of friends playing together. It can be an interesting place to meet others, but beware the underage children that are scattered around. VR Chat is really a neutral place for all ages to gather, you just need to find your own niche.",
-                  "truncated": false,
-                  "minutes_at_review": 4790
-                },
-                {
-                  "recommendationid": "231764900",
-                  "hours_at_review": 53.2,
+                  "recommendationid": "240607477",
+                  "hours_at_review": 78.0,
+                  "minutes_at_review": 4678,
                   "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Great to play with friends, not by yourself.\n\nKeep that in mind",
-                  "truncated": false,
-                  "minutes_at_review": 3192
+                  "date": "2026-11-20",
+                  "review_text": "This game is somewhat good, don't get me wrong but most public lobbies are either full of kids saying vulgar things or lewd avatars that have assets twice the size of your head.\r\nI would recommend you play with friends only unless you want to take the risk and try to play/make friends in a public lobby.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231568940",
-                  "hours_at_review": 56.5,
+                  "recommendationid": "240494107",
+                  "hours_at_review": 22.7,
+                  "minutes_at_review": 1360,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Was forced to play this game with a few friends (unfortunately several times)\n\nBut after joining a public server once, I am glad to stick to the friends only lobbies (^-^;)",
-                  "truncated": false,
-                  "minutes_at_review": 3392
+                  "date": "2026-11-18",
+                  "review_text": "Joined in multiple lobbies. Got called slurs, and got hit on by every E girl and Fem boy imaginable. 10/10, would play again",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231560345",
-                  "hours_at_review": 25.4,
+                  "recommendationid": "240390928",
+                  "hours_at_review": 98.6,
+                  "minutes_at_review": 5916,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Fun with friends. Thats really the point of the game. Is best with vr.",
-                  "truncated": false,
-                  "minutes_at_review": 1525
+                  "date": "2026-11-16",
+                  "review_text": "my first experience was getting called a slur and everyone has their knockers out all the time, 10/10 great mmo",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231526250",
-                  "hours_at_review": 31.2,
+                  "recommendationid": "240284824",
+                  "hours_at_review": 58.1,
+                  "minutes_at_review": 3488,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Great game the communities is nice to me and my friends made so much memories on the way I highly recommend this game. Just avoid the trolls and the weird people.",
-                  "truncated": false,
-                  "minutes_at_review": 1872
+                  "date": "2026-11-15",
+                  "review_text": "me and friends heard slurs within the first microsecond of joining a public server",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229489262",
-                  "hours_at_review": 96.1,
+                  "recommendationid": "240252965",
+                  "hours_at_review": 25.0,
+                  "minutes_at_review": 1502,
                   "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "I'm going to start this off by saying that this review has absolutely nothing to do with anything in public instances. I've been avoiding those for as long as I've been playing. I play with friends in invite-only intances exclusively, and for that this game is perfect.\r\nI'm leaving a negative review because ♥♥♥♥ MANDATORY AGE VERIFICATION. If I'm forced to give up my privacy and anonymity to access certain content, I will simply leave the game entirely. I don't *want* to, but the truth is there are alternatives that I could absolutely migrate to, and if it comes to that, I will.",
-                  "truncated": false,
-                  "minutes_at_review": 5765
-                },
+                  "date": "2026-11-15",
+                  "review_text": "do not play vrchat if you dont wanna see fucking yitties and dih",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-fef8e7",
+              "claim": "Reviewers state that the developers conducted a survey regarding AI-generated content labels and filters, but ultimately refused to implement them despite community responses.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
                 {
-                  "recommendationid": "229640497",
-                  "hours_at_review": 51.6,
+                  "recommendationid": "240445503",
+                  "hours_at_review": 81.1,
+                  "minutes_at_review": 4865,
                   "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "Most the player bass is wired. So yeah, I'll just stay in my private worlds.",
-                  "truncated": false,
-                  "minutes_at_review": 3098
+                  "date": "2026-11-17",
+                  "review_text": "The Dev's have NOT been paying attention the actual what the community wants, we WANTED LESS AI slop on the front page for worlds and items, and ai tags for stuff, BUT NAH, they ignored the dumpster fire they created with the past few  updates.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229871714",
-                  "hours_at_review": 95.0,
-                  "voted_up": true,
-                  "date": "2026-07-07",
-                  "review_text": "Its a fun game I enjoyed playing with friends and being what and who I want but it is filled with racist people and everyone swears for no reason so I stay in a private lobby so I don't hear racism",
-                  "truncated": false,
-                  "minutes_at_review": 5703
+                  "recommendationid": "240337346",
+                  "hours_at_review": 63.5,
+                  "minutes_at_review": 3812,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "Imagine asking your community about including an AI tag to filter out AI garbage, which 95% of the votes said yes to, and then saying \"nah\". **** you, VRS#it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229739075",
-                  "hours_at_review": 48.0,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "This game might as well be the definition of Your Mileage May Vary. You either have the absolute worst time with it, or have a pretty good time with it. It's a blast with friends, but do be weary of public servers...\n...or so I hear. A good chunk of my playtime is exclusively with friends.",
-                  "truncated": false,
-                  "minutes_at_review": 2882
+                  "recommendationid": "238778813",
+                  "hours_at_review": 64.8,
+                  "minutes_at_review": 3885,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "Administration of VRChat posted a poll asking users their feelings about generative AI and what should be done about it on VRChat.  Over 95% of respondents said they wanted filters and labels for AI-generated content. Quote from VRChat administration:  \"What about filters so I can completely turn off this content? We're not adding them.\"\n\nVRChat is one of the biggest hubs for art and creativity on the modern Internet. By refusing even basic moderation of AI-generated worlds and assets, VRChat leadership is making it clear that they do not value or understand the artists that drive the core of VRChat's community.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229628397",
-                  "hours_at_review": 45.7,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "It is a good game don't get me wrong, but it's 100 times better with friends. Public lobbys are alright, but it's better with friends. But i recommend this for people 13+ who wanna play in private lobbys or with friends.",
-                  "truncated": false,
-                  "minutes_at_review": 2742
+                  "recommendationid": "238813810",
+                  "hours_at_review": 44.5,
+                  "minutes_at_review": 2672,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "They asked the community if we wanted a system the required users to tag if they used Generative AI in a world upon upload. They said that 95% of the users did want that, then decided to ignore us. Claiming it would just hurt the community, and other completely irrelevant excuses.\n\nResonite, has had a feature for people to tag if they used AI in the creation of assets. And are actively working on policy of how to deal with it if not tagged properly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238844744",
+                  "hours_at_review": 50.5,
+                  "minutes_at_review": 3027,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "> Makes a poll asking the community if they want a AI label\n> 96% voted they want a label\n> Refuse to add the label because idk it doesnt please their investors probably\n\nfor years vrchat have been neglecting vrchat's community security and feedback. I'm not surprised the game is so unsafe and anti consumer. You guys suck.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239216221",
+                  "hours_at_review": 57.9,
+                  "minutes_at_review": 3471,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "While this game is one of the biggest reasons I even got into VR, I cannot say I can recommend it.\n\nBack in July 2022, the developers added Easy Anti Cheat to prevent malicious mods/clients that crashed and harassed other users. Despite this, crashing other users through particle-based methods and ripping avatars remain relatively easy, while EAC blocks any way for client side QOL or accessibility mods to be used. This is also why I dislike VRC+. Some functionality that was previously available through these client side mods, such as expanded avatar favorites through eg. FavCat, is now locked behind this subscription.\n\nThe developers also recently decided against adding any way to label AI generated content. I personally feel that users should be able to tell whether content was made using generative AI, especially those who would rather avoid it.\n\nIt's a shame to have to create this review, because I used to really like this game.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 10,
-        "cited_recommend": 7,
-        "divergence_p": 0.483,
+        "cited_reviews": 14,
+        "cited_recommend": 4,
+        "divergence_p": 0.806,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -436,169 +790,50 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 518,
-      "pct_positive": 67.8,
+      "pool_n": 1307,
+      "pct_positive": 14.4,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players report severe virtual reality performance drops, toxic interactions, awkward moderation tools, disconnect loops, and paywalled verification features.",
+      "summary": "Long-term players point to severe moderation gaps and unaddressed content tracking features.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-875605",
-              "claim": "Reviewers report that the game suffers from poor performance and low frame rates in virtual reality mode.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231820526",
-                  "hours_at_review": 464.8,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I average 45fps on SteamVR on Vrchat, Played it for well over 2000 Hours on meta and around 500 Hours on Steam as i make this review, I have made so many friends thanks to vrchat, and i would say this game has helped me talk to new people not just in game but in real life, I was pretty socially awkward before this",
-                  "truncated": false,
-                  "minutes_at_review": 27889
-                },
-                {
-                  "recommendationid": "229803040",
-                  "hours_at_review": 206.1,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "VRChat is a mixed bag. \nIt can be looked from different angles and the outcome can vary a lot. From one angle, this game is where you can create and share impressive, visually stunning characters with absolutely incredible features, I am getting surprised what is possible in this era of gaming almost every time I go there. And the fact that it can be used in VR mode is just one more reason why I think it can be just an incredible experience, whether users have just basic VR kit, or something more advanced, such as full body tracking, or even face tracking (eyes and mouth).\nAnd then, we look from different angles, and we can see: horribly optimized game (even with decent rig, I might struggle to keep FPS in VR above 30 in certain areas even when the shown avatar count is set to low), or the overall limitations of the engine (the parameter count limit - those who make avatars in Unity will know), the ones responsible for \"running\" this platform and their decisions, TOS, monetization, age verification and validation are ... \"questionable\" to say the least (plus the fact that without community making content, their game is basically a hollow shell). And of course the community - you can meet the weirdest weirdos, or the most amazing people (just like in real life, who would have guessed?)\nThis game is truly incredible experience, one of a kind - the concept of the game is incredible, but it has its flaws.",
-                  "truncated": false,
-                  "minutes_at_review": 12365
-                },
-                {
-                  "recommendationid": "229613567",
-                  "hours_at_review": 135.5,
-                  "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "I saw a review that says this game is basically VR Roblox, and yeah, that hits the nail on the head. There's some goodies in it, but for all intents and purposes, the good is outweighed by the bad. It may not be the loftsided 10:90 some people try to make it, but in my experience id say Good:Bad its like 43:57.\n\nThe game also runs pretty poorly in VR, even with an optimized avatar. This isn't entirely VRChats fault, as a lot of lag comes from *other* peoples avatars, but the fact i can barely hit 90 FPS on the *home world* on the lowest settings doesn't really help. Sure, my PC isn't exactly a VR Powerhouse, but it should still be able to keep up. and hate me if ya want, im not blowing 500 bones on 16 more gb of RAM.  At that point it'd be better to just get the steam frame and run that standalone.",
-                  "truncated": false,
-                  "minutes_at_review": 8132
-                },
-                {
-                  "recommendationid": "229978230",
-                  "hours_at_review": 311.0,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "I've mainly played on PC and my Specs have changed throughout my time playing from a gaming laptop to a mid-teir gaming pc to now with a semi-high teir pc and no matter what it's been playable in PC mode. in VR mode it seems to be a mess with it barely playing via the link cable. dispite this I still reccomend this as the people you will meet vary a bunch and there's infinite adventure to be had. the moderation of avatars is a bit wonky and not the best so expect to randomly lose a avatar or two.",
-                  "truncated": false,
-                  "minutes_at_review": 18659
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-f40337",
-              "claim": "Reviewers describe disconnect issues and repetitive navigation steps required to rejoin game sessions after losing connection.",
+              "claim_id": "vet-ce5aca",
+              "claim": "Reviewers describe public lobbies containing unmoderated underage users exposed to adult content and grooming behavior.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "229712645",
-                  "hours_at_review": 2129.9,
+                  "recommendationid": "240675915",
+                  "hours_at_review": 4123.9,
+                  "minutes_at_review": 247437,
                   "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "Every update has progressively made it harder for me to play since I tend to disconnect. At first I could just rejoin in a matter of seconds, now i have to disconnect twice in a row and get sent back to the default vrc world before i can rejoin which usually requires me to get an invite back, and it happens consistently.\nThe game itself is also nearly unbearable in public instances.",
-                  "truncated": false,
-                  "minutes_at_review": 127796
+                  "date": "2026-11-21",
+                  "review_text": "after sinking a hole lot of hours and money in this game, you get banned by AI MODDERATION because they are lazy and don't use real people to modderate there game. doesn't help that there are a lot of preds on this game that are trying to find kids.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229611046",
-                  "hours_at_review": 4288.2,
+                  "recommendationid": "240618337",
+                  "hours_at_review": 399.8,
+                  "minutes_at_review": 23987,
                   "voted_up": false,
-                  "date": "2026-07-04",
-                  "review_text": "I don't know about any other pc player's having this issue, but whenever I try to look around it bugs my entire game out and my pc is built to handle huge games. No matter what game I join in vrchat I always have the issue which mean it's not the game I join, it's vrchat. \r\nAs I said, I have no idea if anyone else has had this problem but it's so bad to the point I cannot play the game. I have never had this issue before until all these updates came into place.",
-                  "truncated": false,
-                  "minutes_at_review": 257290
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "vet-8e9c71",
-              "claim": "Reviewers report that the community features many toxic individuals, including trolls, racists, and people screaming slurs.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231707627",
-                  "hours_at_review": 354.9,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "If you're looking for a game that personifies the internet, look no further than VRchat. It's got it all, from the racist and sexist to the wholesome. You'll find just about every kind of person on here, if you spend enough time on it.",
-                  "truncated": false,
-                  "minutes_at_review": 21296
+                  "date": "2026-11-20",
+                  "review_text": " This is less of a negative review and more of a mixed review. I have put 400+ hours into this game (and more to come) and yet, it leaves me with a bitter-sweet taste.\r\n Yes, it's free. Yes, it has lots of amazing moments as it's entirely built around the premise of socialization combined with immersion, leading to a everly evolving experience fuelled by it's active community. These factors are great, but there are some things that I wish are improved on.\r\n My main complaint, regulation - I'm chill with (prefer even) minimal boundaries in terms of rules and regulations on platforms. However, if we have moderation not actively taking measures against underage users to the extent of literal kids being in the same lobbies with porn avatars (and this is a thing I COMMONLY see), then the the very loose lines I've drawn have most certainly been crossed in terms of regulation. This furthermore results in the game's current child predation problem, as I have witnessed multple children getting groomed in-game. This is horrible and should have more action taken against it (excluding ID age verification as I'll explain later in this review). Yes, it's mostly the parent's/guardian's fault too for allowing their children to enter something they themselves are not familiar with, but there should at least be an effort to expel underage users from the game, as one measure (the parents/guardians in this case) isn't always enough.\r\n My second complaint, age verification - I know it's required in many places around the world (it still sucks, just search online to find out why), but to have a status locked behind it, even outside those regions is honestly shitty play. What makes VRChat's age verification process even worse though, is their collaboration with the age verification vendor Persona, who is known to forward their data to the literal American Government without people's knowledge for God-knows-what. As of me writing this, it has been roughly 8 months since Persona has been ca…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "231650036",
-                  "hours_at_review": 1058.1,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "this games fun until someone spams n word",
-                  "truncated": false,
-                  "minutes_at_review": 63486
-                },
-                {
-                  "recommendationid": "229968033",
-                  "hours_at_review": 221.2,
+                  "recommendationid": "238866103",
+                  "hours_at_review": 425.1,
+                  "minutes_at_review": 25503,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "With the wave of age verification specially with it locked behind a one time payment of VRChat+ it has brought out a whole new wave of narcissistic, cringy, elitist scum that make VrChat as bad as all its haters say it is.\n\nIf your here to meet people to try to help with social issues then try to find groups in discords or something as open worlds are playgrounds for some of these scum of the planet to just be horrible people, or the kids running around in avatars that are naked and made to crash the game or even the PC screaming slurs at the top of their little annoying lungs. Which will make you wonder why their parents haven't come in and slapped them upside the head...\n\nBut once in a very great while you may find one or two people that are generally good people that introduce you to groups that will open Vrchat to a whole new place of friends becoming like family... just for them to turn against you or use you until they are done with you then kick you to a curb like a used cond.. umm yea you get the picture i hope.\n\nVrchat was once a great idea for people to get together to have fun, throw parties and meet people from all over the world. To learn things to be part of something. Now its just a cesspit of deranged, narcissist, elitist, that thank they get to do what ever they want because they paid $10 once upon a time to prove they are \"adults\". \n\nI'm glade i got to meet a few genuinely great people that i still can call friends  but i wouldn't recommend Vrchat unless you are already know some people that already play it. Also you don't need high end headsets or FBT( full body tracking) as some will tell you, Start off small just use the pc desktop version then maybe a quest before you think about going all in on something like the Index with tracking pucks for full body.",
-                  "truncated": false,
-                  "minutes_at_review": 13271
-                },
-                {
-                  "recommendationid": "229812504",
-                  "hours_at_review": 148.0,
-                  "voted_up": true,
-                  "date": "2026-07-07",
-                  "review_text": "so honestly the game is really fun if you just dont pay attention to the people who scream slurs and other stuff just make friends a block the bad ones.",
-                  "truncated": false,
-                  "minutes_at_review": 8879
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-618a1b",
-              "claim": "Reviewers mention encountering players who scream slurs or use offensive language in public spaces.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "229968033",
-                  "hours_at_review": 221.2,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "With the wave of age verification specially with it locked behind a one time payment of VRChat+ it has brought out a whole new wave of narcissistic, cringy, elitist scum that make VrChat as bad as all its haters say it is.\n\nIf your here to meet people to try to help with social issues then try to find groups in discords or something as open worlds are playgrounds for some of these scum of the planet to just be horrible people, or the kids running around in avatars that are naked and made to crash the game or even the PC screaming slurs at the top of their little annoying lungs. Which will make you wonder why their parents haven't come in and slapped them upside the head...\n\nBut once in a very great while you may find one or two people that are generally good people that introduce you to groups that will open Vrchat to a whole new place of friends becoming like family... just for them to turn against you or use you until they are done with you then kick you to a curb like a used cond.. umm yea you get the picture i hope.\n\nVrchat was once a great idea for people to get together to have fun, throw parties and meet people from all over the world. To learn things to be part of something. Now its just a cesspit of deranged, narcissist, elitist, that thank they get to do what ever they want because they paid $10 once upon a time to prove they are \"adults\". \n\nI'm glade i got to meet a few genuinely great people that i still can call friends  but i wouldn't recommend Vrchat unless you are already know some people that already play it. Also you don't need high end headsets or FBT( full body tracking) as some will tell you, Start off small just use the pc desktop version then maybe a quest before you think about going all in on something like the Index with tracking pucks for full body.",
-                  "truncated": false,
-                  "minutes_at_review": 13271
-                },
-                {
-                  "recommendationid": "229812504",
-                  "hours_at_review": 148.0,
-                  "voted_up": true,
-                  "date": "2026-07-07",
-                  "review_text": "so honestly the game is really fun if you just dont pay attention to the people who scream slurs and other stuff just make friends a block the bad ones.",
-                  "truncated": false,
-                  "minutes_at_review": 8879
+                  "date": "2026-10-29",
+                  "review_text": "VRChat used to be the ultimate hub for human creativity, beautiful community-made worlds, and genuine social connection. Today, it is a textbook example of a company prioritizing corporate greed and investor demands over the safety, desires, and hard work of its own playerbase. \n\nIf you are thinking about playing this game or buying VRChat+, [b]please read this first.[/b]\n\n[h2]1. The Ultimate Betrayal of Creators (The 95% AI Slop Issue)[/h2]\nVRChat was built on the backs of human artists, 3D modelers, and passionate creators. Recently, the platform has been flooded with low-effort, Generative-AI \"slop\" worlds and assets. \nThe developers put out a survey asking the community how to handle this. [b]Over 21,000 people responded, and 95% asked for a label and a filter for AI content.[/b] \nThe developers' response? They explicitly said [b]NO[/b]. \n\nTheir reasoning? They stated that if they add an AI filter, [i]\"filters get set once and forgotten, and then you never see that part of VRChat again.\"[/i] \n[b]THAT IS THE ENTIRE POINT OF A FILTER.[/b] We don't want to see stolen, soulless AI generation. The developers admitted they would rather protect the \"feelings\" of AI-prompters than protect the real artists who built this game. Furthermore, VRChat is currently violating Steam's TOS by failing to disclose their own use of AI on their store page.\n\n[h2]2. Rampant Unmoderated Grooming & Predator Issues[/h2]\nThis game is absolutely not safe for children, and parents need to be warned. VRChat has a severe, well-documented issue with predators and groomers. Users have consistently reported finding adults actively grooming minors, and when reported, VRChat moderation does absolutely nothing. The predators simply make new accounts or are ignored entirely. \n[i]The developers currently fight harder to protect AI-generated slop than they do to protect minors on their platform.[/i]\n\n[h2]3. A History of Anti-Consumer Decisions[/h2]\nThis AI debacle is just the latest in a long line of t…",
+                  "truncated": true
                 }
               ]
             }
@@ -608,119 +843,495 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-007a40",
-              "claim": "Reviewers mention that user-created worlds and avatars rely heavily on community content, but avatar and content moderation is described as poor or wonky.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231660451",
-                  "hours_at_review": 1222.1,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "This game solely relies on it's playerbase for content. All of the content made is mostly user-created which does open doors for creative people but with how late and mid the moderation is, I would say it's not worth it to allow just any user to make avatars and worlds for the platform. Also VRChat has pushing out more FOMO slop for 30 every month not including everything else that's present in the store. Also this game is friendslop because all the games are either made by Jar or badly designed not to mention the unreasonable amount of competitive people. Also all of the \"beautiful\" worlds that are recommended are filled with post-processing, god-rays, and yandere-dev level modelling. Only reason why I play this game is to larp",
-                  "truncated": false,
-                  "minutes_at_review": 73326
-                },
-                {
-                  "recommendationid": "229978230",
-                  "hours_at_review": 311.0,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "I've mainly played on PC and my Specs have changed throughout my time playing from a gaming laptop to a mid-teir gaming pc to now with a semi-high teir pc and no matter what it's been playable in PC mode. in VR mode it seems to be a mess with it barely playing via the link cable. dispite this I still reccomend this as the people you will meet vary a bunch and there's infinite adventure to be had. the moderation of avatars is a bit wonky and not the best so expect to randomly lose a avatar or two.",
-                  "truncated": false,
-                  "minutes_at_review": 18659
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "vet-43e495",
-              "claim": "Reviewers report that age verification features are tied to paid subscription status.",
+              "claim_id": "vet-d997f5",
+              "claim": "Reviewers report that the developers conducted a survey regarding generative AI and subsequently declined to implement requested content labeling or filtering features.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 48
               },
               "citations": [
                 {
-                  "recommendationid": "229968033",
-                  "hours_at_review": 221.2,
+                  "recommendationid": "240553189",
+                  "hours_at_review": 6160.5,
+                  "minutes_at_review": 369630,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "With the wave of age verification specially with it locked behind a one time payment of VRChat+ it has brought out a whole new wave of narcissistic, cringy, elitist scum that make VrChat as bad as all its haters say it is.\n\nIf your here to meet people to try to help with social issues then try to find groups in discords or something as open worlds are playgrounds for some of these scum of the planet to just be horrible people, or the kids running around in avatars that are naked and made to crash the game or even the PC screaming slurs at the top of their little annoying lungs. Which will make you wonder why their parents haven't come in and slapped them upside the head...\n\nBut once in a very great while you may find one or two people that are generally good people that introduce you to groups that will open Vrchat to a whole new place of friends becoming like family... just for them to turn against you or use you until they are done with you then kick you to a curb like a used cond.. umm yea you get the picture i hope.\n\nVrchat was once a great idea for people to get together to have fun, throw parties and meet people from all over the world. To learn things to be part of something. Now its just a cesspit of deranged, narcissist, elitist, that thank they get to do what ever they want because they paid $10 once upon a time to prove they are \"adults\". \n\nI'm glade i got to meet a few genuinely great people that i still can call friends  but i wouldn't recommend Vrchat unless you are already know some people that already play it. Also you don't need high end headsets or FBT( full body tracking) as some will tell you, Start off small just use the pc desktop version then maybe a quest before you think about going all in on something like the Index with tracking pucks for full body.",
-                  "truncated": false,
-                  "minutes_at_review": 13271
+                  "date": "2026-11-19",
+                  "review_text": "Ignoring the peoples voices and views about the AI issues and other problems in VRC = Negative views and bad outcomes do better VRChat Inc.  For other VRChat user cancel your VRC+ subscriptions and avoid all shopping\n  \nDev team and the owners who control VRC avoiding the problem will make it worst.  21,595 of VRC users and that is a quite a lot of people and if being afraid of harassment or witch hunting is a thought im sorry but this is the internet some users will do this now maybe not witch hunting is going to happen just pointing out AI Users or AI worlds to avoid in vrchat is going to be the following for some VRC users. \n\nAgain if your action is avoiding or not listening to the VRC community is going to be your path may you have shame and dishonor in your next years.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229827228",
-                  "hours_at_review": 362.0,
+                  "recommendationid": "238784914",
+                  "hours_at_review": 2012.7,
+                  "minutes_at_review": 120763,
                   "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "Why tf do we need vrchat plus to do an age verification. They also never have any good avatars. Also lots of preds and other stuff. Good to make fun of them",
-                  "truncated": false,
-                  "minutes_at_review": 21718
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-0ce72a",
-              "claim": "Reviewers point out that age verification features are locked behind a paywall.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "229968033",
-                  "hours_at_review": 221.2,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "With the wave of age verification specially with it locked behind a one time payment of VRChat+ it has brought out a whole new wave of narcissistic, cringy, elitist scum that make VrChat as bad as all its haters say it is.\n\nIf your here to meet people to try to help with social issues then try to find groups in discords or something as open worlds are playgrounds for some of these scum of the planet to just be horrible people, or the kids running around in avatars that are naked and made to crash the game or even the PC screaming slurs at the top of their little annoying lungs. Which will make you wonder why their parents haven't come in and slapped them upside the head...\n\nBut once in a very great while you may find one or two people that are generally good people that introduce you to groups that will open Vrchat to a whole new place of friends becoming like family... just for them to turn against you or use you until they are done with you then kick you to a curb like a used cond.. umm yea you get the picture i hope.\n\nVrchat was once a great idea for people to get together to have fun, throw parties and meet people from all over the world. To learn things to be part of something. Now its just a cesspit of deranged, narcissist, elitist, that thank they get to do what ever they want because they paid $10 once upon a time to prove they are \"adults\". \n\nI'm glade i got to meet a few genuinely great people that i still can call friends  but i wouldn't recommend Vrchat unless you are already know some people that already play it. Also you don't need high end headsets or FBT( full body tracking) as some will tell you, Start off small just use the pc desktop version then maybe a quest before you think about going all in on something like the Index with tracking pucks for full body.",
-                  "truncated": false,
-                  "minutes_at_review": 13271
+                  "date": "2026-10-29",
+                  "review_text": "Despite an overwhelming 95% response in favor of adding a label to police generative-AI content, VRC refuses to appropriately moderate or police the usage of Generative AI. I love the community that has built around this platform, but the platform itself clearly no longer holds the best interests of its userbase at heart.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229827228",
-                  "hours_at_review": 362.0,
+                  "recommendationid": "238789869",
+                  "hours_at_review": 1155.1,
+                  "minutes_at_review": 69306,
                   "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "Why tf do we need vrchat plus to do an age verification. They also never have any good avatars. Also lots of preds and other stuff. Good to make fun of them",
-                  "truncated": false,
-                  "minutes_at_review": 21718
+                  "date": "2026-10-29",
+                  "review_text": "I greatly value and appreciate the doors this platform has opened for me socially but the devs are bunch of fencesitting cowards. \n\nYou really put out a survey, got 95% feedback in favor of a filter for worlds containing AI-Generated content, and said \"nah\". Like... What? Are you stupid?\n\nCancelled my VRC+ sub and recommend you do the same until they get their heads out of their asses.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238870963",
+                  "hours_at_review": 3892.1,
+                  "minutes_at_review": 233527,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "They asked the community on how they should handle AI on VRChat, and then ignored us when 95% of us wanted labelling for anything AI.\nAbsolutely weak response, why even ASK us for input if you are going to ignore us and try to protect AI users instead of encouraging REAL artists making content for your platform. \nI cannot in good faith recommend this game when they seem fine with the AI slop tainting our once great community.\n\nYou guys should be better than this.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238781968",
+                  "hours_at_review": 3794.7,
+                  "minutes_at_review": 227682,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "\"95% of survey respondents want some kind of label for AI usage, but there’s very little agreement beyond that.\"\r\n\r\nYet, you still decide against putting a filter on for it. Absolutely tone-deaf and betrayal of your community of actual creators. I highly recommend avoiding VRC+ subscription until they get their terrible content issues figured out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238872061",
+                  "hours_at_review": 5313.7,
+                  "minutes_at_review": 318821,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Having put in thousands of hours and invested hundreds of dollars into VRChat via VRC+ (every month since it was released) and in-game shop cosmetics, having been playing since BEFORE the Easy Anti-Cheat debacle, this is the line I am not willing to cross.\nFor the last few years, but ESPECIALLY recently, there has been a MAJOR Generative AI issue on the platform. Whether it be AI Gen textures/models, misleading world thumbnails, or outright fully AI generated worlds, the slop has been flooding the platform and its only gotten harder to avoid.\nRecently, they called for a survey of the playerbase to see how people felt about Generative AI on the platform, and how it should be approached going forward. I, along with 30% of the playerbase, said we would like it to be COMPLETELY disallowed. Failing that, **95%** of the playerbase requested for the most barebones, easy to add bandaid fix possible - Add a \"AI Generated\" tag, and allow us to filter it so that we do not see it. They have decided that **95%** is not enough of a majority to justify adding a tag and a filter, citing 'People will just lie about it,' 'It will lead to harassment campaigns,\" and 'People will just set the filter and forget about it.'\nTo go over those points one by one:\n1. \"People will just lie about it.\"\nSo what? That is for the reporting system is FOR. The people that WON'T lie about it are noise in the system that we wouldn't have to worry about iif we could filter it out, which then makes it EASIER to find the liars.\n2. \"It will lead to harassment campaigns.\"\nThis is a culture issue, not a system issue; and regardless, people will grow distrustful of ALL creators on the platform, which will lead to MORE hate campaigns, IF they have no sense of protection from seeing content which they find objectionable. Adding a filter wouldn't cause harassment, but REFUSING TO DO WHAT 95% OF THE PLAYERBASE REQUESTED might.\n3. \"People will just set the filter and forget about it.\"\nThat is the point of a filter. …",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238787855",
+                  "hours_at_review": 2702.3,
+                  "minutes_at_review": 162141,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "\"Oh hey so like 95% of y'all wanted some ways to detect Generated AI in worlds and get rid of it entirely. But we don't wanna because we don't wanna hurt the AI user's feewings\"\r\nGenerative AI literally has no Benefits in creation and just rips any sort of creativity from the process. It is soulless. It steals from other creators. It's literally a cancer to artists spaces. OVER 90% OF USERS DO NOT WANT AI AND YOU REFUSE TO LISTEN. Either you do it secretly yourselves or you just don't have a spine to commit to NO GEN AI. It's embarrassing. Quit embarrassing yourselves for the leeches of the society.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238872138",
+                  "hours_at_review": 107.4,
+                  "minutes_at_review": 6444,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "> ask community what they think about ai\n> 95% of the community says they want a indicator\n> Refuse to add it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238875720",
+                  "hours_at_review": 1952.8,
+                  "minutes_at_review": 117168,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "So you have a vast community full of dedicated artists and creators who helped this game grow steadily over the years by crafting and adding many worlds, avatars, assets and other fascinating ways to play, explore and socialize with others... \r\n\r\nAnd somehow you think it is the best idea to turn them down, show them the middle finger and open the floodgates for AI generated content, allowing it to thrive and stay like it's no big deal. We all asked to add a label system so we can identify such content and not engage with it, but you still decline us. I will never appreciate anything artificial made at the expense of someone else's hard work. Whatever policy this is, it endorses content theft in a space where it's not seen with kind eyes and either they take a few steps back or most users will just boycott the platform and/or leave.\r\n\r\nThis place has been my bastion for +3 years, made lots of friends and got me to appreciate and respect game creators even more. Do not take this away from us with this souless garbage you're allowing now.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238857653",
+                  "hours_at_review": 7143.4,
+                  "minutes_at_review": 428601,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "95% want labels for AI and 33% want to avoid AI all together and devs want to ignore both of these. They also revealed that they use AI for the development of this game and it isn't disclosed on steam. I am beyond disappointed.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238867276",
+                  "hours_at_review": 10315.3,
+                  "minutes_at_review": 618916,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "I've spent over 10,000 hours on this game. I've loved, cried, and healed while being active on this platform. \r\nI've been to and been apart of virtual conventions that have raised hundred of thousands of dollars for charities.\r\nI've built and fostered a community of thousands of people that come together to better ourselves! \r\nI've improved the lives of others, other improved mine. \r\n\r\nand you know what? \r\n\r\nNOT A SINGLE OUNCE OF AI WAS INVOLVED! EVER!\r\n\r\nWE NEVER NEEDED IT! WE NEVER WANTED IT! \r\n\r\nThis game originally was made by people for people. It is VERY disappointing to see the development team not only disrespect the wishes of their player base, but to spit in their face in favor of Ai over REAL creators, REAL people. \r\n\r\nI hope they realize sooner than later that Ai is a cancer that destroys creativity, communities, and hope for a better future.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238876411",
+                  "hours_at_review": 167.8,
+                  "minutes_at_review": 10069,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "If you will not listen to your user base in your own surveys, perhaps you will listen to review bombs and subscription cancelations. Your user base does not want AI generated content and your refusal to implement filters or other means to curate ai out of their experiences is both shameful and a self damaging decision for your game. \n\nYou've made it clear that the users are no longer your priority. This game is best avoided until better decisions and smarter heads take the lead.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239293737",
+                  "hours_at_review": 199.0,
+                  "minutes_at_review": 11940,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Ignored the community. Won't go back and change their minds.\n\nTime to ditch it and let it rot.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238839811",
+                  "hours_at_review": 396.4,
+                  "minutes_at_review": 23787,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Cancelled my VRC+ subscription over the piss-poor response to the AI questionnaire. 95% of people want some kind of labelling at minimum and you've basically told us to forget you asked. \n\n\"Oh but we don't know where the line is-\" tough shit, work it out.\n\"Oh but people might harass-\" Yet you're putting in a like/dislike system? Yeah you're not slick.\n\nIt's blindingly obvious where the team stands and that they never had any intention of listening to the community, at all. You should have just owned it instead of this mealy-mouthed bullshit.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238856359",
+                  "hours_at_review": 1825.8,
+                  "minutes_at_review": 109550,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "I love this game, I love the people in it, I truly do.\n\nBut the current transparently pro-AI pivot the platform is going through makes it impossible for me to recommend.\nIt's not just tone-deaf and incredibly short sighted for a platform built on user-created content to go in this direction, but the way how the information is being communicated itself is borderline abusive.\n\nFeedback forms filled with biased questionaire layout clearly designed to basically gerrymander the results into the pre-decided outcome, and when that still fails (with 95% of answers demanding an AI labelling feature) still doubling down on not creating one.\n\nIn case someone from the decision making team actually reads these comments: The AI filter *is* the compromise. It is the *bare minimum* of what people would find acceptable, with the alternative being an outright ban of AI. And if you can't deliver that compromise, the only alternative that remains is cancelling VRC+ subscriptions and moving on to resonite or something else.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238882534",
+                  "hours_at_review": 3735.1,
+                  "minutes_at_review": 224107,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Majority of the community voting against AI use, and the devs just ignores that? Yea no, nope.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238842100",
+                  "hours_at_review": 8738.5,
+                  "minutes_at_review": 524313,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "VRChat has been getting flooded with GenAI worlds. The community has spoken out its concerns on AI which led VRChat to conduct a survey to learn about their playerbase's stance on the situation. 95% of respondents said they want AI labeling that can be filtered out so they can curate their experience. VRChat then openly admited to essentially ignoring all those 95% of users, allowing AI content to remain on the platform undisclosed. VRChat is what it is today thanks to the community they chose to ignore. AI content in VRChat is unethically trained on all human-made art that brought VRChat its current success. VRChat's response is a huge backstab at the people who've supported it for years.\n\nI've got close to 9000 hours logged into this game since 2017, I've spent over $1000 supporting VRChat and I've been subscribed to VRC+ since day one. I've never cancelled my subscription before in face of past controversies but this is where I draw the line. I refuse to keep supporting a platform that turns their back on the people that made it what it is today and promotes art theft, slop and the ecological impact of AI.\n\nDo better.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239241969",
+                  "hours_at_review": 366.4,
+                  "minutes_at_review": 21982,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "No genuinely fuck ai, yall were asked to do one thing and yall just decided to bootlick the slop like if it was good\n\nAi art is stealing and not art, ai modeling is stealing and not a talent, ai slop is BAD and ITS THE MAIN REASON WHY WE CANT HAVE GOOD THINGS NOWDAYS",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238915170",
+                  "hours_at_review": 453.6,
+                  "minutes_at_review": 27213,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "This was a fun little game to chill in neat little worlds either by oneself or with friends, at least until the VRC team decided that they care more about short-term profits over the longevity of their game by hopping onto the AI Slop bandwagon.\n\nIt takes a special kind of dumbass to look at poll results indicating that 95% of the playerbase is rightfully against AI Slop and go “Nah, the AI stays as it is.” Most would say that kind of slap in the face to the lifeblood of their game is shooting themselves in the foot, but I think we’ve gone past that and went straight to self-amputating both legs with a shotgun.\n\nTL;DR: The devs prefer AI Slop and fast cash over the human creators that made their game a success. Do not play. Do not support! 0/10.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238866103",
+                  "hours_at_review": 425.1,
+                  "minutes_at_review": 25503,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "VRChat used to be the ultimate hub for human creativity, beautiful community-made worlds, and genuine social connection. Today, it is a textbook example of a company prioritizing corporate greed and investor demands over the safety, desires, and hard work of its own playerbase. \n\nIf you are thinking about playing this game or buying VRChat+, [b]please read this first.[/b]\n\n[h2]1. The Ultimate Betrayal of Creators (The 95% AI Slop Issue)[/h2]\nVRChat was built on the backs of human artists, 3D modelers, and passionate creators. Recently, the platform has been flooded with low-effort, Generative-AI \"slop\" worlds and assets. \nThe developers put out a survey asking the community how to handle this. [b]Over 21,000 people responded, and 95% asked for a label and a filter for AI content.[/b] \nThe developers' response? They explicitly said [b]NO[/b]. \n\nTheir reasoning? They stated that if they add an AI filter, [i]\"filters get set once and forgotten, and then you never see that part of VRChat again.\"[/i] \n[b]THAT IS THE ENTIRE POINT OF A FILTER.[/b] We don't want to see stolen, soulless AI generation. The developers admitted they would rather protect the \"feelings\" of AI-prompters than protect the real artists who built this game. Furthermore, VRChat is currently violating Steam's TOS by failing to disclose their own use of AI on their store page.\n\n[h2]2. Rampant Unmoderated Grooming & Predator Issues[/h2]\nThis game is absolutely not safe for children, and parents need to be warned. VRChat has a severe, well-documented issue with predators and groomers. Users have consistently reported finding adults actively grooming minors, and when reported, VRChat moderation does absolutely nothing. The predators simply make new accounts or are ignored entirely. \n[i]The developers currently fight harder to protect AI-generated slop than they do to protect minors on their platform.[/i]\n\n[h2]3. A History of Anti-Consumer Decisions[/h2]\nThis AI debacle is just the latest in a long line of t…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238834709",
+                  "hours_at_review": 3290.2,
+                  "minutes_at_review": 197409,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "VRChat tells us to \"meet new friends,\" but after all these years spent in the game, the \"new friends\" being forced upon us are actually AI-generated. When a survey was conducted on this, our input—our actual preference—was completely ignored. The only alternative offered is a \"like/dislike\" system, which could easily be exploited by toxic communities—something every platform has. Does this mean that we, the creators, could end up at the bottom of the list, pushed aside in favor of AI-generated worlds? SAVE VRCHAT, SAVE CREATORS.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238866623",
+                  "hours_at_review": 976.6,
+                  "minutes_at_review": 58594,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "The fact that 95% of users said put a label for AI-Generated things and then proceeds to ignore all 95% because of potential \"harassment\" is some BS excuse",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239117555",
+                  "hours_at_review": 4103.4,
+                  "minutes_at_review": 246204,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "VRChat is a.. what would you call it, game? program? app? 3D Messenger? a hangout space I frequent a lot. I've made a bunch of close friends in it, some great memories, and enjoyed my time here. But with the recent stance they have with AI, I can't recommend it right now. Over 90% of your players are saying they want AI filters, and they're saying \"nah, we're not gonna do that to protect the ones that like AI\".\r\n\r\nYou know VRChat, most people use your platform to just hang out with friends and talk. We can go other places. Some even have. It's a shame you're throwing away most of your audience to hop on a trend that's bad for everyone involved and bult on theft and lies.\r\n\r\nFriends can exist outside of VRChat, especially good ones. But VRChat can't exist without friends.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239225687",
+                  "hours_at_review": 959.6,
+                  "minutes_at_review": 57575,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "I don’t recommend it because they allow AI content and don’t support non-AI content creators.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238786437",
+                  "hours_at_review": 617.7,
+                  "minutes_at_review": 37064,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "As of recent, they did a survey of the userbase finding that 95% of players wanted some for of AI labeling on the worlds and a search filter.\n\nVRChat directly told them after making it clear about that percentage: \"We’re not adding an “AI-generated” label or AI filters.\"\n\nNo MMO of any form deserves a community, if they loudly show how much they don't care what the community says.\n\nDon't touch this game unless MASSIVE changes happen.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239059969",
+                  "hours_at_review": 122.8,
+                  "minutes_at_review": 7368,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Weird to ask your player base how they feel about AI, a vast majority responding hey we don't like it, and then pretend to not see that response. \"If we put a label on AI content, it'll be forgotten about and you'll never see it.\" Yeah that's the point jackass.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238812305",
+                  "hours_at_review": 1462.0,
+                  "minutes_at_review": 87720,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Gave people a form on their ideas on AI use, 95% of respondents said they wanted some kind of AI-generated label, and then threw out all their goodwill by not adding the label and instead making it harder to criticize people for using AI with the broad idea of 'harassing users for the tools they use'.\n\nSomeone higher up has to be on their Tim Sweeny arc right now. Cancel your VRC+.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238957011",
+                  "hours_at_review": 375.1,
+                  "minutes_at_review": 22509,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "with a platform that's content and art thrives through human creation, going all in with GenAi despite the majority of users going against it is an embarrassing way to shoot yourself in the foot.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238886648",
+                  "hours_at_review": 565.7,
+                  "minutes_at_review": 33943,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "If you want to protect AI so much I might as well treat you as another AI slop trash game that should be in the garbage lol",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239177893",
+                  "hours_at_review": 1421.4,
+                  "minutes_at_review": 85284,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "The past 3 years of my life, VRChat has become one of the primary forms of how I interact with those I love. \n\nIt has been the framework for some of the most real, human moments I've had in my life, thanks to avatar makers, world designers, and every other kind of creator that uses it as a platform to share their work.\n\nVRChat's response to AI usage on the platform and refusal to add an Ai label goes against the artists that make the very foundation of the VRChat experience.\n\nAs much as I love this game, until Ai is restricted or better yet, banned from the platform, I will keep my review negative and not recommend this game.\n\nI sincerely hope the VRChat team hears the sentiment from myself and every other creative on the platform that we will not allow this kind of content to steal what makes this game so special.\n\nFuck Ai and support real artists. \nദ്ദി(˵ •̀ ᴗ - ˵ ) ✧\n\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238826621",
+                  "hours_at_review": 567.0,
+                  "minutes_at_review": 34023,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Developers have admitted to AI use in interviews, but make no effort to update their labels.\n\nThey claim to care about user feedback, then immediately dismiss 95% of it because it conflicts with the interests of their shareholders.\n\nThis app is a trap. They only care about laundering the content that you create for it. Seek out other VR apps before it gets worse.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239304234",
+                  "hours_at_review": 1413.0,
+                  "minutes_at_review": 84781,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "> asks community if they want an AI filter.\n> 95% of the community vote \"yes\"\n> says they wont add AI filter\n> Community doesnt like that and tells VRchat that\n> \"WE ARE UNDER ATTACK\"",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239156991",
+                  "hours_at_review": 853.4,
+                  "minutes_at_review": 51204,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "It’s overflowing with AI and they don’t even listen to their community.\n\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238857483",
+                  "hours_at_review": 5966.6,
+                  "minutes_at_review": 357994,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Vrchat's dev team likes to act like they listen to the community but consistently does the wrong thing. They dont consult the comunity on big decisions and even when they do they actively ignore the playerbase unless it cuts into their funds from players mass unsubscribing from vrc+.\n\nThere really isnt much good to say about vrchat that isnt outweighed by the bad. Vrchat is only a good experience because of the users and the user made content, to ignore the users is a monumentally stupid decision. They would rather add a new 40$ item pack and charge you $10 a month than implement features people actually want.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239089904",
+                  "hours_at_review": 1447.3,
+                  "minutes_at_review": 86839,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "Out of touch fools care more about the 5% of people without a single creative cell in their body than the 95% that said they don't want slop in their community and art-driven game. Total joke.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238875623",
+                  "hours_at_review": 687.7,
+                  "minutes_at_review": 41263,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "I am so incredibly upset. I have been a long time Vrchat user, I was there from the very beginning- I watched this game grow, and change and blossom. I was loving the new changes, until the AI stuff began. I can't believe you guys are falling for that AI stuff, and actively allowing it onto your platform.\n\nThis game has been an escape for me, a safe space for me to vibe with my husband and my friends, but I don't know if that'll ever happen again, and I am so so so disappointed and upset about this.\n\nI can not in good faith recommend this game anymore, to anyone.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238854834",
+                  "hours_at_review": 1878.6,
+                  "minutes_at_review": 112717,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "your company's recent statement on ai is both disappointing and tone deaf. \n\nhere's how to cancel your recurring vr+ subs for any who are as disappointed as me \nhttps://steamcommunity.com/sharedfiles/filedetails/?id=2840737969",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238882743",
+                  "hours_at_review": 108.6,
+                  "minutes_at_review": 6516,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Now an ocean of AI Slop that VRChat higher-ups have ALLOWED. \n\nMay this entire game fall in flames while all the ACTUAL ARTISTS sit back, relax and roast their marshmallows over the smoldering leftovers.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238807940",
+                  "hours_at_review": 1760.7,
+                  "minutes_at_review": 105640,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "After ignoring 95% of it's userbase and choosing not to impliment any kind of filter or label for AI content hosted, I cannot endorse this game anymore. As someone who would spend all week looking forward to spending time with friends on VRC of a weekend, it breaks my heart.\n\nCancelled my VRC+ Subscription as soon as I heard \n\nPlease reconsider.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239140260",
+                  "hours_at_review": 725.1,
+                  "minutes_at_review": 43505,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "95% of players want AI label\nvrchat: we wont add it\n\nbrother, you did survey, what was the point of it then when majority want AI label ?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238906589",
+                  "hours_at_review": 7055.4,
+                  "minutes_at_review": 423321,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Great platform for socializing online, but sadly the developers are poor at listening to their playerbase.\n\nOn the recent publication about the results of the AI generated content within the game, 95% of the responders wanted some kind of label for user generated content that used AI in the creation of it.\n\nThe devs told that even though the percentage was this high, players couldn't come to a decision of what kind of AI use should be labeled.\n\nSo what do they do? Delve deeper into the clear request of the playerbase to add at least some kind of labels?\n\nNo, they tell the players that they will not be adding any kind of labeling or filtering for AI usage.\nAnd they told that this was because of [b]us[/b] the players not being able to decide.\n\nThe problem is that the form had a lot of questions that you could respond with a range of strongly disagree to strongly agree. Of course this is going to result in a lot of different combinations of answers.\n\nMy wish for the devs is to properly and with care go through the data they have collected with the form.\nThen create a second form that's focused on the currently \"conflicting\" parts and see what the results are.\n\nDo not discard your playerbase's opinion, they're who your game is made for.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238843201",
+                  "hours_at_review": 834.2,
+                  "minutes_at_review": 50055,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Say no to genAI slop. Abhorrent and deeply stupid behavior from the developers in refusing to listen to the community keeping their game alive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239025044",
+                  "hours_at_review": 1818.4,
+                  "minutes_at_review": 109102,
+                  "voted_up": false,
+                  "date": "2026-10-31",
+                  "review_text": "95% of the playerbase wants action taken to make it clear what content is AI or even disallow AI content and the platform ignores and refuses to implement the most basic of tools to filter out AI content. Clearly caving to paid AI sponsorships, pathetic from the devs, the platform is only what it is today because of human content created by the community for the community and to spit in the eye of everyone whose data has been stolen and to protect the thieves who stole it is inexcusable. Do better",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239311216",
+                  "hours_at_review": 964.1,
+                  "minutes_at_review": 57846,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Chose to side with the tech that's driving VR back to being unaffordable and chokes out the creatives that carry the platform.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238894519",
+                  "hours_at_review": 945.5,
+                  "minutes_at_review": 56730,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "greenlighting AI in a game that is entirely dependent on user's creative work is like selling cigarettes in a propane factory.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238839740",
+                  "hours_at_review": 158.4,
+                  "minutes_at_review": 9504,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Undisclosed AI that cannot be tagged or filtered, along with an unwillingness by developers to allow users to see when they are engaging with AI content. Public worlds are now flooded with broken, unpolished and downright nonsensical genAI garbage with flipped normals and broken collisions, often paired with misleading thumbnails.\n\nLoved this game, now increasingly tempted to remove the stuff I've published and call it quits. If VRChat wants to have a landfill of broken AI slop then they can have it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238901687",
+                  "hours_at_review": 9434.2,
+                  "minutes_at_review": 566050,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "Much like plenty of the recent reviews, I sincerely have a disdain for when a company ignores the majority of their user base.\r\n\r\nWhy ask us our opinion, and want our say on the subject of how we feel about AI and properly policing and/or implementing ways to filter it out if you are just going to ignore us.\r\n\r\nWhat pockets have you put your hands in to make your userbase, that you literally created the game for, have no say on what content you make.\r\n\r\nThe implementation of the Easy Anti Cheat was a nightmare from the past, especially now that the EAC is acting up... but now you're outright ignoring your users?\r\n\r\nDon't ask us for feedback if you're just going to ignore us.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238883358",
+                  "hours_at_review": 1049.4,
+                  "minutes_at_review": 62966,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "95% of the userbase are in favor of adding a label to police generative-AI content. VRC refuses to moderate or police the usage of Generative AI.\r\n\r\nI love VRChat. I absolutely do, but the devs do not care about the userbase that made VRC what it is.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-b19bf389",
+          "text": "One reviewer says the game is full of sociopaths and hyperactive children looking for attention, and public instances require blocking people constantly.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "240544548",
+            "hours_at_review": 146.7,
+            "minutes_at_review": 8801,
+            "voted_up": false,
+            "date": "2026-11-19",
+            "review_text": "I honestly don't like 95% of the people that play this game and anyone below the age of 30 should just be banned by default. There's some cool people, but it's otherwise full of sociopaths and hyperactive children that want to be the next big tiktok troll. If I see some guy running towards me and he's not using push to talk then I already know he's just going to say something outrageous to get a reaction out of me. In public instances I have to block these people by the minute. If you didn't hate kids and young adults before this, then vrchat will most definitely make you hate them.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-f502fd13",
+          "text": "One reviewer says servers crash way too regularly.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240551839",
+            "hours_at_review": 540.5,
+            "minutes_at_review": 32433,
+            "voted_up": false,
+            "date": "2026-11-19",
+            "review_text": "servers crash way too regularly",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 12,
-        "cited_recommend": 6,
-        "divergence_p": 0.156,
+        "cited_reviews": 50,
+        "cited_recommend": 0,
+        "divergence_p": 0.00042,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1453,
-    "steam_total_reviews": 176117,
+    "pool_n": 2138,
+    "steam_total_reviews": 182813,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/438100/header.jpg?t=1762366454",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/438100/capsule_231x87.jpg?t=1762366454",
-    "grid": "https://cdn2.steamgriddb.com/grid/28dafe9cfbcf6f32037bd9b80b97dc4e.png"
   }
 }

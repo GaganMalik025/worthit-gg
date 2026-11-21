@@ -2586,3 +2586,38 @@ Civilization VI. Wait → Buy: Slay the Spire 2, GTA V Enhanced, Darkest Dungeon
 
 The audit found 3 more citations that support only part of their claim (BACKLOG
 2026-11-18 follow-up). That is 6 of 60 audited citations over three nights.
+
+## 2026-11-21 — Catalog refresh, night 4: 31 of 32 regenerated titles shipped
+
+**QR-4 — Content safety: one manual FAIL, held back (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | 26,819 citations across 543 verdicts, 0 failures, `EXIT_RC=0` (`evals/qr4-2026-11-21.txt`). After the Far Cry 5 revert, **26,856 across 543, 0 failures**, `EXIT_RC=0` (`evals/qr4-2026-11-21-final.txt`). |
+| Manual audit | `evals/audit-4.4-2026-11-21.md`, seed 20261121, 10 verdicts, 20 citations, **read by the coding agent on the owner's instruction, not by the owner**. Every review was read in full, not just the printed 260-character cut. **#11 failed** (Far Cry 5, `240601374`): hate-speech line after the cut. Owner decision A: the refresh is not published. The other 19 are clean. All 10 verdict words recomputed from the split bars agree. |
+| Search index | rebuilt, 0 of 543 verdict appids missing by set membership. Genre sections rebuilt, members unchanged. |
+
+`pipeline/run_batch_logged.sh --refresh`, log `evals/batch-2026-11-21.txt`, `EXIT_RC=0`.
+
+| | |
+|---|---|
+| Ran / published by the pipeline | 32 / 32. **Shipped 31**; Far Cry 5 was held back at the manual audit. |
+| Gate drops / stage failures | 0 / 0 |
+| Refused at the budget | 424 at 0 calls, none recorded |
+| Model calls | **404**, mean 12.6. The run summary and the 32 records agree, and so did ledger `batch_used` 404 |
+| Budget | **404 of 400: 4 over.** Live reserve untouched; 96 of the day's 500 were left for live. Fixed the same day (BACKLOG 2026-11-21) |
+| Over EST_COST 15 | 5: Dead by Daylight 18, Slime Rancher 17, Insurgency: Sandstorm 16, theHunter 16, Kingdom Come: Deliverance 16. That is 16 of 114 across four nights. |
+| Verdicts on the 31 | Buy 18 / Wait 11 / Skip 2 before and after, with 4 words moving |
+| Claims on the 31 | 475 → **357**, plus 93 one-reviewer points |
+| Refresh progress | **113 of 538** non-seed titles verified, 424 to go, Far Cry 5 terminal |
+
+The four verdict words that moved with the fresh reviews:
+- theHunter: Call of the Wild: Wait → Buy
+- Dying Light 2: Skip → Wait
+- VRChat: Wait → Skip
+- Team Fortress 2: Buy → Wait
+
+`data/batch_state.json` was destroyed by a mutation run and rebuilt
+(`evals/reconstruct_batch_state_2026-11-21.py`; BACKLOG 2026-11-21 INCIDENT). The 32
+night-4 records carry `"reconstructed": true`. Their `seconds` values are rounded to whole
+seconds, and `at` is about 1 s early.

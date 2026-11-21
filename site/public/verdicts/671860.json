@@ -1,51 +1,61 @@
 {
   "appid": "671860",
   "game_name": "BattleBit Remastered",
-  "generated_at": "2026-08-10T10:11:44Z",
+  "generated_at": "2026-11-21T03:00:00Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/671860/header.jpg?t=1730393449",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/671860/capsule_231x87.jpg?t=1730393449",
+    "grid": "https://cdn2.steamgriddb.com/grid/096a7517b49e2f931296a28e878af5d9.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 14,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Skip",
-    "tagline": "Blocky graphics and massive battles built on abandoned foundations.",
+    "tagline": "Low player counts and stalled updates leave a once-great battlefield quiet.",
     "for_you_if": [
-      "you want large-scale vehicle combat",
-      "you enjoy proximity voice chat humor"
+      "you want to experience large-scale destructible environments",
+      "you run the game comfortably on lower-end hardware"
     ],
     "not_for_you_if": [
-      "you are seeking active developer updates",
-      "you want fully populated server lists",
-      "you need reliable anti-cheat moderation"
+      "you expect active developer updates and new content",
+      "you are looking for populated servers and active lobbies",
+      "you encounter unaddressed cheaters and strict anti-cheat restrictions"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 53,
-      "pct_positive": 22.6,
+      "pool_n": 57,
+      "pct_positive": 15.8,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 359,
-      "pct_positive": 59.1,
+      "pool_n": 368,
+      "pct_positive": 50.5,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 514,
-      "pct_positive": 51.4,
+      "pool_n": 504,
+      "pct_positive": 45.8,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 277,
-      "pct_positive": 44.8,
+      "pool_n": 271,
+      "pct_positive": 43.2,
       "muted": false
     }
   ],
@@ -55,49 +65,49 @@
       "type": "segmentation",
       "direction": null,
       "shape": "rise_then_fall",
-      "sentence": "Player sentiment peaks during early hours before declining among veterans as long-term issues accumulate.",
+      "sentence": "Positive review rates peak briefly in early hours before declining among mid-tier and veteran players.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 22.6,
-            "pool_n": 53
+            "pct_positive": 15.8,
+            "pool_n": 57
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 59.1,
-            "pool_n": 359
+            "pct_positive": 50.5,
+            "pool_n": 368
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 51.4,
-            "pool_n": 514
+            "pct_positive": 45.8,
+            "pool_n": 504
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 44.8,
-            "pool_n": 277
+            "pct_positive": 43.2,
+            "pool_n": 271
           }
         ],
         "shape": "rise_then_fall",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 22.6,
-        "low_pool_n": 53,
+        "low_pct_positive": 15.8,
+        "low_pool_n": 57,
         "high_cohort": "early",
         "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 59.1,
-        "high_pool_n": 359,
-        "gap_pts": 36.5,
+        "high_pct_positive": 50.5,
+        "high_pool_n": 368,
+        "gap_pts": 34.7,
         "peak_cohort": "early",
-        "peak_pct_positive": 59.1,
+        "peak_pct_positive": 50.5,
         "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 44.8,
-        "drop_after_peak_pts": 14.3
+        "post_peak_low_pct_positive": 43.2,
+        "drop_after_peak_pts": 7.3
       }
     },
     {
@@ -105,14 +115,14 @@
       "type": "recency",
       "direction": "declined",
       "shape": null,
-      "sentence": "Recent reviews score substantially lower than historical lifetime metrics for the title.",
+      "sentence": "Recent reviews show a significantly lower positive rate compared to the lifetime average.",
       "evidence": {
-        "recent_pool_pct_positive": 50.9,
-        "recent_pool_n": 1203,
+        "recent_pool_pct_positive": 45.2,
+        "recent_pool_n": 1200,
         "recent_window_days": 365,
-        "steam_lifetime_pct_positive": 81.4,
-        "steam_total_reviews": 88632,
-        "delta_pts": -30.5
+        "steam_lifetime_pct_positive": 80.9,
+        "steam_total_reviews": 88721,
+        "delta_pts": -35.7
       }
     }
   ],
@@ -121,123 +131,124 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 53,
-      "pct_positive": 22.6,
+      "pool_n": 57,
+      "pct_positive": 15.8,
       "muted": false,
       "n_note": null,
-      "summary": "Players note missing controller support alongside reports that the project has been left without updates.",
+      "summary": "Early players report empty servers and missing controller support.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ref-084226",
-              "claim": "Reviewers report a lack of controller support in the game.",
-              "citation_verdict": "negative",
+              "claim_id": "ref-cbdec7",
+              "claim": "Reviewers report that the game lacks controller support.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 1,
+                "positive": 2,
                 "negative": 2
               },
               "citations": [
                 {
+                  "recommendationid": "233220915",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 41,
+                  "voted_up": true,
+                  "date": "2026-08-19",
+                  "review_text": "Could we have in game controller support?",
+                  "truncated": false
+                },
+                {
                   "recommendationid": "227883915",
                   "hours_at_review": 0.4,
+                  "minutes_at_review": 25,
                   "voted_up": false,
                   "date": "2026-06-13",
                   "review_text": "No controller support, No sound",
-                  "truncated": false,
-                  "minutes_at_review": 25
+                  "truncated": false
                 },
                 {
                   "recommendationid": "226124011",
                   "hours_at_review": 0.2,
+                  "minutes_at_review": 11,
                   "voted_up": false,
                   "date": "2026-05-22",
                   "review_text": "Game had 1 European player when I got it and 0 controller support (wanted to play on my docked steam deck)\n\nRefunded 🥲",
-                  "truncated": false,
-                  "minutes_at_review": 11
+                  "truncated": false
                 },
                 {
                   "recommendationid": "223268109",
                   "hours_at_review": 0.9,
+                  "minutes_at_review": 53,
                   "voted_up": true,
                   "date": "2026-04-14",
                   "review_text": "I play this game for the first time on 4/14/2026 yes I pay full price for it was in the market for a long time looking for a battlefield like game that works on Linux.\nI recently switch to Linux and I have not been able to play any of my favorite games anymore so I been looking for alternatives.\nThis game is a very good battlefield alternative but this game has the same problem that battlefield 6 have the time to kill is way to short. \n\nPlease fix the time to kill.\nI play this game for 60 minutes and was able to only get 1 kill and I died like 200 times as soon as I seen someone I was dead I died so fast that I had no time to react. \n\nAnd please for the love of God add full controller support your copying everything else that battlefield is doing except for the controller support.",
-                  "truncated": false,
-                  "minutes_at_review": 53
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "other",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ref-c4382b",
-              "claim": "Reviewers state that the game has been abandoned by the developers with a lack of updates.",
+              "claim_id": "ref-ea43e6",
+              "claim": "Reviewers report that the player count is extremely low or that servers are empty and dead.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 5
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231502934",
-                  "hours_at_review": 1.1,
+                  "recommendationid": "236103918",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 29,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Rip-off Battlefield game with crappy eye-sore Minecraft/Roblox blocky graphics that capitalized on how terrible BF2042 was/is while everyone was yearning for a new modern BF game. Developers took the profits and ran, went radio silent without any updates. After they spent all their money, they came back crawling and announced updates for a dead game with only 300 players.",
-                  "truncated": false,
-                  "minutes_at_review": 67
+                  "date": "2026-09-24",
+                  "review_text": "Game is dead AF, don't bother.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230299427",
-                  "hours_at_review": 0.3,
+                  "recommendationid": "235159873",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 13,
                   "voted_up": false,
-                  "date": "2026-07-12",
-                  "review_text": "We had an amazing game, then cheaters happened, then the devs broke the absolute heck out of it. Devs promised to fix what they broke two years ago, nothing since.",
-                  "truncated": false,
-                  "minutes_at_review": 16
+                  "date": "2026-09-13",
+                  "review_text": "its dead its a graite game but no one plays it when i got on i coud not play the game because no one was online so sad such a good game like this had to die.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "225212232",
-                  "hours_at_review": 1.1,
+                  "recommendationid": "232101071",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 81,
                   "voted_up": false,
-                  "date": "2026-05-10",
-                  "review_text": "game was fun but the devs abandoned it. they made their money and left the game unfinished.",
-                  "truncated": false,
-                  "minutes_at_review": 66
+                  "date": "2026-08-05",
+                  "review_text": "I played this game back within the first couple of months it came out, and I've got to say that was genuinely the most fun I've had in a massive BF style game in a while. It's insane how this game has stayed the same for the past two years with no updates. Devs keep making posts and announcements but haven't delivered this whole time. I honestly wouldn't recommend this, especially considering the player base is dwindling just barely doesn't reach 500 active players.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "219169348",
-                  "hours_at_review": 1.8,
+                  "recommendationid": "225789753",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 11,
                   "voted_up": false,
-                  "date": "2026-02-25",
-                  "review_text": "\"Note: The last update made by the developers was over 2 years ago. The information and timeline described by the developers here may no longer be up to date.\"",
-                  "truncated": false,
-                  "minutes_at_review": 108
-                },
-                {
-                  "recommendationid": "214425171",
-                  "hours_at_review": 1.9,
-                  "voted_up": false,
-                  "date": "2025-12-28",
-                  "review_text": "It was a good game, unfortunately it was abandoned by the developers.",
-                  "truncated": false,
-                  "minutes_at_review": 115
+                  "date": "2026-05-17",
+                  "review_text": "No point in playing. All servers are super dead. Game has been abandoned.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
         "cited_reviews": 8,
-        "cited_recommend": 1,
-        "divergence_p": 0.43,
+        "cited_recommend": 2,
+        "divergence_p": 0.881,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -245,215 +256,229 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 359,
-      "pct_positive": 59.1,
+      "pool_n": 368,
+      "pct_positive": 50.5,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers highlight destructible environments and voice chat interactions, despite concerns over halted updates.",
+      "summary": "Players joining early note severe population decline and a lack of ongoing developer support.",
       "themes": [
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-5e532a",
-              "claim": "Reviewers report that the developers have abandoned the game and failed to release updates.",
+              "claim_id": "ear-57e488",
+              "claim": "Reviewers report that the developers have abandoned the game and failed to release substantial updates for years.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 10
+                "negative": 9
               },
               "citations": [
                 {
-                  "recommendationid": "231485162",
-                  "hours_at_review": 5.3,
+                  "recommendationid": "240620447",
+                  "hours_at_review": 19.3,
+                  "minutes_at_review": 1159,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "It was so lively and awesome on release. Now, nobody is playing it and no dev is actually releasing any updates lmao",
-                  "truncated": false,
-                  "minutes_at_review": 319
+                  "date": "2026-11-20",
+                  "review_text": "Was a fun game, but the developers have completely abandoned it so it feels like a scam now. They released an update trailer over a year ago, and that update never came.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229479180",
-                  "hours_at_review": 19.9,
+                  "recommendationid": "240508710",
+                  "hours_at_review": 19.1,
+                  "minutes_at_review": 1145,
                   "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "DONT BUY!!! GAME IS DEAD AGAIN!!! DEVs, ignore the community. dont waste ur money to this dead game. Updates? haha good joke xD",
-                  "truncated": false,
-                  "minutes_at_review": 1192
+                  "date": "2026-11-18",
+                  "review_text": "was really good when it got updates but the devs abandoned it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "227922190",
-                  "hours_at_review": 11.4,
+                  "recommendationid": "239806574",
+                  "hours_at_review": 15.0,
+                  "minutes_at_review": 898,
                   "voted_up": false,
-                  "date": "2026-06-14",
-                  "review_text": "\"no update no update no update everything's still hitscan and we hate you\" battlebit devs",
-                  "truncated": false,
-                  "minutes_at_review": 684
+                  "date": "2026-11-09",
+                  "review_text": "no updates after having massive success, joke.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "227773725",
-                  "hours_at_review": 5.3,
+                  "recommendationid": "239326409",
+                  "hours_at_review": 19.3,
+                  "minutes_at_review": 1156,
                   "voted_up": false,
-                  "date": "2026-06-12",
-                  "review_text": "Абсолютно мёртвая игра. Разработчик забил на игру огроменный болт.",
-                  "truncated": false,
-                  "minutes_at_review": 319
+                  "date": "2026-11-04",
+                  "review_text": "Devs abandoned it, had potential but the studio decided to take too long to release any decent updates, so it's dead now.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226587434",
+                  "recommendationid": "238562400",
+                  "hours_at_review": 13.8,
+                  "minutes_at_review": 831,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "This was THE game to escape AAA studios back in 2024. The BattleBit devs had every chance to become multi-millionaires by dropping regular updates. Instead, they decided to sit back, cash out, and spend the money. Now that they need some extra dough, they have suddenly returned to work on an update that was supposed to come out TWO YEARS ago.\r\n\r\nI had the highest hopes for this game. The community back then was so much fun to play with, but now it is mostly dead. These recent updates likely wont bring the old playerbase back (i genuinely hope to be proven wrong, it is almost certainly not happening).\r\n\r\nDo not buy this game at its current state.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236228709",
+                  "hours_at_review": 2.2,
+                  "minutes_at_review": 130,
+                  "voted_up": false,
+                  "date": "2026-09-26",
+                  "review_text": "2 years since the last update, Could have been really special but having been left in limbo it can't be recommended.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236132339",
+                  "hours_at_review": 18.4,
+                  "minutes_at_review": 1105,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "These three guys are the epidemy of Icarus. They thought if they took a small hiatus to make some improvements for stability and other backend stuff that this game was gonna soar higher than it already was...that was TWO YEARS AGO. They were literally at the top of the squad based large scale combat and just packed up and left. Super disappointing because this game really was gas so much it was diesel. It had the old battlefield feel with triple the player count. They keep trying to post updates, about THE update, but haven't released anything...\n\nDon't buy this game, it is essentially dead and abandoned by the developers AND the players.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235141010",
+                  "hours_at_review": 16.5,
+                  "minutes_at_review": 991,
+                  "voted_up": false,
+                  "date": "2026-09-12",
+                  "review_text": "The game itself is good but dear lord did the devs manage to fumble their success. As of writing this review, the 24-hour peak player count is below 500 players. It has been more than 3 years since the last update to the game, the supposed 3.0 update has experienced so much scope creep that it's doubtful it'll ever come out and the developers can't communicate to save their lives. As much as it pains me to do so, I cannot recommend the game in its current state as it is effectively abandoned",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "234262342",
                   "hours_at_review": 11.2,
+                  "minutes_at_review": 669,
                   "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "This game was actually fun for awhile when there were few alternatives. Then the game was effectively abandoned by the devs and now there is Battlefield 6.",
-                  "truncated": false,
-                  "minutes_at_review": 674
-                },
-                {
-                  "recommendationid": "225699931",
-                  "hours_at_review": 18.8,
-                  "voted_up": false,
-                  "date": "2026-05-16",
-                  "review_text": "Another game that lived and died in Early Access, though tragically this game was very good. \n\nThis game died from a meta that slowly went stale, a playerbase that gradually dwindled away, and developers who couldn't find a way to fully release the game and got tired of working on it. If they come back with even just some balance revisions, a map or two, and decent outreach/advertisement this game could very well grow back, but if you're seeing this and this game is somehow STILL Early Access just pass on it.",
-                  "truncated": false,
-                  "minutes_at_review": 1125
-                },
-                {
-                  "recommendationid": "225498841",
-                  "hours_at_review": 7.2,
-                  "voted_up": false,
-                  "date": "2026-05-14",
-                  "review_text": "not kept up by the dev, avoid at all costs",
-                  "truncated": false,
-                  "minutes_at_review": 430
-                },
-                {
-                  "recommendationid": "225351685",
-                  "hours_at_review": 12.0,
-                  "voted_up": false,
-                  "date": "2026-05-12",
-                  "review_text": "dead game, no updates, bad devs",
-                  "truncated": false,
-                  "minutes_at_review": 722
-                },
-                {
-                  "recommendationid": "225327182",
-                  "hours_at_review": 9.9,
-                  "voted_up": false,
-                  "date": "2026-05-12",
-                  "review_text": "abandonware, had a really good potential but was ruined by the game being literally left in a ditch, DO NOT BUY",
-                  "truncated": false,
-                  "minutes_at_review": 593
-                },
-                {
-                  "recommendationid": "225095140",
-                  "hours_at_review": 3.4,
-                  "voted_up": false,
-                  "date": "2026-05-09",
-                  "review_text": "Note: The last update made by the developers was over 2 years ago. The information and timeline described by the developers here may no longer be up to date.\n",
-                  "truncated": false,
-                  "minutes_at_review": 205
+                  "date": "2026-09-01",
+                  "review_text": "Had awesome potential, then kinda seems like the devs just gave up. I've noticed them putting out some Devlogs over the last year but there are like 300, maybe 400 people still playing the game, its too little too late.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-63877e",
-              "claim": "Reviewers note that the game features destructible environments and large-scale vehicle combat.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-485a1b",
+              "claim": "Reviewers state that the player count has declined significantly, leaving lobbies mostly empty or dead.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 3,
-                "negative": 0
+                "positive": 0,
+                "negative": 11
               },
               "citations": [
                 {
-                  "recommendationid": "231578759",
-                  "hours_at_review": 6.4,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "BattleBit Remastered is one of those games that proves you don’t need realistic graphics to create an incredibly fun multiplayer experience. The large-scale battles are chaotic in the best way, with vehicles, destructible environments, different classes, and firefights happening everywhere you look.\r\n\r\nI played it with my family, and that honestly made the experience even better. Whether we were trying to work together, reviving each other, riding around in vehicles, or completely failing at whatever plan we had, we were almost always laughing and having a good time. It is easy to jump into, but there is still enough depth in the weapons, classes, and teamwork to keep it interesting.\r\n\r\nThe proximity voice chat also creates some hilarious and memorable moments with other players. Matches can go from intense and competitive to completely ridiculous within seconds, which gives the game a personality that a lot of modern shooters are missing.\r\n\r\nBattleBit Remastered may look simple at first, but underneath the blocky visuals is a genuinely enjoyable large-scale shooter with satisfying gunplay and plenty of memorable moments. It is especially fun when you have friends or family to play with.\r\n\r\nDefinitely recommended for anyone looking for a fun multiplayer shooter that doesn’t take itself too seriously.",
-                  "truncated": false,
-                  "minutes_at_review": 386
-                },
-                {
-                  "recommendationid": "226983623",
-                  "hours_at_review": 4.9,
-                  "voted_up": true,
-                  "date": "2026-06-02",
-                  "review_text": "I love it it has good destruction and some moments feel like a movie scene basically BF6 but downgraded and still fun 9/10",
-                  "truncated": false,
-                  "minutes_at_review": 296
-                },
-                {
-                  "recommendationid": "224448893",
-                  "hours_at_review": 15.2,
-                  "voted_up": true,
-                  "date": "2026-04-30",
-                  "review_text": " Sa-mi bag copii nedezvoltati intr-o strachina de bors daca jocul n-a fost mai interesant ca ARMA 3 sau Squad.Atata actiune pentru un joc facut in unity si atatea pricoale.\r\n E extrem de bine facut si extrem de realist pentru un joc pixelat.O tona de costumizatii pe arme cat si pe personaj,masini,elicoptere,barci si ATV.\r\nE un must buy daca nu ai bani de squad sau daca ai vrea ceva mai usor de invatat decat ARMA",
-                  "truncated": false,
-                  "minutes_at_review": 909
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ear-9b2e0f",
-              "claim": "Reviewers highlight proximity voice chat as a major source of humor and memorable social interactions.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231591329",
-                  "hours_at_review": 18.1,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Milsim-ish, Casual-ish, engaging big scale military shooter, it's a good time specially when you and some other sickos start using proximity chat. The UI is kind of clunky but I personally can overlook that.",
-                  "truncated": false,
-                  "minutes_at_review": 1089
-                },
-                {
-                  "recommendationid": "231578759",
-                  "hours_at_review": 6.4,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "BattleBit Remastered is one of those games that proves you don’t need realistic graphics to create an incredibly fun multiplayer experience. The large-scale battles are chaotic in the best way, with vehicles, destructible environments, different classes, and firefights happening everywhere you look.\r\n\r\nI played it with my family, and that honestly made the experience even better. Whether we were trying to work together, reviving each other, riding around in vehicles, or completely failing at whatever plan we had, we were almost always laughing and having a good time. It is easy to jump into, but there is still enough depth in the weapons, classes, and teamwork to keep it interesting.\r\n\r\nThe proximity voice chat also creates some hilarious and memorable moments with other players. Matches can go from intense and competitive to completely ridiculous within seconds, which gives the game a personality that a lot of modern shooters are missing.\r\n\r\nBattleBit Remastered may look simple at first, but underneath the blocky visuals is a genuinely enjoyable large-scale shooter with satisfying gunplay and plenty of memorable moments. It is especially fun when you have friends or family to play with.\r\n\r\nDefinitely recommended for anyone looking for a fun multiplayer shooter that doesn’t take itself too seriously.",
-                  "truncated": false,
-                  "minutes_at_review": 386
-                },
-                {
-                  "recommendationid": "231486976",
-                  "hours_at_review": 2.8,
+                  "recommendationid": "240478697",
+                  "hours_at_review": 4.0,
+                  "minutes_at_review": 240,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Completely dead game, None of the official servers are active, adding modded community servers war the worst choice the devs could have made, cause a majority players only played the modded servers, leaving the casual player nowhere to go. plus the modded servers are filled with sweats, no one even uses the voice chat anymore and that was what made the game so enjoyable. If you're a hardcore fps player, you may possibly enjoy, but for any casual player, trust me its not for you. DO NOT WASTE YOUR TIME AND MONEY!!!",
-                  "truncated": false,
-                  "minutes_at_review": 169
+                  "date": "2026-11-18",
+                  "review_text": "this shit does not even launch on my PC and never has, i played the beta for a bit, saw it on sale once and purchased it, since then the player base is gone, the game does not even lauch as i said, and its an actual SCAM",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "228526069",
-                  "hours_at_review": 9.0,
-                  "voted_up": true,
-                  "date": "2026-06-21",
-                  "review_text": "This game is really fun as long as people have voice chat and you have friends if you don't have friends I don't recommend this game\r\n\r\n(That was a joke this game is still really fun even if you don't have friends because this game is basically just making funny moments online friends on not)",
-                  "truncated": false,
-                  "minutes_at_review": 541
+                  "recommendationid": "240295200",
+                  "hours_at_review": 7.6,
+                  "minutes_at_review": 454,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "i really do like this game a lot\nthe moment i saw it i knew it would be a lot of fun and therefore i bought it\nin my couple of hours of playtime tho i have come across one issue that stands out a lot\nthis server features a server with over 100 players at once (which isnt bad by itself)  my issue (and the reason i do NOT recommend this game is because it has lost its massive player count.\nevery time i tried to play this gem of a game i was dissapointed to see that there was always only one server active (the one with over 100 players)\nif you were to try and join a 64 vs 64 match you would be greeted by an empty lobby but yourself.. not fun\n\ni really liked this game but sadly i don't think i will continue playing it because of that\n:(\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238562400",
+                  "hours_at_review": 13.8,
+                  "minutes_at_review": 831,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "This was THE game to escape AAA studios back in 2024. The BattleBit devs had every chance to become multi-millionaires by dropping regular updates. Instead, they decided to sit back, cash out, and spend the money. Now that they need some extra dough, they have suddenly returned to work on an update that was supposed to come out TWO YEARS ago.\r\n\r\nI had the highest hopes for this game. The community back then was so much fun to play with, but now it is mostly dead. These recent updates likely wont bring the old playerbase back (i genuinely hope to be proven wrong, it is almost certainly not happening).\r\n\r\nDo not buy this game at its current state.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238215001",
+                  "hours_at_review": 2.3,
+                  "minutes_at_review": 138,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "I would have loved this game a lot but nobody plays",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237606386",
+                  "hours_at_review": 15.7,
+                  "minutes_at_review": 939,
+                  "voted_up": false,
+                  "date": "2026-10-13",
+                  "review_text": "It's dead, Jim. \n\nSad too, this game had the opprtunity to be a big, long lasting hit but squandered all its potential \n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237549914",
+                  "hours_at_review": 18.8,
+                  "minutes_at_review": 1125,
+                  "voted_up": false,
+                  "date": "2026-10-12",
+                  "review_text": "DEAD GAME. devs killed it. was fun when it dropped but now there are practicaly no players so its not worth the 15 bucks",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236482739",
+                  "hours_at_review": 15.4,
+                  "minutes_at_review": 924,
+                  "voted_up": false,
+                  "date": "2026-09-29",
+                  "review_text": "lets be real nobody was sticking with this once the next mainline Battlefield game came out, people were so burnt by 2042 that they would take literally ANYTHING and this was one of them lol\n\nand looking at how the devs continuously shot themselves in the foot over and over, it's not surprising this barely peaks 300 players now",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236132339",
+                  "hours_at_review": 18.4,
+                  "minutes_at_review": 1105,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "These three guys are the epidemy of Icarus. They thought if they took a small hiatus to make some improvements for stability and other backend stuff that this game was gonna soar higher than it already was...that was TWO YEARS AGO. They were literally at the top of the squad based large scale combat and just packed up and left. Super disappointing because this game really was gas so much it was diesel. It had the old battlefield feel with triple the player count. They keep trying to post updates, about THE update, but haven't released anything...\n\nDon't buy this game, it is essentially dead and abandoned by the developers AND the players.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235358161",
+                  "hours_at_review": 10.8,
+                  "minutes_at_review": 647,
+                  "voted_up": false,
+                  "date": "2026-09-15",
+                  "review_text": "372 players - 24-hour peak\n87,323 players - all-time peak 3.3 years ago",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235141010",
+                  "hours_at_review": 16.5,
+                  "minutes_at_review": 991,
+                  "voted_up": false,
+                  "date": "2026-09-12",
+                  "review_text": "The game itself is good but dear lord did the devs manage to fumble their success. As of writing this review, the 24-hour peak player count is below 500 players. It has been more than 3 years since the last update to the game, the supposed 3.0 update has experienced so much scope creep that it's doubtful it'll ever come out and the developers can't communicate to save their lives. As much as it pains me to do so, I cannot recommend the game in its current state as it is effectively abandoned",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "234262342",
+                  "hours_at_review": 11.2,
+                  "minutes_at_review": 669,
+                  "voted_up": false,
+                  "date": "2026-09-01",
+                  "review_text": "Had awesome potential, then kinda seems like the devs just gave up. I've noticed them putting out some Devlogs over the last year but there are like 300, maybe 400 people still playing the game, its too little too late.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
         "cited_reviews": 16,
-        "cited_recommend": 5,
-        "divergence_p": 0.0229,
+        "cited_recommend": 0,
+        "divergence_p": 1.3e-05,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -461,74 +486,112 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 514,
-      "pct_positive": 51.4,
+      "pool_n": 504,
+      "pct_positive": 45.8,
       "muted": false,
       "n_note": null,
-      "summary": "Participants praise gun customization and social proximity chat while warning about dead servers and missing communication.",
+      "summary": "Mid-tier players experience massive map destruction and good performance on modest hardware, contrasted against stalled updates and sweaty lobbies.",
       "themes": [
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-da5d28",
-              "claim": "Reviewers report that the developers went without updates or communication for an extended period, leading to a depleted player count and dead servers.",
+              "claim_id": "mid-188783",
+              "claim": "Reviewers report that the game has been abandoned by the developers with no updates delivered for years.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
+                "positive": 0,
                 "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231852995",
-                  "hours_at_review": 81.2,
+                  "recommendationid": "240342369",
+                  "hours_at_review": 81.6,
+                  "minutes_at_review": 4895,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "One of my favorite games ever at release and during the playtests, however the pointless balancing and updates just got rid of all the fun. The chase to \"fix\" things that aren't broken nor necessary, along with how its become abandonware makes me feel like the devs just took the money they made and ran off with it. Which is fine? In a way, but promising updates and then never going through with them is what really killed this game",
-                  "truncated": false,
-                  "minutes_at_review": 4873
+                  "date": "2026-11-16",
+                  "review_text": "this game has been dead for a while, dev post every few months but the last actual update was years ago.\r\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231703839",
-                  "hours_at_review": 44.4,
+                  "recommendationid": "240062971",
+                  "hours_at_review": 78.4,
+                  "minutes_at_review": 4706,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Once promised a return and revival of actual 'Battlefield' moments for any veteran of the original BF:1942-BF2 days and then was nearly immediately left to rot on the vine. \n\nThe bottom line is you need to read my review with the Steam chart up. June, July of '23 were when they had servers up. The dip thereafter is not because the meta sucked, not because the netcode was ♥♥♥♥, not because it crashed constantly, and not because player interest dwindled. None of those things were true. The game died because they pulled the servers. That simple. The reasoning was it needed more work and that was all you knew for OVER A YEAR. Oki literally refused to communicate. You can still go look at the community page here where the only communication was from people on the team pointing to MONTHS old comments from Oki as answers to the questions of \"What is even happening anymore?\".\n\nHonestly this game needs to be used as an example of a killed game. Generally it's a game that is several years old and the developers/publishers no longer want to support a small player base with rented servers. THAT happened to this game while it was still in Early Access. I don't know of a more stark warning that you simply should not be supporting this developer. \n\nTo be fair, the game as it was in Summer '23 was fantastic. I had literally no complaints. It was EVERYTHING I had wanted from my big battle FPS games. But I can't in good conscience encourage anyone to give money to the equivalent of a kickstarter creator who has already proven themselves capable of a cut and run. You should not spend your money on this game. You are just as likely to never get to spend an enjoyable hour in this game as to get as many as I have based on their willingness to support your ability to play. Go buy something that the dev can't take away from you. Support the Stop Killing Games movement and let this be a lesson that a solo dev can behave identically to a triple A publisher in terms of removing your access to…",
-                  "truncated": true,
-                  "minutes_at_review": 2661
+                  "date": "2026-11-13",
+                  "review_text": "Vaporware. Kind of fun, but there's no one to play with since the servers are dead after the devs neglected to update this early access game in 2 years.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231658920",
-                  "hours_at_review": 41.1,
+                  "recommendationid": "236629817",
+                  "hours_at_review": 27.9,
+                  "minutes_at_review": 1672,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "For a while this seemed to be on the way to become my go to FPS. It was refreshing and new compared to the yet another battlefield or Cod game and yet the developers went radio silent for nearly 2 years. No updates, no news or communication at all. \n\nNow they think they can just come back and \"update it and it's all fine again\" but the massive playerbase and hype this game used to have is gone. Sadly, most likely for good.",
-                  "truncated": false,
-                  "minutes_at_review": 2467
+                  "date": "2026-10-01",
+                  "review_text": "DO NOT BUY.\n\nCompletely abandoned by the devs when they realised how little effort is needed to make a lot of money. I'd go as far as to call it a cash grab. It is mind-boggling how you can manage to screw over and disappoint a playerbase that mostly came from an already disappointing game (BF2042). Anyone who played the game at launch will tell you the amazing potential this game had, and battlefield players especially.\n\nFurthermore, there have been talks of a so called \"Operation overhaul\" for over 2.5 years now, and very little has actually happened. Not a SINGLE game update for over THREE years now, and barely anything has been said from any of the people behind the game. Does anyone actually still believe that there's an update coming, and if it does come, why should anyone be inclined to step back in after such a long time of complete silence?\n\nThe devs should've admitted a long time ago that they're incapable of committing to this game despite their initial massive playerbase. If anything, they should've hired more people to work on this game. They had a gem of a game, and they went nowhere with it.\n\nSteams own note:\n\"Note: The last update made by the developers was over 2 years ago. The information and timeline described by the developers here may no longer be up to date.\"\n\nTL;DR:\nLong abandoned by devs, players left with little to no information despite initial massive playerbase.\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231157529",
-                  "hours_at_review": 82.8,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "the game plays great buuuuut the devs going radio silent for two years had dwindled the player count down so much that theirs realistically only one playable lobby. kinda sucks because the game is great",
-                  "truncated": false,
-                  "minutes_at_review": 4967
-                },
-                {
-                  "recommendationid": "229932512",
-                  "hours_at_review": 45.5,
+                  "recommendationid": "235390665",
+                  "hours_at_review": 81.8,
+                  "minutes_at_review": 4910,
                   "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "I loved this game when it first came out, it was amazing. The community was great, the gunplay was great. \n\nThere is one glaring problem which means that I cannot recommend it, the game has effectively been dead for 2 years, since around March 2024. The Dev 'team' promised an update by April of 2024 and never delivered. It took them 19 months for an update on steam, which is where most of the playerbase will get information on the game. They then had a playtest in November 2025 and it was incredibly bugged, with bad netcode and a memory leak. Since then, there has been little word, with the information you do get months apart. They also promised another playtest after the disaster in November, 'soon' and it hasn't materialised as of July 2026.\n\nI wish so hard that I could recommend this game in its current state, but I cannot.",
-                  "truncated": false,
-                  "minutes_at_review": 2729
+                  "date": "2026-09-16",
+                  "review_text": "was a very fun game when it was supported by the devs but now nearly 2 - 3 years on, its been abandoned. they decided to take the money and run unfortunately.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-1f328b",
-              "claim": "Reviewers highlight proximity voice chat as a notable feature that contributes to the game's entertainment and social interaction.",
+              "claim_id": "mid-379cc3",
+              "claim": "Reviewers report that the game has received no actual updates in years, with developers failing to deliver promised patches or content overhauls.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240342369",
+                  "hours_at_review": 81.6,
+                  "minutes_at_review": 4895,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "this game has been dead for a while, dev post every few months but the last actual update was years ago.\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240062971",
+                  "hours_at_review": 78.4,
+                  "minutes_at_review": 4706,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Vaporware. Kind of fun, but there's no one to play with since the servers are dead after the devs neglected to update this early access game in 2 years.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236629817",
+                  "hours_at_review": 27.9,
+                  "minutes_at_review": 1672,
+                  "voted_up": false,
+                  "date": "2026-10-01",
+                  "review_text": "DO NOT BUY.\n\nCompletely abandoned by the devs when they realised how little effort is needed to make a lot of money. I'd go as far as to call it a cash grab. It is mind-boggling how you can manage to screw over and disappoint a playerbase that mostly came from an already disappointing game (BF2042). Anyone who played the game at launch will tell you the amazing potential this game had, and battlefield players especially.\n\nFurthermore, there have been talks of a so called \"Operation overhaul\" for over 2.5 years now, and very little has actually happened. Not a SINGLE game update for over THREE years now, and barely anything has been said from any of the people behind the game. Does anyone actually still believe that there's an update coming, and if it does come, why should anyone be inclined to step back in after such a long time of complete silence?\n\nThe devs should've admitted a long time ago that they're incapable of committing to this game despite their initial massive playerbase. If anything, they should've hired more people to work on this game. They had a gem of a game, and they went nowhere with it.\n\nSteams own note:\n\"Note: The last update made by the developers was over 2 years ago. The information and timeline described by the developers here may no longer be up to date.\"\n\nTL;DR:\nLong abandoned by devs, players left with little to no information despite initial massive playerbase.\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235225669",
+                  "hours_at_review": 65.4,
+                  "minutes_at_review": 3922,
+                  "voted_up": false,
+                  "date": "2026-09-13",
+                  "review_text": "This game had insane potential when it first launched: Battlefield 2042 was out and lambasted as a failure, and the crown for a combined arms shooter was in the gutter. BattleBit was perfectly engineered for success in nearly every way as it was accessible before anything else. It could run on potato PC in an era where system requirement creep in games had begun to hit terminal velocity. Not only that, the game captured lightning in a bottle with the fact that it catered to casual fun and old-school persistent-lobby fun akin to gaming in the 2000s and 2010s. \n\nBattleBit would hit massive early success, but unfortunately never left the ground because of pathetic mismanagement by the rather egotistical devs. Like countless other games run by young Roblox devs, the developers would spend most of their time updating the game based on whoever glazed them the most in their Reddit and Discord servers. BattleBit would never leave this death spiral. The game quickly went into content drought. The chat and proximity chat began to get quieter as the banhammer would slaughter anyone. The game balance for weapons and movement was never properly addressed, quickly became yet another shooter that lost its casual audience, and was commandeered by movement-tech players who worshipped the devs.\n\nNow we see the rotting corpse of potential. The devs occassionally scream into an empty void promising the audience of nobody a \"revamp fr fr guys\" while there has not been content in almost 3 years. It's gone, and the crown is in the gutter once again.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-9b4d25",
+              "claim": "Reviewers describe the gameplay as featuring large-scale battles with fully destructible environments.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 4,
@@ -536,718 +599,69 @@
               },
               "citations": [
                 {
-                  "recommendationid": "230159699",
-                  "hours_at_review": 64.7,
+                  "recommendationid": "239873093",
+                  "hours_at_review": 75.0,
+                  "minutes_at_review": 4502,
                   "voted_up": true,
-                  "date": "2026-07-10",
-                  "review_text": "[h1] Fun Core Gameplay, but the Jank is Real [/h1]\n\n[b]It is a decent shooter for the price, but let's be honest the game feels incredibly buggy and unpolished right now.[/b]\n\n[hr][/hr]\n\n[h3] The Reality Check: [/h3]\n* [i]Buggy Experience:[/i] From weird vehicle physics and clipping through walls to occasional server side hit registration issues, you will definitely run into jank.\n* [i]Progression & Balance:[/i] The grind can feel incredibly tedious, and certain weapons completely dominate the meta while others feel like nerf guns.\n* [i]The Graphics Visuals:[/i] The Roblox/Minecraft art style isn't for everyone and can make it genuinely hard to spot enemies at long distances.\n\n[h3] Why it still gets a thumbs up: [/h3]\n* [i]Massive Scale:[/i] The 254-player chaos and full map destruction can be genuinely fun when the game actually works properly.\n* [i]Proximity Chat:[/i] The community interactions and voice chat carry a lot of the entertainment value.\n\n[hr][/hr]\n\n[b]Verdict:[/b] It is worth a try if you want some casual, chaotic fun with friends, but do not expect a highly polished or competitive masterpiece. [spoiler] Buy it on a sale if you are unsure. [/spoiler]",
-                  "truncated": false,
-                  "minutes_at_review": 3883
+                  "date": "2026-11-10",
+                  "review_text": "In the past this was an absolute gem, good performance, good progression, good customization of your builds (cosmetics, weapons, accessories) and amazing maps with more than 90% of it able to be destroyed (C4, RPGs, you name it).\n\nSadly, the devs do not speak much to the community and it seems most servers are actually dead (I have not confirmed this), maybe in the future this will be great again, it is a good game, just dead at the moment.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230018709",
-                  "hours_at_review": 23.6,
+                  "recommendationid": "238121158",
+                  "hours_at_review": 90.0,
+                  "minutes_at_review": 5403,
                   "voted_up": true,
-                  "date": "2026-07-09",
-                  "review_text": "BattleBit Remastered is what happens when someone ignores modern graphics and spends all their time making the gameplay actually fun.\n\nAt first glance it looks like a game made from building blocks.\n\nFive minutes later you're diving behind cover, dragging teammates to safety and laughing because the enemy medic just negotiated a ceasefire over proximity chat.\n\nThe shooting feels fantastic, destruction keeps every match unpredictable, and the class system actually encourages teamwork instead of pretending it does.\n\nThen there's proximity chat...\n\nIt's either the funniest feature in multiplayer gaming or compelling evidence that nobody should be given a microphone.\n\nThe biggest concern now is the player count. While you can still find games, it's nowhere near the phenomenon it was at launch. It'd be a real shame to see BattleBit slowly fade away because underneath the simple visuals is one of the most enjoyable large-scale shooters released in years. It deserves players, not empty servers.\n\nBattleBit proves graphics don't make a shooter memorable.\n\nPlayers do.\n\nLet's just hope there are enough of them to keep this one alive.",
-                  "truncated": false,
-                  "minutes_at_review": 1418
+                  "date": "2026-10-19",
+                  "review_text": "good map destruction and emersive for the graphics it has",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230646769",
-                  "hours_at_review": 20.5,
+                  "recommendationid": "237557612",
+                  "hours_at_review": 48.0,
+                  "minutes_at_review": 2881,
                   "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "Really fun game, gameplay reminiscent of peak battlefield mixed with a Roblox-like animation style. Lot of customization options for each gun with lots of detailed consequences for each (horizontal/vertical recoil, weapon draw speed, bullet trajectory, etc). Proximity chat is fun too. Wish it had more players :(, deserves more imo.",
-                  "truncated": false,
-                  "minutes_at_review": 1230
-                },
-                {
-                  "recommendationid": "229740042",
-                  "hours_at_review": 28.8,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "So the population for this game has steeply fallen since its launch in 2023. That's kinda obvious given that BF6 is out and currently the new hotness. That said, BattleBit is still punching way above its weight and honestly feels like the (ironically) slightly more grounded Battlefield experience that it was always trying to be.\n\nI enjoy the gunplay, the simple environments and graphics keep finding and sighting your target fairly straightforward without jeopardizing stealth and cover, and BattleBit runs like a dream on my laptop while BF6 stutters to death on my higher-end desktop (all while supporting lobbies of over 200 players). Seriously, it's a great game, and while I understand some players' frustration with the development time, honestly for what it is the game is good and it's certainly worth $15 and couple dozen hours of my time, at least. The amount of quality on offer in spite of the price tag and simple presentation is kind of surreal, and what players remain active in this game actually engage in team chat and makes the lobbies feel a lot more alive than any I've encoutered in BF6.  \n\nAlso it has proximity voice chat that's active even for a few seconds after you die. Highly recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 1726
+                  "date": "2026-10-12",
+                  "review_text": "The blocky graphics aren't impressive technically, but they allow for massive battles without requiring high-end hardware. Large-scale firefights, destructible environments, and chaotic team interactions make the gameplay surprisingly engaging. With 48 hours played, there's plenty of evidence that graphics aren't everything in a multiplayer shooter. Different classes, weapons, and unpredictable matches give it strong replayability. A great example of a game prioritizing gameplay and scale over visual realism.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-93ea01",
-              "claim": "Reviewers describe the game as abandoned or lacking updates by the developers after its initial release.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 2,
-                "negative": 17
-              },
-              "citations": [
-                {
-                  "recommendationid": "231852995",
-                  "hours_at_review": 81.2,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "One of my favorite games ever at release and during the playtests, however the pointless balancing and updates just got rid of all the fun. The chase to \"fix\" things that aren't broken nor necessary, along with how its become abandonware makes me feel like the devs just took the money they made and ran off with it. Which is fine? In a way, but promising updates and then never going through with them is what really killed this game",
-                  "truncated": false,
-                  "minutes_at_review": 4873
-                },
-                {
-                  "recommendationid": "231703839",
-                  "hours_at_review": 44.4,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Once promised a return and revival of actual 'Battlefield' moments for any veteran of the original BF:1942-BF2 days and then was nearly immediately left to rot on the vine. \n\nThe bottom line is you need to read my review with the Steam chart up. June, July of '23 were when they had servers up. The dip thereafter is not because the meta sucked, not because the netcode was ♥♥♥♥, not because it crashed constantly, and not because player interest dwindled. None of those things were true. The game died because they pulled the servers. That simple. The reasoning was it needed more work and that was all you knew for OVER A YEAR. Oki literally refused to communicate. You can still go look at the community page here where the only communication was from people on the team pointing to MONTHS old comments from Oki as answers to the questions of \"What is even happening anymore?\".\n\nHonestly this game needs to be used as an example of a killed game. Generally it's a game that is several years old and the developers/publishers no longer want to support a small player base with rented servers. THAT happened to this game while it was still in Early Access. I don't know of a more stark warning that you simply should not be supporting this developer. \n\nTo be fair, the game as it was in Summer '23 was fantastic. I had literally no complaints. It was EVERYTHING I had wanted from my big battle FPS games. But I can't in good conscience encourage anyone to give money to the equivalent of a kickstarter creator who has already proven themselves capable of a cut and run. You should not spend your money on this game. You are just as likely to never get to spend an enjoyable hour in this game as to get as many as I have based on their willingness to support your ability to play. Go buy something that the dev can't take away from you. Support the Stop Killing Games movement and let this be a lesson that a solo dev can behave identically to a triple A publisher in terms of removing your access to…",
-                  "truncated": true,
-                  "minutes_at_review": 2661
-                },
-                {
-                  "recommendationid": "231658920",
-                  "hours_at_review": 41.1,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "For a while this seemed to be on the way to become my go to FPS. It was refreshing and new compared to the yet another battlefield or Cod game and yet the developers went radio silent for nearly 2 years. No updates, no news or communication at all. \n\nNow they think they can just come back and \"update it and it's all fine again\" but the massive playerbase and hype this game used to have is gone. Sadly, most likely for good.",
-                  "truncated": false,
-                  "minutes_at_review": 2467
-                },
-                {
-                  "recommendationid": "231513833",
-                  "hours_at_review": 27.7,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Devs stopped working on the game.",
-                  "truncated": false,
-                  "minutes_at_review": 1664
-                },
-                {
-                  "recommendationid": "231487489",
-                  "hours_at_review": 65.7,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "game died when devs randomly decided to ghost everyone. honestly was a banger and racked up 10 hours playtime in a day",
-                  "truncated": false,
-                  "minutes_at_review": 3942
-                },
-                {
-                  "recommendationid": "231442846",
-                  "hours_at_review": 30.0,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "Abandoned by the devs and dead multiplayer; don't bother buying.",
-                  "truncated": false,
-                  "minutes_at_review": 1798
-                },
-                {
-                  "recommendationid": "231157529",
-                  "hours_at_review": 82.8,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "the game plays great buuuuut the devs going radio silent for two years had dwindled the player count down so much that theirs realistically only one playable lobby. kinda sucks because the game is great",
-                  "truncated": false,
-                  "minutes_at_review": 4967
-                },
-                {
-                  "recommendationid": "230937729",
-                  "hours_at_review": 44.4,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "Do NOT purchase\n\n-Abandoned Game\n-No Servers to play on\n-You'll waste your money",
-                  "truncated": false,
-                  "minutes_at_review": 2664
-                },
-                {
-                  "recommendationid": "230858482",
-                  "hours_at_review": 32.9,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "devs essentially just abandoned the game",
-                  "truncated": false,
-                  "minutes_at_review": 1976
-                },
-                {
-                  "recommendationid": "230759376",
-                  "hours_at_review": 63.3,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Game was goated for quite some time. Devs decided this game needed heavy balancing and after many annoying changes, left the game completely. Unless they pick themselves up by their bootstraps, I don't see this game growing any time soon. I would love to come back if they do.",
-                  "truncated": false,
-                  "minutes_at_review": 3796
-                },
-                {
-                  "recommendationid": "230712863",
-                  "hours_at_review": 24.0,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Used to be a very fun game but been abandoned by the dev. Don't buy.",
-                  "truncated": false,
-                  "minutes_at_review": 1441
-                },
-                {
-                  "recommendationid": "230546799",
-                  "hours_at_review": 89.7,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Great game when it came out, then. Now the game's dev going off the grid for two years. With the unclear support of the game, stay away until the devs give out a major update that fixes the current games state.\n",
-                  "truncated": false,
-                  "minutes_at_review": 5380
-                },
-                {
-                  "recommendationid": "229932512",
-                  "hours_at_review": 45.5,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "I loved this game when it first came out, it was amazing. The community was great, the gunplay was great. \n\nThere is one glaring problem which means that I cannot recommend it, the game has effectively been dead for 2 years, since around March 2024. The Dev 'team' promised an update by April of 2024 and never delivered. It took them 19 months for an update on steam, which is where most of the playerbase will get information on the game. They then had a playtest in November 2025 and it was incredibly bugged, with bad netcode and a memory leak. Since then, there has been little word, with the information you do get months apart. They also promised another playtest after the disaster in November, 'soon' and it hasn't materialised as of July 2026.\n\nI wish so hard that I could recommend this game in its current state, but I cannot.",
-                  "truncated": false,
-                  "minutes_at_review": 2729
-                },
-                {
-                  "recommendationid": "229345875",
-                  "hours_at_review": 56.4,
-                  "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "abandonware, even though the dev came back with a broken playtest 2 years later then dip and re-surface again to post a devblog once every blue moon, there is no guaranteed that they won't go out for milk again later.",
-                  "truncated": false,
-                  "minutes_at_review": 3385
-                },
-                {
-                  "recommendationid": "229288049",
-                  "hours_at_review": 21.5,
-                  "voted_up": true,
-                  "date": "2026-07-01",
-                  "review_text": "Good game and fun gameplay, lots do do but one downside. They don't update regularly.",
-                  "truncated": false,
-                  "minutes_at_review": 1292
-                },
-                {
-                  "recommendationid": "228921882",
-                  "hours_at_review": 83.6,
-                  "voted_up": false,
-                  "date": "2026-06-27",
-                  "review_text": "One of my favourite shooters of all time on steam. Unfortunate the state of the servers, barren, and the declining player base. A lack of updates or support also has been a determent to the game. Few players use mic anymore unfortunately. Pick it up if it is on sale, but don't waste your money on this when there is better out there now.",
-                  "truncated": false,
-                  "minutes_at_review": 5016
-                },
-                {
-                  "recommendationid": "228679475",
-                  "hours_at_review": 68.6,
-                  "voted_up": false,
-                  "date": "2026-06-24",
-                  "review_text": "Devs offer broken and empty promises while keeping the community silent at the same time.\n\nIt was very fun at the beginning, but now it's better to look for something else as this game has no future.",
-                  "truncated": false,
-                  "minutes_at_review": 4118
-                },
-                {
-                  "recommendationid": "228496880",
-                  "hours_at_review": 37.9,
-                  "voted_up": false,
-                  "date": "2026-06-21",
-                  "review_text": "devs abandoned the game for 2 years when their game was at its peak. just to return when the community has already left for better games. bf6 is out and better than ever. honestly dont buy this. go buy bf6 you will thank me later.",
-                  "truncated": false,
-                  "minutes_at_review": 2276
-                },
-                {
-                  "recommendationid": "227698911",
-                  "hours_at_review": 68.2,
-                  "voted_up": false,
-                  "date": "2026-06-11",
-                  "review_text": "Good game, fun times, but its abandonware at this point and the devs are \"working\" on reworking the game allegedly but if thats the case its too late",
-                  "truncated": false,
-                  "minutes_at_review": 4089
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-d8adfc",
-              "claim": "Reviewers note that weekly challenge progress randomly resets.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230159699",
-                  "hours_at_review": 64.7,
-                  "voted_up": true,
-                  "date": "2026-07-10",
-                  "review_text": "[h1] Fun Core Gameplay, but the Jank is Real [/h1]\n\n[b]It is a decent shooter for the price, but let's be honest the game feels incredibly buggy and unpolished right now.[/b]\n\n[hr][/hr]\n\n[h3] The Reality Check: [/h3]\n* [i]Buggy Experience:[/i] From weird vehicle physics and clipping through walls to occasional server side hit registration issues, you will definitely run into jank.\n* [i]Progression & Balance:[/i] The grind can feel incredibly tedious, and certain weapons completely dominate the meta while others feel like nerf guns.\n* [i]The Graphics Visuals:[/i] The Roblox/Minecraft art style isn't for everyone and can make it genuinely hard to spot enemies at long distances.\n\n[h3] Why it still gets a thumbs up: [/h3]\n* [i]Massive Scale:[/i] The 254-player chaos and full map destruction can be genuinely fun when the game actually works properly.\n* [i]Proximity Chat:[/i] The community interactions and voice chat carry a lot of the entertainment value.\n\n[hr][/hr]\n\n[b]Verdict:[/b] It is worth a try if you want some casual, chaotic fun with friends, but do not expect a highly polished or competitive masterpiece. [spoiler] Buy it on a sale if you are unsure. [/spoiler]",
-                  "truncated": false,
-                  "minutes_at_review": 3883
-                },
-                {
-                  "recommendationid": "229915638",
-                  "hours_at_review": 45.1,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "The game is NOT dead. There is always a server with 100 players or more. It is free of cheaters, which is very nice. Smoke grenades can be effective because the enemy doesn't have a cheater with ESP who can shoot accurately through the smoke. I also like that the game doesn't have mortars, deaths from mortars never feel earned. The game also seems pretty bug-free, although the one bug I have had to deal with, weekly challenges randomly resetting your progress, seems like it has existed for a couple years without being fixed, so that is disappointing. Don't bother trying to complete the weekly challenges. It is nice that snipers are well balanced, with the scope glint always letting you know if a sniper is aiming at you, and snipers not being able to wear helmets.",
-                  "truncated": false,
-                  "minutes_at_review": 2705
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-4db86b",
-              "claim": "Reviewers describe gun customization options with consequences for stats such as recoil, bullet trajectory, and draw speed.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230646769",
-                  "hours_at_review": 20.5,
-                  "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "Really fun game, gameplay reminiscent of peak battlefield mixed with a Roblox-like animation style. Lot of customization options for each gun with lots of detailed consequences for each (horizontal/vertical recoil, weapon draw speed, bullet trajectory, etc). Proximity chat is fun too. Wish it had more players :(, deserves more imo.",
-                  "truncated": false,
-                  "minutes_at_review": 1230
-                },
-                {
-                  "recommendationid": "228732629",
-                  "hours_at_review": 33.4,
-                  "voted_up": true,
-                  "date": "2026-06-24",
-                  "review_text": "Trust me, This game a is great for these reasons\r\n- Many and many of guns to choose from \r\n- crazy amount of customization (muzzles, scopes, lazers/flashlights, player customization, gun skin, etc)\r\n- every building can be broken\r\nReally this game is something you would play to past the time and goof around with your friends.\r\notherwise should you buy it? Yes and no, i would buy it if it was on a discount, not full price",
-                  "truncated": false,
-                  "minutes_at_review": 2004
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-07fcf8",
-              "claim": "Reviewers describe the developers as having abandoned the game or gone without communication for long periods.",
+              "claim_id": "mid-6c1626",
+              "claim": "Reviewers describe the game as abandoned by the developers, with years passing between actual updates despite ongoing promises of future overhauls.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 5
-              },
-              "citations": [
-                {
-                  "recommendationid": "231852995",
-                  "hours_at_review": 81.2,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "One of my favorite games ever at release and during the playtests, however the pointless balancing and updates just got rid of all the fun. The chase to \"fix\" things that aren't broken nor necessary, along with how its become abandonware makes me feel like the devs just took the money they made and ran off with it. Which is fine? In a way, but promising updates and then never going through with them is what really killed this game",
-                  "truncated": false,
-                  "minutes_at_review": 4873
-                },
-                {
-                  "recommendationid": "231703839",
-                  "hours_at_review": 44.4,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Once promised a return and revival of actual 'Battlefield' moments for any veteran of the original BF:1942-BF2 days and then was nearly immediately left to rot on the vine. \n\nThe bottom line is you need to read my review with the Steam chart up. June, July of '23 were when they had servers up. The dip thereafter is not because the meta sucked, not because the netcode was ♥♥♥♥, not because it crashed constantly, and not because player interest dwindled. None of those things were true. The game died because they pulled the servers. That simple. The reasoning was it needed more work and that was all you knew for OVER A YEAR. Oki literally refused to communicate. You can still go look at the community page here where the only communication was from people on the team pointing to MONTHS old comments from Oki as answers to the questions of \"What is even happening anymore?\".\n\nHonestly this game needs to be used as an example of a killed game. Generally it's a game that is several years old and the developers/publishers no longer want to support a small player base with rented servers. THAT happened to this game while it was still in Early Access. I don't know of a more stark warning that you simply should not be supporting this developer. \n\nTo be fair, the game as it was in Summer '23 was fantastic. I had literally no complaints. It was EVERYTHING I had wanted from my big battle FPS games. But I can't in good conscience encourage anyone to give money to the equivalent of a kickstarter creator who has already proven themselves capable of a cut and run. You should not spend your money on this game. You are just as likely to never get to spend an enjoyable hour in this game as to get as many as I have based on their willingness to support your ability to play. Go buy something that the dev can't take away from you. Support the Stop Killing Games movement and let this be a lesson that a solo dev can behave identically to a triple A publisher in terms of removing your access to…",
-                  "truncated": true,
-                  "minutes_at_review": 2661
-                },
-                {
-                  "recommendationid": "231658920",
-                  "hours_at_review": 41.1,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "For a while this seemed to be on the way to become my go to FPS. It was refreshing and new compared to the yet another battlefield or Cod game and yet the developers went radio silent for nearly 2 years. No updates, no news or communication at all. \n\nNow they think they can just come back and \"update it and it's all fine again\" but the massive playerbase and hype this game used to have is gone. Sadly, most likely for good.",
-                  "truncated": false,
-                  "minutes_at_review": 2467
-                },
-                {
-                  "recommendationid": "231487489",
-                  "hours_at_review": 65.7,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "game died when devs randomly decided to ghost everyone. honestly was a banger and racked up 10 hours playtime in a day",
-                  "truncated": false,
-                  "minutes_at_review": 3942
-                },
-                {
-                  "recommendationid": "229932512",
-                  "hours_at_review": 45.5,
-                  "voted_up": false,
-                  "date": "2026-07-08",
-                  "review_text": "I loved this game when it first came out, it was amazing. The community was great, the gunplay was great. \n\nThere is one glaring problem which means that I cannot recommend it, the game has effectively been dead for 2 years, since around March 2024. The Dev 'team' promised an update by April of 2024 and never delivered. It took them 19 months for an update on steam, which is where most of the playerbase will get information on the game. They then had a playtest in November 2025 and it was incredibly bugged, with bad netcode and a memory leak. Since then, there has been little word, with the information you do get months apart. They also promised another playtest after the disaster in November, 'soon' and it hasn't materialised as of July 2026.\n\nI wish so hard that I could recommend this game in its current state, but I cannot.",
-                  "truncated": false,
-                  "minutes_at_review": 2729
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-aa6464",
-              "claim": "Reviewers note that the blocky, Minecraft-style graphics can make it difficult to spot distant enemies.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230159699",
-                  "hours_at_review": 64.7,
-                  "voted_up": true,
-                  "date": "2026-07-10",
-                  "review_text": "[h1] Fun Core Gameplay, but the Jank is Real [/h1]\n\n[b]It is a decent shooter for the price, but let's be honest the game feels incredibly buggy and unpolished right now.[/b]\n\n[hr][/hr]\n\n[h3] The Reality Check: [/h3]\n* [i]Buggy Experience:[/i] From weird vehicle physics and clipping through walls to occasional server side hit registration issues, you will definitely run into jank.\n* [i]Progression & Balance:[/i] The grind can feel incredibly tedious, and certain weapons completely dominate the meta while others feel like nerf guns.\n* [i]The Graphics Visuals:[/i] The Roblox/Minecraft art style isn't for everyone and can make it genuinely hard to spot enemies at long distances.\n\n[h3] Why it still gets a thumbs up: [/h3]\n* [i]Massive Scale:[/i] The 254-player chaos and full map destruction can be genuinely fun when the game actually works properly.\n* [i]Proximity Chat:[/i] The community interactions and voice chat carry a lot of the entertainment value.\n\n[hr][/hr]\n\n[b]Verdict:[/b] It is worth a try if you want some casual, chaotic fun with friends, but do not expect a highly polished or competitive masterpiece. [spoiler] Buy it on a sale if you are unsure. [/spoiler]",
-                  "truncated": false,
-                  "minutes_at_review": 3883
-                },
-                {
-                  "recommendationid": "229740042",
-                  "hours_at_review": 28.8,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "So the population for this game has steeply fallen since its launch in 2023. That's kinda obvious given that BF6 is out and currently the new hotness. That said, BattleBit is still punching way above its weight and honestly feels like the (ironically) slightly more grounded Battlefield experience that it was always trying to be.\n\nI enjoy the gunplay, the simple environments and graphics keep finding and sighting your target fairly straightforward without jeopardizing stealth and cover, and BattleBit runs like a dream on my laptop while BF6 stutters to death on my higher-end desktop (all while supporting lobbies of over 200 players). Seriously, it's a great game, and while I understand some players' frustration with the development time, honestly for what it is the game is good and it's certainly worth $15 and couple dozen hours of my time, at least. The amount of quality on offer in spite of the price tag and simple presentation is kind of surreal, and what players remain active in this game actually engage in team chat and makes the lobbies feel a lot more alive than any I've encoutered in BF6.  \n\nAlso it has proximity voice chat that's active even for a few seconds after you die. Highly recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 1726
-                },
-                {
-                  "recommendationid": "230018709",
-                  "hours_at_review": 23.6,
-                  "voted_up": true,
-                  "date": "2026-07-09",
-                  "review_text": "BattleBit Remastered is what happens when someone ignores modern graphics and spends all their time making the gameplay actually fun.\n\nAt first glance it looks like a game made from building blocks.\n\nFive minutes later you're diving behind cover, dragging teammates to safety and laughing because the enemy medic just negotiated a ceasefire over proximity chat.\n\nThe shooting feels fantastic, destruction keeps every match unpredictable, and the class system actually encourages teamwork instead of pretending it does.\n\nThen there's proximity chat...\n\nIt's either the funniest feature in multiplayer gaming or compelling evidence that nobody should be given a microphone.\n\nThe biggest concern now is the player count. While you can still find games, it's nowhere near the phenomenon it was at launch. It'd be a real shame to see BattleBit slowly fade away because underneath the simple visuals is one of the most enjoyable large-scale shooters released in years. It deserves players, not empty servers.\n\nBattleBit proves graphics don't make a shooter memorable.\n\nPlayers do.\n\nLet's just hope there are enough of them to keep this one alive.",
-                  "truncated": false,
-                  "minutes_at_review": 1418
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 25,
-        "cited_recommend": 8,
-        "divergence_p": 0.0402,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 277,
-      "pct_positive": 44.8,
-      "muted": false,
-      "n_note": null,
-      "summary": "Long-term players enjoy the gunplay and performance, while noting dwindling populations, cheaters, and prolonged abandonment.",
-      "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-fa42cd",
-              "claim": "Reviewers report that the developers have gone years without releasing an update for the game, leaving it in a prolonged state of early access.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 3,
-                "negative": 10
-              },
-              "citations": [
-                {
-                  "recommendationid": "231781358",
-                  "hours_at_review": 433.2,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "A game I once loved and adored, completely ruined by a dev team that could not care any less for it's dwindling player base. When this game first came out, there were servers galore, servers for each region that were filled along with other servers made specifically for smaller groups to play on. None of this exists anymore, and there's no one to blame but the devs themselves. We have been waiting on an \"April Update\" since 2024, since then we have gotten little to no information in regards to the update, apart from a singular playtest that was so horrible it left a bad taste in the mouths of everyone player who tried it. \nSo, would I recommend this game after over 400 hours of playing it? No. I don't recommend touching this game with a 30 foot pole. A completely avoidable disaster that the devs did nothing to stop. \nIf you are a game developer and you see this review, do not make the same mistakes these guys have. Communicate with your community, release updates and update notes when you say you will or at the very least keep your player base in the know. If you say you will work on updates, please actually work on them unlike these developers. \n\nFinal Note: A game that could've been, and at first was, a smash hit destined to go even farther ruined by useless developers and a lack of communication to the only people keeping this game alive anymore.\nDO NOT BUY, DO NOT GIFT, DO NOT GIVE THESE DEVELOPERS ANY CREDIT FOR THE LACK IF TRANSPARITY.",
-                  "truncated": false,
-                  "minutes_at_review": 25993
-                },
-                {
-                  "recommendationid": "231711876",
-                  "hours_at_review": 771.3,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "The game was fun when it was new, but the devs killed it due to their lack of interest or possibly petty grudging at their own community. They have been promising an update for years, with the most intensive promised addition being a higher poly forklift model. The fabled mid april update will likely never drop. \n\nWith a global population now hovering at 400~ players concurrent between 2 NA servers, you will not find a good match. Balance issues have been left stagnant, and most ingame VC is now regulated to discord. I got the supporter edition at release, and the promises included still have not been implemented. Do not purchase this game.",
-                  "truncated": false,
-                  "minutes_at_review": 46279
-                },
-                {
-                  "recommendationid": "231709469",
-                  "hours_at_review": 474.9,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "I've accumulated about 500 hours in this game from August 2023-December 2024 (It's last update before the devs went radio silent for about 9 months until we heard news about the Revamp in July 2025.) \n\nNow from what I learned from these last 3 years that the devs were super passionate when the game exploded over 1 million sales and over 500k players, and the eventual player drop months down the line which is normal. I wouldn't recommend the game now, it's not in a bad state gameplay wise it's just that the devs abandoned the game for 2 YEARS.\n\nI've seen the recent update of this month, it's looking good but this was promised to use 2 years ago ALOT of people have moved on to bigger and better things. It's just the way of the industry unfortunately people lose interest, now Battlebit Team don't ♥♥♥♥ this up, I want to comeback to the game I use to love and I want to see this game FULLY release no more EARLY access, or beta. ALSO PLEASE DON'T LET THE NEXT PLAYTEST BE SUPER BUGGY. Keep working diligently and I believe in the team so please work hard and to get this out I'm so proud to be apart of something big, and bigger than me. SO PLEASE DON'T MESS THIS UP!",
-                  "truncated": false,
-                  "minutes_at_review": 28492
-                },
-                {
-                  "recommendationid": "231675797",
-                  "hours_at_review": 113.8,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Incredible game when it launched and the dev's were working on it. Unfortunately they took a 2 year hiatus and have only returned, presumably, because they need money. Don't buy this game the dev team abandoned it once they will likely do it again.",
-                  "truncated": false,
-                  "minutes_at_review": 6826
-                },
-                {
-                  "recommendationid": "231133235",
-                  "hours_at_review": 778.7,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "Still in early access and last update was more than 2 years ago. \n\nThis game has been abandoned, it's developers made off with all of our money and disappeared. Don't bother.",
-                  "truncated": false,
-                  "minutes_at_review": 46721
-                },
-                {
-                  "recommendationid": "231095984",
-                  "hours_at_review": 125.0,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "I genuinely wish this review didn’t have to be written. When BattleBit Remastered arrived, it captured a rare kind of lightning in a bottle. It took the sprawling, chaotic formula of classic Battlefield, packaged it into an approachable low-poly aesthetic, and offered engaging gunplay, deep customization, classes, vehicles, and incredible local proximity chat—all for fifteen dollars. How could it possibly fail?\n\nFor a time, the moment-to-moment gameplay was phenomenal. It took the internet by storm because it delivered exactly what it promised. Beyond the tight mechanics and massive servers, the true texture of the game was its community. Yes, gamers can be loud and a bit much, but for every person yelling to the clouds about cheaters or weapon balance, there were three more of us just logging in after a long day of work, wanting nothing more than to relax and banter with our friends in the trenches. It was an ecosystem built for camaraderie.\n\nBut then came the friction—not from the gameplay, but from the void outside of it. Two years of silence. The player count dwindled and eventually fell off a cliff, suffocated by a sheer lack of interaction and apparent attention from the developers. I do not doubt for a second that the creators love their product, but passion works both ways. When a community invests time and faith into your project, two years of total silence demonstrates a profound lack of love for the players themselves. Stepping into this line of work requires understanding that maintaining the relationship is just as vital as building the engine.\n\nI cannot in good conscience recommend this title. Even if the team manages to rally, right the ship, and begin pushing out content at a pace that surpasses Hello Games’ redemption of No Man's Sky, the story for me ends here. The window for that reconciliation is beyond closed. I can't say exactly when that door shut, but I think everyone still watching knows it did. I will fondly remember the time when this low-…",
-                  "truncated": true,
-                  "minutes_at_review": 7498
-                },
-                {
-                  "recommendationid": "231004130",
-                  "hours_at_review": 241.1,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "Good game, very few bugs, current wip update has been delayed for several years now, but all that means is you don't have to worry about them changing the meta. Would recommend if you like battlefield but either don't have the PC for/ or don't like realistic textures. 10/10 3 years ago, with current neglect, 6/10.",
-                  "truncated": false,
-                  "minutes_at_review": 14468
-                },
-                {
-                  "recommendationid": "228981918",
-                  "hours_at_review": 194.2,
-                  "voted_up": true,
-                  "date": "2026-06-27",
-                  "review_text": "Still better than any Battlefield game. More frequent updates would keep people logging in, but very little has happened in the last two years. Even with a large update coming \"soon\", it could be too little too late for this great game.",
-                  "truncated": false,
-                  "minutes_at_review": 11652
-                },
-                {
-                  "recommendationid": "228564981",
-                  "hours_at_review": 122.6,
-                  "voted_up": false,
-                  "date": "2026-06-22",
-                  "review_text": "Game was absolutely amazing, tons of fun. It was competing and winning against games like Battlefield and Call of Duty. BUT its been totally abandoned for more than 2 years. Loser devs abandoned game at its peak and was just giving empty promises.",
-                  "truncated": false,
-                  "minutes_at_review": 7357
-                },
-                {
-                  "recommendationid": "226657281",
-                  "hours_at_review": 123.8,
-                  "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "Genuinely one of the best war-sims I've ever played, competing with the best from other franchises that share the genre. Extremely fun gunplay and movement mechanics in a simple, easy to run game environment. Some of the most fun I've ever had was with the VOIP proximity chat in Battlebit. Unfortunately, when the devs went to work on the \"overhaul\" update, they left it with less than a skeleton crew. After the 2+ years of basically complete silence from the devs the servers are dead and cheaters are rampant. Its because of this that I could not recommend anyone spend money on this game, even though I love it so much. If it manages to bounce back, definitely give it a shot.",
-                  "truncated": false,
-                  "minutes_at_review": 7429
-                },
-                {
-                  "recommendationid": "226577666",
-                  "hours_at_review": 146.9,
-                  "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "A great game abadoned by the devs, had so much potential too.\n\nAlso never realised this game was still tagged early access, I could have sworn it was released and I feel it had enough content to no longer be considered in an early access state but I guess not.\nWhich just makes it even worse that they abandoned (for over 2 years now) the game that was still in an early access state.",
-                  "truncated": false,
-                  "minutes_at_review": 8817
-                },
-                {
-                  "recommendationid": "226523791",
-                  "hours_at_review": 116.2,
-                  "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "Devs gave up on a multimillion dollar opportunity with all the hype this game had, but threw it away and have added close to zero new content since.\n\nDo not reccomend",
-                  "truncated": false,
-                  "minutes_at_review": 6975
-                },
-                {
-                  "recommendationid": "225003378",
-                  "hours_at_review": 160.3,
-                  "voted_up": false,
-                  "date": "2026-05-08",
-                  "review_text": "I loved this game when it first came out. Never had any problems, felt like a good battlefield-like game. unfortunately with this recent \"update\" I am now unable to play this game on Linux. This was the only multiplayer game i have played over the last few years. But with the dev team dangling the carrot on a stick, teasing the operation overhaul update and never delivering, let alone even a real update, this game feels like it is dead. i wouldn't have minded since I played Bf3 on 360 for long after it was supported. Now i can't get the game to even load. I hope the game becomes playable again for Linux. But i won't hold my breath.\n\nEDIT 5/9/2026: Battlebit is now working for me on Linux. I still wish there was some info for the new update, unfortunately there is not a lot of active servers, but there is at least one with 100 plus people. I will continue to play the game as long as the servers remain up. Still, at the moment, I can not recommend buying. This game had and hopefully still has a lot of potential to be a great game, but the community feels like it is shrinking more and more.",
-                  "truncated": false,
-                  "minutes_at_review": 9616
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-be0c2c",
-              "claim": "Reviewers note that the active player count has severely dwindled, leaving only a couple of populated servers during peak hours.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 2,
-                "negative": 7
-              },
-              "citations": [
-                {
-                  "recommendationid": "231781358",
-                  "hours_at_review": 433.2,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "A game I once loved and adored, completely ruined by a dev team that could not care any less for it's dwindling player base. When this game first came out, there were servers galore, servers for each region that were filled along with other servers made specifically for smaller groups to play on. None of this exists anymore, and there's no one to blame but the devs themselves. We have been waiting on an \"April Update\" since 2024, since then we have gotten little to no information in regards to the update, apart from a singular playtest that was so horrible it left a bad taste in the mouths of everyone player who tried it. \nSo, would I recommend this game after over 400 hours of playing it? No. I don't recommend touching this game with a 30 foot pole. A completely avoidable disaster that the devs did nothing to stop. \nIf you are a game developer and you see this review, do not make the same mistakes these guys have. Communicate with your community, release updates and update notes when you say you will or at the very least keep your player base in the know. If you say you will work on updates, please actually work on them unlike these developers. \n\nFinal Note: A game that could've been, and at first was, a smash hit destined to go even farther ruined by useless developers and a lack of communication to the only people keeping this game alive anymore.\nDO NOT BUY, DO NOT GIFT, DO NOT GIVE THESE DEVELOPERS ANY CREDIT FOR THE LACK IF TRANSPARITY.",
-                  "truncated": false,
-                  "minutes_at_review": 25993
-                },
-                {
-                  "recommendationid": "231711876",
-                  "hours_at_review": 771.3,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "The game was fun when it was new, but the devs killed it due to their lack of interest or possibly petty grudging at their own community. They have been promising an update for years, with the most intensive promised addition being a higher poly forklift model. The fabled mid april update will likely never drop. \n\nWith a global population now hovering at 400~ players concurrent between 2 NA servers, you will not find a good match. Balance issues have been left stagnant, and most ingame VC is now regulated to discord. I got the supporter edition at release, and the promises included still have not been implemented. Do not purchase this game.",
-                  "truncated": false,
-                  "minutes_at_review": 46279
-                },
-                {
-                  "recommendationid": "231535084",
-                  "hours_at_review": 111.5,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Lots of fun! Battlefield esque game made by people who know what makes it fun. It's def on the lower end for players but you can basically always find one eu and one us server thats full or almost full so it's not too bad. Excited for operation overhaul!",
-                  "truncated": false,
-                  "minutes_at_review": 6688
-                },
-                {
-                  "recommendationid": "230751453",
-                  "hours_at_review": 220.2,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "There's only one server that is ever active and because of that there are always people with super high ping which can make playing frustrating. But because there is only ever one server active that also means that if there is someone hacking then you're just out of luck for the day. It used to be fun to hop on and have some good times with a random squad.",
-                  "truncated": false,
-                  "minutes_at_review": 13209
-                },
-                {
-                  "recommendationid": "228436833",
-                  "hours_at_review": 100.6,
-                  "voted_up": true,
-                  "date": "2026-06-20",
-                  "review_text": "Good game. Its a shame most people play in that 1 big server",
-                  "truncated": false,
-                  "minutes_at_review": 6035
-                },
-                {
-                  "recommendationid": "226794102",
-                  "hours_at_review": 160.7,
-                  "voted_up": false,
-                  "date": "2026-05-30",
-                  "review_text": "This game will be remembered in retrospective videos as a game from the early 2020s that was extremely fun for a few months before vanishing into the wind. It will be a textbook example of how early access can do far more harm than good. When the game was first released, it really could have been a Battlefield killer. Packed lobbies, tons of unique game modes and maps in the pipeline, and super accessible for even those with lower spec PCs. Only those who played the first few months will understand just how fun it was with all the role players frolicking throughout the maps and screaming into the mic. I remember one dude roleplaying a drill sergeant, telling people things like \"Don't complain soldier, you knew what you signed up for!\". Unfortunately, those days are gone because the game got stale. One year ago when I was still playing weekly, there would be at least two full lobbies on the American server. Now it's a miracle if one fills up. I honestly don't see the game recovering unless it goes free or the price is reduced. Dev blogs are being posted but I honestly doubt any update is coming, and if it does, it is already YEARS TOO LATE. As someone who truly loved the game, I can't foresee myself coming back to play it if the update is ever released. The game had a time and a place, and that time has passed along with the momentum that would have kept me playing.",
-                  "truncated": false,
-                  "minutes_at_review": 9642
-                },
-                {
-                  "recommendationid": "226657281",
-                  "hours_at_review": 123.8,
-                  "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "Genuinely one of the best war-sims I've ever played, competing with the best from other franchises that share the genre. Extremely fun gunplay and movement mechanics in a simple, easy to run game environment. Some of the most fun I've ever had was with the VOIP proximity chat in Battlebit. Unfortunately, when the devs went to work on the \"overhaul\" update, they left it with less than a skeleton crew. After the 2+ years of basically complete silence from the devs the servers are dead and cheaters are rampant. Its because of this that I could not recommend anyone spend money on this game, even though I love it so much. If it manages to bounce back, definitely give it a shot.",
-                  "truncated": false,
-                  "minutes_at_review": 7429
-                },
-                {
-                  "recommendationid": "226553233",
-                  "hours_at_review": 272.1,
-                  "voted_up": false,
-                  "date": "2026-05-27",
-                  "review_text": "If you are playing from anywhere east of Europe, just don't. The game is dead and there are no Asia servers with reasonable ping. It's really disappointing to see this game with an all-time peak of 86k dip to <500 players",
-                  "truncated": false,
-                  "minutes_at_review": 16326
-                },
-                {
-                  "recommendationid": "224158298",
-                  "hours_at_review": 137.8,
-                  "voted_up": false,
-                  "date": "2026-04-26",
-                  "review_text": "Weve been waiting on new content for 2 years. Since then servers have gotten worse and the player base is dead. Do not buy if you want a fun game.",
-                  "truncated": false,
-                  "minutes_at_review": 8266
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-f7c90c",
-              "claim": "Reviewers describe engaging proximity chat and cooperative team interactions among players.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
                 "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "231095984",
-                  "hours_at_review": 125.0,
+                  "recommendationid": "240342369",
+                  "hours_at_review": 81.6,
+                  "minutes_at_review": 4895,
                   "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "I genuinely wish this review didn’t have to be written. When BattleBit Remastered arrived, it captured a rare kind of lightning in a bottle. It took the sprawling, chaotic formula of classic Battlefield, packaged it into an approachable low-poly aesthetic, and offered engaging gunplay, deep customization, classes, vehicles, and incredible local proximity chat—all for fifteen dollars. How could it possibly fail?\n\nFor a time, the moment-to-moment gameplay was phenomenal. It took the internet by storm because it delivered exactly what it promised. Beyond the tight mechanics and massive servers, the true texture of the game was its community. Yes, gamers can be loud and a bit much, but for every person yelling to the clouds about cheaters or weapon balance, there were three more of us just logging in after a long day of work, wanting nothing more than to relax and banter with our friends in the trenches. It was an ecosystem built for camaraderie.\n\nBut then came the friction—not from the gameplay, but from the void outside of it. Two years of silence. The player count dwindled and eventually fell off a cliff, suffocated by a sheer lack of interaction and apparent attention from the developers. I do not doubt for a second that the creators love their product, but passion works both ways. When a community invests time and faith into your project, two years of total silence demonstrates a profound lack of love for the players themselves. Stepping into this line of work requires understanding that maintaining the relationship is just as vital as building the engine.\n\nI cannot in good conscience recommend this title. Even if the team manages to rally, right the ship, and begin pushing out content at a pace that surpasses Hello Games’ redemption of No Man's Sky, the story for me ends here. The window for that reconciliation is beyond closed. I can't say exactly when that door shut, but I think everyone still watching knows it did. I will fondly remember the time when this low-…",
-                  "truncated": true,
-                  "minutes_at_review": 7498
+                  "date": "2026-11-16",
+                  "review_text": "this game has been dead for a while, dev post every few months but the last actual update was years ago.\r\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "227394986",
-                  "hours_at_review": 108.7,
-                  "voted_up": true,
-                  "date": "2026-06-07",
-                  "review_text": "DON'T LISTEN TO THE NEGATIVE REVIEWS! This game is worth it.\n\nThe Good:\n- The devs ARE updating the game.\n- The gun physics are so damn good (including quick-scope snipers), I keep coming back even though i play on 180 ping, it's fantastic.\n- The overall quality of things you can do from leaning, combining clips and the MASSIVE range of weapon mods are just beautiful.\n- The Map destruction is great!\n- The proximity chat can lead to some of the best gaming moments you've ever had.\n- The map sizes and games in them can really make it feel like a battlefield we never got\n- The medics actually get themselves killed trying to revive you.\n\nThe ACTUAL bad:\n- The game is DYING but NOT DEAD.\n- Because it's only the last few people who love this game, if you're in eu, you're only getting to play at night when the playerbase is online, BUT THAT SERVER IS WORTH PLAYING IN!\n- There isn't much of a reason to keep coming back in the grinding perspective.\n\n\nWhat I hope the devs will see and maybe can help rebuild our playerbase:\n- make the game free to boost playerbase and introduce seperate paid items\n- make more skins purchaseable from guns to player skins\n- A battlepass to keep revenue generating and introducing a reason for players to grind\n- accolade displaying - when killed by a player let them display accolades like Sniper Mastery\n- Banners / player cards for killed screen, make it customizable like call of duty or earnable.\n- Slower Level Progression! Up the level cap to 1000. Give players a reason to do weeklys.\n- add more weapons even if it's ww2 weapons we'll eat that sh** up!\n- allow paying players the ability to get acess to new weapons BEFORE they are released to all free players. (incentive)\n- Create weekly leaderboards and reward players on their position.\n- Weekly leaderboards can even be custom like Grenade kills and rewarded the top 1000 players with a banner representing it\n- Soldier Ranks per season, creating seasons around a battepass and rewarding soldiers on…",
-                  "truncated": true,
-                  "minutes_at_review": 6521
-                },
-                {
-                  "recommendationid": "226794102",
-                  "hours_at_review": 160.7,
+                  "recommendationid": "240062971",
+                  "hours_at_review": 78.4,
+                  "minutes_at_review": 4706,
                   "voted_up": false,
-                  "date": "2026-05-30",
-                  "review_text": "This game will be remembered in retrospective videos as a game from the early 2020s that was extremely fun for a few months before vanishing into the wind. It will be a textbook example of how early access can do far more harm than good. When the game was first released, it really could have been a Battlefield killer. Packed lobbies, tons of unique game modes and maps in the pipeline, and super accessible for even those with lower spec PCs. Only those who played the first few months will understand just how fun it was with all the role players frolicking throughout the maps and screaming into the mic. I remember one dude roleplaying a drill sergeant, telling people things like \"Don't complain soldier, you knew what you signed up for!\". Unfortunately, those days are gone because the game got stale. One year ago when I was still playing weekly, there would be at least two full lobbies on the American server. Now it's a miracle if one fills up. I honestly don't see the game recovering unless it goes free or the price is reduced. Dev blogs are being posted but I honestly doubt any update is coming, and if it does, it is already YEARS TOO LATE. As someone who truly loved the game, I can't foresee myself coming back to play it if the update is ever released. The game had a time and a place, and that time has passed along with the momentum that would have kept me playing.",
-                  "truncated": false,
-                  "minutes_at_review": 9642
+                  "date": "2026-11-13",
+                  "review_text": "Vaporware. Kind of fun, but there's no one to play with since the servers are dead after the devs neglected to update this early access game in 2 years.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226657281",
-                  "hours_at_review": 123.8,
+                  "recommendationid": "236629817",
+                  "hours_at_review": 27.9,
+                  "minutes_at_review": 1672,
                   "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "Genuinely one of the best war-sims I've ever played, competing with the best from other franchises that share the genre. Extremely fun gunplay and movement mechanics in a simple, easy to run game environment. Some of the most fun I've ever had was with the VOIP proximity chat in Battlebit. Unfortunately, when the devs went to work on the \"overhaul\" update, they left it with less than a skeleton crew. After the 2+ years of basically complete silence from the devs the servers are dead and cheaters are rampant. Its because of this that I could not recommend anyone spend money on this game, even though I love it so much. If it manages to bounce back, definitely give it a shot.",
-                  "truncated": false,
-                  "minutes_at_review": 7429
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-b50f3c",
-              "claim": "Reviewers praise the game's gunplay, movement mechanics, and optimization for running well on lower-end hardware.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "230160265",
-                  "hours_at_review": 135.2,
-                  "voted_up": true,
-                  "date": "2026-07-10",
-                  "review_text": "Actually great gun play. more fun than bf6 imo plus it runs better on lower end pcs!",
-                  "truncated": false,
-                  "minutes_at_review": 8114
-                },
-                {
-                  "recommendationid": "227175827",
-                  "hours_at_review": 188.9,
-                  "voted_up": true,
-                  "date": "2026-06-04",
-                  "review_text": "The Good: gameplay is top tier. the movement, gunplay, progression, and optimization make the game feel fantastic. Based on gameplay alone, in 2026 it plays better than most shooters.\n\nThe Bad: the playerbase is gone. Only a few servers run during the day making it difficult to find full lobbies. It would be amazing to see a resurgence in players.  I very much miss the chaotic prox chat that made this game feel alive.\n\n",
-                  "truncated": false,
-                  "minutes_at_review": 11335
-                },
-                {
-                  "recommendationid": "226657281",
-                  "hours_at_review": 123.8,
-                  "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "Genuinely one of the best war-sims I've ever played, competing with the best from other franchises that share the genre. Extremely fun gunplay and movement mechanics in a simple, easy to run game environment. Some of the most fun I've ever had was with the VOIP proximity chat in Battlebit. Unfortunately, when the devs went to work on the \"overhaul\" update, they left it with less than a skeleton crew. After the 2+ years of basically complete silence from the devs the servers are dead and cheaters are rampant. Its because of this that I could not recommend anyone spend money on this game, even though I love it so much. If it manages to bounce back, definitely give it a shot.",
-                  "truncated": false,
-                  "minutes_at_review": 7429
-                },
-                {
-                  "recommendationid": "228055167",
-                  "hours_at_review": 197.5,
-                  "voted_up": true,
-                  "date": "2026-06-15",
-                  "review_text": "very good game if you want to play battlefield and you got a nice and cheap pc and better to be honest \nSOME COMPANIES SHOULD FKING WATCH HOW A small team MAKE BETTER GAMES than them with maybe some bugs but havent found any from the day it came out",
-                  "truncated": false,
-                  "minutes_at_review": 11850
+                  "date": "2026-10-01",
+                  "review_text": "DO NOT BUY.\n\nCompletely abandoned by the devs when they realised how little effort is needed to make a lot of money. I'd go as far as to call it a cash grab. It is mind-boggling how you can manage to screw over and disappoint a playerbase that mostly came from an already disappointing game (BF2042). Anyone who played the game at launch will tell you the amazing potential this game had, and battlefield players especially.\n\nFurthermore, there have been talks of a so called \"Operation overhaul\" for over 2.5 years now, and very little has actually happened. Not a SINGLE game update for over THREE years now, and barely anything has been said from any of the people behind the game. Does anyone actually still believe that there's an update coming, and if it does come, why should anyone be inclined to step back in after such a long time of complete silence?\n\nThe devs should've admitted a long time ago that they're incapable of committing to this game despite their initial massive playerbase. If anything, they should've hired more people to work on this game. They had a gem of a game, and they went nowhere with it.\n\nSteams own note:\n\"Note: The last update made by the developers was over 2 years ago. The information and timeline described by the developers here may no longer be up to date.\"\n\nTL;DR:\nLong abandoned by devs, players left with little to no information despite initial massive playerbase.\n",
+                  "truncated": false
                 }
               ]
             }
@@ -1257,101 +671,316 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-97fc91",
-              "claim": "Reviewers report that the game is plagued by cheaters and a lack of effective anti-cheat moderation or reporting tools.",
+              "claim_id": "mid-67ced9",
+              "claim": "Reviewers mention that remaining matches are dominated by highly skilled or sweaty players using advanced movement techniques.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 7
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231588171",
-                  "hours_at_review": 239.1,
+                  "recommendationid": "239098119",
+                  "hours_at_review": 85.0,
+                  "minutes_at_review": 5100,
                   "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "♥♥♥♥♥♥ anti cheat with no further support on it. \n\nBeen a beta supporter, player over 1k hour and so . Recenly when I wanted to play with friends got a notification about being banned and with guide to reach out official discord to resolve stuff. Zero help on said discord saying \"its about easy anticheat you need to reach em\" yet the given number for ban incident wont work on EAC site, and when I ask assistance about how to know what happened, why I got banned or so they just mock you and say \"wait 30 days, if you dont get unbanned you cheated\" like WTF????\n\n10 year account, zero ban on any game like not even just cheating, n o ban at all and when I ask if it did catch smth else as 3rd party I just get mocked and screwed for nothing. \n\nIt used to be a game I love deeply and with lack of updates even tho all my friends dropped it I kept playing. Now with this whole no moderation bs I see why the community got smaller and smaller. Never seen a team trying their best to ♥♥♥♥ up a community that was once huge WORSE then R6 succeded to do so.\n\nSikik türk sunucunuzda da bi bok yaptığınız yok, gayet detaylı, paragraf paragraf durumu özetleyip yardım istediğinde iki dal yarrak kasıla kasıla kanka global sunucuya yaz diyor :D",
-                  "truncated": false,
-                  "minutes_at_review": 14348
+                  "date": "2026-11-01",
+                  "review_text": "In 2026 only one server still has some people, usually around 120. All of them are sweaty",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231545109",
-                  "hours_at_review": 102.8,
+                  "recommendationid": "237694543",
+                  "hours_at_review": 51.3,
+                  "minutes_at_review": 3078,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "This game isnt even worth getting, the creators only care about the maps obviously instead of fixing bugs or cheating issues, the maps, the maps is all that matters apparently. i want my money back if this is how this game is gonna end up.",
-                  "truncated": false,
-                  "minutes_at_review": 6168
+                  "date": "2026-10-14",
+                  "review_text": "dead game, full of sweats",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231058652",
-                  "hours_at_review": 601.1,
+                  "recommendationid": "236990244",
+                  "hours_at_review": 64.3,
+                  "minutes_at_review": 3859,
                   "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "Devs don't give a sh*t about this game anymore. 1 or 2 servers are maxxed out with bunch of cheathers... Reporting system is down, nothing is changing. 20$ is just thievery.",
-                  "truncated": false,
-                  "minutes_at_review": 36066
+                  "date": "2026-10-05",
+                  "review_text": "I absolutely love spending an entire game grinding out a weekly challenge, just for it to reset the next game and I have to start all over again. Maybe IF I'm lucky and can handle being thrown around by the only players who actually play nowadays (200 max in a single server, who have probably 1000+ hours so they do the same sort of movement tech you'd see in a MW2019 montage video), I MIGHT get those challenges back, 10 games later, after my morale is at an all time low.\n\nWhat a great game it could've been, but the devs decided to go silent for years and let the money just sit there, and everyone stopped caring.\n\nIt doesn't surprise me, but it's a great shame nonetheless. \n\nShould you buy this game?\n\nNo.\n\nWill I continue to play it to try and achieve prestiging once, despite the obstacles described?\n\nYes, because I have a mental disability.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226657281",
-                  "hours_at_review": 123.8,
+                  "recommendationid": "235225669",
+                  "hours_at_review": 65.4,
+                  "minutes_at_review": 3922,
                   "voted_up": false,
-                  "date": "2026-05-28",
-                  "review_text": "Genuinely one of the best war-sims I've ever played, competing with the best from other franchises that share the genre. Extremely fun gunplay and movement mechanics in a simple, easy to run game environment. Some of the most fun I've ever had was with the VOIP proximity chat in Battlebit. Unfortunately, when the devs went to work on the \"overhaul\" update, they left it with less than a skeleton crew. After the 2+ years of basically complete silence from the devs the servers are dead and cheaters are rampant. Its because of this that I could not recommend anyone spend money on this game, even though I love it so much. If it manages to bounce back, definitely give it a shot.",
-                  "truncated": false,
-                  "minutes_at_review": 7429
+                  "date": "2026-09-13",
+                  "review_text": "This game had insane potential when it first launched: Battlefield 2042 was out and lambasted as a failure, and the crown for a combined arms shooter was in the gutter. BattleBit was perfectly engineered for success in nearly every way as it was accessible before anything else. It could run on potato PC in an era where system requirement creep in games had begun to hit terminal velocity. Not only that, the game captured lightning in a bottle with the fact that it catered to casual fun and old-school persistent-lobby fun akin to gaming in the 2000s and 2010s. \n\nBattleBit would hit massive early success, but unfortunately never left the ground because of pathetic mismanagement by the rather egotistical devs. Like countless other games run by young Roblox devs, the developers would spend most of their time updating the game based on whoever glazed them the most in their Reddit and Discord servers. BattleBit would never leave this death spiral. The game quickly went into content drought. The chat and proximity chat began to get quieter as the banhammer would slaughter anyone. The game balance for weapons and movement was never properly addressed, quickly became yet another shooter that lost its casual audience, and was commandeered by movement-tech players who worshipped the devs.\n\nNow we see the rotting corpse of potential. The devs occassionally scream into an empty void promising the audience of nobody a \"revamp fr fr guys\" while there has not been content in almost 3 years. It's gone, and the crown is in the gutter once again.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-01410d",
+              "claim": "Reviewers note that the game features extensive map destruction and can run well on lower-end hardware or laptops.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "237557612",
+                  "hours_at_review": 48.0,
+                  "minutes_at_review": 2881,
+                  "voted_up": true,
+                  "date": "2026-10-12",
+                  "review_text": "The blocky graphics aren't impressive technically, but they allow for massive battles without requiring high-end hardware. Large-scale firefights, destructible environments, and chaotic team interactions make the gameplay surprisingly engaging. With 48 hours played, there's plenty of evidence that graphics aren't everything in a multiplayer shooter. Different classes, weapons, and unpredictable matches give it strong replayability. A great example of a game prioritizing gameplay and scale over visual realism.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226313405",
-                  "hours_at_review": 129.1,
-                  "voted_up": false,
-                  "date": "2026-05-24",
-                  "review_text": "Cheaters across the board and devs seemed to completely abandon the game altogether",
-                  "truncated": false,
-                  "minutes_at_review": 7748
+                  "recommendationid": "236611397",
+                  "hours_at_review": 90.1,
+                  "minutes_at_review": 5407,
+                  "voted_up": true,
+                  "date": "2026-10-01",
+                  "review_text": "It's been a while since I last played this game, but can you imagine this game running on my potato laptop and you still get a blend experience between SQUAD and Battlefield? Well more to the Battlefield side, but doesnt change the fact that this game is nice. Anyway if you can get over PixelGun quality texture you'd enjoy this game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226270076",
-                  "hours_at_review": 521.6,
+                  "recommendationid": "235225669",
+                  "hours_at_review": 65.4,
+                  "minutes_at_review": 3922,
                   "voted_up": false,
-                  "date": "2026-05-24",
-                  "review_text": "No answers from the devs, infested with cheaters. People getting over 100 kills, shooting you out helicopters with all headshots. Worthless game and devs",
-                  "truncated": false,
-                  "minutes_at_review": 31295
-                },
-                {
-                  "recommendationid": "228357983",
-                  "hours_at_review": 137.0,
-                  "voted_up": false,
-                  "date": "2026-06-19",
-                  "review_text": "Game is a cool concept but its not fun anymore to play. Developers vanished. Too many exploits due to vibecoding. Dog****. I wish I didn't had bought nor spent time playing this.",
-                  "truncated": false,
-                  "minutes_at_review": 8218
+                  "date": "2026-09-13",
+                  "review_text": "This game had insane potential when it first launched: Battlefield 2042 was out and lambasted as a failure, and the crown for a combined arms shooter was in the gutter. BattleBit was perfectly engineered for success in nearly every way as it was accessible before anything else. It could run on potato PC in an era where system requirement creep in games had begun to hit terminal velocity. Not only that, the game captured lightning in a bottle with the fact that it catered to casual fun and old-school persistent-lobby fun akin to gaming in the 2000s and 2010s. \n\nBattleBit would hit massive early success, but unfortunately never left the ground because of pathetic mismanagement by the rather egotistical devs. Like countless other games run by young Roblox devs, the developers would spend most of their time updating the game based on whoever glazed them the most in their Reddit and Discord servers. BattleBit would never leave this death spiral. The game quickly went into content drought. The chat and proximity chat began to get quieter as the banhammer would slaughter anyone. The game balance for weapons and movement was never properly addressed, quickly became yet another shooter that lost its casual audience, and was commandeered by movement-tech players who worshipped the devs.\n\nNow we see the rotting corpse of potential. The devs occassionally scream into an empty void promising the audience of nobody a \"revamp fr fr guys\" while there has not been content in almost 3 years. It's gone, and the crown is in the gutter once again.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-5a3681a9",
+          "text": "One reviewer says proxy chat is always fun.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "237650562",
+            "hours_at_review": 73.3,
+            "minutes_at_review": 4399,
+            "voted_up": true,
+            "date": "2026-10-13",
+            "review_text": "Proxy chat is always fun. Game is engaging and super fun by yourself or with friends but sweaty if you make it.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 29,
-        "cited_recommend": 9,
-        "divergence_p": 0.0949,
+        "cited_reviews": 12,
+        "cited_recommend": 4,
+        "divergence_p": 0.285,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 271,
+      "pct_positive": 43.2,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players point to persistent abandonment, anti-cheat complications, and unaddressed cheaters.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-3f2940",
+              "claim": "Reviewers state that the developers have left the game unupdated for years, leading many to consider it abandoned.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240221672",
+                  "hours_at_review": 100.5,
+                  "minutes_at_review": 6030,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "devs abandoned this game, no updates in over 2 years and the last preview for an update (would have been underwhelming) was 5 months ago. Never buying anything from these developers again",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238469047",
+                  "hours_at_review": 205.8,
+                  "minutes_at_review": 12350,
+                  "voted_up": false,
+                  "date": "2026-10-24",
+                  "review_text": "Early access game that was supported for about 6 months and hasn't received any updates for nearly 3 years. Player numbers by now are so low that you can't find a full server in many parts of the world.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231133235",
+                  "hours_at_review": 778.7,
+                  "minutes_at_review": 46721,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Still in early access and last update was more than 2 years ago. \n\nThis game has been abandoned, it's developers made off with all of our money and disappeared. Don't bother.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231095984",
+                  "hours_at_review": 125.0,
+                  "minutes_at_review": 7498,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "I genuinely wish this review didn’t have to be written. When BattleBit Remastered arrived, it captured a rare kind of lightning in a bottle. It took the sprawling, chaotic formula of classic Battlefield, packaged it into an approachable low-poly aesthetic, and offered engaging gunplay, deep customization, classes, vehicles, and incredible local proximity chat—all for fifteen dollars. How could it possibly fail?\n\nFor a time, the moment-to-moment gameplay was phenomenal. It took the internet by storm because it delivered exactly what it promised. Beyond the tight mechanics and massive servers, the true texture of the game was its community. Yes, gamers can be loud and a bit much, but for every person yelling to the clouds about cheaters or weapon balance, there were three more of us just logging in after a long day of work, wanting nothing more than to relax and banter with our friends in the trenches. It was an ecosystem built for camaraderie.\n\nBut then came the friction—not from the gameplay, but from the void outside of it. Two years of silence. The player count dwindled and eventually fell off a cliff, suffocated by a sheer lack of interaction and apparent attention from the developers. I do not doubt for a second that the creators love their product, but passion works both ways. When a community invests time and faith into your project, two years of total silence demonstrates a profound lack of love for the players themselves. Stepping into this line of work requires understanding that maintaining the relationship is just as vital as building the engine.\n\nI cannot in good conscience recommend this title. Even if the team manages to rally, right the ship, and begin pushing out content at a pace that surpasses Hello Games’ redemption of No Man's Sky, the story for me ends here. The window for that reconciliation is beyond closed. I can't say exactly when that door shut, but I think everyone still watching knows it did. I will fondly remember the time when this low-…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-5a569b",
+              "claim": "Reviewers note that the game has experienced a lack of updates and content additions over an extended period.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240643137",
+                  "hours_at_review": 204.1,
+                  "minutes_at_review": 12246,
+                  "voted_up": false,
+                  "date": "2026-11-20",
+                  "review_text": "It's a great game and hopefully the devs finish the update soon and it brings back players but as of now it's been content starved and dead. You can still find a decent sized lobby but usually literally only one lobby is alive with roughly 100 players.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240221672",
+                  "hours_at_review": 100.5,
+                  "minutes_at_review": 6030,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "devs abandoned this game, no updates in over 2 years and the last preview for an update (would have been underwhelming) was 5 months ago. Never buying anything from these developers again",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231133235",
+                  "hours_at_review": 778.7,
+                  "minutes_at_review": 46721,
+                  "voted_up": false,
+                  "date": "2026-07-23",
+                  "review_text": "Still in early access and last update was more than 2 years ago. \n\nThis game has been abandoned, it's developers made off with all of our money and disappeared. Don't bother.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-cec82d",
+              "claim": "Reviewers report encountering issues with cheaters and aimbotters in the active matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "233244247",
+                  "hours_at_review": 145.2,
+                  "minutes_at_review": 8709,
+                  "voted_up": false,
+                  "date": "2026-08-20",
+                  "review_text": "I remember the halcyon days of '23, before the utter silence from the devs and then this attempt at a re-re-reboot. Good times.\n\nThis game had its chance.\n\nNow aimbotters run rampant while you can get banned from the game for being naughty in prox chat, the thing that made this game interesting to begin with.\n\nWait for Wardogs if you want something similar with way more promise behind it and an active dev team that actually plays their game and cares about it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232958344",
+                  "hours_at_review": 176.4,
+                  "minutes_at_review": 10586,
+                  "voted_up": false,
+                  "date": "2026-08-16",
+                  "review_text": "dead game full of cheaters",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231058652",
+                  "hours_at_review": 601.1,
+                  "minutes_at_review": 36066,
+                  "voted_up": false,
+                  "date": "2026-07-22",
+                  "review_text": "Devs don't give a sh*t about this game anymore. 1 or 2 servers are maxxed out with bunch of cheathers... Reporting system is down, nothing is changing. 20$ is just thievery.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-300777",
+              "claim": "Reviewers report encountering anti-cheat issues and bans, describing difficulties receiving support or resolving ban incidents through official channels.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "235999842",
+                  "hours_at_review": 225.3,
+                  "minutes_at_review": 13521,
+                  "voted_up": false,
+                  "date": "2026-09-24",
+                  "review_text": "still wont let me play due to anticheat issue, really stupid",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "231588171",
+                  "hours_at_review": 239.1,
+                  "minutes_at_review": 14348,
+                  "voted_up": false,
+                  "date": "2026-07-29",
+                  "review_text": "Shitty anti cheat with no further support on it. \n\nBeen a beta supporter, player over 1k hour and so . Recenly when I wanted to play with friends got a notification about being banned and with guide to reach out official discord to resolve stuff. Zero help on said discord saying \"its about easy anticheat you need to reach em\" yet the given number for ban incident wont work on EAC site, and when I ask assistance about how to know what happened, why I got banned or so they just mock you and say \"wait 30 days, if you dont get unbanned you cheated\" like WTF????\n\n10 year account, zero ban on any game like not even just cheating, n o ban at all and when I ask if it did catch smth else as 3rd party I just get mocked and screwed for nothing. \n\nIt used to be a game I love deeply and with lack of updates even tho all my friends dropped it I kept playing. Now with this whole no moderation bs I see why the community got smaller and smaller. Never seen a team trying their best to fuck up a community that was once huge WORSE then R6 succeded to do so.\n\nSikik türk sunucunuzda da bi bok yaptığınız yok, gayet detaylı, paragraf paragraf durumu özetleyip yardım istediğinde iki dal yarrak kasıla kasıla kanka global sunucuya yaz diyor :D",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 10,
+        "cited_recommend": 0,
+        "divergence_p": 0.0035,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1203,
-    "steam_total_reviews": 88632,
+    "pool_n": 1200,
+    "steam_total_reviews": 88721,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/671860/header.jpg?t=1730393449",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/671860/capsule_231x87.jpg?t=1730393449",
-    "grid": "https://cdn2.steamgriddb.com/grid/096a7517b49e2f931296a28e878af5d9.png"
   }
 }

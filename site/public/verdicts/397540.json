@@ -1,52 +1,62 @@
 {
   "appid": "397540",
   "game_name": "Borderlands 3",
-  "generated_at": "2026-08-10T10:07:23Z",
+  "generated_at": "2026-11-21T02:33:25Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/397540/header.jpg?t=1750802377",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/397540/capsule_231x87.jpg?t=1750802377",
+    "grid": "https://cdn2.steamgriddb.com/grid/c039e6496e67fdb3d46e6d5877e01ed2.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 11,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Brilliant gunplay clashes with grating writing and unskippable dialogue.",
+    "tagline": "Brilliant gunplay trapped behind weak writing and technical issues",
     "for_you_if": [
-      "you want stellar first-person shooter mechanics",
-      "you enjoy cooperative looter shooter gameplay",
-      "you can mute the voice audio"
+      "you want top-tier shooter mechanics",
+      "you plan to focus on downloadable content",
+      "you can overlook juvenile dialogue"
     ],
     "not_for_you_if": [
-      "you care about engaging characters and writing",
-      "you dislike unskippable cutscenes",
-      "you find excessive loot drops boring"
+      "you need stable performance without crashes",
+      "you require smooth online connectivity",
+      "you cannot tolerate unskippable sequences"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 34,
-      "pct_positive": 52.9,
-      "muted": true
+      "pool_n": 42,
+      "pct_positive": 47.6,
+      "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 410,
-      "pct_positive": 75.4,
+      "pool_n": 426,
+      "pct_positive": 77.9,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 542,
-      "pct_positive": 77.5,
+      "pool_n": 509,
+      "pct_positive": 78.6,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 215,
-      "pct_positive": 86.5,
+      "pool_n": 223,
+      "pct_positive": 88.8,
       "muted": false
     }
   ],
@@ -56,44 +66,44 @@
       "type": "segmentation",
       "direction": null,
       "shape": "monotonic_increase",
-      "sentence": "Positive sentiment increases steadily as playtime lengthens.",
+      "sentence": "Review scores increase steadily the longer players spend with the game.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 52.9,
-            "pool_n": 34
+            "pct_positive": 47.6,
+            "pool_n": 42
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 75.4,
-            "pool_n": 410
+            "pct_positive": 77.9,
+            "pool_n": 426
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 77.5,
-            "pool_n": 542
+            "pct_positive": 78.6,
+            "pool_n": 509
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 86.5,
-            "pool_n": 215
+            "pct_positive": 88.8,
+            "pool_n": 223
           }
         ],
         "shape": "monotonic_increase",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 52.9,
-        "low_pool_n": 34,
+        "low_pct_positive": 47.6,
+        "low_pool_n": 42,
         "high_cohort": "veteran",
         "high_cohort_label": "over 100 hours",
-        "high_pct_positive": 86.5,
-        "high_pool_n": 215,
-        "gap_pts": 33.6
+        "high_pct_positive": 88.8,
+        "high_pool_n": 223,
+        "gap_pts": 41.2
       }
     }
   ],
@@ -102,146 +112,138 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 34,
-      "pct_positive": 52.9,
-      "muted": true,
-      "n_note": "n=17 - too few reviews to call",
-      "summary": null,
-      "themes": []
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 410,
-      "pct_positive": 75.4,
+      "pool_n": 42,
+      "pct_positive": 47.6,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers praise the improved gunplay and movement while criticizing the weak story, unskippable dialogue, and excessive item drops.",
+      "summary": "Initial players encounter crashes and weak writing alongside solid gunplay.",
       "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ref-3d509e",
+              "claim": "Reviewers experience crashes and fatal errors when launching or playing the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240183933",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 74,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "refunded because of fatal error violation access something something..  2026 and still this problem",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239973591",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 42,
+                  "voted_up": false,
+                  "date": "2026-11-11",
+                  "review_text": "Poorly optimised game that kept crashing on the deck. Not recommended",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-985e23",
-              "claim": "Reviewers report that the game suffers from poor dialogue, a weak or cringe story, and uncompelling villains compared to previous entries.",
-              "citation_verdict": "negative",
+              "claim_id": "ref-bfb200",
+              "claim": "Reviewers describe the story and dialogue as poor, cringeworthy, or juvenile.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
+                "positive": 5,
                 "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231820509",
-                  "hours_at_review": 10.2,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "\"oh boy i cant wait to play the game\"\n\nheres dialogue you gotta sit through that is boring as ♥♥♥♥\n\n\"oh boy i cant wait to get loot!\"\n\nheres an unlimited amount of legendaries\n\n\"oh boy i cant wait to see how the characters are doing\"\n\nheres a boring story with unsufferable villains\n\n\ncool thanks",
-                  "truncated": false,
-                  "minutes_at_review": 612
-                },
-                {
-                  "recommendationid": "231418101",
-                  "hours_at_review": 19.9,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "Dialogue writing is terrible. Handsome Jack from BL2 walked the tightrope between \"annoying\" and \"villain you wanted to see dead\" purely on the strength of his writing. \r\nWhoever they wrangled to write the antagonists' dialogue in BL3 doesn't even bother to toe that line - There are no redeeming qualities between the two of them and I would appreciate a mod that just removes all of their dialogue.\r\nBugs that have remained unaddressed since the launch of the game [x] number of years ago - Be ready to lose who your co-op partner is in the mess since the over-head player markers disappear within minutes of entering a zone.\r\nConstant repeating voice lines when entering new zones - What was tolerable for the first 10 hours has continued and will likely continue for the rest of playtime.\r\n\r\nI don't recommend this title for fans of the series, even at a price of less than $10 on sale. In fact, pretend the franchise died with the Pre-Sequel.",
-                  "truncated": false,
-                  "minutes_at_review": 1197
-                },
-                {
-                  "recommendationid": "230576037",
-                  "hours_at_review": 18.6,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Look, it has better gameplay than BL2, but the story just.. Doesn't grab me. It was always going to be hard to follow up Handsome Jack, and the Calypso twins def struggle in that regard, but that isn't even the worst of it. None of the characters from the older games feel right. Lilith makes lots of dumb decisions, Tannis has become much more sociable & goofy, Rhys and Vaughn are BUTCHERED, and don't even get me started on Maya. The game suffers from the bandits being the main antagonists, The game suffers from each planet being essentially a show up, solve the issues of some local leader, then get to access their vault right after. The vaults on pandora were hard to open, but Eden-6? Promethea? No sweat at all. \r\n\r\nI won't get into the horribly overtuned drop rates, or the crimson raiders' change in leadership, or the excessive number of \"quirky\" character moments. But out of BL1, BL2, Presequel and this, it's definitely the weakest entry & the one with the least soul.",
-                  "truncated": false,
-                  "minutes_at_review": 1113
-                },
-                {
-                  "recommendationid": "228671981",
-                  "hours_at_review": 19.9,
-                  "voted_up": false,
-                  "date": "2026-06-23",
-                  "review_text": "Anything past Borderlands 2 never happened and this game as well as Borderlands 4 were just hallucinations.\n\nSarcasm aside, this game is [i]okay[/i], but the story itself could've been better and the main villains are very generic and not really villains at all. The game is carried by its gameplay, and even that has its fair share with flaws, as with Borderlands 2.",
-                  "truncated": false,
-                  "minutes_at_review": 1197
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-f5a6ab",
-              "claim": "Reviewers note that the gunplay, mechanics, and movement are a significant improvement and the best part of the game.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "230576037",
-                  "hours_at_review": 18.6,
-                  "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "Look, it has better gameplay than BL2, but the story just.. Doesn't grab me. It was always going to be hard to follow up Handsome Jack, and the Calypso twins def struggle in that regard, but that isn't even the worst of it. None of the characters from the older games feel right. Lilith makes lots of dumb decisions, Tannis has become much more sociable & goofy, Rhys and Vaughn are BUTCHERED, and don't even get me started on Maya. The game suffers from the bandits being the main antagonists, The game suffers from each planet being essentially a show up, solve the issues of some local leader, then get to access their vault right after. The vaults on pandora were hard to open, but Eden-6? Promethea? No sweat at all. \r\n\r\nI won't get into the horribly overtuned drop rates, or the crimson raiders' change in leadership, or the excessive number of \"quirky\" character moments. But out of BL1, BL2, Presequel and this, it's definitely the weakest entry & the one with the least soul.",
-                  "truncated": false,
-                  "minutes_at_review": 1113
-                },
-                {
-                  "recommendationid": "230436873",
-                  "hours_at_review": 14.0,
+                  "recommendationid": "240378353",
+                  "hours_at_review": 1.2,
+                  "minutes_at_review": 70,
                   "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "Best Mechanical Borderlands game. Story is not great, and the bombardment of quips is too much, but actually playing the game is quite good.",
-                  "truncated": false,
-                  "minutes_at_review": 840
+                  "date": "2026-11-16",
+                  "review_text": "Having spent 600 Hours on the Epic Launcher one i decided to move here. grown on me lately. borderlands 4 is still to be checked but after that released this one did grow alot on me. fun for loot goblins. the story is kinda cringe but other than that its a really good game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230049081",
-                  "hours_at_review": 15.0,
-                  "voted_up": true,
-                  "date": "2026-07-09",
-                  "review_text": "The story is a bit cheesy, but the gunplay, builds, and looting are the best the series has ever seen. Definitely recommend, especially on sale or with friends.",
-                  "truncated": false,
-                  "minutes_at_review": 901
+                  "recommendationid": "239304320",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 61,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Horrible story compared to BL2, and gun play is a little lackluster compared to BL2 and BL4.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229037160",
-                  "hours_at_review": 6.5,
-                  "voted_up": true,
-                  "date": "2026-06-28",
-                  "review_text": "well the story sucks but the gunplay and the world absolute banger \r\nthe movement feels amazing and smooth and yaa i m enjoying it very much \r\ni recommend it",
-                  "truncated": false,
-                  "minutes_at_review": 392
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-be7e98",
-              "claim": "Reviewers complain about long, unskippable dialogue sequences.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230122655",
-                  "hours_at_review": 13.1,
-                  "voted_up": true,
-                  "date": "2026-07-10",
-                  "review_text": "As a fan of Borderlands 2 and after not playing any game of the franchise since 2014, I was pleasantly surprised. \n\nThis game is better than Cyberpunk 2077 in every conceivable way. It's a better RPG, better shooter, more replay value, has fun coop, etc. SO many advantages.\n\nThe only 2 downsides - game freezes for 5 seconds once every 40 minutes on linux (arch btw + hyprland) and the dialogue is not my cup of tea, it would be nice if there was an option to skip/fastforward it",
-                  "truncated": false,
-                  "minutes_at_review": 787
+                  "recommendationid": "236328300",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 29,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "I played this game with a friend and have absolutely no idea what's happening because the story is awful. Claptrap is annoying as usual and the first boss has the most annoying \"fake wrestler\"/\"Russian\" accent I have ever heard. Not a fan of the voice acting or art style(it's atrocious). The guns have some of the worst aim and damage of any shooter I have played.  The gameplay and the way the game feels is pretty good at least.  If you are to buy this game then do it when it's on sale because it isn't worth full price.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "228660154",
-                  "hours_at_review": 17.4,
+                  "recommendationid": "236301003",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 60,
                   "voted_up": true,
-                  "date": "2026-06-23",
-                  "review_text": "Great gameplay and weapon variety, beautiful graphics. Only problems are excessive legendary drops and long, unskippable dialouge.",
-                  "truncated": false,
-                  "minutes_at_review": 1044
+                  "date": "2026-09-27",
+                  "review_text": "Borderlands is one of the reasons why gamer culture makes my p*ss boil. I absolutely hate Borderland's story and characters. Borderland's writing is the equivalent of scraping the bottom of a sticky trash can and considering it good enough as a final product for people to give some of their hard earned money in exchange for it. I understand that Claptrap being annoying is the joke, but it's not funny, it's just cringy and annoying. I have the extreme prejudice that fans of Borderlands all live in a stinky apartment filled with LED colored lights, boxed Funko Pops, smelling like cat urine, dog feces, a trash can filled with half-eaten Hungry Man rotting, hair grease stains on walls and couches and sticky waifu pillows lying on the floor amongst all the candy, chips wrappings and empty gamer fuel cans. I googled to see if Tiny Tina's also in Borderlands 3, and to my absolute disappointment, she is.\n\nSolid gameplay though! ¯\\\\_(ツ)_/¯",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235246313",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 92,
+                  "voted_up": true,
+                  "date": "2026-09-14",
+                  "review_text": "Terrible writing,\npretty decent gameplay.\nOften cheap.\n\nWorth a play,\nbut after playing 4..\nI can't see myself coming back to this as 4 is much better.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232238633",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 114,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "BL3 is the culmination of Gearbox's tradition of gameplay iteration. Each, successive sequel does something to improve on the previous game and BL3 is no exception. At the time BL3 released, it had the best gunplay and movement in the franchise. Even after the release of BL4 which arguably has better movement and comparable gunplay, I frequently return to 3. I believe it is the absolute representation of a Borderlands title, from the gameplay and multifaceted, legendary loot to the disparate environments and zany, memorable characters. BL4 was lacking in the latter two departments. 3 has a few narrative choices that I did not wholly agree with but in totality, it's the best Borderlands game. And yes, I place it above BL2, which has the stronger base game narrative. BL3 simply holds up better with its more modern movement and shooting features. It also has the best collection of DLC story packs, which outshine the narrative of the base game.\n\nPS Ignore my low gameplay time. I have about 400 hours or so on Xbox. I just recently purchased the game on Steam so I could play on my handheld.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232040750",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 91,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Gameplay is great, story feels like it was written by 15 year olds. The story itself feels like juvenile humor and it’s really hard to give a shit about. If you’re mainly interested in the game play it’s worth a try but the story will probably not engage you.\n\nI honestly wish there was a neutral stance on \"Do you recommend this game?\" instead of a Yes or No.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229902331",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 6,
+                  "voted_up": false,
+                  "date": "2026-07-08",
+                  "review_text": "i made it 6 minutes in before the dialogue became unbearable and i refunded the game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229368721",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": true,
+                  "date": "2026-07-01",
+                  "review_text": "ok so, the story isn't great, and it isn't on par with borderlands 2 sadly but that was a very high bar to reach again and a lot of people are over exaggerating, the story can be good sometimes, also it has incredible end game content and dlc and the gameplay is the best in the series. if you liked 2 you should get the 3 and you will have fun with the gameplay, just don't expect to have the same level of story. alot better than the soulless cashgrab that is Borderlands 4",
+                  "truncated": false
                 }
               ]
             }
@@ -251,8 +253,197 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-db88e2",
-              "claim": "Reviewers report excessive legendary weapon drops that can make the game feel too easy.",
+              "claim_id": "ref-aa5268",
+              "claim": "Reviewers praise the core gunplay and gameplay mechanics as solid.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 6,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "236328300",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 29,
+                  "voted_up": false,
+                  "date": "2026-09-27",
+                  "review_text": "I played this game with a friend and have absolutely no idea what's happening because the story is awful. Claptrap is annoying as usual and the first boss has the most annoying \"fake wrestler\"/\"Russian\" accent I have ever heard. Not a fan of the voice acting or art style(it's atrocious). The guns have some of the worst aim and damage of any shooter I have played.  The gameplay and the way the game feels is pretty good at least.  If you are to buy this game then do it when it's on sale because it isn't worth full price.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236301003",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 60,
+                  "voted_up": true,
+                  "date": "2026-09-27",
+                  "review_text": "Borderlands is one of the reasons why gamer culture makes my p*ss boil. I absolutely hate Borderland's story and characters. Borderland's writing is the equivalent of scraping the bottom of a sticky trash can and considering it good enough as a final product for people to give some of their hard earned money in exchange for it. I understand that Claptrap being annoying is the joke, but it's not funny, it's just cringy and annoying. I have the extreme prejudice that fans of Borderlands all live in a stinky apartment filled with LED colored lights, boxed Funko Pops, smelling like cat urine, dog feces, a trash can filled with half-eaten Hungry Man rotting, hair grease stains on walls and couches and sticky waifu pillows lying on the floor amongst all the candy, chips wrappings and empty gamer fuel cans. I googled to see if Tiny Tina's also in Borderlands 3, and to my absolute disappointment, she is.\n\nSolid gameplay though! ¯\\\\_(ツ)_/¯",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235246313",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 92,
+                  "voted_up": true,
+                  "date": "2026-09-14",
+                  "review_text": "Terrible writing,\npretty decent gameplay.\nOften cheap.\n\nWorth a play,\nbut after playing 4..\nI can't see myself coming back to this as 4 is much better.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233167907",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 83,
+                  "voted_up": true,
+                  "date": "2026-08-19",
+                  "review_text": "Good gunplay, good game.\n\nThanks to my ankol friend Pangolorian Stir-Fry Lung Juice/TCAH_RACOON for this game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232434201",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 41,
+                  "voted_up": true,
+                  "date": "2026-08-09",
+                  "review_text": "Move gameplay from epic to here because lack of achievements in there. Still a solid gameplay even after 7 years old (2019-2026)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232238633",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 114,
+                  "voted_up": true,
+                  "date": "2026-08-07",
+                  "review_text": "BL3 is the culmination of Gearbox's tradition of gameplay iteration. Each, successive sequel does something to improve on the previous game and BL3 is no exception. At the time BL3 released, it had the best gunplay and movement in the franchise. Even after the release of BL4 which arguably has better movement and comparable gunplay, I frequently return to 3. I believe it is the absolute representation of a Borderlands title, from the gameplay and multifaceted, legendary loot to the disparate environments and zany, memorable characters. BL4 was lacking in the latter two departments. 3 has a few narrative choices that I did not wholly agree with but in totality, it's the best Borderlands game. And yes, I place it above BL2, which has the stronger base game narrative. BL3 simply holds up better with its more modern movement and shooting features. It also has the best collection of DLC story packs, which outshine the narrative of the base game.\n\nPS Ignore my low gameplay time. I have about 400 hours or so on Xbox. I just recently purchased the game on Steam so I could play on my handheld.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232040750",
+                  "hours_at_review": 1.5,
+                  "minutes_at_review": 91,
+                  "voted_up": false,
+                  "date": "2026-08-04",
+                  "review_text": "Gameplay is great, story feels like it was written by 15 year olds. The story itself feels like juvenile humor and it’s really hard to give a shit about. If you’re mainly interested in the game play it’s worth a try but the story will probably not engage you.\n\nI honestly wish there was a neutral stance on \"Do you recommend this game?\" instead of a Yes or No.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "229368721",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": true,
+                  "date": "2026-07-01",
+                  "review_text": "ok so, the story isn't great, and it isn't on par with borderlands 2 sadly but that was a very high bar to reach again and a lot of people are over exaggerating, the story can be good sometimes, also it has incredible end game content and dlc and the gameplay is the best in the series. if you liked 2 you should get the 3 and you will have fun with the gameplay, just don't expect to have the same level of story. alot better than the soulless cashgrab that is Borderlands 4",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-f35d84b4",
+          "text": "One reviewer says a known glitch in the first mission requires restarting the game and hoping it does not happen again in order to proceed.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "230817023",
+            "hours_at_review": 1.0,
+            "minutes_at_review": 60,
+            "voted_up": false,
+            "date": "2026-07-19",
+            "review_text": "Overhyped game!\nKnown glitch in the first mission requires me to restart the game and hope to don't experience it again, otherwise I cannot proceed any further.\nWhy not fix it?\nI don't wanna play a game, if I have to expect to encounter more glitches and bugs in upcomming missions, as the devs don't seem to care.",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 13,
+        "cited_recommend": 7,
+        "divergence_p": 0.767,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 426,
+      "pct_positive": 77.9,
+      "muted": false,
+      "n_note": null,
+      "summary": "Performance stutters and connection issues emerge while gunplay and movement improve.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-6bd2c4",
+              "claim": "Reviewers report that the game suffers from poor optimization, stuttering, and performance issues on PC systems.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 2,
+                "negative": 4
+              },
+              "citations": [
+                {
+                  "recommendationid": "240386282",
+                  "hours_at_review": 5.9,
+                  "minutes_at_review": 354,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "El juego esta asquerosamente mal hecho, mas de 10 minutos en poder iniciarlo y al intentar jugarlo con amigos se desconecta del servicio de shift y no quiere volver a conectarse, no puedo ni entrar a los menus sin tener que esperar otros 5 minutos para poder configurar cualquier cosa, un completo asco",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239746958",
+                  "hours_at_review": 18.9,
+                  "minutes_at_review": 1134,
+                  "voted_up": true,
+                  "date": "2026-11-08",
+                  "review_text": "Got it on sale for $6, for the price, seems like a very good purchase.\r\nI understand why people say the writing is very poor in this game, it's feels like they were on a time crunch, and the game, somehow, feels significantly more linear than Borderlands 1 and 2. The lack of Bounty Boards for additional side-quests leaves a lot to be desired for a looter-shooter.\r\nIt's a good game, but it's definitely not up to the standards of the previous entries in the franchise.\r\n\r\nThe most concerning thing about this game, is how demanding it seems to become later on in the story for most systems. I still see plenty of Steam discussions about how to get the game to run well on even RTX 50 series cards, and Ryzen 7 CPUs, even with my (currently) 5 year-old system, it runs well enough on Medium settings at 1080p and 60FPS, but I am getting framerate loss (60 -> 45 FPS) during intense moments and sudden fan speed increases, but the game isn't overheating my PC so I guess it's fine. Be careful with higher settings.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239403847",
+                  "hours_at_review": 6.7,
+                  "minutes_at_review": 400,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "This game stutters no matter what your specs are. Total SCAM",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239308731",
+                  "hours_at_review": 6.2,
+                  "minutes_at_review": 373,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "I may be crazy but I actually find it so satisfying defeating enemies and getting small amounts of xp with occasionally bosses exploding into a loot bubble. I just can’t stand how badly optimized the game is for not really having the most realistic graphics.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237617157",
+                  "hours_at_review": 9.8,
+                  "minutes_at_review": 585,
+                  "voted_up": false,
+                  "date": "2026-10-13",
+                  "review_text": "Had this game on PS5, it runs buttery smooth on there. It runs like shit on PC 7 years after its release.\r\nBruh. It runs better on a 1650 Ti with an HDD than on the specs attached to this review. I love the game, I've sunk in over 100 hours on console but man it's damn near unplayable on PC, they had 7 fucking years and what gives ?",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237591515",
+                  "hours_at_review": 14.7,
+                  "minutes_at_review": 879,
+                  "voted_up": true,
+                  "date": "2026-10-12",
+                  "review_text": "i still have not finished this game, but from these 14 hours i can safely say this shit is the balls. I dont think i can go back to the old borderlands games anymore after it, the gunplay is just so good, the classes and all.\r\nthe only problem is the connectivity. because fuck gearbox. \r\nand also the optimization. fuck you gearbox.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-a12a77",
+              "claim": "Reviewers note connection problems and losing connection to the shift service when trying to play with friends.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -260,34 +451,181 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231820509",
-                  "hours_at_review": 10.2,
+                  "recommendationid": "240386282",
+                  "hours_at_review": 5.9,
+                  "minutes_at_review": 354,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "\"oh boy i cant wait to play the game\"\n\nheres dialogue you gotta sit through that is boring as ♥♥♥♥\n\n\"oh boy i cant wait to get loot!\"\n\nheres an unlimited amount of legendaries\n\n\"oh boy i cant wait to see how the characters are doing\"\n\nheres a boring story with unsufferable villains\n\n\ncool thanks",
-                  "truncated": false,
-                  "minutes_at_review": 612
+                  "date": "2026-11-16",
+                  "review_text": "El juego esta asquerosamente mal hecho, mas de 10 minutos en poder iniciarlo y al intentar jugarlo con amigos se desconecta del servicio de shift y no quiere volver a conectarse, no puedo ni entrar a los menus sin tener que esperar otros 5 minutos para poder configurar cualquier cosa, un completo asco",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "228660154",
-                  "hours_at_review": 17.4,
+                  "recommendationid": "237591515",
+                  "hours_at_review": 14.7,
+                  "minutes_at_review": 879,
                   "voted_up": true,
-                  "date": "2026-06-23",
-                  "review_text": "Great gameplay and weapon variety, beautiful graphics. Only problems are excessive legendary drops and long, unskippable dialouge.",
-                  "truncated": false,
-                  "minutes_at_review": 1044
+                  "date": "2026-10-12",
+                  "review_text": "i still have not finished this game, but from these 14 hours i can safely say this shit is the balls. I dont think i can go back to the old borderlands games anymore after it, the gunplay is just so good, the classes and all.\r\nthe only problem is the connectivity. because fuck gearbox. \r\nand also the optimization. fuck you gearbox.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "ear-0801d3",
+              "claim": "Reviewers describe the story, dialogue, and writing as weak, boring, and a disappointment compared to previous entries in the series.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "240098978",
+                  "hours_at_review": 6.7,
+                  "minutes_at_review": 399,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Wanted to finish it to get to the cool weapons and perks but the dialogs are so boring it makes it hard to complete even when trying to ignore the story, but there are so many unskippable follow quests and conversations it makes it impossible. \n\nIt has lost all the charm of Borderlands 2, it's like a cheap knockoff but totally missing the point the the humor, while trying extremely hard to imitate it.\n\nThe point where it just dropped it was in the sanctuary ship when an NPC decided to lock me in a room by staying still at the door.\n\nUnplayable.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239133495",
+                  "hours_at_review": 6.5,
+                  "minutes_at_review": 388,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "about five times worse than its predecessor and yet somehow much much better than its successor. that tells you everything you know to know about the Borderlands franchise post-BL2 (which is sadly the majority of its lifespan).\n\n[hr]\n\nwhat's particularly unfortunate, is that i would go so far as to say that borderlands 3's atmosphere and presentation, helped by its art direction, world-building, and incredible soundtrack are damn-near BL2-level, but that it is [i]that[/i] much harder to immerse yourself in it and truly enjoy it due to [b]how dogsh*t the writing, characters, the dialogue, and the plot are. they are just truly an abhorrent, irredeemable embarrassment[/b], constantly getting in the way of immersion into an otherwise meticulously crafted world.\n\nstill, the gunplay is pretty satisfying, so if you're willing to mute the dialogue and force-skip all the cutscenes, it's an overall pretty enjoyable experience.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237753283",
+                  "hours_at_review": 10.8,
+                  "minutes_at_review": 651,
+                  "voted_up": false,
+                  "date": "2026-10-15",
+                  "review_text": "As a huge fan of Borderlands 2 this game is sad. The skill trees feel like they do nothing and the Reddit \"Hello fellow kids\" humor is terrible. Gunplay is pretty good tho.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237518505",
+                  "hours_at_review": 7.2,
+                  "minutes_at_review": 434,
+                  "voted_up": true,
+                  "date": "2026-10-12",
+                  "review_text": "Great gameplay and visuals! Massive variety of guns you can choose from and are all different in all classes! However! The voice acting is very dull and makes you want to fall asleep! Not much enthusiasm from the voice actors compared to Borderlands 2! Now I see why you put so much emphasis on the Borderlands 2 game! Overall it's a good game to kill time! but it's definitely not on par with the borderlands 2 storyline and I'm midway through the game!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237494722",
+                  "hours_at_review": 11.9,
+                  "minutes_at_review": 713,
+                  "voted_up": false,
+                  "date": "2026-10-11",
+                  "review_text": "Gameplay is a huge step up from 2 but the story is lacking and I never find myself coming back to it compared to the fun characters in 2",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-0cebd6",
+              "claim": "Reviewers praise the gunplay mechanics, weapon variety, and movement updates like sliding and mantling.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240294951",
+                  "hours_at_review": 19.0,
+                  "minutes_at_review": 1139,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "Borderlands 3 is still an absolute blast, even in 2026! The graphics hold up incredibly well, the art style is timeless, and the game still looks fantastic.\r\n\r\nThe gunplay is satisfying, the world is packed with things to explore, and there's an insane amount of loot to collect. The humor, characters and chaotic gameplay make it just as entertaining today as it was at launch.\r\n\r\nIf you enjoy looter shooters with tons of content, crazy weapons and endless fun, Borderlands 3 is definitely worth playing.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239565861",
+                  "hours_at_review": 17.3,
+                  "minutes_at_review": 1038,
+                  "voted_up": true,
+                  "date": "2026-11-07",
+                  "review_text": "Greetings, flesh-sacks! It is I, CLAPTRAP, your beloved general, master of ceremonies, and definitely-not-annoying guide to the galaxy!\nSince my programming forbids me from doing anything useful like climbing stairs, I have instead written the ultimate, completely unbiased review of Borderlands 3. Step aside, human critics! A real cybernetic masterpiece is about to break it down for you.\n\nTHE GAMEPLAY: 10/10 (Just like my dance moves!)\n\nFirst things first: the shooting and looting are absolutely fantastic. The master-class weapon variety lets you fire everything from pistols that scream insults to guns that spawn more guns when you reload. They finally added mantling and slide mechanics, meaning you can parkour around the battlefield with the grace of a gazelle—or at least the grace of me if I had actual legs instead of a single, squeaky unicycle wheel!\nThe action skills are bigger and louder than ever. You can stomp around in a giant mech, summon elemental sirens, or sic cyber-beasts on bandits. It feels so good it almost makes me forget about that time I was brutally reprogrammed to be a cruise ship door closer!\n\nTHE STORY: 6/10 (Needs 500% more Claptrap)\n\nNow, let's talk about the plot. We leave Pandora and head into the stars aboard Sanctuary III, which is a glorious spaceship mainly because I am on it. However, our main villains are the Calypso Twins—a pair of hyper-cringey siren streamers who literally murder people for \"likes.\" Honestly, I haven't seen a more annoying, desperate cry for attention since... well, since my last birthday party when nobody showed up because I \"forgot\" to send invitations and also everyone hates me.\nThe dialogue can drag on a bit, forcing you to stand around listening to NPCs talk when you could be out there blowing things up. Plus, they gave me a new voice actor, which some organic beings complained about—but personally, I think my vocal modulators have never sounded more pristine and majestic!\n\nTHE VERDICT\n\nBorderlands 3 is an ab…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "237983878",
+                  "hours_at_review": 17.6,
+                  "minutes_at_review": 1056,
+                  "voted_up": false,
+                  "date": "2026-10-18",
+                  "review_text": "The player can't hate the characters they're supposed to be fighting for. I cannot recall another game where I've felt the same insane urge to join the \"evil faction\" and mercilessly annihilate all my previous \"allies\". Slaughtering Lilith, Ava, Tannis and all the other annoying, narcissistic girlbosses in this dogshit game would bring me a greater wave of pleasure than killing any of its villains ever did.\n\nYou can make a fun game, but a fun game where you're constantly bombarded with humiliation rituals, unfunny jokes and annoying characters that treat you like a side hoe gets stale very fast, no matter how shiny the loot is or how well made the movement is. You can try to ignore it, as I've been told to do, but it isn't enough. I just can't bring myself to turn my brain completely off. There's always that annoying, mosquito-like buzz in your ear. It feels like Randy is forcing you on the cuck chair next to his, watching as a black man delivers pleasure to his wife for the first time in her life.\n\nToo many women and browns. Needs more whites who aren't punching bags.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238009431",
+                  "hours_at_review": 4.4,
+                  "minutes_at_review": 263,
+                  "voted_up": true,
+                  "date": "2026-10-18",
+                  "review_text": "Gunplay seems best in the series so far, story eh.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237753283",
+                  "hours_at_review": 10.8,
+                  "minutes_at_review": 651,
+                  "voted_up": false,
+                  "date": "2026-10-15",
+                  "review_text": "As a huge fan of Borderlands 2 this game is sad. The skill trees feel like they do nothing and the Reddit \"Hello fellow kids\" humor is terrible. Gunplay is pretty good tho.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-dc71f405",
+          "text": "One reviewer states that the early game feels effortless compared to earlier titles.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "238936076",
+            "hours_at_review": 3.7,
+            "minutes_at_review": 221,
+            "voted_up": true,
+            "date": "2026-10-30",
+            "review_text": "Game story gets too much hate, came into this expecting the worst, ended up being no less annoying then that 1 coworker you always avoid. Ppl who shit on the twins just mad about being indirectly ragebaited into hating them. But its a villains job to be hateable. \r\n\r\nI also jumped into this after playing bl2 for 10-12 hours a day for an entire week straight, and immediately after ragequitting the pre-sequel after attempting to enjoy that hot garbage trash ass game for an entire afternoon. So i was so happy to see that gameplay wise, this game is a huge upgrade. (Also i can't stress this enough, Fuck TPS.)\r\n\r\nmy only 2 cons atm are that legendaries and purple rares drop way too easily and the early game also feels effortless compared to bl2's early game.\r\n\r\nFuck TPS.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-11e98ca4",
+          "text": "One reviewer complains that you are not able to sort items in price order and that it takes a few seconds to see the actual price due to animations.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239930479",
+            "hours_at_review": 13.8,
+            "minutes_at_review": 825,
+            "voted_up": false,
+            "date": "2026-11-11",
+            "review_text": "Sadly BL3 is not the best one of the series. It got a bunch of annoying \"features\" that couldnt make me really like it. My worst is how you are not able to sort your items in price order, and also it always take 2-3 seconds to see the actual price of an item cause the \"cool moving numbers\" animation.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 9,
-        "cited_recommend": 5,
-        "divergence_p": 0.158,
+        "cited_reviews": 15,
+        "cited_recommend": 7,
+        "divergence_p": 0.00805,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -295,59 +633,108 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 542,
-      "pct_positive": 77.5,
+      "pool_n": 509,
+      "pct_positive": 78.6,
       "muted": false,
       "n_note": null,
-      "summary": "Players enjoy the smooth performance and addictive mechanics yet detest the obnoxious writing and dialogue.",
+      "summary": "Stuttering and save corruption trouble extended sessions despite strong mechanics.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-7d5998",
-              "claim": "Reviewers report that the game runs smoothly with good performance and high visual fidelity.",
+              "claim_id": "mid-0f082f",
+              "claim": "Reviewers report frequent crashes and save data corruption issues during their playthroughs.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "237996024",
+                  "hours_at_review": 57.1,
+                  "minutes_at_review": 3426,
+                  "voted_up": false,
+                  "date": "2026-10-18",
+                  "review_text": "I was having fun, until my save got corrupt. Thanks Randy\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237745917",
+                  "hours_at_review": 50.4,
+                  "minutes_at_review": 3025,
+                  "voted_up": false,
+                  "date": "2026-10-15",
+                  "review_text": "honestly, the gameplay is just alright. but the story, dialogue, and some of quests and jokes are very dated compared to other games in the series. plus during my first playthrough the game would constantly crash for no reason and corrupt my data. losing around 40 hours of progress. the game really isn't worth anyone's time or money even if the gunplay and graphics are better than previous games.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-711011",
+              "claim": "Reviewers note ongoing stuttering issues during gameplay despite trying various fixes found online.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 4,
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240495482",
+                  "hours_at_review": 70.3,
+                  "minutes_at_review": 4220,
+                  "voted_up": true,
+                  "date": "2026-11-18",
+                  "review_text": "Gameplay so good I had to buy this game again so I can have it on Steam instead of using the fudge-arse Epic launcher.\n\nStory is ♥♥♥♥ obviously - Except for Balex part, the family jewel quest is a great and reminded me to put this review right now. Side Quests (not all) and DLCs are great.\n\nHowever, there are still stutterers even with all the tips from the internet, but I can enjoy the game anyway and they fixed these issues in BL4 so idk, stutter is just part of BL3 experience I guess.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239224343",
+                  "hours_at_review": 28.1,
+                  "minutes_at_review": 1684,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "Gameplay so good I had to buy this game again so I can have it on Steam instead of using the fudge-arse Epic launcher.\n\nStory is shit obviously - Except for Balex part, the family jewel quest is a great and reminded me to put this review right now. Side Quests (not all) and DLCs are great.\n\nHowever, there are still stutterers even with [b]all[/b] the tips from the internet, but I can enjoy the game anyway and they fixed these issues in BL4 so idk, [i]stutter is just part of BL3 experience I guess.[/i]\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238016294",
+                  "hours_at_review": 40.4,
+                  "minutes_at_review": 2425,
+                  "voted_up": false,
+                  "date": "2026-10-18",
+                  "review_text": "This game's tehnical issues stop the game from being played.\n\nBefore the issues, I was playing on DirectX 12 with 120 fps on high settings and no stutters 2 years ago. I came back to play this game and now there's stuttering at every moment of the gameplay and it's impossible to enjoy it. I see that people have the same problems online talking about it.\n\nI can't recommend this to anyone unless they like to take semi-breaks while playing. Also be aware, the story is corny as fuck.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-339738",
+              "claim": "Reviewers experience persistent stuttering during gameplay.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231313014",
-                  "hours_at_review": 24.2,
+                  "recommendationid": "240495482",
+                  "hours_at_review": 70.3,
+                  "minutes_at_review": 4220,
                   "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "Logged around 200+ hours on PS4.\n\n​Great gunplay and a huge step up from Borderlands 2. \n\nThe main story can be quite annoying, but the DLCs are actually good. \n\nPerformance is decent overall.\n\n​10/10 — Gearbox is going strong.",
-                  "truncated": false,
-                  "minutes_at_review": 1455
+                  "date": "2026-11-18",
+                  "review_text": "Gameplay so good I had to buy this game again so I can have it on Steam instead of using the fudge-arse Epic launcher.\n\nStory is ♥♥♥♥ obviously - Except for Balex part, the family jewel quest is a great and reminded me to put this review right now. Side Quests (not all) and DLCs are great.\n\nHowever, there are still stutterers even with all the tips from the internet, but I can enjoy the game anyway and they fixed these issues in BL4 so idk, stutter is just part of BL3 experience I guess.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230261636",
-                  "hours_at_review": 41.8,
+                  "recommendationid": "239224343",
+                  "hours_at_review": 28.1,
+                  "minutes_at_review": 1684,
                   "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "Borderlands 3 is yet another solid entry in the franchise. It's exactly what you'd expect from a Borderlands game, but reworked and improved in all the right ways.\n\n[b]First, I'll start with the POSITIVES:[/b]\n+ The looter-shooter gameplay is absolute crack. The loop goes: find an overpowered gun → use it until it becomes average → replace it with an even better gun → repeat. It's an endless cycle of chasing the next OP weapon, and the gameplay loop is honestly near perfect.\n+ The gameplay itself is top-tier. Between the skill trees, player progression, huge variety of enemies, and endless weapons, the game stayed fresh almost all the way to the end.\n+ No complaints about performance. I didn't experience any crashes, bugs, or noticeable glitches. It was a super smooth experience.\n+ There's a solid 30 hours of content just in the main game, and probably closer to 40 if you take your time and complete the side stuff\n+ It's a great \"turn your brain off\" shooter. You can relax and just enjoy blasting through enemies for most of the game. (This could be a negative for some people, but it's exactly what I was looking for.)\n\n[b]Here are some NEGATIVES that come to mind:[/b]\n- The story is pretty dumb. I'm still not sure how I feel about the main villains being an influencer/streamer duo.\n- Some of the map design is a chore. It feels like certain areas were made unnecessarily huge just to pad the game's length.\n- Sanctuary is awful to navigate. Why does it have three floors with almost no cohesive flow between them?\n- The Borderlands humor and overall atmosphere didn't feel as fresh this time around. I miss when most of the characters were just completely insane. It felt more tame.\n\nOverall, I'd give Borderlands 3 a 3.5/5. The gameplay loop is what will always keep me coming back to this series. I got exactly what I wanted from Borderlands, and even a little more.\n\nMy Rating: ⭐⭐⭐✨✨ 3.5 / 5",
-                  "truncated": false,
-                  "minutes_at_review": 2508
-                },
-                {
-                  "recommendationid": "229762571",
-                  "hours_at_review": 33.9,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "Super corny, DLC is hit or miss, but it feels [b]really[/b] good to play. It will probably be torture playing it solo. If you can somehow manage to get a friend to buy the ultimate edition alongside you, even the terrible parts can shine a little. Wait for a 90% sale, they happen pretty often now.\n\nOh, and the performance is insane. I'm running it maxed out and even with a gazillion effects on my screen the 1% lows don't move. No idea how the same devs managed to make BL4.",
-                  "truncated": false,
-                  "minutes_at_review": 2033
-                },
-                {
-                  "recommendationid": "229271467",
-                  "hours_at_review": 71.2,
-                  "voted_up": true,
-                  "date": "2026-06-30",
-                  "review_text": "Runs smooth and looks great!",
-                  "truncated": false,
-                  "minutes_at_review": 4270
+                  "date": "2026-11-02",
+                  "review_text": "Gameplay so good I had to buy this game again so I can have it on Steam instead of using the fudge-arse Epic launcher.\n\nStory is shit obviously - Except for Balex part, the family jewel quest is a great and reminded me to put this review right now. Side Quests (not all) and DLCs are great.\n\nHowever, there are still stutterers even with [b]all[/b] the tips from the internet, but I can enjoy the game anyway and they fixed these issues in BL4 so idk, [i]stutter is just part of BL3 experience I guess.[/i]\n",
+                  "truncated": false
                 }
               ]
             }
@@ -357,213 +744,44 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-a576e9",
-              "claim": "Reviewers describe the core gunplay, movement, and loot mechanics as highly enjoyable and addictive.",
+              "claim_id": "mid-3b9f5a",
+              "claim": "Reviewers report that the main story and dialogue are weak, cringeworthy, or annoying, with some suggesting turning down or muting the dialogue audio.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 3,
-                "negative": 1
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231628066",
-                  "hours_at_review": 65.9,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "good gunplay and looter shooter stuff. writing and especially the ending was awful. having just finished the final boss now i am so disappointed i'm going strait to bed.\n\nNOT TO MENTION the part of the game where tanith covers half of your entire screen for a WHOLE HOUR and there is no way to turn it off.",
-                  "truncated": false,
-                  "minutes_at_review": 3953
-                },
-                {
-                  "recommendationid": "230261636",
-                  "hours_at_review": 41.8,
+                  "recommendationid": "240674550",
+                  "hours_at_review": 41.0,
+                  "minutes_at_review": 2457,
                   "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "Borderlands 3 is yet another solid entry in the franchise. It's exactly what you'd expect from a Borderlands game, but reworked and improved in all the right ways.\n\n[b]First, I'll start with the POSITIVES:[/b]\n+ The looter-shooter gameplay is absolute crack. The loop goes: find an overpowered gun → use it until it becomes average → replace it with an even better gun → repeat. It's an endless cycle of chasing the next OP weapon, and the gameplay loop is honestly near perfect.\n+ The gameplay itself is top-tier. Between the skill trees, player progression, huge variety of enemies, and endless weapons, the game stayed fresh almost all the way to the end.\n+ No complaints about performance. I didn't experience any crashes, bugs, or noticeable glitches. It was a super smooth experience.\n+ There's a solid 30 hours of content just in the main game, and probably closer to 40 if you take your time and complete the side stuff\n+ It's a great \"turn your brain off\" shooter. You can relax and just enjoy blasting through enemies for most of the game. (This could be a negative for some people, but it's exactly what I was looking for.)\n\n[b]Here are some NEGATIVES that come to mind:[/b]\n- The story is pretty dumb. I'm still not sure how I feel about the main villains being an influencer/streamer duo.\n- Some of the map design is a chore. It feels like certain areas were made unnecessarily huge just to pad the game's length.\n- Sanctuary is awful to navigate. Why does it have three floors with almost no cohesive flow between them?\n- The Borderlands humor and overall atmosphere didn't feel as fresh this time around. I miss when most of the characters were just completely insane. It felt more tame.\n\nOverall, I'd give Borderlands 3 a 3.5/5. The gameplay loop is what will always keep me coming back to this series. I got exactly what I wanted from Borderlands, and even a little more.\n\nMy Rating: ⭐⭐⭐✨✨ 3.5 / 5",
-                  "truncated": false,
-                  "minutes_at_review": 2508
+                  "date": "2026-11-21",
+                  "review_text": "People overexaggerate the story being that bad when you can just go into settings and turn \"dialogue\" to 0, you're welcome.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229689268",
-                  "hours_at_review": 32.6,
+                  "recommendationid": "238064084",
+                  "hours_at_review": 32.7,
+                  "minutes_at_review": 1964,
                   "voted_up": true,
-                  "date": "2026-07-05",
-                  "review_text": "This is easily the weakest game in the Borderlands franchise. Normally I'd say the story doesn't really matter in a looter shooter, but in this case it's so painfully bad that it actually gets in the way of enjoying the game. I skipped every cutscene I could, and whenever I couldn't, it felt like the game was holding me hostage.\r\n\r\nAs if that wasn't enough, the characters never seem to shut up. Even after the cutscenes are over, they're constantly talking to you over the radio, and most of the dialogue ranges from forgettable to downright irritating. By the end of the campaign, I was more excited to mute the voices than to hear the next mission.\r\n\r\nThankfully, the gameplay carries the entire experience. The gunplay is excellent, the loot system is as addictive as ever, and blowing up bandits with ridiculous weapons never gets old. That's what Borderlands has always been about, and it's the only reason I kept playing.\r\n\r\nIf you've had a long day at work or school and just want to switch your brain off, throw on some music, and turn thousands of psychos into loot piñatas, this game still delivers. It took me around 30 hours to finish the campaign, and despite everything I genuinely had fun because the core gameplay is that good.\r\n\r\nFor under €10, it's absolutely worth picking up. Just do yourself a favor tho and skip every cutscene you can, let the loot do the talking, and pretend the story never happened.",
-                  "truncated": false,
-                  "minutes_at_review": 1959
-                },
-                {
-                  "recommendationid": "229332941",
-                  "hours_at_review": 34.4,
-                  "voted_up": true,
-                  "date": "2026-07-01",
-                  "review_text": "I recommend this one mainly for the gameplay, the guns and looting system feel really fun to play and ultimately, that's really what you want out of a game.\n\nAs many have said the story, dialogs, and characters are terrible, unfunny, and unlikeable. Delivering coffee to a purple haired, nose ring Karen, and having to deal with cringe furries is really annoying. I guarantee the writers probably look like the characters they designed.\n\nI recommend you don't play this game for the plot, just skip the cut scenes and turn the dialog audio to 0. Also, don't pay full price for this either.",
-                  "truncated": false,
-                  "minutes_at_review": 2061
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-c2856d",
-              "claim": "Reviewers characterize the main story, writing, and dialogue as poorly written, cringeworthy, or annoying.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231628066",
-                  "hours_at_review": 65.9,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "good gunplay and looter shooter stuff. writing and especially the ending was awful. having just finished the final boss now i am so disappointed i'm going strait to bed.\n\nNOT TO MENTION the part of the game where tanith covers half of your entire screen for a WHOLE HOUR and there is no way to turn it off.",
-                  "truncated": false,
-                  "minutes_at_review": 3953
-                },
-                {
-                  "recommendationid": "230961450",
-                  "hours_at_review": 79.5,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "I've played the main story and the side quests of the main story to completion, and I'm sad to say the story is still too loud and awful for me to ignore.\n\nGameplay wise, this game is very strong, and surpasses the groundwork laid by Borderlands 2. It's fun as ♥♥♥♥.\n\nBut the writing, story, and everything outside of the gameplay is overbearingly millennial-coded. Like, Rick and Morty core humor that will have you rolling your eyes and throwing up a little every time almost any character says something that isn't exposition.\n\nIt's a shame too, because there's a lot of potential with a story that implicates the cast of Borderlands 1 and 2, but none of those interesting dimensions you'd expect are explored or exploited. They get turned into tools for Borderlands 3's narrative to exist, oftentimes mischaracterizing or recharacterizing beloved characters so Borderlands 3's events can happen. It's disappointing, and overshadows much of the good Borderlands 3 gets right.",
-                  "truncated": false,
-                  "minutes_at_review": 4769
-                },
-                {
-                  "recommendationid": "230166013",
-                  "hours_at_review": 85.5,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "Turning dialogue volume to zero made this game somewhat playable. The antagonist single handedly made me want to quit playing. Typical girl-power-karen-woke slop that made it's way into one of my favorite franchises.",
-                  "truncated": false,
-                  "minutes_at_review": 5129
-                },
-                {
-                  "recommendationid": "229332941",
-                  "hours_at_review": 34.4,
-                  "voted_up": true,
-                  "date": "2026-07-01",
-                  "review_text": "I recommend this one mainly for the gameplay, the guns and looting system feel really fun to play and ultimately, that's really what you want out of a game.\n\nAs many have said the story, dialogs, and characters are terrible, unfunny, and unlikeable. Delivering coffee to a purple haired, nose ring Karen, and having to deal with cringe furries is really annoying. I guarantee the writers probably look like the characters they designed.\n\nI recommend you don't play this game for the plot, just skip the cut scenes and turn the dialog audio to 0. Also, don't pay full price for this either.",
-                  "truncated": false,
-                  "minutes_at_review": 2061
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-c88dcb",
-              "claim": "Reviewers mention that the game contains unskippable dialogue or cutscenes that negatively impact the experience.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "229476021",
-                  "hours_at_review": 70.2,
-                  "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "Where is skip dialogue option?",
-                  "truncated": false,
-                  "minutes_at_review": 4210
-                },
-                {
-                  "recommendationid": "229361826",
-                  "hours_at_review": 53.4,
-                  "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "It just has way too much unskippable dialogue. plus I'm not super in love with any new characters except Zane and Wainwright Jakobs basically. and the story is rather boring. (though the 2nd one's isn't the greatest either. it is better by a bit)\r\nlike most people I do not like that kid with maya. I haven't played this in so long I can't even remember her name.\r\nI like the game play for the most part, I just can't sit through that story again.",
-                  "truncated": false,
-                  "minutes_at_review": 3204
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-0580e1",
-              "claim": "Reviewers mention muting the dialogue audio or turning down the voice volume to make the game experience better.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231720438",
-                  "hours_at_review": 45.9,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Gameplay is fun but play with voices muted",
-                  "truncated": false,
-                  "minutes_at_review": 2751
-                },
-                {
-                  "recommendationid": "230354121",
-                  "hours_at_review": 22.6,
-                  "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "Good game, as long as you mute the dialog and completely ignore the story",
-                  "truncated": false,
-                  "minutes_at_review": 1356
-                },
-                {
-                  "recommendationid": "230166013",
-                  "hours_at_review": 85.5,
-                  "voted_up": false,
-                  "date": "2026-07-10",
-                  "review_text": "Turning dialogue volume to zero made this game somewhat playable. The antagonist single handedly made me want to quit playing. Typical girl-power-karen-woke slop that made it's way into one of my favorite franchises.",
-                  "truncated": false,
-                  "minutes_at_review": 5129
-                },
-                {
-                  "recommendationid": "229569493",
-                  "hours_at_review": 81.3,
-                  "voted_up": true,
-                  "date": "2026-07-04",
-                  "review_text": "Played this in my PS4 when it first released, hated the story but stayed for the looting and shooting. Love every minute of the gameplay now that I have all of the good story DLC and now at 165fps 1440p ultrawide in my rig. \r\n\r\nEnjoying the game much much more now that I can skip all cutscenes in the main story and can turn down dialogue. The DLC stories are pretty good tho!",
-                  "truncated": false,
-                  "minutes_at_review": 4876
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-04560b",
-              "claim": "Reviewers describe the core gunplay, movement, and looter-shooter mechanics as enjoyable and a step up from previous entries, while criticizing the story, writing, dialogue, and characters as poor or annoying.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231628066",
-                  "hours_at_review": 65.9,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "good gunplay and looter shooter stuff. writing and especially the ending was awful. having just finished the final boss now i am so disappointed i'm going strait to bed.\n\nNOT TO MENTION the part of the game where tanith covers half of your entire screen for a WHOLE HOUR and there is no way to turn it off.",
-                  "truncated": false,
-                  "minutes_at_review": 3953
-                },
-                {
-                  "recommendationid": "230961450",
-                  "hours_at_review": 79.5,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "I've played the main story and the side quests of the main story to completion, and I'm sad to say the story is still too loud and awful for me to ignore.\n\nGameplay wise, this game is very strong, and surpasses the groundwork laid by Borderlands 2. It's fun as ♥♥♥♥.\n\nBut the writing, story, and everything outside of the gameplay is overbearingly millennial-coded. Like, Rick and Morty core humor that will have you rolling your eyes and throwing up a little every time almost any character says something that isn't exposition.\n\nIt's a shame too, because there's a lot of potential with a story that implicates the cast of Borderlands 1 and 2, but none of those interesting dimensions you'd expect are explored or exploited. They get turned into tools for Borderlands 3's narrative to exist, oftentimes mischaracterizing or recharacterizing beloved characters so Borderlands 3's events can happen. It's disappointing, and overshadows much of the good Borderlands 3 gets right.",
-                  "truncated": false,
-                  "minutes_at_review": 4769
+                  "date": "2026-10-19",
+                  "review_text": "Surprisingly, I had a lot of fun with the game. I wasn't a huge fan of BL1 and BL2 - both were kinda mid in my mind.\nI remember there being a huge hate bandwagon about the 2 main villains on release - and yeah, the dialogue and writing in this game is mostly bad, cringy and unfunny, with a decent amount of gross out \"humor\" to boot.\nBut the gameplay and gunplay really do carry this game, with visuals (despite the ugly cel shading) and audio also being pretty good, and they all are better here than the previous two games by a wide margin.\n\n[h3]The guns, loot and gameplay[/h3]\nUndeniably the best part. Yeah, it starts slow with guns that have poor accuracy, like in previous games, but it picks up fast and by the second half I was drowning in legendries, so much so that I was wiping most bosses, including the final story boss, in under a minute, just because I happened to kill an optional animal mini-boss on the way there.\n\nI did like the new feature of guns having alternative firing modes. Most of the time its something boring - a burst/auto switch, but for some guns they have cool gimmicks like the underbarrel grenade launcher or a shotgun, elemental type switch, auto aim puck, etc., depending on the gun manufacturer.\n\nThe guns are kinda weird though.\nMost pistols seem to just be SMGs. This makes the SMG archetype pointless. Rocket Launchers also appear to be extremely underwhelming, at least in my playthrough and build, they did no more damage that regular guns, and had extremely poor ammo economy and slow firing speed, making them useless in my view.\nThen there are the weapon manufacturers. At least half of them have weird gimmicks - slow charge up times, throw-away reloads, overheat mechanics, slow projectiles, etc.\n\nWhat this all culminates in is that I stuck with like 3 \"boring\" manufactures, and mostly pistols and assault rifles, because that's what was most effective. The other 6 manufacturers and 4 gun archetypes were just immediately trashed, because they ar…",
+                  "truncated": true
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 14,
-        "cited_recommend": 9,
-        "divergence_p": 0.189,
+        "cited_reviews": 7,
+        "cited_recommend": 4,
+        "divergence_p": 0.173,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -571,18 +789,159 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 215,
-      "pct_positive": 86.5,
+      "pool_n": 223,
+      "pct_positive": 88.8,
       "muted": false,
       "n_note": null,
-      "summary": "Longtime players highlight the fluid gameplay and better downloadable content while continuing to fault the main campaign narrative.",
+      "summary": "Long-term players praise top-tier combat and expansions while managing bugs and annoying dialogue.",
       "themes": [
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-a271b4",
-              "claim": "Reviewers report that the main story and dialogue are weak, obnoxious, or poorly written, though some note the downloadable content stories are better.",
+              "claim_id": "vet-50b698",
+              "claim": "The main campaign story and writing are described as poor, weak, or annoying.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "239179375",
+                  "hours_at_review": 215.6,
+                  "minutes_at_review": 12933,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "       [The DLC is very good, worth playing if you make it though the story!!!] \r\n Long time Borderlands player, this game is really good; despite the really annoying, repetitive story. The gameplay of this particular title is one of, if not the most customizable and fun takes on the running, gunning and looting that this franchise known for. I've played this on PC an PS4, for a combined 500 hrs- and I can say, the lengthy, forced interactions with the cast will get annoying and you will start to just ignore the bad dialogue and writing like the rest of us. Treasure every moment the game just lets you shoot stuff with the cool character you're playing as. \r\nMain story: A generous 4/10 \r\nGameplay: 8/10 Gun go burr",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238629630",
+                  "hours_at_review": 229.1,
+                  "minutes_at_review": 13746,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "-CONS-\r\n> story isn't as good as other borderlands games - notably borderlands 2 (no villain will ever truly be as good as handsome jack)\r\n> sometimes terribly cringey dialogue\r\n\r\n-PROS-\r\n> everything else\r\n\r\nseriously! this game has its bad points, but overall they don't affect the game at all! there is some terrible writing, but there is also some GREAT writing (some points I literally laughed out loud) \r\non every other point of this game other than story and dialogue, this is hands down the best borderlands in the series for gameplay, DLC, character builds, crazy guns and modifiers, bosses and endgame\r\n\r\nGET THIS GAME (on sale if possible)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237465954",
+                  "hours_at_review": 142.6,
+                  "minutes_at_review": 8556,
+                  "voted_up": true,
+                  "date": "2026-10-11",
+                  "review_text": "The sad paradox of BL3 is that it features the best gameplay in the series, balanced out by the worst story to boot.\n\nGearbox were a couple of steps away from making a generational masterpiece but somehow managed to cook up the most underwhelming narrative, annoyingly bland characters, and AI-level dialogue that silenced most of the redeeming qualities that the game had going for itself.\n\nThe strangest part is that the DLC content in this game is absolutely phenomenal, and for the most part, feels like a polished product when looking back at the base game campaign.\n\nThe story is what it is, but in the defense of Gearbox (yes, I cannot believe I'm typing that), there is a great game under the surface of the awful storytelling choices they made. \n\nOn the other hand, the gameplay is addictive like crack cocaine, which is unironically the best in the series with its tech tree builds and unique weapon variety. BL2 andies will take offence to this, but hey, you can't win them all, so f_ck them as far as I'm concerned. Their judgement holds the same value as legendary drops in this game. \n\nI remember playing through the entire game and DLC content with one of my friends, and we had an absolute blast, which the Discord mod-level dialogue couldn't touch. \n\nCome to your own conclusions after trying it out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235237951",
+                  "hours_at_review": 121.8,
+                  "minutes_at_review": 7308,
+                  "voted_up": true,
+                  "date": "2026-09-14",
+                  "review_text": "9/15/26 Update: After starting a new save and playing through some of the DLC's, it utterly bamboozles me how they could have failed so hard on the main game story but won so hard with the DLC's. Every single one (Yes, even the 3rd, imo, despite most of the community not liking it) has good story and quick pacing considering its a DLC. \n\n\nBy far the best in the franchise. I huffed the \"BL4 IS GOOD\" Copium for about 80 hours until realizing BL3 is just superior. Not gonna rant about BL4, thats its own review but yes, the story for BL3 is dogcrap. Install a dialogue/cutscene skipper and the game is immediately a 9/10 instead of a 5/10. The gameplay and DLC's make up for the lackluster main story. (Except Season Pass 2, its kinda bad. just buy the first one). Base game is also great, but mods like REBORN or REBALANDS make the imperfect balance better (or worse, I prefer rebalands balance imo) and some skills actually usable. IF your wondering whether to play BL4 or BL3, go BL3 every day of the week. BL4 is worth maybe one playthrough and thats it.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-f35ae4",
+              "claim": "Core gameplay elements such as gunplay, movement, controls, and combat mechanics are praised as the best in the series.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "239179375",
+                  "hours_at_review": 215.6,
+                  "minutes_at_review": 12933,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "       [The DLC is very good, worth playing if you make it though the story!!!] \r\n Long time Borderlands player, this game is really good; despite the really annoying, repetitive story. The gameplay of this particular title is one of, if not the most customizable and fun takes on the running, gunning and looting that this franchise known for. I've played this on PC an PS4, for a combined 500 hrs- and I can say, the lengthy, forced interactions with the cast will get annoying and you will start to just ignore the bad dialogue and writing like the rest of us. Treasure every moment the game just lets you shoot stuff with the cool character you're playing as. \r\nMain story: A generous 4/10 \r\nGameplay: 8/10 Gun go burr",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238257249",
+                  "hours_at_review": 506.4,
+                  "minutes_at_review": 30383,
+                  "voted_up": true,
+                  "date": "2026-10-21",
+                  "review_text": "Borderlands 3, truth be told I really enjoy this game. The looting, shooting, traversal, level design, enemy design, sound design and soundtrack. Pretty much everything to do with the core gameplay is fantastic. The drop rates and selection for items I personally think is the best of all the BL games, it tows that line of,  you will get legendaries to drop a lot but whether you get good parts rolls determines the viability of them which I greatly enjoy and tickles the loot goblin in me. The Gunplay is still the slight edge of wackyness and realism that previous titles brought, and each vault hunter is viable and has very fun unique action skills. Swapping between those action skills and crafting builds I think is the strongest here over the previous games.\r\n\r\nNow the story, is all over the place for me. The main campaign storyline is definitely the weakest its ever been, but there are still many many likable characters (along with a few unlikeable) that are still written decent for what they're trying to be. The DLCs are where they definitely improved greatly on the story telling, and actually impressed me with how much better the writting for the DLCs is. \r\n\r\nIn short, Its a very fun game to play, don't get too attached to the story/characters, blast psyco's in the dome and get Shlootin!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238225540",
+                  "hours_at_review": 198.5,
+                  "minutes_at_review": 11910,
+                  "voted_up": false,
+                  "date": "2026-10-21",
+                  "review_text": "The shooting is genuinely great, best in the series, no argument there. Problem is everything around it. The villains are twitch streamers, every NPC talks in memes that were already dead in 2019, and I started skipping cutscenes about ten hours in. I stayed for the loot, not for the game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237465954",
+                  "hours_at_review": 142.6,
+                  "minutes_at_review": 8556,
+                  "voted_up": true,
+                  "date": "2026-10-11",
+                  "review_text": "The sad paradox of BL3 is that it features the best gameplay in the series, balanced out by the worst story to boot.\n\nGearbox were a couple of steps away from making a generational masterpiece but somehow managed to cook up the most underwhelming narrative, annoyingly bland characters, and AI-level dialogue that silenced most of the redeeming qualities that the game had going for itself.\n\nThe strangest part is that the DLC content in this game is absolutely phenomenal, and for the most part, feels like a polished product when looking back at the base game campaign.\n\nThe story is what it is, but in the defense of Gearbox (yes, I cannot believe I'm typing that), there is a great game under the surface of the awful storytelling choices they made. \n\nOn the other hand, the gameplay is addictive like crack cocaine, which is unironically the best in the series with its tech tree builds and unique weapon variety. BL2 andies will take offence to this, but hey, you can't win them all, so f_ck them as far as I'm concerned. Their judgement holds the same value as legendary drops in this game. \n\nI remember playing through the entire game and DLC content with one of my friends, and we had an absolute blast, which the Discord mod-level dialogue couldn't touch. \n\nCome to your own conclusions after trying it out.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-2ba2d8",
+              "claim": "DLC storylines are noted as being significantly better written and more enjoyable than the main campaign.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "238600820",
+                  "hours_at_review": 142.0,
+                  "minutes_at_review": 8522,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "Story is garbage, some missions are still bugged like claptrap's last one so you can't even finish them without playing through again.\r\n\r\nGameplay is the best in the series easily, the DLC stories are way better than the main story, soundtrack is solid too",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237465954",
+                  "hours_at_review": 142.6,
+                  "minutes_at_review": 8556,
+                  "voted_up": true,
+                  "date": "2026-10-11",
+                  "review_text": "The sad paradox of BL3 is that it features the best gameplay in the series, balanced out by the worst story to boot.\n\nGearbox were a couple of steps away from making a generational masterpiece but somehow managed to cook up the most underwhelming narrative, annoyingly bland characters, and AI-level dialogue that silenced most of the redeeming qualities that the game had going for itself.\n\nThe strangest part is that the DLC content in this game is absolutely phenomenal, and for the most part, feels like a polished product when looking back at the base game campaign.\n\nThe story is what it is, but in the defense of Gearbox (yes, I cannot believe I'm typing that), there is a great game under the surface of the awful storytelling choices they made. \n\nOn the other hand, the gameplay is addictive like crack cocaine, which is unironically the best in the series with its tech tree builds and unique weapon variety. BL2 andies will take offence to this, but hey, you can't win them all, so f_ck them as far as I'm concerned. Their judgement holds the same value as legendary drops in this game. \n\nI remember playing through the entire game and DLC content with one of my friends, and we had an absolute blast, which the Discord mod-level dialogue couldn't touch. \n\nCome to your own conclusions after trying it out.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235237951",
+                  "hours_at_review": 121.8,
+                  "minutes_at_review": 7308,
+                  "voted_up": true,
+                  "date": "2026-09-14",
+                  "review_text": "9/15/26 Update: After starting a new save and playing through some of the DLC's, it utterly bamboozles me how they could have failed so hard on the main game story but won so hard with the DLC's. Every single one (Yes, even the 3rd, imo, despite most of the community not liking it) has good story and quick pacing considering its a DLC. \n\n\nBy far the best in the franchise. I huffed the \"BL4 IS GOOD\" Copium for about 80 hours until realizing BL3 is just superior. Not gonna rant about BL4, thats its own review but yes, the story for BL3 is dogcrap. Install a dialogue/cutscene skipper and the game is immediately a 9/10 instead of a 5/10. The gameplay and DLC's make up for the lackluster main story. (Except Season Pass 2, its kinda bad. just buy the first one). Base game is also great, but mods like REBORN or REBALANDS make the imperfect balance better (or worse, I prefer rebalands balance imo) and some skills actually usable. IF your wondering whether to play BL4 or BL3, go BL3 every day of the week. BL4 is worth maybe one playthrough and thats it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235234762",
+                  "hours_at_review": 307.5,
+                  "minutes_at_review": 18448,
+                  "voted_up": true,
+                  "date": "2026-09-14",
+                  "review_text": "coming back after trying out bl4, this game really is a blast. while the story for the main game is hot garbage, almost all the dlc's are bangers in all aspects. gun-play is some of the best the series has seen. weapons and enemies scale fairly unlike in bl2. i highly recommend a cutscene skipper and a dialogue skipper for this game, which makes a otherwise 6/10 game into a 9/10. this game has higher highs and lower lows compared to bl2, and i like it for that tbh.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-6c27c9",
+              "claim": "Mission dialogue and interactions are described as lengthy, forced, or requiring players to wait through unskippable talking sequences.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -590,37 +949,37 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231344921",
-                  "hours_at_review": 138.0,
+                  "recommendationid": "239179375",
+                  "hours_at_review": 215.6,
+                  "minutes_at_review": 12933,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "This game is *nearly* perfect. It has two major flaws, the story and dialogue is constantly interupting the gameplay and the characters and writing is incredibly obnoxious. Its a horrid story which is really a shame after how amazing borderlands 2 story is.\r\n\r\nOther than all that the game is amazing. The gunplay is fast and heavy. All four vault hunters are a joy to play. Build crafting is really fun in this game maybe even better than in Bl2. The game runs well the graphics are above par. Picking this up on sale is a no brainer. Its a great modern version of Bl2 \r\n\r\n8/10",
-                  "truncated": false,
-                  "minutes_at_review": 8281
+                  "date": "2026-11-02",
+                  "review_text": "       [The DLC is very good, worth playing if you make it though the story!!!] \r\n Long time Borderlands player, this game is really good; despite the really annoying, repetitive story. The gameplay of this particular title is one of, if not the most customizable and fun takes on the running, gunning and looting that this franchise known for. I've played this on PC an PS4, for a combined 500 hrs- and I can say, the lengthy, forced interactions with the cast will get annoying and you will start to just ignore the bad dialogue and writing like the rest of us. Treasure every moment the game just lets you shoot stuff with the cool character you're playing as. \r\nMain story: A generous 4/10 \r\nGameplay: 8/10 Gun go burr",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229967263",
-                  "hours_at_review": 589.3,
+                  "recommendationid": "239032731",
+                  "hours_at_review": 133.2,
+                  "minutes_at_review": 7989,
                   "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "Gameplay is fun as ♥♥♥♥. Story is mid, but honestly the gameplay was so fun I didnt care. The DLC stories are significantly better, the Bounty of Blood being the best in my opinion. I've played through that specific DLC 3 times already I love it so much. Wish they had additional vault hunters, but im very happy with the core 4 that we get. Definitely recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 35360
+                  "date": "2026-10-31",
+                  "review_text": "Good entry in the franchise for new and returning borderlands looter-shooter enjoyers, the mechanics are more of what we love with that modern AAA game polish. The way they implemented action skill variety between the different heroes and the extra 4 skill trees in leu of added dlc characters is fresh and I think a great change. There is one fatal flaw, that being the story. My god, I get that borderlands always had a bit of that quirky millenial-type humour but this is just miserable too listen to. What definetly doesn't help is the fact that the mission-dialogue is always agonisignly long, with the added bonus of you needing to interact-listen-interact-listen  before you can even start running to the next sequence of interacting and listening. I HIGHLY reccomend playing with the voices disabled and playing a yt video in the background while playing this game, personally I found it 10x more enjoyable that way. 7/10",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "224800967",
-                  "hours_at_review": 175.0,
+                  "recommendationid": "238542766",
+                  "hours_at_review": 112.3,
+                  "minutes_at_review": 6738,
                   "voted_up": true,
-                  "date": "2026-05-05",
-                  "review_text": "Not nearly as bad as I was expecting. While I do agree the story is awful, I was honestly expecting far worse with what people where saying.\r\n\r\nPros:\r\nThe gunplay is absolutely improved and better than the previous BLs.\r\nThe writing in the DLC is honestly better than the main story.\r\n\r\nCons:\r\nThe main writing isn't great.\r\nThe maps feel too big and make exploration feel like a chore.\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 10499
+                  "date": "2026-10-25",
+                  "review_text": "I will recommend this title, if you can play with at least one friend (especially if you have fun together). We can see many upgrades in this game like better shooting feeling, graphic increase, more freedom moving around (etc. climbing). Very good thing in this game is Mayhem mode, which increase difficulty level of your adventure and scale enemies to your level (so you can enjoy running through dlcs or later missions); leveling is faster and easier than previous parts, and you don't need to re-run whole game again, if you use ''mayhem mode'' you don't need to worry to get 72lvl. First off we start on normal mode and we can set lobby for two options (separate loot for all members or no separate). After finishing game once, you can set in game settings ''True Vault Hunter Mode'', but i didn't use it once, so you need to check for yourself or on web. Last very good and very helpful thing we can set in options is auto-sell ''common->purple rarity items, so no longer need to run to vendors many times) and you can find a lot of gold stuff just killing enemies.\nGame is boring and long. I think after pre-sequel they started to like long voice talks and slowing progress. Game have many posivite aspects, but i didn't enjoy it enough to recommend for solo playing (even i maxed out achievements, but for my own purpose).\nIf you ever played Killing Floor, for me Borderlands 3 in compare to Borderlands 2 is like Killing Floor 2 for KF1 (many upgrades, but worse, more colorful and annoiying robots). Shooting, looting and exploring was fine, but story and overall feelings was mixed, and i was exhausted playing it.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-8cf5c4",
-              "claim": "Reviewers note that legendary weapons drop in very high quantities during gameplay.",
+              "claim_id": "vet-dfe100",
+              "claim": "Reviewers report that the main story and dialogue are weak, cringey, or poorly written, while praising the gameplay, gunplay, and combat mechanics.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -628,37 +987,37 @@
               },
               "citations": [
                 {
-                  "recommendationid": "228052139",
-                  "hours_at_review": 132.0,
+                  "recommendationid": "238629630",
+                  "hours_at_review": 229.1,
+                  "minutes_at_review": 13746,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "-CONS-\r\n> story isn't as good as other borderlands games - notably borderlands 2 (no villain will ever truly be as good as handsome jack)\r\n> sometimes terribly cringey dialogue\r\n\r\n-PROS-\r\n> everything else\r\n\r\nseriously! this game has its bad points, but overall they don't affect the game at all! there is some terrible writing, but there is also some GREAT writing (some points I literally laughed out loud) \r\non every other point of this game other than story and dialogue, this is hands down the best borderlands in the series for gameplay, DLC, character builds, crazy guns and modifiers, bosses and endgame\r\n\r\nGET THIS GAME (on sale if possible)",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238225540",
+                  "hours_at_review": 198.5,
+                  "minutes_at_review": 11910,
                   "voted_up": false,
-                  "date": "2026-06-15",
-                  "review_text": "A good game that needs to be rescued from Gearbox at this point - they've made it almost impossible to enjoy.\r\n\r\n+ graphics and sound design are fantastic\r\n+ gun design is a major improvement over the monstrously ugly mess that was BL2's guns\r\n+ polished and very enjoyable gunplay; traversal is also fairly fast, smooth and flows very well\r\n\r\n- Legendary loot drops are so ridiculously common it kills all excitement for drops\r\n- maps are unironically too big and quests are time-wasting traversals (go to A, wait for NPC to yap for literal minutes, go to B; take item 2 meters away, give to NPC)\r\n- dozens of Ubisoft-esque \"wait for this NPC to finish yapping\"/ \"follow this slow NPC\" segments, genuine waste of time\r\n- boss fights generally suck; almost all bosses have phases that slow the pace to a crawl and makes min-maxing builds worthless, after a point any bonus dmg you do is irrelevant since you hit the boss' phase and wait around for its invincibility to end\r\n- everyone in BL is gay - the amount of LGBTQ prevalence is kinda crazy, most (yes, actually) of the NPCs in game who's sexuality is mentioned are gay/lesbian. There is an entire DLC dedicated to marrying two gay men. Heterosexuality is merely implied to exist in this universe. Very strange and blatantly propagandistic\r\n- the humor keeps becoming more and more unbearable. Zoomers will find this hard to believe but BL1's humor was fairly understated, the most \"wacky\" NPCs were Claptrap and Tannis, and even they have been flanderized beyond recognition. The reddit-fication of the franchise began with BL2 and and reached an unbearable degree\r\n\r\n\r\n\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 7921
+                  "date": "2026-10-21",
+                  "review_text": "The shooting is genuinely great, best in the series, no argument there. Problem is everything around it. The villains are twitch streamers, every NPC talks in memes that were already dead in 2019, and I started skipping cutscenes about ten hours in. I stayed for the loot, not for the game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226298616",
-                  "hours_at_review": 186.9,
+                  "recommendationid": "237465954",
+                  "hours_at_review": 142.6,
+                  "minutes_at_review": 8556,
                   "voted_up": true,
-                  "date": "2026-05-24",
-                  "review_text": "The main story is abysmally bad, but it is undoubtably the best gameplay and gunplay in the series. It feels so good to run around and shoot stuff. All the characters are unique and fun to play. While legendaries are far more plentiful than any other game in the series, there are so many cool and fun ones with amazing synergies. The soundtrack is amazing, Jesper Kyd and Raison Varner crushed it. The Maliwan Takedown alone is better than anything BL4 can put out and that's only ONE of the FREE dlcs they added. The Halloween event is amazing, the Cartel event is amazing. This game is so good it makes me sad to see how BL4 ended up.",
-                  "truncated": false,
-                  "minutes_at_review": 11215
-                },
-                {
-                  "recommendationid": "226279822",
-                  "hours_at_review": 104.5,
-                  "voted_up": true,
-                  "date": "2026-05-24",
-                  "review_text": "I don't think anyone needs a commentary on how abysmal the campaign and many side quest story lines are. This is known information at this point.\r\nAside from this, bosses are designed well, have well thought out mechanics that make them enjoyable to fight.\r\nMayhem mode is a mixed bag, it can add sufficient complexity for those looking for a somewhat chaotic experience, though I often find myself playing with it disabled or on mayhem 11 to ignore the modifiers. Locking some drops behind mayhem mode serves to push players into it, which is probably fine, but I can see it rubbing some the wrong way. Build diversity also takes a nose dive after some mayhem levels as certain weapons simply scale better, how big a deal this is will depend on the person in particular. You can technically make anything work, it will just take years to kill anything.\r\nThe legendary designs for the most part are fantastic, featuring some returning items and plenty of new ones. I like a lot of them.\r\nLevel design is not super condensed, I feel it could have used a smaller map in several locations, but for the most part it isn't egregious and can be traversed without too much effort, though it does feel like many areas call for a car. (or a good snowdrift/speed zane build)\r\nThe fps elements are vastly improved compared to BL2, it is fun to simply move around in the environments and shot the guns give to you, regardless of whether or not they are legendary. Sliding and mantling are not revolutionary, but they feel satisfying to use.\r\nThe characters are all unique in their own ways and have varied playstyles, I have completed entire playthroughs of each except flak. And can safely say that they are all very fun in their own ways, and have several viable ways to build their skill trees.\r\n\r\nSo to summarize, this game has a lot of positives with one GLARING negative. The story and humor is dated at best, and downright lazy if given proper attention. This can be remedied by getting a dialogue skip an…",
-                  "truncated": true,
-                  "minutes_at_review": 6270
+                  "date": "2026-10-11",
+                  "review_text": "The sad paradox of BL3 is that it features the best gameplay in the series, balanced out by the worst story to boot.\n\nGearbox were a couple of steps away from making a generational masterpiece but somehow managed to cook up the most underwhelming narrative, annoyingly bland characters, and AI-level dialogue that silenced most of the redeeming qualities that the game had going for itself.\n\nThe strangest part is that the DLC content in this game is absolutely phenomenal, and for the most part, feels like a polished product when looking back at the base game campaign.\n\nThe story is what it is, but in the defense of Gearbox (yes, I cannot believe I'm typing that), there is a great game under the surface of the awful storytelling choices they made. \n\nOn the other hand, the gameplay is addictive like crack cocaine, which is unironically the best in the series with its tech tree builds and unique weapon variety. BL2 andies will take offence to this, but hey, you can't win them all, so f_ck them as far as I'm concerned. Their judgement holds the same value as legendary drops in this game. \n\nI remember playing through the entire game and DLC content with one of my friends, and we had an absolute blast, which the Discord mod-level dialogue couldn't touch. \n\nCome to your own conclusions after trying it out.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-9a5326",
-              "claim": "Reviewers report that the main story and dialogue are poorly written, annoying, and detract from the overall experience.",
+              "claim_id": "vet-454700",
+              "claim": "Reviewers recommend disabling or muting in-game voices and dialogue to improve the experience.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -666,89 +1025,31 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231344921",
-                  "hours_at_review": 138.0,
+                  "recommendationid": "239032731",
+                  "hours_at_review": 133.2,
+                  "minutes_at_review": 7989,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "This game is *nearly* perfect. It has two major flaws, the story and dialogue is constantly interupting the gameplay and the characters and writing is incredibly obnoxious. Its a horrid story which is really a shame after how amazing borderlands 2 story is.\r\n\r\nOther than all that the game is amazing. The gunplay is fast and heavy. All four vault hunters are a joy to play. Build crafting is really fun in this game maybe even better than in Bl2. The game runs well the graphics are above par. Picking this up on sale is a no brainer. Its a great modern version of Bl2 \r\n\r\n8/10",
-                  "truncated": false,
-                  "minutes_at_review": 8281
+                  "date": "2026-10-31",
+                  "review_text": "Good entry in the franchise for new and returning borderlands looter-shooter enjoyers, the mechanics are more of what we love with that modern AAA game polish. The way they implemented action skill variety between the different heroes and the extra 4 skill trees in leu of added dlc characters is fresh and I think a great change. There is one fatal flaw, that being the story. My god, I get that borderlands always had a bit of that quirky millenial-type humour but this is just miserable too listen to. What definetly doesn't help is the fact that the mission-dialogue is always agonisignly long, with the added bonus of you needing to interact-listen-interact-listen  before you can even start running to the next sequence of interacting and listening. I HIGHLY reccomend playing with the voices disabled and playing a yt video in the background while playing this game, personally I found it 10x more enjoyable that way. 7/10",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231216567",
-                  "hours_at_review": 135.8,
+                  "recommendationid": "234397958",
+                  "hours_at_review": 162.3,
+                  "minutes_at_review": 9736,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Mechanically the best in the series. \r\n\r\nMain story writing and majority of dialogue is just really, really bad.",
-                  "truncated": false,
-                  "minutes_at_review": 8151
+                  "date": "2026-09-03",
+                  "review_text": "The game is better with the dialogue muted.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226574516",
-                  "hours_at_review": 214.4,
+                  "recommendationid": "234190657",
+                  "hours_at_review": 119.0,
+                  "minutes_at_review": 7143,
                   "voted_up": true,
-                  "date": "2026-05-27",
-                  "review_text": "[h2]3/5[/h2]\n\nI’m a fan of the Borderlands franchise, but this was a really hard playthrough, both for my friends and me. And it’s mainly because of the story, because in every other way, the game seems to have upgraded. Sadly, I neither have the time nor the interest to play the DLCs, so I will not be including them in my review.\n\nI started the game in co-op with my friends, but they gave up midway through the main story because they felt incredibly overwhelmed with completely unnecessary dialogue, to the point where you either forget or simply lose track of what the point of your mission even is. I do know that the Borderlands lore is quite huge, but even by Borderlands standards, this is some bad storywriting. The yapping is f*cking excessive, especially considering the amount of characters involved at the same time. However, I can say that the last 2-3 hours felt quite entertaining, mainly because the unnecessary characters are stripped away and you can finally focus on the plot. Most of the characters are already familiar, and I think the concept of the villains would work well with the Calypso twins, if they weren’t so incredibly cringy. [spoiler]And the fact that they USED the death of Maya, one of the franchise’s icons, completely unnecessary, purely to make players feel something toward the villains, tells you a lot about how lame the storytelling is.[/spoiler]\nThis also completely tanks the replay value, in my personal opinion, because all of those dialogues are completely unskippable, and some of them are up to 4 minutes long. Overall, the story is simply paced terribly and it’s just completely forgettable.\n\nhttps://steamcommunity.com/sharedfiles/filedetails/?id=3730872799\n\nBorderlands 3 has introduced a lot of upgrades to the gameplay features and movement mechanics, and it’s easily the game’s biggest strength. Combined with a massive range of weapons, the gunplay is fantastic and it feels refined. It’s fast and entertaining, and even though the gameplay…",
-                  "truncated": true,
-                  "minutes_at_review": 12864
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-583e53",
-              "claim": "Reviewers note that the downloadable content (DLC) stories are significantly better than the main campaign.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "229967263",
-                  "hours_at_review": 589.3,
-                  "voted_up": true,
-                  "date": "2026-07-08",
-                  "review_text": "Gameplay is fun as ♥♥♥♥. Story is mid, but honestly the gameplay was so fun I didnt care. The DLC stories are significantly better, the Bounty of Blood being the best in my opinion. I've played through that specific DLC 3 times already I love it so much. Wish they had additional vault hunters, but im very happy with the core 4 that we get. Definitely recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 35360
-                },
-                {
-                  "recommendationid": "224800967",
-                  "hours_at_review": 175.0,
-                  "voted_up": true,
-                  "date": "2026-05-05",
-                  "review_text": "Not nearly as bad as I was expecting. While I do agree the story is awful, I was honestly expecting far worse with what people where saying.\r\n\r\nPros:\r\nThe gunplay is absolutely improved and better than the previous BLs.\r\nThe writing in the DLC is honestly better than the main story.\r\n\r\nCons:\r\nThe main writing isn't great.\r\nThe maps feel too big and make exploration feel like a chore.\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 10499
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-502157",
-              "claim": "Reviewers find the game maps to be excessively large, making exploration feel like a chore or requiring extensive vehicle travel.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "228052139",
-                  "hours_at_review": 132.0,
-                  "voted_up": false,
-                  "date": "2026-06-15",
-                  "review_text": "A good game that needs to be rescued from Gearbox at this point - they've made it almost impossible to enjoy.\r\n\r\n+ graphics and sound design are fantastic\r\n+ gun design is a major improvement over the monstrously ugly mess that was BL2's guns\r\n+ polished and very enjoyable gunplay; traversal is also fairly fast, smooth and flows very well\r\n\r\n- Legendary loot drops are so ridiculously common it kills all excitement for drops\r\n- maps are unironically too big and quests are time-wasting traversals (go to A, wait for NPC to yap for literal minutes, go to B; take item 2 meters away, give to NPC)\r\n- dozens of Ubisoft-esque \"wait for this NPC to finish yapping\"/ \"follow this slow NPC\" segments, genuine waste of time\r\n- boss fights generally suck; almost all bosses have phases that slow the pace to a crawl and makes min-maxing builds worthless, after a point any bonus dmg you do is irrelevant since you hit the boss' phase and wait around for its invincibility to end\r\n- everyone in BL is gay - the amount of LGBTQ prevalence is kinda crazy, most (yes, actually) of the NPCs in game who's sexuality is mentioned are gay/lesbian. There is an entire DLC dedicated to marrying two gay men. Heterosexuality is merely implied to exist in this universe. Very strange and blatantly propagandistic\r\n- the humor keeps becoming more and more unbearable. Zoomers will find this hard to believe but BL1's humor was fairly understated, the most \"wacky\" NPCs were Claptrap and Tannis, and even they have been flanderized beyond recognition. The reddit-fication of the franchise began with BL2 and and reached an unbearable degree\r\n\r\n\r\n\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 7921
-                },
-                {
-                  "recommendationid": "224800967",
-                  "hours_at_review": 175.0,
-                  "voted_up": true,
-                  "date": "2026-05-05",
-                  "review_text": "Not nearly as bad as I was expecting. While I do agree the story is awful, I was honestly expecting far worse with what people where saying.\r\n\r\nPros:\r\nThe gunplay is absolutely improved and better than the previous BLs.\r\nThe writing in the DLC is honestly better than the main story.\r\n\r\nCons:\r\nThe main writing isn't great.\r\nThe maps feel too big and make exploration feel like a chore.\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 10499
+                  "date": "2026-08-31",
+                  "review_text": "though the story is dogshit at lest the gameplay is good and has more than plenty of guns with one problem... guns almost feel the same every time even the legdarys feel this way. but in all i would recamend playing with the voices off every time after the first playthrough.",
+                  "truncated": false
                 }
               ]
             }
@@ -758,46 +1059,37 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-1de9a7",
-              "claim": "Reviewers praise the gunplay and movement mechanics as smooth, fast, and a significant mechanical improvement over previous entries.",
+              "claim_id": "vet-242c2e",
+              "claim": "Certain quests or missions can become bugged or stuck, requiring a playthrough restart to complete.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
-                "negative": 1
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231053032",
-                  "hours_at_review": 164.6,
+                  "recommendationid": "238842560",
+                  "hours_at_review": 226.1,
+                  "minutes_at_review": 13566,
                   "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "For the absolute smoothest, most fluid, and modern FPS mechanics - pick this game. The only weak point is the story which you can ignore and skip.",
-                  "truncated": false,
-                  "minutes_at_review": 9875
+                  "date": "2026-10-29",
+                  "review_text": "Good game. Can be buggy, quests can get stuck.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "228052139",
-                  "hours_at_review": 132.0,
-                  "voted_up": false,
-                  "date": "2026-06-15",
-                  "review_text": "A good game that needs to be rescued from Gearbox at this point - they've made it almost impossible to enjoy.\r\n\r\n+ graphics and sound design are fantastic\r\n+ gun design is a major improvement over the monstrously ugly mess that was BL2's guns\r\n+ polished and very enjoyable gunplay; traversal is also fairly fast, smooth and flows very well\r\n\r\n- Legendary loot drops are so ridiculously common it kills all excitement for drops\r\n- maps are unironically too big and quests are time-wasting traversals (go to A, wait for NPC to yap for literal minutes, go to B; take item 2 meters away, give to NPC)\r\n- dozens of Ubisoft-esque \"wait for this NPC to finish yapping\"/ \"follow this slow NPC\" segments, genuine waste of time\r\n- boss fights generally suck; almost all bosses have phases that slow the pace to a crawl and makes min-maxing builds worthless, after a point any bonus dmg you do is irrelevant since you hit the boss' phase and wait around for its invincibility to end\r\n- everyone in BL is gay - the amount of LGBTQ prevalence is kinda crazy, most (yes, actually) of the NPCs in game who's sexuality is mentioned are gay/lesbian. There is an entire DLC dedicated to marrying two gay men. Heterosexuality is merely implied to exist in this universe. Very strange and blatantly propagandistic\r\n- the humor keeps becoming more and more unbearable. Zoomers will find this hard to believe but BL1's humor was fairly understated, the most \"wacky\" NPCs were Claptrap and Tannis, and even they have been flanderized beyond recognition. The reddit-fication of the franchise began with BL2 and and reached an unbearable degree\r\n\r\n\r\n\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 7921
-                },
-                {
-                  "recommendationid": "225558987",
-                  "hours_at_review": 107.4,
+                  "recommendationid": "238600820",
+                  "hours_at_review": 142.0,
+                  "minutes_at_review": 8522,
                   "voted_up": true,
-                  "date": "2026-05-15",
-                  "review_text": "the game is slightly better than 2 in the engine and movement as well as gun play and in my opinion character builds but lacks in story elements but also contains a larger more fleshed out map",
-                  "truncated": false,
-                  "minutes_at_review": 6442
+                  "date": "2026-10-26",
+                  "review_text": "Story is garbage, some missions are still bugged like claptrap's last one so you can't even finish them without playing through again.\r\n\r\nGameplay is the best in the series easily, the DLC stories are way better than the main story, soundtrack is solid too",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-97d201",
-              "claim": "Reviewers describe the gunplay and mechanics as a major improvement over previous entries in the series, offering smooth and fluid first-person shooter gameplay.",
+              "claim_id": "vet-9b120f",
+              "claim": "Reviewers encounter bugs that can get quests stuck or prevent mission completion.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -805,90 +1097,52 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231344921",
-                  "hours_at_review": 138.0,
+                  "recommendationid": "238842560",
+                  "hours_at_review": 226.1,
+                  "minutes_at_review": 13566,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "This game is *nearly* perfect. It has two major flaws, the story and dialogue is constantly interupting the gameplay and the characters and writing is incredibly obnoxious. Its a horrid story which is really a shame after how amazing borderlands 2 story is.\r\n\r\nOther than all that the game is amazing. The gunplay is fast and heavy. All four vault hunters are a joy to play. Build crafting is really fun in this game maybe even better than in Bl2. The game runs well the graphics are above par. Picking this up on sale is a no brainer. Its a great modern version of Bl2 \r\n\r\n8/10",
-                  "truncated": false,
-                  "minutes_at_review": 8281
+                  "date": "2026-10-29",
+                  "review_text": "Good game. Can be buggy, quests can get stuck.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231053032",
-                  "hours_at_review": 164.6,
+                  "recommendationid": "238600820",
+                  "hours_at_review": 142.0,
+                  "minutes_at_review": 8522,
                   "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "For the absolute smoothest, most fluid, and modern FPS mechanics - pick this game. The only weak point is the story which you can ignore and skip.",
-                  "truncated": false,
-                  "minutes_at_review": 9875
+                  "date": "2026-10-26",
+                  "review_text": "Story is garbage, some missions are still bugged like claptrap's last one so you can't even finish them without playing through again.\r\n\r\nGameplay is the best in the series easily, the DLC stories are way better than the main story, soundtrack is solid too",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "226298616",
-                  "hours_at_review": 186.9,
+                  "recommendationid": "235870352",
+                  "hours_at_review": 142.2,
+                  "minutes_at_review": 8532,
                   "voted_up": true,
-                  "date": "2026-05-24",
-                  "review_text": "The main story is abysmally bad, but it is undoubtably the best gameplay and gunplay in the series. It feels so good to run around and shoot stuff. All the characters are unique and fun to play. While legendaries are far more plentiful than any other game in the series, there are so many cool and fun ones with amazing synergies. The soundtrack is amazing, Jesper Kyd and Raison Varner crushed it. The Maliwan Takedown alone is better than anything BL4 can put out and that's only ONE of the FREE dlcs they added. The Halloween event is amazing, the Cartel event is amazing. This game is so good it makes me sad to see how BL4 ended up.",
-                  "truncated": false,
-                  "minutes_at_review": 11215
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "vet-0e0ec3",
-              "claim": "Reviewers state that legendary loot drops are extremely common.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "228052139",
-                  "hours_at_review": 132.0,
-                  "voted_up": false,
-                  "date": "2026-06-15",
-                  "review_text": "A good game that needs to be rescued from Gearbox at this point - they've made it almost impossible to enjoy.\r\n\r\n+ graphics and sound design are fantastic\r\n+ gun design is a major improvement over the monstrously ugly mess that was BL2's guns\r\n+ polished and very enjoyable gunplay; traversal is also fairly fast, smooth and flows very well\r\n\r\n- Legendary loot drops are so ridiculously common it kills all excitement for drops\r\n- maps are unironically too big and quests are time-wasting traversals (go to A, wait for NPC to yap for literal minutes, go to B; take item 2 meters away, give to NPC)\r\n- dozens of Ubisoft-esque \"wait for this NPC to finish yapping\"/ \"follow this slow NPC\" segments, genuine waste of time\r\n- boss fights generally suck; almost all bosses have phases that slow the pace to a crawl and makes min-maxing builds worthless, after a point any bonus dmg you do is irrelevant since you hit the boss' phase and wait around for its invincibility to end\r\n- everyone in BL is gay - the amount of LGBTQ prevalence is kinda crazy, most (yes, actually) of the NPCs in game who's sexuality is mentioned are gay/lesbian. There is an entire DLC dedicated to marrying two gay men. Heterosexuality is merely implied to exist in this universe. Very strange and blatantly propagandistic\r\n- the humor keeps becoming more and more unbearable. Zoomers will find this hard to believe but BL1's humor was fairly understated, the most \"wacky\" NPCs were Claptrap and Tannis, and even they have been flanderized beyond recognition. The reddit-fication of the franchise began with BL2 and and reached an unbearable degree\r\n\r\n\r\n\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 7921
-                },
-                {
-                  "recommendationid": "226298616",
-                  "hours_at_review": 186.9,
-                  "voted_up": true,
-                  "date": "2026-05-24",
-                  "review_text": "The main story is abysmally bad, but it is undoubtably the best gameplay and gunplay in the series. It feels so good to run around and shoot stuff. All the characters are unique and fun to play. While legendaries are far more plentiful than any other game in the series, there are so many cool and fun ones with amazing synergies. The soundtrack is amazing, Jesper Kyd and Raison Varner crushed it. The Maliwan Takedown alone is better than anything BL4 can put out and that's only ONE of the FREE dlcs they added. The Halloween event is amazing, the Cartel event is amazing. This game is so good it makes me sad to see how BL4 ended up.",
-                  "truncated": false,
-                  "minutes_at_review": 11215
+                  "date": "2026-09-23",
+                  "review_text": "The gameplay makes up for the lackluster story. There are still bugs left in the game, but nothing that some google searches couldn't resolve.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 10,
-        "cited_recommend": 9,
-        "divergence_p": 0.765,
+        "cited_reviews": 14,
+        "cited_recommend": 13,
+        "divergence_p": 0.81,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1201,
-    "steam_total_reviews": 76738,
-    "cohort_count": 3,
+    "pool_n": 1200,
+    "steam_total_reviews": 77369,
+    "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/397540/header.jpg?t=1750802377",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/397540/capsule_231x87.jpg?t=1750802377",
-    "grid": "https://cdn2.steamgriddb.com/grid/c039e6496e67fdb3d46e6d5877e01ed2.png"
   }
 }

@@ -1,0 +1,17 @@
+ir02
+the pre-fix rule: 15 left is enough, running titles ignored
+
+CAUGHT+NAMED
+file: pipeline/run_batch.py
+expected: never spend past a budget of 400
+one title alone does not fit on 17 left                            FAIL
+night 4: 16 left with a title 3 calls in refuses the next title    FAIL
+two fresh titles need 36 left, not 35                              FAIL
+30 left with a title 3 calls in refuses the next (15 still owed)   FAIL
+night 4's costs never spend past a budget of 400                   FAIL
+night 4's costs never spend past a budget of 18                    FAIL
+night 4's costs never spend past a budget of 17                    FAIL
+A's earlier calls today are not counted as progress (B refused on 30) FAIL
+a third is refused while both run                                  FAIL
+a title that does not fit never reaches generate()                 FAIL
+
