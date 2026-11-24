@@ -35,6 +35,8 @@ Usage:
 
 import argparse
 import json
+import os
+import re
 import signal
 import sys
 import threading
@@ -195,6 +197,32 @@ def release(appid):
         _inflight.pop(appid, None)
 
 
+# A failed stage's error text, kept (owner, 2026-11-25). Night 5 lost 16 titles and
+# the cause could not be proven, because generate() returned the stage's stderr and
+# this function dropped it (BACKLOG 2026-11-25). data/batch_state.json is COMMITTED,
+# so the text is redacted before it is stored or printed: every key-shaped token, and
+# the exact value of every KEY/TOKEN/SECRET in .env and the environment.
+STDERR_KEEP = 1500
+_KEY_SHAPES = re.compile(r"AQ\.[A-Za-z0-9_\-]{8,}|AIza[0-9A-Za-z_\-]{20,}")
+
+
+def _secrets():
+    pairs = list(generate_one._dotenv().items()) + list(os.environ.items())
+    return [v for k, v in pairs
+            if v and len(v) >= 8 and any(w in k.upper() for w in ("KEY", "TOKEN", "SECRET"))]
+
+
+def redact(text, secrets=None):
+    for value in (_secrets() if secrets is None else secrets):
+        text = text.replace(value, "[REDACTED]")
+    return _KEY_SHAPES.sub("[REDACTED]", text)
+
+
+def last_error_line(stderr):
+    lines = [ln.strip() for ln in (stderr or "").splitlines() if ln.strip()]
+    return lines[-1] if lines else ""
+
+
 def run_title(row, state, args):
     appid, title = row["appid"], row["title"]
     t0 = time.time()
@@ -230,6 +258,8 @@ def run_title(row, state, args):
     for key in ("reason", "structure", "stage", "detail"):
         if key in result:
             entry[key] = result[key]
+    if result.get("stderr"):
+        entry["stderr"] = redact(result["stderr"])[-STDERR_KEEP:]
     if refresh:
         # make_audit_sample.py scopes a night by `at` and `published`, so a
         # refreshed title joins that night's audit like any new one
@@ -247,6 +277,9 @@ def run_title(row, state, args):
     print("  [%s] %-38s %5.0fs  %2d calls  %s"
           % (mark, title[:38], entry["seconds"], entry["model_calls"],
              entry.get("reason", "")[:44]), flush=True)
+    if entry.get("stderr"):
+        print("         %s: %s" % (entry.get("stage"), last_error_line(entry["stderr"])[:200]),
+              flush=True)
     return entry
 
 

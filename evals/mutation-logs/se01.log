@@ -1,0 +1,18 @@
+se01
+CONTROL: pipeline/test_refresh.py green, unmutated
+
+PASS
+ ok
+  a title that raises still releases its reservation                 ok
+
+budget: a refresh run stops before any title when the budget is spent
+  with no budget, no title runs                                      ok
+    and it says BUDGET STOP                                          ok
+  control: with budget, the refresh title runs                       ok
+
+marker: synthesis records whether the claims were meaning-checked
+  claims_verified is True when the claims file says True             ok
+  claims_verified is False when the claims file says False           ok
+
+all refresh tests passed
+

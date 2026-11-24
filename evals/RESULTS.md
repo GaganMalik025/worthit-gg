@@ -2621,3 +2621,30 @@ The four verdict words that moved with the fresh reviews:
 (`evals/reconstruct_batch_state_2026-11-21.py`; BACKLOG 2026-11-21 INCIDENT). The 32
 night-4 records carry `"reconstructed": true`. Their `seconds` values are rounded to whole
 seconds, and `at` is about 1 s early.
+
+## 2026-11-25 — Catalog refresh, night 5: 9 of 25 titles regenerated, 16 stage failures
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **26,743 citations across 543 verdicts, 0 failures**, `EXIT_RC=0`. Raw: `evals/qr4-2026-11-25.txt` |
+| Manual audit | `evals/audit-4.4-2026-11-25.md`, seed 20261125, 9 verdicts, 20 citations, **read by the coding agent on the owner's instruction, not by the owner**, full review text. No slur, hate speech or sexually explicit text. One crude joke (#9) is flagged in the file for the owner. All 9 verdict words recomputed from the split bars agree. Ready or Not is at 88.2, 0.8 under the Buy line. |
+| Search index | rebuilt, 0 of 543 verdict appids missing by set membership. Genre sections rebuilt, members unchanged. |
+
+`pipeline/run_batch_logged.sh --refresh`, log `evals/batch-2026-11-25.txt`, **`EXIT_RC=1`**.
+
+| | |
+|---|---|
+| Ran / published | 25 / **9** |
+| Stage failures | **16**: 14 at extract, 2 at verdict. Cause unproven: likely API errors, since 140 of the 222 calls on failed titles left no response (BACKLOG 2026-11-25). Their live pages are untouched, and they retry on a later night. |
+| Refused at the budget | 399 at 0 calls, none recorded |
+| Model calls | **386**, mean 15.4. The run summary and the ledger `batch_used` 386 agree |
+| Budget | 14 of 400 left: the in-flight reservation held. Live reserve untouched |
+| Over TITLE_RESERVE 18 | 10 titles, up to 25 (Half-Life). The owner keeps 18 |
+| Verdicts on the 9 | Buy 4 / Wait 4 / Skip 1 → **Buy 5 / Wait 3 / Skip 1**. Project Zomboid moved Wait → Buy |
+| Claims on the 9 | 130 → **77**, plus 33 one-reviewer points |
+| Refresh progress | **122 of 538** non-seed titles verified, 415 to go, Far Cry 5 terminal |
+
+Extraction padded the required second id with the first in 70 of 245 claims in the
+surviving cached responses (BACKLOG 2026-11-25).

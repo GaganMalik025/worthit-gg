@@ -1,0 +1,41 @@
+=== run_batch.py --refresh | started 2026-11-24T19:49:17Z ===
+live ledger: remote live_used=0 (remote ledger is from another quota day - counts 0), local=0 -> using 0 (persisted, so the per-title stop sees it too)
+catalog 2026-08-12T09:40:19Z | night all | 424 titles pending (REFRESH: published titles, fresh reviews)
+batch budget 400 of 400 remaining (live reserve 100 untouched, live used 0 today)
+pacer {"date": "2026-11-24", "ceiling_rpm": 12, "configured_rpm": 12, "narrowed": false, "in_flight_this_minute": 0, "requests_today": 0, "state_file": "/Users/gaganmalik/Downloads/worthit-gg/data/model_pacer.json"}
+worst-case fit: 26 titles at 15 calls each
+  [FAIL] Hell Let Loose                           130s  11 calls  
+  [FAIL] Phasmophobia                             120s   8 calls  
+  [FAIL] Half-Life                                266s  25 calls  
+  [FAIL] Assassin's Creed® Odyssey                192s  15 calls  
+  [ok  ] Age of Empires II: Definitive Edition    179s  19 calls  
+  [FAIL] Resident Evil 2                          120s   7 calls  
+  [FAIL] Sekiro™: Shadows Die Twice - GOTY Edit   183s  16 calls  
+  [FAIL] Valheim                                  185s  11 calls  
+  [FAIL] Last Epoch                               205s  21 calls  
+  [FAIL] Among Us                                  90s   6 calls  
+  [FAIL] Bloons TD 6                              110s   5 calls  
+  [ok  ] Halo: The Master Chief Collection        205s  24 calls  
+  [ok  ] Project Zomboid                          192s  19 calls  
+  [ok  ] Hades                                    151s  17 calls  
+  [ok  ] Hollow Knight                            244s  24 calls  
+  [ok  ] THE FINALS                               224s  23 calls  
+  [ok  ] Ready or Not                             171s  17 calls  
+  [FAIL] Battlefield™ 6                           150s  10 calls  
+  [FAIL] Sea of Thieves: 2026 Edition              79s   5 calls  
+  [FAIL] ULTRAKILL                                198s  20 calls  
+  [ok  ] New World: Aeternum                      237s  22 calls  
+  [ok  ] Euro Truck Simulator 2                   198s  21 calls  
+  [FAIL] Hollow Knight: Silksong                  170s  16 calls  
+  [FAIL] Hogwarts Legacy                          170s  14 calls  
+  [FAIL] Path of Exile                            113s  10 calls  
+
+399 titles queued past the budget were refused before starting (0 calls, not recorded); they stay pending
+
+25 attempted in 36.2 min: {"stage_failed": 16, "ok": 9}
+  published     : 9
+  model calls   : 386 (mean 15.4 per attempted title)
+  wall clock    : 86.8s mean per title
+  effective rate: 10.7 requests/min
+  batch budget  : 14 of 400 left, live reserve 100 untouched
+EXIT_RC=1  (run_batch.py, captured under pipefail + PIPESTATUS)

@@ -1,0 +1,16 @@
+mutate_stage_error_2026-11-25.py --run
+
+  se01  PASS             CONTROL: pipeline/test_refresh.py green, unmutated
+  se02  CAUGHT+NAMED     the error is not stored
+  se03  CAUGHT+NAMED     key-shaped tokens are not redacted
+  se04  CAUGHT+NAMED     exact secrets are not redacted
+  se05  CAUGHT+NAMED     the raw stderr is stored
+  se06  CAUGHT+NAMED     the log line omits the error
+  se07  CAUGHT+NAMED     the log line prints the raw stderr
+  se08  CAUGHT+NAMED     the secrets list ignores .env
+  se09  CAUGHT+NAMED     every .env value is treated as a secret
+
+restored byte-identical:
+  pipeline/run_batch.py          True (93de11122881)
+real state untouched: live_quota.json True, batch_state.json True
+9/9 as expected

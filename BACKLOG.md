@@ -62,6 +62,55 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-11-25 | **`make_audit_sample.py --date <log date>` can select nothing** | night 5
+audit | The sampler keeps records whose `at` is after `--date`, and `at` is UTC. A
+night that starts after 05:30 IST but before midnight UTC is stamped the PREVIOUS UTC
+day. Night 5 started at 01:19 IST, 2026-11-24T19:49Z, so `--date 2026-11-25` drew 0
+verdicts and wrote an empty sample without complaint. Re-run with `--date 2026-11-24
+--out evals/audit-4.4-2026-11-25.md`. Not fixed: an empty sample should be an error,
+and the post-batch step should name the UTC start date.
+
+2026-11-25 | **Refresh night 5: 16 of 25 titles stage_failed, and the cause cannot be
+proven from disk** | `evals/batch-2026-11-25.txt` (`EXIT_RC=1`) | 14 failed at
+extract, 2 at verdict (Half-Life, ULTRAKILL); 9 published. Most of the calls spent on
+failed titles left no cached response: 140 of 222. Bloons TD 6 and Sea of Thieves
+spent exactly 5 calls with 0 responses, which is `MAX_ATTEMPTS` = 5 transient
+retries on one request. That fits API errors. Three things are ruled out:
+- a per-minute 429: the pacer never narrowed, still at 12 rpm
+- daily exhaustion: 386 of 500 were spent, and titles kept succeeding to the end
+- a key failure: a 401 aborts with its own message
+
+That leaves 5xx/timeouts, unproven. **Why unproven:** `run_title` drops the stderr that
+`generate()` returns, and the log line prints no reason, so a failed stage's error
+exists nowhere. **Fixed 2026-11-25 (owner: "yes")**: `run_title` keeps the last 1,500
+characters of a failed stage's stderr in the record, and prints its last line under the
+log line. Both are redacted first, for key-shaped tokens and for the exact value of
+every KEY/TOKEN/SECRET in `.env` and the environment, because `data/batch_state.json`
+is committed. Tests are in `pipeline/test_refresh.py`. Mutations:
+`evals/mutate-stage-error-2026-11-25.txt`, 8/8. Night 5's own cause stays unproven;
+the next failure will be readable. The 16 live pages are untouched, as designed, and the titles
+retry on a later night. Work-dir caches are kept, so finished cohorts resume at zero
+cost.
+
+2026-11-25 | **Extraction pads the required second id with the first one** | night 5
+cached extraction responses in `data/refresh/*/data/cache/extract/` | 70 of 245 claims
+in the 60 cached responses list the same `recommendationid` twice (e.g. Among Us
+`["240852994", "240852994"]`). Enforcement counts distinct ids, so each is rejected
+and the cohort regenerates. That is part of why night 5's titles cost more. Only the
+failed titles' caches survive, so this sample is skewed toward them, and there is no
+earlier night to compare against: successful caches are deleted. Not fixed. A schema
+`uniqueItems` or a prompt line is a change to extraction, which needs a measured
+pilot first.
+
+2026-11-25 | **10 titles cost more than `TITLE_RESERVE` 18** | night 5 | Half-Life 25,
+Halo MCC 24, Hollow Knight 24, THE FINALS 23, New World 22, Last Epoch 21, Euro Truck
+Simulator 2 21, ULTRAKILL 20, Age of Empires II DE 19, Project Zomboid 19. The night
+still stopped under budget (386 of 400). The reservation's own comment says to raise it
+to the new maximum, 25. That stops each night about one title earlier again, and
+tonight's costs were inflated by errors and retries. **Owner decision 2026-11-25: keep
+18.** A title above it can still overshoot by its excess. The budget check still
+held on night 5, at 386 of 400.
+
 2026-11-21 | **Refresh night 4 spent 404 of its 400 batch calls** | `evals/batch-2026-11-21.txt` |
 generate() checked the ledger before starting a title, but the ledger counts only
 calls already sent. With two workers, the last titles started on about 16 calls left,

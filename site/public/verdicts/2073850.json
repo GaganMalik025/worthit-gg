@@ -1,52 +1,62 @@
 {
   "appid": "2073850",
   "game_name": "THE FINALS",
-  "generated_at": "2026-08-11T03:31:41Z",
+  "generated_at": "2026-11-24T20:12:59Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2073850/61f55ef49a74c76bf9fda9ec35bc3101eeee2b3e/header.jpg?t=1787220389",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2073850/9adb8c82f6c262d024dc462904099a2041f2a030/capsule_231x87.jpg?t=1787220389",
+    "grid": "https://cdn2.steamgriddb.com/grid/a220b18f7302ecd6c80092293dec3138.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 23,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Destructible arenas hide rough performance and fierce matchmaking hurdles.",
+    "tagline": "Brilliant destruction wrapped in a punishing matchmaking grind.",
     "for_you_if": [
-      "you enjoy fast-paced team shooters",
-      "you like shaping maps through total destruction",
-      "you want a game without pay-to-win gear"
+      "you enjoy fully destructible environments",
+      "you want free shooters",
+      "you master movement mechanics quickly"
     ],
     "not_for_you_if": [
-      "you need stable performance without sudden crashes",
-      "you object to facing high-level veterans early on",
-      "you expect flawless server connections and hit registration"
+      "you cannot tolerate uneven matchmaking",
+      "you need stable frame rates on specific maps",
+      "you mind technical stuttering after updates"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 59,
-      "pct_positive": 18.6,
+      "pool_n": 60,
+      "pct_positive": 51.7,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 498,
-      "pct_positive": 74.5,
+      "pool_n": 342,
+      "pct_positive": 76.3,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 512,
-      "pct_positive": 80.5,
+      "pool_n": 444,
+      "pct_positive": 78.4,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 613,
-      "pct_positive": 73.9,
+      "pool_n": 812,
+      "pct_positive": 74.4,
       "muted": false
     }
   ],
@@ -56,49 +66,49 @@
       "type": "segmentation",
       "direction": null,
       "shape": "rise_then_fall",
-      "sentence": "Positive sentiment starts low during the opening phase, climbs through mid-tier play, and dips slightly among long-term players.",
+      "sentence": "Player reception improves markedly past the initial hours before experiencing a slight dip among long-term participants.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 18.6,
-            "pool_n": 59
+            "pct_positive": 51.7,
+            "pool_n": 60
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 74.5,
-            "pool_n": 498
+            "pct_positive": 76.3,
+            "pool_n": 342
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 80.5,
-            "pool_n": 512
+            "pct_positive": 78.4,
+            "pool_n": 444
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 73.9,
-            "pool_n": 613
+            "pct_positive": 74.4,
+            "pool_n": 812
           }
         ],
         "shape": "rise_then_fall",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 18.6,
-        "low_pool_n": 59,
+        "low_pct_positive": 51.7,
+        "low_pool_n": 60,
         "high_cohort": "mid",
         "high_cohort_label": "20-100 hours",
-        "high_pct_positive": 80.5,
-        "high_pool_n": 512,
-        "gap_pts": 61.9,
+        "high_pct_positive": 78.4,
+        "high_pool_n": 444,
+        "gap_pts": 26.7,
         "peak_cohort": "mid",
-        "peak_pct_positive": 80.5,
+        "peak_pct_positive": 78.4,
         "post_peak_low_cohort": "veteran",
-        "post_peak_low_pct_positive": 73.9,
-        "drop_after_peak_pts": 6.6
+        "post_peak_low_pct_positive": 74.4,
+        "drop_after_peak_pts": 4.0
       }
     }
   ],
@@ -107,116 +117,191 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 59,
-      "pct_positive": 18.6,
+      "pool_n": 60,
+      "pct_positive": 51.7,
       "muted": false,
       "n_note": null,
-      "summary": "Initial players encounter immediate roadblocks with unskippable cutscenes, forced random names, and startup errors.",
+      "summary": "Early players experience unskippable intros and face steep matchmaking curves against veterans, alongside distinct destruction mechanics and synthetic voice work.",
       "themes": [
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ref-be48e4",
-              "claim": "Reviewers report that intro cutscenes cannot be skipped.",
-              "citation_verdict": "negative",
+              "claim_id": "ref-e99957",
+              "claim": "Reviewers note that the game features AI-generated text-to-speech for in-game commentators and player voices.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 0,
+                "positive": 2,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231633944",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "can't skip the intro cutscene, wrote this review while watching it. might go make popcorn",
-                  "truncated": false,
-                  "minutes_at_review": 24
+                  "recommendationid": "240735099",
+                  "hours_at_review": 1.3,
+                  "minutes_at_review": 80,
+                  "voted_up": true,
+                  "date": "2026-11-21",
+                  "review_text": "Very enjoyable adrenaline run and gun with balanced TTK. Uses AI for commentary and player voices which is pretty lazy.  \nBesides that I love this game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231225924",
-                  "hours_at_review": 0.7,
+                  "recommendationid": "239559980",
+                  "hours_at_review": 1.8,
+                  "minutes_at_review": 106,
                   "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "i only opened the game to see it pushed my intel i9 to its max temp on all cores i will not touch this game again until they figure there SH*T out and actually optimize the game so it doesnt try to make everyones cpu wanna kill itself, i didnt even play the damn game yet all i did was open it to a very long and stupid cut scene you cant skip and the whole time without even going into a match it will try to kill youre cpu guys dont play it until they do something about it im very upset with games like this as i do not feel like spending hundreds over time to keep getting cpus because of devs like these that think its ok to allow players to probably damage there cpu just from openeing this game and even while sitting in menu, i tried changing EVERY SINGLE video option to the ones i know help cool down the cpu and the lowest i got was still warning me that its very hot, i have played games with the worst optimazation and they never have gotten and stayed this high im very dissapointed as i really wanted to play this game because it looks simply amazing but none the less i will not play it untill i can see that it stops treating pcs like there a kettle or the top of a stove, ur better off throwing youre cpu into an oven to bake id guess because it will try to do the same as this game does\n(and yes i know the stove or oven reaches way higher temps its a analogy)",
-                  "truncated": false,
-                  "minutes_at_review": 43
+                  "date": "2026-11-07",
+                  "review_text": "Kind of a decent game, doesn't deserve my upvote. The final boss of \"try-harding\" is this game. You cannot even progress with your skill level unless you start sweating in your seat. Uses AI-generated TTS for it's in-game commentators. I do not support this kinds of devs. I do not recommend this game.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ref-b09039",
-              "claim": "The game assigns a random name to the player instead of using their Steam name and lacks an in-game option to change it.",
-              "citation_verdict": "negative",
+              "claim_id": "ref-5833c5",
+              "claim": "Reviewers report that the environment features extensive destruction mechanics allowing players to break through walls and floors.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 5,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231394903",
-                  "hours_at_review": 0.9,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Sound is awful.  90% of the time you can't hear enemies sprinting next to you. They assign you a random name, instead of letting you pick one or using your Steam name and there is no way to change it in game. There is no loadout menu, you have to go to multiple different menus to customize your loadout.  Bots are tracking you and shooting through walls and line of sight blockers. Live service slop.",
-                  "truncated": false,
-                  "minutes_at_review": 53
+                  "recommendationid": "240176941",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 30,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "The destruction is the whole thing. You don't flank around the building — you go through it. Blow the floor out from under a cashout, drop a whole team two storeys, rebuild a wall so they can't get back in. No other shooter gives you that, and it's genuinely funny every time.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231088038",
-                  "hours_at_review": 1.5,
+                  "recommendationid": "239876929",
+                  "hours_at_review": 1.4,
+                  "minutes_at_review": 85,
+                  "voted_up": true,
+                  "date": "2026-11-10",
+                  "review_text": "Supper fun game! You can blow up almost everything. Plus, this game has NO gore, NO bad language,\nand NO inappropriate content! This is one of the best games I've played. It's also free! \nI totally recommend this game!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238755826",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 21,
+                  "voted_up": true,
+                  "date": "2026-10-28",
+                  "review_text": "THE FINALS is easily one of the most fun and refreshing FPS games out there. The movement feels great, the gunplay is satisfying, and the destruction makes every match unpredictable. Blowing through walls, floors, and entire buildings to outplay another team never gets old.\r\n\r\nThe graphics are fantastic, the gameplay is fast-paced, and there's a ton of room for creativity and different playstyles. It's one of those games where even losing can be entertaining because of how chaotic things get.\r\n\r\nIf you enjoy competitive shooters, THE FINALS is absolutely worth playing. Highly recommend!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238651462",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 5,
+                  "voted_up": true,
+                  "date": "2026-10-27",
+                  "review_text": "Great game icl\nLove the unique voicelines for your username \nBut most of all I love the destruction aspect of the game, makes it so much more lively\nP.S I have no playtime here because I play mostly on console",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238510708",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 57,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "One time I scratched my nuts and the whole building collapsed.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-99d2f4",
+              "claim": "Reviewers mention unskippable intro videos or cutscenes when launching the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "239669258",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 8,
                   "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "Its a good game with a fast time-to-kill with destructable environments that serve a strategic purpose but also are really fun to play around with. My reasons for not recommending this game isn't because of the game itself, but from the poorly though out controller implementation as someone who primarily uses gyro aiming when I'm playing shooters on a controller. If you're a keyboard and mouse player, or someone who uses standard controls, this complaint may not apply. \n\nMy major complaint is the lack of support for gyro aiming on any controller other than a DualShock/DualSense plugged in via USB. On top of this, there is a lack of support for proper mixed input, which is where both mouse and controller inputs can be used at the same time without stutters from it locking the inputs of one or the other or GUI glyph flickering, forcing me to bind everything to KBM inputs and losing benefits that other controller owners with gyro sensors don't have to deal with. While I can just bind everything to KBM inputs through Steam Input and have these issues resolved, there have been reports of bans for using virtual input devices which is how Steam Input works so it's too risky for me to continue playing like this. This even extends to other programs like DS4Windows which uses a virtual DS4 controller and is useful to get gyro support for Dualshock 4 controllers connected via bluetooth. This could be fixed by supporting native gyro for the Steam Controller and Steam Deck if there is a concern of cheating software being spoofed as Steam Input virtual devices, but for now nothing has been done about this. Risking bans for using Steam Input like I'm playing Valorant is deeply frustrating.",
-                  "truncated": false,
-                  "minutes_at_review": 91
+                  "date": "2026-11-08",
+                  "review_text": "Tedious intro video that can't be skipped and then 5+ minutes to find a match. Nah.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238508855",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 34,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Never heard of this game before, thought I would give it a try. This game is just fucking shit. Tutorial has long ass cutscenes that you cant skip. Don't fucking care for that. Just SHUT UP AND LET ME PLAY THE DAMN GAME. Gunplay is shit. Gadgets are shit. Gameplay is shit. Nothing worth playing here. Def not playing again. This is just pathetic",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239478151",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 11,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "why do devs feel the need to make an unskipable cut scene to open their game with MAX volume this shit is annoying,\nalso why is the character customization awful for white characters what tf is this dei the game??",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ref-576c6e",
-              "claim": "Reviewers experience game crashes and startup failures, including errors regarding disallowed file modifications.",
+              "claim_id": "ref-647f9b",
+              "claim": "Reviewers state that new players are matched against experienced players, creating a difficult learning curve.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "230375414",
-                  "hours_at_review": 0.3,
+                  "recommendationid": "239559980",
+                  "hours_at_review": 1.8,
+                  "minutes_at_review": 106,
                   "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "im sorry but i couldnt even play the game. it kept saying prhobidet app detected i checked on youtube to fix it did everything and still didnt work. when it didnt said that the game kept crashing. like, nothing worked.",
-                  "truncated": false,
-                  "minutes_at_review": 18
+                  "date": "2026-11-07",
+                  "review_text": "Kind of a decent game, doesn't deserve my upvote. The final boss of \"try-harding\" is this game. You cannot even progress with your skill level unless you start sweating in your seat. Uses AI-generated TTS for it's in-game commentators. I do not support this kinds of devs. I do not recommend this game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230508578",
-                  "hours_at_review": 0.7,
+                  "recommendationid": "238559540",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 27,
                   "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": ">install game\n>game crashes\n>restart\n>\"a disallowed game file modification was detected\"\n???",
-                  "truncated": false,
-                  "minutes_at_review": 43
+                  "date": "2026-10-25",
+                  "review_text": "It's very sweaty even when you just start. Tried to play a casual match but quit halfway through since there were obviously players that were worlds more experienced than I and seem to me to be players I shouldn't even be able to go against 15 minutes after learning the basics of the game from the tutorial",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238546241",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 24,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "First game after tutorial matched with whole bunch of experience players with tons of kill score in their info plate .\nUnfortunately you can't earn my money , I am not here to feed your whales . And your whales got no enough feeds , eventually they will quit also . \n\nuninstalled . \nBye",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 6,
-        "cited_recommend": 0,
-        "divergence_p": 0.291,
+        "cited_reviews": 12,
+        "cited_recommend": 6,
+        "divergence_p": 0.566,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -224,18 +309,56 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 498,
-      "pct_positive": 74.5,
+      "pool_n": 342,
+      "pct_positive": 76.3,
       "muted": false,
       "n_note": null,
-      "summary": "New participants praise the destructible environments, but report technical crashes and severe matchmaking imbalance against veteran opponents.",
+      "summary": "Stepping past the entry window reveals smooth gunplay and accessible unlocks, though matchmaking disparities and map-specific performance drops persist.",
       "themes": [
         {
-          "theme": "content",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-b3d1ad",
-              "claim": "Reviewers note that the game features destructible terrain and environments.",
+              "claim_id": "ear-6f051f",
+              "claim": "Reviewers report that the matchmaking matches low-level or new players against much higher-ranked or experienced opponents.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "241254983",
+                  "hours_at_review": 13.8,
+                  "minutes_at_review": 826,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "what kind of game is this? in every match i'm matched up with players higher than me in rank and stuff. Game has high demand for pc though graphics arent this good you should have a high end pc for. Then comes that shooting players dont cause much damage and they dont die easily unless i shoot at them twice reloading the gun. enemies are very difficult to eliminate and those that arent playing well with manners are winers while those that are playing with manners are losing this game; this game is just like that no kidding. also Cashout isnt a good concept either. so overall this game is not good but it is an exception to every other game so in the end there is no game left to play that is as beautiful as The Finals is; this is the only game left to play if you cant find any other interesting. game doesnt look so as beautiful that it should not run on a mid end pc well and smoothly damn",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240789056",
+                  "hours_at_review": 11.8,
+                  "minutes_at_review": 711,
+                  "voted_up": false,
+                  "date": "2026-11-22",
+                  "review_text": "Not recommended to new players, theres 0 matchmaking, you get stomped by people who know everything about the game, and this is ability spam first shooter second.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239423023",
+                  "hours_at_review": 16.8,
+                  "minutes_at_review": 1010,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "This game has the worst matchmaking known to man; you have Emeralds facing bronze and silvers, in every single match! The Mexican and Orbital maps are so unoptimized that the'll make your pc run at 30 frames.\n\nEasy fix is to have it so you never \"rest\" rank but rank down a single leauge ie Silver to bronze per season played per season so reoccuring player still remain high rank even after multiple seasons mso their not matched with low rank/ casual players. Also completely prevent people above gold from matchmaking with people under gold. I can't belive a game as good as this has legitmatlyu the worst matchmaking known to man. Theres so much to love about this game but oh boy does the matchmaking just ruin everything about this game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-7deeff",
+              "claim": "Reviewers describe smooth movement mechanics and praise the gunplay.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -243,79 +366,42 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231004622",
-                  "hours_at_review": 2.7,
+                  "recommendationid": "241304289",
+                  "hours_at_review": 3.1,
+                  "minutes_at_review": 189,
                   "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "This game has some of the most impressive bots I've seen yet - they navigate the complicated destructible terrain with ease and actually play like real players. This propels The Finals to a prime spot for any casual shooter fan who wants to play PvE first. Great stuff from the team at Embark!",
-                  "truncated": false,
-                  "minutes_at_review": 163
+                  "date": "2026-11-24",
+                  "review_text": "so well designed game, cant believe ex battlefield developers made this game looking at how smooth the movement is or its jus the ex mirror's edge devs",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230834562",
-                  "hours_at_review": 4.7,
+                  "recommendationid": "239438862",
+                  "hours_at_review": 15.3,
+                  "minutes_at_review": 918,
                   "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "it is fun and very challenging and full of DISTRUCTIONNNN",
-                  "truncated": false,
-                  "minutes_at_review": 282
+                  "date": "2026-11-05",
+                  "review_text": "It's a game like no other. The movement is not too complex and shootings fun. There's a LOAD of different weapons to choose from not to mention there's different classes that serve different purposes and there's many fun gamemodes that no other game has. For a free game it's awesome and definitely worth a try.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230387010",
-                  "hours_at_review": 9.7,
+                  "recommendationid": "238688918",
+                  "hours_at_review": 10.8,
+                  "minutes_at_review": 650,
                   "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "I love Arc Raiders. I tried The Finals again in Season 11 to get the Arc Raiders' skin.  I ended up really enjoying The Finals and its competitive gameplay. I mostly play PvE in Arc so, it's nice to play this when I just want to shoot other players and try and dominate others with skill. I highly recommend it. Easy to learn, but tactics go deep once you play it longer. Graphics are great, gameplay is smooth, destruction is cool and tactical.",
-                  "truncated": false,
-                  "minutes_at_review": 583
+                  "date": "2026-10-27",
+                  "review_text": "This satisfies that craving I've had for a new FPS for what feels like YEARSSS! It's no surprise to me that these are the same Devs that made my favourite Battlefield games (4&1), and the shooting feels PERFECT. The movement, the dynamic destruction is pure chaos, and every match is unique for that reason. Items scattered around the map create opportunities to turn a seemingly hopeless moment completely on it's head, resulting in some amazing clutch plays. Fast paced, frantic, chaotic and a game-loop that just gets more and more FUN with every match as you begin to get deeper into the mechanics and playstyle - while keeping it relatively simple to get into for a new player. Having an absolute blast, thank you Embark <3 \nP.S - Please make the next Battlefield game, PLEASE!",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "difficulty",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-b9c8f5",
-              "claim": "Reviewers report that weapon and matchmaking balance issues put new players against veteran or high-level opponents.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232358016",
-                  "hours_at_review": 14.8,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "great game but match making sucks and weapon balance sometimes doesn't work, love playing against a full team of level 90s with a team of first timers.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230412763",
-                  "hours_at_review": 15.9,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Good game but the skill based match making is b.s. im new to the game and im constantly being steam rolled by vets and sweats with top teir game play and gear that wear freaking expensive @ss cosmetics so just a warning skill based match making is B.S, and yes it is a skill issue.",
-                  "truncated": false,
-                  "minutes_at_review": 953
-                },
-                {
-                  "recommendationid": "230359640",
-                  "hours_at_review": 2.3,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "As someone with almost 500+ hours on PlayStation, I have to say that this game has too many flaws to recommend it to any new players. The games matchmaking is horrible and will put new players with level 100s and disregards all skill. The balancing updates have yet to balance the game and push it further into one gun metas. Overall, if you can get 3-5 people on to play, this game is fun, but other than that, I wouldn't bother playing this for more than 10 hours.",
-                  "truncated": false,
-                  "minutes_at_review": 137
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-5c4f0e",
-              "claim": "Reviewers state that the game has a steep learning curve and high competitive intensity.",
+              "claim_id": "ear-1c1c85",
+              "claim": "Reviewers note that the game features fully destructible environments and maps.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -323,57 +409,31 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232469904",
-                  "hours_at_review": 8.0,
+                  "recommendationid": "238579119",
+                  "hours_at_review": 15.4,
+                  "minutes_at_review": 925,
                   "voted_up": true,
-                  "date": "2026-08-10",
-                  "review_text": "Really underrated game. Super fun but can get pretty intense. Really cool abilities and weapons.",
+                  "date": "2026-10-25",
+                  "review_text": "I have downloaded it previously, played it and honestly didn't click. I tried it after couple of months and damn... I have tons of fun. It has a learning curve and some really sweaty players but the game is made in a way that you can always overcome skill with strategy and vice versa. You can destroy everything in this game and it feels so good when you blow up through a wall and kill someone. Overall great game, works well on Linux and is somewhat optimized.",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "232239372",
-                  "hours_at_review": 7.7,
+                  "recommendationid": "239425019",
+                  "hours_at_review": 19.9,
+                  "minutes_at_review": 1191,
                   "voted_up": true,
-                  "date": "2026-08-07",
-                  "review_text": "I never typically take the time to write reviews but this game absolutely SLAPS! The gameplay has a bit of a learning curve to it but is so addictive. On top of that the character customization is some of the best I've ever seen in a shooter. I'm looking forward to clocking more hours into this game. BRAVO!",
+                  "date": "2026-11-05",
+                  "review_text": "[b]⭐️⭐️⭐️⭐️⭐️ Pure Chaos, Total Destruction, and Absolute Adrenaline! [/b]\n\nPlaying THE FINALS is an absolute rush from start to finish! One second you’re strategically setting up an ambush with your squad, and the next, someone blows out the entire floor beneath you, sending you falling into a pile of rubble and gunfire. You literally can't predict what's going to happen next—watching an entire building collapse on your opponents mid-fight is peak hilarity and peak satisfaction.\n\nStealing a cashout in the final seconds while the entire arena crumbles around you is the ultimate high. It’s chaotic, fast-paced, and easily the most addictive, visually explosive FPS game out there. Highly recommended if you love high-stakes action and turning the entire map into your personal weapon!",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "230341864",
-                  "hours_at_review": 6.0,
+                  "recommendationid": "239152915",
+                  "hours_at_review": 8.6,
+                  "minutes_at_review": 518,
                   "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "if there was an in between option thats what it would be. its not terrible and the combat class system is fun, however its VERY competetive and hard to just casualy play. runs great, especially with upscaling or settings tweaks",
-                  "truncated": false,
-                  "minutes_at_review": 359
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-78fa30",
-              "claim": "Reviewers state that matchmaking places new players against veteran teams.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "232358016",
-                  "hours_at_review": 14.8,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "great game but match making sucks and weapon balance sometimes doesn't work, love playing against a full team of level 90s with a team of first timers.",
+                  "date": "2026-11-02",
+                  "review_text": "This game is super fun and like if you combined COD with TF2 with insane, fully desctructible environments. Highly reccomend this game, I'm surprised it's not more popular. It is a blast even when you're losing badly, and even better when you lock in and get a bunch of frags",
                   "truncated": false
-                },
-                {
-                  "recommendationid": "230412763",
-                  "hours_at_review": 15.9,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Good game but the skill based match making is b.s. im new to the game and im constantly being steam rolled by vets and sweats with top teir game play and gear that wear freaking expensive @ss cosmetics so just a warning skill based match making is B.S, and yes it is a skill issue.",
-                  "truncated": false,
-                  "minutes_at_review": 953
                 }
               ]
             }
@@ -383,31 +443,40 @@
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "ear-be09ac",
-              "claim": "Reviewers note that cosmetic items cost money, but gameplay-affecting items and weapons can be unlocked for free without paying.",
+              "claim_id": "ear-1f05ca",
+              "claim": "Reviewers highlight that the game is free to play and that all gameplay-influencing items can be unlocked without payment.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 3,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231003476",
-                  "hours_at_review": 16.3,
+                  "recommendationid": "240646614",
+                  "hours_at_review": 15.9,
+                  "minutes_at_review": 953,
                   "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "I like this game a lot. It is fast paced, free, and well maintained. It is an easy and quick go-to when playing with friends. The graphics are great and I haven't run into many bugs. While you have to pay to get most cosmetics there are still many things you can unlock as a free-to-play player.",
-                  "truncated": false,
-                  "minutes_at_review": 978
+                  "date": "2026-11-20",
+                  "review_text": "The FINALS Is A Great Game For Skill Expression and Exceptional teamwork, Despite The Game Being a F2P, It Is NOT Pay to win, As You unlock everything for free, as all paid things are Purely Cosmetic, The Music, Movement, Classes, Dynamic Commentary and the Destruction Immediately Shows itself away from other Generic FPS Titles.\nOverall, 9.7/10",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230361496",
-                  "hours_at_review": 18.5,
+                  "recommendationid": "239438862",
+                  "hours_at_review": 15.3,
+                  "minutes_at_review": 918,
                   "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "The netcode is horrible, the guns are poorly balanced across the board and the matchmaking is barely working as intended (probably because of the small playerbase). \n\nSo why do I give it a thumbs up? Because it’s completely free and you don’t have to spent ANY money for anything since nothing that is related to the gameplay (besides most of the cosmetics) is paid. Those are absurdy overpriced but the game remains completely free. \n\nI cant have bitter feelings to an okay game when it comes free.",
-                  "truncated": false,
-                  "minutes_at_review": 1110
+                  "date": "2026-11-05",
+                  "review_text": "It's a game like no other. The movement is not too complex and shootings fun. There's a LOAD of different weapons to choose from not to mention there's different classes that serve different purposes and there's many fun gamemodes that no other game has. For a free game it's awesome and definitely worth a try.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239128744",
+                  "hours_at_review": 16.6,
+                  "minutes_at_review": 998,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "I got this game a little bit ago, and my first experience was great. This is a one of a kind game and its free with constant new updates to keep it fresh.",
+                  "truncated": false
                 }
               ]
             }
@@ -417,71 +486,44 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-926b07",
-              "claim": "Reviewers note that the game has stability issues and crashes after multiple matches.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-976fa2",
+              "claim": "Reviewers describe performance issues on specific maps that drop frame rates significantly.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "232398344",
-                  "hours_at_review": 7.6,
-                  "voted_up": true,
-                  "date": "2026-08-09",
-                  "review_text": "Such a fun game. I definitely recommend playing it. So many good game mode options and it's just super engaging. \n\nIf you're running Linux it's compatible with your system. A good COD alternative for sure with no kernel level AC.\nIdk if it's due to my system but it does tend to crash occasionally.",
+                  "recommendationid": "241254983",
+                  "hours_at_review": 13.8,
+                  "minutes_at_review": 826,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "what kind of game is this? in every match i'm matched up with players higher than me in rank and stuff. Game has high demand for pc though graphics arent this good you should have a high end pc for. Then comes that shooting players dont cause much damage and they dont die easily unless i shoot at them twice reloading the gun. enemies are very difficult to eliminate and those that arent playing well with manners are winers while those that are playing with manners are losing this game; this game is just like that no kidding. also Cashout isnt a good concept either. so overall this game is not good but it is an exception to every other game so in the end there is no game left to play that is as beautiful as The Finals is; this is the only game left to play if you cant find any other interesting. game doesnt look so as beautiful that it should not run on a mid end pc well and smoothly damn",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "230638412",
-                  "hours_at_review": 17.1,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "Fun game.  Feels like a pre-Oasis world from Ready Player One before haptic suits.  Also feels like the beginnings of what could be mainstream e-sports where the fake sponsors get replaced by real sponsors like Pepsi, Coke, M&Ms, Asus, etc.. could be big.  CONS: Game has stability issues and crashes after 2-3 matches, which makes it hard to win a match if your team mates are unable to rejoin.  Game has a big disdain for snipers/1 shot kills.  Takes multiple head shots to kill anything.  Game needs to be more inclusive for snipers.. maybe add sniper mode or level/scenario augment for snipers.  Music is great.  Seems to change often.  Diggin the disco-techno-club vibe on the menu screen.  Overall game has a good feel to it.",
-                  "truncated": false,
-                  "minutes_at_review": 1023
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-42abe3",
-              "claim": "Reviewers report that the game freezes or crashes during matches after recent updates.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "230430311",
-                  "hours_at_review": 5.0,
-                  "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "Good game until they latest patch. Game ran great last week but now it freezes half way through a match. You know something is wrong because when the game is running the task bar is still showing. Its frustrating and pretty much unplayable now. Idk what is taking Embark so long to fix the patch and i also wonder why they patched it in the first place. I'm sure they'll fix it but when? until then dont even bother.",
-                  "truncated": false,
-                  "minutes_at_review": 302
-                },
-                {
-                  "recommendationid": "230638412",
-                  "hours_at_review": 17.1,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "Fun game.  Feels like a pre-Oasis world from Ready Player One before haptic suits.  Also feels like the beginnings of what could be mainstream e-sports where the fake sponsors get replaced by real sponsors like Pepsi, Coke, M&Ms, Asus, etc.. could be big.  CONS: Game has stability issues and crashes after 2-3 matches, which makes it hard to win a match if your team mates are unable to rejoin.  Game has a big disdain for snipers/1 shot kills.  Takes multiple head shots to kill anything.  Game needs to be more inclusive for snipers.. maybe add sniper mode or level/scenario augment for snipers.  Music is great.  Seems to change often.  Diggin the disco-techno-club vibe on the menu screen.  Overall game has a good feel to it.",
-                  "truncated": false,
-                  "minutes_at_review": 1023
+                  "recommendationid": "239423023",
+                  "hours_at_review": 16.8,
+                  "minutes_at_review": 1010,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "This game has the worst matchmaking known to man; you have Emeralds facing bronze and silvers, in every single match! The Mexican and Orbital maps are so unoptimized that the'll make your pc run at 30 frames.\n\nEasy fix is to have it so you never \"rest\" rank but rank down a single leauge ie Silver to bronze per season played per season so reoccuring player still remain high rank even after multiple seasons mso their not matched with low rank/ casual players. Also completely prevent people above gold from matchmaking with people under gold. I can't belive a game as good as this has legitmatlyu the worst matchmaking known to man. Theres so much to love about this game but oh boy does the matchmaking just ruin everything about this game.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 14,
-        "cited_recommend": 12,
-        "divergence_p": 0.906,
+        "cited_reviews": 11,
+        "cited_recommend": 8,
+        "divergence_p": 0.504,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -489,100 +531,131 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 512,
-      "pct_positive": 80.5,
+      "pool_n": 444,
+      "pct_positive": 78.4,
       "muted": false,
       "n_note": null,
-      "summary": "Mid-tier participants highlight smooth optimization and dynamic destruction, while noting issues with cheaters and mismatched opponents.",
+      "summary": "Regular players leverage deep environmental destruction to alter strategy, while occasionally running into post-update technical stuttering and crashes.",
       "themes": [
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-8883c1",
-              "claim": "Reviewers report that matchmaking groups players against opponents with high-level previous season ranks or veteran players, creating an unbalanced experience.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232459951",
-                  "hours_at_review": 34.8,
-                  "voted_up": false,
-                  "date": "2026-08-09",
-                  "review_text": "Terrible new player experience. I am just the shooting bag getting matched against people with s10 diamond/ruby on their playercard. Either that or a smurf/cheater. Game is plagued with it and TOS allow smurfing. Would not recommend as a new player.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230719934",
-                  "hours_at_review": 65.2,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Skill based matching making is not here. I can get 16 kills one match and then 0 kills 5 matches in a row. \nNeed to take last season ranks and match those players together in the new seasons. Keep running into ruby players when in silver trying to climb. Its such a fun game and love it but this problem brings me to the point of not wanting to play it ever again. Cant recommend this game until this problem is fixed\n",
-                  "truncated": false,
-                  "minutes_at_review": 3914
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-dc5774",
-              "claim": "Reviewers describe the maps as featuring fully destructible environments where buildings, walls, and structures can be brought down during matches.",
+              "claim_id": "mid-ab31cc",
+              "claim": "The game features environmental destruction that alters gameplay mechanics and strategy.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 12,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232531695",
-                  "hours_at_review": 53.3,
+                  "recommendationid": "241236984",
+                  "hours_at_review": 79.0,
+                  "minutes_at_review": 4740,
                   "voted_up": true,
-                  "date": "2026-08-10",
-                  "review_text": "This game is incredibly fun and adds a unique twist to the normal first person shooter in that every single thing you could imagine will be breakable other than the base floor of the map itself. Buildings, walls, barricades, even entire Japanese Inspired structures can come tumbling down. While I do wish there was more variety with guns and that different classes could use more than the specific class weapons there are plenty to choose from (around 15 I think). Overall a very fun game that runs pretty well considering how much data it takes to constantly rerun map generation.",
+                  "date": "2026-11-24",
+                  "review_text": "Best destruction in any online game I have played. Makes the game so unique and adds depth to the gameplay.\nMore people should play it, I think it is underrated.",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "232344508",
-                  "hours_at_review": 21.7,
+                  "recommendationid": "240948002",
+                  "hours_at_review": 31.1,
+                  "minutes_at_review": 1867,
                   "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": " THE FINALS is easily the most fun shooter I've played ever Running Medium build with the AKM feels so good, and blowing up entire buildings to steal a cashout never gets old. If you're bored of standard tactical shooters, just download this and it's free and a blast with friends.",
-                  "truncated": false
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-9cdd4e",
-              "claim": "Reviewers note that weapons and abilities are restricted to three specific character classes.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232531695",
-                  "hours_at_review": 53.3,
-                  "voted_up": true,
-                  "date": "2026-08-10",
-                  "review_text": "This game is incredibly fun and adds a unique twist to the normal first person shooter in that every single thing you could imagine will be breakable other than the base floor of the map itself. Buildings, walls, barricades, even entire Japanese Inspired structures can come tumbling down. While I do wish there was more variety with guns and that different classes could use more than the specific class weapons there are plenty to choose from (around 15 I think). Overall a very fun game that runs pretty well considering how much data it takes to constantly rerun map generation.",
+                  "date": "2026-11-23",
+                  "review_text": "Love the destruction and physics in this game! It has a lot of ways of playing, from game modes to weapons and gadgets, letting you play the way you want. I wish the UI was less clunky and streamlined, but it seems to change with every major update.\r\n\r\nGreat graphics and performance, cool maps, and (some) cool cosmetics. Amazing soundtrack as well! \r\nI like the theme of the game and how its supposed to be like a big gameshow held inside of an arena the size of a small town. The most recent update added a cool feature where the announcers will call out your unique user name during the match, depending on the circumstances. I can't say I've ever seen a game do that before.",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "230570915",
-                  "hours_at_review": 87.4,
+                  "recommendationid": "240942853",
+                  "hours_at_review": 53.5,
+                  "minutes_at_review": 3208,
                   "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "It's fun and probably the most fun free to play FPS I've ever played. Everything is destructive and makes sense. Weapons and abilities are locked to 3 classes (Light, Medium, Heavy) and the Cashout game design genuinely feels fun. Definitely has some games where it does get pretty competitive for better and worse. Wish I had a team to play with",
-                  "truncated": false,
-                  "minutes_at_review": 5246
+                  "date": "2026-11-23",
+                  "review_text": "The Finals is honestly one of the most fun PvP games I've played in a long time\r\n\r\nI never really cared much about destruction in games but here it's actually a big part of the gameplay and can completely change how a match goes\r\n\r\nGunplay feels really good and I love how this game actually tries something new instead of just copying whatever is trending like most games these days\r\n\r\nMatchmaking has its issues for sure but it's not that bad honestly. You kinda get used to it and the game is still really fun. Of course sometimes it makes you wanna rage quit lol but that's just PvP I guess\r\n\r\nAlso the character customization is just awesome. You can make some really cool looking characters\r\n\r\nOverall I think this is easily one of the best PvP games out there right now. Just give it some time to learn the game and get used to how it plays\r\n\r\nDefinitely worth playing",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239234308",
+                  "hours_at_review": 40.7,
+                  "minutes_at_review": 2444,
+                  "voted_up": true,
+                  "date": "2026-11-03",
+                  "review_text": "Probably one of the best FPS/arena shooters with next-gen destruction tech that makes each round pretty dynamic and interesting.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239253584",
+                  "hours_at_review": 80.4,
+                  "minutes_at_review": 4823,
+                  "voted_up": true,
+                  "date": "2026-11-03",
+                  "review_text": "THE ABSOLUTE PINNACLE OF COMPETITIVE SHOOTERS 👑\r\n\r\nIf you are not playing THE FINALS, you are genuinely missing out on the greatest evolutionary leap in multiplayer FPS history. I have been eating, sleeping, and breathing this masterpiece, and I can confidently say the genre has a new king.\r\nFirst of all, the movement and gunplay are buttery smooth. It feels incredibly responsive, rewarding raw mechanical skill and high-IQ positioning like no other game on the market. But the real crown jewel? The fully destructible environments. The destruction isn’t just a visual gimmick; it’s a living, breathing tactical mechanic. Watching a ceiling collapse to drop a cashout station right into your lap completely changes how you approach competitive strategy. It’s pure, unadulterated chaos, but executed with absolute competitive precision.\r\nThe art direction, the style, the unreal optimization, and the thunderous sound design make every single match feel like an absolute stadium event. You can feel the love, passion, and unparalleled expertise the developers poured into every single pixel. Embark Studios didn't just make a game; they built an absolute arena phenomenon. \r\n\r\nMy only 2 complaints? let me turn down the crowd yelling audio. Your game is so loud.. - and NERF the medium turrets (there should never be more than 1 per team)\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239253701",
+                  "hours_at_review": 61.0,
+                  "minutes_at_review": 3660,
+                  "voted_up": true,
+                  "date": "2026-11-03",
+                  "review_text": "It's pretty good, guns and movement feel satisfying, plus the destruction physics are all great. I like the artstyle and the customization options are great. \r\nReally makes you feel like you're in some frantic takeshi's castle style game show with all the chicanery that can happen in a match.\r\n\r\nHowever, it is pretty sweaty, so be prepared for that. Especially if you have a major skill issue or are prone to getting tilted.\r\nCharacters can move between speeds of \"heavy tf2\" and \"gunz the duel.\" And TTK hovers around 1 second at most. So tracking is generally the main skill here.\r\n\r\nAlso, the performance and visuals can be iffy, for some it's buttery smooth and crystal clear,\r\nBut for others: (me.) It can feel a little sluggish and visually fuzzy, which makes it kinda hard to play or get in the groove. \r\nThis is generally on top of how insanely chaotic the game can get, considering you're able to knock down buildings, blow up walls and generally cause all kinds of chaos. \r\n\r\nOverall, it's pretty good. I'd recommend it if you want a fun semi-competitive FPS with unique sandboxy mechanics.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239249677",
+                  "hours_at_review": 87.9,
+                  "minutes_at_review": 5273,
+                  "voted_up": true,
+                  "date": "2026-11-03",
+                  "review_text": "An absurdly underrated game. Far and away one of the best free to play games available.\n\nOh, and the level of destruction in the buildings and environments is ridiculously good. It's chaotic, fun and strategic.\n\nGive it a try, they really cooked with this one.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239224891",
+                  "hours_at_review": 89.4,
+                  "minutes_at_review": 5365,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "Very shooter designs, the attention to detail is incredible, the creative design is mind blowing, the game modes are very innovative and engaging, and if you looking for great graphics and destruction this game is for you. Also very unique concept",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239034532",
+                  "hours_at_review": 32.3,
+                  "minutes_at_review": 1940,
+                  "voted_up": true,
+                  "date": "2026-10-31",
+                  "review_text": "One of the best FPS games I've ever played. The environmental destruction, gunplay is just chefs kiss",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238964062",
+                  "hours_at_review": 34.9,
+                  "minutes_at_review": 2091,
+                  "voted_up": true,
+                  "date": "2026-10-31",
+                  "review_text": "An incredibly great game. Great mechanics, gunplay is fantastic, destruction is clean and immersive. Give it a shot, you wont be disappointed.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238851906",
+                  "hours_at_review": 46.6,
+                  "minutes_at_review": 2794,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "Great game! \r\nLots of movement, \r\ndestruction, \r\ntons of weapons including melee\r\nMaps are big and varied",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238796394",
+                  "hours_at_review": 60.2,
+                  "minutes_at_review": 3613,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "Game is good, community is bad. You will be doing everything for your team, 3v1 winning and still have dude yelling what is my team doing with less than 2000 combat score and 1/8. I really don't like heavy mobility shooters but The Finals just does it perfect, fluid movement, destructive maps, and fun gunfights. A little cheating issue for sure seen some lock on cross map kills for sure, but as have recent haven't noticed it as much except for snipers.",
+                  "truncated": false
                 }
               ]
             }
@@ -592,131 +665,59 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-463f9a",
-              "claim": "Reviewers state that the game runs smoothly and has solid optimization.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232474247",
-                  "hours_at_review": 71.3,
-                  "voted_up": true,
-                  "date": "2026-08-10",
-                  "review_text": "Played over 800 hours on my playstation and switch to pc recently, this game is even better and smoother. Highly recommend!",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230612991",
-                  "hours_at_review": 69.7,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "this game plays amazing super smooth and great servers! the content released is top teir as well!",
-                  "truncated": false,
-                  "minutes_at_review": 4180
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-106d08",
-              "claim": "Reviewers report encountering issues with cheaters and smurfs in matches.",
+              "claim_id": "mid-c3ede0",
+              "claim": "The game suffers from technical problems including stuttering and game crashes after updates.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 2
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "232459951",
-                  "hours_at_review": 34.8,
+                  "recommendationid": "239472312",
+                  "hours_at_review": 38.8,
+                  "minutes_at_review": 2326,
                   "voted_up": false,
-                  "date": "2026-08-09",
-                  "review_text": "Terrible new player experience. I am just the shooting bag getting matched against people with s10 diamond/ruby on their playercard. Either that or a smurf/cheater. Game is plagued with it and TOS allow smurfing. Would not recommend as a new player.",
+                  "date": "2026-11-06",
+                  "review_text": "Dropped the latest patch and all of a sudden I can't play the game, even on the lowest settings. Used to be able to play on high quality, now I'm on low and can't go a game without crashing or stuttering the entire time. Pleas fix your game Embark.",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "232304310",
-                  "hours_at_review": 68.3,
+                  "recommendationid": "238650095",
+                  "hours_at_review": 54.9,
+                  "minutes_at_review": 3293,
                   "voted_up": false,
-                  "date": "2026-08-07",
-                  "review_text": "The game is pretty great if you can ignore the awful matchmaking, cheating and smurfing. Like i had the same opponents 3 matchs in a row and it was a really bad time. I'm saying all this as a more casual player, so if you really like PvP then yeah, pretty good overall.",
+                  "date": "2026-10-27",
+                  "review_text": "All my weapons customization, skins, sights etc... gone and reset.\n\nAnd for the first time constant crashes unplayable\n\nGG game what a JOKE",
                   "truncated": false
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "mid-bb17dd",
-              "claim": "Reviewers mention that the game is free to play.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232475557",
-                  "hours_at_review": 24.6,
-                  "voted_up": true,
-                  "date": "2026-08-10",
-                  "review_text": "Gameplay is great, free, super fun to play with friends, can be competitive but definitely has a lot goofy moments for causal play.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230393744",
-                  "hours_at_review": 98.5,
-                  "voted_up": true,
-                  "date": "2026-07-13",
-                  "review_text": "This game is unlike anything else, in a good way. The mix of combat and thinking involved to master the game is expansive. And the game is free, so why not?",
-                  "truncated": false,
-                  "minutes_at_review": 5913
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-922549",
-              "claim": "Reviewers state that microtransactions consist purely of cosmetics and the game is not pay-to-win.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "230888804",
-                  "hours_at_review": 21.2,
-                  "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": "This has the WORST skill based matchmaking system I've ever seen.\n\nDon't waist your time on this one, its only purpose is to sell you skins and cosmetics.\n\nSo its literally just Counter Strike but with destruction.\n\nDon't get me wrong, the game is fun. BUT ONLY WITH FRIENDS. You can NOT solo in this game if you want to win.",
-                  "truncated": false,
-                  "minutes_at_review": 1272
-                },
-                {
-                  "recommendationid": "230491131",
-                  "hours_at_review": 61.8,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "The Finals ticks a lot of boxes. It looks nice, it's not pay-to-win, all micro-transactions are purely cosmetic, the weapons feel good, and the maps are visually impressive with dynamic destruction. I also can't honestly say it's not fun - it can be genuinely enjoyable when the stars align. But that happens so rarely that you shouldn't hold out hope for it happening.\r\n\r\nThe devs claim to fix things each new season, but somehow nothing ever changes. The meta stays exactly the same, and you keep dying to the same classes and loadouts match after match. After my last game, I found myself thinking: \"Am I playing this wrong? Am I supposed to pick the easiest weapons rather than the ones I actually want to use?\" Maybe. But even if that's by design, why would the devs invalidate over half the weapons in the game by making them uncompetitive? Back when I played Counter-Strike: Source, the only guns anyone ever used were the M4, the AK, the AWP, and the Deagle. Is that really better than Counter-Strike 2, where far more weapons have utility and you can choose what suits your playstyle?\r\n\r\nThe Light class is arguably the most infuriating to counter as any other class. Evasive Dash turns several of the Light's weapons into a dominant meta. Throwing knives, the sword, and the double-barrel shotgun all seem to have a lower TTK than any other ranged weapon in the game.\r\n\r\nHonestly, Titanfall 2 had a host of interesting weapons with fun properties and unique traits, and—with maybe a few exceptions - I never got tilted when I died in that game. When I get killed by a Kraber shot from a grapple-hooking speedster on the other side of the map, I know that person didn't just get lucky; they probably practiced a lot to pull that off. Meanwhile, none of the weapons in The Finals reward me for dedicating time to them, nor do they feel satisfying when I'm on the receiving end.\r\n\r\nI'm convinced the only matches I do well in are the few where I'm grouped with lower-skilled players or players…",
-                  "truncated": true,
-                  "minutes_at_review": 3707
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-5e9c43e8",
+          "text": "One reviewer says matchmaking keeps putting you in lobbies full of sweats and no lives.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239321800",
+            "hours_at_review": 28.3,
+            "minutes_at_review": 1698,
+            "voted_up": true,
+            "date": "2026-11-04",
+            "review_text": "Fun, but don't do ranked. Matchmaking is shit, you'll win 3, then lose 15. I don't find it fair how when you lose, matchmaking stays the same and keeps putting you in lobbies full of sweats and no lives.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 12,
-        "cited_recommend": 8,
-        "divergence_p": 0.192,
+        "cited_reviews": 14,
+        "cited_recommend": 12,
+        "divergence_p": 0.839,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -724,119 +725,88 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 613,
-      "pct_positive": 73.9,
+      "pool_n": 812,
+      "pct_positive": 74.4,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players enjoy map destruction and fair cosmetic passes, while criticizing server issues, smurfing, and restrictive weapon updates.",
+      "summary": "Long-term competitors rely heavily on map-altering destruction tactics, though persistent high-rank matchmaking imbalances continue to surface.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-ffd13f",
-              "claim": "Reviewers report severe server issues, connection problems, and bad hit registration that negatively impact matches.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-798952",
+              "claim": "Reviewers note that the game features fully destructible environments that significantly impact gameplay strategy and map navigation.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
-                "negative": 4
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232445394",
-                  "hours_at_review": 422.8,
-                  "voted_up": false,
-                  "date": "2026-08-09",
-                  "review_text": "Very bad servers and hitreg, additionally somehow invis on a fps shooter is something they came up with...and its as terrible as it sounds.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "232435128",
-                  "hours_at_review": 533.7,
-                  "voted_up": false,
-                  "date": "2026-08-09",
-                  "review_text": "I really love this game, and I mean it but lately (season 11), it has been unplayable because of cheaters and Hitreg issues.\nI post this review in hope that the devs act on it, but since then it will stay negative.\n\nHope to see it shine again !",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "232406437",
-                  "hours_at_review": 357.5,
+                  "recommendationid": "241477769",
+                  "hours_at_review": 118.2,
+                  "minutes_at_review": 7093,
                   "voted_up": true,
-                  "date": "2026-08-09",
-                  "review_text": "Fix your f*cking servers Embark!",
+                  "date": "2026-11-24",
+                  "review_text": "I think this game is very unique everything from it's world aesthetics and game play. All of which I very much approve. It's a fast paced shooter with more destruction that battlefield",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "232374313",
-                  "hours_at_review": 141.1,
-                  "voted_up": false,
-                  "date": "2026-08-08",
-                  "review_text": "The finals is grate at base value but, The smurfing, horrible matchmaking, and connection issues make it worth uninstalling.\n\nDon't get me wrong game is great I love it to death but as a veteran ♥♥♥♥ casual it's unplayable.\n  the smurfing going against low level 18-30 level players that are just insane at the game positioning, beaming across map, and general game sense. when your still trying not to fall off the map is not fun at all.\n\n   new players cant grow because they get matched with ruby ranked players before they even know what that is and beamed across map by A XP LIGHT with no recoil. so they dropped the game because they cant make progress. lowering player count. \n\n  I have bad internet and good at time not top of the line. Still I and other players with Ethernet connection and 1 gig internet see hit registration problems and connection issues. I get glued in place and my team with the enemy team start teleport try fighting that when they are a small melee light not fun and feels terribly unfair.  \n\nthe fun thing about these issues is the smurfing and connection issues like hit registration make new players quit which gives a small player pool, thus you get matched with high ranked players and smurf's while your team is brand new players that will quit the game soon as they are sent to the lobby when the game just started. which leads to decent players smurfing more because they want easier lobby's. the game is dying.\n\nside note for the people who talk about \"innocent\" smurfing such as using off meta weapons that is at the expense of new players they need time to learn the game.\n\nTLDR no gun works in your hands and the only way the game feels fair is playing in high ranked elo matches ruby as no one smurfs that and its easy to matchmake at the top.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230682631",
-                  "hours_at_review": 342.4,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Server issues constantly now, with connection issue warnings for all players",
-                  "truncated": false,
-                  "minutes_at_review": 20546
-                },
-                {
-                  "recommendationid": "230455606",
-                  "hours_at_review": 245.4,
+                  "recommendationid": "241398590",
+                  "hours_at_review": 132.4,
+                  "minutes_at_review": 7945,
                   "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "This game is being ruined by the server issues present. I just lost about 10 wins worth of RS in ranked simply because their servers cannot function. Embark needs to fix this game quickly or they will be losing a lot of loyal players",
-                  "truncated": false,
-                  "minutes_at_review": 14724
+                  "date": "2026-11-24",
+                  "review_text": "The most fun I've had with destruction in any game, hands down. Every time I wonder if the novelty's going to wear off eventually, I end up in a fight for a steal even more dynamic and exciting than the last. And despite being a multiplayer destruction environment, I've never had any desync problems! \n\nCashout is a fantastic game mode. It's the best parts of Defusal, KOTH, and CTF rolled together. The bracket-style rounds work really well. It feels like you spend more time winning games (sticking around round-to-round) than losing them (get to requeue for the next game quickly). \n\nGrab a friend or two and have a blast.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239176108",
+                  "hours_at_review": 507.3,
+                  "minutes_at_review": 30439,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "[h1]A fantastic concept and a unique take on the competitive FPS genre.[/h1]\n\nBefore getting into it, I should mention that I'm not normally a fan of PvP games. The last competitive shooter I seriously played was the original Black Ops back in the day, and I didn't put many hours into it. Then I watched a friend play The Finals and was completely blown away.\n\nThis game is a spectacle.\n\nThe destruction, the chaos, the movement, the objective play. It ignited something in me that I didn't realize I was missing. After my first session, I was hooked. I started playing in July and have already put more than 500 hours into it.\n\nThat said, you should know what you're getting into.\n\nThis is a sweaty game.\n\nYou're going to get destroyed for a while before things start clicking. Even after that, you'll still lose and die a lot. The upside is that success feels incredibly rewarding. Every kill feels earned, and every win feels like hitting the lottery. If you're playing with friends, those moments become even better.\n\n[b]The Pros[/b]\n\n[h2]Destruction[/h2]\n\nThe destruction is the first thing you'll notice, and it's arguably the best in the business.\n\nBlowing holes through floors to ambush opponents, collapsing buildings onto objective sites, or tossing an explosive canister into a random structure just because you can never gets old. The destruction isn't a gimmick. It's a core part of the gameplay, and it changes the way every match unfolds.\n\n[h2]Skill Expression[/h2]\n\nThis is where The Finals really shines.\n\nThere are three classes, multiple specializations, dozens of gadgets, different weapons, and countless ways to approach fights and objectives. You can build a character that genuinely matches your personality and playstyle.\n\nMore importantly, the skill ceiling is absurdly high. Hundreds of hours later and I'm still learning new things everyday.\n\n[h2]Cosmetics[/h2]\n\nThe cosmetic system is excellent.\n\nYou can create anything from a tactical operator to the most cursed abomi…",
+                  "truncated": true
                 }
               ]
             },
             {
-              "claim_id": "vet-de7c70",
-              "claim": "Players describe experiencing crashes following updates.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-ac9c21",
+              "claim": "Reviewers report that the game features fully destructible environments that allow players to blow holes in floors, collapse buildings, and alter routes.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 3
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232333712",
-                  "hours_at_review": 178.9,
+                  "recommendationid": "241454727",
+                  "hours_at_review": 180.1,
+                  "minutes_at_review": 10806,
                   "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "Great fun.\n\nA few crashes here and there though.",
+                  "date": "2026-11-24",
+                  "review_text": "The Finals isn't the classic fast pace fps where the only objective is to get as many kills as possible; it redefines the gameplay, you get thrown in a map where everithing can be destroyed (you can kill enemies with flowerpots), you have to adapt to the destruction of the normal route to reach a cashbox, you HAVE to play with your team, otherwise it's almost impossible to win, after you deposit the cashbox inside a cashout you'll have to defend with evrything you've got, even going in front of the enemy while he's stealing it.\nYou'll have to play some matches in quick cash to learn all the combiantions of abilities and gear that is available but after it will be a lots of fun.\nIf you're a newbie reading this review, I appreciate your time and my tip is to start with a Medium build, with akm, pyro nade, zipline and defibirllator, don't forget the healing gun to keep your team alive and support it during intense fighting.\nI'll wish you best of luck and happy playing The Finals.",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "231004851",
-                  "hours_at_review": 324.7,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "Since the update the game crashes, cash boxes are extremely close to one another along with vaults which encourages brain dead 3rd party garbage. Not to mention they buffed melee weapons after everyone was already complaining about them and then nerfed quick melee's, indirectly making the sniper go from the worst weapon in the game to worse than that. Room temp iq gotta be the first and only requirement to be an embark dev.",
-                  "truncated": false,
-                  "minutes_at_review": 19480
+                  "recommendationid": "238625925",
+                  "hours_at_review": 138.7,
+                  "minutes_at_review": 8319,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "THE FINALS – One of the Most Fun and Addictive Multiplayer Games I've Ever Played\n\nTHE FINALS is genuinely one of those games that reminds me why I love multiplayer gaming in the first place. In a market filled with repetitive shooters that often feel like copies of one another, THE FINALS manages to stand out with its own identity, offering an experience that feels fresh, chaotic, creative, and incredibly fun.\n\nWhat makes this game so special is its unique gameplay and mechanics. The fully destructible environments completely change the way you approach every match. Buildings can collapse, walls can be blown apart, floors can disappear, and entire strategies can change within seconds. There is something incredibly satisfying about destroying an entire building just to eliminate an enemy team or completely changing the battlefield to your advantage. The level of environmental destruction adds a layer of unpredictability that very few shooters can offer.\n\nThe movement, gunplay, gadgets, abilities, and different character builds make the gameplay even more interesting. Every match feels like a different experience because there are so many ways to approach a situation. You can play aggressively, support your teammates, set traps, defend objectives, or come up with completely unexpected strategies. The freedom to experiment with different loadouts and playstyles keeps things exciting and prevents the gameplay from becoming stale.\n\nBut honestly, the biggest achievement of THE FINALS is just how FUN it is. The chaotic team fights, last-second objective steals, unexpected comebacks, insane destruction, and those perfectly timed plays create moments that are genuinely memorable. Even when a match doesn't go your way, there's almost always something entertaining happening.\n\nAnd that's probably my favourite thing about this game: I KEEP COMING BACK TO IT. No matter how many hours I put into it, I never seem to get bored. I can take a break, come back after a while, and still…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "230824219",
-                  "hours_at_review": 1000.6,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "The Finals is one of the best games out there that perfectly captures the arena shooter genre with its own unique style. Despite putting 1,000 hours into it, my biggest grievance is the constant, relentless updates and rebalances. Buffing, nerfing, and reworking weapons and abilities every 1 to 2 months drastically kills the game's flow and overall enjoyment.\r\n\r\nIt takes about 50 hours on average to truly master and get used to a weapon, but thanks to the developers at Embark, they tweak the weapon stats right around that time, completely ruining your playstyle. The worst part is that this is a never-ending cycle. I won't even get into the increasing number of bugs and the performance/FPS drops with every single patch.\r\n\r\nI am calling out to the developers: stop messing with the game balance, or at least find a healthy middle ground. It feels as though these adjustments are being made by people who don't even play the game. For example—how on earth can the FAMAS be weaker and have a smaller magazine capacity than the FCAR? There are countless examples like this, but I won’t waste my breath. Just leave the game alone.",
-                  "truncated": false,
-                  "minutes_at_review": 60036
-                },
-                {
-                  "recommendationid": "230882687",
-                  "hours_at_review": 376.4,
-                  "voted_up": false,
-                  "date": "2026-07-20",
-                  "review_text": "Last Balance going into season 11 ruined a lot of reliable gunplay and reliable ways to counter certain combos.\n\nConstant crashing since update aswell is annoying.",
-                  "truncated": false,
-                  "minutes_at_review": 22581
+                  "recommendationid": "239176108",
+                  "hours_at_review": 507.3,
+                  "minutes_at_review": 30439,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "[h1]A fantastic concept and a unique take on the competitive FPS genre.[/h1]\n\nBefore getting into it, I should mention that I'm not normally a fan of PvP games. The last competitive shooter I seriously played was the original Black Ops back in the day, and I didn't put many hours into it. Then I watched a friend play The Finals and was completely blown away.\n\nThis game is a spectacle.\n\nThe destruction, the chaos, the movement, the objective play. It ignited something in me that I didn't realize I was missing. After my first session, I was hooked. I started playing in July and have already put more than 500 hours into it.\n\nThat said, you should know what you're getting into.\n\nThis is a sweaty game.\n\nYou're going to get destroyed for a while before things start clicking. Even after that, you'll still lose and die a lot. The upside is that success feels incredibly rewarding. Every kill feels earned, and every win feels like hitting the lottery. If you're playing with friends, those moments become even better.\n\n[b]The Pros[/b]\n\n[h2]Destruction[/h2]\n\nThe destruction is the first thing you'll notice, and it's arguably the best in the business.\n\nBlowing holes through floors to ambush opponents, collapsing buildings onto objective sites, or tossing an explosive canister into a random structure just because you can never gets old. The destruction isn't a gimmick. It's a core part of the gameplay, and it changes the way every match unfolds.\n\n[h2]Skill Expression[/h2]\n\nThis is where The Finals really shines.\n\nThere are three classes, multiple specializations, dozens of gadgets, different weapons, and countless ways to approach fights and objectives. You can build a character that genuinely matches your personality and playstyle.\n\nMore importantly, the skill ceiling is absurdly high. Hundreds of hours later and I'm still learning new things everyday.\n\n[h2]Cosmetics[/h2]\n\nThe cosmetic system is excellent.\n\nYou can create anything from a tactical operator to the most cursed abomi…",
+                  "truncated": true
                 }
               ]
             }
@@ -846,328 +816,90 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-9988fd",
-              "claim": "Reviewers describe a steep learning curve and punishing onboarding experience for new players.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "232374313",
-                  "hours_at_review": 141.1,
-                  "voted_up": false,
-                  "date": "2026-08-08",
-                  "review_text": "The finals is grate at base value but, The smurfing, horrible matchmaking, and connection issues make it worth uninstalling.\n\nDon't get me wrong game is great I love it to death but as a veteran ♥♥♥♥ casual it's unplayable.\n  the smurfing going against low level 18-30 level players that are just insane at the game positioning, beaming across map, and general game sense. when your still trying not to fall off the map is not fun at all.\n\n   new players cant grow because they get matched with ruby ranked players before they even know what that is and beamed across map by A XP LIGHT with no recoil. so they dropped the game because they cant make progress. lowering player count. \n\n  I have bad internet and good at time not top of the line. Still I and other players with Ethernet connection and 1 gig internet see hit registration problems and connection issues. I get glued in place and my team with the enemy team start teleport try fighting that when they are a small melee light not fun and feels terribly unfair.  \n\nthe fun thing about these issues is the smurfing and connection issues like hit registration make new players quit which gives a small player pool, thus you get matched with high ranked players and smurf's while your team is brand new players that will quit the game soon as they are sent to the lobby when the game just started. which leads to decent players smurfing more because they want easier lobby's. the game is dying.\n\nside note for the people who talk about \"innocent\" smurfing such as using off meta weapons that is at the expense of new players they need time to learn the game.\n\nTLDR no gun works in your hands and the only way the game feels fair is playing in high ranked elo matches ruby as no one smurfs that and its easy to matchmake at the top.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230859617",
-                  "hours_at_review": 186.9,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "Let me just say it: this game is super fun.\n\nThe skins are insane — genuinely some of the most creative and well-made cosmetics I've seen in a multiplayer shooter. The audio design is excellent, giving every explosion, footstep, and cashout buzzer a satisfying punch. The way people turn into coins when they die hits and itch I didn't know I had. And the destruction? Best in the business, no contest. Walls crumble, floors collapse, and entire buildings come down around you in a way no other game has pulled off this well. And it changes the environment. It doesn't just delete a wall from the map. It moves it and by the end of the match it's like a jungle gym. \n\nNow, the big caveat: the onboarding is rough. If you're not a 16-year-old who just downed four cans of energy drinks before slamming the queue button, you will struggle early on. The learning curve hits hard, and the game doesn't exactly hold your hand. You'll die a lot. You'll wonder what just killed you. You'll question your life choices.\nBut if you're patient and don't mind eating some dirt in the beginning, it clicks — and when it does, it's incredibly rewarding. I'm just a guy in his 20s trying to keep up, and I'm having a ton of fun with it.\n\nTL;DR: Give it a shot. It's free, there's zero pay-to-win, and once you push through the initial chaos, you'll find one of the most entertaining shooters out there right now.",
-                  "truncated": false,
-                  "minutes_at_review": 11214
-                },
-                {
-                  "recommendationid": "230852886",
-                  "hours_at_review": 103.7,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "This is propably one the best games ive ever played, the gunplay feels amazing the maps are really good. I also love the classes and the dynamism. But sometimes you really feel that there is a large learning curve and you get heavily outmatched. Overall its a great game but I hope that embark lisents to player feedback and fixes their issues.",
-                  "truncated": false,
-                  "minutes_at_review": 6220
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-79734b",
-              "claim": "Reviewers report that experienced players creating alternate accounts for smurfing ruins the matchmaking and lobbies for lower-level players.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232374313",
-                  "hours_at_review": 141.1,
-                  "voted_up": false,
-                  "date": "2026-08-08",
-                  "review_text": "The finals is grate at base value but, The smurfing, horrible matchmaking, and connection issues make it worth uninstalling.\n\nDon't get me wrong game is great I love it to death but as a veteran ♥♥♥♥ casual it's unplayable.\n  the smurfing going against low level 18-30 level players that are just insane at the game positioning, beaming across map, and general game sense. when your still trying not to fall off the map is not fun at all.\n\n   new players cant grow because they get matched with ruby ranked players before they even know what that is and beamed across map by A XP LIGHT with no recoil. so they dropped the game because they cant make progress. lowering player count. \n\n  I have bad internet and good at time not top of the line. Still I and other players with Ethernet connection and 1 gig internet see hit registration problems and connection issues. I get glued in place and my team with the enemy team start teleport try fighting that when they are a small melee light not fun and feels terribly unfair.  \n\nthe fun thing about these issues is the smurfing and connection issues like hit registration make new players quit which gives a small player pool, thus you get matched with high ranked players and smurf's while your team is brand new players that will quit the game soon as they are sent to the lobby when the game just started. which leads to decent players smurfing more because they want easier lobby's. the game is dying.\n\nside note for the people who talk about \"innocent\" smurfing such as using off meta weapons that is at the expense of new players they need time to learn the game.\n\nTLDR no gun works in your hands and the only way the game feels fair is playing in high ranked elo matches ruby as no one smurfs that and its easy to matchmake at the top.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230712416",
-                  "hours_at_review": 1046.6,
-                  "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "very unique game, absolute love the gameplay, only down side is the ranked system and smurfing, needs to be fixed asap",
-                  "truncated": false,
-                  "minutes_at_review": 62797
-                },
-                {
-                  "recommendationid": "230961825",
-                  "hours_at_review": 991.0,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "For a new player, the game is simply brilliant, but… For someone who’s already clocked up well over a hundred hours, there are three main issues:\n1) There’s absolutely no link between your skill level and matchmaking. It’s hard to play this game badly, or even just averagely. Especially in ranked mode.\n2) The outsourced Indian support team don’t understand how game balance works. In the context of the latest melee weapon rework, this is glaringly obvious even to a blind person.\n3) Smurfing – the developers couldn’t care less about it. I’M SO ♥♥♥♥♥♥♥ FED UP WITH THESE POINTS IN MM – WHY THE ♥♥♥♥ AM I PLAYING AGAINST DIAMONDS+RUBY AT ANY RANK, GETTING 500 FOR A WIN AND -1500 FOR A LOSS?",
-                  "truncated": false,
-                  "minutes_at_review": 59460
-                },
-                {
-                  "recommendationid": "230251143",
-                  "hours_at_review": 849.2,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "I have been playing since season 5. Ever since season 9, my enjoyment of this game has just been declining all the way up into season 11. \n\nMain issues and why I do not recommend this game:\n\nExtremely broken ranked system that will pit you against the top 1000-500 players in the world.\n\nSkill based matchmaking in EVERY game mode, making it impossible to truly \"relax\" since every player in the lobby is playing like there is a 10k dollar prize on the line.\n\nNew melee rework is the 2nd most disappointing update I have every experienced in this game. (first being the season 9 launch).\n\nSmurfing (in which experienced players create a new account to stomp newbie lobbies) is, sadly, very rampant.\nThe amount of rs that I was refunded because of someone cheating in my ranked games is insane.\n\nVery toxic community (specifically in the main gamemode, \"cashout\") in which the matches will genuinely become the most unfun gaming sessions you will witness. (For example, you can play very well and make all the right plays, but your lobotomized teammates will proceed to get themselves and your team killed, then proceed to blame you for it [this is not uncommon. This has happened in 1000 of the over 4000 matches in this game that I have played])\n\n\n\n\nI love the FINALS, but it has gotten to the point where I just do not look forward to playing this game in the slightest. It is always a gamble if I am going to go against new players who are trying the game (in which I take it chill and try some new things) or I am going againsts the most sweatiest, bitchless comp team where stomping newbies is considered their warmup game.",
-                  "truncated": false,
-                  "minutes_at_review": 50953
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-0db640",
-              "claim": "Reviewers note that recent updates altered the melee weapon system in ways that removed skill expression and frustrated players who relied on those weapons.",
+              "claim_id": "vet-186185",
+              "claim": "Reviewers report that match-making pairs lower-ranked players against much higher-ranked opponents and high-skill competitors.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 7
+                "negative": 3
               },
               "citations": [
                 {
-                  "recommendationid": "232519457",
-                  "hours_at_review": 250.7,
+                  "recommendationid": "238744497",
+                  "hours_at_review": 559.0,
+                  "minutes_at_review": 33537,
                   "voted_up": false,
-                  "date": "2026-08-10",
-                  "review_text": "melee rework for literally every gun is the dumbest idea ever. i worked on two seasons working on melee combos for the ks and xp and double barrel and its all gone because the kick",
+                  "date": "2026-10-28",
+                  "review_text": "Man, this sucks to give a negative review because I really LOVE this game. The concept, it's top notch destruction techonology, the mouvement, etc. but playing with friends has become more stressful than fun, don't fall for the trailers where they go \"weehee! haha! Throw me!\". This won't happen: you go in a game and everyone goes quiet because things are way too tense, even in casual. \r\n\r\nThe matchmaking feels relentlessly sweaty, with high-ranked players and smurfs making every games miserable. I feel like I'm ruining my friends' experience because I simply can't keep up. I recently convinced a friend to try the game, and after just two fun matches, we were completely overwhelmed.\r\n\r\nNow, I prefer playing alone just to avoid dragging my friends into these lobbies. With SBMM seemingly getting stricter, I'm afraid is getting worse.\r\n\r\nI don't have a solution, and I understand matchmaking is complicated. I just want to enjoy this game with my friends without every session feeling like a competitive grind. Right now I can't.",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "232307684",
-                  "hours_at_review": 445.6,
+                  "recommendationid": "239332286",
+                  "hours_at_review": 283.4,
+                  "minutes_at_review": 17003,
                   "voted_up": false,
-                  "date": "2026-08-08",
-                  "review_text": "Before the melee rework, the existing system felt frustrating, and a bit unfair. Now, after the rework, it feels EXTREMELY frustrating, very unfair, and every melee weapon has its own confusing rules.\nI started by ignoring those weapons, and the opponents that used them would feel irritating.\nI then try to use them because \"if something is meta use it\", but they're not even strong. Now they all have an even more simplified gameplan and no real skill expression, while also not being balanced.\n \n- Spear is straight up worse compared to before the update, where all combos deal less damage and heavy hits are harder to land since if you miss one you can't use them for a while. A weapon that already was considered the worst by a lot of the community is now completely, entirely unusable. \n- Sledge feels unbeatable with any class unless the user pushes you in full open from 50 meters away or more letting you shoot them, on a class that can close distances very easily. In a vacuum, the 1v1 is somewhat balanced, sure. But in a real game it feels like it's a 70/30 for the hammer user, where if he manages to get close he has already won with no player interaction being really relevant.\n- Twin blades were frustrating and boring before, so you change nothing about them except granting them more range, so they now also feel inescapable.\n- Riot used to be inconsistent with blocking, now it's even worse where I'll be looking at someone and they still hit me while aiming at the body. You try to block and quickly hit, and you get punished by the new \"special attack\" that takes away your defense and locks you in an animation for half an hour.\n- Everything else hasn't even changed much and feels just as frustrating and boring.\n\nThis whole rework is just very, very unfun. It's genuinely just worse than before, and the worst part has to be the 25 damage quick melee. It was perfectly balanced and fun before, not one person on earth said 40 damage was too much for quick melee, and it was a …",
-                  "truncated": true
-                },
-                {
-                  "recommendationid": "230431176",
-                  "hours_at_review": 196.6,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "They ruined the game with a melee update. Devs please heed my words- reverse your mistakes and repent.",
-                  "truncated": false,
-                  "minutes_at_review": 11794
-                },
-                {
-                  "recommendationid": "230513449",
-                  "hours_at_review": 229.1,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "they \"fixed\" melee by removing all skill expression and combo potential from the sword, gutting its movement tech, and then giving every other weapon what little benefits it had left.",
-                  "truncated": false,
-                  "minutes_at_review": 13745
-                },
-                {
-                  "recommendationid": "230171924",
-                  "hours_at_review": 516.1,
-                  "voted_up": false,
-                  "date": "2026-07-11",
-                  "review_text": "I loved this game, as you could see, I have 516 hours in it at the time of this review. However, the devs listened to a handful of loud complainers on Reddit and completely gutted the game. All melee weapons are ruined. Playing with them now feels like the game is just lagging. Also super annoying and distracting to have an overlay right in your main field of view. Light was already at a massive disadvantage and they just made it worse. On top of that, it seems like they are rewarding basic playstyles and punishing people who want to play with more unique weapons. This went from my favorite game ever that I played ridiculous amounts of to a game I hate. Maybe it's for the best, I'll get outside and touch grass. Or maybe just play God of War Ragnarök. Will probably try it back out every now and then but feel incredibly depressed on its current state.",
-                  "truncated": false,
-                  "minutes_at_review": 30966
-                },
-                {
-                  "recommendationid": "230696626",
-                  "hours_at_review": 100.1,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "They reworked the melee system in a way that, in my opinion, made it worse, with little to no community feedback, and have shown little willingness to adjust it afterward. I can't recommend this developer behavior.",
-                  "truncated": false,
-                  "minutes_at_review": 6007
-                },
-                {
-                  "recommendationid": "230728149",
-                  "hours_at_review": 127.5,
-                  "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "Updates going into season 11; absolutely horrible. They have updated the swords, and the light class into a horrid \"dumbed down\" version of its former self. Game is completely unplayable now for anyone with a fast paced gameplay.",
-                  "truncated": false,
-                  "minutes_at_review": 7651
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-e82f6e",
-              "claim": "Reviewers note that recent updates introduced a melee weapon rework that altered combos, damage, and mechanics for weapons like the sword, spear, sledgehammer, and riot shield.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "232519457",
-                  "hours_at_review": 250.7,
-                  "voted_up": false,
-                  "date": "2026-08-10",
-                  "review_text": "melee rework for literally every gun is the dumbest idea ever. i worked on two seasons working on melee combos for the ks and xp and double barrel and its all gone because the kick",
+                  "date": "2026-11-04",
+                  "review_text": "Love to play this game! But the Match making of this game sucks!!! Absolutely sucks! i am a silver player and i am getting queued with Emerald or whatever it is called players and i am getting killed left and right while my team mates play like absolute bronze and silver players the match making in this game sucks but apart from that i love this game.\r\n",
                   "truncated": false
                 },
                 {
-                  "recommendationid": "232307684",
-                  "hours_at_review": 445.6,
+                  "recommendationid": "238657006",
+                  "hours_at_review": 163.1,
+                  "minutes_at_review": 9786,
                   "voted_up": false,
-                  "date": "2026-08-08",
-                  "review_text": "Before the melee rework, the existing system felt frustrating, and a bit unfair. Now, after the rework, it feels EXTREMELY frustrating, very unfair, and every melee weapon has its own confusing rules.\nI started by ignoring those weapons, and the opponents that used them would feel irritating.\nI then try to use them because \"if something is meta use it\", but they're not even strong. Now they all have an even more simplified gameplan and no real skill expression, while also not being balanced.\n \n- Spear is straight up worse compared to before the update, where all combos deal less damage and heavy hits are harder to land since if you miss one you can't use them for a while. A weapon that already was considered the worst by a lot of the community is now completely, entirely unusable. \n- Sledge feels unbeatable with any class unless the user pushes you in full open from 50 meters away or more letting you shoot them, on a class that can close distances very easily. In a vacuum, the 1v1 is somewhat balanced, sure. But in a real game it feels like it's a 70/30 for the hammer user, where if he manages to get close he has already won with no player interaction being really relevant.\n- Twin blades were frustrating and boring before, so you change nothing about them except granting them more range, so they now also feel inescapable.\n- Riot used to be inconsistent with blocking, now it's even worse where I'll be looking at someone and they still hit me while aiming at the body. You try to block and quickly hit, and you get punished by the new \"special attack\" that takes away your defense and locks you in an animation for half an hour.\n- Everything else hasn't even changed much and feels just as frustrating and boring.\n\nThis whole rework is just very, very unfun. It's genuinely just worse than before, and the worst part has to be the 25 damage quick melee. It was perfectly balanced and fun before, not one person on earth said 40 damage was too much for quick melee, and it was a …",
-                  "truncated": true
-                },
-                {
-                  "recommendationid": "230682659",
-                  "hours_at_review": 1365.8,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Why I hate the finals and Embark: An autobiography\n\nMy name is MrEden111, often known as Eden, especially in circles on the finals as one of the most dedicated exclusive charge’n’slam sledge players since season 4 from Oceania. \n\nThe finals is, and more importantly, *was* a wonderful game, a breath of fresh air in a stale live service industry where your wallet was valued, you as a player was respected, and where the developers would constantly deliver breath taking updates. But having not played season 3, I had little idea of the horrors there were yet to come.\n\nFor many seasons the game was pumped with life, after the tremendous success of season 4 with a vast array of new content such as sponsorships, new weapons, and my all-time favourite map; fortune stadium. They would swing hard again with season 5, with Mexico themed beauty bringing in even more content (despite how op the Cerberus was), season 6 bringing even more wonder ignoring the Vegas reskin which was much better than its original predecessor (No the team death match map does not count) … but then came season 7. Because even accounting for the flaws, these were updates that did amazing for the health of the game. Alongside also dealing with issues such as the infamous taser (which later turned to the disabler) to rise player enjoyment.\n\nBut I wake up in the morning of season 7, and I open to read the patch notes, my hands went cold and palmy, my heart sank to rest on my lungs. The infamous sledge nerf, the turning point of the game for me and finally opened my eyes to the faults of Embark. Which as a noteworthy mention, was only caused because of this obsession in the heavy playerbase to use winch with the most current powerful weapon, leading to only the weapon being significantly nerfed, which is a relevant issue in the mindset of embark’s balancing philosophy to always look at the surface of the issue instead of the deeper reasons (unless if they outright ignore it of course).\n\nIt was then Embark to…",
-                  "truncated": true,
-                  "minutes_at_review": 81949
-                },
-                {
-                  "recommendationid": "230513449",
-                  "hours_at_review": 229.1,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "they \"fixed\" melee by removing all skill expression and combo potential from the sword, gutting its movement tech, and then giving every other weapon what little benefits it had left.",
-                  "truncated": false,
-                  "minutes_at_review": 13745
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-cbf8d3",
-              "claim": "Reviewers report that the game includes environmental destruction allowing players to break through walls, floors, and buildings.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 4,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232531864",
-                  "hours_at_review": 330.8,
-                  "voted_up": true,
-                  "date": "2026-08-10",
-                  "review_text": "The Finals is easily one of the most underrated shooters I’ve played. I liked all the game modes, but spent most of my time in World Tour grinding the Deep Pockets achievement.\r\n\r\nGunplay is really good and I’d describe it as a polished Apex Legends. Movement is great too and fits the fast pace perfectly.\r\n\r\nDestruction is probably my favorite part of the game. You can destroy enemy positions, make your own paths or even use it to move around the map faster. It looks great and actually affects how you play instead of just being there for show.\r\n\r\nThe classes are well balanced, especially when you’re playing with a team and everyone runs a different build properly. The maps are also amazing. Bernal, Seoul and Monaco were my favorites, but honestly all of them are great.\r\n\r\nProgression is pretty fast, unless you start caring about achievements haha. Weapons could use a bit more variety, but it’s nothing that hurts the experience. Players are pretty random and the skill gap is definitely noticeable.\r\n\r\nGraphics are great, performance was perfect for me and monetization is completely optional without constantly being shoved in your face.\r\n\r\nThe best part is easily the fast-paced gameplay and the freedom you have. The worst part is the achievement grind. Period.\r\n\r\nDefinitely recommend it. It’s not doing anything completely new, but it does what it does really well and deserves way more attention.\r\n\r\n9/10",
+                  "date": "2026-10-27",
+                  "review_text": "It's not fun hitting the hidden threshold that just puts emerald players in every single lobby. Remove the sbmm that doesn't even work properly. Would you rather sometimes get stomped due to chance or would you rather get stomped EVERY SINGLE MATCH. This reason alone has driven me and all my friends away from the game.",
                   "truncated": false
-                },
-                {
-                  "recommendationid": "232334298",
-                  "hours_at_review": 329.7,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "I’ve enjoyed fast-paced FPS games ever since playing Quake 3, and The Finals perfectly scratches that itch. The destruction of the environment, combined with the dynamic way fire and gas work, creates situations that require quick decision-making and can feel incredibly satisfying when you pull them off.\n\nThe graphics are also great. The game looks amazing without sacrificing visibility, so you can still clearly see opponents and important cues. The sound design is excellent too, although I do feel that the intro expression audio can sometimes get a bit messy.\n\nOverall, it’s a fantastic game that really hits the right notes for me. My only wish is that more people would give it a try and join in!",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230859617",
-                  "hours_at_review": 186.9,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "Let me just say it: this game is super fun.\n\nThe skins are insane — genuinely some of the most creative and well-made cosmetics I've seen in a multiplayer shooter. The audio design is excellent, giving every explosion, footstep, and cashout buzzer a satisfying punch. The way people turn into coins when they die hits and itch I didn't know I had. And the destruction? Best in the business, no contest. Walls crumble, floors collapse, and entire buildings come down around you in a way no other game has pulled off this well. And it changes the environment. It doesn't just delete a wall from the map. It moves it and by the end of the match it's like a jungle gym. \n\nNow, the big caveat: the onboarding is rough. If you're not a 16-year-old who just downed four cans of energy drinks before slamming the queue button, you will struggle early on. The learning curve hits hard, and the game doesn't exactly hold your hand. You'll die a lot. You'll wonder what just killed you. You'll question your life choices.\nBut if you're patient and don't mind eating some dirt in the beginning, it clicks — and when it does, it's incredibly rewarding. I'm just a guy in his 20s trying to keep up, and I'm having a ton of fun with it.\n\nTL;DR: Give it a shot. It's free, there's zero pay-to-win, and once you push through the initial chaos, you'll find one of the most entertaining shooters out there right now.",
-                  "truncated": false,
-                  "minutes_at_review": 11214
-                },
-                {
-                  "recommendationid": "230487107",
-                  "hours_at_review": 1062.9,
-                  "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "its a unique game with distroyable and beautiful maps.\r\npluss 90% of the skins are fire.",
-                  "truncated": false,
-                  "minutes_at_review": 63776
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "vet-b86935",
-              "claim": "Reviewers report that the game offers a battle pass system where completing tiers can earn currency to purchase subsequent passes.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 4,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232378420",
-                  "hours_at_review": 207.6,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "One of the most unique FPS games I have ever played. The cosmetics are very unique and amazing. It has the usual battle pass system where, if you buy it and do most of it, you can buy the next one. I love how you can destroy all the buildings break through any wall. The game also almost never lags and looks great, even though my settings are on medium. I would highly recommend playing the different game modes so you can get a feel for the game. It's also a FREE GAME so you lose nothing if you play it.",
-                  "truncated": false
-                },
-                {
-                  "recommendationid": "230686503",
-                  "hours_at_review": 220.3,
-                  "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "!!UNDERRATED!!\n\nTHE FINALS is hands down my absolute favorite shooter right now. The fast-paced rhythm, the chaotic environmental destruction, and the cosmetic options are entirely incredible. My favorite class to play is the Light, and I absolutely love running the M11, the sword, and the FCAR. My absolute favorite game modes are Power Shift and Quick Cash.\n\nPerformance-running on a High-End PC is great. I play at maximum graphical settings without DLSS and manage to get around 90 FPS. This is perfectly acceptable since the game is visually heavy and packed with physics. Speaking of atmosphere, the soundtrack is unique. I highly recommend activating the music mix option from previous seasons because every single track is incredible. \n\nI started playing back in Season 10, and now that we are in Season 11, the progression system feels amazing. The ability to unlock past seasonal skins using Multibucks makes it feel like you have two or three battle passes active at the same time. The Year 1 bundle is a fantastic deal that unlocks a massive part of previous seasons. For Season 11, I got the Ultimate Pass with legendary skins, which looks brutal and helps support the developers. The weapon charms, weapon skins, character outfits, emotes, stickers, and badges are top-tier. My only personal wish would be for more flawless female character faces and pink skins. \n\nThe battle pass is highly rewarding, and the cosmetic bundles are very reasonably priced. The game is obviously at its absolute best when playing with friends, and I rarely encounter cheaters. The only downside preventing a perfect score is the matchmaking system, which can feel quite unbalanced when putting level 1 players against level 100 players in the same lobby. There should also be heavier penalties for players who leave matches before they end. Despite these minor issues, the game is dangerously addictive. Highly recommended. Final score: 9.5/10.\n",
-                  "truncated": false,
-                  "minutes_at_review": 13218
-                },
-                {
-                  "recommendationid": "230626055",
-                  "hours_at_review": 548.3,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "I spent 10€ for the first season pass and now in season 11 I am having 3 times the value in coins and all regular cosmetics from the battle passes. This shooter stands out for its fantastic gameplay feeling, great game modes and all combined with over the top team play elements and verticality in almost every map. Nothing I would ever regret to have spent my time in.",
-                  "truncated": false,
-                  "minutes_at_review": 32897
-                },
-                {
-                  "recommendationid": "230252762",
-                  "hours_at_review": 107.6,
-                  "voted_up": true,
-                  "date": "2026-07-11",
-                  "review_text": "good game good company and its free. haven't spent a dollar and i've been able to get a few premium battle passes free",
-                  "truncated": false,
-                  "minutes_at_review": 6454
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-1507e2ae",
+          "text": "One reviewer states that buying the battle pass gives you enough in-game currency to buy the next pass and some extra.",
+          "theme": "monetization",
+          "citation": {
+            "recommendationid": "241398391",
+            "hours_at_review": 1821.7,
+            "minutes_at_review": 109301,
+            "voted_up": true,
+            "date": "2026-11-24",
+            "review_text": "Great game! Been playing since the beta three years ago. I love the fact buying a battle pass gives you enough in game currency to buy the next pass and some extra. The art team does a fantastic job with these skins too. See you next time in...THE FINALS.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-a6c4f6f8",
+          "text": "One reviewer reports that the stickers and 2D art are mostly AI generated.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "238992314",
+            "hours_at_review": 141.3,
+            "minutes_at_review": 8481,
+            "voted_up": false,
+            "date": "2026-10-31",
+            "review_text": "it is a disappointing game, the game play isn't boring or anything , the battle pass or whatever is OK , but why did they have to make it AI , i culd ignore the voices and commentators that are AI but it hurts to look at the stickers and 2D art which is mostly Ai generated , it culd be a good or very good game but now i see it as a pile of AI trash",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 30,
-        "cited_recommend": 14,
-        "divergence_p": 0.00135,
+        "cited_reviews": 8,
+        "cited_recommend": 5,
+        "divergence_p": 0.336,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1682,
-    "steam_total_reviews": 156382,
+    "pool_n": 1658,
+    "steam_total_reviews": 161640,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2073850/61f55ef49a74c76bf9fda9ec35bc3101eeee2b3e/header.jpg?t=1787220389",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2073850/9adb8c82f6c262d024dc462904099a2041f2a030/capsule_231x87.jpg?t=1787220389",
-    "grid": "https://cdn2.steamgriddb.com/grid/a220b18f7302ecd6c80092293dec3138.png"
   }
 }

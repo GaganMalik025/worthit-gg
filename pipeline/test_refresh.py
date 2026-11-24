@@ -267,8 +267,46 @@ def test_run_title_records_only_what_ran():
 
             run_batch.run_title({"appid": 78, "title": "N"}, state,
                                 SimpleNamespace(reserve=100, no_gate=False, refresh=False))
+
             check("a normal batch title keeps the segmentation gate on",
                   calls[-1].get("segmentation_gate") is True, calls[-1])
+
+            # a failed stage keeps its error, redacted (owner, 2026-11-25)
+            fake_key = "AQ.Ab12Cd34Ef56Gh78Ij90"
+            fake_generate.result = (False, {
+                "published": False, "outcome": "stage_failed", "stage": "extract",
+                "model_calls": 5,
+                "stderr": "Traceback...\n  key=%s\n  env-secret=plainSecretValue99\n"
+                          "google.genai.errors.ServerError: 503 UNAVAILABLE. "
+                          "The model is overloaded.\n" % fake_key})
+            out = io.StringIO()
+            with patched(run_batch, _secrets=lambda: ["plainSecretValue99"]), \
+                 contextlib.redirect_stdout(out):
+                run_batch.run_title({"appid": 79, "title": "F"}, state, args)
+            rec = state["titles"]["79"].get("stderr", "")
+            check("a stage failure keeps its error in the record",
+                  "503 UNAVAILABLE" in rec, state["titles"]["79"])
+            check("a key-shaped string is redacted from the record",
+                  fake_key not in rec and "[REDACTED]" in rec, rec)
+            check("an exact secret from .env is redacted from the record",
+                  "plainSecretValue99" not in rec, rec)
+            check("the log line shows the stage and the error",
+                  "extract: google.genai.errors.ServerError: 503 UNAVAILABLE" in out.getvalue(),
+                  out.getvalue())
+            check("the log line never carries the key",
+                  fake_key not in out.getvalue() and "plainSecretValue99" not in out.getvalue(),
+                  out.getvalue())
+            check("the saved state file carries no key",
+                  fake_key not in state_path.read_text() and
+                  "plainSecretValue99" not in state_path.read_text())
+
+    with patched(generate_one, _dotenv=lambda *a, **k: {"GEMINI_API_KEY": "fromDotenv12345",
+                                                       "SITE_NAME": "notASecret123"}):
+        secrets = run_batch._secrets()
+    check("the secrets to redact include the .env key",
+          "fromDotenv12345" in secrets, secrets)
+    check("  but not a .env value whose name is not a key, token or secret",
+          "notASecret123" not in secrets)
 
     # the flag run_title relies on comes from generate() itself
     with patched(live_quota, load=lambda *a, **k: {},
