@@ -1,51 +1,61 @@
 {
   "appid": "1240440",
   "game_name": "Halo Infinite",
-  "generated_at": "2026-08-12T10:09:59Z",
+  "generated_at": "2026-11-25T11:25:17Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240440/2262ffb4f1659df1c1cbf2c70af40560b4fa12e4/header.jpg?t=1774464322",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240440/9d64f5027f08e849ed1369f98b22326e2377b2b7/capsule_231x87.jpg?t=1774464322",
+    "grid": "https://cdn2.steamgriddb.com/grid/5e6f4ecb84c2cef4254267d8479a3fb4.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 23,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Classic gunplay trapped behind frustrating login loops and performance stutters.",
+    "tagline": "Classic gunplay held back by endless login loops and sparse worlds.",
     "for_you_if": [
-      "you want fast multiplayer gunplay and fluid movement",
-      "you enjoy exploring open world sci-fi environments"
+      "you want familiar sandbox combat",
+      "you are willing to wait for matches"
     ],
     "not_for_you_if": [
-      "you will not deal with forced Microsoft account sign-ins",
-      "you need stable frame rates during intense firefights",
-      "you dislike aggressive in-game monetization systems"
+      "you will not deal with account login loops",
+      "you expect split-screen campaign co-op",
+      "you want dynamic open world content"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 106,
-      "pct_positive": 28.3,
+      "pool_n": 109,
+      "pct_positive": 33.0,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 354,
-      "pct_positive": 70.6,
+      "pool_n": 342,
+      "pct_positive": 67.3,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 280,
-      "pct_positive": 63.6,
+      "pool_n": 265,
+      "pct_positive": 60.4,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 160,
-      "pct_positive": 70.0,
+      "pool_n": 184,
+      "pct_positive": 72.3,
       "muted": false
     }
   ],
@@ -54,50 +64,45 @@
       "flag_id": "cohort_divergence",
       "type": "segmentation",
       "direction": null,
-      "shape": "rise_then_fall",
-      "sentence": "Review sentiment rises past the initial hours before dipping during mid game progression and recovering among long term players.",
+      "shape": "mixed",
+      "sentence": "Player sentiment improves steadily the longer they spend with the game, moving from harsh initial technical friction to more favorable long-term views.",
       "evidence": {
         "sequence": [
           {
             "cohort": "refund_window",
             "label": "under 2 hours",
-            "pct_positive": 28.3,
-            "pool_n": 106
+            "pct_positive": 33.0,
+            "pool_n": 109
           },
           {
             "cohort": "early",
             "label": "2-20 hours",
-            "pct_positive": 70.6,
-            "pool_n": 354
+            "pct_positive": 67.3,
+            "pool_n": 342
           },
           {
             "cohort": "mid",
             "label": "20-100 hours",
-            "pct_positive": 63.6,
-            "pool_n": 280
+            "pct_positive": 60.4,
+            "pool_n": 265
           },
           {
             "cohort": "veteran",
             "label": "over 100 hours",
-            "pct_positive": 70.0,
-            "pool_n": 160
+            "pct_positive": 72.3,
+            "pool_n": 184
           }
         ],
-        "shape": "rise_then_fall",
+        "shape": "mixed",
         "low_cohort": "refund_window",
         "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 28.3,
-        "low_pool_n": 106,
-        "high_cohort": "early",
-        "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 70.6,
-        "high_pool_n": 354,
-        "gap_pts": 42.3,
-        "peak_cohort": "early",
-        "peak_pct_positive": 70.6,
-        "post_peak_low_cohort": "mid",
-        "post_peak_low_pct_positive": 63.6,
-        "drop_after_peak_pts": 7.0
+        "low_pct_positive": 33.0,
+        "low_pool_n": 109,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 72.3,
+        "high_pool_n": 184,
+        "gap_pts": 39.3
       }
     }
   ],
@@ -106,50 +111,124 @@
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 106,
-      "pct_positive": 28.3,
+      "pool_n": 109,
+      "pct_positive": 33.0,
       "muted": false,
       "n_note": null,
-      "summary": "Early players struggle with account login failures, menu loading locks, and locked campaign content.",
+      "summary": "Players hit immediate roadblocks with login loops, startup crashes, and mandatory account sign-ins.",
       "themes": [
         {
           "theme": "access",
           "claims": [
             {
-              "claim_id": "ref-b10603",
-              "claim": "Reviewers experience login failures and errors preventing them from signing into their Xbox or Microsoft accounts to start the game.",
+              "claim_id": "ref-1deaf1",
+              "claim": "Reviewers report getting stuck in an infinite loop or experiencing errors when attempting to log into Xbox Live.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "232087572",
-                  "hours_at_review": 1.9,
+                  "recommendationid": "239504396",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 6,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "\"Sign in to play\" Okay I'll sign in. \"Failed to sign in.\" Okay I'll try every troubleshooting solution I can find online. Nope, doesn't work. A whopping 112 minutes \"played\" in the damned loading screen and broken sign in menu.",
-                  "truncated": false,
-                  "minutes_at_review": 112
+                  "date": "2026-11-06",
+                  "review_text": "The game take 5 minutes to load, then infinitely cycles through login page. Legit cant even play the game... dont waste your time downloading it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229022128",
-                  "hours_at_review": 0.6,
+                  "recommendationid": "237521876",
+                  "hours_at_review": 1.6,
+                  "minutes_at_review": 97,
                   "voted_up": false,
-                  "date": "2026-06-28",
-                  "review_text": "Failure to log into XBoxLive, stuck in login loop where the login prompt does not show up. Every workaround looked up online does nothing to fix , no amount of restarting XboxLive services, clearing credentials, clearing steam browser cache does anything to allow me to log in.. Waste of my time.",
-                  "truncated": false,
-                  "minutes_at_review": 33
+                  "date": "2026-10-12",
+                  "review_text": "the game became unplayable due to a continuous xbox live login error loop. start game, error on attempt to login, get told to login, login, loads, error on attempt to login. refunded it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "228597119",
-                  "hours_at_review": 1.1,
+                  "recommendationid": "233248881",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 53,
                   "voted_up": false,
-                  "date": "2026-06-22",
-                  "review_text": "Game is unplayable. I can't even get signed in to even start the game. I've googled and tried all the workarounds and even what the official website said to do. Game came out in 2021 and they still can't fix basic ♥♥♥♥ like this.",
-                  "truncated": false,
-                  "minutes_at_review": 65
+                  "date": "2026-08-20",
+                  "review_text": "This is the worst experience from such a franchise.\r\nWhat on actual f**** are these DEVS up to.\r\nThe loading screen takes Infinite time, its freakin stuck with a message \"PROFILE ERROR (Please login you Xbox Live Account\"\r\n\r\nEvery thisg is fked up logged in and yet this is a loop I am stuck goodness grace. Eventually my day is ruined and I am hitting Uninstall since masacring the internet watching guides and reading discussion turnns out THERES NO FREAKIN SOLUTION FOR THIS.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232869943",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 48,
+                  "voted_up": false,
+                  "date": "2026-08-15",
+                  "review_text": "There was an issue looking up your account. Tap next to try again.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-8dd9b7",
+              "claim": "Reviewers report that the game requires signing into an Xbox Live or Microsoft account to play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 6
+              },
+              "citations": [
+                {
+                  "recommendationid": "235999462",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 24,
+                  "voted_up": false,
+                  "date": "2026-09-24",
+                  "review_text": "You CAN NOT play this game without a microsoft account. You can create one, but you will still have to link it to a \"valid\" email address from a major vendor. Nothing free wise. So you simply can't just PLAY THE GAME YOU PAID FOR. FUCK YOU.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235515495",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 11,
+                  "voted_up": false,
+                  "date": "2026-09-18",
+                  "review_text": "Apparently this gam just doesn't work for a lot of people (including me) on steam. Umm so I keep getting the \"log into Xbox live\" message even though there is no option to do so. I am logged into Xbox on my pc and other Xbox games such as fh5 and fh6 work perfectly fine. So I look it up to find no fixes with what little searching I dd and at this point I lost all interest. Xbox fix your game, other titles work fine I don't see why this one doesn't.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "235449381",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 10,
+                  "voted_up": false,
+                  "date": "2026-09-17",
+                  "review_text": "can't play without joining to the xbox acc",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "234423170",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 19,
+                  "voted_up": false,
+                  "date": "2026-09-04",
+                  "review_text": "Download Game\nPlease Log In to XBOX Live - literally no prompt whatsoever to log in\nRelaunch -> \nRepeat -> Repeat\n\nOkay. No Halo Infinite I guess.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232974047",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 23,
+                  "voted_up": false,
+                  "date": "2026-08-16",
+                  "review_text": "Can't even start this trash.\nXbox account is connected to Steam.\nTells me to Sign In. But the game doesn't detect me clicking at the sign in window, it just treats it as if I just pressed Enter again and spits out an error. One time it managed to get me to log in window, and it failed to log me in.\nAbsolute piece of trash, but what can we expect from 343 industries... no, I'm still not calling you hacks \"Halo Studios\", you don't know what Halo even is.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232156078",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 22,
+                  "voted_up": false,
+                  "date": "2026-08-06",
+                  "review_text": "I CANT EVEN PLAY THIS BITCH ASS GAME!! IT WONT EVEN LET ME SIGN IN TO MY XBOX LIVE ACCOUNT BITCH ASS GAME. PLAYSTATION IS BETTER!!!!!!!!!!!!!!!!!!",
+                  "truncated": false
                 }
               ]
             }
@@ -159,95 +238,109 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "ref-909fb5",
-              "claim": "Reviewers report getting stuck in loading screens or login loops at the main menu.",
+              "claim_id": "ref-d52e50",
+              "claim": "Reviewers experience startup crashes or failures to launch the game.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "231866063",
-                  "hours_at_review": 0.3,
+                  "recommendationid": "239832534",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 14,
                   "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Jesus Christ I can't even play. Just endless loading screens on every menu.\n\nI shouldn't  have to find so many work-arounds to play a game.",
-                  "truncated": false,
-                  "minutes_at_review": 19
+                  "date": "2026-11-10",
+                  "review_text": "Crashes on startup. If the game has been out since 2021 this shouldn't be an issue.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229311277",
-                  "hours_at_review": 0.2,
+                  "recommendationid": "237986093",
+                  "hours_at_review": 0.5,
+                  "minutes_at_review": 27,
                   "voted_up": false,
-                  "date": "2026-07-01",
-                  "review_text": "Stuck on the main menu in a sign in loop. 0/10",
-                  "truncated": false,
-                  "minutes_at_review": 12
+                  "date": "2026-10-18",
+                  "review_text": "WONT EVEN GET PASSED THE START GAME SCREEN",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "228098530",
-                  "hours_at_review": 0.2,
+                  "recommendationid": "236539474",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 38,
                   "voted_up": false,
-                  "date": "2026-06-16",
-                  "review_text": "cant play because of xbox sign in loop",
-                  "truncated": false,
-                  "minutes_at_review": 12
+                  "date": "2026-09-30",
+                  "review_text": "I wouldn't recommend buying this product unless you have a fix to prevent the start up screen from crashing. Believe when I say I tried to make it work.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236146086",
+                  "hours_at_review": 1.9,
+                  "minutes_at_review": 117,
+                  "voted_up": false,
+                  "date": "2026-09-25",
+                  "review_text": "Game attempts to  launch then gives the error \" can't start game \"  Absolutely pathetic.",
+                  "truncated": false
                 }
               ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
+            },
             {
-              "claim_id": "ref-2262d5",
-              "claim": "Reviewers describe the campaign and certain game modes or customization options as locked behind paywalls or separate purchases.",
+              "claim_id": "ref-a3eb4b",
+              "claim": "Reviewers describe lengthy loading screens upon starting the game.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
-                "negative": 3
+                "negative": 4
               },
               "citations": [
                 {
-                  "recommendationid": "232149560",
-                  "hours_at_review": 1.2,
+                  "recommendationid": "241518263",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 42,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "Biggest mistake was making MP free so they resulted to battle passes and making the main game DLC.",
-                  "truncated": false,
-                  "minutes_at_review": 74
+                  "date": "2026-11-24",
+                  "review_text": "An absolute dumpster fire spend more time in lobbies and loading screens a gamers worst nightmare endless loading screens and no gameplay not surprising for such a game considering the past titles this is halo not call of duty.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232005876",
-                  "hours_at_review": 1.2,
+                  "recommendationid": "239504396",
+                  "hours_at_review": 0.1,
+                  "minutes_at_review": 6,
                   "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "Played this game to get used to using an xbox controller, as I have been a proud Playstation owner for many years now. It was free and a FPS shooter, perfect for practice. That's it. Other than that it is a dead game with one objective and I couldn't even play past one game mode as all the cool looking ones were locked behind a paywall. And having already spent 60 quid on a controller I no longer use as it sadly developed early age stick drift, and GAME refused to take it back, I didn't feel like spending more on a game I view as merely practise. The best way to describe Halo Infinite from my personal experience is eating dinner at your mate's house and pretending you like his mum's cooking. Should've played Splitgate instead. Can't imagine the player base even exists on either games anymore. Corporal out.",
-                  "truncated": false,
-                  "minutes_at_review": 70
+                  "date": "2026-11-06",
+                  "review_text": "The game take 5 minutes to load, then infinitely cycles through login page. Legit cant even play the game... dont waste your time downloading it",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229984289",
-                  "hours_at_review": 1.0,
+                  "recommendationid": "235105589",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 16,
                   "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "Used to be my favorite game to play on Xbox game pass came to steam and i gotta pay for campaign im not playing till i have campainign ill play smth else like splitgate",
-                  "truncated": false,
-                  "minutes_at_review": 59
+                  "date": "2026-09-12",
+                  "review_text": "Nothing quite kills the excitement of launching a new game like a 10 minute loading screen, signing into Microsoft, a wave of notifications I know nothing about, a menu packed with things I don't care about, then the game crashing during the lengthy opening cinematic. Too bad.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "232615162",
+                  "hours_at_review": 0.3,
+                  "minutes_at_review": 17,
+                  "voted_up": false,
+                  "date": "2026-08-11",
+                  "review_text": "Game is unstable in multiplayer on PC, I have a better time playing this on Xbox. Also I had to watch one of my PlayStation clips before I could load in because of the freaking loading times! What shaders is this thing running?? Play on consoles AND NOT PC, I looked up why it's loading times suck and it's because of the shaders. Good game, but play it on console unless you have a good PC, and I have a decent one. Only mode I even able to play was Academy, no I'm serious I wasn't kicked out of Academy. Gunplay and TTK are good but I never played PvP because I suck at Halo PvP, one cool thing is the customization, so many options and ways to make your custom Spartan look how YOU want! The mouse movement isn't the best because it's kind of slow in normal settings but changing to roughly 4 was better because I could aim faster and still shoot targets good. Overall get this game on console and not on PC unless your specs are in the middle or maximum, you'll have a better time playing on this platform than me, also the amount of daily players in 24 hour peaks on Steam isn't good there's roughly around 1,600 players at peak moments, so if your friend played Halo Infinite and you wanna play with him he might not get on because the game had it's last update and it's bad in a lot of ways for certain people.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 9,
+        "cited_reviews": 17,
         "cited_recommend": 0,
-        "divergence_p": 0.0501,
+        "divergence_p": 0.0011,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -255,50 +348,41 @@
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 354,
-      "pct_positive": 70.6,
+      "pool_n": 342,
+      "pct_positive": 67.3,
       "muted": false,
       "n_note": null,
-      "summary": "Players enjoy open world exploration and gunplay while encountering account errors and aggressive monetization.",
+      "summary": "Players encounter match find delays alongside persistent account linkage loops.",
       "themes": [
         {
-          "theme": "content",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-ac6e1f",
-              "claim": "The campaign features an open world layout with natural-feeling environments, though some find traversal and map activities sparse or frustrating.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-8a2488",
+              "claim": "Reviewers describe encountering long waiting times and difficulty finding multiplayer matches.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 2,
+                "positive": 1,
                 "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "232611872",
-                  "hours_at_review": 5.1,
+                  "recommendationid": "240849895",
+                  "hours_at_review": 10.9,
+                  "minutes_at_review": 655,
                   "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "Its a great edition to the Halo franchise! \r\nI truly enjoy the open world aspect of the game and multi player feels more like it went back to its roots than a couple other games.",
-                  "truncated": false,
-                  "minutes_at_review": 304
+                  "date": "2026-11-23",
+                  "review_text": "There are better Halo's out there, but this does scratch my fps itch. Gunplay is fun and that feel good feeling whenever you're popping off in a match. Quite hard to find games, you'll be waiting awhile for a match. Cosmetic and battle pass system is predatory and every operation and season you previously didn't participate in is locked behind a paywall.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232375428",
-                  "hours_at_review": 13.6,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "I hear people are deriding this game. I don't know about multiplayer but open world feels natural for the Halo series, and the main missions are a return to form. The villains are pretty good, better than any of the previous games'. The gameplay is fluid and feels like old times. I've gotten several hours out of the campaign and feel that it's been worth my investment. I really like this direction for the series, and I hope later installments build on it without repeating it.\r\n\r\nAs with many open world shooters, the respawning enemies in areas I've already cleared is annoying, and collectables are always frustrating when it's not clear where they all are. I don't like having to double back to pick up upgrades.\r\n\r\nI do wish air vehicles were available earlier in the game, there are some areas that are a huge pain in the butt to get to.\r\n\r\nI love being able to summon vehicles, tanks, and guns that I like from the FOB's instead of having to hunt down the vehicle I want.",
-                  "truncated": false,
-                  "minutes_at_review": 814
-                },
-                {
-                  "recommendationid": "232151342",
-                  "hours_at_review": 14.3,
+                  "recommendationid": "238873345",
+                  "hours_at_review": 14.7,
+                  "minutes_at_review": 880,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "I cam back to this game years after release and finally beat the campaign. My initial stop was because I got so frustrated with an open world map where it seemed there was just so little actually going on in it. Transversal was just a pain in the butt and not fun.\r\n\r\nI also hated how this game, particularly in the end, turned into a bullet-sponge snooze fest.",
-                  "truncated": false,
-                  "minutes_at_review": 859
+                  "date": "2026-10-29",
+                  "review_text": "This game is ass cheeks. When it came out it was playable, by that I mean they had super fiesta and infection. They had other gamemodes but I wasn't into them. They then over the years decided \"you know what? let's just remove everything.\" So now you can count the number of gamemodes on your hands and none of them are good, and for the cherry on top, it's a long ass queue cuz nobody plays it, which is understandable. Also all of the armor and stuff looks incredibly gay and pretty much anything BUT Halo. I could see the armors in this game being from valorant way over being from anything Halo related.",
+                  "truncated": false
                 }
               ]
             }
@@ -308,8 +392,222 @@
           "theme": "access",
           "claims": [
             {
-              "claim_id": "ear-c89c91",
-              "claim": "The game encounters technical errors, startup failures, or login roadblocks related to Xbox Live account requirements.",
+              "claim_id": "ear-efb942",
+              "claim": "Reviewers report being stuck in sign-in or account linkage loops.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240145347",
+                  "hours_at_review": 8.1,
+                  "minutes_at_review": 486,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "stuck in sign in loop",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239261886",
+                  "hours_at_review": 15.0,
+                  "minutes_at_review": 899,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Stuck on that add an email to protect your account screen and nothing I do is working.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 1,
+        "divergence_p": 0.106,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 265,
+      "pct_positive": 60.4,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players face long ranked queues, progression blocking campaign bugs, and a sparse open world.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-6d37c3",
+              "claim": "Reviewers report lengthy wait times when attempting to find ranked multiplayer matches.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "241628061",
+                  "hours_at_review": 49.1,
+                  "minutes_at_review": 2947,
+                  "voted_up": false,
+                  "date": "2026-11-25",
+                  "review_text": "Games dead and abandoned. There is no more upcoming updates except \"SeAsOnS\" = season passes for you to waste your money on. \n\nTook me 39 minutes to find a ranked arena match with all regions selected. Don't waste your time on this BS. Halo is dead.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240379115",
+                  "hours_at_review": 24.3,
+                  "minutes_at_review": 1459,
+                  "voted_up": false,
+                  "date": "2026-11-16",
+                  "review_text": "Tardas más de 10min en encontrar partida en ranked solo para que te empareje con puro mandril",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "mid-d273fc",
+              "claim": "Reviewers encounter bugs in campaign co-op that block progression and force mission restarts.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240122238",
+                  "hours_at_review": 33.9,
+                  "minutes_at_review": 2031,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "This game was mildly okay on Solo, but its insanely bad but design wise and technical wise.  Was playing game on legendary in co-op with friend but we had to give up.  The difficulty is stupid 1st of all.  low shield upgrade you die near instantly, max shield upgrade you die near instantly knowing you maxed your shield.  Can't swap equipment half the time because the game bugs and prevents it. Had to restart multi missions due to bugs that blocked progression.  Eventually had to give up game and delete it on Silent Auditorium due to a progression blocker that refused to let us continue game despite us restarting the very hard mission 3x and check point a few times.  game is Trash. do NOT buy. the Devs rushed the game, stuffed crap into it with out testing, and will never fixed any bugs or issues ever since support dropped and studio shut down.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237504455",
+                  "hours_at_review": 20.7,
+                  "minutes_at_review": 1243,
+                  "voted_up": false,
+                  "date": "2026-10-11",
+                  "review_text": "Game respawns you at the beginning of mission, regardless of mission progress, and bricks itself forcing you to restart the entire mission.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "mid-04262e",
+              "claim": "Reviewers describe the open world as sparse and lacking meaningful content or dynamic evolution.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240672642",
+                  "hours_at_review": 28.8,
+                  "minutes_at_review": 1727,
+                  "voted_up": false,
+                  "date": "2026-11-21",
+                  "review_text": "It's a fun game just not handled well. Not a lot of games in my region, the content is sparse and I think largely community made. The ping's already ass, wait times are long, and once you get into a game it's mostly og players that'll plow right through you and it kills the experience. It's a shame the game kind of got abandoned to focus on a project that ended up killing the studio. But I think the worst parts of this game were because that studio was the one handling it, and this may be for the best.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239544420",
+                  "hours_at_review": 55.5,
+                  "minutes_at_review": 3330,
+                  "voted_up": false,
+                  "date": "2026-11-06",
+                  "review_text": "this game had a lot of potential to be an amazing game. gunplay is fun, the boss fights were an interesting and welcome addition. the story itself i think was good too, but it is the biggest what if\n\naside from the common complaints such as no forge, or co op campaign on release\n\nthe open world is bland and dead, not enough content for an open world story, the fight against the banished doesnt feel like any sort of resistance or war\n\nyou fight to get these tiny outposts and 6 marines sit around and do nothing unless you get a vehicle and bring them to the fight, other than that everything you do doesnt help the way the world evolves\n\ndefinitely not worth the money you pay, because it feels unfinished.. but the content that was there was very good and absolutely could have been one of the great ones 343 put out.\n\nbut they suck and switched up saying they never had any plans for expanding on the campaign, and instead focused on moneygrab multiplayer, but multiplayer is ok.. definitely gotten a following and most certainly worth playing since its free",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 6,
+        "cited_recommend": 0,
+        "divergence_p": 0.00386,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 184,
+      "pct_positive": 72.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players note missing split-screen features, microtransaction paywalls, cheaters, and authentication failures.",
+      "themes": [
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-7e299b",
+              "claim": "Reviewers report that the campaign lacks split-screen co-op.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "241610217",
+                  "hours_at_review": 709.2,
+                  "minutes_at_review": 42550,
+                  "voted_up": true,
+                  "date": "2026-11-25",
+                  "review_text": "Loved being able to play a new HALO. Does it beat the original trilogy? No. But it comes back to the roots better than 4 and 5. I love the new equipment (like the grappleshot turning master chief into basically spider-man) and new weapons. An Open-world map means tons of room for exploring and customization. \r\n\r\nThat said, I think it might be dying as there hasn't been a new battle pass released in a long time. There are parts of the map that aren't grapple-able, but they look identical to the places that are. I'd love to see all surfaces allow for grappling. I would also love for campaign customization. Being able to play the campaign with my own armor would be peak! Also, split-screen campaign. c'mon guys. It's been a staple of nearly every halo installment. Please add it! \r\n\r\nOverall, a solid game for the HALO franchise, but I would wait until a sale.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "236117780",
+                  "hours_at_review": 393.4,
+                  "minutes_at_review": 23606,
+                  "voted_up": true,
+                  "date": "2026-09-25",
+                  "review_text": "Honestly the gold standard for all first person shooters. Great to play with friends of any skill level. Campaign was abysmal and absolutely not worth even half their asking price, but the free multiplayer experience makes up for it. Kind of wild there's no local multiplayer but alas that is the way of modern gaming.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "vet-176576",
+              "claim": "Reviewers experience persistent log-in loops or authentication failures involving the Xbox app when trying to start the game.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -317,31 +615,74 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232007692",
-                  "hours_at_review": 16.6,
+                  "recommendationid": "238522675",
+                  "hours_at_review": 114.6,
+                  "minutes_at_review": 6877,
                   "voted_up": false,
-                  "date": "2026-08-04",
-                  "review_text": "My game has a error when i launch the game.",
-                  "truncated": false,
-                  "minutes_at_review": 995
+                  "date": "2026-10-25",
+                  "review_text": "The devs don't want you to play the game unfortunately, don't bother buying it. Me and multiple other people try and log in, only to have to sign in AGAIN through the miserable xbox app. \"please sign in\" --> \"there was a problem signing in\" repeat. You literally can't launch the game and play it because they want you to sign into their pathetic system. Don't buy a game you can't play!",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231940942",
-                  "hours_at_review": 7.1,
+                  "recommendationid": "236282232",
+                  "hours_at_review": 175.7,
+                  "minutes_at_review": 10542,
                   "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "game doesnt even work i tried coming back to it after a year but every time i try to start the game it tells me i have to be signed in to an xbox live account....so i signed in to my account and the game still doesnt work so yeah if it works for you great but a game thats been out this long having this stupid of an issue is just complete bull i give it a straight 0 outta 10",
-                  "truncated": false,
-                  "minutes_at_review": 424
+                  "date": "2026-09-27",
+                  "review_text": "I would've upvoted, but I literally hate having to type my microsoft password every time I login. Its like they don't want people to play it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231522027",
-                  "hours_at_review": 7.5,
+                  "recommendationid": "235306124",
+                  "hours_at_review": 109.0,
+                  "minutes_at_review": 6540,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Used to be good\nUsed to be fun with friends\nCampaign Overpriced \nNow requires an Xbox Live Account\nNow has Kernel Level Anti-Cheat",
-                  "truncated": false,
-                  "minutes_at_review": 453
+                  "date": "2026-09-15",
+                  "review_text": "game used to be pretty good, and then an update broke the game where it wont even let me log into my xbox account anymore, just an infinite loop of \"press enter to start\" and \"log in to your xbox account\" while im actively looking at my xbox profile in the app on my second screen, still not fixed months later. ive tried every suggestion i can find on google, and now im done beating my head against the wall trying to get this busted shit to run. save your disk space.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "monetization",
+          "claims": [
+            {
+              "claim_id": "vet-dc200a",
+              "claim": "Reviewers note that armor and other customization items are locked behind paywalls or microtransactions.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "239739932",
+                  "hours_at_review": 541.7,
+                  "minutes_at_review": 32503,
+                  "voted_up": true,
+                  "date": "2026-11-08",
+                  "review_text": "This game is sooooo wassssshhhhedd. the multiplayer was goated(not as goated as halo 5 super fiesta), forge mode was legendary, custom games was absolute peak and it was all ruined by battle passes, paywalled cosmetics, the drip feeding of content, no spartan laser, no mantis, the banshee and falcons controls were trash, a lack of new proper maps and the gutting/inevitable layoffs at 343 where at the end of it all was nothing but a skeleton crew working on Halo Infinite. Microsoft stay taking L's. The next campaign better not be some undersaturated half baked open world.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238958718",
+                  "hours_at_review": 320.5,
+                  "minutes_at_review": 19231,
+                  "voted_up": false,
+                  "date": "2026-10-30",
+                  "review_text": "open halo infinite, look at spartans, look at armour i can't afford for a few hours, close game",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238144437",
+                  "hours_at_review": 163.7,
+                  "minutes_at_review": 9824,
+                  "voted_up": true,
+                  "date": "2026-10-20",
+                  "review_text": "armor customization locked behind paywall, but fun halo game",
+                  "truncated": false
                 }
               ]
             }
@@ -351,263 +692,8 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ear-2f5d3d",
-              "claim": "The multiplayer offers enjoyable gunplay and fluid movement mechanics, though some report long waiting times for matchmaking or customization.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232365012",
-                  "hours_at_review": 4.1,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "This game really captures the essence of the franchise and has a loyal fanbase, but there's a bit of a wait to join a match, The gameplay is enjoyable, just like any Halo game, but it could use more updates",
-                  "truncated": false,
-                  "minutes_at_review": 247
-                },
-                {
-                  "recommendationid": "231444077",
-                  "hours_at_review": 6.8,
-                  "voted_up": true,
-                  "date": "2026-07-27",
-                  "review_text": "Enjoying every match..just hate long waiting times for customizations",
-                  "truncated": false,
-                  "minutes_at_review": 405
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ear-0937e7",
-              "claim": "The in-game shop and battle pass system are criticized as overly aggressive monetization.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232611226",
-                  "hours_at_review": 5.3,
-                  "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "playing this game feels like driving a mercedes\nextremely smooth, very intuitive, everything feels great\nbut man do they have a hand in your wallet at every turn\nmy advice? don't buy a battle pass, don't spend a dime beyond what you paid for the campaign\njust play halo and have fun, it nails that",
-                  "truncated": false,
-                  "minutes_at_review": 318
-                },
-                {
-                  "recommendationid": "231792324",
-                  "hours_at_review": 17.9,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I mean it's alright, can't care less for the multiplayer anymore, campaign was waisted potential, the pve customs and forge modes are the best part of the game. The shop is a mess.",
-                  "truncated": false,
-                  "minutes_at_review": 1076
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-0cd457",
-              "claim": "Final campaign missions can encounter bugs that prevent progression.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231770008",
-                  "hours_at_review": 16.7,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "what an absolute piece of ♥♥♥♥ game (campaign).\n\nnothing about it is right or feels good. the ammo system is really bad. most of the guns are really bad. for some reason the vehicles feel significantly worse. in an absolutely beautiful fiasco, the final missions of the game are just completely bugged out and have the potential of just... not working for you at all? which is exactly what I wanted after almost 17 hours of absolute refuse being poured into my brain.\n\nweapon (the character) evokes absolutely no emotion, and is extremely quirk chungus. the cortana flashbacks are sleazy and too on the nose — we have done the whole freaked out boymom cortana created for gooners in halo 4 (which is also complete and total ass) and are now circling it but in slight attempts to make her \"creepy\" (they fail). they also reuse the same ♥♥♥♥♥♥♥ cortana plotline for what I think is the third? time in the franchise, and at this point it is just frankly annoying. omg she's gone 😱😱😱 she got corrupted bc of rampancy and now she's gone 😱😱😱 \"omg master chief you friendless loser, why would you try to delete me like this\" I DON'T CARE! \n\n343 industries is genuinely not a serious company, full of not serious people.",
-                  "truncated": false,
-                  "minutes_at_review": 1000
-                },
-                {
-                  "recommendationid": "232611226",
-                  "hours_at_review": 5.3,
-                  "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "playing this game feels like driving a mercedes\nextremely smooth, very intuitive, everything feels great\nbut man do they have a hand in your wallet at every turn\nmy advice? don't buy a battle pass, don't spend a dime beyond what you paid for the campaign\njust play halo and have fun, it nails that",
-                  "truncated": false,
-                  "minutes_at_review": 318
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 11,
-        "cited_recommend": 6,
-        "divergence_p": 0.197,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "mid",
-      "label": "20-100h",
-      "hours_range": "20-100 hours",
-      "pool_n": 280,
-      "pct_positive": 63.6,
-      "muted": false,
-      "n_note": null,
-      "summary": "Longer sessions reveal bland open world design, crashing issues, and mandatory account login hurdles.",
-      "themes": [
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "mid-3c27f9",
-              "claim": "Reviewers experience login loops or issues where the game fails to recognize or sign into an Xbox account to play.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "232445677",
-                  "hours_at_review": 44.6,
-                  "voted_up": false,
-                  "date": "2026-08-09",
-                  "review_text": "Tried to comeback and give it a try and it wont even load up. Some kind of login error loop where it wont let me login nor play. This game is too old for this kind of silliness. Cant recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 2675
-                },
-                {
-                  "recommendationid": "231694770",
-                  "hours_at_review": 51.5,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "Would have been fun to play, but for 2 years I haven't been able to get the XBOX sign in menu, so for SOME REASON it forgot my Xbox account, and just fully installed the game so this has been happening now since aprox 9/14/2023? i haven't been able to play, because it requires me to sign into XBOX. it doesn't give the ability to sign in, it just repeats the menu, I have deleted my STEAM web Cache, I have deleted my Xbox game credentials from my pc, I have signed OUT and INTO Microsoft store, Xbox App, Xbox Game Bar. I CAN sign into COMBAT EVOLVED, but not INFINITE...",
-                  "truncated": false,
-                  "minutes_at_review": 3090
-                },
-                {
-                  "recommendationid": "231603843",
-                  "hours_at_review": 43.4,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "I am trying to replay this game for the first time after years. It's almost taken more time trying to log in than download. It's bad enough they make you log into xbox to play SINGLEPLAYER, but at least make it so your stuff doesn't glitch out when I am trying to log in...",
-                  "truncated": false,
-                  "minutes_at_review": 2602
-                },
-                {
-                  "recommendationid": "231166144",
-                  "hours_at_review": 57.2,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "GAME DOES NOT WORK ANYMORE, CANT SIGN INTO XBOX ACC. TRIED EVERY POSSIBLE FIX. \n\n\nUPDATE, I had to go into steam settings and turn on GPU accelerated web rendering and this fixed it for anyone else struggling.",
-                  "truncated": false,
-                  "minutes_at_review": 3434
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-b6b26e",
-              "claim": "Reviewers state that the game requires signing into a Microsoft or Xbox account even to play the single-player campaign.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231603843",
-                  "hours_at_review": 43.4,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "I am trying to replay this game for the first time after years. It's almost taken more time trying to log in than download. It's bad enough they make you log into xbox to play SINGLEPLAYER, but at least make it so your stuff doesn't glitch out when I am trying to log in...",
-                  "truncated": false,
-                  "minutes_at_review": 2602
-                },
-                {
-                  "recommendationid": "231225737",
-                  "hours_at_review": 25.4,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "I played only the solo campaign, and only after going through the whole Master Chief Collection. In my opinion, it is the best way to have a great time in this game. An important note: do not go head-on into story missions only. The story, gameplay, and graphics are really satisfying. The grappling hook is good, but I miss the dual-wielding option for light guns.The bad side is that even for the story part of the game, you have to log in to an active Microsoft account. But it is the same story with the Master Chief Collection; you just have to accept this dark side of Microsoft.I would not even try multiplayer; it is pointless. It is better to try co-op in story mode.\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 1526
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "mid-26f6fe",
-              "claim": "Reviewers describe the open world as repetitive, empty, bland, and generic, featuring the same repetitive activities like capturing bases and destroying outposts.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "232371692",
-                  "hours_at_review": 75.0,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "Hey kiddo, Handsome Jack here... and I just played Halo Infinite, and honestly? It's pretty good. Not amazing, not terrible, just good. You get to play as Master Chief, drive around a giant alien ring, shoot aliens, blow things up, and swing around with a grappling hook like a very angry green Spider-Man. And I'll admit, that's pretty fun.\n\nThe gunplay is still fantastic, the weapons feel great, and driving a Warthog into a group of unsuspecting aliens never gets old. The open world is fun for a while too, but eventually you start noticing that you're doing the same things over and over again. Capture this base, destroy that outpost, rescue these guys, shoot those guys. At some point you're just driving around thinking, “Wait, haven't I already done this?”\n\nThe story is decent, the characters are fine, and Master Chief is still Master Chief, so obviously there's some quality control happening somewhere. But it also feels like there was a much bigger game hiding in here that never quite showed up. There's plenty to enjoy, but not enough that made me sit there thinking, “Wow, I NEED to keep playing this.”\n\nSo yeah, kiddo, 7/10. It's fun, it looks good, the shooting feels great, and occasionally you get to do something ridiculously cool. But it's not exactly the second coming of gaming. It's more like the gaming equivalent of a perfectly acceptable sandwich. You'll eat it, you'll enjoy it, and then five minutes later you'll wonder why you didn't order something better.\n\nStill, not bad.\n\nAnd that's coming from me, so you know I'm being incredibly generous.",
-                  "truncated": false,
-                  "minutes_at_review": 4503
-                },
-                {
-                  "recommendationid": "231534652",
-                  "hours_at_review": 26.1,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "It's easy to see why halo infinite failed, it's just so empty.",
-                  "truncated": false,
-                  "minutes_at_review": 1564
-                },
-                {
-                  "recommendationid": "231622717",
-                  "hours_at_review": 21.4,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "The only good thing I can say is that the core gameplay is fun and responsive. On the other hand:\n- bland and generic open world\n- coop borderline unplayable due to bugs\n- a story not worthy of that name\n\nThe worst Halo game.",
-                  "truncated": false,
-                  "minutes_at_review": 1285
-                },
-                {
-                  "recommendationid": "231553240",
-                  "hours_at_review": 60.4,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "(Realistically this is a more mixed review but ill overall put it negative ig)\n\nUnlike H4 & 5, Infinite is actually fun to play! Great core gameplay here and the grappleshot is a lot of fun to use. The return to the classic art style, tone and music is a breath of fresh air, and the game distancing itself from the awful narrative of H5 and retconning a lot of it is also totally welcome. Unfortunately the actual story this game tells is very underwhelming, with no compelling stakes or interesting villains. The linear missions are also incredibly generic, and lack variety and have almost no set pieces. The open world is fun to run around and vibe in, but i wouldve traded it all for a more traditional Halo experience with a more well rounded story and missions.",
-                  "truncated": false,
-                  "minutes_at_review": 3623
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "mid-a678b2",
-              "claim": "Reviewers report crashing issues, connection failures, poor performance, and glitching menus and cosmetics.",
+              "claim_id": "vet-17d264",
+              "claim": "Reviewers describe encountering cheaters in multiplayer matches who use wallhacks or aim assistance.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -615,348 +701,72 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232532738",
-                  "hours_at_review": 26.7,
+                  "recommendationid": "239607965",
+                  "hours_at_review": 156.7,
+                  "minutes_at_review": 9401,
                   "voted_up": false,
-                  "date": "2026-08-10",
-                  "review_text": "unplayble cant go with out crashes or connetion issues  and runs poorly the menus and cosmetics glich out.",
-                  "truncated": false,
-                  "minutes_at_review": 1602
+                  "date": "2026-11-07",
+                  "review_text": "Halo Infinite could have been a genuinely great multiplayer experience, but the hacking problem makes it an absolute joke.\r\n\r\nThere is nothing enjoyable about loading into a match, trying to have a legitimate gunfight, and getting completely destroyed by someone who apparently has the ability to see through walls, track your every movement, and land shots that should be physically impossible.\r\n\r\nAt some point, you stop questioning whether the enemy is actually good and start wondering which cheat program they decided to use today. It is ridiculous that legitimate players have to deal with this garbage while trying to enjoy a game they actually want to play.\r\n\r\nHalo has always been about competitive multiplayer, memorable gunfights, and having a good time with friends. Instead, matches can feel like a competition between people actually playing the game and people who apparently need a computer to play it for them.\r\n\r\nIt is genuinely disappointing seeing a franchise like Halo end up in this state. I should be getting killed because someone outplayed me, not because they have the combined eyesight of a satellite and the aiming ability of a military targeting system.\r\n\r\nUntil the cheating situation is properly addressed, I have very little interest in wasting my time here. Absolutely pathetic.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231670814",
-                  "hours_at_review": 27.2,
+                  "recommendationid": "237169088",
+                  "hours_at_review": 741.8,
+                  "minutes_at_review": 44507,
                   "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "The menu is the worst designed thing I've ever seen.\nHorribly optimised game with known technical issues that will never be solved.\nOtherwise fun.",
-                  "truncated": false,
-                  "minutes_at_review": 1631
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-bf2eaa",
-              "claim": "Reviewers state that the game drops frames during traversal and suffers from poor hardware optimization.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231184505",
-                  "hours_at_review": 31.5,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "It saddens me what happened to this game during its development. Its so very samey. and it runs poorly, dropping frames during traversal. Ironic that Unreal engine is replacing it, as it does the same. \r\n\r\nThe original trilogy is so much better. go play that.",
-                  "truncated": false,
-                  "minutes_at_review": 1892
-                },
-                {
-                  "recommendationid": "230951744",
-                  "hours_at_review": 48.1,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "Despite the bad hardware optimization, it's a nice continuation of the Halo Masterchief narrative",
-                  "truncated": false,
-                  "minutes_at_review": 2885
+                  "date": "2026-10-07",
+                  "review_text": "not sure about campaign mode but I know that they don't have any control to prevent cheaters on top of that it honestly feel as though some of the plays are RNG based",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-15917bbb",
+          "text": "One reviewer says all the menus take ages to load every time the game is started.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "237913705",
+            "hours_at_review": 146.1,
+            "minutes_at_review": 8765,
+            "voted_up": true,
+            "date": "2026-10-17",
+            "review_text": "Really solid casual multiplayer, especially for a F2P title. \nI really enjoy Jeff Steitzer's high energy announcer delivery in this iteration. \n\nDepending on your region and desired playlists you may have difficulty finding matches. \nAll the menus take ages to load every time the game is started, which can get a bit tiresome. Performance is acceptable, but I have found it somewhat unstable even on Windows systems.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-d054dda4",
+          "text": "One reviewer says that they missed a trigger in the campaign which would not let them activate the light bridge needed to progress.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240645998",
+            "hours_at_review": 212.3,
+            "minutes_at_review": 12737,
+            "voted_up": true,
+            "date": "2026-11-20",
+            "review_text": "The multiplayer is great one of my favorite Halo multiplayers. I heard it was bad at launch but they seem to have fixed it up pretty well and it runs pretty well too.\n\nThe campaign is also good I liked the story and the gameplay though it is a bit buggy sometimes. I was playing coop with a friend and we used the grappleshot to cut some corners (literally) but we must have missed a trigger or something because it would not let us activate the light bridge needed to progress. \n\nAnother thing is on my system the campaign does not run very well at medium settings. I thought about lowering the settings to low but the game just does not look very good at low settings. \n\nOverall its a good multiplayer and a good campaign (albeit a bit buggy).",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 13,
+        "cited_reviews": 10,
         "cited_recommend": 4,
-        "divergence_p": 0.0166,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 160,
-      "pct_positive": 70.0,
-      "muted": false,
-      "n_note": null,
-      "summary": "Experienced players navigate technical stutters, server desync, and high cosmetic prices alongside account connectivity loops.",
-      "themes": [
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "vet-5d36de",
-              "claim": "Matchmaking results in lopsided blowouts and long queue waiting times.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "232623483",
-                  "hours_at_review": 100.8,
-                  "voted_up": false,
-                  "date": "2026-08-12",
-                  "review_text": "matchmaking feels terrible as a player just coming back after a long break for 1-2 games just nothing competitive about it just blow outs",
-                  "truncated": false,
-                  "minutes_at_review": 6049
-                },
-                {
-                  "recommendationid": "231908365",
-                  "hours_at_review": 424.8,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "I have been playing Halo since Halo 4 and let me tell you, This game is the worst sh** imaginable, never have I played a worse FPS title than this. Constant server issues causing blank shots and desync, losing aim assist when you jump during a gunfight and let's not forget the eternity waiting times to find a game only to have it start by someone leaving, causing the game to end and then voila, you're back in eternity queue waiting screen.\n\nThe campaign is just as awful as the multiplayer, sh** was so bad I almost forgot it even existed. Do yourself a favour and don't install this dumpster fire of a Halo game. Go play Master Chief Collection instead. At least you'll find a game in less than 30 mins.",
-                  "truncated": false,
-                  "minutes_at_review": 25487
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-d92e84",
-              "claim": "Players experience technical performance issues such as stuttering and frame drops during matches.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232225516",
-                  "hours_at_review": 178.2,
-                  "voted_up": true,
-                  "date": "2026-08-06",
-                  "review_text": "Decided to get back into the multiplayer with Campaign Evolved releasing. I do love the game, the cosmetics etc but my god they need to sort the stuttering/performance issues. \nI have tried in game settings, turning off game bar, AMD specific settings and nothing seems to be a permanent solution. Some games will play smooth and really makes the game enjoyable. \nOthers have constant stuttering, frame drops and I can't see any warnings about connection issues. But I never have any other issues like this with other games I play. \nI recommend it if you are a genuine halo fan, not if you just want another shooter to play.",
-                  "truncated": false,
-                  "minutes_at_review": 10689
-                },
-                {
-                  "recommendationid": "230052793",
-                  "hours_at_review": 166.0,
-                  "voted_up": true,
-                  "date": "2026-07-09",
-                  "review_text": "Just plain fun if you load up custom games with some friends. Have been getting random lag spikes that I haven't been getting before either on windows or before the update that added the impossible gauntlet mode.\n\nWhile I've only played for 160 hrs on steam, I have over 520 hours as of writing this (xbox console and xbox app on windows) . The online multiplayer used to be really fun, but now only the sweats play so it would be best to avoid online matchmaking. However, if you can convince some friends to hop on, it's a blast.",
-                  "truncated": false,
-                  "minutes_at_review": 9962
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-430f4c",
-              "claim": "The menus and user interface are described as buggy, choppy, and poorly performing.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231474232",
-                  "hours_at_review": 489.2,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "Don't be fooled by the steam records. I have over 3k hours on this garbage.\n\nIll lay it out simple and straight for you. \n\nWhen this came out 5 years ago, that was it. That was the actual final straw for the Halo franchise. Not Reach, not 5, not MCC, this one right here. And they failed, miserably. Now the only people who play this game are the losers like me who have been playing for the last 20 years. Or anyone new and unfortunate enough to accidentally stumble upon it.\n\n-Constant disconnection issues over the years, still there.\n-Terribly sweaty and toxic community trying to relive their primes. Check.\n-Constant desync and wall/angle/bullet issues over the years. Still not fixed.\n\nYou know what does work? The store. Buying cosmetics. Putting your credit/debit card info into the Microsoft platform. That sure works great. But the game doesn't.\n\n-The UI has been buggy and choppy since release\n-The developers have been opaque and unhelpful\n-$550,000,000 budget to make a half baked cosmetic app.\n\nI could go on and on about the issues this game has. I can't stress enough how many issues this game has had and still has. But I'm sure you get the point now.\n\nAll I can do is beg, plead and hope that the parents of the children who are spending money on this game, and the fully developed adults who keep shoveling money into this dumpster fire, please stop. Please stop. Please.\n\nThey don't deserve your money. They don't deserve another car, or another boat or another house. They have turned modern gaming into a cash grab that has sucked the soul out of many of our favorite titles, not just Halo.\n\nPlease, for the love of the future of gaming. Stop buying cosmetics on these games. All you're doing is reinforcing the terrible systems they have in place, and will stay in place indefinitely if we don't do something. Speak with your wallet. If you want the big heads to listen, talk with money. \n\nParents of children who play: wake up, take a stand, teach your child that bad people …",
-                  "truncated": true,
-                  "minutes_at_review": 29351
-                },
-                {
-                  "recommendationid": "229763796",
-                  "hours_at_review": 299.5,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "A pretty solid multiplayer experience hampered by perhaps the worst performing menus and UI that I have ever seen in a videogame. When you're actually playing though, its good fun and there's a ton of different PvE and PvP gamemodes - all for free. Its still got a pretty active playerbase at a mix of skill levels. If you're interested in playing for cosmetics, you can drop £10 of in-game currency and buy the several battle passes that actually refund that money on completion (not all of them do, so check), and you'll get a fair few from those - otherwise, pretty much everything on the store is a massive rip off in terms of price, so buyer beware.",
-                  "truncated": false,
-                  "minutes_at_review": 17970
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-7aa2c0",
-              "claim": "Reviewers report that the game suffers from continuous server issues including connection drops and desync during gunfights.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231908365",
-                  "hours_at_review": 424.8,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "I have been playing Halo since Halo 4 and let me tell you, This game is the worst sh** imaginable, never have I played a worse FPS title than this. Constant server issues causing blank shots and desync, losing aim assist when you jump during a gunfight and let's not forget the eternity waiting times to find a game only to have it start by someone leaving, causing the game to end and then voila, you're back in eternity queue waiting screen.\n\nThe campaign is just as awful as the multiplayer, sh** was so bad I almost forgot it even existed. Do yourself a favour and don't install this dumpster fire of a Halo game. Go play Master Chief Collection instead. At least you'll find a game in less than 30 mins.",
-                  "truncated": false,
-                  "minutes_at_review": 25487
-                },
-                {
-                  "recommendationid": "231474232",
-                  "hours_at_review": 489.2,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "Don't be fooled by the steam records. I have over 3k hours on this garbage.\n\nIll lay it out simple and straight for you. \n\nWhen this came out 5 years ago, that was it. That was the actual final straw for the Halo franchise. Not Reach, not 5, not MCC, this one right here. And they failed, miserably. Now the only people who play this game are the losers like me who have been playing for the last 20 years. Or anyone new and unfortunate enough to accidentally stumble upon it.\n\n-Constant disconnection issues over the years, still there.\n-Terribly sweaty and toxic community trying to relive their primes. Check.\n-Constant desync and wall/angle/bullet issues over the years. Still not fixed.\n\nYou know what does work? The store. Buying cosmetics. Putting your credit/debit card info into the Microsoft platform. That sure works great. But the game doesn't.\n\n-The UI has been buggy and choppy since release\n-The developers have been opaque and unhelpful\n-$550,000,000 budget to make a half baked cosmetic app.\n\nI could go on and on about the issues this game has. I can't stress enough how many issues this game has had and still has. But I'm sure you get the point now.\n\nAll I can do is beg, plead and hope that the parents of the children who are spending money on this game, and the fully developed adults who keep shoveling money into this dumpster fire, please stop. Please stop. Please.\n\nThey don't deserve your money. They don't deserve another car, or another boat or another house. They have turned modern gaming into a cash grab that has sucked the soul out of many of our favorite titles, not just Halo.\n\nPlease, for the love of the future of gaming. Stop buying cosmetics on these games. All you're doing is reinforcing the terrible systems they have in place, and will stay in place indefinitely if we don't do something. Speak with your wallet. If you want the big heads to listen, talk with money. \n\nParents of children who play: wake up, take a stand, teach your child that bad people …",
-                  "truncated": true,
-                  "minutes_at_review": 29351
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "vet-83e426",
-              "claim": "Players encounter login barriers involving Microsoft account connectivity errors, captchas, and looping title screens.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231873510",
-                  "hours_at_review": 428.4,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Good luck signing in to the microsoft account that you have running on your microsoft pc but somehow this game can't seem to connect with, include a captcha that can't be passed in some weird secondary browser this game loads, on top of waiting 20min for the game to load (literally got to watch an entire tv show on my phone.) Game def used to be fun, but if you can't load it in a reasonable time or get passed the sign-in well... Maybe others have better luck but this is it for me.",
-                  "truncated": false,
-                  "minutes_at_review": 25702
-                },
-                {
-                  "recommendationid": "230980556",
-                  "hours_at_review": 119.0,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "Can't even get past the damn title screen now just to enter the account login for this singleplayer campaign game that I paid money for but still require an active microsoft account and internet connection for, BECAUSE IT KEEPS LOOPING BETWEEN \"PRESS ENTER\" AND A ♥♥♥♥♥♥♥ ERROR CODE.\r\n\r\nWhat more do you need to hear? And you just know the insulting remake of Halo: Combat Evolved is going to bring more of the same pathetic issues. Halo needs to be old yeller'd already and Microsoft needs to have its offices [redacted due to extreme violent content]",
-                  "truncated": false,
-                  "minutes_at_review": 7139
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-4f31e2",
-              "claim": "Reviewers experience roadblocks trying to sign into a Microsoft account, including looping errors and captchas that fail to pass in secondary browsers.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231873510",
-                  "hours_at_review": 428.4,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "Good luck signing in to the microsoft account that you have running on your microsoft pc but somehow this game can't seem to connect with, include a captcha that can't be passed in some weird secondary browser this game loads, on top of waiting 20min for the game to load (literally got to watch an entire tv show on my phone.) Game def used to be fun, but if you can't load it in a reasonable time or get passed the sign-in well... Maybe others have better luck but this is it for me.",
-                  "truncated": false,
-                  "minutes_at_review": 25702
-                },
-                {
-                  "recommendationid": "230980556",
-                  "hours_at_review": 119.0,
-                  "voted_up": false,
-                  "date": "2026-07-21",
-                  "review_text": "Can't even get past the damn title screen now just to enter the account login for this singleplayer campaign game that I paid money for but still require an active microsoft account and internet connection for, BECAUSE IT KEEPS LOOPING BETWEEN \"PRESS ENTER\" AND A ♥♥♥♥♥♥♥ ERROR CODE.\r\n\r\nWhat more do you need to hear? And you just know the insulting remake of Halo: Combat Evolved is going to bring more of the same pathetic issues. Halo needs to be old yeller'd already and Microsoft needs to have its offices [redacted due to extreme violent content]",
-                  "truncated": false,
-                  "minutes_at_review": 7139
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "vet-63401d",
-              "claim": "Cosmetics and in-store items feature high price tags, and progression requires a heavy grind.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232223585",
-                  "hours_at_review": 116.9,
-                  "voted_up": true,
-                  "date": "2026-08-06",
-                  "review_text": "It's a good game but not as good as the Bungie Halos. Will go more into depth but the TL;DR: Game gets a 7/10.\n\nCampaign is fun and story is good, best 343 has made at least.\nMultiplayer feels like Halo multiplayer and Forge/Custom maps and game modes are great.\nDownside: Progression/customization is slower and harder than it needs to be. I mean, a real grindfest. You don't feel like an old Halo, BF, or COD where you levelld and won stuff. Spartan points and levels come slow and a lot of items are locked behind a payable battle pass.\n\nMy opinion? People are either hungry for live service games (lots of complaints when this game came out, very quickly, about a lack of updates/content drought.) which just feels entitled because Halo CE-3 weren't that. You bought the game, had campaign and multiplayer, and that was it. Period. But nowadays people think if it isn't getting constant and massive updates the game is bad. Sad, tbh.\n\nAlright, for the real stuff:\n\nCampaign! It's fine, the story is interesting, the characters like Joy and the pilot are great. The villains? Not so much.  Atriox is really weird disappearing right at the beginning, the Banished don't really have a lot of interest/motive, and gameplay wise the AI is really slow, dumb, and easy to handle. \n\nThe collectibles, the side stories (such as with the Spartan 4s and the Zeta Halo battle you miss), are really cool if you're into lore and the Halo universe. \n\nGameplay: It's fine. Just fine. It feels like Halo, even with new additions like the grapple hook, and the upgrading your suit doesn't feel bad either. But it isn't great. Like I said, the AI is too simple, the gunplay doesn't feel as impactful as other games, your allies aren't all that useful or important (the outpost system could have been WAY better, at least more polished), and that makes the game not so memorable overall.\n\nMultiplayer: This is where you get Halo. Anyone can jump in or out, there's a bunch of game modes, at the time of writing there…",
-                  "truncated": true,
-                  "minutes_at_review": 7013
-                },
-                {
-                  "recommendationid": "229763796",
-                  "hours_at_review": 299.5,
-                  "voted_up": true,
-                  "date": "2026-07-06",
-                  "review_text": "A pretty solid multiplayer experience hampered by perhaps the worst performing menus and UI that I have ever seen in a videogame. When you're actually playing though, its good fun and there's a ton of different PvE and PvP gamemodes - all for free. Its still got a pretty active playerbase at a mix of skill levels. If you're interested in playing for cosmetics, you can drop £10 of in-game currency and buy the several battle passes that actually refund that money on completion (not all of them do, so check), and you'll get a fair few from those - otherwise, pretty much everything on the store is a massive rip off in terms of price, so buyer beware.",
-                  "truncated": false,
-                  "minutes_at_review": 17970
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-af31e8",
-              "claim": "Reviewers state that the campaign lacks planned downloadable content continuations since planned updates were cancelled.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232558320",
-                  "hours_at_review": 254.1,
-                  "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "ok so, the multiplayer is fun. Pretty solid honestly. Lots of free content but lots more paid content (cosmetics)\r\nIts a bummer. Live service games are anti consumer. Gunplay feels good and is fun. \r\n\r\nThe story mode was ok. Its more halo but it sucks that they arent continuing this story, this master chief is done well. I like the weapon",
-                  "truncated": false,
-                  "minutes_at_review": 15245
-                },
-                {
-                  "recommendationid": "232361125",
-                  "hours_at_review": 267.8,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "I suppose now that it's done, it's about time to review this game. A few months after launch, this would be a negative review. It took 2 years for this game to be in a healthy state when it comes to having enough maps, gamemodes, forge, etc. That 1-2 year drought still lingers with me as how bad post launch support can be for a game.\n\nNow though, it has enough content even if they cut support last year. The gunplay is good, the weapon sandbox is great and well balanced imo, the ttk is long as it has been for the majority of this franchise, the movement is ok but lacks fluid momentum that I prefer. The artstyle is good and feels like halo (imo 2 anniversary has the best artstyle for halo within it's campaign). The overall multiplayer gameplay loop feels like an updated version of 3 with armor pickups.\n\nTLDR: The game is fun and is Halo\n\nI have not played it's campaign since the game launched nearly 5 years ago. I remember the sandbox was really fun. I liked the story more than 5 and CE. I like the pilot and this iteration of Chief's character. It's a shame that the planned campaign dlc got axed and we have not gotten a new game that continues and expands with what Infinite's story left. I still don't know what the ♥♥♥♥ an endless is. Atriox should have been this game's main villain and showing him alive at the end when he'd been missing since the opening cutscene is a dissapointing tease. I hope we get a proper sequel someday and 343/halo studios don't scrap the prior entry's story like they have done 3 times in a row from 4 to 5 to infinite.",
-                  "truncated": false,
-                  "minutes_at_review": 16068
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 11,
-        "cited_recommend": 6,
-        "divergence_p": 0.21,
+        "divergence_p": 0.0325,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
     "pool_n": 900,
-    "steam_total_reviews": 139089,
+    "steam_total_reviews": 139401,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240440/2262ffb4f1659df1c1cbf2c70af40560b4fa12e4/header.jpg?t=1774464322",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240440/9d64f5027f08e849ed1369f98b22326e2377b2b7/capsule_231x87.jpg?t=1774464322",
-    "grid": "https://cdn2.steamgriddb.com/grid/5e6f4ecb84c2cef4254267d8479a3fb4.png"
   }
 }

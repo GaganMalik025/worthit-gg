@@ -2648,3 +2648,32 @@ seconds, and `at` is about 1 s early.
 
 Extraction padded the required second id with the first in 70 of 245 claims in the
 surviving cached responses (BACKLOG 2026-11-25).
+
+## 2026-11-25 — Catalog refresh, night 6: 16 of 24 titles regenerated, 8 lost to Gemini 503s
+
+**QR-4 — Content safety: PASS (launch gate, invariant 8)**
+
+| | |
+|---|---|
+| Automated gate | **26,640 citations across 543 verdicts, 0 failures**, `EXIT_RC=0`. Raw: `evals/qr4-2026-11-25-night6.txt` |
+| Manual audit | `evals/audit-4.4-2026-11-25-night6.md`, seed 20261126, 10 verdicts, 20 citations, **read by the coding agent on the owner's instruction, not by the owner**, full review text. No NSFW, slur or hate-speech text. All 10 verdict words recomputed from the split bars agree. Last Epoch is at 64.3, 0.3 over the Skip line. |
+| Search index | rebuilt, 0 of 543 verdict appids missing by set membership. Genre sections rebuilt, members unchanged. |
+
+`pipeline/run_batch_logged.sh --refresh`, log `evals/batch-2026-11-25.txt` from line 42
+(it shares the file with night 5, the same IST date), **`EXIT_RC=1`**.
+
+| | |
+|---|---|
+| Ran / published | 24 / **16** |
+| Stage failures | **8, all `503 UNAVAILABLE` "high demand"**, read from the records' stored `stderr`: 3 at extract, 5 at verdict. The owner chose to leave this be (BACKLOG 2026-11-25) |
+| Night 5's failures | 16 retried: 12 published, 4 failed again |
+| Refused at the budget | 391 at 0 calls, none recorded |
+| Model calls | **387**, mean 16.1. The run summary and the ledger `batch_used` 387 agree |
+| Budget | 13 of 400 left. Live reserve untouched |
+| Over TITLE_RESERVE 18 | 9 titles, up to 26 (Path of Exile), inflated by charged 503 retries |
+| Verdicts on the 16 | Buy 9 / Wait 7 → **Buy 11 / Wait 5**. Raft and Assassin's Creed Odyssey moved Wait → Buy |
+| Claims on the 16 | 266 → **190**, plus 48 one-reviewer points |
+| Refresh progress | **138 of 538** non-seed titles verified, 399 to go, Far Cry 5 terminal |
+
+The stored error text held its redaction: there are 0 key-shaped tokens and 0 `.env` values in
+`data/batch_state.json`.

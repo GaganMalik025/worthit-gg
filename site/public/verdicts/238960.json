@@ -1,382 +1,280 @@
 {
   "appid": "238960",
   "game_name": "Path of Exile",
-  "generated_at": "2026-08-12T10:09:51Z",
+  "generated_at": "2026-11-25T11:23:08Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/177c953b362c5a6221f9c15d340a0b1e2b8bfab8/header.jpg?t=1784681738",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/58dd50cfbfebc6d02985fd966a6b6472f3a2f96e/capsule_231x87.jpg?t=1784681738",
+    "grid": "https://cdn2.steamgriddb.com/grid/b18f9c54e6efde8a08b8b478b0806587.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 26,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Wait",
-    "tagline": "Deep builds and brilliant loot hide behind punishing learning curves and disconnections.",
+    "tagline": "Complex mechanical depths meet persistent technical instability in the endgame.",
     "for_you_if": [
-      "you enjoy deep character build customization",
-      "you want complex passive skill trees to explore",
-      "you like tackling challenging endgame progression"
+      "you enjoy deep character building and complex passive trees",
+      "you are willing to use external guides for learning"
     ],
     "not_for_you_if": [
-      "you expect clear in-game crafting explanations",
-      "you need stable connection latency during play",
-      "you want to avoid purchasing extra stash tabs",
-      "you dislike untelegraphed one-shot deaths"
+      "you need stable performance during intense endgame combat",
+      "you want rewarding ground loot without relying on specific mechanics",
+      "you are discouraged by brutal early game difficulty spikes"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 77,
-      "pct_positive": 76.6,
-      "muted": true
+      "pool_n": 32,
+      "pct_positive": 43.8,
+      "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 223,
-      "pct_positive": 81.2,
+      "pool_n": 205,
+      "pct_positive": 81.5,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 238,
-      "pct_positive": 79.8,
+      "pool_n": 203,
+      "pct_positive": 81.3,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 670,
-      "pct_positive": 86.4,
+      "pool_n": 760,
+      "pct_positive": 84.6,
       "muted": false
     }
   ],
-  "distortion_flags": [],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Reviewer sentiment shifts upward as playtime increases before stabilizing among long-term players.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 43.8,
+            "pool_n": 32
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 81.5,
+            "pool_n": 205
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 81.3,
+            "pool_n": 203
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 84.6,
+            "pool_n": 760
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 43.8,
+        "low_pool_n": 32,
+        "high_cohort": "veteran",
+        "high_cohort_label": "over 100 hours",
+        "high_pct_positive": 84.6,
+        "high_pool_n": 760,
+        "gap_pts": 40.8
+      }
+    }
+  ],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 77,
-      "pct_positive": 76.6,
-      "muted": true,
-      "n_note": "n=18 - too few reviews to call",
-      "summary": null,
-      "themes": []
+      "pool_n": 32,
+      "pct_positive": 43.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Players starting out within the refund window face steep difficulty spikes alongside complex character building systems.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ref-aa2de2",
+              "claim": "Reviewers report that early enemies can one-shot players and that the game is confusing or unguided at the start.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "235272223",
+                  "hours_at_review": 0.2,
+                  "minutes_at_review": 15,
+                  "voted_up": false,
+                  "date": "2026-09-14",
+                  "review_text": "Avoid this piss poor attempt at a Diablo clone it basically forces you to trade with other players to get anywhere in the game after you've gotten somewhere and actually hates new players because believe me you will rage like an insane person from JUST the beginning level/tutorial as literally everything one shots you this is genuinely the worse FTP ARPG game I have ever played based on practices I will never be returning.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239103935",
+                  "hours_at_review": 1.0,
+                  "minutes_at_review": 60,
+                  "voted_up": true,
+                  "date": "2026-11-01",
+                  "review_text": "Only got 1 hour in so far, so I honestly have no idea what this game is about yet lol. A bit confusing at first, but it's looking fun so far. Let's see how it goes :)",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ref-31cd05",
+              "claim": "Reviewers mention an extensive skill tree and complex character building systems.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "234359662",
+                  "hours_at_review": 0.9,
+                  "minutes_at_review": 53,
+                  "voted_up": true,
+                  "date": "2026-09-03",
+                  "review_text": "The kind of game where you open the skill tree and immediately realize you know nothing. Insane build variety, endless loot and ridiculous amounts of content. One of the best ARPGs ever made.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "233532385",
+                  "hours_at_review": 1.7,
+                  "minutes_at_review": 100,
+                  "voted_up": true,
+                  "date": "2026-08-23",
+                  "review_text": "Great game to play with many different ways to build your character even though its complex at first. I recommend this one to anyone looking for a change from Diablo.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "thin"
+        ],
+        "cited_reviews": 4,
+        "cited_recommend": 3,
+        "divergence_p": 0.963,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 223,
-      "pct_positive": 81.2,
+      "pool_n": 205,
+      "pct_positive": 81.5,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers encounter connection issues and note the steep learning curve alongside deep character building.",
-      "themes": [
+      "summary": "Players settling into the experience find their footing past the opening hours.",
+      "themes": [],
+      "single_points": [
         {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-674fa3",
-              "claim": "Reviewers experience unexpected disconnections and latency issues during gameplay.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232328421",
-                  "hours_at_review": 19.4,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "Path of Exile is a great game to play to pass the time while grinding to strengthen your character. However, I keep experiencing unexpected disconnection errors right in the middle of my gameplay; please fix the connection issues. Thanks.",
-                  "truncated": false,
-                  "minutes_at_review": 1164
-                },
-                {
-                  "recommendationid": "231326680",
-                  "hours_at_review": 6.5,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "There are some latency issues but overall a fun experience. I wish there were more guided quests and options of co'op. Perhaps I haven't played enough but that's my first impressions.",
-                  "truncated": false,
-                  "minutes_at_review": 388
-                }
-              ]
-            }
-          ]
-        },
-        {
+          "point_id": "one-d8effaa4",
+          "text": "One reviewer says the heist contracts are an awesome mechanic.",
           "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-d74fc4",
-              "claim": "Inventory space is described as very small.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "232113673",
-                  "hours_at_review": 9.7,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "coming from a long time Diablo player, the game is very fun, different yet still familiar enough.                       \r\nthe only thing i dislike is that the inventory space is VERY small :'D but that's  not really something anyone can change",
-                  "truncated": false,
-                  "minutes_at_review": 582
-                },
-                {
-                  "recommendationid": "231890593",
-                  "hours_at_review": 19.5,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "If you have no money at all, sure, play this\r\n\r\nOtherwise just play Grim Dawn. It's better in every aspect (especially inventory management) and you don't get nickel-and-dimed for convenience features",
-                  "truncated": false,
-                  "minutes_at_review": 1168
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "ear-70c935",
-              "claim": "The game lacks WASD controls, restricting players to controllers or mouse movement.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231942641",
-                  "hours_at_review": 10.7,
-                  "voted_up": true,
-                  "date": "2026-08-03",
-                  "review_text": "Great ARPG they should really add asdw controlls though so im not restricted to using controller",
-                  "truncated": false,
-                  "minutes_at_review": 644
-                },
-                {
-                  "recommendationid": "230999245",
-                  "hours_at_review": 3.3,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "It's good game I play on Xbox ally it works well but text are small and controls sometimes doesn't work I have to manually turn on and off so I can play it if you want to play on handheld please use steam controller  in the setting otherwise it won't work",
-                  "truncated": false,
-                  "minutes_at_review": 200
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-75e5c7",
-              "claim": "New players find the game confusing and difficult to learn without outside guides or external help.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 5,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231937243",
-                  "hours_at_review": 10.4,
-                  "voted_up": true,
-                  "date": "2026-08-03",
-                  "review_text": "it's fun, follow a build/guide though because it'll help",
-                  "truncated": false,
-                  "minutes_at_review": 624
-                },
-                {
-                  "recommendationid": "231679072",
-                  "hours_at_review": 7.2,
-                  "voted_up": true,
-                  "date": "2026-07-30",
-                  "review_text": "good game but not noob friendly",
-                  "truncated": false,
-                  "minutes_at_review": 432
-                },
-                {
-                  "recommendationid": "231286896",
-                  "hours_at_review": 17.9,
-                  "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "I know this game has been out for awhile, however.... I played it a little bit but found it overwhelming until I had someone I could chat with about what was what and after giving it a good go... well lets just say it's a good go to when you want something with depth and kill kill kill... :)    Now a game for hubby and I to play together.  It's pretty fun!",
-                  "truncated": false,
-                  "minutes_at_review": 1074
-                },
-                {
-                  "recommendationid": "231268113",
-                  "hours_at_review": 7.5,
-                  "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "While I have only started my journey into POE, I have found the game to very enjoyable. I'd probably recommend following a build guide as I have, as even while following it things can be overwhelming at times. Also much easier if you have a couple friends.",
-                  "truncated": false,
-                  "minutes_at_review": 452
-                },
-                {
-                  "recommendationid": "230874340",
-                  "hours_at_review": 7.8,
-                  "voted_up": true,
-                  "date": "2026-07-20",
-                  "review_text": "Great Game it's a bit confusing at first, but it’s absolutely worth learning.",
-                  "truncated": false,
-                  "minutes_at_review": 467
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-55b6c8",
-              "claim": "The game features deep character build options and a complex passive skill tree.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "232186452",
-                  "hours_at_review": 8.2,
-                  "voted_up": false,
-                  "date": "2026-08-06",
-                  "review_text": "got to maps and realized i'd been doing spreadsheets instead of having fun for 60 hours, the combat never stops feeling clunky and the passive tree is just an illusion of choice",
-                  "truncated": false,
-                  "minutes_at_review": 489
-                },
-                {
-                  "recommendationid": "231799437",
-                  "hours_at_review": 16.6,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "Good solo or with friends. Deep character build options. Skill Tree and Itemization are both well developed and fun to master. Story is pretty good, amazing all this is provided for free. Definitely the best alternative to Diablo. I enjoyed this more than Diablo 2 Remaster",
-                  "truncated": false,
-                  "minutes_at_review": 994
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "ear-6b66f5",
-              "claim": "Reviewers note that the game is free to play.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232411208",
-                  "hours_at_review": 15.3,
-                  "voted_up": true,
-                  "date": "2026-08-09",
-                  "review_text": "since it free it was fun\r\nbut really dark when go underground",
-                  "truncated": false,
-                  "minutes_at_review": 917
-                },
-                {
-                  "recommendationid": "232016662",
-                  "hours_at_review": 4.3,
-                  "voted_up": true,
-                  "date": "2026-08-04",
-                  "review_text": "pretty dope game and its free , can support game in game buys for some perks but dont need too really unless supporting game ... really suprised this is free , did an awesome job.",
-                  "truncated": false,
-                  "minutes_at_review": 261
-                }
-              ]
-            }
-          ]
+          "citation": {
+            "recommendationid": "240285321",
+            "hours_at_review": 10.4,
+            "minutes_at_review": 626,
+            "voted_up": true,
+            "date": "2026-11-15",
+            "review_text": "Remember this!! Quality isn't always about a high price\n\nA F2P game with this many mechanics... devs, PLEASE don't stop! The heist contracts are a fcking awesome mechanic, that's what I enjoyed the most. Merveil is quite a btch too :) She took me ages to get through\n\nAnyway, you guys just have to give it a try, even if RPGs aren't really your thing",
+            "truncated": false
+          }
         }
       ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 15,
-        "cited_recommend": 13,
-        "divergence_p": 0.803,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
+      "sourcing": null
     },
     {
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 238,
-      "pct_positive": 79.8,
+      "pool_n": 203,
+      "pct_positive": 81.3,
       "muted": false,
       "n_note": null,
-      "summary": "Players grapple with random crafting mechanics and necessary stash tabs while exploring extensive customization.",
+      "summary": "Mid-tier adventurers navigate intricate skill trees while occasionally encountering performance drops during intense sequences.",
       "themes": [
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-b2ea8c",
-              "claim": "The game features a massive passive skill tree and deep character customization mechanics that require external guides or extensive research to understand.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-4cb7a3",
+              "claim": "Reviewers note that the game features a complex and intimidating passive skill tree with a steep learning curve for newcomers.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 3,
-                "negative": 2
+                "positive": 4,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232292381",
-                  "hours_at_review": 22.2,
-                  "voted_up": false,
-                  "date": "2026-08-07",
-                  "review_text": "I want to like this game. I want so very, very badly to like this game. But I can't. This is easily the most complex ARPG I've ever played, and I've played a lot, and as a consequence of that and certain design decisions, this game is outrageously hostile to casual blind playthroughs. To clarify what I mean by this, I mean playthroughs where you pick up the game knowing little to nothing about it and do a quick playthrough of the campaign and maybe a little endgame. That's usually what I want out of ARPGs, as I usually find endgame content in ARPGs to be mind-numbingly boring and I'm not super fond of replaying ARPGs to try different classes. So I'm not here to judge POE's endgame, not that I've reached it anyway.\n\nWhat I am here to judge is the campaign playthrough. The actual campaign, from what I've played, is honestly pretty solid. The issue is the mechanical density of actually playing the game. Everyone knows about the skill tree. The thing is ridiculous, far too large to truly be able to parse and craft a decent build out of without many, many hours of playtime fiddling with it. I would be okay with this, except respeccing without already having a good build to farm currency is sufficiently expensive to be basically impossible. Compare this with, say, Grim Dawn, where unless you're undoing every single skill point, it's viable to respec. Or, Diablo 3 and 4, where respeccing your skills is completely free and can be done at any time outside of combat. This gives a high level of flexibility to try out builds, and if they don't work, you can change them immediately. That just isn't really possible in POE.\n\nAdd on to that the relatively high level of difficulty, especially if you don't know about the need to stack resistances, and you can very easily build yourself into a corner where your only viable option to fix things is to start a new character. I hate starting new characters. There's no reason why the game has to make respeccing expensive, or even limited a…",
-                  "truncated": true,
-                  "minutes_at_review": 1331
-                },
-                {
-                  "recommendationid": "232105633",
-                  "hours_at_review": 83.7,
+                  "recommendationid": "240187407",
+                  "hours_at_review": 50.5,
+                  "minutes_at_review": 3027,
                   "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "Fun but very confusing as a new player",
-                  "truncated": false,
-                  "minutes_at_review": 5024
+                  "date": "2026-11-14",
+                  "review_text": "The skill tree is pretty intimidating at first, but get's easier to understand the longer you play. \r\nAlso do the labyrinths.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231559443",
-                  "hours_at_review": 31.1,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Extremely repetitive and boring gameplay (which is laggy AF) makes for a miserable experience all around.\r\n\r\nCan't be played without a guide and extensive research which is also lame.",
-                  "truncated": false,
-                  "minutes_at_review": 1866
-                },
-                {
-                  "recommendationid": "231323935",
-                  "hours_at_review": 99.1,
+                  "recommendationid": "240123512",
+                  "hours_at_review": 34.5,
+                  "minutes_at_review": 2073,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "Difficult to follow without help from youtube but very fun once you learn even half the mechanics\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 5944
+                  "date": "2026-11-13",
+                  "review_text": "Steep learning curve. Excellent game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231169819",
-                  "hours_at_review": 79.7,
+                  "recommendationid": "238413209",
+                  "hours_at_review": 32.6,
+                  "minutes_at_review": 1958,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Recommended 💎⚔️\n\nPath of Exile isn't just an action RPG—it's a hobby disguised as a free game.\n\nThe amount of character customization is incredible. Between the massive passive skill tree, Ascendancy classes, support gems, crafting, and countless unique items, every build feels like a new adventure. Experimenting with different combinations is just as fun as fighting monsters. 🌳✨\n\nCombat is fast, satisfying, and becomes wonderfully chaotic in the endgame. Clearing entire screens of enemies, hunting for valuable loot, and constantly improving your gear creates one of the most addictive gameplay loops in the genre. 💥💰\n\nThe leagues keep the game feeling fresh by introducing new mechanics and challenges every few months. Combined with the deep Atlas endgame, trading, and boss fights, there's always another goal to chase. 🗺️👹\n\nThe learning curve is brutal. New players will probably spend almost as much time reading guides as playing, and inventory management can be frustrating without extra stash tabs. But once everything clicks, it's incredibly rewarding. 📚😅\n\nI logged in to try a new build. A few hours later I had 15 browser tabs open, three crafting calculators, and absolutely no regrets. 😂♥♥♥♥♥♥♥♥to play. Dangerous to your free time. 💀\n\nPath of Exile features an enormous passive skill tree, deep item crafting, seasonal challenge leagues, a vast endgame Atlas system, and extensive character customization, making it one of the deepest ARPGs available.",
-                  "truncated": false,
-                  "minutes_at_review": 4780
+                  "date": "2026-10-23",
+                  "review_text": "An incredibly deep action RPG with loads of customisation and progression. The skill tree alone gives you plenty to experiment with, and the loot system makes finding better gear satisfying. It can be confusing for new players, however once you find out what you're doing you'll have a blast.\r\n\r\nA great choice for anyone who enjoys ARPGs.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-71590c",
-              "claim": "High-level crafting relies heavily on random number generation and consumes consumables without clear in-game explanations of how the systems work.",
+              "claim_id": "mid-14ad50",
+              "claim": "Reviewers describe the learning curve as steep and intimidating, requiring patience and experimentation to understand the complex systems.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -384,22 +282,22 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231225720",
-                  "hours_at_review": 98.3,
+                  "recommendationid": "240651513",
+                  "hours_at_review": 93.4,
+                  "minutes_at_review": 5604,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Great dungeon crawler - I'm optimized for graphics, at least so I think and i love the diversity of enemies and playable characters.  Microtransactions enable different looks, as opposed to the in-game armor making you look cool - so that leaves much to be desired and it is not cheap.  Expect a game that requires good inventory management.  I like the crafting system generally, but high level is RNG based.\nThere is much in the game that is not explained, like how crafting works, given that crafting requires consumables, it would be good if that were a bit clearer in my humble opinion, otherwise it leads to just hording your mats and not wanting to waste them on testing.  I love the community, especially the loot filters by devs - makes the game much more playable and not all too intense in clearing out inventory.",
-                  "truncated": false,
-                  "minutes_at_review": 5900
+                  "date": "2026-11-20",
+                  "review_text": "If you are  new to the game you can ignore like 80% of the bad reviews. This game is incredibly complex and difficult to approach but if you take your time and experiment it will reward you. the campaign is fun with a genuinely interesting story. at the time of posting this I have less than 100 hours (which is considered very new) and I haven't encountered many of the complaints I've seen in the negative reviews. If you're intrastent give the game a try but remember to be patient and I think you'll have a great time.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231169819",
-                  "hours_at_review": 79.7,
+                  "recommendationid": "240123512",
+                  "hours_at_review": 34.5,
+                  "minutes_at_review": 2073,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Recommended 💎⚔️\n\nPath of Exile isn't just an action RPG—it's a hobby disguised as a free game.\n\nThe amount of character customization is incredible. Between the massive passive skill tree, Ascendancy classes, support gems, crafting, and countless unique items, every build feels like a new adventure. Experimenting with different combinations is just as fun as fighting monsters. 🌳✨\n\nCombat is fast, satisfying, and becomes wonderfully chaotic in the endgame. Clearing entire screens of enemies, hunting for valuable loot, and constantly improving your gear creates one of the most addictive gameplay loops in the genre. 💥💰\n\nThe leagues keep the game feeling fresh by introducing new mechanics and challenges every few months. Combined with the deep Atlas endgame, trading, and boss fights, there's always another goal to chase. 🗺️👹\n\nThe learning curve is brutal. New players will probably spend almost as much time reading guides as playing, and inventory management can be frustrating without extra stash tabs. But once everything clicks, it's incredibly rewarding. 📚😅\n\nI logged in to try a new build. A few hours later I had 15 browser tabs open, three crafting calculators, and absolutely no regrets. 😂♥♥♥♥♥♥♥♥to play. Dangerous to your free time. 💀\n\nPath of Exile features an enormous passive skill tree, deep item crafting, seasonal challenge leagues, a vast endgame Atlas system, and extensive character customization, making it one of the deepest ARPGs available.",
-                  "truncated": false,
-                  "minutes_at_review": 4780
+                  "date": "2026-11-13",
+                  "review_text": "Steep learning curve. Excellent game.",
+                  "truncated": false
                 }
               ]
             }
@@ -409,51 +307,8 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-85e202",
-              "claim": "Gameplay experiences periodic latency spikes and connection instability during matches.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "232171114",
-                  "hours_at_review": 47.1,
-                  "voted_up": true,
-                  "date": "2026-08-06",
-                  "review_text": "its pretty decent diablo like over top game just really bad lag at times but games free so not bad",
-                  "truncated": false,
-                  "minutes_at_review": 2828
-                },
-                {
-                  "recommendationid": "231559443",
-                  "hours_at_review": 31.1,
-                  "voted_up": false,
-                  "date": "2026-07-29",
-                  "review_text": "Extremely repetitive and boring gameplay (which is laggy AF) makes for a miserable experience all around.\r\n\r\nCan't be played without a guide and extensive research which is also lame.",
-                  "truncated": false,
-                  "minutes_at_review": 1866
-                },
-                {
-                  "recommendationid": "226162564",
-                  "hours_at_review": 37.3,
-                  "voted_up": true,
-                  "date": "2026-05-22",
-                  "review_text": "I’ve never played any of the Path of Exile games before, but I’ve been watching a lot of Path of Exile 2 YouTube videos, and I wasn’t about to drop $20 on POE 2, so I decided to try the free POE. I’m currently in Part 2, Act 7 as of this review, and I’ve been enjoying it, but there are two things I haven’t liked. I don’t know if it’s me or the servers, but my latency will sit around 12 ms and then randomly spike to like 300 for a second before going back down. This happens about every minute. Also, with all the content added over the years, the game can feel kind of overwhelming. The Bestiary, Mines, Breaches, Heists, etc., are things I’m avoiding until I complete the campaign/story.",
-                  "truncated": false,
-                  "minutes_at_review": 2236
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
-            {
-              "claim_id": "mid-d4a33f",
-              "claim": "Cosmetic microtransactions are expensive, while purchasing stash tabs is recommended for inventory management quality of life.",
+              "claim_id": "mid-95693e",
+              "claim": "Reviewers report performance drops and stuttering issues during intense endgame maps and combat sequences.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -461,34 +316,50 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231569276",
-                  "hours_at_review": 22.5,
+                  "recommendationid": "239452563",
+                  "hours_at_review": 82.5,
+                  "minutes_at_review": 4947,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Its a loot game with so many builds that you cant count. You dont have to play them all to enjoy the game. If you play with your friends, try playing different builds and you will learn about the build from them. New season every 4-5 months, I usually play a new build every season. Not all season are best but they are good to play. \r\n\r\nI love the mob explosion + loot + in depth character build + quick game part. I can play the game for 6+ hrs straight or just hop in for 15-20 mins, Damn its flexible :D. You can play the game 100% ftp but i recommend a 10$ top up, just for some QOL stuff (for stash tabs- currency, map, frags)",
-                  "truncated": false,
-                  "minutes_at_review": 1351
+                  "date": "2026-11-05",
+                  "review_text": "first league was the settlers league (3.25 iirc) played for like 300+ hours on the poe launcher and took a break after that, had a blast. was a bit burned out on other games so i can back iin 3.29 on steam and have been having a lot of fun. certainly a more \"hardcore\" game but i enjoy it even as a semi casual player. finding out about stuff you've never heard off and exploring different builds is extremely fun and feels rewarding. I do have some performance issues but it's mainly when i've either just booted up the game or im in a map with a lot of stuff happening. overall w game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231225720",
-                  "hours_at_review": 98.3,
+                  "recommendationid": "235616593",
+                  "hours_at_review": 98.0,
+                  "minutes_at_review": 5882,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "Great dungeon crawler - I'm optimized for graphics, at least so I think and i love the diversity of enemies and playable characters.  Microtransactions enable different looks, as opposed to the in-game armor making you look cool - so that leaves much to be desired and it is not cheap.  Expect a game that requires good inventory management.  I like the crafting system generally, but high level is RNG based.\nThere is much in the game that is not explained, like how crafting works, given that crafting requires consumables, it would be good if that were a bit clearer in my humble opinion, otherwise it leads to just hording your mats and not wanting to waste them on testing.  I love the community, especially the loot filters by devs - makes the game much more playable and not all too intense in clearing out inventory.",
-                  "truncated": false,
-                  "minutes_at_review": 5900
+                  "date": "2026-09-19",
+                  "review_text": "fun game, tons of customization and content\r\n\r\nperformance still poopoo in endgame",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-083d57f2",
+          "text": "One reviewer says performance is still poor in the endgame.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "235616593",
+            "hours_at_review": 98.0,
+            "minutes_at_review": 5882,
+            "voted_up": true,
+            "date": "2026-09-19",
+            "review_text": "fun game, tons of customization and content\r\n\r\nperformance still poopoo in endgame",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 9,
-        "cited_recommend": 7,
-        "divergence_p": 0.57,
+        "cited_reviews": 6,
+        "cited_recommend": 6,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -496,18 +367,18 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 670,
-      "pct_positive": 86.4,
+      "pool_n": 760,
+      "pct_positive": 84.6,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players highlight severe endgame random loot generation, account security frustrations, and punishing map progression.",
+      "summary": "Longtime veterans grapple with extreme mechanical complexity, unrewarding ground loot, and persistent technical instability.",
       "themes": [
         {
-          "theme": "access",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-e5f999",
-              "claim": "Reviewers report that player accounts can be permanently banned after being compromised by outside bots, and describe customer support as unhelpful and dismissive of proof regarding unauthorized access.",
+              "claim_id": "vet-40fe20",
+              "claim": "Reviewers report encountering frequent bugs, crashes, and phase-locked map bosses during recent leagues.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -515,56 +386,80 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232252106",
-                  "hours_at_review": 126.9,
+                  "recommendationid": "241032556",
+                  "hours_at_review": 4066.3,
+                  "minutes_at_review": 243980,
                   "voted_up": false,
-                  "date": "2026-08-07",
-                  "review_text": "Some chinese bot hacked my account, when I tried to login after years I was perma-banned. Support is not willing to unban me, despite the ban happening during years that I was not playing this game. There are many other negative reviews with the exact same issue, some poor fellow lost a 3k hour account because of this.\n\nSupport is full of pajeets, very unpleasant to deal with!",
-                  "truncated": false,
-                  "minutes_at_review": 7615
+                  "date": "2026-11-23",
+                  "review_text": "I've run face first into several bugs and QoL nightmares this league that are apparently bugs that have been around for several leagues. Nightmare Map bosses getting phase locked be that by fates or otherwise, TWO spectres being deleted by some mechanic that we weren't able to ascertain, and some of the worst UI/UX decisions when it comes to AG gearing and Spectre management. \n\nCombining this with the issues that came about post Settlers league, I certainly wouldn't recommend the game in it's current state. It feels like excess dev time has been pushed towards features with good bones, but not enough has been put into fixing existing issues. Basic bugs that are a landmine to the avg player's experience.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232103183",
-                  "hours_at_review": 2861.9,
+                  "recommendationid": "240750465",
+                  "hours_at_review": 1462.4,
+                  "minutes_at_review": 87746,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "The security of this game and the support are insanely bad : My steam account got hacked (first time i'm hacked in my life), i fixed the problem really fast, but the hacker went on my poe account, changed the password/email without any security check and played on it with a launcher (my account was still linked to steam). I didn't notice it because i've never played poe oustide of steam, so i had no clue a hacker was playing with my account. Then i realized my account was banned, the hacker cheated with my account. I contacted the support, the only answer they gave me was : i breached the terms of use. I explained it wasn't my fault, i have a lot of proofs but they didn't care, always the same answer. So i lost my poe and poe 2 account, all my leagues rewards and skins. I loved this game so much, told to everyone it was the best game ever and now my 9 years old account is perma banned, it's disgusting ...",
-                  "truncated": false,
-                  "minutes_at_review": 171712
+                  "date": "2026-11-22",
+                  "review_text": "Constant crashes and bugs. GGG let's everyone BETA test their game every league.",
+                  "truncated": false
                 }
               ]
-            }
-          ]
-        },
-        {
-          "theme": "monetization",
-          "claims": [
+            },
             {
-              "claim_id": "vet-f81732",
-              "claim": "Reviewers state that purchasing stash tabs is virtually mandatory to comfortably play the endgame and manage items effectively.",
-              "citation_verdict": "positive",
+              "claim_id": "vet-5e96c2",
+              "claim": "Reviewers experience constant crashes and bugs, noting that updates introduce technical instability.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "232376158",
-                  "hours_at_review": 1622.1,
-                  "voted_up": true,
-                  "date": "2026-08-08",
-                  "review_text": "Hands down one of the best ARPGs of all time, PoE delivers almost everything an ARPG fan wants, and it doesn't charge you $70 upfront to find out.\n\nPath of Exile’s Atlas mapping system offers over 100 maps, dozens of endgame bosses, and layers of mechanics that you can customize to play exactly the content you want. The massive passive skill tree and flexible skill gem system give you the freedom to make almost any crazy build work.\nYou can play PoE’s entire campaign and endgame for free. The only [b]\"mandatory\"[/b] purchase to comfortably play the endgame is a few stash tabs, which is a fraction of the cost of D4’s base game and seasonal passes.\n\nAnother thing I love is the studio itself, GGG routinely sits down for Q&As with community members and streamers. When the community points out that a mechanic feels terrible or that mobs don't feel as rewarding as they should be, GGG responds quickly with lists of balance updates and QoL fixes based directly on player feedback. They aren't afraid to admit when they've made a mistake or when they aren't happy with the current state of the game. They also deliberately try to avoid mid league nerfs to respect the time players have invested in their builds.",
-                  "truncated": false,
-                  "minutes_at_review": 97326
+                  "recommendationid": "240750465",
+                  "hours_at_review": 1462.4,
+                  "minutes_at_review": 87746,
+                  "voted_up": false,
+                  "date": "2026-11-22",
+                  "review_text": "Constant crashes and bugs. GGG let's everyone BETA test their game every league.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232153141",
-                  "hours_at_review": 889.5,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "Path of Exile has been a staple of the ARPG scene since its release, through good expansions and bad, its had a large player base and the most complicated skill tree I have ever seen. From casual play to die hard gamers, it features enough content to keep you occupied for days on end. \r\n\r\nAlso its a free game, no real pay to win, but without more stash tabs, you might be struggle bussing a little bit.",
-                  "truncated": false,
-                  "minutes_at_review": 53368
+                  "recommendationid": "240610823",
+                  "hours_at_review": 2404.2,
+                  "minutes_at_review": 144254,
+                  "voted_up": false,
+                  "date": "2026-11-20",
+                  "review_text": "The last 4 leagues all follow the same scheme.\n\nUntested/overtuned enemies, crashes, less and less currency & worse crafting.\nIt feels like brain drain on the side off the devs combined with next to no testing.\nAnd at the end of the league you still have more bugs total then the league befor.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-9804fc",
+              "claim": "Reviewers report encountering constant crashes and bugs, with developers using patches as beta tests each league.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240750465",
+                  "hours_at_review": 1462.4,
+                  "minutes_at_review": 87746,
+                  "voted_up": false,
+                  "date": "2026-11-22",
+                  "review_text": "Constant crashes and bugs. GGG let's everyone BETA test their game every league.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240610823",
+                  "hours_at_review": 2404.2,
+                  "minutes_at_review": 144254,
+                  "voted_up": false,
+                  "date": "2026-11-20",
+                  "review_text": "The last 4 leagues all follow the same scheme.\n\nUntested/overtuned enemies, crashes, less and less currency & worse crafting.\nIt feels like brain drain on the side off the devs combined with next to no testing.\nAnd at the end of the league you still have more bugs total then the league befor.",
+                  "truncated": false
                 }
               ]
             }
@@ -574,8 +469,8 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "vet-1462a3",
-              "claim": "Reviewers describe the endgame as heavily reliant on random number generation for loot drops, meaning heavy farming does not guarantee rewards compared to random luck.",
+              "claim_id": "vet-adc570",
+              "claim": "Reviewers report that regular ground loot drops feel unrewarding, requiring players to rely heavily on specific mechanics for good items.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -583,22 +478,22 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232389952",
-                  "hours_at_review": 2800.1,
+                  "recommendationid": "241370720",
+                  "hours_at_review": 2422.0,
+                  "minutes_at_review": 145318,
                   "voted_up": false,
-                  "date": "2026-08-09",
-                  "review_text": "I miss the Chris Wilson vision.... This is Tencent vision now. The most recent GGG interview gave no discussion about actual ground loot or plans other than telling us \"a massive rework to endgame is coming\" I haven't been optimistic about either PoE games since poe2 launched. The excitement is gone. The loot is horridly predictable \"do this get x\" loop. Every. Single. Last. FUN AND EXCTING FARM.... has been ripped from the game. Slowly... every league, one by one like a dying horse.... even harbingers man.... even harbys :(",
-                  "truncated": false,
-                  "minutes_at_review": 168007
+                  "date": "2026-11-24",
+                  "review_text": "This is my favorite game of all time. Wish my first review was a positive review, because overall it still is a great game. I'm leaving a bad review for this current league and the direction of the game.\n\nThe newest league shows they don't really know what they're doing. Evident in the latest mid-league patch. They acknowledged that ground loot still wasn't where it needed to be, and that players wanted more \"tinks\" (rare drops), so they just added 2 new uninspiring currency items to the drop pool and moved several league-specific ones to the core pool. Which contradicts the whole \"philosophy\" they've had going on of separating drops so they only come from their specific leagues. \n\nAll in all the game lost its charm in terms of player agency and how we want to play with the variety of content. Scarabs were a annoying as hell to buy and organize but the gameplay they allowed was fun. Threads seems like a better idea on paper but I'm way more worried about how long it'll take to make them actually feel good because they're such a drastic change, than I would be if they just reverted back to the old system.\n\nThis league mechanic is also very half-baked. Somehow it feels too quick and too tedious at the same time. Like it's rewarding enough to interact with it, doesn't take a long time to do, but it's just not fun enough to feel good taking 10 seconds to get more drops. Other than clicking buttons on the screen a few times to pick rewards you literally just kill some monsters around the pot and then kill the boss. Even torchlight I feel would have a mechanic like this. a loop of simple interactions, but then they'd eventually lead to a longer, fun interaction, then start over (like twinightmare)",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232108145",
-                  "hours_at_review": 282.4,
+                  "recommendationid": "240609542",
+                  "hours_at_review": 935.8,
+                  "minutes_at_review": 56146,
                   "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "The game have Billion build ! \nThe game have Billion farm !\nall that doesnt matter the game is 100% based on RNG. if you farming the highest and hardest maps with good builds etc etc. u might get as much as someone still playing the acts with some good luck, everything in this game based on RNG. my friends have 1k+ and some 6k+ farming every league. yet didnt see the mirror. and me who was goofing around got more loot than they did i even got a mirror. so you reading this might think it weird why am i giving the game negative review if i got all the goods? because imagine if i spend hours farming just for someone get the game yesterday out me in currency because they have \"good rng\". builds and stuff are fun yes. but the core itself (farming) is suck. a shame. other than that if u have nasa pc or not the game will always be on 10 frames in huge farms like breach because the engine is ♥♥♥♥♥♥♥. for me my laptop isnt best but at lowest setting my cpu is like 40% my gpu around 60% the game is 4 fps. that an engine issue afaik because me and my entire group have that fps drop.",
-                  "truncated": false,
-                  "minutes_at_review": 16941
+                  "date": "2026-11-20",
+                  "review_text": "review for 3.30\n\nI’ve been playing Path of Exile for years, and it’s one of the games I’ve always come back to every league. But for the past few leagues, the game just hasn’t felt as exciting as it used to, and 3.30 hasn’t changed that for me.\n\nMy biggest problem is ground loot. Killing monsters and clearing maps should feel rewarding, but most of what drops is useless, and the good stuff only comes from very specific mechanics and strategies. It takes away the fun of just playing the game and getting a surprise drop. After all the talk before launch about reworking loot, I was hoping this would finally be the league that fixed it, so it’s very disappointing to see ground loot still feeling this bad.\n\nI still love this game and I want it to do well, which is why I’m writing this. GGG, please fix the ground loot. Make regular drops worth picking up again and bring back that excitement that kept so many of us playing for years.",
+                  "truncated": false
                 }
               ]
             }
@@ -608,56 +503,52 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-4444fc",
-              "claim": "Reviewers report that the campaign and map progression feature sudden, untelegraphed one-shot deaths from off-screen or from visually cluttered encounters without a death log.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-584101",
+              "claim": "Reviewers describe the game as extremely complex and difficult to learn without external resources like YouTube guides, community assistance, or help from experienced friends.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232542058",
-                  "hours_at_review": 311.0,
-                  "voted_up": false,
-                  "date": "2026-08-10",
-                  "review_text": "Welp, after a years-long break I can say that this game is fundamentally broken with power creep and content bloat. The balancing team must have (understandably) given up leagues ago. Most of the time you have no way of knowing what is actually dangerous on your screen at any time - a random magic mob can one-shot you from off-screen with an autoattack while bosses barely dent your health. And if you have a visually busy build, just hope that you have enough damage to ignore game mechanics.\r\n\r\nIn the end, you either break the game or see how truly broken it is.",
-                  "truncated": false,
-                  "minutes_at_review": 18662
+                  "recommendationid": "240653968",
+                  "hours_at_review": 433.1,
+                  "minutes_at_review": 25985,
+                  "voted_up": true,
+                  "date": "2026-11-20",
+                  "review_text": "What made me stay is the depth. No other game has this much going on under the hood.\n\nThe crafting is basically gambling, but gambling you can make as deterministic as possible, and when it hits, the dopamine is insane. The grind is real, but it's actually rewarding. Your hours feel like they matter because you're constantly progressing your character, your gear, your understanding of the game.\n\nI've played a lot of builds, and that's the point. The build variety is massive and the fun really comes from individual preference. There is a playstyle for literally everyone. The game feels really, really hard at first because you have to fight so many systems at once, but once you understand how every little detail works, it's extremely rewarding.\n\nThe endgame is huge, the variety in playstyles and league mechanics is huge, but what keeps the game alive are the seasonal league changes. Every league feels fresh again.\n\nWorst part? Dying and not understanding your mistakes, and grinding for hours and hours when you don't know what to do. That almost made me quit. What saved it was trading, YouTube guides, and the community. The community is great. A lot of people will actually help you if you send them your PoB.\n\nI'd recommend this to people who like strategy, depth, and a community that works together on metas and stuff. I would NOT recommend it to people who want quick dopamine. Everything needs grind and understanding. You can't just turn your brain off until endgame farming, in my opinion.\n\nIf you like to obliterate every monster on your screen in seconds, this game is for you.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232304086",
-                  "hours_at_review": 226.8,
-                  "voted_up": false,
-                  "date": "2026-08-07",
-                  "review_text": "Really gave this game a good try but once campaign ended, what to do felt overwhelming. The content doesn't feel intuitive or cohesive. Feels like a bunch of mini games thrown into one game, with no indication on where to start or what each one is good for, or how to \"play\" them.\n\nand I tried just chipping away piece by piece, and not sure if I learned much.\n\nBut what really killed the game for me is how content goes from blasting along, to getting one shot without any real clear animation, or telegraphed effect, or way to change the UI to put debuffs not off to the side of the screen, etc. There isn't a death log either. \n\nI think this game would have been great if you learned and grew as it developed but coming in as a new player now is challenging in an unfun way.",
-                  "truncated": false,
-                  "minutes_at_review": 13609
+                  "recommendationid": "240606355",
+                  "hours_at_review": 181.6,
+                  "minutes_at_review": 10898,
+                  "voted_up": true,
+                  "date": "2026-11-20",
+                  "review_text": "Very fun game that is also horribly obtuse. It took a ton of hand holding from friends who have played this game for thousands of hours for me to even start to understand it, and I'm just scratching the surface. Excellent monetization system. No real complaints though, given that it's a free game.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 8,
+        "cited_reviews": 7,
         "cited_recommend": 2,
-        "divergence_p": 0.000138,
+        "divergence_p": 0.00138,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1208,
-    "steam_total_reviews": 142615,
-    "cohort_count": 3,
+    "pool_n": 1200,
+    "steam_total_reviews": 143714,
+    "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/177c953b362c5a6221f9c15d340a0b1e2b8bfab8/header.jpg?t=1784681738",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/238960/58dd50cfbfebc6d02985fd966a6b6472f3a2f96e/capsule_231x87.jpg?t=1784681738",
-    "grid": "https://cdn2.steamgriddb.com/grid/b18f9c54e6efde8a08b8b478b0806587.png"
   }
 }

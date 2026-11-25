@@ -1,397 +1,608 @@
 {
   "appid": "812140",
   "game_name": "Assassin's Creed® Odyssey",
-  "generated_at": "2026-08-10T10:12:19Z",
+  "generated_at": "2026-11-25T11:08:01Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/812140/header.jpg?t=1786633104",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/812140/capsule_231x87.jpg?t=1786633104",
+    "grid": "https://cdn2.steamgriddb.com/grid/132d16811e7db45a5c501541c275851c.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 13,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
-    "word": "Wait",
-    "tagline": "Massive ancient worlds hide severe startup hurdles and mandatory launchers.",
+    "word": "Buy",
+    "tagline": "Vast historical sandbox with heavy grinding and relentless bounty hunters.",
     "for_you_if": [
-      "you want to explore a massive recreation of ancient Greece",
-      "you enjoy losing yourself in vast historical open worlds"
+      "you want to explore an expansive Ancient Greek open world",
+      "you enjoy action RPG combat with naval exploration"
     ],
     "not_for_you_if": [
-      "you will not install a third-party launcher",
-      "you encounter startup errors or crashes on launch",
-      "you dislike heavy level grinding and mandatory side quests"
+      "you dislike repetitive side quests and progression grinding",
+      "you will not tolerate external third-party launchers",
+      "you want traditional stealth-focused assassinations"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 45,
-      "pct_positive": 33.3,
-      "muted": false
+      "pool_n": 22,
+      "pct_positive": 45.5,
+      "muted": true
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 309,
-      "pct_positive": 83.2,
+      "pool_n": 324,
+      "pct_positive": 85.8,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 479,
-      "pct_positive": 85.8,
+      "pool_n": 485,
+      "pct_positive": 92.2,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 374,
-      "pct_positive": 90.9,
+      "pool_n": 369,
+      "pct_positive": 91.3,
       "muted": false
     }
   ],
-  "distortion_flags": [
-    {
-      "flag_id": "cohort_divergence",
-      "type": "segmentation",
-      "direction": null,
-      "shape": "monotonic_increase",
-      "sentence": "Reviews turn increasingly positive as players invest more time past initial technical hurdles.",
-      "evidence": {
-        "sequence": [
-          {
-            "cohort": "refund_window",
-            "label": "under 2 hours",
-            "pct_positive": 33.3,
-            "pool_n": 45
-          },
-          {
-            "cohort": "early",
-            "label": "2-20 hours",
-            "pct_positive": 83.2,
-            "pool_n": 309
-          },
-          {
-            "cohort": "mid",
-            "label": "20-100 hours",
-            "pct_positive": 85.8,
-            "pool_n": 479
-          },
-          {
-            "cohort": "veteran",
-            "label": "over 100 hours",
-            "pct_positive": 90.9,
-            "pool_n": 374
-          }
-        ],
-        "shape": "monotonic_increase",
-        "low_cohort": "refund_window",
-        "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 33.3,
-        "low_pool_n": 45,
-        "high_cohort": "veteran",
-        "high_cohort_label": "over 100 hours",
-        "high_pct_positive": 90.9,
-        "high_pool_n": 374,
-        "gap_pts": 57.6
-      }
-    }
-  ],
+  "distortion_flags": [],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 45,
-      "pct_positive": 33.3,
+      "pool_n": 22,
+      "pct_positive": 45.5,
+      "muted": true,
+      "n_note": "n=19 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "single_points": [],
+      "sourcing": null
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 324,
+      "pct_positive": 85.8,
       "muted": false,
       "n_note": null,
-      "summary": "Players experience severe startup failures, crashes, and third-party account authentication errors.",
+      "summary": "Early players praise the vast Ancient Greek setting while noting progression grinding and level gates.",
       "themes": [
         {
-          "theme": "access",
+          "theme": "content",
           "claims": [
             {
-              "claim_id": "ref-bb8786",
-              "claim": "Reviewers experience authentication and ownership errors that prevent the game from starting.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-560bbf",
+              "claim": "This cohort describes the open world as vast and visually detailed with an Ancient Greece setting, though some note areas are level-gated.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231874588",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-08-02",
-                  "review_text": "\"There was a problem authenticating the ownership of this product and the game cannot be started. Please contact Customer Support.\"\n\nEdit: I just tried contacting customer support and I was unable to open a case because of this message: \"Please fill out all required fields before submitting\". I filled out all the fields that I saw. I don't know what I'm supposed to do now.",
-                  "truncated": false,
-                  "minutes_at_review": 44
+                  "recommendationid": "241148460",
+                  "hours_at_review": 10.1,
+                  "minutes_at_review": 606,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "All I can say so far with 12 hours in is  what a wonderful and beautiful game its been. Although So far the story is pretty mid. The open world isnt so open at the very start. But once you get through the first island the game starts to open up. Its somewhat linear in terms of the game areas can only be reached at certain levels. But honestly 12 hours into the game and I am loving it. Since I have only played the first Assasins Creed this is a pretty neat update to what I remember as a kid. The game is pretty demanding but I am able to run it around 120FPS at max settings. I wish they would add DLSS or framegen into the game as well as RayTraced Lighting. RayTraced lighting would really take this game to the next level. But its absolutely one of the most beautiful games I have played.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230392916",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "yeah cant play the game because of ubisoft connect errors in 2026",
-                  "truncated": false,
-                  "minutes_at_review": 5
+                  "recommendationid": "240073653",
+                  "hours_at_review": 17.6,
+                  "minutes_at_review": 1059,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "Very solid Assassin's Creed Game, I am on my second play through as I got it originally on PS.\r\n\r\nThe map is huge, the combat is fun but simple, ships which imo are just as much if not more fun than Black Flag and the graphics can be beautiful.\r\n\r\n8.5/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239904789",
+                  "hours_at_review": 16.8,
+                  "minutes_at_review": 1006,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "The combat is fun, the graphics are beautiful, and the map is gigantic and full of detail. Ancient Greece is a perfect setting for the game.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ref-0b0271",
-              "claim": "Third-party account creation and login issues, including suspended accounts and invalid passwords, prevent players from accessing the game through Ubisoft Connect.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-433df1",
+              "claim": "Reviewers describe the open world as beautiful and detailed, though some note it feels closed off at the very start.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 3
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "229882504",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "Can't login with steam. Ok. Can't login with ubisoft account coz just f u. Can't create new account coz all passwords are \"Invalid\" (like wtf?). Refund and I couldn't even get to a game.",
-                  "truncated": false,
-                  "minutes_at_review": 11
-                },
-                {
-                  "recommendationid": "229805635",
-                  "hours_at_review": 0.5,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "You know, you guys as a company is just something special. Please tell me why the new account I created 2 months ago I cannot login to because the account is suspended, I even reset the password and somehow I still cannot access the account and now I tried to create a new account, is now telling me that this request cannot be completed. Like this is the second time. Complete failure of a company.",
-                  "truncated": false,
-                  "minutes_at_review": 30
-                },
-                {
-                  "recommendationid": "229671112",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "Bought the game two days ago and still cant play it because Ubisoft wont let me create an account. Yea man, i think its a good system to not let me play a game if im not connected to a stupid account.",
-                  "truncated": false,
-                  "minutes_at_review": 13
-                },
-                {
-                  "recommendationid": "229642794",
-                  "hours_at_review": 0.5,
+                  "recommendationid": "241148460",
+                  "hours_at_review": 10.1,
+                  "minutes_at_review": 606,
                   "voted_up": true,
-                  "date": "2026-07-05",
-                  "review_text": "Ubisoft connect is so hotdog water :(( couldn't even play the game despite having a freshly made account and a single correct log in attempt that locked me out of the game by suspending my account so refunded it instead. I hope it improves so I can finally rebuy & play it someday.",
-                  "truncated": false,
-                  "minutes_at_review": 31
+                  "date": "2026-11-24",
+                  "review_text": "All I can say so far with 12 hours in is  what a wonderful and beautiful game its been. Although So far the story is pretty mid. The open world isnt so open at the very start. But once you get through the first island the game starts to open up. Its somewhat linear in terms of the game areas can only be reached at certain levels. But honestly 12 hours into the game and I am loving it. Since I have only played the first Assasins Creed this is a pretty neat update to what I remember as a kid. The game is pretty demanding but I am able to run it around 120FPS at max settings. I wish they would add DLSS or framegen into the game as well as RayTraced Lighting. RayTraced lighting would really take this game to the next level. But its absolutely one of the most beautiful games I have played.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239904789",
+                  "hours_at_review": 16.8,
+                  "minutes_at_review": 1006,
+                  "voted_up": true,
+                  "date": "2026-11-11",
+                  "review_text": "The combat is fun, the graphics are beautiful, and the map is gigantic and full of detail. Ancient Greece is a perfect setting for the game.",
+                  "truncated": false
                 }
               ]
             }
           ]
         },
         {
-          "theme": "performance",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "ref-142f10",
-              "claim": "The game encounters startup failures, closing during initialization or failing to launch entirely.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-30182f",
+              "claim": "Reviewers note that side quests and progression can feel repetitive, grind-heavy, or stretched out over long playtimes.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231542592",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "can't get it to launch?",
-                  "truncated": false,
-                  "minutes_at_review": 24
+                  "recommendationid": "240861957",
+                  "hours_at_review": 16.2,
+                  "minutes_at_review": 970,
+                  "voted_up": true,
+                  "date": "2026-11-23",
+                  "review_text": "Enough content gets a bit repetitive tho",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230669375",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "I have tried everything to get this game to load. i have even upgraded my pc. The game does not work, it just closes while initializing. I have 14 minutes of \"Play Time\" from trying to get it to work with absolutely no success.\n\nI tried reporting this issue and even requested a refund that was denied. I feel cheated out of my money. Ultimately prom my point of view i was scammed. I paid for a bundle of assassin's creed games and was not delivered a single working game.\n\nI will never buy another game from this studio ever again.",
-                  "truncated": false,
-                  "minutes_at_review": 15
+                  "recommendationid": "238980785",
+                  "hours_at_review": 14.6,
+                  "minutes_at_review": 875,
+                  "voted_up": true,
+                  "date": "2026-10-31",
+                  "review_text": "A fairly decent game overall, in my opinion, but one that demands a considerable amount of time and patience. The majority of side quests feel repetitive, following more or less the same formula with very little variation. The graphics are undoubtedly one of the game's strongest aspects, but other elements are just okay. Naval combat is average and nowhere near the level of *AC Black Flag*, although that's somewhat understandable.\r\n\r\nAs for the story, I feel it is unnecessarily stretched, particularly the whole Cult of Kosmos storyline, which starts to feel dragged out after a while. Overall, it's a good game with plenty to offer, but you'll need to be patient and willing to invest a substantial amount of time to truly enjoy it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "237235866",
+                  "hours_at_review": 18.4,
+                  "minutes_at_review": 1102,
+                  "voted_up": true,
+                  "date": "2026-10-08",
+                  "review_text": "Love the story and gameplay. The only downside is that they made it a grindfest for mats.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ref-10e43a",
-              "claim": "The game crashes during play within the first few minutes.",
-              "citation_verdict": "negative",
+              "claim_id": "ear-433d3a",
+              "claim": "Reviewers note that the game features repetitive side quests and requires a significant amount of time spent on grinding.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 0,
-                "negative": 2
+                "positive": 2,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "228075208",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-06-16",
-                  "review_text": "Game is bugged so bad that i cant even play it for more then 20 minutes without it crashing. pretty sure its on ubisoft with their security patch. got it on sale and still feel ripped off",
-                  "truncated": false,
-                  "minutes_at_review": 43
+                  "recommendationid": "238980785",
+                  "hours_at_review": 14.6,
+                  "minutes_at_review": 875,
+                  "voted_up": true,
+                  "date": "2026-10-31",
+                  "review_text": "A fairly decent game overall, in my opinion, but one that demands a considerable amount of time and patience. The majority of side quests feel repetitive, following more or less the same formula with very little variation. The graphics are undoubtedly one of the game's strongest aspects, but other elements are just okay. Naval combat is average and nowhere near the level of *AC Black Flag*, although that's somewhat understandable.\r\n\r\nAs for the story, I feel it is unnecessarily stretched, particularly the whole Cult of Kosmos storyline, which starts to feel dragged out after a while. Overall, it's a good game with plenty to offer, but you'll need to be patient and willing to invest a substantial amount of time to truly enjoy it.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230669375",
-                  "hours_at_review": 0.2,
-                  "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "I have tried everything to get this game to load. i have even upgraded my pc. The game does not work, it just closes while initializing. I have 14 minutes of \"Play Time\" from trying to get it to work with absolutely no success.\n\nI tried reporting this issue and even requested a refund that was denied. I feel cheated out of my money. Ultimately prom my point of view i was scammed. I paid for a bundle of assassin's creed games and was not delivered a single working game.\n\nI will never buy another game from this studio ever again.",
-                  "truncated": false,
-                  "minutes_at_review": 15
+                  "recommendationid": "239247041",
+                  "hours_at_review": 7.3,
+                  "minutes_at_review": 441,
+                  "voted_up": true,
+                  "date": "2026-11-03",
+                  "review_text": "good game but so try hard to grinding money and xp, not like a wither 3, withcer3 still best RPG , overall a story and graphic so amazing",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-f5ebd620",
+          "text": "One reviewer says that as soon as you log in after creating a Ubisoft account, you are greeted with multiple ads and monetization prompts.",
+          "theme": "access",
+          "citation": {
+            "recommendationid": "241066593",
+            "hours_at_review": 3.1,
+            "minutes_at_review": 187,
+            "voted_up": false,
+            "date": "2026-11-24",
+            "review_text": "As soon as you log into any Ubisoft game after creating an account sitting through the fun of bureacuracy. Your main Starting Screen, Adds, adds, adds. \"would you like to earn actual EXP? $$$\" \"Check out our black friday sales\" \"Too poor to buy x4 time the game value in DLC have fun limping through the game pesant\" \r\nUbisoft Core.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 9,
-        "cited_recommend": 1,
-        "divergence_p": 0.144,
+        "cited_reviews": 7,
+        "cited_recommend": 7,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
     {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 309,
-      "pct_positive": 83.2,
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 485,
+      "pct_positive": 92.2,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers encounter a massive historical open world alongside padded activities and resource microtransactions.",
+      "summary": "Mid-game players enjoy expansive exploration and sailing across islands, though loop repetition and external launcher requirements cause friction.",
       "themes": [
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ear-b46ed8",
-              "claim": "Reviewers note that the game features a massive open world set in Ancient Greece with extensive exploration.",
+              "claim_id": "mid-e96536",
+              "claim": "Reviewers describe the world of Ancient Greece as visually impressive and expansive, featuring detailed landscapes, architecture, and exploration across islands.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 6,
-                "negative": 1
+                "positive": 5,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232184657",
-                  "hours_at_review": 3.5,
+                  "recommendationid": "241203155",
+                  "hours_at_review": 32.1,
+                  "minutes_at_review": 1924,
                   "voted_up": true,
-                  "date": "2026-08-06",
-                  "review_text": "Ignore my play time, I played this fully through Uplay back in the day when it launched. I bought it a second time (deeply discounted so I could justify it) just so I could replay one of if not the last truly great Assasssin's Creed games (Valhalla is pretty good too, I don't hate it). \r\n\r\nThe story is cool (if you ignore the very brief but very ♥♥♥♥♥♥ girlboss modern day interludes). The voice acting on Kassandra is incredible (I did not enjoy Alexios very much so my recommendation is not picking him). The world is massive, and I know that is not always a good thing, but it's just so gorgeous and I love exploring it. \r\n\r\nIt does still have some of the infamous Ubisoft \"find all the ? on the map\" things but not nearly to the degree of something like AC3. The combat is certainly not revolutionary but it's engaging and enjoyable enough to keep me interested and to entice me back for a second very long playthrough. \r\n\r\nUbisoft as a company blows, but this is and always will be an absolute gem.",
-                  "truncated": false,
-                  "minutes_at_review": 211
+                  "date": "2026-11-24",
+                  "review_text": "Assassin's Creed Odyssey is an incredible open-world RPG that takes players into the beautiful world of Ancient Greece. One of the strongest aspects of the game is its massive open world, filled with breathtaking landscapes, historical locations, ancient temples, beautiful islands, and impressive architecture. The attention to environmental detail makes exploring the world an experience of its own.\r\n\r\nThe character design is another major highlight. Alexios and Kassandra both have distinctive personalities, well-designed appearances, and impressive character animations. Their facial expressions, dialogue delivery, and interactions help bring the story to life. The supporting characters are also memorable, with different personalities and motivations that make the world feel more alive.\r\n\r\nThe animation quality deserves special appreciation. Combat animations are fluid and satisfying, with a variety of fighting styles, weapon movements, dodges, and special abilities. The cinematic presentation during important story moments adds another layer of immersion. Whether exploring ancient cities, fighting enemies, or travelling across the Greek islands, the animations help maintain the game's visual appeal.\r\n\r\nThe combat system offers plenty of freedom. Players can experiment with different weapons, abilities, armour sets, and playstyles. The naval combat is another enjoyable feature, allowing players to explore the Mediterranean Sea and participate in ship battles. Upgrading the ship and discovering new locations adds more depth to the experience.\r\n\r\nThe soundtrack and atmosphere are also outstanding. The music complements the Greek setting beautifully, while the environmental sounds make exploration feel more immersive. Watching the sunset over the sea or exploring ancient ruins can be just as enjoyable as completing missions.\r\n\r\nFinal Verdict: Assassin's Creed Odyssey is a remarkable adventure with beautiful world-building, memorable characters, satisfying combat, and im…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "232164647",
-                  "hours_at_review": 3.4,
+                  "recommendationid": "240727674",
+                  "hours_at_review": 70.2,
+                  "minutes_at_review": 4209,
                   "voted_up": true,
-                  "date": "2026-08-06",
-                  "review_text": "very fun game \r\nfun world \r\nwill lose time exploring",
-                  "truncated": false,
-                  "minutes_at_review": 202
+                  "date": "2026-11-21",
+                  "review_text": "Assassin’s Creed Odyssey delivers an incredible experience from beginning to end. Ancient Greece is breathtaking, the world is rich with history and mythology, and the freedom to explore makes every adventure feel worthwhile. The story is engaging, the characters are memorable, and the DLCs add even more depth to an already fantastic experience.\n\nWhether exploring the Greek world, uncovering ancient secrets, or facing its mythical challenges, Odyssey is a game that truly makes you feel part of its world.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232118955",
-                  "hours_at_review": 6.6,
+                  "recommendationid": "240367668",
+                  "hours_at_review": 25.1,
+                  "minutes_at_review": 1503,
                   "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "Takes on average 11minutes to load with a Intel CPU (yes legit time from Steam) in fact i'm 5 minutes into the load right now as I write this!.\nIts more of a Stand alone RPG than Assassin's Creed. This said has more Modern day than current Assassin's Creed.\nCombat is that crappy version, not horrible but not good, Black Flag Resync combat truer to original combat is much better.\nVery Large, lots to do.\nIf you have not played it before worth giving it a shot if you like the AC Series.",
-                  "truncated": false,
-                  "minutes_at_review": 398
+                  "date": "2026-11-16",
+                  "review_text": "I bought this game on sale for 15 euros (specifically the deluxe version.) I have to say, beyond all beliefs, this is an extraordinary game with a wide map to explore and various enemies to defeat. One thing that also stood out to me were the amazing graphics and scenery, while the representation of Ancient Greece was also superb. I recommend this game to anyone who wants to have a unique gaming experience.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231176419",
-                  "hours_at_review": 15.8,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "It has some impressive visuals and a beautiful open world, but the experience becomes repetitive after a while. The huge map is filled with activities that often feel like filler, and the RPG mechanics sometimes make progression feel more like a grind than an adventure. The story has interesting moments, but the pacing suffers from the amount of side content required to move forward. A decent open-world game, but it loses some of the focused identity that made earlier Assassin’s Creed titles stand out.",
-                  "truncated": false,
-                  "minutes_at_review": 948
+                  "recommendationid": "239355452",
+                  "hours_at_review": 71.7,
+                  "minutes_at_review": 4303,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "Genuinely enjoyed the beautiful greek world on my ultrawide monitor, it looks stunning , a literal treat to the eyes",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230944934",
-                  "hours_at_review": 16.2,
+                  "recommendationid": "238792261",
+                  "hours_at_review": 86.8,
+                  "minutes_at_review": 5206,
                   "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "Como el AC Origins pero muchísimo más grande, en mi opinión demasiado, abruma el tamaño del mapa y es casi todo el rato lo mismo. Si no te aburre su duración lo disfrutarás.",
-                  "truncated": false,
-                  "minutes_at_review": 973
-                },
-                {
-                  "recommendationid": "230294223",
-                  "hours_at_review": 10.7,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "**Assassin's Creed Odyssey** is one of the most impressive open-world RPGs I have ever played. From the moment I entered Ancient Greece, I was amazed by the breathtaking landscapes, beautiful islands, and vibrant cities. Every region feels unique, making exploration enjoyable from beginning to end.\n\nOne of the game's greatest strengths is its freedom. You can choose how to approach combat, whether through stealth, melee, ranged attacks, or powerful abilities. The RPG progression system allows you to experiment with different builds, and the variety of weapons and armor keeps character customization interesting throughout the adventure.\n\nThe story is also engaging, especially with the choices that affect dialogue and multiple endings. Meeting famous historical figures, sailing across the Aegean Sea, and discovering hidden ruins make the world feel alive. There is always something new to explore, whether it's a side quest, a fortress, or a mysterious cave.\n\nVisually, the game is stunning. The lighting, weather effects, oceans, forests, and ancient architecture create one of the most beautiful worlds Ubisoft has ever built. Even after dozens of hours, I still found myself stopping just to admire the scenery.\n\nIf I had to mention a minor downside, it would be that the map is extremely large. Some side activities can become repetitive, and completing everything requires a significant time investment. However, considering the amount of content available, I think it's a reasonable trade-off.\n\nOverall, Assassin's Creed Odyssey is an outstanding RPG filled with exploration, adventure, memorable characters, and an incredible world. If you enjoy open-world games with beautiful environments and hundreds of hours of content, I highly recommend it.\n\n\n『Assassin's Creed Odyssey』は、私がプレイしたオープンワールドRPGの中でも特に印象に残っている作品です。古代ギリシャの世界は非常に美しく、広大な海、美しい島々、壮大な都市が細部まで丁寧に作り込まれています。どこへ行っても新しい発見があり、探索そのものがとても楽しいゲームです。\n\n本作の大きな魅力は自由度の高さです。ステルス、近接戦闘、弓、特殊アビリティなど、自分の好きなプレイスタイルを自由に選べます。武器や防具の種類も豊富で、キャラクタ…",
-                  "truncated": true,
-                  "minutes_at_review": 641
-                },
-                {
-                  "recommendationid": "230265808",
-                  "hours_at_review": 7.2,
-                  "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "This bring so much more to the AC franchise compared to the older games, the role playing is done very nicely, and some missions are actually enjoyable! Plus the map is huge so there is always something new to do.",
-                  "truncated": false,
-                  "minutes_at_review": 430
+                  "date": "2026-10-29",
+                  "review_text": "This is my favorite Assassins Creed game, ancient Greece is lovingly recreated, the characters and voice acting are great. Think of this game as more of an action rpg set during the Peloponnesian War instead of a strictly assassins creed game, but wow, it still holds up to to when it released back in 2019. Players have the option of playing Kassandra or Alexios, I prefer Kassandra's vocal range so I would recommend playing as her. Naval battles make a return, commanding a bireme, sailing the Aegean, listening to Greek sea shanties, and cleaving enemy ships in half is honestly one of the most satisfying experience I have had in gaming in a while.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "ear-78acd8",
-              "claim": "Reviewers point out that the game feels repetitive and padded with filler activities across its large map.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-7992a4",
+              "claim": "Reviewers note that the gameplay becomes repetitive over time due to similar quests, side missions, and camp-clearing loops.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 4,
                 "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231176419",
-                  "hours_at_review": 15.8,
+                  "recommendationid": "240688923",
+                  "hours_at_review": 76.5,
+                  "minutes_at_review": 4588,
                   "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "It has some impressive visuals and a beautiful open world, but the experience becomes repetitive after a while. The huge map is filled with activities that often feel like filler, and the RPG mechanics sometimes make progression feel more like a grind than an adventure. The story has interesting moments, but the pacing suffers from the amount of side content required to move forward. A decent open-world game, but it loses some of the focused identity that made earlier Assassin’s Creed titles stand out.",
-                  "truncated": false,
-                  "minutes_at_review": 948
+                  "date": "2026-11-21",
+                  "review_text": "Game starts off quite interesting and fun but becomes very repetitive after a while. Playing this game reminds me of my previous experience with Assassin Creed 1. Game starts off very interesting and cool, but after a few hours, becomes very repetitive, and have to struggle to continue playing (due to the repetitive nature). Overall, combat lacks depth and assassination lacks variety.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230944934",
-                  "hours_at_review": 16.2,
+                  "recommendationid": "240346657",
+                  "hours_at_review": 22.4,
+                  "minutes_at_review": 1347,
                   "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "Como el AC Origins pero muchísimo más grande, en mi opinión demasiado, abruma el tamaño del mapa y es casi todo el rato lo mismo. Si no te aburre su duración lo disfrutarás.",
-                  "truncated": false,
-                  "minutes_at_review": 973
+                  "date": "2026-11-16",
+                  "review_text": "It is fun but the game is bloated and the gameplay becomes repetitive quickly.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230676988",
-                  "hours_at_review": 5.1,
+                  "recommendationid": "240192279",
+                  "hours_at_review": 99.9,
+                  "minutes_at_review": 5992,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "After playing over 100 hours, completing every quest, including both DLCs and unlocking all the achievements, here’s my honest opinion.\r\n\r\nOdyssey is a breathtaking journey through ambition, betrayal and fractured loyalties. Ancient Greece is mesmerising w/ exquisite environmental detail that constantly made me stop to admire the scenery. This game is gorgeous as hell.\r\n\r\nThe RPG systems are excellent and combat is fluid, satisfyin and addictive. The dialogue, character interactions and expressive movements create extraordinary immersion, And kicking someone off a cliff? Pure disrespect, lmao.\r\n\r\nBut the quests become repetitive, sometimes demanding considerable time for an underwhelming payoff. “Was that seriouslyy it?” sums up a few of them. Some characters also have conspicuously similar faces, I occasionally couldn’t tell who was who, lol.\r\n\r\nMy biggest criticism is how the sheer abundance of side quests overshadows the main narrative. After so many diversions, I’d forget what was happening in the central story. It deserved greater prominence, stronger continuity and more sustained emotional momentum. Ik Ik repetition is part of the AC formula, but story wise, I’d say Odyssey is decent, though nothing exceptional.\r\n\r\nPersonally, I found both DLCs better than the main storyline. Their compelling narratives and memorable moments left a deeper impression, making them the highlight of my experience. No cap!\r\n\r\nDespite the repetition, Odyssey’s world, combat and atmosphere kept drawing me back. Imo, it’s the 3rd best AC I’ve played so far. \r\n\r\n7/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240159581",
+                  "hours_at_review": 95.8,
+                  "minutes_at_review": 5748,
                   "voted_up": false,
-                  "date": "2026-07-17",
-                  "review_text": "Like others have pointed out, it's a beautiful game filled to the brim with pointless content. After playing four hours and reading that the game takes 80-100 hours to complete, I immediately gave up. It's not *really* an rpg, it's not *really* an assassin game, it's mostly poorly written dialogue and simple hack'n slash left mouse button spamming. Go there, kill x, go back for reward.",
-                  "truncated": false,
-                  "minutes_at_review": 304
+                  "date": "2026-11-14",
+                  "review_text": "It feels very different from the older Assassin's Creed games. You play more like a warrior than an assassin, and the quests get boring and repetitive.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230294223",
-                  "hours_at_review": 10.7,
+                  "recommendationid": "238703160",
+                  "hours_at_review": 68.4,
+                  "minutes_at_review": 4103,
                   "voted_up": true,
-                  "date": "2026-07-12",
-                  "review_text": "**Assassin's Creed Odyssey** is one of the most impressive open-world RPGs I have ever played. From the moment I entered Ancient Greece, I was amazed by the breathtaking landscapes, beautiful islands, and vibrant cities. Every region feels unique, making exploration enjoyable from beginning to end.\n\nOne of the game's greatest strengths is its freedom. You can choose how to approach combat, whether through stealth, melee, ranged attacks, or powerful abilities. The RPG progression system allows you to experiment with different builds, and the variety of weapons and armor keeps character customization interesting throughout the adventure.\n\nThe story is also engaging, especially with the choices that affect dialogue and multiple endings. Meeting famous historical figures, sailing across the Aegean Sea, and discovering hidden ruins make the world feel alive. There is always something new to explore, whether it's a side quest, a fortress, or a mysterious cave.\n\nVisually, the game is stunning. The lighting, weather effects, oceans, forests, and ancient architecture create one of the most beautiful worlds Ubisoft has ever built. Even after dozens of hours, I still found myself stopping just to admire the scenery.\n\nIf I had to mention a minor downside, it would be that the map is extremely large. Some side activities can become repetitive, and completing everything requires a significant time investment. However, considering the amount of content available, I think it's a reasonable trade-off.\n\nOverall, Assassin's Creed Odyssey is an outstanding RPG filled with exploration, adventure, memorable characters, and an incredible world. If you enjoy open-world games with beautiful environments and hundreds of hours of content, I highly recommend it.\n\n\n『Assassin's Creed Odyssey』は、私がプレイしたオープンワールドRPGの中でも特に印象に残っている作品です。古代ギリシャの世界は非常に美しく、広大な海、美しい島々、壮大な都市が細部まで丁寧に作り込まれています。どこへ行っても新しい発見があり、探索そのものがとても楽しいゲームです。\n\n本作の大きな魅力は自由度の高さです。ステルス、近接戦闘、弓、特殊アビリティなど、自分の好きなプレイスタイルを自由に選べます。武器や防具の種類も豊富で、キャラクタ…",
-                  "truncated": true,
-                  "minutes_at_review": 641
+                  "date": "2026-10-27",
+                  "review_text": "One of the better ACs. Huge world with the beautiful atmosphere being the focal selling point. Ship combat is fun, but less so than black flag. Tons of content although most of it is copy paste slop.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238565800",
+                  "hours_at_review": 33.5,
+                  "minutes_at_review": 2008,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "Ancient Greece is beautiful and exploring its islands by land and sea is a big part of what makes this game fun. I also liked the combat and the different builds you can create. However, the game is quite long and the constant clearing of camps and completing similar quests can get tiring. It doesn't feel like a classic AC game, but as an open-world RPG, it's a pretty solid experience. Overall a 7.9/10 game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-4a1f8e",
+              "claim": "Reviewers note that the game features extensive open-world exploration across Ancient Greece, including sailing ships and visiting various islands and historical locations.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "241203155",
+                  "hours_at_review": 32.1,
+                  "minutes_at_review": 1924,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "Assassin's Creed Odyssey is an incredible open-world RPG that takes players into the beautiful world of Ancient Greece. One of the strongest aspects of the game is its massive open world, filled with breathtaking landscapes, historical locations, ancient temples, beautiful islands, and impressive architecture. The attention to environmental detail makes exploring the world an experience of its own.\r\n\r\nThe character design is another major highlight. Alexios and Kassandra both have distinctive personalities, well-designed appearances, and impressive character animations. Their facial expressions, dialogue delivery, and interactions help bring the story to life. The supporting characters are also memorable, with different personalities and motivations that make the world feel more alive.\r\n\r\nThe animation quality deserves special appreciation. Combat animations are fluid and satisfying, with a variety of fighting styles, weapon movements, dodges, and special abilities. The cinematic presentation during important story moments adds another layer of immersion. Whether exploring ancient cities, fighting enemies, or travelling across the Greek islands, the animations help maintain the game's visual appeal.\r\n\r\nThe combat system offers plenty of freedom. Players can experiment with different weapons, abilities, armour sets, and playstyles. The naval combat is another enjoyable feature, allowing players to explore the Mediterranean Sea and participate in ship battles. Upgrading the ship and discovering new locations adds more depth to the experience.\r\n\r\nThe soundtrack and atmosphere are also outstanding. The music complements the Greek setting beautifully, while the environmental sounds make exploration feel more immersive. Watching the sunset over the sea or exploring ancient ruins can be just as enjoyable as completing missions.\r\n\r\nFinal Verdict: Assassin's Creed Odyssey is a remarkable adventure with beautiful world-building, memorable characters, satisfying combat, and im…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "240671420",
+                  "hours_at_review": 66.6,
+                  "minutes_at_review": 3997,
+                  "voted_up": true,
+                  "date": "2026-11-21",
+                  "review_text": "Easily one of the my favourite open-world RPGs out there.\n\nThe scenery across Ancient Greece is breathtaking, making exploration and sailing around the map a highlight on its own.\n\nThe combat is really fun and gives you a great variety of weapons to experiment with, so you can easily find a playstyle that fits you. \n\nMake sure to grab both ''Legacy of the First Blade'' and ''The Fate of Atlantis'' DCLs too. They are worth playing. 9/10.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238565800",
+                  "hours_at_review": 33.5,
+                  "minutes_at_review": 2008,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "Ancient Greece is beautiful and exploring its islands by land and sea is a big part of what makes this game fun. I also liked the combat and the different builds you can create. However, the game is quite long and the constant clearing of camps and completing similar quests can get tiring. It doesn't feel like a classic AC game, but as an open-world RPG, it's a pretty solid experience. Overall a 7.9/10 game.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-b3a948",
+              "claim": "Reviewers report that the open-world map and side content can feel repetitive or bloated over time.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240688923",
+                  "hours_at_review": 76.5,
+                  "minutes_at_review": 4588,
+                  "voted_up": false,
+                  "date": "2026-11-21",
+                  "review_text": "Game starts off quite interesting and fun but becomes very repetitive after a while. Playing this game reminds me of my previous experience with Assassin Creed 1. Game starts off very interesting and cool, but after a few hours, becomes very repetitive, and have to struggle to continue playing (due to the repetitive nature). Overall, combat lacks depth and assassination lacks variety.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240346657",
+                  "hours_at_review": 22.4,
+                  "minutes_at_review": 1347,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "It is fun but the game is bloated and the gameplay becomes repetitive quickly.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238703160",
+                  "hours_at_review": 68.4,
+                  "minutes_at_review": 4103,
+                  "voted_up": true,
+                  "date": "2026-10-27",
+                  "review_text": "One of the better ACs. Huge world with the beautiful atmosphere being the focal selling point. Ship combat is fun, but less so than black flag. Tons of content although most of it is copy paste slop.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "access",
+          "claims": [
+            {
+              "claim_id": "mid-7c02c8",
+              "claim": "Reviewers report frustration with requiring Ubisoft's external launcher to play the game.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240674646",
+                  "hours_at_review": 38.1,
+                  "minutes_at_review": 2289,
+                  "voted_up": false,
+                  "date": "2026-11-21",
+                  "review_text": "Game is great but its paired with the most horrendous game launcher I have ever had the unfortunate chance of using.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240175509",
+                  "hours_at_review": 28.9,
+                  "minutes_at_review": 1733,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "A game good enough that I bought it a second time on Steam so I wouldn't have to deal with Ubisoft's launcher that never once in 10+ years saved my login information.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239865826",
+                  "hours_at_review": 26.5,
+                  "minutes_at_review": 1589,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "i need your loader to play a game i paid for?",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-902d6d",
+              "claim": "Reviewers note that the game requires using a third-party Ubisoft launcher to play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "240674646",
+                  "hours_at_review": 38.1,
+                  "minutes_at_review": 2289,
+                  "voted_up": false,
+                  "date": "2026-11-21",
+                  "review_text": "Game is great but its paired with the most horrendous game launcher I have ever had the unfortunate chance of using.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240175509",
+                  "hours_at_review": 28.9,
+                  "minutes_at_review": 1733,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "A game good enough that I bought it a second time on Steam so I wouldn't have to deal with Ubisoft's launcher that never once in 10+ years saved my login information.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239865826",
+                  "hours_at_review": 26.5,
+                  "minutes_at_review": 1589,
+                  "voted_up": false,
+                  "date": "2026-11-10",
+                  "review_text": "i need your loader to play a game i paid for?",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-8aee6e",
+              "claim": "Reviewers state that the game lacks traditional stealth mechanics and feels more like an action RPG or warrior game than a classic Assassin's Creed title.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "240310890",
+                  "hours_at_review": 66.1,
+                  "minutes_at_review": 3968,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "Assassin's Creed Odyssey is very fun and the main story is pretty good. This is a pretty decent RPG game, but a terrible Assassin's Creed game. The stealth is very basic and a little janky at times when combined with the parkour system in this, which is a huge step down from the classic Assassin's Creed games. The fun parts are in the combat both on land and sea. I like how the different weapon types feel unique from each other, the abilities you unlock actually are useful while not being op, and how the game can genuinely be difficult at times without keeping you stuck at one part of the game for two hours straight (Except that one hog boss fight, fuck that pig). The game isn't too grindy compared to other RPG games, all you have to do is do some side quests alongside the main story and you should be the appropriate level for most of the time. And once you do get to the higher levels, you really do start to feel much more powerful. The game itself also looks great and I love the customization (thank god for transmog). Although I must say, a lot of the acting in this game is horrendous. Some actors are actually pretty good like Alexios, but many of the side characters feel like you just started watching a Tubi movie. If you're looking for a good Assassin's Creed game, then this one isn't it and you should play something like Black Flag or the Ezio Collection. But if you're looking for a good RPG game or just really like this period of Ancient Greece (like me), then this game might be worth your time.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240171863",
+                  "hours_at_review": 50.5,
+                  "minutes_at_review": 3032,
+                  "voted_up": true,
+                  "date": "2026-11-14",
+                  "review_text": "This was a TERRIBLE assassin's creed game. Stealth just doesn't mean anything and isn't rewarding unless your five levels above every NPC, but they all scale to you. I just considering myself playing as Odysseus from the odyssey and it honestly was fun. The world is pretty damn good looking, and I kept wanting to explore for the first 30 hours or so. It got repetetive, but by that point I was able to just finish the main story and finish. For a few bucks, this is a great game. There's easily 200 hours of content, the only issue is that not a lot would consider it good content. \r\n7/10",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240159581",
+                  "hours_at_review": 95.8,
+                  "minutes_at_review": 5748,
+                  "voted_up": false,
+                  "date": "2026-11-14",
+                  "review_text": "It feels very different from the older Assassin's Creed games. You play more like a warrior than an assassin, and the quests get boring and repetitive.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239215324",
+                  "hours_at_review": 63.7,
+                  "minutes_at_review": 3822,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "Ignore the AC faithfuls who dog on the newer games style. This is an excellent rpg, missing a lot of the Assassins creed DNA but incredible regardless.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238855854",
+                  "hours_at_review": 81.3,
+                  "minutes_at_review": 4880,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "terrible ac game, W rpg game u will enjoy it if u dont play it like an ac game",
+                  "truncated": false
                 }
               ]
             }
@@ -401,228 +612,8 @@
           "theme": "monetization",
           "claims": [
             {
-              "claim_id": "ear-435749",
-              "claim": "Reviewers mention that acquiring resources is slow unless paid for, noting the presence of microtransactions in the single-player mode.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231149338",
-                  "hours_at_review": 10.8,
-                  "voted_up": false,
-                  "date": "2026-07-23",
-                  "review_text": "Microtransactions in single player mode",
-                  "truncated": false,
-                  "minutes_at_review": 648
-                },
-                {
-                  "recommendationid": "231098470",
-                  "hours_at_review": 10.8,
-                  "voted_up": true,
-                  "date": "2026-07-23",
-                  "review_text": "not one for story games cuz i always loose interest quick but AC Odyssey is not like that. really fun. i love the open world aspect and i was a huge fan of Greek mythology when i was younger so that helps fuel the interest. Overall, really fun game and would recommend. perfect amount of combat and story. A little slow for resources unless you pay for them however but still awesome.",
-                  "truncated": false,
-                  "minutes_at_review": 651
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 10,
-        "cited_recommend": 7,
-        "divergence_p": 0.229,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "mid",
-      "label": "20-100h",
-      "hours_range": "20-100 hours",
-      "pool_n": 479,
-      "pct_positive": 85.8,
-      "muted": false,
-      "n_note": null,
-      "summary": "Players praise the vast historical scenery and fluid movement while facing launcher blocks, level gating, and heavy material grinding.",
-      "themes": [
-        {
-          "theme": "access",
-          "claims": [
-            {
-              "claim_id": "mid-e0c090",
-              "claim": "Reviewers report that the Ubisoft account and launcher issues prevent launching or playing the game, with technical problems causing long delays or crashes on high-end hardware.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "232107956",
-                  "hours_at_review": 38.8,
-                  "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "So Ubisoft account broke and can’t play any of their games that use their launcher anymore. Worst part is I actually like this game, and sunk hours into it by the time this issue occurred. Ubisoft support basically told me to refund the game. Good game, worst company ever.",
-                  "truncated": false,
-                  "minutes_at_review": 2329
-                },
-                {
-                  "recommendationid": "232003170",
-                  "hours_at_review": 22.2,
-                  "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "Ubisoft, fix your damn game! I can't even launch the game on a high end pc without it crashing. What are we doing? I didn't have this problem when the game released, so why now?",
-                  "truncated": false,
-                  "minutes_at_review": 1334
-                },
-                {
-                  "recommendationid": "231521733",
-                  "hours_at_review": 83.0,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Good game, cant bring myself to play anymore cause of third party launcher and denuvo causing massive delays(15 mins) in lauching game",
-                  "truncated": false,
-                  "minutes_at_review": 4983
-                },
-                {
-                  "recommendationid": "231420914",
-                  "hours_at_review": 43.5,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "always giving me stress beacae of log in to the ubisoft connect",
-                  "truncated": false,
-                  "minutes_at_review": 2609
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-6b337f",
-              "claim": "Reviewers report that the game requires signing into a third-party Ubisoft launcher and account to play.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "232107956",
-                  "hours_at_review": 38.8,
-                  "voted_up": false,
-                  "date": "2026-08-05",
-                  "review_text": "So Ubisoft account broke and can’t play any of their games that use their launcher anymore. Worst part is I actually like this game, and sunk hours into it by the time this issue occurred. Ubisoft support basically told me to refund the game. Good game, worst company ever.",
-                  "truncated": false,
-                  "minutes_at_review": 2329
-                },
-                {
-                  "recommendationid": "231948840",
-                  "hours_at_review": 38.6,
-                  "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "No choice but to install separate Ubisoft launcher to play.",
-                  "truncated": false,
-                  "minutes_at_review": 2318
-                },
-                {
-                  "recommendationid": "231521733",
-                  "hours_at_review": 83.0,
-                  "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "Good game, cant bring myself to play anymore cause of third party launcher and denuvo causing massive delays(15 mins) in lauching game",
-                  "truncated": false,
-                  "minutes_at_review": 4983
-                },
-                {
-                  "recommendationid": "231420914",
-                  "hours_at_review": 43.5,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "always giving me stress beacae of log in to the ubisoft connect",
-                  "truncated": false,
-                  "minutes_at_review": 2609
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-bfec6d",
-              "claim": "Reviewers note that the game requires completing side quests and involves heavy grinding due to enemy level scaling and expensive gear upgrades.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 3,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231878522",
-                  "hours_at_review": 91.5,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "A good game with a good story that starts off nicely. But further you go, the frustration grows:\n- Level scaling is pretty bad, even one level can sometimes keep you struggling against an enemy\n- Upgrading your gear costs a lot to bring it up to scale: you loot all possible locations, get all the drops, kill all the enemies, and STILL barely can upgrade your gear once, and after two or three levels it becomes obsolete again, and you need to start grinding again so you could have a chance\n- The level difference for main quests sometimes jumps which obligates you to complete all the side-quests you see, not because you want to and get appealed to them, but because you NEED TO\n\nAll in all, it is a good game, for a single playthrough, because I at least do not have the patience to go through so many hours of grinding again",
-                  "truncated": false,
-                  "minutes_at_review": 5493
-                },
-                {
-                  "recommendationid": "231612641",
-                  "hours_at_review": 26.8,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "if you love greek world and mythology . you will like this plus this game is too big and limits you for not leveling up . you have to do side quest to level up thats how they increased the length i dont like the rpg element , but overall its a good game in sale . plus i got ac 3 and liberationn with it also thats why it was a steal deal . if you plan to play this . you will have spend lot of time in this game",
-                  "truncated": false,
-                  "minutes_at_review": 1606
-                },
-                {
-                  "recommendationid": "231756860",
-                  "hours_at_review": 39.5,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "The game is great w.r.t environment\r\ngameplay\r\nopen-world activities ( some are great some are forced)\r\nmost annoying thing is levelling up to fight for a particular region and not being able to progess through the story\r\nother than that I didn't found MUCH WOKISM SLOP in this game\r\ntalk about Spiderman 2 Shissshhh\r\n-10/10 for optimization and still lags and shutters many times \r\nno matter how well your configs are, since the game is from 2018\r\n-10/10 HDR Compatibility is really WEAk\r\nwith HDR compatibility 10/10 it would've a visually STUNNING experience\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 2369
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-5bd5e8",
-              "claim": "Reviewers report that climbing mechanics are fluid and allow scaling almost anywhere without difficulty finding grab points.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231953384",
-                  "hours_at_review": 82.6,
-                  "voted_up": true,
-                  "date": "2026-08-03",
-                  "review_text": "One of the best Assassin's Creed games in the franchise. One of the most annoying things is trying to climb things in the other games. This one, pretty much everything is climbable without the glitching or difficulty of finding the exact grab point, the only thing you can't really climb are regular trees that are for decoration. This game is absolutely amazing in every aspect, it is always evolving and changing in real time, from territory ownership due to the ongoing war between Athens and Sparta which i love that you can participate in great battles for territory, and politics based off the decisions that you make as you play. The only thing that i wish you could do so far is throw regular equipped spears. Throwing Leonidas's spear is great for assassinations, but it would be fun to be able to throw regular spears and javelins. Anyway, This game seems to never end, and never gets old, nor is it easy.\n Favorites: Odyssey, Valhalla and Black Flag are the top 3 for me Valhalla and Black flag are about equal on rating, just depends on the mood I'm in, I'd lean towards Valhalla being in 2nd, tied with Odyssey if i had to choose.\nBoth are worth buying(Valhalla and Odyssey), even if it takes you forever to play them lol.",
-                  "truncated": false,
-                  "minutes_at_review": 4957
-                },
-                {
-                  "recommendationid": "231968149",
-                  "hours_at_review": 49.1,
-                  "voted_up": false,
-                  "date": "2026-08-03",
-                  "review_text": "Worst AC I've played yet.\r\nControlls are a pile of ♥♥♥♥. Sneaking mechanics are barely exist. Anything can see and hear you from a kilometer even with leveled up sneaking abilities. The character interacts with the last blade of grass and the target for that interaction changes 100x a second as you move an inch.\r\nThe mercanary mechanic is nightmare. The strory is mediocre.\r\nIt's like badly deliverd a hack-and-slash game.\r\nOnly play it if you'd never played an AC game before (so you won't be disappointed) and you never even consider sneaking up on enemies. And even then only get it when it's free...",
-                  "truncated": false,
-                  "minutes_at_review": 2948
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-8f8de4",
-              "claim": "Reviewers state that equipment upgrading requires extensive grinding for materials and currency.",
+              "claim_id": "mid-3b1e32",
+              "claim": "Reviewers criticize the inclusion of microtransactions and in-game cash shops in a full-priced single-player game.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -630,28 +621,83 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231878522",
-                  "hours_at_review": 91.5,
+                  "recommendationid": "239997254",
+                  "hours_at_review": 58.3,
+                  "minutes_at_review": 3497,
                   "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "A good game with a good story that starts off nicely. But further you go, the frustration grows:\n- Level scaling is pretty bad, even one level can sometimes keep you struggling against an enemy\n- Upgrading your gear costs a lot to bring it up to scale: you loot all possible locations, get all the drops, kill all the enemies, and STILL barely can upgrade your gear once, and after two or three levels it becomes obsolete again, and you need to start grinding again so you could have a chance\n- The level difference for main quests sometimes jumps which obligates you to complete all the side-quests you see, not because you want to and get appealed to them, but because you NEED TO\n\nAll in all, it is a good game, for a single playthrough, because I at least do not have the patience to go through so many hours of grinding again",
-                  "truncated": false,
-                  "minutes_at_review": 5493
+                  "date": "2026-11-12",
+                  "review_text": "IMO the best AC game thus far, followed closely by Black Flag, even though this one came out a few years ago now. Played mostly on PS4 when it first came out so I actually have more like 200hrs in it. Obviously there are both good and bad things, most of the bad things though are simply the franchise selling cosmetics for WAY too much, even years after it came out, and also the fact that you need DLC's to actually finish the full story. If you don't you're kinda left on a cliffhanger and it is unfortunate to get to that and just be disappointed that you've gotta spend another $50 to be satisfied with the ending. Of course this is an AC game so the gameplay itself is largely rinse and repeat from all the other more recent games, but if you've played them before you're gonna be prepared for that. But I will say the combat is way better than it was in previous games, seems like they just finetuned the combat from Origins. Whenever I get a new AC game I know what im gonna get gameplay wise, but it's the stories that make me, and many others, always come back for more. As someone who enjoys learning about history, the series itself is really great in that aspect. They truly do make an effort to be as realistic as possible when it comes to various peoples/societies and its clear that they do their research in many areas. Obviously that does not include all the mythology stuff that they're getting more and more into lately. This game in particular feels more like the devs wanted to show how ancient Greeks genuinely believed the world around them worked, instead of just throwing in a bunch of mythology stuff for funsies. I might be biased though because Ancient Greece is one of my favorite areas of history to study so the premise is right up my alley anyways. Also I REALLY liked how you could choose who to play, it makes things more interesting for sure. Additionally, I loved the incorporation of Ithaca from Homer's The Iliad (aka The Odyssey), that classic is so fascinatin…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "231314065",
-                  "hours_at_review": 97.2,
+                  "recommendationid": "239812842",
+                  "hours_at_review": 66.5,
+                  "minutes_at_review": 3989,
                   "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "Solid addition to the series, Enjoyable skill trees, Good expansions, anything can be accomplished with enough grinding and save scrubbing. I quite enjoyed it.",
-                  "truncated": false,
-                  "minutes_at_review": 5833
+                  "date": "2026-11-09",
+                  "review_text": "Exploration & Graphics: 10/10. The Ancient Greece atmosphere is incredible.\r\nMissions: Typical Ubisoft. 80% of the game is the usual repetitive loop of \"go there, kill that, steal this, free them.\"\r\nCombat: Flashy and fun, especially using the god-like abilities, but enemies can be massive damage sponges if your gear isn't maxed out.\r\nStory: Pretty good! I'm no expert, but it kept me engaged.\r\nVerdict: Despite the classic Ubisoft grind, I genuinely liked the game. Overall, a thumbs up.\r\n\r\nSide Note: I absolutely hate the microtransactions. Shoving an in-game cash shop and XP boosts into a full-priced, single-player game is a terrible practice.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 21,
+        "cited_recommend": 17,
+        "divergence_p": 0.0761,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 369,
+      "pct_positive": 91.3,
+      "muted": false,
+      "n_note": null,
+      "summary": "Veterans highlight massive world detail and relentless mercenary mechanics alongside combat repetition and performance stutters.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-6c6973",
+              "claim": "The game suffers from performance stutters and drops in frame rate on current hardware.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240369834",
+                  "hours_at_review": 159.8,
+                  "minutes_at_review": 9589,
+                  "voted_up": true,
+                  "date": "2026-11-16",
+                  "review_text": "Gorgeous game. Felt quite a lot like AC: Origins though. Random frame drops were a bit annoying",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238303002",
+                  "hours_at_review": 245.6,
+                  "minutes_at_review": 14736,
+                  "voted_up": true,
+                  "date": "2026-10-22",
+                  "review_text": "After 200+ hours of gameplay I full-heartedly recommend it, but I'm biased! \nMy love for ancient Greece and lack of experience with other AC games made this a 9/10 for me. \n\nThe story and the map is huge, all the mercenaries and the amount of side missions can take as long as you'd like it to take. I got sidetracked so haven't finished the game yet, but that means I'll spend longer in the ancient Greece.\n\nMy only issue is the performance on curren6 hardware, that isn't as good as I'd expect. A lot of stutters and no as high FPS as I'd have hoped. One moment it will be over 200 FPS and the next moment visibly stuttering under 50 FPS",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "mid-15bf5f",
-              "claim": "Reviewers point out that progress in the main story is gated behind leveling up, requiring side quests to be completed.",
+              "claim_id": "vet-19d0f5",
+              "claim": "Reviewers report performance issues and frame drops, including stuttering and long startup times on certain Intel processors due to a lack of optimization.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -659,31 +705,31 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231878522",
-                  "hours_at_review": 91.5,
+                  "recommendationid": "240714079",
+                  "hours_at_review": 107.9,
+                  "minutes_at_review": 6475,
                   "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "A good game with a good story that starts off nicely. But further you go, the frustration grows:\n- Level scaling is pretty bad, even one level can sometimes keep you struggling against an enemy\n- Upgrading your gear costs a lot to bring it up to scale: you loot all possible locations, get all the drops, kill all the enemies, and STILL barely can upgrade your gear once, and after two or three levels it becomes obsolete again, and you need to start grinding again so you could have a chance\n- The level difference for main quests sometimes jumps which obligates you to complete all the side-quests you see, not because you want to and get appealed to them, but because you NEED TO\n\nAll in all, it is a good game, for a single playthrough, because I at least do not have the patience to go through so many hours of grinding again",
-                  "truncated": false,
-                  "minutes_at_review": 5493
+                  "date": "2026-11-21",
+                  "review_text": "Despite it being a bit narratively divergent from the AC games that preceded it, it’s a very fun demo-god simulator set in Ancient Greece.\n\nThe only real complaint is that it has not been optimized for modern machines. Hyperthreading on new Intel chips causes a very long startup time of about 5 minutes. A bug fix is desperately needed.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231756860",
-                  "hours_at_review": 39.5,
+                  "recommendationid": "240369834",
+                  "hours_at_review": 159.8,
+                  "minutes_at_review": 9589,
                   "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "The game is great w.r.t environment\r\ngameplay\r\nopen-world activities ( some are great some are forced)\r\nmost annoying thing is levelling up to fight for a particular region and not being able to progess through the story\r\nother than that I didn't found MUCH WOKISM SLOP in this game\r\ntalk about Spiderman 2 Shissshhh\r\n-10/10 for optimization and still lags and shutters many times \r\nno matter how well your configs are, since the game is from 2018\r\n-10/10 HDR Compatibility is really WEAk\r\nwith HDR compatibility 10/10 it would've a visually STUNNING experience\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 2369
+                  "date": "2026-11-16",
+                  "review_text": "Gorgeous game. Felt quite a lot like AC: Origins though. Random frame drops were a bit annoying",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231612641",
-                  "hours_at_review": 26.8,
+                  "recommendationid": "238303002",
+                  "hours_at_review": 245.6,
+                  "minutes_at_review": 14736,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "if you love greek world and mythology . you will like this plus this game is too big and limits you for not leveling up . you have to do side quest to level up thats how they increased the length i dont like the rpg element , but overall its a good game in sale . plus i got ac 3 and liberationn with it also thats why it was a steal deal . if you plan to play this . you will have spend lot of time in this game",
-                  "truncated": false,
-                  "minutes_at_review": 1606
+                  "date": "2026-10-22",
+                  "review_text": "After 200+ hours of gameplay I full-heartedly recommend it, but I'm biased! \nMy love for ancient Greece and lack of experience with other AC games made this a 9/10 for me. \n\nThe story and the map is huge, all the mercenaries and the amount of side missions can take as long as you'd like it to take. I got sidetracked so haven't finished the game yet, but that means I'll spend longer in the ancient Greece.\n\nMy only issue is the performance on curren6 hardware, that isn't as good as I'd expect. A lot of stutters and no as high FPS as I'd have hoped. One moment it will be over 200 FPS and the next moment visibly stuttering under 50 FPS",
+                  "truncated": false
                 }
               ]
             }
@@ -693,8 +739,8 @@
           "theme": "content",
           "claims": [
             {
-              "claim_id": "mid-8c7b9a",
-              "claim": "Reviewers describe the open world as large, visually beautiful, and rich in historical and mythological locations, scenery, and exploration.",
+              "claim_id": "vet-8580c2",
+              "claim": "The open-world map is exceptionally large and detailed, featuring Ancient Greek settings, historical landmarks, and a wide variety of side quests and points of interest.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 4,
@@ -702,251 +748,40 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232097578",
-                  "hours_at_review": 76.7,
+                  "recommendationid": "240857862",
+                  "hours_at_review": 135.9,
+                  "minutes_at_review": 8153,
                   "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "9.5 / 10 ⭐ \n\nJust finished Assassin's Creed Odyssey and I had an amazing time with it. The world is absolutely beautiful and feels huge and alive, with so many places worth exploring. The RPG system is one of the best I've played, and I really enjoyed upgrading my character and trying different abilities.\n\nThe story kept me interested from start to finish, and the enemies made combat fun without feeling repetitive. I also loved the ship gameplay, sailing around Ancient Greece and taking part in naval battles was a great addition.\n\nOverall, it's a fantastic open-world RPG with beautiful visuals, fun gameplay, and a memorable adventure. Definitely one of my favorite Assassin's Creed games.",
-                  "truncated": false,
-                  "minutes_at_review": 4603
+                  "date": "2026-11-23",
+                  "review_text": "  So, I’ve finally played this game Assassin's Creed Odyssey. In my opinion, it’s the best Assassin's Creed game until now. I used to struggle to choose between AC III Remastered and AC Unity, but now I know for sure which one is my favorite.\r\n  I have never experienced a map this detailed and beautiful, filled with so many NPCs, each with unique dialogue and animations. It’s also the longest story mode/open world game I have ever played.\r\nTo complete everything—the entire map, the main story, side quests, and the DLCs—it takes about 150 hours.\r\n  The story is so good that I don't have words for it, also the Legacy of the First Blade DLC, in particular, left me feeling quite sad due to all the drama that happend to Kassandra , all she wanted was peace but the Greel world , woundn't let this happend.\r\n  I definitely plan to revisit AC Origins and continue on to AC Valhalla.\r\nThe gameplay can be a bit challenging at first until you get used with it, but it becomes fairly easy once you master the combat. In my opinion, the mercenaries are the most annoying part because they’re constantly hunting you down. If your \"wanted\" reach level 5, it’s very difficult to shake them off unless you pay them off. The game features a huge variety of legendary, unique weapons and armor sets, as well as various skills. Perhaps the coolest feature is the list of cultists you have to track down and eliminate every single one, which will keep you busy and challenged throughout the entire game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231891195",
-                  "hours_at_review": 32.6,
+                  "recommendationid": "240621463",
+                  "hours_at_review": 175.6,
+                  "minutes_at_review": 10535,
                   "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "I am a huge fan of Greek mythology as well as the Assassin's Creed franchise, so this is just perfect in my opinion. The graphics are amazing and open world allows you to see really beautiful sights",
-                  "truncated": false,
-                  "minutes_at_review": 1955
+                  "date": "2026-11-20",
+                  "review_text": "This is the Assassin's Creed I've been waiting for.\nThe world of Ancient Greece is beautiful and enormous. The attention to detail and historical accuracy? Amazing! (I've even watched YouTube videos where historians discussed what Ubisoft got right and what they got wrong in AC Odyssey.)\nYou feel like a time traveller witnessing one of the most fascinating periods in human history. Yeah, there are some supernatural elements, aliens, and DNA doesn't actually contain the memories of your ancestors, but that's okay. It's just a video game.\nAlexios and Kassandra are charismatic, fun and relatable characters. They even remind me of Ezio — the best character in the AC universe.\nThe map offers a huge variety of things to do: side quests, collectibles, forts to capture, battles for territory, sailing your ship or simply getting lost and enjoying the view.\nFor some people, that's too much. For me? Well, I wanted more!\nThe DLCs are fun, but they're not as grounded as the base game. If that's not your cup of tea, just stick to the main game.\nI've spent 175.6 hours in this game, left no stone unturned, completed almost everything and... in the end, I was genuinely sad that the journey had come to an end.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231392208",
-                  "hours_at_review": 48.0,
+                  "recommendationid": "239932606",
+                  "hours_at_review": 181.5,
+                  "minutes_at_review": 10891,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "Absolutely fabulous game,from the architecture to the views of ancient Greece, for me it's aaaa triple A game,i really like it. It's the 3rd time finishing it btw,the first 2 times i played it was a craked game haha .",
-                  "truncated": false,
-                  "minutes_at_review": 2878
+                  "date": "2026-11-11",
+                  "review_text": "I've always said that Ubisoft knows how to build worlds, not games. And if there's one game that perfectly demonstrates both sides of that statement, it's this one.\n\nAncient Greece is absolutely mesmerizing. The islands, the architecture, the historical landmarks, the ancient writings, the mythology, and the sheer richness of the world are nothing short of extraordinary. Ubisoft has this incredible ability to recreate historical settings that make you genuinely want to explore them, not necessarily because there's a quest marker telling you to, but because you're curious about what's waiting beyond the next mountain or across the sea.\n\nAnd Odyssey might be one of their finest achievements in that regard.\n\nI spent countless hours sailing between islands, wandering through ancient cities, exploring ruins, discovering secrets, and immersing myself in Greek history and mythology. Every region felt like another opportunity to discover something fascinating. I was so captivated by this world that I ended up completing 100% of the game, something I rarely bother doing.\n\nThe mythology deserves special praise. Gods, legendary creatures, ancient mysteries, and the constant blending of history with myth made the experience endlessly fascinating. And the power fantasy? Absolutely ridiculous, in the best possible way. By the end, you're less of an Assassin and more of a Greek demigod casually walking around and ruining everyone's day. I loved that.\n\nI played as Kassandra, and she was a fantastic protagonist. Charismatic, entertaining, and genuinely fun to inhabit throughout such an enormous adventure. The story itself was decent, nothing particularly groundbreaking, but it did its job and gave me enough reason to keep going.\n\nUnfortunately, this is also where my usual Ubisoft criticism comes in.\n\nThe gameplay loop starts out genuinely enjoyable. The combat, abilities, progression, exploration, and activities all feel satisfying initially. But after dozens upon dozens of hours, t…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "231495457",
-                  "hours_at_review": 24.7,
+                  "recommendationid": "239750733",
+                  "hours_at_review": 214.8,
+                  "minutes_at_review": 12889,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Love this game. One of my favorite AC game in the franchise. I love the RPG elements especially with the dialogue choices. I spent more time doing side quests and exploring rather than doing the main quest. The side quests are really engaging. Some games have side quests that are plain boring but not this one. The landscape is absolutely gorgeous too. I was exploring this one cave and as I exited the cave, I came into view the ocean and trees and it was stunning. It's visual eye candy.",
-                  "truncated": false,
-                  "minutes_at_review": 1482
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-09fd33",
-              "claim": "Reviewers note that the game features extensive open-world exploration and a vast amount of content.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 4,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232097578",
-                  "hours_at_review": 76.7,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "9.5 / 10 ⭐ \n\nJust finished Assassin's Creed Odyssey and I had an amazing time with it. The world is absolutely beautiful and feels huge and alive, with so many places worth exploring. The RPG system is one of the best I've played, and I really enjoyed upgrading my character and trying different abilities.\n\nThe story kept me interested from start to finish, and the enemies made combat fun without feeling repetitive. I also loved the ship gameplay, sailing around Ancient Greece and taking part in naval battles was a great addition.\n\nOverall, it's a fantastic open-world RPG with beautiful visuals, fun gameplay, and a memorable adventure. Definitely one of my favorite Assassin's Creed games.",
-                  "truncated": false,
-                  "minutes_at_review": 4603
-                },
-                {
-                  "recommendationid": "231995092",
-                  "hours_at_review": 72.4,
-                  "voted_up": true,
-                  "date": "2026-08-03",
-                  "review_text": "It is basically not an assassin's creed game and there are some repetitive ubislop elements but overall great action rpg, crazy amount of content, dialogue is fun and entertaining, game does a fantastic job of making you feel like a badass with visceral kill animations. Great immersion as a dirtbag greek mercenary who kills people for money. The landscapes are quite beautiful.\n\n(Also there is a lot of gay sex, its ancient greece what did you expect) 10/10",
-                  "truncated": false,
-                  "minutes_at_review": 4343
-                },
-                {
-                  "recommendationid": "231363510",
-                  "hours_at_review": 95.9,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "this game is crazy. not like regular AC games, more like an insanely massive open world game with hundreds of hours of content, with different dimensions and abilities and playstyles, it really never seems to end. you think youre done with one thing and about 50 other things open up, heaps of content",
-                  "truncated": false,
-                  "minutes_at_review": 5753
-                },
-                {
-                  "recommendationid": "231280388",
-                  "hours_at_review": 79.8,
-                  "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "Huge and beautiful world with tons of content and quests. It would've fared better if it got rid of the \"Assassin's Creed\" in the title and was just called \"The Odyssey\".",
-                  "truncated": false,
-                  "minutes_at_review": 4791
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 18,
-        "cited_recommend": 12,
-        "divergence_p": 0.033,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 374,
-      "pct_positive": 90.9,
-      "muted": false,
-      "n_note": null,
-      "summary": "Long-term players admire the stunning ancient setting despite repetitive missions, mandatory leveling grind, and spongy enemies.",
-      "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-dc5716",
-              "claim": "Reviewers describe the open world map of ancient Greece as massive and visually stunning.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 8,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232125139",
-                  "hours_at_review": 167.4,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "- Big Beautiful Breathtaking open world map\n- If you downloading this right know..get ready for a big Adventure, a virtual holiday trip to Ancient Rome\n- Missions can get a bit repetitive, bunch of fetch quest grind just to keep up with the level-gating system\n- yeah go do those side mission go get yourself slightly better gear or if you're lucky you got a legendary or something\n- head to nexusmods you'll have no problem with that part of the grind and maybe somehow you can even \"claim\" the microtransaction items from the store, ifykyk, just like I did.\n- Alexios is a good MC but Ubi made Kassandra canon lore wise, me personally idgaf, Alexios is a total badass also cuz it's just fitting and up to my immersion of being freelance sparta mercenary \n- Woah Atlantis very cool\n- This game takes forever wtf if i were unemployed without any responsibity I would've had a blast booting up this game every day\n- Yeah i mean if you compare to the old Assassins title, this one..lets just be honest it is horse5hit compared to the ogs\n- Verdict : personal rating 8/10\n- AC1-Syndicate still undefeated... fuh these modern combat style robotic janky ass animation, i mean how can we go from AC 3 to this, im also pointing at you BLACK FLAG RESYNCED\n- Absolute Video hames, gaming time \n- John Odysseus/10\n- This is Sparta rahhh\n- yo go watch Spartacus, Troy, 300, nolan imax sparta, etc    for da vibes..,.,,.type ♥♥♥♥",
-                  "truncated": false,
-                  "minutes_at_review": 10042
-                },
-                {
-                  "recommendationid": "232121892",
-                  "hours_at_review": 215.2,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "A candy for ancient and bronze/iron era historical lovers!\r\nGraphics and the wolrd itself are still amazing after the years.",
-                  "truncated": false,
-                  "minutes_at_review": 12915
-                },
-                {
-                  "recommendationid": "232116825",
-                  "hours_at_review": 148.9,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "Great setting for a assassins creed game. Loved the lore and exploration of ancient Greece.",
-                  "truncated": false,
-                  "minutes_at_review": 8936
-                },
-                {
-                  "recommendationid": "232092418",
-                  "hours_at_review": 100.9,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "Most beautifully rendered open world game of its era, and certainly within the AC universe. It was a breeze for me to complete sidequests or roam around the map just for fun, when it was such a chore for games like AC Origins and Valhalla.",
-                  "truncated": false,
-                  "minutes_at_review": 6056
-                },
-                {
-                  "recommendationid": "231904352",
-                  "hours_at_review": 115.5,
-                  "voted_up": true,
-                  "date": "2026-08-02",
-                  "review_text": "[h2]By Zeus's Balls, This Is The Most Beautiful Open-World Set In Ancient Greece Ever, Along With The Most Beautiful DLCs Ever Made!![/h2]\n\nFrom Hater to Lover of this Game!!\n\nI mainly purchased this to get immersed in the Greek setting as Christopher Nolan's Odyssey was approaching release and If I had gone by the few reviews of my friends who gave this one a thumbs down, I would've missed playing a masterpiece. Seriously, how can you not love exploring this beautiful and magnificent world which Ubisoft has created? Some of my friends' critique are so dumb. You guys missed out on a real gem. If I had to critique this game, it would be only the slow HORSE SPEED which I fixed by installing a mod, disabling horse speed restrictions in major cities. Anyone playing this should install this mod. It saves you a lot of time and avoids testing your patience.\n\nAssassin's Creed Odyssey isn't just one of my favorite Assassin's Creed game, it's one of the best open-world RPGs I've ever played.\n\nFrom the moment the game recreates the Battle of Thermopylae, it grabs your attention and never really lets go. The journey of Kassandra is filled with memorable characters, emotional moments, and plenty of choices that make the adventure feel personal. Ancient Greece is absolutely breathtaking, with every island, city, and mountain inviting you to explore just a little bit longer.\n\nCombat is fast, satisfying, and incredibly fun thanks to the wide variety of abilities and builds you can create. Whether you prefer charging headfirst into battle, picking enemies off with a bow, or silently clearing an entire fort without being detected, the game gives you the freedom to play your way. Recruiting defeated enemies to your ship instead of killing them is a small feature, but one that adds another layer to the experience.\n\nSpeaking of ships, naval combat is surprisingly addictive. Upgrading your vessel, assembling a unique crew, and engaging in sea battles across the Aegean Sea never stopped b…",
-                  "truncated": true,
-                  "minutes_at_review": 6929
-                },
-                {
-                  "recommendationid": "231577799",
-                  "hours_at_review": 147.1,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Assassin’s Creed Odyssey is easily one of my favorite games, and after completing it about three different times, I still find reasons to come back.\r\n\r\nAncient Greece is one of the most beautiful and enjoyable open worlds Ubisoft has created. The map is massive, but it never feels empty. There are islands to explore, naval battles, forts to clear, mercenaries to hunt, legendary animals, side quests, and plenty of hidden locations that reward you for wandering away from the main story.\r\n\r\nThe combat is fast, satisfying, and gives you a lot of freedom in how you build your character. You can focus on stealth, direct combat, ranged attacks, or combine everything depending on the situation. The ability system and gear options make each playthrough feel different, especially once you start experimenting with specialized builds.\r\n\r\nThe story is also much more personal than I expected. Your choices can affect relationships, quests, and even the fate of your family. Some decisions are more meaningful than others, but they still make the journey feel like your own. The voice acting, especially for Kassandra, is excellent and gives the game a lot of personality.\r\n\r\nIt may not feel exactly like the older Assassin’s Creed games, but taken on its own, Odyssey is an outstanding open-world action RPG. It has a huge amount of content, memorable characters, great combat, an incredible setting, and enough replay value that I have finished it three times.\r\n\r\nAbsolutely recommended.",
-                  "truncated": false,
-                  "minutes_at_review": 8828
-                },
-                {
-                  "recommendationid": "231510506",
-                  "hours_at_review": 109.6,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Lots of fun. Great voice acting, a beautiful world and lots to see and do.\nAnd I mean LOTS AND LOTS.\n\nIf you're like me and you want to uncover every single question mark and have a checkmark for every single location... This game will take you a long time to finish.\n\nAnd it's fun! Though I do have to take breaks in between as to not burn out due to the sheer size of the world.\n\nAlso, even though it's not Deck verified it runs splendidly on it. I almost exclusively play on the Deck, and it runs between 40 and 60 FPS for the most part.\n\nI did not finish the game so far either. If I had to guess I'm about 70% through the main game, though I didn't even touch the DLC yet.",
-                  "truncated": false,
-                  "minutes_at_review": 6577
-                },
-                {
-                  "recommendationid": "231059436",
-                  "hours_at_review": 170.5,
-                  "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "Honestly, AC Odyssey is an incredible open-world RPG. Ancient Greece is huge, gorgeous, and full of life, and playing as Kassandra is awesome with all the naval combat and mythical gear. The reason it’s an 7/10 for me instead of higher is that the map can feel a bit overwhelming, and the heavy level-gating grinds the pacing down at times. But if you love massive RPGs and ancient history, it’s definitely a blast.",
-                  "truncated": false,
-                  "minutes_at_review": 10230
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-1337ed",
-              "claim": "Players report that missions and side quests become repetitive, featuring fetch quests and clearing out camps.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 5,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232125139",
-                  "hours_at_review": 167.4,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "- Big Beautiful Breathtaking open world map\n- If you downloading this right know..get ready for a big Adventure, a virtual holiday trip to Ancient Rome\n- Missions can get a bit repetitive, bunch of fetch quest grind just to keep up with the level-gating system\n- yeah go do those side mission go get yourself slightly better gear or if you're lucky you got a legendary or something\n- head to nexusmods you'll have no problem with that part of the grind and maybe somehow you can even \"claim\" the microtransaction items from the store, ifykyk, just like I did.\n- Alexios is a good MC but Ubi made Kassandra canon lore wise, me personally idgaf, Alexios is a total badass also cuz it's just fitting and up to my immersion of being freelance sparta mercenary \n- Woah Atlantis very cool\n- This game takes forever wtf if i were unemployed without any responsibity I would've had a blast booting up this game every day\n- Yeah i mean if you compare to the old Assassins title, this one..lets just be honest it is horse5hit compared to the ogs\n- Verdict : personal rating 8/10\n- AC1-Syndicate still undefeated... fuh these modern combat style robotic janky ass animation, i mean how can we go from AC 3 to this, im also pointing at you BLACK FLAG RESYNCED\n- Absolute Video hames, gaming time \n- John Odysseus/10\n- This is Sparta rahhh\n- yo go watch Spartacus, Troy, 300, nolan imax sparta, etc    for da vibes..,.,,.type ♥♥♥♥",
-                  "truncated": false,
-                  "minutes_at_review": 10042
-                },
-                {
-                  "recommendationid": "232085712",
-                  "hours_at_review": 141.3,
-                  "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "Game is good overall, took me 141hrs to complete my first playthrough in nightmare difficulty, 100% map + quests completion (Base game only, dont own dlcs). The story is exciting and revealing for the grand scheme of the saga. Compared to origins the graphic quality seemes to have dropped drastically, no idea why. Its more RPGish than origins, leaning heavily into RNG for gear stats, the world is huge and, as oposed to origins which had very deep, unique and interesting quests, odyssey's are far more generic and repetitive, of course, some of them are also fantastic. I didnt quite enjoy the \"travelling downtime\" on odyssey, not enough fast travel points.\r\nParkour is fine, fluent and responsive, but the game in general doesnt feel like an Asassins Creed, its best to think of as just a cool greek mythology RPG.\r\nUltimately satisfied with the game, would reccomend it to anyone who enjoys action RPGs in general and im ready to continue with valhalla!",
-                  "truncated": false,
-                  "minutes_at_review": 8481
-                },
-                {
-                  "recommendationid": "231988818",
-                  "hours_at_review": 159.6,
-                  "voted_up": true,
-                  "date": "2026-08-03",
-                  "review_text": "I hate that I love this game. \r\nDo note that game is very very veeeeeery long even if you are jobless like me,it's gonna take you months to explore everything in the game. It's not an assassins creed but more of an adventures of a Greek mercenary as you go around exploring and helping. \r\nStory is quite good,mysterious with each chapter though last chapter of good ending felt a teen wrote it who got into slice of life anime genre.\r\nCharacters are best written ones I seen in an assassins creed game,Alexios/Kassandra is one of best main characters in an rpg game and side characters like Sokrates are quite memorable \r\nThe world is quite sexy looking for a 2018 game BUT the gameplay is horrible. You are gonna need to grind levels for certain missions to progress and exploring unknown areas was just so awful. You are either gonna clear out enemy camp, hunt an alpha animal or loot chests with bad gear. That's it and the world is one of,if not biggest worlds in a game I ever seen. If you are gonna try to explore it all within days,you will burn yourself trying to uncover every corner of the map. I personally loved first 30 hours of the game,then around 60 hours I started crying how much more of this am I gonna have to do.\r\nSo exploring and grind made me feel neutral on the game,it should have been more like origins who had it perfectly paced.  Also wasn't a fan of the story outside the simulator, the main girl is simply boring with no personality unlike Desmond from previous games, honestly should have been like syndicate where you just view cutscenes for 5 minutes and get back to the simulator.\r\n\r\nOverall fun adventure game but a bit too grindy.almost made me quit open world games for good \r\nAlso works flawlessly on steam deck oled,60+ fps and high graphics \r\n8/10 for me\r\nP.s kinda cringe ubisoft made Kassandra as canon main character,what's the point of picking a sibling then??",
-                  "truncated": false,
-                  "minutes_at_review": 9573
-                },
-                {
-                  "recommendationid": "230838805",
-                  "hours_at_review": 149.4,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "Finally, I got the chance to play another game from this incredible series.\n\nAncient Greece was absolutely beautiful. They did an amazing job recreating the world, not only visually but also historically, which is something Assassin's Creed has always been great at. Together with the soundtrack, it made exploring the world a fantastic experience.\n\nOne thing I liked much more than in Assassin's Creed Origins was the upgrade system. In Origins I often felt like I had to stop and farm materials just to upgrade my gear. Odyssey still has the ship upgrades, but I never felt forced to grind. Most of the resources came naturally while I was playing.\n\nThis was also the first Assassin's Creed where I really started to feel the repetitive gameplay. I never had any problems with my level, but after a while I got tired of doing the same tasks over and over again: kill the captain, loot a few chests, move on to the next one. Around the halfway point of the game I stopped doing those activities unless a quest sent me there.\n\nThe naval battles were fun, but after some time I lost interest in them as well. Once I had finished everything I wanted to do at sea, I mostly used fast travel instead.\n\nThe story was great from beginning to end. I met a lot of memorable characters, and I especially loved having Barnabas and Herodotos by my side. They were fantastic companions, and I really enjoyed the quests involving them.\n\nAs for the DLCs:\n\n[b]Legacy of the First Blade[/b] had an interesting story, but the romance and everything that followed felt too forced to me. Some of the optional romances in the base game actually had much better chemistry. I understand that, they needed to connect Odyssey more closely to Origins, but I think it could have been handled better.\n\n[b] The Fate of Atlantis[/b] was enjoyable, especially because I loved learning more about the First Civilization. However, I think it was a bit longer than it needed to be.\n\nI already knew what happened to Kassandra because …",
-                  "truncated": true,
-                  "minutes_at_review": 8962
-                },
-                {
-                  "recommendationid": "230995825",
-                  "hours_at_review": 153.5,
-                  "voted_up": true,
-                  "date": "2026-07-21",
-                  "review_text": "Overall it is a good game imo, but commonly known issue: full of repetitive chores (although i am aware it is not the worst offender in the series). I finished it FINALLY after 154 hours. It is pretty cool for a mythology nerd like me but yeah, obviously takes WAY too long to complete.",
-                  "truncated": false,
-                  "minutes_at_review": 9209
+                  "date": "2026-11-08",
+                  "review_text": "Horas jugadas al momento del análisis: 214h\r\n\r\nCompletado: Historia principal, Culto de Kosmos, sellado mítico y DLC Legacy of the First Blade.\r\n\r\nAssassin's Creed Odyssey es un viaje monumental. Si buscas un juego lineal o corto, este no es tu lugar; pero si buscas un action-RPG inmersivo donde perderte semanas explorando la Antigua Grecia, ofrece contenido de sobra para justificar cada centavo.\r\n\r\nLo mejor:\r\n\r\nAmbientación y escala: Visualmente Grecia es espectacular; navegar entre islas y explorar ruinas históricas nunca cansa.\r\n\r\nCombate y builds: Gran variedad de estilos. Armar configuraciones enfocadas en daño de Asesino, críticos y habilidades como Hero Strike o disparos de francotirador con el arco se siente sumamente gratificante.\r\n\r\nEl árbol del Culto: La mecánica de investigar pistas y cazar a los miembros del Culto de Kosmos uno a uno por todo el mapa es uno de los mejores sistemas que ha tenido la saga.\r\n\r\nConexión de lore: El DLC Legacy of the First Blade cierra con un broche de oro que sirve como la antesala perfecta para Assassin's Creed Origins.\r\n\r\nPuntos a tener en cuenta:\r\n\r\nEl mapa es gigantesco y por momentos puede sentirse abrumador si eres completista. Es fácil dispersarse con misiones secundarias repetitivas si no te enfocas en la historia y los objetivos clave.\r\n\r\nRequiere optimizar bien configuraciones en PC y clientes de arranque para evitar cuellos de botella en pantallas de carga.\r\n\r\nVeredicto:\r\n\r\nUn juego enorme, divertido y con un ciclo de combate adictivo. Cerrar la historia de Kassandra tras más de 200 horas deja una satisfacción tremenda. Totalmente recomendado. 9/10",
+                  "truncated": false
                 }
               ]
             }
@@ -956,103 +791,228 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-f1b854",
-              "claim": "Reviewers report that the game requires leveling and grinding to progress through certain missions.",
+              "claim_id": "vet-e8b580",
+              "claim": "Combat involves managing adrenaline to execute special abilities and can feel repetitive or sponge-like against bosses after extended play.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 3,
+                "positive": 4,
                 "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "232125139",
-                  "hours_at_review": 167.4,
+                  "recommendationid": "239664837",
+                  "hours_at_review": 661.7,
+                  "minutes_at_review": 39700,
                   "voted_up": true,
-                  "date": "2026-08-05",
-                  "review_text": "- Big Beautiful Breathtaking open world map\n- If you downloading this right know..get ready for a big Adventure, a virtual holiday trip to Ancient Rome\n- Missions can get a bit repetitive, bunch of fetch quest grind just to keep up with the level-gating system\n- yeah go do those side mission go get yourself slightly better gear or if you're lucky you got a legendary or something\n- head to nexusmods you'll have no problem with that part of the grind and maybe somehow you can even \"claim\" the microtransaction items from the store, ifykyk, just like I did.\n- Alexios is a good MC but Ubi made Kassandra canon lore wise, me personally idgaf, Alexios is a total badass also cuz it's just fitting and up to my immersion of being freelance sparta mercenary \n- Woah Atlantis very cool\n- This game takes forever wtf if i were unemployed without any responsibity I would've had a blast booting up this game every day\n- Yeah i mean if you compare to the old Assassins title, this one..lets just be honest it is horse5hit compared to the ogs\n- Verdict : personal rating 8/10\n- AC1-Syndicate still undefeated... fuh these modern combat style robotic janky ass animation, i mean how can we go from AC 3 to this, im also pointing at you BLACK FLAG RESYNCED\n- Absolute Video hames, gaming time \n- John Odysseus/10\n- This is Sparta rahhh\n- yo go watch Spartacus, Troy, 300, nolan imax sparta, etc    for da vibes..,.,,.type ♥♥♥♥",
-                  "truncated": false,
-                  "minutes_at_review": 10042
+                  "date": "2026-11-08",
+                  "review_text": "An AC game that focuses on a strong character in a Greek family tragedy without the usual assassins. The ancestors and bloodline are still the main story, but this time you have more self-determination to earn coins and loot by doing jobs in the fabulous Greek world. Messenger, courier, hunter, burglary, piracy, sabotage, mercenary and naturally send someone to Hades. Sometimes you only get directions to an island or region and get to find the quest marker on your own. You are rewarded with varied loot to build up to 5 loadouts. Every item of clothing and weapon has two or three special properties and at a blacksmith you can choose one more. The combat and abilities are easy to use. I started collecting gear with critical change/damage and after gaining abilities, gear that increased adrenaline, because that’s the resource the abilities consume.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231988818",
-                  "hours_at_review": 159.6,
+                  "recommendationid": "238520795",
+                  "hours_at_review": 336.9,
+                  "minutes_at_review": 20216,
                   "voted_up": true,
-                  "date": "2026-08-03",
-                  "review_text": "I hate that I love this game. \r\nDo note that game is very very veeeeeery long even if you are jobless like me,it's gonna take you months to explore everything in the game. It's not an assassins creed but more of an adventures of a Greek mercenary as you go around exploring and helping. \r\nStory is quite good,mysterious with each chapter though last chapter of good ending felt a teen wrote it who got into slice of life anime genre.\r\nCharacters are best written ones I seen in an assassins creed game,Alexios/Kassandra is one of best main characters in an rpg game and side characters like Sokrates are quite memorable \r\nThe world is quite sexy looking for a 2018 game BUT the gameplay is horrible. You are gonna need to grind levels for certain missions to progress and exploring unknown areas was just so awful. You are either gonna clear out enemy camp, hunt an alpha animal or loot chests with bad gear. That's it and the world is one of,if not biggest worlds in a game I ever seen. If you are gonna try to explore it all within days,you will burn yourself trying to uncover every corner of the map. I personally loved first 30 hours of the game,then around 60 hours I started crying how much more of this am I gonna have to do.\r\nSo exploring and grind made me feel neutral on the game,it should have been more like origins who had it perfectly paced.  Also wasn't a fan of the story outside the simulator, the main girl is simply boring with no personality unlike Desmond from previous games, honestly should have been like syndicate where you just view cutscenes for 5 minutes and get back to the simulator.\r\n\r\nOverall fun adventure game but a bit too grindy.almost made me quit open world games for good \r\nAlso works flawlessly on steam deck oled,60+ fps and high graphics \r\n8/10 for me\r\nP.s kinda cringe ubisoft made Kassandra as canon main character,what's the point of picking a sibling then??",
-                  "truncated": false,
-                  "minutes_at_review": 9573
+                  "date": "2026-10-25",
+                  "review_text": "I haven't played Origins, but after 100% achievement (DLC required) I can say that this is the best AC but not AC game I've ever played next to OG Black Flag. It is bloated, grindy, repetitive, and very long. But it is fun.\n\n-Purposefully grindy just to sell you their perma XP and money boost.\n-Abilities are substituted for tools from previous games. Some abilities are just mandatory like Second Wind and Battlecry of Ares while some are just useless or situational like Beast Master and Call to Arms.\n-There are bound to be bugs and I encountered plenty.\n-With how grindy and expensive it is to upgrade, the game incentivize you to steal.\n-Combat is drastically changed. But every combat is about the same, even all the bosses. Melee combat is just button mashing light attack, occasionally use heavy attack, use abilities when off cooldown, use overpower attack when you have the adrenaline, dodge only on red attacks, and dodge/parry white attacks. Ranged combat is similar to melee but keeping distance and barrage enemies with arrows.\n-Bounty hunter system is slightly like the Nemesis system and is the generic crime/wanted system. You can pay off your Wanted status, but there is no reason to later in the game when you can easily kill the BHunters and they're just walking resources.\n-The game is an RPG so naturally the game will level gate you with high level enemies that can easily kill you. But if you're exploring or not rushing the game, it isn't an issue.\n-The highest difficulty isn't even hard if you got the right gears with engraves to tank or do a lot of damage. But not recommended for early game.\n-The level scaling setting is nice to have but feels mandatory to have since it also effect gear loot level, reduce upgrade resources on them, and have more value for selling or dismantling.\n-Eagle vision is changed to being literal. You control Ikaros allows you to view everything from bird's POV and tells you everything from point of interest, tag enemies, chests, objectiv…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "231059436",
-                  "hours_at_review": 170.5,
+                  "recommendationid": "238416684",
+                  "hours_at_review": 146.9,
+                  "minutes_at_review": 8815,
                   "voted_up": true,
-                  "date": "2026-07-22",
-                  "review_text": "Honestly, AC Odyssey is an incredible open-world RPG. Ancient Greece is huge, gorgeous, and full of life, and playing as Kassandra is awesome with all the naval combat and mythical gear. The reason it’s an 7/10 for me instead of higher is that the map can feel a bit overwhelming, and the heavy level-gating grinds the pacing down at times. But if you love massive RPGs and ancient history, it’s definitely a blast.",
-                  "truncated": false,
-                  "minutes_at_review": 10230
+                  "date": "2026-10-24",
+                  "review_text": "While this is an Assassins Creed game and I would recommend everyone plays. This does not feel at all like an Assassins Creed title.\r\n\r\nThis revolves a lot around powers, and the overall scope of the genre seems to be lost.\r\nVoice acting is meh.\r\ncombat feels fluid, but most bosses are sponges.\r\nThe world is beautiful and exploration is amazing. \r\n\r\nAfter 100% this on playstation and doing it again on PC, I do not want to play this game ever again. \r\nwith Origins I could do more than twice and not be upset. This game feels more like a chore than a fun filled game. \r\n\r\nIf this was a standalone Spartan game, it would be absolutely amazing, but as an Assassins Creed title... not so much. \r\n\r\nThough I still recommend playing the game, I would just recommend you not look at is as an Assassins Creed title.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-34a54f",
-              "claim": "Reviewers describe enemies as requiring many hits to defeat during combat.",
-              "citation_verdict": "negative",
+              "claim_id": "vet-af503d",
+              "claim": "Mercenaries continuously hunt the player across the world and can be difficult to evade without paying off the bounty.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 2
+                "positive": 4,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231486370",
-                  "hours_at_review": 137.9,
+                  "recommendationid": "240857862",
+                  "hours_at_review": 135.9,
+                  "minutes_at_review": 8153,
                   "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "Ancient Greece is beautiful I could spend hours just walking around. This is one of my favorite games. Only complaint is that enemies are insanely spongey. Makes combat not difficult, but tedious.",
-                  "truncated": false,
-                  "minutes_at_review": 8272
+                  "date": "2026-11-23",
+                  "review_text": "  So, I’ve finally played this game Assassin's Creed Odyssey. In my opinion, it’s the best Assassin's Creed game until now. I used to struggle to choose between AC III Remastered and AC Unity, but now I know for sure which one is my favorite.\r\n  I have never experienced a map this detailed and beautiful, filled with so many NPCs, each with unique dialogue and animations. It’s also the longest story mode/open world game I have ever played.\r\nTo complete everything—the entire map, the main story, side quests, and the DLCs—it takes about 150 hours.\r\n  The story is so good that I don't have words for it, also the Legacy of the First Blade DLC, in particular, left me feeling quite sad due to all the drama that happend to Kassandra , all she wanted was peace but the Greel world , woundn't let this happend.\r\n  I definitely plan to revisit AC Origins and continue on to AC Valhalla.\r\nThe gameplay can be a bit challenging at first until you get used with it, but it becomes fairly easy once you master the combat. In my opinion, the mercenaries are the most annoying part because they’re constantly hunting you down. If your \"wanted\" reach level 5, it’s very difficult to shake them off unless you pay them off. The game features a huge variety of legendary, unique weapons and armor sets, as well as various skills. Perhaps the coolest feature is the list of cultists you have to track down and eliminate every single one, which will keep you busy and challenged throughout the entire game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231167612",
-                  "hours_at_review": 223.2,
-                  "voted_up": false,
-                  "date": "2026-07-24",
-                  "review_text": "Combat is an absolute slog, with even basic enemies needing dozens of hits to kill. This isn't even a problem with the levelling mechanics, as even enemies equal to you take forever to kill, which in turn makes the combat incredibly boring.",
-                  "truncated": false,
-                  "minutes_at_review": 13391
+                  "recommendationid": "240061754",
+                  "hours_at_review": 157.2,
+                  "minutes_at_review": 9434,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "[h3] 📢 Verdict: GRAB [/h3]\r\n[b]TLDR:[/b] \r\nAssassin's Creed Odyssey throws you into a massive, richly realized fragment of ancient Greece, packed with flexible gameplay, fun side quests, and standout DLCs that tie the franchise together.\r\n\r\n[list]\r\n[*] 🔄 [b]The Loop:[/b] \r\nThere is a healthy blend of ranged, close combat, stealth, and puzzle gameplay available. Go loud or quiet - they’re both fun. Hunting down the Cult of Kosmos through clues is addictive, and so is the naval combat aboard the Adrestia (it even has sea shanties, and a few of them are bangers). The Mercenary system is a nice touch, though it is hilarious how relentless they can be. I had sessions where I took out at least half a dozen of them in barely a couple of hours because they just kept spawning. Pro tip: do not pay off your bounty, so you level up faster and get higher-level loot. There are plenty of side quests, and quite a number of them are interesting and play out like a mini-series. There will also be several occasions where completing quests a certain way provides different outcomes, though for main quest lines, this is often limited to different narrative options rather than the outcomes themselves. Let me save you some time though: there is no achievement for completing every point of interest. I did not check this until after completing about a third of the regions, but thank goodness I did, because it gets repetitive without adding much value. Focus on the story.\r\n\r\n[*] 🎨 [b]The Vibe:[/b] \r\nGreece during the Peloponnesian War is a breathtakingly exceptional setting for a game like this, and it was nice to see mythos and history tied in together. Graphics are great, and the audio is fine. Please Ubisoft, stop reusing \"Ezio's Family\" and start making something fresh with each new title. Voice acting sometimes does not match the animations, but it is serviceable. Most importantly, the writing needs to be improved in future titles, alongside other details that would enhance the overall i…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "230796378",
-                  "hours_at_review": 108.4,
-                  "voted_up": false,
-                  "date": "2026-07-19",
-                  "review_text": "I wouldn't recommend it personally to anyone because of a lot of annoying things this game has- the naval is alright and the world is really beautiful but the combat is.. well it takes like a thousand hits to kill someone and i dont like that at all also the mercenary system is so damn annoying... if you want an ac game dont get this one if you want a fun experience as this game feels so grindy and time consuming its not worth it tbh just play origins it's far better",
-                  "truncated": false,
-                  "minutes_at_review": 6504
+                  "recommendationid": "239451240",
+                  "hours_at_review": 118.6,
+                  "minutes_at_review": 7117,
+                  "voted_up": true,
+                  "date": "2026-11-05",
+                  "review_text": "I found the DLC more enjoyable than the main cult-line quests, as it felt extremely repetitive. I found myself caring very little about the clues to discover the identities of the members. Highly recommend Atlantis DLC though, extremely fun.  \n\nDO NOT GET ME STARTED ON THE [b]BOUNTY-MERCINARY-MECHANIC[/b]. Oh my goodness. The mercenaries will keep spawning indefinitely, and you'll have to either deal with multiple mercenaries hunting you 24/7 or pay an insane amount of in-game currency to clear it. It almost made me quit the game [b] multiple [/b] times during the main-quest and exploring of main world. This mechanic was luckily removed from the DLC, so I could finally get a breather.\n\nThere's also a good few visual bugs, and a few that also impact gameplay. There was a boss that loaded in under the ground and became unkillable. There is not a team actively working on repairing any bugs that are left in the game, so I had to find a way to solve the bug myself. For reference, it's the kretan-bull bug (somewhat known bug). Only way to fix it was to load a previous save of the game, which I LUCKILY had made at the start of the game, and then load back into my current save. \n\nThank you to those who kept me sane watching my gameplay while getting through completing this game to 100%.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238520795",
+                  "hours_at_review": 336.9,
+                  "minutes_at_review": 20216,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "I haven't played Origins, but after 100% achievement (DLC required) I can say that this is the best AC but not AC game I've ever played next to OG Black Flag. It is bloated, grindy, repetitive, and very long. But it is fun.\n\n-Purposefully grindy just to sell you their perma XP and money boost.\n-Abilities are substituted for tools from previous games. Some abilities are just mandatory like Second Wind and Battlecry of Ares while some are just useless or situational like Beast Master and Call to Arms.\n-There are bound to be bugs and I encountered plenty.\n-With how grindy and expensive it is to upgrade, the game incentivize you to steal.\n-Combat is drastically changed. But every combat is about the same, even all the bosses. Melee combat is just button mashing light attack, occasionally use heavy attack, use abilities when off cooldown, use overpower attack when you have the adrenaline, dodge only on red attacks, and dodge/parry white attacks. Ranged combat is similar to melee but keeping distance and barrage enemies with arrows.\n-Bounty hunter system is slightly like the Nemesis system and is the generic crime/wanted system. You can pay off your Wanted status, but there is no reason to later in the game when you can easily kill the BHunters and they're just walking resources.\n-The game is an RPG so naturally the game will level gate you with high level enemies that can easily kill you. But if you're exploring or not rushing the game, it isn't an issue.\n-The highest difficulty isn't even hard if you got the right gears with engraves to tank or do a lot of damage. But not recommended for early game.\n-The level scaling setting is nice to have but feels mandatory to have since it also effect gear loot level, reduce upgrade resources on them, and have more value for selling or dismantling.\n-Eagle vision is changed to being literal. You control Ikaros allows you to view everything from bird's POV and tells you everything from point of interest, tag enemies, chests, objectiv…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-e2a3f1",
+              "claim": "Players describe the combat mechanics as relying on light and heavy attacks, abilities, dodging, and parrying, though some point out issues with hitboxes and sponge-like boss enemies.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "238520795",
+                  "hours_at_review": 336.9,
+                  "minutes_at_review": 20216,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "I haven't played Origins, but after 100% achievement (DLC required) I can say that this is the best AC but not AC game I've ever played next to OG Black Flag. It is bloated, grindy, repetitive, and very long. But it is fun.\n\n-Purposefully grindy just to sell you their perma XP and money boost.\n-Abilities are substituted for tools from previous games. Some abilities are just mandatory like Second Wind and Battlecry of Ares while some are just useless or situational like Beast Master and Call to Arms.\n-There are bound to be bugs and I encountered plenty.\n-With how grindy and expensive it is to upgrade, the game incentivize you to steal.\n-Combat is drastically changed. But every combat is about the same, even all the bosses. Melee combat is just button mashing light attack, occasionally use heavy attack, use abilities when off cooldown, use overpower attack when you have the adrenaline, dodge only on red attacks, and dodge/parry white attacks. Ranged combat is similar to melee but keeping distance and barrage enemies with arrows.\n-Bounty hunter system is slightly like the Nemesis system and is the generic crime/wanted system. You can pay off your Wanted status, but there is no reason to later in the game when you can easily kill the BHunters and they're just walking resources.\n-The game is an RPG so naturally the game will level gate you with high level enemies that can easily kill you. But if you're exploring or not rushing the game, it isn't an issue.\n-The highest difficulty isn't even hard if you got the right gears with engraves to tank or do a lot of damage. But not recommended for early game.\n-The level scaling setting is nice to have but feels mandatory to have since it also effect gear loot level, reduce upgrade resources on them, and have more value for selling or dismantling.\n-Eagle vision is changed to being literal. You control Ikaros allows you to view everything from bird's POV and tells you everything from point of interest, tag enemies, chests, objectiv…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238416684",
+                  "hours_at_review": 146.9,
+                  "minutes_at_review": 8815,
+                  "voted_up": true,
+                  "date": "2026-10-24",
+                  "review_text": "While this is an Assassins Creed game and I would recommend everyone plays. This does not feel at all like an Assassins Creed title.\r\n\r\nThis revolves a lot around powers, and the overall scope of the genre seems to be lost.\r\nVoice acting is meh.\r\ncombat feels fluid, but most bosses are sponges.\r\nThe world is beautiful and exploration is amazing. \r\n\r\nAfter 100% this on playstation and doing it again on PC, I do not want to play this game ever again. \r\nwith Origins I could do more than twice and not be upset. This game feels more like a chore than a fun filled game. \r\n\r\nIf this was a standalone Spartan game, it would be absolutely amazing, but as an Assassins Creed title... not so much. \r\n\r\nThough I still recommend playing the game, I would just recommend you not look at is as an Assassins Creed title.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-5f6ea3",
+              "claim": "The mercenary system causes persistent enemies to hunt the player down, which reviewers find both engaging and frustratingly relentless.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240857862",
+                  "hours_at_review": 135.9,
+                  "minutes_at_review": 8153,
+                  "voted_up": true,
+                  "date": "2026-11-23",
+                  "review_text": "  So, I’ve finally played this game Assassin's Creed Odyssey. In my opinion, it’s the best Assassin's Creed game until now. I used to struggle to choose between AC III Remastered and AC Unity, but now I know for sure which one is my favorite.\r\n  I have never experienced a map this detailed and beautiful, filled with so many NPCs, each with unique dialogue and animations. It’s also the longest story mode/open world game I have ever played.\r\nTo complete everything—the entire map, the main story, side quests, and the DLCs—it takes about 150 hours.\r\n  The story is so good that I don't have words for it, also the Legacy of the First Blade DLC, in particular, left me feeling quite sad due to all the drama that happend to Kassandra , all she wanted was peace but the Greel world , woundn't let this happend.\r\n  I definitely plan to revisit AC Origins and continue on to AC Valhalla.\r\nThe gameplay can be a bit challenging at first until you get used with it, but it becomes fairly easy once you master the combat. In my opinion, the mercenaries are the most annoying part because they’re constantly hunting you down. If your \"wanted\" reach level 5, it’s very difficult to shake them off unless you pay them off. The game features a huge variety of legendary, unique weapons and armor sets, as well as various skills. Perhaps the coolest feature is the list of cultists you have to track down and eliminate every single one, which will keep you busy and challenged throughout the entire game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240061754",
+                  "hours_at_review": 157.2,
+                  "minutes_at_review": 9434,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "[h3] 📢 Verdict: GRAB [/h3]\r\n[b]TLDR:[/b] \r\nAssassin's Creed Odyssey throws you into a massive, richly realized fragment of ancient Greece, packed with flexible gameplay, fun side quests, and standout DLCs that tie the franchise together.\r\n\r\n[list]\r\n[*] 🔄 [b]The Loop:[/b] \r\nThere is a healthy blend of ranged, close combat, stealth, and puzzle gameplay available. Go loud or quiet - they’re both fun. Hunting down the Cult of Kosmos through clues is addictive, and so is the naval combat aboard the Adrestia (it even has sea shanties, and a few of them are bangers). The Mercenary system is a nice touch, though it is hilarious how relentless they can be. I had sessions where I took out at least half a dozen of them in barely a couple of hours because they just kept spawning. Pro tip: do not pay off your bounty, so you level up faster and get higher-level loot. There are plenty of side quests, and quite a number of them are interesting and play out like a mini-series. There will also be several occasions where completing quests a certain way provides different outcomes, though for main quest lines, this is often limited to different narrative options rather than the outcomes themselves. Let me save you some time though: there is no achievement for completing every point of interest. I did not check this until after completing about a third of the regions, but thank goodness I did, because it gets repetitive without adding much value. Focus on the story.\r\n\r\n[*] 🎨 [b]The Vibe:[/b] \r\nGreece during the Peloponnesian War is a breathtakingly exceptional setting for a game like this, and it was nice to see mythos and history tied in together. Graphics are great, and the audio is fine. Please Ubisoft, stop reusing \"Ezio's Family\" and start making something fresh with each new title. Voice acting sometimes does not match the animations, but it is serviceable. Most importantly, the writing needs to be improved in future titles, alongside other details that would enhance the overall i…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-fb1397",
+              "claim": "Reviewers note that the game features a bounty hunter and mercenary system where relentless mercenaries track down the player, and bounties can be cleared by paying them off or killing them.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240857862",
+                  "hours_at_review": 135.9,
+                  "minutes_at_review": 8153,
+                  "voted_up": true,
+                  "date": "2026-11-23",
+                  "review_text": "  So, I’ve finally played this game Assassin's Creed Odyssey. In my opinion, it’s the best Assassin's Creed game until now. I used to struggle to choose between AC III Remastered and AC Unity, but now I know for sure which one is my favorite.\r\n  I have never experienced a map this detailed and beautiful, filled with so many NPCs, each with unique dialogue and animations. It’s also the longest story mode/open world game I have ever played.\r\nTo complete everything—the entire map, the main story, side quests, and the DLCs—it takes about 150 hours.\r\n  The story is so good that I don't have words for it, also the Legacy of the First Blade DLC, in particular, left me feeling quite sad due to all the drama that happend to Kassandra , all she wanted was peace but the Greel world , woundn't let this happend.\r\n  I definitely plan to revisit AC Origins and continue on to AC Valhalla.\r\nThe gameplay can be a bit challenging at first until you get used with it, but it becomes fairly easy once you master the combat. In my opinion, the mercenaries are the most annoying part because they’re constantly hunting you down. If your \"wanted\" reach level 5, it’s very difficult to shake them off unless you pay them off. The game features a huge variety of legendary, unique weapons and armor sets, as well as various skills. Perhaps the coolest feature is the list of cultists you have to track down and eliminate every single one, which will keep you busy and challenged throughout the entire game.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240061754",
+                  "hours_at_review": 157.2,
+                  "minutes_at_review": 9434,
+                  "voted_up": true,
+                  "date": "2026-11-13",
+                  "review_text": "[h3] 📢 Verdict: GRAB [/h3]\r\n[b]TLDR:[/b] \r\nAssassin's Creed Odyssey throws you into a massive, richly realized fragment of ancient Greece, packed with flexible gameplay, fun side quests, and standout DLCs that tie the franchise together.\r\n\r\n[list]\r\n[*] 🔄 [b]The Loop:[/b] \r\nThere is a healthy blend of ranged, close combat, stealth, and puzzle gameplay available. Go loud or quiet - they’re both fun. Hunting down the Cult of Kosmos through clues is addictive, and so is the naval combat aboard the Adrestia (it even has sea shanties, and a few of them are bangers). The Mercenary system is a nice touch, though it is hilarious how relentless they can be. I had sessions where I took out at least half a dozen of them in barely a couple of hours because they just kept spawning. Pro tip: do not pay off your bounty, so you level up faster and get higher-level loot. There are plenty of side quests, and quite a number of them are interesting and play out like a mini-series. There will also be several occasions where completing quests a certain way provides different outcomes, though for main quest lines, this is often limited to different narrative options rather than the outcomes themselves. Let me save you some time though: there is no achievement for completing every point of interest. I did not check this until after completing about a third of the regions, but thank goodness I did, because it gets repetitive without adding much value. Focus on the story.\r\n\r\n[*] 🎨 [b]The Vibe:[/b] \r\nGreece during the Peloponnesian War is a breathtakingly exceptional setting for a game like this, and it was nice to see mythos and history tied in together. Graphics are great, and the audio is fine. Please Ubisoft, stop reusing \"Ezio's Family\" and start making something fresh with each new title. Voice acting sometimes does not match the animations, but it is serviceable. Most importantly, the writing needs to be improved in future titles, alongside other details that would enhance the overall i…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "239451240",
+                  "hours_at_review": 118.6,
+                  "minutes_at_review": 7117,
+                  "voted_up": true,
+                  "date": "2026-11-05",
+                  "review_text": "I found the DLC more enjoyable than the main cult-line quests, as it felt extremely repetitive. I found myself caring very little about the clues to discover the identities of the members. Highly recommend Atlantis DLC though, extremely fun.  \n\nDO NOT GET ME STARTED ON THE [b]BOUNTY-MERCINARY-MECHANIC[/b]. Oh my goodness. The mercenaries will keep spawning indefinitely, and you'll have to either deal with multiple mercenaries hunting you 24/7 or pay an insane amount of in-game currency to clear it. It almost made me quit the game [b] multiple [/b] times during the main-quest and exploring of main world. This mechanic was luckily removed from the DLC, so I could finally get a breather.\n\nThere's also a good few visual bugs, and a few that also impact gameplay. There was a boss that loaded in under the ground and became unkillable. There is not a team actively working on repairing any bugs that are left in the game, so I had to find a way to solve the bug myself. For reference, it's the kretan-bull bug (somewhat known bug). Only way to fix it was to load a previous save of the game, which I LUCKILY had made at the start of the game, and then load back into my current save. \n\nThank you to those who kept me sane watching my gameplay while getting through completing this game to 100%.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238520795",
+                  "hours_at_review": 336.9,
+                  "minutes_at_review": 20216,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "I haven't played Origins, but after 100% achievement (DLC required) I can say that this is the best AC but not AC game I've ever played next to OG Black Flag. It is bloated, grindy, repetitive, and very long. But it is fun.\n\n-Purposefully grindy just to sell you their perma XP and money boost.\n-Abilities are substituted for tools from previous games. Some abilities are just mandatory like Second Wind and Battlecry of Ares while some are just useless or situational like Beast Master and Call to Arms.\n-There are bound to be bugs and I encountered plenty.\n-With how grindy and expensive it is to upgrade, the game incentivize you to steal.\n-Combat is drastically changed. But every combat is about the same, even all the bosses. Melee combat is just button mashing light attack, occasionally use heavy attack, use abilities when off cooldown, use overpower attack when you have the adrenaline, dodge only on red attacks, and dodge/parry white attacks. Ranged combat is similar to melee but keeping distance and barrage enemies with arrows.\n-Bounty hunter system is slightly like the Nemesis system and is the generic crime/wanted system. You can pay off your Wanted status, but there is no reason to later in the game when you can easily kill the BHunters and they're just walking resources.\n-The game is an RPG so naturally the game will level gate you with high level enemies that can easily kill you. But if you're exploring or not rushing the game, it isn't an issue.\n-The highest difficulty isn't even hard if you got the right gears with engraves to tank or do a lot of damage. But not recommended for early game.\n-The level scaling setting is nice to have but feels mandatory to have since it also effect gear loot level, reduce upgrade resources on them, and have more value for selling or dismantling.\n-Eagle vision is changed to being literal. You control Ikaros allows you to view everything from bird's POV and tells you everything from point of interest, tag enemies, chests, objectiv…",
+                  "truncated": true
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-307ccdac",
+          "text": "One reviewer says naval combat aboard the ship has sea shanties and a few of them are bangers.",
+          "theme": "content",
+          "citation": {
+            "recommendationid": "240061754",
+            "hours_at_review": 157.2,
+            "minutes_at_review": 9434,
+            "voted_up": true,
+            "date": "2026-11-13",
+            "review_text": "[h3] 📢 Verdict: GRAB [/h3]\r\n[b]TLDR:[/b] \r\nAssassin's Creed Odyssey throws you into a massive, richly realized fragment of ancient Greece, packed with flexible gameplay, fun side quests, and standout DLCs that tie the franchise together.\r\n\r\n[list]\r\n[*] 🔄 [b]The Loop:[/b] \r\nThere is a healthy blend of ranged, close combat, stealth, and puzzle gameplay available. Go loud or quiet - they’re both fun. Hunting down the Cult of Kosmos through clues is addictive, and so is the naval combat aboard the Adrestia (it even has sea shanties, and a few of them are bangers). The Mercenary system is a nice touch, though it is hilarious how relentless they can be. I had sessions where I took out at least half a dozen of them in barely a couple of hours because they just kept spawning. Pro tip: do not pay off your bounty, so you level up faster and get higher-level loot. There are plenty of side quests, and quite a number of them are interesting and play out like a mini-series. There will also be several occasions where completing quests a certain way provides different outcomes, though for main quest lines, this is often limited to different narrative options rather than the outcomes themselves. Let me save you some time though: there is no achievement for completing every point of interest. I did not check this until after completing about a third of the regions, but thank goodness I did, because it gets repetitive without adding much value. Focus on the story.\r\n\r\n[*] 🎨 [b]The Vibe:[/b] \r\nGreece during the Peloponnesian War is a breathtakingly exceptional setting for a game like this, and it was nice to see mythos and history tied in together. Graphics are great, and the audio is fine. Please Ubisoft, stop reusing \"Ezio's Family\" and start making something fresh with each new title. Voice acting sometimes does not match the animations, but it is serviceable. Most importantly, the writing needs to be improved in future titles, alongside other details that would enhance the overall i…",
+            "truncated": true
+          }
+        }
+      ],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 15,
-        "cited_recommend": 13,
-        "divergence_p": 0.402,
+        "cited_reviews": 12,
+        "cited_recommend": 12,
+        "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1207,
-    "steam_total_reviews": 62354,
-    "cohort_count": 4,
+    "pool_n": 1200,
+    "steam_total_reviews": 63927,
+    "cohort_count": 3,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/812140/header.jpg?t=1786633104",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/812140/capsule_231x87.jpg?t=1786633104",
-    "grid": "https://cdn2.steamgriddb.com/grid/132d16811e7db45a5c501541c275851c.png"
   }
 }

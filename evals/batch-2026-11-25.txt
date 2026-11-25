@@ -39,3 +39,51 @@ worst-case fit: 26 titles at 15 calls each
   effective rate: 10.7 requests/min
   batch budget  : 14 of 400 left, live reserve 100 untouched
 EXIT_RC=1  (run_batch.py, captured under pipefail + PIPESTATUS)
+=== run_batch.py --refresh | started 2026-11-25T11:03:55Z ===
+live ledger: remote live_used=0 (remote ledger is from another quota day - counts 0), local=0 -> using 0 (persisted, so the per-title stop sees it too)
+catalog 2026-08-12T09:40:19Z | night all | 415 titles pending (REFRESH: published titles, fresh reviews)
+batch budget 400 of 400 remaining (live reserve 100 untouched, live used 0 today)
+pacer {"date": "2026-11-25", "ceiling_rpm": 12, "configured_rpm": 12, "narrowed": false, "in_flight_this_minute": 0, "requests_today": 0, "state_file": "/Users/gaganmalik/Downloads/worthit-gg/data/model_pacer.json"}
+worst-case fit: 26 titles at 15 calls each
+  [ok  ] Half-Life                                 19s   3 calls  
+  [ok  ] Hell Let Loose                           130s  14 calls  
+  [FAIL] Phasmophobia                             164s  14 calls  
+         extract: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+  [ok  ] Assassin's Creed® Odyssey                116s  13 calls  
+  [ok  ] Sekiro™: Shadows Die Twice - GOTY Edit    92s  11 calls  
+  [ok  ] Valheim                                  120s  13 calls  
+  [ok  ] Resident Evil 2                          159s  17 calls  
+  [ok  ] Last Epoch                               111s  10 calls  
+  [ok  ] Among Us                                 180s  20 calls  
+  [ok  ] Bloons TD 6                              163s  16 calls  
+  [ok  ] ULTRAKILL                                  8s   1 calls  
+  [FAIL] Battlefield™ 6                           179s  17 calls  
+         extract: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+  [FAIL] Hollow Knight: Silksong                  145s  13 calls  
+         verdict: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+  [ok  ] Sea of Thieves: 2026 Edition             233s  24 calls  
+  [FAIL] Hogwarts Legacy                          178s  18 calls  
+         verdict: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+  [ok  ] Path of Exile                            240s  26 calls  
+  [ok  ] Halo Infinite                            195s  23 calls  
+  [FAIL] Satisfactory                             209s  21 calls  
+         verdict: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+  [ok  ] R.E.P.O.                                 131s  15 calls  
+  [FAIL] Doki Doki Literature Club!               237s  21 calls  
+         verdict: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+  [FAIL] PEAK                                     262s  24 calls  
+         verdict: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+  [ok  ] The Elder Scrolls V: Skyrim Special Ed   220s  19 calls  
+  [ok  ] Raft                                     235s  22 calls  
+  [FAIL] Paladins®                                134s  12 calls  
+         extract: google.genai.errors.ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.'
+
+391 titles queued past the budget were refused before starting (0 calls, not recorded); they stay pending
+
+24 attempted in 32.5 min: {"ok": 16, "stage_failed": 8}
+  published     : 16
+  model calls   : 387 (mean 16.1 per attempted title)
+  wall clock    : 81.3s mean per title
+  effective rate: 11.9 requests/min
+  batch budget  : 13 of 400 left, live reserve 100 untouched
+EXIT_RC=1  (run_batch.py, captured under pipefail + PIPESTATUS)

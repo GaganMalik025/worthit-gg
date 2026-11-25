@@ -1,183 +1,210 @@
 {
   "appid": "489830",
   "game_name": "The Elder Scrolls V: Skyrim Special Edition",
-  "generated_at": "2026-08-12T10:15:39Z",
+  "generated_at": "2026-11-25T11:34:14Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489830/header.jpg?t=1786648247",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489830/capsule_231x87.jpg?t=1786648247",
+    "grid": "https://cdn2.steamgriddb.com/grid/3fefb4dece2d90708c94ccc3846d8d40.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 19,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Buy",
-    "tagline": "Endless open exploration tempered by clunky mechanics and bugs.",
+    "tagline": "Classic open-world exploration paired with enduring technical friction.",
     "for_you_if": [
-      "you want massive open worlds to explore",
-      "you enjoy deep fantasy roleplaying",
-      "you plan to mod the experience heavily"
+      "you want a massive sandbox for open-world exploration",
+      "you enjoy modding games to tailor the experience"
     ],
     "not_for_you_if": [
-      "you need modern fluid combat systems",
-      "you expect polished quest progression",
-      "you want balanced magic classes"
+      "you need a stable game without crashes or legacy bugs",
+      "you run Windows 11 and cannot troubleshoot technical issues",
+      "you expect modern, polished combat mechanics out of the box"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 32,
-      "pct_positive": 84.4,
-      "muted": true
+      "pool_n": 46,
+      "pct_positive": 56.5,
+      "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 407,
-      "pct_positive": 95.8,
+      "pool_n": 351,
+      "pct_positive": 90.9,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 515,
-      "pct_positive": 95.3,
+      "pool_n": 538,
+      "pct_positive": 91.6,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 567,
-      "pct_positive": 95.6,
+      "pool_n": 639,
+      "pct_positive": 89.0,
       "muted": false
     }
   ],
-  "distortion_flags": [],
+  "distortion_flags": [
+    {
+      "flag_id": "cohort_divergence",
+      "type": "segmentation",
+      "direction": null,
+      "shape": "monotonic_increase",
+      "sentence": "Initial reviews show significantly lower satisfaction during the opening hours compared to later stages of play.",
+      "evidence": {
+        "sequence": [
+          {
+            "cohort": "refund_window",
+            "label": "under 2 hours",
+            "pct_positive": 56.5,
+            "pool_n": 46
+          },
+          {
+            "cohort": "early",
+            "label": "2-20 hours",
+            "pct_positive": 90.9,
+            "pool_n": 351
+          },
+          {
+            "cohort": "mid",
+            "label": "20-100 hours",
+            "pct_positive": 91.6,
+            "pool_n": 538
+          },
+          {
+            "cohort": "veteran",
+            "label": "over 100 hours",
+            "pct_positive": 89.0,
+            "pool_n": 639
+          }
+        ],
+        "shape": "monotonic_increase",
+        "low_cohort": "refund_window",
+        "low_cohort_label": "under 2 hours",
+        "low_pct_positive": 56.5,
+        "low_pool_n": 46,
+        "high_cohort": "mid",
+        "high_cohort_label": "20-100 hours",
+        "high_pct_positive": 91.6,
+        "high_pool_n": 538,
+        "gap_pts": 35.1
+      }
+    }
+  ],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 32,
-      "pct_positive": 84.4,
-      "muted": true,
-      "n_note": "n=19 - too few reviews to call",
-      "summary": null,
-      "themes": []
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 407,
-      "pct_positive": 95.8,
+      "pool_n": 46,
+      "pct_positive": 56.5,
       "muted": false,
       "n_note": null,
-      "summary": "Players note technical annoyances involving hardware inputs early on.",
+      "summary": "Initial launch encounters severe character creation locks and setup barriers.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-2a306c",
-              "claim": "Reviewers report that connected controllers interfere with mouse and keyboard inputs, requiring players to unplug the controller or disable it to regain normal control.",
+              "claim_id": "ref-a559fe",
+              "claim": "Reviewers report encountering a soft lock during character creation where the game fails to progress past the name input screen.",
               "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
-                "negative": 2
+                "positive": 0,
+                "negative": 5
               },
               "citations": [
                 {
-                  "recommendationid": "232555140",
-                  "hours_at_review": 4.3,
-                  "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "For some reason, Skyrim thinks I am playing on Xbox; there are no mouse and keyboard settings  or pc settings",
-                  "truncated": false,
-                  "minutes_at_review": 257
+                  "recommendationid": "240668146",
+                  "hours_at_review": 1.3,
+                  "minutes_at_review": 76,
+                  "voted_up": false,
+                  "date": "2026-11-20",
+                  "review_text": "bought the special addition without the anniversary nor creation dlcs. I was enthused to see I still had access to the creation content, but less so when the game soft locks when you choose your name. It keeps looping to ask your name. After fully deleting all creation content, my deck still cannot pass the soft lock.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232416509",
-                  "hours_at_review": 10.5,
+                  "recommendationid": "240351310",
+                  "hours_at_review": 0.6,
+                  "minutes_at_review": 33,
                   "voted_up": false,
-                  "date": "2026-08-09",
-                  "review_text": "F*(! the devs for locking exclusive priority of keyboard keys.\r\nI can not use any of the shortcuts or any of the windows keys.\r\nPrntSc, Windows, alt+f4, all of them do not work and finding a fix is surprisingly a futile adventure. Try to disable gamepad in Skyrim.ini, install fixes from nexusmods, install collections, none of them work.\r\n\r\nThough, in main menu of the game everything works, but when you press \"Continue\", it stops working.",
-                  "truncated": false,
-                  "minutes_at_review": 628
+                  "date": "2026-11-16",
+                  "review_text": "If planning to play on steam deck don’t bother, can’t get past name selection part of character creation. Tried all known work arounds including launch command and still absolutely nothing.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230360918",
-                  "hours_at_review": 11.3,
+                  "recommendationid": "240305158",
+                  "hours_at_review": 0.7,
+                  "minutes_at_review": 41,
                   "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Hey, I have a controller.  Doesn't mean I want to use it.  Can't control this game unless I unplug said controller.",
-                  "truncated": false,
-                  "minutes_at_review": 681
+                  "date": "2026-11-15",
+                  "review_text": "Installed it, watched the opening scene, got to the character creation and couldn’t get past it. It tells me to enter a name, then nothing. There is no excuse for a bug on something this basic.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240242195",
+                  "hours_at_review": 0.8,
+                  "minutes_at_review": 45,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "unable to get passed character creation on steam deck\r\n\r\n",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240005105",
+                  "hours_at_review": 0.4,
+                  "minutes_at_review": 26,
+                  "voted_up": false,
+                  "date": "2026-11-12",
+                  "review_text": "Played this on Xbox 360 at launch. Seeing it on sale thought I’d give it a go on steam deck. Thinking a 15 year old game must run well on this hand held by now. Wrong. Couldn’t even get past character creation, imputed a name and wouldn’t recognize to go forward. There’s some work arounds online sort of to get past it but come on, Bethesda doesn’t care enough to patch this simple problem so I don’t care enough to buy their products anymore. \nAlso the fan was going already going hard just at the intro cutscene and character creation before even moving or playing. Thought to myself that’s a good omen not to put any time into it.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 3,
-        "cited_recommend": 1,
-        "divergence_p": 0.00514,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 5,
+        "cited_recommend": 0,
+        "divergence_p": 0.0156,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
     {
-      "bucket": "mid",
-      "label": "20-100h",
-      "hours_range": "20-100 hours",
-      "pool_n": 515,
-      "pct_positive": 95.3,
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 351,
+      "pct_positive": 90.9,
       "muted": false,
       "n_note": null,
-      "summary": "Reviewers note dated graphics alongside combat system limitations and mod instability.",
+      "summary": "Players encounter combat mechanics feeling outdated alongside frequent crashes and mod-breaking updates.",
       "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "mid-4fd635",
-              "claim": "Reviewers note that the game's graphics and mechanical elements feel dated.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232615938",
-                  "hours_at_review": 96.3,
-                  "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "Skyrim has an atmosphere that draws you back. The scenery, although dated, is still beautiful and the NPC's are a lot of fun to interact with. The dungeons can be cruel and brutal, but a challenge is always welcome. You can get lost in the crafting of potions, gardening, making weapons and armor or just adventuring around the map. The combat feels genuine if a little clunky at times, but it feels great to fell a dragon or clear hold of bandits. And the Draugr make for a great opponents in the cold murky depths of long ruined keeps. This is one of the greatest adventure games of all time. And it has a survival mode for the hardcore. So, pick a race, grab a weapon and get to Riverwood, for this adventure begins!",
-                  "truncated": false,
-                  "minutes_at_review": 5781
-                },
-                {
-                  "recommendationid": "230197675",
-                  "hours_at_review": 69.9,
-                  "voted_up": true,
-                  "date": "2026-07-11",
-                  "review_text": "a true masterpiece. It is truly dated, both graphically and mechanically, but once spruced up with mods, it is second to none.",
-                  "truncated": false,
-                  "minutes_at_review": 4192
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-877a1e",
-              "claim": "Reviewers report that updates and additions can break or destabilize existing mods.",
+              "claim_id": "ear-60979f",
+              "claim": "Game updates break installed mods, which frustrates players.",
               "citation_verdict": "negative",
               "citation_split": {
                 "positive": 0,
@@ -185,22 +212,51 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232382513",
-                  "hours_at_review": 76.7,
+                  "recommendationid": "241156797",
+                  "hours_at_review": 4.1,
+                  "minutes_at_review": 245,
                   "voted_up": false,
-                  "date": "2026-08-08",
-                  "review_text": "So, been playing this since elementary school, im now 24, and I have to admit, every year it feels like the game gets worse, less stable, and more bloated with paid mods no one asked for. I use to be able to claim this game was one of the best games in the world. Now I cant even say its the best game in the Bethesda roster. if you do want to play this game, your best bet is to play an older version of it and to block it's ability to update, so you can keep it frozen in the version that it actually functions in. Mods are constantly being broken at this point by 'additions' that really only take away from the game.\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 4603
+                  "date": "2026-11-24",
+                  "review_text": "I'm sure this game is wonderful, but I'm leaving a bad review because of how uniquely bad the technical difficulties I had with this game were. I've had far better experiences running sketchy early-2000s shovelware in Window's compatibility mode, and that's a pretty low bar.\n\nIt hijacks my entire computer every time I launch it, it's an absolute struggle just to shut the game off, and there's always some oddly specific bug I have to Google up with another device to solve. \n\nTrying to mod the game wasn't easy for me either — but I did get it working eventually! Only for it all to break in an update. All those hours troubleshooting down the drain.\n\nKinda wish I got this on a console instead.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230374018",
-                  "hours_at_review": 58.4,
+                  "recommendationid": "238625844",
+                  "hours_at_review": 13.1,
+                  "minutes_at_review": 788,
                   "voted_up": false,
-                  "date": "2026-07-13",
-                  "review_text": "Greedy ass company trying to milk this 15 year old game by updating and bricking free mods for all users pushing paid Creation Club mods.\n\nEmbarassing and disgusting.",
-                  "truncated": false,
-                  "minutes_at_review": 3501
+                  "date": "2026-10-26",
+                  "review_text": "Another update broke all my mods.\r\nCan't roll back to older version.\r\nGetting real tired of this.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ac1196",
+              "claim": "Reviewers report frequent crashes and bugs during gameplay.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "239318961",
+                  "hours_at_review": 7.2,
+                  "minutes_at_review": 433,
+                  "voted_up": true,
+                  "date": "2026-11-04",
+                  "review_text": "has a bunch of bugs and crashes a lot but hell isnt it fun",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239222819",
+                  "hours_at_review": 18.9,
+                  "minutes_at_review": 1131,
+                  "voted_up": false,
+                  "date": "2026-11-02",
+                  "review_text": "mY GAME CRASHES CONSTANTLY, I am saving every 5 minutes so I can make some progress in the game",
+                  "truncated": false
                 }
               ]
             }
@@ -210,119 +266,124 @@
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "mid-33919a",
-              "claim": "Reviewers describe the combat system as feeling clunky or outdated.",
-              "citation_verdict": "positive",
+              "claim_id": "ear-e827d8",
+              "claim": "Combat mechanics are described as outdated, sloppy, or feeling broken without modifications.",
+              "citation_verdict": "mixed",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 1,
+                "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "232615938",
-                  "hours_at_review": 96.3,
+                  "recommendationid": "241419516",
+                  "hours_at_review": 2.5,
+                  "minutes_at_review": 152,
                   "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "Skyrim has an atmosphere that draws you back. The scenery, although dated, is still beautiful and the NPC's are a lot of fun to interact with. The dungeons can be cruel and brutal, but a challenge is always welcome. You can get lost in the crafting of potions, gardening, making weapons and armor or just adventuring around the map. The combat feels genuine if a little clunky at times, but it feels great to fell a dragon or clear hold of bandits. And the Draugr make for a great opponents in the cold murky depths of long ruined keeps. This is one of the greatest adventure games of all time. And it has a survival mode for the hardcore. So, pick a race, grab a weapon and get to Riverwood, for this adventure begins!",
-                  "truncated": false,
-                  "minutes_at_review": 5781
+                  "date": "2026-11-24",
+                  "review_text": "Good game. Combat is a little sloppy though.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232526792",
-                  "hours_at_review": 37.4,
-                  "voted_up": true,
-                  "date": "2026-08-10",
-                  "review_text": "the character dialogues barely make any sense\nthe writing is straight up ass\nthe combat is outdated\n10/10 would recommend one of the best games i have and will ever play",
-                  "truncated": false,
-                  "minutes_at_review": 2241
+                  "recommendationid": "240723140",
+                  "hours_at_review": 8.9,
+                  "minutes_at_review": 534,
+                  "voted_up": false,
+                  "date": "2026-11-21",
+                  "review_text": "Lately I've wanted to play this game cuz it seemed like playing an older rpg would be fun. Boy was I wrong. This game feels fundimentally broken without mods, as the combat breaks constantly and i get softlock bugs every 30 minutes. Not only that but my whole computers input system sometimes stops working and I have to restart it. This game is held together by mods that disable even being able to get achievements. And lacking the nostalgia I really don't see the point in playing this game anymore. That's just my opinion though, as maybe this is just not my kind of game.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
-        "cited_reviews": 5,
-        "cited_recommend": 3,
-        "divergence_p": 0.0201,
+        "cited_reviews": 6,
+        "cited_recommend": 2,
+        "divergence_p": 0.000885,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
     {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 567,
-      "pct_positive": 95.6,
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 538,
+      "pct_positive": 91.6,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players encounter repetitive dungeons, weaker magic, and quest-blocking bugs.",
+      "summary": "Longer sessions reveal persistent legacy bugs and reliance on external mods and tools for stability.",
       "themes": [
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-178c5e",
-              "claim": "Reviewers describe the dungeons and crypts as highly repetitive in their game design.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "232413660",
-                  "hours_at_review": 205.1,
-                  "voted_up": true,
-                  "date": "2026-08-09",
-                  "review_text": "[h1]If you owned the original steam release before Oct 28, 2016, then you got this for free. If you didn't, then too bad![/h1]\r\n\r\nDo you know of the Elder Scrolls my homies? Have you heard of Skyrim!?\r\n\r\nIf you haven't, I shun you. You are unworthy.\r\n\r\nSkyrim is such a popular game and is so well known, I shouldn't have to write a review - you should know everything about it already. Perhaps, then, I write more for developers of other games, instead of for potential gamers, because gamers shouldn't be reading reviews for this masterpiece, they should be paying / downloading / playing it.\r\n\r\nSo many game developers get things right, then go ahead and make a sequel and screw up everything everyone enjoyed about a game. It happens in almost every popular series - Final Fantasy is so different from I to XVI (and probably all the way up to M if the company survives long enough) they're completely different genres, Borderlands was great once but now it's thrashing a dead horse, and while I loved Diablo I and II I don't want anything to do with Blizzard any more.\r\n\r\nSo here is a game that got things right. Presenting... Skyrim!\r\n\r\n\r\n____________\r\n\r\nI could have ended the review right there and it would have been perfect. But as you well know, there is no such thing as a perfect game.\r\n\r\nSome issues it has, regardless of whether it is the Special Edition or not, is the highly repetitive nature of the dungeons and crypts, weak magic compared to physical combat and weapons, shallow or weak questing (go fetch, or go kill this thing), and other things like over-simplified stats (what stats?, it's just skills, hp and stamina), and pointless dialogue choices.\r\n\r\nEven with all those minor issues, the game is still ridiculously popular.\r\n\r\nI have even come up with my own version of play, which is to start on maximum difficulty and drop the difficulty level every 20 levels. I think I've played the game to completion on various consoles and now multiple times on PC as well thanks to …",
-                  "truncated": true,
-                  "minutes_at_review": 12303
-                },
-                {
-                  "recommendationid": "230843412",
-                  "hours_at_review": 541.6,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "There's a lot of criticism that this game is a shallow RPG, that it dumbed down RPG elements that were in past elder scrolls games, you rarely make choices, the characters are bland, the combat is tedious, etc. Underneath all that, there's still an incredible open world to explore with soulful art and music, but all of that criticism is true. As fun as it is to explore Skyrim, the game really stops being interesting once you realize how repetitive its game design is. Honestly the best way to describe all the criticisms of Skyrim is that the game treats the player like an idiot. \n\nWhat you should really play this game for is the modding scene. Skyrim modding has gotten so advanced that you can essentially build your own RPG within Skyrim. You can practically make your own video game. That experience might honestly be some of the most fun I've had with PC gaming. You can turn this game into a survival RPG where you have to craft torches and food, or you can turn it into a third person action RPG. At this point you can genuinely make Skyrim whatever you want. It's something I recommend anyone with a good PC does at least once.",
-                  "truncated": false,
-                  "minutes_at_review": 32498
-                }
-              ]
-            }
-          ]
-        },
         {
           "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-d6b285",
-              "claim": "Reviewers report that magic is weaker compared to physical combat and weapons.",
-              "citation_verdict": "positive",
+              "claim_id": "mid-27786e",
+              "claim": "Reviewers state that the game requires installing mods, mod managers, and community fixes to run properly or bypass technical limitations.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 1,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "232413660",
-                  "hours_at_review": 205.1,
-                  "voted_up": true,
-                  "date": "2026-08-09",
-                  "review_text": "[h1]If you owned the original steam release before Oct 28, 2016, then you got this for free. If you didn't, then too bad![/h1]\r\n\r\nDo you know of the Elder Scrolls my homies? Have you heard of Skyrim!?\r\n\r\nIf you haven't, I shun you. You are unworthy.\r\n\r\nSkyrim is such a popular game and is so well known, I shouldn't have to write a review - you should know everything about it already. Perhaps, then, I write more for developers of other games, instead of for potential gamers, because gamers shouldn't be reading reviews for this masterpiece, they should be paying / downloading / playing it.\r\n\r\nSo many game developers get things right, then go ahead and make a sequel and screw up everything everyone enjoyed about a game. It happens in almost every popular series - Final Fantasy is so different from I to XVI (and probably all the way up to M if the company survives long enough) they're completely different genres, Borderlands was great once but now it's thrashing a dead horse, and while I loved Diablo I and II I don't want anything to do with Blizzard any more.\r\n\r\nSo here is a game that got things right. Presenting... Skyrim!\r\n\r\n\r\n____________\r\n\r\nI could have ended the review right there and it would have been perfect. But as you well know, there is no such thing as a perfect game.\r\n\r\nSome issues it has, regardless of whether it is the Special Edition or not, is the highly repetitive nature of the dungeons and crypts, weak magic compared to physical combat and weapons, shallow or weak questing (go fetch, or go kill this thing), and other things like over-simplified stats (what stats?, it's just skills, hp and stamina), and pointless dialogue choices.\r\n\r\nEven with all those minor issues, the game is still ridiculously popular.\r\n\r\nI have even come up with my own version of play, which is to start on maximum difficulty and drop the difficulty level every 20 levels. I think I've played the game to completion on various consoles and now multiple times on PC as well thanks to …",
-                  "truncated": true,
-                  "minutes_at_review": 12303
+                  "recommendationid": "241591541",
+                  "hours_at_review": 30.6,
+                  "minutes_at_review": 1835,
+                  "voted_up": false,
+                  "date": "2026-11-25",
+                  "review_text": "This is a game, that requires modding. And it just gets on my nerves even trying to ever enjoy this game.\n\nI have owned the game since basically it came out. Even have the special edition. And even with it being 2026 and having all these editions and fixes ect. You STILL have to mod it to bypass the 60fps lock. That alone, makes it a complete write off to me. Because you will inevitably break something, or updates to your pc break something.\n\nI spent 30 hours over the years modding the game, and never actually playing it. And thats just the hours I put INTO the game. Not on modding outside of it. And i just cant recommend a game that requires so much crap just to play.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230843412",
-                  "hours_at_review": 541.6,
+                  "recommendationid": "239127164",
+                  "hours_at_review": 20.5,
+                  "minutes_at_review": 1232,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "This version still needs a bunch of fan-fixes to work properly. Tons of easy-to-fix bugs that you need mods to solve. So you install  a mod manager, script extender AND mods for those to work. Then you need another mod because of course they disable achievements just to make the game playable.\n\nPure Bethesda bs. \nUnplayable unless you want to spend more then an hour applying fan-made fixes. And even THEN some very egregious bugs persist. (Male characters using female grunts and vice versa) This for a 15-year old game's \"special edition\". Just embarrassing, downloading a pirated version that has all these fixes included is way less of a hassle. Do not buy.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238729535",
+                  "hours_at_review": 40.1,
+                  "minutes_at_review": 2404,
                   "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "There's a lot of criticism that this game is a shallow RPG, that it dumbed down RPG elements that were in past elder scrolls games, you rarely make choices, the characters are bland, the combat is tedious, etc. Underneath all that, there's still an incredible open world to explore with soulful art and music, but all of that criticism is true. As fun as it is to explore Skyrim, the game really stops being interesting once you realize how repetitive its game design is. Honestly the best way to describe all the criticisms of Skyrim is that the game treats the player like an idiot. \n\nWhat you should really play this game for is the modding scene. Skyrim modding has gotten so advanced that you can essentially build your own RPG within Skyrim. You can practically make your own video game. That experience might honestly be some of the most fun I've had with PC gaming. You can turn this game into a survival RPG where you have to craft torches and food, or you can turn it into a third person action RPG. At this point you can genuinely make Skyrim whatever you want. It's something I recommend anyone with a good PC does at least once.",
-                  "truncated": false,
-                  "minutes_at_review": 32498
+                  "date": "2026-10-28",
+                  "review_text": "other than being REQUIRED to mod for the game to even launch its a classic I played this gem back on the PS3 and playing on PC brings me back to when I was a child",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-074937",
+              "claim": "Reviewers state that the game requires external mods and third-party tools to fix basic issues, bypass frame rate limits, or ensure proper functionality.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "241591541",
+                  "hours_at_review": 30.6,
+                  "minutes_at_review": 1835,
+                  "voted_up": false,
+                  "date": "2026-11-25",
+                  "review_text": "This is a game, that requires modding. And it just gets on my nerves even trying to ever enjoy this game.\n\nI have owned the game since basically it came out. Even have the special edition. And even with it being 2026 and having all these editions and fixes ect. You STILL have to mod it to bypass the 60fps lock. That alone, makes it a complete write off to me. Because you will inevitably break something, or updates to your pc break something.\n\nI spent 30 hours over the years modding the game, and never actually playing it. And thats just the hours I put INTO the game. Not on modding outside of it. And i just cant recommend a game that requires so much crap just to play.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239127164",
+                  "hours_at_review": 20.5,
+                  "minutes_at_review": 1232,
+                  "voted_up": false,
+                  "date": "2026-11-01",
+                  "review_text": "This version still needs a bunch of fan-fixes to work properly. Tons of easy-to-fix bugs that you need mods to solve. So you install  a mod manager, script extender AND mods for those to work. Then you need another mod because of course they disable achievements just to make the game playable.\n\nPure Bethesda bs. \nUnplayable unless you want to spend more then an hour applying fan-made fixes. And even THEN some very egregious bugs persist. (Male characters using female grunts and vice versa) This for a 15-year old game's \"special edition\". Just embarrassing, downloading a pirated version that has all these fixes included is way less of a hassle. Do not buy.",
+                  "truncated": false
                 }
               ]
             }
@@ -332,8 +393,135 @@
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "vet-cda63e",
-              "claim": "Reviewers note the presence of bugs that can hinder or block quest progression.",
+              "claim_id": "mid-5c4447",
+              "claim": "Reviewers report that the game experiences frequent crashes on the Steam Deck and Windows 11.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "238620520",
+                  "hours_at_review": 79.2,
+                  "minutes_at_review": 4750,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "\nThe game as a game is great, but on Windows 11 it keeps crashing after 1 hour of playing.\nStill after a while it just crashes :{ if it's up to you please fix it:]",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238607098",
+                  "hours_at_review": 52.8,
+                  "minutes_at_review": 3168,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "I am so disappointed. It was exciting to see this game get verified after how buggy it was. However it still crashes constantly on Steamdeck. Tried to switch over to PC with controller support and it crashes less, but still crashing. Very sad.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "mid-3eddd6",
+              "claim": "Reviewers describe encountering bugs, glitches, and crashes that persist from earlier releases.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 1,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "239173626",
+                  "hours_at_review": 30.2,
+                  "minutes_at_review": 1811,
+                  "voted_up": true,
+                  "date": "2026-11-02",
+                  "review_text": "Great version of the original game. It is worth noting NOTHING IS FIXED from the original release. All bugs (including all the game breaking ones) are still present which is very frustrating. Graphics have had a slight improvement, but otherwise its the exact same",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239254384",
+                  "hours_at_review": 66.4,
+                  "minutes_at_review": 3983,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Don't get me wrong, this was a great game 2000 years ago. But having to deal with the same bugs, crashes, glitches from the PS3 version and even when we get mods, they are constantly getting messed with. Haven't played Elder Scrolls Online and won't ever try it.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 7,
+        "cited_recommend": 2,
+        "divergence_p": 7.6e-05,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 639,
+      "pct_positive": 89.0,
+      "muted": false,
+      "n_note": null,
+      "summary": "Long-term players note basic combat systems alongside occasional unfinishable quests.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-b887ba",
+              "claim": "Reviewers describe the combat system as basic, simplistic, or outdated compared to modern standards.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "241079857",
+                  "hours_at_review": 4648.8,
+                  "minutes_at_review": 278925,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "There are games I play, and then there are worlds I return to. Skyrim is the latter.\n\nAfter more than 4,000 hours, I still find myself drawn back to its mountains, forests, winding roads, and familiar settlements. There is something remarkably peaceful about wandering through the wilderness with Jeremy Soule's soundtrack playing in the background, with no particular destination in mind.\n\nWhat makes Skyrim exceptional is the freedom it gives me to inhabit its world on my own terms. I have created numerous characters over the years, each with their own backstory, personality, motivations, fighting style, and moral compass. Their stories extend well beyond the quests the game provides. Sometimes I am an adventurer seeking forgotten ruins. Sometimes I am a hunter wandering the wilderness. Sometimes I am simply a traveler looking for the next interesting place to explore.\n\nSkyrim understands something that I think many modern open-world RPGs miss: the world itself can be the adventure. I don't always need an objective, a reward, or a cinematic event waiting around the next corner. Sometimes the journey is enough.\n\nThe modding community deserves tremendous credit for the game's longevity, but for me, mods are about enhancing an experience I already love rather than transforming it into something else.\n\nIs Skyrim perfect? Far from it. The combat can be simplistic, the writing can be inconsistent, and its age is increasingly apparent. Yet I have played countless games with better graphics, more sophisticated combat, and more complex narratives. Very few have captured my imagination the way Skyrim has.\n\nFor me, the true measure of an RPG is not how compelling a story it tells me, but how compelling a story it allows me to tell.\n\nSkyrim gives me that freedom.\n\nAnd after thousands of hours, there is still something comforting about starting a new character, stepping into the world, and wondering where the road will take me this time.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238847658",
+                  "hours_at_review": 287.6,
+                  "minutes_at_review": 17253,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "One of my all-time favorites.  Replaying now it is showing its age:  combat, movement, graphics don't meet current standards for such open-world games, but it's still fun to play.  Lots to see and do.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238814059",
+                  "hours_at_review": 1146.8,
+                  "minutes_at_review": 68809,
+                  "voted_up": true,
+                  "date": "2026-10-29",
+                  "review_text": "What can I say, for a game its age it holds up. Helps that it has a loyal fanbase that virtually develops it for you thanks to the game's robust modding tools, you'll never run out of content really.\n\nCombat is a bit basic, but as with anything Bethesda related its a click mod install away from improvement.\nHonestly the only thing that can't really be fixed is the somewhat basic story, but I might just have high standards.\n\nGoes on sale almost every couple months, you won't regret it. It's a bit of a Gamer right of passage to play, in the same league as half life and doom.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-0e051e",
+              "claim": "Reviewers state that quests can become locked or unfinishable due to bugs.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -341,49 +529,43 @@
               },
               "citations": [
                 {
-                  "recommendationid": "232635536",
-                  "hours_at_review": 174.7,
+                  "recommendationid": "238682284",
+                  "hours_at_review": 126.8,
+                  "minutes_at_review": 7605,
                   "voted_up": true,
-                  "date": "2026-08-12",
-                  "review_text": "Seen many people say positive things about Skyrim before playing it. As a fan of magic, dragons, open world, and the idea of having followers; this game is an absolute blast. All of the quests are good, there are lots of factions I lead, and there are many marriage candidates even in the base game.\r\n\r\nHowever, I do wish there were less bugs and crashes. It would also be nice if followers had more dialogue and quests like in Fallout 4. It would also be nice if they stopped saying \"stupid dog\" to Meeko.",
-                  "truncated": false,
-                  "minutes_at_review": 10482
+                  "date": "2026-10-27",
+                  "review_text": "Overall 8/10\r\n\r\nPros: This game has some of the best\r\n- Lore\r\n- RPG elements (Classing, Builds, Playstyles, Races)\r\n- Side content\r\n- Replayability\r\n- Vampirism if actually worth it now unlike in previous ES games\r\n- Bugs (infinite items, duplicated weapons, wearing more pieces of armour than should be allowed etc)\r\n- Quests can be completed at any level as the rewards are no longer scaled to your level (an issue Oblivion suffered from)\r\n- DLC is very enjoyable\r\n- Daedric quests\r\n\r\nCons:\r\n- Bugs (The most bugged Bethesda game of them all, especially for bows). Many quests can become locked or unfinishable. \r\n- Lack of choice (Most quests dont have more than one ending)\r\n- Smithing Skill (Might as well be called the difficulty slider skill with how detrimental this is to every build, your damage and armour become irrelevant if this is not levelled. Its annoying to level up so just use an item duplication glitch to infinitely smith jewellery). Such an unnecessary thing to put in the game and really ruins your level if levelled early.\r\n- Thieves guild and dark brotherhood quests inferior to previous iterations.\r\n- Ridiculous fetch quests that will be stuck in your journal the entire game.\r\n- RNG for some quests can leave you playing for hours for diminishing returns.\r\n- Soul Cairn (No explanation needed)",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "232550121",
-                  "hours_at_review": 198.8,
+                  "recommendationid": "239374798",
+                  "hours_at_review": 276.5,
+                  "minutes_at_review": 16588,
                   "voted_up": true,
-                  "date": "2026-08-11",
-                  "review_text": "[H1]“What is better - to be born good, or to overcome your evil nature through great effort?”\n~ Paarthurnax[/H1]\n\nA profound quote that really makes you think, Skyrim is more than just a game, for many people, it was an adventure of a lifetime.\n\nI still remember the first time I discovered this universe, I was still in high school back then, it has been more than ten years now, and despite all that time, I still have nothing but good memories of this game every time I come back to it.\n\nI started another playthrough in 2020, and the one I have just completed will be my last, I achieved everything I set out to do, I unlocked all the achievements, explored as much as possible, traveled across Skyrim and Solstheim, defeated Miraak, and helped countless people along the way.\n\nI feel like I have left my own little mark on this world, and it has been an absolute pleasure despite the countless bugs the game has, some of which can be frustrating and even prevent you from progressing, but honestly, without those bugs, it would not quite be an Elder Scrolls game.\n\nI am genuinely glad I got to experience this game, and I think everyone should play it at least once in their life, there really is no bad reason to say no, unless of course you simply hate The Elder Scrolls series.\n\nJust do not buy it at full price, wait for a sale, like the one happening right now at around €10, at that price, it is absolutely worth it.\n\nThe game itself does not take up much space either, unless you are planning on building a massive modlist through MO2, personally, I just focused on giving the game a bit of a visual makeover, making it look a little better while bringing back that nostalgia from years ago, around 30 GB of mods to bring a chapter to a close.\n\nThank you, Skyrim. 🐉",
-                  "truncated": false,
-                  "minutes_at_review": 11927
+                  "date": "2026-11-04",
+                  "review_text": "Skyrim is easily in my top 3 favorite games. The carefully crafted, enormous map is a delight; I've probably done 6 or 8 playthroughs over the years and find new things every time. Thee major quests (counting the main questline plus the faction quests here) are varied and substantial; your character has to make some hard choices that do affect other quests and gameplay. Crafting (enchanting, alchemy, smithing) provide ways to customize how you interact with the world as well as give you tools to modify the difficulty of the game (in addition to the difficulty setting, of course).\r\n\r\nAnd yeah, there are some annoyances and bugs: some quests are fragile and can get stuck or bugged if you make certain choices; followers can be frustrating clumsy (*cough*floor traps*cough*) and the pathing isn't great; the physics can be hilarious (\"why did that corpse fly half a kilometer?!\"). But at this point, in 2026, all those things are quirky and a little funny, and I just save early and save often. This game is just pure comfort food now.\r\n\r\n[b]tldr; Skyrim is 10/10, love it.[/b]",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 4,
-        "cited_recommend": 4,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 5,
+        "cited_recommend": 5,
         "divergence_p": 1.0,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1521,
-    "steam_total_reviews": 219224,
-    "cohort_count": 3,
+    "pool_n": 1574,
+    "steam_total_reviews": 225353,
+    "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489830/header.jpg?t=1786648247",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489830/capsule_231x87.jpg?t=1786648247",
-    "grid": "https://cdn2.steamgriddb.com/grid/3fefb4dece2d90708c94ccc3846d8d40.png"
   }
 }

@@ -1,119 +1,175 @@
 {
   "appid": "945360",
   "game_name": "Among Us",
-  "generated_at": "2026-08-10T10:13:16Z",
+  "generated_at": "2026-11-25T11:13:40Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/945360/header.jpg?t=1787088490",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/945360/capsule_231x87.jpg?t=1787088490",
+    "grid": "https://cdn2.steamgriddb.com/grid/09246ffb824ca2c5bc47a64cb302d3cb.jpg"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 20,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Buy",
-    "tagline": "Space deduction and deception marred by connection hurdles and cheaters.",
+    "tagline": "Deception and deduction in space, though lobbies battle cheaters and trolls.",
     "for_you_if": [
-      "you play with a dedicated group of friends",
-      "you enjoy social deduction games",
-      "you prefer playing on a computer"
+      "you enjoy social deduction games with friends",
+      "you want multiple maps and game modes"
     ],
     "not_for_you_if": [
-      "you rely on public matchmaking lobbies",
-      "you cannot stand cheaters and hackers",
-      "you are affected by age verification limits"
+      "you are frustrated by hackers and bots",
+      "you dislike dealing with public lobby trolls"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 55,
-      "pct_positive": 65.5,
+      "pool_n": 64,
+      "pct_positive": 84.4,
       "muted": false
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 1070,
-      "pct_positive": 93.7,
+      "pool_n": 677,
+      "pct_positive": 91.9,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 708,
-      "pct_positive": 90.8,
+      "pool_n": 478,
+      "pct_positive": 91.4,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 154,
+      "pool_n": 135,
       "pct_positive": 89.6,
       "muted": false
     }
   ],
-  "distortion_flags": [
-    {
-      "flag_id": "cohort_divergence",
-      "type": "segmentation",
-      "direction": null,
-      "shape": "monotonic_increase",
-      "sentence": "Player sentiment improves after the initial refund window before stabilizing among long-term participants.",
-      "evidence": {
-        "sequence": [
-          {
-            "cohort": "refund_window",
-            "label": "under 2 hours",
-            "pct_positive": 65.5,
-            "pool_n": 55
-          },
-          {
-            "cohort": "early",
-            "label": "2-20 hours",
-            "pct_positive": 93.7,
-            "pool_n": 1070
-          },
-          {
-            "cohort": "mid",
-            "label": "20-100 hours",
-            "pct_positive": 90.8,
-            "pool_n": 708
-          },
-          {
-            "cohort": "veteran",
-            "label": "over 100 hours",
-            "pct_positive": 89.6,
-            "pool_n": 154
-          }
-        ],
-        "shape": "monotonic_increase",
-        "low_cohort": "refund_window",
-        "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 65.5,
-        "low_pool_n": 55,
-        "high_cohort": "early",
-        "high_cohort_label": "2-20 hours",
-        "high_pct_positive": 93.7,
-        "high_pool_n": 1070,
-        "gap_pts": 28.2
-      }
-    }
-  ],
+  "distortion_flags": [],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 55,
-      "pct_positive": 65.5,
+      "pool_n": 64,
+      "pct_positive": 84.4,
       "muted": false,
       "n_note": null,
-      "summary": "Early players find the experience repetitive quickly, face account linking issues, and struggle with strict age verification.",
+      "summary": "New players jump straight into social deduction without notable complaints.",
+      "themes": [],
+      "single_points": [],
+      "sourcing": null
+    },
+    {
+      "bucket": "early",
+      "label": "2-20h",
+      "hours_range": "2-20 hours",
+      "pool_n": 677,
+      "pct_positive": 91.9,
+      "muted": false,
+      "n_note": null,
+      "summary": "Early players experience occasional disconnections and disruptions from hackers.",
       "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "ear-007966",
+              "claim": "Reviewers report frequent disconnections during gameplay.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 2,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "241426536",
+                  "hours_at_review": 13.0,
+                  "minutes_at_review": 778,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "i got imposter 3 times in a row and disconnected 3 times in a row.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238530313",
+                  "hours_at_review": 4.0,
+                  "minutes_at_review": 237,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "it's so fun but idk why i'm always disconnected :<",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "ear-ade7db",
+              "claim": "Reviewers note the presence of hackers and bots disrupting public and private lobbies.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "241355739",
+                  "hours_at_review": 4.7,
+                  "minutes_at_review": 283,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "Its good but among us you have to fix your security system there are so many bots just stopping lobbies from starting",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241290043",
+                  "hours_at_review": 2.7,
+                  "minutes_at_review": 161,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "Hackers Made The Game Unplayable!\r\n\r\nI have been playing among us for years, across multiple platforms and I loved the game. I have noticed though within the last year or so this game has been taken over by hackers that use bots to stop people from playing in lobbies, public and private ones.\r\n\r\nI really liked this game, but these bots made the gameborderline unplayable. I spent 23 hours trying to play and switching lobbies, every lobby was taken over by these bots.\r\n\r\nPlease developers, fix your game!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241242293",
+                  "hours_at_review": 8.8,
+                  "minutes_at_review": 530,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "There will be a hacker in every lobby.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238569688",
+                  "hours_at_review": 16.4,
+                  "minutes_at_review": 982,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Fun game, works fine on my potato pc. Not recommended if you don't have a bunch of friends to play with because 4/5 people in a public lobby either don't speak english, are a troll, a hacker, cheat with a discord chat room, or ban you because you asked to start. Just don't play a public game because of the toxic players.\r\n\r\nPrivate games are great though if you trust everyone in the room not to cheat.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
         {
           "theme": "content",
           "claims": [
             {
-              "claim_id": "ref-0a0327",
-              "claim": "Reviewers report that the gameplay becomes repetitive quickly.",
+              "claim_id": "ear-e016a0",
+              "claim": "Reviewers mention the inclusion of a horse mode.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -121,286 +177,35 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231766703",
-                  "hours_at_review": 0.8,
+                  "recommendationid": "238766911",
+                  "hours_at_review": 7.8,
+                  "minutes_at_review": 470,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "They made the game sh*t by adding the horseMode, Will not recommend this game at all!!!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238621352",
+                  "hours_at_review": 13.1,
+                  "minutes_at_review": 788,
                   "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "got on pc used to play on iphone this game is fun but gets a little repetitive after playing a lot",
-                  "truncated": false,
-                  "minutes_at_review": 50
-                },
-                {
-                  "recommendationid": "231387905",
-                  "hours_at_review": 1.1,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "I expected nothing, and I was still disappointed.\n\nThe gameplay gets repetitive almost immediately, the tasks are boring, and public lobbies are full of people leaving mid-game or making random accusations. The whole experience depends on having the perfect group of friends, and without that, it's just frustrating.\n\nWouldn't recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 65
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ref-915892",
-              "claim": "Reviewers note issues with account linking or merging between platforms.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230542281",
-                  "hours_at_review": 1.1,
-                  "voted_up": false,
-                  "date": "2026-07-15",
-                  "review_text": "Can't even merge my account from my phone. Might as well just remove the whole \"feature\" of merging accounts. Going to get a refund.",
-                  "truncated": false,
-                  "minutes_at_review": 66
-                },
-                {
-                  "recommendationid": "230033048",
-                  "hours_at_review": 0.4,
-                  "voted_up": false,
-                  "date": "2026-07-09",
-                  "review_text": "good game but the account linking isnt working\nWhich means i cant have the right hand skin on gaben's storefront :(",
-                  "truncated": false,
-                  "minutes_at_review": 26
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ref-1e88fe",
-              "claim": "Reviewers state that the game relies heavily on playing with a group of friends for a good experience.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231387905",
-                  "hours_at_review": 1.1,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "I expected nothing, and I was still disappointed.\n\nThe gameplay gets repetitive almost immediately, the tasks are boring, and public lobbies are full of people leaving mid-game or making random accusations. The whole experience depends on having the perfect group of friends, and without that, it's just frustrating.\n\nWouldn't recommend.",
-                  "truncated": false,
-                  "minutes_at_review": 65
-                },
-                {
-                  "recommendationid": "229681650",
-                  "hours_at_review": 1.7,
-                  "voted_up": false,
-                  "date": "2026-07-05",
-                  "review_text": "This is a game only for those who can tolerate weird, awkward social experiences and have a group of friends to hang out with. This game just ain't for my type what so ever.",
-                  "truncated": false,
-                  "minutes_at_review": 100
-                },
-                {
-                  "recommendationid": "230125047",
-                  "hours_at_review": 1.7,
-                  "voted_up": true,
-                  "date": "2026-07-10",
-                  "review_text": "Very good game if u have friends, if not, u don't need it.",
-                  "truncated": false,
-                  "minutes_at_review": 102
-                }
-              ]
-            },
-            {
-              "claim_id": "ref-90931c",
-              "claim": "Reviewers complain about age verification restrictions and the inability to change the date of birth after the initial input.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "230465373",
-                  "hours_at_review": 0.1,
-                  "voted_up": false,
-                  "date": "2026-07-14",
-                  "review_text": "The fact that there is no way to change your date of birth after the initial input is simply unacceptable.",
-                  "truncated": false,
-                  "minutes_at_review": 8
-                },
-                {
-                  "recommendationid": "229439436",
-                  "hours_at_review": 0.3,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I decided to buy the game, 6 years after playing it on mobile. But it's disappointing to see what the game has turned into.\nThere's now some weird age verification. It's not bad by it's looks, but if you enter in your age wrong, you have to \"get your guardian's approval\", no way to bypass this btw.\ntheres also the stupid quick chat, which if youre too young to play Among us, is the only thing you can use.\nit's so buns that it makes the game be pointless as a whole.\n\noh and not to mention, the mobile version, the last time i played it back in 2025, had ads and microtransactions on every single cosmetic.\n\n6/10, would love to see a mode to switch back to the old UI, because this one is terrible.",
-                  "truncated": false,
-                  "minutes_at_review": 21
+                  "date": "2026-10-26",
+                  "review_text": "Peter, Your horse is here",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
         "level": "baseline",
         "triggers": [],
         "cited_reviews": 8,
-        "cited_recommend": 2,
-        "divergence_p": 0.0235,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "early",
-      "label": "2-20h",
-      "hours_range": "2-20 hours",
-      "pool_n": 1070,
-      "pct_positive": 93.7,
-      "muted": false,
-      "n_note": null,
-      "summary": "Players moving past the initial hours encounter hackers, public lobby dropouts, and keyboard convenience.",
-      "themes": [
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ear-e098ba",
-              "claim": "Reviewers note that public lobbies suffer from players leaving immediately at the start of a match.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231795646",
-                  "hours_at_review": 13.1,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "I’ve known my best friend for about 8 years. We’ve been through a lot together, shared real-life secrets, and I trusted the guy with my life.\n\nThen we played this game.\n\nWe walked into elec together. Just two bros fixing some wires. The door suddenly closed, he sliced me in half, vented away, and then immediately typed in the chat:\n\n\"idk guys blue is acting really sus, saw him faking tasks\"\n\nHe convinced the entire lobby to vote out an innocent guy while my ghost was just sitting there watching this absolute psychopath win the game. 10/10 game for ruining my trust in humanity.\nAlso, as a mathematical certainty: the probability of you surviving after walking into elec is roughly P=0. Don’t go in there my friend :)\n\nBUT, if you play in public lobbies instead of with friends, get ready for a completely different nightmare. Half the lobby just leaves the exact microsecond the match starts because they didn’t get Impostor or because of net problems. It completely kills the match. The devs seriously need to add a massive matchmaking cooldown for these first-second leavers who press the leave button themselves...\n\nAnd don’t get me started on the clueless randoms. A guy will report a body and instantly go \"where is the body?\" in chat with zero logic. We desperately need an option to filter lobbies for people with like 100+ hours so we don’t have to play with people who just mash the vote button.\n( And hey, don't look at my Steam playtime and judge me—I swear I played this on Android for years before buying it here! ;D )\n\nAnother massive issue is the chat system itself during meetings. When everyone is typing at once, important messages just get buried. You try to scroll up to read someone's defense, but the chat constantly auto-scrolls back to the bottom. There really needs to be a way to filter or view a specific person's messages, because finding anything in that mess is a nightmare.\n\nAlso, the usernames and messages some people come up with are just completely inappropri…",
-                  "truncated": true,
-                  "minutes_at_review": 787
-                },
-                {
-                  "recommendationid": "230785094",
-                  "hours_at_review": 16.4,
-                  "voted_up": true,
-                  "date": "2026-07-18",
-                  "review_text": "Seriusly wtf do i pay and if i crash i gotta wait to play(or i quit in general)\nPlease, you can just emulate it...\nbut its a pretty fun game to play with friends!\nI'd say give 20 stars to every pc player\nthe game is a simple killer taht tries to kill you and the others who just need to do their tasks.\nYou can use your keyboard and thats pretty good!\nthe game dosen't get boring, but if you play it for more that one hour with no breaks you migth get a little bored\nPrice:8/10\nGameplay:9/10\nreplayability:10/10\nLore:1/10\nP2W stuff:No\nPaid stus:Yes\npc stuff: nothing exept quick and faster timing because you can have like all the important stuff near your moviment keys, like [SPACE] E R Q F\n\nOveral...\n8.2/10\n\nP.S. pretty goated game during 2020/2021",
-                  "truncated": false,
-                  "minutes_at_review": 982
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "performance",
-          "claims": [
-            {
-              "claim_id": "ear-ecd70b",
-              "claim": "Reviewers report that the PC version runs better and makes typing in chat easier compared to mobile devices.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231776195",
-                  "hours_at_review": 3.0,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "its a good game I would recomend playing on pc though as its easier to type in the chat but overall hyped game \r\n",
-                  "truncated": false,
-                  "minutes_at_review": 179
-                },
-                {
-                  "recommendationid": "230576869",
-                  "hours_at_review": 3.9,
-                  "voted_up": true,
-                  "date": "2026-07-16",
-                  "review_text": "I love Among Us, it runs better on pc, you can run this game on basically anything, but the phone version is bad and low quality. I hope they change it so I can play on the go with joy!, Been playing since 2020, 10/10 only game i can play for six years and not get bored of.",
-                  "truncated": false,
-                  "minutes_at_review": 233
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-d33862",
-              "claim": "Reviewers encounter hackers, bot spam, and missing anti-cheat systems when playing in public servers.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231731490",
-                  "hours_at_review": 2.1,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "[b]Introduction :[/b]\nDéveloppé et édité par le petit studio américain InnerSloth, Among Us est un jeu de party à déduction sociale sorti en 2018, mais devenu un phénomène planétaire en 2020. Dans un vaisseau spatial, un groupe de Crewmates doit accomplir des tâches d'entretien pendant qu'un ou plusieurs Imposteurs sabotent et éliminent l'équipage en douce. À chaque cadavre découvert, tout le monde débat, s'accuse et vote pour éjecter le coupable présumé. Le tout pour une poignée d'euros.\n\n[b]Ce que j'ai aimé :[/b]\n[list]\n[*]🕵️ un concept de bluff redoutablement efficace : mentir en pleine face à ses amis ou démasquer un menteur procure une tension et un plaisir uniques\n[*]🎮 une prise en main immédiate : les règles s'expliquent en deux minutes, tout le monde peut jouer, du gamer chevronné au néophyte total\n[*]🔁 une rejouabilité quasi infinie parce que chaque partie dépend des joueurs : un imposteur ne joue jamais deux fois pareil\n[*]💸 un prix ridicule (environ 4€ sur PC, gratuit sur mobile) pour des heures et des heures de fous rires entre potes\n[*]🌍 une accessibilité multiplateforme totale (PC, Switch, mobile) qui rend les parties entre amis ultra faciles à monter\n[/list]\n\n[b]Ce que j'ai moins aimé :[/b]\n[list]\n[*]🐛 quelques bugs persistants pendant les votes et à l'affichage, l'expérience n'est pas toujours d'une propreté irréprochable\n[*]🤖 des tricheurs qui sévissent parfois en toute impunité et peuvent gâcher une partie publique\n[*]🇫🇷 l'absence de traduction française officielle et l'impossibilité de remapper les touches, des oublis un peu datés\n[*]😴 sur le très long terme, une répétitivité qui peut s'installer si l'on enchaîne sans varier les cartes ou les réglages\n[/list]\n\n[b]Conclusion :[/b]\nAmong Us, c'est le jeu de soirée par excellence. Seul, il n'a aucun intérêt ; mais entre amis, avec un salon vocal et un peu de mauvaise foi, il devient une machine à rires et à trahisons. Ce n'est pas un mastodonte technique, il traîne quelques bugs et des cheaters, mais…",
-                  "truncated": true,
-                  "minutes_at_review": 127
-                },
-                {
-                  "recommendationid": "230701776",
-                  "hours_at_review": 9.2,
-                  "voted_up": true,
-                  "date": "2026-07-17",
-                  "review_text": "authentication sucks but other then that the game is pretty cool\r\nalso beware of hackers because there is literlary no anticheat for them and bots that spam stuff",
-                  "truncated": false,
-                  "minutes_at_review": 552
-                }
-              ]
-            },
-            {
-              "claim_id": "ear-48f495",
-              "claim": "Reviewers experience bugs where players can report bodies right as they are killed.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231766256",
-                  "hours_at_review": 13.1,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "its funny how ther are so many glichtes like if you kill someone rhithg as they report they die an report lol\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 785
-                },
-                {
-                  "recommendationid": "231731490",
-                  "hours_at_review": 2.1,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "[b]Introduction :[/b]\nDéveloppé et édité par le petit studio américain InnerSloth, Among Us est un jeu de party à déduction sociale sorti en 2018, mais devenu un phénomène planétaire en 2020. Dans un vaisseau spatial, un groupe de Crewmates doit accomplir des tâches d'entretien pendant qu'un ou plusieurs Imposteurs sabotent et éliminent l'équipage en douce. À chaque cadavre découvert, tout le monde débat, s'accuse et vote pour éjecter le coupable présumé. Le tout pour une poignée d'euros.\n\n[b]Ce que j'ai aimé :[/b]\n[list]\n[*]🕵️ un concept de bluff redoutablement efficace : mentir en pleine face à ses amis ou démasquer un menteur procure une tension et un plaisir uniques\n[*]🎮 une prise en main immédiate : les règles s'expliquent en deux minutes, tout le monde peut jouer, du gamer chevronné au néophyte total\n[*]🔁 une rejouabilité quasi infinie parce que chaque partie dépend des joueurs : un imposteur ne joue jamais deux fois pareil\n[*]💸 un prix ridicule (environ 4€ sur PC, gratuit sur mobile) pour des heures et des heures de fous rires entre potes\n[*]🌍 une accessibilité multiplateforme totale (PC, Switch, mobile) qui rend les parties entre amis ultra faciles à monter\n[/list]\n\n[b]Ce que j'ai moins aimé :[/b]\n[list]\n[*]🐛 quelques bugs persistants pendant les votes et à l'affichage, l'expérience n'est pas toujours d'une propreté irréprochable\n[*]🤖 des tricheurs qui sévissent parfois en toute impunité et peuvent gâcher une partie publique\n[*]🇫🇷 l'absence de traduction française officielle et l'impossibilité de remapper les touches, des oublis un peu datés\n[*]😴 sur le très long terme, une répétitivité qui peut s'installer si l'on enchaîne sans varier les cartes ou les réglages\n[/list]\n\n[b]Conclusion :[/b]\nAmong Us, c'est le jeu de soirée par excellence. Seul, il n'a aucun intérêt ; mais entre amis, avec un salon vocal et un peu de mauvaise foi, il devient une machine à rires et à trahisons. Ce n'est pas un mastodonte technique, il traîne quelques bugs et des cheaters, mais…",
-                  "truncated": true,
-                  "minutes_at_review": 127
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 7,
-        "cited_recommend": 7,
-        "divergence_p": 1.0,
+        "cited_recommend": 4,
+        "divergence_p": 0.00231,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -408,129 +213,132 @@
       "bucket": "mid",
       "label": "20-100h",
       "hours_range": "20-100 hours",
-      "pool_n": 708,
-      "pct_positive": 90.8,
+      "pool_n": 478,
+      "pct_positive": 91.4,
       "muted": false,
       "n_note": null,
-      "summary": "Experienced players navigate matchmaking bans, hacker disruptions, and map bugs.",
+      "summary": "Mid-tier players highlight lobby disruptions caused by bots and controversial new roles.",
       "themes": [
         {
           "theme": "performance",
           "claims": [
             {
-              "claim_id": "mid-f483fc",
-              "claim": "Reviewers note that leaving a game applies a ten minute ban from online matchmaking.",
-              "citation_verdict": "mixed",
+              "claim_id": "mid-d78381",
+              "claim": "Reviewers describe bots and hackers repeatedly joining and leaving lobbies to cancel the start timer and prevent matches from beginning.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 1,
-                "negative": 1
+                "positive": 0,
+                "negative": 5
               },
               "citations": [
                 {
-                  "recommendationid": "231734874",
-                  "hours_at_review": 42.0,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "good game but if you got an error you get 10 minutes of ban from online",
-                  "truncated": false,
-                  "minutes_at_review": 2523
+                  "recommendationid": "241348739",
+                  "hours_at_review": 26.9,
+                  "minutes_at_review": 1613,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "Game has been destroyed by nothing but bots and hackers every single lobby you join has spam bots that will constantly leave and rejoin so that the lobby will not be able to start this game seriously needs a strong anti cheat client because the bots and hackers have ruined this game",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230577769",
-                  "hours_at_review": 50.9,
+                  "recommendationid": "241284036",
+                  "hours_at_review": 60.6,
+                  "minutes_at_review": 3635,
                   "voted_up": false,
-                  "date": "2026-07-16",
-                  "review_text": "this game if fun BUT IF YOU LEAVE A GAME FOR A RESON YOU HAVE TO WAIT TEN MINITS TO PLAY AGAIN AND NO ONE PLAYS FAIR ANYMORE\r\n",
-                  "truncated": false,
-                  "minutes_at_review": 3056
+                  "date": "2026-11-24",
+                  "review_text": "There are hackers on this game who spam join lobbies and prevent them from starting, and then while you're in game they'll crash the server which results in you getting temporarily suspended from joining online among us games which is totally unfair. Devs, please fix.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241186537",
+                  "hours_at_review": 74.6,
+                  "minutes_at_review": 4474,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "I love this game, but recently, a major issue has appeared.\nThe issue involves what most people would call a \"hacker,\" although I'm not entirely sure that's what they are, they might aswell be bots.\n\nWhenever the host starts a game, a short timer is triggered. If anyone leaves or joins during that time, the timer gets cancelled.\nRecently, random accounts have started joining and leaving whenever you try to start a game. It doesn't matter if you ban them from the lobby, they'll just come back using a different username.\nI've had multiple lobbies shut down because of this. It genuinely takes me over 20 minutes just to start a game, when it should normally take between 2–5 minutes.\n\nThe crazy part is that the solution to this is incredibly easy to implement: just make it so that the host is the only one who can cancel the timer.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241148201",
+                  "hours_at_review": 26.4,
+                  "minutes_at_review": 1586,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "Game is filled with bots that prevent real players from starting their lobbies. the game is unplayable in this state. additionally, hosts are getting banned from their own lobbies.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241147864",
+                  "hours_at_review": 67.6,
+                  "minutes_at_review": 4054,
+                  "voted_up": false,
+                  "date": "2026-11-24",
+                  "review_text": "game is filled with bots that prevent you from starting the game pls fix",
+                  "truncated": false
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
             {
-              "claim_id": "mid-0c65c5",
-              "claim": "Reviewers encounter hackers in online lobbies who can ban players or close the game mid-match.",
-              "citation_verdict": "positive",
+              "claim_id": "mid-a78d29",
+              "claim": "Reviewers state that the newly added influencer role ruins matches because dead crewmates can reveal impostor colors from beyond the grave.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 3,
-                "negative": 1
+                "positive": 0,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231725921",
-                  "hours_at_review": 79.8,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Absolute fantastic game, fun and great to play with friends, you either see the nicest people or the most toxic, either people who are absolute genesis or less then 1 braincell, expert lobbies are dumb and beginner smart, once in a while every sabotage will go off at the sometime due to hackers or in hide and seek they go through walls, hide and seek is fun and the music is fire. for only 5 dollars this game brings a lot of fun and great memories, i extremely recommend it 9/10, might wanna avoid public lobbies if you get very mad very easily",
-                  "truncated": false,
-                  "minutes_at_review": 4787
-                },
-                {
-                  "recommendationid": "230845748",
-                  "hours_at_review": 23.9,
-                  "voted_up": true,
-                  "date": "2026-07-19",
-                  "review_text": "This game ive Played for ages and had fun (most times) playing a good round of among us also with the new roles and maps makes it better every update! 99% worth it.\r\n\r\nSometimes you may come across hackers but you just need to get used to it",
-                  "truncated": false,
-                  "minutes_at_review": 1437
-                },
-                {
-                  "recommendationid": "230734003",
-                  "hours_at_review": 27.0,
+                  "recommendationid": "238712377",
+                  "hours_at_review": 87.5,
+                  "minutes_at_review": 5249,
                   "voted_up": false,
-                  "date": "2026-07-18",
-                  "review_text": "This game is honestly so fun, specially with the right settings. BUT there's 1 major issue. The game has a hacking problem. In my 27 hours of playing, I encountered at least 3 occasions of hackers. What they usually do is close and ban people from lobbies mid-game without needing to be a host (and no, I'm not referring to the vote to kick system). These hackers can make the game feel unplayable at times, especially when you find a lobby of good players.",
-                  "truncated": false,
-                  "minutes_at_review": 1621
+                  "date": "2026-10-27",
+                  "review_text": "The newly added Influencer role just ruins the game. Dead crewmates can reveal the impostors colors. I can't believe not a single developer or tester realized how bad this role is and how much it ruins the game.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "230462433",
-                  "hours_at_review": 32.9,
-                  "voted_up": true,
-                  "date": "2026-07-14",
-                  "review_text": "good game until you get voted out for no reason, somone is hacking, or there is a crewposter",
-                  "truncated": false,
-                  "minutes_at_review": 1974
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-259a28",
-              "claim": "Reviewers report encountering bugs in hide and seek mode where players can move or be killed through walls.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231725921",
-                  "hours_at_review": 79.8,
-                  "voted_up": true,
-                  "date": "2026-07-31",
-                  "review_text": "Absolute fantastic game, fun and great to play with friends, you either see the nicest people or the most toxic, either people who are absolute genesis or less then 1 braincell, expert lobbies are dumb and beginner smart, once in a while every sabotage will go off at the sometime due to hackers or in hide and seek they go through walls, hide and seek is fun and the music is fire. for only 5 dollars this game brings a lot of fun and great memories, i extremely recommend it 9/10, might wanna avoid public lobbies if you get very mad very easily",
-                  "truncated": false,
-                  "minutes_at_review": 4787
-                },
-                {
-                  "recommendationid": "230561864",
-                  "hours_at_review": 32.6,
-                  "voted_up": true,
-                  "date": "2026-07-15",
-                  "review_text": "I dont know what to say. But its just a really good game. and its fun, ESPECIALLY hide and seek. just dont like how im able to get killed through walls in hide and seek.",
-                  "truncated": false,
-                  "minutes_at_review": 1956
+                  "recommendationid": "238768976",
+                  "hours_at_review": 38.6,
+                  "minutes_at_review": 2317,
+                  "voted_up": false,
+                  "date": "2026-10-28",
+                  "review_text": "After adding inf this game has became shit. If you play a 100% perfect game the inf snitches on you FROM THE GRAVE. DO NOT BUY.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [
+        {
+          "point_id": "one-1eb00b42",
+          "text": "One reviewer says that hackers crash the server, which results in being temporarily suspended from joining online games.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "241284036",
+            "hours_at_review": 60.6,
+            "minutes_at_review": 3635,
+            "voted_up": false,
+            "date": "2026-11-24",
+            "review_text": "There are hackers on this game who spam join lobbies and prevent them from starting, and then while you're in game they'll crash the server which results in you getting temporarily suspended from joining online among us games which is totally unfair. Devs, please fix.",
+            "truncated": false
+          }
+        }
+      ],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
         "cited_reviews": 7,
-        "cited_recommend": 5,
-        "divergence_p": 0.13,
+        "cited_recommend": 0,
+        "divergence_p": 3.48e-08,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     },
@@ -538,106 +346,170 @@
       "bucket": "veteran",
       "label": "100h+",
       "hours_range": "over 100 hours",
-      "pool_n": 154,
+      "pool_n": 135,
       "pct_positive": 89.6,
       "muted": false,
       "n_note": null,
-      "summary": "Long-term players continue to deal with cheaters invading lobbies.",
+      "summary": "Veterans appreciate the diverse modes and maps while navigating public lobby trolls.",
       "themes": [
         {
-          "theme": "performance",
+          "theme": "difficulty",
           "claims": [
             {
-              "claim_id": "vet-93e168",
-              "claim": "Reviewers report that hackers can invade lobbies and ruin matches.",
+              "claim_id": "vet-369e33",
+              "claim": "Reviewers describe public lobbies as frustrating due to trolls, teamers, and uncooperative players.",
               "citation_verdict": "positive",
               "citation_split": {
-                "positive": 2,
+                "positive": 4,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240561901",
+                  "hours_at_review": 278.4,
+                  "minutes_at_review": 16704,
+                  "voted_up": true,
+                  "date": "2026-11-19",
+                  "review_text": "Majority of public lobby player base are teamers and/or 12yo's who don't listen to information. \nThe game, fundamentally is great, mileage depends on who you play with",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240236321",
+                  "hours_at_review": 592.0,
+                  "minutes_at_review": 35517,
+                  "voted_up": true,
+                  "date": "2026-11-15",
+                  "review_text": "Super fun if you join a discord server. Trolls and noobs can make games frustrating, but the more server folks you have, the more fun it is! I love trying to figure it out!",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238510950",
+                  "hours_at_review": 159.7,
+                  "minutes_at_review": 9583,
+                  "voted_up": true,
+                  "date": "2026-10-25",
+                  "review_text": "This game aged like fine wine; it's unfortunate that a lot of lobbies are full of incompetent Crewmates/Impostor and trolls, but regardless, it's still super fun",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238601827",
+                  "hours_at_review": 161.4,
+                  "minutes_at_review": 9682,
+                  "voted_up": true,
+                  "date": "2026-10-26",
+                  "review_text": "good game to play with friends, public lobbies suck",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-3c1026",
+              "claim": "Reviewers mention that the influencer role is annoying or confusing, though hosts can disable it.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
                 "negative": 1
               },
               "citations": [
                 {
-                  "recommendationid": "231789272",
-                  "hours_at_review": 109.7,
+                  "recommendationid": "240339218",
+                  "hours_at_review": 262.6,
+                  "minutes_at_review": 15755,
                   "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Playing among us in 2026 is just horrible. Everybody is stupid even in expert lobbies and everyone just has too much power and kicks you out for absolutely no reason. The chances of getting imposter are just sickening and people can't even tell who is the murder based on venting anymore because of the Engineer crewmate role. It is very easy for hackers to invade this game also and ruin your lobby. This game was enjoyable only 3-5 years ago.",
-                  "truncated": false,
-                  "minutes_at_review": 6582
+                  "date": "2026-11-16",
+                  "review_text": "used to be good, influencer ruined the game, finding lobbies with it disabled is effortful. the game also lags a lot. i'd avoid for now, will change review later",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231391978",
-                  "hours_at_review": 120.4,
+                  "recommendationid": "239637549",
+                  "hours_at_review": 134.4,
+                  "minutes_at_review": 8066,
                   "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "Really fun but there can be hackers and teamers",
-                  "truncated": false,
-                  "minutes_at_review": 7222
+                  "date": "2026-11-07",
+                  "review_text": "extremly fun  influencer role is a bit confuesing but 9.8 out of 10 rating",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231196086",
-                  "hours_at_review": 176.8,
+                  "recommendationid": "239472840",
+                  "hours_at_review": 391.4,
+                  "minutes_at_review": 23486,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "its very fun but sometimes there are hackers or ppl with no brain cells, the hackers hack to see who the impostor is and i have a question if you're a hacker; why tf do you hack if the thing that you get if you win are beans (the game's currency) and sometimes pods (currency for boxes with exclusive skins. and the brainless ppl (often found in the quick chat servers) just vote along with a hacker or sometimes an other brainless guy that saw the accused person vent while the engineer role (a role that is a crewmate but can vent) is enabled or the brainless can sometimes be engineer and seeing someone vent accuse them of being impostor while there are 2 or more engineers enabled.",
-                  "truncated": false,
-                  "minutes_at_review": 10609
+                  "date": "2026-11-06",
+                  "review_text": "its aight they just need to remove the influencer role",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238721230",
+                  "hours_at_review": 117.4,
+                  "minutes_at_review": 7042,
+                  "voted_up": true,
+                  "date": "2026-10-28",
+                  "review_text": "Among Us is fun. \nHowever. \nThis game started as an IQ test of \"Let's go detective mode and find out who this is, and put our heads together.\" \nNow, it's \"It's cyan. I feel it in my heart guys.\" No proof, everyone follows like sheep, and you get voted out. \nYes, you were the impostor. \nYes, the round started 12 seconds ago and you did nothing. \nNo, they won't guess anything else correct for the rest of the game.\n10/10, would recommend, would rage again.\n\nEdit: The influencer role is incredibly annoying and broken. Kinda wrecks the game, just being able to send a photo of the impostor's color. Just try to find or make a lobby without the influencer role and you'll have a much more enjoyable time.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-1a6bb4",
-              "claim": "Reviewers note that hackers are present in online lobbies.",
-              "citation_verdict": "mixed",
+              "claim_id": "vet-d55f9c",
+              "claim": "Reviewers note that the game features multiple maps and game modes, including hide-and-seek and selectable roles such as the influencer.",
+              "citation_verdict": "positive",
               "citation_split": {
-                "positive": 1,
-                "negative": 1
+                "positive": 3,
+                "negative": 0
               },
               "citations": [
                 {
-                  "recommendationid": "231789272",
-                  "hours_at_review": 109.7,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Playing among us in 2026 is just horrible. Everybody is stupid even in expert lobbies and everyone just has too much power and kicks you out for absolutely no reason. The chances of getting imposter are just sickening and people can't even tell who is the murder based on venting anymore because of the Engineer crewmate role. It is very easy for hackers to invade this game also and ruin your lobby. This game was enjoyable only 3-5 years ago.",
-                  "truncated": false,
-                  "minutes_at_review": 6582
+                  "recommendationid": "241183861",
+                  "hours_at_review": 285.9,
+                  "minutes_at_review": 17157,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "Among Us is a really fun and entertaining game, especially when playing with friends. The gameplay is simple but exciting, and every round brings something different. Finding the impostor, completing tasks, discussing suspicious players, and sometimes fooling everyone makes the experience hilarious.\n\nThe graphics are simple but charming, and the different maps and game modes keep things interesting. It is a great game for spending time with friends, testing your observation skills, and enjoying some funny moments.\n\nOverall, highly recommended! It's not just a game of survival, it's a game of trust, teamwork, and betrayal!",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231196086",
-                  "hours_at_review": 176.8,
+                  "recommendationid": "239413826",
+                  "hours_at_review": 118.1,
+                  "minutes_at_review": 7088,
                   "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "its very fun but sometimes there are hackers or ppl with no brain cells, the hackers hack to see who the impostor is and i have a question if you're a hacker; why tf do you hack if the thing that you get if you win are beans (the game's currency) and sometimes pods (currency for boxes with exclusive skins. and the brainless ppl (often found in the quick chat servers) just vote along with a hacker or sometimes an other brainless guy that saw the accused person vent while the engineer role (a role that is a crewmate but can vent) is enabled or the brainless can sometimes be engineer and seeing someone vent accuse them of being impostor while there are 2 or more engineers enabled.",
-                  "truncated": false,
-                  "minutes_at_review": 10609
+                  "date": "2026-11-05",
+                  "review_text": "It's Among Us, what do I have to say?\n\nBut for real, it's a fun, simple social deduction game between killers and crewmates. There's a handful of extra roles the devs have added in the last few years, but if they're not your cup of tea, you can easily disable them if you're hosting. A good time-killer.\n\nAlso, the hide-and-seek mode is HIGHLY underrated.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238721230",
+                  "hours_at_review": 117.4,
+                  "minutes_at_review": 7042,
+                  "voted_up": true,
+                  "date": "2026-10-28",
+                  "review_text": "Among Us is fun. \nHowever. \nThis game started as an IQ test of \"Let's go detective mode and find out who this is, and put our heads together.\" \nNow, it's \"It's cyan. I feel it in my heart guys.\" No proof, everyone follows like sheep, and you get voted out. \nYes, you were the impostor. \nYes, the round started 12 seconds ago and you did nothing. \nNo, they won't guess anything else correct for the rest of the game.\n10/10, would recommend, would rage again.\n\nEdit: The influencer role is incredibly annoying and broken. Kinda wrecks the game, just being able to send a photo of the impostor's color. Just try to find or make a lobby without the influencer role and you'll have a much more enjoyable time.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 3,
-        "cited_recommend": 2,
-        "divergence_p": 0.281,
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 10,
+        "cited_recommend": 9,
+        "divergence_p": 0.667,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1987,
-    "steam_total_reviews": 430494,
+    "pool_n": 1354,
+    "steam_total_reviews": 436039,
     "cohort_count": 4,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/945360/header.jpg?t=1787088490",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/945360/capsule_231x87.jpg?t=1787088490",
-    "grid": "https://cdn2.steamgriddb.com/grid/09246ffb824ca2c5bc47a64cb302d3cb.jpg"
   }
 }

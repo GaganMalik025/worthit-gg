@@ -62,6 +62,22 @@ before the case study is published.
 
 <!-- Append below. Format: date | item | source | why it's here and not in the code -->
 
+2026-11-25 | **Night 6's failures are proven: Gemini 503 "high demand", all 8** |
+`evals/batch-2026-11-25.txt` from line 42, the records' `stderr` | It is the first
+night with the stored error text. All 8 failures read `ServerError: 503 UNAVAILABLE ...
+This model is currently experiencing high demand`: 3 at extract, 5 at verdict. That
+supports, but does not prove, the same cause for night 5. Each 503 is retried up to
+`MAX_ATTEMPTS` = 5 times, and the pacer charges every attempt. So overload costs quota
+as well as titles: mean cost rose to 16.1, and 9 titles went above 18 (Path of Exile 26).
+Of night 5's 16 failures, 12 published tonight and 4 failed again. The redaction held:
+there are 0 key-shaped tokens and 0 `.env` values in `data/batch_state.json`. Not fixed.
+Options for the owner:
+- run nights at a different hour
+- give up on a title sooner under 503s, to stop the charged retries
+- accept the loss, since failed titles retry and their pages stay up
+> **2026-11-25, owner decision: leave it.** Failed titles retry on a later night, and their
+> live pages stay up meanwhile.
+
 2026-11-25 | **`make_audit_sample.py --date <log date>` can select nothing** | night 5
 audit | The sampler keeps records whose `at` is after `--date`, and `at` is UTC. A
 night that starts after 05:30 IST but before midnight UTC is stamped the PREVIOUS UTC

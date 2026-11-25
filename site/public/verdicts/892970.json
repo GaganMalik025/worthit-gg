@@ -1,657 +1,94 @@
 {
   "appid": "892970",
   "game_name": "Valheim",
-  "generated_at": "2026-08-10T10:12:52Z",
+  "generated_at": "2026-11-25T11:10:32Z",
+  "claims_verified": true,
+  "art": {
+    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/de0bdcf6c008c508a79d8e75eb91fc67f4bebd5d/header.jpg?t=1786012504",
+    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/3b25991b8a19244cfd979a2766e7490cc7894e09/capsule_231x87.jpg?t=1786012504",
+    "grid": "https://cdn2.steamgriddb.com/grid/15bae9fa92cfa7982d794811b05162c9.png"
+  },
   "model": {
     "extraction": "gemini-3.5-flash-lite",
     "synthesis": "gemini-3.5-flash-lite"
   },
+  "cost": {
+    "model_calls": 13,
+    "basis": "gemini requests charged to this appid on this quota day, on the machine that generated it. equals this run's cost on a fresh CI runner; a same-day regeneration on a dev machine accumulates. pipeline diagnostic - never rendered."
+  },
   "verdict": {
     "word": "Buy",
-    "tagline": "Rough initial menus clear the path to vast survival building.",
+    "tagline": "Brutal wilderness and grand building clash with clunky combat.",
     "for_you_if": [
-      "you want deep survival crafting and building systems",
-      "you enjoy exploring massive procedural worlds by boat"
+      "you want a vast survival sandbox to explore with friends",
+      "you enjoy building and tackling challenging wilderness environments"
     ],
     "not_for_you_if": [
-      "you dislike heavy resource grinding and item transportation rules",
-      "you are frustrated by clunky combat and strict death penalties",
-      "you want polished interfaces right from the start"
+      "you dislike heavy resource grinds and tedious inventory management",
+      "you need polished combat mechanics and reliable performance"
     ]
   },
   "split_bar": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
-      "pool_n": 35,
-      "pct_positive": 42.9,
-      "muted": false
+      "pool_n": 24,
+      "pct_positive": 100.0,
+      "muted": true
     },
     {
       "bucket": "early",
       "label": "2-20h",
-      "pool_n": 324,
-      "pct_positive": 89.2,
+      "pool_n": 162,
+      "pct_positive": 92.0,
       "muted": false
     },
     {
       "bucket": "mid",
       "label": "20-100h",
-      "pool_n": 400,
-      "pct_positive": 88.5,
+      "pool_n": 496,
+      "pct_positive": 94.8,
       "muted": false
     },
     {
       "bucket": "veteran",
       "label": "100h+",
-      "pool_n": 520,
-      "pct_positive": 93.3,
+      "pool_n": 1379,
+      "pct_positive": 93.6,
       "muted": false
     }
   ],
-  "distortion_flags": [
-    {
-      "flag_id": "cohort_divergence",
-      "type": "segmentation",
-      "direction": null,
-      "shape": "monotonic_increase",
-      "sentence": "Initial impressions are sharply divided before smoothing into strong approval among longer-term players.",
-      "evidence": {
-        "sequence": [
-          {
-            "cohort": "refund_window",
-            "label": "under 2 hours",
-            "pct_positive": 42.9,
-            "pool_n": 35
-          },
-          {
-            "cohort": "early",
-            "label": "2-20 hours",
-            "pct_positive": 89.2,
-            "pool_n": 324
-          },
-          {
-            "cohort": "mid",
-            "label": "20-100 hours",
-            "pct_positive": 88.5,
-            "pool_n": 400
-          },
-          {
-            "cohort": "veteran",
-            "label": "over 100 hours",
-            "pct_positive": 93.3,
-            "pool_n": 520
-          }
-        ],
-        "shape": "monotonic_increase",
-        "low_cohort": "refund_window",
-        "low_cohort_label": "under 2 hours",
-        "low_pct_positive": 42.9,
-        "low_pool_n": 35,
-        "high_cohort": "veteran",
-        "high_cohort_label": "over 100 hours",
-        "high_pct_positive": 93.3,
-        "high_pool_n": 520,
-        "gap_pts": 50.4
-      }
-    }
-  ],
+  "distortion_flags": [],
   "cohorts": [
     {
       "bucket": "refund_window",
       "label": "<2h refund window",
       "hours_range": "under 2 hours",
-      "pool_n": 35,
-      "pct_positive": 42.9,
-      "muted": false,
-      "n_note": null,
-      "summary": "Early players struggle with cluttered crafting menus and building interfaces.",
-      "themes": [
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ref-b5f142",
-              "claim": "Reviewers describe the craft menu and building parts interface as cluttered, messy, and lacking further subdivisions beyond basic tabs.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "229880270",
-                  "hours_at_review": 0.7,
-                  "voted_up": false,
-                  "date": "2026-07-07",
-                  "review_text": "This review is more aimed at casual players like me who are not familar with such games. The game feels like some's fading memory of a old Conan Exiles like game. I could personally vibe with the hazy visuals and rigid character design, but the onscreen text fonts, UI overlay lends to an overall very dated look. The tutorial guide as a raven is.. inspired? but the thought bubbles do not have a solid background. \n\nAfter that, the crafting menu seems like a mess. After the basic tabs dividing tools from building parts, there are no further subdivisions. So I have to look a cluttered boxed menu with 50 different parts ranging from roof parts to flooring, while 50 notifications pop up for the unlocking them. Then Overlay text that help with building itself consists entirely of small ugly floating text. It just feels messy, cheap and ugly.\n\nIt's surprising that despite the game's popularity the UI is left as is. Devs should really take a page out of Factorio's development and consider bring the UI to modern standards. Take inspiration, stay faithful to old games, except in terms of user-interface. \n\nEven though my playtime is short, the design choices I have seen so far do not lend me confidence and am likely to find further irritating elements as I continue. I wouldnt recommend this game if you are... sensitive? like me.",
-                  "truncated": false,
-                  "minutes_at_review": 43
-                },
-                {
-                  "recommendationid": "229745584",
-                  "hours_at_review": 1.2,
-                  "voted_up": false,
-                  "date": "2026-07-06",
-                  "review_text": "There are some bugs I noticed when I played this game 2 years ago. 1 issue is the hoe not leveling correctly, there is a mound that never gets flattened and I have to figure it out through Youtube and Reddit, which I shouldn't have to do. Some items like the pickaxe should be one of the 1st things to get when starting, why do I get an axe and a hammer to build, but no pickaxe? It makes no sense because there are rocks/boulders lying around which interfere with tools like the hoe. \n\nOther issues that aren't bug related are the tools, the building in this game is ok, not bad but not good, it's ok and it just does what it needs. But as someone who likes building in games, the line on the walls/half walls annoy me a bit, and the dirt phasing through the floor also annoys me, the stairs also seem to be restricted to only being put in 1 way and that's against the wall and up. I can't have it in the middle or in the corner, and I also can't make a balcony. \n\nThis game is ok, I enjoyed it 2 years ago but now I just don't like it. There are more problems that occur, and the game hasn't really seemed to have progressed. It's the same game with nothing added to it, at least not in the beginning. Which is a bummer, the game should have a strong hold for beginners which then makes them want to finish the game, not have content at the end.\n\nIt could be just me, but building is a core mechanic in this game, which is why it's an issue for me. The game isn't terrible but something like that killed the vibe almost instantly.",
-                  "truncated": false,
-                  "minutes_at_review": 73
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "thin"
-        ],
-        "cited_reviews": 2,
-        "cited_recommend": 0,
-        "divergence_p": 0.326,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
+      "pool_n": 24,
+      "pct_positive": 100.0,
+      "muted": true,
+      "n_note": "n=14 - too few reviews to call",
+      "summary": null,
+      "themes": [],
+      "single_points": [],
+      "sourcing": null
     },
     {
       "bucket": "early",
       "label": "2-20h",
       "hours_range": "2-20 hours",
-      "pool_n": 324,
-      "pct_positive": 89.2,
+      "pool_n": 162,
+      "pct_positive": 92.0,
       "muted": false,
       "n_note": null,
-      "summary": "Players encounter clunky combat, finicky building mechanics, and a heavy resource grind while starting out.",
+      "summary": "Early exploration brings smooth performance alongside sudden hazards and a lack of hand-holding.",
       "themes": [
         {
-          "theme": "difficulty",
+          "theme": "performance",
           "claims": [
             {
-              "claim_id": "ear-b1b30b",
-              "claim": "Reviewers report that the controls and combat feel clunky and difficult to use.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 4
-              },
-              "citations": [
-                {
-                  "recommendationid": "231724616",
-                  "hours_at_review": 3.2,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "Given the game the controls are difficult to use. Switching views is stupid and there is NO information as to how to do various actions,\r\nalways doing the flying in thing is silly as well",
-                  "truncated": false,
-                  "minutes_at_review": 191
-                },
-                {
-                  "recommendationid": "231340462",
-                  "hours_at_review": 4.4,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "The first few hours feel empty and devoid of diverse wildlife, you will kill the same boring things over and over, if you expect a polished, fast-paced modern survival game like I did coming from Conan Exiles, this may be a let down. \n\nPros:  Immersive atmosphere and pretty decent weather/lighting systems. Cool concept. Cheaper/Lower priced compared to major survival games.\n\nCons: Clunky Combat and movement pacing feel incredibly sluggish and slow. Feels like I am playing someone's weekend project that never got finished. Frustrating building snap system is incredibly finicky. \n\nFor a title in EA for 5 years this is disappointing and I just don't get the hype.\nI will keep playing and may change my mind and review but as of 4 hours in, its very bland.",
-                  "truncated": false,
-                  "minutes_at_review": 266
-                },
-                {
-                  "recommendationid": "231034437",
-                  "hours_at_review": 4.6,
-                  "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "Whole thing just feels clunky, combat is incredibly unresponsive.",
-                  "truncated": false,
-                  "minutes_at_review": 276
-                },
-                {
-                  "recommendationid": "229481172",
-                  "hours_at_review": 10.9,
-                  "voted_up": false,
-                  "date": "2026-07-03",
-                  "review_text": "Pretty game, sure, but overburdened by clunky controls and RIDICULOUS enemy spawn rates. Greylings and Greydwarfs spawn SO much you will run into more within a full minute of the last swarm followed by Troll that will notice you in the far distance\nMy character got stuck in the ground 3 times and without a rake/shovel i had to restart a few more times\nHopefully the final update will actually fix that but im doubtful",
-                  "truncated": false,
-                  "minutes_at_review": 654
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "ear-6cddc6",
-              "claim": "Reviewers note that the game features a heavy and tedious resource grind.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 1,
-                "negative": 3
-              },
-              "citations": [
-                {
-                  "recommendationid": "231178822",
-                  "hours_at_review": 17.1,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "I only had a PS5 when this launched. i wanted to play it with my wife so bad. Now that we both have PCs its been an amazing game. if your the type that have a perfect duo or group and don't mind the \"Minecraft\" art style, this game is 1000% worth trying. The grind in the beginning can be tedious but figuring everything out and realizing your strength is one of the best parts. Taking out your first bear or troll gives a certain type of euphoria. 10/10 game.",
-                  "truncated": false,
-                  "minutes_at_review": 1024
-                },
-                {
-                  "recommendationid": "231267132",
-                  "hours_at_review": 15.3,
-                  "voted_up": false,
-                  "date": "2026-07-25",
-                  "review_text": "Valheim is a deliberately slow paced experience that's supposed to feel mysterious and dangerous and it does a good job of that.\r\n\r\nUnfortunately, the developers have mistaken \"a slow pace\" for \"a tedious and punishing grind\" that results in obviously unfair results, like putting 3 resources in and getting 1 back, when there were multiple steps before that, that they could've taken to reduce the output, if they felt that was necessary.\r\n\r\nThere's also a difference between keeping things vague and keeping them opaquely obscured. The first encourages exploration, the latter encourages looking things up online to skip the experimentation in an already punishing game.\r\n\r\nSomething I find that's clever, is that you need to stay scarce during the night. What's not clever, is just spamming monsters at the player to obviously punish them, instead of giving them the choice to do it anyway, with some resistance.\r\n\r\nThe game does not respect your time. That's the baseline issue here. It's not a \"hardcore experience\", it's just an otherwise enjoyable experience, hampered by a stubborn mind set.\r\n\r\nBack to the drawing board boys, this ain't it.",
-                  "truncated": false,
-                  "minutes_at_review": 916
-                },
-                {
-                  "recommendationid": "231016077",
-                  "hours_at_review": 10.3,
-                  "voted_up": false,
-                  "date": "2026-07-22",
-                  "review_text": "One of the most mid games I have ever played. Cool concept, but theres too much grinding and not enough combat assiciated with the game.",
-                  "truncated": false,
-                  "minutes_at_review": 618
-                },
-                {
-                  "recommendationid": "229391505",
-                  "hours_at_review": 8.4,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "dont get me wrong, this game is super fun and addicting, but it comes with many problems in my opinion. firstly, its annoying. its not hard, but some parts of the game are just so tedious and mindnumbing its hard to enjoy the experience. going to the black forest to mine copper or tin (UNREASONABLE AMOUNTS BTW) and then immediately being driven out by a troll or a bear is just so infuriating and annoying. running away for a minute and then coming back just to get aggroed by the same bear or troll. enemies in the black forest are so over-leveled for the average player going in, which leads me to my next point. this game is made for co-op, NOT singleplayer. i feel like the devs purposely made enemies so much harder than need be just for making playing with friends more fun. its very unfair for single players. as much as i dislike this part of the game, other parts are mostly great. i suppose maybe its because im in the copper age, which most players regard as the most tedious age, but its so annoying to keep playing. ill keep trying the game but if i have to run away from a bear or troll again for a solid two minutes then no way is the rest of the game fun.",
-                  "truncated": false,
-                  "minutes_at_review": 506
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "other",
-          "claims": [
-            {
-              "claim_id": "ear-201e82",
-              "claim": "Reviewers describe the building snap system as finicky and frustrating to use.",
-              "citation_verdict": "negative",
-              "citation_split": {
-                "positive": 0,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231458840",
-                  "hours_at_review": 7.7,
-                  "voted_up": false,
-                  "date": "2026-07-27",
-                  "review_text": "The worst building experience I ever had. Not far in the game, but it is already pissing me off.",
-                  "truncated": false,
-                  "minutes_at_review": 462
-                },
-                {
-                  "recommendationid": "231340462",
-                  "hours_at_review": 4.4,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "The first few hours feel empty and devoid of diverse wildlife, you will kill the same boring things over and over, if you expect a polished, fast-paced modern survival game like I did coming from Conan Exiles, this may be a let down. \n\nPros:  Immersive atmosphere and pretty decent weather/lighting systems. Cool concept. Cheaper/Lower priced compared to major survival games.\n\nCons: Clunky Combat and movement pacing feel incredibly sluggish and slow. Feels like I am playing someone's weekend project that never got finished. Frustrating building snap system is incredibly finicky. \n\nFor a title in EA for 5 years this is disappointing and I just don't get the hype.\nI will keep playing and may change my mind and review but as of 4 hours in, its very bland.",
-                  "truncated": false,
-                  "minutes_at_review": 266
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "escalated",
-        "triggers": [
-          "divergent"
-        ],
-        "cited_reviews": 9,
-        "cited_recommend": 1,
-        "divergence_p": 1.51e-07,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "mid",
-      "label": "20-100h",
-      "hours_range": "20-100 hours",
-      "pool_n": 400,
-      "pct_positive": 88.5,
-      "muted": false,
-      "n_note": null,
-      "summary": "Established players navigate extensive travel, structural support requirements, and harsh biomes despite recommending the experience.",
-      "themes": [
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "mid-2fee9d",
-              "claim": "The mistlands biome features difficult traversal that causes players to repeatedly fall into water and die.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231778926",
-                  "hours_at_review": 98.3,
-                  "voted_up": false,
-                  "date": "2026-07-31",
-                  "review_text": "the mistlands would be an AMAZING biome but they decided to make traversing it an absolute nightmare, please fix how it's generated literally no one wants to spam spacebar and then end up in the water and die for hours and hours and hours, completely ruins an otherwise beautiful area.",
-                  "truncated": false,
-                  "minutes_at_review": 5900
-                },
-                {
-                  "recommendationid": "231164317",
-                  "hours_at_review": 89.8,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "its like a mix of skyrim, minecraft, terraria, and elden ring. A ton of fun, just don't go into any biome except the black forest and meadows and you'll always have fun. Aside from invasions. In all seriousness, my only complaint is the death runs. They can be EXTREMELY nasty. Although it's easy to do multiplayer which is nice.",
-                  "truncated": false,
-                  "minutes_at_review": 5389
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-470f82",
-              "claim": "Death in the game results in skill loss mechanics.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231698346",
-                  "hours_at_review": 42.5,
-                  "voted_up": false,
-                  "date": "2026-07-30",
-                  "review_text": "gg except the skill loss on death bs",
-                  "truncated": false,
-                  "minutes_at_review": 2552
-                },
-                {
-                  "recommendationid": "231164317",
-                  "hours_at_review": 89.8,
-                  "voted_up": true,
-                  "date": "2026-07-24",
-                  "review_text": "its like a mix of skyrim, minecraft, terraria, and elden ring. A ton of fun, just don't go into any biome except the black forest and meadows and you'll always have fun. Aside from invasions. In all seriousness, my only complaint is the death runs. They can be EXTREMELY nasty. Although it's easy to do multiplayer which is nice.",
-                  "truncated": false,
-                  "minutes_at_review": 5389
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "mid-0aa755",
-              "claim": "Building mechanics require structural support and roofs to prevent collapse and weather damage to wood.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231355946",
-                  "hours_at_review": 64.2,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "I have love hate relationships with this game. If not for my girlfriend, who likes game’s setting and wants to finish it but still share my opinion (as she later said, she was convincing herself that it’s good game just to not feel disappointment), I would drop it on 3th or 4th region without regrets. But let’s start with the positives:\n-  This game really nailed viking esthetics, it’s even reflected in gameplay where you are expected to sail to some region build outpost and start developing your base with resources you find on site and starting extracting materials to move them to the main base when you gather enough. \n- Combat is another good* part of this game because it has elements such as blocking, parrying, dodging, combo of light attacks, special attacks that are weapon specific and variety of enemies to test your skills in combat. \n- Building also implemented in unique and interesting way where everything you build require support from sides and if support is removed the whole structure will collapse. Also wooden element require roof above them or rain will damage them until 50% hp applying visual affect on a component like it was abandoned and weather-beaten.\n- Music at first seemed great, 1st region theme is very calming and really fits all location but after it I can’t really remember anything.\n- Graphics can be called a plus of a game because it has its own style and I’ll leave it at that. I think it won’t be liked by everyone but I found it appealing.\n\nAnd for the downsides I can address almost everything else because developers of Valheim seem to be obsessed with making game realistic and hyper complicated in every aspect. Right now game feels like set of interesting mechanics without clear vision what they trying to achieve. \n- To start inventory management is horrible, you got slot limits, count inside slot limits, weight limits, no additional slots for armor and trinkets which leads to situation where by the end of a game your 6 slots will be occup…",
-                  "truncated": true,
-                  "minutes_at_review": 3849
-                },
-                {
-                  "recommendationid": "231339199",
-                  "hours_at_review": 72.0,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "If you enjoy survival, exploration, building, and progression that feels rewarding rather than rushed, Valheim is one of the best games in its genre. Even years after its release, it remains highly recommended, especially if you play with friends or enjoy modding.\r\n\r\nWhat Valheim does exceptionally well\r\n🌍 Exploration (10/10)\r\n\r\nThe world is procedurally generated, so every seed feels different.\r\n\r\nEach biome introduces:\r\n\r\nNew enemies\r\nNew resources\r\nNew mechanics\r\nA new boss\r\n\r\nUnlike many survival games, exploration is genuinely exciting because every new area matters.\r\n\r\n🏠 Building (10/10)\r\n\r\nValheim has one of the best building systems in survival games.\r\n\r\nFeatures include:\r\n\r\nStructural integrity system\r\nSnapping pieces\r\nHuge creative freedom\r\nComfortable base mechanics\r\nTerraforming\r\n\r\nPlayers have recreated:\r\n\r\nViking castles\r\nJapanese villages\r\nCities\r\nShips\r\nEntire kingdoms\r\n\r\nMods make building even better.\r\n\r\n⚔ Combat (8.5/10)\r\n\r\nCombat focuses on:\r\n\r\nDodge rolls\r\nBlocking\r\nPerfect parries\r\nStamina management\r\n\r\nEvery enemy has strengths and weaknesses.\r\n\r\nThe combat isn't as deep as a Souls game, but it rewards preparation and timing more than button mashing.\r\n\r\n⛵ Sailing (10/10)\r\n\r\nOne of Valheim's signature features.\r\n\r\nYou'll:\r\n\r\nBuild different ships\r\nNavigate using the wind\r\nEncounter sea serpents\r\nTransport valuable metals\r\nGo on long expeditions\r\n\r\nOcean journeys can become memorable adventures.\r\n\r\n🎵 Atmosphere (10/10)\r\n\r\nValheim excels at creating mood.\r\n\r\nExamples:\r\n\r\nPeaceful mornings in the Meadows\r\nStorms at sea\r\nMisty forests\r\nSnow-covered mountains\r\nEerie swamps\r\n\r\nThe soundtrack is subtle but highly effective.\r\n\r\n📈 Progression (9.5/10)\r\n\r\nProgression feels meaningful.\r\n\r\nA typical cycle is:\r\n\r\nExplore biome →\r\nCollect resources →\r\nCraft better gear →\r\nDefeat boss →\r\nUnlock next biome\r\n\r\nEach upgrade noticeably changes what you're capable of.\r\n\r\nMultiplayer (10/10)\r\n\r\nValheim shines with friends.\r\n\r\nRoles naturally emerge:\r\n\r\nBuilder\r\nFar…",
-                  "truncated": true,
-                  "minutes_at_review": 4318
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-9e645d",
-              "claim": "Resource gathering and transporting materials like iron require extensive back-and-forth travel and boat journeys.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231257852",
-                  "hours_at_review": 74.1,
-                  "voted_up": true,
-                  "date": "2026-07-25",
-                  "review_text": "The game is great. Maybe a little too much of a grind at a certein point of the game. It requires a lot of back and forth to gather resources. Like 70 iron to get a lvl 3 tool, which you have to melt for 21 minutes. And to get that iron you have to travel far away with a boat which can take up to 30-1hr to discover it,  discover cave fights to gather maybe around 100. a cave which may take up to 15 minutes to complete it. Go back with the boat for another 15~ ish minutes after you discover were it can be found, back to your home. \nThe game runs great",
-                  "truncated": false,
-                  "minutes_at_review": 4447
-                },
-                {
-                  "recommendationid": "229419610",
-                  "hours_at_review": 67.9,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Overall, I like this game, but it does a lot of things wrong, and I am only going to list those flaws. \n\nPlaying it solo is a huge grind, and you have to deal with a lot, especially at night. Your stamina drops to zero very quickly, and you will be attacked by small enemies, bears, and trolls. Your items especially mining tools break easily, and your biggest enemy? Your inventory weight. You can't carry much, so you will have to constantly return to your base. Fun!\n\nThe world generation is random and it's the worst I've ever seen... I have never seen a reasonable generated map. I once played on a map that had almost no dungeons (all of them were five minutes away and far from each other). I generated another map where the first boss was close and there were multiple locations and dungeons, but the second boss was miles away at sea. I traveled by boat and died because, in order to reach it, I had to pass through a very high biome with flying enemies that one-shot you; you can't really do anything while you are on the boat.\n\nLosing items at sea... oh boy... I went to complain about it, and people defended it to the death for some reason. 'It's realistic!' Yeah, it's 'realistic' to throw your items onto your ship and then realize there is no way to retrieve them, meaning they go straight into the sea, leaving you with no option of getting them back.\n\nThe biome enemy scaling is stupid. I get it you weren't meant to go there without the proper items but I beat trolls and bears, and you're telling me that a wolf does the same damage as a troll?! I went to see what the next biome was like, thinking I was ready, only to get one-shot by a wolf! Lol.",
-                  "truncated": false,
-                  "minutes_at_review": 4072
-                }
-              ]
-            },
-            {
-              "claim_id": "mid-bf028a",
-              "claim": "The game features a procedural world generation system that some find empty or repetitive.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 2,
-                "negative": 2
-              },
-              "citations": [
-                {
-                  "recommendationid": "231786696",
-                  "hours_at_review": 66.1,
-                  "voted_up": false,
-                  "date": "2026-08-01",
-                  "review_text": "Valheim is an empty world. Which is what you get with a procedurally generated world, it may be big, but it is empty in the sense that there really isn't a mission besides killing some bosses, sure you can build, but whats the point if the world is empty? \r\n\r\nThe size of the world just serves to pad the game and it just feel like a waste of time and because it's generated everything always feel the same and areas just don't feel unique no matter if every generated world is different you''l always know what to expect.",
-                  "truncated": false,
-                  "minutes_at_review": 3967
-                },
-                {
-                  "recommendationid": "231392513",
-                  "hours_at_review": 42.7,
-                  "voted_up": false,
-                  "date": "2026-07-26",
-                  "review_text": "Game is fun to play, but the graphic and generic auto-generated landscape and similar dungeons make it boring to play.  I'd rather playing something else with more hand crafted exciting places to explore.",
-                  "truncated": false,
-                  "minutes_at_review": 2562
-                },
-                {
-                  "recommendationid": "231339199",
-                  "hours_at_review": 72.0,
-                  "voted_up": true,
-                  "date": "2026-07-26",
-                  "review_text": "If you enjoy survival, exploration, building, and progression that feels rewarding rather than rushed, Valheim is one of the best games in its genre. Even years after its release, it remains highly recommended, especially if you play with friends or enjoy modding.\r\n\r\nWhat Valheim does exceptionally well\r\n🌍 Exploration (10/10)\r\n\r\nThe world is procedurally generated, so every seed feels different.\r\n\r\nEach biome introduces:\r\n\r\nNew enemies\r\nNew resources\r\nNew mechanics\r\nA new boss\r\n\r\nUnlike many survival games, exploration is genuinely exciting because every new area matters.\r\n\r\n🏠 Building (10/10)\r\n\r\nValheim has one of the best building systems in survival games.\r\n\r\nFeatures include:\r\n\r\nStructural integrity system\r\nSnapping pieces\r\nHuge creative freedom\r\nComfortable base mechanics\r\nTerraforming\r\n\r\nPlayers have recreated:\r\n\r\nViking castles\r\nJapanese villages\r\nCities\r\nShips\r\nEntire kingdoms\r\n\r\nMods make building even better.\r\n\r\n⚔ Combat (8.5/10)\r\n\r\nCombat focuses on:\r\n\r\nDodge rolls\r\nBlocking\r\nPerfect parries\r\nStamina management\r\n\r\nEvery enemy has strengths and weaknesses.\r\n\r\nThe combat isn't as deep as a Souls game, but it rewards preparation and timing more than button mashing.\r\n\r\n⛵ Sailing (10/10)\r\n\r\nOne of Valheim's signature features.\r\n\r\nYou'll:\r\n\r\nBuild different ships\r\nNavigate using the wind\r\nEncounter sea serpents\r\nTransport valuable metals\r\nGo on long expeditions\r\n\r\nOcean journeys can become memorable adventures.\r\n\r\n🎵 Atmosphere (10/10)\r\n\r\nValheim excels at creating mood.\r\n\r\nExamples:\r\n\r\nPeaceful mornings in the Meadows\r\nStorms at sea\r\nMisty forests\r\nSnow-covered mountains\r\nEerie swamps\r\n\r\nThe soundtrack is subtle but highly effective.\r\n\r\n📈 Progression (9.5/10)\r\n\r\nProgression feels meaningful.\r\n\r\nA typical cycle is:\r\n\r\nExplore biome →\r\nCollect resources →\r\nCraft better gear →\r\nDefeat boss →\r\nUnlock next biome\r\n\r\nEach upgrade noticeably changes what you're capable of.\r\n\r\nMultiplayer (10/10)\r\n\r\nValheim shines with friends.\r\n\r\nRoles naturally emerge:\r\n\r\nBuilder\r\nFar…",
-                  "truncated": true,
-                  "minutes_at_review": 4318
-                },
-                {
-                  "recommendationid": "229419610",
-                  "hours_at_review": 67.9,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Overall, I like this game, but it does a lot of things wrong, and I am only going to list those flaws. \n\nPlaying it solo is a huge grind, and you have to deal with a lot, especially at night. Your stamina drops to zero very quickly, and you will be attacked by small enemies, bears, and trolls. Your items especially mining tools break easily, and your biggest enemy? Your inventory weight. You can't carry much, so you will have to constantly return to your base. Fun!\n\nThe world generation is random and it's the worst I've ever seen... I have never seen a reasonable generated map. I once played on a map that had almost no dungeons (all of them were five minutes away and far from each other). I generated another map where the first boss was close and there were multiple locations and dungeons, but the second boss was miles away at sea. I traveled by boat and died because, in order to reach it, I had to pass through a very high biome with flying enemies that one-shot you; you can't really do anything while you are on the boat.\n\nLosing items at sea... oh boy... I went to complain about it, and people defended it to the death for some reason. 'It's realistic!' Yeah, it's 'realistic' to throw your items onto your ship and then realize there is no way to retrieve them, meaning they go straight into the sea, leaving you with no option of getting them back.\n\nThe biome enemy scaling is stupid. I get it you weren't meant to go there without the proper items but I beat trolls and bears, and you're telling me that a wolf does the same damage as a troll?! I went to see what the next biome was like, thinking I was ready, only to get one-shot by a wolf! Lol.",
-                  "truncated": false,
-                  "minutes_at_review": 4072
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 9,
-        "cited_recommend": 4,
-        "divergence_p": 0.0017,
-        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
-      }
-    },
-    {
-      "bucket": "veteran",
-      "label": "100h+",
-      "hours_range": "over 100 hours",
-      "pool_n": 520,
-      "pct_positive": 93.3,
-      "muted": false,
-      "n_note": null,
-      "summary": "Long-term players highlight addictive building systems alongside tedious gear retrieval, hostile biomes, and restricted metal transport.",
-      "themes": [
-        {
-          "theme": "difficulty",
-          "claims": [
-            {
-              "claim_id": "vet-cfb697",
-              "claim": "Reviewers report that retrieving lost gear after dying in dangerous or remote biomes can be extremely tedious and difficult.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231794975",
-                  "hours_at_review": 214.1,
-                  "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "★★★★★ — 214.1 hrs on record — Would Sail the Ashlands Again\n\nHonestly one of the best co-op experiences I've ever had. Valheim nails that Viking survival fantasy perfectly — from the first time you wash up on shore with nothing but a stone axe, to finally taking down Bonemass with a squad that's more focused on roasting each other in Discord than actually fighting the boss.\n\nThe building system is criminally addictive. What starts as \"just a small base\" turns into a full-blown fortress after hour 50, complete with someone's questionable tower design that \"definitely won't collapse\" (it collapsed). Exploring the biomes with friends — sailing into fog not knowing if you'll find loot or a Serpent about to end your voyage — never gets old.\n\nBut real talk, the actual magic of this game is playing it with friends. Half the fun isn't the boss fights or the loot, it's the chaos in voice chat — someone aggroing a troll by accident, someone else forgetting to eat and dying mid-raid, and the collective screaming when a Greydwarf sneaks up during base building. Valheim doesn't just give you a game, it gives you stories you'll be laughing about weeks later.\n\n214 hours in and I'm still not tired of it. Simple graphics, deep gameplay, and a co-op experience that turns \"let's just build a small house\" into an all-night Discord call. Skål to that.\n\n10/10 — best played with friends, a full pot of coffee, and zero regard for sleep schedule.",
-                  "truncated": false,
-                  "minutes_at_review": 12843
-                },
-                {
-                  "recommendationid": "231546411",
-                  "hours_at_review": 200.8,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "I love this game. I truly do. Everything in this game is perfect, exploration, soundtracks, enemies, weapons.\nEvery biome brings something new, something fresh, something new to grind and explore for which makes it really fun and addicting.\n\nAnd then there's ashlands...\n\nThis biome is terrible. Everything tries to kill you in this biome. There ar dvergr from mistlands but they are too weak and there are so few of them to do anything(apart from the fact that they like to comit suicide in lava pools). Another annoying fact that none of the enemies fight each other, they all unite to kill you and trying to lose their agro is allmost impossible.\n\nThe worst part about this biome is if you die far away from your portal, trying to retrieve your loot is so tedious. I have spent over 1-2 hours to get my loot back because theres allways atleast one askvin or a ton of skeletons chasing me which you can't get rid of. Spending so much time doing the same thing gets so tedious and annoying you just want to quit and never play again.\n\nEven after all this I still reccomend valheim from the bottom of my heart to everyone. This game is so good to not try it and the fact that 1.0 with Deep North being around the corner it brings hope that the new biome is going to be a lot better then the ashlands are.\n\n(Lets hope that 1.0 will also bring some changes to ashlands)",
-                  "truncated": false,
-                  "minutes_at_review": 12047
-                },
-                {
-                  "recommendationid": "229424163",
-                  "hours_at_review": 216.6,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I played this on normal without many modifiers, I suggest you change a lot of the core game rules:\nThe game has some balancing issues for sure, namely the mandatory Ashland zone that requires siege equipment to get to.  If you are a solo player that will require a lot of investment of resources and time.  If you are in a multiplayer server, it is still hard but more bearable.  I understand this is meant to be a multiplayer survival game however the pain of not having friends to support the base, venture out and collect resources (metal can not be teleported in base game settings) feels too long for the amount of materials you need to craft a single piece of armor or a weapon.  Using a massive amount of metal to make a sword that weighs about 90% of the blade should not be a thing, then double it to upgrade it to a reasonable level. The weapon itself may not even be effective at the monsters you are fighting such as skeletons, druagar, and trolls.  \n\nStandard death makes you drop all your items at the tombstone, at least they won't float away.  Though you might wish it did float somewhere else because the gap in tiers needed to get to some locations are a bit too much and very painful to equip yourself to to retrieve the initial gear set.  Say I die in a hostile biome like the mountains, I have to climb the mountain or teleport up there with food in my belly to get all the equipment back.  And if I die with the previous tier of loot I had trying to get the first tombstone leads to a 2nd tombstone I have to retrieve.  It gets draining for sure.\n\nTime needs to be allocated for growing and cooking food.  I am not really a farmer type but I like how different diets fit different playstyles but it feels more important than the armor you have.\n\nThe aesthetics are beautiful and picturesque at times, I don't experience much slow down on a 2080 turbo.  Though some of my friends complain when the game gets busy in the mist lands and some bosses.\n\nThis game has been in early ac…",
-                  "truncated": true,
-                  "minutes_at_review": 12998
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-bf576d",
-              "claim": "Reviewers describe the Ashlands biome as particularly hostile, citing relentless enemy aggression and difficulties in retrieving lost gear from distant locations.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231546411",
-                  "hours_at_review": 200.8,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "I love this game. I truly do. Everything in this game is perfect, exploration, soundtracks, enemies, weapons.\nEvery biome brings something new, something fresh, something new to grind and explore for which makes it really fun and addicting.\n\nAnd then there's ashlands...\n\nThis biome is terrible. Everything tries to kill you in this biome. There ar dvergr from mistlands but they are too weak and there are so few of them to do anything(apart from the fact that they like to comit suicide in lava pools). Another annoying fact that none of the enemies fight each other, they all unite to kill you and trying to lose their agro is allmost impossible.\n\nThe worst part about this biome is if you die far away from your portal, trying to retrieve your loot is so tedious. I have spent over 1-2 hours to get my loot back because theres allways atleast one askvin or a ton of skeletons chasing me which you can't get rid of. Spending so much time doing the same thing gets so tedious and annoying you just want to quit and never play again.\n\nEven after all this I still reccomend valheim from the bottom of my heart to everyone. This game is so good to not try it and the fact that 1.0 with Deep North being around the corner it brings hope that the new biome is going to be a lot better then the ashlands are.\n\n(Lets hope that 1.0 will also bring some changes to ashlands)",
-                  "truncated": false,
-                  "minutes_at_review": 12047
-                },
-                {
-                  "recommendationid": "229424163",
-                  "hours_at_review": 216.6,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I played this on normal without many modifiers, I suggest you change a lot of the core game rules:\nThe game has some balancing issues for sure, namely the mandatory Ashland zone that requires siege equipment to get to.  If you are a solo player that will require a lot of investment of resources and time.  If you are in a multiplayer server, it is still hard but more bearable.  I understand this is meant to be a multiplayer survival game however the pain of not having friends to support the base, venture out and collect resources (metal can not be teleported in base game settings) feels too long for the amount of materials you need to craft a single piece of armor or a weapon.  Using a massive amount of metal to make a sword that weighs about 90% of the blade should not be a thing, then double it to upgrade it to a reasonable level. The weapon itself may not even be effective at the monsters you are fighting such as skeletons, druagar, and trolls.  \n\nStandard death makes you drop all your items at the tombstone, at least they won't float away.  Though you might wish it did float somewhere else because the gap in tiers needed to get to some locations are a bit too much and very painful to equip yourself to to retrieve the initial gear set.  Say I die in a hostile biome like the mountains, I have to climb the mountain or teleport up there with food in my belly to get all the equipment back.  And if I die with the previous tier of loot I had trying to get the first tombstone leads to a 2nd tombstone I have to retrieve.  It gets draining for sure.\n\nTime needs to be allocated for growing and cooking food.  I am not really a farmer type but I like how different diets fit different playstyles but it feels more important than the armor you have.\n\nThe aesthetics are beautiful and picturesque at times, I don't experience much slow down on a 2080 turbo.  Though some of my friends complain when the game gets busy in the mist lands and some bosses.\n\nThis game has been in early ac…",
-                  "truncated": true,
-                  "minutes_at_review": 12998
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-6fef9b",
-              "claim": "Reviewers report that the Ashlands biome features relentless enemy aggression and constant mob attacks that make agro management difficult.",
-              "citation_verdict": "positive",
-              "citation_split": {
-                "positive": 2,
-                "negative": 0
-              },
-              "citations": [
-                {
-                  "recommendationid": "231546411",
-                  "hours_at_review": 200.8,
-                  "voted_up": true,
-                  "date": "2026-07-28",
-                  "review_text": "I love this game. I truly do. Everything in this game is perfect, exploration, soundtracks, enemies, weapons.\nEvery biome brings something new, something fresh, something new to grind and explore for which makes it really fun and addicting.\n\nAnd then there's ashlands...\n\nThis biome is terrible. Everything tries to kill you in this biome. There ar dvergr from mistlands but they are too weak and there are so few of them to do anything(apart from the fact that they like to comit suicide in lava pools). Another annoying fact that none of the enemies fight each other, they all unite to kill you and trying to lose their agro is allmost impossible.\n\nThe worst part about this biome is if you die far away from your portal, trying to retrieve your loot is so tedious. I have spent over 1-2 hours to get my loot back because theres allways atleast one askvin or a ton of skeletons chasing me which you can't get rid of. Spending so much time doing the same thing gets so tedious and annoying you just want to quit and never play again.\n\nEven after all this I still reccomend valheim from the bottom of my heart to everyone. This game is so good to not try it and the fact that 1.0 with Deep North being around the corner it brings hope that the new biome is going to be a lot better then the ashlands are.\n\n(Lets hope that 1.0 will also bring some changes to ashlands)",
-                  "truncated": false,
-                  "minutes_at_review": 12047
-                },
-                {
-                  "recommendationid": "229372808",
-                  "hours_at_review": 366.2,
-                  "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Do I recommend this game?\n\nIf I could give a maybe I certainly would for this game.\n\nI think it had a lot of really great decisions going into EA and each subsequent biome ruined the fun of the game a little more. They made some really bad choices like the mist being so obnoxious in mistlands, and the nonstop barrage of mobs in ashlands, raids on bases etc. Thankfully modders made the game better in every regard in fractions of the time Iron Gate takes to do literally ANYTHING. \n\nIt certainly gave me a few hours of entertainment for the money I spent but I will never buy another EA from these slow ass developers again. 5+ years to release 3 major updates. \n",
-                  "truncated": false,
-                  "minutes_at_review": 21971
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "theme": "content",
-          "claims": [
-            {
-              "claim_id": "vet-a04112",
-              "claim": "Reviewers note that the game prohibits transporting metal items through portals, forcing players to use boats for transport.",
-              "citation_verdict": "mixed",
-              "citation_split": {
-                "positive": 1,
-                "negative": 1
-              },
-              "citations": [
-                {
-                  "recommendationid": "231612920",
-                  "hours_at_review": 312.6,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Honestly, it’s a really, really good game; the only thing I don't like is that it requires an industrial amount of farming, and it’s a bit boring not being able to use portals to transport ore and being forced to use the boat instead.",
-                  "truncated": false,
-                  "minutes_at_review": 18755
-                },
-                {
-                  "recommendationid": "229424163",
-                  "hours_at_review": 216.6,
-                  "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I played this on normal without many modifiers, I suggest you change a lot of the core game rules:\nThe game has some balancing issues for sure, namely the mandatory Ashland zone that requires siege equipment to get to.  If you are a solo player that will require a lot of investment of resources and time.  If you are in a multiplayer server, it is still hard but more bearable.  I understand this is meant to be a multiplayer survival game however the pain of not having friends to support the base, venture out and collect resources (metal can not be teleported in base game settings) feels too long for the amount of materials you need to craft a single piece of armor or a weapon.  Using a massive amount of metal to make a sword that weighs about 90% of the blade should not be a thing, then double it to upgrade it to a reasonable level. The weapon itself may not even be effective at the monsters you are fighting such as skeletons, druagar, and trolls.  \n\nStandard death makes you drop all your items at the tombstone, at least they won't float away.  Though you might wish it did float somewhere else because the gap in tiers needed to get to some locations are a bit too much and very painful to equip yourself to to retrieve the initial gear set.  Say I die in a hostile biome like the mountains, I have to climb the mountain or teleport up there with food in my belly to get all the equipment back.  And if I die with the previous tier of loot I had trying to get the first tombstone leads to a 2nd tombstone I have to retrieve.  It gets draining for sure.\n\nTime needs to be allocated for growing and cooking food.  I am not really a farmer type but I like how different diets fit different playstyles but it feels more important than the armor you have.\n\nThe aesthetics are beautiful and picturesque at times, I don't experience much slow down on a 2080 turbo.  Though some of my friends complain when the game gets busy in the mist lands and some bosses.\n\nThis game has been in early ac…",
-                  "truncated": true,
-                  "minutes_at_review": 12998
-                }
-              ]
-            },
-            {
-              "claim_id": "vet-0a3ddd",
-              "claim": "Reviewers describe the building system as robust and addictive, allowing for the creation of elaborate structures while incorporating structural stability mechanics.",
+              "claim_id": "ear-5cc7ae",
+              "claim": "Reviewers mention that the game runs well on lower-end hardware and Steam Deck.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 3,
@@ -659,37 +96,164 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231794975",
-                  "hours_at_review": 214.1,
+                  "recommendationid": "241383054",
+                  "hours_at_review": 3.6,
+                  "minutes_at_review": 217,
                   "voted_up": true,
-                  "date": "2026-08-01",
-                  "review_text": "★★★★★ — 214.1 hrs on record — Would Sail the Ashlands Again\n\nHonestly one of the best co-op experiences I've ever had. Valheim nails that Viking survival fantasy perfectly — from the first time you wash up on shore with nothing but a stone axe, to finally taking down Bonemass with a squad that's more focused on roasting each other in Discord than actually fighting the boss.\n\nThe building system is criminally addictive. What starts as \"just a small base\" turns into a full-blown fortress after hour 50, complete with someone's questionable tower design that \"definitely won't collapse\" (it collapsed). Exploring the biomes with friends — sailing into fog not knowing if you'll find loot or a Serpent about to end your voyage — never gets old.\n\nBut real talk, the actual magic of this game is playing it with friends. Half the fun isn't the boss fights or the loot, it's the chaos in voice chat — someone aggroing a troll by accident, someone else forgetting to eat and dying mid-raid, and the collective screaming when a Greydwarf sneaks up during base building. Valheim doesn't just give you a game, it gives you stories you'll be laughing about weeks later.\n\n214 hours in and I'm still not tired of it. Simple graphics, deep gameplay, and a co-op experience that turns \"let's just build a small house\" into an all-night Discord call. Skål to that.\n\n10/10 — best played with friends, a full pot of coffee, and zero regard for sleep schedule.",
-                  "truncated": false,
-                  "minutes_at_review": 12843
+                  "date": "2026-11-24",
+                  "review_text": "I know it says 3.6 hours, but I've actually played WAY more than that. I'm not usually into this type of game, but the lack of hand-holding and the boss hunting really remind me of Shadow of the Colossus, one of my all-time favorites. Definitely get it! There's a Switch 2 version too, but it runs perfectly fine on the Steam Deck.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231615347",
-                  "hours_at_review": 120.5,
+                  "recommendationid": "241177104",
+                  "hours_at_review": 2.7,
+                  "minutes_at_review": 164,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "An Absolute Masterclass in Survival, Crafting, and Co-Op\nRating: ★★★★★ (5/5)\nIt is rare for an indie title to drop into the survival-crafting genre and instantly set a new high-water mark, but Valheim does precisely that. Blending Norse mythology, atmospheric world-building, and brilliant mechanics, it is easily one of the most compelling gaming experiences of the last decade.\n\nOne of Valheim’s biggest triumphs is how remarkably well it runs. In an era where modern releases routinely crush mid-tier rigs, Valheim manages to deliver stunning, painterly vistas with rich lighting and atmosphere while maintaining excellent performance on average PC hardware. You don't need a top-end graphics card to enjoy buttery-smooth framerates, making it incredibly accessible for groups of friends with varying PC setups.\n\nWhether you want to drop into a quick session or run a persistent world for your group, Valheim makes seamless connectivity a priority. With robust private server support—including straightforward dedicated server setups—your community can build, explore, and progress at their own pace without worrying about tethering or host dependency.\n\nIf you enjoy base-building, prepare to be completely hooked. Valheim boasts some of the best building options in any game on the market. The structural integrity system forces you to think like an actual architect, balancing stability, airflow for smoke, and weather protection. From cozy coastal longhouses to sprawling mountain fortresses, the crafting system rewards creativity in a way few other games achieve.\n\nWhile perfectly enjoyable solo, Valheim truly shines as a co-op game. Gathering resources, embarking on long naval voyages into uncharted waters, and tackling brutal boss fights alongside friends creates unforgettable gaming moments. The game’s immersion is top-notch—the howling winds during a thunderstorm, the dynamic ocean swells, and the quiet beauty of the Meadows make the world feel alive and unforgiving.\n\nProgression …",
-                  "truncated": true,
-                  "minutes_at_review": 7232
+                  "date": "2026-11-24",
+                  "review_text": "I was stuck with only an old laptop that I had to Linux on and only internet access if I went to the Library.  in comes Valhiem to the rescue. this game has great crafting, sailing, DnD, survival, and you can play it with others. since i played offline with a Linux laptop steam doesn't show the hundreds of hours of enjoyment I have received from this game that is very well engineered to be played on a potato with a cane....  while running like your on a super gaming rig!  yes folks we are talking very little trouble running it at all. unlike bigger games that can crash every update.   sure the character graphics could use a bit of improvement and I think they need to let you swim down under water, but otherwise it has checked every box...",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231611495",
-                  "hours_at_review": 104.8,
+                  "recommendationid": "240930014",
+                  "hours_at_review": 4.5,
+                  "minutes_at_review": 267,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Valheim is a good, cozy survival game overall that captures a uniquely warm atmosphere. Its beloved low-poly, retro visual style paired with stunning dynamic lighting and weather effects creates a charming aesthetic that players fall in love with instantly.\n\nThe building capabilities are remarkably detailed, forcing you to account for structural stability and smoke ventilation. However, the system is somewhat limited by a lack of geometric shapes, which can restrain your creativity when trying to build more intricate vanilla structures.\n\nThe progression system is fine and satisfying, taking you smoothly from one biome to the next as defeating regional bosses unlocks the tools and metals needed for your next leap in technology.",
-                  "truncated": false,
-                  "minutes_at_review": 6285
+                  "date": "2026-11-23",
+                  "review_text": "the game is great especially when u have the opportunity to play multiplayer it s amazing the game works for any kind of hardware in my opinion and i could say it s a 10/10 the only problem is u don t know what to do if you are new it lacks explanation and it gets confusing after a while",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "ear-e98db2",
+              "claim": "Reviewers state that the game lacks a proper tutorial, leaving new players to figure things out on their own.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "240995380",
+                  "hours_at_review": 17.4,
+                  "minutes_at_review": 1042,
+                  "voted_up": true,
+                  "date": "2026-11-23",
+                  "review_text": "Good game once you figure it out. Needs a good tutorial though as you are left figuring much of it out on your own.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240930014",
+                  "hours_at_review": 4.5,
+                  "minutes_at_review": 267,
+                  "voted_up": true,
+                  "date": "2026-11-23",
+                  "review_text": "the game is great especially when u have the opportunity to play multiplayer it s amazing the game works for any kind of hardware in my opinion and i could say it s a 10/10 the only problem is u don t know what to do if you are new it lacks explanation and it gets confusing after a while",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-22c21d",
-              "claim": "Reviewers mention that the development and update pace has been slow during early access.",
+              "claim_id": "ear-e80b0a",
+              "claim": "Reviewers describe being killed by falling trees that they have chopped down themselves.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 0
+              },
+              "citations": [
+                {
+                  "recommendationid": "241441294",
+                  "hours_at_review": 8.1,
+                  "minutes_at_review": 487,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "10/10 would die to a falling tree again",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241433087",
+                  "hours_at_review": 2.1,
+                  "minutes_at_review": 128,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "Got killed by a tree I chopped down myself. 10/10.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241226953",
+                  "hours_at_review": 8.7,
+                  "minutes_at_review": 521,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "I sat down to play Valheim for an hour or so to check it out. I endup playing 6 hours straight, forgot to drink water. I have beehives now in my garden and i am very happy. Then i chopped a tree and fall on my head killing me. I run back to collect my loot and go home to recover, i found a bear tearing my home appart. I fight the bear. It one shot me. \r\n\r\nGreat game.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-ae319ec2",
+          "text": "One reviewer says that the inventory slots fill up way too fast.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "241473013",
+            "hours_at_review": 12.4,
+            "minutes_at_review": 746,
+            "voted_up": true,
+            "date": "2026-11-24",
+            "review_text": "Pros:\n-Unbeatable atmosphere and soundtrack\n-Building system is deeply addictive once you learn structural integrity\n-Full 1.0 release with the Deep North biome wraps up an incredible progression loop   \n-Phenomenal with friends\n\nCons:\n-The inventory slots fill up way too fast\n-You will lose your gear across an ocean at least once\n\nRate: 7/10",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-ebc44daf",
+          "text": "One reviewer states that enemies hit absurdly hard and can easily over fill your block meter.",
+          "theme": "difficulty",
+          "citation": {
+            "recommendationid": "239807854",
+            "hours_at_review": 18.7,
+            "minutes_at_review": 1121,
+            "voted_up": false,
+            "date": "2026-11-09",
+            "review_text": "Every time I thought about playing more, I thought about playing something better.\r\n\r\nValheim is deceptive in its appearance, it looks like norse fantasy survival crafting game, but it's actually a realism simulator with a norse fantasy coating, everything is realistic to the point of being a detriment.\r\n\r\n[h2]Illusion of difficulty[/h2]\r\nEnemies hit absurdly hard, as hard as you'd expect them to hit if they were real, it feels imbalanced just for the sake of realism.\r\n\r\nYou have a block button that also functions as a parry if done with exact timing, if you don't parry and block instead, you start to fill up the blocking meter, if it fills up all the way the damage from that attack goes through.\r\nIt seems like the game is balanced around parry, because as mentioned every enemy past the tutorial zone hits absurdly hard and will easily over fill your block meter.\r\n\r\nAfter beating the first boss you can go to a new area, you need to go there to in order to begin progressing, but within it can spawn a miniboss that has half the health of the boss you just fought and [b]four times[/b] the damage.\r\n\r\n[h2]Dying is tedious[/h2]\r\nWhen you die, you drop everything you had in your inventory, including your equipped armor and weapons, and you lose 5% of experience across all your skills.\r\nThese penalties can be greatly reduced through world settings.\r\n\r\n[h2]Collecting resources is slow and tedious[/h2]\r\nYour maximum carry weight is 300, ore is extremely heavy and the first one you need weights 10 pounds, meaning you can only carry a total of 30 at a time, [b]but[/b] that's if you have nothing else at all in your inventory, so you'll actually carry around 20 at a time. Later ores weigh even more.\r\n\r\nYou can make a cart to put ore and other items in, but:[list]\r\n[*]The more weight is in it, the harder it is to pull\r\n[*]It obeys physics and can get stuck on terrain\r\n[*]If left alone without you around, enemies will destroy it[/list]\r\nIt's just not worth using.\r\n\r\nAfter copper, yo…",
+            "truncated": true
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "baseline",
+        "triggers": [],
+        "cited_reviews": 7,
+        "cited_recommend": 7,
+        "divergence_p": 1.0,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "mid",
+      "label": "20-100h",
+      "hours_range": "20-100 hours",
+      "pool_n": 496,
+      "pct_positive": 94.8,
+      "muted": false,
+      "n_note": null,
+      "summary": "Mid-game progression highlights tedious inventory limits, awkward combat, and demanding survival timers.",
+      "themes": [
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "mid-1f705d",
+              "claim": "Reviewers report that inventory management is tedious due to weight limits and a lack of quality-of-life features like crafting directly from nearby chests.",
               "citation_verdict": "positive",
               "citation_split": {
                 "positive": 2,
@@ -697,66 +261,359 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231528019",
-                  "hours_at_review": 213.5,
+                  "recommendationid": "239739831",
+                  "hours_at_review": 62.5,
+                  "minutes_at_review": 3753,
                   "voted_up": false,
-                  "date": "2026-07-28",
-                  "review_text": "The graphics, mood, vibes, absolutely spectacular. I had a great time with this game with friends and family.\n\nOn the other hand, the update pace, is an absolute insult. Modders have done 100x more than the team ever has. I am asking for ONE, I repeat, ONE, substantial update. You don't need to support the game for years. It's just I've never seen a single actual satisfying content release. The team members seem to be apathetic about delivering substantial updates, I have watched their interviews and conference talks. \n\nThis game and 7DTD and Zomboid have put serious PTSD in buying open-world survival crafting games in Early Access for me, because I see promise in them and when I purchased them, while I am indeed enjoying the game, I purchased them on the premise that I believed there would be at least ONE major update within 2 years of their initial release. Most of these games I've been waiting longer than 5 years now.",
-                  "truncated": false,
-                  "minutes_at_review": 12811
+                  "date": "2026-11-08",
+                  "review_text": "Whilst having a very strong early game, exploration and atmosphere, the further along you get the more frustrating the grind becomes and the severe, utter lack of quality of life features regarding crafting, ordering inventories, chests and other things made this game just annoying to play.\n\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229376285",
-                  "hours_at_review": 285.5,
+                  "recommendationid": "240146986",
+                  "hours_at_review": 93.0,
+                  "minutes_at_review": 5578,
                   "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Shoutout to the modding community for making this game what it is today.\n\nWhen the game first dropped in alpha, it was actually really fun and had a ton of potential. My friends and I played it for a solid 2-3 play throughs in the last few years and had a blast. We were excited to see where the devs would take it.\n\nFast forward five years, and the official updates have been extremely underwhelming, Valheim is a good game that got carried by an incredible modding community, but the development pace has been painfully slow for a game that exploded as hard as it did.\n\nThankfully, the modding community stepped up and basically finished the game for them years ago. The mods added the depth, replayability, and content that kept the game alive.\n\nThe content they are finishing up in this full release has already been finished years ago with mods. It mostly just means the game is probably going to be broken for a few weeks or months while modders have to update everything again.",
-                  "truncated": false,
-                  "minutes_at_review": 17131
+                  "date": "2026-11-14",
+                  "review_text": "Valheim in my view is close to a master piece. No it's not perfect. The graphics aren't the best even if that was their artistic choice. I like the older look, but could you at least make it so things to mesh through each other? I always found that rather lazy. That being said, Valheim is such a delight to play. It's combat is simple and satisfying, and its roster of weapons is wide enough to keep combat interesting. Giving you good reason to use multiple rather than sticking to one type. It's Norse world is gripping, atmospheric and full of wonder. The game wants you to explore but you don't feel forced, you want to explore. There's always something new to find. The crafting is just as good, I like how crafting stations work and are upgraded, and I love how you discover new recipes as you find new resources. That being said, it was tedious having to  remove things from my chests when I often couldn't carry everything without being overencumbered, a simple mechanic where you can craft things that are in nearby chests would have been a big quality of life touch. But this isn't a big enough issue to make me dislike the crafting, it was still everything you could for in a game. Lastly, the boss fights, sailing, and meads are all what makes Valheim unique to other survival games for me. True many other survival games have bosses, but Valheim's bosses are utterly unique due to their setting. Meads are basically potions, but brewing them still felt different and I welcomed the change. Then the sailing. The sailing is scary at times, peaceful at times, and it opens up the vastness of Valheim's massive generated worlds. I don't want to spoil anything, but there's a lot to admire about this game. If you like boss hunting, crafting, base building (which is superb and due to its physics more thought provoking than other survival games, however more variety on building pieces would have been nice), and simple yet satisfying combat. You gotta try this game. \r\n",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "229372808",
-                  "hours_at_review": 366.2,
+                  "recommendationid": "241256422",
+                  "hours_at_review": 35.9,
+                  "minutes_at_review": 2152,
                   "voted_up": true,
-                  "date": "2026-07-02",
-                  "review_text": "Do I recommend this game?\n\nIf I could give a maybe I certainly would for this game.\n\nI think it had a lot of really great decisions going into EA and each subsequent biome ruined the fun of the game a little more. They made some really bad choices like the mist being so obnoxious in mistlands, and the nonstop barrage of mobs in ashlands, raids on bases etc. Thankfully modders made the game better in every regard in fractions of the time Iron Gate takes to do literally ANYTHING. \n\nIt certainly gave me a few hours of entertainment for the money I spent but I will never buy another EA from these slow ass developers again. 5+ years to release 3 major updates. \n",
-                  "truncated": false,
-                  "minutes_at_review": 21971
+                  "date": "2026-11-24",
+                  "review_text": "I'm surprised I hadn't reviewed the game yet. Anyhow, I enjoy the game quite a bit and would recommend people to give this a try, but some things to keep in mind. If you want the developer intended experience, sure, go on and play that, but if you want some very useful QoL features that \"SHOULD\" (aka they wouldn't make the game easier, just would make the game less tedious) be in the game in the first place, you need to use some mods for that. For example if you want seperate slots for your armor pieces to not take up precious inventory space, you need a mod for that; If you want nearby crafting stations to have access to materials in your chests, you need a mod for that etc. The game is fun, but combat can be clunky the first time. To me it still is kind of clunky but I'm getting used to it. The enemy variety is nice also. Another quick note, as a solo player, you may want to increase the Loot drop multiplier in the world settings a bit, otherwise the grind will be a slog, but if you already have plans immediately to play with friends, default settings are good for multiplayer.\r\nAlso unsurprisingly the game runs decently well. It has kind of a pixelated art style, which works really well and look gorgeous. Overall the game runs well, but even with my rig there is quite a few minor stutters and some fps drops here and there, and I'm not even exactly running the game at max settings, otherwise I'd have 100% GPU usage with heavy fps drops and stutters.\r\nI got the game gifted to by an indie dev that I had by that time already helped test his game for a bit over an year as a thanks, and I'm happy I have been able to enjoy the game since around late 2024 or early 2025, I don't exactly remember.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-519468",
-              "claim": "Reviewers note that base building incorporates a structural integrity system requiring players to manage stability, weather protection, and smoke ventilation.",
-              "citation_verdict": "positive",
+              "claim_id": "mid-7595b4",
+              "claim": "Reviewers describe the combat mechanics and enemy hitboxes as feeling clunky or awkward.",
+              "citation_verdict": "negative",
               "citation_split": {
-                "positive": 2,
-                "negative": 0
+                "positive": 1,
+                "negative": 2
               },
               "citations": [
                 {
-                  "recommendationid": "231615347",
-                  "hours_at_review": 120.5,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "An Absolute Masterclass in Survival, Crafting, and Co-Op\nRating: ★★★★★ (5/5)\nIt is rare for an indie title to drop into the survival-crafting genre and instantly set a new high-water mark, but Valheim does precisely that. Blending Norse mythology, atmospheric world-building, and brilliant mechanics, it is easily one of the most compelling gaming experiences of the last decade.\n\nOne of Valheim’s biggest triumphs is how remarkably well it runs. In an era where modern releases routinely crush mid-tier rigs, Valheim manages to deliver stunning, painterly vistas with rich lighting and atmosphere while maintaining excellent performance on average PC hardware. You don't need a top-end graphics card to enjoy buttery-smooth framerates, making it incredibly accessible for groups of friends with varying PC setups.\n\nWhether you want to drop into a quick session or run a persistent world for your group, Valheim makes seamless connectivity a priority. With robust private server support—including straightforward dedicated server setups—your community can build, explore, and progress at their own pace without worrying about tethering or host dependency.\n\nIf you enjoy base-building, prepare to be completely hooked. Valheim boasts some of the best building options in any game on the market. The structural integrity system forces you to think like an actual architect, balancing stability, airflow for smoke, and weather protection. From cozy coastal longhouses to sprawling mountain fortresses, the crafting system rewards creativity in a way few other games achieve.\n\nWhile perfectly enjoyable solo, Valheim truly shines as a co-op game. Gathering resources, embarking on long naval voyages into uncharted waters, and tackling brutal boss fights alongside friends creates unforgettable gaming moments. The game’s immersion is top-notch—the howling winds during a thunderstorm, the dynamic ocean swells, and the quiet beauty of the Meadows make the world feel alive and unforgiving.\n\nProgression …",
-                  "truncated": true,
-                  "minutes_at_review": 7232
+                  "recommendationid": "240305349",
+                  "hours_at_review": 81.7,
+                  "minutes_at_review": 4903,
+                  "voted_up": false,
+                  "date": "2026-11-15",
+                  "review_text": "I have very mixed feelings about this game, however the numerous QoL features missing, constantly being out of stamina or forced to have debuffs that drain it faster or slow how fast it recharges, the jank of the combat and the building system, the problems with the enemy AI and the multiplayer synching issues do not make me want to recommend this game, nor make me feel like replaying it in the future. Apparently installing a bunch of mods can ease this but it some of these issues should not need a third party mod to be addressed.",
+                  "truncated": false
                 },
                 {
-                  "recommendationid": "231611495",
-                  "hours_at_review": 104.8,
+                  "recommendationid": "239294217",
+                  "hours_at_review": 55.1,
+                  "minutes_at_review": 3304,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Chore simulator, maybe somewhere in there was a good idea, but the execution is just so bad, combat is clunky as hell, building would be nice if there was no encumbrance limit in Your base and everything is an endless grind, boss and mob hitboxes hit You when You stand 3 meters to the side of the attack. I wish I've never wasted my time on this game and I only did that because I was playing with friends. Next time they'll propose to play Valheim I'll tell them I'll much rather crush my balls with a hammer.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241256422",
+                  "hours_at_review": 35.9,
+                  "minutes_at_review": 2152,
                   "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Valheim is a good, cozy survival game overall that captures a uniquely warm atmosphere. Its beloved low-poly, retro visual style paired with stunning dynamic lighting and weather effects creates a charming aesthetic that players fall in love with instantly.\n\nThe building capabilities are remarkably detailed, forcing you to account for structural stability and smoke ventilation. However, the system is somewhat limited by a lack of geometric shapes, which can restrain your creativity when trying to build more intricate vanilla structures.\n\nThe progression system is fine and satisfying, taking you smoothly from one biome to the next as defeating regional bosses unlocks the tools and metals needed for your next leap in technology.",
-                  "truncated": false,
-                  "minutes_at_review": 6285
+                  "date": "2026-11-24",
+                  "review_text": "I'm surprised I hadn't reviewed the game yet. Anyhow, I enjoy the game quite a bit and would recommend people to give this a try, but some things to keep in mind. If you want the developer intended experience, sure, go on and play that, but if you want some very useful QoL features that \"SHOULD\" (aka they wouldn't make the game easier, just would make the game less tedious) be in the game in the first place, you need to use some mods for that. For example if you want seperate slots for your armor pieces to not take up precious inventory space, you need a mod for that; If you want nearby crafting stations to have access to materials in your chests, you need a mod for that etc. The game is fun, but combat can be clunky the first time. To me it still is kind of clunky but I'm getting used to it. The enemy variety is nice also. Another quick note, as a solo player, you may want to increase the Loot drop multiplier in the world settings a bit, otherwise the grind will be a slog, but if you already have plans immediately to play with friends, default settings are good for multiplayer.\r\nAlso unsurprisingly the game runs decently well. It has kind of a pixelated art style, which works really well and look gorgeous. Overall the game runs well, but even with my rig there is quite a few minor stutters and some fps drops here and there, and I'm not even exactly running the game at max settings, otherwise I'd have 100% GPU usage with heavy fps drops and stutters.\r\nI got the game gifted to by an indie dev that I had by that time already helped test his game for a bit over an year as a thanks, and I'm happy I have been able to enjoy the game since around late 2024 or early 2025, I don't exactly remember.",
+                  "truncated": false
                 }
               ]
             },
             {
-              "claim_id": "vet-a662d6",
-              "claim": "Reviewers note that metal cannot be teleported using base game settings, requiring boat transport.",
+              "claim_id": "mid-a81bac",
+              "claim": "Reviewers report that the survival systems rely heavily on timers tied to food buffs and the rested status, requiring regular maintenance to avoid severe combat disadvantages.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239287634",
+                  "hours_at_review": 98.7,
+                  "minutes_at_review": 5923,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "My friends and I have spent numerous hours playing since 1.0 dropped in September and we find many aspects of the game enjoyable! The enemy design, the bosses, the building, the environments are all unique and fun in their own way.\r\n\r\nHowever, we have noticed while playing that for every enjoyable thing we come across, there is something else that leads us to question your judgement. For clarity, we are currently working on defeating the boss in the Ashlands.\r\n\r\nFor starters, the wind. It is interesting in concept, especially early game. However, when you force the players to sail in order to find new biomes, it gets to a point where it's just a tedious annoyance. And I know that the Moder buff forces it in your favor, but only for five minutes? With a twenty minute cooldown? Wouldn't that make more sense as a passive buff, a reward for slaying a dragon?\r\n\r\nAlso, why is the rested bonus so miserable? Having it enabled is absolutely necessary for any kind of combat and/or traversal, especially in the Mistlands. Yet it only lasts for 29 minutes at max level? Nobody is going back to their base every half hour.\r\n\r\nWhy is a crafting station required to build this late into the game? I understand late game constructions, but do we seriously need a crafting table to put a campfire down at this point? My suggestion is an upgraded hammer that allows the player to build simple wooden structures without one. Hell, we should be able to craft hammers that allow us to build anything without a crafting station.\r\n\r\nOn top of that, why can't we repair things without a crafting station? Even if it costs materials to fix things without one, we should be allowed to counteract the hundreds of vultures that decimate our boat's health while stuck on the Ashland spikes. The spikes that make it near impossible to traverse the waters in that massive boat that is also required to even enter the Ashlands.\r\n\r\nBy the way, vultures are scavengers; not predators. They should not be attacking us wh…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238828923",
+                  "hours_at_review": 60.5,
+                  "minutes_at_review": 3628,
+                  "voted_up": false,
+                  "date": "2026-10-29",
+                  "review_text": "Valheim is a great game that's woefully held back by design that doesn't want you to play it.\r\n\r\nAt the core, the entire game runs on timers. You have three food slots that you must keep full, because you never upgrade your stamina and food. They only increase by eating food, and every biome has new food with better stats, and a slightly longer timer. If you die, all 3 food buffs disappear, and you need to eat more. Likewise, halfway through the timer, the food buffs start decreasing, so you don't even get the full value for the entirety of the timer. This is bad, because everything depends on your HP and stamina, such as your ability to dodge and block attacks.\r\n\r\nThen there's the Rested buff. Rested is a near-mandatory buff for your stamina, without which you'll die quick. You get Rested by resting, in your base. Effectively this puts a timer on how long you're allowed to go out and hunt, explore, mine etc. A timer on how much you're allowed to explore, in an exploration focused game. This one also goes away when you die, meaning every death has you not just stock back up on food, but also sit around your base, before you can continue playing the game.\r\n\r\nThis comes to a finale with the bosses: You require all 4 of these timed buffs, all of which disappear on death. And a boss, naturally, will kill you a few times. So each death requires you go back to base, eat food, rest up for the stamina buff, then go back to the boss, grab your corpse, then spend time re-equipping your armor (because that's not instant, it has an interact bar), and only then can you continue the fight, if by then the boss or their minions haven't whittled down your HP.\r\n\r\nAll in all, I feel like the game punishes me for actually wanting to interact with the great biomes, crafting, combat (thanks for the dodge hotkey), and exploration. Which makes me not want to play the game, despite all of those aforementioned parts of the game being absolutely amazing. \r\n\r\nSo if all of the above doesn't mat…",
+                  "truncated": true
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "single_points": [
+        {
+          "point_id": "one-f564d696",
+          "text": "One reviewer says the performance in later biomes is terrible because destruction and simulated objects cause instability, and mentions multiplayer net-code issues with lagging enemy movement and unreadable boss animations.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240691264",
+            "hours_at_review": 90.5,
+            "minutes_at_review": 5428,
+            "voted_up": false,
+            "date": "2026-11-21",
+            "review_text": "This game is not ready to be called 1.0.\r\nThe performance in later biomes is terrible, certain enemies just create too much destruction and/or simulated objects to run stable. \r\nPlaying this game in multiplayer comes with a terrible net-code, enemy movement lagging, where even the animations of bosses become unreadable if you are not the host for that fight. \r\nAnd the enemy health scaling when adventuring with friends just made the combat feel worse .\r\n\r\nDoesn't help either, that the final boss soft-locked in his second phase, and getting the items to summon that boss again (without cheats) would take an hour, if not hours, of finding random Dungeons to then go to a random spot on the map for an invasion event.",
+            "truncated": false
+          }
+        },
+        {
+          "point_id": "one-baf9d33a",
+          "text": "One reviewer says multiplayer comes with terrible net-code, enemy movement lagging, and unreadable boss animations for non-hosts.",
+          "theme": "performance",
+          "citation": {
+            "recommendationid": "240691264",
+            "hours_at_review": 90.5,
+            "minutes_at_review": 5428,
+            "voted_up": false,
+            "date": "2026-11-21",
+            "review_text": "This game is not ready to be called 1.0.\r\nThe performance in later biomes is terrible, certain enemies just create too much destruction and/or simulated objects to run stable. \r\nPlaying this game in multiplayer comes with a terrible net-code, enemy movement lagging, where even the animations of bosses become unreadable if you are not the host for that fight. \r\nAnd the enemy health scaling when adventuring with friends just made the combat feel worse .\r\n\r\nDoesn't help either, that the final boss soft-locked in his second phase, and getting the items to summon that boss again (without cheats) would take an hour, if not hours, of finding random Dungeons to then go to a random spot on the map for an invasion event.",
+            "truncated": false
+          }
+        }
+      ],
+      "sourcing": {
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 7,
+        "cited_recommend": 2,
+        "divergence_p": 7.31e-06,
+        "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
+      }
+    },
+    {
+      "bucket": "veteran",
+      "label": "100h+",
+      "hours_range": "over 100 hours",
+      "pool_n": 1379,
+      "pct_positive": 93.6,
+      "muted": false,
+      "n_note": null,
+      "summary": "Veterans navigate vast biomes while facing heavy resource grinds, late-game performance drops, and punishing death mechanics.",
+      "themes": [
+        {
+          "theme": "performance",
+          "claims": [
+            {
+              "claim_id": "vet-547df6",
+              "claim": "Reviewers report performance drops and lag in late-game biomes like Mistlands due to particle effects, spawns, and peer-to-peer multiplayer desync.",
+              "citation_verdict": "mixed",
+              "citation_split": {
+                "positive": 3,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "241475082",
+                  "hours_at_review": 243.6,
+                  "minutes_at_review": 14616,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "The game overall is great. Stylish graphics, simple but fun combat, and like most survival games, it's a really fun game to play with friends. The early to mid-game progression is peak, though across like five playthroughs, the devs' \"anti-fun\" or \"anti-convenience\" philosophy always drags down the late game:\n\n- Bosses are mostly damage sponges with zero replay value. Once you get their one progression drop, there's no reason to fight them again, and even if you just want to refight one for fun or extra trophies, summoning gets ridiculously tedious by the end.\n- Hitboxes are quite problematically thin/small. Standing on a teeny tiny slope makes you whiff completely with melee weapons on most if not all attacks.\n- Even with the newly added extra inventory rows upgrades, late-game biomes can flood your inventory with random drops, and missing basic QoL like a crafting search bar or \"quick stack to nearby chests\" hurts.\n- Dying nukes 5% (by default) of your skills that already take forever to grind. But honestly, skills barely impact gameplay past the early levels anyway, so there's little reason to stress over maxing them out.\n- Performance tanks from Mistlands onward from all the particles/spawns, and if you are playing P2P with a friend, prepare for even more lag.\n\nStill worth playing with friends. Just tweak the world modifiers or grab a few QoL mods so the endgame doesn't waste your time or kill your excitement.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239712901",
+                  "hours_at_review": 271.2,
+                  "minutes_at_review": 16272,
+                  "voted_up": true,
+                  "date": "2026-11-08",
+                  "review_text": "One of the best Survival RPGs out there.\nJust don't be irritated by the art style, if you give it a chance it can be very very fun and also rewarding.\n\nAlso the Game doesn't really throw information at you, so either find out the hard way, or go to the wiki.\n\nI think this Game has so much to offer, but I'd like it to perform better with multiple Players. I hope they'll fix that in some way, in the future. \nOtherwise you can run it on a server too, but that doesn't negate the problem. Unless you have a ton of performance and connection speed, on everyone's single individual machine and the Server.\nThat's also where the problem lies, with PvP. The features are there, but the Game isn't build accordingly.\nIf one Player has bad Hardware or connection speed and loads an area (on a good Server), everyone in that area is affected by the first Player to load it. \nNot what you want, in a (mostly) parry-based combat System",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240139169",
+                  "hours_at_review": 229.4,
+                  "minutes_at_review": 13763,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Great first four biomes, terrible and unfinished endgame.\n\nValheim starts out amazing, but after the four biome, the game design completely falls apart—culminating in a rushed and frustrating Deep North expansion.\n\n    Broken combat & hitboxes: Melee combat doesn't work on uneven terrain, and enemies like the Hex float out of reach while dodging slow ranged projectiles.\n\n    Illogical progression: Crafting an ice staff from rare resources in an ice biome only to find out the local enemies are immune to frost makes zero sense.\n\n    Artificial grind: Locking essential gear behind terrible RNG drop rates from frustrating enemies (like Hexes or 2-star Kriegers) isn't \"hardcore\"—it's just padding playtime.\n\n    Unplayable multiplayer lag: The P2P netcode is a mess. Desync causes characters to get stuck on each other's heads at portals, leading to unfair deaths.\n\n    Rushed atmosphere: Missing music and empty-feeling late-game zones make it clear the developers just wanted to push out 1.0 and be done with it.\n\nLoved the early game, deeply disappointed by how the developers treated the rest of it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239624546",
+                  "hours_at_review": 112.1,
+                  "minutes_at_review": 6728,
+                  "voted_up": false,
+                  "date": "2026-11-07",
+                  "review_text": "still an early access game with bugs, terrible optimizaton in lategame, horrible netcode and just lack of proper QoL. Review would be positive if it was still an EA game, but it's supposedly not anymore.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240991336",
+                  "hours_at_review": 176.4,
+                  "minutes_at_review": 10582,
+                  "voted_up": true,
+                  "date": "2026-11-23",
+                  "review_text": "Finally played through the game with a handful of friends on hardcore/modded and had a blast. But getting to Ashlands and Deep north had us all a bit frustrated. Felt rushed and ran really bad performance wise.\n\nUp until Ashlands was an easy 10/10, but Ashlands/DeepNorth really dragged it down to a 7/10.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "content",
+          "claims": [
+            {
+              "claim_id": "vet-437c25",
+              "claim": "Reviewers note that the game features basic story elements, cutscenes upon defeating bosses, and an intricate random world generator with distinct biomes.",
+              "citation_verdict": "positive",
+              "citation_split": {
+                "positive": 3,
+                "negative": 1
+              },
+              "citations": [
+                {
+                  "recommendationid": "241475314",
+                  "hours_at_review": 1929.1,
+                  "minutes_at_review": 115747,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "Valheim puts you in the pilot's seat of a Viking warrior sent to Norse purgatory. Fight, Craft, and Plot your path to Valhalla through immersive biomes, challenging boss fights, and the most intricate random world generator ever seen. \r\n\r\nBuilders rejoice, hundreds of pieces with free build or snapping and Base defense events(optional).\r\n\r\nCrafters and farmers, you'll find every weapon and armor set matters to somone's build, rewarding farming and cooking system with endless decoration possibilities.\r\n\r\nWarriors, Rogues, and Mages, with a souls-lite combat system to fall in love with, I began to feel very comfortable with normal difficulty after early access ended. Then I tried Hard. Suddenly every second of food, every potion ingredient, and each kit upgrade mattered.\r\n\r\nI've truly loved a few games in my 40+ years, but none will top this one for D͟e͟c͟a͟d͟e͟s͟ to come.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241474308",
+                  "hours_at_review": 726.0,
+                  "minutes_at_review": 43560,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "Valheim is a fine survival game. I wouldnt call it hardcore because only thing hard about it is how it trys your patience by throwing BS at you time to time. It's fun with friends and you can easily sink alot of time into it.\r\n\r\nThe story is very basic and serves its purpose as background noise sufficiently enough. Wish there was more to Thor and Odin beyond showing up every once and a while as terrain decorations.\r\n\r\nitemgame is fine but there are alot of items that are underwhelming, Dev's trolling the players and flatout useless. The merchant materials which allow you to make unique weapons are rather underwhelming considering how tiny window of the game they are effective. The charms or relics effects are underwhelming considering how much you have to work for it to get activated. I like the Stamina and Tank armor builds but the Eitr armors feel underwhelming and I can hardly tell the eitr benefits with the armors.\r\n\r\nthe bosses the meat on the platter range from walking over them to actually engaging fights, the first boss is obviously easy because the game requires you to kill it early for progression. The Second boss doesnt exactly challenge you anymore beyond doing more damage but being less aggressive. but the remaining bosses are fun fights solo and with friends.\r\n\r\nThere are bugs, funny, annoying and gamebreaking which I think need to get fixed Like the final boss of the game stopping functioning in an immune state and you not being able to defeat them should not be there in the 1.0 update but yet it is.\r\n\r\nOverall the game is enjoyable survival experience I recommend playing with friends.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "241460298",
+                  "hours_at_review": 259.6,
+                  "minutes_at_review": 15578,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "One of the best survival co-ops I've player for the following reasons:\n- Simple and yet stunning graphics \n- Game size is 4GB which is kind on storage\n- The progression is rough at first but once you understand the game, it makes the risk worth the reward\n- Every map is generated differently with all the biomes (no 2 play throughs will ever be the same, so great for replaying)\n- The story feels epic now that there are cutscenes when you sleep between slaying world bosses\n- I get to fish and farm when I want to choose 'cosy' instead of 'violence'\n- I get to name pet chickens after people I know",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239270269",
+                  "hours_at_review": 452.1,
+                  "minutes_at_review": 27125,
+                  "voted_up": false,
+                  "date": "2026-11-03",
+                  "review_text": "Valheim has had an extremely long period of early access and I held off playing it until the full release so that I could experience the complete package from the developers. I definitely enjoyed my time playing Valheim and it is an excellent game to play with friends but I cannot, in good faith, recommend it to others in the current state. The game feels unfinished in so many areas that is really disappointing for a full release with such a lengthy early access. If the developers had over five years of early access and couldn't get a reasonable gear upgrade system in place I cannot recommend their game.\r\n\r\nThere were many good aspects to Valheim: I really liked the way the food system worked with it being one of the major factors to progressing in the game and having a variety of ways to access it (seeds to plant, animals to hunt or tame and farm, berries to forage), the food slowly degrading in stats over time - really strong system. I also loved the variety and creativity in the biomes and the way you had to get resources from them - sometimes you mine straight from the ground, sometimes you have to go into dungeons, sometimes you have to murder the local dwarves - and the logistics of moving these resources around was also a fun logistical puzzle. These elements also all involved a lot of exploration and the game excels in this area - exploring and finding new items, foods, ores, enemies, biomes etc. was very well done. The building in the game is rewarding but partly because of how awkward it is to build things. I liked the physics used in the game where you actually require proper support for your constructions but the actual building is cumbersome to use and lacks basic quality of life (QoL) features you'd expect to exist.\r\n\r\nThere are many systems which are clearly half-baked or tacked on and not in a fit state for a full release. Frankly I would be embarrassed to have released the game with the state of some of these. A minor but glaring example is the afor…",
+                  "truncated": true
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-e214a7",
+              "claim": "Reviewers point out that the game lacks basic quality-of-life features such as a crafting search bar or inventory management assistance like quick stacking into chests.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 3
+              },
+              "citations": [
+                {
+                  "recommendationid": "241475082",
+                  "hours_at_review": 243.6,
+                  "minutes_at_review": 14616,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "The game overall is great. Stylish graphics, simple but fun combat, and like most survival games, it's a really fun game to play with friends. The early to mid-game progression is peak, though across like five playthroughs, the devs' \"anti-fun\" or \"anti-convenience\" philosophy always drags down the late game:\n\n- Bosses are mostly damage sponges with zero replay value. Once you get their one progression drop, there's no reason to fight them again, and even if you just want to refight one for fun or extra trophies, summoning gets ridiculously tedious by the end.\n- Hitboxes are quite problematically thin/small. Standing on a teeny tiny slope makes you whiff completely with melee weapons on most if not all attacks.\n- Even with the newly added extra inventory rows upgrades, late-game biomes can flood your inventory with random drops, and missing basic QoL like a crafting search bar or \"quick stack to nearby chests\" hurts.\n- Dying nukes 5% (by default) of your skills that already take forever to grind. But honestly, skills barely impact gameplay past the early levels anyway, so there's little reason to stress over maxing them out.\n- Performance tanks from Mistlands onward from all the particles/spawns, and if you are playing P2P with a friend, prepare for even more lag.\n\nStill worth playing with friends. Just tweak the world modifiers or grab a few QoL mods so the endgame doesn't waste your time or kill your excitement.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "239823878",
+                  "hours_at_review": 127.4,
+                  "minutes_at_review": 7645,
+                  "voted_up": false,
+                  "date": "2026-11-09",
+                  "review_text": "I really like the game, I've put a lot of hours into it long before 1.0 and right after but I can't recommend it\n\nIt is fun and addictive but only in the very beginning. It gets stale, grindy and repetitive very quickly\n\nMy biggest gripe is that after so many years the game is missing SO MUCH QOL. You will constantly question yourself - is this really supposed to be this tedious? Yes. Is there a better way to do it? There isn't. I should be allowed to filter/search through my stuff... Yes, you should. Can you? No you cannot\n\nYears of development time wasted, the game is dead - if you've played this during COVID - do not come back, it is not worth it",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238500997",
+                  "hours_at_review": 310.3,
+                  "minutes_at_review": 18619,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "Valheim is not a bad game, it's quite good and is worth it's asking price but it does have some issues if you're thinking of getting it.\n\nValheim confuses excessive friction with difficulty. Things like dying can cause you to lose hours of progression just to get back to where you were, your mandatory food buffs degrade over time and last about half as long as they read, the entire fishing system is a clunky mess and for a game with this many items, crafting recipies and workstations there is no inventory management assistance, not even a search tool or the ability to lookup an item you've learned.\n\nValheim also comes with no detailed difficulty adjustment tools outside of some console commands to let players tailor the experience to their liking. If you're considering picking it up and and don't enjoy harcore-like mechanics (severe time and/or progression loss on death or making a mistake) I strongly recommend that you install a set of quality of life mods to help adjust the game to your liking.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238609634",
+                  "hours_at_review": 136.8,
+                  "minutes_at_review": 8205,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "Valheim has a unique atmosphere and a solid building system. But after five years of early access, 1.0 left me underwhelmed: the core problems are still there.\r\n\r\nGrind. Every progression tier means hours of repetitive gathering. Ore can’t go through portals, so you keep making the same boat trips over and over. Yes, world modifiers exist, but I shouldn’t have to tweak a game’s settings to make it enjoyable.\r\n\r\nQuality of life. Chests are tiny, and there’s no way to move items between them automatically. You spend ages sorting your inventory by hand. In 2026, that feels ancient.\r\n\r\nBugs. Water physics are sloppy: fish flying out of the water, desync in multiplayer… For a game that just left early access, that’s disappointing.\r\n\r\nAn underwhelming 1.0. To me, a new biome doesn’t make a finished game. Valheim feels as old-school and clunky as it did in 2021, only now it costs more.\r\n\r\nRecommended if you want to build with friends, ideally with mods. Skip it if your playtime is limited.",
+                  "truncated": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "theme": "difficulty",
+          "claims": [
+            {
+              "claim_id": "vet-06c203",
+              "claim": "Reviewers describe the combat system as souls-like, noting that standing on uneven terrain or slopes causes melee attacks to miss entirely.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 1,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "241475082",
+                  "hours_at_review": 243.6,
+                  "minutes_at_review": 14616,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "The game overall is great. Stylish graphics, simple but fun combat, and like most survival games, it's a really fun game to play with friends. The early to mid-game progression is peak, though across like five playthroughs, the devs' \"anti-fun\" or \"anti-convenience\" philosophy always drags down the late game:\n\n- Bosses are mostly damage sponges with zero replay value. Once you get their one progression drop, there's no reason to fight them again, and even if you just want to refight one for fun or extra trophies, summoning gets ridiculously tedious by the end.\n- Hitboxes are quite problematically thin/small. Standing on a teeny tiny slope makes you whiff completely with melee weapons on most if not all attacks.\n- Even with the newly added extra inventory rows upgrades, late-game biomes can flood your inventory with random drops, and missing basic QoL like a crafting search bar or \"quick stack to nearby chests\" hurts.\n- Dying nukes 5% (by default) of your skills that already take forever to grind. But honestly, skills barely impact gameplay past the early levels anyway, so there's little reason to stress over maxing them out.\n- Performance tanks from Mistlands onward from all the particles/spawns, and if you are playing P2P with a friend, prepare for even more lag.\n\nStill worth playing with friends. Just tweak the world modifiers or grab a few QoL mods so the endgame doesn't waste your time or kill your excitement.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "240139169",
+                  "hours_at_review": 229.4,
+                  "minutes_at_review": 13763,
+                  "voted_up": false,
+                  "date": "2026-11-13",
+                  "review_text": "Great first four biomes, terrible and unfinished endgame.\n\nValheim starts out amazing, but after the four biome, the game design completely falls apart—culminating in a rushed and frustrating Deep North expansion.\n\n    Broken combat & hitboxes: Melee combat doesn't work on uneven terrain, and enemies like the Hex float out of reach while dodging slow ranged projectiles.\n\n    Illogical progression: Crafting an ice staff from rare resources in an ice biome only to find out the local enemies are immune to frost makes zero sense.\n\n    Artificial grind: Locking essential gear behind terrible RNG drop rates from frustrating enemies (like Hexes or 2-star Kriegers) isn't \"hardcore\"—it's just padding playtime.\n\n    Unplayable multiplayer lag: The P2P netcode is a mess. Desync causes characters to get stuck on each other's heads at portals, leading to unfair deaths.\n\n    Rushed atmosphere: Missing music and empty-feeling late-game zones make it clear the developers just wanted to push out 1.0 and be done with it.\n\nLoved the early game, deeply disappointed by how the developers treated the rest of it.",
+                  "truncated": false
+                },
+                {
+                  "recommendationid": "238573145",
+                  "hours_at_review": 561.1,
+                  "minutes_at_review": 33666,
+                  "voted_up": false,
+                  "date": "2026-10-25",
+                  "review_text": "This isn’t a bad game, but the 1.0 release still hasn’t addressed most of the issues I hoped it would.\n\nThe early game is as great as ever and gets you hooked, but the longer you play, the more you start hating things the devs apparently consider features.\n\nCombat isn’t great. Some weapons and builds are seriously underpowered or awkward to use, and fighting on slopes is still shit after five years, despite modders having fixed it long ago. Apparently, not being able to hit an enemy because they’re standing slightly uphill is part of the intended experience.\n\nValheim is sorely lacking in quality-of-life features, and players have been complaining about it for years. I honestly don’t understand why the devs seem so determined to keep basic conveniences out of the game.\n\nThe UI also feels extremely unpolished for a 1.0 release. I like the low-poly, retro look, but that doesn’t mean crafting and inventory management need to feel like they’re stuck in the ’90s too.\n\nIf you’re like me and play with mods, Valheim can be a great game and a lot of fun. But I can’t recommend a game that seems so committed to wasting my time for no good reason.",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-55fea4",
+              "claim": "Reviewers note that the death penalty involves dropping all equipped items and a percentage of skills, making recovery extremely difficult when stranded far away without portals.",
               "citation_verdict": "mixed",
               "citation_split": {
                 "positive": 1,
@@ -764,47 +621,74 @@
               },
               "citations": [
                 {
-                  "recommendationid": "231612920",
-                  "hours_at_review": 312.6,
-                  "voted_up": true,
-                  "date": "2026-07-29",
-                  "review_text": "Honestly, it’s a really, really good game; the only thing I don't like is that it requires an industrial amount of farming, and it’s a bit boring not being able to use portals to transport ore and being forced to use the boat instead.",
-                  "truncated": false,
-                  "minutes_at_review": 18755
+                  "recommendationid": "239455672",
+                  "hours_at_review": 198.8,
+                  "minutes_at_review": 11931,
+                  "voted_up": false,
+                  "date": "2026-11-05",
+                  "review_text": "Valheim is a game with totally unforgivable game design mistakes and now outdated user experience. Notably, its death penalties are one of the worst I've ever seen, a true school-case of what NOT to do in game design. This alone prevents me from recommending it at all.\n\nIt's sad since the ambience and artstyle is nice, and it's one of the few viking themed games, moreover a coop one. But its issues are so heavy it drags the game right to the doorstep of hell.\n\n[h1] What are the game's weaknesses? [/h1]\n\n[h2] The death penalty mechanic is the worst I've seen [/h2]\n\nWritten shortly, dying actively tells you to stop playing this game.\n\nIn very hardcore games, dying usually means losing the resources and XP you earned thus far. Plus you have to redo some parts of the level. Difficult, punishing but fair : Each death is a new occasion to optimize your route, avoid traps you didn't see and learn the enemy moves. You improve despite your death.\n\nIn Valheim, each deaths makes your game insanely harder, a non-sense when you just faced a challenge too great for you. But how did they manage that? By making you drop all your items, including food, ARMOR AND WEAPONS. If you died while travelling on sea (there are sea and flying monsters) or if you didn't put a portal nearby, you'll have to build a new (expensive) ship and sail back there. And each time you die, you'll travel back with less equipment, sometimes to a point you'll just be naked on a raft that moves at a snail's pace.\n\nAnd let's be clear, those food, armors and weapons are absolutely mandatory : Enemies will one-shot you while being near unkillable in the later parts if you are neither well-equiped nor well-fed. Also, in some biomes you will constantly take damage if you don't have the appropriate armor, making traversal almost impossible regardless of your skill level.\n\nAnd the \"best\" part : Enemies will spawncamp your corpse. They can also spawncamp the portal if you died too close to it, leading to instant deaths…",
+                  "truncated": true
                 },
                 {
-                  "recommendationid": "229424163",
-                  "hours_at_review": 216.6,
+                  "recommendationid": "241194068",
+                  "hours_at_review": 441.8,
+                  "minutes_at_review": 26507,
+                  "voted_up": true,
+                  "date": "2026-11-24",
+                  "review_text": "Valheim is one of the better survival crafting games I've played over the years. It's slow, progressive and risky, in a good way. You start out with nothing, punching trees until it kills you, and by the time you're sailing across the ocean in a longship with a fully built base behind you, it feels like you earned all of it. Dying actually costs you, so every trip into a new biome feels tense. \n\nThe building is great, the atmosphere is beautiful, and the exploration keeps you curious. Seeing new uncharted lands through the sunrise gives you moments most survival games just don't have.\n\nIt does need some quality of life improvements. The game also explains very little, which is good if you like that sort of approch. If you don't like a slow paced games or losing your gear, this probably won't be for you. But with updates, the game is becoming better.\n\nWhere Valheim really shines is with friends. Building a base together, splitting up jobs, getting wiped by a boss and laughing about it makes the whole experience far more enjoyable. Solo is still good, but with a group it's easily one of the best co-op survival games on PC.\n\nStill getting killed by trees, still hating on the mistlands, still the death journey feel tedious, still the ore runs are harrowing. Still haven't cleared the mistlands :/",
+                  "truncated": false
+                }
+              ]
+            },
+            {
+              "claim_id": "vet-bf62de",
+              "claim": "Reviewers describe resource gathering and transportation as a heavy grind, specifically highlighting heavy metal weight limits and the inability to transport ore through portals in vanilla play.",
+              "citation_verdict": "negative",
+              "citation_split": {
+                "positive": 0,
+                "negative": 2
+              },
+              "citations": [
+                {
+                  "recommendationid": "239958007",
+                  "hours_at_review": 140.5,
+                  "minutes_at_review": 8429,
                   "voted_up": false,
-                  "date": "2026-07-02",
-                  "review_text": "I played this on normal without many modifiers, I suggest you change a lot of the core game rules:\nThe game has some balancing issues for sure, namely the mandatory Ashland zone that requires siege equipment to get to.  If you are a solo player that will require a lot of investment of resources and time.  If you are in a multiplayer server, it is still hard but more bearable.  I understand this is meant to be a multiplayer survival game however the pain of not having friends to support the base, venture out and collect resources (metal can not be teleported in base game settings) feels too long for the amount of materials you need to craft a single piece of armor or a weapon.  Using a massive amount of metal to make a sword that weighs about 90% of the blade should not be a thing, then double it to upgrade it to a reasonable level. The weapon itself may not even be effective at the monsters you are fighting such as skeletons, druagar, and trolls.  \n\nStandard death makes you drop all your items at the tombstone, at least they won't float away.  Though you might wish it did float somewhere else because the gap in tiers needed to get to some locations are a bit too much and very painful to equip yourself to to retrieve the initial gear set.  Say I die in a hostile biome like the mountains, I have to climb the mountain or teleport up there with food in my belly to get all the equipment back.  And if I die with the previous tier of loot I had trying to get the first tombstone leads to a 2nd tombstone I have to retrieve.  It gets draining for sure.\n\nTime needs to be allocated for growing and cooking food.  I am not really a farmer type but I like how different diets fit different playstyles but it feels more important than the armor you have.\n\nThe aesthetics are beautiful and picturesque at times, I don't experience much slow down on a 2080 turbo.  Though some of my friends complain when the game gets busy in the mist lands and some bosses.\n\nThis game has been in early ac…",
-                  "truncated": true,
-                  "minutes_at_review": 12998
+                  "date": "2026-11-11",
+                  "review_text": "Want to have an adventure? Want a fair, challenging game where skill is tested? Want to explore and have a good time with your friends or family? Then welcome in Valheim! Where none of that exists.\nNow, are you unemployed? have no life? like to play games as if it was a job itself? hate yourself? then this is the game for you!\nYou know a game is bad when most of the positive reviews are saying \"mod this game\" \"good when you mod\" but this review is for vanilla Valheim only, and not anyone else but the devs fixing the problems.\n- GRIND: You go to an area, collect metal from nodes, and take them back home. Simple right? WRONG. Metal weighs crazy amounts so you can only carry so much on you before you move at a snails pace and draining stamina. Well there are carts right? so just fill the cart. WRONG. can't fill the cart too much or its too heavy to move. Its faster to be overweight, walk, drop items, wait for stamina, and pick back up for one trip then use the cart 3-4 times. This has taken HOURS to get a few stacks of copper and tin with two people. Also note, we had 2x drop rate so if you play how the devs consider \"normal\" then add double the amount of time. Now, this is just the black forest... it gets much much worse, why? because you can get to black forest with no boats, now think about this. The same thing as before in a new area plus having to boat to find the area to go to. Get the resources and then boat ALL the way back to your base. And if you just want to make a base at the swamp instead of bringing everything back? find another black forest and start all over again so you can make a forge to make everything else! or you know, you can just make metals go through portals which we ended up doing because we were having headaches just walking slow and sitting in boats for hours (which is normally turned off). Still on grind btw, items crafted take so many resources taking stacks of metals. 30-40 hours of work to make some but not all armor and a weapon or two…",
+                  "truncated": true
+                },
+                {
+                  "recommendationid": "238609634",
+                  "hours_at_review": 136.8,
+                  "minutes_at_review": 8205,
+                  "voted_up": false,
+                  "date": "2026-10-26",
+                  "review_text": "Valheim has a unique atmosphere and a solid building system. But after five years of early access, 1.0 left me underwhelmed: the core problems are still there.\r\n\r\nGrind. Every progression tier means hours of repetitive gathering. Ore can’t go through portals, so you keep making the same boat trips over and over. Yes, world modifiers exist, but I shouldn’t have to tweak a game’s settings to make it enjoyable.\r\n\r\nQuality of life. Chests are tiny, and there’s no way to move items between them automatically. You spend ages sorting your inventory by hand. In 2026, that feels ancient.\r\n\r\nBugs. Water physics are sloppy: fish flying out of the water, desync in multiplayer… For a game that just left early access, that’s disappointing.\r\n\r\nAn underwhelming 1.0. To me, a new biome doesn’t make a finished game. Valheim feels as old-school and clunky as it did in 2021, only now it costs more.\r\n\r\nRecommended if you want to build with friends, ideally with mods. Skip it if your playtime is limited.",
+                  "truncated": false
                 }
               ]
             }
           ]
         }
       ],
+      "single_points": [],
       "sourcing": {
-        "level": "baseline",
-        "triggers": [],
-        "cited_reviews": 9,
+        "level": "escalated",
+        "triggers": [
+          "divergent"
+        ],
+        "cited_reviews": 16,
         "cited_recommend": 7,
-        "divergence_p": 0.118,
+        "divergence_p": 1.36e-07,
         "basis": "pipeline diagnostic - counts of cited reviews, never rendered; see invariant 13"
       }
     }
   ],
   "footer": {
-    "pool_n": 1279,
-    "steam_total_reviews": 301391,
-    "cohort_count": 4,
+    "pool_n": 2061,
+    "steam_total_reviews": 319296,
+    "cohort_count": 3,
     "basis": "pre-quota pool swept at ingestion (a sample of Steam, not a census)"
-  },
-  "art": {
-    "header_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/de0bdcf6c008c508a79d8e75eb91fc67f4bebd5d/header.jpg?t=1786012504",
-    "capsule_image": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/892970/3b25991b8a19244cfd979a2766e7490cc7894e09/capsule_231x87.jpg?t=1786012504",
-    "grid": "https://cdn2.steamgriddb.com/grid/15bae9fa92cfa7982d794811b05162c9.png"
   }
 }
